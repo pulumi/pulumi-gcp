@@ -119,12 +119,12 @@ namespace Pulumi.Gcp.BigTable
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
         /// 
         /// -----
         /// </summary>
         [Output("automatedBackupPolicy")]
-        public Output<Outputs.TableAutomatedBackupPolicy?> AutomatedBackupPolicy { get; private set; } = null!;
+        public Output<Outputs.TableAutomatedBackupPolicy> AutomatedBackupPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
@@ -218,7 +218,7 @@ namespace Pulumi.Gcp.BigTable
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
         /// 
         /// -----
         /// </summary>
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.BigTable
     public sealed class TableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+        /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
         /// 
         /// -----
         /// </summary>

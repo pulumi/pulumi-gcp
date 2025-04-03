@@ -16,6 +16,9 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ClusterAutomatedBackupConfig',
+    'ClusterAutomatedBackupConfigFixedFrequencySchedule',
+    'ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime',
     'ClusterCrossClusterReplicationConfig',
     'ClusterCrossClusterReplicationConfigMembership',
     'ClusterCrossClusterReplicationConfigMembershipPrimaryCluster',
@@ -55,6 +58,117 @@ __all__ = [
     'GetInstancePersistenceConfigResult',
     'GetInstanceServerCaCertResult',
 ]
+
+@pulumi.output_type
+class ClusterAutomatedBackupConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedFrequencySchedule":
+            suggest = "fixed_frequency_schedule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAutomatedBackupConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAutomatedBackupConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAutomatedBackupConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fixed_frequency_schedule: 'outputs.ClusterAutomatedBackupConfigFixedFrequencySchedule',
+                 retention: str):
+        """
+        :param 'ClusterAutomatedBackupConfigFixedFrequencyScheduleArgs' fixed_frequency_schedule: Trigger automated backups at a fixed frequency.
+               Structure is documented below.
+        :param str retention: How long to keep automated backups before the backups are deleted.
+               The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        pulumi.set(__self__, "fixed_frequency_schedule", fixed_frequency_schedule)
+        pulumi.set(__self__, "retention", retention)
+
+    @property
+    @pulumi.getter(name="fixedFrequencySchedule")
+    def fixed_frequency_schedule(self) -> 'outputs.ClusterAutomatedBackupConfigFixedFrequencySchedule':
+        """
+        Trigger automated backups at a fixed frequency.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fixed_frequency_schedule")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> str:
+        """
+        How long to keep automated backups before the backups are deleted.
+        The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "retention")
+
+
+@pulumi.output_type
+class ClusterAutomatedBackupConfigFixedFrequencySchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAutomatedBackupConfigFixedFrequencySchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAutomatedBackupConfigFixedFrequencySchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAutomatedBackupConfigFixedFrequencySchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 start_time: 'outputs.ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime'):
+        """
+        :param 'ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs' start_time: The start time of every automated backup in UTC.
+               It must be set to the start of an hour. This field is required.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> 'outputs.ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime':
+        """
+        The start time of every automated backup in UTC.
+        It must be set to the start of an hour. This field is required.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime(dict):
+    def __init__(__self__, *,
+                 hours: int):
+        """
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        pulumi.set(__self__, "hours", hours)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> int:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
 
 @pulumi.output_type
 class ClusterCrossClusterReplicationConfig(dict):

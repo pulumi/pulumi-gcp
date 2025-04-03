@@ -37,7 +37,8 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
      * A 256-bit [customer-supplied encryption key]
      * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+     * to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * may be set.
      * 
      */
     @Import(name="diskEncryptionKeyRaw")
@@ -47,11 +48,31 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
      * @return A 256-bit [customer-supplied encryption key]
      * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+     * to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * may be set.
      * 
      */
     public Optional<Output<String>> diskEncryptionKeyRaw() {
         return Optional.ofNullable(this.diskEncryptionKeyRaw);
+    }
+
+    /**
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * may be set.
+     * 
+     */
+    @Import(name="diskEncryptionKeyRsa")
+    private @Nullable Output<String> diskEncryptionKeyRsa;
+
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * may be set.
+     * 
+     */
+    public Optional<Output<String>> diskEncryptionKeyRsa() {
+        return Optional.ofNullable(this.diskEncryptionKeyRsa);
     }
 
     /**
@@ -74,9 +95,24 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+     * 
+     */
+    @Import(name="diskEncryptionServiceAccount")
+    private @Nullable Output<String> diskEncryptionServiceAccount;
+
+    /**
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+     * 
+     */
+    public Optional<Output<String>> diskEncryptionServiceAccount() {
+        return Optional.ofNullable(this.diskEncryptionServiceAccount);
+    }
+
+    /**
      * The self_link of the encryption key that is
-     * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-     * and `disk_encryption_key_raw` may be set.
+     * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * may be set.
      * 
      */
     @Import(name="kmsKeySelfLink")
@@ -84,8 +120,8 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The self_link of the encryption key that is
-     * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-     * and `disk_encryption_key_raw` may be set.
+     * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+     * may be set.
      * 
      */
     public Optional<Output<String>> kmsKeySelfLink() {
@@ -133,7 +169,9 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
     private InstanceAttachedDiskArgs(InstanceAttachedDiskArgs $) {
         this.deviceName = $.deviceName;
         this.diskEncryptionKeyRaw = $.diskEncryptionKeyRaw;
+        this.diskEncryptionKeyRsa = $.diskEncryptionKeyRsa;
         this.diskEncryptionKeySha256 = $.diskEncryptionKeySha256;
+        this.diskEncryptionServiceAccount = $.diskEncryptionServiceAccount;
         this.kmsKeySelfLink = $.kmsKeySelfLink;
         this.mode = $.mode;
         this.source = $.source;
@@ -184,7 +222,8 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
          * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key]
          * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+         * to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+         * may be set.
          * 
          * @return builder
          * 
@@ -198,13 +237,39 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
          * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key]
          * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+         * to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+         * may be set.
          * 
          * @return builder
          * 
          */
         public Builder diskEncryptionKeyRaw(String diskEncryptionKeyRaw) {
             return diskEncryptionKeyRaw(Output.of(diskEncryptionKeyRaw));
+        }
+
+        /**
+         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+         * may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryptionKeyRsa(@Nullable Output<String> diskEncryptionKeyRsa) {
+            $.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
+            return this;
+        }
+
+        /**
+         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+         * may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryptionKeyRsa(String diskEncryptionKeyRsa) {
+            return diskEncryptionKeyRsa(Output.of(diskEncryptionKeyRsa));
         }
 
         /**
@@ -233,9 +298,30 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param diskEncryptionServiceAccount The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryptionServiceAccount(@Nullable Output<String> diskEncryptionServiceAccount) {
+            $.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param diskEncryptionServiceAccount The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryptionServiceAccount(String diskEncryptionServiceAccount) {
+            return diskEncryptionServiceAccount(Output.of(diskEncryptionServiceAccount));
+        }
+
+        /**
          * @param kmsKeySelfLink The self_link of the encryption key that is
-         * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-         * and `disk_encryption_key_raw` may be set.
+         * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+         * may be set.
          * 
          * @return builder
          * 
@@ -247,8 +333,8 @@ public final class InstanceAttachedDiskArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param kmsKeySelfLink The self_link of the encryption key that is
-         * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-         * and `disk_encryption_key_raw` may be set.
+         * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+         * may be set.
          * 
          * @return builder
          * 

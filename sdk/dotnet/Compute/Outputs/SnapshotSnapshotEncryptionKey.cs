@@ -29,6 +29,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? RawKey;
         /// <summary>
+        /// Specifies an encryption key stored in Google Cloud KMS, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public readonly string? RsaEncryptedKey;
+        /// <summary>
         /// (Output)
         /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         /// encryption key that protects this resource.
@@ -43,11 +49,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? rawKey,
 
+            string? rsaEncryptedKey,
+
             string? sha256)
         {
             KmsKeySelfLink = kmsKeySelfLink;
             KmsKeyServiceAccount = kmsKeyServiceAccount;
             RawKey = rawKey;
+            RsaEncryptedKey = rsaEncryptedKey;
             Sha256 = sha256;
         }
     }

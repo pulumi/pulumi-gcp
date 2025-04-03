@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.MemoryStore
     {
         public readonly string AuthorizationMode;
         public readonly string CreateTime;
+        public readonly ImmutableArray<Outputs.GetInstanceCrossInstanceReplicationConfigResult> CrossInstanceReplicationConfigs;
         public readonly bool DeletionProtectionEnabled;
         public readonly ImmutableArray<Outputs.GetInstanceDesiredPscAutoConnectionResult> DesiredPscAutoConnections;
         public readonly ImmutableArray<Outputs.GetInstanceDiscoveryEndpointResult> DiscoveryEndpoints;
@@ -162,6 +163,7 @@ namespace Pulumi.Gcp.MemoryStore
         public readonly string NodeType;
         public readonly ImmutableArray<Outputs.GetInstancePersistenceConfigResult> PersistenceConfigs;
         public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetInstancePscAttachmentDetailResult> PscAttachmentDetails;
         public readonly ImmutableArray<Outputs.GetInstancePscAutoConnectionResult> PscAutoConnections;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly int ReplicaCount;
@@ -178,6 +180,8 @@ namespace Pulumi.Gcp.MemoryStore
             string authorizationMode,
 
             string createTime,
+
+            ImmutableArray<Outputs.GetInstanceCrossInstanceReplicationConfigResult> crossInstanceReplicationConfigs,
 
             bool deletionProtectionEnabled,
 
@@ -217,6 +221,8 @@ namespace Pulumi.Gcp.MemoryStore
 
             string? project,
 
+            ImmutableArray<Outputs.GetInstancePscAttachmentDetailResult> pscAttachmentDetails,
+
             ImmutableArray<Outputs.GetInstancePscAutoConnectionResult> pscAutoConnections,
 
             ImmutableDictionary<string, string> pulumiLabels,
@@ -239,6 +245,7 @@ namespace Pulumi.Gcp.MemoryStore
         {
             AuthorizationMode = authorizationMode;
             CreateTime = createTime;
+            CrossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DesiredPscAutoConnections = desiredPscAutoConnections;
             DiscoveryEndpoints = discoveryEndpoints;
@@ -258,6 +265,7 @@ namespace Pulumi.Gcp.MemoryStore
             NodeType = nodeType;
             PersistenceConfigs = persistenceConfigs;
             Project = project;
+            PscAttachmentDetails = pscAttachmentDetails;
             PscAutoConnections = pscAutoConnections;
             PulumiLabels = pulumiLabels;
             ReplicaCount = replicaCount;

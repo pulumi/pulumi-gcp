@@ -363,6 +363,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateMessage!: pulumi.Output<string>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * The field is ignored (both PUT & PATCH) when empty.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The name of the tenant project.
      */
     public /*out*/ readonly tenantProjectId!: pulumi.Output<string>;
@@ -435,6 +442,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["serviceEndpoint"] = state ? state.serviceEndpoint : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tenantProjectId"] = state ? state.tenantProjectId : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -461,6 +469,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["privateInstance"] = args ? args.privateInstance : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
@@ -615,6 +624,13 @@ export interface InstanceState {
      */
     stateMessage?: pulumi.Input<string>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * The field is ignored (both PUT & PATCH) when empty.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The name of the tenant project.
      */
     tenantProjectId?: pulumi.Input<string>;
@@ -730,6 +746,13 @@ export interface InstanceArgs {
      * The region of the Data Fusion instance.
      */
     region?: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * The field is ignored (both PUT & PATCH) when empty.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.

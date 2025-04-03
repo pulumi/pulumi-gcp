@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
     public sealed class SecurityProfileThreatPreventionProfile
     {
         /// <summary>
+        /// Defines what action to take for antivirus threats per protocol.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecurityProfileThreatPreventionProfileAntivirusOverride> AntivirusOverrides;
+        /// <summary>
         /// The configuration for overriding threats actions by severity match.
         /// Structure is documented below.
         /// </summary>
@@ -28,10 +33,13 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
 
         [OutputConstructor]
         private SecurityProfileThreatPreventionProfile(
+            ImmutableArray<Outputs.SecurityProfileThreatPreventionProfileAntivirusOverride> antivirusOverrides,
+
             ImmutableArray<Outputs.SecurityProfileThreatPreventionProfileSeverityOverride> severityOverrides,
 
             ImmutableArray<Outputs.SecurityProfileThreatPreventionProfileThreatOverride> threatOverrides)
         {
+            AntivirusOverrides = antivirusOverrides;
             SeverityOverrides = severityOverrides;
             ThreatOverrides = threatOverrides;
         }

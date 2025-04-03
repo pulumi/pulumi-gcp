@@ -498,6 +498,14 @@ class DataAccessScope(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A DataAccessScope is a boolean expression of data access labels used to restrict access to data for users.
+
+        To get more information about DataAccessScope, see:
+
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dataAccessScopes)
+        * How-to Guides
+            * [Introduction to data RBAC](https://cloud.google.com/chronicle/docs/onboard/onboard-datarbac)
+
         ## Example Usage
 
         ### Chronicle Dataaccessscope With Logtype
@@ -675,6 +683,14 @@ class DataAccessScope(pulumi.CustomResource):
                  args: DataAccessScopeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A DataAccessScope is a boolean expression of data access labels used to restrict access to data for users.
+
+        To get more information about DataAccessScope, see:
+
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dataAccessScopes)
+        * How-to Guides
+            * [Introduction to data RBAC](https://cloud.google.com/chronicle/docs/onboard/onboard-datarbac)
+
         ## Example Usage
 
         ### Chronicle Dataaccessscope With Logtype

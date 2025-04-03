@@ -27,7 +27,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -136,6 +136,9 @@ class GetBackendServiceResult:
         if timeout_sec and not isinstance(timeout_sec, int):
             raise TypeError("Expected argument 'timeout_sec' to be a int")
         pulumi.set(__self__, "timeout_sec", timeout_sec)
+        if tls_settings and not isinstance(tls_settings, list):
+            raise TypeError("Expected argument 'tls_settings' to be a list")
+        pulumi.set(__self__, "tls_settings", tls_settings)
 
     @property
     @pulumi.getter(name="affinityCookieTtlSec")
@@ -356,6 +359,11 @@ class GetBackendServiceResult:
         """
         return pulumi.get(self, "timeout_sec")
 
+    @property
+    @pulumi.getter(name="tlsSettings")
+    def tls_settings(self) -> Sequence['outputs.GetBackendServiceTlsSettingResult']:
+        return pulumi.get(self, "tls_settings")
+
 
 class AwaitableGetBackendServiceResult(GetBackendServiceResult):
     # pylint: disable=using-constant-test
@@ -398,7 +406,8 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             service_lb_policy=self.service_lb_policy,
             session_affinity=self.session_affinity,
             strong_session_affinity_cookies=self.strong_session_affinity_cookies,
-            timeout_sec=self.timeout_sec)
+            timeout_sec=self.timeout_sec,
+            tls_settings=self.tls_settings)
 
 
 def get_backend_service(name: Optional[str] = None,
@@ -469,7 +478,8 @@ def get_backend_service(name: Optional[str] = None,
         service_lb_policy=pulumi.get(__ret__, 'service_lb_policy'),
         session_affinity=pulumi.get(__ret__, 'session_affinity'),
         strong_session_affinity_cookies=pulumi.get(__ret__, 'strong_session_affinity_cookies'),
-        timeout_sec=pulumi.get(__ret__, 'timeout_sec'))
+        timeout_sec=pulumi.get(__ret__, 'timeout_sec'),
+        tls_settings=pulumi.get(__ret__, 'tls_settings'))
 def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendServiceResult]:
@@ -537,4 +547,5 @@ def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
         service_lb_policy=pulumi.get(__response__, 'service_lb_policy'),
         session_affinity=pulumi.get(__response__, 'session_affinity'),
         strong_session_affinity_cookies=pulumi.get(__response__, 'strong_session_affinity_cookies'),
-        timeout_sec=pulumi.get(__response__, 'timeout_sec')))
+        timeout_sec=pulumi.get(__response__, 'timeout_sec'),
+        tls_settings=pulumi.get(__response__, 'tls_settings')))

@@ -850,6 +850,119 @@ import * as utilities from "../utilities";
  *     backfillNone: {},
  * });
  * ```
+ * ### Datastream Stream Bigquery Blmt
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "blmt-instance",
+ *     databaseVersion: "MYSQL_8_0",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         ipConfiguration: {
+ *             authorizedNetworks: [
+ *                 {
+ *                     value: "34.71.242.81",
+ *                 },
+ *                 {
+ *                     value: "34.72.28.29",
+ *                 },
+ *                 {
+ *                     value: "34.67.6.157",
+ *                 },
+ *                 {
+ *                     value: "34.67.234.134",
+ *                 },
+ *                 {
+ *                     value: "34.72.239.218",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     name: "user",
+ *     instance: instance.name,
+ *     host: "%",
+ *     password: pwd.result,
+ * });
+ * const blmtBucket = new gcp.storage.Bucket("blmt_bucket", {
+ *     name: "blmt-bucket",
+ *     location: "us-central1",
+ *     forceDestroy: true,
+ * });
+ * const blmtConnection = new gcp.bigquery.Connection("blmt_connection", {
+ *     project: project.then(project => project.projectId),
+ *     location: "us-central1",
+ *     connectionId: "blmt-connection",
+ *     friendlyName: "Datastream BLMT Test Connection",
+ *     description: "Connection for Datastream BLMT test",
+ *     cloudResource: {},
+ * });
+ * const blmtConnectionBucketAdmin = new gcp.storage.BucketIAMMember("blmt_connection_bucket_admin", {
+ *     bucket: blmtBucket.name,
+ *     role: "roles/storage.admin",
+ *     member: blmtConnection.cloudResource.apply(cloudResource => `serviceAccount:${cloudResource?.serviceAccountId}`),
+ * });
+ * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("source_connection_profile", {
+ *     displayName: "Source connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "blmt-source-profile",
+ *     mysqlProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         username: user.name,
+ *         password: user.password,
+ *     },
+ * });
+ * const destinationConnectionProfile = new gcp.datastream.ConnectionProfile("destination_connection_profile", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "blmt-destination-profile",
+ *     bigqueryProfile: {},
+ * });
+ * const _default = new gcp.datastream.Stream("default", {
+ *     streamId: "blmt-stream",
+ *     location: "us-central1",
+ *     displayName: "My BLMT stream",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: sourceConnectionProfile.id,
+ *         mysqlSourceConfig: {},
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: destinationConnectionProfile.id,
+ *         bigqueryDestinationConfig: {
+ *             sourceHierarchyDatasets: {
+ *                 datasetTemplate: {
+ *                     location: "us-central1",
+ *                 },
+ *             },
+ *             blmtConfig: {
+ *                 bucket: blmtBucket.name,
+ *                 connectionName: pulumi.all([blmtConnection.project, blmtConnection.location, blmtConnection.connectionId]).apply(([project, location, connectionId]) => `${project}.${location}.${connectionId}`),
+ *                 fileFormat: "PARQUET",
+ *                 tableFormat: "ICEBERG",
+ *                 rootPath: "/",
+ *             },
+ *             appendOnly: {},
+ *         },
+ *     },
+ *     backfillNone: {},
+ * });
+ * ```
  *
  * ## Import
  *

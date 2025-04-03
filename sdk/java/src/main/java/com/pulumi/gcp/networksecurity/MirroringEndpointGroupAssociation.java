@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networksecurity.MirroringEndpointGroupAssociationArgs;
 import com.pulumi.gcp.networksecurity.inputs.MirroringEndpointGroupAssociationState;
+import com.pulumi.gcp.networksecurity.outputs.MirroringEndpointGroupAssociationLocation;
 import com.pulumi.gcp.networksecurity.outputs.MirroringEndpointGroupAssociationLocationsDetail;
 import java.lang.Boolean;
 import java.lang.String;
@@ -196,17 +197,41 @@ public class MirroringEndpointGroupAssociation extends com.pulumi.resources.Cust
         return this.location;
     }
     /**
+     * The list of locations where the association is configured. This information
+     * is retrieved from the linked endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="locations", refs={List.class,MirroringEndpointGroupAssociationLocation.class}, tree="[0,1]")
+    private Output<List<MirroringEndpointGroupAssociationLocation>> locations;
+
+    /**
+     * @return The list of locations where the association is configured. This information
+     * is retrieved from the linked endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<MirroringEndpointGroupAssociationLocation>> locations() {
+        return this.locations;
+    }
+    /**
+     * (Deprecated)
      * The list of locations where the association is present. This information
      * is retrieved from the linked endpoint group, and not configured as part
      * of the association itself.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.
+     * 
      */
+    @Deprecated /* `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead. */
     @Export(name="locationsDetails", refs={List.class,MirroringEndpointGroupAssociationLocationsDetail.class}, tree="[0,1]")
     private Output<List<MirroringEndpointGroupAssociationLocationsDetail>> locationsDetails;
 
     /**
-     * @return The list of locations where the association is present. This information
+     * @return (Deprecated)
+     * The list of locations where the association is present. This information
      * is retrieved from the linked endpoint group, and not configured as part
      * of the association itself.
      * Structure is documented below.

@@ -223,6 +223,7 @@ namespace Pulumi.Gcp.Compute
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetInstanceInstanceEncryptionKeyResult> InstanceEncryptionKeys;
         /// <summary>
         /// The server-assigned unique identifier of this instance.
         /// </summary>
@@ -340,6 +341,8 @@ namespace Pulumi.Gcp.Compute
 
             string id,
 
+            ImmutableArray<Outputs.GetInstanceInstanceEncryptionKeyResult> instanceEncryptionKeys,
+
             string instanceId,
 
             string keyRevocationActionType,
@@ -409,6 +412,7 @@ namespace Pulumi.Gcp.Compute
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
             Id = id;
+            InstanceEncryptionKeys = instanceEncryptionKeys;
             InstanceId = instanceId;
             KeyRevocationActionType = keyRevocationActionType;
             LabelFingerprint = labelFingerprint;

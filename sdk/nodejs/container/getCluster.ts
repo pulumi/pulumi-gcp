@@ -75,6 +75,7 @@ export interface GetClusterResult {
     readonly defaultSnatStatuses: outputs.container.GetClusterDefaultSnatStatus[];
     readonly deletionProtection: boolean;
     readonly description: string;
+    readonly disableL4LbFirewallReconciliation: boolean;
     readonly dnsConfigs: outputs.container.GetClusterDnsConfig[];
     readonly effectiveLabels: {[key: string]: string};
     readonly enableAutopilot: boolean;

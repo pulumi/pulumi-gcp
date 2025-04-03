@@ -41,6 +41,8 @@ __all__ = [
     'InboundSamlConfigIdpConfigIdpCertificate',
     'InboundSamlConfigSpConfig',
     'InboundSamlConfigSpConfigSpCertificate',
+    'TenantClient',
+    'TenantClientPermissions',
     'TenantInboundSamlConfigIdpConfig',
     'TenantInboundSamlConfigIdpConfigIdpCertificate',
     'TenantInboundSamlConfigSpConfig',
@@ -1368,6 +1370,77 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
         The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")
+
+
+@pulumi.output_type
+class TenantClient(dict):
+    def __init__(__self__, *,
+                 permissions: Optional['outputs.TenantClientPermissions'] = None):
+        """
+        :param 'TenantClientPermissionsArgs' permissions: Configuration related to restricting a user's ability to affect their account.
+               Structure is documented below.
+        """
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional['outputs.TenantClientPermissions']:
+        """
+        Configuration related to restricting a user's ability to affect their account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class TenantClientPermissions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disabledUserDeletion":
+            suggest = "disabled_user_deletion"
+        elif key == "disabledUserSignup":
+            suggest = "disabled_user_signup"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TenantClientPermissions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TenantClientPermissions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TenantClientPermissions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disabled_user_deletion: Optional[bool] = None,
+                 disabled_user_signup: Optional[bool] = None):
+        """
+        :param bool disabled_user_deletion: When true, end users cannot delete their account on the associated project through any of our API methods.
+        :param bool disabled_user_signup: When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+        """
+        if disabled_user_deletion is not None:
+            pulumi.set(__self__, "disabled_user_deletion", disabled_user_deletion)
+        if disabled_user_signup is not None:
+            pulumi.set(__self__, "disabled_user_signup", disabled_user_signup)
+
+    @property
+    @pulumi.getter(name="disabledUserDeletion")
+    def disabled_user_deletion(self) -> Optional[bool]:
+        """
+        When true, end users cannot delete their account on the associated project through any of our API methods.
+        """
+        return pulumi.get(self, "disabled_user_deletion")
+
+    @property
+    @pulumi.getter(name="disabledUserSignup")
+    def disabled_user_signup(self) -> Optional[bool]:
+        """
+        When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+        """
+        return pulumi.get(self, "disabled_user_signup")
 
 
 @pulumi.output_type

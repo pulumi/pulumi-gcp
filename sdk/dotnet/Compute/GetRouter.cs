@@ -168,6 +168,7 @@ namespace Pulumi.Gcp.Compute
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetRouterMd5AuthenticationKeyResult> Md5AuthenticationKeys;
         public readonly string Name;
         public readonly string Network;
         public readonly string? Project;
@@ -186,6 +187,8 @@ namespace Pulumi.Gcp.Compute
 
             string id,
 
+            ImmutableArray<Outputs.GetRouterMd5AuthenticationKeyResult> md5AuthenticationKeys,
+
             string name,
 
             string network,
@@ -201,6 +204,7 @@ namespace Pulumi.Gcp.Compute
             Description = description;
             EncryptedInterconnectRouter = encryptedInterconnectRouter;
             Id = id;
+            Md5AuthenticationKeys = md5AuthenticationKeys;
             Name = name;
             Network = network;
             Project = project;

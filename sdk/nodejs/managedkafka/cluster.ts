@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     rebalanceConfig: {
- *         mode: "NO_REBALANCE",
+ *         mode: "AUTO_REBALANCE_ON_SCALE_UP",
  *     },
  *     labels: {
  *         key: "value",

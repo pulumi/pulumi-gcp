@@ -172,6 +172,13 @@ import * as utilities from "../utilities";
  *     },
  *     desiredState: "ACTIVE",
  *     enableThirdPartyIdentity: true,
+ * }, {
+ *     dependsOn: [
+ *         myNetwork,
+ *         mySubnetwork,
+ *         static,
+ *         actAsPermission,
+ *     ],
  * });
  * ```
  *

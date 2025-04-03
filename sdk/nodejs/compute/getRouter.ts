@@ -67,6 +67,7 @@ export interface GetRouterResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly md5AuthenticationKeys: outputs.compute.GetRouterMd5AuthenticationKey[];
     readonly name: string;
     readonly network: string;
     readonly project?: string;

@@ -15,8 +15,26 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'InstanceCrossInstanceReplicationConfigArgs',
+    'InstanceCrossInstanceReplicationConfigArgsDict',
+    'InstanceCrossInstanceReplicationConfigMembershipArgs',
+    'InstanceCrossInstanceReplicationConfigMembershipArgsDict',
+    'InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs',
+    'InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict',
+    'InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs',
+    'InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict',
+    'InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs',
+    'InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict',
+    'InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs',
+    'InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict',
     'InstanceDesiredPscAutoConnectionArgs',
     'InstanceDesiredPscAutoConnectionArgsDict',
+    'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs',
+    'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict',
+    'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs',
+    'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict',
+    'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs',
+    'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict',
     'InstanceDiscoveryEndpointArgs',
     'InstanceDiscoveryEndpointArgsDict',
     'InstanceEndpointArgs',
@@ -41,6 +59,8 @@ __all__ = [
     'InstancePersistenceConfigAofConfigArgsDict',
     'InstancePersistenceConfigRdbConfigArgs',
     'InstancePersistenceConfigRdbConfigArgsDict',
+    'InstancePscAttachmentDetailArgs',
+    'InstancePscAttachmentDetailArgsDict',
     'InstancePscAutoConnectionArgs',
     'InstancePscAutoConnectionArgsDict',
     'InstanceStateInfoArgs',
@@ -52,6 +72,420 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class InstanceCrossInstanceReplicationConfigArgsDict(TypedDict):
+        instance_role: NotRequired[pulumi.Input[str]]
+        """
+        The instance role supports the following values:
+        1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+        2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+        3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+        4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
+        Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+        """
+        memberships: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgsDict']]]]
+        """
+        (Output)
+        An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+        Structure is documented below.
+        """
+        primary_instance: NotRequired[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict']]
+        """
+        This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+        Structure is documented below.
+        """
+        secondary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict']]]]
+        """
+        List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
+        Structure is documented below.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The last time cross instance replication config was updated.
+        """
+elif False:
+    InstanceCrossInstanceReplicationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceCrossInstanceReplicationConfigArgs:
+    def __init__(__self__, *,
+                 instance_role: Optional[pulumi.Input[str]] = None,
+                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]] = None,
+                 primary_instance: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']] = None,
+                 secondary_instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance_role: The instance role supports the following values:
+               1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+               2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+               3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+               4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
+               Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]] memberships: (Output)
+               An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+               Structure is documented below.
+        :param pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs'] primary_instance: This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]] secondary_instances: List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: (Output)
+               The last time cross instance replication config was updated.
+        """
+        if instance_role is not None:
+            pulumi.set(__self__, "instance_role", instance_role)
+        if memberships is not None:
+            pulumi.set(__self__, "memberships", memberships)
+        if primary_instance is not None:
+            pulumi.set(__self__, "primary_instance", primary_instance)
+        if secondary_instances is not None:
+            pulumi.set(__self__, "secondary_instances", secondary_instances)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="instanceRole")
+    def instance_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance role supports the following values:
+        1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+        2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+        3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+        4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
+        Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+        """
+        return pulumi.get(self, "instance_role")
+
+    @instance_role.setter
+    def instance_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_role", value)
+
+    @property
+    @pulumi.getter
+    def memberships(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]]:
+        """
+        (Output)
+        An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "memberships")
+
+    @memberships.setter
+    def memberships(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]]):
+        pulumi.set(self, "memberships", value)
+
+    @property
+    @pulumi.getter(name="primaryInstance")
+    def primary_instance(self) -> Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']]:
+        """
+        This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "primary_instance")
+
+    @primary_instance.setter
+    def primary_instance(self, value: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']]):
+        pulumi.set(self, "primary_instance", value)
+
+    @property
+    @pulumi.getter(name="secondaryInstances")
+    def secondary_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]]:
+        """
+        List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secondary_instances")
+
+    @secondary_instances.setter
+    def secondary_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]]):
+        pulumi.set(self, "secondary_instances", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The last time cross instance replication config was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+
+if not MYPY:
+    class InstanceCrossInstanceReplicationConfigMembershipArgsDict(TypedDict):
+        primary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict']]]]
+        """
+        Details of the primary instance that is used as the replication source for all the secondary instances.
+        """
+        secondary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict']]]]
+        """
+        List of secondary instances that are replicating from the primary instance.
+        """
+elif False:
+    InstanceCrossInstanceReplicationConfigMembershipArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceCrossInstanceReplicationConfigMembershipArgs:
+    def __init__(__self__, *,
+                 primary_instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]] = None,
+                 secondary_instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]] primary_instances: Details of the primary instance that is used as the replication source for all the secondary instances.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]] secondary_instances: List of secondary instances that are replicating from the primary instance.
+        """
+        if primary_instances is not None:
+            pulumi.set(__self__, "primary_instances", primary_instances)
+        if secondary_instances is not None:
+            pulumi.set(__self__, "secondary_instances", secondary_instances)
+
+    @property
+    @pulumi.getter(name="primaryInstances")
+    def primary_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]]:
+        """
+        Details of the primary instance that is used as the replication source for all the secondary instances.
+        """
+        return pulumi.get(self, "primary_instances")
+
+    @primary_instances.setter
+    def primary_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]]):
+        pulumi.set(self, "primary_instances", value)
+
+    @property
+    @pulumi.getter(name="secondaryInstances")
+    def secondary_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]]:
+        """
+        List of secondary instances that are replicating from the primary instance.
+        """
+        return pulumi.get(self, "secondary_instances")
+
+    @secondary_instances.setter
+    def secondary_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]]):
+        pulumi.set(self, "secondary_instances", value)
+
+
+if not MYPY:
+    class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict(TypedDict):
+        instance: NotRequired[pulumi.Input[str]]
+        """
+        The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique id of the primary instance.
+        """
+elif False:
+    InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs:
+    def __init__(__self__, *,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance: The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+        :param pulumi.Input[str] uid: (Output)
+               The unique id of the primary instance.
+        """
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The unique id of the primary instance.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+
+if not MYPY:
+    class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict(TypedDict):
+        instance: NotRequired[pulumi.Input[str]]
+        """
+        The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        Output only. System assigned, unique identifier for the instance.
+        """
+elif False:
+    InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs:
+    def __init__(__self__, *,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance: The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+        :param pulumi.Input[str] uid: Output only. System assigned, unique identifier for the instance.
+        """
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. System assigned, unique identifier for the instance.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+
+if not MYPY:
+    class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict(TypedDict):
+        instance: NotRequired[pulumi.Input[str]]
+        """
+        The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique id of the primary instance.
+        """
+elif False:
+    InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs:
+    def __init__(__self__, *,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance: The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+        :param pulumi.Input[str] uid: (Output)
+               The unique id of the primary instance.
+        """
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The unique id of the primary instance.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+
+if not MYPY:
+    class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict(TypedDict):
+        instance: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The unique id of the secondary instance.
+        """
+elif False:
+    InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs:
+    def __init__(__self__, *,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance: (Output)
+               The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+        :param pulumi.Input[str] uid: (Output)
+               The unique id of the secondary instance.
+        """
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The unique id of the secondary instance.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
 
 if not MYPY:
     class InstanceDesiredPscAutoConnectionArgsDict(TypedDict):
@@ -110,6 +544,282 @@ class InstanceDesiredPscAutoConnectionArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict(TypedDict):
+        connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict']]]]
+        """
+        Structure is documented below.
+        """
+elif False:
+    InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs:
+    def __init__(__self__, *,
+                 connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]] connections: Structure is documented below.
+        """
+        if connections is not None:
+            pulumi.set(__self__, "connections", connections)
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connections")
+
+    @connections.setter
+    def connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]]):
+        pulumi.set(self, "connections", value)
+
+
+if not MYPY:
+    class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict(TypedDict):
+        psc_connection: NotRequired[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict']]
+        """
+        Detailed information of a PSC connection that is created by the customer
+        who owns the cluster.
+        Structure is documented below.
+        """
+elif False:
+    InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs:
+    def __init__(__self__, *,
+                 psc_connection: Optional[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']] = None):
+        """
+        :param pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs'] psc_connection: Detailed information of a PSC connection that is created by the customer
+               who owns the cluster.
+               Structure is documented below.
+        """
+        if psc_connection is not None:
+            pulumi.set(__self__, "psc_connection", psc_connection)
+
+    @property
+    @pulumi.getter(name="pscConnection")
+    def psc_connection(self) -> Optional[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']]:
+        """
+        Detailed information of a PSC connection that is created by the customer
+        who owns the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_connection")
+
+    @psc_connection.setter
+    def psc_connection(self, value: Optional[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']]):
+        pulumi.set(self, "psc_connection", value)
+
+
+if not MYPY:
+    class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict(TypedDict):
+        forwarding_rule: pulumi.Input[str]
+        """
+        The URI of the consumer side forwarding rule.
+        Format:
+        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        """
+        ip_address: pulumi.Input[str]
+        """
+        The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        network: pulumi.Input[str]
+        """
+        The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        psc_connection_id: pulumi.Input[str]
+        """
+        The PSC connection id of the forwarding rule connected to the
+        service attachment.
+        """
+        service_attachment: pulumi.Input[str]
+        """
+        The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        connection_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output Only. Type of a PSC Connection.
+        Possible values:
+        CONNECTION_TYPE_DISCOVERY
+        CONNECTION_TYPE_PRIMARY
+        CONNECTION_TYPE_READER
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        The consumer project_id where the forwarding rule is created from.
+        """
+        psc_connection_status: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+        Possible values:
+        ACTIVE
+        NOT_FOUND
+        """
+elif False:
+    InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[str],
+                 ip_address: pulumi.Input[str],
+                 network: pulumi.Input[str],
+                 psc_connection_id: pulumi.Input[str],
+                 service_attachment: pulumi.Input[str],
+                 connection_type: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 psc_connection_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] forwarding_rule: The URI of the consumer side forwarding rule.
+               Format:
+               projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        :param pulumi.Input[str] ip_address: The IP allocated on the consumer network for the PSC forwarding rule.
+        :param pulumi.Input[str] network: The consumer network where the IP address resides, in the form of
+               projects/{project_id}/global/networks/{network_id}.
+        :param pulumi.Input[str] psc_connection_id: The PSC connection id of the forwarding rule connected to the
+               service attachment.
+        :param pulumi.Input[str] service_attachment: The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        :param pulumi.Input[str] connection_type: (Output)
+               Output Only. Type of a PSC Connection.
+               Possible values:
+               CONNECTION_TYPE_DISCOVERY
+               CONNECTION_TYPE_PRIMARY
+               CONNECTION_TYPE_READER
+        :param pulumi.Input[str] project_id: The consumer project_id where the forwarding rule is created from.
+        :param pulumi.Input[str] psc_connection_status: (Output)
+               Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+               Possible values:
+               ACTIVE
+               NOT_FOUND
+        """
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "service_attachment", service_attachment)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if psc_connection_status is not None:
+            pulumi.set(__self__, "psc_connection_status", psc_connection_status)
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[str]:
+        """
+        The URI of the consumer side forwarding rule.
+        Format:
+        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "forwarding_rule", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[str]:
+        """
+        The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> pulumi.Input[str]:
+        """
+        The PSC connection id of the forwarding rule connected to the
+        service attachment.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @psc_connection_id.setter
+    def psc_connection_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "psc_connection_id", value)
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> pulumi.Input[str]:
+        """
+        The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        return pulumi.get(self, "service_attachment")
+
+    @service_attachment.setter
+    def service_attachment(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_attachment", value)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output Only. Type of a PSC Connection.
+        Possible values:
+        CONNECTION_TYPE_DISCOVERY
+        CONNECTION_TYPE_PRIMARY
+        CONNECTION_TYPE_READER
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_type", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+        Possible values:
+        ACTIVE
+        NOT_FOUND
+        """
+        return pulumi.get(self, "psc_connection_status")
+
+    @psc_connection_status.setter
+    def psc_connection_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_connection_status", value)
 
 
 if not MYPY:
@@ -1143,6 +1853,76 @@ class InstancePersistenceConfigRdbConfigArgs:
 
 
 if not MYPY:
+    class InstancePscAttachmentDetailArgsDict(TypedDict):
+        connection_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output Only. Type of a PSC Connection.
+        Possible values:
+        CONNECTION_TYPE_DISCOVERY
+        CONNECTION_TYPE_PRIMARY
+        CONNECTION_TYPE_READER
+        """
+        service_attachment: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+elif False:
+    InstancePscAttachmentDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstancePscAttachmentDetailArgs:
+    def __init__(__self__, *,
+                 connection_type: Optional[pulumi.Input[str]] = None,
+                 service_attachment: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] connection_type: (Output)
+               Output Only. Type of a PSC Connection.
+               Possible values:
+               CONNECTION_TYPE_DISCOVERY
+               CONNECTION_TYPE_PRIMARY
+               CONNECTION_TYPE_READER
+        :param pulumi.Input[str] service_attachment: (Output)
+               Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output Only. Type of a PSC Connection.
+        Possible values:
+        CONNECTION_TYPE_DISCOVERY
+        CONNECTION_TYPE_PRIMARY
+        CONNECTION_TYPE_READER
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_type", value)
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        return pulumi.get(self, "service_attachment")
+
+    @service_attachment.setter
+    def service_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_attachment", value)
+
+
+if not MYPY:
     class InstancePscAutoConnectionArgsDict(TypedDict):
         connection_type: NotRequired[pulumi.Input[str]]
         """
@@ -1434,6 +2214,16 @@ class InstanceStateInfoArgs:
 
 if not MYPY:
     class InstanceStateInfoUpdateInfoArgsDict(TypedDict):
+        target_engine_version: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Target engine version for the instance.
+        """
+        target_node_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Target node type for the instance.
+        """
         target_replica_count: NotRequired[pulumi.Input[int]]
         """
         (Output)
@@ -1450,18 +2240,54 @@ elif False:
 @pulumi.input_type
 class InstanceStateInfoUpdateInfoArgs:
     def __init__(__self__, *,
+                 target_engine_version: Optional[pulumi.Input[str]] = None,
+                 target_node_type: Optional[pulumi.Input[str]] = None,
                  target_replica_count: Optional[pulumi.Input[int]] = None,
                  target_shard_count: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[str] target_engine_version: (Output)
+               Output only. Target engine version for the instance.
+        :param pulumi.Input[str] target_node_type: (Output)
+               Output only. Target node type for the instance.
         :param pulumi.Input[int] target_replica_count: (Output)
                Output only. Target number of replica nodes per shard for the instance.
         :param pulumi.Input[int] target_shard_count: (Output)
                Output only. Target number of shards for the instance.
         """
+        if target_engine_version is not None:
+            pulumi.set(__self__, "target_engine_version", target_engine_version)
+        if target_node_type is not None:
+            pulumi.set(__self__, "target_node_type", target_node_type)
         if target_replica_count is not None:
             pulumi.set(__self__, "target_replica_count", target_replica_count)
         if target_shard_count is not None:
             pulumi.set(__self__, "target_shard_count", target_shard_count)
+
+    @property
+    @pulumi.getter(name="targetEngineVersion")
+    def target_engine_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. Target engine version for the instance.
+        """
+        return pulumi.get(self, "target_engine_version")
+
+    @target_engine_version.setter
+    def target_engine_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_engine_version", value)
+
+    @property
+    @pulumi.getter(name="targetNodeType")
+    def target_node_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. Target node type for the instance.
+        """
+        return pulumi.get(self, "target_node_type")
+
+    @target_node_type.setter
+    def target_node_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_node_type", value)
 
     @property
     @pulumi.getter(name="targetReplicaCount")

@@ -16,6 +16,7 @@ from .. import _utilities
 
 __all__ = [
     'Batching',
+    'ExternalCredentials',
 ]
 
 @pulumi.output_type
@@ -37,5 +38,31 @@ class Batching(dict):
     @pulumi.getter(name="sendAfter")
     def send_after(self) -> Optional[str]:
         return pulumi.get(self, "send_after")
+
+
+@pulumi.output_type
+class ExternalCredentials(dict):
+    def __init__(__self__, *,
+                 audience: str,
+                 identity_token: str,
+                 service_account_email: str):
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "identity_token", identity_token)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> str:
+        return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter(name="identityToken")
+    def identity_token(self) -> str:
+        return pulumi.get(self, "identity_token")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        return pulumi.get(self, "service_account_email")
 
 

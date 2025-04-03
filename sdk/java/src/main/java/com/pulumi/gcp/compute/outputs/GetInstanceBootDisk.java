@@ -25,10 +25,15 @@ public final class GetInstanceBootDisk {
      */
     private String deviceName;
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
      * 
      */
     private String diskEncryptionKeyRaw;
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * 
+     */
+    private String diskEncryptionKeyRsa;
     /**
      * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      * encoded SHA-256 hash of the [customer-supplied encryption key]
@@ -36,6 +41,11 @@ public final class GetInstanceBootDisk {
      * 
      */
     private String diskEncryptionKeySha256;
+    /**
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    private String diskEncryptionServiceAccount;
     /**
      * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
      * 
@@ -53,7 +63,7 @@ public final class GetInstanceBootDisk {
      */
     private String interface_;
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
      * 
      */
     private String kmsKeySelfLink;
@@ -85,11 +95,18 @@ public final class GetInstanceBootDisk {
         return this.deviceName;
     }
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
      * 
      */
     public String diskEncryptionKeyRaw() {
         return this.diskEncryptionKeyRaw;
+    }
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * 
+     */
+    public String diskEncryptionKeyRsa() {
+        return this.diskEncryptionKeyRsa;
     }
     /**
      * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
@@ -99,6 +116,13 @@ public final class GetInstanceBootDisk {
      */
     public String diskEncryptionKeySha256() {
         return this.diskEncryptionKeySha256;
+    }
+    /**
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    public String diskEncryptionServiceAccount() {
+        return this.diskEncryptionServiceAccount;
     }
     /**
      * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
@@ -123,7 +147,7 @@ public final class GetInstanceBootDisk {
         return this.interface_;
     }
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
      * 
      */
     public String kmsKeySelfLink() {
@@ -156,7 +180,9 @@ public final class GetInstanceBootDisk {
         private Boolean autoDelete;
         private String deviceName;
         private String diskEncryptionKeyRaw;
+        private String diskEncryptionKeyRsa;
         private String diskEncryptionKeySha256;
+        private String diskEncryptionServiceAccount;
         private List<String> guestOsFeatures;
         private List<GetInstanceBootDiskInitializeParam> initializeParams;
         private String interface_;
@@ -169,7 +195,9 @@ public final class GetInstanceBootDisk {
     	      this.autoDelete = defaults.autoDelete;
     	      this.deviceName = defaults.deviceName;
     	      this.diskEncryptionKeyRaw = defaults.diskEncryptionKeyRaw;
+    	      this.diskEncryptionKeyRsa = defaults.diskEncryptionKeyRsa;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
+    	      this.diskEncryptionServiceAccount = defaults.diskEncryptionServiceAccount;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.initializeParams = defaults.initializeParams;
     	      this.interface_ = defaults.interface_;
@@ -203,11 +231,27 @@ public final class GetInstanceBootDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder diskEncryptionKeyRsa(String diskEncryptionKeyRsa) {
+            if (diskEncryptionKeyRsa == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "diskEncryptionKeyRsa");
+            }
+            this.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
+            return this;
+        }
+        @CustomType.Setter
         public Builder diskEncryptionKeySha256(String diskEncryptionKeySha256) {
             if (diskEncryptionKeySha256 == null) {
               throw new MissingRequiredPropertyException("GetInstanceBootDisk", "diskEncryptionKeySha256");
             }
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskEncryptionServiceAccount(String diskEncryptionServiceAccount) {
+            if (diskEncryptionServiceAccount == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "diskEncryptionServiceAccount");
+            }
+            this.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
             return this;
         }
         @CustomType.Setter
@@ -269,7 +313,9 @@ public final class GetInstanceBootDisk {
             _resultValue.autoDelete = autoDelete;
             _resultValue.deviceName = deviceName;
             _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            _resultValue.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            _resultValue.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
             _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.initializeParams = initializeParams;
             _resultValue.interface_ = interface_;

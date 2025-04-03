@@ -2924,6 +2924,10 @@ if not MYPY:
         The sandbox environment to host this Revision.
         Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         """
+        gpu_zonal_redundancy_disabled: NotRequired[pulumi.Input[bool]]
+        """
+        True if GPU zonal redundancy is disabled on this revision.
+        """
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
@@ -2988,6 +2992,7 @@ class ServiceTemplateArgs:
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  execution_environment: Optional[pulumi.Input[str]] = None,
+                 gpu_zonal_redundancy_disabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_instance_request_concurrency: Optional[pulumi.Input[int]] = None,
                  node_selector: Optional[pulumi.Input['ServiceTemplateNodeSelectorArgs']] = None,
@@ -3009,6 +3014,7 @@ class ServiceTemplateArgs:
         :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param pulumi.Input[str] execution_environment: The sandbox environment to host this Revision.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
+        :param pulumi.Input[bool] gpu_zonal_redundancy_disabled: True if GPU zonal redundancy is disabled on this revision.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
                For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -3039,6 +3045,8 @@ class ServiceTemplateArgs:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if execution_environment is not None:
             pulumi.set(__self__, "execution_environment", execution_environment)
+        if gpu_zonal_redundancy_disabled is not None:
+            pulumi.set(__self__, "gpu_zonal_redundancy_disabled", gpu_zonal_redundancy_disabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_instance_request_concurrency is not None:
@@ -3114,6 +3122,18 @@ class ServiceTemplateArgs:
     @execution_environment.setter
     def execution_environment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "execution_environment", value)
+
+    @property
+    @pulumi.getter(name="gpuZonalRedundancyDisabled")
+    def gpu_zonal_redundancy_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if GPU zonal redundancy is disabled on this revision.
+        """
+        return pulumi.get(self, "gpu_zonal_redundancy_disabled")
+
+    @gpu_zonal_redundancy_disabled.setter
+    def gpu_zonal_redundancy_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gpu_zonal_redundancy_disabled", value)
 
     @property
     @pulumi.getter

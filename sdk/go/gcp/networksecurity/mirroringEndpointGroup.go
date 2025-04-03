@@ -100,6 +100,13 @@ import (
 type MirroringEndpointGroup struct {
 	pulumi.CustomResourceState
 
+	// List of associations to this endpoint group.
+	// Structure is documented below.
+	Associations MirroringEndpointGroupAssociationTypeArrayOutput `pulumi:"associations"`
+	// List of details about the connected deployment groups to this endpoint
+	// group.
+	// Structure is documented below.
+	ConnectedDeploymentGroups MirroringEndpointGroupConnectedDeploymentGroupArrayOutput `pulumi:"connectedDeploymentGroups"`
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -123,9 +130,10 @@ type MirroringEndpointGroup struct {
 	//
 	// ***
 	MirroringEndpointGroupId pulumi.StringOutput `pulumi:"mirroringEndpointGroupId"`
-	// The resource name of this endpoint group, for example:
-	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-	// See https://google.aip.dev/122 for more details.
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -138,16 +146,12 @@ type MirroringEndpointGroup struct {
 	// operation (e.g. adding a new association to the group).
 	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// The current state of the endpoint group.
-	// See https://google.aip.dev/216.
+	// (Output)
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
-	// CLOSED
-	// CREATING
-	// DELETING
 	// OUT_OF_SYNC
-	// DELETE_FAILED
 	State pulumi.StringOutput `pulumi:"state"`
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
@@ -198,6 +202,13 @@ func GetMirroringEndpointGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MirroringEndpointGroup resources.
 type mirroringEndpointGroupState struct {
+	// List of associations to this endpoint group.
+	// Structure is documented below.
+	Associations []MirroringEndpointGroupAssociationType `pulumi:"associations"`
+	// List of details about the connected deployment groups to this endpoint
+	// group.
+	// Structure is documented below.
+	ConnectedDeploymentGroups []MirroringEndpointGroupConnectedDeploymentGroup `pulumi:"connectedDeploymentGroups"`
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime *string `pulumi:"createTime"`
@@ -221,9 +232,10 @@ type mirroringEndpointGroupState struct {
 	//
 	// ***
 	MirroringEndpointGroupId *string `pulumi:"mirroringEndpointGroupId"`
-	// The resource name of this endpoint group, for example:
-	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-	// See https://google.aip.dev/122 for more details.
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -236,16 +248,12 @@ type mirroringEndpointGroupState struct {
 	// operation (e.g. adding a new association to the group).
 	// See https://google.aip.dev/128.
 	Reconciling *bool `pulumi:"reconciling"`
-	// The current state of the endpoint group.
-	// See https://google.aip.dev/216.
+	// (Output)
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
-	// CLOSED
-	// CREATING
-	// DELETING
 	// OUT_OF_SYNC
-	// DELETE_FAILED
 	State *string `pulumi:"state"`
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
@@ -253,6 +261,13 @@ type mirroringEndpointGroupState struct {
 }
 
 type MirroringEndpointGroupState struct {
+	// List of associations to this endpoint group.
+	// Structure is documented below.
+	Associations MirroringEndpointGroupAssociationTypeArrayInput
+	// List of details about the connected deployment groups to this endpoint
+	// group.
+	// Structure is documented below.
+	ConnectedDeploymentGroups MirroringEndpointGroupConnectedDeploymentGroupArrayInput
 	// The timestamp when the resource was created.
 	// See https://google.aip.dev/148#timestamps.
 	CreateTime pulumi.StringPtrInput
@@ -276,9 +291,10 @@ type MirroringEndpointGroupState struct {
 	//
 	// ***
 	MirroringEndpointGroupId pulumi.StringPtrInput
-	// The resource name of this endpoint group, for example:
-	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-	// See https://google.aip.dev/122 for more details.
+	// (Output)
+	// The connected deployment group's resource name, for example:
+	// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+	// See https://google.aip.dev/124.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -291,16 +307,12 @@ type MirroringEndpointGroupState struct {
 	// operation (e.g. adding a new association to the group).
 	// See https://google.aip.dev/128.
 	Reconciling pulumi.BoolPtrInput
-	// The current state of the endpoint group.
-	// See https://google.aip.dev/216.
+	// (Output)
+	// The current state of the association in this location.
 	// Possible values:
 	// STATE_UNSPECIFIED
 	// ACTIVE
-	// CLOSED
-	// CREATING
-	// DELETING
 	// OUT_OF_SYNC
-	// DELETE_FAILED
 	State pulumi.StringPtrInput
 	// The timestamp when the resource was most recently updated.
 	// See https://google.aip.dev/148#timestamps.
@@ -447,6 +459,23 @@ func (o MirroringEndpointGroupOutput) ToMirroringEndpointGroupOutputWithContext(
 	return o
 }
 
+// List of associations to this endpoint group.
+// Structure is documented below.
+func (o MirroringEndpointGroupOutput) Associations() MirroringEndpointGroupAssociationTypeArrayOutput {
+	return o.ApplyT(func(v *MirroringEndpointGroup) MirroringEndpointGroupAssociationTypeArrayOutput {
+		return v.Associations
+	}).(MirroringEndpointGroupAssociationTypeArrayOutput)
+}
+
+// List of details about the connected deployment groups to this endpoint
+// group.
+// Structure is documented below.
+func (o MirroringEndpointGroupOutput) ConnectedDeploymentGroups() MirroringEndpointGroupConnectedDeploymentGroupArrayOutput {
+	return o.ApplyT(func(v *MirroringEndpointGroup) MirroringEndpointGroupConnectedDeploymentGroupArrayOutput {
+		return v.ConnectedDeploymentGroups
+	}).(MirroringEndpointGroupConnectedDeploymentGroupArrayOutput)
+}
+
 // The timestamp when the resource was created.
 // See https://google.aip.dev/148#timestamps.
 func (o MirroringEndpointGroupOutput) CreateTime() pulumi.StringOutput {
@@ -491,9 +520,10 @@ func (o MirroringEndpointGroupOutput) MirroringEndpointGroupId() pulumi.StringOu
 	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringOutput { return v.MirroringEndpointGroupId }).(pulumi.StringOutput)
 }
 
-// The resource name of this endpoint group, for example:
-// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-// See https://google.aip.dev/122 for more details.
+// (Output)
+// The connected deployment group's resource name, for example:
+// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+// See https://google.aip.dev/124.
 func (o MirroringEndpointGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -518,16 +548,12 @@ func (o MirroringEndpointGroupOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// The current state of the endpoint group.
-// See https://google.aip.dev/216.
+// (Output)
+// The current state of the association in this location.
 // Possible values:
 // STATE_UNSPECIFIED
 // ACTIVE
-// CLOSED
-// CREATING
-// DELETING
 // OUT_OF_SYNC
-// DELETE_FAILED
 func (o MirroringEndpointGroupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Reference lists are user-defined lists of values which users can use in multiple Rules.
+//
+// To get more information about ReferenceList, see:
+//
+// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.referenceLists)
+// * How-to Guides
+//   - [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+//
 // ## Example Usage
 //
 // ### Chronicle Referencelist Basic

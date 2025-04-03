@@ -6,6 +6,7 @@ package com.pulumi.gcp.datastream.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs;
+import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigMergeArgs;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
@@ -36,6 +37,23 @@ public final class StreamDestinationConfigBigqueryDestinationConfigArgs extends 
      */
     public Optional<Output<StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs>> appendOnly() {
         return Optional.ofNullable(this.appendOnly);
+    }
+
+    /**
+     * BigLake Managed Tables configuration for BigQuery streams.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="blmtConfig")
+    private @Nullable Output<StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs> blmtConfig;
+
+    /**
+     * @return BigLake Managed Tables configuration for BigQuery streams.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs>> blmtConfig() {
+        return Optional.ofNullable(this.blmtConfig);
     }
 
     /**
@@ -116,6 +134,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigArgs extends 
 
     private StreamDestinationConfigBigqueryDestinationConfigArgs(StreamDestinationConfigBigqueryDestinationConfigArgs $) {
         this.appendOnly = $.appendOnly;
+        this.blmtConfig = $.blmtConfig;
         this.dataFreshness = $.dataFreshness;
         this.merge = $.merge;
         this.singleTargetDataset = $.singleTargetDataset;
@@ -163,6 +182,29 @@ public final class StreamDestinationConfigBigqueryDestinationConfigArgs extends 
          */
         public Builder appendOnly(StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs appendOnly) {
             return appendOnly(Output.of(appendOnly));
+        }
+
+        /**
+         * @param blmtConfig BigLake Managed Tables configuration for BigQuery streams.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blmtConfig(@Nullable Output<StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs> blmtConfig) {
+            $.blmtConfig = blmtConfig;
+            return this;
+        }
+
+        /**
+         * @param blmtConfig BigLake Managed Tables configuration for BigQuery streams.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blmtConfig(StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs blmtConfig) {
+            return blmtConfig(Output.of(blmtConfig));
         }
 
         /**

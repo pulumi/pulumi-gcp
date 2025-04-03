@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.outputs.GetBackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceSecuritySetting;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceStrongSessionAffinityCooky;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceTlsSetting;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -114,6 +115,7 @@ public final class GetBackendServiceResult {
      * 
      */
     private Integer timeoutSec;
+    private List<GetBackendServiceTlsSetting> tlsSettings;
 
     private GetBackendServiceResult() {}
     public Integer affinityCookieTtlSec() {
@@ -276,6 +278,9 @@ public final class GetBackendServiceResult {
     public Integer timeoutSec() {
         return this.timeoutSec;
     }
+    public List<GetBackendServiceTlsSetting> tlsSettings() {
+        return this.tlsSettings;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -322,6 +327,7 @@ public final class GetBackendServiceResult {
         private String sessionAffinity;
         private List<GetBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies;
         private Integer timeoutSec;
+        private List<GetBackendServiceTlsSetting> tlsSettings;
         public Builder() {}
         public Builder(GetBackendServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -361,6 +367,7 @@ public final class GetBackendServiceResult {
     	      this.sessionAffinity = defaults.sessionAffinity;
     	      this.strongSessionAffinityCookies = defaults.strongSessionAffinityCookies;
     	      this.timeoutSec = defaults.timeoutSec;
+    	      this.tlsSettings = defaults.tlsSettings;
         }
 
         @CustomType.Setter
@@ -691,6 +698,17 @@ public final class GetBackendServiceResult {
             this.timeoutSec = timeoutSec;
             return this;
         }
+        @CustomType.Setter
+        public Builder tlsSettings(List<GetBackendServiceTlsSetting> tlsSettings) {
+            if (tlsSettings == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "tlsSettings");
+            }
+            this.tlsSettings = tlsSettings;
+            return this;
+        }
+        public Builder tlsSettings(GetBackendServiceTlsSetting... tlsSettings) {
+            return tlsSettings(List.of(tlsSettings));
+        }
         public GetBackendServiceResult build() {
             final var _resultValue = new GetBackendServiceResult();
             _resultValue.affinityCookieTtlSec = affinityCookieTtlSec;
@@ -729,6 +747,7 @@ public final class GetBackendServiceResult {
             _resultValue.sessionAffinity = sessionAffinity;
             _resultValue.strongSessionAffinityCookies = strongSessionAffinityCookies;
             _resultValue.timeoutSec = timeoutSec;
+            _resultValue.tlsSettings = tlsSettings;
             return _resultValue;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.gcp.identityplatform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.identityplatform.inputs.TenantClientArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -30,6 +31,23 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> allowPasswordSignup() {
         return Optional.ofNullable(this.allowPasswordSignup);
+    }
+
+    /**
+     * Options related to how clients making requests on behalf of a tenant should be configured.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="client")
+    private @Nullable Output<TenantClientArgs> client;
+
+    /**
+     * @return Options related to how clients making requests on behalf of a tenant should be configured.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TenantClientArgs>> client() {
+        return Optional.ofNullable(this.client);
     }
 
     /**
@@ -106,6 +124,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
 
     private TenantArgs(TenantArgs $) {
         this.allowPasswordSignup = $.allowPasswordSignup;
+        this.client = $.client;
         this.disableAuth = $.disableAuth;
         this.displayName = $.displayName;
         this.enableEmailLinkSignin = $.enableEmailLinkSignin;
@@ -149,6 +168,29 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowPasswordSignup(Boolean allowPasswordSignup) {
             return allowPasswordSignup(Output.of(allowPasswordSignup));
+        }
+
+        /**
+         * @param client Options related to how clients making requests on behalf of a tenant should be configured.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder client(@Nullable Output<TenantClientArgs> client) {
+            $.client = client;
+            return this;
+        }
+
+        /**
+         * @param client Options related to how clients making requests on behalf of a tenant should be configured.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder client(TenantClientArgs client) {
+            return client(Output.of(client));
         }
 
         /**

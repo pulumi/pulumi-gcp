@@ -687,6 +687,14 @@ class Rule(pulumi.CustomResource):
                  text: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The Rule resource represents a user-created rule.
+
+        To get more information about Rule, see:
+
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.rules)
+        * How-to Guides
+            * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+
         ## Example Usage
 
         ### Chronicle Rule Basic
@@ -797,6 +805,14 @@ class Rule(pulumi.CustomResource):
                  args: RuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Rule resource represents a user-created rule.
+
+        To get more information about Rule, see:
+
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.rules)
+        * How-to Guides
+            * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+
         ## Example Usage
 
         ### Chronicle Rule Basic

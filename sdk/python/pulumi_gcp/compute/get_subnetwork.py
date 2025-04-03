@@ -27,10 +27,13 @@ class GetSubnetworkResult:
     """
     A collection of values returned by getSubnetwork.
     """
-    def __init__(__self__, description=None, gateway_address=None, id=None, internal_ipv6_prefix=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None, subnetwork_id=None):
+    def __init__(__self__, description=None, external_ipv6_prefix=None, gateway_address=None, id=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None, stack_type=None, subnetwork_id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if external_ipv6_prefix and not isinstance(external_ipv6_prefix, str):
+            raise TypeError("Expected argument 'external_ipv6_prefix' to be a str")
+        pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
         if gateway_address and not isinstance(gateway_address, str):
             raise TypeError("Expected argument 'gateway_address' to be a str")
         pulumi.set(__self__, "gateway_address", gateway_address)
@@ -43,6 +46,9 @@ class GetSubnetworkResult:
         if ip_cidr_range and not isinstance(ip_cidr_range, str):
             raise TypeError("Expected argument 'ip_cidr_range' to be a str")
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if ipv6_access_type and not isinstance(ipv6_access_type, str):
+            raise TypeError("Expected argument 'ipv6_access_type' to be a str")
+        pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -64,6 +70,9 @@ class GetSubnetworkResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if stack_type and not isinstance(stack_type, str):
+            raise TypeError("Expected argument 'stack_type' to be a str")
+        pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork_id and not isinstance(subnetwork_id, int):
             raise TypeError("Expected argument 'subnetwork_id' to be a int")
         pulumi.set(__self__, "subnetwork_id", subnetwork_id)
@@ -75,6 +84,14 @@ class GetSubnetworkResult:
         Description of this subnetwork.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="externalIpv6Prefix")
+    def external_ipv6_prefix(self) -> str:
+        """
+        The external IPv6 address range that is assigned to this subnetwork.
+        """
+        return pulumi.get(self, "external_ipv6_prefix")
 
     @property
     @pulumi.getter(name="gatewayAddress")
@@ -108,6 +125,14 @@ class GetSubnetworkResult:
         secondary range.
         """
         return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> str:
+        """
+        The access type of IPv6 address this subnet holds. Possible values are: `EXTERNAL`, `INTERNAL`.
+        """
+        return pulumi.get(self, "ipv6_access_type")
 
     @property
     @pulumi.getter
@@ -158,6 +183,14 @@ class GetSubnetworkResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        """
+        The stack type for the subnet. Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @property
     @pulumi.getter(name="subnetworkId")
     def subnetwork_id(self) -> int:
         """
@@ -173,10 +206,12 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             yield self
         return GetSubnetworkResult(
             description=self.description,
+            external_ipv6_prefix=self.external_ipv6_prefix,
             gateway_address=self.gateway_address,
             id=self.id,
             internal_ipv6_prefix=self.internal_ipv6_prefix,
             ip_cidr_range=self.ip_cidr_range,
+            ipv6_access_type=self.ipv6_access_type,
             name=self.name,
             network=self.network,
             private_ip_google_access=self.private_ip_google_access,
@@ -184,6 +219,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             region=self.region,
             secondary_ip_ranges=self.secondary_ip_ranges,
             self_link=self.self_link,
+            stack_type=self.stack_type,
             subnetwork_id=self.subnetwork_id)
 
 
@@ -225,10 +261,12 @@ def get_subnetwork(name: Optional[str] = None,
 
     return AwaitableGetSubnetworkResult(
         description=pulumi.get(__ret__, 'description'),
+        external_ipv6_prefix=pulumi.get(__ret__, 'external_ipv6_prefix'),
         gateway_address=pulumi.get(__ret__, 'gateway_address'),
         id=pulumi.get(__ret__, 'id'),
         internal_ipv6_prefix=pulumi.get(__ret__, 'internal_ipv6_prefix'),
         ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
+        ipv6_access_type=pulumi.get(__ret__, 'ipv6_access_type'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
         private_ip_google_access=pulumi.get(__ret__, 'private_ip_google_access'),
@@ -236,6 +274,7 @@ def get_subnetwork(name: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         secondary_ip_ranges=pulumi.get(__ret__, 'secondary_ip_ranges'),
         self_link=pulumi.get(__ret__, 'self_link'),
+        stack_type=pulumi.get(__ret__, 'stack_type'),
         subnetwork_id=pulumi.get(__ret__, 'subnetwork_id'))
 def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -274,10 +313,12 @@ def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts, typ=GetSubnetworkResult)
     return __ret__.apply(lambda __response__: GetSubnetworkResult(
         description=pulumi.get(__response__, 'description'),
+        external_ipv6_prefix=pulumi.get(__response__, 'external_ipv6_prefix'),
         gateway_address=pulumi.get(__response__, 'gateway_address'),
         id=pulumi.get(__response__, 'id'),
         internal_ipv6_prefix=pulumi.get(__response__, 'internal_ipv6_prefix'),
         ip_cidr_range=pulumi.get(__response__, 'ip_cidr_range'),
+        ipv6_access_type=pulumi.get(__response__, 'ipv6_access_type'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
         private_ip_google_access=pulumi.get(__response__, 'private_ip_google_access'),
@@ -285,4 +326,5 @@ def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
         region=pulumi.get(__response__, 'region'),
         secondary_ip_ranges=pulumi.get(__response__, 'secondary_ip_ranges'),
         self_link=pulumi.get(__response__, 'self_link'),
+        stack_type=pulumi.get(__response__, 'stack_type'),
         subnetwork_id=pulumi.get(__response__, 'subnetwork_id')))

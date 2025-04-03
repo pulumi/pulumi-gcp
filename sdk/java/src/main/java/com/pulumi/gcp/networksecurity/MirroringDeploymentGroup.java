@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networksecurity.MirroringDeploymentGroupArgs;
 import com.pulumi.gcp.networksecurity.inputs.MirroringDeploymentGroupState;
 import com.pulumi.gcp.networksecurity.outputs.MirroringDeploymentGroupConnectedEndpointGroup;
+import com.pulumi.gcp.networksecurity.outputs.MirroringDeploymentGroupLocation;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -199,6 +200,22 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
         return this.location;
     }
     /**
+     * The list of locations where the deployment group is present.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="locations", refs={List.class,MirroringDeploymentGroupLocation.class}, tree="[0,1]")
+    private Output<List<MirroringDeploymentGroupLocation>> locations;
+
+    /**
+     * @return The list of locations where the deployment group is present.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<MirroringDeploymentGroupLocation>> locations() {
+        return this.locations;
+    }
+    /**
      * The ID to use for the new deployment group, which will become the final
      * component of the deployment group&#39;s resource name.
      * 
@@ -309,26 +326,24 @@ public class MirroringDeploymentGroup extends com.pulumi.resources.CustomResourc
         return this.reconciling;
     }
     /**
-     * The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The current state of the deployment group.
-     * See https://google.aip.dev/216.
+     * @return (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CREATING
-     * DELETING
+     * OUT_OF_SYNC
      * 
      */
     public Output<String> state() {

@@ -1200,6 +1200,177 @@ import (
 //	}
 //
 // ```
+// ### Datastream Stream Bigquery Blmt
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("blmt-instance"),
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						AuthorizedNetworks: sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.71.242.81"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.28.29"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.6.157"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.67.234.134"),
+//							},
+//							&sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{
+//								Value: pulumi.String("34.72.239.218"),
+//							},
+//						},
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+//				Instance: instance.Name,
+//				Name:     pulumi.String("db"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+//				Length:  pulumi.Int(16),
+//				Special: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+//				Name:     pulumi.String("user"),
+//				Instance: instance.Name,
+//				Host:     pulumi.String("%"),
+//				Password: pwd.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			blmtBucket, err := storage.NewBucket(ctx, "blmt_bucket", &storage.BucketArgs{
+//				Name:         pulumi.String("blmt-bucket"),
+//				Location:     pulumi.String("us-central1"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			blmtConnection, err := bigquery.NewConnection(ctx, "blmt_connection", &bigquery.ConnectionArgs{
+//				Project:       pulumi.String(project.ProjectId),
+//				Location:      pulumi.String("us-central1"),
+//				ConnectionId:  pulumi.String("blmt-connection"),
+//				FriendlyName:  pulumi.String("Datastream BLMT Test Connection"),
+//				Description:   pulumi.String("Connection for Datastream BLMT test"),
+//				CloudResource: &bigquery.ConnectionCloudResourceArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucketIAMMember(ctx, "blmt_connection_bucket_admin", &storage.BucketIAMMemberArgs{
+//				Bucket: blmtBucket.Name,
+//				Role:   pulumi.String("roles/storage.admin"),
+//				Member: blmtConnection.CloudResource.ApplyT(func(cloudResource bigquery.ConnectionCloudResource) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", cloudResource.ServiceAccountId), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceConnectionProfile, err := datastream.NewConnectionProfile(ctx, "source_connection_profile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Source connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("blmt-source-profile"),
+//				MysqlProfile: &datastream.ConnectionProfileMysqlProfileArgs{
+//					Hostname: instance.PublicIpAddress,
+//					Username: user.Name,
+//					Password: user.Password,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destinationConnectionProfile, err := datastream.NewConnectionProfile(ctx, "destination_connection_profile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("blmt-destination-profile"),
+//				BigqueryProfile:     &datastream.ConnectionProfileBigqueryProfileArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewStream(ctx, "default", &datastream.StreamArgs{
+//				StreamId:    pulumi.String("blmt-stream"),
+//				Location:    pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("My BLMT stream"),
+//				SourceConfig: &datastream.StreamSourceConfigArgs{
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
+//					MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
+//				},
+//				DestinationConfig: &datastream.StreamDestinationConfigArgs{
+//					DestinationConnectionProfile: destinationConnectionProfile.ID(),
+//					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
+//						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
+//							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//						},
+//						BlmtConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs{
+//							Bucket: blmtBucket.Name,
+//							ConnectionName: pulumi.All(blmtConnection.Project, blmtConnection.Location, blmtConnection.ConnectionId).ApplyT(func(_args []interface{}) (string, error) {
+//								project := _args[0].(string)
+//								location := _args[1].(*string)
+//								connectionId := _args[2].(string)
+//								return fmt.Sprintf("%v.%v.%v", project, location, connectionId), nil
+//							}).(pulumi.StringOutput),
+//							FileFormat:  pulumi.String("PARQUET"),
+//							TableFormat: pulumi.String("ICEBERG"),
+//							RootPath:    pulumi.String("/"),
+//						},
+//						AppendOnly: &datastream.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs{},
+//					},
+//				},
+//				BackfillNone: &datastream.StreamBackfillNoneArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

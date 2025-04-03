@@ -18,6 +18,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Regional Parameter is a logical regional parameter.
+ * 
+ * To get more information about RegionalParameter, see:
+ * 
+ * * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+ * 
  * ## Example Usage
  * 
  * ### Regional Parameter Basic

@@ -294,6 +294,12 @@ namespace Pulumi.Gcp.Container
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Disable L4 load balancer VPC firewalls to enable firewall policies.
+        /// </summary>
+        [Output("disableL4LbFirewallReconciliation")]
+        public Output<bool?> DisableL4LbFirewallReconciliation { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         /// </summary>
         [Output("dnsConfig")]
@@ -985,6 +991,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Disable L4 load balancer VPC firewalls to enable firewall policies.
+        /// </summary>
+        [Input("disableL4LbFirewallReconciliation")]
+        public Input<bool>? DisableL4LbFirewallReconciliation { get; set; }
+
+        /// <summary>
         /// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         /// </summary>
         [Input("dnsConfig")]
@@ -1591,6 +1603,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Disable L4 load balancer VPC firewalls to enable firewall policies.
+        /// </summary>
+        [Input("disableL4LbFirewallReconciliation")]
+        public Input<bool>? DisableL4LbFirewallReconciliation { get; set; }
 
         /// <summary>
         /// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.

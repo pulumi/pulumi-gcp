@@ -6,6 +6,7 @@ package com.pulumi.gcp.memorystore;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
@@ -44,6 +45,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Cross instance replication config
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="crossInstanceReplicationConfig")
+    private @Nullable Output<InstanceCrossInstanceReplicationConfigArgs> crossInstanceReplicationConfig;
+
+    /**
+     * @return Cross instance replication config
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceCrossInstanceReplicationConfigArgs>> crossInstanceReplicationConfig() {
+        return Optional.ofNullable(this.crossInstanceReplicationConfig);
+    }
+
+    /**
      * Optional. If set to true deletion of the instance will fail.
      * 
      */
@@ -59,18 +77,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created PSC connections.
      * 
      */
-    @Import(name="desiredPscAutoConnections", required=true)
-    private Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections;
+    @Import(name="desiredPscAutoConnections")
+    private @Nullable Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections;
 
     /**
-     * @return Required. Immutable. User inputs for the auto-created PSC connections.
+     * @return Immutable. User inputs for the auto-created PSC connections.
      * 
      */
-    public Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections() {
-        return this.desiredPscAutoConnections;
+    public Optional<Output<List<InstanceDesiredPscAutoConnectionArgs>>> desiredPscAutoConnections() {
+        return Optional.ofNullable(this.desiredPscAutoConnections);
     }
 
     /**
@@ -341,6 +359,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     private InstanceArgs(InstanceArgs $) {
         this.authorizationMode = $.authorizationMode;
+        this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.desiredPscAutoConnections = $.desiredPscAutoConnections;
         this.engineConfigs = $.engineConfigs;
@@ -403,6 +422,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param crossInstanceReplicationConfig Cross instance replication config
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossInstanceReplicationConfig(@Nullable Output<InstanceCrossInstanceReplicationConfigArgs> crossInstanceReplicationConfig) {
+            $.crossInstanceReplicationConfig = crossInstanceReplicationConfig;
+            return this;
+        }
+
+        /**
+         * @param crossInstanceReplicationConfig Cross instance replication config
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossInstanceReplicationConfig(InstanceCrossInstanceReplicationConfigArgs crossInstanceReplicationConfig) {
+            return crossInstanceReplicationConfig(Output.of(crossInstanceReplicationConfig));
+        }
+
+        /**
          * @param deletionProtectionEnabled Optional. If set to true deletion of the instance will fail.
          * 
          * @return builder
@@ -424,18 +466,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredPscAutoConnections Required. Immutable. User inputs for the auto-created PSC connections.
+         * @param desiredPscAutoConnections Immutable. User inputs for the auto-created PSC connections.
          * 
          * @return builder
          * 
          */
-        public Builder desiredPscAutoConnections(Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections) {
+        public Builder desiredPscAutoConnections(@Nullable Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections) {
             $.desiredPscAutoConnections = desiredPscAutoConnections;
             return this;
         }
 
         /**
-         * @param desiredPscAutoConnections Required. Immutable. User inputs for the auto-created PSC connections.
+         * @param desiredPscAutoConnections Immutable. User inputs for the auto-created PSC connections.
          * 
          * @return builder
          * 
@@ -445,7 +487,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredPscAutoConnections Required. Immutable. User inputs for the auto-created PSC connections.
+         * @param desiredPscAutoConnections Immutable. User inputs for the auto-created PSC connections.
          * 
          * @return builder
          * 
@@ -803,9 +845,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            if ($.desiredPscAutoConnections == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "desiredPscAutoConnections");
-            }
             if ($.instanceId == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "instanceId");
             }

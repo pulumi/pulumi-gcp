@@ -32,18 +32,33 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
     }
 
     /**
-     * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     @Import(name="diskEncryptionKeyRaw")
     private @Nullable Output<String> diskEncryptionKeyRaw;
 
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     public Optional<Output<String>> diskEncryptionKeyRaw() {
         return Optional.ofNullable(this.diskEncryptionKeyRaw);
+    }
+
+    /**
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * 
+     */
+    @Import(name="diskEncryptionKeyRsa")
+    private @Nullable Output<String> diskEncryptionKeyRsa;
+
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+     * 
+     */
+    public Optional<Output<String>> diskEncryptionKeyRsa() {
+        return Optional.ofNullable(this.diskEncryptionKeyRsa);
     }
 
     /**
@@ -62,14 +77,29 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
     }
 
     /**
-     * The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    @Import(name="diskEncryptionServiceAccount")
+    private @Nullable Output<String> diskEncryptionServiceAccount;
+
+    /**
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    public Optional<Output<String>> diskEncryptionServiceAccount() {
+        return Optional.ofNullable(this.diskEncryptionServiceAccount);
+    }
+
+    /**
+     * The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     @Import(name="kmsKeySelfLink")
     private @Nullable Output<String> kmsKeySelfLink;
 
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
      * 
      */
     public Optional<Output<String>> kmsKeySelfLink() {
@@ -111,7 +141,9 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
     private InstanceFromTemplateAttachedDiskArgs(InstanceFromTemplateAttachedDiskArgs $) {
         this.deviceName = $.deviceName;
         this.diskEncryptionKeyRaw = $.diskEncryptionKeyRaw;
+        this.diskEncryptionKeyRsa = $.diskEncryptionKeyRsa;
         this.diskEncryptionKeySha256 = $.diskEncryptionKeySha256;
+        this.diskEncryptionServiceAccount = $.diskEncryptionServiceAccount;
         this.kmsKeySelfLink = $.kmsKeySelfLink;
         this.mode = $.mode;
         this.source = $.source;
@@ -157,7 +189,7 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskEncryptionKeyRaw A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+         * @param diskEncryptionKeyRaw A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
          * 
          * @return builder
          * 
@@ -168,13 +200,34 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
         }
 
         /**
-         * @param diskEncryptionKeyRaw A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+         * @param diskEncryptionKeyRaw A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
          * 
          * @return builder
          * 
          */
         public Builder diskEncryptionKeyRaw(String diskEncryptionKeyRaw) {
             return diskEncryptionKeyRaw(Output.of(diskEncryptionKeyRaw));
+        }
+
+        /**
+         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryptionKeyRsa(@Nullable Output<String> diskEncryptionKeyRsa) {
+            $.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
+            return this;
+        }
+
+        /**
+         * @param diskEncryptionKeyRsa Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryptionKeyRsa(String diskEncryptionKeyRsa) {
+            return diskEncryptionKeyRsa(Output.of(diskEncryptionKeyRsa));
         }
 
         /**
@@ -199,7 +252,28 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
         }
 
         /**
-         * @param kmsKeySelfLink The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+         * @param diskEncryptionServiceAccount The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryptionServiceAccount(@Nullable Output<String> diskEncryptionServiceAccount) {
+            $.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param diskEncryptionServiceAccount The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryptionServiceAccount(String diskEncryptionServiceAccount) {
+            return diskEncryptionServiceAccount(Output.of(diskEncryptionServiceAccount));
+        }
+
+        /**
+         * @param kmsKeySelfLink The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
          * 
          * @return builder
          * 
@@ -210,7 +284,7 @@ public final class InstanceFromTemplateAttachedDiskArgs extends com.pulumi.resou
         }
 
         /**
-         * @param kmsKeySelfLink The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+         * @param kmsKeySelfLink The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
          * 
          * @return builder
          * 

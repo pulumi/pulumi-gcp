@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceOutlierDetectionArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceSecuritySettingsArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceStrongSessionAffinityCookieArgs;
+import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -802,6 +803,23 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.timeoutSec);
     }
 
+    /**
+     * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tlsSettings")
+    private @Nullable Output<BackendServiceTlsSettingsArgs> tlsSettings;
+
+    /**
+     * @return Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackendServiceTlsSettingsArgs>> tlsSettings() {
+        return Optional.ofNullable(this.tlsSettings);
+    }
+
     private BackendServiceState() {}
 
     private BackendServiceState(BackendServiceState $) {
@@ -840,6 +858,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         this.sessionAffinity = $.sessionAffinity;
         this.strongSessionAffinityCookie = $.strongSessionAffinityCookie;
         this.timeoutSec = $.timeoutSec;
+        this.tlsSettings = $.tlsSettings;
     }
 
     public static Builder builder() {
@@ -1901,6 +1920,29 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder timeoutSec(Integer timeoutSec) {
             return timeoutSec(Output.of(timeoutSec));
+        }
+
+        /**
+         * @param tlsSettings Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsSettings(@Nullable Output<BackendServiceTlsSettingsArgs> tlsSettings) {
+            $.tlsSettings = tlsSettings;
+            return this;
+        }
+
+        /**
+         * @param tlsSettings Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsSettings(BackendServiceTlsSettingsArgs tlsSettings) {
+            return tlsSettings(Output.of(tlsSettings));
         }
 
         public BackendServiceState build() {

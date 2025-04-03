@@ -1779,6 +1779,8 @@ public final class ContainerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:container/getEngineVersions:getEngineVersions", TypeShape.of(GetEngineVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -1824,6 +1826,8 @@ public final class ContainerFunctions {
         return getRegistryImage(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -1869,6 +1873,8 @@ public final class ContainerFunctions {
         return getRegistryImagePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -1914,6 +1920,8 @@ public final class ContainerFunctions {
         return Deployment.getInstance().invoke("gcp:container/getRegistryImage:getRegistryImage", TypeShape.of(GetRegistryImageResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -1959,6 +1967,8 @@ public final class ContainerFunctions {
         return Deployment.getInstance().invoke("gcp:container/getRegistryImage:getRegistryImage", TypeShape.of(GetRegistryImageResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -2004,6 +2014,8 @@ public final class ContainerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:container/getRegistryImage:getRegistryImage", TypeShape.of(GetRegistryImageResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -2047,6 +2059,8 @@ public final class ContainerFunctions {
         return getRegistryRepository(GetRegistryRepositoryArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -2090,6 +2104,8 @@ public final class ContainerFunctions {
         return getRegistryRepositoryPlain(GetRegistryRepositoryPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -2133,6 +2149,8 @@ public final class ContainerFunctions {
         return getRegistryRepository(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -2176,6 +2194,8 @@ public final class ContainerFunctions {
         return getRegistryRepositoryPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -2219,6 +2239,8 @@ public final class ContainerFunctions {
         return Deployment.getInstance().invoke("gcp:container/getRegistryRepository:getRegistryRepository", TypeShape.of(GetRegistryRepositoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
@@ -2262,6 +2284,8 @@ public final class ContainerFunctions {
         return Deployment.getInstance().invoke("gcp:container/getRegistryRepository:getRegistryRepository", TypeShape.of(GetRegistryRepositoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+     * 
      * This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
      * 
      * The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.

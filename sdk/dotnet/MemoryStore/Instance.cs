@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.MemoryStore
     /// <summary>
     /// A Google Cloud Memorystore instance.
     /// 
+    /// To get more information about Instance, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/valkey/create-instances)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Memorystore Instance Basic
@@ -282,6 +288,186 @@ namespace Pulumi.Gcp.MemoryStore
     /// 
     /// });
     /// ```
+    /// ### Memorystore Instance Secondary Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primaryProducerNet = new Gcp.Compute.Network("primary_producer_net", new()
+    ///     {
+    ///         Name = "my-network-primary-instance",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var primaryProducerSubnet = new Gcp.Compute.Subnetwork("primary_producer_subnet", new()
+    ///     {
+    ///         Name = "my-subnet-primary-instance",
+    ///         IpCidrRange = "10.0.1.0/29",
+    ///         Region = "asia-east1",
+    ///         Network = primaryProducerNet.Id,
+    ///     });
+    /// 
+    ///     var primaryPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("primary_policy", new()
+    ///     {
+    ///         Name = "my-policy-primary-instance",
+    ///         Location = "asia-east1",
+    ///         ServiceClass = "gcp-memorystore",
+    ///         Description = "my basic service connection policy",
+    ///         Network = primaryProducerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 primaryProducerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     // Primary instance
+    ///     var primaryInstance = new Gcp.MemoryStore.Instance("primary_instance", new()
+    ///     {
+    ///         InstanceId = "primary-instance",
+    ///         ShardCount = 1,
+    ///         DesiredPscAutoConnections = new[]
+    ///         {
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredPscAutoConnectionArgs
+    ///             {
+    ///                 Network = primaryProducerNet.Id,
+    ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///             },
+    ///         },
+    ///         Location = "asia-east1",
+    ///         ReplicaCount = 1,
+    ///         NodeType = "SHARED_CORE_NANO",
+    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_DISABLED",
+    ///         AuthorizationMode = "AUTH_DISABLED",
+    ///         EngineConfigs = 
+    ///         {
+    ///             { "maxmemory-policy", "volatile-ttl" },
+    ///         },
+    ///         ZoneDistributionConfig = new Gcp.MemoryStore.Inputs.InstanceZoneDistributionConfigArgs
+    ///         {
+    ///             Mode = "SINGLE_ZONE",
+    ///             Zone = "asia-east1-c",
+    ///         },
+    ///         DeletionProtectionEnabled = true,
+    ///         PersistenceConfig = new Gcp.MemoryStore.Inputs.InstancePersistenceConfigArgs
+    ///         {
+    ///             Mode = "RDB",
+    ///             RdbConfig = new Gcp.MemoryStore.Inputs.InstancePersistenceConfigRdbConfigArgs
+    ///             {
+    ///                 RdbSnapshotPeriod = "ONE_HOUR",
+    ///                 RdbSnapshotStartTime = "2024-10-02T15:01:23Z",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "abc", "xyz" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             primaryPolicy,
+    ///         },
+    ///     });
+    /// 
+    ///     var secondaryProducerNet = new Gcp.Compute.Network("secondary_producer_net", new()
+    ///     {
+    ///         Name = "my-network-secondary-instance",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var secondaryProducerSubnet = new Gcp.Compute.Subnetwork("secondary_producer_subnet", new()
+    ///     {
+    ///         Name = "my-subnet-secondary-instance",
+    ///         IpCidrRange = "10.0.2.0/29",
+    ///         Region = "europe-north1",
+    ///         Network = secondaryProducerNet.Id,
+    ///     });
+    /// 
+    ///     var secondaryPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("secondary_policy", new()
+    ///     {
+    ///         Name = "my-policy-secondary-instance",
+    ///         Location = "europe-north1",
+    ///         ServiceClass = "gcp-memorystore",
+    ///         Description = "my basic service connection policy",
+    ///         Network = secondaryProducerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 secondaryProducerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Secondary instance
+    ///     var secondaryInstance = new Gcp.MemoryStore.Instance("secondary_instance", new()
+    ///     {
+    ///         InstanceId = "secondary-instance",
+    ///         ShardCount = 1,
+    ///         DesiredPscAutoConnections = new[]
+    ///         {
+    ///             new Gcp.MemoryStore.Inputs.InstanceDesiredPscAutoConnectionArgs
+    ///             {
+    ///                 Network = secondaryProducerNet.Id,
+    ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///             },
+    ///         },
+    ///         Location = "europe-north1",
+    ///         ReplicaCount = 1,
+    ///         NodeType = "SHARED_CORE_NANO",
+    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_DISABLED",
+    ///         AuthorizationMode = "AUTH_DISABLED",
+    ///         EngineConfigs = 
+    ///         {
+    ///             { "maxmemory-policy", "volatile-ttl" },
+    ///         },
+    ///         ZoneDistributionConfig = new Gcp.MemoryStore.Inputs.InstanceZoneDistributionConfigArgs
+    ///         {
+    ///             Mode = "SINGLE_ZONE",
+    ///             Zone = "europe-north1-c",
+    ///         },
+    ///         DeletionProtectionEnabled = true,
+    ///         CrossInstanceReplicationConfig = new Gcp.MemoryStore.Inputs.InstanceCrossInstanceReplicationConfigArgs
+    ///         {
+    ///             InstanceRole = "SECONDARY",
+    ///             PrimaryInstance = new Gcp.MemoryStore.Inputs.InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs
+    ///             {
+    ///                 Instance = primaryInstance.Id,
+    ///             },
+    ///         },
+    ///         PersistenceConfig = new Gcp.MemoryStore.Inputs.InstancePersistenceConfigArgs
+    ///         {
+    ///             Mode = "RDB",
+    ///             RdbConfig = new Gcp.MemoryStore.Inputs.InstancePersistenceConfigRdbConfigArgs
+    ///             {
+    ///                 RdbSnapshotPeriod = "ONE_HOUR",
+    ///                 RdbSnapshotStartTime = "2024-10-02T15:01:23Z",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "abc", "xyz" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             secondaryPolicy,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -325,13 +511,20 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Cross instance replication config
+        /// Structure is documented below.
+        /// </summary>
+        [Output("crossInstanceReplicationConfig")]
+        public Output<Outputs.InstanceCrossInstanceReplicationConfig> CrossInstanceReplicationConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. If set to true deletion of the instance will fail.
         /// </summary>
         [Output("deletionProtectionEnabled")]
         public Output<bool?> DeletionProtectionEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. User inputs for the auto-created PSC connections.
+        /// Immutable. User inputs for the auto-created PSC connections.
         /// </summary>
         [Output("desiredPscAutoConnections")]
         public Output<ImmutableArray<Outputs.InstanceDesiredPscAutoConnection>> DesiredPscAutoConnections { get; private set; } = null!;
@@ -461,6 +654,13 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration of a service attachment of the cluster, for creating PSC connections.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pscAttachmentDetails")]
+        public Output<ImmutableArray<Outputs.InstancePscAttachmentDetail>> PscAttachmentDetails { get; private set; } = null!;
 
         /// <summary>
         /// Output only. User inputs and resource details of the auto-created PSC connections.
@@ -594,16 +794,23 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? AuthorizationMode { get; set; }
 
         /// <summary>
+        /// Cross instance replication config
+        /// Structure is documented below.
+        /// </summary>
+        [Input("crossInstanceReplicationConfig")]
+        public Input<Inputs.InstanceCrossInstanceReplicationConfigArgs>? CrossInstanceReplicationConfig { get; set; }
+
+        /// <summary>
         /// Optional. If set to true deletion of the instance will fail.
         /// </summary>
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
-        [Input("desiredPscAutoConnections", required: true)]
+        [Input("desiredPscAutoConnections")]
         private InputList<Inputs.InstanceDesiredPscAutoConnectionArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// Required. Immutable. User inputs for the auto-created PSC connections.
+        /// Immutable. User inputs for the auto-created PSC connections.
         /// </summary>
         public InputList<Inputs.InstanceDesiredPscAutoConnectionArgs> DesiredPscAutoConnections
         {
@@ -758,6 +965,13 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// Cross instance replication config
+        /// Structure is documented below.
+        /// </summary>
+        [Input("crossInstanceReplicationConfig")]
+        public Input<Inputs.InstanceCrossInstanceReplicationConfigGetArgs>? CrossInstanceReplicationConfig { get; set; }
+
+        /// <summary>
         /// Optional. If set to true deletion of the instance will fail.
         /// </summary>
         [Input("deletionProtectionEnabled")]
@@ -767,7 +981,7 @@ namespace Pulumi.Gcp.MemoryStore
         private InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs>? _desiredPscAutoConnections;
 
         /// <summary>
-        /// Required. Immutable. User inputs for the auto-created PSC connections.
+        /// Immutable. User inputs for the auto-created PSC connections.
         /// </summary>
         public InputList<Inputs.InstanceDesiredPscAutoConnectionGetArgs> DesiredPscAutoConnections
         {
@@ -946,6 +1160,19 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pscAttachmentDetails")]
+        private InputList<Inputs.InstancePscAttachmentDetailGetArgs>? _pscAttachmentDetails;
+
+        /// <summary>
+        /// Configuration of a service attachment of the cluster, for creating PSC connections.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstancePscAttachmentDetailGetArgs> PscAttachmentDetails
+        {
+            get => _pscAttachmentDetails ?? (_pscAttachmentDetails = new InputList<Inputs.InstancePscAttachmentDetailGetArgs>());
+            set => _pscAttachmentDetails = value;
+        }
 
         [Input("pscAutoConnections")]
         private InputList<Inputs.InstancePscAutoConnectionGetArgs>? _pscAutoConnections;

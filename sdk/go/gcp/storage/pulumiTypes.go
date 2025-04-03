@@ -2580,6 +2580,1784 @@ func (o BucketWebsitePtrOutput) NotFoundPage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ControlFolderIntelligenceConfigEffectiveIntelligenceConfig struct {
+	// (Output)
+	// The `StorageIntelligence` edition that is applicable for the resource.
+	EffectiveEdition *string `pulumi:"effectiveEdition"`
+	// (Output)
+	// The Intelligence config resource that is applied for the target resource.
+	IntelligenceConfig *string `pulumi:"intelligenceConfig"`
+}
+
+// ControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput is an input type that accepts ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs and ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput` via:
+//
+//	ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs{...}
+type ControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput() ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput
+	ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(context.Context) ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput
+}
+
+type ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs struct {
+	// (Output)
+	// The `StorageIntelligence` edition that is applicable for the resource.
+	EffectiveEdition pulumi.StringPtrInput `pulumi:"effectiveEdition"`
+	// (Output)
+	// The Intelligence config resource that is applied for the target resource.
+	IntelligenceConfig pulumi.StringPtrInput `pulumi:"intelligenceConfig"`
+}
+
+func (ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (i ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs) ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput() ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return i.ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs) ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput)
+}
+
+// ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayInput is an input type that accepts ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray and ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayInput` via:
+//
+//	ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray{ ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs{...} }
+type ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput
+	ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(context.Context) ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput
+}
+
+type ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray []ControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput
+
+func (ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlFolderIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (i ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray) ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return i.ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray) ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput)
+}
+
+type ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput() ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return o
+}
+
+// (Output)
+// The `StorageIntelligence` edition that is applicable for the resource.
+func (o ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) EffectiveEdition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigEffectiveIntelligenceConfig) *string { return v.EffectiveEdition }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Intelligence config resource that is applied for the target resource.
+func (o ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) IntelligenceConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigEffectiveIntelligenceConfig) *string {
+		return v.IntelligenceConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+type ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlFolderIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ToControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) Index(i pulumi.IntInput) ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlFolderIntelligenceConfigEffectiveIntelligenceConfig {
+		return vs[0].([]ControlFolderIntelligenceConfigEffectiveIntelligenceConfig)[vs[1].(int)]
+	}).(ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput)
+}
+
+type ControlFolderIntelligenceConfigFilter struct {
+	// Buckets to exclude from the Storage Intelligence plan.
+	// Structure is documented below.
+	ExcludedCloudStorageBuckets *ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets `pulumi:"excludedCloudStorageBuckets"`
+	// Locations to exclude from the Storage Intelligence plan.
+	// Structure is documented below.
+	ExcludedCloudStorageLocations *ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations `pulumi:"excludedCloudStorageLocations"`
+	// Buckets to include in the Storage Intelligence plan.
+	// Structure is documented below.
+	IncludedCloudStorageBuckets *ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets `pulumi:"includedCloudStorageBuckets"`
+	// Locations to include in the Storage Intelligence plan.
+	// Structure is documented below.
+	IncludedCloudStorageLocations *ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations `pulumi:"includedCloudStorageLocations"`
+}
+
+// ControlFolderIntelligenceConfigFilterInput is an input type that accepts ControlFolderIntelligenceConfigFilterArgs and ControlFolderIntelligenceConfigFilterOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterInput` via:
+//
+//	ControlFolderIntelligenceConfigFilterArgs{...}
+type ControlFolderIntelligenceConfigFilterInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterOutput() ControlFolderIntelligenceConfigFilterOutput
+	ToControlFolderIntelligenceConfigFilterOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterOutput
+}
+
+type ControlFolderIntelligenceConfigFilterArgs struct {
+	// Buckets to exclude from the Storage Intelligence plan.
+	// Structure is documented below.
+	ExcludedCloudStorageBuckets ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput `pulumi:"excludedCloudStorageBuckets"`
+	// Locations to exclude from the Storage Intelligence plan.
+	// Structure is documented below.
+	ExcludedCloudStorageLocations ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput `pulumi:"excludedCloudStorageLocations"`
+	// Buckets to include in the Storage Intelligence plan.
+	// Structure is documented below.
+	IncludedCloudStorageBuckets ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput `pulumi:"includedCloudStorageBuckets"`
+	// Locations to include in the Storage Intelligence plan.
+	// Structure is documented below.
+	IncludedCloudStorageLocations ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput `pulumi:"includedCloudStorageLocations"`
+}
+
+func (ControlFolderIntelligenceConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (i ControlFolderIntelligenceConfigFilterArgs) ToControlFolderIntelligenceConfigFilterOutput() ControlFolderIntelligenceConfigFilterOutput {
+	return i.ToControlFolderIntelligenceConfigFilterOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterArgs) ToControlFolderIntelligenceConfigFilterOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterOutput)
+}
+
+func (i ControlFolderIntelligenceConfigFilterArgs) ToControlFolderIntelligenceConfigFilterPtrOutput() ControlFolderIntelligenceConfigFilterPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterArgs) ToControlFolderIntelligenceConfigFilterPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterOutput).ToControlFolderIntelligenceConfigFilterPtrOutputWithContext(ctx)
+}
+
+// ControlFolderIntelligenceConfigFilterPtrInput is an input type that accepts ControlFolderIntelligenceConfigFilterArgs, ControlFolderIntelligenceConfigFilterPtr and ControlFolderIntelligenceConfigFilterPtrOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterPtrInput` via:
+//
+//	        ControlFolderIntelligenceConfigFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlFolderIntelligenceConfigFilterPtrInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterPtrOutput() ControlFolderIntelligenceConfigFilterPtrOutput
+	ToControlFolderIntelligenceConfigFilterPtrOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterPtrOutput
+}
+
+type controlFolderIntelligenceConfigFilterPtrType ControlFolderIntelligenceConfigFilterArgs
+
+func ControlFolderIntelligenceConfigFilterPtr(v *ControlFolderIntelligenceConfigFilterArgs) ControlFolderIntelligenceConfigFilterPtrInput {
+	return (*controlFolderIntelligenceConfigFilterPtrType)(v)
+}
+
+func (*controlFolderIntelligenceConfigFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (i *controlFolderIntelligenceConfigFilterPtrType) ToControlFolderIntelligenceConfigFilterPtrOutput() ControlFolderIntelligenceConfigFilterPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *controlFolderIntelligenceConfigFilterPtrType) ToControlFolderIntelligenceConfigFilterPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterPtrOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterOutput) ToControlFolderIntelligenceConfigFilterOutput() ControlFolderIntelligenceConfigFilterOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterOutput) ToControlFolderIntelligenceConfigFilterOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterOutput) ToControlFolderIntelligenceConfigFilterPtrOutput() ControlFolderIntelligenceConfigFilterPtrOutput {
+	return o.ToControlFolderIntelligenceConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ControlFolderIntelligenceConfigFilterOutput) ToControlFolderIntelligenceConfigFilterPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlFolderIntelligenceConfigFilter) *ControlFolderIntelligenceConfigFilter {
+		return &v
+	}).(ControlFolderIntelligenceConfigFilterPtrOutput)
+}
+
+// Buckets to exclude from the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlFolderIntelligenceConfigFilterOutput) ExcludedCloudStorageBuckets() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigFilter) *ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets {
+		return v.ExcludedCloudStorageBuckets
+	}).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput)
+}
+
+// Locations to exclude from the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlFolderIntelligenceConfigFilterOutput) ExcludedCloudStorageLocations() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigFilter) *ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations {
+		return v.ExcludedCloudStorageLocations
+	}).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput)
+}
+
+// Buckets to include in the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlFolderIntelligenceConfigFilterOutput) IncludedCloudStorageBuckets() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigFilter) *ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets {
+		return v.IncludedCloudStorageBuckets
+	}).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+// Locations to include in the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlFolderIntelligenceConfigFilterOutput) IncludedCloudStorageLocations() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigFilter) *ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations {
+		return v.IncludedCloudStorageLocations
+	}).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterPtrOutput) ToControlFolderIntelligenceConfigFilterPtrOutput() ControlFolderIntelligenceConfigFilterPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterPtrOutput) ToControlFolderIntelligenceConfigFilterPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterPtrOutput) Elem() ControlFolderIntelligenceConfigFilterOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilter) ControlFolderIntelligenceConfigFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ControlFolderIntelligenceConfigFilter
+		return ret
+	}).(ControlFolderIntelligenceConfigFilterOutput)
+}
+
+// Buckets to exclude from the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlFolderIntelligenceConfigFilterPtrOutput) ExcludedCloudStorageBuckets() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilter) *ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedCloudStorageBuckets
+	}).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput)
+}
+
+// Locations to exclude from the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlFolderIntelligenceConfigFilterPtrOutput) ExcludedCloudStorageLocations() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilter) *ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedCloudStorageLocations
+	}).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput)
+}
+
+// Buckets to include in the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlFolderIntelligenceConfigFilterPtrOutput) IncludedCloudStorageBuckets() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilter) *ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedCloudStorageBuckets
+	}).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+// Locations to include in the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlFolderIntelligenceConfigFilterPtrOutput) IncludedCloudStorageLocations() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilter) *ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedCloudStorageLocations
+	}).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsInput is an input type that accepts ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs and ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsInput` via:
+//
+//	ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs{...}
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput
+	ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput
+}
+
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return i.ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput)
+}
+
+func (i ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput).ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx)
+}
+
+// ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput is an input type that accepts ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs, ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtr and ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput` via:
+//
+//	        ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput
+	ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput
+}
+
+type controlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs
+
+func ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtr(v *ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput {
+	return (*controlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType)(v)
+}
+
+func (*controlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i *controlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i *controlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o.ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets) *ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets {
+		return &v
+	}).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput)
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) Elem() ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets) ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets
+		return ret
+	}).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput)
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations struct {
+	// List of locations.
+	Locations []string `pulumi:"locations"`
+}
+
+// ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsInput is an input type that accepts ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs and ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsInput` via:
+//
+//	ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs{...}
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput
+	ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput
+}
+
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs struct {
+	// List of locations.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (i ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return i.ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput)
+}
+
+func (i ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput).ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx)
+}
+
+// ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput is an input type that accepts ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs, ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtr and ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput` via:
+//
+//	        ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput
+	ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput
+}
+
+type controlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs
+
+func ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtr(v *ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput {
+	return (*controlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType)(v)
+}
+
+func (*controlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (i *controlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i *controlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o.ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations) *ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations {
+		return &v
+	}).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput)
+}
+
+// List of locations.
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations) []string {
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) ToControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) Elem() ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations) ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations {
+		if v != nil {
+			return *v
+		}
+		var ret ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations
+		return ret
+	}).(ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput)
+}
+
+// List of locations.
+func (o ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsInput is an input type that accepts ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs and ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsInput` via:
+//
+//	ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{...}
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput
+	ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput
+}
+
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return i.ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput)
+}
+
+func (i ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput).ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx)
+}
+
+// ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput is an input type that accepts ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs, ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtr and ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput` via:
+//
+//	        ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput
+	ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput
+}
+
+type controlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs
+
+func ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtr(v *ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput {
+	return (*controlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType)(v)
+}
+
+func (*controlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i *controlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i *controlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets) *ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets {
+		return &v
+	}).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) Elem() ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets) ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets
+		return ret
+	}).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput)
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations struct {
+	// List of locations.
+	Locations []string `pulumi:"locations"`
+}
+
+// ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsInput is an input type that accepts ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs and ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsInput` via:
+//
+//	ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{...}
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput
+	ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput
+}
+
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs struct {
+	// List of locations.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (i ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return i.ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput)
+}
+
+func (i ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput).ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx)
+}
+
+// ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput is an input type that accepts ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs, ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtr and ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput` via:
+//
+//	        ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput
+	ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput
+}
+
+type controlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs
+
+func ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtr(v *ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput {
+	return (*controlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType)(v)
+}
+
+func (*controlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (i *controlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return i.ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i *controlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o.ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations) *ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations {
+		return &v
+	}).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput)
+}
+
+// List of locations.
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations) []string {
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) ToControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) Elem() ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations) ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations {
+		if v != nil {
+			return *v
+		}
+		var ret ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations
+		return ret
+	}).(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput)
+}
+
+// List of locations.
+func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig struct {
+	// (Output)
+	// The `StorageIntelligence` edition that is applicable for the resource.
+	EffectiveEdition *string `pulumi:"effectiveEdition"`
+	// (Output)
+	// The Intelligence config resource that is applied for the target resource.
+	IntelligenceConfig *string `pulumi:"intelligenceConfig"`
+}
+
+// ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput is an input type that accepts ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs and ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput` via:
+//
+//	ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs{...}
+type ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput() ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput
+	ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput
+}
+
+type ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs struct {
+	// (Output)
+	// The `StorageIntelligence` edition that is applicable for the resource.
+	EffectiveEdition pulumi.StringPtrInput `pulumi:"effectiveEdition"`
+	// (Output)
+	// The Intelligence config resource that is applied for the target resource.
+	IntelligenceConfig pulumi.StringPtrInput `pulumi:"intelligenceConfig"`
+}
+
+func (ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (i ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs) ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput() ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return i.ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs) ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput)
+}
+
+// ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput is an input type that accepts ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray and ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput` via:
+//
+//	ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray{ ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs{...} }
+type ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput
+	ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput
+}
+
+type ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray []ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput
+
+func (ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (i ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray) ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return i.ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray) ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput() ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return o
+}
+
+// (Output)
+// The `StorageIntelligence` edition that is applicable for the resource.
+func (o ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) EffectiveEdition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig) *string {
+		return v.EffectiveEdition
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Intelligence config resource that is applied for the target resource.
+func (o ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) IntelligenceConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig) *string {
+		return v.IntelligenceConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+type ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ToControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) Index(i pulumi.IntInput) ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig {
+		return vs[0].([]ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)[vs[1].(int)]
+	}).(ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilter struct {
+	// Buckets to exclude from the Storage Intelligence plan.
+	// Structure is documented below.
+	ExcludedCloudStorageBuckets *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets `pulumi:"excludedCloudStorageBuckets"`
+	// Locations to exclude from the Storage Intelligence plan.
+	// Structure is documented below.
+	ExcludedCloudStorageLocations *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations `pulumi:"excludedCloudStorageLocations"`
+	// Buckets to include in the Storage Intelligence plan.
+	// Structure is documented below.
+	IncludedCloudStorageBuckets *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets `pulumi:"includedCloudStorageBuckets"`
+	// Locations to include in the Storage Intelligence plan.
+	// Structure is documented below.
+	IncludedCloudStorageLocations *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations `pulumi:"includedCloudStorageLocations"`
+}
+
+// ControlOrganizationIntelligenceConfigFilterInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterArgs and ControlOrganizationIntelligenceConfigFilterOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterInput` via:
+//
+//	ControlOrganizationIntelligenceConfigFilterArgs{...}
+type ControlOrganizationIntelligenceConfigFilterInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterOutput() ControlOrganizationIntelligenceConfigFilterOutput
+	ToControlOrganizationIntelligenceConfigFilterOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterOutput
+}
+
+type ControlOrganizationIntelligenceConfigFilterArgs struct {
+	// Buckets to exclude from the Storage Intelligence plan.
+	// Structure is documented below.
+	ExcludedCloudStorageBuckets ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput `pulumi:"excludedCloudStorageBuckets"`
+	// Locations to exclude from the Storage Intelligence plan.
+	// Structure is documented below.
+	ExcludedCloudStorageLocations ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput `pulumi:"excludedCloudStorageLocations"`
+	// Buckets to include in the Storage Intelligence plan.
+	// Structure is documented below.
+	IncludedCloudStorageBuckets ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput `pulumi:"includedCloudStorageBuckets"`
+	// Locations to include in the Storage Intelligence plan.
+	// Structure is documented below.
+	IncludedCloudStorageLocations ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput `pulumi:"includedCloudStorageLocations"`
+}
+
+func (ControlOrganizationIntelligenceConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterArgs) ToControlOrganizationIntelligenceConfigFilterOutput() ControlOrganizationIntelligenceConfigFilterOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterArgs) ToControlOrganizationIntelligenceConfigFilterOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterOutput)
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterArgs) ToControlOrganizationIntelligenceConfigFilterPtrOutput() ControlOrganizationIntelligenceConfigFilterPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterArgs) ToControlOrganizationIntelligenceConfigFilterPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterOutput).ToControlOrganizationIntelligenceConfigFilterPtrOutputWithContext(ctx)
+}
+
+// ControlOrganizationIntelligenceConfigFilterPtrInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterArgs, ControlOrganizationIntelligenceConfigFilterPtr and ControlOrganizationIntelligenceConfigFilterPtrOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterPtrInput` via:
+//
+//	        ControlOrganizationIntelligenceConfigFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlOrganizationIntelligenceConfigFilterPtrInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterPtrOutput() ControlOrganizationIntelligenceConfigFilterPtrOutput
+	ToControlOrganizationIntelligenceConfigFilterPtrOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterPtrOutput
+}
+
+type controlOrganizationIntelligenceConfigFilterPtrType ControlOrganizationIntelligenceConfigFilterArgs
+
+func ControlOrganizationIntelligenceConfigFilterPtr(v *ControlOrganizationIntelligenceConfigFilterArgs) ControlOrganizationIntelligenceConfigFilterPtrInput {
+	return (*controlOrganizationIntelligenceConfigFilterPtrType)(v)
+}
+
+func (*controlOrganizationIntelligenceConfigFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterPtrType) ToControlOrganizationIntelligenceConfigFilterPtrOutput() ControlOrganizationIntelligenceConfigFilterPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterPtrType) ToControlOrganizationIntelligenceConfigFilterPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterPtrOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterOutput) ToControlOrganizationIntelligenceConfigFilterOutput() ControlOrganizationIntelligenceConfigFilterOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterOutput) ToControlOrganizationIntelligenceConfigFilterOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterOutput) ToControlOrganizationIntelligenceConfigFilterPtrOutput() ControlOrganizationIntelligenceConfigFilterPtrOutput {
+	return o.ToControlOrganizationIntelligenceConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterOutput) ToControlOrganizationIntelligenceConfigFilterPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlOrganizationIntelligenceConfigFilter) *ControlOrganizationIntelligenceConfigFilter {
+		return &v
+	}).(ControlOrganizationIntelligenceConfigFilterPtrOutput)
+}
+
+// Buckets to exclude from the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlOrganizationIntelligenceConfigFilterOutput) ExcludedCloudStorageBuckets() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigFilter) *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets {
+		return v.ExcludedCloudStorageBuckets
+	}).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput)
+}
+
+// Locations to exclude from the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlOrganizationIntelligenceConfigFilterOutput) ExcludedCloudStorageLocations() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigFilter) *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations {
+		return v.ExcludedCloudStorageLocations
+	}).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput)
+}
+
+// Buckets to include in the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlOrganizationIntelligenceConfigFilterOutput) IncludedCloudStorageBuckets() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigFilter) *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets {
+		return v.IncludedCloudStorageBuckets
+	}).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+// Locations to include in the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlOrganizationIntelligenceConfigFilterOutput) IncludedCloudStorageLocations() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigFilter) *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations {
+		return v.IncludedCloudStorageLocations
+	}).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterPtrOutput) ToControlOrganizationIntelligenceConfigFilterPtrOutput() ControlOrganizationIntelligenceConfigFilterPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterPtrOutput) ToControlOrganizationIntelligenceConfigFilterPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterPtrOutput) Elem() ControlOrganizationIntelligenceConfigFilterOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilter) ControlOrganizationIntelligenceConfigFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ControlOrganizationIntelligenceConfigFilter
+		return ret
+	}).(ControlOrganizationIntelligenceConfigFilterOutput)
+}
+
+// Buckets to exclude from the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlOrganizationIntelligenceConfigFilterPtrOutput) ExcludedCloudStorageBuckets() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilter) *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedCloudStorageBuckets
+	}).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput)
+}
+
+// Locations to exclude from the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlOrganizationIntelligenceConfigFilterPtrOutput) ExcludedCloudStorageLocations() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilter) *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedCloudStorageLocations
+	}).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput)
+}
+
+// Buckets to include in the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlOrganizationIntelligenceConfigFilterPtrOutput) IncludedCloudStorageBuckets() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilter) *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedCloudStorageBuckets
+	}).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+// Locations to include in the Storage Intelligence plan.
+// Structure is documented below.
+func (o ControlOrganizationIntelligenceConfigFilterPtrOutput) IncludedCloudStorageLocations() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilter) *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedCloudStorageLocations
+	}).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs and ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsInput` via:
+//
+//	ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs{...}
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput
+	ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput
+}
+
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput)
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput).ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx)
+}
+
+// ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs, ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtr and ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput` via:
+//
+//	        ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput
+	ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput
+}
+
+type controlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs
+
+func ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtr(v *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput {
+	return (*controlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType)(v)
+}
+
+func (*controlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrType) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o.ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets) *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets {
+		return &v
+	}).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput)
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) Elem() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets
+		return ret
+	}).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput)
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations struct {
+	// List of locations.
+	Locations []string `pulumi:"locations"`
+}
+
+// ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs and ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsInput` via:
+//
+//	ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs{...}
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput
+	ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput
+}
+
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs struct {
+	// List of locations.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput)
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput).ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx)
+}
+
+// ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs, ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtr and ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput` via:
+//
+//	        ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput
+	ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput
+}
+
+type controlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs
+
+func ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtr(v *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput {
+	return (*controlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType)(v)
+}
+
+func (*controlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrType) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o.ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations) *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations {
+		return &v
+	}).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput)
+}
+
+// List of locations.
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations) []string {
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) ToControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) Elem() ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations) ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations {
+		if v != nil {
+			return *v
+		}
+		var ret ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations
+		return ret
+	}).(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput)
+}
+
+// List of locations.
+func (o ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs and ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsInput` via:
+//
+//	ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{...}
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput
+	ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput
+}
+
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput)
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput).ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx)
+}
+
+// ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs, ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtr and ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput` via:
+//
+//	        ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput
+	ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput
+}
+
+type controlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs
+
+func ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtr(v *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput {
+	return (*controlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType)(v)
+}
+
+func (*controlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrType) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(context.Background())
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets) *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets {
+		return &v
+	}).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput)
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) Elem() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets
+		return ret
+	}).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput)
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations struct {
+	// List of locations.
+	Locations []string `pulumi:"locations"`
+}
+
+// ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs and ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsInput` via:
+//
+//	ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{...}
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput
+	ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput
+}
+
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs struct {
+	// List of locations.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput)
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput).ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx)
+}
+
+// ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput is an input type that accepts ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs, ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtr and ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput` via:
+//
+//	        ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput
+	ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput
+}
+
+type controlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs
+
+func ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtr(v *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput {
+	return (*controlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType)(v)
+}
+
+func (*controlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return i.ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i *controlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrType) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o.ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(context.Background())
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations) *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations {
+		return &v
+	}).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput)
+}
+
+// List of locations.
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations) []string {
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) ToControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) Elem() ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations) ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations {
+		if v != nil {
+			return *v
+		}
+		var ret ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations
+		return ret
+	}).(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput)
+}
+
+// List of locations.
+func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
 type ControlProjectIntelligenceConfigEffectiveIntelligenceConfig struct {
 	// (Output)
 	// The `StorageIntelligence` edition that is applicable for the resource.
@@ -12833,6 +14611,1282 @@ func (o GetBucketsBucketArrayOutput) Index(i pulumi.IntInput) GetBucketsBucketOu
 	}).(GetBucketsBucketOutput)
 }
 
+type GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig struct {
+	// The 'StorageIntelligence' edition that is applicable for the resource.
+	EffectiveEdition string `pulumi:"effectiveEdition"`
+	// The Intelligence config resource that is applied for the target resource.
+	IntelligenceConfig string `pulumi:"intelligenceConfig"`
+}
+
+// GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput is an input type that accepts GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs and GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput` via:
+//
+//	GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs{...}
+type GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput() GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput
+	ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(context.Context) GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput
+}
+
+type GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs struct {
+	// The 'StorageIntelligence' edition that is applicable for the resource.
+	EffectiveEdition pulumi.StringInput `pulumi:"effectiveEdition"`
+	// The Intelligence config resource that is applied for the target resource.
+	IntelligenceConfig pulumi.StringInput `pulumi:"intelligenceConfig"`
+}
+
+func (GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs) ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput() GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return i.ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs) ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput)
+}
+
+// GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayInput is an input type that accepts GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray and GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayInput` via:
+//
+//	GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray{ GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs{...} }
+type GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput
+	ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(context.Context) GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput
+}
+
+type GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray []GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput
+
+func (GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray) ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return i.ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray) ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput() GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return o
+}
+
+// The 'StorageIntelligence' edition that is applicable for the resource.
+func (o GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) EffectiveEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig) string {
+		return v.EffectiveEdition
+	}).(pulumi.StringOutput)
+}
+
+// The Intelligence config resource that is applied for the target resource.
+func (o GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput) IntelligenceConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig) string {
+		return v.IntelligenceConfig
+	}).(pulumi.StringOutput)
+}
+
+type GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ToGetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) Index(i pulumi.IntInput) GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig {
+		return vs[0].([]GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig)[vs[1].(int)]
+	}).(GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilter struct {
+	// Buckets to exclude from the Storage Intelligence plan.
+	ExcludedCloudStorageBuckets []GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket `pulumi:"excludedCloudStorageBuckets"`
+	// Locations to exclude from the Storage Intelligence plan.
+	ExcludedCloudStorageLocations []GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation `pulumi:"excludedCloudStorageLocations"`
+	// Buckets to include in the Storage Intelligence plan.
+	IncludedCloudStorageBuckets []GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket `pulumi:"includedCloudStorageBuckets"`
+	// Locations to include in the Storage Intelligence plan.
+	IncludedCloudStorageLocations []GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation `pulumi:"includedCloudStorageLocations"`
+}
+
+// GetControlFolderIntelligenceConfigFilterInput is an input type that accepts GetControlFolderIntelligenceConfigFilterArgs and GetControlFolderIntelligenceConfigFilterOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterArgs{...}
+type GetControlFolderIntelligenceConfigFilterInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterOutput() GetControlFolderIntelligenceConfigFilterOutput
+	ToGetControlFolderIntelligenceConfigFilterOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterArgs struct {
+	// Buckets to exclude from the Storage Intelligence plan.
+	ExcludedCloudStorageBuckets GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput `pulumi:"excludedCloudStorageBuckets"`
+	// Locations to exclude from the Storage Intelligence plan.
+	ExcludedCloudStorageLocations GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput `pulumi:"excludedCloudStorageLocations"`
+	// Buckets to include in the Storage Intelligence plan.
+	IncludedCloudStorageBuckets GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput `pulumi:"includedCloudStorageBuckets"`
+	// Locations to include in the Storage Intelligence plan.
+	IncludedCloudStorageLocations GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput `pulumi:"includedCloudStorageLocations"`
+}
+
+func (GetControlFolderIntelligenceConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterArgs) ToGetControlFolderIntelligenceConfigFilterOutput() GetControlFolderIntelligenceConfigFilterOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterArgs) ToGetControlFolderIntelligenceConfigFilterOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterOutput)
+}
+
+// GetControlFolderIntelligenceConfigFilterArrayInput is an input type that accepts GetControlFolderIntelligenceConfigFilterArray and GetControlFolderIntelligenceConfigFilterArrayOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterArrayInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterArray{ GetControlFolderIntelligenceConfigFilterArgs{...} }
+type GetControlFolderIntelligenceConfigFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterArrayOutput() GetControlFolderIntelligenceConfigFilterArrayOutput
+	ToGetControlFolderIntelligenceConfigFilterArrayOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterArrayOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterArray []GetControlFolderIntelligenceConfigFilterInput
+
+func (GetControlFolderIntelligenceConfigFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterArray) ToGetControlFolderIntelligenceConfigFilterArrayOutput() GetControlFolderIntelligenceConfigFilterArrayOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterArray) ToGetControlFolderIntelligenceConfigFilterArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterOutput) ToGetControlFolderIntelligenceConfigFilterOutput() GetControlFolderIntelligenceConfigFilterOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterOutput) ToGetControlFolderIntelligenceConfigFilterOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterOutput {
+	return o
+}
+
+// Buckets to exclude from the Storage Intelligence plan.
+func (o GetControlFolderIntelligenceConfigFilterOutput) ExcludedCloudStorageBuckets() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigFilter) []GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket {
+		return v.ExcludedCloudStorageBuckets
+	}).(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput)
+}
+
+// Locations to exclude from the Storage Intelligence plan.
+func (o GetControlFolderIntelligenceConfigFilterOutput) ExcludedCloudStorageLocations() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigFilter) []GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation {
+		return v.ExcludedCloudStorageLocations
+	}).(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput)
+}
+
+// Buckets to include in the Storage Intelligence plan.
+func (o GetControlFolderIntelligenceConfigFilterOutput) IncludedCloudStorageBuckets() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigFilter) []GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket {
+		return v.IncludedCloudStorageBuckets
+	}).(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput)
+}
+
+// Locations to include in the Storage Intelligence plan.
+func (o GetControlFolderIntelligenceConfigFilterOutput) IncludedCloudStorageLocations() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigFilter) []GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation {
+		return v.IncludedCloudStorageLocations
+	}).(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterArrayOutput) ToGetControlFolderIntelligenceConfigFilterArrayOutput() GetControlFolderIntelligenceConfigFilterArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterArrayOutput) ToGetControlFolderIntelligenceConfigFilterArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterArrayOutput) Index(i pulumi.IntInput) GetControlFolderIntelligenceConfigFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlFolderIntelligenceConfigFilter {
+		return vs[0].([]GetControlFolderIntelligenceConfigFilter)[vs[1].(int)]
+	}).(GetControlFolderIntelligenceConfigFilterOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketInput is an input type that accepts GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArgs and GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArgs{...}
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput
+	ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArgs struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArgs) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArgs) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput)
+}
+
+// GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput is an input type that accepts GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArray and GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArray{ GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArgs{...} }
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput
+	ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArray []GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketInput
+
+func (GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArray) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArray) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return o
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket {
+		return vs[0].([]GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket)[vs[1].(int)]
+	}).(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation struct {
+	// List of locations.
+	Locations []string `pulumi:"locations"`
+}
+
+// GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationInput is an input type that accepts GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArgs and GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArgs{...}
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput
+	ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArgs struct {
+	// List of locations.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArgs) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArgs) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput)
+}
+
+// GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput is an input type that accepts GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArray and GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArray{ GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArgs{...} }
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput
+	ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArray []GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationInput
+
+func (GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArray) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArray) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return o
+}
+
+// List of locations.
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation) []string {
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput() GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput) ToGetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput) Index(i pulumi.IntInput) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation {
+		return vs[0].([]GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocation)[vs[1].(int)]
+	}).(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketInput is an input type that accepts GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArgs and GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArgs{...}
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput
+	ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArgs struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArgs) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArgs) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput)
+}
+
+// GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput is an input type that accepts GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArray and GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArray{ GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArgs{...} }
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput
+	ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArray []GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketInput
+
+func (GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArray) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArray) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return o
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket {
+		return vs[0].([]GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucket)[vs[1].(int)]
+	}).(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation struct {
+	// List of locations.
+	Locations []string `pulumi:"locations"`
+}
+
+// GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationInput is an input type that accepts GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArgs and GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArgs{...}
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput
+	ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArgs struct {
+	// List of locations.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArgs) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArgs) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput)
+}
+
+// GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput is an input type that accepts GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArray and GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput` via:
+//
+//	GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArray{ GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArgs{...} }
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput
+	ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutputWithContext(context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArray []GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationInput
+
+func (GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArray) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return i.ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArray) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return o
+}
+
+// List of locations.
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation) []string {
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput() GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput) ToGetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput) Index(i pulumi.IntInput) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation {
+		return vs[0].([]GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocation)[vs[1].(int)]
+	}).(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig struct {
+	// The 'StorageIntelligence' edition that is applicable for the resource.
+	EffectiveEdition string `pulumi:"effectiveEdition"`
+	// The Intelligence config resource that is applied for the target resource.
+	IntelligenceConfig string `pulumi:"intelligenceConfig"`
+}
+
+// GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput is an input type that accepts GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs and GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs{...}
+type GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput() GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput
+	ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput
+}
+
+type GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs struct {
+	// The 'StorageIntelligence' edition that is applicable for the resource.
+	EffectiveEdition pulumi.StringInput `pulumi:"effectiveEdition"`
+	// The Intelligence config resource that is applied for the target resource.
+	IntelligenceConfig pulumi.StringInput `pulumi:"intelligenceConfig"`
+}
+
+func (GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs) ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput() GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs) ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput)
+}
+
+// GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput is an input type that accepts GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray and GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray{ GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs{...} }
+type GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput
+	ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput
+}
+
+type GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray []GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput
+
+func (GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray) ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray) ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput() GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return o
+}
+
+// The 'StorageIntelligence' edition that is applicable for the resource.
+func (o GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) EffectiveEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig) string {
+		return v.EffectiveEdition
+	}).(pulumi.StringOutput)
+}
+
+// The Intelligence config resource that is applied for the target resource.
+func (o GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput) IntelligenceConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig) string {
+		return v.IntelligenceConfig
+	}).(pulumi.StringOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput() GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) ToGetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput) Index(i pulumi.IntInput) GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig {
+		return vs[0].([]GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig)[vs[1].(int)]
+	}).(GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilter struct {
+	// Buckets to exclude from the Storage Intelligence plan.
+	ExcludedCloudStorageBuckets []GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket `pulumi:"excludedCloudStorageBuckets"`
+	// Locations to exclude from the Storage Intelligence plan.
+	ExcludedCloudStorageLocations []GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation `pulumi:"excludedCloudStorageLocations"`
+	// Buckets to include in the Storage Intelligence plan.
+	IncludedCloudStorageBuckets []GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket `pulumi:"includedCloudStorageBuckets"`
+	// Locations to include in the Storage Intelligence plan.
+	IncludedCloudStorageLocations []GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation `pulumi:"includedCloudStorageLocations"`
+}
+
+// GetControlOrganizationIntelligenceConfigFilterInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterArgs and GetControlOrganizationIntelligenceConfigFilterOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterArgs{...}
+type GetControlOrganizationIntelligenceConfigFilterInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterOutput() GetControlOrganizationIntelligenceConfigFilterOutput
+	ToGetControlOrganizationIntelligenceConfigFilterOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterArgs struct {
+	// Buckets to exclude from the Storage Intelligence plan.
+	ExcludedCloudStorageBuckets GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput `pulumi:"excludedCloudStorageBuckets"`
+	// Locations to exclude from the Storage Intelligence plan.
+	ExcludedCloudStorageLocations GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput `pulumi:"excludedCloudStorageLocations"`
+	// Buckets to include in the Storage Intelligence plan.
+	IncludedCloudStorageBuckets GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput `pulumi:"includedCloudStorageBuckets"`
+	// Locations to include in the Storage Intelligence plan.
+	IncludedCloudStorageLocations GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput `pulumi:"includedCloudStorageLocations"`
+}
+
+func (GetControlOrganizationIntelligenceConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterArgs) ToGetControlOrganizationIntelligenceConfigFilterOutput() GetControlOrganizationIntelligenceConfigFilterOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterArgs) ToGetControlOrganizationIntelligenceConfigFilterOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterOutput)
+}
+
+// GetControlOrganizationIntelligenceConfigFilterArrayInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterArray and GetControlOrganizationIntelligenceConfigFilterArrayOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterArrayInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterArray{ GetControlOrganizationIntelligenceConfigFilterArgs{...} }
+type GetControlOrganizationIntelligenceConfigFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterArrayOutput() GetControlOrganizationIntelligenceConfigFilterArrayOutput
+	ToGetControlOrganizationIntelligenceConfigFilterArrayOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterArrayOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterArray []GetControlOrganizationIntelligenceConfigFilterInput
+
+func (GetControlOrganizationIntelligenceConfigFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterArray) ToGetControlOrganizationIntelligenceConfigFilterArrayOutput() GetControlOrganizationIntelligenceConfigFilterArrayOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterArray) ToGetControlOrganizationIntelligenceConfigFilterArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterOutput) ToGetControlOrganizationIntelligenceConfigFilterOutput() GetControlOrganizationIntelligenceConfigFilterOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterOutput) ToGetControlOrganizationIntelligenceConfigFilterOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterOutput {
+	return o
+}
+
+// Buckets to exclude from the Storage Intelligence plan.
+func (o GetControlOrganizationIntelligenceConfigFilterOutput) ExcludedCloudStorageBuckets() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigFilter) []GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket {
+		return v.ExcludedCloudStorageBuckets
+	}).(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput)
+}
+
+// Locations to exclude from the Storage Intelligence plan.
+func (o GetControlOrganizationIntelligenceConfigFilterOutput) ExcludedCloudStorageLocations() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigFilter) []GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation {
+		return v.ExcludedCloudStorageLocations
+	}).(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput)
+}
+
+// Buckets to include in the Storage Intelligence plan.
+func (o GetControlOrganizationIntelligenceConfigFilterOutput) IncludedCloudStorageBuckets() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigFilter) []GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket {
+		return v.IncludedCloudStorageBuckets
+	}).(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput)
+}
+
+// Locations to include in the Storage Intelligence plan.
+func (o GetControlOrganizationIntelligenceConfigFilterOutput) IncludedCloudStorageLocations() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigFilter) []GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation {
+		return v.IncludedCloudStorageLocations
+	}).(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilter)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterArrayOutput() GetControlOrganizationIntelligenceConfigFilterArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterArrayOutput) Index(i pulumi.IntInput) GetControlOrganizationIntelligenceConfigFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceConfigFilter {
+		return vs[0].([]GetControlOrganizationIntelligenceConfigFilter)[vs[1].(int)]
+	}).(GetControlOrganizationIntelligenceConfigFilterOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArgs and GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArgs{...}
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput
+	ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArgs struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArgs) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArgs) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput)
+}
+
+// GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArray and GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArray{ GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArgs{...} }
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput
+	ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArray []GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketInput
+
+func (GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArray) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArray) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return o
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket {
+		return vs[0].([]GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucket)[vs[1].(int)]
+	}).(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation struct {
+	// List of locations.
+	Locations []string `pulumi:"locations"`
+}
+
+// GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArgs and GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArgs{...}
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput
+	ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArgs struct {
+	// List of locations.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArgs) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArgs) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput)
+}
+
+// GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArray and GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArray{ GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArgs{...} }
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput
+	ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArray []GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationInput
+
+func (GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArray) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArray) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return o
+}
+
+// List of locations.
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation) []string {
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput() GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput) Index(i pulumi.IntInput) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation {
+		return vs[0].([]GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocation)[vs[1].(int)]
+	}).(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes []string `pulumi:"bucketIdRegexes"`
+}
+
+// GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArgs and GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArgs{...}
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput
+	ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArgs struct {
+	// List of bucket id regexes to exclude in the storage intelligence plan.
+	BucketIdRegexes pulumi.StringArrayInput `pulumi:"bucketIdRegexes"`
+}
+
+func (GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArgs) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArgs) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput)
+}
+
+// GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArray and GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArray{ GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArgs{...} }
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput
+	ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArray []GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketInput
+
+func (GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArray) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArray) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return o
+}
+
+// List of bucket id regexes to exclude in the storage intelligence plan.
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput) BucketIdRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket) []string {
+		return v.BucketIdRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput) Index(i pulumi.IntInput) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket {
+		return vs[0].([]GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket)[vs[1].(int)]
+	}).(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation struct {
+	// List of locations.
+	Locations []string `pulumi:"locations"`
+}
+
+// GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArgs and GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArgs{...}
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput
+	ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArgs struct {
+	// List of locations.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArgs) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArgs) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput)
+}
+
+// GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput is an input type that accepts GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArray and GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArray{ GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArgs{...} }
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput
+	ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArray []GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationInput
+
+func (GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArray) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArray) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return o
+}
+
+// List of locations.
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation) []string {
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput() GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput) ToGetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput) Index(i pulumi.IntInput) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation {
+		return vs[0].([]GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation)[vs[1].(int)]
+	}).(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput)
+}
+
 type GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig struct {
 	// The 'StorageIntelligence' edition that is applicable for the resource.
 	EffectiveEdition string `pulumi:"effectiveEdition"`
@@ -13504,6 +16558,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningPtrInput)(nil)).Elem(), BucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteInput)(nil)).Elem(), BucketWebsiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsitePtrInput)(nil)).Elem(), BucketWebsiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterPtrInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterPtrInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigFilterInput)(nil)).Elem(), ControlProjectIntelligenceConfigFilterArgs{})
@@ -13634,6 +16712,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketWebsiteArrayInput)(nil)).Elem(), GetBucketWebsiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketInput)(nil)).Elem(), GetBucketsBucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketArrayInput)(nil)).Elem(), GetBucketsBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigFilterInput)(nil)).Elem(), GetControlProjectIntelligenceConfigFilterArgs{})
@@ -13678,6 +16780,30 @@ func init() {
 	pulumi.RegisterOutputType(BucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(BucketWebsiteOutput{})
 	pulumi.RegisterOutputType(BucketWebsitePtrOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterPtrOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterPtrOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsPtrOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsPtrOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigFilterOutput{})
@@ -13808,6 +16934,30 @@ func init() {
 	pulumi.RegisterOutputType(GetBucketWebsiteArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketsBucketOutput{})
 	pulumi.RegisterOutputType(GetBucketsBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigFilterOutput{})

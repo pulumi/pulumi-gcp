@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+//
 // ## Example Usage
 //
 // ```go
@@ -67,6 +69,8 @@ type LookupParameterVersionResult struct {
 	Disabled bool `pulumi:"disabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	KmsKeyVersion string `pulumi:"kmsKeyVersion"`
 	// The resource name of the ParameterVersion. Format:
 	// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
 	Name      string `pulumi:"name"`
@@ -132,6 +136,11 @@ func (o LookupParameterVersionResultOutput) Disabled() pulumi.BoolOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupParameterVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupParameterVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+func (o LookupParameterVersionResultOutput) KmsKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupParameterVersionResult) string { return v.KmsKeyVersion }).(pulumi.StringOutput)
 }
 
 // The resource name of the ParameterVersion. Format:

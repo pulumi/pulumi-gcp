@@ -35,6 +35,11 @@ public final class FunctionServiceConfig {
      */
     private @Nullable String availableMemory;
     /**
+     * @return The binary authorization policy to be checked when deploying the Cloud Run service.
+     * 
+     */
+    private @Nullable String binaryAuthorizationPolicy;
+    /**
      * @return Environment variables that shall be available during function execution.
      * 
      */
@@ -139,6 +144,13 @@ public final class FunctionServiceConfig {
      */
     public Optional<String> availableMemory() {
         return Optional.ofNullable(this.availableMemory);
+    }
+    /**
+     * @return The binary authorization policy to be checked when deploying the Cloud Run service.
+     * 
+     */
+    public Optional<String> binaryAuthorizationPolicy() {
+        return Optional.ofNullable(this.binaryAuthorizationPolicy);
     }
     /**
      * @return Environment variables that shall be available during function execution.
@@ -262,6 +274,7 @@ public final class FunctionServiceConfig {
         private @Nullable Boolean allTrafficOnLatestRevision;
         private @Nullable String availableCpu;
         private @Nullable String availableMemory;
+        private @Nullable String binaryAuthorizationPolicy;
         private @Nullable Map<String,String> environmentVariables;
         private @Nullable String gcfUri;
         private @Nullable String ingressSettings;
@@ -282,6 +295,7 @@ public final class FunctionServiceConfig {
     	      this.allTrafficOnLatestRevision = defaults.allTrafficOnLatestRevision;
     	      this.availableCpu = defaults.availableCpu;
     	      this.availableMemory = defaults.availableMemory;
+    	      this.binaryAuthorizationPolicy = defaults.binaryAuthorizationPolicy;
     	      this.environmentVariables = defaults.environmentVariables;
     	      this.gcfUri = defaults.gcfUri;
     	      this.ingressSettings = defaults.ingressSettings;
@@ -314,6 +328,12 @@ public final class FunctionServiceConfig {
         public Builder availableMemory(@Nullable String availableMemory) {
 
             this.availableMemory = availableMemory;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder binaryAuthorizationPolicy(@Nullable String binaryAuthorizationPolicy) {
+
+            this.binaryAuthorizationPolicy = binaryAuthorizationPolicy;
             return this;
         }
         @CustomType.Setter
@@ -411,6 +431,7 @@ public final class FunctionServiceConfig {
             _resultValue.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
             _resultValue.availableCpu = availableCpu;
             _resultValue.availableMemory = availableMemory;
+            _resultValue.binaryAuthorizationPolicy = binaryAuthorizationPolicy;
             _resultValue.environmentVariables = environmentVariables;
             _resultValue.gcfUri = gcfUri;
             _resultValue.ingressSettings = ingressSettings;

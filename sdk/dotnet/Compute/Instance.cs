@@ -293,6 +293,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Hostname { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+        /// </summary>
+        [Output("instanceEncryptionKey")]
+        public Output<Outputs.InstanceInstanceEncryptionKey?> InstanceEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// The server-assigned unique identifier of this instance.
         /// </summary>
         [Output("instanceId")]
@@ -645,6 +651,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
+        /// Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+        /// </summary>
+        [Input("instanceEncryptionKey")]
+        public Input<Inputs.InstanceInstanceEncryptionKeyArgs>? InstanceEncryptionKey { get; set; }
+
+        /// <summary>
         /// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         /// </summary>
         [Input("keyRevocationActionType")]
@@ -986,6 +998,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+        /// </summary>
+        [Input("instanceEncryptionKey")]
+        public Input<Inputs.InstanceInstanceEncryptionKeyGetArgs>? InstanceEncryptionKey { get; set; }
 
         /// <summary>
         /// The server-assigned unique identifier of this instance.

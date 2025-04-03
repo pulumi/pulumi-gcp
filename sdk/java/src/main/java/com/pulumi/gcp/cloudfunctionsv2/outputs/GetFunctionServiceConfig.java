@@ -34,6 +34,11 @@ public final class GetFunctionServiceConfig {
      */
     private String availableMemory;
     /**
+     * @return The binary authorization policy to be checked when deploying the Cloud Run service.
+     * 
+     */
+    private String binaryAuthorizationPolicy;
+    /**
      * @return Environment variables that shall be available during function execution.
      * 
      */
@@ -131,6 +136,13 @@ public final class GetFunctionServiceConfig {
      */
     public String availableMemory() {
         return this.availableMemory;
+    }
+    /**
+     * @return The binary authorization policy to be checked when deploying the Cloud Run service.
+     * 
+     */
+    public String binaryAuthorizationPolicy() {
+        return this.binaryAuthorizationPolicy;
     }
     /**
      * @return Environment variables that shall be available during function execution.
@@ -247,6 +259,7 @@ public final class GetFunctionServiceConfig {
         private Boolean allTrafficOnLatestRevision;
         private String availableCpu;
         private String availableMemory;
+        private String binaryAuthorizationPolicy;
         private Map<String,String> environmentVariables;
         private String gcfUri;
         private String ingressSettings;
@@ -267,6 +280,7 @@ public final class GetFunctionServiceConfig {
     	      this.allTrafficOnLatestRevision = defaults.allTrafficOnLatestRevision;
     	      this.availableCpu = defaults.availableCpu;
     	      this.availableMemory = defaults.availableMemory;
+    	      this.binaryAuthorizationPolicy = defaults.binaryAuthorizationPolicy;
     	      this.environmentVariables = defaults.environmentVariables;
     	      this.gcfUri = defaults.gcfUri;
     	      this.ingressSettings = defaults.ingressSettings;
@@ -305,6 +319,14 @@ public final class GetFunctionServiceConfig {
               throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "availableMemory");
             }
             this.availableMemory = availableMemory;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder binaryAuthorizationPolicy(String binaryAuthorizationPolicy) {
+            if (binaryAuthorizationPolicy == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "binaryAuthorizationPolicy");
+            }
+            this.binaryAuthorizationPolicy = binaryAuthorizationPolicy;
             return this;
         }
         @CustomType.Setter
@@ -430,6 +452,7 @@ public final class GetFunctionServiceConfig {
             _resultValue.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
             _resultValue.availableCpu = availableCpu;
             _resultValue.availableMemory = availableMemory;
+            _resultValue.binaryAuthorizationPolicy = binaryAuthorizationPolicy;
             _resultValue.environmentVariables = environmentVariables;
             _resultValue.gcfUri = gcfUri;
             _resultValue.ingressSettings = ingressSettings;

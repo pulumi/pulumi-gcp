@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.ParameterManager
     public static class GetRegionalParameterVersion
     {
         /// <summary>
+        /// Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +38,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionalParameterVersionResult>("gcp:parametermanager/getRegionalParameterVersion:getRegionalParameterVersion", args ?? new GetRegionalParameterVersionArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +64,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionalParameterVersionResult>("gcp:parametermanager/getRegionalParameterVersion:getRegionalParameterVersion", args ?? new GetRegionalParameterVersionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

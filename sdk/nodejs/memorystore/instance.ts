@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * A Google Cloud Memorystore instance.
  *
+ * To get more information about Instance, see:
+ *
+ * * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/memorystore/docs/valkey/create-instances)
+ *
  * ## Example Usage
  *
  * ### Memorystore Instance Basic
@@ -182,6 +188,128 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ * ### Memorystore Instance Secondary Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primaryProducerNet = new gcp.compute.Network("primary_producer_net", {
+ *     name: "my-network-primary-instance",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const primaryProducerSubnet = new gcp.compute.Subnetwork("primary_producer_subnet", {
+ *     name: "my-subnet-primary-instance",
+ *     ipCidrRange: "10.0.1.0/29",
+ *     region: "asia-east1",
+ *     network: primaryProducerNet.id,
+ * });
+ * const primaryPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("primary_policy", {
+ *     name: "my-policy-primary-instance",
+ *     location: "asia-east1",
+ *     serviceClass: "gcp-memorystore",
+ *     description: "my basic service connection policy",
+ *     network: primaryProducerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [primaryProducerSubnet.id],
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * // Primary instance
+ * const primaryInstance = new gcp.memorystore.Instance("primary_instance", {
+ *     instanceId: "primary-instance",
+ *     shardCount: 1,
+ *     desiredPscAutoConnections: [{
+ *         network: primaryProducerNet.id,
+ *         projectId: project.then(project => project.projectId),
+ *     }],
+ *     location: "asia-east1",
+ *     replicaCount: 1,
+ *     nodeType: "SHARED_CORE_NANO",
+ *     transitEncryptionMode: "TRANSIT_ENCRYPTION_DISABLED",
+ *     authorizationMode: "AUTH_DISABLED",
+ *     engineConfigs: {
+ *         "maxmemory-policy": "volatile-ttl",
+ *     },
+ *     zoneDistributionConfig: {
+ *         mode: "SINGLE_ZONE",
+ *         zone: "asia-east1-c",
+ *     },
+ *     deletionProtectionEnabled: true,
+ *     persistenceConfig: {
+ *         mode: "RDB",
+ *         rdbConfig: {
+ *             rdbSnapshotPeriod: "ONE_HOUR",
+ *             rdbSnapshotStartTime: "2024-10-02T15:01:23Z",
+ *         },
+ *     },
+ *     labels: {
+ *         abc: "xyz",
+ *     },
+ * }, {
+ *     dependsOn: [primaryPolicy],
+ * });
+ * const secondaryProducerNet = new gcp.compute.Network("secondary_producer_net", {
+ *     name: "my-network-secondary-instance",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const secondaryProducerSubnet = new gcp.compute.Subnetwork("secondary_producer_subnet", {
+ *     name: "my-subnet-secondary-instance",
+ *     ipCidrRange: "10.0.2.0/29",
+ *     region: "europe-north1",
+ *     network: secondaryProducerNet.id,
+ * });
+ * const secondaryPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("secondary_policy", {
+ *     name: "my-policy-secondary-instance",
+ *     location: "europe-north1",
+ *     serviceClass: "gcp-memorystore",
+ *     description: "my basic service connection policy",
+ *     network: secondaryProducerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [secondaryProducerSubnet.id],
+ *     },
+ * });
+ * // Secondary instance
+ * const secondaryInstance = new gcp.memorystore.Instance("secondary_instance", {
+ *     instanceId: "secondary-instance",
+ *     shardCount: 1,
+ *     desiredPscAutoConnections: [{
+ *         network: secondaryProducerNet.id,
+ *         projectId: project.then(project => project.projectId),
+ *     }],
+ *     location: "europe-north1",
+ *     replicaCount: 1,
+ *     nodeType: "SHARED_CORE_NANO",
+ *     transitEncryptionMode: "TRANSIT_ENCRYPTION_DISABLED",
+ *     authorizationMode: "AUTH_DISABLED",
+ *     engineConfigs: {
+ *         "maxmemory-policy": "volatile-ttl",
+ *     },
+ *     zoneDistributionConfig: {
+ *         mode: "SINGLE_ZONE",
+ *         zone: "europe-north1-c",
+ *     },
+ *     deletionProtectionEnabled: true,
+ *     crossInstanceReplicationConfig: {
+ *         instanceRole: "SECONDARY",
+ *         primaryInstance: {
+ *             instance: primaryInstance.id,
+ *         },
+ *     },
+ *     persistenceConfig: {
+ *         mode: "RDB",
+ *         rdbConfig: {
+ *             rdbSnapshotPeriod: "ONE_HOUR",
+ *             rdbSnapshotStartTime: "2024-10-02T15:01:23Z",
+ *         },
+ *     },
+ *     labels: {
+ *         abc: "xyz",
+ *     },
+ * }, {
+ *     dependsOn: [secondaryPolicy],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -246,13 +374,18 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Cross instance replication config
+     * Structure is documented below.
+     */
+    public readonly crossInstanceReplicationConfig!: pulumi.Output<outputs.memorystore.InstanceCrossInstanceReplicationConfig>;
+    /**
      * Optional. If set to true deletion of the instance will fail.
      */
     public readonly deletionProtectionEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Required. Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created PSC connections.
      */
-    public readonly desiredPscAutoConnections!: pulumi.Output<outputs.memorystore.InstanceDesiredPscAutoConnection[]>;
+    public readonly desiredPscAutoConnections!: pulumi.Output<outputs.memorystore.InstanceDesiredPscAutoConnection[] | undefined>;
     /**
      * Output only. Endpoints clients can connect to the instance through. Currently only one
      * discovery endpoint is supported.
@@ -348,6 +481,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Configuration of a service attachment of the cluster, for creating PSC connections.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly pscAttachmentDetails!: pulumi.Output<outputs.memorystore.InstancePscAttachmentDetail[]>;
+    /**
      * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
      */
@@ -415,6 +553,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["authorizationMode"] = state ? state.authorizationMode : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["crossInstanceReplicationConfig"] = state ? state.crossInstanceReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
             resourceInputs["desiredPscAutoConnections"] = state ? state.desiredPscAutoConnections : undefined;
             resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
@@ -433,6 +572,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodeType"] = state ? state.nodeType : undefined;
             resourceInputs["persistenceConfig"] = state ? state.persistenceConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pscAttachmentDetails"] = state ? state.pscAttachmentDetails : undefined;
             resourceInputs["pscAutoConnections"] = state ? state.pscAutoConnections : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["replicaCount"] = state ? state.replicaCount : undefined;
@@ -445,9 +585,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zoneDistributionConfig"] = state ? state.zoneDistributionConfig : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.desiredPscAutoConnections === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'desiredPscAutoConnections'");
-            }
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
@@ -458,6 +595,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'shardCount'");
             }
             resourceInputs["authorizationMode"] = args ? args.authorizationMode : undefined;
+            resourceInputs["crossInstanceReplicationConfig"] = args ? args.crossInstanceReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
             resourceInputs["desiredPscAutoConnections"] = args ? args.desiredPscAutoConnections : undefined;
             resourceInputs["engineConfigs"] = args ? args.engineConfigs : undefined;
@@ -481,6 +619,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeConfigs"] = undefined /*out*/;
+            resourceInputs["pscAttachmentDetails"] = undefined /*out*/;
             resourceInputs["pscAutoConnections"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -510,11 +649,16 @@ export interface InstanceState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * Cross instance replication config
+     * Structure is documented below.
+     */
+    crossInstanceReplicationConfig?: pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfig>;
+    /**
      * Optional. If set to true deletion of the instance will fail.
      */
     deletionProtectionEnabled?: pulumi.Input<boolean>;
     /**
-     * Required. Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created PSC connections.
      */
     desiredPscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[]>;
     /**
@@ -612,6 +756,11 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Configuration of a service attachment of the cluster, for creating PSC connections.
+     * Structure is documented below.
+     */
+    pscAttachmentDetails?: pulumi.Input<pulumi.Input<inputs.memorystore.InstancePscAttachmentDetail>[]>;
+    /**
      * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
      */
@@ -676,13 +825,18 @@ export interface InstanceArgs {
      */
     authorizationMode?: pulumi.Input<string>;
     /**
+     * Cross instance replication config
+     * Structure is documented below.
+     */
+    crossInstanceReplicationConfig?: pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfig>;
+    /**
      * Optional. If set to true deletion of the instance will fail.
      */
     deletionProtectionEnabled?: pulumi.Input<boolean>;
     /**
-     * Required. Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created PSC connections.
      */
-    desiredPscAutoConnections: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[]>;
+    desiredPscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[]>;
     /**
      * Optional. User-provided engine configurations for the instance.
      */

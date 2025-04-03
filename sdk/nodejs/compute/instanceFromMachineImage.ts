@@ -125,6 +125,10 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
+     * Encryption key used to provide data encryption on the given instance.
+     */
+    public readonly instanceEncryptionKey!: pulumi.Output<outputs.compute.InstanceFromMachineImageInstanceEncryptionKey>;
+    /**
      * The server-assigned unique identifier of this instance.
      */
     public /*out*/ readonly instanceId!: pulumi.Output<string>;
@@ -230,6 +234,10 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      */
     public readonly sourceMachineImage!: pulumi.Output<string>;
     /**
+     * Encryption key for the source machine image.
+     */
+    public readonly sourceMachineImageEncryptionKey!: pulumi.Output<outputs.compute.InstanceFromMachineImageSourceMachineImageEncryptionKey | undefined>;
+    /**
      * The list of tags attached to the instance.
      */
     public readonly tags!: pulumi.Output<string[]>;
@@ -278,6 +286,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["instanceEncryptionKey"] = state ? state.instanceEncryptionKey : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["keyRevocationActionType"] = state ? state.keyRevocationActionType : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
@@ -302,6 +311,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             resourceInputs["sourceMachineImage"] = state ? state.sourceMachineImage : undefined;
+            resourceInputs["sourceMachineImageEncryptionKey"] = state ? state.sourceMachineImageEncryptionKey : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -320,6 +330,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["enableDisplay"] = args ? args.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["instanceEncryptionKey"] = args ? args.instanceEncryptionKey : undefined;
             resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineType"] = args ? args.machineType : undefined;
@@ -338,6 +349,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["sourceMachineImage"] = args ? args.sourceMachineImage : undefined;
+            resourceInputs["sourceMachineImageEncryptionKey"] = args ? args.sourceMachineImageEncryptionKey : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["attachedDisks"] = undefined /*out*/;
@@ -428,6 +440,10 @@ export interface InstanceFromMachineImageState {
      * exceed 253 characters. Changing this forces a new resource to be created.
      */
     hostname?: pulumi.Input<string>;
+    /**
+     * Encryption key used to provide data encryption on the given instance.
+     */
+    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageInstanceEncryptionKey>;
     /**
      * The server-assigned unique identifier of this instance.
      */
@@ -534,6 +550,10 @@ export interface InstanceFromMachineImageState {
      */
     sourceMachineImage?: pulumi.Input<string>;
     /**
+     * Encryption key for the source machine image.
+     */
+    sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageSourceMachineImageEncryptionKey>;
+    /**
      * The list of tags attached to the instance.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -598,6 +618,10 @@ export interface InstanceFromMachineImageArgs {
      * exceed 253 characters. Changing this forces a new resource to be created.
      */
     hostname?: pulumi.Input<string>;
+    /**
+     * Encryption key used to provide data encryption on the given instance.
+     */
+    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageInstanceEncryptionKey>;
     /**
      * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
      * default.
@@ -679,6 +703,10 @@ export interface InstanceFromMachineImageArgs {
      * - - -
      */
     sourceMachineImage: pulumi.Input<string>;
+    /**
+     * Encryption key for the source machine image.
+     */
+    sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageSourceMachineImageEncryptionKey>;
     /**
      * The list of tags attached to the instance.
      */

@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Assignee { get; private set; } = null!;
 
         /// <summary>
-        /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         /// </summary>
         [Output("jobType")]
         public Output<string> JobType { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string> Assignee { get; set; } = null!;
 
         /// <summary>
-        /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         /// </summary>
         [Input("jobType", required: true)]
         public Input<string> JobType { get; set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Assignee { get; set; }
 
         /// <summary>
-        /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+        /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         /// </summary>
         [Input("jobType")]
         public Input<string>? JobType { get; set; }

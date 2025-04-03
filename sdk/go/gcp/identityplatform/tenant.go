@@ -78,6 +78,9 @@ type Tenant struct {
 
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup pulumi.BoolPtrOutput `pulumi:"allowPasswordSignup"`
+	// Options related to how clients making requests on behalf of a tenant should be configured.
+	// Structure is documented below.
+	Client TenantClientPtrOutput `pulumi:"client"`
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -130,6 +133,9 @@ func GetTenant(ctx *pulumi.Context,
 type tenantState struct {
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup *bool `pulumi:"allowPasswordSignup"`
+	// Options related to how clients making requests on behalf of a tenant should be configured.
+	// Structure is documented below.
+	Client *TenantClient `pulumi:"client"`
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -150,6 +156,9 @@ type tenantState struct {
 type TenantState struct {
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup pulumi.BoolPtrInput
+	// Options related to how clients making requests on behalf of a tenant should be configured.
+	// Structure is documented below.
+	Client TenantClientPtrInput
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -174,6 +183,9 @@ func (TenantState) ElementType() reflect.Type {
 type tenantArgs struct {
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup *bool `pulumi:"allowPasswordSignup"`
+	// Options related to how clients making requests on behalf of a tenant should be configured.
+	// Structure is documented below.
+	Client *TenantClient `pulumi:"client"`
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -193,6 +205,9 @@ type tenantArgs struct {
 type TenantArgs struct {
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup pulumi.BoolPtrInput
+	// Options related to how clients making requests on behalf of a tenant should be configured.
+	// Structure is documented below.
+	Client TenantClientPtrInput
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -298,6 +313,12 @@ func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutpu
 // Whether to allow email/password user authentication.
 func (o TenantOutput) AllowPasswordSignup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.BoolPtrOutput { return v.AllowPasswordSignup }).(pulumi.BoolPtrOutput)
+}
+
+// Options related to how clients making requests on behalf of a tenant should be configured.
+// Structure is documented below.
+func (o TenantOutput) Client() TenantClientPtrOutput {
+	return o.ApplyT(func(v *Tenant) TenantClientPtrOutput { return v.Client }).(TenantClientPtrOutput)
 }
 
 // Whether authentication is disabled for the tenant. If true, the users under

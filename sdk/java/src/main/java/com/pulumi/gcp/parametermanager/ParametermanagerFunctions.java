@@ -37,6 +37,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class ParametermanagerFunctions {
     /**
+     * Use this data source to get information about a Parameter Manager Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -77,6 +79,8 @@ public final class ParametermanagerFunctions {
         return getParameter(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get information about a Parameter Manager Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -117,6 +121,8 @@ public final class ParametermanagerFunctions {
         return getParameterPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get information about a Parameter Manager Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -157,6 +163,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getParameter:getParameter", TypeShape.of(GetParameterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get information about a Parameter Manager Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -197,6 +205,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getParameter:getParameter", TypeShape.of(GetParameterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get information about a Parameter Manager Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -237,6 +247,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:parametermanager/getParameter:getParameter", TypeShape.of(GetParameterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -278,6 +290,8 @@ public final class ParametermanagerFunctions {
         return getParameterVersion(args, InvokeOptions.Empty);
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -319,6 +333,8 @@ public final class ParametermanagerFunctions {
         return getParameterVersionPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -360,6 +376,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getParameterVersion:getParameterVersion", TypeShape.of(GetParameterVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -401,6 +419,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getParameterVersion:getParameterVersion", TypeShape.of(GetParameterVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -442,6 +462,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:parametermanager/getParameterVersion:getParameterVersion", TypeShape.of(GetParameterVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version with render payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -483,6 +505,8 @@ public final class ParametermanagerFunctions {
         return getParameterVersionRender(args, InvokeOptions.Empty);
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version with render payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -524,6 +548,8 @@ public final class ParametermanagerFunctions {
         return getParameterVersionRenderPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version with render payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -565,6 +591,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getParameterVersionRender:getParameterVersionRender", TypeShape.of(GetParameterVersionRenderResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version with render payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -606,6 +634,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getParameterVersionRender:getParameterVersionRender", TypeShape.of(GetParameterVersionRenderResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Parameter version with render payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -647,6 +677,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:parametermanager/getParameterVersionRender:getParameterVersionRender", TypeShape.of(GetParameterVersionRenderResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to list the Parameter Manager Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -685,6 +717,8 @@ public final class ParametermanagerFunctions {
         return getParameters(GetParametersArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to list the Parameter Manager Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -723,6 +757,8 @@ public final class ParametermanagerFunctions {
         return getParametersPlain(GetParametersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to list the Parameter Manager Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -761,6 +797,8 @@ public final class ParametermanagerFunctions {
         return getParameters(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to list the Parameter Manager Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -799,6 +837,8 @@ public final class ParametermanagerFunctions {
         return getParametersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to list the Parameter Manager Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -837,6 +877,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getParameters:getParameters", TypeShape.of(GetParametersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to list the Parameter Manager Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -875,6 +917,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getParameters:getParameters", TypeShape.of(GetParametersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to list the Parameter Manager Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -913,6 +957,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:parametermanager/getParameters:getParameters", TypeShape.of(GetParametersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get information about a Parameter Manager Regional Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -954,6 +1000,8 @@ public final class ParametermanagerFunctions {
         return getRegionalParameter(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get information about a Parameter Manager Regional Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -995,6 +1043,8 @@ public final class ParametermanagerFunctions {
         return getRegionalParameterPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get information about a Parameter Manager Regional Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1036,6 +1086,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameter:getRegionalParameter", TypeShape.of(GetRegionalParameterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get information about a Parameter Manager Regional Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1077,6 +1129,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameter:getRegionalParameter", TypeShape.of(GetRegionalParameterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get information about a Parameter Manager Regional Parameter.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1118,6 +1172,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:parametermanager/getRegionalParameter:getRegionalParameter", TypeShape.of(GetRegionalParameterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1160,6 +1216,8 @@ public final class ParametermanagerFunctions {
         return getRegionalParameterVersion(args, InvokeOptions.Empty);
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1202,6 +1260,8 @@ public final class ParametermanagerFunctions {
         return getRegionalParameterVersionPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1244,6 +1304,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameterVersion:getRegionalParameterVersion", TypeShape.of(GetRegionalParameterVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1286,6 +1348,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameterVersion:getRegionalParameterVersion", TypeShape.of(GetRegionalParameterVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1328,6 +1392,10 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:parametermanager/getRegionalParameterVersion:getRegionalParameterVersion", TypeShape.of(GetRegionalParameterVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version with rendered payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
+     * &gt; **Warning:** To use this data source, we must grant the `Secret Manager Secret Accessor` role to the principal of the parameter. Please note that it can take up to 7 minutes for the role to take effect. Hence, we might need to wait approximately 7 minutes after granting  `Secret Manager Secret Accessor` role to the principal of the parameter. For more information see the [access change propagation documentation](https://cloud.google.com/iam/docs/access-change-propagation).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1370,6 +1438,10 @@ public final class ParametermanagerFunctions {
         return getRegionalParameterVersionRender(args, InvokeOptions.Empty);
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version with rendered payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
+     * &gt; **Warning:** To use this data source, we must grant the `Secret Manager Secret Accessor` role to the principal of the parameter. Please note that it can take up to 7 minutes for the role to take effect. Hence, we might need to wait approximately 7 minutes after granting  `Secret Manager Secret Accessor` role to the principal of the parameter. For more information see the [access change propagation documentation](https://cloud.google.com/iam/docs/access-change-propagation).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1412,6 +1484,10 @@ public final class ParametermanagerFunctions {
         return getRegionalParameterVersionRenderPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version with rendered payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
+     * &gt; **Warning:** To use this data source, we must grant the `Secret Manager Secret Accessor` role to the principal of the parameter. Please note that it can take up to 7 minutes for the role to take effect. Hence, we might need to wait approximately 7 minutes after granting  `Secret Manager Secret Accessor` role to the principal of the parameter. For more information see the [access change propagation documentation](https://cloud.google.com/iam/docs/access-change-propagation).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1454,6 +1530,10 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender", TypeShape.of(GetRegionalParameterVersionRenderResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version with rendered payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
+     * &gt; **Warning:** To use this data source, we must grant the `Secret Manager Secret Accessor` role to the principal of the parameter. Please note that it can take up to 7 minutes for the role to take effect. Hence, we might need to wait approximately 7 minutes after granting  `Secret Manager Secret Accessor` role to the principal of the parameter. For more information see the [access change propagation documentation](https://cloud.google.com/iam/docs/access-change-propagation).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1496,6 +1576,10 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender", TypeShape.of(GetRegionalParameterVersionRenderResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get the value and metadata from a Parameter Manager Regional Parameter version with rendered payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).
+     * 
+     * &gt; **Warning:** To use this data source, we must grant the `Secret Manager Secret Accessor` role to the principal of the parameter. Please note that it can take up to 7 minutes for the role to take effect. Hence, we might need to wait approximately 7 minutes after granting  `Secret Manager Secret Accessor` role to the principal of the parameter. For more information see the [access change propagation documentation](https://cloud.google.com/iam/docs/access-change-propagation).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1538,6 +1622,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:parametermanager/getRegionalParameterVersionRender:getRegionalParameterVersionRender", TypeShape.of(GetRegionalParameterVersionRenderResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to list the Parameter Manager Regional Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1578,6 +1664,8 @@ public final class ParametermanagerFunctions {
         return getRegionalParameters(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to list the Parameter Manager Regional Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1618,6 +1706,8 @@ public final class ParametermanagerFunctions {
         return getRegionalParametersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to list the Parameter Manager Regional Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1658,6 +1748,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameters:getRegionalParameters", TypeShape.of(GetRegionalParametersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to list the Parameter Manager Regional Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1698,6 +1790,8 @@ public final class ParametermanagerFunctions {
         return Deployment.getInstance().invoke("gcp:parametermanager/getRegionalParameters:getRegionalParameters", TypeShape.of(GetRegionalParametersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to list the Parameter Manager Regional Parameters.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;

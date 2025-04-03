@@ -122,6 +122,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The list of locations where the deployment group is present.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("locations")]
+        public Output<ImmutableArray<Outputs.MirroringDeploymentGroupLocation>> Locations { get; private set; } = null!;
+
+        /// <summary>
         /// The ID to use for the new deployment group, which will become the final
         /// component of the deployment group's resource name.
         /// 
@@ -172,13 +179,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of the deployment group.
-        /// See https://google.aip.dev/216.
+        /// (Output)
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
-        /// CREATING
-        /// DELETING
+        /// OUT_OF_SYNC
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -364,6 +370,19 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        [Input("locations")]
+        private InputList<Inputs.MirroringDeploymentGroupLocationGetArgs>? _locations;
+
+        /// <summary>
+        /// The list of locations where the deployment group is present.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.MirroringDeploymentGroupLocationGetArgs> Locations
+        {
+            get => _locations ?? (_locations = new InputList<Inputs.MirroringDeploymentGroupLocationGetArgs>());
+            set => _locations = value;
+        }
+
         /// <summary>
         /// The ID to use for the new deployment group, which will become the final
         /// component of the deployment group's resource name.
@@ -425,13 +444,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// The current state of the deployment group.
-        /// See https://google.aip.dev/216.
+        /// (Output)
+        /// The current state of the association in this location.
         /// Possible values:
         /// STATE_UNSPECIFIED
         /// ACTIVE
-        /// CREATING
-        /// DELETING
+        /// OUT_OF_SYNC
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

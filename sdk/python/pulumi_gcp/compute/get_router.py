@@ -27,7 +27,7 @@ class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, bgps=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, id=None, name=None, network=None, project=None, region=None, self_link=None):
+    def __init__(__self__, bgps=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, id=None, md5_authentication_keys=None, name=None, network=None, project=None, region=None, self_link=None):
         if bgps and not isinstance(bgps, list):
             raise TypeError("Expected argument 'bgps' to be a list")
         pulumi.set(__self__, "bgps", bgps)
@@ -43,6 +43,9 @@ class GetRouterResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if md5_authentication_keys and not isinstance(md5_authentication_keys, list):
+            raise TypeError("Expected argument 'md5_authentication_keys' to be a list")
+        pulumi.set(__self__, "md5_authentication_keys", md5_authentication_keys)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -88,6 +91,11 @@ class GetRouterResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="md5AuthenticationKeys")
+    def md5_authentication_keys(self) -> Sequence['outputs.GetRouterMd5AuthenticationKeyResult']:
+        return pulumi.get(self, "md5_authentication_keys")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
@@ -124,6 +132,7 @@ class AwaitableGetRouterResult(GetRouterResult):
             description=self.description,
             encrypted_interconnect_router=self.encrypted_interconnect_router,
             id=self.id,
+            md5_authentication_keys=self.md5_authentication_keys,
             name=self.name,
             network=self.network,
             project=self.project,
@@ -171,6 +180,7 @@ def get_router(name: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         encrypted_interconnect_router=pulumi.get(__ret__, 'encrypted_interconnect_router'),
         id=pulumi.get(__ret__, 'id'),
+        md5_authentication_keys=pulumi.get(__ret__, 'md5_authentication_keys'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
         project=pulumi.get(__ret__, 'project'),
@@ -215,6 +225,7 @@ def get_router_output(name: Optional[pulumi.Input[str]] = None,
         description=pulumi.get(__response__, 'description'),
         encrypted_interconnect_router=pulumi.get(__response__, 'encrypted_interconnect_router'),
         id=pulumi.get(__response__, 'id'),
+        md5_authentication_keys=pulumi.get(__response__, 'md5_authentication_keys'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
         project=pulumi.get(__response__, 'project'),

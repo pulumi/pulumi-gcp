@@ -1984,6 +1984,8 @@ type FunctionServiceConfig struct {
 	// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
 	// supplied the value is interpreted as bytes.
 	AvailableMemory *string `pulumi:"availableMemory"`
+	// The binary authorization policy to be checked when deploying the Cloud Run service.
+	BinaryAuthorizationPolicy *string `pulumi:"binaryAuthorizationPolicy"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// (Output)
@@ -2045,6 +2047,8 @@ type FunctionServiceConfigArgs struct {
 	// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
 	// supplied the value is interpreted as bytes.
 	AvailableMemory pulumi.StringPtrInput `pulumi:"availableMemory"`
+	// The binary authorization policy to be checked when deploying the Cloud Run service.
+	BinaryAuthorizationPolicy pulumi.StringPtrInput `pulumi:"binaryAuthorizationPolicy"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
 	// (Output)
@@ -2178,6 +2182,11 @@ func (o FunctionServiceConfigOutput) AvailableCpu() pulumi.StringPtrOutput {
 // supplied the value is interpreted as bytes.
 func (o FunctionServiceConfigOutput) AvailableMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.AvailableMemory }).(pulumi.StringPtrOutput)
+}
+
+// The binary authorization policy to be checked when deploying the Cloud Run service.
+func (o FunctionServiceConfigOutput) BinaryAuthorizationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.BinaryAuthorizationPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Environment variables that shall be available during function execution.
@@ -2316,6 +2325,16 @@ func (o FunctionServiceConfigPtrOutput) AvailableMemory() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.AvailableMemory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The binary authorization policy to be checked when deploying the Cloud Run service.
+func (o FunctionServiceConfigPtrOutput) BinaryAuthorizationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BinaryAuthorizationPolicy
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3917,6 +3936,8 @@ type GetFunctionServiceConfig struct {
 	// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
 	// supplied the value is interpreted as bytes.
 	AvailableMemory string `pulumi:"availableMemory"`
+	// The binary authorization policy to be checked when deploying the Cloud Run service.
+	BinaryAuthorizationPolicy string `pulumi:"binaryAuthorizationPolicy"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// URIs of the Service deployed
@@ -3971,6 +3992,8 @@ type GetFunctionServiceConfigArgs struct {
 	// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
 	// supplied the value is interpreted as bytes.
 	AvailableMemory pulumi.StringInput `pulumi:"availableMemory"`
+	// The binary authorization policy to be checked when deploying the Cloud Run service.
+	BinaryAuthorizationPolicy pulumi.StringInput `pulumi:"binaryAuthorizationPolicy"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
 	// URIs of the Service deployed
@@ -4071,6 +4094,11 @@ func (o GetFunctionServiceConfigOutput) AvailableCpu() pulumi.StringOutput {
 // supplied the value is interpreted as bytes.
 func (o GetFunctionServiceConfigOutput) AvailableMemory() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.AvailableMemory }).(pulumi.StringOutput)
+}
+
+// The binary authorization policy to be checked when deploying the Cloud Run service.
+func (o GetFunctionServiceConfigOutput) BinaryAuthorizationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.BinaryAuthorizationPolicy }).(pulumi.StringOutput)
 }
 
 // Environment variables that shall be available during function execution.

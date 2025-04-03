@@ -4297,6 +4297,10 @@ type ServicePerimeterDryRunEgressPolicyEgressTo struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimeterDryRunEgressPolicyEgressToInput is an input type that accepts ServicePerimeterDryRunEgressPolicyEgressToArgs and ServicePerimeterDryRunEgressPolicyEgressToOutput values.
@@ -4325,6 +4329,10 @@ type ServicePerimeterDryRunEgressPolicyEgressToArgs struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimeterDryRunEgressPolicyEgressToArgs) ElementType() reflect.Type {
@@ -4429,6 +4437,13 @@ func (o ServicePerimeterDryRunEgressPolicyEgressToOutput) Resources() pulumi.Str
 	return o.ApplyT(func(v ServicePerimeterDryRunEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimeterDryRunEgressPolicyEgressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterDryRunEgressPolicyEgressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimeterDryRunEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterDryRunEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
@@ -4488,6 +4503,18 @@ func (o ServicePerimeterDryRunEgressPolicyEgressToPtrOutput) Resources() pulumi.
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimeterDryRunEgressPolicyEgressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -5097,6 +5124,10 @@ type ServicePerimeterDryRunIngressPolicyIngressTo struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimeterDryRunIngressPolicyIngressToInput is an input type that accepts ServicePerimeterDryRunIngressPolicyIngressToArgs and ServicePerimeterDryRunIngressPolicyIngressToOutput values.
@@ -5124,6 +5155,10 @@ type ServicePerimeterDryRunIngressPolicyIngressToArgs struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimeterDryRunIngressPolicyIngressToArgs) ElementType() reflect.Type {
@@ -5224,6 +5259,13 @@ func (o ServicePerimeterDryRunIngressPolicyIngressToOutput) Resources() pulumi.S
 	return o.ApplyT(func(v ServicePerimeterDryRunIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimeterDryRunIngressPolicyIngressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterDryRunIngressPolicyIngressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimeterDryRunIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterDryRunIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
@@ -5274,6 +5316,18 @@ func (o ServicePerimeterDryRunIngressPolicyIngressToPtrOutput) Resources() pulum
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimeterDryRunIngressPolicyIngressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -5888,6 +5942,10 @@ type ServicePerimeterEgressPolicyEgressTo struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimeterEgressPolicyEgressToInput is an input type that accepts ServicePerimeterEgressPolicyEgressToArgs and ServicePerimeterEgressPolicyEgressToOutput values.
@@ -5916,6 +5974,10 @@ type ServicePerimeterEgressPolicyEgressToArgs struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimeterEgressPolicyEgressToArgs) ElementType() reflect.Type {
@@ -6020,6 +6082,13 @@ func (o ServicePerimeterEgressPolicyEgressToOutput) Resources() pulumi.StringArr
 	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimeterEgressPolicyEgressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimeterEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
@@ -6079,6 +6148,18 @@ func (o ServicePerimeterEgressPolicyEgressToPtrOutput) Resources() pulumi.String
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimeterEgressPolicyEgressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -6697,6 +6778,10 @@ type ServicePerimeterIngressPolicyIngressTo struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimeterIngressPolicyIngressToInput is an input type that accepts ServicePerimeterIngressPolicyIngressToArgs and ServicePerimeterIngressPolicyIngressToOutput values.
@@ -6724,6 +6809,10 @@ type ServicePerimeterIngressPolicyIngressToArgs struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimeterIngressPolicyIngressToArgs) ElementType() reflect.Type {
@@ -6824,6 +6913,13 @@ func (o ServicePerimeterIngressPolicyIngressToOutput) Resources() pulumi.StringA
 	return o.ApplyT(func(v ServicePerimeterIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimeterIngressPolicyIngressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterIngressPolicyIngressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimeterIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
@@ -6874,6 +6970,18 @@ func (o ServicePerimeterIngressPolicyIngressToPtrOutput) Resources() pulumi.Stri
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimeterIngressPolicyIngressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -7934,6 +8042,10 @@ type ServicePerimeterSpecEgressPolicyEgressTo struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimeterSpecEgressPolicyEgressToInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToArgs and ServicePerimeterSpecEgressPolicyEgressToOutput values.
@@ -7962,6 +8074,10 @@ type ServicePerimeterSpecEgressPolicyEgressToArgs struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimeterSpecEgressPolicyEgressToArgs) ElementType() reflect.Type {
@@ -8066,6 +8182,13 @@ func (o ServicePerimeterSpecEgressPolicyEgressToOutput) Resources() pulumi.Strin
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimeterSpecEgressPolicyEgressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimeterSpecEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
@@ -8125,6 +8248,18 @@ func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Resources() pulumi.St
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -8836,6 +8971,10 @@ type ServicePerimeterSpecIngressPolicyIngressTo struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimeterSpecIngressPolicyIngressToInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToArgs and ServicePerimeterSpecIngressPolicyIngressToOutput values.
@@ -8863,6 +9002,10 @@ type ServicePerimeterSpecIngressPolicyIngressToArgs struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimeterSpecIngressPolicyIngressToArgs) ElementType() reflect.Type {
@@ -8963,6 +9106,13 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOutput) Resources() pulumi.Str
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimeterSpecIngressPolicyIngressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimeterSpecIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterSpecIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
@@ -9013,6 +9163,18 @@ func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Resources() pulumi.
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -10239,6 +10401,10 @@ type ServicePerimeterStatusEgressPolicyEgressTo struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimeterStatusEgressPolicyEgressToInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToArgs and ServicePerimeterStatusEgressPolicyEgressToOutput values.
@@ -10267,6 +10433,10 @@ type ServicePerimeterStatusEgressPolicyEgressToArgs struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimeterStatusEgressPolicyEgressToArgs) ElementType() reflect.Type {
@@ -10371,6 +10541,13 @@ func (o ServicePerimeterStatusEgressPolicyEgressToOutput) Resources() pulumi.Str
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimeterStatusEgressPolicyEgressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimeterStatusEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
@@ -10430,6 +10607,18 @@ func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Resources() pulumi.
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -11141,6 +11330,10 @@ type ServicePerimeterStatusIngressPolicyIngressTo struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimeterStatusIngressPolicyIngressToInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToArgs and ServicePerimeterStatusIngressPolicyIngressToOutput values.
@@ -11168,6 +11361,10 @@ type ServicePerimeterStatusIngressPolicyIngressToArgs struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimeterStatusIngressPolicyIngressToArgs) ElementType() reflect.Type {
@@ -11268,6 +11465,13 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOutput) Resources() pulumi.S
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimeterStatusIngressPolicyIngressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimeterStatusIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterStatusIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
@@ -11318,6 +11522,18 @@ func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Resources() pulum
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -12836,6 +13052,10 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput values.
@@ -12864,6 +13084,10 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ElementType() reflect.Type {
@@ -12968,6 +13192,13 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) Resourc
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
@@ -13027,6 +13258,18 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Reso
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -13746,6 +13989,10 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimetersServicePerimeterSpecIngressPolicyIngressToInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput values.
@@ -13773,6 +14020,10 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ElementType() reflect.Type {
@@ -13873,6 +14124,13 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) Resou
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
@@ -13923,6 +14181,18 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Re
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -15171,6 +15441,10 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput values.
@@ -15199,6 +15473,10 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs struct {
 	// then this `EgressTo` rule will authorize access to all resources outside
 	// the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `EgressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ElementType() reflect.Type {
@@ -15305,6 +15583,13 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) Resou
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
@@ -15364,6 +15649,18 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Re
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `EgressFrom`
+// are allowed to perform.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -16085,6 +16382,10 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources []string `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles []string `pulumi:"roles"`
 }
 
 // ServicePerimetersServicePerimeterStatusIngressPolicyIngressToInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput values.
@@ -16112,6 +16413,10 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs struct {
 	// resources inside the perimeter, provided that the request
 	// also matches the `operations` field.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// A list of IAM roles that represent the set of operations that the sources
+	// specified in the corresponding `IngressFrom`
+	// are allowed to perform.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
 func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ElementType() reflect.Type {
@@ -16212,6 +16517,13 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) Res
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
@@ -16262,6 +16574,18 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) 
 			return nil
 		}
 		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of IAM roles that represent the set of operations that the sources
+// specified in the corresponding `IngressFrom`
+// are allowed to perform.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
 	}).(pulumi.StringArrayOutput)
 }
 

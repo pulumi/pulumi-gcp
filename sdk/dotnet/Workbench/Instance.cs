@@ -263,6 +263,15 @@ namespace Pulumi.Gcp.Workbench
     ///         },
     ///         DesiredState = "ACTIVE",
     ///         EnableThirdPartyIdentity = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             myNetwork,
+    ///             mySubnetwork,
+    ///             @static,
+    ///             actAsPermission,
+    ///         },
     ///     });
     /// 
     /// });

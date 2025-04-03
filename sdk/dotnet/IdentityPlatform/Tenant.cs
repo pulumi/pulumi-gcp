@@ -74,6 +74,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Output<bool?> AllowPasswordSignup { get; private set; } = null!;
 
         /// <summary>
+        /// Options related to how clients making requests on behalf of a tenant should be configured.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("client")]
+        public Output<Outputs.TenantClient?> Client { get; private set; } = null!;
+
+        /// <summary>
         /// Whether authentication is disabled for the tenant. If true, the users under
         /// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
         /// are not able to manage its users.
@@ -162,6 +169,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<bool>? AllowPasswordSignup { get; set; }
 
         /// <summary>
+        /// Options related to how clients making requests on behalf of a tenant should be configured.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("client")]
+        public Input<Inputs.TenantClientArgs>? Client { get; set; }
+
+        /// <summary>
         /// Whether authentication is disabled for the tenant. If true, the users under
         /// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
         /// are not able to manage its users.
@@ -204,6 +218,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Input("allowPasswordSignup")]
         public Input<bool>? AllowPasswordSignup { get; set; }
+
+        /// <summary>
+        /// Options related to how clients making requests on behalf of a tenant should be configured.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("client")]
+        public Input<Inputs.TenantClientGetArgs>? Client { get; set; }
 
         /// <summary>
         /// Whether authentication is disabled for the tenant. If true, the users under

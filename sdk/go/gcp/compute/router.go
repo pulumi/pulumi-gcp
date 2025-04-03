@@ -150,6 +150,9 @@ type Router struct {
 	// Indicates if a router is dedicated for use with encrypted VLAN
 	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolPtrOutput `pulumi:"encryptedInterconnectRouter"`
+	// Keys used for MD5 authentication.
+	// Structure is documented below.
+	Md5AuthenticationKeys RouterMd5AuthenticationKeysPtrOutput `pulumi:"md5AuthenticationKeys"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -213,6 +216,9 @@ type routerState struct {
 	// Indicates if a router is dedicated for use with encrypted VLAN
 	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
+	// Keys used for MD5 authentication.
+	// Structure is documented below.
+	Md5AuthenticationKeys *RouterMd5AuthenticationKeys `pulumi:"md5AuthenticationKeys"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -244,6 +250,9 @@ type RouterState struct {
 	// Indicates if a router is dedicated for use with encrypted VLAN
 	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
+	// Keys used for MD5 authentication.
+	// Structure is documented below.
+	Md5AuthenticationKeys RouterMd5AuthenticationKeysPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -277,6 +286,9 @@ type routerArgs struct {
 	// Indicates if a router is dedicated for use with encrypted VLAN
 	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
+	// Keys used for MD5 authentication.
+	// Structure is documented below.
+	Md5AuthenticationKeys *RouterMd5AuthenticationKeys `pulumi:"md5AuthenticationKeys"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -305,6 +317,9 @@ type RouterArgs struct {
 	// Indicates if a router is dedicated for use with encrypted VLAN
 	// attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
+	// Keys used for MD5 authentication.
+	// Structure is documented below.
+	Md5AuthenticationKeys RouterMd5AuthenticationKeysPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?`
@@ -430,6 +445,12 @@ func (o RouterOutput) Description() pulumi.StringPtrOutput {
 // attachments (interconnectAttachments).
 func (o RouterOutput) EncryptedInterconnectRouter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Router) pulumi.BoolPtrOutput { return v.EncryptedInterconnectRouter }).(pulumi.BoolPtrOutput)
+}
+
+// Keys used for MD5 authentication.
+// Structure is documented below.
+func (o RouterOutput) Md5AuthenticationKeys() RouterMd5AuthenticationKeysPtrOutput {
+	return o.ApplyT(func(v *Router) RouterMd5AuthenticationKeysPtrOutput { return v.Md5AuthenticationKeys }).(RouterMd5AuthenticationKeysPtrOutput)
 }
 
 // Name of the resource. The name must be 1-63 characters long, and

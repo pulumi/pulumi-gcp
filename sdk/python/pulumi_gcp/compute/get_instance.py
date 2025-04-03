@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, creation_timestamp=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, key_revocation_action_type=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, creation_timestamp=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_encryption_keys=None, instance_id=None, key_revocation_action_type=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -79,6 +79,9 @@ class GetInstanceResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if instance_encryption_keys and not isinstance(instance_encryption_keys, list):
+            raise TypeError("Expected argument 'instance_encryption_keys' to be a list")
+        pulumi.set(__self__, "instance_encryption_keys", instance_encryption_keys)
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
@@ -275,6 +278,11 @@ class GetInstanceResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceEncryptionKeys")
+    def instance_encryption_keys(self) -> Sequence['outputs.GetInstanceInstanceEncryptionKeyResult']:
+        return pulumi.get(self, "instance_encryption_keys")
 
     @property
     @pulumi.getter(name="instanceId")
@@ -484,6 +492,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             guest_accelerators=self.guest_accelerators,
             hostname=self.hostname,
             id=self.id,
+            instance_encryption_keys=self.instance_encryption_keys,
             instance_id=self.instance_id,
             key_revocation_action_type=self.key_revocation_action_type,
             label_fingerprint=self.label_fingerprint,
@@ -569,6 +578,7 @@ def get_instance(name: Optional[str] = None,
         guest_accelerators=pulumi.get(__ret__, 'guest_accelerators'),
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
+        instance_encryption_keys=pulumi.get(__ret__, 'instance_encryption_keys'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
         key_revocation_action_type=pulumi.get(__ret__, 'key_revocation_action_type'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
@@ -651,6 +661,7 @@ def get_instance_output(name: Optional[pulumi.Input[Optional[str]]] = None,
         guest_accelerators=pulumi.get(__response__, 'guest_accelerators'),
         hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
+        instance_encryption_keys=pulumi.get(__response__, 'instance_encryption_keys'),
         instance_id=pulumi.get(__response__, 'instance_id'),
         key_revocation_action_type=pulumi.get(__response__, 'key_revocation_action_type'),
         label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),

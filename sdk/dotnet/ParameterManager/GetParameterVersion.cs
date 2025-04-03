@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.ParameterManager
     public static class GetParameterVersion
     {
         /// <summary>
+        /// Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +37,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetParameterVersionResult>("gcp:parametermanager/getParameterVersion:getParameterVersion", args ?? new GetParameterVersionArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +62,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.Invoke<GetParameterVersionResult>("gcp:parametermanager/getParameterVersion:getParameterVersion", args ?? new GetParameterVersionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get the value and metadata from a Parameter Manager Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -155,6 +161,10 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        /// </summary>
+        public readonly string KmsKeyVersion;
+        /// <summary>
         /// The resource name of the ParameterVersion. Format:
         /// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
         /// </summary>
@@ -179,6 +189,8 @@ namespace Pulumi.Gcp.ParameterManager
 
             string id,
 
+            string kmsKeyVersion,
+
             string name,
 
             string parameter,
@@ -194,6 +206,7 @@ namespace Pulumi.Gcp.ParameterManager
             CreateTime = createTime;
             Disabled = disabled;
             Id = id;
+            KmsKeyVersion = kmsKeyVersion;
             Name = name;
             Parameter = parameter;
             ParameterData = parameterData;

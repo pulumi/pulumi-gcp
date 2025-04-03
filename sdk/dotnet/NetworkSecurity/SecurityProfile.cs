@@ -83,6 +83,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///                     ThreatId = "280647",
     ///                 },
     ///             },
+    ///             AntivirusOverrides = new[]
+    ///             {
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileThreatPreventionProfileAntivirusOverrideArgs
+    ///                 {
+    ///                     Protocol = "SMTP",
+    ///                     Action = "ALLOW",
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 

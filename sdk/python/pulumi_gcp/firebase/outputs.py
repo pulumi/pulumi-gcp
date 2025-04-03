@@ -19,6 +19,11 @@ __all__ = [
     'AppHostingBackendCodebase',
     'AppHostingBackendManagedResource',
     'AppHostingBackendManagedResourceRunService',
+    'AppHostingBuildError',
+    'AppHostingBuildSource',
+    'AppHostingBuildSourceCodebase',
+    'AppHostingBuildSourceCodebaseAuthor',
+    'AppHostingBuildSourceContainer',
     'ExtensionsInstanceConfig',
     'ExtensionsInstanceErrorStatus',
     'ExtensionsInstanceRuntimeData',
@@ -167,6 +172,334 @@ class AppHostingBackendManagedResourceRunService(dict):
         projects/{project}/locations/{location}/services/{serviceId}
         """
         return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class AppHostingBuildError(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 details: Optional[Sequence[Mapping[str, str]]] = None,
+                 message: Optional[str] = None):
+        """
+        :param int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, str]] details: (Output)
+               A list of messages that carry the error details. There is a common set of
+               message types for APIs to use.
+        :param str message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence[Mapping[str, str]]]:
+        """
+        (Output)
+        A list of messages that carry the error details. There is a common set of
+        message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AppHostingBuildSource(dict):
+    def __init__(__self__, *,
+                 codebase: Optional['outputs.AppHostingBuildSourceCodebase'] = None,
+                 container: Optional['outputs.AppHostingBuildSourceContainer'] = None):
+        """
+        :param 'AppHostingBuildSourceCodebaseArgs' codebase: A codebase source, representing the state of the codebase
+               that the build will be created at.
+               Structure is documented below.
+        :param 'AppHostingBuildSourceContainerArgs' container: The URI of an Artifact Registry
+               [container
+               image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
+               to use as the build source.
+               Structure is documented below.
+        """
+        if codebase is not None:
+            pulumi.set(__self__, "codebase", codebase)
+        if container is not None:
+            pulumi.set(__self__, "container", container)
+
+    @property
+    @pulumi.getter
+    def codebase(self) -> Optional['outputs.AppHostingBuildSourceCodebase']:
+        """
+        A codebase source, representing the state of the codebase
+        that the build will be created at.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "codebase")
+
+    @property
+    @pulumi.getter
+    def container(self) -> Optional['outputs.AppHostingBuildSourceContainer']:
+        """
+        The URI of an Artifact Registry
+        [container
+        image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
+        to use as the build source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container")
+
+
+@pulumi.output_type
+class AppHostingBuildSourceCodebase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commitMessage":
+            suggest = "commit_message"
+        elif key == "commitTime":
+            suggest = "commit_time"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppHostingBuildSourceCodebase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppHostingBuildSourceCodebase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppHostingBuildSourceCodebase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authors: Optional[Sequence['outputs.AppHostingBuildSourceCodebaseAuthor']] = None,
+                 branch: Optional[str] = None,
+                 commit: Optional[str] = None,
+                 commit_message: Optional[str] = None,
+                 commit_time: Optional[str] = None,
+                 display_name: Optional[str] = None,
+                 hash: Optional[str] = None,
+                 uri: Optional[str] = None):
+        """
+        :param Sequence['AppHostingBuildSourceCodebaseAuthorArgs'] authors: (Output)
+               Version control metadata for a user associated with a resolved codebase.
+               Currently assumes a Git user.
+               Structure is documented below.
+        :param str branch: The branch in the codebase to build from, using the latest commit.
+        :param str commit: The commit in the codebase to build from.
+               
+               
+               <a name="nested_source_codebase_author"></a>The `author` block contains:
+        :param str commit_message: (Output)
+               The message of a codebase change.
+        :param str commit_time: (Output)
+               The time the change was made.
+        :param str display_name: Human-readable name. 63 character limit.
+        :param str hash: (Output)
+               The full SHA-1 hash of a Git commit, if available.
+        :param str uri: (Output)
+               A URI linking to the codebase on an hosting provider's website. May
+               not be valid if the commit has been rebased or force-pushed out of
+               existence in the linked repository.
+        """
+        if authors is not None:
+            pulumi.set(__self__, "authors", authors)
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if commit is not None:
+            pulumi.set(__self__, "commit", commit)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if commit_time is not None:
+            pulumi.set(__self__, "commit_time", commit_time)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if hash is not None:
+            pulumi.set(__self__, "hash", hash)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def authors(self) -> Optional[Sequence['outputs.AppHostingBuildSourceCodebaseAuthor']]:
+        """
+        (Output)
+        Version control metadata for a user associated with a resolved codebase.
+        Currently assumes a Git user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authors")
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The branch in the codebase to build from, using the latest commit.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter
+    def commit(self) -> Optional[str]:
+        """
+        The commit in the codebase to build from.
+
+
+        <a name="nested_source_codebase_author"></a>The `author` block contains:
+        """
+        return pulumi.get(self, "commit")
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[str]:
+        """
+        (Output)
+        The message of a codebase change.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @property
+    @pulumi.getter(name="commitTime")
+    def commit_time(self) -> Optional[str]:
+        """
+        (Output)
+        The time the change was made.
+        """
+        return pulumi.get(self, "commit_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        Human-readable name. 63 character limit.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def hash(self) -> Optional[str]:
+        """
+        (Output)
+        The full SHA-1 hash of a Git commit, if available.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        (Output)
+        A URI linking to the codebase on an hosting provider's website. May
+        not be valid if the commit has been rebased or force-pushed out of
+        existence in the linked repository.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class AppHostingBuildSourceCodebaseAuthor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "imageUri":
+            suggest = "image_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppHostingBuildSourceCodebaseAuthor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppHostingBuildSourceCodebaseAuthor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppHostingBuildSourceCodebaseAuthor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[str] = None,
+                 email: Optional[str] = None,
+                 image_uri: Optional[str] = None):
+        """
+        :param str display_name: The 'name' field in a Git user's git.config. Required by Git.
+        :param str email: The 'email' field in a Git user's git.config, if available.
+        :param str image_uri: The URI of an image file associated with the user's account in an
+               external source control provider, if available.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The 'name' field in a Git user's git.config. Required by Git.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        The 'email' field in a Git user's git.config, if available.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[str]:
+        """
+        The URI of an image file associated with the user's account in an
+        external source control provider, if available.
+        """
+        return pulumi.get(self, "image_uri")
+
+
+@pulumi.output_type
+class AppHostingBuildSourceContainer(dict):
+    def __init__(__self__, *,
+                 image: str):
+        """
+        :param str image: A URI representing a container for the backend to use.
+        """
+        pulumi.set(__self__, "image", image)
+
+    @property
+    @pulumi.getter
+    def image(self) -> str:
+        """
+        A URI representing a container for the backend to use.
+        """
+        return pulumi.get(self, "image")
 
 
 @pulumi.output_type

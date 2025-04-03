@@ -53,6 +53,12 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         [Input("executionEnvironment")]
         public Input<string>? ExecutionEnvironment { get; set; }
 
+        /// <summary>
+        /// True if GPU zonal redundancy is disabled on this revision.
+        /// </summary>
+        [Input("gpuZonalRedundancyDisabled")]
+        public Input<bool>? GpuZonalRedundancyDisabled { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 

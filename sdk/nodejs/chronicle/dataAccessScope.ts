@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A DataAccessScope is a boolean expression of data access labels used to restrict access to data for users.
+ *
+ * To get more information about DataAccessScope, see:
+ *
+ * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dataAccessScopes)
+ * * How-to Guides
+ *     * [Introduction to data RBAC](https://cloud.google.com/chronicle/docs/onboard/onboard-datarbac)
+ *
  * ## Example Usage
  *
  * ### Chronicle Dataaccessscope With Logtype

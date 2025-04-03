@@ -25,15 +25,25 @@ public final class InstanceFromMachineImageBootDisk {
      */
     private @Nullable String deviceName;
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
      * 
      */
     private @Nullable String diskEncryptionKeyRaw;
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * 
+     */
+    private @Nullable String diskEncryptionKeyRsa;
     /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
      * 
      */
     private @Nullable String diskEncryptionKeySha256;
+    /**
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    private @Nullable String diskEncryptionServiceAccount;
     /**
      * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
      * 
@@ -50,7 +60,7 @@ public final class InstanceFromMachineImageBootDisk {
      */
     private @Nullable String interface_;
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
      * 
      */
     private @Nullable String kmsKeySelfLink;
@@ -81,11 +91,18 @@ public final class InstanceFromMachineImageBootDisk {
         return Optional.ofNullable(this.deviceName);
     }
     /**
-     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
      * 
      */
     public Optional<String> diskEncryptionKeyRaw() {
         return Optional.ofNullable(this.diskEncryptionKeyRaw);
+    }
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+     * 
+     */
+    public Optional<String> diskEncryptionKeyRsa() {
+        return Optional.ofNullable(this.diskEncryptionKeyRsa);
     }
     /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
@@ -93,6 +110,13 @@ public final class InstanceFromMachineImageBootDisk {
      */
     public Optional<String> diskEncryptionKeySha256() {
         return Optional.ofNullable(this.diskEncryptionKeySha256);
+    }
+    /**
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+     * 
+     */
+    public Optional<String> diskEncryptionServiceAccount() {
+        return Optional.ofNullable(this.diskEncryptionServiceAccount);
     }
     /**
      * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
@@ -116,7 +140,7 @@ public final class InstanceFromMachineImageBootDisk {
         return Optional.ofNullable(this.interface_);
     }
     /**
-     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
      * 
      */
     public Optional<String> kmsKeySelfLink() {
@@ -149,7 +173,9 @@ public final class InstanceFromMachineImageBootDisk {
         private @Nullable Boolean autoDelete;
         private @Nullable String deviceName;
         private @Nullable String diskEncryptionKeyRaw;
+        private @Nullable String diskEncryptionKeyRsa;
         private @Nullable String diskEncryptionKeySha256;
+        private @Nullable String diskEncryptionServiceAccount;
         private @Nullable List<String> guestOsFeatures;
         private @Nullable InstanceFromMachineImageBootDiskInitializeParams initializeParams;
         private @Nullable String interface_;
@@ -162,7 +188,9 @@ public final class InstanceFromMachineImageBootDisk {
     	      this.autoDelete = defaults.autoDelete;
     	      this.deviceName = defaults.deviceName;
     	      this.diskEncryptionKeyRaw = defaults.diskEncryptionKeyRaw;
+    	      this.diskEncryptionKeyRsa = defaults.diskEncryptionKeyRsa;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
+    	      this.diskEncryptionServiceAccount = defaults.diskEncryptionServiceAccount;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.initializeParams = defaults.initializeParams;
     	      this.interface_ = defaults.interface_;
@@ -190,9 +218,21 @@ public final class InstanceFromMachineImageBootDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder diskEncryptionKeyRsa(@Nullable String diskEncryptionKeyRsa) {
+
+            this.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
+            return this;
+        }
+        @CustomType.Setter
         public Builder diskEncryptionKeySha256(@Nullable String diskEncryptionKeySha256) {
 
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskEncryptionServiceAccount(@Nullable String diskEncryptionServiceAccount) {
+
+            this.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
             return this;
         }
         @CustomType.Setter
@@ -239,7 +279,9 @@ public final class InstanceFromMachineImageBootDisk {
             _resultValue.autoDelete = autoDelete;
             _resultValue.deviceName = deviceName;
             _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            _resultValue.diskEncryptionKeyRsa = diskEncryptionKeyRsa;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            _resultValue.diskEncryptionServiceAccount = diskEncryptionServiceAccount;
             _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.initializeParams = initializeParams;
             _resultValue.interface_ = interface_;

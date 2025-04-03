@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a Parameter Manager Parameter.
+//
 // ## Example Usage
 //
 // ```go
@@ -61,6 +63,7 @@ type LookupParameterResult struct {
 	Format          string            `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string                     `pulumi:"id"`
+	KmsKey        string                     `pulumi:"kmsKey"`
 	Labels        map[string]string          `pulumi:"labels"`
 	Name          string                     `pulumi:"name"`
 	ParameterId   string                     `pulumi:"parameterId"`
@@ -121,6 +124,10 @@ func (o LookupParameterResultOutput) Format() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupParameterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupParameterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupParameterResultOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupParameterResult) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 func (o LookupParameterResultOutput) Labels() pulumi.StringMapOutput {

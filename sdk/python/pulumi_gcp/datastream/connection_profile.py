@@ -903,6 +903,26 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             })
         ```
+        ### Datastream Connection Profile Postgres Secret Manager
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Postgres Source With Secret Manager",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            create_without_validation=True,
+            postgresql_profile={
+                "hostname": "fake-hostname",
+                "port": 3306,
+                "username": "fake-username",
+                "secret_manager_stored_password": "projects/fake-project/secrets/fake-secret/versions/1",
+                "database": "fake-database",
+            })
+        ```
+
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:
@@ -1230,6 +1250,26 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             })
         ```
+        ### Datastream Connection Profile Postgres Secret Manager
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Postgres Source With Secret Manager",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            create_without_validation=True,
+            postgresql_profile={
+                "hostname": "fake-hostname",
+                "port": 3306,
+                "username": "fake-username",
+                "secret_manager_stored_password": "projects/fake-project/secrets/fake-secret/versions/1",
+                "database": "fake-database",
+            })
+        ```
+
         ## Import
 
         ConnectionProfile can be imported using any of these accepted formats:

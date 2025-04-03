@@ -169,6 +169,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The external IPv6 address range that is assigned to this subnetwork.
+        /// </summary>
+        public readonly string ExternalIpv6Prefix;
+        /// <summary>
         /// The IP address of the gateway.
         /// </summary>
         public readonly string GatewayAddress;
@@ -185,6 +189,10 @@ namespace Pulumi.Gcp.Compute
         /// secondary range.
         /// </summary>
         public readonly string IpCidrRange;
+        /// <summary>
+        /// The access type of IPv6 address this subnet holds. Possible values are: `EXTERNAL`, `INTERNAL`.
+        /// </summary>
+        public readonly string Ipv6AccessType;
         public readonly string? Name;
         /// <summary>
         /// The network name or resource link to the parent
@@ -206,6 +214,10 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetSubnetworkSecondaryIpRangeResult> SecondaryIpRanges;
         public readonly string SelfLink;
         /// <summary>
+        /// The stack type for the subnet. Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
+        /// </summary>
+        public readonly string StackType;
+        /// <summary>
         /// The numeric ID of the resource.
         /// </summary>
         public readonly int SubnetworkId;
@@ -214,6 +226,8 @@ namespace Pulumi.Gcp.Compute
         private GetSubnetworkResult(
             string description,
 
+            string externalIpv6Prefix,
+
             string gatewayAddress,
 
             string id,
@@ -221,6 +235,8 @@ namespace Pulumi.Gcp.Compute
             string internalIpv6Prefix,
 
             string ipCidrRange,
+
+            string ipv6AccessType,
 
             string? name,
 
@@ -236,13 +252,17 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
+            string stackType,
+
             int subnetworkId)
         {
             Description = description;
+            ExternalIpv6Prefix = externalIpv6Prefix;
             GatewayAddress = gatewayAddress;
             Id = id;
             InternalIpv6Prefix = internalIpv6Prefix;
             IpCidrRange = ipCidrRange;
+            Ipv6AccessType = ipv6AccessType;
             Name = name;
             Network = network;
             PrivateIpGoogleAccess = privateIpGoogleAccess;
@@ -250,6 +270,7 @@ namespace Pulumi.Gcp.Compute
             Region = region;
             SecondaryIpRanges = secondaryIpRanges;
             SelfLink = selfLink;
+            StackType = stackType;
             SubnetworkId = subnetworkId;
         }
     }

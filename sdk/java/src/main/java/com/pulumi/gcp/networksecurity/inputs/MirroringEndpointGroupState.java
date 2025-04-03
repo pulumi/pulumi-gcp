@@ -5,8 +5,11 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.MirroringEndpointGroupAssociationArgs;
+import com.pulumi.gcp.networksecurity.inputs.MirroringEndpointGroupConnectedDeploymentGroupArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +19,42 @@ import javax.annotation.Nullable;
 public final class MirroringEndpointGroupState extends com.pulumi.resources.ResourceArgs {
 
     public static final MirroringEndpointGroupState Empty = new MirroringEndpointGroupState();
+
+    /**
+     * List of associations to this endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="associations")
+    private @Nullable Output<List<MirroringEndpointGroupAssociationArgs>> associations;
+
+    /**
+     * @return List of associations to this endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<MirroringEndpointGroupAssociationArgs>>> associations() {
+        return Optional.ofNullable(this.associations);
+    }
+
+    /**
+     * List of details about the connected deployment groups to this endpoint
+     * group.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="connectedDeploymentGroups")
+    private @Nullable Output<List<MirroringEndpointGroupConnectedDeploymentGroupArgs>> connectedDeploymentGroups;
+
+    /**
+     * @return List of details about the connected deployment groups to this endpoint
+     * group.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<MirroringEndpointGroupConnectedDeploymentGroupArgs>>> connectedDeploymentGroups() {
+        return Optional.ofNullable(this.connectedDeploymentGroups);
+    }
 
     /**
      * The timestamp when the resource was created.
@@ -141,18 +180,20 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The resource name of this endpoint group, for example:
-     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-     * See https://google.aip.dev/122 for more details.
+     * (Output)
+     * The connected deployment group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of this endpoint group, for example:
-     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-     * See https://google.aip.dev/122 for more details.
+     * @return (Output)
+     * The connected deployment group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Optional<Output<String>> name() {
@@ -215,32 +256,24 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The current state of the endpoint group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CLOSED
-     * CREATING
-     * DELETING
      * OUT_OF_SYNC
-     * DELETE_FAILED
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The current state of the endpoint group.
-     * See https://google.aip.dev/216.
+     * @return (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CLOSED
-     * CREATING
-     * DELETING
      * OUT_OF_SYNC
-     * DELETE_FAILED
      * 
      */
     public Optional<Output<String>> state() {
@@ -267,6 +300,8 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
     private MirroringEndpointGroupState() {}
 
     private MirroringEndpointGroupState(MirroringEndpointGroupState $) {
+        this.associations = $.associations;
+        this.connectedDeploymentGroups = $.connectedDeploymentGroups;
         this.createTime = $.createTime;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
@@ -298,6 +333,77 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
 
         public Builder(MirroringEndpointGroupState defaults) {
             $ = new MirroringEndpointGroupState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param associations List of associations to this endpoint group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associations(@Nullable Output<List<MirroringEndpointGroupAssociationArgs>> associations) {
+            $.associations = associations;
+            return this;
+        }
+
+        /**
+         * @param associations List of associations to this endpoint group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associations(List<MirroringEndpointGroupAssociationArgs> associations) {
+            return associations(Output.of(associations));
+        }
+
+        /**
+         * @param associations List of associations to this endpoint group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associations(MirroringEndpointGroupAssociationArgs... associations) {
+            return associations(List.of(associations));
+        }
+
+        /**
+         * @param connectedDeploymentGroups List of details about the connected deployment groups to this endpoint
+         * group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectedDeploymentGroups(@Nullable Output<List<MirroringEndpointGroupConnectedDeploymentGroupArgs>> connectedDeploymentGroups) {
+            $.connectedDeploymentGroups = connectedDeploymentGroups;
+            return this;
+        }
+
+        /**
+         * @param connectedDeploymentGroups List of details about the connected deployment groups to this endpoint
+         * group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectedDeploymentGroups(List<MirroringEndpointGroupConnectedDeploymentGroupArgs> connectedDeploymentGroups) {
+            return connectedDeploymentGroups(Output.of(connectedDeploymentGroups));
+        }
+
+        /**
+         * @param connectedDeploymentGroups List of details about the connected deployment groups to this endpoint
+         * group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectedDeploymentGroups(MirroringEndpointGroupConnectedDeploymentGroupArgs... connectedDeploymentGroups) {
+            return connectedDeploymentGroups(List.of(connectedDeploymentGroups));
         }
 
         /**
@@ -466,9 +572,10 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The resource name of this endpoint group, for example:
-         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-         * See https://google.aip.dev/122 for more details.
+         * @param name (Output)
+         * The connected deployment group&#39;s resource name, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -479,9 +586,10 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The resource name of this endpoint group, for example:
-         * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-         * See https://google.aip.dev/122 for more details.
+         * @param name (Output)
+         * The connected deployment group&#39;s resource name, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
          * 
          * @return builder
          * 
@@ -564,16 +672,12 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param state The current state of the endpoint group.
-         * See https://google.aip.dev/216.
+         * @param state (Output)
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
-         * CLOSED
-         * CREATING
-         * DELETING
          * OUT_OF_SYNC
-         * DELETE_FAILED
          * 
          * @return builder
          * 
@@ -584,16 +688,12 @@ public final class MirroringEndpointGroupState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param state The current state of the endpoint group.
-         * See https://google.aip.dev/216.
+         * @param state (Output)
+         * The current state of the association in this location.
          * Possible values:
          * STATE_UNSPECIFIED
          * ACTIVE
-         * CLOSED
-         * CREATING
-         * DELETING
          * OUT_OF_SYNC
-         * DELETE_FAILED
          * 
          * @return builder
          * 

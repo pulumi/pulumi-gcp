@@ -102,6 +102,24 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? Size { get; set; }
 
         /// <summary>
+        /// The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+        /// </summary>
+        [Input("snapshot")]
+        public Input<string>? Snapshot { get; set; }
+
+        /// <summary>
+        /// Encryption key used to decrypt the given image. Structure is documented below.
+        /// </summary>
+        [Input("sourceImageEncryptionKey")]
+        public Input<Inputs.InstanceBootDiskInitializeParamsSourceImageEncryptionKeyArgs>? SourceImageEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Encryption key used to decrypt the given snapshot. Structure is documented below.
+        /// </summary>
+        [Input("sourceSnapshotEncryptionKey")]
+        public Input<Inputs.InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
+
+        /// <summary>
         /// The URL or the name of the storage pool in which the new disk is created.
         /// For example:
         /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}

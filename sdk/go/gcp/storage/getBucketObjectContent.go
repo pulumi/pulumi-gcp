@@ -72,7 +72,10 @@ type GetBucketObjectContentResult struct {
 	Bucket       string `pulumi:"bucket"`
 	CacheControl string `pulumi:"cacheControl"`
 	// (Computed) The content of the object.
-	Content             string                                     `pulumi:"content"`
+	Content string `pulumi:"content"`
+	// (Computed) Base64 encoded version of the object content.
+	// Use this when dealing with binary data.
+	ContentBase64       string                                     `pulumi:"contentBase64"`
 	ContentDisposition  string                                     `pulumi:"contentDisposition"`
 	ContentEncoding     string                                     `pulumi:"contentEncoding"`
 	ContentLanguage     string                                     `pulumi:"contentLanguage"`
@@ -146,6 +149,12 @@ func (o GetBucketObjectContentResultOutput) CacheControl() pulumi.StringOutput {
 // (Computed) The content of the object.
 func (o GetBucketObjectContentResultOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// (Computed) Base64 encoded version of the object content.
+// Use this when dealing with binary data.
+func (o GetBucketObjectContentResultOutput) ContentBase64() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.ContentBase64 }).(pulumi.StringOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) ContentDisposition() pulumi.StringOutput {

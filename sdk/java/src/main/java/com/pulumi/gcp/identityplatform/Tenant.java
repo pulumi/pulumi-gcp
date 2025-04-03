@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.identityplatform.TenantArgs;
 import com.pulumi.gcp.identityplatform.inputs.TenantState;
+import com.pulumi.gcp.identityplatform.outputs.TenantClient;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -103,6 +104,22 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> allowPasswordSignup() {
         return Codegen.optional(this.allowPasswordSignup);
+    }
+    /**
+     * Options related to how clients making requests on behalf of a tenant should be configured.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="client", refs={TenantClient.class}, tree="[0]")
+    private Output</* @Nullable */ TenantClient> client;
+
+    /**
+     * @return Options related to how clients making requests on behalf of a tenant should be configured.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<TenantClient>> client() {
+        return Codegen.optional(this.client);
     }
     /**
      * Whether authentication is disabled for the tenant. If true, the users under

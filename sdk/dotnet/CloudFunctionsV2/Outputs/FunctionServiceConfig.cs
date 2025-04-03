@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly string? AvailableMemory;
         /// <summary>
+        /// The binary authorization policy to be checked when deploying the Cloud Run service.
+        /// </summary>
+        public readonly string? BinaryAuthorizationPolicy;
+        /// <summary>
         /// Environment variables that shall be available during function execution.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? EnvironmentVariables;
@@ -103,6 +107,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
             string? availableMemory,
 
+            string? binaryAuthorizationPolicy,
+
             ImmutableDictionary<string, string>? environmentVariables,
 
             string? gcfUri,
@@ -134,6 +140,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             AllTrafficOnLatestRevision = allTrafficOnLatestRevision;
             AvailableCpu = availableCpu;
             AvailableMemory = availableMemory;
+            BinaryAuthorizationPolicy = binaryAuthorizationPolicy;
             EnvironmentVariables = environmentVariables;
             GcfUri = gcfUri;
             IngressSettings = ingressSettings;

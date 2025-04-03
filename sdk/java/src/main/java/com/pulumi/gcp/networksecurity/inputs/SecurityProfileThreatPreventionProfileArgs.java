@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileAntivirusOverrideArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileSeverityOverrideArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileThreatOverrideArgs;
 import java.util.List;
@@ -16,6 +17,23 @@ import javax.annotation.Nullable;
 public final class SecurityProfileThreatPreventionProfileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SecurityProfileThreatPreventionProfileArgs Empty = new SecurityProfileThreatPreventionProfileArgs();
+
+    /**
+     * Defines what action to take for antivirus threats per protocol.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="antivirusOverrides")
+    private @Nullable Output<List<SecurityProfileThreatPreventionProfileAntivirusOverrideArgs>> antivirusOverrides;
+
+    /**
+     * @return Defines what action to take for antivirus threats per protocol.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<SecurityProfileThreatPreventionProfileAntivirusOverrideArgs>>> antivirusOverrides() {
+        return Optional.ofNullable(this.antivirusOverrides);
+    }
 
     /**
      * The configuration for overriding threats actions by severity match.
@@ -58,6 +76,7 @@ public final class SecurityProfileThreatPreventionProfileArgs extends com.pulumi
     private SecurityProfileThreatPreventionProfileArgs() {}
 
     private SecurityProfileThreatPreventionProfileArgs(SecurityProfileThreatPreventionProfileArgs $) {
+        this.antivirusOverrides = $.antivirusOverrides;
         this.severityOverrides = $.severityOverrides;
         this.threatOverrides = $.threatOverrides;
     }
@@ -78,6 +97,40 @@ public final class SecurityProfileThreatPreventionProfileArgs extends com.pulumi
 
         public Builder(SecurityProfileThreatPreventionProfileArgs defaults) {
             $ = new SecurityProfileThreatPreventionProfileArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param antivirusOverrides Defines what action to take for antivirus threats per protocol.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antivirusOverrides(@Nullable Output<List<SecurityProfileThreatPreventionProfileAntivirusOverrideArgs>> antivirusOverrides) {
+            $.antivirusOverrides = antivirusOverrides;
+            return this;
+        }
+
+        /**
+         * @param antivirusOverrides Defines what action to take for antivirus threats per protocol.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antivirusOverrides(List<SecurityProfileThreatPreventionProfileAntivirusOverrideArgs> antivirusOverrides) {
+            return antivirusOverrides(Output.of(antivirusOverrides));
+        }
+
+        /**
+         * @param antivirusOverrides Defines what action to take for antivirus threats per protocol.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antivirusOverrides(SecurityProfileThreatPreventionProfileAntivirusOverrideArgs... antivirusOverrides) {
+            return antivirusOverrides(List.of(antivirusOverrides));
         }
 
         /**

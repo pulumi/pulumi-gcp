@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -85,6 +87,11 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly allowPasswordSignup!: pulumi.Output<boolean | undefined>;
     /**
+     * Options related to how clients making requests on behalf of a tenant should be configured.
+     * Structure is documented below.
+     */
+    public readonly client!: pulumi.Output<outputs.identityplatform.TenantClient | undefined>;
+    /**
      * Whether authentication is disabled for the tenant. If true, the users under
      * the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
      * are not able to manage its users.
@@ -125,6 +132,7 @@ export class Tenant extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TenantState | undefined;
             resourceInputs["allowPasswordSignup"] = state ? state.allowPasswordSignup : undefined;
+            resourceInputs["client"] = state ? state.client : undefined;
             resourceInputs["disableAuth"] = state ? state.disableAuth : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["enableEmailLinkSignin"] = state ? state.enableEmailLinkSignin : undefined;
@@ -136,6 +144,7 @@ export class Tenant extends pulumi.CustomResource {
                 throw new Error("Missing required property 'displayName'");
             }
             resourceInputs["allowPasswordSignup"] = args ? args.allowPasswordSignup : undefined;
+            resourceInputs["client"] = args ? args.client : undefined;
             resourceInputs["disableAuth"] = args ? args.disableAuth : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["enableEmailLinkSignin"] = args ? args.enableEmailLinkSignin : undefined;
@@ -155,6 +164,11 @@ export interface TenantState {
      * Whether to allow email/password user authentication.
      */
     allowPasswordSignup?: pulumi.Input<boolean>;
+    /**
+     * Options related to how clients making requests on behalf of a tenant should be configured.
+     * Structure is documented below.
+     */
+    client?: pulumi.Input<inputs.identityplatform.TenantClient>;
     /**
      * Whether authentication is disabled for the tenant. If true, the users under
      * the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
@@ -191,6 +205,11 @@ export interface TenantArgs {
      * Whether to allow email/password user authentication.
      */
     allowPasswordSignup?: pulumi.Input<boolean>;
+    /**
+     * Options related to how clients making requests on behalf of a tenant should be configured.
+     * Structure is documented below.
+     */
+    client?: pulumi.Input<inputs.identityplatform.TenantClient>;
     /**
      * Whether authentication is disabled for the tenant. If true, the users under
      * the disabled tenant are not allowed to sign-in. Admins of the disabled tenant

@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetInstanceBootDiskInitializeParamSourceImageEncryptionKey;
+import com.pulumi.gcp.compute.outputs.GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -59,6 +61,21 @@ public final class GetInstanceBootDiskInitializeParam {
      * 
      */
     private Integer size;
+    /**
+     * @return The snapshot from which this disk was initialised.
+     * 
+     */
+    private String snapshot;
+    /**
+     * @return The encryption key used to decrypt the source image.
+     * 
+     */
+    private List<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey> sourceImageEncryptionKeys;
+    /**
+     * @return The encryption key used to decrypt the source snapshot.
+     * 
+     */
+    private List<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
     /**
      * @return The URL of the storage pool in which the new disk is created
      * 
@@ -135,6 +152,27 @@ public final class GetInstanceBootDiskInitializeParam {
         return this.size;
     }
     /**
+     * @return The snapshot from which this disk was initialised.
+     * 
+     */
+    public String snapshot() {
+        return this.snapshot;
+    }
+    /**
+     * @return The encryption key used to decrypt the source image.
+     * 
+     */
+    public List<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey> sourceImageEncryptionKeys() {
+        return this.sourceImageEncryptionKeys;
+    }
+    /**
+     * @return The encryption key used to decrypt the source snapshot.
+     * 
+     */
+    public List<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys() {
+        return this.sourceSnapshotEncryptionKeys;
+    }
+    /**
      * @return The URL of the storage pool in which the new disk is created
      * 
      */
@@ -167,6 +205,9 @@ public final class GetInstanceBootDiskInitializeParam {
         private Map<String,String> resourceManagerTags;
         private List<String> resourcePolicies;
         private Integer size;
+        private String snapshot;
+        private List<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey> sourceImageEncryptionKeys;
+        private List<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
         private String storagePool;
         private String type;
         public Builder() {}
@@ -181,6 +222,9 @@ public final class GetInstanceBootDiskInitializeParam {
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.size = defaults.size;
+    	      this.snapshot = defaults.snapshot;
+    	      this.sourceImageEncryptionKeys = defaults.sourceImageEncryptionKeys;
+    	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
     	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
         }
@@ -261,6 +305,36 @@ public final class GetInstanceBootDiskInitializeParam {
             return this;
         }
         @CustomType.Setter
+        public Builder snapshot(String snapshot) {
+            if (snapshot == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "snapshot");
+            }
+            this.snapshot = snapshot;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceImageEncryptionKeys(List<GetInstanceBootDiskInitializeParamSourceImageEncryptionKey> sourceImageEncryptionKeys) {
+            if (sourceImageEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "sourceImageEncryptionKeys");
+            }
+            this.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
+            return this;
+        }
+        public Builder sourceImageEncryptionKeys(GetInstanceBootDiskInitializeParamSourceImageEncryptionKey... sourceImageEncryptionKeys) {
+            return sourceImageEncryptionKeys(List.of(sourceImageEncryptionKeys));
+        }
+        @CustomType.Setter
+        public Builder sourceSnapshotEncryptionKeys(List<GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys) {
+            if (sourceSnapshotEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "sourceSnapshotEncryptionKeys");
+            }
+            this.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
+            return this;
+        }
+        public Builder sourceSnapshotEncryptionKeys(GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKey... sourceSnapshotEncryptionKeys) {
+            return sourceSnapshotEncryptionKeys(List.of(sourceSnapshotEncryptionKeys));
+        }
+        @CustomType.Setter
         public Builder storagePool(String storagePool) {
             if (storagePool == null) {
               throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "storagePool");
@@ -287,6 +361,9 @@ public final class GetInstanceBootDiskInitializeParam {
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.size = size;
+            _resultValue.snapshot = snapshot;
+            _resultValue.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
+            _resultValue.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             _resultValue.storagePool = storagePool;
             _resultValue.type = type;
             return _resultValue;

@@ -21,12 +21,13 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 desired_psc_auto_connections: pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]],
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  shard_count: pulumi.Input[int],
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 cross_instance_replication_config: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -40,7 +41,6 @@ class InstanceArgs:
                  zone_distribution_config: Optional[pulumi.Input['InstanceZoneDistributionConfigArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: Required. Immutable. User inputs for the auto-created PSC connections.
         :param pulumi.Input[str] instance_id: Required. The ID to use for the instance, which will become the final component of
                the instance's resource name.
                This value is subject to the following restrictions:
@@ -57,7 +57,10 @@ class InstanceArgs:
         :param pulumi.Input[str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
+        :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
+               Structure is documented below.
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: Immutable. User inputs for the auto-created PSC connections.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to represent user-provided metadata.
@@ -88,14 +91,17 @@ class InstanceArgs:
         :param pulumi.Input['InstanceZoneDistributionConfigArgs'] zone_distribution_config: Zone distribution configuration for allocation of instance resources.
                Structure is documented below.
         """
-        pulumi.set(__self__, "desired_psc_auto_connections", desired_psc_auto_connections)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "shard_count", shard_count)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
+        if cross_instance_replication_config is not None:
+            pulumi.set(__self__, "cross_instance_replication_config", cross_instance_replication_config)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        if desired_psc_auto_connections is not None:
+            pulumi.set(__self__, "desired_psc_auto_connections", desired_psc_auto_connections)
         if engine_configs is not None:
             pulumi.set(__self__, "engine_configs", engine_configs)
         if engine_version is not None:
@@ -118,18 +124,6 @@ class InstanceArgs:
             pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
         if zone_distribution_config is not None:
             pulumi.set(__self__, "zone_distribution_config", zone_distribution_config)
-
-    @property
-    @pulumi.getter(name="desiredPscAutoConnections")
-    def desired_psc_auto_connections(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]:
-        """
-        Required. Immutable. User inputs for the auto-created PSC connections.
-        """
-        return pulumi.get(self, "desired_psc_auto_connections")
-
-    @desired_psc_auto_connections.setter
-    def desired_psc_auto_connections(self, value: pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]):
-        pulumi.set(self, "desired_psc_auto_connections", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -192,6 +186,19 @@ class InstanceArgs:
         pulumi.set(self, "authorization_mode", value)
 
     @property
+    @pulumi.getter(name="crossInstanceReplicationConfig")
+    def cross_instance_replication_config(self) -> Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']]:
+        """
+        Cross instance replication config
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cross_instance_replication_config")
+
+    @cross_instance_replication_config.setter
+    def cross_instance_replication_config(self, value: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']]):
+        pulumi.set(self, "cross_instance_replication_config", value)
+
+    @property
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -202,6 +209,18 @@ class InstanceArgs:
     @deletion_protection_enabled.setter
     def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
+
+    @property
+    @pulumi.getter(name="desiredPscAutoConnections")
+    def desired_psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
+        """
+        Immutable. User inputs for the auto-created PSC connections.
+        """
+        return pulumi.get(self, "desired_psc_auto_connections")
+
+    @desired_psc_auto_connections.setter
+    def desired_psc_auto_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]):
+        pulumi.set(self, "desired_psc_auto_connections", value)
 
     @property
     @pulumi.getter(name="engineConfigs")
@@ -359,6 +378,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 cross_instance_replication_config: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]]] = None,
@@ -377,6 +397,7 @@ class _InstanceState:
                  node_type: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_attachment_details: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]]] = None,
                  psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
@@ -393,8 +414,10 @@ class _InstanceState:
                AUTH_DISABLED
                IAM_AUTH
         :param pulumi.Input[str] create_time: Output only. Creation timestamp of the instance.
+        :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
+               Structure is documented below.
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: Required. Immutable. User inputs for the auto-created PSC connections.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: Immutable. User inputs for the auto-created PSC connections.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDiscoveryEndpointArgs']]] discovery_endpoints: Output only. Endpoints clients can connect to the instance through. Currently only one
                discovery endpoint is supported.
                Structure is documented below.
@@ -441,6 +464,8 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]] psc_attachment_details: Configuration of a service attachment of the cluster, for creating PSC connections.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]] psc_auto_connections: Output only. User inputs and resource details of the auto-created PSC connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -468,6 +493,8 @@ class _InstanceState:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if cross_instance_replication_config is not None:
+            pulumi.set(__self__, "cross_instance_replication_config", cross_instance_replication_config)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if desired_psc_auto_connections is not None:
@@ -504,6 +531,8 @@ class _InstanceState:
             pulumi.set(__self__, "persistence_config", persistence_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_attachment_details is not None:
+            pulumi.set(__self__, "psc_attachment_details", psc_attachment_details)
         if psc_auto_connections is not None:
             pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         if pulumi_labels is not None:
@@ -552,6 +581,19 @@ class _InstanceState:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="crossInstanceReplicationConfig")
+    def cross_instance_replication_config(self) -> Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']]:
+        """
+        Cross instance replication config
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cross_instance_replication_config")
+
+    @cross_instance_replication_config.setter
+    def cross_instance_replication_config(self, value: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']]):
+        pulumi.set(self, "cross_instance_replication_config", value)
+
+    @property
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -567,7 +609,7 @@ class _InstanceState:
     @pulumi.getter(name="desiredPscAutoConnections")
     def desired_psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]]:
         """
-        Required. Immutable. User inputs for the auto-created PSC connections.
+        Immutable. User inputs for the auto-created PSC connections.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 
@@ -798,6 +840,19 @@ class _InstanceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscAttachmentDetails")
+    def psc_attachment_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]]]:
+        """
+        Configuration of a service attachment of the cluster, for creating PSC connections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_attachment_details")
+
+    @psc_attachment_details.setter
+    def psc_attachment_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAttachmentDetailArgs']]]]):
+        pulumi.set(self, "psc_attachment_details", value)
+
+    @property
     @pulumi.getter(name="pscAutoConnections")
     def psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscAutoConnectionArgs']]]]:
         """
@@ -936,6 +991,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -955,6 +1011,12 @@ class Instance(pulumi.CustomResource):
                  __props__=None):
         """
         A Google Cloud Memorystore instance.
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/memorystore/docs/valkey/create-instances)
 
         ## Example Usage
 
@@ -1114,6 +1176,118 @@ class Instance(pulumi.CustomResource):
             deletion_protection_enabled=False,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+        ### Memorystore Instance Secondary Instance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary_producer_net = gcp.compute.Network("primary_producer_net",
+            name="my-network-primary-instance",
+            auto_create_subnetworks=False)
+        primary_producer_subnet = gcp.compute.Subnetwork("primary_producer_subnet",
+            name="my-subnet-primary-instance",
+            ip_cidr_range="10.0.1.0/29",
+            region="asia-east1",
+            network=primary_producer_net.id)
+        primary_policy = gcp.networkconnectivity.ServiceConnectionPolicy("primary_policy",
+            name="my-policy-primary-instance",
+            location="asia-east1",
+            service_class="gcp-memorystore",
+            description="my basic service connection policy",
+            network=primary_producer_net.id,
+            psc_config={
+                "subnetworks": [primary_producer_subnet.id],
+            })
+        project = gcp.organizations.get_project()
+        # Primary instance
+        primary_instance = gcp.memorystore.Instance("primary_instance",
+            instance_id="primary-instance",
+            shard_count=1,
+            desired_psc_auto_connections=[{
+                "network": primary_producer_net.id,
+                "project_id": project.project_id,
+            }],
+            location="asia-east1",
+            replica_count=1,
+            node_type="SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
+            authorization_mode="AUTH_DISABLED",
+            engine_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            zone_distribution_config={
+                "mode": "SINGLE_ZONE",
+                "zone": "asia-east1-c",
+            },
+            deletion_protection_enabled=True,
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            labels={
+                "abc": "xyz",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[primary_policy]))
+        secondary_producer_net = gcp.compute.Network("secondary_producer_net",
+            name="my-network-secondary-instance",
+            auto_create_subnetworks=False)
+        secondary_producer_subnet = gcp.compute.Subnetwork("secondary_producer_subnet",
+            name="my-subnet-secondary-instance",
+            ip_cidr_range="10.0.2.0/29",
+            region="europe-north1",
+            network=secondary_producer_net.id)
+        secondary_policy = gcp.networkconnectivity.ServiceConnectionPolicy("secondary_policy",
+            name="my-policy-secondary-instance",
+            location="europe-north1",
+            service_class="gcp-memorystore",
+            description="my basic service connection policy",
+            network=secondary_producer_net.id,
+            psc_config={
+                "subnetworks": [secondary_producer_subnet.id],
+            })
+        # Secondary instance
+        secondary_instance = gcp.memorystore.Instance("secondary_instance",
+            instance_id="secondary-instance",
+            shard_count=1,
+            desired_psc_auto_connections=[{
+                "network": secondary_producer_net.id,
+                "project_id": project.project_id,
+            }],
+            location="europe-north1",
+            replica_count=1,
+            node_type="SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
+            authorization_mode="AUTH_DISABLED",
+            engine_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            zone_distribution_config={
+                "mode": "SINGLE_ZONE",
+                "zone": "europe-north1-c",
+            },
+            deletion_protection_enabled=True,
+            cross_instance_replication_config={
+                "instance_role": "SECONDARY",
+                "primary_instance": {
+                    "instance": primary_instance.id,
+                },
+            },
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            labels={
+                "abc": "xyz",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[secondary_policy]))
+        ```
 
         ## Import
 
@@ -1144,8 +1318,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
+        :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']] cross_instance_replication_config: Cross instance replication config
+               Structure is documented below.
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: Required. Immutable. User inputs for the auto-created PSC connections.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: Immutable. User inputs for the auto-created PSC connections.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[str] engine_version: Optional. Engine version of the instance.
         :param pulumi.Input[str] instance_id: Required. The ID to use for the instance, which will become the final component of
@@ -1198,6 +1374,12 @@ class Instance(pulumi.CustomResource):
         """
         A Google Cloud Memorystore instance.
 
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/memorystore/docs/valkey/create-instances)
+
         ## Example Usage
 
         ### Memorystore Instance Basic
@@ -1356,6 +1538,118 @@ class Instance(pulumi.CustomResource):
             deletion_protection_enabled=False,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+        ### Memorystore Instance Secondary Instance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary_producer_net = gcp.compute.Network("primary_producer_net",
+            name="my-network-primary-instance",
+            auto_create_subnetworks=False)
+        primary_producer_subnet = gcp.compute.Subnetwork("primary_producer_subnet",
+            name="my-subnet-primary-instance",
+            ip_cidr_range="10.0.1.0/29",
+            region="asia-east1",
+            network=primary_producer_net.id)
+        primary_policy = gcp.networkconnectivity.ServiceConnectionPolicy("primary_policy",
+            name="my-policy-primary-instance",
+            location="asia-east1",
+            service_class="gcp-memorystore",
+            description="my basic service connection policy",
+            network=primary_producer_net.id,
+            psc_config={
+                "subnetworks": [primary_producer_subnet.id],
+            })
+        project = gcp.organizations.get_project()
+        # Primary instance
+        primary_instance = gcp.memorystore.Instance("primary_instance",
+            instance_id="primary-instance",
+            shard_count=1,
+            desired_psc_auto_connections=[{
+                "network": primary_producer_net.id,
+                "project_id": project.project_id,
+            }],
+            location="asia-east1",
+            replica_count=1,
+            node_type="SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
+            authorization_mode="AUTH_DISABLED",
+            engine_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            zone_distribution_config={
+                "mode": "SINGLE_ZONE",
+                "zone": "asia-east1-c",
+            },
+            deletion_protection_enabled=True,
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            labels={
+                "abc": "xyz",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[primary_policy]))
+        secondary_producer_net = gcp.compute.Network("secondary_producer_net",
+            name="my-network-secondary-instance",
+            auto_create_subnetworks=False)
+        secondary_producer_subnet = gcp.compute.Subnetwork("secondary_producer_subnet",
+            name="my-subnet-secondary-instance",
+            ip_cidr_range="10.0.2.0/29",
+            region="europe-north1",
+            network=secondary_producer_net.id)
+        secondary_policy = gcp.networkconnectivity.ServiceConnectionPolicy("secondary_policy",
+            name="my-policy-secondary-instance",
+            location="europe-north1",
+            service_class="gcp-memorystore",
+            description="my basic service connection policy",
+            network=secondary_producer_net.id,
+            psc_config={
+                "subnetworks": [secondary_producer_subnet.id],
+            })
+        # Secondary instance
+        secondary_instance = gcp.memorystore.Instance("secondary_instance",
+            instance_id="secondary-instance",
+            shard_count=1,
+            desired_psc_auto_connections=[{
+                "network": secondary_producer_net.id,
+                "project_id": project.project_id,
+            }],
+            location="europe-north1",
+            replica_count=1,
+            node_type="SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
+            authorization_mode="AUTH_DISABLED",
+            engine_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            zone_distribution_config={
+                "mode": "SINGLE_ZONE",
+                "zone": "europe-north1-c",
+            },
+            deletion_protection_enabled=True,
+            cross_instance_replication_config={
+                "instance_role": "SECONDARY",
+                "primary_instance": {
+                    "instance": primary_instance.id,
+                },
+            },
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            labels={
+                "abc": "xyz",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[secondary_policy]))
+        ```
 
         ## Import
 
@@ -1397,6 +1691,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1423,9 +1718,8 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["authorization_mode"] = authorization_mode
+            __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
-            if desired_psc_auto_connections is None and not opts.urn:
-                raise TypeError("Missing required property 'desired_psc_auto_connections'")
             __props__.__dict__["desired_psc_auto_connections"] = desired_psc_auto_connections
             __props__.__dict__["engine_configs"] = engine_configs
             __props__.__dict__["engine_version"] = engine_version
@@ -1454,6 +1748,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["node_configs"] = None
+            __props__.__dict__["psc_attachment_details"] = None
             __props__.__dict__["psc_auto_connections"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
@@ -1474,6 +1769,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
             desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiscoveryEndpointArgs', 'InstanceDiscoveryEndpointArgsDict']]]]] = None,
@@ -1492,6 +1788,7 @@ class Instance(pulumi.CustomResource):
             node_type: Optional[pulumi.Input[str]] = None,
             persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            psc_attachment_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePscAttachmentDetailArgs', 'InstancePscAttachmentDetailArgsDict']]]]] = None,
             psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePscAutoConnectionArgs', 'InstancePscAutoConnectionArgsDict']]]]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             replica_count: Optional[pulumi.Input[int]] = None,
@@ -1513,8 +1810,10 @@ class Instance(pulumi.CustomResource):
                AUTH_DISABLED
                IAM_AUTH
         :param pulumi.Input[str] create_time: Output only. Creation timestamp of the instance.
+        :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']] cross_instance_replication_config: Cross instance replication config
+               Structure is documented below.
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: Required. Immutable. User inputs for the auto-created PSC connections.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: Immutable. User inputs for the auto-created PSC connections.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDiscoveryEndpointArgs', 'InstanceDiscoveryEndpointArgsDict']]]] discovery_endpoints: Output only. Endpoints clients can connect to the instance through. Currently only one
                discovery endpoint is supported.
                Structure is documented below.
@@ -1561,6 +1860,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePscAttachmentDetailArgs', 'InstancePscAttachmentDetailArgsDict']]]] psc_attachment_details: Configuration of a service attachment of the cluster, for creating PSC connections.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePscAutoConnectionArgs', 'InstancePscAutoConnectionArgsDict']]]] psc_auto_connections: Output only. User inputs and resource details of the auto-created PSC connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1590,6 +1891,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["authorization_mode"] = authorization_mode
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["desired_psc_auto_connections"] = desired_psc_auto_connections
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
@@ -1608,6 +1910,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["node_type"] = node_type
         __props__.__dict__["persistence_config"] = persistence_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["psc_attachment_details"] = psc_attachment_details
         __props__.__dict__["psc_auto_connections"] = psc_auto_connections
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["replica_count"] = replica_count
@@ -1639,6 +1942,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="crossInstanceReplicationConfig")
+    def cross_instance_replication_config(self) -> pulumi.Output['outputs.InstanceCrossInstanceReplicationConfig']:
+        """
+        Cross instance replication config
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cross_instance_replication_config")
+
+    @property
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1648,9 +1960,9 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredPscAutoConnections")
-    def desired_psc_auto_connections(self) -> pulumi.Output[Sequence['outputs.InstanceDesiredPscAutoConnection']]:
+    def desired_psc_auto_connections(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceDesiredPscAutoConnection']]]:
         """
-        Required. Immutable. User inputs for the auto-created PSC connections.
+        Immutable. User inputs for the auto-created PSC connections.
         """
         return pulumi.get(self, "desired_psc_auto_connections")
 
@@ -1811,6 +2123,15 @@ class Instance(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscAttachmentDetails")
+    def psc_attachment_details(self) -> pulumi.Output[Sequence['outputs.InstancePscAttachmentDetail']]:
+        """
+        Configuration of a service attachment of the cluster, for creating PSC connections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_attachment_details")
 
     @property
     @pulumi.getter(name="pscAutoConnections")

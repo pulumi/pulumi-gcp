@@ -22,9 +22,16 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// A 256-bit [customer-supplied encryption key]
         /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
         /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        /// to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+        /// to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        /// may be set.
         /// </summary>
         public readonly string? DiskEncryptionKeyRaw;
+        /// <summary>
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        /// may be set.
+        /// </summary>
+        public readonly string? DiskEncryptionKeyRsa;
         /// <summary>
         /// The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         /// encoded SHA-256 hash of the [customer-supplied encryption key]
@@ -32,9 +39,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? DiskEncryptionKeySha256;
         /// <summary>
+        /// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        /// </summary>
+        public readonly string? DiskEncryptionServiceAccount;
+        /// <summary>
         /// The self_link of the encryption key that is
-        /// stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-        /// and `disk_encryption_key_raw` may be set.
+        /// stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        /// may be set.
         /// </summary>
         public readonly string? KmsKeySelfLink;
         /// <summary>
@@ -55,7 +66,11 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? diskEncryptionKeyRaw,
 
+            string? diskEncryptionKeyRsa,
+
             string? diskEncryptionKeySha256,
+
+            string? diskEncryptionServiceAccount,
 
             string? kmsKeySelfLink,
 
@@ -65,7 +80,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             DeviceName = deviceName;
             DiskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            DiskEncryptionKeyRsa = diskEncryptionKeyRsa;
             DiskEncryptionKeySha256 = diskEncryptionKeySha256;
+            DiskEncryptionServiceAccount = diskEncryptionServiceAccount;
             KmsKeySelfLink = kmsKeySelfLink;
             Mode = mode;
             Source = source;

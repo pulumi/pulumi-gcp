@@ -17,6 +17,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Regional Parameter Version resource that stores the actual value of the regional parameter.
+ * 
+ * To get more information about RegionalParameterVersion, see:
+ * 
+ * * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions)
+ * 
  * ## Example Usage
  * 
  * ### Regional Parameter Version Basic

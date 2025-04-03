@@ -2435,6 +2435,12 @@ if not MYPY:
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimeterDryRunEgressPolicyEgressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2443,7 +2449,8 @@ class ServicePerimeterDryRunEgressPolicyEgressToArgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
@@ -2456,6 +2463,9 @@ class ServicePerimeterDryRunEgressPolicyEgressToArgs:
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `EgressFrom`
+               are allowed to perform.
         """
         if external_resources is not None:
             pulumi.set(__self__, "external_resources", external_resources)
@@ -2463,6 +2473,8 @@ class ServicePerimeterDryRunEgressPolicyEgressToArgs:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -2507,6 +2519,20 @@ class ServicePerimeterDryRunEgressPolicyEgressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -2843,6 +2869,12 @@ if not MYPY:
         resources inside the perimeter, provided that the request
         also matches the `operations` field.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimeterDryRunIngressPolicyIngressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2850,7 +2882,8 @@ elif False:
 class ServicePerimeterDryRunIngressPolicyIngressToArgs:
     def __init__(__self__, *,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
@@ -2863,11 +2896,16 @@ class ServicePerimeterDryRunIngressPolicyIngressToArgs:
                then this `IngressTo` rule will authorize access to all
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `IngressFrom`
+               are allowed to perform.
         """
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter
@@ -2901,6 +2939,20 @@ class ServicePerimeterDryRunIngressPolicyIngressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -3242,6 +3294,12 @@ if not MYPY:
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimeterEgressPolicyEgressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3250,7 +3308,8 @@ class ServicePerimeterEgressPolicyEgressToArgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
@@ -3263,6 +3322,9 @@ class ServicePerimeterEgressPolicyEgressToArgs:
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `EgressFrom`
+               are allowed to perform.
         """
         if external_resources is not None:
             pulumi.set(__self__, "external_resources", external_resources)
@@ -3270,6 +3332,8 @@ class ServicePerimeterEgressPolicyEgressToArgs:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -3314,6 +3378,20 @@ class ServicePerimeterEgressPolicyEgressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -3659,6 +3737,12 @@ if not MYPY:
         resources inside the perimeter, provided that the request
         also matches the `operations` field.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimeterIngressPolicyIngressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3666,7 +3750,8 @@ elif False:
 class ServicePerimeterIngressPolicyIngressToArgs:
     def __init__(__self__, *,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
@@ -3679,11 +3764,16 @@ class ServicePerimeterIngressPolicyIngressToArgs:
                then this `IngressTo` rule will authorize access to all
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `IngressFrom`
+               are allowed to perform.
         """
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter
@@ -3717,6 +3807,20 @@ class ServicePerimeterIngressPolicyIngressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -4337,6 +4441,12 @@ if not MYPY:
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimeterSpecEgressPolicyEgressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4345,7 +4455,8 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
@@ -4358,6 +4469,9 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `EgressFrom`
+               are allowed to perform.
         """
         if external_resources is not None:
             pulumi.set(__self__, "external_resources", external_resources)
@@ -4365,6 +4479,8 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -4409,6 +4525,20 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -4802,6 +4932,12 @@ if not MYPY:
         resources inside the perimeter, provided that the request
         also matches the `operations` field.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimeterSpecIngressPolicyIngressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4809,7 +4945,8 @@ elif False:
 class ServicePerimeterSpecIngressPolicyIngressToArgs:
     def __init__(__self__, *,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
@@ -4822,11 +4959,16 @@ class ServicePerimeterSpecIngressPolicyIngressToArgs:
                then this `IngressTo` rule will authorize access to all
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `IngressFrom`
+               are allowed to perform.
         """
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter
@@ -4860,6 +5002,20 @@ class ServicePerimeterSpecIngressPolicyIngressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -5538,6 +5694,12 @@ if not MYPY:
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimeterStatusEgressPolicyEgressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -5546,7 +5708,8 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
@@ -5559,6 +5722,9 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `EgressFrom`
+               are allowed to perform.
         """
         if external_resources is not None:
             pulumi.set(__self__, "external_resources", external_resources)
@@ -5566,6 +5732,8 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -5610,6 +5778,20 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -6003,6 +6185,12 @@ if not MYPY:
         resources inside the perimeter, provided that the request
         also matches the `operations` field.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimeterStatusIngressPolicyIngressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -6010,7 +6198,8 @@ elif False:
 class ServicePerimeterStatusIngressPolicyIngressToArgs:
     def __init__(__self__, *,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
@@ -6023,11 +6212,16 @@ class ServicePerimeterStatusIngressPolicyIngressToArgs:
                then this `IngressTo` rule will authorize access to all
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `IngressFrom`
+               are allowed to perform.
         """
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter
@@ -6061,6 +6255,20 @@ class ServicePerimeterStatusIngressPolicyIngressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -7040,6 +7248,12 @@ if not MYPY:
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7048,7 +7262,8 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
@@ -7061,6 +7276,9 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `EgressFrom`
+               are allowed to perform.
         """
         if external_resources is not None:
             pulumi.set(__self__, "external_resources", external_resources)
@@ -7068,6 +7286,8 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -7112,6 +7332,20 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -7505,6 +7739,12 @@ if not MYPY:
         resources inside the perimeter, provided that the request
         also matches the `operations` field.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7512,7 +7752,8 @@ elif False:
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
     def __init__(__self__, *,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
@@ -7525,11 +7766,16 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
                then this `IngressTo` rule will authorize access to all
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `IngressFrom`
+               are allowed to perform.
         """
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter
@@ -7563,6 +7809,20 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -8247,6 +8507,12 @@ if not MYPY:
         then this `EgressTo` rule will authorize access to all resources outside
         the perimeter.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -8255,7 +8521,8 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
     def __init__(__self__, *,
                  external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
                matches if it contains an external resource in this list (Example:
@@ -8268,6 +8535,9 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
                if it contains a resource in this list. If * is specified for resources,
                then this `EgressTo` rule will authorize access to all resources outside
                the perimeter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `EgressFrom`
+               are allowed to perform.
         """
         if external_resources is not None:
             pulumi.set(__self__, "external_resources", external_resources)
@@ -8275,6 +8545,8 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter(name="externalResources")
@@ -8319,6 +8591,20 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `EgressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:
@@ -8712,6 +8998,12 @@ if not MYPY:
         resources inside the perimeter, provided that the request
         also matches the `operations` field.
         """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
 elif False:
     ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -8719,7 +9011,8 @@ elif False:
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
     def __init__(__self__, *,
                  operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
                are allowed to perform in this `ServicePerimeter`.
@@ -8732,11 +9025,16 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
                then this `IngressTo` rule will authorize access to all
                resources inside the perimeter, provided that the request
                also matches the `operations` field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of IAM roles that represent the set of operations that the sources
+               specified in the corresponding `IngressFrom`
+               are allowed to perform.
         """
         if operations is not None:
             pulumi.set(__self__, "operations", operations)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
 
     @property
     @pulumi.getter
@@ -8770,6 +9068,20 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of IAM roles that represent the set of operations that the sources
+        specified in the corresponding `IngressFrom`
+        are allowed to perform.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 if not MYPY:

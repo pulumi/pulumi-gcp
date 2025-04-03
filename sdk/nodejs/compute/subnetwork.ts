@@ -315,10 +315,15 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Deprecated)
      * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
      * it will not appear in get listings. If not set the default behavior is determined by the
      * org policy, if there is no org policy specified, then it will default to disabled.
      * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     *
+     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+     *
+     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
      */
     public readonly enableFlowLogs!: pulumi.Output<boolean>;
     /**
@@ -386,7 +391,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * Structure is documented below.
      */
-    public readonly logConfig!: pulumi.Output<outputs.compute.SubnetworkLogConfig>;
+    public readonly logConfig!: pulumi.Output<outputs.compute.SubnetworkLogConfig | undefined>;
     /**
      * The name of the resource, provided by the client when initially
      * creating the resource. The name must be 1-63 characters long, and
@@ -591,10 +596,15 @@ export interface SubnetworkState {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
      * it will not appear in get listings. If not set the default behavior is determined by the
      * org policy, if there is no org policy specified, then it will default to disabled.
      * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     *
+     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+     *
+     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
      */
     enableFlowLogs?: pulumi.Input<boolean>;
     /**
@@ -782,10 +792,15 @@ export interface SubnetworkArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * Whether to enable flow logging for this subnetwork. If this field is not explicitly set,
      * it will not appear in get listings. If not set the default behavior is determined by the
      * org policy, if there is no org policy specified, then it will default to disabled.
      * This field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+     *
+     * > **Warning:** This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
+     *
+     * @deprecated This field is being removed in favor of log_config. If logConfig is present, flow logs are enabled.
      */
     enableFlowLogs?: pulumi.Input<boolean>;
     /**

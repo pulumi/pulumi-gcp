@@ -1300,6 +1300,114 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+        ### Datastream Stream Bigquery Blmt
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        project = gcp.organizations.get_project()
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="blmt-instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+                "ip_configuration": {
+                    "authorized_networks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
+                    ],
+                },
+            },
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        blmt_bucket = gcp.storage.Bucket("blmt_bucket",
+            name="blmt-bucket",
+            location="us-central1",
+            force_destroy=True)
+        blmt_connection = gcp.bigquery.Connection("blmt_connection",
+            project=project.project_id,
+            location="us-central1",
+            connection_id="blmt-connection",
+            friendly_name="Datastream BLMT Test Connection",
+            description="Connection for Datastream BLMT test",
+            cloud_resource={})
+        blmt_connection_bucket_admin = gcp.storage.BucketIAMMember("blmt_connection_bucket_admin",
+            bucket=blmt_bucket.name,
+            role="roles/storage.admin",
+            member=blmt_connection.cloud_resource.apply(lambda cloud_resource: f"serviceAccount:{cloud_resource.service_account_id}"))
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="blmt-source-profile",
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destination_connection_profile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="blmt-destination-profile",
+            bigquery_profile={})
+        default = gcp.datastream.Stream("default",
+            stream_id="blmt-stream",
+            location="us-central1",
+            display_name="My BLMT stream",
+            source_config={
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {},
+            },
+            destination_config={
+                "destination_connection_profile": destination_connection_profile.id,
+                "bigquery_destination_config": {
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                    },
+                    "blmt_config": {
+                        "bucket": blmt_bucket.name,
+                        "connection_name": pulumi.Output.all(
+                            project=blmt_connection.project,
+                            location=blmt_connection.location,
+                            connection_id=blmt_connection.connection_id
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['location']}.{resolved_outputs['connection_id']}")
+        ,
+                        "file_format": "PARQUET",
+                        "table_format": "ICEBERG",
+                        "root_path": "/",
+                    },
+                    "append_only": {},
+                },
+            },
+            backfill_none={})
+        ```
 
         ## Import
 
@@ -2132,6 +2240,114 @@ class Stream(pulumi.CustomResource):
                         "dataset_template": {
                             "location": "us-central1",
                         },
+                    },
+                    "append_only": {},
+                },
+            },
+            backfill_none={})
+        ```
+        ### Datastream Stream Bigquery Blmt
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        project = gcp.organizations.get_project()
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="blmt-instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+                "ip_configuration": {
+                    "authorized_networks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
+                    ],
+                },
+            },
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        blmt_bucket = gcp.storage.Bucket("blmt_bucket",
+            name="blmt-bucket",
+            location="us-central1",
+            force_destroy=True)
+        blmt_connection = gcp.bigquery.Connection("blmt_connection",
+            project=project.project_id,
+            location="us-central1",
+            connection_id="blmt-connection",
+            friendly_name="Datastream BLMT Test Connection",
+            description="Connection for Datastream BLMT test",
+            cloud_resource={})
+        blmt_connection_bucket_admin = gcp.storage.BucketIAMMember("blmt_connection_bucket_admin",
+            bucket=blmt_bucket.name,
+            role="roles/storage.admin",
+            member=blmt_connection.cloud_resource.apply(lambda cloud_resource: f"serviceAccount:{cloud_resource.service_account_id}"))
+        source_connection_profile = gcp.datastream.ConnectionProfile("source_connection_profile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="blmt-source-profile",
+            mysql_profile={
+                "hostname": instance.public_ip_address,
+                "username": user.name,
+                "password": user.password,
+            })
+        destination_connection_profile = gcp.datastream.ConnectionProfile("destination_connection_profile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="blmt-destination-profile",
+            bigquery_profile={})
+        default = gcp.datastream.Stream("default",
+            stream_id="blmt-stream",
+            location="us-central1",
+            display_name="My BLMT stream",
+            source_config={
+                "source_connection_profile": source_connection_profile.id,
+                "mysql_source_config": {},
+            },
+            destination_config={
+                "destination_connection_profile": destination_connection_profile.id,
+                "bigquery_destination_config": {
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                    },
+                    "blmt_config": {
+                        "bucket": blmt_bucket.name,
+                        "connection_name": pulumi.Output.all(
+                            project=blmt_connection.project,
+                            location=blmt_connection.location,
+                            connection_id=blmt_connection.connection_id
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['location']}.{resolved_outputs['connection_id']}")
+        ,
+                        "file_format": "PARQUET",
+                        "table_format": "ICEBERG",
+                        "root_path": "/",
                     },
                     "append_only": {},
                 },

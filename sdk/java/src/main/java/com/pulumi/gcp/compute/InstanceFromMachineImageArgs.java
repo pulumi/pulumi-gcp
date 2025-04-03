@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageGuestAcceleratorArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageInstanceEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageNetworkInterfaceArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageNetworkPerformanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageParamsArgs;
@@ -16,6 +17,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageReservationAffinity
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageServiceAccountArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageShieldedInstanceConfigArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -175,6 +177,21 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * Encryption key used to provide data encryption on the given instance.
+     * 
+     */
+    @Import(name="instanceEncryptionKey")
+    private @Nullable Output<InstanceFromMachineImageInstanceEncryptionKeyArgs> instanceEncryptionKey;
+
+    /**
+     * @return Encryption key used to provide data encryption on the given instance.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageInstanceEncryptionKeyArgs>> instanceEncryptionKey() {
+        return Optional.ofNullable(this.instanceEncryptionKey);
     }
 
     /**
@@ -466,6 +483,21 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Encryption key for the source machine image.
+     * 
+     */
+    @Import(name="sourceMachineImageEncryptionKey")
+    private @Nullable Output<InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs> sourceMachineImageEncryptionKey;
+
+    /**
+     * @return Encryption key for the source machine image.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs>> sourceMachineImageEncryptionKey() {
+        return Optional.ofNullable(this.sourceMachineImageEncryptionKey);
+    }
+
+    /**
      * The list of tags attached to the instance.
      * 
      */
@@ -522,6 +554,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         this.enableDisplay = $.enableDisplay;
         this.guestAccelerators = $.guestAccelerators;
         this.hostname = $.hostname;
+        this.instanceEncryptionKey = $.instanceEncryptionKey;
         this.keyRevocationActionType = $.keyRevocationActionType;
         this.labels = $.labels;
         this.machineType = $.machineType;
@@ -540,6 +573,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.sourceMachineImage = $.sourceMachineImage;
+        this.sourceMachineImageEncryptionKey = $.sourceMachineImageEncryptionKey;
         this.tags = $.tags;
         this.zone = $.zone;
     }
@@ -774,6 +808,27 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
          */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param instanceEncryptionKey Encryption key used to provide data encryption on the given instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceEncryptionKey(@Nullable Output<InstanceFromMachineImageInstanceEncryptionKeyArgs> instanceEncryptionKey) {
+            $.instanceEncryptionKey = instanceEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param instanceEncryptionKey Encryption key used to provide data encryption on the given instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceEncryptionKey(InstanceFromMachineImageInstanceEncryptionKeyArgs instanceEncryptionKey) {
+            return instanceEncryptionKey(Output.of(instanceEncryptionKey));
         }
 
         /**
@@ -1180,6 +1235,27 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
          */
         public Builder sourceMachineImage(String sourceMachineImage) {
             return sourceMachineImage(Output.of(sourceMachineImage));
+        }
+
+        /**
+         * @param sourceMachineImageEncryptionKey Encryption key for the source machine image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceMachineImageEncryptionKey(@Nullable Output<InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs> sourceMachineImageEncryptionKey) {
+            $.sourceMachineImageEncryptionKey = sourceMachineImageEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceMachineImageEncryptionKey Encryption key for the source machine image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceMachineImageEncryptionKey(InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs sourceMachineImageEncryptionKey) {
+            return sourceMachineImageEncryptionKey(Output.of(sourceMachineImageEncryptionKey));
         }
 
         /**

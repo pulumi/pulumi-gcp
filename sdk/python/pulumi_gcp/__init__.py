@@ -743,6 +743,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/dnsZone",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/dnsZone:DnsZone": "DnsZone"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/endpointAttachment",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -4463,6 +4471,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataproc/metastoreDatabaseIamBinding",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreDatabaseIamBinding:MetastoreDatabaseIamBinding": "MetastoreDatabaseIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreDatabaseIamMember",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreDatabaseIamMember:MetastoreDatabaseIamMember": "MetastoreDatabaseIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreDatabaseIamPolicy",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreDatabaseIamPolicy:MetastoreDatabaseIamPolicy": "MetastoreDatabaseIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataproc/metastoreFederation",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
@@ -4523,6 +4555,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
    "gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy": "MetastoreServiceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreTableIamBinding",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding": "MetastoreTableIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreTableIamMember",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreTableIamMember:MetastoreTableIamMember": "MetastoreTableIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/metastoreTableIamPolicy",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy": "MetastoreTableIamPolicy"
   }
  },
  {
@@ -4723,6 +4779,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/searchEngine:SearchEngine": "SearchEngine"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/sitemap",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/sitemap:Sitemap": "Sitemap"
   }
  },
  {
@@ -4951,6 +5015,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "eventarc/enrollment",
+  "fqn": "pulumi_gcp.eventarc",
+  "classes": {
+   "gcp:eventarc/enrollment:Enrollment": "Enrollment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "eventarc/googleApiSource",
   "fqn": "pulumi_gcp.eventarc",
   "classes": {
@@ -5083,6 +5155,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/appHostingBackend:AppHostingBackend": "AppHostingBackend"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appHostingBuild",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appHostingBuild:AppHostingBuild": "AppHostingBuild"
   }
  },
  {
@@ -6643,6 +6723,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.memorystore",
   "classes": {
    "gcp:memorystore/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "memorystore/instanceDesiredUserCreatedEndpoints",
+  "fqn": "pulumi_gcp.memorystore",
+  "classes": {
+   "gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints": "InstanceDesiredUserCreatedEndpoints"
   }
  },
  {
@@ -8643,6 +8731,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.storage",
   "classes": {
    "gcp:storage/bucketObject:BucketObject": "BucketObject"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/controlFolderIntelligenceConfig",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig": "ControlFolderIntelligenceConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/controlOrganizationIntelligenceConfig",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig": "ControlOrganizationIntelligenceConfig"
   }
  },
  {

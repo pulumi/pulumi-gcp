@@ -19,7 +19,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     public static final TableState Empty = new TableState();
 
     /**
-     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to &#34;0&#34;. If this argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
      * 
      * ***
      * 
@@ -28,7 +28,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<TableAutomatedBackupPolicyArgs> automatedBackupPolicy;
 
     /**
-     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to &#34;0&#34;. If this argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
      * 
      * ***
      * 
@@ -180,7 +180,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to &#34;0&#34;. If this argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
          * 
          * ***
          * 
@@ -193,7 +193,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+         * @param automatedBackupPolicy Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to &#34;0&#34;. If this argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
          * 
          * ***
          * 

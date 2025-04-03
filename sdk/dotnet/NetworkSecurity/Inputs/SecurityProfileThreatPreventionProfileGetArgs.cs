@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
 
     public sealed class SecurityProfileThreatPreventionProfileGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("antivirusOverrides")]
+        private InputList<Inputs.SecurityProfileThreatPreventionProfileAntivirusOverrideGetArgs>? _antivirusOverrides;
+
+        /// <summary>
+        /// Defines what action to take for antivirus threats per protocol.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SecurityProfileThreatPreventionProfileAntivirusOverrideGetArgs> AntivirusOverrides
+        {
+            get => _antivirusOverrides ?? (_antivirusOverrides = new InputList<Inputs.SecurityProfileThreatPreventionProfileAntivirusOverrideGetArgs>());
+            set => _antivirusOverrides = value;
+        }
+
         [Input("severityOverrides")]
         private InputList<Inputs.SecurityProfileThreatPreventionProfileSeverityOverrideGetArgs>? _severityOverrides;
 

@@ -689,6 +689,14 @@ Object.defineProperty(exports, "eventarcCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const externalCredentials: outputs.config.ExternalCredentials | undefined;
+Object.defineProperty(exports, "externalCredentials", {
+    get() {
+        return __config.getObject<outputs.config.ExternalCredentials>("externalCredentials");
+    },
+    enumerable: true,
+});
+
 export declare const filestoreCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "filestoreCustomEndpoint", {
     get() {

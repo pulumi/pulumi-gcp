@@ -6,6 +6,7 @@ package com.pulumi.gcp;
 import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.config.inputs.Batching;
+import com.pulumi.gcp.config.inputs.ExternalCredentials;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -269,6 +270,9 @@ public final class Config {
     }
     public Optional<String> eventarcCustomEndpoint() {
         return Codegen.stringProp("eventarcCustomEndpoint").config(config).get();
+    }
+    public Optional<ExternalCredentials> externalCredentials() {
+        return Codegen.objectProp("externalCredentials", ExternalCredentials.class).config(config).get();
     }
     public Optional<String> filestoreCustomEndpoint() {
         return Codegen.stringProp("filestoreCustomEndpoint").config(config).get();

@@ -402,6 +402,888 @@ func (o AppHostingBackendManagedResourceRunServiceArrayOutput) Index(i pulumi.In
 	}).(AppHostingBackendManagedResourceRunServiceOutput)
 }
 
+type AppHostingBuildError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details. There is a common set of
+	// message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AppHostingBuildErrorInput is an input type that accepts AppHostingBuildErrorArgs and AppHostingBuildErrorOutput values.
+// You can construct a concrete instance of `AppHostingBuildErrorInput` via:
+//
+//	AppHostingBuildErrorArgs{...}
+type AppHostingBuildErrorInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildErrorOutput() AppHostingBuildErrorOutput
+	ToAppHostingBuildErrorOutputWithContext(context.Context) AppHostingBuildErrorOutput
+}
+
+type AppHostingBuildErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details. There is a common set of
+	// message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AppHostingBuildErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildError)(nil)).Elem()
+}
+
+func (i AppHostingBuildErrorArgs) ToAppHostingBuildErrorOutput() AppHostingBuildErrorOutput {
+	return i.ToAppHostingBuildErrorOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildErrorArgs) ToAppHostingBuildErrorOutputWithContext(ctx context.Context) AppHostingBuildErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildErrorOutput)
+}
+
+// AppHostingBuildErrorArrayInput is an input type that accepts AppHostingBuildErrorArray and AppHostingBuildErrorArrayOutput values.
+// You can construct a concrete instance of `AppHostingBuildErrorArrayInput` via:
+//
+//	AppHostingBuildErrorArray{ AppHostingBuildErrorArgs{...} }
+type AppHostingBuildErrorArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildErrorArrayOutput() AppHostingBuildErrorArrayOutput
+	ToAppHostingBuildErrorArrayOutputWithContext(context.Context) AppHostingBuildErrorArrayOutput
+}
+
+type AppHostingBuildErrorArray []AppHostingBuildErrorInput
+
+func (AppHostingBuildErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingBuildError)(nil)).Elem()
+}
+
+func (i AppHostingBuildErrorArray) ToAppHostingBuildErrorArrayOutput() AppHostingBuildErrorArrayOutput {
+	return i.ToAppHostingBuildErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildErrorArray) ToAppHostingBuildErrorArrayOutputWithContext(ctx context.Context) AppHostingBuildErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildErrorArrayOutput)
+}
+
+type AppHostingBuildErrorOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildError)(nil)).Elem()
+}
+
+func (o AppHostingBuildErrorOutput) ToAppHostingBuildErrorOutput() AppHostingBuildErrorOutput {
+	return o
+}
+
+func (o AppHostingBuildErrorOutput) ToAppHostingBuildErrorOutputWithContext(ctx context.Context) AppHostingBuildErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AppHostingBuildErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details. There is a common set of
+// message types for APIs to use.
+func (o AppHostingBuildErrorOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v AppHostingBuildError) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AppHostingBuildErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingBuildErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingBuildError)(nil)).Elem()
+}
+
+func (o AppHostingBuildErrorArrayOutput) ToAppHostingBuildErrorArrayOutput() AppHostingBuildErrorArrayOutput {
+	return o
+}
+
+func (o AppHostingBuildErrorArrayOutput) ToAppHostingBuildErrorArrayOutputWithContext(ctx context.Context) AppHostingBuildErrorArrayOutput {
+	return o
+}
+
+func (o AppHostingBuildErrorArrayOutput) Index(i pulumi.IntInput) AppHostingBuildErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingBuildError {
+		return vs[0].([]AppHostingBuildError)[vs[1].(int)]
+	}).(AppHostingBuildErrorOutput)
+}
+
+type AppHostingBuildSource struct {
+	// A codebase source, representing the state of the codebase
+	// that the build will be created at.
+	// Structure is documented below.
+	Codebase *AppHostingBuildSourceCodebase `pulumi:"codebase"`
+	// The URI of an Artifact Registry
+	// [container
+	// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
+	// to use as the build source.
+	// Structure is documented below.
+	Container *AppHostingBuildSourceContainer `pulumi:"container"`
+}
+
+// AppHostingBuildSourceInput is an input type that accepts AppHostingBuildSourceArgs and AppHostingBuildSourceOutput values.
+// You can construct a concrete instance of `AppHostingBuildSourceInput` via:
+//
+//	AppHostingBuildSourceArgs{...}
+type AppHostingBuildSourceInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildSourceOutput() AppHostingBuildSourceOutput
+	ToAppHostingBuildSourceOutputWithContext(context.Context) AppHostingBuildSourceOutput
+}
+
+type AppHostingBuildSourceArgs struct {
+	// A codebase source, representing the state of the codebase
+	// that the build will be created at.
+	// Structure is documented below.
+	Codebase AppHostingBuildSourceCodebasePtrInput `pulumi:"codebase"`
+	// The URI of an Artifact Registry
+	// [container
+	// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
+	// to use as the build source.
+	// Structure is documented below.
+	Container AppHostingBuildSourceContainerPtrInput `pulumi:"container"`
+}
+
+func (AppHostingBuildSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildSource)(nil)).Elem()
+}
+
+func (i AppHostingBuildSourceArgs) ToAppHostingBuildSourceOutput() AppHostingBuildSourceOutput {
+	return i.ToAppHostingBuildSourceOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildSourceArgs) ToAppHostingBuildSourceOutputWithContext(ctx context.Context) AppHostingBuildSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceOutput)
+}
+
+func (i AppHostingBuildSourceArgs) ToAppHostingBuildSourcePtrOutput() AppHostingBuildSourcePtrOutput {
+	return i.ToAppHostingBuildSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildSourceArgs) ToAppHostingBuildSourcePtrOutputWithContext(ctx context.Context) AppHostingBuildSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceOutput).ToAppHostingBuildSourcePtrOutputWithContext(ctx)
+}
+
+// AppHostingBuildSourcePtrInput is an input type that accepts AppHostingBuildSourceArgs, AppHostingBuildSourcePtr and AppHostingBuildSourcePtrOutput values.
+// You can construct a concrete instance of `AppHostingBuildSourcePtrInput` via:
+//
+//	        AppHostingBuildSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppHostingBuildSourcePtrInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildSourcePtrOutput() AppHostingBuildSourcePtrOutput
+	ToAppHostingBuildSourcePtrOutputWithContext(context.Context) AppHostingBuildSourcePtrOutput
+}
+
+type appHostingBuildSourcePtrType AppHostingBuildSourceArgs
+
+func AppHostingBuildSourcePtr(v *AppHostingBuildSourceArgs) AppHostingBuildSourcePtrInput {
+	return (*appHostingBuildSourcePtrType)(v)
+}
+
+func (*appHostingBuildSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingBuildSource)(nil)).Elem()
+}
+
+func (i *appHostingBuildSourcePtrType) ToAppHostingBuildSourcePtrOutput() AppHostingBuildSourcePtrOutput {
+	return i.ToAppHostingBuildSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *appHostingBuildSourcePtrType) ToAppHostingBuildSourcePtrOutputWithContext(ctx context.Context) AppHostingBuildSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourcePtrOutput)
+}
+
+type AppHostingBuildSourceOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildSource)(nil)).Elem()
+}
+
+func (o AppHostingBuildSourceOutput) ToAppHostingBuildSourceOutput() AppHostingBuildSourceOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceOutput) ToAppHostingBuildSourceOutputWithContext(ctx context.Context) AppHostingBuildSourceOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceOutput) ToAppHostingBuildSourcePtrOutput() AppHostingBuildSourcePtrOutput {
+	return o.ToAppHostingBuildSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AppHostingBuildSourceOutput) ToAppHostingBuildSourcePtrOutputWithContext(ctx context.Context) AppHostingBuildSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppHostingBuildSource) *AppHostingBuildSource {
+		return &v
+	}).(AppHostingBuildSourcePtrOutput)
+}
+
+// A codebase source, representing the state of the codebase
+// that the build will be created at.
+// Structure is documented below.
+func (o AppHostingBuildSourceOutput) Codebase() AppHostingBuildSourceCodebasePtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSource) *AppHostingBuildSourceCodebase { return v.Codebase }).(AppHostingBuildSourceCodebasePtrOutput)
+}
+
+// The URI of an Artifact Registry
+// [container
+// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
+// to use as the build source.
+// Structure is documented below.
+func (o AppHostingBuildSourceOutput) Container() AppHostingBuildSourceContainerPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSource) *AppHostingBuildSourceContainer { return v.Container }).(AppHostingBuildSourceContainerPtrOutput)
+}
+
+type AppHostingBuildSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingBuildSource)(nil)).Elem()
+}
+
+func (o AppHostingBuildSourcePtrOutput) ToAppHostingBuildSourcePtrOutput() AppHostingBuildSourcePtrOutput {
+	return o
+}
+
+func (o AppHostingBuildSourcePtrOutput) ToAppHostingBuildSourcePtrOutputWithContext(ctx context.Context) AppHostingBuildSourcePtrOutput {
+	return o
+}
+
+func (o AppHostingBuildSourcePtrOutput) Elem() AppHostingBuildSourceOutput {
+	return o.ApplyT(func(v *AppHostingBuildSource) AppHostingBuildSource {
+		if v != nil {
+			return *v
+		}
+		var ret AppHostingBuildSource
+		return ret
+	}).(AppHostingBuildSourceOutput)
+}
+
+// A codebase source, representing the state of the codebase
+// that the build will be created at.
+// Structure is documented below.
+func (o AppHostingBuildSourcePtrOutput) Codebase() AppHostingBuildSourceCodebasePtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSource) *AppHostingBuildSourceCodebase {
+		if v == nil {
+			return nil
+		}
+		return v.Codebase
+	}).(AppHostingBuildSourceCodebasePtrOutput)
+}
+
+// The URI of an Artifact Registry
+// [container
+// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
+// to use as the build source.
+// Structure is documented below.
+func (o AppHostingBuildSourcePtrOutput) Container() AppHostingBuildSourceContainerPtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSource) *AppHostingBuildSourceContainer {
+		if v == nil {
+			return nil
+		}
+		return v.Container
+	}).(AppHostingBuildSourceContainerPtrOutput)
+}
+
+type AppHostingBuildSourceCodebase struct {
+	// (Output)
+	// Version control metadata for a user associated with a resolved codebase.
+	// Currently assumes a Git user.
+	// Structure is documented below.
+	Authors []AppHostingBuildSourceCodebaseAuthor `pulumi:"authors"`
+	// The branch in the codebase to build from, using the latest commit.
+	Branch *string `pulumi:"branch"`
+	// The commit in the codebase to build from.
+	//
+	// <a name="nestedSourceCodebaseAuthor"></a>The `author` block contains:
+	Commit *string `pulumi:"commit"`
+	// (Output)
+	// The message of a codebase change.
+	CommitMessage *string `pulumi:"commitMessage"`
+	// (Output)
+	// The time the change was made.
+	CommitTime *string `pulumi:"commitTime"`
+	// Human-readable name. 63 character limit.
+	DisplayName *string `pulumi:"displayName"`
+	// (Output)
+	// The full SHA-1 hash of a Git commit, if available.
+	Hash *string `pulumi:"hash"`
+	// (Output)
+	// A URI linking to the codebase on an hosting provider's website. May
+	// not be valid if the commit has been rebased or force-pushed out of
+	// existence in the linked repository.
+	Uri *string `pulumi:"uri"`
+}
+
+// AppHostingBuildSourceCodebaseInput is an input type that accepts AppHostingBuildSourceCodebaseArgs and AppHostingBuildSourceCodebaseOutput values.
+// You can construct a concrete instance of `AppHostingBuildSourceCodebaseInput` via:
+//
+//	AppHostingBuildSourceCodebaseArgs{...}
+type AppHostingBuildSourceCodebaseInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildSourceCodebaseOutput() AppHostingBuildSourceCodebaseOutput
+	ToAppHostingBuildSourceCodebaseOutputWithContext(context.Context) AppHostingBuildSourceCodebaseOutput
+}
+
+type AppHostingBuildSourceCodebaseArgs struct {
+	// (Output)
+	// Version control metadata for a user associated with a resolved codebase.
+	// Currently assumes a Git user.
+	// Structure is documented below.
+	Authors AppHostingBuildSourceCodebaseAuthorArrayInput `pulumi:"authors"`
+	// The branch in the codebase to build from, using the latest commit.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The commit in the codebase to build from.
+	//
+	// <a name="nestedSourceCodebaseAuthor"></a>The `author` block contains:
+	Commit pulumi.StringPtrInput `pulumi:"commit"`
+	// (Output)
+	// The message of a codebase change.
+	CommitMessage pulumi.StringPtrInput `pulumi:"commitMessage"`
+	// (Output)
+	// The time the change was made.
+	CommitTime pulumi.StringPtrInput `pulumi:"commitTime"`
+	// Human-readable name. 63 character limit.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (Output)
+	// The full SHA-1 hash of a Git commit, if available.
+	Hash pulumi.StringPtrInput `pulumi:"hash"`
+	// (Output)
+	// A URI linking to the codebase on an hosting provider's website. May
+	// not be valid if the commit has been rebased or force-pushed out of
+	// existence in the linked repository.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (AppHostingBuildSourceCodebaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildSourceCodebase)(nil)).Elem()
+}
+
+func (i AppHostingBuildSourceCodebaseArgs) ToAppHostingBuildSourceCodebaseOutput() AppHostingBuildSourceCodebaseOutput {
+	return i.ToAppHostingBuildSourceCodebaseOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildSourceCodebaseArgs) ToAppHostingBuildSourceCodebaseOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceCodebaseOutput)
+}
+
+func (i AppHostingBuildSourceCodebaseArgs) ToAppHostingBuildSourceCodebasePtrOutput() AppHostingBuildSourceCodebasePtrOutput {
+	return i.ToAppHostingBuildSourceCodebasePtrOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildSourceCodebaseArgs) ToAppHostingBuildSourceCodebasePtrOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceCodebaseOutput).ToAppHostingBuildSourceCodebasePtrOutputWithContext(ctx)
+}
+
+// AppHostingBuildSourceCodebasePtrInput is an input type that accepts AppHostingBuildSourceCodebaseArgs, AppHostingBuildSourceCodebasePtr and AppHostingBuildSourceCodebasePtrOutput values.
+// You can construct a concrete instance of `AppHostingBuildSourceCodebasePtrInput` via:
+//
+//	        AppHostingBuildSourceCodebaseArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppHostingBuildSourceCodebasePtrInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildSourceCodebasePtrOutput() AppHostingBuildSourceCodebasePtrOutput
+	ToAppHostingBuildSourceCodebasePtrOutputWithContext(context.Context) AppHostingBuildSourceCodebasePtrOutput
+}
+
+type appHostingBuildSourceCodebasePtrType AppHostingBuildSourceCodebaseArgs
+
+func AppHostingBuildSourceCodebasePtr(v *AppHostingBuildSourceCodebaseArgs) AppHostingBuildSourceCodebasePtrInput {
+	return (*appHostingBuildSourceCodebasePtrType)(v)
+}
+
+func (*appHostingBuildSourceCodebasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingBuildSourceCodebase)(nil)).Elem()
+}
+
+func (i *appHostingBuildSourceCodebasePtrType) ToAppHostingBuildSourceCodebasePtrOutput() AppHostingBuildSourceCodebasePtrOutput {
+	return i.ToAppHostingBuildSourceCodebasePtrOutputWithContext(context.Background())
+}
+
+func (i *appHostingBuildSourceCodebasePtrType) ToAppHostingBuildSourceCodebasePtrOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceCodebasePtrOutput)
+}
+
+type AppHostingBuildSourceCodebaseOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildSourceCodebaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildSourceCodebase)(nil)).Elem()
+}
+
+func (o AppHostingBuildSourceCodebaseOutput) ToAppHostingBuildSourceCodebaseOutput() AppHostingBuildSourceCodebaseOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceCodebaseOutput) ToAppHostingBuildSourceCodebaseOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebaseOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceCodebaseOutput) ToAppHostingBuildSourceCodebasePtrOutput() AppHostingBuildSourceCodebasePtrOutput {
+	return o.ToAppHostingBuildSourceCodebasePtrOutputWithContext(context.Background())
+}
+
+func (o AppHostingBuildSourceCodebaseOutput) ToAppHostingBuildSourceCodebasePtrOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppHostingBuildSourceCodebase) *AppHostingBuildSourceCodebase {
+		return &v
+	}).(AppHostingBuildSourceCodebasePtrOutput)
+}
+
+// (Output)
+// Version control metadata for a user associated with a resolved codebase.
+// Currently assumes a Git user.
+// Structure is documented below.
+func (o AppHostingBuildSourceCodebaseOutput) Authors() AppHostingBuildSourceCodebaseAuthorArrayOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebase) []AppHostingBuildSourceCodebaseAuthor { return v.Authors }).(AppHostingBuildSourceCodebaseAuthorArrayOutput)
+}
+
+// The branch in the codebase to build from, using the latest commit.
+func (o AppHostingBuildSourceCodebaseOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebase) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The commit in the codebase to build from.
+//
+// <a name="nestedSourceCodebaseAuthor"></a>The `author` block contains:
+func (o AppHostingBuildSourceCodebaseOutput) Commit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebase) *string { return v.Commit }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The message of a codebase change.
+func (o AppHostingBuildSourceCodebaseOutput) CommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebase) *string { return v.CommitMessage }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time the change was made.
+func (o AppHostingBuildSourceCodebaseOutput) CommitTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebase) *string { return v.CommitTime }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable name. 63 character limit.
+func (o AppHostingBuildSourceCodebaseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebase) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The full SHA-1 hash of a Git commit, if available.
+func (o AppHostingBuildSourceCodebaseOutput) Hash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebase) *string { return v.Hash }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A URI linking to the codebase on an hosting provider's website. May
+// not be valid if the commit has been rebased or force-pushed out of
+// existence in the linked repository.
+func (o AppHostingBuildSourceCodebaseOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebase) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingBuildSourceCodebasePtrOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildSourceCodebasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingBuildSourceCodebase)(nil)).Elem()
+}
+
+func (o AppHostingBuildSourceCodebasePtrOutput) ToAppHostingBuildSourceCodebasePtrOutput() AppHostingBuildSourceCodebasePtrOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceCodebasePtrOutput) ToAppHostingBuildSourceCodebasePtrOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebasePtrOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceCodebasePtrOutput) Elem() AppHostingBuildSourceCodebaseOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) AppHostingBuildSourceCodebase {
+		if v != nil {
+			return *v
+		}
+		var ret AppHostingBuildSourceCodebase
+		return ret
+	}).(AppHostingBuildSourceCodebaseOutput)
+}
+
+// (Output)
+// Version control metadata for a user associated with a resolved codebase.
+// Currently assumes a Git user.
+// Structure is documented below.
+func (o AppHostingBuildSourceCodebasePtrOutput) Authors() AppHostingBuildSourceCodebaseAuthorArrayOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) []AppHostingBuildSourceCodebaseAuthor {
+		if v == nil {
+			return nil
+		}
+		return v.Authors
+	}).(AppHostingBuildSourceCodebaseAuthorArrayOutput)
+}
+
+// The branch in the codebase to build from, using the latest commit.
+func (o AppHostingBuildSourceCodebasePtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The commit in the codebase to build from.
+//
+// <a name="nestedSourceCodebaseAuthor"></a>The `author` block contains:
+func (o AppHostingBuildSourceCodebasePtrOutput) Commit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Commit
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The message of a codebase change.
+func (o AppHostingBuildSourceCodebasePtrOutput) CommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time the change was made.
+func (o AppHostingBuildSourceCodebasePtrOutput) CommitTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Human-readable name. 63 character limit.
+func (o AppHostingBuildSourceCodebasePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The full SHA-1 hash of a Git commit, if available.
+func (o AppHostingBuildSourceCodebasePtrOutput) Hash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hash
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A URI linking to the codebase on an hosting provider's website. May
+// not be valid if the commit has been rebased or force-pushed out of
+// existence in the linked repository.
+func (o AppHostingBuildSourceCodebasePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppHostingBuildSourceCodebaseAuthor struct {
+	// The 'name' field in a Git user's git.config. Required by Git.
+	DisplayName *string `pulumi:"displayName"`
+	// The 'email' field in a Git user's git.config, if available.
+	Email *string `pulumi:"email"`
+	// The URI of an image file associated with the user's account in an
+	// external source control provider, if available.
+	ImageUri *string `pulumi:"imageUri"`
+}
+
+// AppHostingBuildSourceCodebaseAuthorInput is an input type that accepts AppHostingBuildSourceCodebaseAuthorArgs and AppHostingBuildSourceCodebaseAuthorOutput values.
+// You can construct a concrete instance of `AppHostingBuildSourceCodebaseAuthorInput` via:
+//
+//	AppHostingBuildSourceCodebaseAuthorArgs{...}
+type AppHostingBuildSourceCodebaseAuthorInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildSourceCodebaseAuthorOutput() AppHostingBuildSourceCodebaseAuthorOutput
+	ToAppHostingBuildSourceCodebaseAuthorOutputWithContext(context.Context) AppHostingBuildSourceCodebaseAuthorOutput
+}
+
+type AppHostingBuildSourceCodebaseAuthorArgs struct {
+	// The 'name' field in a Git user's git.config. Required by Git.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The 'email' field in a Git user's git.config, if available.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The URI of an image file associated with the user's account in an
+	// external source control provider, if available.
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+}
+
+func (AppHostingBuildSourceCodebaseAuthorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildSourceCodebaseAuthor)(nil)).Elem()
+}
+
+func (i AppHostingBuildSourceCodebaseAuthorArgs) ToAppHostingBuildSourceCodebaseAuthorOutput() AppHostingBuildSourceCodebaseAuthorOutput {
+	return i.ToAppHostingBuildSourceCodebaseAuthorOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildSourceCodebaseAuthorArgs) ToAppHostingBuildSourceCodebaseAuthorOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebaseAuthorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceCodebaseAuthorOutput)
+}
+
+// AppHostingBuildSourceCodebaseAuthorArrayInput is an input type that accepts AppHostingBuildSourceCodebaseAuthorArray and AppHostingBuildSourceCodebaseAuthorArrayOutput values.
+// You can construct a concrete instance of `AppHostingBuildSourceCodebaseAuthorArrayInput` via:
+//
+//	AppHostingBuildSourceCodebaseAuthorArray{ AppHostingBuildSourceCodebaseAuthorArgs{...} }
+type AppHostingBuildSourceCodebaseAuthorArrayInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildSourceCodebaseAuthorArrayOutput() AppHostingBuildSourceCodebaseAuthorArrayOutput
+	ToAppHostingBuildSourceCodebaseAuthorArrayOutputWithContext(context.Context) AppHostingBuildSourceCodebaseAuthorArrayOutput
+}
+
+type AppHostingBuildSourceCodebaseAuthorArray []AppHostingBuildSourceCodebaseAuthorInput
+
+func (AppHostingBuildSourceCodebaseAuthorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingBuildSourceCodebaseAuthor)(nil)).Elem()
+}
+
+func (i AppHostingBuildSourceCodebaseAuthorArray) ToAppHostingBuildSourceCodebaseAuthorArrayOutput() AppHostingBuildSourceCodebaseAuthorArrayOutput {
+	return i.ToAppHostingBuildSourceCodebaseAuthorArrayOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildSourceCodebaseAuthorArray) ToAppHostingBuildSourceCodebaseAuthorArrayOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebaseAuthorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceCodebaseAuthorArrayOutput)
+}
+
+type AppHostingBuildSourceCodebaseAuthorOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildSourceCodebaseAuthorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildSourceCodebaseAuthor)(nil)).Elem()
+}
+
+func (o AppHostingBuildSourceCodebaseAuthorOutput) ToAppHostingBuildSourceCodebaseAuthorOutput() AppHostingBuildSourceCodebaseAuthorOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceCodebaseAuthorOutput) ToAppHostingBuildSourceCodebaseAuthorOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebaseAuthorOutput {
+	return o
+}
+
+// The 'name' field in a Git user's git.config. Required by Git.
+func (o AppHostingBuildSourceCodebaseAuthorOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebaseAuthor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The 'email' field in a Git user's git.config, if available.
+func (o AppHostingBuildSourceCodebaseAuthorOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebaseAuthor) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The URI of an image file associated with the user's account in an
+// external source control provider, if available.
+func (o AppHostingBuildSourceCodebaseAuthorOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceCodebaseAuthor) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
+}
+
+type AppHostingBuildSourceCodebaseAuthorArrayOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildSourceCodebaseAuthorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppHostingBuildSourceCodebaseAuthor)(nil)).Elem()
+}
+
+func (o AppHostingBuildSourceCodebaseAuthorArrayOutput) ToAppHostingBuildSourceCodebaseAuthorArrayOutput() AppHostingBuildSourceCodebaseAuthorArrayOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceCodebaseAuthorArrayOutput) ToAppHostingBuildSourceCodebaseAuthorArrayOutputWithContext(ctx context.Context) AppHostingBuildSourceCodebaseAuthorArrayOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceCodebaseAuthorArrayOutput) Index(i pulumi.IntInput) AppHostingBuildSourceCodebaseAuthorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppHostingBuildSourceCodebaseAuthor {
+		return vs[0].([]AppHostingBuildSourceCodebaseAuthor)[vs[1].(int)]
+	}).(AppHostingBuildSourceCodebaseAuthorOutput)
+}
+
+type AppHostingBuildSourceContainer struct {
+	// A URI representing a container for the backend to use.
+	Image string `pulumi:"image"`
+}
+
+// AppHostingBuildSourceContainerInput is an input type that accepts AppHostingBuildSourceContainerArgs and AppHostingBuildSourceContainerOutput values.
+// You can construct a concrete instance of `AppHostingBuildSourceContainerInput` via:
+//
+//	AppHostingBuildSourceContainerArgs{...}
+type AppHostingBuildSourceContainerInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildSourceContainerOutput() AppHostingBuildSourceContainerOutput
+	ToAppHostingBuildSourceContainerOutputWithContext(context.Context) AppHostingBuildSourceContainerOutput
+}
+
+type AppHostingBuildSourceContainerArgs struct {
+	// A URI representing a container for the backend to use.
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (AppHostingBuildSourceContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildSourceContainer)(nil)).Elem()
+}
+
+func (i AppHostingBuildSourceContainerArgs) ToAppHostingBuildSourceContainerOutput() AppHostingBuildSourceContainerOutput {
+	return i.ToAppHostingBuildSourceContainerOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildSourceContainerArgs) ToAppHostingBuildSourceContainerOutputWithContext(ctx context.Context) AppHostingBuildSourceContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceContainerOutput)
+}
+
+func (i AppHostingBuildSourceContainerArgs) ToAppHostingBuildSourceContainerPtrOutput() AppHostingBuildSourceContainerPtrOutput {
+	return i.ToAppHostingBuildSourceContainerPtrOutputWithContext(context.Background())
+}
+
+func (i AppHostingBuildSourceContainerArgs) ToAppHostingBuildSourceContainerPtrOutputWithContext(ctx context.Context) AppHostingBuildSourceContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceContainerOutput).ToAppHostingBuildSourceContainerPtrOutputWithContext(ctx)
+}
+
+// AppHostingBuildSourceContainerPtrInput is an input type that accepts AppHostingBuildSourceContainerArgs, AppHostingBuildSourceContainerPtr and AppHostingBuildSourceContainerPtrOutput values.
+// You can construct a concrete instance of `AppHostingBuildSourceContainerPtrInput` via:
+//
+//	        AppHostingBuildSourceContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppHostingBuildSourceContainerPtrInput interface {
+	pulumi.Input
+
+	ToAppHostingBuildSourceContainerPtrOutput() AppHostingBuildSourceContainerPtrOutput
+	ToAppHostingBuildSourceContainerPtrOutputWithContext(context.Context) AppHostingBuildSourceContainerPtrOutput
+}
+
+type appHostingBuildSourceContainerPtrType AppHostingBuildSourceContainerArgs
+
+func AppHostingBuildSourceContainerPtr(v *AppHostingBuildSourceContainerArgs) AppHostingBuildSourceContainerPtrInput {
+	return (*appHostingBuildSourceContainerPtrType)(v)
+}
+
+func (*appHostingBuildSourceContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingBuildSourceContainer)(nil)).Elem()
+}
+
+func (i *appHostingBuildSourceContainerPtrType) ToAppHostingBuildSourceContainerPtrOutput() AppHostingBuildSourceContainerPtrOutput {
+	return i.ToAppHostingBuildSourceContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *appHostingBuildSourceContainerPtrType) ToAppHostingBuildSourceContainerPtrOutputWithContext(ctx context.Context) AppHostingBuildSourceContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppHostingBuildSourceContainerPtrOutput)
+}
+
+type AppHostingBuildSourceContainerOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildSourceContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppHostingBuildSourceContainer)(nil)).Elem()
+}
+
+func (o AppHostingBuildSourceContainerOutput) ToAppHostingBuildSourceContainerOutput() AppHostingBuildSourceContainerOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceContainerOutput) ToAppHostingBuildSourceContainerOutputWithContext(ctx context.Context) AppHostingBuildSourceContainerOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceContainerOutput) ToAppHostingBuildSourceContainerPtrOutput() AppHostingBuildSourceContainerPtrOutput {
+	return o.ToAppHostingBuildSourceContainerPtrOutputWithContext(context.Background())
+}
+
+func (o AppHostingBuildSourceContainerOutput) ToAppHostingBuildSourceContainerPtrOutputWithContext(ctx context.Context) AppHostingBuildSourceContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppHostingBuildSourceContainer) *AppHostingBuildSourceContainer {
+		return &v
+	}).(AppHostingBuildSourceContainerPtrOutput)
+}
+
+// A URI representing a container for the backend to use.
+func (o AppHostingBuildSourceContainerOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v AppHostingBuildSourceContainer) string { return v.Image }).(pulumi.StringOutput)
+}
+
+type AppHostingBuildSourceContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (AppHostingBuildSourceContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppHostingBuildSourceContainer)(nil)).Elem()
+}
+
+func (o AppHostingBuildSourceContainerPtrOutput) ToAppHostingBuildSourceContainerPtrOutput() AppHostingBuildSourceContainerPtrOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceContainerPtrOutput) ToAppHostingBuildSourceContainerPtrOutputWithContext(ctx context.Context) AppHostingBuildSourceContainerPtrOutput {
+	return o
+}
+
+func (o AppHostingBuildSourceContainerPtrOutput) Elem() AppHostingBuildSourceContainerOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceContainer) AppHostingBuildSourceContainer {
+		if v != nil {
+			return *v
+		}
+		var ret AppHostingBuildSourceContainer
+		return ret
+	}).(AppHostingBuildSourceContainerOutput)
+}
+
+// A URI representing a container for the backend to use.
+func (o AppHostingBuildSourceContainerPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppHostingBuildSourceContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
 type ExtensionsInstanceConfig struct {
 	// List of extension events selected by consumer that extension is allowed to
 	// emit, identified by their types.
@@ -3992,6 +4874,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendManagedResourceArrayInput)(nil)).Elem(), AppHostingBackendManagedResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendManagedResourceRunServiceInput)(nil)).Elem(), AppHostingBackendManagedResourceRunServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendManagedResourceRunServiceArrayInput)(nil)).Elem(), AppHostingBackendManagedResourceRunServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildErrorInput)(nil)).Elem(), AppHostingBuildErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildErrorArrayInput)(nil)).Elem(), AppHostingBuildErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceInput)(nil)).Elem(), AppHostingBuildSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourcePtrInput)(nil)).Elem(), AppHostingBuildSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceCodebaseInput)(nil)).Elem(), AppHostingBuildSourceCodebaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceCodebasePtrInput)(nil)).Elem(), AppHostingBuildSourceCodebaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceCodebaseAuthorInput)(nil)).Elem(), AppHostingBuildSourceCodebaseAuthorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceCodebaseAuthorArrayInput)(nil)).Elem(), AppHostingBuildSourceCodebaseAuthorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceContainerInput)(nil)).Elem(), AppHostingBuildSourceContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBuildSourceContainerPtrInput)(nil)).Elem(), AppHostingBuildSourceContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceConfigInput)(nil)).Elem(), ExtensionsInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceConfigPtrInput)(nil)).Elem(), ExtensionsInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceErrorStatusInput)(nil)).Elem(), ExtensionsInstanceErrorStatusArgs{})
@@ -4046,6 +4938,16 @@ func init() {
 	pulumi.RegisterOutputType(AppHostingBackendManagedResourceArrayOutput{})
 	pulumi.RegisterOutputType(AppHostingBackendManagedResourceRunServiceOutput{})
 	pulumi.RegisterOutputType(AppHostingBackendManagedResourceRunServiceArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildErrorOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildErrorArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildSourceOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildSourcePtrOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildSourceCodebaseOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildSourceCodebasePtrOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildSourceCodebaseAuthorOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildSourceCodebaseAuthorArrayOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildSourceContainerOutput{})
+	pulumi.RegisterOutputType(AppHostingBuildSourceContainerPtrOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ExtensionsInstanceErrorStatusOutput{})

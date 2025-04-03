@@ -487,6 +487,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly authorizationMode!: pulumi.Output<string | undefined>;
     /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     */
+    public readonly automatedBackupConfig!: pulumi.Output<outputs.redis.ClusterAutomatedBackupConfig | undefined>;
+    /**
      * The timestamp associated with the cluster creation request. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
      * digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -631,6 +636,7 @@ export class Cluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["authorizationMode"] = state ? state.authorizationMode : undefined;
+            resourceInputs["automatedBackupConfig"] = state ? state.automatedBackupConfig : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["crossClusterReplicationConfig"] = state ? state.crossClusterReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
@@ -662,6 +668,7 @@ export class Cluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'shardCount'");
             }
             resourceInputs["authorizationMode"] = args ? args.authorizationMode : undefined;
+            resourceInputs["automatedBackupConfig"] = args ? args.automatedBackupConfig : undefined;
             resourceInputs["crossClusterReplicationConfig"] = args ? args.crossClusterReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
             resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
@@ -703,6 +710,11 @@ export interface ClusterState {
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      */
     authorizationMode?: pulumi.Input<string>;
+    /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     */
+    automatedBackupConfig?: pulumi.Input<inputs.redis.ClusterAutomatedBackupConfig>;
     /**
      * The timestamp associated with the cluster creation request. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
@@ -845,6 +857,11 @@ export interface ClusterArgs {
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      */
     authorizationMode?: pulumi.Input<string>;
+    /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     */
+    automatedBackupConfig?: pulumi.Input<inputs.redis.ClusterAutomatedBackupConfig>;
     /**
      * Cross cluster replication config
      * Structure is documented below.

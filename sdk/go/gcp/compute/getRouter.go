@@ -70,12 +70,13 @@ type LookupRouterResult struct {
 	Description                 string         `pulumi:"description"`
 	EncryptedInterconnectRouter bool           `pulumi:"encryptedInterconnectRouter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string  `pulumi:"id"`
-	Name     string  `pulumi:"name"`
-	Network  string  `pulumi:"network"`
-	Project  *string `pulumi:"project"`
-	Region   *string `pulumi:"region"`
-	SelfLink string  `pulumi:"selfLink"`
+	Id                    string                          `pulumi:"id"`
+	Md5AuthenticationKeys []GetRouterMd5AuthenticationKey `pulumi:"md5AuthenticationKeys"`
+	Name                  string                          `pulumi:"name"`
+	Network               string                          `pulumi:"network"`
+	Project               *string                         `pulumi:"project"`
+	Region                *string                         `pulumi:"region"`
+	SelfLink              string                          `pulumi:"selfLink"`
 }
 
 func LookupRouterOutput(ctx *pulumi.Context, args LookupRouterOutputArgs, opts ...pulumi.InvokeOption) LookupRouterResultOutput {
@@ -139,6 +140,10 @@ func (o LookupRouterResultOutput) EncryptedInterconnectRouter() pulumi.BoolOutpu
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRouterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterResultOutput) Md5AuthenticationKeys() GetRouterMd5AuthenticationKeyArrayOutput {
+	return o.ApplyT(func(v LookupRouterResult) []GetRouterMd5AuthenticationKey { return v.Md5AuthenticationKeys }).(GetRouterMd5AuthenticationKeyArrayOutput)
 }
 
 func (o LookupRouterResultOutput) Name() pulumi.StringOutput {

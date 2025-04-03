@@ -17942,6 +17942,332 @@ func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
 	}).(JobStatusOutput)
 }
 
+type MetastoreDatabaseIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MetastoreDatabaseIamBindingConditionInput is an input type that accepts MetastoreDatabaseIamBindingConditionArgs and MetastoreDatabaseIamBindingConditionOutput values.
+// You can construct a concrete instance of `MetastoreDatabaseIamBindingConditionInput` via:
+//
+//	MetastoreDatabaseIamBindingConditionArgs{...}
+type MetastoreDatabaseIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToMetastoreDatabaseIamBindingConditionOutput() MetastoreDatabaseIamBindingConditionOutput
+	ToMetastoreDatabaseIamBindingConditionOutputWithContext(context.Context) MetastoreDatabaseIamBindingConditionOutput
+}
+
+type MetastoreDatabaseIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MetastoreDatabaseIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreDatabaseIamBindingCondition)(nil)).Elem()
+}
+
+func (i MetastoreDatabaseIamBindingConditionArgs) ToMetastoreDatabaseIamBindingConditionOutput() MetastoreDatabaseIamBindingConditionOutput {
+	return i.ToMetastoreDatabaseIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i MetastoreDatabaseIamBindingConditionArgs) ToMetastoreDatabaseIamBindingConditionOutputWithContext(ctx context.Context) MetastoreDatabaseIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDatabaseIamBindingConditionOutput)
+}
+
+func (i MetastoreDatabaseIamBindingConditionArgs) ToMetastoreDatabaseIamBindingConditionPtrOutput() MetastoreDatabaseIamBindingConditionPtrOutput {
+	return i.ToMetastoreDatabaseIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreDatabaseIamBindingConditionArgs) ToMetastoreDatabaseIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreDatabaseIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDatabaseIamBindingConditionOutput).ToMetastoreDatabaseIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// MetastoreDatabaseIamBindingConditionPtrInput is an input type that accepts MetastoreDatabaseIamBindingConditionArgs, MetastoreDatabaseIamBindingConditionPtr and MetastoreDatabaseIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `MetastoreDatabaseIamBindingConditionPtrInput` via:
+//
+//	        MetastoreDatabaseIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreDatabaseIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreDatabaseIamBindingConditionPtrOutput() MetastoreDatabaseIamBindingConditionPtrOutput
+	ToMetastoreDatabaseIamBindingConditionPtrOutputWithContext(context.Context) MetastoreDatabaseIamBindingConditionPtrOutput
+}
+
+type metastoreDatabaseIamBindingConditionPtrType MetastoreDatabaseIamBindingConditionArgs
+
+func MetastoreDatabaseIamBindingConditionPtr(v *MetastoreDatabaseIamBindingConditionArgs) MetastoreDatabaseIamBindingConditionPtrInput {
+	return (*metastoreDatabaseIamBindingConditionPtrType)(v)
+}
+
+func (*metastoreDatabaseIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreDatabaseIamBindingCondition)(nil)).Elem()
+}
+
+func (i *metastoreDatabaseIamBindingConditionPtrType) ToMetastoreDatabaseIamBindingConditionPtrOutput() MetastoreDatabaseIamBindingConditionPtrOutput {
+	return i.ToMetastoreDatabaseIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreDatabaseIamBindingConditionPtrType) ToMetastoreDatabaseIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreDatabaseIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDatabaseIamBindingConditionPtrOutput)
+}
+
+type MetastoreDatabaseIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (MetastoreDatabaseIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreDatabaseIamBindingCondition)(nil)).Elem()
+}
+
+func (o MetastoreDatabaseIamBindingConditionOutput) ToMetastoreDatabaseIamBindingConditionOutput() MetastoreDatabaseIamBindingConditionOutput {
+	return o
+}
+
+func (o MetastoreDatabaseIamBindingConditionOutput) ToMetastoreDatabaseIamBindingConditionOutputWithContext(ctx context.Context) MetastoreDatabaseIamBindingConditionOutput {
+	return o
+}
+
+func (o MetastoreDatabaseIamBindingConditionOutput) ToMetastoreDatabaseIamBindingConditionPtrOutput() MetastoreDatabaseIamBindingConditionPtrOutput {
+	return o.ToMetastoreDatabaseIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreDatabaseIamBindingConditionOutput) ToMetastoreDatabaseIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreDatabaseIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreDatabaseIamBindingCondition) *MetastoreDatabaseIamBindingCondition {
+		return &v
+	}).(MetastoreDatabaseIamBindingConditionPtrOutput)
+}
+
+func (o MetastoreDatabaseIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreDatabaseIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreDatabaseIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreDatabaseIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MetastoreDatabaseIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreDatabaseIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MetastoreDatabaseIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreDatabaseIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreDatabaseIamBindingCondition)(nil)).Elem()
+}
+
+func (o MetastoreDatabaseIamBindingConditionPtrOutput) ToMetastoreDatabaseIamBindingConditionPtrOutput() MetastoreDatabaseIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreDatabaseIamBindingConditionPtrOutput) ToMetastoreDatabaseIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreDatabaseIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreDatabaseIamBindingConditionPtrOutput) Elem() MetastoreDatabaseIamBindingConditionOutput {
+	return o.ApplyT(func(v *MetastoreDatabaseIamBindingCondition) MetastoreDatabaseIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreDatabaseIamBindingCondition
+		return ret
+	}).(MetastoreDatabaseIamBindingConditionOutput)
+}
+
+func (o MetastoreDatabaseIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDatabaseIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreDatabaseIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDatabaseIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreDatabaseIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDatabaseIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreDatabaseIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MetastoreDatabaseIamMemberConditionInput is an input type that accepts MetastoreDatabaseIamMemberConditionArgs and MetastoreDatabaseIamMemberConditionOutput values.
+// You can construct a concrete instance of `MetastoreDatabaseIamMemberConditionInput` via:
+//
+//	MetastoreDatabaseIamMemberConditionArgs{...}
+type MetastoreDatabaseIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToMetastoreDatabaseIamMemberConditionOutput() MetastoreDatabaseIamMemberConditionOutput
+	ToMetastoreDatabaseIamMemberConditionOutputWithContext(context.Context) MetastoreDatabaseIamMemberConditionOutput
+}
+
+type MetastoreDatabaseIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MetastoreDatabaseIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreDatabaseIamMemberCondition)(nil)).Elem()
+}
+
+func (i MetastoreDatabaseIamMemberConditionArgs) ToMetastoreDatabaseIamMemberConditionOutput() MetastoreDatabaseIamMemberConditionOutput {
+	return i.ToMetastoreDatabaseIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i MetastoreDatabaseIamMemberConditionArgs) ToMetastoreDatabaseIamMemberConditionOutputWithContext(ctx context.Context) MetastoreDatabaseIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDatabaseIamMemberConditionOutput)
+}
+
+func (i MetastoreDatabaseIamMemberConditionArgs) ToMetastoreDatabaseIamMemberConditionPtrOutput() MetastoreDatabaseIamMemberConditionPtrOutput {
+	return i.ToMetastoreDatabaseIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreDatabaseIamMemberConditionArgs) ToMetastoreDatabaseIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreDatabaseIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDatabaseIamMemberConditionOutput).ToMetastoreDatabaseIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// MetastoreDatabaseIamMemberConditionPtrInput is an input type that accepts MetastoreDatabaseIamMemberConditionArgs, MetastoreDatabaseIamMemberConditionPtr and MetastoreDatabaseIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `MetastoreDatabaseIamMemberConditionPtrInput` via:
+//
+//	        MetastoreDatabaseIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreDatabaseIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreDatabaseIamMemberConditionPtrOutput() MetastoreDatabaseIamMemberConditionPtrOutput
+	ToMetastoreDatabaseIamMemberConditionPtrOutputWithContext(context.Context) MetastoreDatabaseIamMemberConditionPtrOutput
+}
+
+type metastoreDatabaseIamMemberConditionPtrType MetastoreDatabaseIamMemberConditionArgs
+
+func MetastoreDatabaseIamMemberConditionPtr(v *MetastoreDatabaseIamMemberConditionArgs) MetastoreDatabaseIamMemberConditionPtrInput {
+	return (*metastoreDatabaseIamMemberConditionPtrType)(v)
+}
+
+func (*metastoreDatabaseIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreDatabaseIamMemberCondition)(nil)).Elem()
+}
+
+func (i *metastoreDatabaseIamMemberConditionPtrType) ToMetastoreDatabaseIamMemberConditionPtrOutput() MetastoreDatabaseIamMemberConditionPtrOutput {
+	return i.ToMetastoreDatabaseIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreDatabaseIamMemberConditionPtrType) ToMetastoreDatabaseIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreDatabaseIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreDatabaseIamMemberConditionPtrOutput)
+}
+
+type MetastoreDatabaseIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (MetastoreDatabaseIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreDatabaseIamMemberCondition)(nil)).Elem()
+}
+
+func (o MetastoreDatabaseIamMemberConditionOutput) ToMetastoreDatabaseIamMemberConditionOutput() MetastoreDatabaseIamMemberConditionOutput {
+	return o
+}
+
+func (o MetastoreDatabaseIamMemberConditionOutput) ToMetastoreDatabaseIamMemberConditionOutputWithContext(ctx context.Context) MetastoreDatabaseIamMemberConditionOutput {
+	return o
+}
+
+func (o MetastoreDatabaseIamMemberConditionOutput) ToMetastoreDatabaseIamMemberConditionPtrOutput() MetastoreDatabaseIamMemberConditionPtrOutput {
+	return o.ToMetastoreDatabaseIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreDatabaseIamMemberConditionOutput) ToMetastoreDatabaseIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreDatabaseIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreDatabaseIamMemberCondition) *MetastoreDatabaseIamMemberCondition {
+		return &v
+	}).(MetastoreDatabaseIamMemberConditionPtrOutput)
+}
+
+func (o MetastoreDatabaseIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreDatabaseIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreDatabaseIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreDatabaseIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MetastoreDatabaseIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreDatabaseIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MetastoreDatabaseIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreDatabaseIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreDatabaseIamMemberCondition)(nil)).Elem()
+}
+
+func (o MetastoreDatabaseIamMemberConditionPtrOutput) ToMetastoreDatabaseIamMemberConditionPtrOutput() MetastoreDatabaseIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreDatabaseIamMemberConditionPtrOutput) ToMetastoreDatabaseIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreDatabaseIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreDatabaseIamMemberConditionPtrOutput) Elem() MetastoreDatabaseIamMemberConditionOutput {
+	return o.ApplyT(func(v *MetastoreDatabaseIamMemberCondition) MetastoreDatabaseIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreDatabaseIamMemberCondition
+		return ret
+	}).(MetastoreDatabaseIamMemberConditionOutput)
+}
+
+func (o MetastoreDatabaseIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDatabaseIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreDatabaseIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDatabaseIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreDatabaseIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDatabaseIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type MetastoreFederationBackendMetastore struct {
 	// The type of the backend metastore.
 	// Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
@@ -21134,6 +21460,332 @@ func (o MetastoreServiceTelemetryConfigPtrOutput) LogFormat() pulumi.StringPtrOu
 			return nil
 		}
 		return v.LogFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreTableIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MetastoreTableIamBindingConditionInput is an input type that accepts MetastoreTableIamBindingConditionArgs and MetastoreTableIamBindingConditionOutput values.
+// You can construct a concrete instance of `MetastoreTableIamBindingConditionInput` via:
+//
+//	MetastoreTableIamBindingConditionArgs{...}
+type MetastoreTableIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToMetastoreTableIamBindingConditionOutput() MetastoreTableIamBindingConditionOutput
+	ToMetastoreTableIamBindingConditionOutputWithContext(context.Context) MetastoreTableIamBindingConditionOutput
+}
+
+type MetastoreTableIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MetastoreTableIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreTableIamBindingCondition)(nil)).Elem()
+}
+
+func (i MetastoreTableIamBindingConditionArgs) ToMetastoreTableIamBindingConditionOutput() MetastoreTableIamBindingConditionOutput {
+	return i.ToMetastoreTableIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i MetastoreTableIamBindingConditionArgs) ToMetastoreTableIamBindingConditionOutputWithContext(ctx context.Context) MetastoreTableIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreTableIamBindingConditionOutput)
+}
+
+func (i MetastoreTableIamBindingConditionArgs) ToMetastoreTableIamBindingConditionPtrOutput() MetastoreTableIamBindingConditionPtrOutput {
+	return i.ToMetastoreTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreTableIamBindingConditionArgs) ToMetastoreTableIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreTableIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreTableIamBindingConditionOutput).ToMetastoreTableIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// MetastoreTableIamBindingConditionPtrInput is an input type that accepts MetastoreTableIamBindingConditionArgs, MetastoreTableIamBindingConditionPtr and MetastoreTableIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `MetastoreTableIamBindingConditionPtrInput` via:
+//
+//	        MetastoreTableIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreTableIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreTableIamBindingConditionPtrOutput() MetastoreTableIamBindingConditionPtrOutput
+	ToMetastoreTableIamBindingConditionPtrOutputWithContext(context.Context) MetastoreTableIamBindingConditionPtrOutput
+}
+
+type metastoreTableIamBindingConditionPtrType MetastoreTableIamBindingConditionArgs
+
+func MetastoreTableIamBindingConditionPtr(v *MetastoreTableIamBindingConditionArgs) MetastoreTableIamBindingConditionPtrInput {
+	return (*metastoreTableIamBindingConditionPtrType)(v)
+}
+
+func (*metastoreTableIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreTableIamBindingCondition)(nil)).Elem()
+}
+
+func (i *metastoreTableIamBindingConditionPtrType) ToMetastoreTableIamBindingConditionPtrOutput() MetastoreTableIamBindingConditionPtrOutput {
+	return i.ToMetastoreTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreTableIamBindingConditionPtrType) ToMetastoreTableIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreTableIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreTableIamBindingConditionPtrOutput)
+}
+
+type MetastoreTableIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (MetastoreTableIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreTableIamBindingCondition)(nil)).Elem()
+}
+
+func (o MetastoreTableIamBindingConditionOutput) ToMetastoreTableIamBindingConditionOutput() MetastoreTableIamBindingConditionOutput {
+	return o
+}
+
+func (o MetastoreTableIamBindingConditionOutput) ToMetastoreTableIamBindingConditionOutputWithContext(ctx context.Context) MetastoreTableIamBindingConditionOutput {
+	return o
+}
+
+func (o MetastoreTableIamBindingConditionOutput) ToMetastoreTableIamBindingConditionPtrOutput() MetastoreTableIamBindingConditionPtrOutput {
+	return o.ToMetastoreTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreTableIamBindingConditionOutput) ToMetastoreTableIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreTableIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreTableIamBindingCondition) *MetastoreTableIamBindingCondition {
+		return &v
+	}).(MetastoreTableIamBindingConditionPtrOutput)
+}
+
+func (o MetastoreTableIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreTableIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreTableIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreTableIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MetastoreTableIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreTableIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MetastoreTableIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreTableIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreTableIamBindingCondition)(nil)).Elem()
+}
+
+func (o MetastoreTableIamBindingConditionPtrOutput) ToMetastoreTableIamBindingConditionPtrOutput() MetastoreTableIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreTableIamBindingConditionPtrOutput) ToMetastoreTableIamBindingConditionPtrOutputWithContext(ctx context.Context) MetastoreTableIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreTableIamBindingConditionPtrOutput) Elem() MetastoreTableIamBindingConditionOutput {
+	return o.ApplyT(func(v *MetastoreTableIamBindingCondition) MetastoreTableIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreTableIamBindingCondition
+		return ret
+	}).(MetastoreTableIamBindingConditionOutput)
+}
+
+func (o MetastoreTableIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreTableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreTableIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreTableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreTableIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreTableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreTableIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// MetastoreTableIamMemberConditionInput is an input type that accepts MetastoreTableIamMemberConditionArgs and MetastoreTableIamMemberConditionOutput values.
+// You can construct a concrete instance of `MetastoreTableIamMemberConditionInput` via:
+//
+//	MetastoreTableIamMemberConditionArgs{...}
+type MetastoreTableIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToMetastoreTableIamMemberConditionOutput() MetastoreTableIamMemberConditionOutput
+	ToMetastoreTableIamMemberConditionOutputWithContext(context.Context) MetastoreTableIamMemberConditionOutput
+}
+
+type MetastoreTableIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (MetastoreTableIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreTableIamMemberCondition)(nil)).Elem()
+}
+
+func (i MetastoreTableIamMemberConditionArgs) ToMetastoreTableIamMemberConditionOutput() MetastoreTableIamMemberConditionOutput {
+	return i.ToMetastoreTableIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i MetastoreTableIamMemberConditionArgs) ToMetastoreTableIamMemberConditionOutputWithContext(ctx context.Context) MetastoreTableIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreTableIamMemberConditionOutput)
+}
+
+func (i MetastoreTableIamMemberConditionArgs) ToMetastoreTableIamMemberConditionPtrOutput() MetastoreTableIamMemberConditionPtrOutput {
+	return i.ToMetastoreTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreTableIamMemberConditionArgs) ToMetastoreTableIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreTableIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreTableIamMemberConditionOutput).ToMetastoreTableIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// MetastoreTableIamMemberConditionPtrInput is an input type that accepts MetastoreTableIamMemberConditionArgs, MetastoreTableIamMemberConditionPtr and MetastoreTableIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `MetastoreTableIamMemberConditionPtrInput` via:
+//
+//	        MetastoreTableIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreTableIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreTableIamMemberConditionPtrOutput() MetastoreTableIamMemberConditionPtrOutput
+	ToMetastoreTableIamMemberConditionPtrOutputWithContext(context.Context) MetastoreTableIamMemberConditionPtrOutput
+}
+
+type metastoreTableIamMemberConditionPtrType MetastoreTableIamMemberConditionArgs
+
+func MetastoreTableIamMemberConditionPtr(v *MetastoreTableIamMemberConditionArgs) MetastoreTableIamMemberConditionPtrInput {
+	return (*metastoreTableIamMemberConditionPtrType)(v)
+}
+
+func (*metastoreTableIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreTableIamMemberCondition)(nil)).Elem()
+}
+
+func (i *metastoreTableIamMemberConditionPtrType) ToMetastoreTableIamMemberConditionPtrOutput() MetastoreTableIamMemberConditionPtrOutput {
+	return i.ToMetastoreTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreTableIamMemberConditionPtrType) ToMetastoreTableIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreTableIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreTableIamMemberConditionPtrOutput)
+}
+
+type MetastoreTableIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (MetastoreTableIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreTableIamMemberCondition)(nil)).Elem()
+}
+
+func (o MetastoreTableIamMemberConditionOutput) ToMetastoreTableIamMemberConditionOutput() MetastoreTableIamMemberConditionOutput {
+	return o
+}
+
+func (o MetastoreTableIamMemberConditionOutput) ToMetastoreTableIamMemberConditionOutputWithContext(ctx context.Context) MetastoreTableIamMemberConditionOutput {
+	return o
+}
+
+func (o MetastoreTableIamMemberConditionOutput) ToMetastoreTableIamMemberConditionPtrOutput() MetastoreTableIamMemberConditionPtrOutput {
+	return o.ToMetastoreTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreTableIamMemberConditionOutput) ToMetastoreTableIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreTableIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreTableIamMemberCondition) *MetastoreTableIamMemberCondition {
+		return &v
+	}).(MetastoreTableIamMemberConditionPtrOutput)
+}
+
+func (o MetastoreTableIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreTableIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreTableIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreTableIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o MetastoreTableIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreTableIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type MetastoreTableIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreTableIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreTableIamMemberCondition)(nil)).Elem()
+}
+
+func (o MetastoreTableIamMemberConditionPtrOutput) ToMetastoreTableIamMemberConditionPtrOutput() MetastoreTableIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreTableIamMemberConditionPtrOutput) ToMetastoreTableIamMemberConditionPtrOutputWithContext(ctx context.Context) MetastoreTableIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o MetastoreTableIamMemberConditionPtrOutput) Elem() MetastoreTableIamMemberConditionOutput {
+	return o.ApplyT(func(v *MetastoreTableIamMemberCondition) MetastoreTableIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreTableIamMemberCondition
+		return ret
+	}).(MetastoreTableIamMemberConditionOutput)
+}
+
+func (o MetastoreTableIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreTableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreTableIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreTableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetastoreTableIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreTableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33500,6 +34152,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSparksqlConfigLoggingConfigPtrInput)(nil)).Elem(), JobSparksqlConfigLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusInput)(nil)).Elem(), JobStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusArrayInput)(nil)).Elem(), JobStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDatabaseIamBindingConditionInput)(nil)).Elem(), MetastoreDatabaseIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDatabaseIamBindingConditionPtrInput)(nil)).Elem(), MetastoreDatabaseIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDatabaseIamMemberConditionInput)(nil)).Elem(), MetastoreDatabaseIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDatabaseIamMemberConditionPtrInput)(nil)).Elem(), MetastoreDatabaseIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreFederationBackendMetastoreInput)(nil)).Elem(), MetastoreFederationBackendMetastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreFederationBackendMetastoreArrayInput)(nil)).Elem(), MetastoreFederationBackendMetastoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreFederationIamBindingConditionInput)(nil)).Elem(), MetastoreFederationIamBindingConditionArgs{})
@@ -33540,6 +34196,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScheduledBackupPtrInput)(nil)).Elem(), MetastoreServiceScheduledBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigPtrInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreTableIamBindingConditionInput)(nil)).Elem(), MetastoreTableIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreTableIamBindingConditionPtrInput)(nil)).Elem(), MetastoreTableIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreTableIamMemberConditionInput)(nil)).Elem(), MetastoreTableIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreTableIamMemberConditionPtrInput)(nil)).Elem(), MetastoreTableIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateEncryptionConfigInput)(nil)).Elem(), WorkflowTemplateEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateEncryptionConfigPtrInput)(nil)).Elem(), WorkflowTemplateEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobInput)(nil)).Elem(), WorkflowTemplateJobArgs{})
@@ -33872,6 +34532,10 @@ func init() {
 	pulumi.RegisterOutputType(JobSparksqlConfigLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobStatusOutput{})
 	pulumi.RegisterOutputType(JobStatusArrayOutput{})
+	pulumi.RegisterOutputType(MetastoreDatabaseIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(MetastoreDatabaseIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreDatabaseIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(MetastoreDatabaseIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreFederationBackendMetastoreOutput{})
 	pulumi.RegisterOutputType(MetastoreFederationBackendMetastoreArrayOutput{})
 	pulumi.RegisterOutputType(MetastoreFederationIamBindingConditionOutput{})
@@ -33912,6 +34576,10 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceScheduledBackupPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreTableIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(MetastoreTableIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreTableIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(MetastoreTableIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})

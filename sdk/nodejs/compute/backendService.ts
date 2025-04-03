@@ -382,6 +382,41 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Backend Service Tls Settings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultBackendAuthenticationConfig = new gcp.networksecurity.BackendAuthenticationConfig("default", {
+ *     name: "authentication",
+ *     wellKnownRoots: "PUBLIC_ROOTS",
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: defaultHealthCheck.id,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     protocol: "HTTPS",
+ *     tlsSettings: {
+ *         sni: "example.com",
+ *         subjectAltNames: [
+ *             {
+ *                 dnsName: "example.com",
+ *             },
+ *             {
+ *                 uniformResourceIdentifier: "https://example.com",
+ *             },
+ *         ],
+ *         authenticationConfig: pulumi.interpolate`//networksecurity.googleapis.com/${defaultBackendAuthenticationConfig.id}`,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -700,6 +735,11 @@ export class BackendService extends pulumi.CustomResource {
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     public readonly timeoutSec!: pulumi.Output<number>;
+    /**
+     * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     */
+    public readonly tlsSettings!: pulumi.Output<outputs.compute.BackendServiceTlsSettings | undefined>;
 
     /**
      * Create a BackendService resource with the given unique name, arguments, and options.
@@ -749,6 +789,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
             resourceInputs["strongSessionAffinityCookie"] = state ? state.strongSessionAffinityCookie : undefined;
             resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
+            resourceInputs["tlsSettings"] = state ? state.tlsSettings : undefined;
         } else {
             const args = argsOrState as BackendServiceArgs | undefined;
             resourceInputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
@@ -782,6 +823,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             resourceInputs["strongSessionAffinityCookie"] = args ? args.strongSessionAffinityCookie : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
+            resourceInputs["tlsSettings"] = args ? args.tlsSettings : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["generatedId"] = undefined /*out*/;
@@ -1061,6 +1103,11 @@ export interface BackendServiceState {
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     timeoutSec?: pulumi.Input<number>;
+    /**
+     * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     */
+    tlsSettings?: pulumi.Input<inputs.compute.BackendServiceTlsSettings>;
 }
 
 /**
@@ -1315,4 +1362,9 @@ export interface BackendServiceArgs {
      * The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
      */
     timeoutSec?: pulumi.Input<number>;
+    /**
+     * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     */
+    tlsSettings?: pulumi.Input<inputs.compute.BackendServiceTlsSettings>;
 }

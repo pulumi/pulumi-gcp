@@ -85,6 +85,8 @@ __all__ = [
     'StreamDestinationConfigBigqueryDestinationConfigArgsDict',
     'StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs',
     'StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgsDict',
+    'StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs',
+    'StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict',
     'StreamDestinationConfigBigqueryDestinationConfigMergeArgs',
     'StreamDestinationConfigBigqueryDestinationConfigMergeArgsDict',
     'StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs',
@@ -374,18 +376,22 @@ if not MYPY:
         """
         Hostname for the MySQL connection.
         """
-        password: pulumi.Input[str]
-        """
-        Password for the MySQL connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
         username: pulumi.Input[str]
         """
         Username for the MySQL connection.
         """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password for the MySQL connection.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
         port: NotRequired[pulumi.Input[int]]
         """
         Port for the MySQL connection.
+        """
+        secret_manager_stored_password: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a Secret Manager resource name storing the user's password.
         """
         ssl_config: NotRequired[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgsDict']]
         """
@@ -399,24 +405,29 @@ elif False:
 class ConnectionProfileMysqlProfileArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[str],
-                 password: pulumi.Input[str],
                  username: pulumi.Input[str],
+                 password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 secret_manager_stored_password: Optional[pulumi.Input[str]] = None,
                  ssl_config: Optional[pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgs']] = None):
         """
         :param pulumi.Input[str] hostname: Hostname for the MySQL connection.
+        :param pulumi.Input[str] username: Username for the MySQL connection.
         :param pulumi.Input[str] password: Password for the MySQL connection.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] username: Username for the MySQL connection.
         :param pulumi.Input[int] port: Port for the MySQL connection.
+        :param pulumi.Input[str] secret_manager_stored_password: A reference to a Secret Manager resource name storing the user's password.
         :param pulumi.Input['ConnectionProfileMysqlProfileSslConfigArgs'] ssl_config: SSL configuration for the MySQL connection.
                Structure is documented below.
         """
         pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if secret_manager_stored_password is not None:
+            pulumi.set(__self__, "secret_manager_stored_password", secret_manager_stored_password)
         if ssl_config is not None:
             pulumi.set(__self__, "ssl_config", ssl_config)
 
@@ -434,19 +445,6 @@ class ConnectionProfileMysqlProfileArgs:
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Input[str]:
-        """
-        Password for the MySQL connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[str]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
         Username for the MySQL connection.
@@ -459,6 +457,19 @@ class ConnectionProfileMysqlProfileArgs:
 
     @property
     @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the MySQL connection.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         Port for the MySQL connection.
@@ -468,6 +479,18 @@ class ConnectionProfileMysqlProfileArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="secretManagerStoredPassword")
+    def secret_manager_stored_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a Secret Manager resource name storing the user's password.
+        """
+        return pulumi.get(self, "secret_manager_stored_password")
+
+    @secret_manager_stored_password.setter
+    def secret_manager_stored_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_manager_stored_password", value)
 
     @property
     @pulumi.getter(name="sslConfig")
@@ -661,11 +684,6 @@ if not MYPY:
         """
         Hostname for the Oracle connection.
         """
-        password: pulumi.Input[str]
-        """
-        Password for the Oracle connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
         username: pulumi.Input[str]
         """
         Username for the Oracle connection.
@@ -674,9 +692,18 @@ if not MYPY:
         """
         Connection string attributes
         """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password for the Oracle connection.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
         port: NotRequired[pulumi.Input[int]]
         """
         Port for the Oracle connection.
+        """
+        secret_manager_stored_password: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a Secret Manager resource name storing the user's password.
         """
 elif False:
     ConnectionProfileOracleProfileArgsDict: TypeAlias = Mapping[str, Any]
@@ -686,27 +713,32 @@ class ConnectionProfileOracleProfileArgs:
     def __init__(__self__, *,
                  database_service: pulumi.Input[str],
                  hostname: pulumi.Input[str],
-                 password: pulumi.Input[str],
                  username: pulumi.Input[str],
                  connection_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 port: Optional[pulumi.Input[int]] = None):
+                 password: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 secret_manager_stored_password: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] database_service: Database for the Oracle connection.
         :param pulumi.Input[str] hostname: Hostname for the Oracle connection.
-        :param pulumi.Input[str] password: Password for the Oracle connection.
-               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] username: Username for the Oracle connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] connection_attributes: Connection string attributes
+        :param pulumi.Input[str] password: Password for the Oracle connection.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[int] port: Port for the Oracle connection.
+        :param pulumi.Input[str] secret_manager_stored_password: A reference to a Secret Manager resource name storing the user's password.
         """
         pulumi.set(__self__, "database_service", database_service)
         pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
         if connection_attributes is not None:
             pulumi.set(__self__, "connection_attributes", connection_attributes)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if secret_manager_stored_password is not None:
+            pulumi.set(__self__, "secret_manager_stored_password", secret_manager_stored_password)
 
     @property
     @pulumi.getter(name="databaseService")
@@ -734,19 +766,6 @@ class ConnectionProfileOracleProfileArgs:
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Input[str]:
-        """
-        Password for the Oracle connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[str]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
         Username for the Oracle connection.
@@ -771,6 +790,19 @@ class ConnectionProfileOracleProfileArgs:
 
     @property
     @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the Oracle connection.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         Port for the Oracle connection.
@@ -780,6 +812,18 @@ class ConnectionProfileOracleProfileArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="secretManagerStoredPassword")
+    def secret_manager_stored_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a Secret Manager resource name storing the user's password.
+        """
+        return pulumi.get(self, "secret_manager_stored_password")
+
+    @secret_manager_stored_password.setter
+    def secret_manager_stored_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_manager_stored_password", value)
 
 
 if not MYPY:
@@ -792,18 +836,22 @@ if not MYPY:
         """
         Hostname for the PostgreSQL connection.
         """
-        password: pulumi.Input[str]
-        """
-        Password for the PostgreSQL connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
         username: pulumi.Input[str]
         """
         Username for the PostgreSQL connection.
         """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password for the PostgreSQL connection.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
         port: NotRequired[pulumi.Input[int]]
         """
         Port for the PostgreSQL connection.
+        """
+        secret_manager_stored_password: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a Secret Manager resource name storing the user's password.
         """
 elif False:
     ConnectionProfilePostgresqlProfileArgsDict: TypeAlias = Mapping[str, Any]
@@ -813,23 +861,28 @@ class ConnectionProfilePostgresqlProfileArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
-                 password: pulumi.Input[str],
                  username: pulumi.Input[str],
-                 port: Optional[pulumi.Input[int]] = None):
+                 password: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 secret_manager_stored_password: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] database: Database for the PostgreSQL connection.
         :param pulumi.Input[str] hostname: Hostname for the PostgreSQL connection.
+        :param pulumi.Input[str] username: Username for the PostgreSQL connection.
         :param pulumi.Input[str] password: Password for the PostgreSQL connection.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] username: Username for the PostgreSQL connection.
         :param pulumi.Input[int] port: Port for the PostgreSQL connection.
+        :param pulumi.Input[str] secret_manager_stored_password: A reference to a Secret Manager resource name storing the user's password.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if secret_manager_stored_password is not None:
+            pulumi.set(__self__, "secret_manager_stored_password", secret_manager_stored_password)
 
     @property
     @pulumi.getter
@@ -857,19 +910,6 @@ class ConnectionProfilePostgresqlProfileArgs:
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Input[str]:
-        """
-        Password for the PostgreSQL connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[str]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
         Username for the PostgreSQL connection.
@@ -882,6 +922,19 @@ class ConnectionProfilePostgresqlProfileArgs:
 
     @property
     @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the PostgreSQL connection.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         Port for the PostgreSQL connection.
@@ -891,6 +944,18 @@ class ConnectionProfilePostgresqlProfileArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="secretManagerStoredPassword")
+    def secret_manager_stored_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a Secret Manager resource name storing the user's password.
+        """
+        return pulumi.get(self, "secret_manager_stored_password")
+
+    @secret_manager_stored_password.setter
+    def secret_manager_stored_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_manager_stored_password", value)
 
 
 if not MYPY:
@@ -1201,18 +1266,22 @@ if not MYPY:
         """
         Hostname for the SQL Server connection.
         """
-        password: pulumi.Input[str]
-        """
-        Password for the SQL Server connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
         username: pulumi.Input[str]
         """
         Username for the SQL Server connection.
         """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password for the SQL Server connection.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
         port: NotRequired[pulumi.Input[int]]
         """
         Port for the SQL Server connection.
+        """
+        secret_manager_stored_password: NotRequired[pulumi.Input[str]]
+        """
+        A reference to a Secret Manager resource name storing the user's password.
         """
 elif False:
     ConnectionProfileSqlServerProfileArgsDict: TypeAlias = Mapping[str, Any]
@@ -1222,23 +1291,28 @@ class ConnectionProfileSqlServerProfileArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
-                 password: pulumi.Input[str],
                  username: pulumi.Input[str],
-                 port: Optional[pulumi.Input[int]] = None):
+                 password: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 secret_manager_stored_password: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] database: Database for the SQL Server connection.
         :param pulumi.Input[str] hostname: Hostname for the SQL Server connection.
+        :param pulumi.Input[str] username: Username for the SQL Server connection.
         :param pulumi.Input[str] password: Password for the SQL Server connection.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] username: Username for the SQL Server connection.
         :param pulumi.Input[int] port: Port for the SQL Server connection.
+        :param pulumi.Input[str] secret_manager_stored_password: A reference to a Secret Manager resource name storing the user's password.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if secret_manager_stored_password is not None:
+            pulumi.set(__self__, "secret_manager_stored_password", secret_manager_stored_password)
 
     @property
     @pulumi.getter
@@ -1266,19 +1340,6 @@ class ConnectionProfileSqlServerProfileArgs:
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Input[str]:
-        """
-        Password for the SQL Server connection.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[str]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
     def username(self) -> pulumi.Input[str]:
         """
         Username for the SQL Server connection.
@@ -1291,6 +1352,19 @@ class ConnectionProfileSqlServerProfileArgs:
 
     @property
     @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for the SQL Server connection.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         Port for the SQL Server connection.
@@ -1300,6 +1374,18 @@ class ConnectionProfileSqlServerProfileArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="secretManagerStoredPassword")
+    def secret_manager_stored_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a Secret Manager resource name storing the user's password.
+        """
+        return pulumi.get(self, "secret_manager_stored_password")
+
+    @secret_manager_stored_password.setter
+    def secret_manager_stored_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_manager_stored_password", value)
 
 
 if not MYPY:
@@ -2933,6 +3019,11 @@ if not MYPY:
         events) to a source table will be written to the destination Google BigQuery table, retaining the
         historical state of the data.
         """
+        blmt_config: NotRequired[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict']]
+        """
+        BigLake Managed Tables configuration for BigQuery streams.
+        Structure is documented below.
+        """
         data_freshness: NotRequired[pulumi.Input[str]]
         """
         The guaranteed data freshness (in seconds) when querying tables created by the stream.
@@ -2963,6 +3054,7 @@ elif False:
 class StreamDestinationConfigBigqueryDestinationConfigArgs:
     def __init__(__self__, *,
                  append_only: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']] = None,
+                 blmt_config: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']] = None,
                  data_freshness: Optional[pulumi.Input[str]] = None,
                  merge: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigMergeArgs']] = None,
                  single_target_dataset: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']] = None,
@@ -2971,6 +3063,8 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs'] append_only: AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
                events) to a source table will be written to the destination Google BigQuery table, retaining the
                historical state of the data.
+        :param pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs'] blmt_config: BigLake Managed Tables configuration for BigQuery streams.
+               Structure is documented below.
         :param pulumi.Input[str] data_freshness: The guaranteed data freshness (in seconds) when querying tables created by the stream.
                Editing this field will only affect new tables created in the future, but existing tables
                will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -2985,6 +3079,8 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
         """
         if append_only is not None:
             pulumi.set(__self__, "append_only", append_only)
+        if blmt_config is not None:
+            pulumi.set(__self__, "blmt_config", blmt_config)
         if data_freshness is not None:
             pulumi.set(__self__, "data_freshness", data_freshness)
         if merge is not None:
@@ -3007,6 +3103,19 @@ class StreamDestinationConfigBigqueryDestinationConfigArgs:
     @append_only.setter
     def append_only(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']]):
         pulumi.set(self, "append_only", value)
+
+    @property
+    @pulumi.getter(name="blmtConfig")
+    def blmt_config(self) -> Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']]:
+        """
+        BigLake Managed Tables configuration for BigQuery streams.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "blmt_config")
+
+    @blmt_config.setter
+    def blmt_config(self, value: Optional[pulumi.Input['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']]):
+        pulumi.set(self, "blmt_config", value)
 
     @property
     @pulumi.getter(name="dataFreshness")
@@ -3074,6 +3183,120 @@ elif False:
 class StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs:
     def __init__(__self__):
         pass
+
+
+if not MYPY:
+    class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        The Cloud Storage bucket name.
+        """
+        connection_name: pulumi.Input[str]
+        """
+        The bigquery connection. Format: `{project}.{location}.{name}`
+        """
+        file_format: pulumi.Input[str]
+        """
+        The file format.
+        """
+        table_format: pulumi.Input[str]
+        """
+        The table format.
+        """
+        root_path: NotRequired[pulumi.Input[str]]
+        """
+        The root path inside the Cloud Storage bucket.
+
+        - - -
+        """
+elif False:
+    StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 connection_name: pulumi.Input[str],
+                 file_format: pulumi.Input[str],
+                 table_format: pulumi.Input[str],
+                 root_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket: The Cloud Storage bucket name.
+        :param pulumi.Input[str] connection_name: The bigquery connection. Format: `{project}.{location}.{name}`
+        :param pulumi.Input[str] file_format: The file format.
+        :param pulumi.Input[str] table_format: The table format.
+        :param pulumi.Input[str] root_path: The root path inside the Cloud Storage bucket.
+               
+               - - -
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "connection_name", connection_name)
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "table_format", table_format)
+        if root_path is not None:
+            pulumi.set(__self__, "root_path", root_path)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The Cloud Storage bucket name.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[str]:
+        """
+        The bigquery connection. Format: `{project}.{location}.{name}`
+        """
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connection_name", value)
+
+    @property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> pulumi.Input[str]:
+        """
+        The file format.
+        """
+        return pulumi.get(self, "file_format")
+
+    @file_format.setter
+    def file_format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "file_format", value)
+
+    @property
+    @pulumi.getter(name="tableFormat")
+    def table_format(self) -> pulumi.Input[str]:
+        """
+        The table format.
+        """
+        return pulumi.get(self, "table_format")
+
+    @table_format.setter
+    def table_format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table_format", value)
+
+    @property
+    @pulumi.getter(name="rootPath")
+    def root_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The root path inside the Cloud Storage bucket.
+
+        - - -
+        """
+        return pulumi.get(self, "root_path")
+
+    @root_path.setter
+    def root_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "root_path", value)
 
 
 if not MYPY:
@@ -3174,8 +3397,6 @@ if not MYPY:
         table. The BigQuery Service Account associated with your project requires access to this
         encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
         See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-
-        - - -
         """
 elif False:
     StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgsDict: TypeAlias = Mapping[str, Any]
@@ -3195,8 +3416,6 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
                table. The BigQuery Service Account associated with your project requires access to this
                encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
                See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-               
-               - - -
         """
         pulumi.set(__self__, "location", location)
         if dataset_id_prefix is not None:
@@ -3238,8 +3457,6 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
         table. The BigQuery Service Account associated with your project requires access to this
         encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
         See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-
-        - - -
         """
         return pulumi.get(self, "kms_key_name")
 

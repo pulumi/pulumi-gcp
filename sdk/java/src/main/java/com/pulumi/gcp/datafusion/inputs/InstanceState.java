@@ -461,6 +461,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The name of the tenant project.
      * 
      */
@@ -588,6 +609,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.serviceEndpoint = $.serviceEndpoint;
         this.state = $.state;
         this.stateMessage = $.stateMessage;
+        this.tags = $.tags;
         this.tenantProjectId = $.tenantProjectId;
         this.type = $.type;
         this.updateTime = $.updateTime;
@@ -1218,6 +1240,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stateMessage(String stateMessage) {
             return stateMessage(Output.of(stateMessage));
+        }
+
+        /**
+         * @param tags A map of resource manager tags.
+         * Resource manager tag keys and values have the same definition as resource manager tags.
+         * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+         * The field is ignored (both PUT &amp; PATCH) when empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A map of resource manager tags.
+         * Resource manager tag keys and values have the same definition as resource manager tags.
+         * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+         * The field is ignored (both PUT &amp; PATCH) when empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

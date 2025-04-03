@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.outputs.InstanceFromTemplateAttachedDisk;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateBootDisk;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateConfidentialInstanceConfig;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateGuestAccelerator;
+import com.pulumi.gcp.compute.outputs.InstanceFromTemplateInstanceEncryptionKey;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateNetworkInterface;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateNetworkPerformanceConfig;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateParams;
@@ -322,6 +323,20 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> hostname() {
         return this.hostname;
+    }
+    /**
+     * Encryption key used to provide data encryption on the given instance.
+     * 
+     */
+    @Export(name="instanceEncryptionKey", refs={InstanceFromTemplateInstanceEncryptionKey.class}, tree="[0]")
+    private Output<InstanceFromTemplateInstanceEncryptionKey> instanceEncryptionKey;
+
+    /**
+     * @return Encryption key used to provide data encryption on the given instance.
+     * 
+     */
+    public Output<InstanceFromTemplateInstanceEncryptionKey> instanceEncryptionKey() {
+        return this.instanceEncryptionKey;
     }
     /**
      * The server-assigned unique identifier of this instance.

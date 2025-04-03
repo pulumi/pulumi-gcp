@@ -20,6 +20,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly Outputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnly? AppendOnly;
         /// <summary>
+        /// BigLake Managed Tables configuration for BigQuery streams.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamDestinationConfigBigqueryDestinationConfigBlmtConfig? BlmtConfig;
+        /// <summary>
         /// The guaranteed data freshness (in seconds) when querying tables created by the stream.
         /// Editing this field will only affect new tables created in the future, but existing tables
         /// will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -47,6 +52,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
         private StreamDestinationConfigBigqueryDestinationConfig(
             Outputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnly? appendOnly,
 
+            Outputs.StreamDestinationConfigBigqueryDestinationConfigBlmtConfig? blmtConfig,
+
             string? dataFreshness,
 
             Outputs.StreamDestinationConfigBigqueryDestinationConfigMerge? merge,
@@ -56,6 +63,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
             Outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets? sourceHierarchyDatasets)
         {
             AppendOnly = appendOnly;
+            BlmtConfig = blmtConfig;
             DataFreshness = dataFreshness;
             Merge = merge;
             SingleTargetDataset = singleTargetDataset;

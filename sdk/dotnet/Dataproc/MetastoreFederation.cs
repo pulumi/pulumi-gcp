@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Dataproc
     ///             Version = "3.1.2",
     ///             EndpointProtocol = "GRPC",
     ///         },
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var @default = new Gcp.Dataproc.MetastoreFederation("default", new()
@@ -142,6 +143,9 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -287,6 +291,9 @@ namespace Pulumi.Gcp.Dataproc
             set => _backendMetastores = value;
         }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -350,6 +357,9 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

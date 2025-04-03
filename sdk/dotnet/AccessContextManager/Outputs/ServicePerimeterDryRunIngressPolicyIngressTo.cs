@@ -30,15 +30,24 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// also matches the `operations` field.
         /// </summary>
         public readonly ImmutableArray<string> Resources;
+        /// <summary>
+        /// A list of IAM roles that represent the set of operations that the sources
+        /// specified in the corresponding `IngressFrom`
+        /// are allowed to perform.
+        /// </summary>
+        public readonly ImmutableArray<string> Roles;
 
         [OutputConstructor]
         private ServicePerimeterDryRunIngressPolicyIngressTo(
             ImmutableArray<Outputs.ServicePerimeterDryRunIngressPolicyIngressToOperation> operations,
 
-            ImmutableArray<string> resources)
+            ImmutableArray<string> resources,
+
+            ImmutableArray<string> roles)
         {
             Operations = operations;
             Resources = resources;
+            Roles = roles;
         }
     }
 }

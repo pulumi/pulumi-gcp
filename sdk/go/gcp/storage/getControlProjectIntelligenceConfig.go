@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a Project Storage Intelligence config resource.
+// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+// and
+// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.LookupControlProjectIntelligenceConfig(ctx, &storage.LookupControlProjectIntelligenceConfigArgs{
+//				Name: "my-project",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupControlProjectIntelligenceConfig(ctx *pulumi.Context, args *LookupControlProjectIntelligenceConfigArgs, opts ...pulumi.InvokeOption) (*LookupControlProjectIntelligenceConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupControlProjectIntelligenceConfigResult
@@ -23,6 +53,7 @@ func LookupControlProjectIntelligenceConfig(ctx *pulumi.Context, args *LookupCon
 
 // A collection of arguments for invoking getControlProjectIntelligenceConfig.
 type LookupControlProjectIntelligenceConfigArgs struct {
+	// The name or number of the GCP project.
 	Name string `pulumi:"name"`
 }
 
@@ -48,6 +79,7 @@ func LookupControlProjectIntelligenceConfigOutput(ctx *pulumi.Context, args Look
 
 // A collection of arguments for invoking getControlProjectIntelligenceConfig.
 type LookupControlProjectIntelligenceConfigOutputArgs struct {
+	// The name or number of the GCP project.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 

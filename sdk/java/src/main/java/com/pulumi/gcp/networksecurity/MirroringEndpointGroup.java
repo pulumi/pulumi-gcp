@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networksecurity.MirroringEndpointGroupArgs;
 import com.pulumi.gcp.networksecurity.inputs.MirroringEndpointGroupState;
+import com.pulumi.gcp.networksecurity.outputs.MirroringEndpointGroupAssociation;
+import com.pulumi.gcp.networksecurity.outputs.MirroringEndpointGroupConnectedDeploymentGroup;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -113,6 +115,40 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup")
 public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource {
+    /**
+     * List of associations to this endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="associations", refs={List.class,MirroringEndpointGroupAssociation.class}, tree="[0,1]")
+    private Output<List<MirroringEndpointGroupAssociation>> associations;
+
+    /**
+     * @return List of associations to this endpoint group.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<MirroringEndpointGroupAssociation>> associations() {
+        return this.associations;
+    }
+    /**
+     * List of details about the connected deployment groups to this endpoint
+     * group.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="connectedDeploymentGroups", refs={List.class,MirroringEndpointGroupConnectedDeploymentGroup.class}, tree="[0,1]")
+    private Output<List<MirroringEndpointGroupConnectedDeploymentGroup>> connectedDeploymentGroups;
+
+    /**
+     * @return List of details about the connected deployment groups to this endpoint
+     * group.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<MirroringEndpointGroupConnectedDeploymentGroup>> connectedDeploymentGroups() {
+        return this.connectedDeploymentGroups;
+    }
     /**
      * The timestamp when the resource was created.
      * See https://google.aip.dev/148#timestamps.
@@ -230,18 +266,20 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
         return this.mirroringEndpointGroupId;
     }
     /**
-     * The resource name of this endpoint group, for example:
-     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-     * See https://google.aip.dev/122 for more details.
+     * (Output)
+     * The connected deployment group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The resource name of this endpoint group, for example:
-     * `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-     * See https://google.aip.dev/122 for more details.
+     * @return (Output)
+     * The connected deployment group&#39;s resource name, for example:
+     * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+     * See https://google.aip.dev/124.
      * 
      */
     public Output<String> name() {
@@ -300,32 +338,24 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
         return this.reconciling;
     }
     /**
-     * The current state of the endpoint group.
-     * See https://google.aip.dev/216.
+     * (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CLOSED
-     * CREATING
-     * DELETING
      * OUT_OF_SYNC
-     * DELETE_FAILED
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The current state of the endpoint group.
-     * See https://google.aip.dev/216.
+     * @return (Output)
+     * The current state of the association in this location.
      * Possible values:
      * STATE_UNSPECIFIED
      * ACTIVE
-     * CLOSED
-     * CREATING
-     * DELETING
      * OUT_OF_SYNC
-     * DELETE_FAILED
      * 
      */
     public Output<String> state() {

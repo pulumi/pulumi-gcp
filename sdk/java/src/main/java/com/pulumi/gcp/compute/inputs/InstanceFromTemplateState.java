@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromTemplateAttachedDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateBootDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateGuestAcceleratorArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromTemplateInstanceEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateNetworkInterfaceArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateNetworkPerformanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateParamsArgs;
@@ -263,6 +264,21 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * Encryption key used to provide data encryption on the given instance.
+     * 
+     */
+    @Import(name="instanceEncryptionKey")
+    private @Nullable Output<InstanceFromTemplateInstanceEncryptionKeyArgs> instanceEncryptionKey;
+
+    /**
+     * @return Encryption key used to provide data encryption on the given instance.
+     * 
+     */
+    public Optional<Output<InstanceFromTemplateInstanceEncryptionKeyArgs>> instanceEncryptionKey() {
+        return Optional.ofNullable(this.instanceEncryptionKey);
     }
 
     /**
@@ -719,6 +735,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         this.enableDisplay = $.enableDisplay;
         this.guestAccelerators = $.guestAccelerators;
         this.hostname = $.hostname;
+        this.instanceEncryptionKey = $.instanceEncryptionKey;
         this.instanceId = $.instanceId;
         this.keyRevocationActionType = $.keyRevocationActionType;
         this.labelFingerprint = $.labelFingerprint;
@@ -1106,6 +1123,27 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
          */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param instanceEncryptionKey Encryption key used to provide data encryption on the given instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceEncryptionKey(@Nullable Output<InstanceFromTemplateInstanceEncryptionKeyArgs> instanceEncryptionKey) {
+            $.instanceEncryptionKey = instanceEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param instanceEncryptionKey Encryption key used to provide data encryption on the given instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceEncryptionKey(InstanceFromTemplateInstanceEncryptionKeyArgs instanceEncryptionKey) {
+            return instanceEncryptionKey(Output.of(instanceEncryptionKey));
         }
 
         /**

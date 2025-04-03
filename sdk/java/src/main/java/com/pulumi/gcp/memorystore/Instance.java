@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.memorystore.InstanceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceState;
+import com.pulumi.gcp.memorystore.outputs.InstanceCrossInstanceReplicationConfig;
 import com.pulumi.gcp.memorystore.outputs.InstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.InstanceDiscoveryEndpoint;
 import com.pulumi.gcp.memorystore.outputs.InstanceEndpoint;
@@ -17,6 +18,7 @@ import com.pulumi.gcp.memorystore.outputs.InstanceMaintenancePolicy;
 import com.pulumi.gcp.memorystore.outputs.InstanceMaintenanceSchedule;
 import com.pulumi.gcp.memorystore.outputs.InstanceNodeConfig;
 import com.pulumi.gcp.memorystore.outputs.InstancePersistenceConfig;
+import com.pulumi.gcp.memorystore.outputs.InstancePscAttachmentDetail;
 import com.pulumi.gcp.memorystore.outputs.InstancePscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.InstanceStateInfo;
 import com.pulumi.gcp.memorystore.outputs.InstanceZoneDistributionConfig;
@@ -30,6 +32,12 @@ import javax.annotation.Nullable;
 
 /**
  * A Google Cloud Memorystore instance.
+ * 
+ * To get more information about Instance, see:
+ * 
+ * * [API documentation](https://cloud.google.com/memorystore/docs/valkey/reference/rest/v1/projects.locations.instances)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/memorystore/docs/valkey/create-instances)
  * 
  * ## Example Usage
  * 
@@ -324,6 +332,168 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Memorystore Instance Secondary Instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.memorystore.Instance;
+ * import com.pulumi.gcp.memorystore.InstanceArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigRdbConfigArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigArgs;
+ * import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primaryProducerNet = new Network("primaryProducerNet", NetworkArgs.builder()
+ *             .name("my-network-primary-instance")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var primaryProducerSubnet = new Subnetwork("primaryProducerSubnet", SubnetworkArgs.builder()
+ *             .name("my-subnet-primary-instance")
+ *             .ipCidrRange("10.0.1.0/29")
+ *             .region("asia-east1")
+ *             .network(primaryProducerNet.id())
+ *             .build());
+ * 
+ *         var primaryPolicy = new ServiceConnectionPolicy("primaryPolicy", ServiceConnectionPolicyArgs.builder()
+ *             .name("my-policy-primary-instance")
+ *             .location("asia-east1")
+ *             .serviceClass("gcp-memorystore")
+ *             .description("my basic service connection policy")
+ *             .network(primaryProducerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(primaryProducerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         // Primary instance
+ *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()
+ *             .instanceId("primary-instance")
+ *             .shardCount(1)
+ *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
+ *                 .network(primaryProducerNet.id())
+ *                 .projectId(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .build())
+ *             .location("asia-east1")
+ *             .replicaCount(1)
+ *             .nodeType("SHARED_CORE_NANO")
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_DISABLED")
+ *             .authorizationMode("AUTH_DISABLED")
+ *             .engineConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .zoneDistributionConfig(InstanceZoneDistributionConfigArgs.builder()
+ *                 .mode("SINGLE_ZONE")
+ *                 .zone("asia-east1-c")
+ *                 .build())
+ *             .deletionProtectionEnabled(true)
+ *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
+ *                 .mode("RDB")
+ *                 .rdbConfig(InstancePersistenceConfigRdbConfigArgs.builder()
+ *                     .rdbSnapshotPeriod("ONE_HOUR")
+ *                     .rdbSnapshotStartTime("2024-10-02T15:01:23Z")
+ *                     .build())
+ *                 .build())
+ *             .labels(Map.of("abc", "xyz"))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(primaryPolicy)
+ *                 .build());
+ * 
+ *         var secondaryProducerNet = new Network("secondaryProducerNet", NetworkArgs.builder()
+ *             .name("my-network-secondary-instance")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var secondaryProducerSubnet = new Subnetwork("secondaryProducerSubnet", SubnetworkArgs.builder()
+ *             .name("my-subnet-secondary-instance")
+ *             .ipCidrRange("10.0.2.0/29")
+ *             .region("europe-north1")
+ *             .network(secondaryProducerNet.id())
+ *             .build());
+ * 
+ *         var secondaryPolicy = new ServiceConnectionPolicy("secondaryPolicy", ServiceConnectionPolicyArgs.builder()
+ *             .name("my-policy-secondary-instance")
+ *             .location("europe-north1")
+ *             .serviceClass("gcp-memorystore")
+ *             .description("my basic service connection policy")
+ *             .network(secondaryProducerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(secondaryProducerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         // Secondary instance
+ *         var secondaryInstance = new Instance("secondaryInstance", InstanceArgs.builder()
+ *             .instanceId("secondary-instance")
+ *             .shardCount(1)
+ *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
+ *                 .network(secondaryProducerNet.id())
+ *                 .projectId(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .build())
+ *             .location("europe-north1")
+ *             .replicaCount(1)
+ *             .nodeType("SHARED_CORE_NANO")
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_DISABLED")
+ *             .authorizationMode("AUTH_DISABLED")
+ *             .engineConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .zoneDistributionConfig(InstanceZoneDistributionConfigArgs.builder()
+ *                 .mode("SINGLE_ZONE")
+ *                 .zone("europe-north1-c")
+ *                 .build())
+ *             .deletionProtectionEnabled(true)
+ *             .crossInstanceReplicationConfig(InstanceCrossInstanceReplicationConfigArgs.builder()
+ *                 .instanceRole("SECONDARY")
+ *                 .primaryInstance(InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs.builder()
+ *                     .instance(primaryInstance.id())
+ *                     .build())
+ *                 .build())
+ *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
+ *                 .mode("RDB")
+ *                 .rdbConfig(InstancePersistenceConfigRdbConfigArgs.builder()
+ *                     .rdbSnapshotPeriod("ONE_HOUR")
+ *                     .rdbSnapshotStartTime("2024-10-02T15:01:23Z")
+ *                     .build())
+ *                 .build())
+ *             .labels(Map.of("abc", "xyz"))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(secondaryPolicy)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -385,6 +555,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * Cross instance replication config
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="crossInstanceReplicationConfig", refs={InstanceCrossInstanceReplicationConfig.class}, tree="[0]")
+    private Output<InstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfig;
+
+    /**
+     * @return Cross instance replication config
+     * Structure is documented below.
+     * 
+     */
+    public Output<InstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfig() {
+        return this.crossInstanceReplicationConfig;
+    }
+    /**
      * Optional. If set to true deletion of the instance will fail.
      * 
      */
@@ -399,18 +585,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtectionEnabled);
     }
     /**
-     * Required. Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created PSC connections.
      * 
      */
     @Export(name="desiredPscAutoConnections", refs={List.class,InstanceDesiredPscAutoConnection.class}, tree="[0,1]")
-    private Output<List<InstanceDesiredPscAutoConnection>> desiredPscAutoConnections;
+    private Output</* @Nullable */ List<InstanceDesiredPscAutoConnection>> desiredPscAutoConnections;
 
     /**
-     * @return Required. Immutable. User inputs for the auto-created PSC connections.
+     * @return Immutable. User inputs for the auto-created PSC connections.
      * 
      */
-    public Output<List<InstanceDesiredPscAutoConnection>> desiredPscAutoConnections() {
-        return this.desiredPscAutoConnections;
+    public Output<Optional<List<InstanceDesiredPscAutoConnection>>> desiredPscAutoConnections() {
+        return Codegen.optional(this.desiredPscAutoConnections);
     }
     /**
      * Output only. Endpoints clients can connect to the instance through. Currently only one
@@ -693,6 +879,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Configuration of a service attachment of the cluster, for creating PSC connections.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pscAttachmentDetails", refs={List.class,InstancePscAttachmentDetail.class}, tree="[0,1]")
+    private Output<List<InstancePscAttachmentDetail>> pscAttachmentDetails;
+
+    /**
+     * @return Configuration of a service attachment of the cluster, for creating PSC connections.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<InstancePscAttachmentDetail>> pscAttachmentDetails() {
+        return this.pscAttachmentDetails;
     }
     /**
      * Output only. User inputs and resource details of the auto-created PSC connections.

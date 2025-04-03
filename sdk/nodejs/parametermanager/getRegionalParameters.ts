@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Use this data source to list the Parameter Manager Regional Parameters.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -65,6 +67,8 @@ export interface GetRegionalParametersResult {
     readonly project: string;
 }
 /**
+ * Use this data source to list the Parameter Manager Regional Parameters.
+ *
  * ## Example Usage
  *
  * ```typescript

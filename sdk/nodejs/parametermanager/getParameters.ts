@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Use this data source to list the Parameter Manager Parameters.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -58,6 +60,8 @@ export interface GetParametersResult {
     readonly project: string;
 }
 /**
+ * Use this data source to list the Parameter Manager Parameters.
+ *
  * ## Example Usage
  *
  * ```typescript

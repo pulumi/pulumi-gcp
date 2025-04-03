@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.MetastoreFederationBackendMetastoreArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +49,13 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -252,6 +260,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
     private MetastoreFederationState(MetastoreFederationState $) {
         this.backendMetastores = $.backendMetastores;
         this.createTime = $.createTime;
+        this.deletionProtection = $.deletionProtection;
         this.effectiveLabels = $.effectiveLabels;
         this.endpointUri = $.endpointUri;
         this.federationId = $.federationId;
@@ -338,6 +347,15 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

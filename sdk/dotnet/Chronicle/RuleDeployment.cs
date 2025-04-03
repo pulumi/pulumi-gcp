@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Chronicle
 {
     /// <summary>
+    /// The RuleDeployment resource represents the deployment state of a Rule.
+    /// 
+    /// To get more information about RuleDeployment, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/RuleDeployment)
+    /// * How-to Guides
+    ///     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+    /// 
     /// ## Example Usage
     /// 
     /// ## Import

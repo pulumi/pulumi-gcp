@@ -52,16 +52,16 @@ public final class ConnectionProfileSqlServerProfileArgs extends com.pulumi.reso
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return Password for the SQL Server connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -77,6 +77,21 @@ public final class ConnectionProfileSqlServerProfileArgs extends com.pulumi.reso
      */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
+    }
+
+    /**
+     * A reference to a Secret Manager resource name storing the user&#39;s password.
+     * 
+     */
+    @Import(name="secretManagerStoredPassword")
+    private @Nullable Output<String> secretManagerStoredPassword;
+
+    /**
+     * @return A reference to a Secret Manager resource name storing the user&#39;s password.
+     * 
+     */
+    public Optional<Output<String>> secretManagerStoredPassword() {
+        return Optional.ofNullable(this.secretManagerStoredPassword);
     }
 
     /**
@@ -101,6 +116,7 @@ public final class ConnectionProfileSqlServerProfileArgs extends com.pulumi.reso
         this.hostname = $.hostname;
         this.password = $.password;
         this.port = $.port;
+        this.secretManagerStoredPassword = $.secretManagerStoredPassword;
         this.username = $.username;
     }
 
@@ -171,7 +187,7 @@ public final class ConnectionProfileSqlServerProfileArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -209,6 +225,27 @@ public final class ConnectionProfileSqlServerProfileArgs extends com.pulumi.reso
         }
 
         /**
+         * @param secretManagerStoredPassword A reference to a Secret Manager resource name storing the user&#39;s password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretManagerStoredPassword(@Nullable Output<String> secretManagerStoredPassword) {
+            $.secretManagerStoredPassword = secretManagerStoredPassword;
+            return this;
+        }
+
+        /**
+         * @param secretManagerStoredPassword A reference to a Secret Manager resource name storing the user&#39;s password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretManagerStoredPassword(String secretManagerStoredPassword) {
+            return secretManagerStoredPassword(Output.of(secretManagerStoredPassword));
+        }
+
+        /**
          * @param username Username for the SQL Server connection.
          * 
          * @return builder
@@ -235,9 +272,6 @@ public final class ConnectionProfileSqlServerProfileArgs extends com.pulumi.reso
             }
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("ConnectionProfileSqlServerProfileArgs", "hostname");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("ConnectionProfileSqlServerProfileArgs", "password");
             }
             if ($.username == null) {
                 throw new MissingRequiredPropertyException("ConnectionProfileSqlServerProfileArgs", "username");

@@ -50,6 +50,18 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? Size;
         /// <summary>
+        /// The snapshot from which this disk was initialised.
+        /// </summary>
+        public readonly string? Snapshot;
+        /// <summary>
+        /// The encryption key used to decrypt the source image.
+        /// </summary>
+        public readonly Outputs.InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey? SourceImageEncryptionKey;
+        /// <summary>
+        /// The encryption key used to decrypt the source snapshot.
+        /// </summary>
+        public readonly Outputs.InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey? SourceSnapshotEncryptionKey;
+        /// <summary>
         /// The URL of the storage pool in which the new disk is created
         /// </summary>
         public readonly string? StoragePool;
@@ -78,6 +90,12 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? size,
 
+            string? snapshot,
+
+            Outputs.InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey? sourceImageEncryptionKey,
+
+            Outputs.InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey? sourceSnapshotEncryptionKey,
+
             string? storagePool,
 
             string? type)
@@ -91,6 +109,9 @@ namespace Pulumi.Gcp.Compute.Outputs
             ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;
             Size = size;
+            Snapshot = snapshot;
+            SourceImageEncryptionKey = sourceImageEncryptionKey;
+            SourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
             StoragePool = storagePool;
             Type = type;
         }

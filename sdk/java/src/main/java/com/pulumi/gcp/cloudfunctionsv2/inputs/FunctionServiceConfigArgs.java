@@ -71,6 +71,21 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * The binary authorization policy to be checked when deploying the Cloud Run service.
+     * 
+     */
+    @Import(name="binaryAuthorizationPolicy")
+    private @Nullable Output<String> binaryAuthorizationPolicy;
+
+    /**
+     * @return The binary authorization policy to be checked when deploying the Cloud Run service.
+     * 
+     */
+    public Optional<Output<String>> binaryAuthorizationPolicy() {
+        return Optional.ofNullable(this.binaryAuthorizationPolicy);
+    }
+
+    /**
      * Environment variables that shall be available during function execution.
      * 
      */
@@ -308,6 +323,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         this.allTrafficOnLatestRevision = $.allTrafficOnLatestRevision;
         this.availableCpu = $.availableCpu;
         this.availableMemory = $.availableMemory;
+        this.binaryAuthorizationPolicy = $.binaryAuthorizationPolicy;
         this.environmentVariables = $.environmentVariables;
         this.gcfUri = $.gcfUri;
         this.ingressSettings = $.ingressSettings;
@@ -407,6 +423,27 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder availableMemory(String availableMemory) {
             return availableMemory(Output.of(availableMemory));
+        }
+
+        /**
+         * @param binaryAuthorizationPolicy The binary authorization policy to be checked when deploying the Cloud Run service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorizationPolicy(@Nullable Output<String> binaryAuthorizationPolicy) {
+            $.binaryAuthorizationPolicy = binaryAuthorizationPolicy;
+            return this;
+        }
+
+        /**
+         * @param binaryAuthorizationPolicy The binary authorization policy to be checked when deploying the Cloud Run service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorizationPolicy(String binaryAuthorizationPolicy) {
+            return binaryAuthorizationPolicy(Output.of(binaryAuthorizationPolicy));
         }
 
         /**

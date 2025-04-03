@@ -370,6 +370,12 @@ class RegionalParameter(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Regional Parameter is a logical regional parameter.
+
+        To get more information about RegionalParameter, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+
         ## Example Usage
 
         ### Regional Parameter Basic
@@ -466,6 +472,12 @@ class RegionalParameter(pulumi.CustomResource):
                  args: RegionalParameterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Regional Parameter is a logical regional parameter.
+
+        To get more information about RegionalParameter, see:
+
+        * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+
         ## Example Usage
 
         ### Regional Parameter Basic

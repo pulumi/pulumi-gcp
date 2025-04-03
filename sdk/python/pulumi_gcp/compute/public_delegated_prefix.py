@@ -40,8 +40,8 @@ class PublicDelegatedPrefixArgs:
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-               EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -147,8 +147,8 @@ class PublicDelegatedPrefixArgs:
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         """
         return pulumi.get(self, "mode")
 
@@ -210,8 +210,8 @@ class _PublicDelegatedPrefixState:
                - - -
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-               EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -301,8 +301,8 @@ class _PublicDelegatedPrefixState:
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         """
         return pulumi.get(self, "mode")
 
@@ -449,6 +449,33 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             allocatable_prefix_length=64,
             mode="EXTERNAL_IPV6_FORWARDING_RULE_CREATION")
         ```
+        ### Public Delegated Prefix Ipv6 Subnet Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        advertised = gcp.compute.PublicAdvertisedPrefix("advertised",
+            name="ipv6-pap",
+            description="description",
+            dns_verification_ip="2001:db8::",
+            ip_cidr_range="2001:db8::/32",
+            pdp_scope="REGIONAL")
+        prefix = gcp.compute.PublicDelegatedPrefix("prefix",
+            name="ipv6-root-pdp",
+            description="test-delegation-mode-pdp",
+            region="us-east1",
+            ip_cidr_range="2001:db8::/40",
+            parent_prefix=advertised.id,
+            mode="DELEGATION")
+        subprefix = gcp.compute.PublicDelegatedPrefix("subprefix",
+            name="ipv6-sub-pdp",
+            description="test-subnet-mode-pdp",
+            region="us-east1",
+            ip_cidr_range="2001:db8::/48",
+            parent_prefix=prefix.id,
+            mode="EXTERNAL_IPV6_SUBNETWORK_CREATION")
+        ```
 
         ## Import
 
@@ -490,8 +517,8 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                - - -
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-               EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -565,6 +592,33 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             parent_prefix=prefix.id,
             allocatable_prefix_length=64,
             mode="EXTERNAL_IPV6_FORWARDING_RULE_CREATION")
+        ```
+        ### Public Delegated Prefix Ipv6 Subnet Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        advertised = gcp.compute.PublicAdvertisedPrefix("advertised",
+            name="ipv6-pap",
+            description="description",
+            dns_verification_ip="2001:db8::",
+            ip_cidr_range="2001:db8::/32",
+            pdp_scope="REGIONAL")
+        prefix = gcp.compute.PublicDelegatedPrefix("prefix",
+            name="ipv6-root-pdp",
+            description="test-delegation-mode-pdp",
+            region="us-east1",
+            ip_cidr_range="2001:db8::/40",
+            parent_prefix=advertised.id,
+            mode="DELEGATION")
+        subprefix = gcp.compute.PublicDelegatedPrefix("subprefix",
+            name="ipv6-sub-pdp",
+            description="test-subnet-mode-pdp",
+            region="us-east1",
+            ip_cidr_range="2001:db8::/48",
+            parent_prefix=prefix.id,
+            mode="EXTERNAL_IPV6_SUBNETWORK_CREATION")
         ```
 
         ## Import
@@ -681,8 +735,8 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
                - - -
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-               EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+               EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+               Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -713,7 +767,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allocatablePrefixLength")
-    def allocatable_prefix_length(self) -> pulumi.Output[Optional[int]]:
+    def allocatable_prefix_length(self) -> pulumi.Output[int]:
         """
         The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         """
@@ -751,8 +805,8 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     def mode(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+        EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+        Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         """
         return pulumi.get(self, "mode")
 

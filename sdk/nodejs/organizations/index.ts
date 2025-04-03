@@ -55,6 +55,11 @@ export const getIamCustomRole: typeof import("./getIamCustomRole").getIamCustomR
 export const getIamCustomRoleOutput: typeof import("./getIamCustomRole").getIamCustomRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getIamCustomRole","getIamCustomRoleOutput"], () => require("./getIamCustomRole"));
 
+export { GetIamCustomRolesArgs, GetIamCustomRolesResult, GetIamCustomRolesOutputArgs } from "./getIamCustomRoles";
+export const getIamCustomRoles: typeof import("./getIamCustomRoles").getIamCustomRoles = null as any;
+export const getIamCustomRolesOutput: typeof import("./getIamCustomRoles").getIamCustomRolesOutput = null as any;
+utilities.lazyLoad(exports, ["getIamCustomRoles","getIamCustomRolesOutput"], () => require("./getIamCustomRoles"));
+
 export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;

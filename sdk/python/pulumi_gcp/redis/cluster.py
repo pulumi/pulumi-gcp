@@ -23,6 +23,7 @@ class ClusterArgs:
     def __init__(__self__, *,
                  shard_count: pulumi.Input[int],
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 automated_backup_config: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,8 @@ class ClusterArgs:
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        :param pulumi.Input['ClusterAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
+               Structure is documented below.
         :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
                Structure is documented below.
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
@@ -82,6 +85,8 @@ class ClusterArgs:
         pulumi.set(__self__, "shard_count", shard_count)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
+        if automated_backup_config is not None:
+            pulumi.set(__self__, "automated_backup_config", automated_backup_config)
         if cross_cluster_replication_config is not None:
             pulumi.set(__self__, "cross_cluster_replication_config", cross_cluster_replication_config)
         if deletion_protection_enabled is not None:
@@ -136,6 +141,19 @@ class ClusterArgs:
     @authorization_mode.setter
     def authorization_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "authorization_mode", value)
+
+    @property
+    @pulumi.getter(name="automatedBackupConfig")
+    def automated_backup_config(self) -> Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']]:
+        """
+        The automated backup config for a instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "automated_backup_config")
+
+    @automated_backup_config.setter
+    def automated_backup_config(self, value: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']]):
+        pulumi.set(self, "automated_backup_config", value)
 
     @property
     @pulumi.getter(name="crossClusterReplicationConfig")
@@ -331,6 +349,7 @@ class ClusterArgs:
 class _ClusterState:
     def __init__(__self__, *,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 automated_backup_config: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
@@ -361,6 +380,8 @@ class _ClusterState:
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        :param pulumi.Input['ClusterAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -419,6 +440,8 @@ class _ClusterState:
         """
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
+        if automated_backup_config is not None:
+            pulumi.set(__self__, "automated_backup_config", automated_backup_config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if cross_cluster_replication_config is not None:
@@ -483,6 +506,19 @@ class _ClusterState:
     @authorization_mode.setter
     def authorization_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "authorization_mode", value)
+
+    @property
+    @pulumi.getter(name="automatedBackupConfig")
+    def automated_backup_config(self) -> Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']]:
+        """
+        The automated backup config for a instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "automated_backup_config")
+
+    @automated_backup_config.setter
+    def automated_backup_config(self, value: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']]):
+        pulumi.set(self, "automated_backup_config", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -821,6 +857,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
@@ -1254,6 +1291,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        :param pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']] automated_backup_config: The automated backup config for a instance.
+               Structure is documented below.
         :param pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']] cross_cluster_replication_config: Cross cluster replication config
                Structure is documented below.
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
@@ -1725,6 +1764,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
@@ -1750,6 +1790,7 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["authorization_mode"] = authorization_mode
+            __props__.__dict__["automated_backup_config"] = automated_backup_config
             __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
             __props__.__dict__["kms_key"] = kms_key
@@ -1788,6 +1829,7 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[str]] = None,
+            automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1823,6 +1865,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value is `AUTH_MODE_DISABLED`.
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        :param pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']] automated_backup_config: The automated backup config for a instance.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -1884,6 +1928,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = _ClusterState.__new__(_ClusterState)
 
         __props__.__dict__["authorization_mode"] = authorization_mode
+        __props__.__dict__["automated_backup_config"] = automated_backup_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
@@ -1920,6 +1965,15 @@ class Cluster(pulumi.CustomResource):
         Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         """
         return pulumi.get(self, "authorization_mode")
+
+    @property
+    @pulumi.getter(name="automatedBackupConfig")
+    def automated_backup_config(self) -> pulumi.Output[Optional['outputs.ClusterAutomatedBackupConfig']]:
+        """
+        The automated backup config for a instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "automated_backup_config")
 
     @property
     @pulumi.getter(name="createTime")

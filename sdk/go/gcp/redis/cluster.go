@@ -672,6 +672,9 @@ type Cluster struct {
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode pulumi.StringPtrOutput `pulumi:"authorizationMode"`
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig ClusterAutomatedBackupConfigPtrOutput `pulumi:"automatedBackupConfig"`
 	// The timestamp associated with the cluster creation request. A timestamp in
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -790,6 +793,9 @@ type clusterState struct {
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig *ClusterAutomatedBackupConfig `pulumi:"automatedBackupConfig"`
 	// The timestamp associated with the cluster creation request. A timestamp in
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -876,6 +882,9 @@ type ClusterState struct {
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode pulumi.StringPtrInput
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig ClusterAutomatedBackupConfigPtrInput
 	// The timestamp associated with the cluster creation request. A timestamp in
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -966,6 +975,9 @@ type clusterArgs struct {
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig *ClusterAutomatedBackupConfig `pulumi:"automatedBackupConfig"`
 	// Cross cluster replication config
 	// Structure is documented below.
 	CrossClusterReplicationConfig *ClusterCrossClusterReplicationConfig `pulumi:"crossClusterReplicationConfig"`
@@ -1024,6 +1036,9 @@ type ClusterArgs struct {
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode pulumi.StringPtrInput
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig ClusterAutomatedBackupConfigPtrInput
 	// Cross cluster replication config
 	// Structure is documented below.
 	CrossClusterReplicationConfig ClusterCrossClusterReplicationConfigPtrInput
@@ -1168,6 +1183,12 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 // Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 func (o ClusterOutput) AuthorizationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AuthorizationMode }).(pulumi.StringPtrOutput)
+}
+
+// The automated backup config for a instance.
+// Structure is documented below.
+func (o ClusterOutput) AutomatedBackupConfig() ClusterAutomatedBackupConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAutomatedBackupConfigPtrOutput { return v.AutomatedBackupConfig }).(ClusterAutomatedBackupConfigPtrOutput)
 }
 
 // The timestamp associated with the cluster creation request. A timestamp in

@@ -23,6 +23,7 @@ public final class GetParameterResult {
      * 
      */
     private String id;
+    private String kmsKey;
     private Map<String,String> labels;
     private String name;
     private String parameterId;
@@ -47,6 +48,9 @@ public final class GetParameterResult {
      */
     public String id() {
         return this.id;
+    }
+    public String kmsKey() {
+        return this.kmsKey;
     }
     public Map<String,String> labels() {
         return this.labels;
@@ -83,6 +87,7 @@ public final class GetParameterResult {
         private Map<String,String> effectiveLabels;
         private String format;
         private String id;
+        private String kmsKey;
         private Map<String,String> labels;
         private String name;
         private String parameterId;
@@ -97,6 +102,7 @@ public final class GetParameterResult {
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
+    	      this.kmsKey = defaults.kmsKey;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.parameterId = defaults.parameterId;
@@ -136,6 +142,14 @@ public final class GetParameterResult {
               throw new MissingRequiredPropertyException("GetParameterResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKey(String kmsKey) {
+            if (kmsKey == null) {
+              throw new MissingRequiredPropertyException("GetParameterResult", "kmsKey");
+            }
+            this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
@@ -201,6 +215,7 @@ public final class GetParameterResult {
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.format = format;
             _resultValue.id = id;
+            _resultValue.kmsKey = kmsKey;
             _resultValue.labels = labels;
             _resultValue.name = name;
             _resultValue.parameterId = parameterId;

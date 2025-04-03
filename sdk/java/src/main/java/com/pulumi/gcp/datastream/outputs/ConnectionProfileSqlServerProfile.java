@@ -28,12 +28,17 @@ public final class ConnectionProfileSqlServerProfile {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String password;
+    private @Nullable String password;
     /**
      * @return Port for the SQL Server connection.
      * 
      */
     private @Nullable Integer port;
+    /**
+     * @return A reference to a Secret Manager resource name storing the user&#39;s password.
+     * 
+     */
+    private @Nullable String secretManagerStoredPassword;
     /**
      * @return Username for the SQL Server connection.
      * 
@@ -60,8 +65,8 @@ public final class ConnectionProfileSqlServerProfile {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
     /**
      * @return Port for the SQL Server connection.
@@ -69,6 +74,13 @@ public final class ConnectionProfileSqlServerProfile {
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
+    }
+    /**
+     * @return A reference to a Secret Manager resource name storing the user&#39;s password.
+     * 
+     */
+    public Optional<String> secretManagerStoredPassword() {
+        return Optional.ofNullable(this.secretManagerStoredPassword);
     }
     /**
      * @return Username for the SQL Server connection.
@@ -89,8 +101,9 @@ public final class ConnectionProfileSqlServerProfile {
     public static final class Builder {
         private String database;
         private String hostname;
-        private String password;
+        private @Nullable String password;
         private @Nullable Integer port;
+        private @Nullable String secretManagerStoredPassword;
         private String username;
         public Builder() {}
         public Builder(ConnectionProfileSqlServerProfile defaults) {
@@ -99,6 +112,7 @@ public final class ConnectionProfileSqlServerProfile {
     	      this.hostname = defaults.hostname;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
+    	      this.secretManagerStoredPassword = defaults.secretManagerStoredPassword;
     	      this.username = defaults.username;
         }
 
@@ -119,10 +133,8 @@ public final class ConnectionProfileSqlServerProfile {
             return this;
         }
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfileSqlServerProfile", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
@@ -130,6 +142,12 @@ public final class ConnectionProfileSqlServerProfile {
         public Builder port(@Nullable Integer port) {
 
             this.port = port;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secretManagerStoredPassword(@Nullable String secretManagerStoredPassword) {
+
+            this.secretManagerStoredPassword = secretManagerStoredPassword;
             return this;
         }
         @CustomType.Setter
@@ -146,6 +164,7 @@ public final class ConnectionProfileSqlServerProfile {
             _resultValue.hostname = hostname;
             _resultValue.password = password;
             _resultValue.port = port;
+            _resultValue.secretManagerStoredPassword = secretManagerStoredPassword;
             _resultValue.username = username;
             return _resultValue;
         }

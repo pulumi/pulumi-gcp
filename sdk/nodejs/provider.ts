@@ -306,6 +306,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["edgenetworkCustomEndpoint"] = args ? args.edgenetworkCustomEndpoint : undefined;
             resourceInputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
             resourceInputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
+            resourceInputs["externalCredentials"] = pulumi.output(args ? args.externalCredentials : undefined).apply(JSON.stringify);
             resourceInputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
             resourceInputs["firebaseAppCheckCustomEndpoint"] = args ? args.firebaseAppCheckCustomEndpoint : undefined;
             resourceInputs["firebaseAppHostingCustomEndpoint"] = args ? args.firebaseAppHostingCustomEndpoint : undefined;
@@ -508,6 +509,7 @@ export interface ProviderArgs {
     edgenetworkCustomEndpoint?: pulumi.Input<string>;
     essentialContactsCustomEndpoint?: pulumi.Input<string>;
     eventarcCustomEndpoint?: pulumi.Input<string>;
+    externalCredentials?: pulumi.Input<inputs.ProviderExternalCredentials>;
     filestoreCustomEndpoint?: pulumi.Input<string>;
     firebaseAppCheckCustomEndpoint?: pulumi.Input<string>;
     firebaseAppHostingCustomEndpoint?: pulumi.Input<string>;

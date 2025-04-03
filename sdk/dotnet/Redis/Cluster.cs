@@ -693,6 +693,13 @@ namespace Pulumi.Gcp.Redis
         public Output<string?> AuthorizationMode { get; private set; } = null!;
 
         /// <summary>
+        /// The automated backup config for a instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("automatedBackupConfig")]
+        public Output<Outputs.ClusterAutomatedBackupConfig?> AutomatedBackupConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp associated with the cluster creation request. A timestamp in
         /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
         /// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -927,6 +934,13 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? AuthorizationMode { get; set; }
 
         /// <summary>
+        /// The automated backup config for a instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("automatedBackupConfig")]
+        public Input<Inputs.ClusterAutomatedBackupConfigArgs>? AutomatedBackupConfig { get; set; }
+
+        /// <summary>
         /// Cross cluster replication config
         /// Structure is documented below.
         /// </summary>
@@ -1064,6 +1078,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }
+
+        /// <summary>
+        /// The automated backup config for a instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("automatedBackupConfig")]
+        public Input<Inputs.ClusterAutomatedBackupConfigGetArgs>? AutomatedBackupConfig { get; set; }
 
         /// <summary>
         /// The timestamp associated with the cluster creation request. A timestamp in

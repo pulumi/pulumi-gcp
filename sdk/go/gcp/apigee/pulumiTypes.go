@@ -1314,6 +1314,170 @@ func (o DeveloperAttributeArrayOutput) Index(i pulumi.IntInput) DeveloperAttribu
 	}).(DeveloperAttributeOutput)
 }
 
+type DnsZonePeeringConfig struct {
+	// The name of the producer VPC network.
+	//
+	// ***
+	TargetNetworkId string `pulumi:"targetNetworkId"`
+	// The ID of the project that contains the producer VPC network.
+	TargetProjectId string `pulumi:"targetProjectId"`
+}
+
+// DnsZonePeeringConfigInput is an input type that accepts DnsZonePeeringConfigArgs and DnsZonePeeringConfigOutput values.
+// You can construct a concrete instance of `DnsZonePeeringConfigInput` via:
+//
+//	DnsZonePeeringConfigArgs{...}
+type DnsZonePeeringConfigInput interface {
+	pulumi.Input
+
+	ToDnsZonePeeringConfigOutput() DnsZonePeeringConfigOutput
+	ToDnsZonePeeringConfigOutputWithContext(context.Context) DnsZonePeeringConfigOutput
+}
+
+type DnsZonePeeringConfigArgs struct {
+	// The name of the producer VPC network.
+	//
+	// ***
+	TargetNetworkId pulumi.StringInput `pulumi:"targetNetworkId"`
+	// The ID of the project that contains the producer VPC network.
+	TargetProjectId pulumi.StringInput `pulumi:"targetProjectId"`
+}
+
+func (DnsZonePeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsZonePeeringConfig)(nil)).Elem()
+}
+
+func (i DnsZonePeeringConfigArgs) ToDnsZonePeeringConfigOutput() DnsZonePeeringConfigOutput {
+	return i.ToDnsZonePeeringConfigOutputWithContext(context.Background())
+}
+
+func (i DnsZonePeeringConfigArgs) ToDnsZonePeeringConfigOutputWithContext(ctx context.Context) DnsZonePeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsZonePeeringConfigOutput)
+}
+
+func (i DnsZonePeeringConfigArgs) ToDnsZonePeeringConfigPtrOutput() DnsZonePeeringConfigPtrOutput {
+	return i.ToDnsZonePeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DnsZonePeeringConfigArgs) ToDnsZonePeeringConfigPtrOutputWithContext(ctx context.Context) DnsZonePeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsZonePeeringConfigOutput).ToDnsZonePeeringConfigPtrOutputWithContext(ctx)
+}
+
+// DnsZonePeeringConfigPtrInput is an input type that accepts DnsZonePeeringConfigArgs, DnsZonePeeringConfigPtr and DnsZonePeeringConfigPtrOutput values.
+// You can construct a concrete instance of `DnsZonePeeringConfigPtrInput` via:
+//
+//	        DnsZonePeeringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DnsZonePeeringConfigPtrInput interface {
+	pulumi.Input
+
+	ToDnsZonePeeringConfigPtrOutput() DnsZonePeeringConfigPtrOutput
+	ToDnsZonePeeringConfigPtrOutputWithContext(context.Context) DnsZonePeeringConfigPtrOutput
+}
+
+type dnsZonePeeringConfigPtrType DnsZonePeeringConfigArgs
+
+func DnsZonePeeringConfigPtr(v *DnsZonePeeringConfigArgs) DnsZonePeeringConfigPtrInput {
+	return (*dnsZonePeeringConfigPtrType)(v)
+}
+
+func (*dnsZonePeeringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsZonePeeringConfig)(nil)).Elem()
+}
+
+func (i *dnsZonePeeringConfigPtrType) ToDnsZonePeeringConfigPtrOutput() DnsZonePeeringConfigPtrOutput {
+	return i.ToDnsZonePeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dnsZonePeeringConfigPtrType) ToDnsZonePeeringConfigPtrOutputWithContext(ctx context.Context) DnsZonePeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsZonePeeringConfigPtrOutput)
+}
+
+type DnsZonePeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (DnsZonePeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsZonePeeringConfig)(nil)).Elem()
+}
+
+func (o DnsZonePeeringConfigOutput) ToDnsZonePeeringConfigOutput() DnsZonePeeringConfigOutput {
+	return o
+}
+
+func (o DnsZonePeeringConfigOutput) ToDnsZonePeeringConfigOutputWithContext(ctx context.Context) DnsZonePeeringConfigOutput {
+	return o
+}
+
+func (o DnsZonePeeringConfigOutput) ToDnsZonePeeringConfigPtrOutput() DnsZonePeeringConfigPtrOutput {
+	return o.ToDnsZonePeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DnsZonePeeringConfigOutput) ToDnsZonePeeringConfigPtrOutputWithContext(ctx context.Context) DnsZonePeeringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsZonePeeringConfig) *DnsZonePeeringConfig {
+		return &v
+	}).(DnsZonePeeringConfigPtrOutput)
+}
+
+// The name of the producer VPC network.
+//
+// ***
+func (o DnsZonePeeringConfigOutput) TargetNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsZonePeeringConfig) string { return v.TargetNetworkId }).(pulumi.StringOutput)
+}
+
+// The ID of the project that contains the producer VPC network.
+func (o DnsZonePeeringConfigOutput) TargetProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsZonePeeringConfig) string { return v.TargetProjectId }).(pulumi.StringOutput)
+}
+
+type DnsZonePeeringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DnsZonePeeringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsZonePeeringConfig)(nil)).Elem()
+}
+
+func (o DnsZonePeeringConfigPtrOutput) ToDnsZonePeeringConfigPtrOutput() DnsZonePeeringConfigPtrOutput {
+	return o
+}
+
+func (o DnsZonePeeringConfigPtrOutput) ToDnsZonePeeringConfigPtrOutputWithContext(ctx context.Context) DnsZonePeeringConfigPtrOutput {
+	return o
+}
+
+func (o DnsZonePeeringConfigPtrOutput) Elem() DnsZonePeeringConfigOutput {
+	return o.ApplyT(func(v *DnsZonePeeringConfig) DnsZonePeeringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DnsZonePeeringConfig
+		return ret
+	}).(DnsZonePeeringConfigOutput)
+}
+
+// The name of the producer VPC network.
+//
+// ***
+func (o DnsZonePeeringConfigPtrOutput) TargetNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsZonePeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project that contains the producer VPC network.
+func (o DnsZonePeeringConfigPtrOutput) TargetProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsZonePeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 type EnvironmentIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -4338,6 +4502,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeArrayInput)(nil)).Elem(), AppGroupAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAttributeInput)(nil)).Elem(), DeveloperAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAttributeArrayInput)(nil)).Elem(), DeveloperAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsZonePeeringConfigInput)(nil)).Elem(), DnsZonePeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsZonePeeringConfigPtrInput)(nil)).Elem(), DnsZonePeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionPtrInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamMemberConditionInput)(nil)).Elem(), EnvironmentIamMemberConditionArgs{})
@@ -4392,6 +4558,8 @@ func init() {
 	pulumi.RegisterOutputType(AppGroupAttributeArrayOutput{})
 	pulumi.RegisterOutputType(DeveloperAttributeOutput{})
 	pulumi.RegisterOutputType(DeveloperAttributeArrayOutput{})
+	pulumi.RegisterOutputType(DnsZonePeeringConfigOutput{})
+	pulumi.RegisterOutputType(DnsZonePeeringConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamMemberConditionOutput{})

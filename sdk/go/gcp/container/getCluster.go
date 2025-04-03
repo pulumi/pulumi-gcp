@@ -84,6 +84,7 @@ type LookupClusterResult struct {
 	DefaultSnatStatuses                  []GetClusterDefaultSnatStatus           `pulumi:"defaultSnatStatuses"`
 	DeletionProtection                   bool                                    `pulumi:"deletionProtection"`
 	Description                          string                                  `pulumi:"description"`
+	DisableL4LbFirewallReconciliation    bool                                    `pulumi:"disableL4LbFirewallReconciliation"`
 	DnsConfigs                           []GetClusterDnsConfig                   `pulumi:"dnsConfigs"`
 	EffectiveLabels                      map[string]string                       `pulumi:"effectiveLabels"`
 	EnableAutopilot                      bool                                    `pulumi:"enableAutopilot"`
@@ -260,6 +261,10 @@ func (o LookupClusterResultOutput) DeletionProtection() pulumi.BoolOutput {
 
 func (o LookupClusterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DisableL4LbFirewallReconciliation() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.DisableL4LbFirewallReconciliation }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) DnsConfigs() GetClusterDnsConfigArrayOutput {

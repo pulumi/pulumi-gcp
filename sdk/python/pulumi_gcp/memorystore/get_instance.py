@@ -27,13 +27,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, create_time=None, deletion_protection_enabled=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, id=None, instance_id=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, id=None, instance_id=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if cross_instance_replication_configs and not isinstance(cross_instance_replication_configs, list):
+            raise TypeError("Expected argument 'cross_instance_replication_configs' to be a list")
+        pulumi.set(__self__, "cross_instance_replication_configs", cross_instance_replication_configs)
         if deletion_protection_enabled and not isinstance(deletion_protection_enabled, bool):
             raise TypeError("Expected argument 'deletion_protection_enabled' to be a bool")
         pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
@@ -91,6 +94,9 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if psc_attachment_details and not isinstance(psc_attachment_details, list):
+            raise TypeError("Expected argument 'psc_attachment_details' to be a list")
+        pulumi.set(__self__, "psc_attachment_details", psc_attachment_details)
         if psc_auto_connections and not isinstance(psc_auto_connections, list):
             raise TypeError("Expected argument 'psc_auto_connections' to be a list")
         pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
@@ -131,6 +137,11 @@ class GetInstanceResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="crossInstanceReplicationConfigs")
+    def cross_instance_replication_configs(self) -> Sequence['outputs.GetInstanceCrossInstanceReplicationConfigResult']:
+        return pulumi.get(self, "cross_instance_replication_configs")
 
     @property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -231,6 +242,11 @@ class GetInstanceResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pscAttachmentDetails")
+    def psc_attachment_details(self) -> Sequence['outputs.GetInstancePscAttachmentDetailResult']:
+        return pulumi.get(self, "psc_attachment_details")
+
+    @property
     @pulumi.getter(name="pscAutoConnections")
     def psc_auto_connections(self) -> Sequence['outputs.GetInstancePscAutoConnectionResult']:
         return pulumi.get(self, "psc_auto_connections")
@@ -289,6 +305,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             authorization_mode=self.authorization_mode,
             create_time=self.create_time,
+            cross_instance_replication_configs=self.cross_instance_replication_configs,
             deletion_protection_enabled=self.deletion_protection_enabled,
             desired_psc_auto_connections=self.desired_psc_auto_connections,
             discovery_endpoints=self.discovery_endpoints,
@@ -308,6 +325,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             node_type=self.node_type,
             persistence_configs=self.persistence_configs,
             project=self.project,
+            psc_attachment_details=self.psc_attachment_details,
             psc_auto_connections=self.psc_auto_connections,
             pulumi_labels=self.pulumi_labels,
             replica_count=self.replica_count,
@@ -354,6 +372,7 @@ def get_instance(instance_id: Optional[str] = None,
     return AwaitableGetInstanceResult(
         authorization_mode=pulumi.get(__ret__, 'authorization_mode'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        cross_instance_replication_configs=pulumi.get(__ret__, 'cross_instance_replication_configs'),
         deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
         desired_psc_auto_connections=pulumi.get(__ret__, 'desired_psc_auto_connections'),
         discovery_endpoints=pulumi.get(__ret__, 'discovery_endpoints'),
@@ -373,6 +392,7 @@ def get_instance(instance_id: Optional[str] = None,
         node_type=pulumi.get(__ret__, 'node_type'),
         persistence_configs=pulumi.get(__ret__, 'persistence_configs'),
         project=pulumi.get(__ret__, 'project'),
+        psc_attachment_details=pulumi.get(__ret__, 'psc_attachment_details'),
         psc_auto_connections=pulumi.get(__ret__, 'psc_auto_connections'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         replica_count=pulumi.get(__ret__, 'replica_count'),
@@ -416,6 +436,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
     return __ret__.apply(lambda __response__: GetInstanceResult(
         authorization_mode=pulumi.get(__response__, 'authorization_mode'),
         create_time=pulumi.get(__response__, 'create_time'),
+        cross_instance_replication_configs=pulumi.get(__response__, 'cross_instance_replication_configs'),
         deletion_protection_enabled=pulumi.get(__response__, 'deletion_protection_enabled'),
         desired_psc_auto_connections=pulumi.get(__response__, 'desired_psc_auto_connections'),
         discovery_endpoints=pulumi.get(__response__, 'discovery_endpoints'),
@@ -435,6 +456,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[str]] = None,
         node_type=pulumi.get(__response__, 'node_type'),
         persistence_configs=pulumi.get(__response__, 'persistence_configs'),
         project=pulumi.get(__response__, 'project'),
+        psc_attachment_details=pulumi.get(__response__, 'psc_attachment_details'),
         psc_auto_connections=pulumi.get(__response__, 'psc_auto_connections'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         replica_count=pulumi.get(__response__, 'replica_count'),

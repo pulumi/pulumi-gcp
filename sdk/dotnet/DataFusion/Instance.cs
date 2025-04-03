@@ -486,6 +486,15 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> StateMessage { get; private set; } = null!;
 
         /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the tenant project.
         /// </summary>
         [Output("tenantProjectId")]
@@ -705,6 +714,21 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Represents the type of Data Fusion instance. Each type is configured with
@@ -958,6 +982,21 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("stateMessage")]
         public Input<string>? StateMessage { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The name of the tenant project.

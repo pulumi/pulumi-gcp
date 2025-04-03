@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsSourceImageEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -200,6 +202,51 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     }
 
     /**
+     * The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+     * 
+     */
+    @Import(name="snapshot")
+    private @Nullable Output<String> snapshot;
+
+    /**
+     * @return The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+     * 
+     */
+    public Optional<Output<String>> snapshot() {
+        return Optional.ofNullable(this.snapshot);
+    }
+
+    /**
+     * Encryption key used to decrypt the given image. Structure is documented below.
+     * 
+     */
+    @Import(name="sourceImageEncryptionKey")
+    private @Nullable Output<InstanceBootDiskInitializeParamsSourceImageEncryptionKeyArgs> sourceImageEncryptionKey;
+
+    /**
+     * @return Encryption key used to decrypt the given image. Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceBootDiskInitializeParamsSourceImageEncryptionKeyArgs>> sourceImageEncryptionKey() {
+        return Optional.ofNullable(this.sourceImageEncryptionKey);
+    }
+
+    /**
+     * Encryption key used to decrypt the given snapshot. Structure is documented below.
+     * 
+     */
+    @Import(name="sourceSnapshotEncryptionKey")
+    private @Nullable Output<InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs> sourceSnapshotEncryptionKey;
+
+    /**
+     * @return Encryption key used to decrypt the given snapshot. Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs>> sourceSnapshotEncryptionKey() {
+        return Optional.ofNullable(this.sourceSnapshotEncryptionKey);
+    }
+
+    /**
      * The URL or the name of the storage pool in which the new disk is created.
      * For example:
      * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -251,6 +298,9 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         this.resourceManagerTags = $.resourceManagerTags;
         this.resourcePolicies = $.resourcePolicies;
         this.size = $.size;
+        this.snapshot = $.snapshot;
+        this.sourceImageEncryptionKey = $.sourceImageEncryptionKey;
+        this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
         this.storagePool = $.storagePool;
         this.type = $.type;
     }
@@ -506,6 +556,69 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          */
         public Builder size(Integer size) {
             return size(Output.of(size));
+        }
+
+        /**
+         * @param snapshot The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshot(@Nullable Output<String> snapshot) {
+            $.snapshot = snapshot;
+            return this;
+        }
+
+        /**
+         * @param snapshot The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshot(String snapshot) {
+            return snapshot(Output.of(snapshot));
+        }
+
+        /**
+         * @param sourceImageEncryptionKey Encryption key used to decrypt the given image. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(@Nullable Output<InstanceBootDiskInitializeParamsSourceImageEncryptionKeyArgs> sourceImageEncryptionKey) {
+            $.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceImageEncryptionKey Encryption key used to decrypt the given image. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(InstanceBootDiskInitializeParamsSourceImageEncryptionKeyArgs sourceImageEncryptionKey) {
+            return sourceImageEncryptionKey(Output.of(sourceImageEncryptionKey));
+        }
+
+        /**
+         * @param sourceSnapshotEncryptionKey Encryption key used to decrypt the given snapshot. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshotEncryptionKey(@Nullable Output<InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs> sourceSnapshotEncryptionKey) {
+            $.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceSnapshotEncryptionKey Encryption key used to decrypt the given snapshot. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshotEncryptionKey(InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs sourceSnapshotEncryptionKey) {
+            return sourceSnapshotEncryptionKey(Output.of(sourceSnapshotEncryptionKey));
         }
 
         /**

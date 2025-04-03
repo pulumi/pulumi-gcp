@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ParameterManager
 {
     /// <summary>
+    /// A Parameter Version resource that stores the actual value of the parameter.
+    /// 
+    /// To get more information about ParameterVersion, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Parameter Version Basic
@@ -66,6 +72,33 @@ namespace Pulumi.Gcp.ParameterManager
     /// 
     /// });
     /// ```
+    /// ### Parameter Version With Kms Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var parameter_basic = new Gcp.ParameterManager.Parameter("parameter-basic", new()
+    ///     {
+    ///         ParameterId = "parameter",
+    ///         KmsKey = "kms-key",
+    ///     });
+    /// 
+    ///     var parameter_version_with_kms_key = new Gcp.ParameterManager.ParameterVersion("parameter-version-with-kms-key", new()
+    ///     {
+    ///         Parameter = parameter_basic.Id,
+    ///         ParameterVersionId = "parameter_version",
+    ///         ParameterData = "app-parameter-version-data",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Import
     /// 
     /// ParameterVersion can be imported using any of these accepted formats:
@@ -92,6 +125,13 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+        /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        /// </summary>
+        [Output("kmsKeyVersion")]
+        public Output<string> KmsKeyVersion { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the Parameter Version. Format:
@@ -235,6 +275,13 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+        /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        /// </summary>
+        [Input("kmsKeyVersion")]
+        public Input<string>? KmsKeyVersion { get; set; }
 
         /// <summary>
         /// The resource name of the Parameter Version. Format:

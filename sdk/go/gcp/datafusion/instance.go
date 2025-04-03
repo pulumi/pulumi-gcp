@@ -449,6 +449,11 @@ type Instance struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of the tenant project.
 	TenantProjectId pulumi.StringOutput `pulumi:"tenantProjectId"`
 	// Represents the type of Data Fusion instance. Each type is configured with
@@ -585,6 +590,11 @@ type instanceState struct {
 	State *string `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage *string `pulumi:"stateMessage"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of the tenant project.
 	TenantProjectId *string `pulumi:"tenantProjectId"`
 	// Represents the type of Data Fusion instance. Each type is configured with
@@ -684,6 +694,11 @@ type InstanceState struct {
 	State pulumi.StringPtrInput
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags pulumi.StringMapInput
 	// The name of the tenant project.
 	TenantProjectId pulumi.StringPtrInput
 	// Represents the type of Data Fusion instance. Each type is configured with
@@ -758,6 +773,11 @@ type instanceArgs struct {
 	Project *string `pulumi:"project"`
 	// The region of the Data Fusion instance.
 	Region *string `pulumi:"region"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags map[string]string `pulumi:"tags"`
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -825,6 +845,11 @@ type InstanceArgs struct {
 	Project pulumi.StringPtrInput
 	// The region of the Data Fusion instance.
 	Region pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags pulumi.StringMapInput
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -1082,6 +1107,14 @@ func (o InstanceOutput) State() pulumi.StringOutput {
 // Additional information about the current state of this Data Fusion instance if available.
 func (o InstanceOutput) StateMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+// The field is ignored (both PUT & PATCH) when empty.
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of the tenant project.

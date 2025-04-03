@@ -245,6 +245,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Disable L4 load balancer VPC firewalls to enable firewall policies.
+     */
+    public readonly disableL4LbFirewallReconciliation!: pulumi.Output<boolean | undefined>;
+    /**
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      */
     public readonly dnsConfig!: pulumi.Output<outputs.container.ClusterDnsConfig | undefined>;
@@ -666,6 +670,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["defaultSnatStatus"] = state ? state.defaultSnatStatus : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableL4LbFirewallReconciliation"] = state ? state.disableL4LbFirewallReconciliation : undefined;
             resourceInputs["dnsConfig"] = state ? state.dnsConfig : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableAutopilot"] = state ? state.enableAutopilot : undefined;
@@ -751,6 +756,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["defaultSnatStatus"] = args ? args.defaultSnatStatus : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableL4LbFirewallReconciliation"] = args ? args.disableL4LbFirewallReconciliation : undefined;
             resourceInputs["dnsConfig"] = args ? args.dnsConfig : undefined;
             resourceInputs["enableAutopilot"] = args ? args.enableAutopilot : undefined;
             resourceInputs["enableCiliumClusterwideNetworkPolicy"] = args ? args.enableCiliumClusterwideNetworkPolicy : undefined;
@@ -912,6 +918,10 @@ export interface ClusterState {
      * Description of the cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Disable L4 load balancer VPC firewalls to enable firewall policies.
+     */
+    disableL4LbFirewallReconciliation?: pulumi.Input<boolean>;
     /**
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      */
@@ -1392,6 +1402,10 @@ export interface ClusterArgs {
      * Description of the cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Disable L4 load balancer VPC firewalls to enable firewall policies.
+     */
+    disableL4LbFirewallReconciliation?: pulumi.Input<boolean>;
     /**
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      */

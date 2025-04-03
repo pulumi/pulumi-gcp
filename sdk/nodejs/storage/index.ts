@@ -45,6 +45,16 @@ export type BucketObject = import("./bucketObject").BucketObject;
 export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
 utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
 
+export { ControlFolderIntelligenceConfigArgs, ControlFolderIntelligenceConfigState } from "./controlFolderIntelligenceConfig";
+export type ControlFolderIntelligenceConfig = import("./controlFolderIntelligenceConfig").ControlFolderIntelligenceConfig;
+export const ControlFolderIntelligenceConfig: typeof import("./controlFolderIntelligenceConfig").ControlFolderIntelligenceConfig = null as any;
+utilities.lazyLoad(exports, ["ControlFolderIntelligenceConfig"], () => require("./controlFolderIntelligenceConfig"));
+
+export { ControlOrganizationIntelligenceConfigArgs, ControlOrganizationIntelligenceConfigState } from "./controlOrganizationIntelligenceConfig";
+export type ControlOrganizationIntelligenceConfig = import("./controlOrganizationIntelligenceConfig").ControlOrganizationIntelligenceConfig;
+export const ControlOrganizationIntelligenceConfig: typeof import("./controlOrganizationIntelligenceConfig").ControlOrganizationIntelligenceConfig = null as any;
+utilities.lazyLoad(exports, ["ControlOrganizationIntelligenceConfig"], () => require("./controlOrganizationIntelligenceConfig"));
+
 export { ControlProjectIntelligenceConfigArgs, ControlProjectIntelligenceConfigState } from "./controlProjectIntelligenceConfig";
 export type ControlProjectIntelligenceConfig = import("./controlProjectIntelligenceConfig").ControlProjectIntelligenceConfig;
 export const ControlProjectIntelligenceConfig: typeof import("./controlProjectIntelligenceConfig").ControlProjectIntelligenceConfig = null as any;
@@ -94,6 +104,16 @@ export { GetBucketsArgs, GetBucketsResult, GetBucketsOutputArgs } from "./getBuc
 export const getBuckets: typeof import("./getBuckets").getBuckets = null as any;
 export const getBucketsOutput: typeof import("./getBuckets").getBucketsOutput = null as any;
 utilities.lazyLoad(exports, ["getBuckets","getBucketsOutput"], () => require("./getBuckets"));
+
+export { GetControlFolderIntelligenceConfigArgs, GetControlFolderIntelligenceConfigResult, GetControlFolderIntelligenceConfigOutputArgs } from "./getControlFolderIntelligenceConfig";
+export const getControlFolderIntelligenceConfig: typeof import("./getControlFolderIntelligenceConfig").getControlFolderIntelligenceConfig = null as any;
+export const getControlFolderIntelligenceConfigOutput: typeof import("./getControlFolderIntelligenceConfig").getControlFolderIntelligenceConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getControlFolderIntelligenceConfig","getControlFolderIntelligenceConfigOutput"], () => require("./getControlFolderIntelligenceConfig"));
+
+export { GetControlOrganizationIntelligenceConfigArgs, GetControlOrganizationIntelligenceConfigResult, GetControlOrganizationIntelligenceConfigOutputArgs } from "./getControlOrganizationIntelligenceConfig";
+export const getControlOrganizationIntelligenceConfig: typeof import("./getControlOrganizationIntelligenceConfig").getControlOrganizationIntelligenceConfig = null as any;
+export const getControlOrganizationIntelligenceConfigOutput: typeof import("./getControlOrganizationIntelligenceConfig").getControlOrganizationIntelligenceConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getControlOrganizationIntelligenceConfig","getControlOrganizationIntelligenceConfigOutput"], () => require("./getControlOrganizationIntelligenceConfig"));
 
 export { GetControlProjectIntelligenceConfigArgs, GetControlProjectIntelligenceConfigResult, GetControlProjectIntelligenceConfigOutputArgs } from "./getControlProjectIntelligenceConfig";
 export const getControlProjectIntelligenceConfig: typeof import("./getControlProjectIntelligenceConfig").getControlProjectIntelligenceConfig = null as any;
@@ -202,6 +222,10 @@ const _module = {
                 return new BucketIAMPolicy(name, <any>undefined, { urn })
             case "gcp:storage/bucketObject:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
+            case "gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig":
+                return new ControlFolderIntelligenceConfig(name, <any>undefined, { urn })
+            case "gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig":
+                return new ControlOrganizationIntelligenceConfig(name, <any>undefined, { urn })
             case "gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig":
                 return new ControlProjectIntelligenceConfig(name, <any>undefined, { urn })
             case "gcp:storage/defaultObjectACL:DefaultObjectACL":
@@ -245,6 +269,8 @@ pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMBinding", _module
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketObject", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/controlFolderIntelligenceConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/controlOrganizationIntelligenceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/controlProjectIntelligenceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectAccessControl", _module)

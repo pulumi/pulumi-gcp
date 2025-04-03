@@ -18,6 +18,53 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * ## Example Usage
+ * 
+ * ### Storage Control Project Intelligence Config Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.ControlProjectIntelligenceConfig;
+ * import com.pulumi.gcp.storage.ControlProjectIntelligenceConfigArgs;
+ * import com.pulumi.gcp.storage.inputs.ControlProjectIntelligenceConfigFilterArgs;
+ * import com.pulumi.gcp.storage.inputs.ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ControlProjectIntelligenceConfig("example", ControlProjectIntelligenceConfigArgs.builder()
+ *             .name("test-project")
+ *             .editionConfig("TRIAL")
+ *             .filter(ControlProjectIntelligenceConfigFilterArgs.builder()
+ *                 .includedCloudStorageBuckets(ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs.builder()
+ *                     .bucketIdRegexes(                    
+ *                         "test-id-1*",
+ *                         "test-id-2*")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ProjectIntelligenceConfig can be imported using any of these accepted formats:
@@ -40,14 +87,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig")
 public class ControlProjectIntelligenceConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+     * Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      * 
      */
     @Export(name="editionConfig", refs={String.class}, tree="[0]")
     private Output<String> editionConfig;
 
     /**
-     * @return Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.
+     * @return Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.
      * 
      */
     public Output<String> editionConfig() {

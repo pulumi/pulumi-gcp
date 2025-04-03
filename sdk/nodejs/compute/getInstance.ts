@@ -115,6 +115,7 @@ export interface GetInstanceResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instanceEncryptionKeys: outputs.compute.GetInstanceInstanceEncryptionKey[];
     /**
      * The server-assigned unique identifier of this instance.
      */

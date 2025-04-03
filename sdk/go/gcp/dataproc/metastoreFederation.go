@@ -38,6 +38,7 @@ import (
 //					Version:          pulumi.String("3.1.2"),
 //					EndpointProtocol: pulumi.String("GRPC"),
 //				},
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -149,7 +150,8 @@ type MetastoreFederation struct {
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayOutput `pulumi:"backendMetastores"`
 	// Output only. The time when the metastore federation was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The URI of the endpoint used to access the metastore federation.
@@ -230,7 +232,8 @@ type metastoreFederationState struct {
 	// Structure is documented below.
 	BackendMetastores []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
 	// Output only. The time when the metastore federation was created.
-	CreateTime *string `pulumi:"createTime"`
+	CreateTime         *string `pulumi:"createTime"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The URI of the endpoint used to access the metastore federation.
@@ -268,7 +271,8 @@ type MetastoreFederationState struct {
 	// Structure is documented below.
 	BackendMetastores MetastoreFederationBackendMetastoreArrayInput
 	// Output only. The time when the metastore federation was created.
-	CreateTime pulumi.StringPtrInput
+	CreateTime         pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The URI of the endpoint used to access the metastore federation.
@@ -308,7 +312,8 @@ func (MetastoreFederationState) ElementType() reflect.Type {
 type metastoreFederationArgs struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
-	BackendMetastores []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
+	BackendMetastores  []MetastoreFederationBackendMetastore `pulumi:"backendMetastores"`
+	DeletionProtection *bool                                 `pulumi:"deletionProtection"`
 	// The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -328,7 +333,8 @@ type metastoreFederationArgs struct {
 type MetastoreFederationArgs struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
 	// Structure is documented below.
-	BackendMetastores MetastoreFederationBackendMetastoreArrayInput
+	BackendMetastores  MetastoreFederationBackendMetastoreArrayInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -442,6 +448,10 @@ func (o MetastoreFederationOutput) BackendMetastores() MetastoreFederationBacken
 // Output only. The time when the metastore federation was created.
 func (o MetastoreFederationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o MetastoreFederationOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetastoreFederation) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

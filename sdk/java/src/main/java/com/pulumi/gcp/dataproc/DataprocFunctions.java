@@ -15,18 +15,24 @@ import com.pulumi.gcp.dataproc.inputs.GetClusterIamPolicyArgs;
 import com.pulumi.gcp.dataproc.inputs.GetClusterIamPolicyPlainArgs;
 import com.pulumi.gcp.dataproc.inputs.GetJobIamPolicyArgs;
 import com.pulumi.gcp.dataproc.inputs.GetJobIamPolicyPlainArgs;
+import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
+import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyPlainArgs;
 import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
 import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyPlainArgs;
 import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
 import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceIamPolicyArgs;
 import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceIamPolicyPlainArgs;
 import com.pulumi.gcp.dataproc.inputs.GetMetastoreServicePlainArgs;
+import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
+import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyPlainArgs;
 import com.pulumi.gcp.dataproc.outputs.GetAutoscalingPolicyIamPolicyResult;
 import com.pulumi.gcp.dataproc.outputs.GetClusterIamPolicyResult;
 import com.pulumi.gcp.dataproc.outputs.GetJobIamPolicyResult;
+import com.pulumi.gcp.dataproc.outputs.GetMetastoreDatabaseIamPolicyResult;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreFederationIamPolicyResult;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceIamPolicyResult;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceResult;
+import com.pulumi.gcp.dataproc.outputs.GetMetastoreTableIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class DataprocFunctions {
@@ -679,6 +685,231 @@ public final class DataprocFunctions {
      */
     public static CompletableFuture<GetJobIamPolicyResult> getJobIamPolicyPlain(GetJobIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", TypeShape.of(GetJobIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for database
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs args) {
+        return getMetastoreDatabaseIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for database
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicyPlain(GetMetastoreDatabaseIamPolicyPlainArgs args) {
+        return getMetastoreDatabaseIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for database
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreDatabaseIamPolicy:getMetastoreDatabaseIamPolicy", TypeShape.of(GetMetastoreDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for database
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreDatabaseIamPolicy:getMetastoreDatabaseIamPolicy", TypeShape.of(GetMetastoreDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for database
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicyPlain(GetMetastoreDatabaseIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:dataproc/getMetastoreDatabaseIamPolicy:getMetastoreDatabaseIamPolicy", TypeShape.of(GetMetastoreDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for federation
@@ -1334,5 +1565,235 @@ public final class DataprocFunctions {
      */
     public static CompletableFuture<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicyPlain(GetMetastoreServiceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", TypeShape.of(GetMetastoreServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for table
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .databaseId(hive.hiveConfig()[0].properties().database())
+     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetastoreTableIamPolicyResult> getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs args) {
+        return getMetastoreTableIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for table
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .databaseId(hive.hiveConfig()[0].properties().database())
+     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMetastoreTableIamPolicyResult> getMetastoreTableIamPolicyPlain(GetMetastoreTableIamPolicyPlainArgs args) {
+        return getMetastoreTableIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for table
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .databaseId(hive.hiveConfig()[0].properties().database())
+     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetastoreTableIamPolicyResult> getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreTableIamPolicy:getMetastoreTableIamPolicy", TypeShape.of(GetMetastoreTableIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for table
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .databaseId(hive.hiveConfig()[0].properties().database())
+     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetastoreTableIamPolicyResult> getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreTableIamPolicy:getMetastoreTableIamPolicy", TypeShape.of(GetMetastoreTableIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for table
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
+     *             .project(dpmsService.project())
+     *             .location(dpmsService.location())
+     *             .serviceId(dpmsService.serviceId())
+     *             .databaseId(hive.hiveConfig()[0].properties().database())
+     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetMetastoreTableIamPolicyResult> getMetastoreTableIamPolicyPlain(GetMetastoreTableIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:dataproc/getMetastoreTableIamPolicy:getMetastoreTableIamPolicy", TypeShape.of(GetMetastoreTableIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

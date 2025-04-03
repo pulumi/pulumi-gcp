@@ -1261,6 +1261,166 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Stream Bigquery Blmt
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "blmt-instance",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.71.242.81",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.28.29",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.6.157",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.234.134",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.239.218",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Name = "db",
+    ///     });
+    /// 
+    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Name = "user",
+    ///         Instance = instance.Name,
+    ///         Host = "%",
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
+    ///     var blmtBucket = new Gcp.Storage.Bucket("blmt_bucket", new()
+    ///     {
+    ///         Name = "blmt-bucket",
+    ///         Location = "us-central1",
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var blmtConnection = new Gcp.BigQuery.Connection("blmt_connection", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Location = "us-central1",
+    ///         ConnectionId = "blmt-connection",
+    ///         FriendlyName = "Datastream BLMT Test Connection",
+    ///         Description = "Connection for Datastream BLMT test",
+    ///         CloudResource = null,
+    ///     });
+    /// 
+    ///     var blmtConnectionBucketAdmin = new Gcp.Storage.BucketIAMMember("blmt_connection_bucket_admin", new()
+    ///     {
+    ///         Bucket = blmtBucket.Name,
+    ///         Role = "roles/storage.admin",
+    ///         Member = blmtConnection.CloudResource.Apply(cloudResource =&gt; $"serviceAccount:{cloudResource?.ServiceAccountId}"),
+    ///     });
+    /// 
+    ///     var sourceConnectionProfile = new Gcp.Datastream.ConnectionProfile("source_connection_profile", new()
+    ///     {
+    ///         DisplayName = "Source connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "blmt-source-profile",
+    ///         MysqlProfile = new Gcp.Datastream.Inputs.ConnectionProfileMysqlProfileArgs
+    ///         {
+    ///             Hostname = instance.PublicIpAddress,
+    ///             Username = user.Name,
+    ///             Password = user.Password,
+    ///         },
+    ///     });
+    /// 
+    ///     var destinationConnectionProfile = new Gcp.Datastream.ConnectionProfile("destination_connection_profile", new()
+    ///     {
+    ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "blmt-destination-profile",
+    ///         BigqueryProfile = null,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.Stream("default", new()
+    ///     {
+    ///         StreamId = "blmt-stream",
+    ///         Location = "us-central1",
+    ///         DisplayName = "My BLMT stream",
+    ///         SourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigArgs
+    ///         {
+    ///             SourceConnectionProfile = sourceConnectionProfile.Id,
+    ///             MysqlSourceConfig = null,
+    ///         },
+    ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
+    ///         {
+    ///             DestinationConnectionProfile = destinationConnectionProfile.Id,
+    ///             BigqueryDestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigArgs
+    ///             {
+    ///                 SourceHierarchyDatasets = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
+    ///                 {
+    ///                     DatasetTemplate = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///                 BlmtConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs
+    ///                 {
+    ///                     Bucket = blmtBucket.Name,
+    ///                     ConnectionName = Output.Tuple(blmtConnection.Project, blmtConnection.Location, blmtConnection.ConnectionId).Apply(values =&gt;
+    ///                     {
+    ///                         var project = values.Item1;
+    ///                         var location = values.Item2;
+    ///                         var connectionId = values.Item3;
+    ///                         return $"{project}.{location}.{connectionId}";
+    ///                     }),
+    ///                     FileFormat = "PARQUET",
+    ///                     TableFormat = "ICEBERG",
+    ///                     RootPath = "/",
+    ///                 },
+    ///                 AppendOnly = null,
+    ///             },
+    ///         },
+    ///         BackfillNone = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

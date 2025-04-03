@@ -28,6 +28,12 @@ public final class GetSnapshotSnapshotEncryptionKey {
      */
     private String rawKey;
     /**
+     * @return Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
+    private String rsaEncryptedKey;
+    /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
@@ -59,6 +65,14 @@ public final class GetSnapshotSnapshotEncryptionKey {
         return this.rawKey;
     }
     /**
+     * @return Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
+    public String rsaEncryptedKey() {
+        return this.rsaEncryptedKey;
+    }
+    /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
@@ -79,6 +93,7 @@ public final class GetSnapshotSnapshotEncryptionKey {
         private String kmsKeySelfLink;
         private String kmsKeyServiceAccount;
         private String rawKey;
+        private String rsaEncryptedKey;
         private String sha256;
         public Builder() {}
         public Builder(GetSnapshotSnapshotEncryptionKey defaults) {
@@ -86,6 +101,7 @@ public final class GetSnapshotSnapshotEncryptionKey {
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
     	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
     	      this.sha256 = defaults.sha256;
         }
 
@@ -114,6 +130,14 @@ public final class GetSnapshotSnapshotEncryptionKey {
             return this;
         }
         @CustomType.Setter
+        public Builder rsaEncryptedKey(String rsaEncryptedKey) {
+            if (rsaEncryptedKey == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotSnapshotEncryptionKey", "rsaEncryptedKey");
+            }
+            this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sha256(String sha256) {
             if (sha256 == null) {
               throw new MissingRequiredPropertyException("GetSnapshotSnapshotEncryptionKey", "sha256");
@@ -126,6 +150,7 @@ public final class GetSnapshotSnapshotEncryptionKey {
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
             _resultValue.rawKey = rawKey;
+            _resultValue.rsaEncryptedKey = rsaEncryptedKey;
             _resultValue.sha256 = sha256;
             return _resultValue;
         }

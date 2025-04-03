@@ -65,6 +65,10 @@ __all__ = [
     'InboundSamlConfigSpConfigArgsDict',
     'InboundSamlConfigSpConfigSpCertificateArgs',
     'InboundSamlConfigSpConfigSpCertificateArgsDict',
+    'TenantClientArgs',
+    'TenantClientArgsDict',
+    'TenantClientPermissionsArgs',
+    'TenantClientPermissionsArgsDict',
     'TenantInboundSamlConfigIdpConfigArgs',
     'TenantInboundSamlConfigIdpConfigArgsDict',
     'TenantInboundSamlConfigIdpConfigIdpCertificateArgs',
@@ -1568,6 +1572,93 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
     @x509_certificate.setter
     def x509_certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "x509_certificate", value)
+
+
+if not MYPY:
+    class TenantClientArgsDict(TypedDict):
+        permissions: NotRequired[pulumi.Input['TenantClientPermissionsArgsDict']]
+        """
+        Configuration related to restricting a user's ability to affect their account.
+        Structure is documented below.
+        """
+elif False:
+    TenantClientArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TenantClientArgs:
+    def __init__(__self__, *,
+                 permissions: Optional[pulumi.Input['TenantClientPermissionsArgs']] = None):
+        """
+        :param pulumi.Input['TenantClientPermissionsArgs'] permissions: Configuration related to restricting a user's ability to affect their account.
+               Structure is documented below.
+        """
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input['TenantClientPermissionsArgs']]:
+        """
+        Configuration related to restricting a user's ability to affect their account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input['TenantClientPermissionsArgs']]):
+        pulumi.set(self, "permissions", value)
+
+
+if not MYPY:
+    class TenantClientPermissionsArgsDict(TypedDict):
+        disabled_user_deletion: NotRequired[pulumi.Input[bool]]
+        """
+        When true, end users cannot delete their account on the associated project through any of our API methods.
+        """
+        disabled_user_signup: NotRequired[pulumi.Input[bool]]
+        """
+        When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+        """
+elif False:
+    TenantClientPermissionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TenantClientPermissionsArgs:
+    def __init__(__self__, *,
+                 disabled_user_deletion: Optional[pulumi.Input[bool]] = None,
+                 disabled_user_signup: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] disabled_user_deletion: When true, end users cannot delete their account on the associated project through any of our API methods.
+        :param pulumi.Input[bool] disabled_user_signup: When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+        """
+        if disabled_user_deletion is not None:
+            pulumi.set(__self__, "disabled_user_deletion", disabled_user_deletion)
+        if disabled_user_signup is not None:
+            pulumi.set(__self__, "disabled_user_signup", disabled_user_signup)
+
+    @property
+    @pulumi.getter(name="disabledUserDeletion")
+    def disabled_user_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, end users cannot delete their account on the associated project through any of our API methods.
+        """
+        return pulumi.get(self, "disabled_user_deletion")
+
+    @disabled_user_deletion.setter
+    def disabled_user_deletion(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled_user_deletion", value)
+
+    @property
+    @pulumi.getter(name="disabledUserSignup")
+    def disabled_user_signup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+        """
+        return pulumi.get(self, "disabled_user_signup")
+
+    @disabled_user_signup.setter
+    def disabled_user_signup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled_user_signup", value)
 
 
 if not MYPY:

@@ -10,6 +10,7 @@ import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGuestAcceleratorArgs;
+import com.pulumi.gcp.compute.inputs.InstanceInstanceEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkPerformanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceParamsArgs;
@@ -289,6 +290,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+     * 
+     */
+    @Import(name="instanceEncryptionKey")
+    private @Nullable Output<InstanceInstanceEncryptionKeyArgs> instanceEncryptionKey;
+
+    /**
+     * @return Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceInstanceEncryptionKeyArgs>> instanceEncryptionKey() {
+        return Optional.ofNullable(this.instanceEncryptionKey);
     }
 
     /**
@@ -802,6 +818,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.enableDisplay = $.enableDisplay;
         this.guestAccelerators = $.guestAccelerators;
         this.hostname = $.hostname;
+        this.instanceEncryptionKey = $.instanceEncryptionKey;
         this.instanceId = $.instanceId;
         this.keyRevocationActionType = $.keyRevocationActionType;
         this.labelFingerprint = $.labelFingerprint;
@@ -1223,6 +1240,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param instanceEncryptionKey Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceEncryptionKey(@Nullable Output<InstanceInstanceEncryptionKeyArgs> instanceEncryptionKey) {
+            $.instanceEncryptionKey = instanceEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param instanceEncryptionKey Configuration for data encryption on the instance with encryption keys. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceEncryptionKey(InstanceInstanceEncryptionKeyArgs instanceEncryptionKey) {
+            return instanceEncryptionKey(Output.of(instanceEncryptionKey));
         }
 
         /**

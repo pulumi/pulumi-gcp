@@ -9,6 +9,12 @@ export interface ProviderBatching {
     enableBatching?: pulumi.Input<boolean>;
     sendAfter?: pulumi.Input<string>;
 }
+
+export interface ProviderExternalCredentials {
+    audience: pulumi.Input<string>;
+    identityToken: pulumi.Input<string>;
+    serviceAccountEmail: pulumi.Input<string>;
+}
 export namespace accesscontextmanager {
     export interface AccessLevelBasic {
         /**
@@ -530,6 +536,12 @@ export namespace accesscontextmanager {
          * the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `EgressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimeterDryRunEgressPolicyEgressToOperation {
@@ -627,6 +639,12 @@ export namespace accesscontextmanager {
          * also matches the `operations` field.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `IngressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimeterDryRunIngressPolicyIngressToOperation {
@@ -725,6 +743,12 @@ export namespace accesscontextmanager {
          * the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `EgressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimeterEgressPolicyEgressToOperation {
@@ -825,6 +849,12 @@ export namespace accesscontextmanager {
          * also matches the `operations` field.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `IngressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimeterIngressPolicyIngressToOperation {
@@ -990,6 +1020,12 @@ export namespace accesscontextmanager {
          * the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `EgressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimeterSpecEgressPolicyEgressToOperation {
@@ -1097,6 +1133,12 @@ export namespace accesscontextmanager {
          * also matches the `operations` field.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `IngressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimeterSpecIngressPolicyIngressToOperation {
@@ -1275,6 +1317,12 @@ export namespace accesscontextmanager {
          * the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `EgressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimeterStatusEgressPolicyEgressToOperation {
@@ -1382,6 +1430,12 @@ export namespace accesscontextmanager {
          * also matches the `operations` field.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `IngressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimeterStatusIngressPolicyIngressToOperation {
@@ -1636,6 +1690,12 @@ export namespace accesscontextmanager {
          * the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `EgressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
@@ -1743,6 +1803,12 @@ export namespace accesscontextmanager {
          * also matches the `operations` field.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `IngressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation {
@@ -1923,6 +1989,12 @@ export namespace accesscontextmanager {
          * the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `EgressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation {
@@ -2030,6 +2102,12 @@ export namespace accesscontextmanager {
          * also matches the `operations` field.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of IAM roles that represent the set of operations that the sources
+         * specified in the corresponding `IngressFrom`
+         * are allowed to perform.
+         */
+        roles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation {
@@ -2814,6 +2892,19 @@ export namespace apigee {
          * Value of the attribute
          */
         value?: pulumi.Input<string>;
+    }
+
+    export interface DnsZonePeeringConfig {
+        /**
+         * The name of the producer VPC network.
+         *
+         * - - -
+         */
+        targetNetworkId: pulumi.Input<string>;
+        /**
+         * The ID of the project that contains the producer VPC network.
+         */
+        targetProjectId: pulumi.Input<string>;
     }
 
     export interface EnvironmentIamBindingCondition {
@@ -13042,6 +13133,10 @@ export namespace cloudfunctionsv2 {
          */
         availableMemory?: pulumi.Input<string>;
         /**
+         * The binary authorization policy to be checked when deploying the Cloud Run service.
+         */
+        binaryAuthorizationPolicy?: pulumi.Input<string>;
+        /**
          * Environment variables that shall be available during function execution.
          */
         environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -14989,6 +15084,10 @@ export namespace cloudrunv2 {
          * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
          */
         executionEnvironment?: pulumi.Input<string>;
+        /**
+         * True if GPU zonal redundancy is disabled on this revision.
+         */
+        gpuZonalRedundancyDisabled?: pulumi.Input<boolean>;
         /**
          * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
          * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -17836,6 +17935,42 @@ export namespace compute {
         seconds: pulumi.Input<number>;
     }
 
+    export interface BackendServiceTlsSettings {
+        /**
+         * Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+         * Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+         * Can only be specified if authenticationMode is not NONE.
+         */
+        authenticationConfig?: pulumi.Input<string>;
+        /**
+         * Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+         * TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+         * server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+         * regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+         */
+        sni?: pulumi.Input<string>;
+        /**
+         * A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+         * When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+         * and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+         * When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+         * subjectAltNames.
+         * Structure is documented below.
+         */
+        subjectAltNames?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceTlsSettingsSubjectAltName>[]>;
+    }
+
+    export interface BackendServiceTlsSettingsSubjectAltName {
+        /**
+         * The SAN specified as a DNS Name.
+         */
+        dnsName?: pulumi.Input<string>;
+        /**
+         * The SAN specified as a URI.
+         */
+        uniformResourceIdentifier?: pulumi.Input<string>;
+    }
+
     export interface DiskAsyncPrimaryDisk {
         /**
          * Primary disk for asynchronous disk replication.
@@ -18892,6 +19027,18 @@ export namespace compute {
          * account is used.
          */
         kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
     }
 
     export interface ImageRawDisk {
@@ -19025,9 +19172,16 @@ export namespace compute {
          * A 256-bit [customer-supplied encryption key]
          * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to encrypt this disk. Only one of `kmsKeySelfLink` and `diskEncryptionKeyRaw` may be set.
+         * to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
+         * may be set.
          */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
+         * may be set.
+         */
+        diskEncryptionKeyRsa?: pulumi.Input<string>;
         /**
          * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * encoded SHA-256 hash of the [customer-supplied encryption key]
@@ -19035,9 +19189,13 @@ export namespace compute {
          */
         diskEncryptionKeySha256?: pulumi.Input<string>;
         /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        diskEncryptionServiceAccount?: pulumi.Input<string>;
+        /**
          * The selfLink of the encryption key that is
-         * stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`
-         * and `diskEncryptionKeyRaw` may be set.
+         * stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
+         * may be set.
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
@@ -19068,16 +19226,25 @@ export namespace compute {
          * A 256-bit [customer-supplied encryption key]
          * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to encrypt this disk. Only one of `kmsKeySelfLink` and `diskEncryptionKeyRaw`
+         * to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
          * may be set.
          */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kmsKeySelfLink`, `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
+         */
+        diskEncryptionKeyRsa?: pulumi.Input<string>;
         /**
          * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * encoded SHA-256 hash of the [customer-supplied encryption key]
          * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
          */
         diskEncryptionKeySha256?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        diskEncryptionServiceAccount?: pulumi.Input<string>;
         /**
          * A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
          */
@@ -19094,8 +19261,9 @@ export namespace compute {
         interface?: pulumi.Input<string>;
         /**
          * The selfLink of the encryption key that is
-         * stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`
-         * and `diskEncryptionKeyRaw` may be set.
+         * stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`,
+         * `diskEncryptionKeyRsa` and `diskEncryptionKeyRaw`
+         * may be set.
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
@@ -19172,6 +19340,18 @@ export namespace compute {
          */
         size?: pulumi.Input<number>;
         /**
+         * The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+         */
+        snapshot?: pulumi.Input<string>;
+        /**
+         * Encryption key used to decrypt the given image. Structure is documented below.
+         */
+        sourceImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceBootDiskInitializeParamsSourceImageEncryptionKey>;
+        /**
+         * Encryption key used to decrypt the given snapshot. Structure is documented below.
+         */
+        sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey>;
+        /**
          * The URL or the name of the storage pool in which the new disk is created.
          * For example:
          * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -19184,6 +19364,64 @@ export namespace compute {
          * The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface InstanceBootDiskInitializeParamsSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
+        /**
+         * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * encoded SHA-256 hash of the [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+         */
+        sha256?: pulumi.Input<string>;
+    }
+
+    export interface InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey {
+        /**
+         * The selfLink of the encryption key that is
+         * stored in Google Cloud KMS to decrypt the given image. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+         * may be set.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * A 256-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+         * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+         * may be set.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
+         * may be set.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
+        /**
+         * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * encoded SHA-256 hash of the [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+         */
+        sha256?: pulumi.Input<string>;
     }
 
     export interface InstanceConfidentialInstanceConfig {
@@ -19230,15 +19468,23 @@ export namespace compute {
          */
         deviceName?: pulumi.Input<string>;
         /**
-         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+         */
+        diskEncryptionKeyRsa?: pulumi.Input<string>;
         /**
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
          */
         diskEncryptionKeySha256?: pulumi.Input<string>;
         /**
-         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+         */
+        diskEncryptionServiceAccount?: pulumi.Input<string>;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
@@ -19261,13 +19507,21 @@ export namespace compute {
          */
         deviceName?: pulumi.Input<string>;
         /**
-         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
          */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+         */
+        diskEncryptionKeyRsa?: pulumi.Input<string>;
         /**
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
          */
         diskEncryptionKeySha256?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+         */
+        diskEncryptionServiceAccount?: pulumi.Input<string>;
         /**
          * A list of features to enable on the guest operating system. Applicable only for bootable images.
          */
@@ -19281,7 +19535,7 @@ export namespace compute {
          */
         interface?: pulumi.Input<string>;
         /**
-         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
@@ -19332,6 +19586,18 @@ export namespace compute {
          */
         size?: pulumi.Input<number>;
         /**
+         * The snapshot from which this disk was initialised.
+         */
+        snapshot?: pulumi.Input<string>;
+        /**
+         * The encryption key used to decrypt the source image.
+         */
+        sourceImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey>;
+        /**
+         * The encryption key used to decrypt the source snapshot.
+         */
+        sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey>;
+        /**
          * The URL of the storage pool in which the new disk is created
          */
         storagePool?: pulumi.Input<string>;
@@ -19339,6 +19605,52 @@ export namespace compute {
          * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
+        /**
+         * The SHA256 hash of the encryption key used to encrypt this disk.
+         */
+        sha256?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
+        /**
+         * The SHA256 hash of the encryption key used to encrypt this disk.
+         */
+        sha256?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageConfidentialInstanceConfig {
@@ -19364,6 +19676,21 @@ export namespace compute {
          * The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageInstanceEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * The SHA256 hash of the customer's encryption key.
+         */
+        sha256?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageNetworkInterface {
@@ -19705,6 +20032,14 @@ export namespace compute {
         enableVtpm?: pulumi.Input<boolean>;
     }
 
+    export interface InstanceFromMachineImageSourceMachineImageEncryptionKey {
+        kmsKeyName?: pulumi.Input<string>;
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        rawKey?: pulumi.Input<string>;
+        rsaEncryptedKey?: pulumi.Input<string>;
+        sha256?: pulumi.Input<string>;
+    }
+
     export interface InstanceFromTemplateAdvancedMachineFeatures {
         /**
          * Whether to enable nested virtualization or not.
@@ -19738,15 +20073,23 @@ export namespace compute {
          */
         deviceName?: pulumi.Input<string>;
         /**
-         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
+         */
+        diskEncryptionKeyRsa?: pulumi.Input<string>;
         /**
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
          */
         diskEncryptionKeySha256?: pulumi.Input<string>;
         /**
-         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+         */
+        diskEncryptionServiceAccount?: pulumi.Input<string>;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRsa and diskEncryptionKeyRaw may be set.
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
@@ -19769,13 +20112,21 @@ export namespace compute {
          */
         deviceName?: pulumi.Input<string>;
         /**
-         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
          */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
+         */
+        diskEncryptionKeyRsa?: pulumi.Input<string>;
         /**
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
          */
         diskEncryptionKeySha256?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+         */
+        diskEncryptionServiceAccount?: pulumi.Input<string>;
         /**
          * A list of features to enable on the guest operating system. Applicable only for bootable images.
          */
@@ -19789,7 +20140,7 @@ export namespace compute {
          */
         interface?: pulumi.Input<string>;
         /**
-         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, diskEncryptionKeyRaw and diskEncryptionKeyRsa may be set.
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
@@ -19840,6 +20191,18 @@ export namespace compute {
          */
         size?: pulumi.Input<number>;
         /**
+         * The snapshot from which this disk was initialised.
+         */
+        snapshot?: pulumi.Input<string>;
+        /**
+         * The encryption key used to decrypt the source image.
+         */
+        sourceImageEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey>;
+        /**
+         * The encryption key used to decrypt the source snapshot.
+         */
+        sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey>;
+        /**
          * The URL of the storage pool in which the new disk is created
          */
         storagePool?: pulumi.Input<string>;
@@ -19847,6 +20210,52 @@ export namespace compute {
          * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
+        /**
+         * The SHA256 hash of the encryption key used to encrypt this disk.
+         */
+        sha256?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
+        /**
+         * The SHA256 hash of the encryption key used to encrypt this disk.
+         */
+        sha256?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateConfidentialInstanceConfig {
@@ -19872,6 +20281,21 @@ export namespace compute {
          * The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromTemplateInstanceEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * The SHA256 hash of the customer's encryption key.
+         */
+        sha256?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateNetworkInterface {
@@ -20505,6 +20929,22 @@ export namespace compute {
          * A title for the expression, i.e. a short string describing its purpose.
          */
         title: pulumi.Input<string>;
+    }
+
+    export interface InstanceInstanceEncryptionKey {
+        /**
+         * The selfLink of the encryption key that is
+         * stored in Google Cloud KMS to encrypt the data on this instance.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * The SHA256 hash of the customer's encryption key.
+         */
+        sha256?: pulumi.Input<string>;
     }
 
     export interface InstanceNetworkInterface {
@@ -28613,6 +29053,8 @@ export namespace compute {
     export interface RouterBgpAdvertisedIpRange {
         /**
          * User-specified description for the IP range.
+         *
+         * <a name="nestedMd5AuthenticationKeys"></a>The `md5AuthenticationKeys` block supports:
          */
         description?: pulumi.Input<string>;
         /**
@@ -28620,6 +29062,22 @@ export namespace compute {
          * CIDR-formatted string.
          */
         range: pulumi.Input<string>;
+    }
+
+    export interface RouterMd5AuthenticationKeys {
+        /**
+         * Value of the key used for MD5 authentication.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Name of the resource. The name must be 1-63 characters long, and
+         * comply with RFC1035. Specifically, the name must be 1-63 characters
+         * long and match the regular expression `a-z?`
+         * which means the first character must be a lowercase letter, and all
+         * following characters must be a dash, lowercase letter, or digit,
+         * except the last character, which cannot be a dash.
+         */
+        name: pulumi.Input<string>;
     }
 
     export interface RouterNatLogConfig {
@@ -29481,6 +29939,12 @@ export namespace compute {
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an encryption key stored in Google Cloud KMS, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
         /**
          * (Output)
          * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -31105,6 +31569,11 @@ export namespace compute {
 
     export interface URLMapPathMatcherRouteRule {
         /**
+         * customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+         * Structure is documented below.
+         */
+        customErrorResponsePolicy?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleCustomErrorResponsePolicy>;
+        /**
          * Specifies changes to request and response headers that need to take effect for
          * the selected backendService. The headerAction specified here are applied before
          * the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
@@ -31160,6 +31629,49 @@ export namespace compute {
          * Structure is documented below.
          */
         urlRedirect?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleUrlRedirect>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleCustomErrorResponsePolicy {
+        /**
+         * Specifies rules for returning error responses.
+         * In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+         * For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+         * If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+         * Structure is documented below.
+         */
+        errorResponseRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule>[]>;
+        /**
+         * The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+         * https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * global/backendBuckets/myBackendBucket
+         * If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+         * If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+         */
+        errorService?: pulumi.Input<string>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule {
+        /**
+         * Valid values include:
+         * - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+         * - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+         * - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+         * Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+         */
+        matchResponseCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HTTP status code returned with the response containing the custom error content.
+         * If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+         */
+        overrideResponseCode?: pulumi.Input<number>;
+        /**
+         * The full path to a file within backendBucket. For example: /errors/defaultError.html
+         * path must start with a leading slash. path cannot have trailing slashes.
+         * If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+         * The value must be from 1 to 1024 characters.
+         */
+        path?: pulumi.Input<string>;
     }
 
     export interface URLMapPathMatcherRouteRuleHeaderAction {
@@ -32936,7 +33448,7 @@ export namespace container {
          */
         autoProvisioningDefaults?: pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults>;
         /**
-         * The list of Google Compute Engine 
+         * The list of Google Compute Engine
          * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
          * NodePool's nodes can be created by NAP.
          */
@@ -33833,7 +34345,7 @@ export namespace container {
 
     export interface ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
         /**
-         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
          */
         certificateAuthorityDomainConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>[]>;
         /**
@@ -34372,7 +34884,7 @@ export namespace container {
 
     export interface ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig {
         /**
-         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
          */
         certificateAuthorityDomainConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>[]>;
         /**
@@ -34768,7 +35280,7 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
         /**
-         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
          */
         certificateAuthorityDomainConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>[]>;
         /**
@@ -46194,6 +46706,18 @@ export namespace dataproc {
         substate?: pulumi.Input<string>;
     }
 
+    export interface MetastoreDatabaseIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface MetastoreDatabaseIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface MetastoreFederationBackendMetastore {
         /**
          * The type of the backend metastore.
@@ -46441,6 +46965,18 @@ export namespace dataproc {
          * Possible values are: `LEGACY`, `JSON`.
          */
         logFormat?: pulumi.Input<string>;
+    }
+
+    export interface MetastoreTableIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface MetastoreTableIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface WorkflowTemplateEncryptionConfig {
@@ -47541,11 +48077,15 @@ export namespace datastream {
          * Password for the MySQL connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         /**
          * Port for the MySQL connection.
          */
         port?: pulumi.Input<number>;
+        /**
+         * A reference to a Secret Manager resource name storing the user's password.
+         */
+        secretManagerStoredPassword?: pulumi.Input<string>;
         /**
          * SSL configuration for the MySQL connection.
          * Structure is documented below.
@@ -47613,11 +48153,15 @@ export namespace datastream {
          * Password for the Oracle connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         /**
          * Port for the Oracle connection.
          */
         port?: pulumi.Input<number>;
+        /**
+         * A reference to a Secret Manager resource name storing the user's password.
+         */
+        secretManagerStoredPassword?: pulumi.Input<string>;
         /**
          * Username for the Oracle connection.
          */
@@ -47637,11 +48181,15 @@ export namespace datastream {
          * Password for the PostgreSQL connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         /**
          * Port for the PostgreSQL connection.
          */
         port?: pulumi.Input<number>;
+        /**
+         * A reference to a Secret Manager resource name storing the user's password.
+         */
+        secretManagerStoredPassword?: pulumi.Input<string>;
         /**
          * Username for the PostgreSQL connection.
          */
@@ -47725,11 +48273,15 @@ export namespace datastream {
          * Password for the SQL Server connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         /**
          * Port for the SQL Server connection.
          */
         port?: pulumi.Input<number>;
+        /**
+         * A reference to a Secret Manager resource name storing the user's password.
+         */
+        secretManagerStoredPassword?: pulumi.Input<string>;
         /**
          * Username for the SQL Server connection.
          */
@@ -48101,6 +48653,11 @@ export namespace datastream {
          */
         appendOnly?: pulumi.Input<inputs.datastream.StreamDestinationConfigBigqueryDestinationConfigAppendOnly>;
         /**
+         * BigLake Managed Tables configuration for BigQuery streams.
+         * Structure is documented below.
+         */
+        blmtConfig?: pulumi.Input<inputs.datastream.StreamDestinationConfigBigqueryDestinationConfigBlmtConfig>;
+        /**
          * The guaranteed data freshness (in seconds) when querying tables created by the stream.
          * Editing this field will only affect new tables created in the future, but existing tables
          * will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
@@ -48126,6 +48683,31 @@ export namespace datastream {
     }
 
     export interface StreamDestinationConfigBigqueryDestinationConfigAppendOnly {
+    }
+
+    export interface StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
+        /**
+         * The Cloud Storage bucket name.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * The bigquery connection. Format: `{project}.{location}.{name}`
+         */
+        connectionName: pulumi.Input<string>;
+        /**
+         * The file format.
+         */
+        fileFormat: pulumi.Input<string>;
+        /**
+         * The root path inside the Cloud Storage bucket.
+         *
+         * - - -
+         */
+        rootPath?: pulumi.Input<string>;
+        /**
+         * The table format.
+         */
+        tableFormat: pulumi.Input<string>;
     }
 
     export interface StreamDestinationConfigBigqueryDestinationConfigMerge {
@@ -48158,8 +48740,6 @@ export namespace datastream {
          * table. The BigQuery Service Account associated with your project requires access to this
          * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
          * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-         *
-         * - - -
          */
         kmsKeyName?: pulumi.Input<string>;
         /**
@@ -53894,6 +54474,114 @@ export namespace firebase {
          * projects/{project}/locations/{location}/services/{serviceId}
          */
         service?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingBuildError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * A list of messages that carry the error details. There is a common set of
+         * message types for APIs to use.
+         */
+        details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingBuildSource {
+        /**
+         * A codebase source, representing the state of the codebase
+         * that the build will be created at.
+         * Structure is documented below.
+         */
+        codebase?: pulumi.Input<inputs.firebase.AppHostingBuildSourceCodebase>;
+        /**
+         * The URI of an Artifact Registry
+         * [container
+         * image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
+         * to use as the build source.
+         * Structure is documented below.
+         */
+        container?: pulumi.Input<inputs.firebase.AppHostingBuildSourceContainer>;
+    }
+
+    export interface AppHostingBuildSourceCodebase {
+        /**
+         * (Output)
+         * Version control metadata for a user associated with a resolved codebase.
+         * Currently assumes a Git user.
+         * Structure is documented below.
+         */
+        authors?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingBuildSourceCodebaseAuthor>[]>;
+        /**
+         * The branch in the codebase to build from, using the latest commit.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * The commit in the codebase to build from.
+         *
+         *
+         * <a name="nestedSourceCodebaseAuthor"></a>The `author` block contains:
+         */
+        commit?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The message of a codebase change.
+         */
+        commitMessage?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The time the change was made.
+         */
+        commitTime?: pulumi.Input<string>;
+        /**
+         * Human-readable name. 63 character limit.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The full SHA-1 hash of a Git commit, if available.
+         */
+        hash?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A URI linking to the codebase on an hosting provider's website. May
+         * not be valid if the commit has been rebased or force-pushed out of
+         * existence in the linked repository.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingBuildSourceCodebaseAuthor {
+        /**
+         * The 'name' field in a Git user's git.config. Required by Git.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * The 'email' field in a Git user's git.config, if available.
+         */
+        email?: pulumi.Input<string>;
+        /**
+         * The URI of an image file associated with the user's account in an
+         * external source control provider, if available.
+         */
+        imageUri?: pulumi.Input<string>;
+    }
+
+    export interface AppHostingBuildSourceContainer {
+        /**
+         * A URI representing a container for the backend to use.
+         */
+        image: pulumi.Input<string>;
     }
 
     export interface ExtensionsInstanceConfig {
@@ -60571,6 +61259,25 @@ export namespace identityplatform {
         x509Certificate?: pulumi.Input<string>;
     }
 
+    export interface TenantClient {
+        /**
+         * Configuration related to restricting a user's ability to affect their account.
+         * Structure is documented below.
+         */
+        permissions?: pulumi.Input<inputs.identityplatform.TenantClientPermissions>;
+    }
+
+    export interface TenantClientPermissions {
+        /**
+         * When true, end users cannot delete their account on the associated project through any of our API methods.
+         */
+        disabledUserDeletion?: pulumi.Input<boolean>;
+        /**
+         * When true, end users cannot sign up for a new account on the associated project through any of our API methods.
+         */
+        disabledUserSignup?: pulumi.Input<boolean>;
+    }
+
     export interface TenantInboundSamlConfigIdpConfig {
         /**
          * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -62549,6 +63256,98 @@ export namespace memcache {
 }
 
 export namespace memorystore {
+    export interface InstanceCrossInstanceReplicationConfig {
+        /**
+         * The instance role supports the following values:
+         * 1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+         * 2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+         * 3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+         * 4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
+         * Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+         */
+        instanceRole?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+         * Structure is documented below.
+         */
+        memberships?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfigMembership>[]>;
+        /**
+         * This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+         * Structure is documented below.
+         */
+        primaryInstance?: pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfigPrimaryInstance>;
+        /**
+         * List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
+         * Structure is documented below.
+         */
+        secondaryInstances?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfigSecondaryInstance>[]>;
+        /**
+         * (Output)
+         * The last time cross instance replication config was updated.
+         */
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface InstanceCrossInstanceReplicationConfigMembership {
+        /**
+         * Details of the primary instance that is used as the replication source for all the secondary instances.
+         */
+        primaryInstances?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance>[]>;
+        /**
+         * List of secondary instances that are replicating from the primary instance.
+         */
+        secondaryInstances?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance>[]>;
+    }
+
+    export interface InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
+        /**
+         * The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+         */
+        instance?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The unique id of the primary instance.
+         */
+        uid?: pulumi.Input<string>;
+    }
+
+    export interface InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
+        /**
+         * The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+         */
+        instance?: pulumi.Input<string>;
+        /**
+         * Output only. System assigned, unique identifier for the instance.
+         */
+        uid?: pulumi.Input<string>;
+    }
+
+    export interface InstanceCrossInstanceReplicationConfigPrimaryInstance {
+        /**
+         * The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+         */
+        instance?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The unique id of the primary instance.
+         */
+        uid?: pulumi.Input<string>;
+    }
+
+    export interface InstanceCrossInstanceReplicationConfigSecondaryInstance {
+        /**
+         * (Output)
+         * The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+         */
+        instance?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The unique id of the secondary instance.
+         */
+        uid?: pulumi.Input<string>;
+    }
+
     export interface InstanceDesiredPscAutoConnection {
         /**
          * (Output)
@@ -62561,6 +63360,70 @@ export namespace memorystore {
          * Output only. The consumer projectId where the forwarding rule is created from.
          */
         projectId: pulumi.Input<string>;
+    }
+
+    export interface InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint {
+        /**
+         * Structure is documented below.
+         */
+        connections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection>[]>;
+    }
+
+    export interface InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
+        /**
+         * Detailed information of a PSC connection that is created by the customer
+         * who owns the cluster.
+         * Structure is documented below.
+         */
+        pscConnection?: pulumi.Input<inputs.memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection>;
+    }
+
+    export interface InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection {
+        /**
+         * (Output)
+         * Output Only. Type of a PSC Connection.
+         * Possible values:
+         * CONNECTION_TYPE_DISCOVERY
+         * CONNECTION_TYPE_PRIMARY
+         * CONNECTION_TYPE_READER
+         */
+        connectionType?: pulumi.Input<string>;
+        /**
+         * The URI of the consumer side forwarding rule.
+         * Format:
+         * projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+         */
+        forwardingRule: pulumi.Input<string>;
+        /**
+         * The IP allocated on the consumer network for the PSC forwarding rule.
+         */
+        ipAddress: pulumi.Input<string>;
+        /**
+         * The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network: pulumi.Input<string>;
+        /**
+         * The consumer projectId where the forwarding rule is created from.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * The PSC connection id of the forwarding rule connected to the
+         * service attachment.
+         */
+        pscConnectionId: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+         * Possible values:
+         * ACTIVE
+         * NOT_FOUND
+         */
+        pscConnectionStatus?: pulumi.Input<string>;
+        /**
+         * The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+         */
+        serviceAttachment: pulumi.Input<string>;
     }
 
     export interface InstanceDiscoveryEndpoint {
@@ -62807,6 +63670,23 @@ export namespace memorystore {
         rdbSnapshotStartTime?: pulumi.Input<string>;
     }
 
+    export interface InstancePscAttachmentDetail {
+        /**
+         * (Output)
+         * Output Only. Type of a PSC Connection.
+         * Possible values:
+         * CONNECTION_TYPE_DISCOVERY
+         * CONNECTION_TYPE_PRIMARY
+         * CONNECTION_TYPE_READER
+         */
+        connectionType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+         */
+        serviceAttachment?: pulumi.Input<string>;
+    }
+
     export interface InstancePscAutoConnection {
         /**
          * (Output)
@@ -62876,6 +63756,16 @@ export namespace memorystore {
     }
 
     export interface InstanceStateInfoUpdateInfo {
+        /**
+         * (Output)
+         * Output only. Target engine version for the instance.
+         */
+        targetEngineVersion?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Target node type for the instance.
+         */
+        targetNodeType?: pulumi.Input<string>;
         /**
          * (Output)
          * Output only. Target number of replica nodes per shard for the instance.
@@ -66166,12 +67056,105 @@ export namespace networksecurity {
         name?: pulumi.Input<string>;
     }
 
+    export interface MirroringDeploymentGroupLocation {
+        /**
+         * The cloud location of the deployment group, currently restricted to `global`.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The current state of the association in this location.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * ACTIVE
+         * OUT_OF_SYNC
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface MirroringEndpointGroupAssociation {
+        /**
+         * (Output)
+         * The connected deployment group's resource name, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The associated network, for example:
+         * projects/123456789/global/networks/my-network.
+         * See https://google.aip.dev/124.
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The current state of the association in this location.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * ACTIVE
+         * OUT_OF_SYNC
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface MirroringEndpointGroupAssociationLocation {
+        /**
+         * The cloud location of the association, currently restricted to `global`.
+         *
+         *
+         * - - -
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The current state of the association in this location.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * ACTIVE
+         * OUT_OF_SYNC
+         */
+        state?: pulumi.Input<string>;
+    }
+
     export interface MirroringEndpointGroupAssociationLocationsDetail {
         /**
          * The cloud location of the association, currently restricted to `global`.
          *
          *
          * - - -
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The current state of the association in this location.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * ACTIVE
+         * OUT_OF_SYNC
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface MirroringEndpointGroupConnectedDeploymentGroup {
+        /**
+         * (Output)
+         * The list of locations where the deployment group is present.
+         * Structure is documented below.
+         */
+        locations?: pulumi.Input<pulumi.Input<inputs.networksecurity.MirroringEndpointGroupConnectedDeploymentGroupLocation>[]>;
+        /**
+         * (Output)
+         * The connected deployment group's resource name, for example:
+         * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
+         * See https://google.aip.dev/124.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface MirroringEndpointGroupConnectedDeploymentGroupLocation {
+        /**
+         * The cloud location of the endpoint group, currently restricted to `global`.
          */
         location?: pulumi.Input<string>;
         /**
@@ -66203,6 +67186,11 @@ export namespace networksecurity {
 
     export interface SecurityProfileThreatPreventionProfile {
         /**
+         * Defines what action to take for antivirus threats per protocol.
+         * Structure is documented below.
+         */
+        antivirusOverrides?: pulumi.Input<pulumi.Input<inputs.networksecurity.SecurityProfileThreatPreventionProfileAntivirusOverride>[]>;
+        /**
          * The configuration for overriding threats actions by severity match.
          * Structure is documented below.
          */
@@ -66214,6 +67202,19 @@ export namespace networksecurity {
          * Structure is documented below.
          */
         threatOverrides?: pulumi.Input<pulumi.Input<inputs.networksecurity.SecurityProfileThreatPreventionProfileThreatOverride>[]>;
+    }
+
+    export interface SecurityProfileThreatPreventionProfileAntivirusOverride {
+        /**
+         * Threat action override. For some threat types, only a subset of actions applies.
+         * Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+         */
+        action: pulumi.Input<string>;
+        /**
+         * Required protocol to match.
+         * Possible values are: `SMTP`, `SMB`, `POP3`, `IMAP`, `HTTP2`, `HTTP`, `FTP`.
+         */
+        protocol: pulumi.Input<string>;
     }
 
     export interface SecurityProfileThreatPreventionProfileSeverityOverride {
@@ -74047,6 +75048,37 @@ export namespace recaptcha {
 }
 
 export namespace redis {
+    export interface ClusterAutomatedBackupConfig {
+        /**
+         * Trigger automated backups at a fixed frequency.
+         * Structure is documented below.
+         */
+        fixedFrequencySchedule: pulumi.Input<inputs.redis.ClusterAutomatedBackupConfigFixedFrequencySchedule>;
+        /**
+         * How long to keep automated backups before the backups are deleted.
+         * The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        retention: pulumi.Input<string>;
+    }
+
+    export interface ClusterAutomatedBackupConfigFixedFrequencySchedule {
+        /**
+         * The start time of every automated backup in UTC.
+         * It must be set to the start of an hour. This field is required.
+         * Structure is documented below.
+         */
+        startTime: pulumi.Input<inputs.redis.ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime>;
+    }
+
+    export interface ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         * An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours: pulumi.Input<number>;
+    }
+
     export interface ClusterCrossClusterReplicationConfig {
         /**
          * The role of the cluster in cross cluster replication. Supported values are:
@@ -77381,6 +78413,134 @@ export namespace storage {
          * resource is not found.
          */
         notFoundPage?: pulumi.Input<string>;
+    }
+
+    export interface ControlFolderIntelligenceConfigEffectiveIntelligenceConfig {
+        /**
+         * (Output)
+         * The `StorageIntelligence` edition that is applicable for the resource.
+         */
+        effectiveEdition?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Intelligence config resource that is applied for the target resource.
+         */
+        intelligenceConfig?: pulumi.Input<string>;
+    }
+
+    export interface ControlFolderIntelligenceConfigFilter {
+        /**
+         * Buckets to exclude from the Storage Intelligence plan.
+         * Structure is documented below.
+         */
+        excludedCloudStorageBuckets?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets>;
+        /**
+         * Locations to exclude from the Storage Intelligence plan.
+         * Structure is documented below.
+         */
+        excludedCloudStorageLocations?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations>;
+        /**
+         * Buckets to include in the Storage Intelligence plan.
+         * Structure is documented below.
+         */
+        includedCloudStorageBuckets?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets>;
+        /**
+         * Locations to include in the Storage Intelligence plan.
+         * Structure is documented below.
+         */
+        includedCloudStorageLocations?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations>;
+    }
+
+    export interface ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets {
+        /**
+         * List of bucket id regexes to exclude in the storage intelligence plan.
+         */
+        bucketIdRegexes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations {
+        /**
+         * List of locations.
+         */
+        locations: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets {
+        /**
+         * List of bucket id regexes to exclude in the storage intelligence plan.
+         */
+        bucketIdRegexes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations {
+        /**
+         * List of locations.
+         */
+        locations: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig {
+        /**
+         * (Output)
+         * The `StorageIntelligence` edition that is applicable for the resource.
+         */
+        effectiveEdition?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Intelligence config resource that is applied for the target resource.
+         */
+        intelligenceConfig?: pulumi.Input<string>;
+    }
+
+    export interface ControlOrganizationIntelligenceConfigFilter {
+        /**
+         * Buckets to exclude from the Storage Intelligence plan.
+         * Structure is documented below.
+         */
+        excludedCloudStorageBuckets?: pulumi.Input<inputs.storage.ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets>;
+        /**
+         * Locations to exclude from the Storage Intelligence plan.
+         * Structure is documented below.
+         */
+        excludedCloudStorageLocations?: pulumi.Input<inputs.storage.ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations>;
+        /**
+         * Buckets to include in the Storage Intelligence plan.
+         * Structure is documented below.
+         */
+        includedCloudStorageBuckets?: pulumi.Input<inputs.storage.ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets>;
+        /**
+         * Locations to include in the Storage Intelligence plan.
+         * Structure is documented below.
+         */
+        includedCloudStorageLocations?: pulumi.Input<inputs.storage.ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations>;
+    }
+
+    export interface ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets {
+        /**
+         * List of bucket id regexes to exclude in the storage intelligence plan.
+         */
+        bucketIdRegexes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations {
+        /**
+         * List of locations.
+         */
+        locations: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets {
+        /**
+         * List of bucket id regexes to exclude in the storage intelligence plan.
+         */
+        bucketIdRegexes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations {
+        /**
+         * List of locations.
+         */
+        locations: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ControlProjectIntelligenceConfigEffectiveIntelligenceConfig {

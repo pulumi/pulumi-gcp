@@ -24,6 +24,20 @@ public final class ImageImageEncryptionKey {
      * 
      */
     private @Nullable String kmsKeyServiceAccount;
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    private @Nullable String rawKey;
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    private @Nullable String rsaEncryptedKey;
 
     private ImageImageEncryptionKey() {}
     /**
@@ -43,6 +57,24 @@ public final class ImageImageEncryptionKey {
     public Optional<String> kmsKeyServiceAccount() {
         return Optional.ofNullable(this.kmsKeyServiceAccount);
     }
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<String> rawKey() {
+        return Optional.ofNullable(this.rawKey);
+    }
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<String> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -55,11 +87,15 @@ public final class ImageImageEncryptionKey {
     public static final class Builder {
         private @Nullable String kmsKeySelfLink;
         private @Nullable String kmsKeyServiceAccount;
+        private @Nullable String rawKey;
+        private @Nullable String rsaEncryptedKey;
         public Builder() {}
         public Builder(ImageImageEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
+    	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
         }
 
         @CustomType.Setter
@@ -74,10 +110,24 @@ public final class ImageImageEncryptionKey {
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
+        @CustomType.Setter
+        public Builder rawKey(@Nullable String rawKey) {
+
+            this.rawKey = rawKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rsaEncryptedKey(@Nullable String rsaEncryptedKey) {
+
+            this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
         public ImageImageEncryptionKey build() {
             final var _resultValue = new ImageImageEncryptionKey();
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            _resultValue.rawKey = rawKey;
+            _resultValue.rsaEncryptedKey = rsaEncryptedKey;
             return _resultValue;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.memorystore.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDiscoveryEndpointArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceEndpointArgs;
@@ -12,6 +13,7 @@ import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceMaintenanceScheduleArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceNodeConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
+import com.pulumi.gcp.memorystore.inputs.InstancePscAttachmentDetailArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePscAutoConnectionArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceStateInfoArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
@@ -64,6 +66,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Cross instance replication config
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="crossInstanceReplicationConfig")
+    private @Nullable Output<InstanceCrossInstanceReplicationConfigArgs> crossInstanceReplicationConfig;
+
+    /**
+     * @return Cross instance replication config
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceCrossInstanceReplicationConfigArgs>> crossInstanceReplicationConfig() {
+        return Optional.ofNullable(this.crossInstanceReplicationConfig);
+    }
+
+    /**
      * Optional. If set to true deletion of the instance will fail.
      * 
      */
@@ -79,14 +98,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. Immutable. User inputs for the auto-created PSC connections.
+     * Immutable. User inputs for the auto-created PSC connections.
      * 
      */
     @Import(name="desiredPscAutoConnections")
     private @Nullable Output<List<InstanceDesiredPscAutoConnectionArgs>> desiredPscAutoConnections;
 
     /**
-     * @return Required. Immutable. User inputs for the auto-created PSC connections.
+     * @return Immutable. User inputs for the auto-created PSC connections.
      * 
      */
     public Optional<Output<List<InstanceDesiredPscAutoConnectionArgs>>> desiredPscAutoConnections() {
@@ -392,6 +411,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration of a service attachment of the cluster, for creating PSC connections.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscAttachmentDetails")
+    private @Nullable Output<List<InstancePscAttachmentDetailArgs>> pscAttachmentDetails;
+
+    /**
+     * @return Configuration of a service attachment of the cluster, for creating PSC connections.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstancePscAttachmentDetailArgs>>> pscAttachmentDetails() {
+        return Optional.ofNullable(this.pscAttachmentDetails);
+    }
+
+    /**
      * Output only. User inputs and resource details of the auto-created PSC connections.
      * Structure is documented below.
      * 
@@ -570,6 +606,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.authorizationMode = $.authorizationMode;
         this.createTime = $.createTime;
+        this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.desiredPscAutoConnections = $.desiredPscAutoConnections;
         this.discoveryEndpoints = $.discoveryEndpoints;
@@ -588,6 +625,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.nodeType = $.nodeType;
         this.persistenceConfig = $.persistenceConfig;
         this.project = $.project;
+        this.pscAttachmentDetails = $.pscAttachmentDetails;
         this.pscAutoConnections = $.pscAutoConnections;
         this.pulumiLabels = $.pulumiLabels;
         this.replicaCount = $.replicaCount;
@@ -665,6 +703,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param crossInstanceReplicationConfig Cross instance replication config
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossInstanceReplicationConfig(@Nullable Output<InstanceCrossInstanceReplicationConfigArgs> crossInstanceReplicationConfig) {
+            $.crossInstanceReplicationConfig = crossInstanceReplicationConfig;
+            return this;
+        }
+
+        /**
+         * @param crossInstanceReplicationConfig Cross instance replication config
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossInstanceReplicationConfig(InstanceCrossInstanceReplicationConfigArgs crossInstanceReplicationConfig) {
+            return crossInstanceReplicationConfig(Output.of(crossInstanceReplicationConfig));
+        }
+
+        /**
          * @param deletionProtectionEnabled Optional. If set to true deletion of the instance will fail.
          * 
          * @return builder
@@ -686,7 +747,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredPscAutoConnections Required. Immutable. User inputs for the auto-created PSC connections.
+         * @param desiredPscAutoConnections Immutable. User inputs for the auto-created PSC connections.
          * 
          * @return builder
          * 
@@ -697,7 +758,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredPscAutoConnections Required. Immutable. User inputs for the auto-created PSC connections.
+         * @param desiredPscAutoConnections Immutable. User inputs for the auto-created PSC connections.
          * 
          * @return builder
          * 
@@ -707,7 +768,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredPscAutoConnections Required. Immutable. User inputs for the auto-created PSC connections.
+         * @param desiredPscAutoConnections Immutable. User inputs for the auto-created PSC connections.
          * 
          * @return builder
          * 
@@ -1153,6 +1214,40 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pscAttachmentDetails Configuration of a service attachment of the cluster, for creating PSC connections.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAttachmentDetails(@Nullable Output<List<InstancePscAttachmentDetailArgs>> pscAttachmentDetails) {
+            $.pscAttachmentDetails = pscAttachmentDetails;
+            return this;
+        }
+
+        /**
+         * @param pscAttachmentDetails Configuration of a service attachment of the cluster, for creating PSC connections.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAttachmentDetails(List<InstancePscAttachmentDetailArgs> pscAttachmentDetails) {
+            return pscAttachmentDetails(Output.of(pscAttachmentDetails));
+        }
+
+        /**
+         * @param pscAttachmentDetails Configuration of a service attachment of the cluster, for creating PSC connections.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAttachmentDetails(InstancePscAttachmentDetailArgs... pscAttachmentDetails) {
+            return pscAttachmentDetails(List.of(pscAttachmentDetails));
         }
 
         /**

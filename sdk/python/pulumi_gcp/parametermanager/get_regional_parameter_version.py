@@ -152,6 +152,8 @@ def get_regional_parameter_version(location: Optional[str] = None,
                                    project: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionalParameterVersionResult:
     """
+    Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+
     ## Example Usage
 
     ```python
@@ -196,6 +198,8 @@ def get_regional_parameter_version_output(location: Optional[pulumi.Input[Option
                                           project: Optional[pulumi.Input[Optional[str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalParameterVersionResult]:
     """
+    Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).
+
     ## Example Usage
 
     ```python

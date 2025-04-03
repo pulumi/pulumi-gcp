@@ -498,6 +498,52 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Datastream Connection Profile Postgres Secret Manager
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()
+ *             .displayName("Postgres Source With Secret Manager")
+ *             .location("us-central1")
+ *             .connectionProfileId("source-profile")
+ *             .createWithoutValidation(true)
+ *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
+ *                 .hostname("fake-hostname")
+ *                 .port(3306)
+ *                 .username("fake-username")
+ *                 .secretManagerStoredPassword("projects/fake-project/secrets/fake-secret/versions/1")
+ *                 .database("fake-database")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ConnectionProfile can be imported using any of these accepted formats:

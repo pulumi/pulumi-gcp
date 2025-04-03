@@ -187,6 +187,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> DefaultSnatStatuses;
         public readonly bool DeletionProtection;
         public readonly string Description;
+        public readonly bool DisableL4LbFirewallReconciliation;
         public readonly ImmutableArray<Outputs.GetClusterDnsConfigResult> DnsConfigs;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool EnableAutopilot;
@@ -292,6 +293,8 @@ namespace Pulumi.Gcp.Container
             bool deletionProtection,
 
             string description,
+
+            bool disableL4LbFirewallReconciliation,
 
             ImmutableArray<Outputs.GetClusterDnsConfigResult> dnsConfigs,
 
@@ -445,6 +448,7 @@ namespace Pulumi.Gcp.Container
             DefaultSnatStatuses = defaultSnatStatuses;
             DeletionProtection = deletionProtection;
             Description = description;
+            DisableL4LbFirewallReconciliation = disableL4LbFirewallReconciliation;
             DnsConfigs = dnsConfigs;
             EffectiveLabels = effectiveLabels;
             EnableAutopilot = enableAutopilot;

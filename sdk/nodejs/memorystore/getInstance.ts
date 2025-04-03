@@ -54,6 +54,7 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly authorizationMode: string;
     readonly createTime: string;
+    readonly crossInstanceReplicationConfigs: outputs.memorystore.GetInstanceCrossInstanceReplicationConfig[];
     readonly deletionProtectionEnabled: boolean;
     readonly desiredPscAutoConnections: outputs.memorystore.GetInstanceDesiredPscAutoConnection[];
     readonly discoveryEndpoints: outputs.memorystore.GetInstanceDiscoveryEndpoint[];
@@ -76,6 +77,7 @@ export interface GetInstanceResult {
     readonly nodeType: string;
     readonly persistenceConfigs: outputs.memorystore.GetInstancePersistenceConfig[];
     readonly project?: string;
+    readonly pscAttachmentDetails: outputs.memorystore.GetInstancePscAttachmentDetail[];
     readonly pscAutoConnections: outputs.memorystore.GetInstancePscAutoConnection[];
     readonly pulumiLabels: {[key: string]: string};
     readonly replicaCount: number;

@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A Parameter Version resource that stores the actual value of the parameter.
+ *
+ * To get more information about ParameterVersion, see:
+ *
+ * * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions)
+ *
  * ## Example Usage
  *
  * ### Parameter Version Basic
@@ -37,6 +43,23 @@ import * as utilities from "../utilities";
  *         key1: "val1",
  *         key2: "val2",
  *     }),
+ * });
+ * ```
+ * ### Parameter Version With Kms Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const parameter_basic = new gcp.parametermanager.Parameter("parameter-basic", {
+ *     parameterId: "parameter",
+ *     kmsKey: "kms-key",
+ * });
+ * const parameter_version_with_kms_key = new gcp.parametermanager.ParameterVersion("parameter-version-with-kms-key", {
+ *     parameter: parameter_basic.id,
+ *     parameterVersionId: "parameter_version",
+ *     parameterData: "app-parameter-version-data",
  * });
  * ```
  * ## Import
@@ -88,6 +111,11 @@ export class ParameterVersion extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     */
+    public /*out*/ readonly kmsKeyVersion!: pulumi.Output<string>;
+    /**
      * The resource name of the Parameter Version. Format:
      * `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
      */
@@ -128,6 +156,7 @@ export class ParameterVersion extends pulumi.CustomResource {
             const state = argsOrState as ParameterVersionState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["kmsKeyVersion"] = state ? state.kmsKeyVersion : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parameter"] = state ? state.parameter : undefined;
             resourceInputs["parameterData"] = state ? state.parameterData : undefined;
@@ -149,6 +178,7 @@ export class ParameterVersion extends pulumi.CustomResource {
             resourceInputs["parameterData"] = args?.parameterData ? pulumi.secret(args.parameterData) : undefined;
             resourceInputs["parameterVersionId"] = args ? args.parameterVersionId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["kmsKeyVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -171,6 +201,11 @@ export interface ParameterVersionState {
      * The current state of Parameter Version. This field is only applicable for updating Parameter Version.
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     */
+    kmsKeyVersion?: pulumi.Input<string>;
     /**
      * The resource name of the Parameter Version. Format:
      * `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`

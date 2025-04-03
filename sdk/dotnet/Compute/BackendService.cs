@@ -559,6 +559,57 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Backend Service Tls Settings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackendAuthenticationConfig = new Gcp.NetworkSecurity.BackendAuthenticationConfig("default", new()
+    ///     {
+    ///         Name = "authentication",
+    ///         WellKnownRoots = "PUBLIC_ROOTS",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         Protocol = "HTTPS",
+    ///         TlsSettings = new Gcp.Compute.Inputs.BackendServiceTlsSettingsArgs
+    ///         {
+    ///             Sni = "example.com",
+    ///             SubjectAltNames = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.BackendServiceTlsSettingsSubjectAltNameArgs
+    ///                 {
+    ///                     DnsName = "example.com",
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.BackendServiceTlsSettingsSubjectAltNameArgs
+    ///                 {
+    ///                     UniformResourceIdentifier = "https://example.com",
+    ///                 },
+    ///             },
+    ///             AuthenticationConfig = defaultBackendAuthenticationConfig.Id.Apply(id =&gt; $"//networksecurity.googleapis.com/{id}"),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -921,6 +972,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("timeoutSec")]
         public Output<int> TimeoutSec { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("tlsSettings")]
+        public Output<Outputs.BackendServiceTlsSettings?> TlsSettings { get; private set; } = null!;
 
 
         /// <summary>
@@ -1308,6 +1366,13 @@ namespace Pulumi.Gcp.Compute
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
 
+        /// <summary>
+        /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tlsSettings")]
+        public Input<Inputs.BackendServiceTlsSettingsArgs>? TlsSettings { get; set; }
+
         public BackendServiceArgs()
         {
         }
@@ -1680,6 +1745,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("timeoutSec")]
         public Input<int>? TimeoutSec { get; set; }
+
+        /// <summary>
+        /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tlsSettings")]
+        public Input<Inputs.BackendServiceTlsSettingsGetArgs>? TlsSettings { get; set; }
 
         public BackendServiceState()
         {

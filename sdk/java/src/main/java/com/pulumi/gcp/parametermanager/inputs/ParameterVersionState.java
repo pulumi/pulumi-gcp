@@ -47,6 +47,23 @@ public final class ParameterVersionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    @Import(name="kmsKeyVersion")
+    private @Nullable Output<String> kmsKeyVersion;
+
+    /**
+     * @return The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+     * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    public Optional<Output<String>> kmsKeyVersion() {
+        return Optional.ofNullable(this.kmsKeyVersion);
+    }
+
+    /**
      * The resource name of the Parameter Version. Format:
      * `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
      * 
@@ -134,6 +151,7 @@ public final class ParameterVersionState extends com.pulumi.resources.ResourceAr
     private ParameterVersionState(ParameterVersionState $) {
         this.createTime = $.createTime;
         this.disabled = $.disabled;
+        this.kmsKeyVersion = $.kmsKeyVersion;
         this.name = $.name;
         this.parameter = $.parameter;
         this.parameterData = $.parameterData;
@@ -199,6 +217,29 @@ public final class ParameterVersionState extends com.pulumi.resources.ResourceAr
          */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
+        }
+
+        /**
+         * @param kmsKeyVersion The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+         * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyVersion(@Nullable Output<String> kmsKeyVersion) {
+            $.kmsKeyVersion = kmsKeyVersion;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyVersion The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
+         * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyVersion(String kmsKeyVersion) {
+            return kmsKeyVersion(Output.of(kmsKeyVersion));
         }
 
         /**

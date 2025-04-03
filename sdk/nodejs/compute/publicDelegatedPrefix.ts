@@ -66,6 +66,36 @@ import * as utilities from "../utilities";
  *     mode: "EXTERNAL_IPV6_FORWARDING_RULE_CREATION",
  * });
  * ```
+ * ### Public Delegated Prefix Ipv6 Subnet Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const advertised = new gcp.compute.PublicAdvertisedPrefix("advertised", {
+ *     name: "ipv6-pap",
+ *     description: "description",
+ *     dnsVerificationIp: "2001:db8::",
+ *     ipCidrRange: "2001:db8::/32",
+ *     pdpScope: "REGIONAL",
+ * });
+ * const prefix = new gcp.compute.PublicDelegatedPrefix("prefix", {
+ *     name: "ipv6-root-pdp",
+ *     description: "test-delegation-mode-pdp",
+ *     region: "us-east1",
+ *     ipCidrRange: "2001:db8::/40",
+ *     parentPrefix: advertised.id,
+ *     mode: "DELEGATION",
+ * });
+ * const subprefix = new gcp.compute.PublicDelegatedPrefix("subprefix", {
+ *     name: "ipv6-sub-pdp",
+ *     description: "test-subnet-mode-pdp",
+ *     region: "us-east1",
+ *     ipCidrRange: "2001:db8::/48",
+ *     parentPrefix: prefix.id,
+ *     mode: "EXTERNAL_IPV6_SUBNETWORK_CREATION",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -128,7 +158,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
     /**
      * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
      */
-    public readonly allocatablePrefixLength!: pulumi.Output<number | undefined>;
+    public readonly allocatablePrefixLength!: pulumi.Output<number>;
     /**
      * An optional description of this resource.
      */
@@ -146,8 +176,8 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
     public readonly isLiveMigration!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
      */
     public readonly mode!: pulumi.Output<string | undefined>;
     /**
@@ -252,8 +282,8 @@ export interface PublicDelegatedPrefixState {
     isLiveMigration?: pulumi.Input<boolean>;
     /**
      * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -309,8 +339,8 @@ export interface PublicDelegatedPrefixArgs {
     isLiveMigration?: pulumi.Input<boolean>;
     /**
      * Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+     * EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+     * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
      */
     mode?: pulumi.Input<string>;
     /**

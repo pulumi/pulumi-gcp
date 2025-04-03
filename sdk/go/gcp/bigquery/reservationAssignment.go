@@ -88,7 +88,7 @@ type ReservationAssignment struct {
 
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee pulumi.StringOutput `pulumi:"assignee"`
-	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType pulumi.StringOutput `pulumi:"jobType"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -147,7 +147,7 @@ func GetReservationAssignment(ctx *pulumi.Context,
 type reservationAssignmentState struct {
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee *string `pulumi:"assignee"`
-	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType *string `pulumi:"jobType"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -168,7 +168,7 @@ type reservationAssignmentState struct {
 type ReservationAssignmentState struct {
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee pulumi.StringPtrInput
-	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -193,7 +193,7 @@ func (ReservationAssignmentState) ElementType() reflect.Type {
 type reservationAssignmentArgs struct {
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee string `pulumi:"assignee"`
-	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType string `pulumi:"jobType"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -210,7 +210,7 @@ type reservationAssignmentArgs struct {
 type ReservationAssignmentArgs struct {
 	// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
 	Assignee pulumi.StringInput
-	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+	// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 	JobType pulumi.StringInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -315,7 +315,7 @@ func (o ReservationAssignmentOutput) Assignee() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.Assignee }).(pulumi.StringOutput)
 }
 
-// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
+// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
 func (o ReservationAssignmentOutput) JobType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.JobType }).(pulumi.StringOutput)
 }

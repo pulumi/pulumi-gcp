@@ -404,7 +404,7 @@ class Cluster(pulumi.CustomResource):
                 },
             },
             rebalance_config={
-                "mode": "NO_REBALANCE",
+                "mode": "AUTO_REBALANCE_ON_SCALE_UP",
             },
             labels={
                 "key": "value",
@@ -518,7 +518,7 @@ class Cluster(pulumi.CustomResource):
                 },
             },
             rebalance_config={
-                "mode": "NO_REBALANCE",
+                "mode": "AUTO_REBALANCE_ON_SCALE_UP",
             },
             labels={
                 "key": "value",

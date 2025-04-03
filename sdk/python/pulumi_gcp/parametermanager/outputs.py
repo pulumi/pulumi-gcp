@@ -203,6 +203,7 @@ class GetParametersParameterResult(dict):
                  create_time: str,
                  effective_labels: Mapping[str, str],
                  format: str,
+                 kms_key: str,
                  labels: Mapping[str, str],
                  name: str,
                  parameter_id: str,
@@ -213,6 +214,7 @@ class GetParametersParameterResult(dict):
         """
         :param str create_time: The time at which the parameter was created.
         :param str format: The format type of the parameter.
+        :param str kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param Mapping[str, str] labels: The labels assigned to the parameter.
         :param str name: The resource name of the parameter. Format: `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
         :param str parameter_id: The unique name of the resource.
@@ -225,6 +227,7 @@ class GetParametersParameterResult(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "kms_key", kms_key)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "parameter_id", parameter_id)
@@ -253,6 +256,14 @@ class GetParametersParameterResult(dict):
         The format type of the parameter.
         """
         return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter

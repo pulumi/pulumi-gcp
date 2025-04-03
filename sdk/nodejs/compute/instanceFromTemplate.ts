@@ -146,6 +146,10 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
+     * Encryption key used to provide data encryption on the given instance.
+     */
+    public readonly instanceEncryptionKey!: pulumi.Output<outputs.compute.InstanceFromTemplateInstanceEncryptionKey>;
+    /**
      * The server-assigned unique identifier of this instance.
      */
     public /*out*/ readonly instanceId!: pulumi.Output<string>;
@@ -298,6 +302,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["instanceEncryptionKey"] = state ? state.instanceEncryptionKey : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["keyRevocationActionType"] = state ? state.keyRevocationActionType : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
@@ -342,6 +347,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["enableDisplay"] = args ? args.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["instanceEncryptionKey"] = args ? args.instanceEncryptionKey : undefined;
             resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineType"] = args ? args.machineType : undefined;
@@ -448,6 +454,10 @@ export interface InstanceFromTemplateState {
      * exceed 253 characters. Changing this forces a new resource to be created.
      */
     hostname?: pulumi.Input<string>;
+    /**
+     * Encryption key used to provide data encryption on the given instance.
+     */
+    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromTemplateInstanceEncryptionKey>;
     /**
      * The server-assigned unique identifier of this instance.
      */
@@ -625,6 +635,10 @@ export interface InstanceFromTemplateArgs {
      * exceed 253 characters. Changing this forces a new resource to be created.
      */
     hostname?: pulumi.Input<string>;
+    /**
+     * Encryption key used to provide data encryption on the given instance.
+     */
+    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceFromTemplateInstanceEncryptionKey>;
     /**
      * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
      * default.

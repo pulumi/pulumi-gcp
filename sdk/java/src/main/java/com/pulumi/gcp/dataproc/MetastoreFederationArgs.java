@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreFederationBackendMetastoreArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,13 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
      */
     public Output<List<MetastoreFederationBackendMetastoreArgs>> backendMetastores() {
         return this.backendMetastores;
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -115,6 +123,7 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
 
     private MetastoreFederationArgs(MetastoreFederationArgs $) {
         this.backendMetastores = $.backendMetastores;
+        this.deletionProtection = $.deletionProtection;
         this.federationId = $.federationId;
         this.labels = $.labels;
         this.location = $.location;
@@ -172,6 +181,15 @@ public final class MetastoreFederationArgs extends com.pulumi.resources.Resource
          */
         public Builder backendMetastores(MetastoreFederationBackendMetastoreArgs... backendMetastores) {
             return backendMetastores(List.of(backendMetastores));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

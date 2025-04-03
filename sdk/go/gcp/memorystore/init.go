@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:memorystore/instance:Instance":
 		r = &Instance{}
+	case "gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints":
+		r = &InstanceDesiredUserCreatedEndpoints{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"memorystore/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"memorystore/instanceDesiredUserCreatedEndpoints",
 		&module{version},
 	)
 }

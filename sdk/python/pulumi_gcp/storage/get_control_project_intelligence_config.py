@@ -98,7 +98,22 @@ class AwaitableGetControlProjectIntelligenceConfigResult(GetControlProjectIntell
 def get_control_project_intelligence_config(name: Optional[str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetControlProjectIntelligenceConfigResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a Project Storage Intelligence config resource.
+    See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+    and
+    [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    sample_config = gcp.storage.get_control_project_intelligence_config(name="my-project")
+    ```
+
+
+    :param str name: The name or number of the GCP project.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -115,7 +130,22 @@ def get_control_project_intelligence_config(name: Optional[str] = None,
 def get_control_project_intelligence_config_output(name: Optional[pulumi.Input[str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetControlProjectIntelligenceConfigResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a Project Storage Intelligence config resource.
+    See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
+    and
+    [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    sample_config = gcp.storage.get_control_project_intelligence_config(name="my-project")
+    ```
+
+
+    :param str name: The name or number of the GCP project.
     """
     __args__ = dict()
     __args__['name'] = name

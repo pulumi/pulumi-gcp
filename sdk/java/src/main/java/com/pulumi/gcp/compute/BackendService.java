@@ -21,6 +21,7 @@ import com.pulumi.gcp.compute.outputs.BackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.BackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.BackendServiceSecuritySettings;
 import com.pulumi.gcp.compute.outputs.BackendServiceStrongSessionAffinityCookie;
+import com.pulumi.gcp.compute.outputs.BackendServiceTlsSettings;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -801,6 +802,72 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Backend Service Tls Settings
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.networksecurity.BackendAuthenticationConfig;
+ * import com.pulumi.gcp.networksecurity.BackendAuthenticationConfigArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBackendAuthenticationConfig = new BackendAuthenticationConfig("defaultBackendAuthenticationConfig", BackendAuthenticationConfigArgs.builder()
+ *             .name("authentication")
+ *             .wellKnownRoots("PUBLIC_ROOTS")
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .protocol("HTTPS")
+ *             .tlsSettings(BackendServiceTlsSettingsArgs.builder()
+ *                 .sni("example.com")
+ *                 .subjectAltNames(                
+ *                     BackendServiceTlsSettingsSubjectAltNameArgs.builder()
+ *                         .dnsName("example.com")
+ *                         .build(),
+ *                     BackendServiceTlsSettingsSubjectAltNameArgs.builder()
+ *                         .uniformResourceIdentifier("https://example.com")
+ *                         .build())
+ *                 .authenticationConfig(defaultBackendAuthenticationConfig.id().applyValue(id -> String.format("//networksecurity.googleapis.com/%s", id)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -1566,6 +1633,22 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> timeoutSec() {
         return this.timeoutSec;
+    }
+    /**
+     * Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="tlsSettings", refs={BackendServiceTlsSettings.class}, tree="[0]")
+    private Output</* @Nullable */ BackendServiceTlsSettings> tlsSettings;
+
+    /**
+     * @return Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackendServiceTlsSettings>> tlsSettings() {
+        return Codegen.optional(this.tlsSettings);
     }
 
     /**

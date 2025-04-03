@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *         version: "3.1.2",
  *         endpointProtocol: "GRPC",
  *     },
+ *     deletionProtection: false,
  * });
  * const _default = new gcp.dataproc.MetastoreFederation("default", {
  *     location: "us-central1",
@@ -133,6 +134,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
      * Output only. The time when the metastore federation was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -203,6 +205,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
             const state = argsOrState as MetastoreFederationState | undefined;
             resourceInputs["backendMetastores"] = state ? state.backendMetastores : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
             resourceInputs["federationId"] = state ? state.federationId : undefined;
@@ -228,6 +231,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             resourceInputs["backendMetastores"] = args ? args.backendMetastores : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["federationId"] = args ? args.federationId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -263,6 +267,7 @@ export interface MetastoreFederationState {
      * Output only. The time when the metastore federation was created.
      */
     createTime?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -328,6 +333,7 @@ export interface MetastoreFederationArgs {
      * Structure is documented below.
      */
     backendMetastores: pulumi.Input<pulumi.Input<inputs.dataproc.MetastoreFederationBackendMetastore>[]>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between

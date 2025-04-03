@@ -91,6 +91,47 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Public Delegated Prefix Ipv6 Subnet Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var advertised = new Gcp.Compute.PublicAdvertisedPrefix("advertised", new()
+    ///     {
+    ///         Name = "ipv6-pap",
+    ///         Description = "description",
+    ///         DnsVerificationIp = "2001:db8::",
+    ///         IpCidrRange = "2001:db8::/32",
+    ///         PdpScope = "REGIONAL",
+    ///     });
+    /// 
+    ///     var prefix = new Gcp.Compute.PublicDelegatedPrefix("prefix", new()
+    ///     {
+    ///         Name = "ipv6-root-pdp",
+    ///         Description = "test-delegation-mode-pdp",
+    ///         Region = "us-east1",
+    ///         IpCidrRange = "2001:db8::/40",
+    ///         ParentPrefix = advertised.Id,
+    ///         Mode = "DELEGATION",
+    ///     });
+    /// 
+    ///     var subprefix = new Gcp.Compute.PublicDelegatedPrefix("subprefix", new()
+    ///     {
+    ///         Name = "ipv6-sub-pdp",
+    ///         Description = "test-subnet-mode-pdp",
+    ///         Region = "us-east1",
+    ///         IpCidrRange = "2001:db8::/48",
+    ///         ParentPrefix = prefix.Id,
+    ///         Mode = "EXTERNAL_IPV6_SUBNETWORK_CREATION",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -129,7 +170,7 @@ namespace Pulumi.Gcp.Compute
         /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         /// </summary>
         [Output("allocatablePrefixLength")]
-        public Output<int?> AllocatablePrefixLength { get; private set; } = null!;
+        public Output<int> AllocatablePrefixLength { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource.
@@ -154,8 +195,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         /// </summary>
         [Output("mode")]
         public Output<string?> Mode { get; private set; } = null!;
@@ -271,8 +312,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -344,8 +385,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
-        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION.
-        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`.
+        /// EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
+        /// Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

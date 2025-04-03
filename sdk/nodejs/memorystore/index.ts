@@ -15,6 +15,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { InstanceDesiredUserCreatedEndpointsArgs, InstanceDesiredUserCreatedEndpointsState } from "./instanceDesiredUserCreatedEndpoints";
+export type InstanceDesiredUserCreatedEndpoints = import("./instanceDesiredUserCreatedEndpoints").InstanceDesiredUserCreatedEndpoints;
+export const InstanceDesiredUserCreatedEndpoints: typeof import("./instanceDesiredUserCreatedEndpoints").InstanceDesiredUserCreatedEndpoints = null as any;
+utilities.lazyLoad(exports, ["InstanceDesiredUserCreatedEndpoints"], () => require("./instanceDesiredUserCreatedEndpoints"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,9 +27,12 @@ const _module = {
         switch (type) {
             case "gcp:memorystore/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints":
+                return new InstanceDesiredUserCreatedEndpoints(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "memorystore/instance", _module)
+pulumi.runtime.registerResourceModule("gcp", "memorystore/instanceDesiredUserCreatedEndpoints", _module)

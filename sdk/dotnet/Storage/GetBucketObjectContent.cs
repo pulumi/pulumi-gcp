@@ -183,6 +183,11 @@ namespace Pulumi.Gcp.Storage
         /// (Computed) The content of the object.
         /// </summary>
         public readonly string Content;
+        /// <summary>
+        /// (Computed) Base64 encoded version of the object content.
+        /// Use this when dealing with binary data.
+        /// </summary>
+        public readonly string ContentBase64;
         public readonly string ContentDisposition;
         public readonly string ContentEncoding;
         public readonly string ContentLanguage;
@@ -215,6 +220,8 @@ namespace Pulumi.Gcp.Storage
             string cacheControl,
 
             string content,
+
+            string contentBase64,
 
             string contentDisposition,
 
@@ -261,6 +268,7 @@ namespace Pulumi.Gcp.Storage
             Bucket = bucket;
             CacheControl = cacheControl;
             Content = content;
+            ContentBase64 = contentBase64;
             ContentDisposition = contentDisposition;
             ContentEncoding = contentEncoding;
             ContentLanguage = contentLanguage;

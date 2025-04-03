@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageAttachedDisk;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageBootDisk;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageConfidentialInstanceConfig;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageGuestAccelerator;
+import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageInstanceEncryptionKey;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageNetworkInterface;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageNetworkPerformanceConfig;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageParams;
@@ -23,10 +24,12 @@ import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageScheduling;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageScratchDisk;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageServiceAccount;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageShieldedInstanceConfig;
+import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageSourceMachineImageEncryptionKey;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -298,6 +301,20 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      */
     public Output<String> hostname() {
         return this.hostname;
+    }
+    /**
+     * Encryption key used to provide data encryption on the given instance.
+     * 
+     */
+    @Export(name="instanceEncryptionKey", refs={InstanceFromMachineImageInstanceEncryptionKey.class}, tree="[0]")
+    private Output<InstanceFromMachineImageInstanceEncryptionKey> instanceEncryptionKey;
+
+    /**
+     * @return Encryption key used to provide data encryption on the given instance.
+     * 
+     */
+    public Output<InstanceFromMachineImageInstanceEncryptionKey> instanceEncryptionKey() {
+        return this.instanceEncryptionKey;
     }
     /**
      * The server-assigned unique identifier of this instance.
@@ -652,6 +669,20 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      */
     public Output<String> sourceMachineImage() {
         return this.sourceMachineImage;
+    }
+    /**
+     * Encryption key for the source machine image.
+     * 
+     */
+    @Export(name="sourceMachineImageEncryptionKey", refs={InstanceFromMachineImageSourceMachineImageEncryptionKey.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceFromMachineImageSourceMachineImageEncryptionKey> sourceMachineImageEncryptionKey;
+
+    /**
+     * @return Encryption key for the source machine image.
+     * 
+     */
+    public Output<Optional<InstanceFromMachineImageSourceMachineImageEncryptionKey>> sourceMachineImageEncryptionKey() {
+        return Codegen.optional(this.sourceMachineImageEncryptionKey);
     }
     /**
      * The list of tags attached to the instance.

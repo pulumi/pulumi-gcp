@@ -2205,6 +2205,8 @@ class ServiceTemplate(dict):
             suggest = "encryption_key"
         elif key == "executionEnvironment":
             suggest = "execution_environment"
+        elif key == "gpuZonalRedundancyDisabled":
+            suggest = "gpu_zonal_redundancy_disabled"
         elif key == "maxInstanceRequestConcurrency":
             suggest = "max_instance_request_concurrency"
         elif key == "nodeSelector":
@@ -2234,6 +2236,7 @@ class ServiceTemplate(dict):
                  containers: Optional[Sequence['outputs.ServiceTemplateContainer']] = None,
                  encryption_key: Optional[str] = None,
                  execution_environment: Optional[str] = None,
+                 gpu_zonal_redundancy_disabled: Optional[bool] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  max_instance_request_concurrency: Optional[int] = None,
                  node_selector: Optional['outputs.ServiceTemplateNodeSelector'] = None,
@@ -2255,6 +2258,7 @@ class ServiceTemplate(dict):
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The sandbox environment to host this Revision.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
+        :param bool gpu_zonal_redundancy_disabled: True if GPU zonal redundancy is disabled on this revision.
         :param Mapping[str, str] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
                For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -2285,6 +2289,8 @@ class ServiceTemplate(dict):
             pulumi.set(__self__, "encryption_key", encryption_key)
         if execution_environment is not None:
             pulumi.set(__self__, "execution_environment", execution_environment)
+        if gpu_zonal_redundancy_disabled is not None:
+            pulumi.set(__self__, "gpu_zonal_redundancy_disabled", gpu_zonal_redundancy_disabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_instance_request_concurrency is not None:
@@ -2344,6 +2350,14 @@ class ServiceTemplate(dict):
         Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         """
         return pulumi.get(self, "execution_environment")
+
+    @property
+    @pulumi.getter(name="gpuZonalRedundancyDisabled")
+    def gpu_zonal_redundancy_disabled(self) -> Optional[bool]:
+        """
+        True if GPU zonal redundancy is disabled on this revision.
+        """
+        return pulumi.get(self, "gpu_zonal_redundancy_disabled")
 
     @property
     @pulumi.getter
@@ -5827,6 +5841,7 @@ class GetServiceTemplateResult(dict):
                  containers: Sequence['outputs.GetServiceTemplateContainerResult'],
                  encryption_key: str,
                  execution_environment: str,
+                 gpu_zonal_redundancy_disabled: bool,
                  labels: Mapping[str, str],
                  max_instance_request_concurrency: int,
                  node_selectors: Sequence['outputs.GetServiceTemplateNodeSelectorResult'],
@@ -5848,6 +5863,7 @@ class GetServiceTemplateResult(dict):
         :param Sequence['GetServiceTemplateContainerArgs'] containers: Holds the containers that define the unit of execution for this Service.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The sandbox environment to host this Revision. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+        :param bool gpu_zonal_redundancy_disabled: True if GPU zonal redundancy is disabled on this revision.
         :param Mapping[str, str] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
                For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                
@@ -5871,6 +5887,7 @@ class GetServiceTemplateResult(dict):
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "encryption_key", encryption_key)
         pulumi.set(__self__, "execution_environment", execution_environment)
+        pulumi.set(__self__, "gpu_zonal_redundancy_disabled", gpu_zonal_redundancy_disabled)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         pulumi.set(__self__, "node_selectors", node_selectors)
@@ -5919,6 +5936,14 @@ class GetServiceTemplateResult(dict):
         The sandbox environment to host this Revision. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
         """
         return pulumi.get(self, "execution_environment")
+
+    @property
+    @pulumi.getter(name="gpuZonalRedundancyDisabled")
+    def gpu_zonal_redundancy_disabled(self) -> bool:
+        """
+        True if GPU zonal redundancy is disabled on this revision.
+        """
+        return pulumi.get(self, "gpu_zonal_redundancy_disabled")
 
     @property
     @pulumi.getter

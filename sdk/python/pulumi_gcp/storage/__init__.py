@@ -13,6 +13,8 @@ from .bucket_iam_binding import *
 from .bucket_iam_member import *
 from .bucket_iam_policy import *
 from .bucket_object import *
+from .control_folder_intelligence_config import *
+from .control_organization_intelligence_config import *
 from .control_project_intelligence_config import *
 from .default_object_access_control import *
 from .default_object_acl import *
@@ -23,6 +25,8 @@ from .get_bucket_object import *
 from .get_bucket_object_content import *
 from .get_bucket_objects import *
 from .get_buckets import *
+from .get_control_folder_intelligence_config import *
+from .get_control_organization_intelligence_config import *
 from .get_control_project_intelligence_config import *
 from .get_managed_folder_iam_policy import *
 from .get_object_signed_url import *

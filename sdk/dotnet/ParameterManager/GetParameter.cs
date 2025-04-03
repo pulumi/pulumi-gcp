@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.ParameterManager
     public static class GetParameter
     {
         /// <summary>
+        /// Use this data source to get information about a Parameter Manager Parameter.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetParameterResult>("gcp:parametermanager/getParameter:getParameter", args ?? new GetParameterArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to get information about a Parameter Manager Parameter.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Gcp.ParameterManager
             => global::Pulumi.Deployment.Instance.Invoke<GetParameterResult>("gcp:parametermanager/getParameter:getParameter", args ?? new GetParameterInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to get information about a Parameter Manager Parameter.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -130,6 +136,7 @@ namespace Pulumi.Gcp.ParameterManager
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string KmsKey;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string ParameterId;
@@ -147,6 +154,8 @@ namespace Pulumi.Gcp.ParameterManager
             string format,
 
             string id,
+
+            string kmsKey,
 
             ImmutableDictionary<string, string> labels,
 
@@ -166,6 +175,7 @@ namespace Pulumi.Gcp.ParameterManager
             EffectiveLabels = effectiveLabels;
             Format = format;
             Id = id;
+            KmsKey = kmsKey;
             Labels = labels;
             Name = name;
             ParameterId = parameterId;

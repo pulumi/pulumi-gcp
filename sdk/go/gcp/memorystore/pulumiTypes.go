@@ -13,6 +13,862 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceCrossInstanceReplicationConfig struct {
+	// The instance role supports the following values:
+	// 1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+	// 2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+	// 3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+	// 4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
+	//    Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+	InstanceRole *string `pulumi:"instanceRole"`
+	// (Output)
+	// An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+	// Structure is documented below.
+	Memberships []InstanceCrossInstanceReplicationConfigMembership `pulumi:"memberships"`
+	// This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+	// Structure is documented below.
+	PrimaryInstance *InstanceCrossInstanceReplicationConfigPrimaryInstance `pulumi:"primaryInstance"`
+	// List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
+	// Structure is documented below.
+	SecondaryInstances []InstanceCrossInstanceReplicationConfigSecondaryInstance `pulumi:"secondaryInstances"`
+	// (Output)
+	// The last time cross instance replication config was updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// InstanceCrossInstanceReplicationConfigInput is an input type that accepts InstanceCrossInstanceReplicationConfigArgs and InstanceCrossInstanceReplicationConfigOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigArgs{...}
+type InstanceCrossInstanceReplicationConfigInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigOutput() InstanceCrossInstanceReplicationConfigOutput
+	ToInstanceCrossInstanceReplicationConfigOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigOutput
+}
+
+type InstanceCrossInstanceReplicationConfigArgs struct {
+	// The instance role supports the following values:
+	// 1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+	// 2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+	// 3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+	// 4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
+	//    Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+	InstanceRole pulumi.StringPtrInput `pulumi:"instanceRole"`
+	// (Output)
+	// An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+	// Structure is documented below.
+	Memberships InstanceCrossInstanceReplicationConfigMembershipArrayInput `pulumi:"memberships"`
+	// This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+	// Structure is documented below.
+	PrimaryInstance InstanceCrossInstanceReplicationConfigPrimaryInstancePtrInput `pulumi:"primaryInstance"`
+	// List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
+	// Structure is documented below.
+	SecondaryInstances InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput `pulumi:"secondaryInstances"`
+	// (Output)
+	// The last time cross instance replication config was updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (InstanceCrossInstanceReplicationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfig)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigArgs) ToInstanceCrossInstanceReplicationConfigOutput() InstanceCrossInstanceReplicationConfigOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigArgs) ToInstanceCrossInstanceReplicationConfigOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigOutput)
+}
+
+func (i InstanceCrossInstanceReplicationConfigArgs) ToInstanceCrossInstanceReplicationConfigPtrOutput() InstanceCrossInstanceReplicationConfigPtrOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigArgs) ToInstanceCrossInstanceReplicationConfigPtrOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigOutput).ToInstanceCrossInstanceReplicationConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceCrossInstanceReplicationConfigPtrInput is an input type that accepts InstanceCrossInstanceReplicationConfigArgs, InstanceCrossInstanceReplicationConfigPtr and InstanceCrossInstanceReplicationConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigPtrInput` via:
+//
+//	        InstanceCrossInstanceReplicationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceCrossInstanceReplicationConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigPtrOutput() InstanceCrossInstanceReplicationConfigPtrOutput
+	ToInstanceCrossInstanceReplicationConfigPtrOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigPtrOutput
+}
+
+type instanceCrossInstanceReplicationConfigPtrType InstanceCrossInstanceReplicationConfigArgs
+
+func InstanceCrossInstanceReplicationConfigPtr(v *InstanceCrossInstanceReplicationConfigArgs) InstanceCrossInstanceReplicationConfigPtrInput {
+	return (*instanceCrossInstanceReplicationConfigPtrType)(v)
+}
+
+func (*instanceCrossInstanceReplicationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCrossInstanceReplicationConfig)(nil)).Elem()
+}
+
+func (i *instanceCrossInstanceReplicationConfigPtrType) ToInstanceCrossInstanceReplicationConfigPtrOutput() InstanceCrossInstanceReplicationConfigPtrOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceCrossInstanceReplicationConfigPtrType) ToInstanceCrossInstanceReplicationConfigPtrOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigPtrOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfig)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigOutput) ToInstanceCrossInstanceReplicationConfigOutput() InstanceCrossInstanceReplicationConfigOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigOutput) ToInstanceCrossInstanceReplicationConfigOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigOutput) ToInstanceCrossInstanceReplicationConfigPtrOutput() InstanceCrossInstanceReplicationConfigPtrOutput {
+	return o.ToInstanceCrossInstanceReplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceCrossInstanceReplicationConfigOutput) ToInstanceCrossInstanceReplicationConfigPtrOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceCrossInstanceReplicationConfig) *InstanceCrossInstanceReplicationConfig {
+		return &v
+	}).(InstanceCrossInstanceReplicationConfigPtrOutput)
+}
+
+// The instance role supports the following values:
+//  1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+//  2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+//  3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+//  4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
+//     Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+func (o InstanceCrossInstanceReplicationConfigOutput) InstanceRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfig) *string { return v.InstanceRole }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+// Structure is documented below.
+func (o InstanceCrossInstanceReplicationConfigOutput) Memberships() InstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfig) []InstanceCrossInstanceReplicationConfigMembership {
+		return v.Memberships
+	}).(InstanceCrossInstanceReplicationConfigMembershipArrayOutput)
+}
+
+// This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+// Structure is documented below.
+func (o InstanceCrossInstanceReplicationConfigOutput) PrimaryInstance() InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfig) *InstanceCrossInstanceReplicationConfigPrimaryInstance {
+		return v.PrimaryInstance
+	}).(InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput)
+}
+
+// List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
+// Structure is documented below.
+func (o InstanceCrossInstanceReplicationConfigOutput) SecondaryInstances() InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfig) []InstanceCrossInstanceReplicationConfigSecondaryInstance {
+		return v.SecondaryInstances
+	}).(InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput)
+}
+
+// (Output)
+// The last time cross instance replication config was updated.
+func (o InstanceCrossInstanceReplicationConfigOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfig) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCrossInstanceReplicationConfig)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigPtrOutput) ToInstanceCrossInstanceReplicationConfigPtrOutput() InstanceCrossInstanceReplicationConfigPtrOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigPtrOutput) ToInstanceCrossInstanceReplicationConfigPtrOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPtrOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigPtrOutput) Elem() InstanceCrossInstanceReplicationConfigOutput {
+	return o.ApplyT(func(v *InstanceCrossInstanceReplicationConfig) InstanceCrossInstanceReplicationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceCrossInstanceReplicationConfig
+		return ret
+	}).(InstanceCrossInstanceReplicationConfigOutput)
+}
+
+// The instance role supports the following values:
+//  1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+//  2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+//  3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+//  4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
+//     Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+func (o InstanceCrossInstanceReplicationConfigPtrOutput) InstanceRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCrossInstanceReplicationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+// Structure is documented below.
+func (o InstanceCrossInstanceReplicationConfigPtrOutput) Memberships() InstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return o.ApplyT(func(v *InstanceCrossInstanceReplicationConfig) []InstanceCrossInstanceReplicationConfigMembership {
+		if v == nil {
+			return nil
+		}
+		return v.Memberships
+	}).(InstanceCrossInstanceReplicationConfigMembershipArrayOutput)
+}
+
+// This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+// Structure is documented below.
+func (o InstanceCrossInstanceReplicationConfigPtrOutput) PrimaryInstance() InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return o.ApplyT(func(v *InstanceCrossInstanceReplicationConfig) *InstanceCrossInstanceReplicationConfigPrimaryInstance {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryInstance
+	}).(InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput)
+}
+
+// List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
+// Structure is documented below.
+func (o InstanceCrossInstanceReplicationConfigPtrOutput) SecondaryInstances() InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return o.ApplyT(func(v *InstanceCrossInstanceReplicationConfig) []InstanceCrossInstanceReplicationConfigSecondaryInstance {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryInstances
+	}).(InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput)
+}
+
+// (Output)
+// The last time cross instance replication config was updated.
+func (o InstanceCrossInstanceReplicationConfigPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCrossInstanceReplicationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigMembership struct {
+	// Details of the primary instance that is used as the replication source for all the secondary instances.
+	PrimaryInstances []InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance `pulumi:"primaryInstances"`
+	// List of secondary instances that are replicating from the primary instance.
+	SecondaryInstances []InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance `pulumi:"secondaryInstances"`
+}
+
+// InstanceCrossInstanceReplicationConfigMembershipInput is an input type that accepts InstanceCrossInstanceReplicationConfigMembershipArgs and InstanceCrossInstanceReplicationConfigMembershipOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigMembershipInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigMembershipArgs{...}
+type InstanceCrossInstanceReplicationConfigMembershipInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigMembershipOutput() InstanceCrossInstanceReplicationConfigMembershipOutput
+	ToInstanceCrossInstanceReplicationConfigMembershipOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigMembershipOutput
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipArgs struct {
+	// Details of the primary instance that is used as the replication source for all the secondary instances.
+	PrimaryInstances InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput `pulumi:"primaryInstances"`
+	// List of secondary instances that are replicating from the primary instance.
+	SecondaryInstances InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput `pulumi:"secondaryInstances"`
+}
+
+func (InstanceCrossInstanceReplicationConfigMembershipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembership)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipArgs) ToInstanceCrossInstanceReplicationConfigMembershipOutput() InstanceCrossInstanceReplicationConfigMembershipOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigMembershipOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipArgs) ToInstanceCrossInstanceReplicationConfigMembershipOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigMembershipOutput)
+}
+
+// InstanceCrossInstanceReplicationConfigMembershipArrayInput is an input type that accepts InstanceCrossInstanceReplicationConfigMembershipArray and InstanceCrossInstanceReplicationConfigMembershipArrayOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigMembershipArrayInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigMembershipArray{ InstanceCrossInstanceReplicationConfigMembershipArgs{...} }
+type InstanceCrossInstanceReplicationConfigMembershipArrayInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigMembershipArrayOutput() InstanceCrossInstanceReplicationConfigMembershipArrayOutput
+	ToInstanceCrossInstanceReplicationConfigMembershipArrayOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigMembershipArrayOutput
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipArray []InstanceCrossInstanceReplicationConfigMembershipInput
+
+func (InstanceCrossInstanceReplicationConfigMembershipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCrossInstanceReplicationConfigMembership)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipArray) ToInstanceCrossInstanceReplicationConfigMembershipArrayOutput() InstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigMembershipArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipArray) ToInstanceCrossInstanceReplicationConfigMembershipArrayOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigMembershipArrayOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembership)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipOutput) ToInstanceCrossInstanceReplicationConfigMembershipOutput() InstanceCrossInstanceReplicationConfigMembershipOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipOutput) ToInstanceCrossInstanceReplicationConfigMembershipOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipOutput {
+	return o
+}
+
+// Details of the primary instance that is used as the replication source for all the secondary instances.
+func (o InstanceCrossInstanceReplicationConfigMembershipOutput) PrimaryInstances() InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigMembership) []InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
+		return v.PrimaryInstances
+	}).(InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput)
+}
+
+// List of secondary instances that are replicating from the primary instance.
+func (o InstanceCrossInstanceReplicationConfigMembershipOutput) SecondaryInstances() InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigMembership) []InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
+		return v.SecondaryInstances
+	}).(InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigMembershipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCrossInstanceReplicationConfigMembership)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipArrayOutput) ToInstanceCrossInstanceReplicationConfigMembershipArrayOutput() InstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipArrayOutput) ToInstanceCrossInstanceReplicationConfigMembershipArrayOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipArrayOutput) Index(i pulumi.IntInput) InstanceCrossInstanceReplicationConfigMembershipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceCrossInstanceReplicationConfigMembership {
+		return vs[0].([]InstanceCrossInstanceReplicationConfigMembership)[vs[1].(int)]
+	}).(InstanceCrossInstanceReplicationConfigMembershipOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance struct {
+	// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+	Instance *string `pulumi:"instance"`
+	// (Output)
+	// The unique id of the primary instance.
+	Uid *string `pulumi:"uid"`
+}
+
+// InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput is an input type that accepts InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs and InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs{...}
+type InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput() InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput
+	ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs struct {
+	// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+	Instance pulumi.StringPtrInput `pulumi:"instance"`
+	// (Output)
+	// The unique id of the primary instance.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput() InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput)
+}
+
+// InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput is an input type that accepts InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray and InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray{ InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs{...} }
+type InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput() InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput
+	ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray []InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput
+
+func (InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray) ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput() InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray) ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput() InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return o
+}
+
+// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+func (o InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance) *string { return v.Instance }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique id of the primary instance.
+func (o InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput) ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput() InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput) ToInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput) Index(i pulumi.IntInput) InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
+		return vs[0].([]InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)[vs[1].(int)]
+	}).(InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance struct {
+	// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance *string `pulumi:"instance"`
+	// Output only. System assigned, unique identifier for the instance.
+	Uid *string `pulumi:"uid"`
+}
+
+// InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput is an input type that accepts InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs and InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs{...}
+type InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput() InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput
+	ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs struct {
+	// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance pulumi.StringPtrInput `pulumi:"instance"`
+	// Output only. System assigned, unique identifier for the instance.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput() InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput)
+}
+
+// InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput is an input type that accepts InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray and InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray{ InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs{...} }
+type InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput() InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput
+	ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray []InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput
+
+func (InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray) ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput() InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray) ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput() InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return o
+}
+
+// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+func (o InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance) *string { return v.Instance }).(pulumi.StringPtrOutput)
+}
+
+// Output only. System assigned, unique identifier for the instance.
+func (o InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput) ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput() InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput) ToInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput) Index(i pulumi.IntInput) InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
+		return vs[0].([]InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)[vs[1].(int)]
+	}).(InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigPrimaryInstance struct {
+	// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+	Instance *string `pulumi:"instance"`
+	// (Output)
+	// The unique id of the primary instance.
+	Uid *string `pulumi:"uid"`
+}
+
+// InstanceCrossInstanceReplicationConfigPrimaryInstanceInput is an input type that accepts InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs and InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigPrimaryInstanceInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{...}
+type InstanceCrossInstanceReplicationConfigPrimaryInstanceInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput() InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput
+	ToInstanceCrossInstanceReplicationConfigPrimaryInstanceOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput
+}
+
+type InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs struct {
+	// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+	Instance pulumi.StringPtrInput `pulumi:"instance"`
+	// (Output)
+	// The unique id of the primary instance.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigPrimaryInstance)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput() InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigPrimaryInstanceOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigPrimaryInstanceOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput)
+}
+
+func (i InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput() InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput).ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutputWithContext(ctx)
+}
+
+// InstanceCrossInstanceReplicationConfigPrimaryInstancePtrInput is an input type that accepts InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs, InstanceCrossInstanceReplicationConfigPrimaryInstancePtr and InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigPrimaryInstancePtrInput` via:
+//
+//	        InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceCrossInstanceReplicationConfigPrimaryInstancePtrInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput() InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput
+	ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput
+}
+
+type instanceCrossInstanceReplicationConfigPrimaryInstancePtrType InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs
+
+func InstanceCrossInstanceReplicationConfigPrimaryInstancePtr(v *InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs) InstanceCrossInstanceReplicationConfigPrimaryInstancePtrInput {
+	return (*instanceCrossInstanceReplicationConfigPrimaryInstancePtrType)(v)
+}
+
+func (*instanceCrossInstanceReplicationConfigPrimaryInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCrossInstanceReplicationConfigPrimaryInstance)(nil)).Elem()
+}
+
+func (i *instanceCrossInstanceReplicationConfigPrimaryInstancePtrType) ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput() InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceCrossInstanceReplicationConfigPrimaryInstancePtrType) ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigPrimaryInstance)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput() InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigPrimaryInstanceOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput() InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return o.ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceCrossInstanceReplicationConfigPrimaryInstance) *InstanceCrossInstanceReplicationConfigPrimaryInstance {
+		return &v
+	}).(InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput)
+}
+
+// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigPrimaryInstance) *string { return v.Instance }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique id of the primary instance.
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigPrimaryInstance) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCrossInstanceReplicationConfigPrimaryInstance)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput) ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput() InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput) ToInstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput) Elem() InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return o.ApplyT(func(v *InstanceCrossInstanceReplicationConfigPrimaryInstance) InstanceCrossInstanceReplicationConfigPrimaryInstance {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceCrossInstanceReplicationConfigPrimaryInstance
+		return ret
+	}).(InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput)
+}
+
+// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCrossInstanceReplicationConfigPrimaryInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Instance
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique id of the primary instance.
+func (o InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCrossInstanceReplicationConfigPrimaryInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigSecondaryInstance struct {
+	// (Output)
+	// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance *string `pulumi:"instance"`
+	// (Output)
+	// The unique id of the secondary instance.
+	Uid *string `pulumi:"uid"`
+}
+
+// InstanceCrossInstanceReplicationConfigSecondaryInstanceInput is an input type that accepts InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs and InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigSecondaryInstanceInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs{...}
+type InstanceCrossInstanceReplicationConfigSecondaryInstanceInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput() InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput
+	ToInstanceCrossInstanceReplicationConfigSecondaryInstanceOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput
+}
+
+type InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs struct {
+	// (Output)
+	// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance pulumi.StringPtrInput `pulumi:"instance"`
+	// (Output)
+	// The unique id of the secondary instance.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigSecondaryInstance)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput() InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigSecondaryInstanceOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs) ToInstanceCrossInstanceReplicationConfigSecondaryInstanceOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput)
+}
+
+// InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput is an input type that accepts InstanceCrossInstanceReplicationConfigSecondaryInstanceArray and InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput values.
+// You can construct a concrete instance of `InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput` via:
+//
+//	InstanceCrossInstanceReplicationConfigSecondaryInstanceArray{ InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs{...} }
+type InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput interface {
+	pulumi.Input
+
+	ToInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput() InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput
+	ToInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutputWithContext(context.Context) InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput
+}
+
+type InstanceCrossInstanceReplicationConfigSecondaryInstanceArray []InstanceCrossInstanceReplicationConfigSecondaryInstanceInput
+
+func (InstanceCrossInstanceReplicationConfigSecondaryInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCrossInstanceReplicationConfigSecondaryInstance)(nil)).Elem()
+}
+
+func (i InstanceCrossInstanceReplicationConfigSecondaryInstanceArray) ToInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput() InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return i.ToInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceCrossInstanceReplicationConfigSecondaryInstanceArray) ToInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCrossInstanceReplicationConfigSecondaryInstance)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput() InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) ToInstanceCrossInstanceReplicationConfigSecondaryInstanceOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return o
+}
+
+// (Output)
+// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigSecondaryInstance) *string { return v.Instance }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique id of the secondary instance.
+func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCrossInstanceReplicationConfigSecondaryInstance) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceCrossInstanceReplicationConfigSecondaryInstance)(nil)).Elem()
+}
+
+func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) ToInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput() InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) ToInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutputWithContext(ctx context.Context) InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return o
+}
+
+func (o InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) Index(i pulumi.IntInput) InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceCrossInstanceReplicationConfigSecondaryInstance {
+		return vs[0].([]InstanceCrossInstanceReplicationConfigSecondaryInstance)[vs[1].(int)]
+	}).(InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput)
+}
+
 type InstanceDesiredPscAutoConnection struct {
 	// (Output)
 	// Output only. The consumer network where the IP address resides, in the form of
@@ -126,6 +982,548 @@ func (o InstanceDesiredPscAutoConnectionArrayOutput) Index(i pulumi.IntInput) In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDesiredPscAutoConnection {
 		return vs[0].([]InstanceDesiredPscAutoConnection)[vs[1].(int)]
 	}).(InstanceDesiredPscAutoConnectionOutput)
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint struct {
+	// Structure is documented below.
+	Connections []InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection `pulumi:"connections"`
+}
+
+// InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointInput is an input type that accepts InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs and InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput values.
+// You can construct a concrete instance of `InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointInput` via:
+//
+//	InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs{...}
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointInput interface {
+	pulumi.Input
+
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutputWithContext(context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs struct {
+	// Structure is documented below.
+	Connections InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayInput `pulumi:"connections"`
+}
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint)(nil)).Elem()
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput {
+	return i.ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutputWithContext(context.Background())
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput)
+}
+
+// InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayInput is an input type that accepts InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArray and InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput values.
+// You can construct a concrete instance of `InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayInput` via:
+//
+//	InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArray{ InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs{...} }
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayInput interface {
+	pulumi.Input
+
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutputWithContext(context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArray []InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointInput
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint)(nil)).Elem()
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArray) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput {
+	return i.ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArray) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput)
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput struct{ *pulumi.OutputState }
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint)(nil)).Elem()
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput {
+	return o
+}
+
+// Structure is documented below.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput) Connections() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint) []InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
+		return v.Connections
+	}).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput)
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint)(nil)).Elem()
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput) Index(i pulumi.IntInput) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint {
+		return vs[0].([]InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint)[vs[1].(int)]
+	}).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput)
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection struct {
+	// Detailed information of a PSC connection that is created by the customer
+	// who owns the cluster.
+	// Structure is documented below.
+	PscConnection *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection `pulumi:"pscConnection"`
+}
+
+// InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionInput is an input type that accepts InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs and InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput values.
+// You can construct a concrete instance of `InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionInput` via:
+//
+//	InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs{...}
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionInput interface {
+	pulumi.Input
+
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutputWithContext(context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs struct {
+	// Detailed information of a PSC connection that is created by the customer
+	// who owns the cluster.
+	// Structure is documented below.
+	PscConnection InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrInput `pulumi:"pscConnection"`
+}
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection)(nil)).Elem()
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput {
+	return i.ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutputWithContext(context.Background())
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput)
+}
+
+// InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayInput is an input type that accepts InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArray and InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput values.
+// You can construct a concrete instance of `InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayInput` via:
+//
+//	InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArray{ InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs{...} }
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayInput interface {
+	pulumi.Input
+
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutputWithContext(context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArray []InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionInput
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection)(nil)).Elem()
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArray) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput {
+	return i.ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArray) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput)
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput struct{ *pulumi.OutputState }
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection)(nil)).Elem()
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput {
+	return o
+}
+
+// Detailed information of a PSC connection that is created by the customer
+// who owns the cluster.
+// Structure is documented below.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput) PscConnection() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection) *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection {
+		return v.PscConnection
+	}).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput)
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection)(nil)).Elem()
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput) Index(i pulumi.IntInput) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
+		return vs[0].([]InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection)[vs[1].(int)]
+	}).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput)
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection struct {
+	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType *string `pulumi:"connectionType"`
+	// The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule string `pulumi:"forwardingRule"`
+	// The IP allocated on the consumer network for the PSC forwarding rule.
+	IpAddress string `pulumi:"ipAddress"`
+	// The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+	// The consumer projectId where the forwarding rule is created from.
+	ProjectId *string `pulumi:"projectId"`
+	// The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// (Output)
+	// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+	// Possible values:
+	// ACTIVE
+	// NOT_FOUND
+	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
+	// The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment string `pulumi:"serviceAttachment"`
+}
+
+// InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionInput is an input type that accepts InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs and InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput values.
+// You can construct a concrete instance of `InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionInput` via:
+//
+//	InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{...}
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionInput interface {
+	pulumi.Input
+
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutputWithContext(context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs struct {
+	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
+	// The IP allocated on the consumer network for the PSC forwarding rule.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The consumer projectId where the forwarding rule is created from.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// (Output)
+	// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+	// Possible values:
+	// ACTIVE
+	// NOT_FOUND
+	PscConnectionStatus pulumi.StringPtrInput `pulumi:"pscConnectionStatus"`
+	// The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment pulumi.StringInput `pulumi:"serviceAttachment"`
+}
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection)(nil)).Elem()
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput {
+	return i.ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutputWithContext(context.Background())
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput)
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput {
+	return i.ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput).ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutputWithContext(ctx)
+}
+
+// InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrInput is an input type that accepts InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs, InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtr and InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput values.
+// You can construct a concrete instance of `InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrInput` via:
+//
+//	        InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrInput interface {
+	pulumi.Input
+
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput
+	ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutputWithContext(context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput
+}
+
+type instanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrType InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs
+
+func InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtr(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrInput {
+	return (*instanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrType)(v)
+}
+
+func (*instanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection)(nil)).Elem()
+}
+
+func (i *instanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrType) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput {
+	return i.ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrType) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput)
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput struct{ *pulumi.OutputState }
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection)(nil)).Elem()
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput {
+	return o.ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection {
+		return &v
+	}).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput)
+}
+
+// (Output)
+// Output Only. Type of a PSC Connection.
+// Possible values:
+// CONNECTION_TYPE_DISCOVERY
+// CONNECTION_TYPE_PRIMARY
+// CONNECTION_TYPE_READER
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		return v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the consumer side forwarding rule.
+// Format:
+// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) ForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) string {
+		return v.ForwardingRule
+	}).(pulumi.StringOutput)
+}
+
+// The IP allocated on the consumer network for the PSC forwarding rule.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) string {
+		return v.IpAddress
+	}).(pulumi.StringOutput)
+}
+
+// The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) string {
+		return v.Network
+	}).(pulumi.StringOutput)
+}
+
+// The consumer projectId where the forwarding rule is created from.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PSC connection id of the forwarding rule connected to the
+// service attachment.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) string {
+		return v.PscConnectionId
+	}).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+// Possible values:
+// ACTIVE
+// NOT_FOUND
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) PscConnectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		return v.PscConnectionStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) string {
+		return v.ServiceAttachment
+	}).(pulumi.StringOutput)
+}
+
+type InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection)(nil)).Elem()
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) ToInstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput {
+	return o
+}
+
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) Elem() InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection
+		return ret
+	}).(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput)
+}
+
+// (Output)
+// Output Only. Type of a PSC Connection.
+// Possible values:
+// CONNECTION_TYPE_DISCOVERY
+// CONNECTION_TYPE_PRIMARY
+// CONNECTION_TYPE_READER
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the consumer side forwarding rule.
+// Format:
+// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP allocated on the consumer network for the PSC forwarding rule.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consumer projectId where the forwarding rule is created from.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PSC connection id of the forwarding rule connected to the
+// service attachment.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PscConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+// Possible values:
+// ACTIVE
+// NOT_FOUND
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) PscConnectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PscConnectionStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAttachment
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceDiscoveryEndpoint struct {
@@ -2033,6 +3431,130 @@ func (o InstancePersistenceConfigRdbConfigPtrOutput) RdbSnapshotStartTime() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstancePscAttachmentDetail struct {
+	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType *string `pulumi:"connectionType"`
+	// (Output)
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment *string `pulumi:"serviceAttachment"`
+}
+
+// InstancePscAttachmentDetailInput is an input type that accepts InstancePscAttachmentDetailArgs and InstancePscAttachmentDetailOutput values.
+// You can construct a concrete instance of `InstancePscAttachmentDetailInput` via:
+//
+//	InstancePscAttachmentDetailArgs{...}
+type InstancePscAttachmentDetailInput interface {
+	pulumi.Input
+
+	ToInstancePscAttachmentDetailOutput() InstancePscAttachmentDetailOutput
+	ToInstancePscAttachmentDetailOutputWithContext(context.Context) InstancePscAttachmentDetailOutput
+}
+
+type InstancePscAttachmentDetailArgs struct {
+	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// (Output)
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
+}
+
+func (InstancePscAttachmentDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscAttachmentDetail)(nil)).Elem()
+}
+
+func (i InstancePscAttachmentDetailArgs) ToInstancePscAttachmentDetailOutput() InstancePscAttachmentDetailOutput {
+	return i.ToInstancePscAttachmentDetailOutputWithContext(context.Background())
+}
+
+func (i InstancePscAttachmentDetailArgs) ToInstancePscAttachmentDetailOutputWithContext(ctx context.Context) InstancePscAttachmentDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscAttachmentDetailOutput)
+}
+
+// InstancePscAttachmentDetailArrayInput is an input type that accepts InstancePscAttachmentDetailArray and InstancePscAttachmentDetailArrayOutput values.
+// You can construct a concrete instance of `InstancePscAttachmentDetailArrayInput` via:
+//
+//	InstancePscAttachmentDetailArray{ InstancePscAttachmentDetailArgs{...} }
+type InstancePscAttachmentDetailArrayInput interface {
+	pulumi.Input
+
+	ToInstancePscAttachmentDetailArrayOutput() InstancePscAttachmentDetailArrayOutput
+	ToInstancePscAttachmentDetailArrayOutputWithContext(context.Context) InstancePscAttachmentDetailArrayOutput
+}
+
+type InstancePscAttachmentDetailArray []InstancePscAttachmentDetailInput
+
+func (InstancePscAttachmentDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstancePscAttachmentDetail)(nil)).Elem()
+}
+
+func (i InstancePscAttachmentDetailArray) ToInstancePscAttachmentDetailArrayOutput() InstancePscAttachmentDetailArrayOutput {
+	return i.ToInstancePscAttachmentDetailArrayOutputWithContext(context.Background())
+}
+
+func (i InstancePscAttachmentDetailArray) ToInstancePscAttachmentDetailArrayOutputWithContext(ctx context.Context) InstancePscAttachmentDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscAttachmentDetailArrayOutput)
+}
+
+type InstancePscAttachmentDetailOutput struct{ *pulumi.OutputState }
+
+func (InstancePscAttachmentDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscAttachmentDetail)(nil)).Elem()
+}
+
+func (o InstancePscAttachmentDetailOutput) ToInstancePscAttachmentDetailOutput() InstancePscAttachmentDetailOutput {
+	return o
+}
+
+func (o InstancePscAttachmentDetailOutput) ToInstancePscAttachmentDetailOutputWithContext(ctx context.Context) InstancePscAttachmentDetailOutput {
+	return o
+}
+
+// (Output)
+// Output Only. Type of a PSC Connection.
+// Possible values:
+// CONNECTION_TYPE_DISCOVERY
+// CONNECTION_TYPE_PRIMARY
+// CONNECTION_TYPE_READER
+func (o InstancePscAttachmentDetailOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscAttachmentDetail) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o InstancePscAttachmentDetailOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscAttachmentDetail) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+type InstancePscAttachmentDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (InstancePscAttachmentDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstancePscAttachmentDetail)(nil)).Elem()
+}
+
+func (o InstancePscAttachmentDetailArrayOutput) ToInstancePscAttachmentDetailArrayOutput() InstancePscAttachmentDetailArrayOutput {
+	return o
+}
+
+func (o InstancePscAttachmentDetailArrayOutput) ToInstancePscAttachmentDetailArrayOutputWithContext(ctx context.Context) InstancePscAttachmentDetailArrayOutput {
+	return o
+}
+
+func (o InstancePscAttachmentDetailArrayOutput) Index(i pulumi.IntInput) InstancePscAttachmentDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstancePscAttachmentDetail {
+		return vs[0].([]InstancePscAttachmentDetail)[vs[1].(int)]
+	}).(InstancePscAttachmentDetailOutput)
+}
+
 type InstancePscAutoConnection struct {
 	// (Output)
 	// Output Only. Type of a PSC Connection.
@@ -2367,6 +3889,12 @@ func (o InstanceStateInfoArrayOutput) Index(i pulumi.IntInput) InstanceStateInfo
 
 type InstanceStateInfoUpdateInfo struct {
 	// (Output)
+	// Output only. Target engine version for the instance.
+	TargetEngineVersion *string `pulumi:"targetEngineVersion"`
+	// (Output)
+	// Output only. Target node type for the instance.
+	TargetNodeType *string `pulumi:"targetNodeType"`
+	// (Output)
 	// Output only. Target number of replica nodes per shard for the instance.
 	TargetReplicaCount *int `pulumi:"targetReplicaCount"`
 	// (Output)
@@ -2386,6 +3914,12 @@ type InstanceStateInfoUpdateInfoInput interface {
 }
 
 type InstanceStateInfoUpdateInfoArgs struct {
+	// (Output)
+	// Output only. Target engine version for the instance.
+	TargetEngineVersion pulumi.StringPtrInput `pulumi:"targetEngineVersion"`
+	// (Output)
+	// Output only. Target node type for the instance.
+	TargetNodeType pulumi.StringPtrInput `pulumi:"targetNodeType"`
 	// (Output)
 	// Output only. Target number of replica nodes per shard for the instance.
 	TargetReplicaCount pulumi.IntPtrInput `pulumi:"targetReplicaCount"`
@@ -2443,6 +3977,18 @@ func (o InstanceStateInfoUpdateInfoOutput) ToInstanceStateInfoUpdateInfoOutput()
 
 func (o InstanceStateInfoUpdateInfoOutput) ToInstanceStateInfoUpdateInfoOutputWithContext(ctx context.Context) InstanceStateInfoUpdateInfoOutput {
 	return o
+}
+
+// (Output)
+// Output only. Target engine version for the instance.
+func (o InstanceStateInfoUpdateInfoOutput) TargetEngineVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceStateInfoUpdateInfo) *string { return v.TargetEngineVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Target node type for the instance.
+func (o InstanceStateInfoUpdateInfoOutput) TargetNodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceStateInfoUpdateInfo) *string { return v.TargetNodeType }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -2651,6 +4197,691 @@ func (o InstanceZoneDistributionConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 		}
 		return v.Zone
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfig struct {
+	// The instance role supports the following values:
+	// 1. 'INSTANCE_ROLE_UNSPECIFIED': This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+	// 2. 'NONE': This is an independent instance that previously participated in cross instance replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.
+	// 3. 'PRIMARY': This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+	// 4. 'SECONDARY': This instance replicates data from the primary instance. It allows only reads. Possible values: ["INSTANCE_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
+	InstanceRole string `pulumi:"instanceRole"`
+	// An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+	Memberships []GetInstanceCrossInstanceReplicationConfigMembership `pulumi:"memberships"`
+	// This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type 'SECONDARY'.
+	PrimaryInstances []GetInstanceCrossInstanceReplicationConfigPrimaryInstance `pulumi:"primaryInstances"`
+	// List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type 'PRIMARY'.
+	SecondaryInstances []GetInstanceCrossInstanceReplicationConfigSecondaryInstance `pulumi:"secondaryInstances"`
+	// The last time cross instance replication config was updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetInstanceCrossInstanceReplicationConfigInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigArgs and GetInstanceCrossInstanceReplicationConfigOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigArgs{...}
+type GetInstanceCrossInstanceReplicationConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigOutput() GetInstanceCrossInstanceReplicationConfigOutput
+	ToGetInstanceCrossInstanceReplicationConfigOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigArgs struct {
+	// The instance role supports the following values:
+	// 1. 'INSTANCE_ROLE_UNSPECIFIED': This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+	// 2. 'NONE': This is an independent instance that previously participated in cross instance replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.
+	// 3. 'PRIMARY': This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+	// 4. 'SECONDARY': This instance replicates data from the primary instance. It allows only reads. Possible values: ["INSTANCE_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
+	InstanceRole pulumi.StringInput `pulumi:"instanceRole"`
+	// An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+	Memberships GetInstanceCrossInstanceReplicationConfigMembershipArrayInput `pulumi:"memberships"`
+	// This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type 'SECONDARY'.
+	PrimaryInstances GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayInput `pulumi:"primaryInstances"`
+	// List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type 'PRIMARY'.
+	SecondaryInstances GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput `pulumi:"secondaryInstances"`
+	// The last time cross instance replication config was updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetInstanceCrossInstanceReplicationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfig)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigArgs) ToGetInstanceCrossInstanceReplicationConfigOutput() GetInstanceCrossInstanceReplicationConfigOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigArgs) ToGetInstanceCrossInstanceReplicationConfigOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigOutput)
+}
+
+// GetInstanceCrossInstanceReplicationConfigArrayInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigArray and GetInstanceCrossInstanceReplicationConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigArrayInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigArray{ GetInstanceCrossInstanceReplicationConfigArgs{...} }
+type GetInstanceCrossInstanceReplicationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigArrayOutput() GetInstanceCrossInstanceReplicationConfigArrayOutput
+	ToGetInstanceCrossInstanceReplicationConfigArrayOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigArrayOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigArray []GetInstanceCrossInstanceReplicationConfigInput
+
+func (GetInstanceCrossInstanceReplicationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfig)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigArray) ToGetInstanceCrossInstanceReplicationConfigArrayOutput() GetInstanceCrossInstanceReplicationConfigArrayOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigArray) ToGetInstanceCrossInstanceReplicationConfigArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigArrayOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfig)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigOutput) ToGetInstanceCrossInstanceReplicationConfigOutput() GetInstanceCrossInstanceReplicationConfigOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigOutput) ToGetInstanceCrossInstanceReplicationConfigOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigOutput {
+	return o
+}
+
+// The instance role supports the following values:
+// 1. 'INSTANCE_ROLE_UNSPECIFIED': This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
+// 2. 'NONE': This is an independent instance that previously participated in cross instance replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.
+// 3. 'PRIMARY': This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+// 4. 'SECONDARY': This instance replicates data from the primary instance. It allows only reads. Possible values: ["INSTANCE_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
+func (o GetInstanceCrossInstanceReplicationConfigOutput) InstanceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfig) string { return v.InstanceRole }).(pulumi.StringOutput)
+}
+
+// An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
+func (o GetInstanceCrossInstanceReplicationConfigOutput) Memberships() GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfig) []GetInstanceCrossInstanceReplicationConfigMembership {
+		return v.Memberships
+	}).(GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput)
+}
+
+// This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type 'SECONDARY'.
+func (o GetInstanceCrossInstanceReplicationConfigOutput) PrimaryInstances() GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfig) []GetInstanceCrossInstanceReplicationConfigPrimaryInstance {
+		return v.PrimaryInstances
+	}).(GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput)
+}
+
+// List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type 'PRIMARY'.
+func (o GetInstanceCrossInstanceReplicationConfigOutput) SecondaryInstances() GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfig) []GetInstanceCrossInstanceReplicationConfigSecondaryInstance {
+		return v.SecondaryInstances
+	}).(GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput)
+}
+
+// The last time cross instance replication config was updated.
+func (o GetInstanceCrossInstanceReplicationConfigOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfig) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfig)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigArrayOutput) ToGetInstanceCrossInstanceReplicationConfigArrayOutput() GetInstanceCrossInstanceReplicationConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigArrayOutput) ToGetInstanceCrossInstanceReplicationConfigArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceCrossInstanceReplicationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceCrossInstanceReplicationConfig {
+		return vs[0].([]GetInstanceCrossInstanceReplicationConfig)[vs[1].(int)]
+	}).(GetInstanceCrossInstanceReplicationConfigOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembership struct {
+	// Details of the primary instance that is used as the replication source for all the secondary instances.
+	PrimaryInstances []GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance `pulumi:"primaryInstances"`
+	// List of secondary instances that are replicating from the primary instance.
+	SecondaryInstances []GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance `pulumi:"secondaryInstances"`
+}
+
+// GetInstanceCrossInstanceReplicationConfigMembershipInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigMembershipArgs and GetInstanceCrossInstanceReplicationConfigMembershipOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigMembershipInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigMembershipArgs{...}
+type GetInstanceCrossInstanceReplicationConfigMembershipInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigMembershipOutput() GetInstanceCrossInstanceReplicationConfigMembershipOutput
+	ToGetInstanceCrossInstanceReplicationConfigMembershipOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigMembershipOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipArgs struct {
+	// Details of the primary instance that is used as the replication source for all the secondary instances.
+	PrimaryInstances GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput `pulumi:"primaryInstances"`
+	// List of secondary instances that are replicating from the primary instance.
+	SecondaryInstances GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput `pulumi:"secondaryInstances"`
+}
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembership)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipArgs) ToGetInstanceCrossInstanceReplicationConfigMembershipOutput() GetInstanceCrossInstanceReplicationConfigMembershipOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigMembershipOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipArgs) ToGetInstanceCrossInstanceReplicationConfigMembershipOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigMembershipOutput)
+}
+
+// GetInstanceCrossInstanceReplicationConfigMembershipArrayInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigMembershipArray and GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigMembershipArrayInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigMembershipArray{ GetInstanceCrossInstanceReplicationConfigMembershipArgs{...} }
+type GetInstanceCrossInstanceReplicationConfigMembershipArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigMembershipArrayOutput() GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput
+	ToGetInstanceCrossInstanceReplicationConfigMembershipArrayOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipArray []GetInstanceCrossInstanceReplicationConfigMembershipInput
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigMembership)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipArray) ToGetInstanceCrossInstanceReplicationConfigMembershipArrayOutput() GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigMembershipArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipArray) ToGetInstanceCrossInstanceReplicationConfigMembershipArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembership)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipOutput() GetInstanceCrossInstanceReplicationConfigMembershipOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipOutput {
+	return o
+}
+
+// Details of the primary instance that is used as the replication source for all the secondary instances.
+func (o GetInstanceCrossInstanceReplicationConfigMembershipOutput) PrimaryInstances() GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigMembership) []GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
+		return v.PrimaryInstances
+	}).(GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput)
+}
+
+// List of secondary instances that are replicating from the primary instance.
+func (o GetInstanceCrossInstanceReplicationConfigMembershipOutput) SecondaryInstances() GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigMembership) []GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
+		return v.SecondaryInstances
+	}).(GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigMembership)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipArrayOutput() GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput) Index(i pulumi.IntInput) GetInstanceCrossInstanceReplicationConfigMembershipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceCrossInstanceReplicationConfigMembership {
+		return vs[0].([]GetInstanceCrossInstanceReplicationConfigMembership)[vs[1].(int)]
+	}).(GetInstanceCrossInstanceReplicationConfigMembershipOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance struct {
+	// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance string `pulumi:"instance"`
+	// The unique id of the primary instance.
+	Uid string `pulumi:"uid"`
+}
+
+// GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs and GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs{...}
+type GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput
+	ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs struct {
+	// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The unique id of the primary instance.
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs) ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs) ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput)
+}
+
+// GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray and GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray{ GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs{...} }
+type GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput
+	ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray []GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray) ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray) ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return o
+}
+
+// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+func (o GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The unique id of the primary instance.
+func (o GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput) Index(i pulumi.IntInput) GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
+		return vs[0].([]GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance)[vs[1].(int)]
+	}).(GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance struct {
+	// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance string `pulumi:"instance"`
+	// The unique id of the secondary instance.
+	Uid string `pulumi:"uid"`
+}
+
+// GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs and GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs{...}
+type GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput
+	ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs struct {
+	// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The unique id of the secondary instance.
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs) ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs) ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput)
+}
+
+// GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray and GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray{ GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs{...} }
+type GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput
+	ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray []GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray) ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray) ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return o
+}
+
+// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+func (o GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The unique id of the secondary instance.
+func (o GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput) ToGetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput) Index(i pulumi.IntInput) GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
+		return vs[0].([]GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstance)[vs[1].(int)]
+	}).(GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigPrimaryInstance struct {
+	// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+	Instance string `pulumi:"instance"`
+	// The unique id of the primary instance.
+	Uid string `pulumi:"uid"`
+}
+
+// GetInstanceCrossInstanceReplicationConfigPrimaryInstanceInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArgs and GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigPrimaryInstanceInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{...}
+type GetInstanceCrossInstanceReplicationConfigPrimaryInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput
+	ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArgs struct {
+	// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The unique id of the primary instance.
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigPrimaryInstance)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArgs) ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArgs) ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput)
+}
+
+// GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArray and GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArray{ GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{...} }
+type GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput
+	ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArray []GetInstanceCrossInstanceReplicationConfigPrimaryInstanceInput
+
+func (GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigPrimaryInstance)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArray) ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArray) ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigPrimaryInstance)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return o
+}
+
+// The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
+func (o GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigPrimaryInstance) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The unique id of the primary instance.
+func (o GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigPrimaryInstance) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigPrimaryInstance)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput) ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput) ToGetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput) Index(i pulumi.IntInput) GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceCrossInstanceReplicationConfigPrimaryInstance {
+		return vs[0].([]GetInstanceCrossInstanceReplicationConfigPrimaryInstance)[vs[1].(int)]
+	}).(GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigSecondaryInstance struct {
+	// The full resource path of the Nth instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance string `pulumi:"instance"`
+	// The unique id of the Nth instance.
+	Uid string `pulumi:"uid"`
+}
+
+// GetInstanceCrossInstanceReplicationConfigSecondaryInstanceInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArgs and GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigSecondaryInstanceInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArgs{...}
+type GetInstanceCrossInstanceReplicationConfigSecondaryInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput
+	ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArgs struct {
+	// The full resource path of the Nth instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// The unique id of the Nth instance.
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigSecondaryInstance)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArgs) ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArgs) ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput)
+}
+
+// GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput is an input type that accepts GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArray and GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput` via:
+//
+//	GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArray{ GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArgs{...} }
+type GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput
+	ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutputWithContext(context.Context) GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput
+}
+
+type GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArray []GetInstanceCrossInstanceReplicationConfigSecondaryInstanceInput
+
+func (GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigSecondaryInstance)(nil)).Elem()
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArray) ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return i.ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArray) ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigSecondaryInstance)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput() GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return o
+}
+
+// The full resource path of the Nth instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
+func (o GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigSecondaryInstance) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The unique id of the Nth instance.
+func (o GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceCrossInstanceReplicationConfigSecondaryInstance) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceCrossInstanceReplicationConfigSecondaryInstance)(nil)).Elem()
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput() GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) ToGetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutputWithContext(ctx context.Context) GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput) Index(i pulumi.IntInput) GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceCrossInstanceReplicationConfigSecondaryInstance {
+		return vs[0].([]GetInstanceCrossInstanceReplicationConfigSecondaryInstance)[vs[1].(int)]
+	}).(GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput)
 }
 
 type GetInstanceDesiredPscAutoConnection struct {
@@ -4284,6 +6515,112 @@ func (o GetInstancePersistenceConfigRdbConfigArrayOutput) Index(i pulumi.IntInpu
 	}).(GetInstancePersistenceConfigRdbConfigOutput)
 }
 
+type GetInstancePscAttachmentDetail struct {
+	// Service attachment URI which your self-created PscConnection should use as target.
+	ConnectionType string `pulumi:"connectionType"`
+	// Service attachment URI which your self-created PscConnection should use as target.
+	ServiceAttachment string `pulumi:"serviceAttachment"`
+}
+
+// GetInstancePscAttachmentDetailInput is an input type that accepts GetInstancePscAttachmentDetailArgs and GetInstancePscAttachmentDetailOutput values.
+// You can construct a concrete instance of `GetInstancePscAttachmentDetailInput` via:
+//
+//	GetInstancePscAttachmentDetailArgs{...}
+type GetInstancePscAttachmentDetailInput interface {
+	pulumi.Input
+
+	ToGetInstancePscAttachmentDetailOutput() GetInstancePscAttachmentDetailOutput
+	ToGetInstancePscAttachmentDetailOutputWithContext(context.Context) GetInstancePscAttachmentDetailOutput
+}
+
+type GetInstancePscAttachmentDetailArgs struct {
+	// Service attachment URI which your self-created PscConnection should use as target.
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	// Service attachment URI which your self-created PscConnection should use as target.
+	ServiceAttachment pulumi.StringInput `pulumi:"serviceAttachment"`
+}
+
+func (GetInstancePscAttachmentDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePscAttachmentDetail)(nil)).Elem()
+}
+
+func (i GetInstancePscAttachmentDetailArgs) ToGetInstancePscAttachmentDetailOutput() GetInstancePscAttachmentDetailOutput {
+	return i.ToGetInstancePscAttachmentDetailOutputWithContext(context.Background())
+}
+
+func (i GetInstancePscAttachmentDetailArgs) ToGetInstancePscAttachmentDetailOutputWithContext(ctx context.Context) GetInstancePscAttachmentDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePscAttachmentDetailOutput)
+}
+
+// GetInstancePscAttachmentDetailArrayInput is an input type that accepts GetInstancePscAttachmentDetailArray and GetInstancePscAttachmentDetailArrayOutput values.
+// You can construct a concrete instance of `GetInstancePscAttachmentDetailArrayInput` via:
+//
+//	GetInstancePscAttachmentDetailArray{ GetInstancePscAttachmentDetailArgs{...} }
+type GetInstancePscAttachmentDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePscAttachmentDetailArrayOutput() GetInstancePscAttachmentDetailArrayOutput
+	ToGetInstancePscAttachmentDetailArrayOutputWithContext(context.Context) GetInstancePscAttachmentDetailArrayOutput
+}
+
+type GetInstancePscAttachmentDetailArray []GetInstancePscAttachmentDetailInput
+
+func (GetInstancePscAttachmentDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePscAttachmentDetail)(nil)).Elem()
+}
+
+func (i GetInstancePscAttachmentDetailArray) ToGetInstancePscAttachmentDetailArrayOutput() GetInstancePscAttachmentDetailArrayOutput {
+	return i.ToGetInstancePscAttachmentDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePscAttachmentDetailArray) ToGetInstancePscAttachmentDetailArrayOutputWithContext(ctx context.Context) GetInstancePscAttachmentDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePscAttachmentDetailArrayOutput)
+}
+
+type GetInstancePscAttachmentDetailOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePscAttachmentDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePscAttachmentDetail)(nil)).Elem()
+}
+
+func (o GetInstancePscAttachmentDetailOutput) ToGetInstancePscAttachmentDetailOutput() GetInstancePscAttachmentDetailOutput {
+	return o
+}
+
+func (o GetInstancePscAttachmentDetailOutput) ToGetInstancePscAttachmentDetailOutputWithContext(ctx context.Context) GetInstancePscAttachmentDetailOutput {
+	return o
+}
+
+// Service attachment URI which your self-created PscConnection should use as target.
+func (o GetInstancePscAttachmentDetailOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAttachmentDetail) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+// Service attachment URI which your self-created PscConnection should use as target.
+func (o GetInstancePscAttachmentDetailOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePscAttachmentDetail) string { return v.ServiceAttachment }).(pulumi.StringOutput)
+}
+
+type GetInstancePscAttachmentDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePscAttachmentDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePscAttachmentDetail)(nil)).Elem()
+}
+
+func (o GetInstancePscAttachmentDetailArrayOutput) ToGetInstancePscAttachmentDetailArrayOutput() GetInstancePscAttachmentDetailArrayOutput {
+	return o
+}
+
+func (o GetInstancePscAttachmentDetailArrayOutput) ToGetInstancePscAttachmentDetailArrayOutputWithContext(ctx context.Context) GetInstancePscAttachmentDetailArrayOutput {
+	return o
+}
+
+func (o GetInstancePscAttachmentDetailArrayOutput) Index(i pulumi.IntInput) GetInstancePscAttachmentDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePscAttachmentDetail {
+		return vs[0].([]GetInstancePscAttachmentDetail)[vs[1].(int)]
+	}).(GetInstancePscAttachmentDetailOutput)
+}
+
 type GetInstancePscAutoConnection struct {
 	// Output Only. Type of a PSC Connection.
 	//  Possible values:
@@ -4586,6 +6923,10 @@ func (o GetInstanceStateInfoArrayOutput) Index(i pulumi.IntInput) GetInstanceSta
 }
 
 type GetInstanceStateInfoUpdateInfo struct {
+	// Output only. Target engine version for the instance.
+	TargetEngineVersion string `pulumi:"targetEngineVersion"`
+	// Output only. Target node type for the instance.
+	TargetNodeType string `pulumi:"targetNodeType"`
 	// Output only. Target number of replica nodes per shard for the instance.
 	TargetReplicaCount int `pulumi:"targetReplicaCount"`
 	// Output only. Target number of shards for the instance.
@@ -4604,6 +6945,10 @@ type GetInstanceStateInfoUpdateInfoInput interface {
 }
 
 type GetInstanceStateInfoUpdateInfoArgs struct {
+	// Output only. Target engine version for the instance.
+	TargetEngineVersion pulumi.StringInput `pulumi:"targetEngineVersion"`
+	// Output only. Target node type for the instance.
+	TargetNodeType pulumi.StringInput `pulumi:"targetNodeType"`
 	// Output only. Target number of replica nodes per shard for the instance.
 	TargetReplicaCount pulumi.IntInput `pulumi:"targetReplicaCount"`
 	// Output only. Target number of shards for the instance.
@@ -4659,6 +7004,16 @@ func (o GetInstanceStateInfoUpdateInfoOutput) ToGetInstanceStateInfoUpdateInfoOu
 
 func (o GetInstanceStateInfoUpdateInfoOutput) ToGetInstanceStateInfoUpdateInfoOutputWithContext(ctx context.Context) GetInstanceStateInfoUpdateInfoOutput {
 	return o
+}
+
+// Output only. Target engine version for the instance.
+func (o GetInstanceStateInfoUpdateInfoOutput) TargetEngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceStateInfoUpdateInfo) string { return v.TargetEngineVersion }).(pulumi.StringOutput)
+}
+
+// Output only. Target node type for the instance.
+func (o GetInstanceStateInfoUpdateInfoOutput) TargetNodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceStateInfoUpdateInfo) string { return v.TargetNodeType }).(pulumi.StringOutput)
 }
 
 // Output only. Target number of replica nodes per shard for the instance.
@@ -4812,8 +7167,26 @@ func (o GetInstanceZoneDistributionConfigArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigPtrInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigMembershipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipArrayInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigMembershipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigPrimaryInstanceInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigPrimaryInstancePtrInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigSecondaryInstanceInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigSecondaryInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredPscAutoConnectionInput)(nil)).Elem(), InstanceDesiredPscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredPscAutoConnectionArrayInput)(nil)).Elem(), InstanceDesiredPscAutoConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointInput)(nil)).Elem(), InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayInput)(nil)).Elem(), InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionInput)(nil)).Elem(), InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayInput)(nil)).Elem(), InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionInput)(nil)).Elem(), InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrInput)(nil)).Elem(), InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiscoveryEndpointInput)(nil)).Elem(), InstanceDiscoveryEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDiscoveryEndpointArrayInput)(nil)).Elem(), InstanceDiscoveryEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointInput)(nil)).Elem(), InstanceEndpointArgs{})
@@ -4837,6 +7210,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigAofConfigPtrInput)(nil)).Elem(), InstancePersistenceConfigAofConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigRdbConfigInput)(nil)).Elem(), InstancePersistenceConfigRdbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigRdbConfigPtrInput)(nil)).Elem(), InstancePersistenceConfigRdbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscAttachmentDetailInput)(nil)).Elem(), InstancePscAttachmentDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscAttachmentDetailArrayInput)(nil)).Elem(), InstancePscAttachmentDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscAutoConnectionInput)(nil)).Elem(), InstancePscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscAutoConnectionArrayInput)(nil)).Elem(), InstancePscAutoConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStateInfoInput)(nil)).Elem(), InstanceStateInfoArgs{})
@@ -4845,6 +7220,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStateInfoUpdateInfoArrayInput)(nil)).Elem(), InstanceStateInfoUpdateInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneDistributionConfigInput)(nil)).Elem(), InstanceZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneDistributionConfigPtrInput)(nil)).Elem(), InstanceZoneDistributionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigArrayInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigMembershipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipArrayInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigMembershipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigPrimaryInstanceInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigSecondaryInstanceInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDesiredPscAutoConnectionInput)(nil)).Elem(), GetInstanceDesiredPscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDesiredPscAutoConnectionArrayInput)(nil)).Elem(), GetInstanceDesiredPscAutoConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDiscoveryEndpointInput)(nil)).Elem(), GetInstanceDiscoveryEndpointArgs{})
@@ -4871,6 +7258,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigAofConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigAofConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigRdbConfigInput)(nil)).Elem(), GetInstancePersistenceConfigRdbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigRdbConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigRdbConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscAttachmentDetailInput)(nil)).Elem(), GetInstancePscAttachmentDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscAttachmentDetailArrayInput)(nil)).Elem(), GetInstancePscAttachmentDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscAutoConnectionInput)(nil)).Elem(), GetInstancePscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePscAutoConnectionArrayInput)(nil)).Elem(), GetInstancePscAutoConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceStateInfoInput)(nil)).Elem(), GetInstanceStateInfoArgs{})
@@ -4879,8 +7268,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceStateInfoUpdateInfoArrayInput)(nil)).Elem(), GetInstanceStateInfoUpdateInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceZoneDistributionConfigInput)(nil)).Elem(), GetInstanceZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceZoneDistributionConfigArrayInput)(nil)).Elem(), GetInstanceZoneDistributionConfigArray{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigMembershipOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigMembershipArrayOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigPrimaryInstanceOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigPrimaryInstancePtrOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigSecondaryInstanceOutput{})
+	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceDesiredPscAutoConnectionOutput{})
 	pulumi.RegisterOutputType(InstanceDesiredPscAutoConnectionArrayOutput{})
+	pulumi.RegisterOutputType(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointOutput{})
+	pulumi.RegisterOutputType(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput{})
+	pulumi.RegisterOutputType(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionOutput{})
+	pulumi.RegisterOutputType(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArrayOutput{})
+	pulumi.RegisterOutputType(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionOutput{})
+	pulumi.RegisterOutputType(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceDiscoveryEndpointOutput{})
 	pulumi.RegisterOutputType(InstanceDiscoveryEndpointArrayOutput{})
 	pulumi.RegisterOutputType(InstanceEndpointOutput{})
@@ -4904,6 +7311,8 @@ func init() {
 	pulumi.RegisterOutputType(InstancePersistenceConfigAofConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstancePersistenceConfigRdbConfigOutput{})
 	pulumi.RegisterOutputType(InstancePersistenceConfigRdbConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstancePscAttachmentDetailOutput{})
+	pulumi.RegisterOutputType(InstancePscAttachmentDetailArrayOutput{})
 	pulumi.RegisterOutputType(InstancePscAutoConnectionOutput{})
 	pulumi.RegisterOutputType(InstancePscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceStateInfoOutput{})
@@ -4912,6 +7321,18 @@ func init() {
 	pulumi.RegisterOutputType(InstanceStateInfoUpdateInfoArrayOutput{})
 	pulumi.RegisterOutputType(InstanceZoneDistributionConfigOutput{})
 	pulumi.RegisterOutputType(InstanceZoneDistributionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigMembershipOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigMembershipArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigPrimaryInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigPrimaryInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigSecondaryInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigSecondaryInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceDesiredPscAutoConnectionOutput{})
 	pulumi.RegisterOutputType(GetInstanceDesiredPscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceDiscoveryEndpointOutput{})
@@ -4938,6 +7359,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancePersistenceConfigAofConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePersistenceConfigRdbConfigOutput{})
 	pulumi.RegisterOutputType(GetInstancePersistenceConfigRdbConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePscAttachmentDetailOutput{})
+	pulumi.RegisterOutputType(GetInstancePscAttachmentDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePscAutoConnectionOutput{})
 	pulumi.RegisterOutputType(GetInstancePscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceStateInfoOutput{})

@@ -534,6 +534,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Disable L4 load balancer VPC firewalls to enable firewall policies.
+     * 
+     */
+    @Export(name="disableL4LbFirewallReconciliation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disableL4LbFirewallReconciliation;
+
+    /**
+     * @return Disable L4 load balancer VPC firewalls to enable firewall policies.
+     * 
+     */
+    public Output<Optional<Boolean>> disableL4LbFirewallReconciliation() {
+        return Codegen.optional(this.disableL4LbFirewallReconciliation);
+    }
+    /**
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      * 
      */

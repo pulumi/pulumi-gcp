@@ -104,6 +104,7 @@ class ProviderArgs:
                  edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 external_credentials: Optional[pulumi.Input['ProviderExternalCredentialsArgs']] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_app_check_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -381,6 +382,8 @@ class ProviderArgs:
             pulumi.set(__self__, "essential_contacts_custom_endpoint", essential_contacts_custom_endpoint)
         if eventarc_custom_endpoint is not None:
             pulumi.set(__self__, "eventarc_custom_endpoint", eventarc_custom_endpoint)
+        if external_credentials is not None:
+            pulumi.set(__self__, "external_credentials", external_credentials)
         if filestore_custom_endpoint is not None:
             pulumi.set(__self__, "filestore_custom_endpoint", filestore_custom_endpoint)
         if firebase_app_check_custom_endpoint is not None:
@@ -1355,6 +1358,15 @@ class ProviderArgs:
     @eventarc_custom_endpoint.setter
     def eventarc_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "eventarc_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="externalCredentials")
+    def external_credentials(self) -> Optional[pulumi.Input['ProviderExternalCredentialsArgs']]:
+        return pulumi.get(self, "external_credentials")
+
+    @external_credentials.setter
+    def external_credentials(self, value: Optional[pulumi.Input['ProviderExternalCredentialsArgs']]):
+        pulumi.set(self, "external_credentials", value)
 
     @property
     @pulumi.getter(name="filestoreCustomEndpoint")
@@ -2400,6 +2412,7 @@ class Provider(pulumi.ProviderResource):
                  edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 external_credentials: Optional[pulumi.Input[Union['ProviderExternalCredentialsArgs', 'ProviderExternalCredentialsArgsDict']]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_app_check_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2627,6 +2640,7 @@ class Provider(pulumi.ProviderResource):
                  edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 external_credentials: Optional[pulumi.Input[Union['ProviderExternalCredentialsArgs', 'ProviderExternalCredentialsArgsDict']]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_app_check_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2826,6 +2840,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["edgenetwork_custom_endpoint"] = edgenetwork_custom_endpoint
             __props__.__dict__["essential_contacts_custom_endpoint"] = essential_contacts_custom_endpoint
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
+            __props__.__dict__["external_credentials"] = pulumi.Output.from_input(external_credentials).apply(pulumi.runtime.to_json) if external_credentials is not None else None
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
             __props__.__dict__["firebase_app_check_custom_endpoint"] = firebase_app_check_custom_endpoint
             __props__.__dict__["firebase_app_hosting_custom_endpoint"] = firebase_app_hosting_custom_endpoint

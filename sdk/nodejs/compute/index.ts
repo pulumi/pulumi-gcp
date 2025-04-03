@@ -325,6 +325,11 @@ export const getNodeTypes: typeof import("./getNodeTypes").getNodeTypes = null a
 export const getNodeTypesOutput: typeof import("./getNodeTypes").getNodeTypesOutput = null as any;
 utilities.lazyLoad(exports, ["getNodeTypes","getNodeTypesOutput"], () => require("./getNodeTypes"));
 
+export { GetRegionBackendServiceArgs, GetRegionBackendServiceResult, GetRegionBackendServiceOutputArgs } from "./getRegionBackendService";
+export const getRegionBackendService: typeof import("./getRegionBackendService").getRegionBackendService = null as any;
+export const getRegionBackendServiceOutput: typeof import("./getRegionBackendService").getRegionBackendServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionBackendService","getRegionBackendServiceOutput"], () => require("./getRegionBackendService"));
+
 export { GetRegionBackendServiceIamPolicyArgs, GetRegionBackendServiceIamPolicyResult, GetRegionBackendServiceIamPolicyOutputArgs } from "./getRegionBackendServiceIamPolicy";
 export const getRegionBackendServiceIamPolicy: typeof import("./getRegionBackendServiceIamPolicy").getRegionBackendServiceIamPolicy = null as any;
 export const getRegionBackendServiceIamPolicyOutput: typeof import("./getRegionBackendServiceIamPolicy").getRegionBackendServiceIamPolicyOutput = null as any;

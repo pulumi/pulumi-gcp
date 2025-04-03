@@ -49,6 +49,30 @@ __all__ = [
     'BucketVersioningArgsDict',
     'BucketWebsiteArgs',
     'BucketWebsiteArgsDict',
+    'ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs',
+    'ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgsDict',
+    'ControlFolderIntelligenceConfigFilterArgs',
+    'ControlFolderIntelligenceConfigFilterArgsDict',
+    'ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs',
+    'ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict',
+    'ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs',
+    'ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict',
+    'ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs',
+    'ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict',
+    'ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs',
+    'ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict',
+    'ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs',
+    'ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgsDict',
+    'ControlOrganizationIntelligenceConfigFilterArgs',
+    'ControlOrganizationIntelligenceConfigFilterArgsDict',
+    'ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs',
+    'ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict',
+    'ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs',
+    'ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict',
+    'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs',
+    'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict',
+    'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs',
+    'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict',
     'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs',
     'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict',
     'ControlProjectIntelligenceConfigFilterArgs',
@@ -1351,6 +1375,578 @@ class BucketWebsiteArgs:
     @not_found_page.setter
     def not_found_page(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "not_found_page", value)
+
+
+if not MYPY:
+    class ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedDict):
+        effective_edition: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The `StorageIntelligence` edition that is applicable for the resource.
+        """
+        intelligence_config: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Intelligence config resource that is applied for the target resource.
+        """
+elif False:
+    ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs:
+    def __init__(__self__, *,
+                 effective_edition: Optional[pulumi.Input[str]] = None,
+                 intelligence_config: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] effective_edition: (Output)
+               The `StorageIntelligence` edition that is applicable for the resource.
+        :param pulumi.Input[str] intelligence_config: (Output)
+               The Intelligence config resource that is applied for the target resource.
+        """
+        if effective_edition is not None:
+            pulumi.set(__self__, "effective_edition", effective_edition)
+        if intelligence_config is not None:
+            pulumi.set(__self__, "intelligence_config", intelligence_config)
+
+    @property
+    @pulumi.getter(name="effectiveEdition")
+    def effective_edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The `StorageIntelligence` edition that is applicable for the resource.
+        """
+        return pulumi.get(self, "effective_edition")
+
+    @effective_edition.setter
+    def effective_edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_edition", value)
+
+    @property
+    @pulumi.getter(name="intelligenceConfig")
+    def intelligence_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The Intelligence config resource that is applied for the target resource.
+        """
+        return pulumi.get(self, "intelligence_config")
+
+    @intelligence_config.setter
+    def intelligence_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intelligence_config", value)
+
+
+if not MYPY:
+    class ControlFolderIntelligenceConfigFilterArgsDict(TypedDict):
+        excluded_cloud_storage_buckets: NotRequired[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict']]
+        """
+        Buckets to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        excluded_cloud_storage_locations: NotRequired[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict']]
+        """
+        Locations to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        included_cloud_storage_buckets: NotRequired[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict']]
+        """
+        Buckets to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        included_cloud_storage_locations: NotRequired[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict']]
+        """
+        Locations to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+elif False:
+    ControlFolderIntelligenceConfigFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlFolderIntelligenceConfigFilterArgs:
+    def __init__(__self__, *,
+                 excluded_cloud_storage_buckets: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']] = None,
+                 excluded_cloud_storage_locations: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']] = None,
+                 included_cloud_storage_buckets: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']] = None,
+                 included_cloud_storage_locations: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']] = None):
+        """
+        :param pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs'] excluded_cloud_storage_buckets: Buckets to exclude from the Storage Intelligence plan.
+               Structure is documented below.
+        :param pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs'] excluded_cloud_storage_locations: Locations to exclude from the Storage Intelligence plan.
+               Structure is documented below.
+        :param pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs'] included_cloud_storage_buckets: Buckets to include in the Storage Intelligence plan.
+               Structure is documented below.
+        :param pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs'] included_cloud_storage_locations: Locations to include in the Storage Intelligence plan.
+               Structure is documented below.
+        """
+        if excluded_cloud_storage_buckets is not None:
+            pulumi.set(__self__, "excluded_cloud_storage_buckets", excluded_cloud_storage_buckets)
+        if excluded_cloud_storage_locations is not None:
+            pulumi.set(__self__, "excluded_cloud_storage_locations", excluded_cloud_storage_locations)
+        if included_cloud_storage_buckets is not None:
+            pulumi.set(__self__, "included_cloud_storage_buckets", included_cloud_storage_buckets)
+        if included_cloud_storage_locations is not None:
+            pulumi.set(__self__, "included_cloud_storage_locations", included_cloud_storage_locations)
+
+    @property
+    @pulumi.getter(name="excludedCloudStorageBuckets")
+    def excluded_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]:
+        """
+        Buckets to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "excluded_cloud_storage_buckets")
+
+    @excluded_cloud_storage_buckets.setter
+    def excluded_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]):
+        pulumi.set(self, "excluded_cloud_storage_buckets", value)
+
+    @property
+    @pulumi.getter(name="excludedCloudStorageLocations")
+    def excluded_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]:
+        """
+        Locations to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "excluded_cloud_storage_locations")
+
+    @excluded_cloud_storage_locations.setter
+    def excluded_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]):
+        pulumi.set(self, "excluded_cloud_storage_locations", value)
+
+    @property
+    @pulumi.getter(name="includedCloudStorageBuckets")
+    def included_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]:
+        """
+        Buckets to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_cloud_storage_buckets")
+
+    @included_cloud_storage_buckets.setter
+    def included_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]):
+        pulumi.set(self, "included_cloud_storage_buckets", value)
+
+    @property
+    @pulumi.getter(name="includedCloudStorageLocations")
+    def included_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]:
+        """
+        Locations to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_cloud_storage_locations")
+
+    @included_cloud_storage_locations.setter
+    def included_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]):
+        pulumi.set(self, "included_cloud_storage_locations", value)
+
+
+if not MYPY:
+    class ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict(TypedDict):
+        bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+elif False:
+    ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs:
+    def __init__(__self__, *,
+                 bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bucket_id_regexes: List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        pulumi.set(__self__, "bucket_id_regexes", bucket_id_regexes)
+
+    @property
+    @pulumi.getter(name="bucketIdRegexes")
+    def bucket_id_regexes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        return pulumi.get(self, "bucket_id_regexes")
+
+    @bucket_id_regexes.setter
+    def bucket_id_regexes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "bucket_id_regexes", value)
+
+
+if not MYPY:
+    class ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict(TypedDict):
+        locations: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of locations.
+        """
+elif False:
+    ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: List of locations.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of locations.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "locations", value)
+
+
+if not MYPY:
+    class ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict(TypedDict):
+        bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+elif False:
+    ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs:
+    def __init__(__self__, *,
+                 bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bucket_id_regexes: List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        pulumi.set(__self__, "bucket_id_regexes", bucket_id_regexes)
+
+    @property
+    @pulumi.getter(name="bucketIdRegexes")
+    def bucket_id_regexes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        return pulumi.get(self, "bucket_id_regexes")
+
+    @bucket_id_regexes.setter
+    def bucket_id_regexes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "bucket_id_regexes", value)
+
+
+if not MYPY:
+    class ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict(TypedDict):
+        locations: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of locations.
+        """
+elif False:
+    ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: List of locations.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of locations.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "locations", value)
+
+
+if not MYPY:
+    class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedDict):
+        effective_edition: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The `StorageIntelligence` edition that is applicable for the resource.
+        """
+        intelligence_config: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Intelligence config resource that is applied for the target resource.
+        """
+elif False:
+    ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs:
+    def __init__(__self__, *,
+                 effective_edition: Optional[pulumi.Input[str]] = None,
+                 intelligence_config: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] effective_edition: (Output)
+               The `StorageIntelligence` edition that is applicable for the resource.
+        :param pulumi.Input[str] intelligence_config: (Output)
+               The Intelligence config resource that is applied for the target resource.
+        """
+        if effective_edition is not None:
+            pulumi.set(__self__, "effective_edition", effective_edition)
+        if intelligence_config is not None:
+            pulumi.set(__self__, "intelligence_config", intelligence_config)
+
+    @property
+    @pulumi.getter(name="effectiveEdition")
+    def effective_edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The `StorageIntelligence` edition that is applicable for the resource.
+        """
+        return pulumi.get(self, "effective_edition")
+
+    @effective_edition.setter
+    def effective_edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_edition", value)
+
+    @property
+    @pulumi.getter(name="intelligenceConfig")
+    def intelligence_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The Intelligence config resource that is applied for the target resource.
+        """
+        return pulumi.get(self, "intelligence_config")
+
+    @intelligence_config.setter
+    def intelligence_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intelligence_config", value)
+
+
+if not MYPY:
+    class ControlOrganizationIntelligenceConfigFilterArgsDict(TypedDict):
+        excluded_cloud_storage_buckets: NotRequired[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict']]
+        """
+        Buckets to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        excluded_cloud_storage_locations: NotRequired[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict']]
+        """
+        Locations to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        included_cloud_storage_buckets: NotRequired[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict']]
+        """
+        Buckets to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        included_cloud_storage_locations: NotRequired[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict']]
+        """
+        Locations to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+elif False:
+    ControlOrganizationIntelligenceConfigFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlOrganizationIntelligenceConfigFilterArgs:
+    def __init__(__self__, *,
+                 excluded_cloud_storage_buckets: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']] = None,
+                 excluded_cloud_storage_locations: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']] = None,
+                 included_cloud_storage_buckets: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']] = None,
+                 included_cloud_storage_locations: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']] = None):
+        """
+        :param pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs'] excluded_cloud_storage_buckets: Buckets to exclude from the Storage Intelligence plan.
+               Structure is documented below.
+        :param pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs'] excluded_cloud_storage_locations: Locations to exclude from the Storage Intelligence plan.
+               Structure is documented below.
+        :param pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs'] included_cloud_storage_buckets: Buckets to include in the Storage Intelligence plan.
+               Structure is documented below.
+        :param pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs'] included_cloud_storage_locations: Locations to include in the Storage Intelligence plan.
+               Structure is documented below.
+        """
+        if excluded_cloud_storage_buckets is not None:
+            pulumi.set(__self__, "excluded_cloud_storage_buckets", excluded_cloud_storage_buckets)
+        if excluded_cloud_storage_locations is not None:
+            pulumi.set(__self__, "excluded_cloud_storage_locations", excluded_cloud_storage_locations)
+        if included_cloud_storage_buckets is not None:
+            pulumi.set(__self__, "included_cloud_storage_buckets", included_cloud_storage_buckets)
+        if included_cloud_storage_locations is not None:
+            pulumi.set(__self__, "included_cloud_storage_locations", included_cloud_storage_locations)
+
+    @property
+    @pulumi.getter(name="excludedCloudStorageBuckets")
+    def excluded_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]:
+        """
+        Buckets to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "excluded_cloud_storage_buckets")
+
+    @excluded_cloud_storage_buckets.setter
+    def excluded_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]):
+        pulumi.set(self, "excluded_cloud_storage_buckets", value)
+
+    @property
+    @pulumi.getter(name="excludedCloudStorageLocations")
+    def excluded_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]:
+        """
+        Locations to exclude from the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "excluded_cloud_storage_locations")
+
+    @excluded_cloud_storage_locations.setter
+    def excluded_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]):
+        pulumi.set(self, "excluded_cloud_storage_locations", value)
+
+    @property
+    @pulumi.getter(name="includedCloudStorageBuckets")
+    def included_cloud_storage_buckets(self) -> Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]:
+        """
+        Buckets to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_cloud_storage_buckets")
+
+    @included_cloud_storage_buckets.setter
+    def included_cloud_storage_buckets(self, value: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]):
+        pulumi.set(self, "included_cloud_storage_buckets", value)
+
+    @property
+    @pulumi.getter(name="includedCloudStorageLocations")
+    def included_cloud_storage_locations(self) -> Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]:
+        """
+        Locations to include in the Storage Intelligence plan.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_cloud_storage_locations")
+
+    @included_cloud_storage_locations.setter
+    def included_cloud_storage_locations(self, value: Optional[pulumi.Input['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]):
+        pulumi.set(self, "included_cloud_storage_locations", value)
+
+
+if not MYPY:
+    class ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict(TypedDict):
+        bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+elif False:
+    ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs:
+    def __init__(__self__, *,
+                 bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bucket_id_regexes: List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        pulumi.set(__self__, "bucket_id_regexes", bucket_id_regexes)
+
+    @property
+    @pulumi.getter(name="bucketIdRegexes")
+    def bucket_id_regexes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        return pulumi.get(self, "bucket_id_regexes")
+
+    @bucket_id_regexes.setter
+    def bucket_id_regexes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "bucket_id_regexes", value)
+
+
+if not MYPY:
+    class ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict(TypedDict):
+        locations: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of locations.
+        """
+elif False:
+    ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: List of locations.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of locations.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "locations", value)
+
+
+if not MYPY:
+    class ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict(TypedDict):
+        bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+elif False:
+    ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs:
+    def __init__(__self__, *,
+                 bucket_id_regexes: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bucket_id_regexes: List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        pulumi.set(__self__, "bucket_id_regexes", bucket_id_regexes)
+
+    @property
+    @pulumi.getter(name="bucketIdRegexes")
+    def bucket_id_regexes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of bucket id regexes to exclude in the storage intelligence plan.
+        """
+        return pulumi.get(self, "bucket_id_regexes")
+
+    @bucket_id_regexes.setter
+    def bucket_id_regexes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "bucket_id_regexes", value)
+
+
+if not MYPY:
+    class ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict(TypedDict):
+        locations: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of locations.
+        """
+elif False:
+    ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs:
+    def __init__(__self__, *,
+                 locations: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: List of locations.
+        """
+        pulumi.set(__self__, "locations", locations)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of locations.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "locations", value)
 
 
 if not MYPY:

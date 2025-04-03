@@ -38,16 +38,16 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return Password for the MySQL connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -63,6 +63,21 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
      */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
+    }
+
+    /**
+     * A reference to a Secret Manager resource name storing the user&#39;s password.
+     * 
+     */
+    @Import(name="secretManagerStoredPassword")
+    private @Nullable Output<String> secretManagerStoredPassword;
+
+    /**
+     * @return A reference to a Secret Manager resource name storing the user&#39;s password.
+     * 
+     */
+    public Optional<Output<String>> secretManagerStoredPassword() {
+        return Optional.ofNullable(this.secretManagerStoredPassword);
     }
 
     /**
@@ -103,6 +118,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         this.hostname = $.hostname;
         this.password = $.password;
         this.port = $.port;
+        this.secretManagerStoredPassword = $.secretManagerStoredPassword;
         this.sslConfig = $.sslConfig;
         this.username = $.username;
     }
@@ -153,7 +169,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -188,6 +204,27 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
          */
         public Builder port(Integer port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param secretManagerStoredPassword A reference to a Secret Manager resource name storing the user&#39;s password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretManagerStoredPassword(@Nullable Output<String> secretManagerStoredPassword) {
+            $.secretManagerStoredPassword = secretManagerStoredPassword;
+            return this;
+        }
+
+        /**
+         * @param secretManagerStoredPassword A reference to a Secret Manager resource name storing the user&#39;s password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretManagerStoredPassword(String secretManagerStoredPassword) {
+            return secretManagerStoredPassword(Output.of(secretManagerStoredPassword));
         }
 
         /**
@@ -237,9 +274,6 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         public ConnectionProfileMysqlProfileArgs build() {
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("ConnectionProfileMysqlProfileArgs", "hostname");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("ConnectionProfileMysqlProfileArgs", "password");
             }
             if ($.username == null) {
                 throw new MissingRequiredPropertyException("ConnectionProfileMysqlProfileArgs", "username");

@@ -16,10 +16,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MirroringEndpointGroupAssociationArgs', 'MirroringEndpointGroupAssociation']
+__all__ = ['MirroringEndpointGroupAssociationInitArgs', 'MirroringEndpointGroupAssociation']
 
 @pulumi.input_type
-class MirroringEndpointGroupAssociationArgs:
+class MirroringEndpointGroupAssociationInitArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  mirroring_endpoint_group: pulumi.Input[str],
@@ -150,6 +150,7 @@ class _MirroringEndpointGroupAssociationState:
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationLocationArgs']]]] = None,
                  locations_details: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationLocationsDetailArgs']]]] = None,
                  mirroring_endpoint_group: Optional[pulumi.Input[str]] = None,
                  mirroring_endpoint_group_association_id: Optional[pulumi.Input[str]] = None,
@@ -172,7 +173,11 @@ class _MirroringEndpointGroupAssociationState:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationLocationsDetailArgs']]] locations_details: The list of locations where the association is present. This information
+        :param pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationLocationArgs']]] locations: The list of locations where the association is configured. This information
+               is retrieved from the linked endpoint group.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationLocationsDetailArgs']]] locations_details: (Deprecated)
+               The list of locations where the association is present. This information
                is retrieved from the linked endpoint group, and not configured as part
                of the association itself.
                Structure is documented below.
@@ -213,6 +218,11 @@ class _MirroringEndpointGroupAssociationState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if locations_details is not None:
+            warnings.warn("""`locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.""", DeprecationWarning)
+            pulumi.log.warn("""locations_details is deprecated: `locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.""")
         if locations_details is not None:
             pulumi.set(__self__, "locations_details", locations_details)
         if mirroring_endpoint_group is not None:
@@ -289,9 +299,25 @@ class _MirroringEndpointGroupAssociationState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationLocationArgs']]]]:
+        """
+        The list of locations where the association is configured. This information
+        is retrieved from the linked endpoint group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationLocationArgs']]]]):
+        pulumi.set(self, "locations", value)
+
+    @property
     @pulumi.getter(name="locationsDetails")
+    @_utilities.deprecated("""`locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.""")
     def locations_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationLocationsDetailArgs']]]]:
         """
+        (Deprecated)
         The list of locations where the association is present. This information
         is retrieved from the linked endpoint group, and not configured as part
         of the association itself.
@@ -539,7 +565,7 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MirroringEndpointGroupAssociationArgs,
+                 args: MirroringEndpointGroupAssociationInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An endpoint group association represents a link between a network and an
@@ -613,12 +639,12 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MirroringEndpointGroupAssociationArgs args: The arguments to use to populate this resource's properties.
+        :param MirroringEndpointGroupAssociationInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MirroringEndpointGroupAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MirroringEndpointGroupAssociationInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -640,7 +666,7 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MirroringEndpointGroupAssociationArgs.__new__(MirroringEndpointGroupAssociationArgs)
+            __props__ = MirroringEndpointGroupAssociationInitArgs.__new__(MirroringEndpointGroupAssociationInitArgs)
 
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -656,6 +682,7 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["locations"] = None
             __props__.__dict__["locations_details"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
@@ -678,6 +705,7 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationArgs', 'MirroringEndpointGroupAssociationLocationArgsDict']]]]] = None,
             locations_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationsDetailArgs', 'MirroringEndpointGroupAssociationLocationsDetailArgsDict']]]]] = None,
             mirroring_endpoint_group: Optional[pulumi.Input[str]] = None,
             mirroring_endpoint_group_association_id: Optional[pulumi.Input[str]] = None,
@@ -705,7 +733,11 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationsDetailArgs', 'MirroringEndpointGroupAssociationLocationsDetailArgsDict']]]] locations_details: The list of locations where the association is present. This information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationArgs', 'MirroringEndpointGroupAssociationLocationArgsDict']]]] locations: The list of locations where the association is configured. This information
+               is retrieved from the linked endpoint group.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationsDetailArgs', 'MirroringEndpointGroupAssociationLocationsDetailArgsDict']]]] locations_details: (Deprecated)
+               The list of locations where the association is present. This information
                is retrieved from the linked endpoint group, and not configured as part
                of the association itself.
                Structure is documented below.
@@ -746,6 +778,7 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["locations"] = locations
         __props__.__dict__["locations_details"] = locations_details
         __props__.__dict__["mirroring_endpoint_group"] = mirroring_endpoint_group
         __props__.__dict__["mirroring_endpoint_group_association_id"] = mirroring_endpoint_group_association_id
@@ -797,9 +830,21 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
         return pulumi.get(self, "location")
 
     @property
+    @pulumi.getter
+    def locations(self) -> pulumi.Output[Sequence['outputs.MirroringEndpointGroupAssociationLocation']]:
+        """
+        The list of locations where the association is configured. This information
+        is retrieved from the linked endpoint group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locations")
+
+    @property
     @pulumi.getter(name="locationsDetails")
+    @_utilities.deprecated("""`locationsDetails` is deprecated and will be removed in a future major release. Use `locations` instead.""")
     def locations_details(self) -> pulumi.Output[Sequence['outputs.MirroringEndpointGroupAssociationLocationsDetail']]:
         """
+        (Deprecated)
         The list of locations where the association is present. This information
         is retrieved from the linked endpoint group, and not configured as part
         of the association itself.

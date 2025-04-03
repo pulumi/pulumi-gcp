@@ -20,6 +20,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The Rule resource represents a user-created rule.
+ * 
+ * To get more information about Rule, see:
+ * 
+ * * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.rules)
+ * * How-to Guides
+ *     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
+ * 
  * ## Example Usage
  * 
  * ### Chronicle Rule Basic

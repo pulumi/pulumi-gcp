@@ -46,6 +46,11 @@ public final class GetServiceTemplate {
      */
     private String executionEnvironment;
     /**
+     * @return True if GPU zonal redundancy is disabled on this revision.
+     * 
+     */
+    private Boolean gpuZonalRedundancyDisabled;
+    /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
      * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
      * 
@@ -141,6 +146,13 @@ public final class GetServiceTemplate {
      */
     public String executionEnvironment() {
         return this.executionEnvironment;
+    }
+    /**
+     * @return True if GPU zonal redundancy is disabled on this revision.
+     * 
+     */
+    public Boolean gpuZonalRedundancyDisabled() {
+        return this.gpuZonalRedundancyDisabled;
     }
     /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
@@ -240,6 +252,7 @@ public final class GetServiceTemplate {
         private List<GetServiceTemplateContainer> containers;
         private String encryptionKey;
         private String executionEnvironment;
+        private Boolean gpuZonalRedundancyDisabled;
         private Map<String,String> labels;
         private Integer maxInstanceRequestConcurrency;
         private List<GetServiceTemplateNodeSelector> nodeSelectors;
@@ -258,6 +271,7 @@ public final class GetServiceTemplate {
     	      this.containers = defaults.containers;
     	      this.encryptionKey = defaults.encryptionKey;
     	      this.executionEnvironment = defaults.executionEnvironment;
+    	      this.gpuZonalRedundancyDisabled = defaults.gpuZonalRedundancyDisabled;
     	      this.labels = defaults.labels;
     	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
     	      this.nodeSelectors = defaults.nodeSelectors;
@@ -304,6 +318,14 @@ public final class GetServiceTemplate {
               throw new MissingRequiredPropertyException("GetServiceTemplate", "executionEnvironment");
             }
             this.executionEnvironment = executionEnvironment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuZonalRedundancyDisabled(Boolean gpuZonalRedundancyDisabled) {
+            if (gpuZonalRedundancyDisabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "gpuZonalRedundancyDisabled");
+            }
+            this.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             return this;
         }
         @CustomType.Setter
@@ -415,6 +437,7 @@ public final class GetServiceTemplate {
             _resultValue.containers = containers;
             _resultValue.encryptionKey = encryptionKey;
             _resultValue.executionEnvironment = executionEnvironment;
+            _resultValue.gpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             _resultValue.labels = labels;
             _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             _resultValue.nodeSelectors = nodeSelectors;

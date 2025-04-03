@@ -137,22 +137,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigtable/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
     /**
-     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to &#34;0&#34;. If this argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
      * 
      * ***
      * 
      */
     @Export(name="automatedBackupPolicy", refs={TableAutomatedBackupPolicy.class}, tree="[0]")
-    private Output</* @Nullable */ TableAutomatedBackupPolicy> automatedBackupPolicy;
+    private Output<TableAutomatedBackupPolicy> automatedBackupPolicy;
 
     /**
-     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to 0.
+     * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to &#34;0&#34;. If this argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
      * 
      * ***
      * 
      */
-    public Output<Optional<TableAutomatedBackupPolicy>> automatedBackupPolicy() {
-        return Codegen.optional(this.automatedBackupPolicy);
+    public Output<TableAutomatedBackupPolicy> automatedBackupPolicy() {
+        return this.automatedBackupPolicy;
     }
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.

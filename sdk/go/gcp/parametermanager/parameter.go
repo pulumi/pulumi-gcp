@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Parameter resource is a logical parameter.
+//
+// To get more information about Parameter, see:
+//
+// * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+//
 // ## Example Usage
 //
 // ### Parameter Config Basic
@@ -97,6 +103,37 @@ import (
 //	}
 //
 // ```
+// ### Parameter With Kms Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parametermanager.NewParameter(ctx, "parameter-with-kms-key", &parametermanager.ParameterArgs{
+//				ParameterId: pulumi.String("parameter"),
+//				KmsKey:      pulumi.String("kms-key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -132,6 +169,9 @@ type Parameter struct {
 	// Default value is `UNFORMATTED`.
 	// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
 	Format pulumi.StringPtrOutput `pulumi:"format"`
+	// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+	// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// The labels assigned to this Parameter.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -210,6 +250,9 @@ type parameterState struct {
 	// Default value is `UNFORMATTED`.
 	// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
 	Format *string `pulumi:"format"`
+	// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+	// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+	KmsKey *string `pulumi:"kmsKey"`
 	// The labels assigned to this Parameter.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -251,6 +294,9 @@ type ParameterState struct {
 	// Default value is `UNFORMATTED`.
 	// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
 	Format pulumi.StringPtrInput
+	// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+	// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+	KmsKey pulumi.StringPtrInput
 	// The labels assigned to this Parameter.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -292,6 +338,9 @@ type parameterArgs struct {
 	// Default value is `UNFORMATTED`.
 	// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
 	Format *string `pulumi:"format"`
+	// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+	// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+	KmsKey *string `pulumi:"kmsKey"`
 	// The labels assigned to this Parameter.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -319,6 +368,9 @@ type ParameterArgs struct {
 	// Default value is `UNFORMATTED`.
 	// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
 	Format pulumi.StringPtrInput
+	// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+	// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+	KmsKey pulumi.StringPtrInput
 	// The labels assigned to this Parameter.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
 	// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -442,6 +494,12 @@ func (o ParameterOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
 func (o ParameterOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Parameter) pulumi.StringPtrOutput { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
+// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+func (o ParameterOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Parameter) pulumi.StringPtrOutput { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
 // The labels assigned to this Parameter.

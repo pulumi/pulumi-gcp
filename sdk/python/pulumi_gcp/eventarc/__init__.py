@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .channel import *
+from .enrollment import *
 from .google_api_source import *
 from .google_channel_config import *
 from .message_bus import *

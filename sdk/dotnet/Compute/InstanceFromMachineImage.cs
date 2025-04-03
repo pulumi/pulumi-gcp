@@ -143,6 +143,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
+        /// Encryption key used to provide data encryption on the given instance.
+        /// </summary>
+        [Output("instanceEncryptionKey")]
+        public Output<Outputs.InstanceFromMachineImageInstanceEncryptionKey> InstanceEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// The server-assigned unique identifier of this instance.
         /// </summary>
         [Output("instanceId")]
@@ -296,6 +302,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SourceMachineImage { get; private set; } = null!;
 
         /// <summary>
+        /// Encryption key for the source machine image.
+        /// </summary>
+        [Output("sourceMachineImageEncryptionKey")]
+        public Output<Outputs.InstanceFromMachineImageSourceMachineImageEncryptionKey?> SourceMachineImageEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// The list of tags attached to the instance.
         /// </summary>
         [Output("tags")]
@@ -438,6 +450,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
+        /// Encryption key used to provide data encryption on the given instance.
+        /// </summary>
+        [Input("instanceEncryptionKey")]
+        public Input<Inputs.InstanceFromMachineImageInstanceEncryptionKeyArgs>? InstanceEncryptionKey { get; set; }
+
+        /// <summary>
         /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
         /// default.
         /// </summary>
@@ -577,6 +595,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceMachineImage", required: true)]
         public Input<string> SourceMachineImage { get; set; } = null!;
+
+        /// <summary>
+        /// Encryption key for the source machine image.
+        /// </summary>
+        [Input("sourceMachineImageEncryptionKey")]
+        public Input<Inputs.InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs>? SourceMachineImageEncryptionKey { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -732,6 +756,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// Encryption key used to provide data encryption on the given instance.
+        /// </summary>
+        [Input("instanceEncryptionKey")]
+        public Input<Inputs.InstanceFromMachineImageInstanceEncryptionKeyGetArgs>? InstanceEncryptionKey { get; set; }
 
         /// <summary>
         /// The server-assigned unique identifier of this instance.
@@ -925,6 +955,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceMachineImage")]
         public Input<string>? SourceMachineImage { get; set; }
+
+        /// <summary>
+        /// Encryption key for the source machine image.
+        /// </summary>
+        [Input("sourceMachineImageEncryptionKey")]
+        public Input<Inputs.InstanceFromMachineImageSourceMachineImageEncryptionKeyGetArgs>? SourceMachineImageEncryptionKey { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

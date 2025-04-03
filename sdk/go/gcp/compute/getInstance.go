@@ -97,7 +97,8 @@ type LookupInstanceResult struct {
 	GuestAccelerators []GetInstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	Hostname          string                        `pulumi:"hostname"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                     string                             `pulumi:"id"`
+	InstanceEncryptionKeys []GetInstanceInstanceEncryptionKey `pulumi:"instanceEncryptionKeys"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Action to be taken when a customer's encryption key is revoked.
@@ -267,6 +268,10 @@ func (o LookupInstanceResultOutput) Hostname() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) InstanceEncryptionKeys() GetInstanceInstanceEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceInstanceEncryptionKey { return v.InstanceEncryptionKeys }).(GetInstanceInstanceEncryptionKeyArrayOutput)
 }
 
 // The server-assigned unique identifier of this instance.

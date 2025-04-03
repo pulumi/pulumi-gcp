@@ -27,7 +27,7 @@ class GetBucketObjectContentResult:
     """
     A collection of values returned by getBucketObjectContent.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, generation=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_base64=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, generation=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -37,6 +37,9 @@ class GetBucketObjectContentResult:
         if content and not isinstance(content, str):
             raise TypeError("Expected argument 'content' to be a str")
         pulumi.set(__self__, "content", content)
+        if content_base64 and not isinstance(content_base64, str):
+            raise TypeError("Expected argument 'content_base64' to be a str")
+        pulumi.set(__self__, "content_base64", content_base64)
         if content_disposition and not isinstance(content_disposition, str):
             raise TypeError("Expected argument 'content_disposition' to be a str")
         pulumi.set(__self__, "content_disposition", content_disposition)
@@ -118,6 +121,15 @@ class GetBucketObjectContentResult:
         (Computed) The content of the object.
         """
         return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="contentBase64")
+    def content_base64(self) -> str:
+        """
+        (Computed) Base64 encoded version of the object content.
+        Use this when dealing with binary data.
+        """
+        return pulumi.get(self, "content_base64")
 
     @property
     @pulumi.getter(name="contentDisposition")
@@ -237,6 +249,7 @@ class AwaitableGetBucketObjectContentResult(GetBucketObjectContentResult):
             bucket=self.bucket,
             cache_control=self.cache_control,
             content=self.content,
+            content_base64=self.content_base64,
             content_disposition=self.content_disposition,
             content_encoding=self.content_encoding,
             content_language=self.content_language,
@@ -301,6 +314,7 @@ def get_bucket_object_content(bucket: Optional[str] = None,
         bucket=pulumi.get(__ret__, 'bucket'),
         cache_control=pulumi.get(__ret__, 'cache_control'),
         content=pulumi.get(__ret__, 'content'),
+        content_base64=pulumi.get(__ret__, 'content_base64'),
         content_disposition=pulumi.get(__ret__, 'content_disposition'),
         content_encoding=pulumi.get(__ret__, 'content_encoding'),
         content_language=pulumi.get(__ret__, 'content_language'),
@@ -362,6 +376,7 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
         bucket=pulumi.get(__response__, 'bucket'),
         cache_control=pulumi.get(__response__, 'cache_control'),
         content=pulumi.get(__response__, 'content'),
+        content_base64=pulumi.get(__response__, 'content_base64'),
         content_disposition=pulumi.get(__response__, 'content_disposition'),
         content_encoding=pulumi.get(__response__, 'content_encoding'),
         content_language=pulumi.get(__response__, 'content_language'),

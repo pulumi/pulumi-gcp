@@ -57,6 +57,8 @@ __all__ = [
     'BackendServiceSecuritySettingsAwsV4Authentication',
     'BackendServiceStrongSessionAffinityCookie',
     'BackendServiceStrongSessionAffinityCookieTtl',
+    'BackendServiceTlsSettings',
+    'BackendServiceTlsSettingsSubjectAltName',
     'DiskAsyncPrimaryDisk',
     'DiskAsyncReplicationSecondaryDisk',
     'DiskDiskEncryptionKey',
@@ -104,13 +106,18 @@ __all__ = [
     'InstanceAttachedDisk',
     'InstanceBootDisk',
     'InstanceBootDiskInitializeParams',
+    'InstanceBootDiskInitializeParamsSourceImageEncryptionKey',
+    'InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey',
     'InstanceConfidentialInstanceConfig',
     'InstanceFromMachineImageAdvancedMachineFeatures',
     'InstanceFromMachineImageAttachedDisk',
     'InstanceFromMachineImageBootDisk',
     'InstanceFromMachineImageBootDiskInitializeParams',
+    'InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey',
+    'InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey',
     'InstanceFromMachineImageConfidentialInstanceConfig',
     'InstanceFromMachineImageGuestAccelerator',
+    'InstanceFromMachineImageInstanceEncryptionKey',
     'InstanceFromMachineImageNetworkInterface',
     'InstanceFromMachineImageNetworkInterfaceAccessConfig',
     'InstanceFromMachineImageNetworkInterfaceAliasIpRange',
@@ -129,12 +136,16 @@ __all__ = [
     'InstanceFromMachineImageScratchDisk',
     'InstanceFromMachineImageServiceAccount',
     'InstanceFromMachineImageShieldedInstanceConfig',
+    'InstanceFromMachineImageSourceMachineImageEncryptionKey',
     'InstanceFromTemplateAdvancedMachineFeatures',
     'InstanceFromTemplateAttachedDisk',
     'InstanceFromTemplateBootDisk',
     'InstanceFromTemplateBootDiskInitializeParams',
+    'InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey',
+    'InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey',
     'InstanceFromTemplateConfidentialInstanceConfig',
     'InstanceFromTemplateGuestAccelerator',
+    'InstanceFromTemplateInstanceEncryptionKey',
     'InstanceFromTemplateNetworkInterface',
     'InstanceFromTemplateNetworkInterfaceAccessConfig',
     'InstanceFromTemplateNetworkInterfaceAliasIpRange',
@@ -174,6 +185,7 @@ __all__ = [
     'InstanceGuestAccelerator',
     'InstanceIAMBindingCondition',
     'InstanceIAMMemberCondition',
+    'InstanceInstanceEncryptionKey',
     'InstanceNetworkInterface',
     'InstanceNetworkInterfaceAccessConfig',
     'InstanceNetworkInterfaceAliasIpRange',
@@ -530,6 +542,7 @@ __all__ = [
     'RouteWarningData',
     'RouterBgp',
     'RouterBgpAdvertisedIpRange',
+    'RouterMd5AuthenticationKeys',
     'RouterNatLogConfig',
     'RouterNatRule',
     'RouterNatRuleAction',
@@ -658,6 +671,8 @@ __all__ = [
     'URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd',
     'URLMapPathMatcherPathRuleUrlRedirect',
     'URLMapPathMatcherRouteRule',
+    'URLMapPathMatcherRouteRuleCustomErrorResponsePolicy',
+    'URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule',
     'URLMapPathMatcherRouteRuleHeaderAction',
     'URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd',
     'URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd',
@@ -714,6 +729,8 @@ __all__ = [
     'GetBackendServiceSecuritySettingAwsV4AuthenticationResult',
     'GetBackendServiceStrongSessionAffinityCookyResult',
     'GetBackendServiceStrongSessionAffinityCookyTtlResult',
+    'GetBackendServiceTlsSettingResult',
+    'GetBackendServiceTlsSettingSubjectAltNameResult',
     'GetDiskAsyncPrimaryDiskResult',
     'GetDiskDiskEncryptionKeyResult',
     'GetDiskGuestOsFeatureResult',
@@ -739,6 +756,8 @@ __all__ = [
     'GetInstanceAttachedDiskResult',
     'GetInstanceBootDiskResult',
     'GetInstanceBootDiskInitializeParamResult',
+    'GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyResult',
+    'GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyResult',
     'GetInstanceConfidentialInstanceConfigResult',
     'GetInstanceGroupManagerAllInstancesConfigResult',
     'GetInstanceGroupManagerAutoHealingPolicyResult',
@@ -760,6 +779,7 @@ __all__ = [
     'GetInstanceGroupNamedPortResult',
     'GetInstanceGuestAcceleratorResult',
     'GetInstanceGuestAttributesQueryValueResult',
+    'GetInstanceInstanceEncryptionKeyResult',
     'GetInstanceNetworkInterfaceResult',
     'GetInstanceNetworkInterfaceAccessConfigResult',
     'GetInstanceNetworkInterfaceAliasIpRangeResult',
@@ -805,6 +825,27 @@ __all__ = [
     'GetMachineTypesMachineTypeAcceleratorResult',
     'GetMachineTypesMachineTypeBundledLocalSsdResult',
     'GetMachineTypesMachineTypeDeprecatedResult',
+    'GetRegionBackendServiceBackendResult',
+    'GetRegionBackendServiceBackendCustomMetricResult',
+    'GetRegionBackendServiceCdnPolicyResult',
+    'GetRegionBackendServiceCdnPolicyCacheKeyPolicyResult',
+    'GetRegionBackendServiceCdnPolicyNegativeCachingPolicyResult',
+    'GetRegionBackendServiceCircuitBreakerResult',
+    'GetRegionBackendServiceCircuitBreakerConnectTimeoutResult',
+    'GetRegionBackendServiceConnectionTrackingPolicyResult',
+    'GetRegionBackendServiceConsistentHashResult',
+    'GetRegionBackendServiceConsistentHashHttpCookyResult',
+    'GetRegionBackendServiceConsistentHashHttpCookyTtlResult',
+    'GetRegionBackendServiceCustomMetricResult',
+    'GetRegionBackendServiceFailoverPolicyResult',
+    'GetRegionBackendServiceIapResult',
+    'GetRegionBackendServiceLogConfigResult',
+    'GetRegionBackendServiceOutlierDetectionResult',
+    'GetRegionBackendServiceOutlierDetectionBaseEjectionTimeResult',
+    'GetRegionBackendServiceOutlierDetectionIntervalResult',
+    'GetRegionBackendServiceStrongSessionAffinityCookyResult',
+    'GetRegionBackendServiceStrongSessionAffinityCookyTtlResult',
+    'GetRegionBackendServiceSubsettingResult',
     'GetRegionDiskAsyncPrimaryDiskResult',
     'GetRegionDiskDiskEncryptionKeyResult',
     'GetRegionDiskGuestOsFeatureResult',
@@ -880,6 +921,7 @@ __all__ = [
     'GetResourcePolicyWorkloadPolicyResult',
     'GetRouterBgpResult',
     'GetRouterBgpAdvertisedIpRangeResult',
+    'GetRouterMd5AuthenticationKeyResult',
     'GetRouterNatLogConfigResult',
     'GetRouterNatRuleResult',
     'GetRouterNatRuleActionResult',
@@ -4172,6 +4214,138 @@ class BackendServiceStrongSessionAffinityCookieTtl(dict):
 
 
 @pulumi.output_type
+class BackendServiceTlsSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationConfig":
+            suggest = "authentication_config"
+        elif key == "subjectAltNames":
+            suggest = "subject_alt_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceTlsSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceTlsSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceTlsSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_config: Optional[str] = None,
+                 sni: Optional[str] = None,
+                 subject_alt_names: Optional[Sequence['outputs.BackendServiceTlsSettingsSubjectAltName']] = None):
+        """
+        :param str authentication_config: Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+               Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+               Can only be specified if authenticationMode is not NONE.
+        :param str sni: Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+               TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+               server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+               regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+        :param Sequence['BackendServiceTlsSettingsSubjectAltNameArgs'] subject_alt_names: A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+               When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+               and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+               When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+               subjectAltNames.
+               Structure is documented below.
+        """
+        if authentication_config is not None:
+            pulumi.set(__self__, "authentication_config", authentication_config)
+        if sni is not None:
+            pulumi.set(__self__, "sni", sni)
+        if subject_alt_names is not None:
+            pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @property
+    @pulumi.getter(name="authenticationConfig")
+    def authentication_config(self) -> Optional[str]:
+        """
+        Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+        Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+        Can only be specified if authenticationMode is not NONE.
+        """
+        return pulumi.get(self, "authentication_config")
+
+    @property
+    @pulumi.getter
+    def sni(self) -> Optional[str]:
+        """
+        Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+        TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+        server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+        regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+        """
+        return pulumi.get(self, "sni")
+
+    @property
+    @pulumi.getter(name="subjectAltNames")
+    def subject_alt_names(self) -> Optional[Sequence['outputs.BackendServiceTlsSettingsSubjectAltName']]:
+        """
+        A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+        When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+        and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+        When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+        subjectAltNames.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject_alt_names")
+
+
+@pulumi.output_type
+class BackendServiceTlsSettingsSubjectAltName(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsName":
+            suggest = "dns_name"
+        elif key == "uniformResourceIdentifier":
+            suggest = "uniform_resource_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceTlsSettingsSubjectAltName. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceTlsSettingsSubjectAltName.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceTlsSettingsSubjectAltName.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_name: Optional[str] = None,
+                 uniform_resource_identifier: Optional[str] = None):
+        """
+        :param str dns_name: The SAN specified as a DNS Name.
+        :param str uniform_resource_identifier: The SAN specified as a URI.
+        """
+        if dns_name is not None:
+            pulumi.set(__self__, "dns_name", dns_name)
+        if uniform_resource_identifier is not None:
+            pulumi.set(__self__, "uniform_resource_identifier", uniform_resource_identifier)
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> Optional[str]:
+        """
+        The SAN specified as a DNS Name.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="uniformResourceIdentifier")
+    def uniform_resource_identifier(self) -> Optional[str]:
+        """
+        The SAN specified as a URI.
+        """
+        return pulumi.get(self, "uniform_resource_identifier")
+
+
+@pulumi.output_type
 class DiskAsyncPrimaryDisk(dict):
     def __init__(__self__, *,
                  disk: str):
@@ -7430,6 +7604,10 @@ class ImageImageEncryptionKey(dict):
             suggest = "kms_key_self_link"
         elif key == "kmsKeyServiceAccount":
             suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ImageImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
@@ -7444,18 +7622,30 @@ class ImageImageEncryptionKey(dict):
 
     def __init__(__self__, *,
                  kms_key_self_link: Optional[str] = None,
-                 kms_key_service_account: Optional[str] = None):
+                 kms_key_service_account: Optional[str] = None,
+                 raw_key: Optional[str] = None,
+                 rsa_encrypted_key: Optional[str] = None):
         """
         :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud
                KMS.
         :param str kms_key_service_account: The service account being used for the encryption request for the
                given KMS key. If absent, the Compute Engine default service
                account is used.
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param str rsa_encrypted_key: Specifies a 256-bit customer-supplied encryption key, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
@@ -7475,6 +7665,26 @@ class ImageImageEncryptionKey(dict):
         account is used.
         """
         return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
 
 
 @pulumi.output_type
@@ -7926,8 +8136,12 @@ class InstanceAttachedDisk(dict):
             suggest = "device_name"
         elif key == "diskEncryptionKeyRaw":
             suggest = "disk_encryption_key_raw"
+        elif key == "diskEncryptionKeyRsa":
+            suggest = "disk_encryption_key_rsa"
         elif key == "diskEncryptionKeySha256":
             suggest = "disk_encryption_key_sha256"
+        elif key == "diskEncryptionServiceAccount":
+            suggest = "disk_encryption_service_account"
         elif key == "kmsKeySelfLink":
             suggest = "kms_key_self_link"
 
@@ -7946,7 +8160,9 @@ class InstanceAttachedDisk(dict):
                  source: str,
                  device_name: Optional[str] = None,
                  disk_encryption_key_raw: Optional[str] = None,
+                 disk_encryption_key_rsa: Optional[str] = None,
                  disk_encryption_key_sha256: Optional[str] = None,
+                 disk_encryption_service_account: Optional[str] = None,
                  kms_key_self_link: Optional[str] = None,
                  mode: Optional[str] = None):
         """
@@ -7956,13 +8172,18 @@ class InstanceAttachedDisk(dict):
         :param str disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
                (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-               to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+               to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+               may be set.
+        :param str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+               may be set.
         :param str disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key]
                (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        :param str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
         :param str kms_key_self_link: The self_link of the encryption key that is
-               stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-               and `disk_encryption_key_raw` may be set.
+               stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+               may be set.
         :param str mode: Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
                If you have a persistent disk with data that you want to share
                between multiple instances, detach it from any read-write instances and
@@ -7973,8 +8194,12 @@ class InstanceAttachedDisk(dict):
             pulumi.set(__self__, "device_name", device_name)
         if disk_encryption_key_raw is not None:
             pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        if disk_encryption_key_rsa is not None:
+            pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         if disk_encryption_key_sha256 is not None:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if disk_encryption_service_account is not None:
+            pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if mode is not None:
@@ -8004,9 +8229,20 @@ class InstanceAttachedDisk(dict):
         A 256-bit [customer-supplied encryption key]
         (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+        to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        may be set.
         """
         return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRsa")
+    def disk_encryption_key_rsa(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        may be set.
+        """
+        return pulumi.get(self, "disk_encryption_key_rsa")
 
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
@@ -8019,12 +8255,20 @@ class InstanceAttachedDisk(dict):
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @property
+    @pulumi.getter(name="diskEncryptionServiceAccount")
+    def disk_encryption_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "disk_encryption_service_account")
+
+    @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[str]:
         """
         The self_link of the encryption key that is
-        stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-        and `disk_encryption_key_raw` may be set.
+        stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -8051,8 +8295,12 @@ class InstanceBootDisk(dict):
             suggest = "device_name"
         elif key == "diskEncryptionKeyRaw":
             suggest = "disk_encryption_key_raw"
+        elif key == "diskEncryptionKeyRsa":
+            suggest = "disk_encryption_key_rsa"
         elif key == "diskEncryptionKeySha256":
             suggest = "disk_encryption_key_sha256"
+        elif key == "diskEncryptionServiceAccount":
+            suggest = "disk_encryption_service_account"
         elif key == "guestOsFeatures":
             suggest = "guest_os_features"
         elif key == "initializeParams":
@@ -8075,7 +8323,9 @@ class InstanceBootDisk(dict):
                  auto_delete: Optional[bool] = None,
                  device_name: Optional[str] = None,
                  disk_encryption_key_raw: Optional[str] = None,
+                 disk_encryption_key_rsa: Optional[str] = None,
                  disk_encryption_key_sha256: Optional[str] = None,
+                 disk_encryption_service_account: Optional[str] = None,
                  guest_os_features: Optional[Sequence[str]] = None,
                  initialize_params: Optional['outputs.InstanceBootDiskInitializeParams'] = None,
                  interface: Optional[str] = None,
@@ -8090,19 +8340,23 @@ class InstanceBootDisk(dict):
         :param str disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
                (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-               to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
+               to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
                may be set.
+        :param str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
         :param str disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key]
                (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        :param str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
         :param Sequence[str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
         :param 'InstanceBootDiskInitializeParamsArgs' initialize_params: Parameters for a new disk that will be created
                alongside the new instance. Either `initialize_params` or `source` must be set.
                Structure is documented below.
         :param str interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
         :param str kms_key_self_link: The self_link of the encryption key that is
-               stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-               and `disk_encryption_key_raw` may be set.
+               stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`,
+               `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+               may be set.
         :param str mode: The mode in which to attach this disk, either `READ_WRITE`
                or `READ_ONLY`. If not specified, the default is to attach the disk in `READ_WRITE` mode.
         :param str source: The name or self_link of the existing disk (such as those managed by
@@ -8115,8 +8369,12 @@ class InstanceBootDisk(dict):
             pulumi.set(__self__, "device_name", device_name)
         if disk_encryption_key_raw is not None:
             pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        if disk_encryption_key_rsa is not None:
+            pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         if disk_encryption_key_sha256 is not None:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if disk_encryption_service_account is not None:
+            pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if initialize_params is not None:
@@ -8155,10 +8413,19 @@ class InstanceBootDisk(dict):
         A 256-bit [customer-supplied encryption key]
         (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
+        to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
         may be set.
         """
         return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRsa")
+    def disk_encryption_key_rsa(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to encrypt this disk. Only one of `kms_key_self_link`, `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        """
+        return pulumi.get(self, "disk_encryption_key_rsa")
 
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
@@ -8169,6 +8436,14 @@ class InstanceBootDisk(dict):
         (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
+
+    @property
+    @pulumi.getter(name="diskEncryptionServiceAccount")
+    def disk_encryption_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "disk_encryption_service_account")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -8201,8 +8476,9 @@ class InstanceBootDisk(dict):
     def kms_key_self_link(self) -> Optional[str]:
         """
         The self_link of the encryption key that is
-        stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
-        and `disk_encryption_key_raw` may be set.
+        stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`,
+        `disk_encryption_key_rsa` and `disk_encryption_key_raw`
+        may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -8241,6 +8517,10 @@ class InstanceBootDiskInitializeParams(dict):
             suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
+        elif key == "sourceImageEncryptionKey":
+            suggest = "source_image_encryption_key"
+        elif key == "sourceSnapshotEncryptionKey":
+            suggest = "source_snapshot_encryption_key"
         elif key == "storagePool":
             suggest = "storage_pool"
 
@@ -8265,6 +8545,9 @@ class InstanceBootDiskInitializeParams(dict):
                  resource_manager_tags: Optional[Mapping[str, str]] = None,
                  resource_policies: Optional[str] = None,
                  size: Optional[int] = None,
+                 snapshot: Optional[str] = None,
+                 source_image_encryption_key: Optional['outputs.InstanceBootDiskInitializeParamsSourceImageEncryptionKey'] = None,
+                 source_snapshot_encryption_key: Optional['outputs.InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey'] = None,
                  storage_pool: Optional[str] = None,
                  type: Optional[str] = None):
         """
@@ -8300,6 +8583,9 @@ class InstanceBootDiskInitializeParams(dict):
         :param str resource_policies: A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
+        :param str snapshot: The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+        :param 'InstanceBootDiskInitializeParamsSourceImageEncryptionKeyArgs' source_image_encryption_key: Encryption key used to decrypt the given image. Structure is documented below.
+        :param 'InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs' source_snapshot_encryption_key: Encryption key used to decrypt the given snapshot. Structure is documented below.
         :param str storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
@@ -8326,6 +8612,12 @@ class InstanceBootDiskInitializeParams(dict):
             pulumi.set(__self__, "resource_policies", resource_policies)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if snapshot is not None:
+            pulumi.set(__self__, "snapshot", snapshot)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if storage_pool is not None:
             pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
@@ -8427,6 +8719,30 @@ class InstanceBootDiskInitializeParams(dict):
         return pulumi.get(self, "size")
 
     @property
+    @pulumi.getter
+    def snapshot(self) -> Optional[str]:
+        """
+        The snapshot from which to initialize this disk. To create a disk with a snapshot that you created, specify the snapshot name in the following format: `global/snapshots/my-backup`
+        """
+        return pulumi.get(self, "snapshot")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> Optional['outputs.InstanceBootDiskInitializeParamsSourceImageEncryptionKey']:
+        """
+        Encryption key used to decrypt the given image. Structure is documented below.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> Optional['outputs.InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey']:
+        """
+        Encryption key used to decrypt the given snapshot. Structure is documented below.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @property
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> Optional[str]:
         """
@@ -8446,6 +8762,210 @@ class InstanceBootDiskInitializeParams(dict):
         The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class InstanceBootDiskInitializeParamsSourceImageEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceBootDiskInitializeParamsSourceImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceBootDiskInitializeParamsSourceImageEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceBootDiskInitializeParamsSourceImageEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 raw_key: Optional[str] = None,
+                 rsa_encrypted_key: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+               encoded SHA-256 hash of the [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        encoded SHA-256 hash of the [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        """
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceBootDiskInitializeParamsSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 raw_key: Optional[str] = None,
+                 rsa_encrypted_key: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self_link of the encryption key that is
+               stored in Google Cloud KMS to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str raw_key: A 256-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+               to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
+        :param str sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+               encoded SHA-256 hash of the [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self_link of the encryption key that is
+        stored in Google Cloud KMS to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[str]:
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        encoded SHA-256 hash of the [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        """
+        return pulumi.get(self, "sha256")
 
 
 @pulumi.output_type
@@ -8613,8 +9133,12 @@ class InstanceFromMachineImageAttachedDisk(dict):
             suggest = "device_name"
         elif key == "diskEncryptionKeyRaw":
             suggest = "disk_encryption_key_raw"
+        elif key == "diskEncryptionKeyRsa":
+            suggest = "disk_encryption_key_rsa"
         elif key == "diskEncryptionKeySha256":
             suggest = "disk_encryption_key_sha256"
+        elif key == "diskEncryptionServiceAccount":
+            suggest = "disk_encryption_service_account"
         elif key == "kmsKeySelfLink":
             suggest = "kms_key_self_link"
 
@@ -8633,15 +9157,19 @@ class InstanceFromMachineImageAttachedDisk(dict):
                  source: str,
                  device_name: Optional[str] = None,
                  disk_encryption_key_raw: Optional[str] = None,
+                 disk_encryption_key_rsa: Optional[str] = None,
                  disk_encryption_key_sha256: Optional[str] = None,
+                 disk_encryption_service_account: Optional[str] = None,
                  kms_key_self_link: Optional[str] = None,
                  mode: Optional[str] = None):
         """
         :param str source: The name or self_link of the disk attached to this instance.
         :param str device_name: Name with which the attached disk is accessible under /dev/disk/by-id/
-        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+        :param str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param str disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
-        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param str mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
         """
         pulumi.set(__self__, "source", source)
@@ -8649,8 +9177,12 @@ class InstanceFromMachineImageAttachedDisk(dict):
             pulumi.set(__self__, "device_name", device_name)
         if disk_encryption_key_raw is not None:
             pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        if disk_encryption_key_rsa is not None:
+            pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         if disk_encryption_key_sha256 is not None:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if disk_encryption_service_account is not None:
+            pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if mode is not None:
@@ -8676,9 +9208,17 @@ class InstanceFromMachineImageAttachedDisk(dict):
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> Optional[str]:
         """
-        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         """
         return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRsa")
+    def disk_encryption_key_rsa(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+        """
+        return pulumi.get(self, "disk_encryption_key_rsa")
 
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
@@ -8689,10 +9229,18 @@ class InstanceFromMachineImageAttachedDisk(dict):
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @property
+    @pulumi.getter(name="diskEncryptionServiceAccount")
+    def disk_encryption_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        """
+        return pulumi.get(self, "disk_encryption_service_account")
+
+    @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[str]:
         """
-        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -8716,8 +9264,12 @@ class InstanceFromMachineImageBootDisk(dict):
             suggest = "device_name"
         elif key == "diskEncryptionKeyRaw":
             suggest = "disk_encryption_key_raw"
+        elif key == "diskEncryptionKeyRsa":
+            suggest = "disk_encryption_key_rsa"
         elif key == "diskEncryptionKeySha256":
             suggest = "disk_encryption_key_sha256"
+        elif key == "diskEncryptionServiceAccount":
+            suggest = "disk_encryption_service_account"
         elif key == "guestOsFeatures":
             suggest = "guest_os_features"
         elif key == "initializeParams":
@@ -8740,7 +9292,9 @@ class InstanceFromMachineImageBootDisk(dict):
                  auto_delete: Optional[bool] = None,
                  device_name: Optional[str] = None,
                  disk_encryption_key_raw: Optional[str] = None,
+                 disk_encryption_key_rsa: Optional[str] = None,
                  disk_encryption_key_sha256: Optional[str] = None,
+                 disk_encryption_service_account: Optional[str] = None,
                  guest_os_features: Optional[Sequence[str]] = None,
                  initialize_params: Optional['outputs.InstanceFromMachineImageBootDiskInitializeParams'] = None,
                  interface: Optional[str] = None,
@@ -8750,12 +9304,14 @@ class InstanceFromMachineImageBootDisk(dict):
         """
         :param bool auto_delete: Whether the disk will be auto-deleted when the instance is deleted.
         :param str device_name: Name with which attached disk will be accessible under /dev/disk/by-id/
-        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+        :param str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         :param str disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
         :param Sequence[str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param 'InstanceFromMachineImageBootDiskInitializeParamsArgs' initialize_params: Parameters with which a disk was created alongside the instance.
         :param str interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
-        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         :param str mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
         :param str source: The name or self_link of the disk attached to this instance.
         """
@@ -8765,8 +9321,12 @@ class InstanceFromMachineImageBootDisk(dict):
             pulumi.set(__self__, "device_name", device_name)
         if disk_encryption_key_raw is not None:
             pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        if disk_encryption_key_rsa is not None:
+            pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         if disk_encryption_key_sha256 is not None:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if disk_encryption_service_account is not None:
+            pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if initialize_params is not None:
@@ -8800,9 +9360,17 @@ class InstanceFromMachineImageBootDisk(dict):
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> Optional[str]:
         """
-        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         """
         return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRsa")
+    def disk_encryption_key_rsa(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+        """
+        return pulumi.get(self, "disk_encryption_key_rsa")
 
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
@@ -8811,6 +9379,14 @@ class InstanceFromMachineImageBootDisk(dict):
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
+
+    @property
+    @pulumi.getter(name="diskEncryptionServiceAccount")
+    def disk_encryption_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        """
+        return pulumi.get(self, "disk_encryption_service_account")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -8840,7 +9416,7 @@ class InstanceFromMachineImageBootDisk(dict):
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[str]:
         """
-        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -8876,6 +9452,10 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
             suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
+        elif key == "sourceImageEncryptionKey":
+            suggest = "source_image_encryption_key"
+        elif key == "sourceSnapshotEncryptionKey":
+            suggest = "source_snapshot_encryption_key"
         elif key == "storagePool":
             suggest = "storage_pool"
 
@@ -8900,6 +9480,9 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
                  resource_manager_tags: Optional[Mapping[str, str]] = None,
                  resource_policies: Optional[str] = None,
                  size: Optional[int] = None,
+                 snapshot: Optional[str] = None,
+                 source_image_encryption_key: Optional['outputs.InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey'] = None,
+                 source_snapshot_encryption_key: Optional['outputs.InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey'] = None,
                  storage_pool: Optional[str] = None,
                  type: Optional[str] = None):
         """
@@ -8912,6 +9495,9 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param str resource_policies: A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param int size: The size of the image in gigabytes.
+        :param str snapshot: The snapshot from which this disk was initialised.
+        :param 'InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKeyArgs' source_image_encryption_key: The encryption key used to decrypt the source image.
+        :param 'InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs' source_snapshot_encryption_key: The encryption key used to decrypt the source snapshot.
         :param str storage_pool: The URL of the storage pool in which the new disk is created
         :param str type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         """
@@ -8933,6 +9519,12 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
             pulumi.set(__self__, "resource_policies", resource_policies)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if snapshot is not None:
+            pulumi.set(__self__, "snapshot", snapshot)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if storage_pool is not None:
             pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
@@ -9011,6 +9603,30 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
         return pulumi.get(self, "size")
 
     @property
+    @pulumi.getter
+    def snapshot(self) -> Optional[str]:
+        """
+        The snapshot from which this disk was initialised.
+        """
+        return pulumi.get(self, "snapshot")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> Optional['outputs.InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey']:
+        """
+        The encryption key used to decrypt the source image.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> Optional['outputs.InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey']:
+        """
+        The encryption key used to decrypt the source snapshot.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @property
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> Optional[str]:
         """
@@ -9025,6 +9641,186 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
         The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 raw_key: Optional[str] = None,
+                 rsa_encrypted_key: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str sha256: The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 raw_key: Optional[str] = None,
+                 rsa_encrypted_key: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str sha256: The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        return pulumi.get(self, "sha256")
 
 
 @pulumi.output_type
@@ -9110,6 +9906,68 @@ class InstanceFromMachineImageGuestAccelerator(dict):
         The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class InstanceFromMachineImageInstanceEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageInstanceEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromMachineImageInstanceEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromMachineImageInstanceEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str sha256: The SHA256 hash of the customer's encryption key.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The SHA256 hash of the customer's encryption key.
+        """
+        return pulumi.get(self, "sha256")
 
 
 @pulumi.output_type
@@ -10350,6 +11208,74 @@ class InstanceFromMachineImageShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
+class InstanceFromMachineImageSourceMachineImageEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageSourceMachineImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromMachineImageSourceMachineImageEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromMachineImageSourceMachineImageEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 raw_key: Optional[str] = None,
+                 rsa_encrypted_key: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[str]:
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[str]:
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
 class InstanceFromTemplateAdvancedMachineFeatures(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -10464,8 +11390,12 @@ class InstanceFromTemplateAttachedDisk(dict):
             suggest = "device_name"
         elif key == "diskEncryptionKeyRaw":
             suggest = "disk_encryption_key_raw"
+        elif key == "diskEncryptionKeyRsa":
+            suggest = "disk_encryption_key_rsa"
         elif key == "diskEncryptionKeySha256":
             suggest = "disk_encryption_key_sha256"
+        elif key == "diskEncryptionServiceAccount":
+            suggest = "disk_encryption_service_account"
         elif key == "kmsKeySelfLink":
             suggest = "kms_key_self_link"
 
@@ -10484,15 +11414,19 @@ class InstanceFromTemplateAttachedDisk(dict):
                  source: str,
                  device_name: Optional[str] = None,
                  disk_encryption_key_raw: Optional[str] = None,
+                 disk_encryption_key_rsa: Optional[str] = None,
                  disk_encryption_key_sha256: Optional[str] = None,
+                 disk_encryption_service_account: Optional[str] = None,
                  kms_key_self_link: Optional[str] = None,
                  mode: Optional[str] = None):
         """
         :param str source: The name or self_link of the disk attached to this instance.
         :param str device_name: Name with which the attached disk is accessible under /dev/disk/by-id/
-        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+        :param str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param str disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
-        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param str mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
         """
         pulumi.set(__self__, "source", source)
@@ -10500,8 +11434,12 @@ class InstanceFromTemplateAttachedDisk(dict):
             pulumi.set(__self__, "device_name", device_name)
         if disk_encryption_key_raw is not None:
             pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        if disk_encryption_key_rsa is not None:
+            pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         if disk_encryption_key_sha256 is not None:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if disk_encryption_service_account is not None:
+            pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if mode is not None:
@@ -10527,9 +11465,17 @@ class InstanceFromTemplateAttachedDisk(dict):
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> Optional[str]:
         """
-        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         """
         return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRsa")
+    def disk_encryption_key_rsa(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+        """
+        return pulumi.get(self, "disk_encryption_key_rsa")
 
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
@@ -10540,10 +11486,18 @@ class InstanceFromTemplateAttachedDisk(dict):
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @property
+    @pulumi.getter(name="diskEncryptionServiceAccount")
+    def disk_encryption_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        """
+        return pulumi.get(self, "disk_encryption_service_account")
+
+    @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[str]:
         """
-        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -10567,8 +11521,12 @@ class InstanceFromTemplateBootDisk(dict):
             suggest = "device_name"
         elif key == "diskEncryptionKeyRaw":
             suggest = "disk_encryption_key_raw"
+        elif key == "diskEncryptionKeyRsa":
+            suggest = "disk_encryption_key_rsa"
         elif key == "diskEncryptionKeySha256":
             suggest = "disk_encryption_key_sha256"
+        elif key == "diskEncryptionServiceAccount":
+            suggest = "disk_encryption_service_account"
         elif key == "guestOsFeatures":
             suggest = "guest_os_features"
         elif key == "initializeParams":
@@ -10591,7 +11549,9 @@ class InstanceFromTemplateBootDisk(dict):
                  auto_delete: Optional[bool] = None,
                  device_name: Optional[str] = None,
                  disk_encryption_key_raw: Optional[str] = None,
+                 disk_encryption_key_rsa: Optional[str] = None,
                  disk_encryption_key_sha256: Optional[str] = None,
+                 disk_encryption_service_account: Optional[str] = None,
                  guest_os_features: Optional[Sequence[str]] = None,
                  initialize_params: Optional['outputs.InstanceFromTemplateBootDiskInitializeParams'] = None,
                  interface: Optional[str] = None,
@@ -10601,12 +11561,14 @@ class InstanceFromTemplateBootDisk(dict):
         """
         :param bool auto_delete: Whether the disk will be auto-deleted when the instance is deleted.
         :param str device_name: Name with which attached disk will be accessible under /dev/disk/by-id/
-        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+        :param str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         :param str disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
         :param Sequence[str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param 'InstanceFromTemplateBootDiskInitializeParamsArgs' initialize_params: Parameters with which a disk was created alongside the instance.
         :param str interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
-        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         :param str mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
         :param str source: The name or self_link of the disk attached to this instance.
         """
@@ -10616,8 +11578,12 @@ class InstanceFromTemplateBootDisk(dict):
             pulumi.set(__self__, "device_name", device_name)
         if disk_encryption_key_raw is not None:
             pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        if disk_encryption_key_rsa is not None:
+            pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         if disk_encryption_key_sha256 is not None:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        if disk_encryption_service_account is not None:
+            pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if initialize_params is not None:
@@ -10651,9 +11617,17 @@ class InstanceFromTemplateBootDisk(dict):
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> Optional[str]:
         """
-        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         """
         return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRsa")
+    def disk_encryption_key_rsa(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+        """
+        return pulumi.get(self, "disk_encryption_key_rsa")
 
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
@@ -10662,6 +11636,14 @@ class InstanceFromTemplateBootDisk(dict):
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
+
+    @property
+    @pulumi.getter(name="diskEncryptionServiceAccount")
+    def disk_encryption_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        """
+        return pulumi.get(self, "disk_encryption_service_account")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -10691,7 +11673,7 @@ class InstanceFromTemplateBootDisk(dict):
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[str]:
         """
-        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -10727,6 +11709,10 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
             suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
+        elif key == "sourceImageEncryptionKey":
+            suggest = "source_image_encryption_key"
+        elif key == "sourceSnapshotEncryptionKey":
+            suggest = "source_snapshot_encryption_key"
         elif key == "storagePool":
             suggest = "storage_pool"
 
@@ -10751,6 +11737,9 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
                  resource_manager_tags: Optional[Mapping[str, str]] = None,
                  resource_policies: Optional[str] = None,
                  size: Optional[int] = None,
+                 snapshot: Optional[str] = None,
+                 source_image_encryption_key: Optional['outputs.InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey'] = None,
+                 source_snapshot_encryption_key: Optional['outputs.InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey'] = None,
                  storage_pool: Optional[str] = None,
                  type: Optional[str] = None):
         """
@@ -10763,6 +11752,9 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param str resource_policies: A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param int size: The size of the image in gigabytes.
+        :param str snapshot: The snapshot from which this disk was initialised.
+        :param 'InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKeyArgs' source_image_encryption_key: The encryption key used to decrypt the source image.
+        :param 'InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKeyArgs' source_snapshot_encryption_key: The encryption key used to decrypt the source snapshot.
         :param str storage_pool: The URL of the storage pool in which the new disk is created
         :param str type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         """
@@ -10784,6 +11776,12 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
             pulumi.set(__self__, "resource_policies", resource_policies)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if snapshot is not None:
+            pulumi.set(__self__, "snapshot", snapshot)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if storage_pool is not None:
             pulumi.set(__self__, "storage_pool", storage_pool)
         if type is not None:
@@ -10862,6 +11860,30 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
         return pulumi.get(self, "size")
 
     @property
+    @pulumi.getter
+    def snapshot(self) -> Optional[str]:
+        """
+        The snapshot from which this disk was initialised.
+        """
+        return pulumi.get(self, "snapshot")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> Optional['outputs.InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey']:
+        """
+        The encryption key used to decrypt the source image.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> Optional['outputs.InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey']:
+        """
+        The encryption key used to decrypt the source snapshot.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @property
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> Optional[str]:
         """
@@ -10876,6 +11898,186 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
         The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromTemplateBootDiskInitializeParamsSourceImageEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 raw_key: Optional[str] = None,
+                 rsa_encrypted_key: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str sha256: The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromTemplateBootDiskInitializeParamsSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 raw_key: Optional[str] = None,
+                 rsa_encrypted_key: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str sha256: The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        return pulumi.get(self, "sha256")
 
 
 @pulumi.output_type
@@ -10961,6 +12163,68 @@ class InstanceFromTemplateGuestAccelerator(dict):
         The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class InstanceFromTemplateInstanceEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateInstanceEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromTemplateInstanceEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromTemplateInstanceEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str sha256: The SHA256 hash of the customer's encryption key.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The SHA256 hash of the customer's encryption key.
+        """
+        return pulumi.get(self, "sha256")
 
 
 @pulumi.output_type
@@ -13271,6 +14535,70 @@ class InstanceIAMMemberCondition(dict):
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class InstanceInstanceEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceInstanceEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceInstanceEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceInstanceEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
+                 sha256: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self_link of the encryption key that is
+               stored in Google Cloud KMS to encrypt the data on this instance.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str sha256: The SHA256 hash of the customer's encryption key.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[str]:
+        """
+        The self_link of the encryption key that is
+        stored in Google Cloud KMS to encrypt the data on this instance.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The SHA256 hash of the customer's encryption key.
+        """
+        return pulumi.get(self, "sha256")
 
 
 @pulumi.output_type
@@ -39585,6 +40913,8 @@ class RouterBgpAdvertisedIpRange(dict):
         :param str range: The IP range to advertise. The value must be a
                CIDR-formatted string.
         :param str description: User-specified description for the IP range.
+               
+               <a name="nested_md5_authentication_keys"></a>The `md5_authentication_keys` block supports:
         """
         pulumi.set(__self__, "range", range)
         if description is not None:
@@ -39604,8 +40934,49 @@ class RouterBgpAdvertisedIpRange(dict):
     def description(self) -> Optional[str]:
         """
         User-specified description for the IP range.
+
+        <a name="nested_md5_authentication_keys"></a>The `md5_authentication_keys` block supports:
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RouterMd5AuthenticationKeys(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 name: str):
+        """
+        :param str key: Value of the key used for MD5 authentication.
+        :param str name: Name of the resource. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?`
+               which means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Value of the key used for MD5 authentication.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource. The name must be 1-63 characters long, and
+        comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?`
+        which means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -43396,6 +44767,8 @@ class SnapshotSnapshotEncryptionKey(dict):
             suggest = "kms_key_service_account"
         elif key == "rawKey":
             suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SnapshotSnapshotEncryptionKey. Access the value via the '{suggest}' property getter instead.")
@@ -43412,12 +44785,16 @@ class SnapshotSnapshotEncryptionKey(dict):
                  kms_key_self_link: Optional[str] = None,
                  kms_key_service_account: Optional[str] = None,
                  raw_key: Optional[str] = None,
+                 rsa_encrypted_key: Optional[str] = None,
                  sha256: Optional[str] = None):
         """
         :param str kms_key_self_link: The name of the encryption key that is stored in Google Cloud KMS.
         :param str kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param str rsa_encrypted_key: Specifies an encryption key stored in Google Cloud KMS, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param str sha256: (Output)
@@ -43430,6 +44807,8 @@ class SnapshotSnapshotEncryptionKey(dict):
             pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
         if raw_key is not None:
             pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
         if sha256 is not None:
             pulumi.set(__self__, "sha256", sha256)
 
@@ -43459,6 +44838,16 @@ class SnapshotSnapshotEncryptionKey(dict):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[str]:
+        """
+        Specifies an encryption key stored in Google Cloud KMS, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
 
     @property
     @pulumi.getter
@@ -48795,7 +50184,9 @@ class URLMapPathMatcherRouteRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "headerAction":
+        if key == "customErrorResponsePolicy":
+            suggest = "custom_error_response_policy"
+        elif key == "headerAction":
             suggest = "header_action"
         elif key == "matchRules":
             suggest = "match_rules"
@@ -48817,6 +50208,7 @@ class URLMapPathMatcherRouteRule(dict):
 
     def __init__(__self__, *,
                  priority: int,
+                 custom_error_response_policy: Optional['outputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicy'] = None,
                  header_action: Optional['outputs.URLMapPathMatcherRouteRuleHeaderAction'] = None,
                  match_rules: Optional[Sequence['outputs.URLMapPathMatcherRouteRuleMatchRule']] = None,
                  route_action: Optional['outputs.URLMapPathMatcherRouteRuleRouteAction'] = None,
@@ -48836,6 +50228,8 @@ class URLMapPathMatcherRouteRule(dict):
                1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
                you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
                future without any impact on existing rules.
+        :param 'URLMapPathMatcherRouteRuleCustomErrorResponsePolicyArgs' custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+               Structure is documented below.
         :param 'URLMapPathMatcherRouteRuleHeaderActionArgs' header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService. The headerAction specified here are applied before
                the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
@@ -48863,6 +50257,8 @@ class URLMapPathMatcherRouteRule(dict):
                Structure is documented below.
         """
         pulumi.set(__self__, "priority", priority)
+        if custom_error_response_policy is not None:
+            pulumi.set(__self__, "custom_error_response_policy", custom_error_response_policy)
         if header_action is not None:
             pulumi.set(__self__, "header_action", header_action)
         if match_rules is not None:
@@ -48893,6 +50289,15 @@ class URLMapPathMatcherRouteRule(dict):
         future without any impact on existing rules.
         """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="customErrorResponsePolicy")
+    def custom_error_response_policy(self) -> Optional['outputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicy']:
+        """
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_error_response_policy")
 
     @property
     @pulumi.getter(name="headerAction")
@@ -48953,6 +50358,152 @@ class URLMapPathMatcherRouteRule(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "url_redirect")
+
+
+@pulumi.output_type
+class URLMapPathMatcherRouteRuleCustomErrorResponsePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorResponseRules":
+            suggest = "error_response_rules"
+        elif key == "errorService":
+            suggest = "error_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in URLMapPathMatcherRouteRuleCustomErrorResponsePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        URLMapPathMatcherRouteRuleCustomErrorResponsePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        URLMapPathMatcherRouteRuleCustomErrorResponsePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_response_rules: Optional[Sequence['outputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule']] = None,
+                 error_service: Optional[str] = None):
+        """
+        :param Sequence['URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRuleArgs'] error_response_rules: Specifies rules for returning error responses.
+               In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+               For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+               If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+               Structure is documented below.
+        :param str error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+               https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               global/backendBuckets/myBackendBucket
+               If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+               If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+        if error_response_rules is not None:
+            pulumi.set(__self__, "error_response_rules", error_response_rules)
+        if error_service is not None:
+            pulumi.set(__self__, "error_service", error_service)
+
+    @property
+    @pulumi.getter(name="errorResponseRules")
+    def error_response_rules(self) -> Optional[Sequence['outputs.URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule']]:
+        """
+        Specifies rules for returning error responses.
+        In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+        For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+        If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_response_rules")
+
+    @property
+    @pulumi.getter(name="errorService")
+    def error_service(self) -> Optional[str]:
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        global/backendBuckets/myBackendBucket
+        If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+        If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+        """
+        return pulumi.get(self, "error_service")
+
+
+@pulumi.output_type
+class URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchResponseCodes":
+            suggest = "match_response_codes"
+        elif key == "overrideResponseCode":
+            suggest = "override_response_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_response_codes: Optional[Sequence[str]] = None,
+                 override_response_code: Optional[int] = None,
+                 path: Optional[str] = None):
+        """
+        :param Sequence[str] match_response_codes: Valid values include:
+               - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+               - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+               - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+               Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        :param int override_response_code: The HTTP status code returned with the response containing the custom error content.
+               If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        :param str path: The full path to a file within backendBucket. For example: /errors/defaultError.html
+               path must start with a leading slash. path cannot have trailing slashes.
+               If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+               The value must be from 1 to 1024 characters.
+        """
+        if match_response_codes is not None:
+            pulumi.set(__self__, "match_response_codes", match_response_codes)
+        if override_response_code is not None:
+            pulumi.set(__self__, "override_response_code", override_response_code)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="matchResponseCodes")
+    def match_response_codes(self) -> Optional[Sequence[str]]:
+        """
+        Valid values include:
+        - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+        - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+        - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+        Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        return pulumi.get(self, "match_response_codes")
+
+    @property
+    @pulumi.getter(name="overrideResponseCode")
+    def override_response_code(self) -> Optional[int]:
+        """
+        The HTTP status code returned with the response containing the custom error content.
+        If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        return pulumi.get(self, "override_response_code")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The full path to a file within backendBucket. For example: /errors/defaultError.html
+        path must start with a leading slash. path cannot have trailing slashes.
+        If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+        The value must be from 1 to 1024 characters.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type
@@ -52950,6 +54501,93 @@ class GetBackendServiceStrongSessionAffinityCookyTtlResult(dict):
 
 
 @pulumi.output_type
+class GetBackendServiceTlsSettingResult(dict):
+    def __init__(__self__, *,
+                 authentication_config: str,
+                 sni: str,
+                 subject_alt_names: Sequence['outputs.GetBackendServiceTlsSettingSubjectAltNameResult']):
+        """
+        :param str authentication_config: Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+               Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+               Can only be specified if authenticationMode is not NONE.
+        :param str sni: Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+               TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+               server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+               regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+        :param Sequence['GetBackendServiceTlsSettingSubjectAltNameArgs'] subject_alt_names: A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+               When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+               and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+               When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+               subjectAltNames.
+        """
+        pulumi.set(__self__, "authentication_config", authentication_config)
+        pulumi.set(__self__, "sni", sni)
+        pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @property
+    @pulumi.getter(name="authenticationConfig")
+    def authentication_config(self) -> str:
+        """
+        Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+        Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+        Can only be specified if authenticationMode is not NONE.
+        """
+        return pulumi.get(self, "authentication_config")
+
+    @property
+    @pulumi.getter
+    def sni(self) -> str:
+        """
+        Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+        TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+        server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+        regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+        """
+        return pulumi.get(self, "sni")
+
+    @property
+    @pulumi.getter(name="subjectAltNames")
+    def subject_alt_names(self) -> Sequence['outputs.GetBackendServiceTlsSettingSubjectAltNameResult']:
+        """
+        A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+        When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+        and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+        When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+        subjectAltNames.
+        """
+        return pulumi.get(self, "subject_alt_names")
+
+
+@pulumi.output_type
+class GetBackendServiceTlsSettingSubjectAltNameResult(dict):
+    def __init__(__self__, *,
+                 dns_name: str,
+                 uniform_resource_identifier: str):
+        """
+        :param str dns_name: The SAN specified as a DNS Name.
+        :param str uniform_resource_identifier: The SAN specified as a URI.
+        """
+        pulumi.set(__self__, "dns_name", dns_name)
+        pulumi.set(__self__, "uniform_resource_identifier", uniform_resource_identifier)
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> str:
+        """
+        The SAN specified as a DNS Name.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="uniformResourceIdentifier")
+    def uniform_resource_identifier(self) -> str:
+        """
+        The SAN specified as a URI.
+        """
+        return pulumi.get(self, "uniform_resource_identifier")
+
+
+@pulumi.output_type
 class GetDiskAsyncPrimaryDiskResult(dict):
     def __init__(__self__, *,
                  disk: str):
@@ -55195,24 +56833,30 @@ class GetInstanceAttachedDiskResult(dict):
     def __init__(__self__, *,
                  device_name: str,
                  disk_encryption_key_raw: str,
+                 disk_encryption_key_rsa: str,
                  disk_encryption_key_sha256: str,
+                 disk_encryption_service_account: str,
                  kms_key_self_link: str,
                  mode: str,
                  source: str):
         """
         :param str device_name: Name with which the attached disk is accessible
                under `/dev/disk/by-id/`
-        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+        :param str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param str disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key]
                (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
-        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         :param str mode: Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
         :param str source: The self_link of the disk attached to this instance.
         """
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
         pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "source", source)
@@ -55230,9 +56874,17 @@ class GetInstanceAttachedDiskResult(dict):
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> str:
         """
-        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         """
         return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRsa")
+    def disk_encryption_key_rsa(self) -> str:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
+        """
+        return pulumi.get(self, "disk_encryption_key_rsa")
 
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
@@ -55245,10 +56897,18 @@ class GetInstanceAttachedDiskResult(dict):
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @property
+    @pulumi.getter(name="diskEncryptionServiceAccount")
+    def disk_encryption_service_account(self) -> str:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        """
+        return pulumi.get(self, "disk_encryption_service_account")
+
+    @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> str:
         """
-        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -55275,7 +56935,9 @@ class GetInstanceBootDiskResult(dict):
                  auto_delete: bool,
                  device_name: str,
                  disk_encryption_key_raw: str,
+                 disk_encryption_key_rsa: str,
                  disk_encryption_key_sha256: str,
+                 disk_encryption_service_account: str,
                  guest_os_features: Sequence[str],
                  initialize_params: Sequence['outputs.GetInstanceBootDiskInitializeParamResult'],
                  interface: str,
@@ -55286,22 +56948,26 @@ class GetInstanceBootDiskResult(dict):
         :param bool auto_delete: Whether the disk will be auto-deleted when the instance is deleted.
         :param str device_name: Name with which the attached disk is accessible
                under `/dev/disk/by-id/`
-        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+        :param str disk_encryption_key_rsa: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         :param str disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key]
                (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
+        :param str disk_encryption_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
         :param Sequence[str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param Sequence['GetInstanceBootDiskInitializeParamArgs'] initialize_params: Parameters with which a disk was created alongside the instance.
                Structure is documented below.
         :param str interface: The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
-        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         :param str mode: Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
         :param str source: The self_link of the disk attached to this instance.
         """
         pulumi.set(__self__, "auto_delete", auto_delete)
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
+        pulumi.set(__self__, "disk_encryption_key_rsa", disk_encryption_key_rsa)
         pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
+        pulumi.set(__self__, "disk_encryption_service_account", disk_encryption_service_account)
         pulumi.set(__self__, "guest_os_features", guest_os_features)
         pulumi.set(__self__, "initialize_params", initialize_params)
         pulumi.set(__self__, "interface", interface)
@@ -55330,9 +56996,17 @@ class GetInstanceBootDiskResult(dict):
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> str:
         """
-        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         """
         return pulumi.get(self, "disk_encryption_key_raw")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyRsa")
+    def disk_encryption_key_rsa(self) -> str:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
+        """
+        return pulumi.get(self, "disk_encryption_key_rsa")
 
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
@@ -55343,6 +57017,14 @@ class GetInstanceBootDiskResult(dict):
         (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
+
+    @property
+    @pulumi.getter(name="diskEncryptionServiceAccount")
+    def disk_encryption_service_account(self) -> str:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used
+        """
+        return pulumi.get(self, "disk_encryption_service_account")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -55373,7 +57055,7 @@ class GetInstanceBootDiskResult(dict):
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> str:
         """
-        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -55406,6 +57088,9 @@ class GetInstanceBootDiskInitializeParamResult(dict):
                  resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  size: int,
+                 snapshot: str,
+                 source_image_encryption_keys: Sequence['outputs.GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyResult'],
+                 source_snapshot_encryption_keys: Sequence['outputs.GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyResult'],
                  storage_pool: str,
                  type: str):
         """
@@ -55418,6 +57103,9 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence[str] resource_policies: A list of self_links to resource policies attached to the selected `boot_disk`
         :param int size: The size of the image in gigabytes.
+        :param str snapshot: The snapshot from which this disk was initialised.
+        :param Sequence['GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyArgs'] source_image_encryption_keys: The encryption key used to decrypt the source image.
+        :param Sequence['GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_keys: The encryption key used to decrypt the source snapshot.
         :param str storage_pool: The URL of the storage pool in which the new disk is created
         :param str type: The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
         """
@@ -55430,6 +57118,9 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "snapshot", snapshot)
+        pulumi.set(__self__, "source_image_encryption_keys", source_image_encryption_keys)
+        pulumi.set(__self__, "source_snapshot_encryption_keys", source_snapshot_encryption_keys)
         pulumi.set(__self__, "storage_pool", storage_pool)
         pulumi.set(__self__, "type", type)
 
@@ -55506,6 +57197,30 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         return pulumi.get(self, "size")
 
     @property
+    @pulumi.getter
+    def snapshot(self) -> str:
+        """
+        The snapshot from which this disk was initialised.
+        """
+        return pulumi.get(self, "snapshot")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKeys")
+    def source_image_encryption_keys(self) -> Sequence['outputs.GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyResult']:
+        """
+        The encryption key used to decrypt the source image.
+        """
+        return pulumi.get(self, "source_image_encryption_keys")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKeys")
+    def source_snapshot_encryption_keys(self) -> Sequence['outputs.GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyResult']:
+        """
+        The encryption key used to decrypt the source snapshot.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_keys")
+
+    @property
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> str:
         """
@@ -55520,6 +57235,130 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstanceBootDiskInitializeParamSourceImageEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str,
+                 raw_key: str,
+                 rsa_encrypted_key: str,
+                 sha256: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str sha256: The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> str:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> str:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        """
+        The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class GetInstanceBootDiskInitializeParamSourceSnapshotEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str,
+                 raw_key: str,
+                 rsa_encrypted_key: str,
+                 sha256: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param str sha256: The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> str:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> str:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        """
+        The SHA256 hash of the encryption key used to encrypt this disk.
+        """
+        return pulumi.get(self, "sha256")
 
 
 @pulumi.output_type
@@ -56230,6 +58069,46 @@ class GetInstanceGuestAttributesQueryValueResult(dict):
         Value of the guest_attribute.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetInstanceInstanceEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str,
+                 sha256: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS.
+        :param str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param str sha256: The SHA256 hash of the customer's encryption key.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        """
+        The SHA256 hash of the customer's encryption key.
+        """
+        return pulumi.get(self, "sha256")
 
 
 @pulumi.output_type
@@ -58782,6 +60661,1524 @@ class GetMachineTypesMachineTypeDeprecatedResult(dict):
         The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceBackendResult(dict):
+    def __init__(__self__, *,
+                 balancing_mode: str,
+                 capacity_scaler: float,
+                 custom_metrics: Sequence['outputs.GetRegionBackendServiceBackendCustomMetricResult'],
+                 description: str,
+                 failover: bool,
+                 group: str,
+                 max_connections: int,
+                 max_connections_per_endpoint: int,
+                 max_connections_per_instance: int,
+                 max_rate: int,
+                 max_rate_per_endpoint: float,
+                 max_rate_per_instance: float,
+                 max_utilization: float):
+        """
+        :param str balancing_mode: Specifies the balancing mode for this backend.
+               
+               See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+               for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+        :param float capacity_scaler: A multiplier applied to the group's maximum servicing capacity
+               (based on UTILIZATION, RATE or CONNECTION).
+               
+               ~>**NOTE**: This field cannot be set for
+               INTERNAL region backend services (default loadBalancingScheme),
+               but is required for non-INTERNAL backend service. The total
+               capacity_scaler for all backends must be non-zero.
+               
+               A setting of 0 means the group is completely drained, offering
+               0% of its available Capacity. Valid range is [0.0,1.0].
+        :param Sequence['GetRegionBackendServiceBackendCustomMetricArgs'] custom_metrics: The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+        :param str description: An optional description of this resource.
+               Provide this property when you create the resource.
+        :param bool failover: This field designates whether this is a failover backend. More
+               than one failover backend can be configured for a given RegionBackendService.
+        :param str group: The fully-qualified URL of an Instance Group or Network Endpoint
+               Group resource. In case of instance group this defines the list
+               of instances that serve traffic. Member virtual machine
+               instances from each instance group must live in the same zone as
+               the instance group itself. No two backends in a backend service
+               are allowed to use same Instance Group resource.
+               
+               For Network Endpoint Groups this defines list of endpoints. All
+               endpoints of Network Endpoint Group must be hosted on instances
+               located in the same zone as the Network Endpoint Group.
+               
+               Backend services cannot mix Instance Group and
+               Network Endpoint Group backends.
+               
+               When the 'load_balancing_scheme' is INTERNAL, only instance groups
+               are supported.
+               
+               Note that you must specify an Instance Group or Network Endpoint
+               Group resource using the fully-qualified URL, rather than a
+               partial URL.
+        :param int max_connections: The max number of simultaneous connections for the group. Can
+               be used with either CONNECTION or UTILIZATION balancing modes.
+               Cannot be set for INTERNAL backend services.
+               
+               For CONNECTION mode, either maxConnections or one
+               of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+               as appropriate for group type, must be set.
+        :param int max_connections_per_endpoint: The max number of simultaneous connections that a single backend
+               network endpoint can handle. Cannot be set
+               for INTERNAL backend services.
+               
+               This is used to calculate the capacity of the group. Can be
+               used in either CONNECTION or UTILIZATION balancing modes. For
+               CONNECTION mode, either maxConnections or
+               maxConnectionsPerEndpoint must be set.
+        :param int max_connections_per_instance: The max number of simultaneous connections that a single
+               backend instance can handle. Cannot be set for INTERNAL backend
+               services.
+               
+               This is used to calculate the capacity of the group.
+               Can be used in either CONNECTION or UTILIZATION balancing modes.
+               For CONNECTION mode, either maxConnections or
+               maxConnectionsPerInstance must be set.
+        :param int max_rate: The max requests per second (RPS) of the group. Cannot be set
+               for INTERNAL backend services.
+               
+               Can be used with either RATE or UTILIZATION balancing modes,
+               but required if RATE mode. Either maxRate or one
+               of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+               group type, must be set.
+        :param float max_rate_per_endpoint: The max requests per second (RPS) that a single backend network
+               endpoint can handle. This is used to calculate the capacity of
+               the group. Can be used in either balancing mode. For RATE mode,
+               either maxRate or maxRatePerEndpoint must be set. Cannot be set
+               for INTERNAL backend services.
+        :param float max_rate_per_instance: The max requests per second (RPS) that a single backend
+               instance can handle. This is used to calculate the capacity of
+               the group. Can be used in either balancing mode. For RATE mode,
+               either maxRate or maxRatePerInstance must be set. Cannot be set
+               for INTERNAL backend services.
+        :param float max_utilization: Used when balancingMode is UTILIZATION. This ratio defines the
+               CPU utilization target for the group. Valid range is [0.0, 1.0].
+               Cannot be set for INTERNAL backend services.
+        """
+        pulumi.set(__self__, "balancing_mode", balancing_mode)
+        pulumi.set(__self__, "capacity_scaler", capacity_scaler)
+        pulumi.set(__self__, "custom_metrics", custom_metrics)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "failover", failover)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "max_connections", max_connections)
+        pulumi.set(__self__, "max_connections_per_endpoint", max_connections_per_endpoint)
+        pulumi.set(__self__, "max_connections_per_instance", max_connections_per_instance)
+        pulumi.set(__self__, "max_rate", max_rate)
+        pulumi.set(__self__, "max_rate_per_endpoint", max_rate_per_endpoint)
+        pulumi.set(__self__, "max_rate_per_instance", max_rate_per_instance)
+        pulumi.set(__self__, "max_utilization", max_utilization)
+
+    @property
+    @pulumi.getter(name="balancingMode")
+    def balancing_mode(self) -> str:
+        """
+        Specifies the balancing mode for this backend.
+
+        See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+        for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+        """
+        return pulumi.get(self, "balancing_mode")
+
+    @property
+    @pulumi.getter(name="capacityScaler")
+    def capacity_scaler(self) -> float:
+        """
+        A multiplier applied to the group's maximum servicing capacity
+        (based on UTILIZATION, RATE or CONNECTION).
+
+        ~>**NOTE**: This field cannot be set for
+        INTERNAL region backend services (default loadBalancingScheme),
+        but is required for non-INTERNAL backend service. The total
+        capacity_scaler for all backends must be non-zero.
+
+        A setting of 0 means the group is completely drained, offering
+        0% of its available Capacity. Valid range is [0.0,1.0].
+        """
+        return pulumi.get(self, "capacity_scaler")
+
+    @property
+    @pulumi.getter(name="customMetrics")
+    def custom_metrics(self) -> Sequence['outputs.GetRegionBackendServiceBackendCustomMetricResult']:
+        """
+        The set of custom metrics that are used for <code>CUSTOM_METRICS</code> BalancingMode.
+        """
+        return pulumi.get(self, "custom_metrics")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        An optional description of this resource.
+        Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def failover(self) -> bool:
+        """
+        This field designates whether this is a failover backend. More
+        than one failover backend can be configured for a given RegionBackendService.
+        """
+        return pulumi.get(self, "failover")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        """
+        The fully-qualified URL of an Instance Group or Network Endpoint
+        Group resource. In case of instance group this defines the list
+        of instances that serve traffic. Member virtual machine
+        instances from each instance group must live in the same zone as
+        the instance group itself. No two backends in a backend service
+        are allowed to use same Instance Group resource.
+
+        For Network Endpoint Groups this defines list of endpoints. All
+        endpoints of Network Endpoint Group must be hosted on instances
+        located in the same zone as the Network Endpoint Group.
+
+        Backend services cannot mix Instance Group and
+        Network Endpoint Group backends.
+
+        When the 'load_balancing_scheme' is INTERNAL, only instance groups
+        are supported.
+
+        Note that you must specify an Instance Group or Network Endpoint
+        Group resource using the fully-qualified URL, rather than a
+        partial URL.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> int:
+        """
+        The max number of simultaneous connections for the group. Can
+        be used with either CONNECTION or UTILIZATION balancing modes.
+        Cannot be set for INTERNAL backend services.
+
+        For CONNECTION mode, either maxConnections or one
+        of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+        as appropriate for group type, must be set.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter(name="maxConnectionsPerEndpoint")
+    def max_connections_per_endpoint(self) -> int:
+        """
+        The max number of simultaneous connections that a single backend
+        network endpoint can handle. Cannot be set
+        for INTERNAL backend services.
+
+        This is used to calculate the capacity of the group. Can be
+        used in either CONNECTION or UTILIZATION balancing modes. For
+        CONNECTION mode, either maxConnections or
+        maxConnectionsPerEndpoint must be set.
+        """
+        return pulumi.get(self, "max_connections_per_endpoint")
+
+    @property
+    @pulumi.getter(name="maxConnectionsPerInstance")
+    def max_connections_per_instance(self) -> int:
+        """
+        The max number of simultaneous connections that a single
+        backend instance can handle. Cannot be set for INTERNAL backend
+        services.
+
+        This is used to calculate the capacity of the group.
+        Can be used in either CONNECTION or UTILIZATION balancing modes.
+        For CONNECTION mode, either maxConnections or
+        maxConnectionsPerInstance must be set.
+        """
+        return pulumi.get(self, "max_connections_per_instance")
+
+    @property
+    @pulumi.getter(name="maxRate")
+    def max_rate(self) -> int:
+        """
+        The max requests per second (RPS) of the group. Cannot be set
+        for INTERNAL backend services.
+
+        Can be used with either RATE or UTILIZATION balancing modes,
+        but required if RATE mode. Either maxRate or one
+        of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+        group type, must be set.
+        """
+        return pulumi.get(self, "max_rate")
+
+    @property
+    @pulumi.getter(name="maxRatePerEndpoint")
+    def max_rate_per_endpoint(self) -> float:
+        """
+        The max requests per second (RPS) that a single backend network
+        endpoint can handle. This is used to calculate the capacity of
+        the group. Can be used in either balancing mode. For RATE mode,
+        either maxRate or maxRatePerEndpoint must be set. Cannot be set
+        for INTERNAL backend services.
+        """
+        return pulumi.get(self, "max_rate_per_endpoint")
+
+    @property
+    @pulumi.getter(name="maxRatePerInstance")
+    def max_rate_per_instance(self) -> float:
+        """
+        The max requests per second (RPS) that a single backend
+        instance can handle. This is used to calculate the capacity of
+        the group. Can be used in either balancing mode. For RATE mode,
+        either maxRate or maxRatePerInstance must be set. Cannot be set
+        for INTERNAL backend services.
+        """
+        return pulumi.get(self, "max_rate_per_instance")
+
+    @property
+    @pulumi.getter(name="maxUtilization")
+    def max_utilization(self) -> float:
+        """
+        Used when balancingMode is UTILIZATION. This ratio defines the
+        CPU utilization target for the group. Valid range is [0.0, 1.0].
+        Cannot be set for INTERNAL backend services.
+        """
+        return pulumi.get(self, "max_utilization")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceBackendCustomMetricResult(dict):
+    def __init__(__self__, *,
+                 dry_run: bool,
+                 max_utilization: float,
+                 name: str):
+        """
+        :param bool dry_run: If true, the metric data is collected and reported to Cloud
+               Monitoring, but is not used for load balancing.
+        :param float max_utilization: Optional parameter to define a target utilization for the Custom Metrics
+               balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+        :param str name: The name of the regional backend service.
+        """
+        pulumi.set(__self__, "dry_run", dry_run)
+        pulumi.set(__self__, "max_utilization", max_utilization)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> bool:
+        """
+        If true, the metric data is collected and reported to Cloud
+        Monitoring, but is not used for load balancing.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @property
+    @pulumi.getter(name="maxUtilization")
+    def max_utilization(self) -> float:
+        """
+        Optional parameter to define a target utilization for the Custom Metrics
+        balancing mode. The valid range is <code>[0.0, 1.0]</code>.
+        """
+        return pulumi.get(self, "max_utilization")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the regional backend service.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceCdnPolicyResult(dict):
+    def __init__(__self__, *,
+                 cache_key_policies: Sequence['outputs.GetRegionBackendServiceCdnPolicyCacheKeyPolicyResult'],
+                 cache_mode: str,
+                 client_ttl: int,
+                 default_ttl: int,
+                 max_ttl: int,
+                 negative_caching: bool,
+                 negative_caching_policies: Sequence['outputs.GetRegionBackendServiceCdnPolicyNegativeCachingPolicyResult'],
+                 serve_while_stale: int,
+                 signed_url_cache_max_age_sec: int):
+        """
+        :param Sequence['GetRegionBackendServiceCdnPolicyCacheKeyPolicyArgs'] cache_key_policies: The CacheKeyPolicy for this CdnPolicy.
+        :param str cache_mode: Specifies the cache setting for all responses from this backend.
+               The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+        :param int client_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+        :param int default_ttl: Specifies the default TTL for cached content served by this origin for responses
+               that do not have an existing valid TTL (max-age or s-max-age).
+        :param int max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+        :param bool negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        :param Sequence['GetRegionBackendServiceCdnPolicyNegativeCachingPolicyArgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+               Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        :param int serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        :param int signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request
+               will be considered fresh, defaults to 1hr (3600s). After this
+               time period, the response will be revalidated before
+               being served.
+               
+               When serving responses to signed URL requests, Cloud CDN will
+               internally behave as though all responses from this backend had a
+               "Cache-Control: public, max-age=[TTL]" header, regardless of any
+               existing Cache-Control header. The actual headers served in
+               responses will not be altered.
+        """
+        pulumi.set(__self__, "cache_key_policies", cache_key_policies)
+        pulumi.set(__self__, "cache_mode", cache_mode)
+        pulumi.set(__self__, "client_ttl", client_ttl)
+        pulumi.set(__self__, "default_ttl", default_ttl)
+        pulumi.set(__self__, "max_ttl", max_ttl)
+        pulumi.set(__self__, "negative_caching", negative_caching)
+        pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        pulumi.set(__self__, "serve_while_stale", serve_while_stale)
+        pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="cacheKeyPolicies")
+    def cache_key_policies(self) -> Sequence['outputs.GetRegionBackendServiceCdnPolicyCacheKeyPolicyResult']:
+        """
+        The CacheKeyPolicy for this CdnPolicy.
+        """
+        return pulumi.get(self, "cache_key_policies")
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> str:
+        """
+        Specifies the cache setting for all responses from this backend.
+        The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+        """
+        return pulumi.get(self, "cache_mode")
+
+    @property
+    @pulumi.getter(name="clientTtl")
+    def client_ttl(self) -> int:
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
+        return pulumi.get(self, "client_ttl")
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> int:
+        """
+        Specifies the default TTL for cached content served by this origin for responses
+        that do not have an existing valid TTL (max-age or s-max-age).
+        """
+        return pulumi.get(self, "default_ttl")
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> int:
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
+        return pulumi.get(self, "max_ttl")
+
+    @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> bool:
+        """
+        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        """
+        return pulumi.get(self, "negative_caching")
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicies")
+    def negative_caching_policies(self) -> Sequence['outputs.GetRegionBackendServiceCdnPolicyNegativeCachingPolicyResult']:
+        """
+        Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        """
+        return pulumi.get(self, "negative_caching_policies")
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> int:
+        """
+        Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        """
+        return pulumi.get(self, "serve_while_stale")
+
+    @property
+    @pulumi.getter(name="signedUrlCacheMaxAgeSec")
+    def signed_url_cache_max_age_sec(self) -> int:
+        """
+        Maximum number of seconds the response to a signed URL request
+        will be considered fresh, defaults to 1hr (3600s). After this
+        time period, the response will be revalidated before
+        being served.
+
+        When serving responses to signed URL requests, Cloud CDN will
+        internally behave as though all responses from this backend had a
+        "Cache-Control: public, max-age=[TTL]" header, regardless of any
+        existing Cache-Control header. The actual headers served in
+        responses will not be altered.
+        """
+        return pulumi.get(self, "signed_url_cache_max_age_sec")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceCdnPolicyCacheKeyPolicyResult(dict):
+    def __init__(__self__, *,
+                 include_host: bool,
+                 include_named_cookies: Sequence[str],
+                 include_protocol: bool,
+                 include_query_string: bool,
+                 query_string_blacklists: Sequence[str],
+                 query_string_whitelists: Sequence[str]):
+        """
+        :param bool include_host: If true requests to different hosts will be cached separately.
+        :param Sequence[str] include_named_cookies: Names of cookies to include in cache keys.
+        :param bool include_protocol: If true, http and https requests will be cached separately.
+        :param bool include_query_string: If true, include query string parameters in the cache key
+               according to query_string_whitelist and
+               query_string_blacklist. If neither is set, the entire query
+               string will be included.
+               
+               If false, the query string will be excluded from the cache
+               key entirely.
+        :param Sequence[str] query_string_blacklists: Names of query string parameters to exclude in cache keys.
+               
+               All other parameters will be included. Either specify
+               query_string_whitelist or query_string_blacklist, not both.
+               '&' and '=' will be percent encoded and not treated as
+               delimiters.
+        :param Sequence[str] query_string_whitelists: Names of query string parameters to include in cache keys.
+               
+               All other parameters will be excluded. Either specify
+               query_string_whitelist or query_string_blacklist, not both.
+               '&' and '=' will be percent encoded and not treated as
+               delimiters.
+        """
+        pulumi.set(__self__, "include_host", include_host)
+        pulumi.set(__self__, "include_named_cookies", include_named_cookies)
+        pulumi.set(__self__, "include_protocol", include_protocol)
+        pulumi.set(__self__, "include_query_string", include_query_string)
+        pulumi.set(__self__, "query_string_blacklists", query_string_blacklists)
+        pulumi.set(__self__, "query_string_whitelists", query_string_whitelists)
+
+    @property
+    @pulumi.getter(name="includeHost")
+    def include_host(self) -> bool:
+        """
+        If true requests to different hosts will be cached separately.
+        """
+        return pulumi.get(self, "include_host")
+
+    @property
+    @pulumi.getter(name="includeNamedCookies")
+    def include_named_cookies(self) -> Sequence[str]:
+        """
+        Names of cookies to include in cache keys.
+        """
+        return pulumi.get(self, "include_named_cookies")
+
+    @property
+    @pulumi.getter(name="includeProtocol")
+    def include_protocol(self) -> bool:
+        """
+        If true, http and https requests will be cached separately.
+        """
+        return pulumi.get(self, "include_protocol")
+
+    @property
+    @pulumi.getter(name="includeQueryString")
+    def include_query_string(self) -> bool:
+        """
+        If true, include query string parameters in the cache key
+        according to query_string_whitelist and
+        query_string_blacklist. If neither is set, the entire query
+        string will be included.
+
+        If false, the query string will be excluded from the cache
+        key entirely.
+        """
+        return pulumi.get(self, "include_query_string")
+
+    @property
+    @pulumi.getter(name="queryStringBlacklists")
+    def query_string_blacklists(self) -> Sequence[str]:
+        """
+        Names of query string parameters to exclude in cache keys.
+
+        All other parameters will be included. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+        return pulumi.get(self, "query_string_blacklists")
+
+    @property
+    @pulumi.getter(name="queryStringWhitelists")
+    def query_string_whitelists(self) -> Sequence[str]:
+        """
+        Names of query string parameters to include in cache keys.
+
+        All other parameters will be excluded. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+        return pulumi.get(self, "query_string_whitelists")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceCdnPolicyNegativeCachingPolicyResult(dict):
+    def __init__(__self__, *,
+                 code: int,
+                 ttl: int):
+        """
+        :param int code: The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+               can be specified as values, and you cannot specify a status code more than once.
+        :param int ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+               (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        """
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+        can be specified as values, and you cannot specify a status code more than once.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> int:
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceCircuitBreakerResult(dict):
+    def __init__(__self__, *,
+                 connect_timeouts: Sequence['outputs.GetRegionBackendServiceCircuitBreakerConnectTimeoutResult'],
+                 max_connections: int,
+                 max_pending_requests: int,
+                 max_requests: int,
+                 max_requests_per_connection: int,
+                 max_retries: int):
+        """
+        :param Sequence['GetRegionBackendServiceCircuitBreakerConnectTimeoutArgs'] connect_timeouts: The timeout for new network connections to hosts.
+        :param int max_connections: The maximum number of connections to the backend cluster.
+               Defaults to 1024.
+        :param int max_pending_requests: The maximum number of pending requests to the backend cluster.
+               Defaults to 1024.
+        :param int max_requests: The maximum number of parallel requests to the backend cluster.
+               Defaults to 1024.
+        :param int max_requests_per_connection: Maximum requests for a single backend connection. This parameter
+               is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+               not specified, there is no limit. Setting this parameter to 1
+               will effectively disable keep alive.
+        :param int max_retries: The maximum number of parallel retries to the backend cluster.
+               Defaults to 3.
+        """
+        pulumi.set(__self__, "connect_timeouts", connect_timeouts)
+        pulumi.set(__self__, "max_connections", max_connections)
+        pulumi.set(__self__, "max_pending_requests", max_pending_requests)
+        pulumi.set(__self__, "max_requests", max_requests)
+        pulumi.set(__self__, "max_requests_per_connection", max_requests_per_connection)
+        pulumi.set(__self__, "max_retries", max_retries)
+
+    @property
+    @pulumi.getter(name="connectTimeouts")
+    def connect_timeouts(self) -> Sequence['outputs.GetRegionBackendServiceCircuitBreakerConnectTimeoutResult']:
+        """
+        The timeout for new network connections to hosts.
+        """
+        return pulumi.get(self, "connect_timeouts")
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> int:
+        """
+        The maximum number of connections to the backend cluster.
+        Defaults to 1024.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter(name="maxPendingRequests")
+    def max_pending_requests(self) -> int:
+        """
+        The maximum number of pending requests to the backend cluster.
+        Defaults to 1024.
+        """
+        return pulumi.get(self, "max_pending_requests")
+
+    @property
+    @pulumi.getter(name="maxRequests")
+    def max_requests(self) -> int:
+        """
+        The maximum number of parallel requests to the backend cluster.
+        Defaults to 1024.
+        """
+        return pulumi.get(self, "max_requests")
+
+    @property
+    @pulumi.getter(name="maxRequestsPerConnection")
+    def max_requests_per_connection(self) -> int:
+        """
+        Maximum requests for a single backend connection. This parameter
+        is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+        not specified, there is no limit. Setting this parameter to 1
+        will effectively disable keep alive.
+        """
+        return pulumi.get(self, "max_requests_per_connection")
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> int:
+        """
+        The maximum number of parallel retries to the backend cluster.
+        Defaults to 3.
+        """
+        return pulumi.get(self, "max_retries")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceCircuitBreakerConnectTimeoutResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        """
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        :param int seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        """
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceConnectionTrackingPolicyResult(dict):
+    def __init__(__self__, *,
+                 connection_persistence_on_unhealthy_backends: str,
+                 enable_strong_affinity: bool,
+                 idle_timeout_sec: int,
+                 tracking_mode: str):
+        """
+        :param str connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy.
+               
+               If set to 'DEFAULT_FOR_PROTOCOL', the existing connections persist on
+               unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+               and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+               or the Session Affinity is configured for 5-tuple. They do not persist
+               for UDP.
+               
+               If set to 'NEVER_PERSIST', after a backend becomes unhealthy, the existing
+               connections on the unhealthy backend are never persisted on the unhealthy
+               backend. They are always diverted to newly selected healthy backends
+               (unless all backends are unhealthy).
+               
+               If set to 'ALWAYS_PERSIST', existing connections always persist on
+               unhealthy backends regardless of protocol and session affinity. It is
+               generally not recommended to use this mode overriding the default. Default value: "DEFAULT_FOR_PROTOCOL" Possible values: ["DEFAULT_FOR_PROTOCOL", "NEVER_PERSIST", "ALWAYS_PERSIST"]
+        :param bool enable_strong_affinity: Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+        :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is
+               no matching traffic (in seconds).
+               
+               For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+               
+               For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+        :param str tracking_mode: Specifies the key used for connection tracking. There are two options:
+               'PER_CONNECTION': The Connection Tracking is performed as per the
+               Connection Key (default Hash Method) for the specific protocol.
+               
+               'PER_SESSION': The Connection Tracking is performed as per the
+               configured Session Affinity. It matches the configured Session Affinity. Default value: "PER_CONNECTION" Possible values: ["PER_CONNECTION", "PER_SESSION"]
+        """
+        pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
+        pulumi.set(__self__, "enable_strong_affinity", enable_strong_affinity)
+        pulumi.set(__self__, "idle_timeout_sec", idle_timeout_sec)
+        pulumi.set(__self__, "tracking_mode", tracking_mode)
+
+    @property
+    @pulumi.getter(name="connectionPersistenceOnUnhealthyBackends")
+    def connection_persistence_on_unhealthy_backends(self) -> str:
+        """
+        Specifies connection persistence when backends are unhealthy.
+
+        If set to 'DEFAULT_FOR_PROTOCOL', the existing connections persist on
+        unhealthy backends only for connection-oriented protocols (TCP and SCTP)
+        and only if the Tracking Mode is PER_CONNECTION (default tracking mode)
+        or the Session Affinity is configured for 5-tuple. They do not persist
+        for UDP.
+
+        If set to 'NEVER_PERSIST', after a backend becomes unhealthy, the existing
+        connections on the unhealthy backend are never persisted on the unhealthy
+        backend. They are always diverted to newly selected healthy backends
+        (unless all backends are unhealthy).
+
+        If set to 'ALWAYS_PERSIST', existing connections always persist on
+        unhealthy backends regardless of protocol and session affinity. It is
+        generally not recommended to use this mode overriding the default. Default value: "DEFAULT_FOR_PROTOCOL" Possible values: ["DEFAULT_FOR_PROTOCOL", "NEVER_PERSIST", "ALWAYS_PERSIST"]
+        """
+        return pulumi.get(self, "connection_persistence_on_unhealthy_backends")
+
+    @property
+    @pulumi.getter(name="enableStrongAffinity")
+    def enable_strong_affinity(self) -> bool:
+        """
+        Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+        """
+        return pulumi.get(self, "enable_strong_affinity")
+
+    @property
+    @pulumi.getter(name="idleTimeoutSec")
+    def idle_timeout_sec(self) -> int:
+        """
+        Specifies how long to keep a Connection Tracking entry while there is
+        no matching traffic (in seconds).
+
+        For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
+
+        For NLB the minimum(default) is 60 seconds and the maximum is 16 hours.
+        """
+        return pulumi.get(self, "idle_timeout_sec")
+
+    @property
+    @pulumi.getter(name="trackingMode")
+    def tracking_mode(self) -> str:
+        """
+        Specifies the key used for connection tracking. There are two options:
+        'PER_CONNECTION': The Connection Tracking is performed as per the
+        Connection Key (default Hash Method) for the specific protocol.
+
+        'PER_SESSION': The Connection Tracking is performed as per the
+        configured Session Affinity. It matches the configured Session Affinity. Default value: "PER_CONNECTION" Possible values: ["PER_CONNECTION", "PER_SESSION"]
+        """
+        return pulumi.get(self, "tracking_mode")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceConsistentHashResult(dict):
+    def __init__(__self__, *,
+                 http_cookies: Sequence['outputs.GetRegionBackendServiceConsistentHashHttpCookyResult'],
+                 http_header_name: str,
+                 minimum_ring_size: int):
+        """
+        :param Sequence['GetRegionBackendServiceConsistentHashHttpCookyArgs'] http_cookies: Hash is based on HTTP Cookie. This field describes a HTTP cookie
+               that will be used as the hash key for the consistent hash load
+               balancer. If the cookie is not present, it will be generated.
+               This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+        :param str http_header_name: The hash based on the value of the specified header field.
+               This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+        :param int minimum_ring_size: The minimum number of virtual nodes to use for the hash ring.
+               Larger ring sizes result in more granular load
+               distributions. If the number of hosts in the load balancing pool
+               is larger than the ring size, each host will be assigned a single
+               virtual node.
+               Defaults to 1024.
+        """
+        pulumi.set(__self__, "http_cookies", http_cookies)
+        pulumi.set(__self__, "http_header_name", http_header_name)
+        pulumi.set(__self__, "minimum_ring_size", minimum_ring_size)
+
+    @property
+    @pulumi.getter(name="httpCookies")
+    def http_cookies(self) -> Sequence['outputs.GetRegionBackendServiceConsistentHashHttpCookyResult']:
+        """
+        Hash is based on HTTP Cookie. This field describes a HTTP cookie
+        that will be used as the hash key for the consistent hash load
+        balancer. If the cookie is not present, it will be generated.
+        This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+        """
+        return pulumi.get(self, "http_cookies")
+
+    @property
+    @pulumi.getter(name="httpHeaderName")
+    def http_header_name(self) -> str:
+        """
+        The hash based on the value of the specified header field.
+        This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+        """
+        return pulumi.get(self, "http_header_name")
+
+    @property
+    @pulumi.getter(name="minimumRingSize")
+    def minimum_ring_size(self) -> int:
+        """
+        The minimum number of virtual nodes to use for the hash ring.
+        Larger ring sizes result in more granular load
+        distributions. If the number of hosts in the load balancing pool
+        is larger than the ring size, each host will be assigned a single
+        virtual node.
+        Defaults to 1024.
+        """
+        return pulumi.get(self, "minimum_ring_size")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceConsistentHashHttpCookyResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 path: str,
+                 ttls: Sequence['outputs.GetRegionBackendServiceConsistentHashHttpCookyTtlResult']):
+        """
+        :param str name: The name of the regional backend service.
+        :param str path: Path to set for the cookie.
+        :param Sequence['GetRegionBackendServiceConsistentHashHttpCookyTtlArgs'] ttls: Lifetime of the cookie.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "ttls", ttls)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the regional backend service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path to set for the cookie.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def ttls(self) -> Sequence['outputs.GetRegionBackendServiceConsistentHashHttpCookyTtlResult']:
+        """
+        Lifetime of the cookie.
+        """
+        return pulumi.get(self, "ttls")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceConsistentHashHttpCookyTtlResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        """
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        :param int seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        """
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceCustomMetricResult(dict):
+    def __init__(__self__, *,
+                 dry_run: bool,
+                 name: str):
+        """
+        :param bool dry_run: If true, the metric data is not used for load balancing.
+        :param str name: The name of the regional backend service.
+        """
+        pulumi.set(__self__, "dry_run", dry_run)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> bool:
+        """
+        If true, the metric data is not used for load balancing.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the regional backend service.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceFailoverPolicyResult(dict):
+    def __init__(__self__, *,
+                 disable_connection_drain_on_failover: bool,
+                 drop_traffic_if_unhealthy: bool,
+                 failover_ratio: float):
+        """
+        :param bool disable_connection_drain_on_failover: On failover or failback, this field indicates whether connection drain
+               will be honored. Setting this to true has the following effect: connections
+               to the old active pool are not drained. Connections to the new active pool
+               use the timeout of 10 min (currently fixed). Setting to false has the
+               following effect: both old and new connections will have a drain timeout
+               of 10 min.
+               This can be set to true only if the protocol is TCP.
+               The default is false.
+        :param bool drop_traffic_if_unhealthy: This option is used only when no healthy VMs are detected in the primary
+               and backup instance groups. When set to true, traffic is dropped. When
+               set to false, new connections are sent across all VMs in the primary group.
+               The default is false.
+        :param float failover_ratio: The value of the field must be in [0, 1]. If the ratio of the healthy
+               VMs in the primary backend is at or below this number, traffic arriving
+               at the load-balanced IP will be directed to the failover backend.
+               In case where 'failoverRatio' is not set or all the VMs in the backup
+               backend are unhealthy, the traffic will be directed back to the primary
+               backend in the "force" mode, where traffic will be spread to the healthy
+               VMs with the best effort, or to all VMs when no VM is healthy.
+               This field is only used with l4 load balancing.
+        """
+        pulumi.set(__self__, "disable_connection_drain_on_failover", disable_connection_drain_on_failover)
+        pulumi.set(__self__, "drop_traffic_if_unhealthy", drop_traffic_if_unhealthy)
+        pulumi.set(__self__, "failover_ratio", failover_ratio)
+
+    @property
+    @pulumi.getter(name="disableConnectionDrainOnFailover")
+    def disable_connection_drain_on_failover(self) -> bool:
+        """
+        On failover or failback, this field indicates whether connection drain
+        will be honored. Setting this to true has the following effect: connections
+        to the old active pool are not drained. Connections to the new active pool
+        use the timeout of 10 min (currently fixed). Setting to false has the
+        following effect: both old and new connections will have a drain timeout
+        of 10 min.
+        This can be set to true only if the protocol is TCP.
+        The default is false.
+        """
+        return pulumi.get(self, "disable_connection_drain_on_failover")
+
+    @property
+    @pulumi.getter(name="dropTrafficIfUnhealthy")
+    def drop_traffic_if_unhealthy(self) -> bool:
+        """
+        This option is used only when no healthy VMs are detected in the primary
+        and backup instance groups. When set to true, traffic is dropped. When
+        set to false, new connections are sent across all VMs in the primary group.
+        The default is false.
+        """
+        return pulumi.get(self, "drop_traffic_if_unhealthy")
+
+    @property
+    @pulumi.getter(name="failoverRatio")
+    def failover_ratio(self) -> float:
+        """
+        The value of the field must be in [0, 1]. If the ratio of the healthy
+        VMs in the primary backend is at or below this number, traffic arriving
+        at the load-balanced IP will be directed to the failover backend.
+        In case where 'failoverRatio' is not set or all the VMs in the backup
+        backend are unhealthy, the traffic will be directed back to the primary
+        backend in the "force" mode, where traffic will be spread to the healthy
+        VMs with the best effort, or to all VMs when no VM is healthy.
+        This field is only used with l4 load balancing.
+        """
+        return pulumi.get(self, "failover_ratio")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceIapResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 oauth2_client_id: str,
+                 oauth2_client_secret: str,
+                 oauth2_client_secret_sha256: str):
+        """
+        :param bool enabled: Whether the serving infrastructure will authenticate and authorize all incoming requests.
+        :param str oauth2_client_id: OAuth2 Client ID for IAP
+        :param str oauth2_client_secret: OAuth2 Client Secret for IAP
+        :param str oauth2_client_secret_sha256: OAuth2 Client Secret SHA-256 for IAP
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
+        pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
+        pulumi.set(__self__, "oauth2_client_secret_sha256", oauth2_client_secret_sha256)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the serving infrastructure will authenticate and authorize all incoming requests.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="oauth2ClientId")
+    def oauth2_client_id(self) -> str:
+        """
+        OAuth2 Client ID for IAP
+        """
+        return pulumi.get(self, "oauth2_client_id")
+
+    @property
+    @pulumi.getter(name="oauth2ClientSecret")
+    def oauth2_client_secret(self) -> str:
+        """
+        OAuth2 Client Secret for IAP
+        """
+        return pulumi.get(self, "oauth2_client_secret")
+
+    @property
+    @pulumi.getter(name="oauth2ClientSecretSha256")
+    def oauth2_client_secret_sha256(self) -> str:
+        """
+        OAuth2 Client Secret SHA-256 for IAP
+        """
+        return pulumi.get(self, "oauth2_client_secret_sha256")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceLogConfigResult(dict):
+    def __init__(__self__, *,
+                 enable: bool,
+                 optional_fields: Sequence[str],
+                 optional_mode: str,
+                 sample_rate: float):
+        """
+        :param bool enable: Whether to enable logging for the load balancer traffic served by this backend service.
+        :param Sequence[str] optional_fields: Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+        :param str optional_mode: Specifies the optional logging mode for the load balancer traffic.
+               Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+        :param float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of
+               the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+               where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+               The default value is 1.0.
+        """
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "optional_fields", optional_fields)
+        pulumi.set(__self__, "optional_mode", optional_mode)
+        pulumi.set(__self__, "sample_rate", sample_rate)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Whether to enable logging for the load balancer traffic served by this backend service.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="optionalFields")
+    def optional_fields(self) -> Sequence[str]:
+        """
+        Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
+        """
+        return pulumi.get(self, "optional_fields")
+
+    @property
+    @pulumi.getter(name="optionalMode")
+    def optional_mode(self) -> str:
+        """
+        Specifies the optional logging mode for the load balancer traffic.
+        Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+        """
+        return pulumi.get(self, "optional_mode")
+
+    @property
+    @pulumi.getter(name="sampleRate")
+    def sample_rate(self) -> float:
+        """
+        This field can only be specified if logging is enabled for this backend service. The value of
+        the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+        where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+        The default value is 1.0.
+        """
+        return pulumi.get(self, "sample_rate")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceOutlierDetectionResult(dict):
+    def __init__(__self__, *,
+                 base_ejection_times: Sequence['outputs.GetRegionBackendServiceOutlierDetectionBaseEjectionTimeResult'],
+                 consecutive_errors: int,
+                 consecutive_gateway_failure: int,
+                 enforcing_consecutive_errors: int,
+                 enforcing_consecutive_gateway_failure: int,
+                 enforcing_success_rate: int,
+                 intervals: Sequence['outputs.GetRegionBackendServiceOutlierDetectionIntervalResult'],
+                 max_ejection_percent: int,
+                 success_rate_minimum_hosts: int,
+                 success_rate_request_volume: int,
+                 success_rate_stdev_factor: int):
+        """
+        :param Sequence['GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs'] base_ejection_times: The base time that a host is ejected for. The real time is equal to the base
+               time multiplied by the number of times the host has been ejected. Defaults to
+               30000ms or 30s.
+        :param int consecutive_errors: Number of errors before a host is ejected from the connection pool. When the
+               backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+               Defaults to 5.
+        :param int consecutive_gateway_failure: The number of consecutive gateway failures (502, 503, 504 status or connection
+               errors that are mapped to one of those status codes) before a consecutive
+               gateway failure ejection occurs. Defaults to 5.
+        :param int enforcing_consecutive_errors: The percentage chance that a host will be actually ejected when an outlier
+               status is detected through consecutive 5xx. This setting can be used to disable
+               ejection or to ramp it up slowly. Defaults to 100.
+        :param int enforcing_consecutive_gateway_failure: The percentage chance that a host will be actually ejected when an outlier
+               status is detected through consecutive gateway failures. This setting can be
+               used to disable ejection or to ramp it up slowly. Defaults to 0.
+        :param int enforcing_success_rate: The percentage chance that a host will be actually ejected when an outlier
+               status is detected through success rate statistics. This setting can be used to
+               disable ejection or to ramp it up slowly. Defaults to 100.
+        :param Sequence['GetRegionBackendServiceOutlierDetectionIntervalArgs'] intervals: Time interval between ejection sweep analysis. This can result in both new
+               ejections as well as hosts being returned to service. Defaults to 10 seconds.
+        :param int max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service
+               that can be ejected. Defaults to 10%.
+        :param int success_rate_minimum_hosts: The number of hosts in a cluster that must have enough request volume to detect
+               success rate outliers. If the number of hosts is less than this setting, outlier
+               detection via success rate statistics is not performed for any host in the
+               cluster. Defaults to 5.
+        :param int success_rate_request_volume: The minimum number of total requests that must be collected in one interval (as
+               defined by the interval duration above) to include this host in success rate
+               based outlier detection. If the volume is lower than this setting, outlier
+               detection via success rate statistics is not performed for that host. Defaults
+               to 100.
+        :param int success_rate_stdev_factor: This factor is used to determine the ejection threshold for success rate outlier
+               ejection. The ejection threshold is the difference between the mean success
+               rate, and the product of this factor and the standard deviation of the mean
+               success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+               by a thousand to get a double. That is, if the desired factor is 1.9, the
+               runtime value should be 1900. Defaults to 1900.
+        """
+        pulumi.set(__self__, "base_ejection_times", base_ejection_times)
+        pulumi.set(__self__, "consecutive_errors", consecutive_errors)
+        pulumi.set(__self__, "consecutive_gateway_failure", consecutive_gateway_failure)
+        pulumi.set(__self__, "enforcing_consecutive_errors", enforcing_consecutive_errors)
+        pulumi.set(__self__, "enforcing_consecutive_gateway_failure", enforcing_consecutive_gateway_failure)
+        pulumi.set(__self__, "enforcing_success_rate", enforcing_success_rate)
+        pulumi.set(__self__, "intervals", intervals)
+        pulumi.set(__self__, "max_ejection_percent", max_ejection_percent)
+        pulumi.set(__self__, "success_rate_minimum_hosts", success_rate_minimum_hosts)
+        pulumi.set(__self__, "success_rate_request_volume", success_rate_request_volume)
+        pulumi.set(__self__, "success_rate_stdev_factor", success_rate_stdev_factor)
+
+    @property
+    @pulumi.getter(name="baseEjectionTimes")
+    def base_ejection_times(self) -> Sequence['outputs.GetRegionBackendServiceOutlierDetectionBaseEjectionTimeResult']:
+        """
+        The base time that a host is ejected for. The real time is equal to the base
+        time multiplied by the number of times the host has been ejected. Defaults to
+        30000ms or 30s.
+        """
+        return pulumi.get(self, "base_ejection_times")
+
+    @property
+    @pulumi.getter(name="consecutiveErrors")
+    def consecutive_errors(self) -> int:
+        """
+        Number of errors before a host is ejected from the connection pool. When the
+        backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+        Defaults to 5.
+        """
+        return pulumi.get(self, "consecutive_errors")
+
+    @property
+    @pulumi.getter(name="consecutiveGatewayFailure")
+    def consecutive_gateway_failure(self) -> int:
+        """
+        The number of consecutive gateway failures (502, 503, 504 status or connection
+        errors that are mapped to one of those status codes) before a consecutive
+        gateway failure ejection occurs. Defaults to 5.
+        """
+        return pulumi.get(self, "consecutive_gateway_failure")
+
+    @property
+    @pulumi.getter(name="enforcingConsecutiveErrors")
+    def enforcing_consecutive_errors(self) -> int:
+        """
+        The percentage chance that a host will be actually ejected when an outlier
+        status is detected through consecutive 5xx. This setting can be used to disable
+        ejection or to ramp it up slowly. Defaults to 100.
+        """
+        return pulumi.get(self, "enforcing_consecutive_errors")
+
+    @property
+    @pulumi.getter(name="enforcingConsecutiveGatewayFailure")
+    def enforcing_consecutive_gateway_failure(self) -> int:
+        """
+        The percentage chance that a host will be actually ejected when an outlier
+        status is detected through consecutive gateway failures. This setting can be
+        used to disable ejection or to ramp it up slowly. Defaults to 0.
+        """
+        return pulumi.get(self, "enforcing_consecutive_gateway_failure")
+
+    @property
+    @pulumi.getter(name="enforcingSuccessRate")
+    def enforcing_success_rate(self) -> int:
+        """
+        The percentage chance that a host will be actually ejected when an outlier
+        status is detected through success rate statistics. This setting can be used to
+        disable ejection or to ramp it up slowly. Defaults to 100.
+        """
+        return pulumi.get(self, "enforcing_success_rate")
+
+    @property
+    @pulumi.getter
+    def intervals(self) -> Sequence['outputs.GetRegionBackendServiceOutlierDetectionIntervalResult']:
+        """
+        Time interval between ejection sweep analysis. This can result in both new
+        ejections as well as hosts being returned to service. Defaults to 10 seconds.
+        """
+        return pulumi.get(self, "intervals")
+
+    @property
+    @pulumi.getter(name="maxEjectionPercent")
+    def max_ejection_percent(self) -> int:
+        """
+        Maximum percentage of hosts in the load balancing pool for the backend service
+        that can be ejected. Defaults to 10%.
+        """
+        return pulumi.get(self, "max_ejection_percent")
+
+    @property
+    @pulumi.getter(name="successRateMinimumHosts")
+    def success_rate_minimum_hosts(self) -> int:
+        """
+        The number of hosts in a cluster that must have enough request volume to detect
+        success rate outliers. If the number of hosts is less than this setting, outlier
+        detection via success rate statistics is not performed for any host in the
+        cluster. Defaults to 5.
+        """
+        return pulumi.get(self, "success_rate_minimum_hosts")
+
+    @property
+    @pulumi.getter(name="successRateRequestVolume")
+    def success_rate_request_volume(self) -> int:
+        """
+        The minimum number of total requests that must be collected in one interval (as
+        defined by the interval duration above) to include this host in success rate
+        based outlier detection. If the volume is lower than this setting, outlier
+        detection via success rate statistics is not performed for that host. Defaults
+        to 100.
+        """
+        return pulumi.get(self, "success_rate_request_volume")
+
+    @property
+    @pulumi.getter(name="successRateStdevFactor")
+    def success_rate_stdev_factor(self) -> int:
+        """
+        This factor is used to determine the ejection threshold for success rate outlier
+        ejection. The ejection threshold is the difference between the mean success
+        rate, and the product of this factor and the standard deviation of the mean
+        success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+        by a thousand to get a double. That is, if the desired factor is 1.9, the
+        runtime value should be 1900. Defaults to 1900.
+        """
+        return pulumi.get(self, "success_rate_stdev_factor")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceOutlierDetectionBaseEjectionTimeResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        """
+        :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations
+               less than one second are represented with a 0 'seconds' field and a positive
+               'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        :param int seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+               inclusive.
+        """
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations
+        less than one second are represented with a 0 'seconds' field and a positive
+        'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+        inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceOutlierDetectionIntervalResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        """
+        :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations
+               less than one second are represented with a 0 'seconds' field and a positive
+               'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        :param int seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+               inclusive.
+        """
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations
+        less than one second are represented with a 0 'seconds' field and a positive
+        'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+        inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceStrongSessionAffinityCookyResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 path: str,
+                 ttls: Sequence['outputs.GetRegionBackendServiceStrongSessionAffinityCookyTtlResult']):
+        """
+        :param str name: The name of the regional backend service.
+        :param str path: Path to set for the cookie.
+        :param Sequence['GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs'] ttls: Lifetime of the cookie.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "ttls", ttls)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the regional backend service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path to set for the cookie.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def ttls(self) -> Sequence['outputs.GetRegionBackendServiceStrongSessionAffinityCookyTtlResult']:
+        """
+        Lifetime of the cookie.
+        """
+        return pulumi.get(self, "ttls")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceStrongSessionAffinityCookyTtlResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        """
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        :param int seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        """
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceSubsettingResult(dict):
+    def __init__(__self__, *,
+                 policy: str):
+        """
+        :param str policy: The algorithm used for subsetting. Possible values: ["CONSISTENT_HASH_SUBSETTING"]
+        """
+        pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        The algorithm used for subsetting. Possible values: ["CONSISTENT_HASH_SUBSETTING"]
+        """
+        return pulumi.get(self, "policy")
 
 
 @pulumi.output_type
@@ -62192,6 +65589,35 @@ class GetRouterBgpAdvertisedIpRangeResult(dict):
 
 
 @pulumi.output_type
+class GetRouterMd5AuthenticationKeyResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 name: str):
+        """
+        :param str key: Value of the key used for MD5 authentication.
+        :param str name: The name of the router.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Value of the key used for MD5 authentication.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the router.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetRouterNatLogConfigResult(dict):
     def __init__(__self__, *,
                  enable: bool,
@@ -64426,6 +67852,7 @@ class GetSnapshotSnapshotEncryptionKeyResult(dict):
                  kms_key_self_link: str,
                  kms_key_service_account: str,
                  raw_key: str,
+                 rsa_encrypted_key: str,
                  sha256: str):
         """
         :param str kms_key_self_link: The name of the encryption key that is stored in Google Cloud KMS.
@@ -64433,12 +67860,15 @@ class GetSnapshotSnapshotEncryptionKeyResult(dict):
                If absent, the Compute Engine Service Agent service account is used.
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
+        :param str rsa_encrypted_key: Specifies an encryption key stored in Google Cloud KMS, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
         :param str sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
         """
         pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
         pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
         pulumi.set(__self__, "sha256", sha256)
 
     @property
@@ -64466,6 +67896,15 @@ class GetSnapshotSnapshotEncryptionKeyResult(dict):
         RFC 4648 base64 to either encrypt or decrypt this resource.
         """
         return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> str:
+        """
+        Specifies an encryption key stored in Google Cloud KMS, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
 
     @property
     @pulumi.getter
