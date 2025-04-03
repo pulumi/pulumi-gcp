@@ -267,7 +267,7 @@ index c9b952fde..a17feabfb 100644
  `cluster_id`.
  
 diff --git a/website/docs/r/bigtable_table.html.markdown b/website/docs/r/bigtable_table.html.markdown
-index 9bf113f15..a9e488215 100644
+index ccd76783e..a8eabee0e 100644
 --- a/website/docs/r/bigtable_table.html.markdown
 +++ b/website/docs/r/bigtable_table.html.markdown
 @@ -10,12 +10,6 @@ Creates a Google Cloud Bigtable table inside an instance. For more information s
@@ -375,7 +375,7 @@ index 088819374..ce84bc4ba 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 91047426d..6afcf145f 100644
+index 144722905..b041a481e 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -33,8 +33,63 @@ To get more information about Service, see:
@@ -443,7 +443,7 @@ index 91047426d..6afcf145f 100644
  
  ```hcl
  resource "google_cloud_run_service" "default" {
-@@ -119,7 +174,7 @@ resource "google_cloud_run_service" "default" {
+@@ -118,7 +173,7 @@ resource "google_cloud_run_service" "default" {
        annotations = {
          "autoscaling.knative.dev/maxScale"      = "1000"
          "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.instance.connection_name
@@ -452,7 +452,7 @@ index 91047426d..6afcf145f 100644
        }
      }
    }
-@@ -378,7 +433,7 @@ The following arguments are supported:
+@@ -377,7 +432,7 @@ The following arguments are supported:
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -461,7 +461,7 @@ index 91047426d..6afcf145f 100644
    or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
    Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
    keys to configure features on a Revision template:
-@@ -534,7 +589,8 @@ The following arguments are supported:
+@@ -537,7 +592,8 @@ The following arguments are supported:
  
  * `liveness_probe` -
    (Optional)
@@ -471,7 +471,7 @@ index 91047426d..6afcf145f 100644
    Structure is [documented below](#nested_spec_template_spec_containers_containers_liveness_probe).
  
  
-@@ -1038,7 +1094,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -1041,7 +1097,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -494,7 +494,7 @@ index 682eef375..611319116 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index eda3590c8..8a193ce59 100644
+index 53fcc32c0..39e0452d8 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -31,24 +31,21 @@ To get more information about Environments, see:
@@ -577,7 +577,7 @@ index eea0057a2..726c86dd3 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 3e12ffc92..8fa279c24 100644
+index 7128df467..c858d5d8b 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -38,7 +38,6 @@ To get more information about BackendService, see:
@@ -669,7 +669,7 @@ index c02f73582..1f47b804b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index dad3a2791..885a1cc1f 100644
+index da78b9884..019e4b9a6 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -1140,21 +1140,331 @@ index b50834b79..bc1dbdc62 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index 744e7e6fa..345a38c3f 100644
+index 6f981b296..6537026e6 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-@@ -25,11 +25,6 @@ description: |-
+@@ -25,15 +25,6 @@ description: |-
  A regional NEG that can support Serverless Products, proxying traffic to
  external backends and providing traffic to the PSC port mapping endpoints.
  
--Recreating a region network endpoint group that's in use by another resource will give a
--`resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
--to avoid this type of error.
+-When in use by a resource that can be updated, recreating a RegionNetworkEndpointGroup
+-will give a `resourceInUseByAnotherResource` error because Terraform will attempt to
+-delete the  RegionNetworkEndpointGroup first, but an in-use RegionNetworkEndpointGroup
+-can't be deleted in the API. Use `lifecycle.create_before_destroy` to reorder the plan
+-and create the new resource first, allowing the deletion to go through successfully.
+-This is only recommended when strictly necessary, as the `create_before_destroy`
+-directive can be passed onto further dependencies, creating unexpected plans.
 -
 -
  To get more information about RegionNetworkEndpointGroup, see:
  
  * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
+@@ -50,38 +41,38 @@ To get more information about RegionNetworkEndpointGroup, see:
+ 
+ 
+ ```hcl
+-// Cloud Functions Example
+-resource "google_compute_region_network_endpoint_group" "function_neg" {
+-  name                  = "function-neg"
+-  network_endpoint_type = "SERVERLESS"
+-  region                = "us-central1"
+-  cloud_function {
+-    function = google_cloudfunctions_function.function_neg.name
+-  }
+-}
+-
+-resource "google_cloudfunctions_function" "function_neg" {
+-  name        = "function-neg"
+-  description = "My function"
+-  runtime     = "nodejs20"
+-
+-  available_memory_mb   = 128
+-  source_archive_bucket = google_storage_bucket.bucket.name
+-  source_archive_object = google_storage_bucket_object.archive.name
+-  trigger_http          = true
+-  timeout               = 60
+-  entry_point           = "helloGET"
+-}
+-
+-resource "google_storage_bucket" "bucket" {
+-  name     = "cloudfunctions-function-example-bucket"
+-  location = "US"
+-}
+-
+-resource "google_storage_bucket_object" "archive" { 
+-  name   = "index.zip"
+-  bucket = google_storage_bucket.bucket.name
+-  source = "path/to/index.zip"
++// Cloud Functions Example
++resource "google_compute_region_network_endpoint_group" "function_neg" {
++  name                  = "function-neg"
++  network_endpoint_type = "SERVERLESS"
++  region                = "us-central1"
++  cloud_function {
++    function = google_cloudfunctions_function.function_neg.name
++  }
++}
++
++resource "google_cloudfunctions_function" "function_neg" {
++  name        = "function-neg"
++  description = "My function"
++  runtime     = "nodejs20"
++
++  available_memory_mb   = 128
++  source_archive_bucket = google_storage_bucket.bucket.name
++  source_archive_object = google_storage_bucket_object.archive.name
++  trigger_http          = true
++  timeout               = 60
++  entry_point           = "helloGET"
++}
++
++resource "google_storage_bucket" "bucket" {
++  name     = "cloudfunctions-function-example-bucket"
++  location = "US"
++}
++
++resource "google_storage_bucket_object" "archive" {
++  name   = "index.zip"
++  bucket = google_storage_bucket.bucket.name
++  source = "path/to/index.zip"
+ }
+ ```
+ <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+@@ -93,32 +84,32 @@ resource "google_storage_bucket_object" "archive" {
+ 
+ 
+ ```hcl
+-// Cloud Run Example
+-resource "google_compute_region_network_endpoint_group" "cloudrun_neg" {
+-  name                  = "cloudrun-neg"
+-  network_endpoint_type = "SERVERLESS"
+-  region                = "us-central1"
+-  cloud_run {
+-    service = google_cloud_run_service.cloudrun_neg.name
+-  }
+-}
+-
+-resource "google_cloud_run_service" "cloudrun_neg" {
+-  name     = "cloudrun-neg"
+-  location = "us-central1"
+-
+-  template {
+-    spec {
+-      containers {
+-        image = "us-docker.pkg.dev/cloudrun/container/hello"
+-      }
+-    }
+-  }
+-
+-  traffic {
+-    percent         = 100
+-    latest_revision = true
+-  }
++// Cloud Run Example
++resource "google_compute_region_network_endpoint_group" "cloudrun_neg" {
++  name                  = "cloudrun-neg"
++  network_endpoint_type = "SERVERLESS"
++  region                = "us-central1"
++  cloud_run {
++    service = google_cloud_run_service.cloudrun_neg.name
++  }
++}
++
++resource "google_cloud_run_service" "cloudrun_neg" {
++  name     = "cloudrun-neg"
++  location = "us-central1"
++
++  template {
++    spec {
++      containers {
++        image = "us-docker.pkg.dev/cloudrun/container/hello"
++      }
++    }
++  }
++
++  traffic {
++    percent         = 100
++    latest_revision = true
++  }
+ }
+ ```
+ <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+@@ -130,80 +121,80 @@ resource "google_cloud_run_service" "cloudrun_neg" {
+ 
+ 
+ ```hcl
+-// App Engine Example
+-resource "google_compute_region_network_endpoint_group" "appengine_neg" {
+-  name                  = "appengine-neg"
+-  network_endpoint_type = "SERVERLESS"
+-  region                = "us-central1"
+-  app_engine {
+-    service = google_app_engine_flexible_app_version.appengine_neg.service
+-    version = google_app_engine_flexible_app_version.appengine_neg.version_id
+-  }
+-}
+-
+-resource "google_app_engine_flexible_app_version" "appengine_neg" {
+-  version_id = "v1"
+-  service    = "appengine-neg"
+-  runtime    = "nodejs"
+-  flexible_runtime_settings {
+-    operating_system = "ubuntu22"
+-    runtime_version = "20"
+-  }
+-
+-  entrypoint {
+-    shell = "node ./app.js"
+-  }
+-
+-  deployment {
+-    zip {
+-      source_url = "https://storage.googleapis.com/${google_storage_bucket.appengine_neg.name}/${google_storage_bucket_object.appengine_neg.name}"
+-    }
+-  }
+-
+-  liveness_check {
+-    path = "/"
+-  }
+-
+-  readiness_check {
+-    path = "/"
+-  }
+-
+-  env_variables = {
+-    port = "8080"
+-  }
+-
+-  handlers {
+-    url_regex        = ".*\\/my-path\\/*"
+-    security_level   = "SECURE_ALWAYS"
+-    login            = "LOGIN_REQUIRED"
+-    auth_fail_action = "AUTH_FAIL_ACTION_REDIRECT"
+-
+-    static_files {
+-      path = "my-other-path"
+-      upload_path_regex = ".*\\/my-path\\/*"
+-    }
+-  }
+-
+-  automatic_scaling {
+-    cool_down_period = "120s"
+-    cpu_utilization {
+-      target_utilization = 0.5
+-    }
+-  }
+-
+-  delete_service_on_destroy = true
+-}
+-
+-resource "google_storage_bucket" "appengine_neg" {
+-  name     = "appengine-neg"
+-  location = "US"
+-  uniform_bucket_level_access = true
+-}
+-
+-resource "google_storage_bucket_object" "appengine_neg" {
+-  name   = "hello-world.zip"
+-  bucket = google_storage_bucket.appengine_neg.name
+-  source = "./test-fixtures/hello-world.zip"
++// App Engine Example
++resource "google_compute_region_network_endpoint_group" "appengine_neg" {
++  name                  = "appengine-neg"
++  network_endpoint_type = "SERVERLESS"
++  region                = "us-central1"
++  app_engine {
++    service = google_app_engine_flexible_app_version.appengine_neg.service
++    version = google_app_engine_flexible_app_version.appengine_neg.version_id
++  }
++}
++
++resource "google_app_engine_flexible_app_version" "appengine_neg" {
++  version_id = "v1"
++  service    = "appengine-neg"
++  runtime    = "nodejs"
++  flexible_runtime_settings {
++    operating_system = "ubuntu22"
++    runtime_version = "20"
++  }
++
++  entrypoint {
++    shell = "node ./app.js"
++  }
++
++  deployment {
++    zip {
++      source_url = "https://storage.googleapis.com/${google_storage_bucket.appengine_neg.name}/${google_storage_bucket_object.appengine_neg.name}"
++    }
++  }
++
++  liveness_check {
++    path = "/"
++  }
++
++  readiness_check {
++    path = "/"
++  }
++
++  env_variables = {
++    port = "8080"
++  }
++
++  handlers {
++    url_regex        = ".*\\/my-path\\/*"
++    security_level   = "SECURE_ALWAYS"
++    login            = "LOGIN_REQUIRED"
++    auth_fail_action = "AUTH_FAIL_ACTION_REDIRECT"
++
++    static_files {
++      path = "my-other-path"
++      upload_path_regex = ".*\\/my-path\\/*"
++    }
++  }
++
++  automatic_scaling {
++    cool_down_period = "120s"
++    cpu_utilization {
++      target_utilization = 0.5
++    }
++  }
++
++  delete_service_on_destroy = true
++}
++
++resource "google_storage_bucket" "appengine_neg" {
++  name     = "appengine-neg"
++  location = "US"
++  uniform_bucket_level_access = true
++}
++
++resource "google_storage_bucket_object" "appengine_neg" {
++  name   = "hello-world.zip"
++  bucket = google_storage_bucket.appengine_neg.name
++  source = "./test-fixtures/hello-world.zip"
+ }
+ ```
+ <div class = "oics-button" style="float: right; margin: 0 0 -15px">
+@@ -215,13 +206,13 @@ resource "google_storage_bucket_object" "appengine_neg" {
+ 
+ 
+ ```hcl
+-// App Engine Example
+-resource "google_compute_region_network_endpoint_group" "appengine_neg" {
+-  name                  = "appengine-neg"
+-  network_endpoint_type = "SERVERLESS"
+-  region                = "us-central1"
+-  app_engine {
+-  }
++// App Engine Example
++resource "google_compute_region_network_endpoint_group" "appengine_neg" {
++  name                  = "appengine-neg"
++  network_endpoint_type = "SERVERLESS"
++  region                = "us-central1"
++  app_engine {
++  }
+ }
+ ```
+ <div class = "oics-button" style="float: right; margin: 0 0 -15px">
 diff --git a/website/docs/r/compute_region_per_instance_config.html.markdown b/website/docs/r/compute_region_per_instance_config.html.markdown
 index 479591d26..6b9b1efaf 100644
 --- a/website/docs/r/compute_region_per_instance_config.html.markdown
@@ -1472,7 +1782,7 @@ index 9b1aaa175..e9bfaf572 100644
  ## Example Usage
  
 diff --git a/website/docs/r/compute_snapshot.html.markdown b/website/docs/r/compute_snapshot.html.markdown
-index c555dd41d..6b309228a 100644
+index a34b0424f..abed72fa5 100644
 --- a/website/docs/r/compute_snapshot.html.markdown
 +++ b/website/docs/r/compute_snapshot.html.markdown
 @@ -41,9 +41,8 @@ To get more information about Snapshot, see:
@@ -1480,7 +1790,7 @@ index c555dd41d..6b309228a 100644
      * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
  
 -~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `source_disk_encryption_key.raw_key`.
+-values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `snapshot_encryption_key.rsa_encrypted_key`, `source_disk_encryption_key.raw_key`.
 -[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
 +~> **Warning:** All arguments including `snapshot_encryption_key.raw_key` and `source_disk_encryption_key.raw_key` will be stored in the raw
 +state as plain-text.
@@ -1519,7 +1829,7 @@ index ce8b687dc..532f74446 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index 5c7de96df..e8b15a554 100644
+index 656892092..77d5471b8 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -394,9 +394,6 @@ The following arguments are supported:
@@ -1577,7 +1887,7 @@ index 85fd0b322..177058967 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 347415786..e2613c800 100644
+index b957e46e7..4695b3baa 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1668,18 +1978,18 @@ index 347415786..e2613c800 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -912,10 +930,6 @@ gvnic {
+@@ -915,10 +933,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
--    **Note**: As of 6.0.0, [argument syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments) 
+-    **Note**: As of 6.0.0, [argument syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments)
 -    is no longer supported for this field in favor of [block syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#blocks).
 -    To dynamically set a list of guest accelerators, use [dynamic blocks](https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks).
 -    To set an empty list, use a single `guest_accelerator` block with `count = 0`.
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -938,7 +952,7 @@ gvnic {
+@@ -941,7 +955,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1688,7 +1998,7 @@ index 347415786..e2613c800 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -963,10 +977,7 @@ gvnic {
+@@ -966,10 +980,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1700,7 +2010,7 @@ index 347415786..e2613c800 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -980,13 +991,14 @@ gvnic {
+@@ -983,13 +994,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1722,7 +2032,7 @@ index 347415786..e2613c800 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1054,6 +1066,20 @@ sole_tenant_config {
+@@ -1057,6 +1069,20 @@ sole_tenant_config {
  
  * `enable_nested_virtualization`- (Optional) Defines whether the instance should have nested virtualization enabled. Defaults to false.
  
@@ -1743,7 +2053,7 @@ index 347415786..e2613c800 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1248,7 +1274,7 @@ for more details. This field only applies to private clusters, when
+@@ -1251,7 +1277,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1752,7 +2062,7 @@ index 347415786..e2613c800 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1350,9 +1376,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1353,9 +1379,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -3381,13 +3691,19 @@ index 8d5c24c10..d3420764c 100644
    depends_on = [google_service_networking_connection.private_service_connection]
  
 diff --git a/website/docs/r/secret_manager_secret_version.html.markdown b/website/docs/r/secret_manager_secret_version.html.markdown
-index d8df4d185..ed5239edc 100644
+index 73824c68b..15186939e 100644
 --- a/website/docs/r/secret_manager_secret_version.html.markdown
 +++ b/website/docs/r/secret_manager_secret_version.html.markdown
-@@ -30,9 +30,8 @@ To get more information about SecretVersion, see:
+@@ -30,15 +30,8 @@ To get more information about SecretVersion, see:
  * How-to Guides
      * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
  
+-~> **Warning:** The behavior of the `secret_data` field is [force new](https://developer.hashicorp.com/terraform/plugin/sdkv2/schemas/schema-behaviors#forcenew).
+-While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
+-this, use the `create_before_destroy` field within the lifecycle block.
+-
+-For more details, refer to the [Terraform lifecycle documentation](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#the-lifecycle-meta-argument).
+-
 -~> **Warning:** All arguments including the following potentially sensitive
 -values will be stored in the raw state as plain text: `payload.secret_data`.
 -[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
@@ -3396,6 +3712,24 @@ index d8df4d185..ed5239edc 100644
  
  ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
  [Read more about Write-only Attributes](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
+@@ -54,7 +47,7 @@ values will be stored in the raw state as plain text: `payload.secret_data`.
+ ```hcl
+ resource "google_secret_manager_secret" "secret-basic" {
+   secret_id = "secret-version"
+-  
++
+   labels = {
+     label = "my-label"
+   }
+@@ -82,7 +75,7 @@ resource "google_secret_manager_secret_version" "secret-version-basic" {
+ ```hcl
+ resource "google_secret_manager_secret" "secret-basic-write-only" {
+   secret_id = "secret-version-write-only"
+-  
++
+   labels = {
+     label = "my-label"
+   }
 diff --git a/website/docs/r/security_scanner_scan_config.html.markdown b/website/docs/r/security_scanner_scan_config.html.markdown
 index b75c861cf..f0bb6cff9 100644
 --- a/website/docs/r/security_scanner_scan_config.html.markdown
@@ -3678,7 +4012,7 @@ index 5e973aba8..17ff1efcb 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index f18fb57cc..9ef3b40de 100644
+index b56f333fa..f6bf5552b 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -129,7 +129,7 @@ The following arguments are supported:
