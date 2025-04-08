@@ -22,7 +22,7 @@ func fixEmptyLabels(_ context.Context, req shimv2.PlanStateEditRequest) (cty.Val
 	//
 	// programLabels may not be the full set of labels on the resource, since
 	// effective_labels can include labels read from the cloud provider.
-	programLabels := property.Map{}
+	var programLabels property.Map
 
 	labelsPropertyName := "labels"
 	if req.TfToken == "google_container_cluster" {
@@ -31,8 +31,7 @@ func fixEmptyLabels(_ context.Context, req shimv2.PlanStateEditRequest) (cty.Val
 
 	// Apply default labels first.
 	if pConfig := resource.FromResourcePropertyValue(resource.NewProperty(req.ProviderConfig)); pConfig.IsMap() {
-		l := pConfig.AsMap()["defaultLabels"]
-		if l.IsMap() {
+		if l := pConfig.AsMap().Get("defaultLabels"); l.IsMap() {
 			programLabels = l.AsMap()
 		}
 	}
@@ -40,8 +39,8 @@ func fixEmptyLabels(_ context.Context, req shimv2.PlanStateEditRequest) (cty.Val
 	// Apply labels next, allowing labels to override defaultLabels.
 	if inputs, ok := (resource.PropertyPath{labelsPropertyName}.Get(resource.NewProperty(req.NewInputs))); ok {
 		if labels := resource.FromResourcePropertyValue(inputs); labels.IsMap() {
-			for k, v := range labels.AsMap() {
-				programLabels[k] = v
+			for k, v := range labels.AsMap().All {
+				programLabels = programLabels.Set(k, v)
 			}
 		}
 	}
@@ -67,7 +66,7 @@ func fixEmptyLabels(_ context.Context, req shimv2.PlanStateEditRequest) (cty.Val
 				// If v is known, so no correction is needed.
 				continue
 			}
-			label, ok := programLabels[k] // labels is in the Pulumi namespace
+			label, ok := programLabels.GetOk(k) // labels is in the Pulumi namespace
 			if !ok || label.IsComputed() || !label.IsString() {
 				// If we didn't inherit label from the program or the
 				// label is actually unknown, then just continue.
