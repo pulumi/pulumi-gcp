@@ -47,6 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.colab.NotebookExecution;
  * import com.pulumi.gcp.colab.NotebookExecutionArgs;
  * import com.pulumi.gcp.colab.inputs.NotebookExecutionDirectNotebookSourceArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -129,7 +131,7 @@ import javax.annotation.Nullable;
  *                 var name = values.t3;
  *                 return String.format("projects/%s/locations/%s/notebookRuntimeTemplates/%s", project,location,name);
  *             }}{@code ))
- *             .gcsOutputUri(outputBucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *             .serviceAccount("my}{@literal @}{@code service-account.com")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
@@ -251,7 +253,7 @@ import javax.annotation.Nullable;
  *                 .generation(notebook.generation())
  *                 .build())
  *             .serviceAccount("my}{@literal @}{@code service-account.com")
- *             .gcsOutputUri(outputBucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *             .notebookRuntimeTemplateResourceName(Output.tuple(myRuntimeTemplate.project(), myRuntimeTemplate.location(), myRuntimeTemplate.name()).applyValue(values -> }{{@code
  *                 var project = values.t1;
  *                 var location = values.t2;
@@ -335,7 +337,8 @@ import javax.annotation.Nullable;
  *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -380,7 +383,7 @@ import javax.annotation.Nullable;
  *                 var name = values.t3;
  *                 return String.format("projects/%s/locations/%s/notebookRuntimeTemplates/%s", project,location,name);
  *             }}{@code ))
- *             .gcsOutputUri(outputBucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *             .serviceAccount("my}{@literal @}{@code service-account.com")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                

@@ -232,7 +232,8 @@ import javax.annotation.Nullable;
  *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()
  *             .connectionId("connection_id")
  *             .location("US")
- *             .spark()
+ *             .spark(ConnectionSparkArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *         var pyspark = new Routine("pyspark", RoutineArgs.builder()
@@ -310,7 +311,8 @@ import javax.annotation.Nullable;
  *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()
  *             .connectionId("connection_id")
  *             .location("US")
- *             .spark()
+ *             .spark(ConnectionSparkArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *         var pysparkMainfile = new Routine("pysparkMainfile", RoutineArgs.builder()
@@ -372,7 +374,8 @@ import javax.annotation.Nullable;
  *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()
  *             .connectionId("connection_id")
  *             .location("US")
- *             .spark()
+ *             .spark(ConnectionSparkArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *         var sparkJar = new Routine("sparkJar", RoutineArgs.builder()
@@ -488,7 +491,8 @@ import javax.annotation.Nullable;
  *         var testConnection = new Connection("testConnection", ConnectionArgs.builder()
  *             .connectionId("connection_id")
  *             .location("US")
- *             .cloudResource()
+ *             .cloudResource(ConnectionCloudResourceArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *         var remoteFunction = new Routine("remoteFunction", RoutineArgs.builder()

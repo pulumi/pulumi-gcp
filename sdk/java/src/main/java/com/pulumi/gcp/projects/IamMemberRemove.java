@@ -61,7 +61,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var targetProject = OrganizationsFunctions.getProject();
+ *         final var targetProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var foo = new IamMemberRemove("foo", IamMemberRemoveArgs.builder()
  *             .role("roles/editor")

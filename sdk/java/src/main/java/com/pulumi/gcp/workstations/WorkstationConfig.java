@@ -527,7 +527,7 @@ import javax.annotation.Nullable;
  *                     .disablePublicIpAddresses(true)
  *                     .accelerators(WorkstationConfigHostGceInstanceAcceleratorArgs.builder()
  *                         .type("nvidia-tesla-t4")
- *                         .count("1")
+ *                         .count(1)
  *                         .build())
  *                     .build())
  *                 .build())
@@ -607,7 +607,7 @@ import javax.annotation.Nullable;
  *                             .machineType("n1-standard-2")
  *                             .accelerators(WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs.builder()
  *                                 .type("nvidia-tesla-t4")
- *                                 .count("1")
+ *                                 .count(1)
  *                                 .build())
  *                             .build(),
  *                         WorkstationConfigHostGceInstanceBoostConfigArgs.builder()

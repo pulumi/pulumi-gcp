@@ -164,6 +164,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.monitoring.Slo;
  * import com.pulumi.gcp.monitoring.SloArgs;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JoinArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -220,6 +222,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliArgs;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricMeanInRangeArgs;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricMeanInRangeRangeArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JoinArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -253,7 +257,7 @@ import javax.annotation.Nullable;
  *                             "resource.type=\"gce_instance\"")
  *                         .build()).result())
  *                     .range(SloWindowsBasedSliMetricMeanInRangeRangeArgs.builder()
- *                         .max(5)
+ *                         .max(5.0)
  *                         .build())
  *                     .build())
  *                 .build())
@@ -281,6 +285,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliArgs;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricSumInRangeArgs;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricSumInRangeRangeArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JoinArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -314,7 +320,7 @@ import javax.annotation.Nullable;
  *                             "resource.type=\"uptime_url\"")
  *                         .build()).result())
  *                     .range(SloWindowsBasedSliMetricSumInRangeRangeArgs.builder()
- *                         .max(5000)
+ *                         .max(5000.0)
  *                         .build())
  *                     .build())
  *                 .build())
@@ -344,6 +350,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs;
  * import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JoinArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -380,8 +388,8 @@ import javax.annotation.Nullable;
  *                                     "resource.type=\"consumed_api\"")
  *                                 .build()).result())
  *                             .range(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs.builder()
- *                                 .min(1)
- *                                 .max(9)
+ *                                 .min(1.0)
+ *                                 .max(9.0)
  *                                 .build())
  *                             .build())
  *                         .build())

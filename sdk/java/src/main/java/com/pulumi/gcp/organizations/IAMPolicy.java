@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()
  *             .orgId("1234567890")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  *         var organization = new IAMPolicy("organization", IAMPolicyArgs.builder()
  *             .orgId("1234567890")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

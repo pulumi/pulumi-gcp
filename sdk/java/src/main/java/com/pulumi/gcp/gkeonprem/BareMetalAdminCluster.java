@@ -90,19 +90,23 @@ import javax.annotation.Nullable;
  *             .controlPlane(BareMetalAdminClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
- *                         .labels()
+ *                         .labels(Map.ofEntries(
+ *                         ))
  *                         .operatingSystem("LINUX")
  *                         .nodeConfigs(                        
  *                             BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                                 .labels()
+ *                                 .labels(Map.ofEntries(
+ *                                 ))
  *                                 .nodeIp("10.200.0.2")
  *                                 .build(),
  *                             BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                                 .labels()
+ *                                 .labels(Map.ofEntries(
+ *                                 ))
  *                                 .nodeIp("10.200.0.3")
  *                                 .build(),
  *                             BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                                 .labels()
+ *                                 .labels(Map.ofEntries(
+ *                                 ))
  *                                 .nodeIp("10.200.0.4")
  *                                 .build())
  *                         .build())
@@ -202,19 +206,23 @@ import javax.annotation.Nullable;
  *             .controlPlane(BareMetalAdminClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
- *                         .labels()
+ *                         .labels(Map.ofEntries(
+ *                         ))
  *                         .operatingSystem("LINUX")
  *                         .nodeConfigs(                        
  *                             BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                                 .labels()
+ *                                 .labels(Map.ofEntries(
+ *                                 ))
  *                                 .nodeIp("10.200.0.2")
  *                                 .build(),
  *                             BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                                 .labels()
+ *                                 .labels(Map.ofEntries(
+ *                                 ))
  *                                 .nodeIp("10.200.0.3")
  *                                 .build(),
  *                             BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                                 .labels()
+ *                                 .labels(Map.ofEntries(
+ *                                 ))
  *                                 .nodeIp("10.200.0.4")
  *                                 .build())
  *                         .taints(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs.builder()

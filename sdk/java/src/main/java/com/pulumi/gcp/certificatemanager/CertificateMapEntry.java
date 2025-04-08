@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  *             .name("cert-map-entry")
  *             .description("My acceptance test certificate map")
  *             .labels(Map.ofEntries(
- *                 Map.entry("terraform", true),
- *                 Map.entry("acc-test", true)
+ *                 Map.entry("terraform", "true"),
+ *                 Map.entry("acc-test", "true")
  *             ))
  *             .build());
  * 
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  *             .description("My acceptance test certificate map entry")
  *             .map(certificateMap.name())
  *             .labels(Map.ofEntries(
- *                 Map.entry("terraform", true),
- *                 Map.entry("acc-test", true)
+ *                 Map.entry("terraform", "true"),
+ *                 Map.entry("acc-test", "true")
  *             ))
  *             .certificates(certificate.id())
  *             .matcher("PRIMARY")

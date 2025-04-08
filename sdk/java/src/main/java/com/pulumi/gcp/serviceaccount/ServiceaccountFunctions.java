@@ -88,6 +88,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.core_v1.Secret;
      * import com.pulumi.kubernetes.core_v1.SecretArgs;
      * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -106,14 +108,16 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var mykey = new Key("mykey", KeyArgs.builder()
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
+     *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
      *             .metadata(ObjectMetaArgs.builder()
      *                 .name("google-application-credentials")
      *                 .build())
-     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
+     *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
+     *                 .input(mykey.privateKey())
+     *                 .build()).applyValue(_invoke -> _invoke.result())))
      *             .build());
      * 
      *     }
@@ -181,6 +185,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.core_v1.Secret;
      * import com.pulumi.kubernetes.core_v1.SecretArgs;
      * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -199,14 +205,16 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var mykey = new Key("mykey", KeyArgs.builder()
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
+     *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
      *             .metadata(ObjectMetaArgs.builder()
      *                 .name("google-application-credentials")
      *                 .build())
-     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
+     *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
+     *                 .input(mykey.privateKey())
+     *                 .build()).applyValue(_invoke -> _invoke.result())))
      *             .build());
      * 
      *     }
@@ -274,6 +282,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.core_v1.Secret;
      * import com.pulumi.kubernetes.core_v1.SecretArgs;
      * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -292,14 +302,16 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var mykey = new Key("mykey", KeyArgs.builder()
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
+     *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
      *             .metadata(ObjectMetaArgs.builder()
      *                 .name("google-application-credentials")
      *                 .build())
-     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
+     *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
+     *                 .input(mykey.privateKey())
+     *                 .build()).applyValue(_invoke -> _invoke.result())))
      *             .build());
      * 
      *     }
@@ -367,6 +379,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.core_v1.Secret;
      * import com.pulumi.kubernetes.core_v1.SecretArgs;
      * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -385,14 +399,16 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var mykey = new Key("mykey", KeyArgs.builder()
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
+     *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
      *             .metadata(ObjectMetaArgs.builder()
      *                 .name("google-application-credentials")
      *                 .build())
-     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
+     *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
+     *                 .input(mykey.privateKey())
+     *                 .build()).applyValue(_invoke -> _invoke.result())))
      *             .build());
      * 
      *     }
@@ -460,6 +476,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.core_v1.Secret;
      * import com.pulumi.kubernetes.core_v1.SecretArgs;
      * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64decodeArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -478,14 +496,16 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var mykey = new Key("mykey", KeyArgs.builder()
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
+     *             .serviceAccountId(myaccount.name())
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
      *             .metadata(ObjectMetaArgs.builder()
      *                 .name("google-application-credentials")
      *                 .build())
-     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
+     *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
+     *                 .input(mykey.privateKey())
+     *                 .build()).applyValue(_invoke -> _invoke.result())))
      *             .build());
      * 
      *     }
@@ -573,7 +593,7 @@ public final class ServiceaccountFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var default = OrganizationsFunctions.getClientConfig();
+     *         final var default = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
      *             .targetServiceAccount("service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
@@ -583,9 +603,9 @@ public final class ServiceaccountFunctions {
      *             .lifetime("300s")
      *             .build());
      * 
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("target-email", me.email());
      *     }}{@code
      * }}{@code
      * }
@@ -673,7 +693,7 @@ public final class ServiceaccountFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var default = OrganizationsFunctions.getClientConfig();
+     *         final var default = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
      *             .targetServiceAccount("service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
@@ -683,9 +703,9 @@ public final class ServiceaccountFunctions {
      *             .lifetime("300s")
      *             .build());
      * 
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("target-email", me.email());
      *     }}{@code
      * }}{@code
      * }
@@ -773,7 +793,7 @@ public final class ServiceaccountFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var default = OrganizationsFunctions.getClientConfig();
+     *         final var default = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
      *             .targetServiceAccount("service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
@@ -783,9 +803,9 @@ public final class ServiceaccountFunctions {
      *             .lifetime("300s")
      *             .build());
      * 
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("target-email", me.email());
      *     }}{@code
      * }}{@code
      * }
@@ -873,7 +893,7 @@ public final class ServiceaccountFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var default = OrganizationsFunctions.getClientConfig();
+     *         final var default = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
      *             .targetServiceAccount("service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
@@ -883,9 +903,9 @@ public final class ServiceaccountFunctions {
      *             .lifetime("300s")
      *             .build());
      * 
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("target-email", me.email());
      *     }}{@code
      * }}{@code
      * }
@@ -973,7 +993,7 @@ public final class ServiceaccountFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var default = OrganizationsFunctions.getClientConfig();
+     *         final var default = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         final var defaultGetAccountAccessToken = ServiceaccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
      *             .targetServiceAccount("service_B}{@literal @}{@code projectB.iam.gserviceaccount.com")
@@ -983,9 +1003,9 @@ public final class ServiceaccountFunctions {
      *             .lifetime("300s")
      *             .build());
      * 
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("target-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("target-email", me.email());
      *     }}{@code
      * }}{@code
      * }
@@ -1036,7 +1056,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }
      * }
      * }
@@ -1089,7 +1109,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }}{@code
      * }}{@code
      * }
@@ -1131,10 +1151,10 @@ public final class ServiceaccountFunctions {
      * 
      *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
      *             .url("https://your.cloud.run.app/")
-     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
+     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.idToken())))
      *             .build());
      * 
-     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
+     *         ctx.export("cloudRunResponse", cloudrun.body());
      *     }
      * }
      * }
@@ -1183,7 +1203,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }
      * }
      * }
@@ -1236,7 +1256,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }}{@code
      * }}{@code
      * }
@@ -1278,10 +1298,10 @@ public final class ServiceaccountFunctions {
      * 
      *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
      *             .url("https://your.cloud.run.app/")
-     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
+     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.idToken())))
      *             .build());
      * 
-     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
+     *         ctx.export("cloudRunResponse", cloudrun.body());
      *     }
      * }
      * }
@@ -1330,7 +1350,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }
      * }
      * }
@@ -1383,7 +1403,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }}{@code
      * }}{@code
      * }
@@ -1425,10 +1445,10 @@ public final class ServiceaccountFunctions {
      * 
      *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
      *             .url("https://your.cloud.run.app/")
-     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
+     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.idToken())))
      *             .build());
      * 
-     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
+     *         ctx.export("cloudRunResponse", cloudrun.body());
      *     }
      * }
      * }
@@ -1477,7 +1497,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }
      * }
      * }
@@ -1530,7 +1550,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }}{@code
      * }}{@code
      * }
@@ -1572,10 +1592,10 @@ public final class ServiceaccountFunctions {
      * 
      *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
      *             .url("https://your.cloud.run.app/")
-     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
+     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.idToken())))
      *             .build());
      * 
-     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
+     *         ctx.export("cloudRunResponse", cloudrun.body());
      *     }
      * }
      * }
@@ -1624,7 +1644,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }
      * }
      * }
@@ -1677,7 +1697,7 @@ public final class ServiceaccountFunctions {
      *             .targetAudience("https://foo.bar/")
      *             .build());
      * 
-     *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
+     *         ctx.export("oidcToken", oidc.idToken());
      *     }}{@code
      * }}{@code
      * }
@@ -1719,10 +1739,10 @@ public final class ServiceaccountFunctions {
      * 
      *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
      *             .url("https://your.cloud.run.app/")
-     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
+     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.idToken())))
      *             .build());
      * 
-     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
+     *         ctx.export("cloudRunResponse", cloudrun.body());
      *     }
      * }
      * }
@@ -1774,7 +1794,7 @@ public final class ServiceaccountFunctions {
      *             .expiresIn(60)
      *             .build());
      * 
-     *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
+     *         ctx.export("jwt", foo.jwt());
      *     }}{@code
      * }}{@code
      * }
@@ -1826,7 +1846,7 @@ public final class ServiceaccountFunctions {
      *             .expiresIn(60)
      *             .build());
      * 
-     *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
+     *         ctx.export("jwt", foo.jwt());
      *     }}{@code
      * }}{@code
      * }
@@ -1878,7 +1898,7 @@ public final class ServiceaccountFunctions {
      *             .expiresIn(60)
      *             .build());
      * 
-     *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
+     *         ctx.export("jwt", foo.jwt());
      *     }}{@code
      * }}{@code
      * }
@@ -1930,7 +1950,7 @@ public final class ServiceaccountFunctions {
      *             .expiresIn(60)
      *             .build());
      * 
-     *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
+     *         ctx.export("jwt", foo.jwt());
      *     }}{@code
      * }}{@code
      * }
@@ -1982,7 +2002,7 @@ public final class ServiceaccountFunctions {
      *             .expiresIn(60)
      *             .build());
      * 
-     *         ctx.export("jwt", foo.applyValue(getAccountJwtResult -> getAccountJwtResult.jwt()));
+     *         ctx.export("jwt", foo.jwt());
      *     }}{@code
      * }}{@code
      * }

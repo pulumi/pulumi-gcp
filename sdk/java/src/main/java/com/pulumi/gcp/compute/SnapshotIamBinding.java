@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         var policy = new SnapshotIamPolicy("policy", SnapshotIamPolicyArgs.builder()
  *             .project(snapshot.project())
  *             .name(snapshot.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *         var policy = new SnapshotIamPolicy("policy", SnapshotIamPolicyArgs.builder()
  *             .project(snapshot.project())
  *             .name(snapshot.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

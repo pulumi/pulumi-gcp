@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var lien = new Lien("lien", LienArgs.builder()
- *             .parent(project.number().applyValue(number -> String.format("projects/%s", number)))
+ *             .parent(project.number().applyValue(_number -> String.format("projects/%s", _number)))
  *             .restrictions("resourcemanager.projects.delete")
  *             .origin("machine-readable-explanation")
  *             .reason("This project is an important environment")

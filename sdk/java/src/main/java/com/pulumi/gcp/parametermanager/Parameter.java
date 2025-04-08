@@ -163,7 +163,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var parameter_with_kms_key = new Parameter("parameter-with-kms-key", ParameterArgs.builder()
  *             .parameterId("parameter")

@@ -41,10 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.firebase.Project;
- * import com.pulumi.gcp.firebase.ProjectArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project("default", ProjectArgs.builder()
+ *         var default_ = new com.pulumi.gcp.organizations.Project("default", com.pulumi.gcp.organizations.ProjectArgs.builder()
  *             .projectId("my-project")
  *             .name("my-project")
  *             .orgId("123456789")
@@ -66,7 +62,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 
- *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+ *         var defaultProject = new com.pulumi.gcp.firebase.Project("defaultProject", com.pulumi.gcp.firebase.ProjectArgs.builder()
  *             .project(default_.projectId())
  *             .build());
  * 

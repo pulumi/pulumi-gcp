@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:%s", settings.applyValue(getOrganizationSettingsResult -> getOrganizationSettingsResult.kmsServiceAccountId())))
+ *             .member(String.format("serviceAccount:%s", settings.kmsServiceAccountId()))
  *             .build());
  * 
  *         var example = new OrganizationSettings("example", OrganizationSettingsArgs.builder()

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .project(my_repo.project())
  *             .location(my_repo.location())
  *             .repository(my_repo.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -212,7 +212,7 @@ import javax.annotation.Nullable;
  *             .project(my_repo.project())
  *             .location(my_repo.location())
  *             .repository(my_repo.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

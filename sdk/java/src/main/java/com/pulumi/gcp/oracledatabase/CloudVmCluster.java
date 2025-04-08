@@ -67,10 +67,10 @@ import javax.annotation.Nullable;
  *             .project("my-project")
  *             .properties(CloudExadataInfrastructurePropertiesArgs.builder()
  *                 .shape("Exadata.X9M")
- *                 .computeCount("2")
- *                 .storageCount("3")
+ *                 .computeCount(2)
+ *                 .storageCount(3)
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
@@ -90,11 +90,11 @@ import javax.annotation.Nullable;
  *             .properties(CloudVmClusterPropertiesArgs.builder()
  *                 .licenseType("LICENSE_INCLUDED")
  *                 .sshPublicKeys("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody}{@literal @}{@code google.com")
- *                 .cpuCoreCount("4")
+ *                 .cpuCoreCount(4)
  *                 .giVersion("19.0.0.0")
  *                 .hostnamePrefix("hostname1")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *     }}{@code
@@ -144,10 +144,10 @@ import javax.annotation.Nullable;
  *             .project("my-project")
  *             .properties(CloudExadataInfrastructurePropertiesArgs.builder()
  *                 .shape("Exadata.X9M")
- *                 .computeCount("2")
- *                 .storageCount("3")
+ *                 .computeCount(2)
+ *                 .storageCount(3)
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
@@ -174,18 +174,18 @@ import javax.annotation.Nullable;
  *             .properties(CloudVmClusterPropertiesArgs.builder()
  *                 .licenseType("LICENSE_INCLUDED")
  *                 .sshPublicKeys("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody}{@literal @}{@code google.com")
- *                 .cpuCoreCount("4")
+ *                 .cpuCoreCount(4)
  *                 .giVersion("19.0.0.0")
  *                 .timeZone(CloudVmClusterPropertiesTimeZoneArgs.builder()
  *                     .id("UTC")
  *                     .build())
- *                 .nodeCount("2")
- *                 .ocpuCount("4.0")
- *                 .dataStorageSizeTb(2)
+ *                 .nodeCount(2)
+ *                 .ocpuCount(4.0)
+ *                 .dataStorageSizeTb(2.0)
  *                 .dbNodeStorageSizeGb(120)
  *                 .dbServerOcids(                
- *                     mydbserver.applyValue(getDbServersResult -> getDbServersResult).applyValue(mydbserver -> mydbserver.applyValue(getDbServersResult -> getDbServersResult.dbServers()[0].properties()[0].ocid())),
- *                     mydbserver.applyValue(getDbServersResult -> getDbServersResult).applyValue(mydbserver -> mydbserver.applyValue(getDbServersResult -> getDbServersResult.dbServers()[1].properties()[0].ocid())))
+ *                     mydbserver.applyValue(_mydbserver -> _mydbserver.dbServers()[0].properties()[0].ocid()),
+ *                     mydbserver.applyValue(_mydbserver -> _mydbserver.dbServers()[1].properties()[0].ocid()))
  *                 .diskRedundancy("HIGH")
  *                 .sparseDiskgroupEnabled(false)
  *                 .localBackupEnabled(false)
@@ -198,7 +198,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .memorySizeGb(60)
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *     }}{@code

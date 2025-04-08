@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  *             .dataset(dataset.id())
  *             .consentStoreId(my_consent.name())
  *             .role("roles/editor")
- *             .member(test_account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(test_account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *     }

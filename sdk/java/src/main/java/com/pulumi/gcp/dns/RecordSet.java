@@ -54,7 +54,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var frontendInstance = new Instance("frontendInstance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .network("default")
  *                 .build())
  *             .name("frontend")
@@ -73,11 +74,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
- *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+ *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(prod.name())
- *             .rrdatas(frontendInstance.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].accessConfigs()[0].natIp()))
+ *             .rrdatas(frontendInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].accessConfigs()[0].natIp()))
  *             .build());
  * 
  *     }
@@ -119,7 +120,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var a = new RecordSet("a", RecordSetArgs.builder()
- *             .name(prod.dnsName().applyValue(dnsName -> String.format("backend.%s", dnsName)))
+ *             .name(prod.dnsName().applyValue(_dnsName -> String.format("backend.%s", _dnsName)))
  *             .managedZone(prod.name())
  *             .type("A")
  *             .ttl(300)
@@ -218,7 +219,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var spf = new RecordSet("spf", RecordSetArgs.builder()
- *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+ *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
  *             .managedZone(prod.name())
  *             .type("TXT")
  *             .ttl(300)
@@ -266,7 +267,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cname = new RecordSet("cname", RecordSetArgs.builder()
- *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+ *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
  *             .managedZone(prod.name())
  *             .type("CNAME")
  *             .ttl(300)
@@ -391,7 +392,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var a = new RecordSet("a", RecordSetArgs.builder()
- *             .name(prod.dnsName().applyValue(dnsName -> String.format("backend.%s", dnsName)))
+ *             .name(prod.dnsName().applyValue(_dnsName -> String.format("backend.%s", _dnsName)))
  *             .managedZone(prod.name())
  *             .type("A")
  *             .ttl(300)
@@ -479,7 +480,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var a = new RecordSet("a", RecordSetArgs.builder()
- *             .name(prod.dnsName().applyValue(dnsName -> String.format("backend.%s", dnsName)))
+ *             .name(prod.dnsName().applyValue(_dnsName -> String.format("backend.%s", _dnsName)))
  *             .managedZone(prod.name())
  *             .type("A")
  *             .ttl(300)

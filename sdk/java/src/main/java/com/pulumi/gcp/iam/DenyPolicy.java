@@ -46,6 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.inputs.DenyPolicyRuleArgs;
  * import com.pulumi.gcp.iam.inputs.DenyPolicyRuleDenyRuleArgs;
  * import com.pulumi.gcp.iam.inputs.DenyPolicyRuleDenyRuleDenialConditionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.UrlencodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -74,7 +76,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new DenyPolicy("example", DenyPolicyArgs.builder()
- *             .parent(StdFunctions.urlencode().applyValue(invoke -> invoke.result()))
+ *             .parent(StdFunctions.urlencode(UrlencodeArgs.builder()
+ *                 .input(project.projectId().applyValue(_projectId -> String.format("cloudresourcemanager.googleapis.com/projects/%s", _projectId)))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .name("my-deny-policy")
  *             .displayName("A deny rule")
  *             .rules(            
@@ -98,7 +102,7 @@ import javax.annotation.Nullable;
  *                             .expression("!resource.matchTag('12345678/env', 'test')")
  *                             .build())
  *                         .deniedPermissions("cloudresourcemanager.googleapis.com/projects.update")
- *                         .exceptionPrincipals(test_account.email().applyValue(email -> String.format("principal://iam.googleapis.com/projects/-/serviceAccounts/%s", email)))
+ *                         .exceptionPrincipals(test_account.email().applyValue(_email -> String.format("principal://iam.googleapis.com/projects/-/serviceAccounts/%s", _email)))
  *                         .build())
  *                     .build())
  *             .build());

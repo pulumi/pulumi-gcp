@@ -125,19 +125,19 @@ import javax.annotation.Nullable;
  *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()
  *             .project(service.project())
  *             .role("roles/compute.networkUser")
- *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(customServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var logsWriter = new IAMMember("logsWriter", IAMMemberArgs.builder()
  *             .project(service.project())
  *             .role("roles/logging.logWriter")
- *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(customServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()
  *             .project(service.project())
  *             .role("roles/storage.objectViewer")
- *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(customServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()

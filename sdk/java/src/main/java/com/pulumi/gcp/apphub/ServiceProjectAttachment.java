@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(serviceProject)
+ *                 .dependsOn(List.of(serviceProject))
  *                 .build());
  * 
  *         var example = new ServiceProjectAttachment("example", ServiceProjectAttachmentArgs.builder()
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(serviceProjectFull)
+ *                 .dependsOn(List.of(serviceProjectFull))
  *                 .build());
  * 
  *         var example2 = new ServiceProjectAttachment("example2", ServiceProjectAttachmentArgs.builder()

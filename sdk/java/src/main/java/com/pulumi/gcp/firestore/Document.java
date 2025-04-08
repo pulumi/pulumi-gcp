@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firestore.Database;
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(project)
+ *                 .dependsOn(List.of(project))
  *                 .build());
  * 
  *         var firestore = new Service("firestore", ServiceArgs.builder()
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firestore.Database;
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(project)
+ *                 .dependsOn(List.of(project))
  *                 .build());
  * 
  *         var firestore = new Service("firestore", ServiceArgs.builder()
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *         var subDocument = new Document("subDocument", DocumentArgs.builder()
  *             .project(project.projectId())
  *             .database(database.name())
- *             .collection(mydoc.path().applyValue(path -> String.format("%s/subdocs", path)))
+ *             .collection(mydoc.path().applyValue(_path -> String.format("%s/subdocs", _path)))
  *             .documentId("bitcoinkey")
  *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}")
  *             .build());
@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
  *         var subSubDocument = new Document("subSubDocument", DocumentArgs.builder()
  *             .project(project.projectId())
  *             .database(database.name())
- *             .collection(subDocument.path().applyValue(path -> String.format("%s/subsubdocs", path)))
+ *             .collection(subDocument.path().applyValue(_path -> String.format("%s/subsubdocs", _path)))
  *             .documentId("asecret")
  *             .fields("{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}")
  *             .build());

@@ -56,7 +56,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()
  *             .name("full-interconnect-test-network")
@@ -75,13 +76,13 @@ import javax.annotation.Nullable;
  *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
  *             .type("PARTNER")
  *             .router(router.id())
- *             .mtu(1500)
+ *             .mtu("1500")
  *             .build());
  * 
  *         var interconnect_test = new VpcFlowLogsConfig("interconnect-test", VpcFlowLogsConfigArgs.builder()
  *             .vpcFlowLogsConfigId("full-interconnect-test-id")
  *             .location("global")
- *             .interconnectAttachment(attachment.name().applyValue(name -> String.format("projects/%s/regions/us-east4/interconnectAttachments/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .interconnectAttachment(attachment.name().applyValue(_name -> String.format("projects/%s/regions/us-east4/interconnectAttachments/%s", project.number(),_name)))
  *             .state("ENABLED")
  *             .aggregationInterval("INTERVAL_5_SEC")
  *             .description("VPC Flow Logs over a VPN Gateway.")
@@ -128,7 +129,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()
  *             .name("basic-interconnect-test-network")
@@ -147,13 +149,13 @@ import javax.annotation.Nullable;
  *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
  *             .type("PARTNER")
  *             .router(router.id())
- *             .mtu(1500)
+ *             .mtu("1500")
  *             .build());
  * 
  *         var interconnect_test = new VpcFlowLogsConfig("interconnect-test", VpcFlowLogsConfigArgs.builder()
  *             .vpcFlowLogsConfigId("basic-interconnect-test-id")
  *             .location("global")
- *             .interconnectAttachment(attachment.name().applyValue(name -> String.format("projects/%s/regions/us-east4/interconnectAttachments/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .interconnectAttachment(attachment.name().applyValue(_name -> String.format("projects/%s/regions/us-east4/interconnectAttachments/%s", project.number(),_name)))
  *             .build());
  * 
  *     }
@@ -201,7 +203,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()
  *             .name("basic-test-network")
@@ -254,7 +257,7 @@ import javax.annotation.Nullable;
  *         var vpn_test = new VpcFlowLogsConfig("vpn-test", VpcFlowLogsConfigArgs.builder()
  *             .vpcFlowLogsConfigId("basic-test-id")
  *             .location("global")
- *             .vpnTunnel(tunnel.name().applyValue(name -> String.format("projects/%s/regions/us-central1/vpnTunnels/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .vpnTunnel(tunnel.name().applyValue(_name -> String.format("projects/%s/regions/us-central1/vpnTunnels/%s", project.number(),_name)))
  *             .build());
  * 
  *         var route = new Route("route", RouteArgs.builder()
@@ -310,7 +313,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()
  *             .name("full-test-network")
@@ -363,7 +367,7 @@ import javax.annotation.Nullable;
  *         var vpn_test = new VpcFlowLogsConfig("vpn-test", VpcFlowLogsConfigArgs.builder()
  *             .vpcFlowLogsConfigId("full-test-id")
  *             .location("global")
- *             .vpnTunnel(tunnel.name().applyValue(name -> String.format("projects/%s/regions/us-central1/vpnTunnels/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .vpnTunnel(tunnel.name().applyValue(_name -> String.format("projects/%s/regions/us-central1/vpnTunnels/%s", project.number(),_name)))
  *             .state("ENABLED")
  *             .aggregationInterval("INTERVAL_5_SEC")
  *             .description("VPC Flow Logs over a VPN Gateway.")

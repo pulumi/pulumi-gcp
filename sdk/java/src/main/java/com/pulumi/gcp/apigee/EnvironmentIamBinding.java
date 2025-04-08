@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()
  *             .orgId(apigeeEnvironment.orgId())
  *             .envId(apigeeEnvironment.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

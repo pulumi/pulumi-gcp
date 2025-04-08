@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.sourcerepo.Repository;
- * import com.pulumi.gcp.sourcerepo.RepositoryArgs;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
- * import com.pulumi.gcp.dataform.Repository;
- * import com.pulumi.gcp.dataform.RepositoryArgs;
  * import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsArgs;
  * import com.pulumi.gcp.dataform.inputs.RepositoryWorkspaceCompilationOverridesArgs;
  * import com.pulumi.gcp.dataform.RepositoryReleaseConfig;
@@ -58,14 +54,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gitRepository = new Repository("gitRepository", RepositoryArgs.builder()
+ *         var gitRepository = new com.pulumi.gcp.sourcerepo.Repository("gitRepository", com.pulumi.gcp.sourcerepo.RepositoryArgs.builder()
  *             .name("my/repository")
  *             .build());
  * 
  *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("my_secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -74,7 +71,7 @@ import javax.annotation.Nullable;
  *             .secretData("secret-data")
  *             .build());
  * 
- *         var repository = new Repository("repository", RepositoryArgs.builder()
+ *         var repository = new com.pulumi.gcp.dataform.Repository("repository", com.pulumi.gcp.dataform.RepositoryArgs.builder()
  *             .name("dataform_repository")
  *             .region("us-central1")
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()

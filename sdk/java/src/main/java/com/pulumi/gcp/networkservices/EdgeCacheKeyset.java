@@ -110,7 +110,8 @@ import javax.annotation.Nullable;
  *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret-name")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 

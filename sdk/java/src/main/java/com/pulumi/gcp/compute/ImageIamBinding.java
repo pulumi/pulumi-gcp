@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -350,7 +350,7 @@ import javax.annotation.Nullable;
  *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -401,7 +401,7 @@ import javax.annotation.Nullable;
  *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
  *             .project(example.project())
  *             .image(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

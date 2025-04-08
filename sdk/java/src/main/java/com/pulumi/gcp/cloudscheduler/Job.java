@@ -46,6 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudscheduler.Job;
  * import com.pulumi.gcp.cloudscheduler.JobArgs;
  * import com.pulumi.gcp.cloudscheduler.inputs.JobPubsubTargetArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -94,6 +96,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudscheduler.JobArgs;
  * import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
  * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -145,6 +149,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudscheduler.JobArgs;
  * import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
  * import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -268,7 +274,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var default = ComputeFunctions.getDefaultServiceAccount();
+ *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+ *             .build());
  * 
  *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")
@@ -319,7 +326,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var default = ComputeFunctions.getDefaultServiceAccount();
+ *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+ *             .build());
  * 
  *         var job = new Job("job", JobArgs.builder()
  *             .name("test-job")

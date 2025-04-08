@@ -76,6 +76,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
  * import com.pulumi.gcp.secretmanager.RegionalSecretVersion;
  * import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;

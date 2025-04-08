@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .project(my_connection.project())
  *             .location(my_connection.location())
  *             .name(my_connection.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *             .project(my_connection.project())
  *             .location(my_connection.location())
  *             .name(my_connection.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

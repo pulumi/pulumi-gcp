@@ -33,8 +33,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.managedkafka.Cluster;
@@ -42,8 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
- * import com.pulumi.gcp.managedkafka.Topic;
- * import com.pulumi.gcp.managedkafka.TopicArgs;
  * import com.pulumi.gcp.managedkafka.ConnectCluster;
  * import com.pulumi.gcp.managedkafka.ConnectClusterArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ConnectClusterCapacityConfigArgs;
@@ -84,30 +80,31 @@ import javax.annotation.Nullable;
  *             .network(mkcNetwork.id())
  *             .build());
  * 
- *         var cpsTopic = new Topic("cpsTopic", TopicArgs.builder()
+ *         var cpsTopic = new com.pulumi.gcp.pubsub.Topic("cpsTopic", com.pulumi.gcp.pubsub.TopicArgs.builder()
  *             .name("my-cps-topic")
  *             .messageRetentionDuration("86600s")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var gmkCluster = new Cluster("gmkCluster", ClusterArgs.builder()
  *             .clusterId("my-cluster")
  *             .location("us-central1")
  *             .capacityConfig(ClusterCapacityConfigArgs.builder()
- *                 .vcpuCount(3)
- *                 .memoryBytes(3221225472)
+ *                 .vcpuCount("3")
+ *                 .memoryBytes("3221225472")
  *                 .build())
  *             .gcpConfig(ClusterGcpConfigArgs.builder()
  *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
  *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .subnet(mkcSubnet.id().applyValue(id -> String.format("projects/%s/regions/us-central1/subnetworks/%s", project.applyValue(getProjectResult -> getProjectResult.projectId()),id)))
+ *                         .subnet(mkcSubnet.id().applyValue(_id -> String.format("projects/%s/regions/us-central1/subnetworks/%s", project.projectId(),_id)))
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var gmkTopic = new Topic("gmkTopic", TopicArgs.builder()
+ *         var gmkTopic = new com.pulumi.gcp.managedkafka.Topic("gmkTopic", com.pulumi.gcp.managedkafka.TopicArgs.builder()
  *             .topicId("my-topic")
  *             .cluster(gmkCluster.clusterId())
  *             .location("us-central1")
@@ -117,18 +114,18 @@ import javax.annotation.Nullable;
  * 
  *         var mkcCluster = new ConnectCluster("mkcCluster", ConnectClusterArgs.builder()
  *             .connectClusterId("my-connect-cluster")
- *             .kafkaCluster(gmkCluster.clusterId().applyValue(clusterId -> String.format("projects/%s/locations/us-central1/clusters/%s", project.applyValue(getProjectResult -> getProjectResult.projectId()),clusterId)))
+ *             .kafkaCluster(gmkCluster.clusterId().applyValue(_clusterId -> String.format("projects/%s/locations/us-central1/clusters/%s", project.projectId(),_clusterId)))
  *             .location("us-central1")
  *             .capacityConfig(ConnectClusterCapacityConfigArgs.builder()
- *                 .vcpuCount(12)
- *                 .memoryBytes(21474836480)
+ *                 .vcpuCount("12")
+ *                 .memoryBytes("21474836480")
  *                 .build())
  *             .gcpConfig(ConnectClusterGcpConfigArgs.builder()
  *                 .accessConfig(ConnectClusterGcpConfigAccessConfigArgs.builder()
  *                     .networkConfigs(ConnectClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .primarySubnet(mkcSubnet.id().applyValue(id -> String.format("projects/%s/regions/us-central1/subnetworks/%s", project.applyValue(getProjectResult -> getProjectResult.projectId()),id)))
+ *                         .primarySubnet(mkcSubnet.id().applyValue(_id -> String.format("projects/%s/regions/us-central1/subnetworks/%s", project.projectId(),_id)))
  *                         .additionalSubnets(mkcAdditionalSubnet.id())
- *                         .dnsDomainNames(gmkCluster.clusterId().applyValue(clusterId -> String.format("%s.us-central1.managedkafka-staging.%s.cloud-staging.goog", clusterId,project.applyValue(getProjectResult -> getProjectResult.projectId()))))
+ *                         .dnsDomainNames(gmkCluster.clusterId().applyValue(_clusterId -> String.format("%s.us-central1.managedkafka-staging.%s.cloud-staging.goog", _clusterId,project.projectId())))
  *                         .build())
  *                     .build())
  *                 .build())
@@ -145,7 +142,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("tasks.max", "1"),
  *                 Map.entry("topics", gmkTopic.topicId()),
  *                 Map.entry("cps.topic", cpsTopic.name()),
- *                 Map.entry("cps.project", project.applyValue(getProjectResult -> getProjectResult.projectId())),
+ *                 Map.entry("cps.project", project.projectId()),
  *                 Map.entry("value.converter", "org.apache.kafka.connect.storage.StringConverter"),
  *                 Map.entry("key.converter", "org.apache.kafka.connect.storage.StringConverter")
  *             ))

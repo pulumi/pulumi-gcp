@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .membershipId("tf-test-membership_41819")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

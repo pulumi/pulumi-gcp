@@ -200,13 +200,13 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(privateConnection.vpcPeeringConfig().applyValue(vpcPeeringConfig -> vpcPeeringConfig.vpc()))
+ *                 .network(privateConnection.vpcPeeringConfig().applyValue(_vpcPeeringConfig -> _vpcPeeringConfig.vpc()))
  *                 .subnetwork(defaultSubnetwork.selfLink())
  *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
  *                     .natIp(natVmIp.address())
  *                     .build())
  *                 .build())
- *             .metadataStartupScript(instance.publicIpAddress().applyValue(publicIpAddress -> """
+ *             .metadataStartupScript(instance.publicIpAddress().applyValue(_publicIpAddress -> """
  * #! /bin/bash
  * # See https://cloud.google.com/datastream/docs/private-connectivity#set-up-reverse-proxy
  * export DB_ADDR=%s
@@ -224,19 +224,19 @@ import javax.annotation.Nullable;
  *      -j SNAT \
  *      --to-source $vm_nic_ip
  * iptables-save
- * ", publicIpAddress)))
+ * ", _publicIpAddress)))
  *             .build());
  * 
  *         var rules = new Firewall("rules", FirewallArgs.builder()
  *             .name("ingress-rule")
- *             .network(privateConnection.vpcPeeringConfig().applyValue(vpcPeeringConfig -> vpcPeeringConfig.vpc()))
+ *             .network(privateConnection.vpcPeeringConfig().applyValue(_vpcPeeringConfig -> _vpcPeeringConfig.vpc()))
  *             .description("Allow traffic into NAT VM")
  *             .direction("INGRESS")
  *             .allows(FirewallAllowArgs.builder()
  *                 .protocol("tcp")
  *                 .ports("5432")
  *                 .build())
- *             .sourceRanges(privateConnection.vpcPeeringConfig().applyValue(vpcPeeringConfig -> vpcPeeringConfig.subnet()))
+ *             .sourceRanges(privateConnection.vpcPeeringConfig().applyValue(_vpcPeeringConfig -> _vpcPeeringConfig.subnet()))
  *             .build());
  * 
  *         var defaultConnectionProfile = new ConnectionProfile("defaultConnectionProfile", ConnectionProfileArgs.builder()
@@ -244,7 +244,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .connectionProfileId("my-profile")
  *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
- *                 .hostname(natVm.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].networkIp()))
+ *                 .hostname(natVm.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
  *                 .username(user.name())
  *                 .password(user.password())
  *                 .database(db.name())

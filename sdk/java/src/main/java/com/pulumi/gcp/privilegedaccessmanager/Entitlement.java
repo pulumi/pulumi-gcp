@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.privilegedaccessmanager.entitlement;
- * import com.pulumi.gcp.privilegedaccessmanager.EntitlementArgs;
+ * import com.pulumi.gcp.privilegedaccessmanager.entitlementArgs;
  * import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementRequesterJustificationConfigArgs;
  * import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementRequesterJustificationConfigUnstructuredArgs;
  * import com.pulumi.gcp.privilegedaccessmanager.inputs.EntitlementEligibleUserArgs;
@@ -71,7 +71,8 @@ import javax.annotation.Nullable;
  *             .maxRequestDuration("43200s")
  *             .parent("projects/my-project-name")
  *             .requesterJustificationConfig(EntitlementRequesterJustificationConfigArgs.builder()
- *                 .unstructured()
+ *                 .unstructured(EntitlementRequesterJustificationConfigUnstructuredArgs.builder()
+ *                     .build())
  *                 .build())
  *             .eligibleUsers(EntitlementEligibleUserArgs.builder()
  *                 .principals("group:test}{@literal @}{@code google.com")

@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.oslogin.SshPublicKey;
  * import com.pulumi.gcp.oslogin.SshPublicKeyArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,10 +53,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+ *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var cache = new SshPublicKey("cache", SshPublicKeyArgs.builder()
- *             .user(me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()))
+ *             .user(me.email())
  *             .key(StdFunctions.file(FileArgs.builder()
  *                 .input("path/to/id_rsa.pub")
  *                 .build()).result())

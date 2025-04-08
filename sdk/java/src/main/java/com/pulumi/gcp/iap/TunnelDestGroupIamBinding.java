@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -357,7 +357,7 @@ import javax.annotation.Nullable;
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -409,7 +409,7 @@ import javax.annotation.Nullable;
  *             .project(destGroup.project())
  *             .region(destGroup.region())
  *             .destGroup(destGroup.groupName())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

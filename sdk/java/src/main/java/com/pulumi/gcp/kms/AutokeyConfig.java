@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.projects.IAMMember;
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *         var waitEnableServiceApi = new Sleep("waitEnableServiceApi", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(kmsApiService)
+ *                 .dependsOn(List.of(kmsApiService))
  *                 .build());
  * 
  *         //Create KMS Service Agent
@@ -102,14 +102,14 @@ import javax.annotation.Nullable;
  *         var waitServiceAgent = new Sleep("waitServiceAgent", SleepArgs.builder()
  *             .createDuration("10s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(kmsServiceAgent)
+ *                 .dependsOn(List.of(kmsServiceAgent))
  *                 .build());
  * 
  *         //Grant the KMS Service Agent the Cloud KMS Admin role
  *         var autokeyProjectAdmin = new IAMMember("autokeyProjectAdmin", IAMMemberArgs.builder()
  *             .project(keyProject.projectId())
  *             .role("roles/cloudkms.admin")
- *             .member(keyProject.number().applyValue(number -> String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-cloudkms.iam.gserviceaccount.com", number)))
+ *             .member(keyProject.number().applyValue(_number -> String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-cloudkms.iam.gserviceaccount.com", _number)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(waitServiceAgent)
  *                 .build());
@@ -118,12 +118,12 @@ import javax.annotation.Nullable;
  *         var waitSrvAccPermissions = new Sleep("waitSrvAccPermissions", SleepArgs.builder()
  *             .createDuration("10s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(autokeyProjectAdmin)
+ *                 .dependsOn(List.of(autokeyProjectAdmin))
  *                 .build());
  * 
  *         var example_autokeyconfig = new AutokeyConfig("example-autokeyconfig", AutokeyConfigArgs.builder()
  *             .folder(autokmsFolder.id())
- *             .keyProject(keyProject.projectId().applyValue(projectId -> String.format("projects/%s", projectId)))
+ *             .keyProject(keyProject.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(waitSrvAccPermissions)
  *                 .build());
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *         var waitAutokeyPropagation = new Sleep("waitAutokeyPropagation", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(example_autokeyconfig)
+ *                 .dependsOn(List.of(example_autokeyconfig))
  *                 .build());
  * 
  *     }}{@code

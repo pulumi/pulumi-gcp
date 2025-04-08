@@ -86,12 +86,12 @@ import javax.annotation.Nullable;
  *                     .addressPools(                    
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
  *                             .pool("ingress-ip")
- *                             .manualAssign("true")
+ *                             .manualAssign(true)
  *                             .addresses("10.251.135.19")
  *                             .build(),
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
  *                             .pool("lb-test-ip")
- *                             .manualAssign("true")
+ *                             .manualAssign(true)
  *                             .addresses("10.251.135.19")
  *                             .build())
  *                     .build())
@@ -177,12 +177,12 @@ import javax.annotation.Nullable;
  *                     .addressPools(                    
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
  *                             .pool("ingress-ip")
- *                             .manualAssign("true")
+ *                             .manualAssign(true)
  *                             .addresses("10.251.135.19")
  *                             .build(),
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
  *                             .pool("lb-test-ip")
- *                             .manualAssign("true")
+ *                             .manualAssign(true)
  *                             .addresses("10.251.135.19")
  *                             .build())
  *                     .build())
@@ -193,7 +193,8 @@ import javax.annotation.Nullable;
  *             .name("my-nodepool")
  *             .location("us-west1")
  *             .vmwareCluster(default_full.name())
- *             .annotations()
+ *             .annotations(Map.ofEntries(
+ *             ))
  *             .config(VMwareNodePoolConfigArgs.builder()
  *                 .cpus(4)
  *                 .memoryMb(8196)
@@ -211,7 +212,8 @@ import javax.annotation.Nullable;
  *                         .value("value")
  *                         .effect("NO_SCHEDULE")
  *                         .build())
- *                 .labels()
+ *                 .labels(Map.ofEntries(
+ *                 ))
  *                 .vsphereConfig(VMwareNodePoolConfigVsphereConfigArgs.builder()
  *                     .datastore("test-datastore")
  *                     .tags(                    

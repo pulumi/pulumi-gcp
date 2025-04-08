@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *         var database = new DatabaseIAMPolicy("database", DatabaseIAMPolicyArgs.builder()
  *             .instance("your-instance-name")
  *             .database("your-database-name")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

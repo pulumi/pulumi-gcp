@@ -68,14 +68,14 @@ import javax.annotation.Nullable;
  *             .name("test-pool")
  *             .location("us-west2")
  *             .serviceLevel("PREMIUM")
- *             .capacityGib(2048)
+ *             .capacityGib("2048")
  *             .network(default_.id())
  *             .build());
  * 
  *         var defaultVolume = new Volume("defaultVolume", VolumeArgs.builder()
  *             .location(defaultStoragePool.location())
  *             .name("test-volume")
- *             .capacityGib(100)
+ *             .capacityGib("100")
  *             .shareName("test-volume")
  *             .storagePool(defaultStoragePool.name())
  *             .protocols("NFSV3")

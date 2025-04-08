@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *         var defaultGlobalForwardingRule = new GlobalForwardingRule("defaultGlobalForwardingRule", GlobalForwardingRuleArgs.builder()
  *             .name("forwarding-rule")
  *             .target(defaultTargetHttpsProxy.id())
- *             .portRange(443)
+ *             .portRange("443")
  *             .build());
  * 
  *     }

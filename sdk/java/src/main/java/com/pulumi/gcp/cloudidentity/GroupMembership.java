@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *         var cloudIdentityGroupMembershipBasic = new GroupMembership("cloudIdentityGroupMembershipBasic", GroupMembershipArgs.builder()
  *             .group(group.id())
  *             .preferredMemberKey(GroupMembershipPreferredMemberKeyArgs.builder()
- *                 .id(child_group.groupKey().applyValue(groupKey -> groupKey.id()))
+ *                 .id(child_group.groupKey().applyValue(_groupKey -> _groupKey.id()))
  *                 .build())
  *             .roles(GroupMembershipRoleArgs.builder()
  *                 .name("MEMBER")

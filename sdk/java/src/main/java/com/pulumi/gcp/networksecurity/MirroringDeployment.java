@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .subnetwork(subnetwork.name())
  *             .backendService(backendService.id())
  *             .loadBalancingScheme("INTERNAL")
- *             .ports(6081)
+ *             .ports("6081")
  *             .ipProtocol("UDP")
  *             .isMirroringCollector(true)
  *             .build());

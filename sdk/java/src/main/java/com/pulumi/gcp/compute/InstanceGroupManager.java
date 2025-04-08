@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .unhealthyThreshold(10)
  *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
  *                 .requestPath("/healthz")
- *                 .port("8080")
+ *                 .port(8080)
  *                 .build())
  *             .build());
  * 

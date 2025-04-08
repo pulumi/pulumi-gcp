@@ -193,7 +193,7 @@ import javax.annotation.Nullable;
  *             .securityPolicy(default_.name())
  *             .description("new rule")
  *             .action("deny")
- *             .priority("2147483647")
+ *             .priority(2147483647)
  *             .match(RegionSecurityPolicyRuleMatchArgs.builder()
  *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()

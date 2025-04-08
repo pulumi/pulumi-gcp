@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  *                     }))
  *                     .build())
  *                 .outputPath(PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs.builder()
- *                     .path(bucket.name().applyValue(name -> String.format("gs://%s/output/dictionary.txt", name)))
+ *                     .path(bucket.name().applyValue(_name -> String.format("gs://%s/output/dictionary.txt", _name)))
  *                     .build())
  *                 .build())
  *             .build());

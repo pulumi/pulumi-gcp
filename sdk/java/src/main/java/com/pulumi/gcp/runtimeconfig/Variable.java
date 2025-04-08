@@ -79,6 +79,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.runtimeconfig.ConfigArgs;
  * import com.pulumi.gcp.runtimeconfig.Variable;
  * import com.pulumi.gcp.runtimeconfig.VariableArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;

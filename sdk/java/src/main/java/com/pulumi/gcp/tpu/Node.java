@@ -57,13 +57,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var available = TpuFunctions.getTensorflowVersions();
+ *         final var available = TpuFunctions.getTensorflowVersions(GetTensorflowVersionsArgs.builder()
+ *             .build());
  * 
  *         var tpu = new Node("tpu", NodeArgs.builder()
  *             .name("test-tpu")
  *             .zone("us-central1-b")
  *             .acceleratorType("v3-8")
- *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+ *             .tensorflowVersion(available.versions()[0])
  *             .cidrBlock("10.2.0.0/29")
  *             .build());
  * 
@@ -106,7 +107,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var available = TpuFunctions.getTensorflowVersions();
+ *         final var available = TpuFunctions.getTensorflowVersions(GetTensorflowVersionsArgs.builder()
+ *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()
  *             .name("tpu-node-network")
@@ -130,7 +132,7 @@ import javax.annotation.Nullable;
  *             .name("test-tpu")
  *             .zone("us-central1-b")
  *             .acceleratorType("v3-8")
- *             .tensorflowVersion(available.applyValue(getTensorflowVersionsResult -> getTensorflowVersionsResult.versions()[0]))
+ *             .tensorflowVersion(available.versions()[0])
  *             .description("Google Provider test TPU")
  *             .useServiceNetworking(true)
  *             .network(privateServiceConnection.network())

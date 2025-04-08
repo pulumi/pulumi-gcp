@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(cluster.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build());
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(cluster.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build());
@@ -223,7 +223,7 @@ import javax.annotation.Nullable;
  *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(cluster.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build());
@@ -306,7 +306,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(cluster.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build());
@@ -420,7 +420,7 @@ import javax.annotation.Nullable;
  *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(cluster.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build());
@@ -490,7 +490,7 @@ import javax.annotation.Nullable;
  *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(cluster.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build());
@@ -564,7 +564,7 @@ import javax.annotation.Nullable;
  *             .membershipId("my-membership")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(cluster.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build());

@@ -83,6 +83,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.applicationintegration.Client;
  * import com.pulumi.gcp.applicationintegration.ClientArgs;
  * import com.pulumi.gcp.applicationintegration.inputs.ClientCloudKmsConfigArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.BasenameArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -96,7 +98,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = OrganizationsFunctions.getProject();
+ *         final var default = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         final var keyring = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
  *             .name("my-keyring")
@@ -105,11 +108,11 @@ import javax.annotation.Nullable;
  * 
  *         final var cryptokey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
  *             .name("my-crypto-key")
- *             .keyRing(keyring.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+ *             .keyRing(keyring.id())
  *             .build());
  * 
  *         final var testKey = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
- *             .cryptoKey(cryptokey.applyValue(getKMSCryptoKeyResult -> getKMSCryptoKeyResult.id()))
+ *             .cryptoKey(cryptokey.id())
  *             .build());
  * 
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
@@ -124,13 +127,13 @@ import javax.annotation.Nullable;
  *             .cloudKmsConfig(ClientCloudKmsConfigArgs.builder()
  *                 .kmsLocation("us-east1")
  *                 .kmsRing(StdFunctions.basename(BasenameArgs.builder()
- *                     .input(keyring.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+ *                     .input(keyring.id())
  *                     .build()).result())
  *                 .key(StdFunctions.basename(BasenameArgs.builder()
- *                     .input(cryptokey.applyValue(getKMSCryptoKeyResult -> getKMSCryptoKeyResult.id()))
+ *                     .input(cryptokey.id())
  *                     .build()).result())
  *                 .keyVersion(StdFunctions.basename(BasenameArgs.builder()
- *                     .input(testKey.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.id()))
+ *                     .input(testKey.id())
  *                     .build()).result())
  *                 .kmsProjectId(default_.projectId())
  *                 .build())

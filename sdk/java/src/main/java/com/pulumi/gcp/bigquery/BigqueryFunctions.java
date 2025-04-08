@@ -723,12 +723,13 @@ public final class BigqueryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
+     *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
      * 
      *     }
@@ -779,12 +780,13 @@ public final class BigqueryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
+     *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
      * 
      *     }
@@ -835,12 +837,13 @@ public final class BigqueryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
+     *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
      * 
      *     }
@@ -891,12 +894,13 @@ public final class BigqueryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
+     *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
      * 
      *     }
@@ -947,12 +951,13 @@ public final class BigqueryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
+     *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
      * 
      *     }
@@ -1003,12 +1008,13 @@ public final class BigqueryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
+     *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
      * 
      *     }
@@ -1059,12 +1065,13 @@ public final class BigqueryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
      *             .cryptoKeyId(key.id())
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
+     *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
      * 
      *     }

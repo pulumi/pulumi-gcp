@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *                 "foo",
  *                 "bar")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                 .sourceImage(myImage.selfLink())
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())

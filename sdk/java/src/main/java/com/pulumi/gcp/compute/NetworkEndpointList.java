@@ -96,28 +96,30 @@ import javax.annotation.Nullable;
  * 
  *         var endpoint_instance1 = new Instance("endpoint-instance1", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
  *             .name("endpoint-instance1")
  *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                     .image(myImage.selfLink())
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         var endpoint_instance2 = new Instance("endpoint-instance2", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
  *             .name("endpoint-instance2")
  *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                     .image(myImage.selfLink())
  *                     .build())
  *                 .build())
  *             .build());
@@ -128,12 +130,12 @@ import javax.annotation.Nullable;
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance1.name())
  *                     .port(neg.defaultPort())
- *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].networkIp()))
+ *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
  *                     .build(),
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance2.name())
  *                     .port(neg.defaultPort())
- *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].networkIp()))
+ *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
  *                     .build())
  *             .build());
  * 
@@ -141,7 +143,7 @@ import javax.annotation.Nullable;
  *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .defaultPort("90")
+ *             .defaultPort(90)
  *             .zone("us-central1-a")
  *             .build());
  * 

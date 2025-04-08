@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *                 "bar")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                     .image(myImage.selfLink())
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()

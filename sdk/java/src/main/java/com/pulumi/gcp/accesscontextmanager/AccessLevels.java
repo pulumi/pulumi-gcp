@@ -54,10 +54,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var access_levels = new AccessLevels("access-levels", AccessLevelsArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
  *             .accessLevels(            
  *                 AccessLevelsAccessLevelArgs.builder()
- *                     .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
+ *                     .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", _name)))
  *                     .title("chromeos_no_lock")
  *                     .basic(AccessLevelsAccessLevelBasicArgs.builder()
  *                         .conditions(AccessLevelsAccessLevelBasicConditionArgs.builder()
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build(),
  *                 AccessLevelsAccessLevelArgs.builder()
- *                     .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/mac_no_lock", name)))
+ *                     .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/accessLevels/mac_no_lock", _name)))
  *                     .title("mac_no_lock")
  *                     .basic(AccessLevelsAccessLevelBasicArgs.builder()
  *                         .conditions(AccessLevelsAccessLevelBasicConditionArgs.builder()

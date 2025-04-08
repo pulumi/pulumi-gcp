@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var neg = new GlobalNetworkEndpointGroup("neg", GlobalNetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
- *             .defaultPort("90")
+ *             .defaultPort(90)
  *             .networkEndpointType("INTERNET_FQDN_PORT")
  *             .build());
  * 

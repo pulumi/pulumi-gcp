@@ -368,7 +368,7 @@ import javax.annotation.Nullable;
  *             .peerExternalGateway(externalVpnGw.id())
  *             .peerExternalGatewayInterface(0)
  *             .sharedSecret("a secret message")
- *             .router(router.id().applyValue(id -> String.format(" %s", id)))
+ *             .router(router.id().applyValue(_id -> String.format(" %s", _id)))
  *             .vpnGatewayInterface(1)
  *             .build());
  * 
@@ -499,7 +499,7 @@ import javax.annotation.Nullable;
  *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
  *             .type("PARTNER")
  *             .router(router.id())
- *             .mtu(1500)
+ *             .mtu("1500")
  *             .region("us-central1")
  *             .build());
  * 

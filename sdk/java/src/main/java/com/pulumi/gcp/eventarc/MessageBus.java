@@ -72,19 +72,19 @@ import javax.annotation.Nullable;
  * 
  *         final var key = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
  *             .name("key")
- *             .keyRing(testKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+ *             .keyRing(testKeyRing.id())
  *             .build());
  * 
  *         var keyMember = new CryptoKeyIAMMember("keyMember", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId(key.applyValue(getKMSCryptoKeyResult -> getKMSCryptoKeyResult.id()))
+ *             .cryptoKeyId(key.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-eventarc.iam.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-eventarc.iam.gserviceaccount.com", testProject.number()))
  *             .build());
  * 
  *         var primary = new MessageBus("primary", MessageBusArgs.builder()
  *             .location("us-central1")
  *             .messageBusId("some-message-bus")
- *             .cryptoKeyName(key.applyValue(getKMSCryptoKeyResult -> getKMSCryptoKeyResult.id()))
+ *             .cryptoKeyName(key.id())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(keyMember)
  *                 .build());

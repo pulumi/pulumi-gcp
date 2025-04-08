@@ -60,14 +60,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example_interconnect = new Interconnect("example-interconnect", InterconnectArgs.builder()
  *             .name("example-interconnect")
  *             .customerName("example_customer")
  *             .interconnectType("DEDICATED")
  *             .linkType("LINK_TYPE_ETHERNET_10G_LR")
- *             .location(String.format("https://www.googleapis.com/compute/v1/projects/%s/global/interconnectLocations/iad-zone1-1", project.applyValue(getProjectResult -> getProjectResult.name())))
+ *             .location(String.format("https://www.googleapis.com/compute/v1/projects/%s/global/interconnectLocations/iad-zone1-1", project.name()))
  *             .requestedLinkCount(1)
  *             .build());
  * 

@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .name("source-pool")
  *             .location("us-central1")
  *             .serviceLevel("PREMIUM")
- *             .capacityGib(2048)
+ *             .capacityGib("2048")
  *             .network(default_.id())
  *             .build());
  * 
@@ -71,14 +71,14 @@ import javax.annotation.Nullable;
  *             .name("destination-pool")
  *             .location("us-west2")
  *             .serviceLevel("PREMIUM")
- *             .capacityGib(2048)
+ *             .capacityGib("2048")
  *             .network(default_.id())
  *             .build());
  * 
  *         var sourceVolume = new Volume("sourceVolume", VolumeArgs.builder()
  *             .location(sourcePool.location())
  *             .name("source-volume")
- *             .capacityGib(100)
+ *             .capacityGib("100")
  *             .shareName("source-volume")
  *             .storagePool(sourcePool.name())
  *             .protocols("NFSV3")

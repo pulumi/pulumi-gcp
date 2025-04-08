@@ -64,8 +64,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()
- *             .name(basic.projectId().applyValue(projectId -> String.format("projects/%s/policies/iam.disableServiceAccountKeyUpload", projectId)))
- *             .parent(basic.projectId().applyValue(projectId -> String.format("projects/%s", projectId)))
+ *             .name(basic.projectId().applyValue(_projectId -> String.format("projects/%s/policies/iam.disableServiceAccountKeyUpload", _projectId)))
+ *             .parent(basic.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()
  *                     .enforce("FALSE")
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()
- *             .name(basic.name().applyValue(name -> String.format("%s/policies/gcp.resourceLocations", name)))
+ *             .name(basic.name().applyValue(_name -> String.format("%s/policies/gcp.resourceLocations", _name)))
  *             .parent(basic.name())
  *             .spec(PolicySpecArgs.builder()
  *                 .inheritFromParent(true)
@@ -203,8 +203,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()
- *             .name(basic.projectId().applyValue(projectId -> String.format("projects/%s/policies/gcp.resourceLocations", projectId)))
- *             .parent(basic.projectId().applyValue(projectId -> String.format("projects/%s", projectId)))
+ *             .name(basic.projectId().applyValue(_projectId -> String.format("projects/%s/policies/gcp.resourceLocations", _projectId)))
+ *             .parent(basic.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(                
  *                     PolicySpecRuleArgs.builder()
@@ -271,7 +271,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()
- *             .name(constraint.name().applyValue(name -> String.format("organizations/123456789/policies/%s", name)))
+ *             .name(constraint.name().applyValue(_name -> String.format("organizations/123456789/policies/%s", _name)))
  *             .parent("organizations/123456789")
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()
@@ -329,8 +329,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()
- *             .name(basic.name().applyValue(name -> String.format("projects/%s/policies/compute.managed.restrictDiskCreation", name)))
- *             .parent(basic.name().applyValue(name -> String.format("projects/%s", name)))
+ *             .name(basic.name().applyValue(_name -> String.format("projects/%s/policies/compute.managed.restrictDiskCreation", _name)))
+ *             .parent(basic.name().applyValue(_name -> String.format("projects/%s", _name)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()
  *                     .enforce("TRUE")

@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .securityPolicy(default_.name())
  *             .description("default rule")
  *             .action("deny")
- *             .priority("2147483647")
+ *             .priority(2147483647)
  *             .match(SecurityPolicyRuleMatchArgs.builder()
  *                 .versionedExpr("SRC_IPS_V1")
  *                 .config(SecurityPolicyRuleMatchConfigArgs.builder()

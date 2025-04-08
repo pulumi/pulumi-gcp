@@ -96,12 +96,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cryptoKeyBinding = new CryptoKeyIAMMember("cryptoKeyBinding", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("my-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var default_ = new Instance("default", InstanceArgs.builder()
@@ -146,7 +147,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
@@ -208,19 +209,20 @@ import javax.annotation.Nullable;
  *             .skipGracePeriod(true)
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()
  *             .caPool(caPool.id())
  *             .role("roles/privateca.certificateRequester")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         // ca pool IAM permissions can take time to propagate
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(caPoolBinding)
+ *                 .dependsOn(List.of(caPoolBinding))
  *                 .build());
  * 
  *         var default_ = new Instance("default", InstanceArgs.builder()
@@ -270,7 +272,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
@@ -306,7 +308,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var caPool = new CaPool("caPool", CaPoolArgs.builder()
  *             .name("ca-pool")
@@ -355,14 +358,14 @@ import javax.annotation.Nullable;
  *         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()
  *             .caPool(caPool.id())
  *             .role("roles/privateca.certificateRequester")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         // ca pool IAM permissions can take time to propagate
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(caPoolBinding)
+ *                 .dependsOn(List.of(caPoolBinding))
  *                 .build());
  * 
  *         // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
@@ -397,7 +400,7 @@ import javax.annotation.Nullable;
  *             .name("my-neg")
  *             .region("us-central1")
  *             .networkEndpointType("PRIVATE_SERVICE_CONNECT")
- *             .pscTargetService(default_.privateConfig().applyValue(privateConfig -> privateConfig.httpServiceAttachment()))
+ *             .pscTargetService(default_.privateConfig().applyValue(_privateConfig -> _privateConfig.httpServiceAttachment()))
  *             .network(network.id())
  *             .subnetwork(subnet.id())
  *             .build());
@@ -410,7 +413,7 @@ import javax.annotation.Nullable;
  *             .backends(RegionBackendServiceBackendArgs.builder()
  *                 .group(pscNeg.id())
  *                 .balancingMode("UTILIZATION")
- *                 .capacityScaler(1)
+ *                 .capacityScaler(1.0)
  *                 .build())
  *             .build());
  * 
@@ -455,7 +458,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceHtmlRecord = new RecordSet("ssmInstanceHtmlRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].html())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].html())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -463,7 +466,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceApiRecord = new RecordSet("ssmInstanceApiRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].api())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].api())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -471,7 +474,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceGitRecord = new RecordSet("ssmInstanceGitRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].gitHttp())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].gitHttp())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -512,7 +515,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
  * import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
  * import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
@@ -543,7 +546,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var caPool = new CaPool("caPool", CaPoolArgs.builder()
  *             .name("ca-pool")
@@ -592,14 +596,14 @@ import javax.annotation.Nullable;
  *         var caPoolBinding = new CaPoolIamBinding("caPoolBinding", CaPoolIamBindingArgs.builder()
  *             .caPool(caPool.id())
  *             .role("roles/privateca.certificateRequester")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         // ca pool IAM permissions can take time to propagate
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(caPoolBinding)
+ *                 .dependsOn(List.of(caPoolBinding))
  *                 .build());
  * 
  *         // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
@@ -644,7 +648,7 @@ import javax.annotation.Nullable;
  *             .loadBalancingScheme("")
  *             .ipAddress(address.id())
  *             .network(network.id())
- *             .target(default_.privateConfig().applyValue(privateConfig -> privateConfig.httpServiceAttachment()))
+ *             .target(default_.privateConfig().applyValue(_privateConfig -> _privateConfig.httpServiceAttachment()))
  *             .build());
  * 
  *         var privateZone = new ManagedZone("privateZone", ManagedZoneArgs.builder()
@@ -659,7 +663,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceHtmlRecord = new RecordSet("ssmInstanceHtmlRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].html())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].html())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -667,7 +671,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceApiRecord = new RecordSet("ssmInstanceApiRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].api())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].api())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -675,7 +679,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceGitRecord = new RecordSet("ssmInstanceGitRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(hostConfigs -> String.format("%s.", hostConfigs[0].gitHttp())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].gitHttp())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())

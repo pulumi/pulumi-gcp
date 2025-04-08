@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .project("my-project-name")
  *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
- *                 .testingScore(1)
+ *                 .testingScore(1.0)
  *                 .build())
  *             .labels(Map.of("label-one", "value-one"))
  *             .build());
@@ -149,7 +149,8 @@ import javax.annotation.Nullable;
  *                 .integrationType("SCORE")
  *                 .allowAllDomains(true)
  *                 .build())
- *             .labels()
+ *             .labels(Map.ofEntries(
+ *             ))
  *             .build());
  * 
  *     }

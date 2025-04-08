@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *         var ssd = new Disk("ssd", DiskArgs.builder()
  *             .name("my-disk")
- *             .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *             .image(myImage.selfLink())
  *             .size(50)
  *             .type("pd-ssd")
  *             .zone("us-central1-a")

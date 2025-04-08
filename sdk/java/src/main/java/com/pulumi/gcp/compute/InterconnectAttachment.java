@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
  *             .type("PARTNER")
  *             .router(foobar.id())
- *             .mtu(1500)
+ *             .mtu("1500")
  *             .labels(Map.of("mykey", "myvalue"))
  *             .build());
  * 

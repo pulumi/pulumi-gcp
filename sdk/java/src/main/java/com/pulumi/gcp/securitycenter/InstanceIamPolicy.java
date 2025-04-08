@@ -93,7 +93,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = AppengineFunctions.getDefaultServiceAccount();
+ *         final var default = AppengineFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+ *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()
  *             .name("datafusion-full-network")
@@ -253,12 +254,13 @@ import javax.annotation.Nullable;
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cryptoKeyMember = new CryptoKeyIAMMember("cryptoKeyMember", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-datafusion.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-datafusion.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var cmek = new Instance("cmek", InstanceArgs.builder()

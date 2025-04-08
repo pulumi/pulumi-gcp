@@ -87,8 +87,8 @@ import javax.annotation.Nullable;
  *             .bucketOptions(MetricBucketOptionsArgs.builder()
  *                 .linearBuckets(MetricBucketOptionsLinearBucketsArgs.builder()
  *                     .numFiniteBuckets(3)
- *                     .width(1)
- *                     .offset(1)
+ *                     .width(1.0)
+ *                     .offset(1.0)
  *                     .build())
  *                 .build())
  *             .build());

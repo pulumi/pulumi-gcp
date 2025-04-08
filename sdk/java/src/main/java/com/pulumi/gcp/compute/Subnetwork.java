@@ -427,7 +427,7 @@ import javax.annotation.Nullable;
  *             .name("subnetwork-reserved-internal-range")
  *             .region("us-central1")
  *             .network(default_.id())
- *             .reservedInternalRange(reserved.id().applyValue(id -> String.format("networkconnectivity.googleapis.com/%s", id)))
+ *             .reservedInternalRange(reserved.id().applyValue(_id -> String.format("networkconnectivity.googleapis.com/%s", _id)))
  *             .build());
  * 
  *     }
@@ -492,10 +492,10 @@ import javax.annotation.Nullable;
  *             .name("subnetwork-reserved-secondary-range")
  *             .region("us-central1")
  *             .network(default_.id())
- *             .reservedInternalRange(reserved.id().applyValue(id -> String.format("networkconnectivity.googleapis.com/%s", id)))
+ *             .reservedInternalRange(reserved.id().applyValue(_id -> String.format("networkconnectivity.googleapis.com/%s", _id)))
  *             .secondaryIpRanges(SubnetworkSecondaryIpRangeArgs.builder()
  *                 .rangeName("secondary")
- *                 .reservedInternalRange(reservedSecondary.id().applyValue(id -> String.format("networkconnectivity.googleapis.com/%s", id)))
+ *                 .reservedInternalRange(reservedSecondary.id().applyValue(_id -> String.format("networkconnectivity.googleapis.com/%s", _id)))
  *                 .build())
  *             .build());
  * 

@@ -271,7 +271,8 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.name())
  *             .build());
  * 
- *         final var targetProject = OrganizationsFunctions.getProject();
+ *         final var targetProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var default_ = new InternalRange("default", InternalRangeArgs.builder()
  *             .name("migration")
@@ -282,7 +283,7 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.1.0.0/16")
  *             .migration(InternalRangeMigrationArgs.builder()
  *                 .source(source.selfLink())
- *                 .target(String.format("projects/%s/regions/us-central1/subnetworks/target-subnet", targetProject.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *                 .target(String.format("projects/%s/regions/us-central1/subnetworks/target-subnet", targetProject.projectId()))
  *                 .build())
  *             .build());
  * 

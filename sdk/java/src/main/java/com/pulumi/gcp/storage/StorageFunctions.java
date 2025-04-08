@@ -865,7 +865,7 @@ public final class StorageFunctions {
      *             .bucket("keystore")
      *             .build());
      * 
-     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
+     *         ctx.export("encrypted", key.content());
      *     }
      * }
      * }
@@ -916,7 +916,7 @@ public final class StorageFunctions {
      *             .bucket("keystore")
      *             .build());
      * 
-     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
+     *         ctx.export("encrypted", key.content());
      *     }
      * }
      * }
@@ -967,7 +967,7 @@ public final class StorageFunctions {
      *             .bucket("keystore")
      *             .build());
      * 
-     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
+     *         ctx.export("encrypted", key.content());
      *     }
      * }
      * }
@@ -1018,7 +1018,7 @@ public final class StorageFunctions {
      *             .bucket("keystore")
      *             .build());
      * 
-     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
+     *         ctx.export("encrypted", key.content());
      *     }
      * }
      * }
@@ -1069,7 +1069,7 @@ public final class StorageFunctions {
      *             .bucket("keystore")
      *             .build());
      * 
-     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
+     *         ctx.export("encrypted", key.content());
      *     }
      * }
      * }
@@ -2379,6 +2379,8 @@ public final class StorageFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import java.util.List;
@@ -2403,7 +2405,7 @@ public final class StorageFunctions {
      *             .credentials(StdFunctions.file(FileArgs.builder()
      *                 .input("path/to/credentials.json")
      *                 .build()).result())
-     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", "1"))
      *             .build());
      * 
      *     }
@@ -2473,6 +2475,8 @@ public final class StorageFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import java.util.List;
@@ -2497,7 +2501,7 @@ public final class StorageFunctions {
      *             .credentials(StdFunctions.file(FileArgs.builder()
      *                 .input("path/to/credentials.json")
      *                 .build()).result())
-     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", "1"))
      *             .build());
      * 
      *     }
@@ -2567,6 +2571,8 @@ public final class StorageFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import java.util.List;
@@ -2591,7 +2597,7 @@ public final class StorageFunctions {
      *             .credentials(StdFunctions.file(FileArgs.builder()
      *                 .input("path/to/credentials.json")
      *                 .build()).result())
-     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", "1"))
      *             .build());
      * 
      *     }
@@ -2661,6 +2667,8 @@ public final class StorageFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import java.util.List;
@@ -2685,7 +2693,7 @@ public final class StorageFunctions {
      *             .credentials(StdFunctions.file(FileArgs.builder()
      *                 .input("path/to/credentials.json")
      *                 .build()).result())
-     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", "1"))
      *             .build());
      * 
      *     }
@@ -2755,6 +2763,8 @@ public final class StorageFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FileArgs;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
      * import java.util.List;
@@ -2779,7 +2789,7 @@ public final class StorageFunctions {
      *             .credentials(StdFunctions.file(FileArgs.builder()
      *                 .input("path/to/credentials.json")
      *                 .build()).result())
-     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", "1"))
      *             .build());
      * 
      *     }
@@ -2855,12 +2865,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *     }
@@ -2900,12 +2911,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -2991,12 +3003,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *     }
@@ -3036,12 +3049,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -3127,12 +3141,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *     }
@@ -3172,12 +3187,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -3263,12 +3279,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *     }
@@ -3308,12 +3325,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -3399,12 +3417,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *     }
@@ -3444,12 +3463,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -3535,12 +3555,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *     }
@@ -3580,12 +3601,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -3671,12 +3693,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
      *             .topic(topic.name())
      *             .role("roles/pubsub.publisher")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *     }
@@ -3716,12 +3739,13 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
      *             .cryptoKeyId("your-crypto-key-id")
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
      * 
      *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -3772,7 +3796,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -3813,7 +3838,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -3854,7 +3880,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -3895,7 +3922,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -3936,7 +3964,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -3977,7 +4006,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -4018,7 +4048,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -4059,7 +4090,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -4104,7 +4136,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -4149,7 +4182,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -4194,7 +4228,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -4239,7 +4274,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -4284,7 +4320,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -4329,7 +4366,8 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
