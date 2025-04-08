@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *         var policy = new WebTypeAppEngingIamPolicy("policy", WebTypeAppEngingIamPolicyArgs.builder()
  *             .project(app.project())
  *             .appId(app.appId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *         var policy = new WebTypeAppEngingIamPolicy("policy", WebTypeAppEngingIamPolicyArgs.builder()
  *             .project(app.project())
  *             .appId(app.appId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -350,7 +350,7 @@ import javax.annotation.Nullable;
  *         var policy = new WebTypeAppEngingIamPolicy("policy", WebTypeAppEngingIamPolicyArgs.builder()
  *             .project(app.project())
  *             .appId(app.appId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -401,7 +401,7 @@ import javax.annotation.Nullable;
  *         var policy = new WebTypeAppEngingIamPolicy("policy", WebTypeAppEngingIamPolicyArgs.builder()
  *             .project(app.project())
  *             .appId(app.appId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

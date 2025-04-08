@@ -90,10 +90,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.vmwareengine.Network;
- * import com.pulumi.gcp.vmwareengine.NetworkArgs;
  * import com.pulumi.gcp.vmwareengine.NetworkPeering;
  * import com.pulumi.gcp.vmwareengine.NetworkPeeringArgs;
  * import java.util.List;
@@ -109,11 +105,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network_peering_vpc = new Network("network-peering-vpc", NetworkArgs.builder()
+ *         var network_peering_vpc = new com.pulumi.gcp.compute.Network("network-peering-vpc", com.pulumi.gcp.compute.NetworkArgs.builder()
  *             .name("default-vpc")
  *             .build());
  * 
- *         var network_peering_standard_nw = new Network("network-peering-standard-nw", NetworkArgs.builder()
+ *         var network_peering_standard_nw = new com.pulumi.gcp.vmwareengine.Network("network-peering-standard-nw", com.pulumi.gcp.vmwareengine.NetworkArgs.builder()
  *             .name("default-standard-nw-np")
  *             .location("global")
  *             .type("STANDARD")

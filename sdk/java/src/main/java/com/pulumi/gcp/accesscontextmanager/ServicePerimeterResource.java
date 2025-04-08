@@ -74,8 +74,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var service_perimeter_resourceServicePerimeter = new ServicePerimeter("service-perimeter-resourceServicePerimeter", ServicePerimeterArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
- *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/servicePerimeters/restrict_all", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
+ *             .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/servicePerimeters/restrict_all", _name)))
  *             .title("restrict_all")
  *             .status(ServicePerimeterStatusArgs.builder()
  *                 .restrictedServices("storage.googleapis.com")

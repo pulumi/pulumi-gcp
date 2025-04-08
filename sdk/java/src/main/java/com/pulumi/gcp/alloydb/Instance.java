@@ -106,7 +106,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(vpcConnection)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }
@@ -219,7 +220,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(vpcConnection)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }

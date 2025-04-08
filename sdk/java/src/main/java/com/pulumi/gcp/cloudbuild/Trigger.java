@@ -244,22 +244,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cloudbuildServiceAccount = new Account("cloudbuildServiceAccount", AccountArgs.builder()
  *             .accountId("cloud-sa")
  *             .build());
  * 
  *         var actAs = new IAMMember("actAs", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .role("roles/iam.serviceAccountUser")
- *             .member(cloudbuildServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(cloudbuildServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var logsWriter = new IAMMember("logsWriter", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .role("roles/logging.logWriter")
- *             .member(cloudbuildServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(cloudbuildServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var service_account_trigger = new Trigger("service-account-trigger", TriggerArgs.builder()
@@ -442,19 +443,20 @@ import javax.annotation.Nullable;
  *             .secretData("secretkeygoeshere")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         final var secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/secretmanager.secretAccessor")
- *                 .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-cloudbuild.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-cloudbuild.iam.gserviceaccount.com", project.number()))
  *                 .build())
  *             .build());
  * 
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .project(webhookTriggerSecretKey.project())
  *             .secretId(webhookTriggerSecretKey.secretId())
- *             .policyData(secretAccessor.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(secretAccessor.policyData())
  *             .build());
  * 
  *         var webhook_config_trigger = new Trigger("webhook-config-trigger", TriggerArgs.builder()

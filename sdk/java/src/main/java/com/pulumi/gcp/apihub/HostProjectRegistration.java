@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.apihub.HostProjectRegistration;
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(project)
+ *                 .dependsOn(List.of(project))
  *                 .build());
  * 
  *         // Enable API hub API
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .project(project.projectId())
  *             .location("asia-south1")
  *             .hostProjectRegistrationId(project.projectId())
- *             .gcpProject(project.projectId().applyValue(projectId -> String.format("projects/%s", projectId)))
+ *             .gcpProject(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(apihubService)
  *                 .build());

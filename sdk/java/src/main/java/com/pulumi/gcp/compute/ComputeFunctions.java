@@ -243,11 +243,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getAddressResult -> getAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -303,11 +303,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getAddressResult -> getAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -363,11 +363,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getAddressResult -> getAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -423,11 +423,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getAddressResult -> getAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -483,11 +483,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getAddressResult -> getAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -544,11 +544,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
+     *             .rrdatas(test.addresses().stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
@@ -605,11 +605,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
+     *             .rrdatas(test.addresses().stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
@@ -666,11 +666,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
+     *             .rrdatas(test.addresses().stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
@@ -727,11 +727,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
+     *             .rrdatas(test.addresses().stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
@@ -788,11 +788,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
+     *             .rrdatas(test.addresses().stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
@@ -849,11 +849,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
+     *             .rrdatas(test.addresses().stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
@@ -910,11 +910,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("frontend.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("frontend.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(test.applyValue(getAddressesResult -> getAddressesResult.addresses()).stream().map(element -> element.address()).collect(toList()))
+     *             .rrdatas(test.addresses().stream().map(element -> element.address()).collect(toList()))
      *             .build());
      * 
      *     }
@@ -1380,7 +1380,7 @@ public final class ComputeFunctions {
      * 
      *         var default_ = new BackendService("default", BackendServiceArgs.builder()
      *             .name("backend-service")
-     *             .healthChecks(baz.applyValue(getBackendServiceResult -> getBackendServiceResult.healthChecks()[0]))
+     *             .healthChecks(baz.healthChecks()[0])
      *             .build());
      * 
      *     }
@@ -1431,7 +1431,7 @@ public final class ComputeFunctions {
      * 
      *         var default_ = new BackendService("default", BackendServiceArgs.builder()
      *             .name("backend-service")
-     *             .healthChecks(baz.applyValue(getBackendServiceResult -> getBackendServiceResult.healthChecks()[0]))
+     *             .healthChecks(baz.healthChecks()[0])
      *             .build());
      * 
      *     }
@@ -1482,7 +1482,7 @@ public final class ComputeFunctions {
      * 
      *         var default_ = new BackendService("default", BackendServiceArgs.builder()
      *             .name("backend-service")
-     *             .healthChecks(baz.applyValue(getBackendServiceResult -> getBackendServiceResult.healthChecks()[0]))
+     *             .healthChecks(baz.healthChecks()[0])
      *             .build());
      * 
      *     }
@@ -1533,7 +1533,7 @@ public final class ComputeFunctions {
      * 
      *         var default_ = new BackendService("default", BackendServiceArgs.builder()
      *             .name("backend-service")
-     *             .healthChecks(baz.applyValue(getBackendServiceResult -> getBackendServiceResult.healthChecks()[0]))
+     *             .healthChecks(baz.healthChecks()[0])
      *             .build());
      * 
      *     }
@@ -1584,7 +1584,7 @@ public final class ComputeFunctions {
      * 
      *         var default_ = new BackendService("default", BackendServiceArgs.builder()
      *             .name("backend-service")
-     *             .healthChecks(baz.applyValue(getBackendServiceResult -> getBackendServiceResult.healthChecks()[0]))
+     *             .healthChecks(baz.healthChecks()[0])
      *             .build());
      * 
      *     }
@@ -1834,9 +1834,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getCertificateResult -> getCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getCertificateResult -> getCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getCertificateResult -> getCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -1879,9 +1879,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getCertificateResult -> getCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getCertificateResult -> getCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getCertificateResult -> getCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -1924,9 +1924,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getCertificateResult -> getCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getCertificateResult -> getCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getCertificateResult -> getCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -1969,9 +1969,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getCertificateResult -> getCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getCertificateResult -> getCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getCertificateResult -> getCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -2014,9 +2014,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getCertificateResult -> getCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getCertificateResult -> getCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getCertificateResult -> getCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -2055,7 +2055,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ComputeFunctions.getDefaultServiceAccount();
+     *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -2096,7 +2097,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ComputeFunctions.getDefaultServiceAccount();
+     *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -2137,7 +2139,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ComputeFunctions.getDefaultServiceAccount();
+     *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -2178,7 +2181,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ComputeFunctions.getDefaultServiceAccount();
+     *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -2219,7 +2223,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ComputeFunctions.getDefaultServiceAccount();
+     *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -2260,7 +2265,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ComputeFunctions.getDefaultServiceAccount();
+     *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -2301,7 +2307,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = ComputeFunctions.getDefaultServiceAccount();
+     *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -3363,11 +3370,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("lb.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -> getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -3423,11 +3430,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("lb.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -> getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -3483,11 +3490,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("lb.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -> getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -3543,11 +3550,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("lb.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -> getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -3603,11 +3610,11 @@ public final class ComputeFunctions {
      *             .build());
      * 
      *         var frontend = new RecordSet("frontend", RecordSetArgs.builder()
-     *             .name(prod.dnsName().applyValue(dnsName -> String.format("lb.%s", dnsName)))
+     *             .name(prod.dnsName().applyValue(_dnsName -> String.format("lb.%s", _dnsName)))
      *             .type("A")
      *             .ttl(300)
      *             .managedZone(prod.name())
-     *             .rrdatas(myAddress.applyValue(getGlobalAddressResult -> getGlobalAddressResult.address()))
+     *             .rrdatas(myAddress.address())
      *             .build());
      * 
      *     }
@@ -4291,7 +4298,7 @@ public final class ComputeFunctions {
      *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+     *                     .image(myImage.selfLink())
      *                     .build())
      *                 .build())
      *             .build());
@@ -4347,7 +4354,7 @@ public final class ComputeFunctions {
      *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+     *                     .image(myImage.selfLink())
      *                     .build())
      *                 .build())
      *             .build());
@@ -4403,7 +4410,7 @@ public final class ComputeFunctions {
      *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+     *                     .image(myImage.selfLink())
      *                     .build())
      *                 .build())
      *             .build());
@@ -4459,7 +4466,7 @@ public final class ComputeFunctions {
      *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+     *                     .image(myImage.selfLink())
      *                     .build())
      *                 .build())
      *             .build());
@@ -4515,7 +4522,7 @@ public final class ComputeFunctions {
      *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+     *                     .image(myImage.selfLink())
      *                     .build())
      *                 .build())
      *             .build());
@@ -4571,7 +4578,7 @@ public final class ComputeFunctions {
      *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+     *                     .image(myImage.selfLink())
      *                     .build())
      *                 .build())
      *             .build());
@@ -4627,7 +4634,7 @@ public final class ComputeFunctions {
      *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+     *                     .image(myImage.selfLink())
      *                     .build())
      *                 .build())
      *             .build());
@@ -4901,7 +4908,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .image(debian.images()[0].selfLink())
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -4963,7 +4970,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .image(debian.images()[0].selfLink())
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -5025,7 +5032,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .image(debian.images()[0].selfLink())
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -5087,7 +5094,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .image(debian.images()[0].selfLink())
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -5149,7 +5156,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .image(debian.images()[0].selfLink())
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -5211,7 +5218,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .image(debian.images()[0].selfLink())
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -5273,7 +5280,7 @@ public final class ComputeFunctions {
      *             .zone("us-central1-a")
      *             .bootDisk(InstanceBootDiskArgs.builder()
      *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-     *                     .image(debian.applyValue(getImagesResult -> getImagesResult.images()[0].selfLink()))
+     *                     .image(debian.images()[0].selfLink())
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -6962,7 +6969,7 @@ public final class ComputeFunctions {
      *             .port(1)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
+     *         ctx.export("serialOut", serial.contents());
      *     }
      * }
      * }
@@ -7003,7 +7010,8 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) }{{@code
      *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("windows-instance")
@@ -7033,13 +7041,17 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *             .instance(windows.name())
-     *             .zone(windows.zone())
-     *             .port(4)
-     *             .build());
+     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
+     *             var name = values.t1;
+     *             var zone = values.t2;
+     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *                 .instance(name)
+     *                 .zone(zone)
+     *                 .port(4)
+     *                 .build());
+     *         }}{@code );
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
      * }}{@code
      * }
@@ -7085,7 +7097,7 @@ public final class ComputeFunctions {
      *             .port(1)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
+     *         ctx.export("serialOut", serial.contents());
      *     }
      * }
      * }
@@ -7126,7 +7138,8 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) }{{@code
      *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("windows-instance")
@@ -7156,13 +7169,17 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *             .instance(windows.name())
-     *             .zone(windows.zone())
-     *             .port(4)
-     *             .build());
+     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
+     *             var name = values.t1;
+     *             var zone = values.t2;
+     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *                 .instance(name)
+     *                 .zone(zone)
+     *                 .port(4)
+     *                 .build());
+     *         }}{@code );
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
      * }}{@code
      * }
@@ -7208,7 +7225,7 @@ public final class ComputeFunctions {
      *             .port(1)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
+     *         ctx.export("serialOut", serial.contents());
      *     }
      * }
      * }
@@ -7249,7 +7266,8 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) }{{@code
      *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("windows-instance")
@@ -7279,13 +7297,17 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *             .instance(windows.name())
-     *             .zone(windows.zone())
-     *             .port(4)
-     *             .build());
+     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
+     *             var name = values.t1;
+     *             var zone = values.t2;
+     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *                 .instance(name)
+     *                 .zone(zone)
+     *                 .port(4)
+     *                 .build());
+     *         }}{@code );
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
      * }}{@code
      * }
@@ -7331,7 +7353,7 @@ public final class ComputeFunctions {
      *             .port(1)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
+     *         ctx.export("serialOut", serial.contents());
      *     }
      * }
      * }
@@ -7372,7 +7394,8 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) }{{@code
      *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("windows-instance")
@@ -7402,13 +7425,17 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *             .instance(windows.name())
-     *             .zone(windows.zone())
-     *             .port(4)
-     *             .build());
+     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
+     *             var name = values.t1;
+     *             var zone = values.t2;
+     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *                 .instance(name)
+     *                 .zone(zone)
+     *                 .port(4)
+     *                 .build());
+     *         }}{@code );
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
      * }}{@code
      * }
@@ -7454,7 +7481,7 @@ public final class ComputeFunctions {
      *             .port(1)
      *             .build());
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents()));
+     *         ctx.export("serialOut", serial.contents());
      *     }
      * }
      * }
@@ -7495,7 +7522,8 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) }{{@code
      *         var windows = new Instance("windows", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("windows-instance")
@@ -7525,13 +7553,17 @@ public final class ComputeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var serial = ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
-     *             .instance(windows.name())
-     *             .zone(windows.zone())
-     *             .port(4)
-     *             .build());
+     *         final var serial = Output.tuple(windows.name(), windows.zone()).applyValue(values -> }{{@code
+     *             var name = values.t1;
+     *             var zone = values.t2;
+     *             return ComputeFunctions.getInstanceSerialPort(GetInstanceSerialPortArgs.builder()
+     *                 .instance(name)
+     *                 .zone(zone)
+     *                 .port(4)
+     *                 .build());
+     *         }}{@code );
      * 
-     *         ctx.export("serialOut", serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult).applyValue(serial -> serial.applyValue(getInstanceSerialPortResult -> getInstanceSerialPortResult.contents())));
+     *         ctx.export("serialOut", serial.applyValue(_serial -> _serial.contents()));
      *     }}{@code
      * }}{@code
      * }
@@ -8093,7 +8125,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     *         final var ranges = ComputeFunctions.getLBIPRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
@@ -8102,7 +8134,7 @@ public final class ComputeFunctions {
      *                 .protocol("tcp")
      *                 .ports("80")
      *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .sourceRanges(ranges.networks())
      *             .targetTags("InstanceBehindLoadBalancer")
      *             .build());
      * 
@@ -8148,7 +8180,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     *         final var ranges = ComputeFunctions.getLBIPRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
@@ -8157,7 +8189,7 @@ public final class ComputeFunctions {
      *                 .protocol("tcp")
      *                 .ports("80")
      *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .sourceRanges(ranges.networks())
      *             .targetTags("InstanceBehindLoadBalancer")
      *             .build());
      * 
@@ -8203,7 +8235,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     *         final var ranges = ComputeFunctions.getLBIPRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
@@ -8212,7 +8244,7 @@ public final class ComputeFunctions {
      *                 .protocol("tcp")
      *                 .ports("80")
      *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .sourceRanges(ranges.networks())
      *             .targetTags("InstanceBehindLoadBalancer")
      *             .build());
      * 
@@ -8258,7 +8290,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     *         final var ranges = ComputeFunctions.getLBIPRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
@@ -8267,7 +8299,7 @@ public final class ComputeFunctions {
      *                 .protocol("tcp")
      *                 .ports("80")
      *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .sourceRanges(ranges.networks())
      *             .targetTags("InstanceBehindLoadBalancer")
      *             .build());
      * 
@@ -8313,7 +8345,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     *         final var ranges = ComputeFunctions.getLBIPRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
@@ -8322,7 +8354,7 @@ public final class ComputeFunctions {
      *                 .protocol("tcp")
      *                 .ports("80")
      *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .sourceRanges(ranges.networks())
      *             .targetTags("InstanceBehindLoadBalancer")
      *             .build());
      * 
@@ -8368,7 +8400,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     *         final var ranges = ComputeFunctions.getLBIPRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
@@ -8377,7 +8409,7 @@ public final class ComputeFunctions {
      *                 .protocol("tcp")
      *                 .ports("80")
      *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .sourceRanges(ranges.networks())
      *             .targetTags("InstanceBehindLoadBalancer")
      *             .build());
      * 
@@ -8423,7 +8455,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     *         final var ranges = ComputeFunctions.getLBIPRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
@@ -8432,7 +8464,7 @@ public final class ComputeFunctions {
      *                 .protocol("tcp")
      *                 .ports("80")
      *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .sourceRanges(ranges.networks())
      *             .targetTags("InstanceBehindLoadBalancer")
      *             .build());
      * 
@@ -8786,11 +8818,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export("cidrBlocks", netblock.cidrBlocks());
+     *         ctx.export("cidrBlocksIpv4", netblock.cidrBlocksIpv4s());
+     *         ctx.export("cidrBlocksIpv6", netblock.cidrBlocksIpv6s());
      *     }
      * }
      * }
@@ -8885,11 +8918,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export("cidrBlocks", netblock.cidrBlocks());
+     *         ctx.export("cidrBlocksIpv4", netblock.cidrBlocksIpv4s());
+     *         ctx.export("cidrBlocksIpv6", netblock.cidrBlocksIpv6s());
      *     }
      * }
      * }
@@ -8984,11 +9018,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export("cidrBlocks", netblock.cidrBlocks());
+     *         ctx.export("cidrBlocksIpv4", netblock.cidrBlocksIpv4s());
+     *         ctx.export("cidrBlocksIpv6", netblock.cidrBlocksIpv6s());
      *     }
      * }
      * }
@@ -9083,11 +9118,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export("cidrBlocks", netblock.cidrBlocks());
+     *         ctx.export("cidrBlocksIpv4", netblock.cidrBlocksIpv4s());
+     *         ctx.export("cidrBlocksIpv6", netblock.cidrBlocksIpv6s());
      *     }
      * }
      * }
@@ -9182,11 +9218,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export("cidrBlocks", netblock.cidrBlocks());
+     *         ctx.export("cidrBlocksIpv4", netblock.cidrBlocksIpv4s());
+     *         ctx.export("cidrBlocksIpv6", netblock.cidrBlocksIpv6s());
      *     }
      * }
      * }
@@ -9281,11 +9318,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export("cidrBlocks", netblock.cidrBlocks());
+     *         ctx.export("cidrBlocksIpv4", netblock.cidrBlocksIpv4s());
+     *         ctx.export("cidrBlocksIpv6", netblock.cidrBlocksIpv6s());
      *     }
      * }
      * }
@@ -9380,11 +9418,12 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
-     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
-     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *         ctx.export("cidrBlocks", netblock.cidrBlocks());
+     *         ctx.export("cidrBlocksIpv4", netblock.cidrBlocksIpv4s());
+     *         ctx.export("cidrBlocksIpv6", netblock.cidrBlocksIpv6s());
      *     }
      * }
      * }
@@ -10039,12 +10078,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         var default_ = new Network("default", NetworkArgs.builder()
      *             .name("foobar")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var other = new Network("other", NetworkArgs.builder()
      *             .name("other")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
@@ -10111,12 +10150,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         var default_ = new Network("default", NetworkArgs.builder()
      *             .name("foobar")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var other = new Network("other", NetworkArgs.builder()
      *             .name("other")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
@@ -10183,12 +10222,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         var default_ = new Network("default", NetworkArgs.builder()
      *             .name("foobar")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var other = new Network("other", NetworkArgs.builder()
      *             .name("other")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
@@ -10255,12 +10294,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         var default_ = new Network("default", NetworkArgs.builder()
      *             .name("foobar")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var other = new Network("other", NetworkArgs.builder()
      *             .name("other")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
@@ -10327,12 +10366,12 @@ public final class ComputeFunctions {
      *     public static void stack(Context ctx) {
      *         var default_ = new Network("default", NetworkArgs.builder()
      *             .name("foobar")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var other = new Network("other", NetworkArgs.builder()
      *             .name("other")
-     *             .autoCreateSubnetworks("false")
+     *             .autoCreateSubnetworks(false)
      *             .build());
      * 
      *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()
@@ -11456,52 +11495,6 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
-     * import com.pulumi.gcp.compute.Instance;
-     * import com.pulumi.gcp.compute.InstanceArgs;
-     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
-     *             .name("persistent-regional-disk")
-     *             .project("example")
-     *             .region("us-central1")
-     *             .type("pd-ssd")
-     *             .physicalBlockSizeBytes(4096)
-     *             .replicaZones(            
-     *                 "us-central1-a",
-     *                 "us-central1-f")
-     *             .build());
-     * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()
-     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
-     *                 .source(diskGoogleComputeDisk.selfLink())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11516,52 +11509,6 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
-     * import com.pulumi.gcp.compute.Instance;
-     * import com.pulumi.gcp.compute.InstanceArgs;
-     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
-     *             .name("persistent-regional-disk")
-     *             .project("example")
-     *             .region("us-central1")
-     *             .type("pd-ssd")
-     *             .physicalBlockSizeBytes(4096)
-     *             .replicaZones(            
-     *                 "us-central1-a",
-     *                 "us-central1-f")
-     *             .build());
-     * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()
-     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
-     *                 .source(diskGoogleComputeDisk.selfLink())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11576,52 +11523,6 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
-     * import com.pulumi.gcp.compute.Instance;
-     * import com.pulumi.gcp.compute.InstanceArgs;
-     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
-     *             .name("persistent-regional-disk")
-     *             .project("example")
-     *             .region("us-central1")
-     *             .type("pd-ssd")
-     *             .physicalBlockSizeBytes(4096)
-     *             .replicaZones(            
-     *                 "us-central1-a",
-     *                 "us-central1-f")
-     *             .build());
-     * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()
-     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
-     *                 .source(diskGoogleComputeDisk.selfLink())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11636,52 +11537,6 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
-     * import com.pulumi.gcp.compute.Instance;
-     * import com.pulumi.gcp.compute.InstanceArgs;
-     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
-     *             .name("persistent-regional-disk")
-     *             .project("example")
-     *             .region("us-central1")
-     *             .type("pd-ssd")
-     *             .physicalBlockSizeBytes(4096)
-     *             .replicaZones(            
-     *                 "us-central1-a",
-     *                 "us-central1-f")
-     *             .build());
-     * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()
-     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
-     *                 .source(diskGoogleComputeDisk.selfLink())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11696,52 +11551,6 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
-     * import com.pulumi.gcp.compute.Instance;
-     * import com.pulumi.gcp.compute.InstanceArgs;
-     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
-     *             .name("persistent-regional-disk")
-     *             .project("example")
-     *             .region("us-central1")
-     *             .type("pd-ssd")
-     *             .physicalBlockSizeBytes(4096)
-     *             .replicaZones(            
-     *                 "us-central1-a",
-     *                 "us-central1-f")
-     *             .build());
-     * 
-     *         var default_ = new Instance("default", InstanceArgs.builder()
-     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
-     *                 .source(diskGoogleComputeDisk.selfLink())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13338,9 +13147,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -13383,9 +13192,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -13428,9 +13237,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -13473,9 +13282,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -13518,9 +13327,9 @@ public final class ComputeFunctions {
      *             .name("my-cert")
      *             .build());
      * 
-     *         ctx.export("certificate", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificate()));
-     *         ctx.export("certificateId", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificateId()));
-     *         ctx.export("selfLink", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.selfLink()));
+     *         ctx.export("certificate", myCert.certificate());
+     *         ctx.export("certificateId", myCert.certificateId());
+     *         ctx.export("selfLink", myCert.selfLink());
      *     }
      * }
      * }
@@ -13561,14 +13370,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getRegions();
+     *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *         for (var i = 0; i < available.names().length(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
-     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
+     *                 .region(available.names()[range.value()])
      *                 .build());
      * 
      *         
@@ -13613,14 +13423,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getRegions();
+     *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *         for (var i = 0; i < available.names().length(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
-     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
+     *                 .region(available.names()[range.value()])
      *                 .build());
      * 
      *         
@@ -13665,14 +13476,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getRegions();
+     *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *         for (var i = 0; i < available.names().length(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
-     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
+     *                 .region(available.names()[range.value()])
      *                 .build());
      * 
      *         
@@ -13717,14 +13529,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getRegions();
+     *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *         for (var i = 0; i < available.names().length(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
-     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
+     *                 .region(available.names()[range.value()])
      *                 .build());
      * 
      *         
@@ -13769,14 +13582,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getRegions();
+     *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *         for (var i = 0; i < available.names().length(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
-     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
+     *                 .region(available.names()[range.value()])
      *                 .build());
      * 
      *         
@@ -13821,14 +13635,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getRegions();
+     *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *         for (var i = 0; i < available.names().length(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
-     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
+     *                 .region(available.names()[range.value()])
      *                 .build());
      * 
      *         
@@ -13873,14 +13688,15 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ComputeFunctions.getRegions();
+     *         final var available = ComputeFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         for (var i = 0; i < available.applyValue(getRegionsResult -> getRegionsResult.names()).length(); i++) {
+     *         for (var i = 0; i < available.names().length(); i++) {
      *             new Subnetwork("cluster-" + i, SubnetworkArgs.builder()
      *                 .name("my-network")
      *                 .ipCidrRange(String.format("10.36.%s.0/24", range.value()))
      *                 .network("my-network")
-     *                 .region(available.applyValue(getRegionsResult -> getRegionsResult.names())[range.value()])
+     *                 .region(available.names()[range.value()])
      *                 .build());
      * 
      *         

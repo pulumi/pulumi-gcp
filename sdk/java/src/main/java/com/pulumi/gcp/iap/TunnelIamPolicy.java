@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()
  *             .project(projectService.project())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()
  *             .project(projectService.project())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -340,7 +340,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()
  *             .project(projectService.project())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -390,7 +390,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new TunnelIamPolicy("policy", TunnelIamPolicyArgs.builder()
  *             .project(projectService.project())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

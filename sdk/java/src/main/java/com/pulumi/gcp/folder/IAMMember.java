@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
  *             .folder("folders/1234567")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * 
  *         var folder = new IAMPolicy("folder", IAMPolicyArgs.builder()
  *             .folder("folders/1234567")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

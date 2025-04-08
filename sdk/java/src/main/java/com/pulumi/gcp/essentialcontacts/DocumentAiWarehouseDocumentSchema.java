@@ -57,10 +57,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var exampleText = new DocumentAiWarehouseDocumentSchema("exampleText", DocumentAiWarehouseDocumentSchemaArgs.builder()
- *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .projectNumber(project.number())
  *             .displayName("test-property-text")
  *             .location("us")
  *             .documentIsFolder(false)
@@ -77,7 +78,8 @@ import javax.annotation.Nullable;
  *                     .name("dummy_source")
  *                     .processorType("dummy_processor")
  *                     .build())
- *                 .textTypeOptions()
+ *                 .textTypeOptions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 

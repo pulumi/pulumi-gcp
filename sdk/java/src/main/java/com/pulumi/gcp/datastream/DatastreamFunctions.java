@@ -49,7 +49,7 @@ public final class DatastreamFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
+     *         ctx.export("ipList", datastreamIps.staticIps());
      *     }
      * }
      * }
@@ -94,7 +94,7 @@ public final class DatastreamFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
+     *         ctx.export("ipList", datastreamIps.staticIps());
      *     }
      * }
      * }
@@ -139,7 +139,7 @@ public final class DatastreamFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
+     *         ctx.export("ipList", datastreamIps.staticIps());
      *     }
      * }
      * }
@@ -184,7 +184,7 @@ public final class DatastreamFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
+     *         ctx.export("ipList", datastreamIps.staticIps());
      *     }
      * }
      * }
@@ -229,7 +229,7 @@ public final class DatastreamFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
+     *         ctx.export("ipList", datastreamIps.staticIps());
      *     }
      * }
      * }

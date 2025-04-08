@@ -103,7 +103,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(vpcConnection)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var user1 = new User("user1", UserArgs.builder()
  *             .cluster(defaultCluster.name())
@@ -197,7 +198,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(vpcConnection)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var user2 = new User("user2", UserArgs.builder()
  *             .cluster(defaultCluster.name())

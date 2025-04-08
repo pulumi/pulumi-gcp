@@ -66,19 +66,20 @@ import javax.annotation.Nullable;
  *             .membershipId("tf-test-membership_34535")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(primary)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var membershipRbacRoleBinding = new MembershipRbacRoleBinding("membershipRbacRoleBinding", MembershipRbacRoleBindingArgs.builder()
  *             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_22375")
  *             .membershipId(membership.membershipId())
- *             .user(String.format("service-%s}{@literal @}{@code gcp-sa-anthossupport.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .user(String.format("service-%s}{@literal @}{@code gcp-sa-anthossupport.iam.gserviceaccount.com", project.number()))
  *             .role(MembershipRbacRoleBindingRoleArgs.builder()
  *                 .predefinedRole("ANTHOS_SUPPORT")
  *                 .build())

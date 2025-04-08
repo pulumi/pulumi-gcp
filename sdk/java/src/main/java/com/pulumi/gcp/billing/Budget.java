@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var budget = new Budget("budget", BudgetArgs.builder()
- *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .billingAccount(account.id())
  *             .displayName("Example Billing Budget")
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
@@ -124,19 +124,20 @@ import javax.annotation.Nullable;
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var budget = new Budget("budget", BudgetArgs.builder()
- *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .billingAccount(account.id())
  *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .projects(String.format("projects/%s", project.number()))
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .lastPeriodAmount(true)
  *                 .build())
  *             .thresholdRules(BudgetThresholdRuleArgs.builder()
- *                 .thresholdPercent(10)
+ *                 .thresholdPercent(10.0)
  *                 .build())
  *             .build());
  * 
@@ -181,13 +182,14 @@ import javax.annotation.Nullable;
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var budget = new Budget("budget", BudgetArgs.builder()
- *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .billingAccount(account.id())
  *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .projects(String.format("projects/%s", project.number()))
  *                 .creditTypesTreatment("INCLUDE_SPECIFIED_CREDITS")
  *                 .services("services/24E6-581D-38E5")
  *                 .creditTypes(                
@@ -255,7 +257,8 @@ import javax.annotation.Nullable;
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var notificationChannel = new NotificationChannel("notificationChannel", NotificationChannelArgs.builder()
  *             .displayName("Example Notification Channel")
@@ -264,10 +267,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var budget = new Budget("budget", BudgetArgs.builder()
- *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .billingAccount(account.id())
  *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .projects(String.format("projects/%s", project.number()))
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
@@ -277,10 +280,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .thresholdRules(            
  *                 BudgetThresholdRuleArgs.builder()
- *                     .thresholdPercent(1)
+ *                     .thresholdPercent(1.0)
  *                     .build(),
  *                 BudgetThresholdRuleArgs.builder()
- *                     .thresholdPercent(1)
+ *                     .thresholdPercent(1.0)
  *                     .spendBasis("FORECASTED_SPEND")
  *                     .build())
  *             .allUpdatesRule(BudgetAllUpdatesRuleArgs.builder()
@@ -330,13 +333,14 @@ import javax.annotation.Nullable;
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var budget = new Budget("budget", BudgetArgs.builder()
- *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .billingAccount(account.id())
  *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .projects(String.format("projects/%s", project.number()))
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()
@@ -394,13 +398,14 @@ import javax.annotation.Nullable;
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var budget = new Budget("budget", BudgetArgs.builder()
- *             .billingAccount(account.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+ *             .billingAccount(account.id())
  *             .displayName("Example Billing Budget")
  *             .budgetFilter(BudgetBudgetFilterArgs.builder()
- *                 .projects(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .projects(String.format("projects/%s", project.number()))
  *                 .creditTypesTreatment("EXCLUDE_ALL_CREDITS")
  *                 .services("services/24E6-581D-38E5")
  *                 .customPeriod(BudgetBudgetFilterCustomPeriodArgs.builder()

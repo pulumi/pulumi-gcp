@@ -80,8 +80,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var service_perimeter = new ServicePerimeter("service-perimeter", ServicePerimeterArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
- *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/servicePerimeters/restrict_storage", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
+ *             .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/servicePerimeters/restrict_storage", _name)))
  *             .title("restrict_storage")
  *             .status(ServicePerimeterStatusArgs.builder()
  *                 .restrictedServices("storage.googleapis.com")
@@ -89,8 +89,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var access_level = new AccessLevel("access-level", AccessLevelArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
- *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
+ *             .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", _name)))
  *             .title("chromeos_no_lock")
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
@@ -156,17 +156,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var secure_data_exchange = new ServicePerimeters("secure-data-exchange", ServicePerimetersArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
  *             .servicePerimeters(            
  *                 ServicePerimetersServicePerimeterArgs.builder()
- *                     .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/servicePerimeters/", name)))
+ *                     .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/servicePerimeters/", _name)))
  *                     .title("")
  *                     .status(ServicePerimetersServicePerimeterStatusArgs.builder()
  *                         .restrictedServices("storage.googleapis.com")
  *                         .build())
  *                     .build(),
  *                 ServicePerimetersServicePerimeterArgs.builder()
- *                     .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/servicePerimeters/", name)))
+ *                     .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/servicePerimeters/", _name)))
  *                     .title("")
  *                     .status(ServicePerimetersServicePerimeterStatusArgs.builder()
  *                         .restrictedServices("bigtable.googleapis.com")
@@ -179,8 +179,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var access_level = new AccessLevel("access-level", AccessLevelArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
- *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/secure_data_exchange", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
+ *             .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/accessLevels/secure_data_exchange", _name)))
  *             .title("secure_data_exchange")
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
@@ -293,8 +293,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var service_perimeter = new ServicePerimeter("service-perimeter", ServicePerimeterArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
- *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/servicePerimeters/restrict_bigquery_dryrun_storage", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
+ *             .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/servicePerimeters/restrict_bigquery_dryrun_storage", _name)))
  *             .title("restrict_bigquery_dryrun_storage")
  *             .status(ServicePerimeterStatusArgs.builder()
  *                 .restrictedServices("bigquery.googleapis.com")

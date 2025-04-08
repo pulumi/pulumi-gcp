@@ -144,7 +144,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var parameter_basic = new Parameter("parameter-basic", ParameterArgs.builder()
  *             .parameterId("parameter")

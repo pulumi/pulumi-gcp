@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var hl7V2Store = new Hl7StoreIamPolicy("hl7V2Store", Hl7StoreIamPolicyArgs.builder()
  *             .hl7V2StoreId("your-hl7-v2-store-id")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

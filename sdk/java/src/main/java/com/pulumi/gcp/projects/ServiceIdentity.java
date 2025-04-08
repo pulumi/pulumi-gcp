@@ -58,15 +58,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var hcSa = new ServiceIdentity("hcSa", ServiceIdentityArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .service("healthcare.googleapis.com")
  *             .build());
  * 
  *         var hcSaBqJobuser = new IAMMember("hcSaBqJobuser", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .role("roles/bigquery.jobUser")
  *             .member(hcSa.member())
  *             .build());

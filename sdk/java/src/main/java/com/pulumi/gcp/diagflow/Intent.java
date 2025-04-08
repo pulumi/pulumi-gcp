@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *         var agentCreate = new IAMMember("agentCreate", IAMMemberArgs.builder()
  *             .project(agentProjectService.project())
  *             .role("roles/dialogflow.admin")
- *             .member(dialogflowServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(dialogflowServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  *             .mlDisabled(true)
  *             .action("some_action")
  *             .resetContexts(true)
- *             .inputContextNames(agentProject.projectId().applyValue(projectId -> String.format("projects/%s/agent/sessions/-/contexts/some_id", projectId)))
+ *             .inputContextNames(agentProject.projectId().applyValue(_projectId -> String.format("projects/%s/agent/sessions/-/contexts/some_id", _projectId)))
  *             .events("some_event")
  *             .defaultResponsePlatforms(            
  *                 "FACEBOOK",

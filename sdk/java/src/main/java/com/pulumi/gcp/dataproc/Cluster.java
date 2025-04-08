@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
  *                     .accelerators(ClusterClusterConfigMasterConfigAcceleratorArgs.builder()
  *                         .acceleratorType("nvidia-tesla-k80")
- *                         .acceleratorCount("1")
+ *                         .acceleratorCount(1)
  *                         .build())
  *                     .build())
  *                 .build())

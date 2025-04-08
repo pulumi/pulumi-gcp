@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .quotaId("CPUS-per-project-region")
  *             .contactEmail("testuser}{@literal @}{@code gmail.com")
  *             .quotaConfig(SQuotaPreferenceQuotaConfigArgs.builder()
- *                 .preferredValue(200)
+ *                 .preferredValue("200")
  *                 .build())
  *             .build());
  * 

@@ -64,7 +64,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example = new Lake("example", LakeArgs.builder()
  *             .name("tf-test-lake_72490")
@@ -87,7 +88,7 @@ import javax.annotation.Nullable;
  *                 .schedule("1 * * * *")
  *                 .build())
  *             .executionSpec(TaskExecutionSpecArgs.builder()
- *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *                 .project("my-project-name")
  *                 .maxJobExecutionLifetime("100s")
  *                 .kmsKey("234jn2kjn42k3n423")
@@ -147,7 +148,8 @@ import javax.annotation.Nullable;
  *             .autoCreateSubnetworks(true)
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var exampleSpark = new Lake("exampleSpark", LakeArgs.builder()
  *             .name("tf-test-lake_95154")
@@ -164,7 +166,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .description("task-spark-terraform")
  *             .executionSpec(TaskExecutionSpecArgs.builder()
- *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *                 .args(Map.of("TASK_ARGS", "--output_location,gs://spark-job/task-result, --output_format, json"))
  *                 .build())
  *             .spark(TaskSparkArgs.builder()
@@ -244,7 +246,8 @@ import javax.annotation.Nullable;
  *             .autoCreateSubnetworks(true)
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var exampleNotebook = new Lake("exampleNotebook", LakeArgs.builder()
  *             .name("tf-test-lake_74000")
@@ -261,7 +264,7 @@ import javax.annotation.Nullable;
  *                 .schedule("1 * * * *")
  *                 .build())
  *             .executionSpec(TaskExecutionSpecArgs.builder()
- *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *                 .args(Map.of("TASK_ARGS", "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json"))
  *                 .build())
  *             .notebook(TaskNotebookArgs.builder()

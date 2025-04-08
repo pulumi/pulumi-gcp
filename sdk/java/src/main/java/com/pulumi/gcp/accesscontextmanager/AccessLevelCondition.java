@@ -81,8 +81,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var access_level_service_account = new AccessLevel("access-level-service-account", AccessLevelArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
- *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
+ *             .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", _name)))
  *             .title("chromeos_no_lock")
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .members(            
  *                 "user:test}{@literal @}{@code google.com",
  *                 "user:test2}{@literal @}{@code google.com",
- *                 created_later.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *                 created_later.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .negate(false)
  *             .devicePolicy(AccessLevelConditionDevicePolicyArgs.builder()
  *                 .requireScreenLock(false)

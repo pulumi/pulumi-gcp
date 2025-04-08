@@ -510,7 +510,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
@@ -567,7 +567,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
@@ -624,7 +624,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
@@ -681,7 +681,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
@@ -738,7 +738,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
@@ -795,7 +795,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
@@ -852,7 +852,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
@@ -909,7 +909,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
@@ -966,7 +966,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
@@ -1023,7 +1023,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
@@ -1367,7 +1367,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
@@ -1422,7 +1422,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
@@ -1477,7 +1477,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
@@ -1532,7 +1532,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
@@ -1587,7 +1587,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *     }
@@ -1642,7 +1642,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -1701,7 +1701,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -1760,7 +1760,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -1819,7 +1819,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -1878,7 +1878,7 @@ public final class KmsFunctions {
      * 
      *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
      *             .name("my-crypto-key")
-     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .keyRing(myKeyRing.id())
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -2243,7 +2243,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2254,7 +2254,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -> getKMSSecretResult.plaintext()))
+     *             .password(sqlUserPassword.plaintext())
      *             .build());
      * 
      *     }
@@ -2372,7 +2372,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2383,7 +2383,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -> getKMSSecretResult.plaintext()))
+     *             .password(sqlUserPassword.plaintext())
      *             .build());
      * 
      *     }
@@ -2501,7 +2501,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2512,7 +2512,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -> getKMSSecretResult.plaintext()))
+     *             .password(sqlUserPassword.plaintext())
      *             .build());
      * 
      *     }
@@ -2630,7 +2630,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2641,7 +2641,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -> getKMSSecretResult.plaintext()))
+     *             .password(sqlUserPassword.plaintext())
      *             .build());
      * 
      *     }
@@ -2759,7 +2759,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2770,7 +2770,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPassword.applyValue(getKMSSecretResult -> getKMSSecretResult.plaintext()))
+     *             .password(sqlUserPassword.plaintext())
      *             .build());
      * 
      *     }
@@ -2901,7 +2901,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3043,7 +3043,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3185,7 +3185,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3327,7 +3327,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3469,7 +3469,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3592,7 +3592,8 @@ public final class KmsFunctions {
      * 
      *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("test")
@@ -3603,7 +3604,7 @@ public final class KmsFunctions {
      *                     .image("debian-cloud/debian-11")
      *                     .build())
      *                 .build())
-     *             .metadata(Map.of("password", myPassword.applyValue(getKMSSecretCiphertextResult -> getKMSSecretCiphertextResult.ciphertext())))
+     *             .metadata(Map.of("password", myPassword.ciphertext()))
      *             .build());
      * 
      *     }
@@ -3716,7 +3717,8 @@ public final class KmsFunctions {
      * 
      *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("test")
@@ -3727,7 +3729,7 @@ public final class KmsFunctions {
      *                     .image("debian-cloud/debian-11")
      *                     .build())
      *                 .build())
-     *             .metadata(Map.of("password", myPassword.applyValue(getKMSSecretCiphertextResult -> getKMSSecretCiphertextResult.ciphertext())))
+     *             .metadata(Map.of("password", myPassword.ciphertext()))
      *             .build());
      * 
      *     }
@@ -3840,7 +3842,8 @@ public final class KmsFunctions {
      * 
      *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("test")
@@ -3851,7 +3854,7 @@ public final class KmsFunctions {
      *                     .image("debian-cloud/debian-11")
      *                     .build())
      *                 .build())
-     *             .metadata(Map.of("password", myPassword.applyValue(getKMSSecretCiphertextResult -> getKMSSecretCiphertextResult.ciphertext())))
+     *             .metadata(Map.of("password", myPassword.ciphertext()))
      *             .build());
      * 
      *     }
@@ -3964,7 +3967,8 @@ public final class KmsFunctions {
      * 
      *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("test")
@@ -3975,7 +3979,7 @@ public final class KmsFunctions {
      *                     .image("debian-cloud/debian-11")
      *                     .build())
      *                 .build())
-     *             .metadata(Map.of("password", myPassword.applyValue(getKMSSecretCiphertextResult -> getKMSSecretCiphertextResult.ciphertext())))
+     *             .metadata(Map.of("password", myPassword.ciphertext()))
      *             .build());
      * 
      *     }
@@ -4088,7 +4092,8 @@ public final class KmsFunctions {
      * 
      *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .accessConfigs()
+     *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+     *                     .build())
      *                 .network("default")
      *                 .build())
      *             .name("test")
@@ -4099,7 +4104,7 @@ public final class KmsFunctions {
      *                     .image("debian-cloud/debian-11")
      *                     .build())
      *                 .build())
-     *             .metadata(Map.of("password", myPassword.applyValue(getKMSSecretCiphertextResult -> getKMSSecretCiphertextResult.ciphertext())))
+     *             .metadata(Map.of("password", myPassword.ciphertext()))
      *             .build());
      * 
      *     }

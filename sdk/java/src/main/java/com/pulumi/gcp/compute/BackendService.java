@@ -608,7 +608,7 @@ import javax.annotation.Nullable;
  *         var externalProxy = new GlobalNetworkEndpointGroup("externalProxy", GlobalNetworkEndpointGroupArgs.builder()
  *             .name("network-endpoint")
  *             .networkEndpointType("INTERNET_FQDN_PORT")
- *             .defaultPort("443")
+ *             .defaultPort(443)
  *             .build());
  * 
  *         var proxy = new GlobalNetworkEndpoint("proxy", GlobalNetworkEndpointArgs.builder()
@@ -622,7 +622,7 @@ import javax.annotation.Nullable;
  *             .enableCdn(true)
  *             .timeoutSec(10)
  *             .connectionDrainingTimeoutSec(10)
- *             .customRequestHeaders(proxy.fqdn().applyValue(fqdn -> String.format("host: %s", fqdn)))
+ *             .customRequestHeaders(proxy.fqdn().applyValue(_fqdn -> String.format("host: %s", _fqdn)))
  *             .customResponseHeaders("X-Cache-Hit: {cdn_cache_status}")
  *             .backends(BackendServiceBackendArgs.builder()
  *                 .group(externalProxy.id())
@@ -758,7 +758,7 @@ import javax.annotation.Nullable;
  *         var defaultNetworkEndpointGroup = new NetworkEndpointGroup("defaultNetworkEndpointGroup", NetworkEndpointGroupArgs.builder()
  *             .name("network-endpoint")
  *             .network(default_.id())
- *             .defaultPort("90")
+ *             .defaultPort(90)
  *             .zone("us-central1-a")
  *             .networkEndpointType("GCE_VM_IP_PORT")
  *             .build());
@@ -768,7 +768,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -859,7 +859,7 @@ import javax.annotation.Nullable;
  *                     BackendServiceTlsSettingsSubjectAltNameArgs.builder()
  *                         .uniformResourceIdentifier("https://example.com")
  *                         .build())
- *                 .authenticationConfig(defaultBackendAuthenticationConfig.id().applyValue(id -> String.format("//networksecurity.googleapis.com/%s", id)))
+ *                 .authenticationConfig(defaultBackendAuthenticationConfig.id().applyValue(_id -> String.format("//networksecurity.googleapis.com/%s", _id)))
  *                 .build())
  *             .build());
  * 

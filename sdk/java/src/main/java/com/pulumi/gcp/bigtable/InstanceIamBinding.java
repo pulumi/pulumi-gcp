@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *         var editor = new InstanceIamPolicy("editor", InstanceIamPolicyArgs.builder()
  *             .project("your-project")
  *             .instance("your-bigtable-instance")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *         var editor = new InstanceIamPolicy("editor", InstanceIamPolicyArgs.builder()
  *             .project("your-project")
  *             .instance("your-bigtable-instance")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

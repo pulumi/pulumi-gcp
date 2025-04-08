@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         var primary = new Release("primary", ReleaseArgs.builder()
  *             .name("cloud.firestore")
  *             .project("my-project-name")
- *             .rulesetName(firestore.name().applyValue(name -> String.format("projects/my-project-name/rulesets/%s", name)))
+ *             .rulesetName(firestore.name().applyValue(_name -> String.format("projects/my-project-name/rulesets/%s", _name)))
  *             .build());
  * 
  *     }
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *         var primary = new Release("primary", ReleaseArgs.builder()
  *             .name("cloud.firestore/database")
  *             .project("my-project-name")
- *             .rulesetName(firestore.name().applyValue(name -> String.format("projects/my-project-name/rulesets/%s", name)))
+ *             .rulesetName(firestore.name().applyValue(_name -> String.format("projects/my-project-name/rulesets/%s", _name)))
  *             .build());
  * 
  *     }

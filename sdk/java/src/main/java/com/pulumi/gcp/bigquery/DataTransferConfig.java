@@ -68,12 +68,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var permissions = new IAMMember("permissions", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .role("roles/iam.serviceAccountTokenCreator")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
@@ -142,12 +143,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var permissions = new IAMMember("permissions", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .role("roles/iam.serviceAccountTokenCreator")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
@@ -221,7 +223,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
  *             .datasetId("my_dataset")

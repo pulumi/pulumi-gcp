@@ -68,7 +68,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var reportBucket = new Bucket("reportBucket", BucketArgs.builder()
  *             .name("my-bucket")
@@ -80,7 +81,7 @@ import javax.annotation.Nullable;
  *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(reportBucket.name())
  *             .role("roles/storage.admin")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-storageinsights.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-storageinsights.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var config = new InsightsReportConfig("config", InsightsReportConfigArgs.builder()

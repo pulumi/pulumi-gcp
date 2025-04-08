@@ -99,12 +99,12 @@ import javax.annotation.Nullable;
  *             .location(default_.location())
  *             .service(default_.name())
  *             .role("roles/run.invoker")
- *             .members(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .members(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var project = new IAMBinding("project", IAMBindingArgs.builder()
  *             .role("roles/iam.serviceAccountTokenCreator")
- *             .members(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .members(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var topic = new Topic("topic", TopicArgs.builder()
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .name("pubsub_subscription")
  *             .topic(topic.name())
  *             .pushConfig(SubscriptionPushConfigArgs.builder()
- *                 .pushEndpoint(default_.statuses().applyValue(statuses -> statuses[0].url()))
+ *                 .pushEndpoint(default_.statuses().applyValue(_statuses -> _statuses[0].url()))
  *                 .oidcToken(SubscriptionPushConfigOidcTokenArgs.builder()
  *                     .serviceAccountEmail(sa.email())
  *                     .build())
@@ -361,7 +361,7 @@ import javax.annotation.Nullable;
  *             .location(default_.location())
  *             .project(default_.project())
  *             .service(default_.name())
- *             .policyData(noauth.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(noauth.policyData())
  *             .build());
  * 
  *     }

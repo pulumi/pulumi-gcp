@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("foobar")
- *             .autoCreateSubnetworks("false")
+ *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var other = new Network("other", NetworkArgs.builder()
  *             .name("other")
- *             .autoCreateSubnetworks("false")
+ *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var peering1 = new NetworkPeering("peering1", NetworkPeeringArgs.builder()

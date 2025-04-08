@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .diskType("pd-ssd")
- *                 .diskSizeGb("960")
+ *                 .diskSizeGb(960)
  *                 .mode("READ_WRITE")
  *                 .build())
  *             .guestAccelerators(RegionInstanceTemplateGuestAcceleratorArgs.builder()
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *             .description("Test resize request resource")
  *             .resizeBy(2)
  *             .requestedRunDuration(ResizeRequestRequestedRunDurationArgs.builder()
- *                 .seconds(14400)
+ *                 .seconds("14400")
  *                 .nanos(0)
  *                 .build())
  *             .build());

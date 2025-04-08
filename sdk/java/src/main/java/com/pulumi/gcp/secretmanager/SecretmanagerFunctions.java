@@ -1990,7 +1990,8 @@ public final class SecretmanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     *         final var secrets = SecretmanagerFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2030,7 +2031,8 @@ public final class SecretmanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     *         final var secrets = SecretmanagerFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2070,7 +2072,8 @@ public final class SecretmanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     *         final var secrets = SecretmanagerFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2110,7 +2113,8 @@ public final class SecretmanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     *         final var secrets = SecretmanagerFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2150,7 +2154,8 @@ public final class SecretmanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     *         final var secrets = SecretmanagerFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2190,7 +2195,8 @@ public final class SecretmanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     *         final var secrets = SecretmanagerFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2230,7 +2236,8 @@ public final class SecretmanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var secrets = SecretmanagerFunctions.getSecrets();
+     *         final var secrets = SecretmanagerFunctions.getSecrets(GetSecretsArgs.builder()
+     *             .build());
      * 
      *     }
      * }

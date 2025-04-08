@@ -54,7 +54,7 @@ public final class IamFunctions {
      *             .name("roles/compute.viewer")
      *             .build());
      * 
-     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
+     *         ctx.export("theRolePermissions", roleinfo.includedPermissions());
      *     }
      * }
      * }
@@ -95,7 +95,7 @@ public final class IamFunctions {
      *             .name("roles/compute.viewer")
      *             .build());
      * 
-     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
+     *         ctx.export("theRolePermissions", roleinfo.includedPermissions());
      *     }
      * }
      * }
@@ -136,7 +136,7 @@ public final class IamFunctions {
      *             .name("roles/compute.viewer")
      *             .build());
      * 
-     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
+     *         ctx.export("theRolePermissions", roleinfo.includedPermissions());
      *     }
      * }
      * }
@@ -177,7 +177,7 @@ public final class IamFunctions {
      *             .name("roles/compute.viewer")
      *             .build());
      * 
-     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
+     *         ctx.export("theRolePermissions", roleinfo.includedPermissions());
      *     }
      * }
      * }
@@ -218,7 +218,7 @@ public final class IamFunctions {
      *             .name("roles/compute.viewer")
      *             .build());
      * 
-     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
+     *         ctx.export("theRolePermissions", roleinfo.includedPermissions());
      *     }
      * }
      * }

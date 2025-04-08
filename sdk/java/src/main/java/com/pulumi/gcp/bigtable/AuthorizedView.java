@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigtable.AuthorizedView;
  * import com.pulumi.gcp.bigtable.AuthorizedViewArgs;
  * import com.pulumi.gcp.bigtable.inputs.AuthorizedViewSubsetViewArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;

@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .parent("projects/my-project-name")
  *             .location("us-central1")
  *             .type("IPV4")
- *             .capacity("100")
+ *             .capacity(100)
  *             .items("208.80.154.224/32")
  *             .build());
  * 
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             .parent("organizations/123456789")
  *             .location("us-central1")
  *             .type("IPV4")
- *             .capacity("100")
+ *             .capacity(100)
  *             .items("208.80.154.224/32")
  *             .build());
  * 
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .description("my description")
  *             .type("IPV4")
- *             .capacity("100")
+ *             .capacity(100)
  *             .items("208.80.154.224/32")
  *             .build());
  * 
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  *             .parent("projects/my-project-name")
  *             .location("global")
  *             .type("IPV4")
- *             .capacity("100")
+ *             .capacity(100)
  *             .purposes("CLOUD_ARMOR")
  *             .items("208.80.154.224/32")
  *             .build());

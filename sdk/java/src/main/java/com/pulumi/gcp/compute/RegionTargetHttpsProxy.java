@@ -40,6 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.RegionSslCertificate;
  * import com.pulumi.gcp.compute.RegionSslCertificateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.compute.RegionHealthCheck;
  * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
  * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
@@ -135,6 +137,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.RegionSslCertificate;
  * import com.pulumi.gcp.compute.RegionSslCertificateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.compute.RegionHealthCheck;
  * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
  * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
@@ -235,6 +239,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificatemanager.TrustConfig;
  * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
@@ -264,7 +270,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
  *             .location("us-central1")
@@ -289,10 +296,10 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .name("my-tls-policy")
  *             .description("my description")
- *             .allowOpen("false")
+ *             .allowOpen(false)
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
  *                 .clientValidationMode("REJECT_INVALID")
- *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -> String.format("projects/%s/locations/us-central1/trustConfigs/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(_name -> String.format("projects/%s/locations/us-central1/trustConfigs/%s", project.number(),_name)))
  *                 .build())
  *             .build());
  * 
@@ -372,6 +379,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificatemanager.Certificate;
  * import com.pulumi.gcp.certificatemanager.CertificateArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.compute.RegionBackendService;
  * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
  * import com.pulumi.gcp.compute.RegionUrlMap;
@@ -421,7 +430,7 @@ import javax.annotation.Nullable;
  *         var default_ = new RegionTargetHttpsProxy("default", RegionTargetHttpsProxyArgs.builder()
  *             .name("target-http-proxy")
  *             .urlMap(defaultRegionUrlMap.id())
- *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -> String.format("//certificatemanager.googleapis.com/%s", id)))
+ *             .certificateManagerCertificates(defaultCertificate.id().applyValue(_id -> String.format("//certificatemanager.googleapis.com/%s", _id)))
  *             .build());
  * 
  *     }

@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  *         var foobar = new Disk("foobar", DiskArgs.builder()
  *             .name("existing-disk")
- *             .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *             .image(myImage.selfLink())
  *             .size(10)
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
@@ -180,7 +180,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = ComputeFunctions.getDefaultServiceAccount();
+ *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+ *             .build());
  * 
  *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
  *             .family("debian-11")
@@ -195,7 +196,7 @@ import javax.annotation.Nullable;
  *                 "foo",
  *                 "bar")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                 .sourceImage(myImage.selfLink())
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
@@ -294,7 +295,8 @@ import javax.annotation.Nullable;
  * 
  *         var confidentialInstanceTemplate = new InstanceTemplate("confidentialInstanceTemplate", InstanceTemplateArgs.builder()
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceTemplateNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .network("default")
  *                 .build())
  *             .name("my-confidential-instance-template")
@@ -373,7 +375,7 @@ import javax.annotation.Nullable;
  *             .machineType("e2-medium")
  *             .region("us-central1")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                 .sourceImage(myImage.selfLink())
  *                 .build())
  *             .build());
  * 

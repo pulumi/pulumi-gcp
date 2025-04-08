@@ -704,7 +704,8 @@ public final class ParametermanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var parameters = ParametermanagerFunctions.getParameters();
+     *         final var parameters = ParametermanagerFunctions.getParameters(GetParametersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -744,7 +745,8 @@ public final class ParametermanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var parameters = ParametermanagerFunctions.getParameters();
+     *         final var parameters = ParametermanagerFunctions.getParameters(GetParametersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -784,7 +786,8 @@ public final class ParametermanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var parameters = ParametermanagerFunctions.getParameters();
+     *         final var parameters = ParametermanagerFunctions.getParameters(GetParametersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -824,7 +827,8 @@ public final class ParametermanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var parameters = ParametermanagerFunctions.getParameters();
+     *         final var parameters = ParametermanagerFunctions.getParameters(GetParametersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -864,7 +868,8 @@ public final class ParametermanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var parameters = ParametermanagerFunctions.getParameters();
+     *         final var parameters = ParametermanagerFunctions.getParameters(GetParametersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -904,7 +909,8 @@ public final class ParametermanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var parameters = ParametermanagerFunctions.getParameters();
+     *         final var parameters = ParametermanagerFunctions.getParameters(GetParametersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -944,7 +950,8 @@ public final class ParametermanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var parameters = ParametermanagerFunctions.getParameters();
+     *         final var parameters = ParametermanagerFunctions.getParameters(GetParametersArgs.builder()
+     *             .build());
      * 
      *     }
      * }

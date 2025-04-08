@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *         var policy = new ScopeIamPolicy("policy", ScopeIamPolicyArgs.builder()
  *             .project(scope.project())
  *             .scopeId(scope.scopeId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -206,7 +206,7 @@ import javax.annotation.Nullable;
  *         var policy = new ScopeIamPolicy("policy", ScopeIamPolicyArgs.builder()
  *             .project(scope.project())
  *             .scopeId(scope.scopeId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

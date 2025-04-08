@@ -60,11 +60,11 @@ import javax.annotation.Nullable;
  *                 Map.entry("foo", "bar1"),
  *                 Map.entry("bar", "baz1")
  *             ))
- *             .forceUpdate("true")
+ *             .forceUpdate(true)
  *             .accessRestriction("WITHIN_ORGANIZATION")
- *             .ignoreInactiveDatasources("true")
- *             .ignoreBackupPlanReferences("true")
- *             .allowMissing("true")
+ *             .ignoreInactiveDatasources(true)
+ *             .ignoreBackupPlanReferences(true)
+ *             .allowMissing(true)
  *             .build());
  * 
  *     }

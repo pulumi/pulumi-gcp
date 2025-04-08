@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .location(dpmsService.location())
  *             .serviceId(dpmsService.serviceId())
  *             .database(hive.hiveConfig()[0].properties().database())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -214,7 +214,7 @@ import javax.annotation.Nullable;
  *             .location(dpmsService.location())
  *             .serviceId(dpmsService.serviceId())
  *             .database(hive.hiveConfig()[0].properties().database())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

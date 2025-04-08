@@ -457,7 +457,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .advancedSettings(CxFlowAdvancedSettingsArgs.builder()
  *                 .audioExportGcsDestination(CxFlowAdvancedSettingsAudioExportGcsDestinationArgs.builder()
- *                     .uri(bucket.url().applyValue(url -> String.format("%s/prefix-", url)))
+ *                     .uri(bucket.url().applyValue(_url -> String.format("%s/prefix-", _url)))
  *                     .build())
  *                 .speechSettings(CxFlowAdvancedSettingsSpeechSettingsArgs.builder()
  *                     .endpointerSensitivity(30)

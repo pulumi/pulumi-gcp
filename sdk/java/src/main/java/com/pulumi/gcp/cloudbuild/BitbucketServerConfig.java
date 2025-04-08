@@ -149,6 +149,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuild.BitbucketServerConfig;
  * import com.pulumi.gcp.cloudbuild.BitbucketServerConfigArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.BitbucketServerConfigSecretsArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.ReplaceArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -163,7 +165,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var servicenetworking = new Service("servicenetworking", ServiceArgs.builder()
  *             .service("servicenetworking.googleapis.com")
@@ -203,7 +206,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .username("test")
  *             .apiKey("<api-key>")
- *             .peeredNetwork(vpcNetwork.id().applyValue(id -> StdFunctions.replace()).applyValue(invoke -> invoke.result()))
+ *             .peeredNetwork(vpcNetwork.id().applyValue(_id -> StdFunctions.replace(ReplaceArgs.builder()
+ *                 .text(_id)
+ *                 .search(project.name())
+ *                 .replace(project.number())
+ *                 .build())).applyValue(_invoke -> _invoke.result()))
  *             .sslCa("""
  * -----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----

@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *             .peerExternalGateway(externalGateway.id())
  *             .peerExternalGatewayInterface(0)
  *             .sharedSecret("a secret message")
- *             .router(router1.id().applyValue(id -> String.format(" %s", id)))
+ *             .router(router1.id().applyValue(_id -> String.format(" %s", _id)))
  *             .vpnGatewayInterface(1)
  *             .build());
  * 

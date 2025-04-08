@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .project(example.project())
  *             .securityGatewaysId(example.securityGatewaysId())
  *             .applicationId(example.applicationId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *             .project(example.project())
  *             .securityGatewaysId(example.securityGatewaysId())
  *             .applicationId(example.applicationId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -356,7 +356,7 @@ import javax.annotation.Nullable;
  *             .project(example.project())
  *             .securityGatewaysId(example.securityGatewaysId())
  *             .applicationId(example.applicationId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -408,7 +408,7 @@ import javax.annotation.Nullable;
  *             .project(example.project())
  *             .securityGatewaysId(example.securityGatewaysId())
  *             .applicationId(example.applicationId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

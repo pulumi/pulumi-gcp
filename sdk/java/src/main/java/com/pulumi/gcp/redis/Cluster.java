@@ -668,7 +668,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(default_)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }

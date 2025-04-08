@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *         var scan_config = new SecurityScanConfig("scan-config", SecurityScanConfigArgs.builder()
  *             .displayName("scan-config")
- *             .startingUrls(scannerStaticIp.address().applyValue(address -> String.format("http://%s", address)))
+ *             .startingUrls(scannerStaticIp.address().applyValue(_address -> String.format("http://%s", _address)))
  *             .targetPlatforms("COMPUTE")
  *             .build());
  * 

@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(settings.applyValue(getFolderSettingsResult -> getFolderSettingsResult).applyValue(settings -> String.format("serviceAccount:%s", settings.applyValue(getFolderSettingsResult -> getFolderSettingsResult.kmsServiceAccountId()))))
+ *             .member(settings.applyValue(_settings -> String.format("serviceAccount:%s", _settings.kmsServiceAccountId())))
  *             .build());
  * 
  *         var example = new FolderSettings("example", FolderSettingsArgs.builder()

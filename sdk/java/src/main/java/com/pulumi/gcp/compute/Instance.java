@@ -76,7 +76,8 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .network("default")
  *                 .build())
  *             .name("my-instance")
@@ -150,7 +151,8 @@ import javax.annotation.Nullable;
  * 
  *         var confidentialInstance = new Instance("confidentialInstance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .network("default")
  *                 .build())
  *             .name("my-confidential-instance")

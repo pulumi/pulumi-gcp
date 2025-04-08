@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .description("my description")
  *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
  *             .protocol("HTTP")
- *             .serviceLbPolicy(default_.id().applyValue(id -> String.format("//networkservices.googleapis.com/%s", id)))
+ *             .serviceLbPolicy(default_.id().applyValue(_id -> String.format("//networkservices.googleapis.com/%s", _id)))
  *             .build());
  * 
  *     }

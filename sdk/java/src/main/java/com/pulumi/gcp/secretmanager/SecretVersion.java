@@ -64,7 +64,8 @@ import javax.annotation.Nullable;
  *             .secretId("secret-version")
  *             .labels(Map.of("label", "my-label"))
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -200,6 +201,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;

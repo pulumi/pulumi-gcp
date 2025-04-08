@@ -120,7 +120,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var default_ = new MetastoreFederation("default", MetastoreFederationArgs.builder()
  *             .location("us-central1")
@@ -129,7 +130,7 @@ import javax.annotation.Nullable;
  *             .backendMetastores(            
  *                 MetastoreFederationBackendMetastoreArgs.builder()
  *                     .rank("2")
- *                     .name(project.applyValue(getProjectResult -> getProjectResult.id()))
+ *                     .name(project.id())
  *                     .metastoreType("BIGQUERY")
  *                     .build(),
  *                 MetastoreFederationBackendMetastoreArgs.builder()

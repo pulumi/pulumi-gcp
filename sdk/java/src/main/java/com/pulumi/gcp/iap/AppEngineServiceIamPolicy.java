@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -354,7 +354,7 @@ import javax.annotation.Nullable;
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -406,7 +406,7 @@ import javax.annotation.Nullable;
  *             .project(version.project())
  *             .appId(version.project())
  *             .service(version.service())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

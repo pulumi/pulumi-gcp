@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("labelkey", "labelvalue"))
  *             .yearlyPrice(RegistrationYearlyPriceArgs.builder()
  *                 .currencyCode("USD")
- *                 .units(12)
+ *                 .units("12")
  *                 .build())
  *             .dnsSettings(RegistrationDnsSettingsArgs.builder()
  *                 .customDns(RegistrationDnsSettingsCustomDnsArgs.builder()

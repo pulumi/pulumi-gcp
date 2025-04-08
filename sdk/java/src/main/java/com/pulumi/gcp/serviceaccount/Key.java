@@ -75,8 +75,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.serviceaccount.Account;
  * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.time.Rotating;
- * import com.pulumi.time.RotatingArgs;
+ * import com.pulumiverse.time.Rotating;
+ * import com.pulumiverse.time.RotatingArgs;
  * import com.pulumi.gcp.serviceaccount.Key;
  * import com.pulumi.gcp.serviceaccount.KeyArgs;
  * import java.util.List;
@@ -130,6 +130,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.kubernetes.core_v1.Secret;
  * import com.pulumi.kubernetes.core_v1.SecretArgs;
  * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64decodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -158,7 +160,9 @@ import javax.annotation.Nullable;
  *             .metadata(ObjectMetaArgs.builder()
  *                 .name("google-application-credentials")
  *                 .build())
- *             .data(Map.of("credentials.json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
+ *             .data(Map.of("credentials.json", StdFunctions.base64decode(Base64decodeArgs.builder()
+ *                 .input(mykey.privateKey())
+ *                 .build()).applyValue(_invoke -> _invoke.result())))
  *             .build());
  * 
  *     }

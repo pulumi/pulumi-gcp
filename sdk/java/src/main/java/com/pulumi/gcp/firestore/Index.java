@@ -209,7 +209,8 @@ import javax.annotation.Nullable;
  *                     .fieldPath("description")
  *                     .vectorConfig(IndexFieldVectorConfigArgs.builder()
  *                         .dimension(128)
- *                         .flat()
+ *                         .flat(IndexFieldVectorConfigFlatArgs.builder()
+ *                             .build())
  *                         .build())
  *                     .build())
  *             .build());

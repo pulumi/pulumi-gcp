@@ -45,6 +45,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.inputs.AccessBoundaryPolicyRuleArgs;
  * import com.pulumi.gcp.iam.inputs.AccessBoundaryPolicyRuleAccessBoundaryRuleArgs;
  * import com.pulumi.gcp.iam.inputs.AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.UrlencodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -67,13 +69,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
- *             .parent(project.orgId().applyValue(orgId -> String.format("organizations/%s", orgId)))
+ *             .parent(project.orgId().applyValue(_orgId -> String.format("organizations/%s", _orgId)))
  *             .title("my policy")
  *             .build());
  * 
  *         var test_access = new AccessLevel("test-access", AccessLevelArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
- *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
+ *             .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", _name)))
  *             .title("chromeos_no_lock")
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
@@ -92,7 +94,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new AccessBoundaryPolicy("example", AccessBoundaryPolicyArgs.builder()
- *             .parent(StdFunctions.urlencode().applyValue(invoke -> invoke.result()))
+ *             .parent(StdFunctions.urlencode(UrlencodeArgs.builder()
+ *                 .input(project.projectId().applyValue(_projectId -> String.format("cloudresourcemanager.googleapis.com/projects/%s", _projectId)))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .name("my-ab-policy")
  *             .displayName("My AB policy")
  *             .rules(AccessBoundaryPolicyRuleArgs.builder()

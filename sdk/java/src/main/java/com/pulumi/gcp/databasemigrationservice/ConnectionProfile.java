@@ -73,7 +73,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cloudsqldb = new DatabaseInstance("cloudsqldb", DatabaseInstanceArgs.builder()
  *             .name("my-database")
@@ -106,7 +107,7 @@ import javax.annotation.Nullable;
  *             .displayName("my-fromprofileid_display")
  *             .labels(Map.of("foo", "bar"))
  *             .mysql(ConnectionProfileMysqlArgs.builder()
- *                 .host(cloudsqldb.ipAddresses().applyValue(ipAddresses -> ipAddresses[0].ipAddress()))
+ *                 .host(cloudsqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
  *                 .port(3306)
  *                 .username(sqldbUser.name())
  *                 .password(sqldbUser.password())
@@ -142,7 +143,7 @@ import javax.annotation.Nullable;
  *                     .dataDiskType("PD_HDD")
  *                     .dataDiskSizeGb("11")
  *                     .zone("us-central1-b")
- *                     .sourceId(String.format("projects/%s/locations/us-central1/connectionProfiles/my-fromprofileid", project.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *                     .sourceId(String.format("projects/%s/locations/us-central1/connectionProfiles/my-fromprofileid", project.projectId()))
  *                     .rootPassword("testpasscloudsql")
  *                     .build())
  *                 .build())
@@ -220,7 +221,7 @@ import javax.annotation.Nullable;
  *             .displayName("my-profileid_display")
  *             .labels(Map.of("foo", "bar"))
  *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
- *                 .host(postgresqldb.ipAddresses().applyValue(ipAddresses -> ipAddresses[0].ipAddress()))
+ *                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
  *                 .port(5432)
  *                 .username(sqldbUser.name())
  *                 .password(sqldbUser.password())
@@ -278,7 +279,8 @@ import javax.annotation.Nullable;
  *                 .username("username")
  *                 .password("password")
  *                 .databaseService("dbprovider")
- *                 .staticServiceIpConnectivity()
+ *                 .staticServiceIpConnectivity(ConnectionProfileOracleStaticServiceIpConnectivityArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -326,7 +328,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("vpc-network")
@@ -365,7 +368,8 @@ import javax.annotation.Nullable;
  *                         .machineConfig(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs.builder()
  *                             .cpuCount(2)
  *                             .build())
- *                         .databaseFlags()
+ *                         .databaseFlags(Map.ofEntries(
+ *                         ))
  *                         .labels(Map.of("alloysinstfoo", "allowinstbar"))
  *                         .build())
  *                     .build())
@@ -411,7 +415,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var destinationCsql = new DatabaseInstance("destinationCsql", DatabaseInstanceArgs.builder()
  *             .name("destination-csql")
@@ -472,7 +477,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var destinationCsql = new DatabaseInstance("destinationCsql", DatabaseInstanceArgs.builder()
  *             .name("destination-csql")
@@ -542,7 +548,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("destination-alloydb")

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 

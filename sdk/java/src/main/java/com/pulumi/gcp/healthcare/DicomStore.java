@@ -95,10 +95,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
- * import com.pulumi.gcp.healthcare.Dataset;
- * import com.pulumi.gcp.healthcare.DatasetArgs;
- * import com.pulumi.gcp.bigquery.Dataset;
- * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
  * import com.pulumi.gcp.bigquery.TableArgs;
  * import com.pulumi.gcp.healthcare.DicomStore;
@@ -123,12 +119,12 @@ import javax.annotation.Nullable;
  *             .name("dicom-notifications")
  *             .build());
  * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *         var dataset = new com.pulumi.gcp.healthcare.Dataset("dataset", com.pulumi.gcp.healthcare.DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var bqDataset = new Dataset("bqDataset", DatasetArgs.builder()
+ *         var bqDataset = new com.pulumi.gcp.bigquery.Dataset("bqDataset", com.pulumi.gcp.bigquery.DatasetArgs.builder()
  *             .datasetId("dicom_bq_ds")
  *             .friendlyName("test")
  *             .description("This is a test description")

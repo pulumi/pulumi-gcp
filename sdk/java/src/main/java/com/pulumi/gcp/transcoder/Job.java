@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *                     }))
  *                     .build())
  *                 .output(JobTemplateConfigOutputArgs.builder()
- *                     .uri(default_.name().applyValue(name -> String.format("gs://%s/outputs/", name)))
+ *                     .uri(default_.name().applyValue(_name -> String.format("gs://%s/outputs/", _name)))
  *                     .build())
  *                 .editLists(JobTemplateConfigEditListArgs.builder()
  *                     .key("atom0")
@@ -327,7 +327,7 @@ import javax.annotation.Nullable;
  *                     .topic(transcoderNotifications.id())
  *                     .build())
  *                 .output(JobConfigOutputArgs.builder()
- *                     .uri(default_.name().applyValue(name -> String.format("gs://%s/outputs/", name)))
+ *                     .uri(default_.name().applyValue(_name -> String.format("gs://%s/outputs/", _name)))
  *                     .build())
  *                 .build())
  *             .labels(Map.of("label", "key"))
@@ -399,7 +399,8 @@ import javax.annotation.Nullable;
  *         var encryptionKey = new Secret("encryptionKey", SecretArgs.builder()
  *             .secretId("transcoder-encryption-key")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -408,11 +409,12 @@ import javax.annotation.Nullable;
  *             .secretData("4A67F2C1B8E93A4F6D3E7890A1BC23DF")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         // this is required to allow the transcoder service identity to access the secret
  *         var transcoder = new ServiceIdentity("transcoder", ServiceIdentityArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .service("transcoder.googleapis.com")
  *             .build());
  * 
@@ -420,7 +422,7 @@ import javax.annotation.Nullable;
  *             .secretId(encryptionKey.secretId())
  *             .project(encryptionKey.project())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(transcoder.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(transcoder.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var defaultJob = new Job("defaultJob", JobArgs.builder()
@@ -462,9 +464,11 @@ import javax.annotation.Nullable;
  *                             .secretVersion(encryptionKeySecretVersion.name())
  *                             .build())
  *                         .drmSystems(JobConfigEncryptionDrmSystemsArgs.builder()
- *                             .clearkey()
+ *                             .clearkey(JobConfigEncryptionDrmSystemsClearkeyArgs.builder()
+ *                                 .build())
  *                             .build())
- *                         .aes128()
+ *                         .aes128(JobConfigEncryptionAes128Args.builder()
+ *                             .build())
  *                         .build(),
  *                     JobConfigEncryptionArgs.builder()
  *                         .id("cenc")
@@ -472,7 +476,8 @@ import javax.annotation.Nullable;
  *                             .secretVersion(encryptionKeySecretVersion.name())
  *                             .build())
  *                         .drmSystems(JobConfigEncryptionDrmSystemsArgs.builder()
- *                             .widevine()
+ *                             .widevine(JobConfigEncryptionDrmSystemsWidevineArgs.builder()
+ *                                 .build())
  *                             .build())
  *                         .mpegCenc(JobConfigEncryptionMpegCencArgs.builder()
  *                             .scheme("cenc")
@@ -484,7 +489,8 @@ import javax.annotation.Nullable;
  *                             .secretVersion(encryptionKeySecretVersion.name())
  *                             .build())
  *                         .drmSystems(JobConfigEncryptionDrmSystemsArgs.builder()
- *                             .widevine()
+ *                             .widevine(JobConfigEncryptionDrmSystemsWidevineArgs.builder()
+ *                                 .build())
  *                             .build())
  *                         .mpegCenc(JobConfigEncryptionMpegCencArgs.builder()
  *                             .scheme("cbcs")
@@ -559,7 +565,7 @@ import javax.annotation.Nullable;
  *                             "fmp4_cbcs_audio")
  *                         .build())
  *                 .output(JobConfigOutputArgs.builder()
- *                     .uri(default_.name().applyValue(name -> String.format("gs://%s/outputs/", name)))
+ *                     .uri(default_.name().applyValue(_name -> String.format("gs://%s/outputs/", _name)))
  *                     .build())
  *                 .build())
  *             .labels(Map.of("label", "key"))
@@ -648,7 +654,7 @@ import javax.annotation.Nullable;
  *                             .startTimeOffset("1.500s")
  *                             .endTimeOffset("3.500s")
  *                             .xy(JobConfigOverlayAnimationAnimationFadeXyArgs.builder()
- *                                 .x(1)
+ *                                 .x(1.0)
  *                                 .y(0.5)
  *                                 .build())
  *                             .build())
@@ -732,7 +738,7 @@ import javax.annotation.Nullable;
  *                             "audio-stream0")
  *                         .build())
  *                 .output(JobConfigOutputArgs.builder()
- *                     .uri(default_.name().applyValue(name -> String.format("gs://%s/outputs/", name)))
+ *                     .uri(default_.name().applyValue(_name -> String.format("gs://%s/outputs/", _name)))
  *                     .build())
  *                 .build())
  *             .labels(Map.of("label", "key"))
@@ -929,7 +935,7 @@ import javax.annotation.Nullable;
  *                             "audio-only")
  *                         .build())
  *                 .output(JobConfigOutputArgs.builder()
- *                     .uri(default_.name().applyValue(name -> String.format("gs://%s/outputs/", name)))
+ *                     .uri(default_.name().applyValue(_name -> String.format("gs://%s/outputs/", _name)))
  *                     .build())
  *                 .build())
  *             .labels(Map.of("label", "key"))

@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip1Network1.id())
  *             .loadBalancingScheme("")
  *             .network(network1.id())
- *             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[0].serviceAttachment()))
+ *             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
  *             .build());
  * 
  *         var ip2Network1 = new Address("ip2Network1", AddressArgs.builder()
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip2Network1.id())
  *             .loadBalancingScheme("")
  *             .network(network1.id())
- *             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[1].serviceAttachment()))
+ *             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
  *             .build());
  * 
  *         var network2 = new Network("network2", NetworkArgs.builder()
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip1Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
- *             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[0].serviceAttachment()))
+ *             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
  *             .build());
  * 
  *         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip2Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
- *             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[1].serviceAttachment()))
+ *             .target(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
  *             .build());
  * 
  *         var instance_user_conn = new InstanceDesiredUserCreatedEndpoints("instance-user-conn", InstanceDesiredUserCreatedEndpointsArgs.builder()
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  *                                 .ipAddress(ip1Network1.address())
  *                                 .forwardingRule(forwardingRule1Network1.id())
  *                                 .network(network1.id())
- *                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[0].serviceAttachment()))
+ *                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
  *                                 .build())
  *                             .build(),
  *                         InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs.builder()
@@ -178,7 +178,7 @@ import javax.annotation.Nullable;
  *                                 .ipAddress(ip2Network1.address())
  *                                 .forwardingRule(forwardingRule2Network1.id())
  *                                 .network(network1.id())
- *                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[1].serviceAttachment()))
+ *                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
  *                                 .build())
  *                             .build())
  *                     .build(),
@@ -190,7 +190,7 @@ import javax.annotation.Nullable;
  *                                 .ipAddress(ip1Network2.address())
  *                                 .forwardingRule(forwardingRule1Network2.id())
  *                                 .network(network2.id())
- *                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[0].serviceAttachment()))
+ *                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
  *                                 .build())
  *                             .build(),
  *                         InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs.builder()
@@ -199,13 +199,14 @@ import javax.annotation.Nullable;
  *                                 .ipAddress(ip2Network2.address())
  *                                 .forwardingRule(forwardingRule2Network2.id())
  *                                 .network(network2.id())
- *                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[1].serviceAttachment()))
+ *                                 .serviceAttachment(instance_user_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
  *                                 .build())
  *                             .build())
  *                     .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }
@@ -298,7 +299,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         //valkey instance with endpoints
  *         var instance_user_auto_connInstance = new Instance("instance-user-auto-connInstance", InstanceArgs.builder()
@@ -306,7 +308,7 @@ import javax.annotation.Nullable;
  *             .shardCount(1)
  *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
  *                 .network(network1.id())
- *                 .projectId(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .projectId(project.projectId())
  *                 .build())
  *             .location("us-central1")
  *             .deletionProtectionEnabled(false)
@@ -320,7 +322,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip1Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
- *             .target(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[0].serviceAttachment()))
+ *             .target(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
  *             .build());
  * 
  *         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
@@ -337,7 +339,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip2Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
- *             .target(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[1].serviceAttachment()))
+ *             .target(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
  *             .build());
  * 
  *         var instance_user_auto_conn = new InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn", InstanceDesiredUserCreatedEndpointsArgs.builder()
@@ -351,7 +353,7 @@ import javax.annotation.Nullable;
  *                             .ipAddress(ip1Network2.address())
  *                             .forwardingRule(forwardingRule1Network2.id())
  *                             .network(network2.id())
- *                             .serviceAttachment(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[0].serviceAttachment()))
+ *                             .serviceAttachment(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[0].serviceAttachment()))
  *                             .build())
  *                         .build(),
  *                     InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs.builder()
@@ -360,7 +362,7 @@ import javax.annotation.Nullable;
  *                             .ipAddress(ip2Network2.address())
  *                             .forwardingRule(forwardingRule2Network2.id())
  *                             .network(network2.id())
- *                             .serviceAttachment(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(pscAttachmentDetails -> pscAttachmentDetails[1].serviceAttachment()))
+ *                             .serviceAttachment(instance_user_auto_connInstance.pscAttachmentDetails().applyValue(_pscAttachmentDetails -> _pscAttachmentDetails[1].serviceAttachment()))
  *                             .build())
  *                         .build())
  *                 .build())

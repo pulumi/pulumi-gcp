@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .project("your-project")
  *             .region("your-region")
  *             .cluster("your-dataproc-cluster")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *             .project("your-project")
  *             .region("your-region")
  *             .cluster("your-dataproc-cluster")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

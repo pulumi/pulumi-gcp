@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .project(feature.project())
  *             .location(feature.location())
  *             .name(feature.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *             .project(feature.project())
  *             .location(feature.location())
  *             .name(feature.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

@@ -68,7 +68,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("fw-network")
@@ -115,7 +116,7 @@ import javax.annotation.Nullable;
  *             .parent("organizations/123456789")
  *             .purpose("GCE_FIREWALL")
  *             .shortName("tag-key")
- *             .purposeData(Map.of("network", default_.name().applyValue(name -> String.format("my-project-name/%s", name))))
+ *             .purposeData(Map.of("network", default_.name().applyValue(_name -> String.format("my-project-name/%s", _name))))
  *             .build());
  * 
  *         var secureTagValue1 = new TagValue("secureTagValue1", TagValueArgs.builder()
@@ -138,9 +139,9 @@ import javax.annotation.Nullable;
  *                     .ipProtocol("all")
  *                     .build())
  *                 .build())
- *             .securityProfileGroup(securityProfileGroup1.id().applyValue(id -> String.format("//networksecurity.googleapis.com/%s", id)))
+ *             .securityProfileGroup(securityProfileGroup1.id().applyValue(_id -> String.format("//networksecurity.googleapis.com/%s", _id)))
  *             .targetSecureTags(NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs.builder()
- *                 .name(secureTagValue1.name().applyValue(name -> String.format("tagValues/%s", name)))
+ *                 .name(secureTagValue1.name().applyValue(_name -> String.format("tagValues/%s", _name)))
  *                 .build())
  *             .build());
  * 

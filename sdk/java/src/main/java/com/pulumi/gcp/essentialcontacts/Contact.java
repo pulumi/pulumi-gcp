@@ -58,10 +58,11 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var contact = new Contact("contact", ContactArgs.builder()
- *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
+ *             .parent(project.id())
  *             .email("foo}{@literal @}{@code bar.com")
  *             .languageTag("en-GB")
  *             .notificationCategorySubscriptions("ALL")

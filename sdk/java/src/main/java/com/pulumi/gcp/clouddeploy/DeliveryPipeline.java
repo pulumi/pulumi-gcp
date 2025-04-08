@@ -60,7 +60,8 @@ import javax.annotation.Nullable;
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
  *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
- *                             .matchTargetLabels()
+ *                             .matchTargetLabels(Map.ofEntries(
+ *                             ))
  *                             .build())
  *                         .profiles(                        
  *                             "example-profile-one",
@@ -123,7 +124,8 @@ import javax.annotation.Nullable;
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
  *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
- *                             .matchTargetLabels()
+ *                             .matchTargetLabels(Map.ofEntries(
+ *                             ))
  *                             .build())
  *                         .profiles(                        
  *                             "example-profile-one",
@@ -186,7 +188,8 @@ import javax.annotation.Nullable;
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
  *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
- *                             .matchTargetLabels()
+ *                             .matchTargetLabels(Map.ofEntries(
+ *                             ))
  *                             .build())
  *                         .profiles(                        
  *                             "example-profile-one",
@@ -249,7 +252,8 @@ import javax.annotation.Nullable;
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
  *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
- *                             .matchTargetLabels()
+ *                             .matchTargetLabels(Map.ofEntries(
+ *                             ))
  *                             .build())
  *                         .profiles(                        
  *                             "example-profile-one",
@@ -312,7 +316,8 @@ import javax.annotation.Nullable;
  *                     DeliveryPipelineSerialPipelineStageArgs.builder()
  *                         .deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs.builder()
  *                             .values(Map.of("deployParameterKey", "deployParameterValue"))
- *                             .matchTargetLabels()
+ *                             .matchTargetLabels(Map.ofEntries(
+ *                             ))
  *                             .build())
  *                         .profiles(                        
  *                             "example-profile-one",

@@ -311,12 +311,13 @@ import javax.annotation.Nullable;
  *                 .dependsOn(lookerVpcConnection)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("looker-kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-looker.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-looker.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *     }}{@code

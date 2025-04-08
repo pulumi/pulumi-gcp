@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *                         PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs.builder()
  *                             .redactionColor(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs.builder()
  *                                 .red(0.5)
- *                                 .blue(1)
+ *                                 .blue(1.0)
  *                                 .green(0.2)
  *                                 .build())
  *                             .selectedInfoTypes(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs.builder()
@@ -196,10 +196,12 @@ import javax.annotation.Nullable;
  *                                 .build())
  *                             .build(),
  *                         PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs.builder()
- *                             .allInfoTypes()
+ *                             .allInfoTypes(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs.builder()
+ *                                 .build())
  *                             .build(),
  *                         PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs.builder()
- *                             .allText()
+ *                             .allText(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs.builder()
+ *                                 .build())
  *                             .build())
  *                     .build())
  *                 .build())

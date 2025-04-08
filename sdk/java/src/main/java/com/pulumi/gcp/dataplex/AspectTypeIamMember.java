@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .project(testAspectTypeBasic.project())
  *             .location(testAspectTypeBasic.location())
  *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -212,7 +212,7 @@ import javax.annotation.Nullable;
  *             .project(testAspectTypeBasic.project())
  *             .location(testAspectTypeBasic.location())
  *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

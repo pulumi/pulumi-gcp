@@ -63,7 +63,8 @@ import javax.annotation.Nullable;
  *             .location("US")
  *             .friendlyName("👋")
  *             .description("a riveting description")
- *             .cloudResource()
+ *             .cloudResource(ConnectionCloudResourceArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *     }

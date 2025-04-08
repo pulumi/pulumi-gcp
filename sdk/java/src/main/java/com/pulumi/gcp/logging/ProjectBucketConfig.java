@@ -202,7 +202,7 @@ import javax.annotation.Nullable;
  *         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(key.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:%s", cmekSettings.applyValue(getProjectCmekSettingsResult -> getProjectCmekSettingsResult.serviceAccountId())))
+ *             .members(String.format("serviceAccount:%s", cmekSettings.serviceAccountId()))
  *             .build());
  * 
  *         var example_project_bucket_cmek_settings = new ProjectBucketConfig("example-project-bucket-cmek-settings", ProjectBucketConfigArgs.builder()

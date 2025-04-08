@@ -52,7 +52,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getCluster();
+     *         final var qa = AlloydbFunctions.getCluster(GetClusterArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -92,7 +93,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getCluster();
+     *         final var qa = AlloydbFunctions.getCluster(GetClusterArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -132,7 +134,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getCluster();
+     *         final var qa = AlloydbFunctions.getCluster(GetClusterArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -172,7 +175,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getCluster();
+     *         final var qa = AlloydbFunctions.getCluster(GetClusterArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -212,7 +216,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getCluster();
+     *         final var qa = AlloydbFunctions.getCluster(GetClusterArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -252,7 +257,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getInstance();
+     *         final var qa = AlloydbFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -292,7 +298,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getInstance();
+     *         final var qa = AlloydbFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -332,7 +339,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getInstance();
+     *         final var qa = AlloydbFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -372,7 +380,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getInstance();
+     *         final var qa = AlloydbFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -412,7 +421,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getInstance();
+     *         final var qa = AlloydbFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -452,7 +462,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getLocations();
+     *         final var qa = AlloydbFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -492,7 +503,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getLocations();
+     *         final var qa = AlloydbFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -532,7 +544,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getLocations();
+     *         final var qa = AlloydbFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -572,7 +585,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getLocations();
+     *         final var qa = AlloydbFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -612,7 +626,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getLocations();
+     *         final var qa = AlloydbFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -652,7 +667,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getLocations();
+     *         final var qa = AlloydbFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -692,7 +708,8 @@ public final class AlloydbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = AlloydbFunctions.getLocations();
+     *         final var qa = AlloydbFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }

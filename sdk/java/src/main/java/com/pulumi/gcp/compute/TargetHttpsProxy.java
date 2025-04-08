@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.SSLCertificate;
  * import com.pulumi.gcp.compute.SSLCertificateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.compute.HttpHealthCheck;
  * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
@@ -130,6 +132,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.SSLCertificate;
  * import com.pulumi.gcp.compute.SSLCertificateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.compute.HttpHealthCheck;
  * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
@@ -224,6 +228,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificatemanager.TrustConfig;
  * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
@@ -252,7 +258,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
  *             .name("my-trust-config")
@@ -277,10 +284,10 @@ import javax.annotation.Nullable;
  *             .name("my-tls-policy")
  *             .description("my description")
  *             .location("global")
- *             .allowOpen("false")
+ *             .allowOpen(false)
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
  *                 .clientValidationMode("ALLOW_INVALID_OR_MISSING_CLIENT_CERT")
- *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -> String.format("projects/%s/locations/global/trustConfigs/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(_name -> String.format("projects/%s/locations/global/trustConfigs/%s", project.number(),_name)))
  *                 .build())
  *             .build());
  * 
@@ -352,6 +359,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificatemanager.Certificate;
  * import com.pulumi.gcp.certificatemanager.CertificateArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.compute.URLMap;
@@ -415,7 +424,7 @@ import javax.annotation.Nullable;
  *         var default_ = new TargetHttpsProxy("default", TargetHttpsProxyArgs.builder()
  *             .name("target-http-proxy")
  *             .urlMap(defaultURLMap.id())
- *             .certificateManagerCertificates(defaultCertificate.id().applyValue(id -> String.format("//certificatemanager.googleapis.com/%s", id)))
+ *             .certificateManagerCertificates(defaultCertificate.id().applyValue(_id -> String.format("//certificatemanager.googleapis.com/%s", _id)))
  *             .build());
  * 
  *     }

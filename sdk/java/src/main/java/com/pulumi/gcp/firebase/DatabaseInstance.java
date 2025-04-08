@@ -101,14 +101,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumi.gcp.firebase.Project;
- * import com.pulumi.gcp.firebase.ProjectArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.firebase.DatabaseInstance;
  * import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -125,7 +121,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Project("default", ProjectArgs.builder()
+ *         var default_ = new com.pulumi.gcp.organizations.Project("default", com.pulumi.gcp.organizations.ProjectArgs.builder()
  *             .projectId("rtdb-project")
  *             .name("rtdb-project")
  *             .orgId("123456789")
@@ -139,7 +135,7 @@ import javax.annotation.Nullable;
  *             .disableOnDestroy(false)
  *             .build());
  * 
- *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+ *         var defaultProject = new com.pulumi.gcp.firebase.Project("defaultProject", com.pulumi.gcp.firebase.ProjectArgs.builder()
  *             .project(default_.projectId())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(firebase)
@@ -154,7 +150,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(firebaseDatabase)
+ *                 .dependsOn(List.of(firebaseDatabase))
  *                 .build());
  * 
  *         var defaultDatabaseInstance = new DatabaseInstance("defaultDatabaseInstance", DatabaseInstanceArgs.builder()

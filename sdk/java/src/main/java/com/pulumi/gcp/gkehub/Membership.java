@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .location("us-west1")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .build());
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  *             .membershipId("basic")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
  *                     .build())
  *                 .build())
  *             .labels(Map.of("env", "test"))
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .authority(MembershipAuthorityArgs.builder()
- *                 .issuer(primary.id().applyValue(id -> String.format("https://container.googleapis.com/v1/%s", id)))
+ *                 .issuer(primary.id().applyValue(_id -> String.format("https://container.googleapis.com/v1/%s", _id)))
  *                 .build())
  *             .build());
  * 

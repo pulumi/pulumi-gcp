@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -356,7 +356,7 @@ import javax.annotation.Nullable;
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -408,7 +408,7 @@ import javax.annotation.Nullable;
  *             .project(tunnelvm.project())
  *             .zone(tunnelvm.zone())
  *             .instance(tunnelvm.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

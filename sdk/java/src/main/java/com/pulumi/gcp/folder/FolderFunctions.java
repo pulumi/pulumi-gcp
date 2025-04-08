@@ -263,7 +263,7 @@ public final class FolderFunctions {
      *             .constraint("constraints/compute.trustedImageProjects")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }
@@ -309,7 +309,7 @@ public final class FolderFunctions {
      *             .constraint("constraints/compute.trustedImageProjects")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }
@@ -355,7 +355,7 @@ public final class FolderFunctions {
      *             .constraint("constraints/compute.trustedImageProjects")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }
@@ -401,7 +401,7 @@ public final class FolderFunctions {
      *             .constraint("constraints/compute.trustedImageProjects")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }
@@ -447,7 +447,7 @@ public final class FolderFunctions {
      *             .constraint("constraints/compute.trustedImageProjects")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }

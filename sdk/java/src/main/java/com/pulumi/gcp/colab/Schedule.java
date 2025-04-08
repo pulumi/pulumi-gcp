@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *         var schedule = new Schedule("schedule", ScheduleArgs.builder()
  *             .displayName("basic-schedule")
  *             .location("us-west1")
- *             .maxConcurrentRunCount(2)
+ *             .maxConcurrentRunCount("2")
  *             .cron("TZ=America/Los_Angeles * * * * *")
  *             .createNotebookExecutionJobRequest(ScheduleCreateNotebookExecutionJobRequestArgs.builder()
  *                 .notebookExecutionJob(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs.builder()
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  *                         var name = values.t3;
  *                         return String.format("projects/%s/locations/%s/notebookRuntimeTemplates/%s", project,location,name);
  *                     }}{@code ))
- *                     .gcsOutputUri(outputBucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                     .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                     .serviceAccount("my}{@literal @}{@code service-account.com")
  *                     .build())
  *                 .build())
@@ -261,7 +261,7 @@ import javax.annotation.Nullable;
  *         var schedule = new Schedule("schedule", ScheduleArgs.builder()
  *             .displayName("paused-schedule")
  *             .location("us-west1")
- *             .maxConcurrentRunCount(2)
+ *             .maxConcurrentRunCount("2")
  *             .cron("TZ=America/Los_Angeles * * * * *")
  *             .desiredState("PAUSED")
  *             .createNotebookExecutionJobRequest(ScheduleCreateNotebookExecutionJobRequestArgs.builder()
@@ -281,7 +281,7 @@ import javax.annotation.Nullable;
  *                         var name = values.t3;
  *                         return String.format("projects/%s/locations/%s/notebookRuntimeTemplates/%s", project,location,name);
  *                     }}{@code ))
- *                     .gcsOutputUri(outputBucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                     .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                     .serviceAccount("my}{@literal @}{@code service-account.com")
  *                     .build())
  *                 .build())
@@ -363,7 +363,8 @@ import javax.annotation.Nullable;
  *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -394,9 +395,9 @@ import javax.annotation.Nullable;
  *             .displayName("full-schedule")
  *             .location("us-west1")
  *             .allowQueueing(true)
- *             .maxConcurrentRunCount(2)
+ *             .maxConcurrentRunCount("2")
  *             .cron("TZ=America/Los_Angeles * * * * *")
- *             .maxRunCount(5)
+ *             .maxRunCount("5")
  *             .startTime("2014-10-02T15:01:23Z")
  *             .endTime("2014-10-10T15:01:23Z")
  *             .desiredState("ACTIVE")
@@ -406,7 +407,7 @@ import javax.annotation.Nullable;
  *                     .executionTimeout("86400s")
  *                     .dataformRepositorySource(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs.builder()
  *                         .commitSha("randomsha123")
- *                         .dataformRepositoryResourceName(dataformRepository.name().applyValue(name -> String.format("projects/my-project-name/locations/us-west1/repositories/%s", name)))
+ *                         .dataformRepositoryResourceName(dataformRepository.name().applyValue(_name -> String.format("projects/my-project-name/locations/us-west1/repositories/%s", _name)))
  *                         .build())
  *                     .notebookRuntimeTemplateResourceName(Output.tuple(myRuntimeTemplate.project(), myRuntimeTemplate.location(), myRuntimeTemplate.name()).applyValue(values -> }{{@code
  *                         var project = values.t1;
@@ -414,7 +415,7 @@ import javax.annotation.Nullable;
  *                         var name = values.t3;
  *                         return String.format("projects/%s/locations/%s/notebookRuntimeTemplates/%s", project,location,name);
  *                     }}{@code ))
- *                     .gcsOutputUri(outputBucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                     .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                     .serviceAccount("my}{@literal @}{@code service-account.com")
  *                     .build())
  *                 .build())

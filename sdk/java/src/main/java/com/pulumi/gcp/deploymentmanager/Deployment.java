@@ -50,6 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.deploymentmanager.inputs.DeploymentTargetArgs;
  * import com.pulumi.gcp.deploymentmanager.inputs.DeploymentTargetConfigArgs;
  * import com.pulumi.gcp.deploymentmanager.inputs.DeploymentLabelArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;

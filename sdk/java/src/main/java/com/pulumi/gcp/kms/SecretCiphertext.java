@@ -83,7 +83,8 @@ import javax.annotation.Nullable;
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .network("default")
  *                 .build())
  *             .name("my-instance")

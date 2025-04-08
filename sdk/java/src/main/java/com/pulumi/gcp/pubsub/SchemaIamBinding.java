@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()
  *             .project(example.project())
  *             .schema(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .location(example.location())
  *             .lake(example.lake())
  *             .taskId(example.taskId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  *             .location(example.location())
  *             .lake(example.lake())
  *             .taskId(example.taskId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

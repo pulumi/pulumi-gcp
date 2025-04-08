@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.AppleApp;
  * import com.pulumi.gcp.firebase.AppleAppArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckAppAttestConfig;
  * import com.pulumi.gcp.firebase.AppCheckAppAttestConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(default_)
+ *                 .dependsOn(List.of(default_))
  *                 .build());
  * 
  *         var defaultAppCheckAppAttestConfig = new AppCheckAppAttestConfig("defaultAppCheckAppAttestConfig", AppCheckAppAttestConfigArgs.builder()
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.AppleApp;
  * import com.pulumi.gcp.firebase.AppleAppArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckAppAttestConfig;
  * import com.pulumi.gcp.firebase.AppCheckAppAttestConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(default_)
+ *                 .dependsOn(List.of(default_))
  *                 .build());
  * 
  *         var defaultAppCheckAppAttestConfig = new AppCheckAppAttestConfig("defaultAppCheckAppAttestConfig", AppCheckAppAttestConfigArgs.builder()

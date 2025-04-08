@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *         var editor = new SubscriptionIAMPolicy("editor", SubscriptionIAMPolicyArgs.builder()
  *             .subscription("your-subscription-name")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

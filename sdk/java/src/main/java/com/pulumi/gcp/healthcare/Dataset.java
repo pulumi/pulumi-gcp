@@ -96,7 +96,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("example-keyring")
@@ -112,7 +113,7 @@ import javax.annotation.Nullable;
  *         var healthcareCmekKeyuser = new CryptoKeyIAMBinding("healthcareCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-healthcare.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-healthcare.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var default_ = new Dataset("default", DatasetArgs.builder()

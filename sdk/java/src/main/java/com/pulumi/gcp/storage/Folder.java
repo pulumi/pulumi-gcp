@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  *         var subfolder = new Folder("subfolder", FolderArgs.builder()
  *             .bucket(bucket.name())
- *             .name(folder.name().applyValue(name -> String.format("%ssubfolder/", name)))
+ *             .name(folder.name().applyValue(_name -> String.format("%ssubfolder/", _name)))
  *             .build());
  * 
  *     }

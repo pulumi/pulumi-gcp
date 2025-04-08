@@ -179,12 +179,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -543,12 +544,14 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -560,7 +563,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -629,12 +632,14 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -646,7 +651,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -717,12 +722,14 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -734,7 +741,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -805,12 +812,14 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -822,7 +831,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -893,12 +902,14 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -910,7 +921,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
@@ -1024,7 +1035,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var upstreamRepo = new Repository("upstreamRepo", RepositoryArgs.builder()
  *             .location("us-central1")
@@ -1042,7 +1054,7 @@ import javax.annotation.Nullable;
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
  *                 .description("pull-through cache of another Artifact Registry repository by URL")
  *                 .commonRepository(RepositoryRemoteRepositoryConfigCommonRepositoryArgs.builder()
- *                     .uri(String.format("https://us-central1-docker.pkg.dev/%s/example-upstream-repo", project.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *                     .uri(String.format("https://us-central1-docker.pkg.dev/%s/example-upstream-repo", project.projectId()))
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
@@ -1093,12 +1105,14 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
  *             .secretId("example-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -1110,7 +1124,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(example_remote_secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()

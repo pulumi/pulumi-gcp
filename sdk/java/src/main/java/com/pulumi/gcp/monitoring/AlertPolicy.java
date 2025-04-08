@@ -281,7 +281,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .rowCountTest(AlertPolicyConditionConditionSqlRowCountTestArgs.builder()
  *                         .comparison("COMPARISON_GT")
- *                         .threshold("0")
+ *                         .threshold(0)
  *                         .build())
  *                     .build())
  *                 .build())

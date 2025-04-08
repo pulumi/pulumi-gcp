@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .parent("organizations/123456789")
  *             .purpose("GCE_FIREWALL")
  *             .shortName("tag-key")
- *             .purposeData(Map.of("network", basicNetwork.name().applyValue(name -> String.format("my-project-name/%s", name))))
+ *             .purposeData(Map.of("network", basicNetwork.name().applyValue(_name -> String.format("my-project-name/%s", _name))))
  *             .build());
  * 
  *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()

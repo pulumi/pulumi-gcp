@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .project("your-project")
  *             .region("your-region")
  *             .jobId("your-dataproc-job")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *             .project("your-project")
  *             .region("your-region")
  *             .jobId("your-dataproc-job")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *                     .value(0.8)
  *                     .build())
  *                 .categoricalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs.builder()
- *                     .value(10)
+ *                     .value(10.0)
  *                     .build())
  *                 .importFeaturesAnalysis(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs.builder()
  *                     .state("ENABLED")
