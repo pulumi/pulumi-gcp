@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(listing.listingId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *             .location(listing.location())
  *             .dataExchangeId(listing.dataExchangeId())
  *             .listingId(listing.listingId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicy;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicyArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.iam.OrganizationsPolicyBinding;
  * import com.pulumi.gcp.iam.OrganizationsPolicyBindingArgs;
  * import com.pulumi.gcp.iam.inputs.OrganizationsPolicyBindingTargetArgs;
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(pabPolicy)
+ *                 .dependsOn(List.of(pabPolicy))
  *                 .build());
  * 
  *         var binding_for_all_org_principals = new OrganizationsPolicyBinding("binding-for-all-org-principals", OrganizationsPolicyBindingArgs.builder()
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .displayName("binding for all principals in the Organization")
  *             .policyKind("PRINCIPAL_ACCESS_BOUNDARY")
  *             .policyBindingId("binding-for-all-org-principals")
- *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", principalAccessBoundaryPolicyId)))
+ *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(_principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", _principalAccessBoundaryPolicyId)))
  *             .target(OrganizationsPolicyBindingTargetArgs.builder()
  *                 .principalSet("//cloudresourcemanager.googleapis.com/organizations/123456789")
  *                 .build())

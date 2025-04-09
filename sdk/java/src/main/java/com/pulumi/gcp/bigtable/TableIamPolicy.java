@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .project("your-project")
  *             .instance("your-bigtable-instance")
  *             .table("your-bigtable-table")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *             .project("your-project")
  *             .instance("your-bigtable-instance")
  *             .table("your-bigtable-table")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

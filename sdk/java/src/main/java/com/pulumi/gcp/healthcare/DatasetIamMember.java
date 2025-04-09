@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
  *             .datasetId("your-dataset-id")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

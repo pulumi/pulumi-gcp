@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.signerVerifier")
- *             .member(serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult).applyValue(serviceAccount -> String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail()))))
+ *             .member(serviceAccount.applyValue(_serviceAccount -> String.format("serviceAccount:%s", _serviceAccount.accountEmail())))
  *             .build());
  * 
  *         final var cryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  * 
  *         var folderAccessApproval = new AccessApprovalSettings("folderAccessApproval", AccessApprovalSettingsArgs.builder()
  *             .folderId(myFolder.folderId())
- *             .activeKeyVersion(cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult).applyValue(cryptoKeyVersion -> cryptoKeyVersion.applyValue(getKMSCryptoKeyVersionResult -> getKMSCryptoKeyVersionResult.name())))
+ *             .activeKeyVersion(cryptoKeyVersion.applyValue(_cryptoKeyVersion -> _cryptoKeyVersion.name()))
  *             .enrolledServices(AccessApprovalSettingsEnrolledServiceArgs.builder()
  *                 .cloudProduct("all")
  *                 .build())

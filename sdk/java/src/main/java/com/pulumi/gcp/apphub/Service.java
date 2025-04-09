@@ -38,10 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.projects.Service;
- * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
  * import com.pulumi.gcp.compute.Network;
@@ -57,8 +55,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import com.pulumi.gcp.apphub.ApphubFunctions;
  * import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
- * import com.pulumi.gcp.apphub.Service;
- * import com.pulumi.gcp.apphub.ServiceArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -90,7 +86,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()
+ *         var computeServiceProject = new com.pulumi.gcp.projects.Service("computeServiceProject", com.pulumi.gcp.projects.ServiceArgs.builder()
  *             .project(serviceProject.projectId())
  *             .service("compute.googleapis.com")
  *             .build());
@@ -98,7 +94,7 @@ import javax.annotation.Nullable;
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(computeServiceProject)
+ *                 .dependsOn(List.of(computeServiceProject))
  *                 .build());
  * 
  *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
@@ -132,7 +128,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(wait120s)
@@ -162,20 +158,20 @@ import javax.annotation.Nullable;
  *         // discovered service block
  *         final var catalog-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
  *             .location("us-central1")
- *             .serviceUri(forwardingRule.id().applyValue(id -> String.format("//compute.googleapis.com/%s", id)))
+ *             .serviceUri(forwardingRule.id().applyValue(_id -> String.format("//compute.googleapis.com/%s", _id)))
  *             .build());
  * 
  *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(forwardingRule)
+ *                 .dependsOn(List.of(forwardingRule))
  *                 .build());
  * 
- *         var example = new Service("example", ServiceArgs.builder()
+ *         var example = new com.pulumi.gcp.apphub.Service("example", com.pulumi.gcp.apphub.ServiceArgs.builder()
  *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .serviceId(forwardingRule.name())
- *             .discoveredService(catalog_service.applyValue(catalog_service -> catalog_service.name()))
+ *             .discoveredService(catalog_service.applyValue(_catalog_service -> _catalog_service.name()))
  *             .build());
  * 
  *     }
@@ -198,10 +194,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.projects.Service;
- * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachment;
  * import com.pulumi.gcp.apphub.ServiceProjectAttachmentArgs;
  * import com.pulumi.gcp.compute.Network;
@@ -217,8 +211,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import com.pulumi.gcp.apphub.ApphubFunctions;
  * import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
- * import com.pulumi.gcp.apphub.Service;
- * import com.pulumi.gcp.apphub.ServiceArgs;
  * import com.pulumi.gcp.apphub.inputs.ServiceAttributesArgs;
  * import com.pulumi.gcp.apphub.inputs.ServiceAttributesEnvironmentArgs;
  * import com.pulumi.gcp.apphub.inputs.ServiceAttributesCriticalityArgs;
@@ -253,7 +245,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Enable Compute API
- *         var computeServiceProject = new Service("computeServiceProject", ServiceArgs.builder()
+ *         var computeServiceProject = new com.pulumi.gcp.projects.Service("computeServiceProject", com.pulumi.gcp.projects.ServiceArgs.builder()
  *             .project(serviceProject.projectId())
  *             .service("compute.googleapis.com")
  *             .build());
@@ -261,7 +253,7 @@ import javax.annotation.Nullable;
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(computeServiceProject)
+ *                 .dependsOn(List.of(computeServiceProject))
  *                 .build());
  * 
  *         var serviceProjectAttachment = new ServiceProjectAttachment("serviceProjectAttachment", ServiceProjectAttachmentArgs.builder()
@@ -295,7 +287,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(wait120s)
@@ -325,20 +317,20 @@ import javax.annotation.Nullable;
  *         // discovered service block
  *         final var catalog-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
  *             .location("us-central1")
- *             .serviceUri(forwardingRule.id().applyValue(id -> String.format("//compute.googleapis.com/%s", id)))
+ *             .serviceUri(forwardingRule.id().applyValue(_id -> String.format("//compute.googleapis.com/%s", _id)))
  *             .build());
  * 
  *         var wait120sForResourceIngestion = new Sleep("wait120sForResourceIngestion", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(forwardingRule)
+ *                 .dependsOn(List.of(forwardingRule))
  *                 .build());
  * 
- *         var example = new Service("example", ServiceArgs.builder()
+ *         var example = new com.pulumi.gcp.apphub.Service("example", com.pulumi.gcp.apphub.ServiceArgs.builder()
  *             .location("us-central1")
  *             .applicationId(application.applicationId())
  *             .serviceId(forwardingRule.name())
- *             .discoveredService(catalog_service.applyValue(catalog_service -> catalog_service.name()))
+ *             .discoveredService(catalog_service.applyValue(_catalog_service -> _catalog_service.name()))
  *             .displayName("Example Service Full")
  *             .description("Register service for testing")
  *             .attributes(ServiceAttributesArgs.builder()

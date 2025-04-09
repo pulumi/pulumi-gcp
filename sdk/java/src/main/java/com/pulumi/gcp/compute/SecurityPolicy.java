@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
  *                     .action("deny(403)")
- *                     .priority("1000")
+ *                     .priority(1000)
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
  *                         .versionedExpr("SRC_IPS_V1")
  *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 SecurityPolicyRuleArgs.builder()
  *                     .action("allow")
- *                     .priority("2147483647")
+ *                     .priority(2147483647)
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
  *                         .versionedExpr("SRC_IPS_V1")
  *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             .rules(            
  *                 SecurityPolicyRuleArgs.builder()
  *                     .action("allow")
- *                     .priority("2147483647")
+ *                     .priority(2147483647)
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
  *                         .versionedExpr("SRC_IPS_V1")
  *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 SecurityPolicyRuleArgs.builder()
  *                     .action("allow")
- *                     .priority("1000")
+ *                     .priority(1000)
  *                     .match(SecurityPolicyRuleMatchArgs.builder()
  *                         .expr(SecurityPolicyRuleMatchExprArgs.builder()
  *                             .expression("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2")
@@ -251,7 +251,7 @@ import javax.annotation.Nullable;
  *             .description("throttle rule with enforce_on_key_configs")
  *             .rules(SecurityPolicyRuleArgs.builder()
  *                 .action("throttle")
- *                 .priority("2147483647")
+ *                 .priority(2147483647)
  *                 .match(SecurityPolicyRuleMatchArgs.builder()
  *                     .versionedExpr("SRC_IPS_V1")
  *                     .config(SecurityPolicyRuleMatchConfigArgs.builder()

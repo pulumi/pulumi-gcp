@@ -47,11 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.dns.ManagedZone;
- * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
- * import com.pulumi.gcp.integrationconnectors.ManagedZone;
- * import com.pulumi.gcp.integrationconnectors.ManagedZoneArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -74,12 +70,13 @@ import javax.annotation.Nullable;
  *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         final var testProject = OrganizationsFunctions.getProject();
+ *         final var testProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var dnsPeerBinding = new IAMMember("dnsPeerBinding", IAMMemberArgs.builder()
  *             .project(targetProject.projectId())
  *             .role("roles/dns.peer")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-connectors.iam.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-connectors.iam.gserviceaccount.com", testProject.number()))
  *             .build());
  * 
  *         var dns = new Service("dns", ServiceArgs.builder()
@@ -100,7 +97,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(compute)
  *                 .build());
  * 
- *         var zone = new ManagedZone("zone", ManagedZoneArgs.builder()
+ *         var zone = new com.pulumi.gcp.dns.ManagedZone("zone", com.pulumi.gcp.dns.ManagedZoneArgs.builder()
  *             .name("tf-test-dns_55138")
  *             .dnsName("private_37559.example.com.")
  *             .visibility("private")
@@ -113,7 +110,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(dns)
  *                 .build());
  * 
- *         var testmanagedzone = new ManagedZone("testmanagedzone", ManagedZoneArgs.builder()
+ *         var testmanagedzone = new com.pulumi.gcp.integrationconnectors.ManagedZone("testmanagedzone", com.pulumi.gcp.integrationconnectors.ManagedZoneArgs.builder()
  *             .name("test")
  *             .description("tf created description")
  *             .labels(Map.of("intent", "example"))

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .project(function.project())
  *             .location(function.location())
  *             .cloudFunction(function.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -212,7 +212,7 @@ import javax.annotation.Nullable;
  *             .project(function.project())
  *             .location(function.location())
  *             .cloudFunction(function.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

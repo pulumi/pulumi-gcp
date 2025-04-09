@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.Folder;
  * import com.pulumi.gcp.organizations.FolderArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.iam.FoldersPolicyBinding;
  * import com.pulumi.gcp.iam.FoldersPolicyBindingArgs;
  * import com.pulumi.gcp.iam.inputs.FoldersPolicyBindingTargetArgs;
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(folder)
+ *                 .dependsOn(List.of(folder))
  *                 .build());
  * 
  *         var binding_for_all_folder_principals = new FoldersPolicyBinding("binding-for-all-folder-principals", FoldersPolicyBindingArgs.builder()
@@ -78,9 +78,9 @@ import javax.annotation.Nullable;
  *             .displayName("binding for all principals in the folder")
  *             .policyKind("PRINCIPAL_ACCESS_BOUNDARY")
  *             .policyBindingId("binding-for-all-folder-principals")
- *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", principalAccessBoundaryPolicyId)))
+ *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(_principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", _principalAccessBoundaryPolicyId)))
  *             .target(FoldersPolicyBindingTargetArgs.builder()
- *                 .principalSet(folder.folderId().applyValue(folderId -> String.format("//cloudresourcemanager.googleapis.com/folders/%s", folderId)))
+ *                 .principalSet(folder.folderId().applyValue(_folderId -> String.format("//cloudresourcemanager.googleapis.com/folders/%s", _folderId)))
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(wait120s)

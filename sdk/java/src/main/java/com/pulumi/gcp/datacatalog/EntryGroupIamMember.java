@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()
  *             .entryGroup(basicEntryGroup.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -204,7 +204,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()
  *             .entryGroup(basicEntryGroup.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

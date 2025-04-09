@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .region("us-central1")
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *         var default_ = new ForwardingRule("default", ForwardingRuleArgs.builder()
  *             .name("website-forwarding-rule")
  *             .region("us-central1")
- *             .portRange(80)
+ *             .portRange("80")
  *             .backendService(backend.id())
  *             .build());
  * 
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -309,7 +309,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -426,7 +426,7 @@ import javax.annotation.Nullable;
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debianImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                 .sourceImage(debianImage.selfLink())
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
@@ -530,7 +530,7 @@ import javax.annotation.Nullable;
  *             .backends(RegionBackendServiceBackendArgs.builder()
  *                 .group(rigm.instanceGroup())
  *                 .balancingMode("UTILIZATION")
- *                 .capacityScaler(1)
+ *                 .capacityScaler(1.0)
  *                 .build())
  *             .region("us-central1")
  *             .name("website-backend")
@@ -660,7 +660,7 @@ import javax.annotation.Nullable;
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debianImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                 .sourceImage(debianImage.selfLink())
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
@@ -764,7 +764,7 @@ import javax.annotation.Nullable;
  *             .backends(RegionBackendServiceBackendArgs.builder()
  *                 .group(rigm.instanceGroup())
  *                 .balancingMode("UTILIZATION")
- *                 .capacityScaler(1)
+ *                 .capacityScaler(1.0)
  *                 .build())
  *             .region("us-central1")
  *             .name("website-backend")
@@ -904,7 +904,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -1032,7 +1032,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -1184,7 +1184,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 

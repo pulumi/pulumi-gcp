@@ -75,7 +75,7 @@ public final class ArtifactregistryFunctions {
      *         var default_ = new Service("default", ServiceArgs.builder()
      *             .template(ServiceTemplateArgs.builder()
      *                 .containers(ServiceTemplateContainerArgs.builder()
-     *                     .image(myImage.applyValue(getDockerImageResult -> getDockerImageResult).applyValue(myImage -> myImage.applyValue(getDockerImageResult -> getDockerImageResult.selfLink())))
+     *                     .image(myImage.applyValue(_myImage -> _myImage.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -141,7 +141,7 @@ public final class ArtifactregistryFunctions {
      *         var default_ = new Service("default", ServiceArgs.builder()
      *             .template(ServiceTemplateArgs.builder()
      *                 .containers(ServiceTemplateContainerArgs.builder()
-     *                     .image(myImage.applyValue(getDockerImageResult -> getDockerImageResult).applyValue(myImage -> myImage.applyValue(getDockerImageResult -> getDockerImageResult.selfLink())))
+     *                     .image(myImage.applyValue(_myImage -> _myImage.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -207,7 +207,7 @@ public final class ArtifactregistryFunctions {
      *         var default_ = new Service("default", ServiceArgs.builder()
      *             .template(ServiceTemplateArgs.builder()
      *                 .containers(ServiceTemplateContainerArgs.builder()
-     *                     .image(myImage.applyValue(getDockerImageResult -> getDockerImageResult).applyValue(myImage -> myImage.applyValue(getDockerImageResult -> getDockerImageResult.selfLink())))
+     *                     .image(myImage.applyValue(_myImage -> _myImage.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -273,7 +273,7 @@ public final class ArtifactregistryFunctions {
      *         var default_ = new Service("default", ServiceArgs.builder()
      *             .template(ServiceTemplateArgs.builder()
      *                 .containers(ServiceTemplateContainerArgs.builder()
-     *                     .image(myImage.applyValue(getDockerImageResult -> getDockerImageResult).applyValue(myImage -> myImage.applyValue(getDockerImageResult -> getDockerImageResult.selfLink())))
+     *                     .image(myImage.applyValue(_myImage -> _myImage.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -339,7 +339,7 @@ public final class ArtifactregistryFunctions {
      *         var default_ = new Service("default", ServiceArgs.builder()
      *             .template(ServiceTemplateArgs.builder()
      *                 .containers(ServiceTemplateContainerArgs.builder()
-     *                     .image(myImage.applyValue(getDockerImageResult -> getDockerImageResult).applyValue(myImage -> myImage.applyValue(getDockerImageResult -> getDockerImageResult.selfLink())))
+     *                     .image(myImage.applyValue(_myImage -> _myImage.selfLink()))
      *                     .build())
      *                 .build())
      *             .build());
@@ -388,7 +388,8 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -423,16 +424,17 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .location(available.locations()[0])
      *             .repositoryId("repo-one")
      *             .format("apt")
      *             .build());
      * 
      *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .location(available.locations()[1])
      *             .repositoryId("repo-two")
      *             .format("apt")
      *             .build());
@@ -481,7 +483,8 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -516,16 +519,17 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .location(available.locations()[0])
      *             .repositoryId("repo-one")
      *             .format("apt")
      *             .build());
      * 
      *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .location(available.locations()[1])
      *             .repositoryId("repo-two")
      *             .format("apt")
      *             .build());
@@ -574,7 +578,8 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -609,16 +614,17 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .location(available.locations()[0])
      *             .repositoryId("repo-one")
      *             .format("apt")
      *             .build());
      * 
      *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .location(available.locations()[1])
      *             .repositoryId("repo-two")
      *             .format("apt")
      *             .build());
@@ -667,7 +673,8 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -702,16 +709,17 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .location(available.locations()[0])
      *             .repositoryId("repo-one")
      *             .format("apt")
      *             .build());
      * 
      *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .location(available.locations()[1])
      *             .repositoryId("repo-two")
      *             .format("apt")
      *             .build());
@@ -760,7 +768,8 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -795,16 +804,17 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .location(available.locations()[0])
      *             .repositoryId("repo-one")
      *             .format("apt")
      *             .build());
      * 
      *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .location(available.locations()[1])
      *             .repositoryId("repo-two")
      *             .format("apt")
      *             .build());
@@ -853,7 +863,8 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -888,16 +899,17 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .location(available.locations()[0])
      *             .repositoryId("repo-one")
      *             .format("apt")
      *             .build());
      * 
      *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .location(available.locations()[1])
      *             .repositoryId("repo-two")
      *             .format("apt")
      *             .build());
@@ -946,7 +958,8 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -981,16 +994,17 @@ public final class ArtifactregistryFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = ArtifactregistryFunctions.getLocations();
+     *         final var available = ArtifactregistryFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *         var repoOne = new Repository("repoOne", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[0]))
+     *             .location(available.locations()[0])
      *             .repositoryId("repo-one")
      *             .format("apt")
      *             .build());
      * 
      *         var repoTwo = new Repository("repoTwo", RepositoryArgs.builder()
-     *             .location(available.applyValue(getLocationsResult -> getLocationsResult.locations()[1]))
+     *             .location(available.locations()[1])
      *             .repositoryId("repo-two")
      *             .format("apt")
      *             .build());

@@ -297,7 +297,7 @@ public final class OrganizationsFunctions {
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+     *             .billingAccount(acct.id())
      *             .build());
      * 
      *     }
@@ -347,7 +347,7 @@ public final class OrganizationsFunctions {
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+     *             .billingAccount(acct.id())
      *             .build());
      * 
      *     }
@@ -397,7 +397,7 @@ public final class OrganizationsFunctions {
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+     *             .billingAccount(acct.id())
      *             .build());
      * 
      *     }
@@ -447,7 +447,7 @@ public final class OrganizationsFunctions {
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+     *             .billingAccount(acct.id())
      *             .build());
      * 
      *     }
@@ -497,7 +497,7 @@ public final class OrganizationsFunctions {
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+     *             .billingAccount(acct.id())
      *             .build());
      * 
      *     }
@@ -547,7 +547,7 @@ public final class OrganizationsFunctions {
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+     *             .billingAccount(acct.id())
      *             .build());
      * 
      *     }
@@ -597,7 +597,7 @@ public final class OrganizationsFunctions {
      *             .name("My Project")
      *             .projectId("your-project-id")
      *             .orgId("1234567")
-     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+     *             .billingAccount(acct.id())
      *             .build());
      * 
      *     }
@@ -635,9 +635,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
+     *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("project", current.applyValue(getClientConfigResult -> getClientConfigResult.project()));
+     *         ctx.export("project", current.project());
      *     }
      * }
      * }
@@ -647,40 +647,6 @@ public final class OrganizationsFunctions {
      * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -712,9 +678,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
+     *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("project", current.applyValue(getClientConfigResult -> getClientConfigResult.project()));
+     *         ctx.export("project", current.project());
      *     }
      * }
      * }
@@ -724,40 +690,6 @@ public final class OrganizationsFunctions {
      * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -789,9 +721,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
+     *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("project", current.applyValue(getClientConfigResult -> getClientConfigResult.project()));
+     *         ctx.export("project", current.project());
      *     }
      * }
      * }
@@ -801,40 +733,6 @@ public final class OrganizationsFunctions {
      * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -866,9 +764,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
+     *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("project", current.applyValue(getClientConfigResult -> getClientConfigResult.project()));
+     *         ctx.export("project", current.project());
      *     }
      * }
      * }
@@ -878,40 +776,6 @@ public final class OrganizationsFunctions {
      * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -943,9 +807,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
+     *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("project", current.applyValue(getClientConfigResult -> getClientConfigResult.project()));
+     *         ctx.export("project", current.project());
      *     }
      * }
      * }
@@ -955,40 +819,6 @@ public final class OrganizationsFunctions {
      * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1020,9 +850,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
+     *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("project", current.applyValue(getClientConfigResult -> getClientConfigResult.project()));
+     *         ctx.export("project", current.project());
      *     }
      * }
      * }
@@ -1032,40 +862,6 @@ public final class OrganizationsFunctions {
      * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1097,9 +893,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = OrganizationsFunctions.getClientConfig();
+     *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("project", current.applyValue(getClientConfigResult -> getClientConfigResult.project()));
+     *         ctx.export("project", current.project());
      *     }
      * }
      * }
@@ -1109,40 +905,6 @@ public final class OrganizationsFunctions {
      * ### Configure Kubernetes Provider With OAuth2 Access Token
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.container.ContainerFunctions;
-     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = OrganizationsFunctions.getClientConfig();
-     * 
-     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
-     *             .name("my-cluster")
-     *             .zone("us-east1-a")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1188,9 +950,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.email());
      *     }
      * }
      * }
@@ -1245,9 +1007,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.email());
      *     }
      * }
      * }
@@ -1302,9 +1064,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.email());
      *     }
      * }
      * }
@@ -1359,9 +1121,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.email());
      *     }
      * }
      * }
@@ -1416,9 +1178,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.email());
      *     }
      * }
      * }
@@ -1473,9 +1235,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.email());
      *     }
      * }
      * }
@@ -1530,9 +1292,9 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *         ctx.export("my-email", me.email());
      *     }
      * }
      * }
@@ -1583,8 +1345,8 @@ public final class OrganizationsFunctions {
      *             .folder("folders/23456")
      *             .build());
      * 
-     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
-     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
+     *         ctx.export("myFolder1Organization", myFolder1.organization());
+     *         ctx.export("myFolder2Parent", myFolder2.parent());
      *     }
      * }
      * }
@@ -1630,8 +1392,8 @@ public final class OrganizationsFunctions {
      *             .folder("folders/23456")
      *             .build());
      * 
-     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
-     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
+     *         ctx.export("myFolder1Organization", myFolder1.organization());
+     *         ctx.export("myFolder2Parent", myFolder2.parent());
      *     }
      * }
      * }
@@ -1677,8 +1439,8 @@ public final class OrganizationsFunctions {
      *             .folder("folders/23456")
      *             .build());
      * 
-     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
-     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
+     *         ctx.export("myFolder1Organization", myFolder1.organization());
+     *         ctx.export("myFolder2Parent", myFolder2.parent());
      *     }
      * }
      * }
@@ -1724,8 +1486,8 @@ public final class OrganizationsFunctions {
      *             .folder("folders/23456")
      *             .build());
      * 
-     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
-     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
+     *         ctx.export("myFolder1Organization", myFolder1.organization());
+     *         ctx.export("myFolder2Parent", myFolder2.parent());
      *     }
      * }
      * }
@@ -1771,8 +1533,8 @@ public final class OrganizationsFunctions {
      *             .folder("folders/23456")
      *             .build());
      * 
-     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
-     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
+     *         ctx.export("myFolder1Organization", myFolder1.organization());
+     *         ctx.export("myFolder2Parent", myFolder2.parent());
      *     }
      * }
      * }
@@ -2143,7 +1905,7 @@ public final class OrganizationsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -2192,7 +1954,7 @@ public final class OrganizationsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -2241,7 +2003,7 @@ public final class OrganizationsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -2290,7 +2052,7 @@ public final class OrganizationsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -2339,7 +2101,7 @@ public final class OrganizationsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -2702,7 +2464,7 @@ public final class OrganizationsFunctions {
      * 
      *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
-     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
+     *             .parent(org.name())
      *             .build());
      * 
      *     }
@@ -2749,7 +2511,7 @@ public final class OrganizationsFunctions {
      * 
      *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
-     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
+     *             .parent(org.name())
      *             .build());
      * 
      *     }
@@ -2796,7 +2558,7 @@ public final class OrganizationsFunctions {
      * 
      *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
-     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
+     *             .parent(org.name())
      *             .build());
      * 
      *     }
@@ -2843,7 +2605,7 @@ public final class OrganizationsFunctions {
      * 
      *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
-     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
+     *             .parent(org.name())
      *             .build());
      * 
      *     }
@@ -2890,7 +2652,7 @@ public final class OrganizationsFunctions {
      * 
      *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
-     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
+     *             .parent(org.name())
      *             .build());
      * 
      *     }
@@ -2937,7 +2699,7 @@ public final class OrganizationsFunctions {
      * 
      *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
-     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
+     *             .parent(org.name())
      *             .build());
      * 
      *     }
@@ -2984,7 +2746,7 @@ public final class OrganizationsFunctions {
      * 
      *         var sales = new Folder("sales", FolderArgs.builder()
      *             .displayName("Sales")
-     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
+     *             .parent(org.name())
      *             .build());
      * 
      *     }
@@ -3027,9 +2789,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject();
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
+     *         ctx.export("projectNumber", project.number());
      *     }
      * }
      * }
@@ -3070,9 +2833,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject();
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
+     *         ctx.export("projectNumber", project.number());
      *     }
      * }
      * }
@@ -3113,9 +2877,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject();
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
+     *         ctx.export("projectNumber", project.number());
      *     }
      * }
      * }
@@ -3156,9 +2921,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject();
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
+     *         ctx.export("projectNumber", project.number());
      *     }
      * }
      * }
@@ -3199,9 +2965,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject();
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
+     *         ctx.export("projectNumber", project.number());
      *     }
      * }
      * }
@@ -3242,9 +3009,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject();
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
+     *         ctx.export("projectNumber", project.number());
      *     }
      * }
      * }
@@ -3285,9 +3053,10 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject();
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
+     *         ctx.export("projectNumber", project.number());
      *     }
      * }
      * }

@@ -58,7 +58,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var addressGroup1 = new AddressGroup("addressGroup1", AddressGroupArgs.builder()
  *             .name("address-group")
@@ -100,7 +101,7 @@ import javax.annotation.Nullable;
  *                     .enableLogging(true)
  *                     .action("allow")
  *                     .direction("EGRESS")
- *                     .targetResources(String.format("https://www.googleapis.com/compute/beta/projects/%s/global/networks/default", project.applyValue(getProjectResult -> getProjectResult.name())))
+ *                     .targetResources(String.format("https://www.googleapis.com/compute/beta/projects/%s/global/networks/default", project.name()))
  *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
  *                         .destIpRanges("11.100.0.1/32")
  *                         .destFqdns(                        
@@ -116,8 +117,8 @@ import javax.annotation.Nullable;
  *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
  *                             .ports(                            
- *                                 8080,
- *                                 7070)
+ *                                 "8080",
+ *                                 "7070")
  *                             .build())
  *                         .build())
  *                     .build(),
@@ -153,7 +154,7 @@ import javax.annotation.Nullable;
  *                     .action("apply_security_profile_group")
  *                     .direction("INGRESS")
  *                     .targetServiceAccounts("test}{@literal @}{@code google.com")
- *                     .securityProfileGroup(securityProfileGroup1.id().applyValue(id -> String.format("//networksecurity.googleapis.com/%s", id)))
+ *                     .securityProfileGroup(securityProfileGroup1.id().applyValue(_id -> String.format("//networksecurity.googleapis.com/%s", _id)))
  *                     .tlsInspect(true)
  *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
  *                         .srcIpRanges("0.0.0.0/0")
@@ -175,7 +176,7 @@ import javax.annotation.Nullable;
  *                         .srcNetworks(network.id())
  *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
- *                             .ports(8080)
+ *                             .ports("8080")
  *                             .build())
  *                         .build())
  *                     .build(),
@@ -191,7 +192,7 @@ import javax.annotation.Nullable;
  *                         .destNetworkScope("INTERNET")
  *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
- *                             .ports(8080)
+ *                             .ports("8080")
  *                             .build())
  *                         .build())
  *                     .build())

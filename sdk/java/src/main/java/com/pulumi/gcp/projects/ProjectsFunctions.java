@@ -40,36 +40,6 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
-     *             .projectId("example-project")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -83,36 +53,6 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
-     *             .projectId("example-project")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -126,36 +66,6 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
-     *             .projectId("example-project")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -169,36 +79,6 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
-     *             .projectId("example-project")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -212,36 +92,6 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
-     *             .projectId("example-project")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -255,36 +105,6 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
-     *             .projectId("example-project")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -298,36 +118,6 @@ public final class ProjectsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetAncestryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = ProjectsFunctions.getAncestry(GetAncestryArgs.builder()
-     *             .projectId("example-project")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -369,7 +159,7 @@ public final class ProjectsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -418,7 +208,7 @@ public final class ProjectsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -467,7 +257,7 @@ public final class ProjectsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -516,7 +306,7 @@ public final class ProjectsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -565,7 +355,7 @@ public final class ProjectsFunctions {
      * 
      *         var project = new IAMMember("project", IAMMemberArgs.builder()
      *             .project("your-project-id")
-     *             .role(example.applyValue(getIamCustomRoleResult -> getIamCustomRoleResult.name()))
+     *             .role(example.name())
      *             .member("user:jane}{@literal @}{@code example.com")
      *             .build());
      * 
@@ -1139,7 +929,7 @@ public final class ProjectsFunctions {
      *             .constraint("constraints/serviceuser.services")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }
@@ -1185,7 +975,7 @@ public final class ProjectsFunctions {
      *             .constraint("constraints/serviceuser.services")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }
@@ -1231,7 +1021,7 @@ public final class ProjectsFunctions {
      *             .constraint("constraints/serviceuser.services")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }
@@ -1277,7 +1067,7 @@ public final class ProjectsFunctions {
      *             .constraint("constraints/serviceuser.services")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }
@@ -1323,7 +1113,7 @@ public final class ProjectsFunctions {
      *             .constraint("constraints/serviceuser.services")
      *             .build());
      * 
-     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *         ctx.export("version", policy.version());
      *     }
      * }
      * }
@@ -1352,9 +1142,7 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1404,9 +1192,7 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1456,9 +1242,7 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1508,9 +1292,7 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1560,9 +1342,7 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

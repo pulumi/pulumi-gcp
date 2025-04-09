@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1-a")
  *             .description("test lustre instance")
  *             .filesystem("testfs")
- *             .capacityGib(18000)
+ *             .capacityGib("18000")
  *             .network(lustre_network.id())
  *             .labels(Map.of("test", "value"))
  *             .build());

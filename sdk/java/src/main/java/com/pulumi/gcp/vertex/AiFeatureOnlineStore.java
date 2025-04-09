@@ -107,17 +107,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var featureonlinestore = new AiFeatureOnlineStore("featureonlinestore", AiFeatureOnlineStoreArgs.builder()
  *             .name("example_feature_online_store_optimized")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
- *             .optimized()
+ *             .optimized(AiFeatureOnlineStoreOptimizedArgs.builder()
+ *                 .build())
  *             .dedicatedServingEndpoint(AiFeatureOnlineStoreDedicatedServingEndpointArgs.builder()
  *                 .privateServiceConnectConfig(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs.builder()
  *                     .enablePrivateServiceConnect(true)
- *                     .projectAllowlists(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *                     .projectAllowlists(project.number())
  *                     .build())
  *                 .build())
  *             .build());
@@ -174,7 +176,8 @@ import javax.annotation.Nullable;
  *             .forceDestroy(true)
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }

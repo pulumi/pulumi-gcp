@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()
  *             .dataset(my_consent.dataset())
  *             .consentStoreId(my_consent.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

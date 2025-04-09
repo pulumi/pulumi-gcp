@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *         var processorDocumentAiProcessorDefaultVersion = new DocumentAiProcessorDefaultVersion("processorDocumentAiProcessorDefaultVersion", DocumentAiProcessorDefaultVersionArgs.builder()
  *             .processor(processor.id())
- *             .version(processor.id().applyValue(id -> String.format("%s/processorVersions/stable", id)))
+ *             .version(processor.id().applyValue(_id -> String.format("%s/processorVersions/stable", _id)))
  *             .build());
  * 
  *     }

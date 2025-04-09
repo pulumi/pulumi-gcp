@@ -72,7 +72,8 @@ import javax.annotation.Nullable;
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
  *             .description("test cluster")
  *             .onPremVersion("1.13.1-gke.35")
- *             .annotations()
+ *             .annotations(Map.ofEntries(
+ *             ))
  *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
  *                 .serviceAddressCidrBlocks("10.96.0.0/12")
  *                 .podAddressCidrBlocks("192.168.0.0/16")
@@ -94,13 +95,13 @@ import javax.annotation.Nullable;
  *                     .addressPools(                    
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
  *                             .pool("ingress-ip")
- *                             .manualAssign("true")
+ *                             .manualAssign(true)
  *                             .addresses("10.251.135.19")
  *                             .avoidBuggyIps(true)
  *                             .build(),
  *                         VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs.builder()
  *                             .pool("lb-test-ip")
- *                             .manualAssign("true")
+ *                             .manualAssign(true)
  *                             .addresses("10.251.135.19")
  *                             .avoidBuggyIps(true)
  *                             .build())
@@ -158,7 +159,8 @@ import javax.annotation.Nullable;
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
  *             .description("test cluster")
  *             .onPremVersion("1.13.1-gke.35")
- *             .annotations()
+ *             .annotations(Map.ofEntries(
+ *             ))
  *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
  *                 .serviceAddressCidrBlocks("10.96.0.0/12")
  *                 .podAddressCidrBlocks("192.168.0.0/16")
@@ -270,7 +272,8 @@ import javax.annotation.Nullable;
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
  *             .description("test cluster")
  *             .onPremVersion("1.13.1-gke.35")
- *             .annotations()
+ *             .annotations(Map.ofEntries(
+ *             ))
  *             .networkConfig(VMwareClusterNetworkConfigArgs.builder()
  *                 .serviceAddressCidrBlocks("10.96.0.0/12")
  *                 .podAddressCidrBlocks("192.168.0.0/16")

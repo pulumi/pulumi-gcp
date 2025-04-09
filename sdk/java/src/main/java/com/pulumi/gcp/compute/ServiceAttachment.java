@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -317,7 +317,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -442,7 +442,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 

@@ -53,19 +53,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cluster = new Cluster("cluster", ClusterArgs.builder()
  *             .clusterId("my-cluster")
  *             .location("us-central1")
  *             .capacityConfig(ClusterCapacityConfigArgs.builder()
- *                 .vcpuCount(3)
- *                 .memoryBytes(3221225472)
+ *                 .vcpuCount("3")
+ *                 .memoryBytes("3221225472")
  *                 .build())
  *             .gcpConfig(ClusterGcpConfigArgs.builder()
  *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
  *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.number()))
  *                         .build())
  *                     .build())
  *                 .build())

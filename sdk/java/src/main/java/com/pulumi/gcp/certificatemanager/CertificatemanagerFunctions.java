@@ -256,7 +256,8 @@ public final class CertificatemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CertificatemanagerFunctions.getCertificates();
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -331,7 +332,8 @@ public final class CertificatemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CertificatemanagerFunctions.getCertificates();
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -406,7 +408,8 @@ public final class CertificatemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CertificatemanagerFunctions.getCertificates();
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -481,7 +484,8 @@ public final class CertificatemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CertificatemanagerFunctions.getCertificates();
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -556,7 +560,8 @@ public final class CertificatemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CertificatemanagerFunctions.getCertificates();
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -631,7 +636,8 @@ public final class CertificatemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CertificatemanagerFunctions.getCertificates();
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -706,7 +712,8 @@ public final class CertificatemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CertificatemanagerFunctions.getCertificates();
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .build());
      * 
      *     }
      * }

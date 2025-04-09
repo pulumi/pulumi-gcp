@@ -68,7 +68,7 @@ public final class ComposerFunctions {
      *             .name(test.name())
      *             .build());
      * 
-     *         ctx.export("debug", composerEnv.applyValue(getEnvironmentResult -> getEnvironmentResult.configs()));
+     *         ctx.export("debug", composerEnv.configs());
      *     }
      * }
      * }
@@ -123,7 +123,7 @@ public final class ComposerFunctions {
      *             .name(test.name())
      *             .build());
      * 
-     *         ctx.export("debug", composerEnv.applyValue(getEnvironmentResult -> getEnvironmentResult.configs()));
+     *         ctx.export("debug", composerEnv.configs());
      *     }
      * }
      * }
@@ -178,7 +178,7 @@ public final class ComposerFunctions {
      *             .name(test.name())
      *             .build());
      * 
-     *         ctx.export("debug", composerEnv.applyValue(getEnvironmentResult -> getEnvironmentResult.configs()));
+     *         ctx.export("debug", composerEnv.configs());
      *     }
      * }
      * }
@@ -233,7 +233,7 @@ public final class ComposerFunctions {
      *             .name(test.name())
      *             .build());
      * 
-     *         ctx.export("debug", composerEnv.applyValue(getEnvironmentResult -> getEnvironmentResult.configs()));
+     *         ctx.export("debug", composerEnv.configs());
      *     }
      * }
      * }
@@ -288,7 +288,7 @@ public final class ComposerFunctions {
      *             .name(test.name())
      *             .build());
      * 
-     *         ctx.export("debug", composerEnv.applyValue(getEnvironmentResult -> getEnvironmentResult.configs()));
+     *         ctx.export("debug", composerEnv.configs());
      *     }
      * }
      * }
@@ -337,14 +337,15 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = ComposerFunctions.getImageVersions();
+     *         final var all = ComposerFunctions.getImageVersions(GetImageVersionsArgs.builder()
+     *             .build());
      * 
      *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.imageVersions()[0].imageVersionId())
      *                     .build())
      *                 .build())
      *             .build());
@@ -397,14 +398,15 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = ComposerFunctions.getImageVersions();
+     *         final var all = ComposerFunctions.getImageVersions(GetImageVersionsArgs.builder()
+     *             .build());
      * 
      *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.imageVersions()[0].imageVersionId())
      *                     .build())
      *                 .build())
      *             .build());
@@ -457,14 +459,15 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = ComposerFunctions.getImageVersions();
+     *         final var all = ComposerFunctions.getImageVersions(GetImageVersionsArgs.builder()
+     *             .build());
      * 
      *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.imageVersions()[0].imageVersionId())
      *                     .build())
      *                 .build())
      *             .build());
@@ -517,14 +520,15 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = ComposerFunctions.getImageVersions();
+     *         final var all = ComposerFunctions.getImageVersions(GetImageVersionsArgs.builder()
+     *             .build());
      * 
      *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.imageVersions()[0].imageVersionId())
      *                     .build())
      *                 .build())
      *             .build());
@@ -577,14 +581,15 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = ComposerFunctions.getImageVersions();
+     *         final var all = ComposerFunctions.getImageVersions(GetImageVersionsArgs.builder()
+     *             .build());
      * 
      *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.imageVersions()[0].imageVersionId())
      *                     .build())
      *                 .build())
      *             .build());
@@ -637,14 +642,15 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = ComposerFunctions.getImageVersions();
+     *         final var all = ComposerFunctions.getImageVersions(GetImageVersionsArgs.builder()
+     *             .build());
      * 
      *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.imageVersions()[0].imageVersionId())
      *                     .build())
      *                 .build())
      *             .build());
@@ -697,14 +703,15 @@ public final class ComposerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = ComposerFunctions.getImageVersions();
+     *         final var all = ComposerFunctions.getImageVersions(GetImageVersionsArgs.builder()
+     *             .build());
      * 
      *         var test = new Environment("test", EnvironmentArgs.builder()
      *             .name("test-env")
      *             .region("us-central1")
      *             .config(EnvironmentConfigArgs.builder()
      *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
-     *                     .imageVersion(all.applyValue(getImageVersionsResult -> getImageVersionsResult.imageVersions()[0].imageVersionId()))
+     *                     .imageVersion(all.imageVersions()[0].imageVersionId())
      *                     .build())
      *                 .build())
      *             .build());
@@ -777,12 +784,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsConfigMapResult -> getUserWorkloadsConfigMapResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }
@@ -851,12 +858,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsConfigMapResult -> getUserWorkloadsConfigMapResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }
@@ -925,12 +932,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsConfigMapResult -> getUserWorkloadsConfigMapResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }
@@ -999,12 +1006,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsConfigMapResult -> getUserWorkloadsConfigMapResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }
@@ -1073,12 +1080,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsConfigMapResult -> getUserWorkloadsConfigMapResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }
@@ -1114,6 +1121,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
      * import com.pulumi.gcp.composer.UserWorkloadsSecret;
      * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
      * import java.util.List;
@@ -1151,12 +1160,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsSecretResult -> getUserWorkloadsSecretResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }
@@ -1192,6 +1201,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
      * import com.pulumi.gcp.composer.UserWorkloadsSecret;
      * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
      * import java.util.List;
@@ -1229,12 +1240,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsSecretResult -> getUserWorkloadsSecretResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }
@@ -1270,6 +1281,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
      * import com.pulumi.gcp.composer.UserWorkloadsSecret;
      * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
      * import java.util.List;
@@ -1307,12 +1320,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsSecretResult -> getUserWorkloadsSecretResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }
@@ -1348,6 +1361,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
      * import com.pulumi.gcp.composer.UserWorkloadsSecret;
      * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
      * import java.util.List;
@@ -1385,12 +1400,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsSecretResult -> getUserWorkloadsSecretResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }
@@ -1426,6 +1441,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
      * import com.pulumi.gcp.composer.UserWorkloadsSecret;
      * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
      * import java.util.List;
@@ -1463,12 +1480,12 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(exampleEnvironment.name())
+     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(_name)
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("debug", example.applyValue(getUserWorkloadsSecretResult -> getUserWorkloadsSecretResult));
+     *         ctx.export("debug", example);
      *     }
      * }
      * }

@@ -43,7 +43,8 @@ public final class MemorystoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = MemorystoreFunctions.getInstance();
+     *         final var qa = MemorystoreFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -83,7 +84,8 @@ public final class MemorystoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = MemorystoreFunctions.getInstance();
+     *         final var qa = MemorystoreFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -123,7 +125,8 @@ public final class MemorystoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = MemorystoreFunctions.getInstance();
+     *         final var qa = MemorystoreFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -163,7 +166,8 @@ public final class MemorystoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = MemorystoreFunctions.getInstance();
+     *         final var qa = MemorystoreFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -203,7 +207,8 @@ public final class MemorystoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var qa = MemorystoreFunctions.getInstance();
+     *         final var qa = MemorystoreFunctions.getInstance(GetInstanceArgs.builder()
+     *             .build());
      * 
      *     }
      * }

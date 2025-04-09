@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.storage.AnywhereCache;
  * import com.pulumi.gcp.storage.AnywhereCacheArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *         var destroyWait5000Seconds = new Sleep("destroyWait5000Seconds", SleepArgs.builder()
  *             .destroyDuration("5000s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(bucket)
+ *                 .dependsOn(List.of(bucket))
  *                 .build());
  * 
  *         var cache = new AnywhereCache("cache", AnywhereCacheArgs.builder()

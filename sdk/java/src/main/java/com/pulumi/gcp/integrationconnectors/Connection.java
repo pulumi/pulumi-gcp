@@ -67,12 +67,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var testProject = OrganizationsFunctions.getProject();
+ *         final var testProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var pubsubconnection = new Connection("pubsubconnection", ConnectionArgs.builder()
  *             .name("test-pubsub")
  *             .location("us-central1")
- *             .connectorVersion(String.format("projects/%s/locations/global/providers/gcp/connectors/pubsub/versions/1", testProject.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *             .connectorVersion(String.format("projects/%s/locations/global/providers/gcp/connectors/pubsub/versions/1", testProject.projectId()))
  *             .description("tf created description")
  *             .configVariables(            
  *                 ConnectionConfigVariableArgs.builder()
@@ -146,7 +147,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var testProject = OrganizationsFunctions.getProject();
+ *         final var testProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("test-secret")
@@ -167,7 +169,7 @@ import javax.annotation.Nullable;
  *         var secretIam = new SecretIamMember("secretIam", SecretIamMemberArgs.builder()
  *             .secretId(secret_basic.id())
  *             .role("roles/secretmanager.admin")
- *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", testProject.number()))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(secret_version_basic)
  *                 .build());
@@ -176,8 +178,8 @@ import javax.annotation.Nullable;
  *             .name("test-zendesk")
  *             .description("tf updated description")
  *             .location("us-central1")
- *             .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", testProject.applyValue(getProjectResult -> getProjectResult.number())))
- *             .connectorVersion(String.format("projects/%s/locations/global/providers/zendesk/connectors/zendesk/versions/1", testProject.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *             .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", testProject.number()))
+ *             .connectorVersion(String.format("projects/%s/locations/global/providers/zendesk/connectors/zendesk/versions/1", testProject.projectId()))
  *             .configVariables(            
  *                 ConnectionConfigVariableArgs.builder()
  *                     .key("proxy_enabled")

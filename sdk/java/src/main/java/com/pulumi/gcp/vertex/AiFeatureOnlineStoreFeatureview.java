@@ -134,7 +134,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }
@@ -288,7 +289,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.vertex.AiFeatureOnlineStore;
@@ -325,7 +326,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var testProject = OrganizationsFunctions.getProject();
+ *         final var testProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("tf-test_35305")
@@ -338,7 +340,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(project)
+ *                 .dependsOn(List.of(project))
  *                 .build());
  * 
  *         var vertexai = new Service("vertexai", ServiceArgs.builder()
@@ -373,10 +375,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var viewer = new DatasetIamMember("viewer", DatasetIamMemberArgs.builder()
- *             .project(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(testProject.projectId())
  *             .datasetId(sampleDataset.datasetId())
  *             .role("roles/bigquery.dataViewer")
- *             .member(project.number().applyValue(number -> String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", number)))
+ *             .member(project.number().applyValue(_number -> String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", _number)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(featureonlinestore)
  *                 .build());
@@ -384,7 +386,7 @@ import javax.annotation.Nullable;
  *         var wait30Seconds = new Sleep("wait30Seconds", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(viewer)
+ *                 .dependsOn(List.of(viewer))
  *                 .build());
  * 
  *         var sampleTable = new Table("sampleTable", TableArgs.builder()
@@ -451,7 +453,7 @@ import javax.annotation.Nullable;
  *                     .featureGroupId(sampleFeatureGroup.name())
  *                     .featureIds(sampleFeature.name())
  *                     .build())
- *                 .projectNumber(testProject.applyValue(getProjectResult -> getProjectResult.number()))
+ *                 .projectNumber(testProject.number())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
@@ -603,11 +605,12 @@ import javax.annotation.Nullable;
  *                 .treeAhConfig(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs.builder()
  *                     .leafNodeEmbeddingCount("1000")
  *                     .build())
- *                 .embeddingDimension("2")
+ *                 .embeddingDimension(2)
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }

@@ -100,11 +100,11 @@ import javax.annotation.Nullable;
  *                 .layer4Configs(                
  *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                         .ipProtocol("tcp")
- *                         .ports(8080)
+ *                         .ports("8080")
  *                         .build(),
  *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                         .ipProtocol("udp")
- *                         .ports(22)
+ *                         .ports("22")
  *                         .build())
  *                 .build())
  *             .build());
@@ -177,11 +177,11 @@ import javax.annotation.Nullable;
  *                 .layer4Configs(                
  *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                         .ipProtocol("tcp")
- *                         .ports(8080)
+ *                         .ports("8080")
  *                         .build(),
  *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                         .ipProtocol("udp")
- *                         .ports(22)
+ *                         .ports("22")
  *                         .build())
  *                 .build())
  *             .build());

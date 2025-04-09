@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
  *             .datasetId(datasetDataset.datasetId())
- *             .policyData(owner.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(owner.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  * 
  *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
  *             .datasetId(datasetDataset.datasetId())
- *             .policyData(owner.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(owner.policyData())
  *             .build());
  * 
  *     }}{@code

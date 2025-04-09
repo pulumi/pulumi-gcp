@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  *             .orgId(apigeeOrg.name())
  *             .keystore(apigeeEnvironmentKeystoreAlias.name())
  *             .alias("alias")
- *             .keySize(1024)
+ *             .keySize("1024")
  *             .sigAlg("SHA512withRSA")
  *             .certValidityInDays(4)
  *             .subject(KeystoresAliasesSelfSignedCertSubjectArgs.builder()

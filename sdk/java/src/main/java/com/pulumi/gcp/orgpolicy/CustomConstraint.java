@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bool = new Policy("bool", PolicyArgs.builder()
- *             .name(constraint.name().applyValue(name -> String.format("organizations/123456789/policies/%s", name)))
+ *             .name(constraint.name().applyValue(_name -> String.format("organizations/123456789/policies/%s", _name)))
  *             .parent("organizations/123456789")
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()

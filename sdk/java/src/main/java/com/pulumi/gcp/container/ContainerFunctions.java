@@ -71,7 +71,7 @@ public final class ContainerFunctions {
      *             .platformVersion("1.25.0-gke.1")
      *             .build());
      * 
-     *         ctx.export("installManifest", manifest.applyValue(getAttachedInstallManifestResult -> getAttachedInstallManifestResult));
+     *         ctx.export("installManifest", manifest);
      *     }
      * }
      * }
@@ -117,7 +117,7 @@ public final class ContainerFunctions {
      *             .platformVersion("1.25.0-gke.1")
      *             .build());
      * 
-     *         ctx.export("installManifest", manifest.applyValue(getAttachedInstallManifestResult -> getAttachedInstallManifestResult));
+     *         ctx.export("installManifest", manifest);
      *     }
      * }
      * }
@@ -163,7 +163,7 @@ public final class ContainerFunctions {
      *             .platformVersion("1.25.0-gke.1")
      *             .build());
      * 
-     *         ctx.export("installManifest", manifest.applyValue(getAttachedInstallManifestResult -> getAttachedInstallManifestResult));
+     *         ctx.export("installManifest", manifest);
      *     }
      * }
      * }
@@ -209,7 +209,7 @@ public final class ContainerFunctions {
      *             .platformVersion("1.25.0-gke.1")
      *             .build());
      * 
-     *         ctx.export("installManifest", manifest.applyValue(getAttachedInstallManifestResult -> getAttachedInstallManifestResult));
+     *         ctx.export("installManifest", manifest);
      *     }
      * }
      * }
@@ -255,7 +255,7 @@ public final class ContainerFunctions {
      *             .platformVersion("1.25.0-gke.1")
      *             .build());
      * 
-     *         ctx.export("installManifest", manifest.applyValue(getAttachedInstallManifestResult -> getAttachedInstallManifestResult));
+     *         ctx.export("installManifest", manifest);
      *     }
      * }
      * }
@@ -299,7 +299,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", uswest.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]));
+     *         ctx.export("firstAvailableVersion", uswest.validVersions()[0]);
      *     }
      * }
      * }
@@ -343,7 +343,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", uswest.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]));
+     *         ctx.export("firstAvailableVersion", uswest.validVersions()[0]);
      *     }
      * }
      * }
@@ -387,7 +387,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", uswest.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]));
+     *         ctx.export("firstAvailableVersion", uswest.validVersions()[0]);
      *     }
      * }
      * }
@@ -431,7 +431,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", uswest.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]));
+     *         ctx.export("firstAvailableVersion", uswest.validVersions()[0]);
      *     }
      * }
      * }
@@ -475,7 +475,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", uswest.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]));
+     *         ctx.export("firstAvailableVersion", uswest.validVersions()[0]);
      *     }
      * }
      * }
@@ -1135,10 +1135,10 @@ public final class ContainerFunctions {
      *             .location("us-east1-a")
      *             .build());
      * 
-     *         ctx.export("endpoint", myCluster.applyValue(getClusterResult -> getClusterResult.endpoint()));
-     *         ctx.export("instanceGroupUrls", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export("nodeConfig", myCluster.applyValue(getClusterResult -> getClusterResult.nodeConfigs()));
-     *         ctx.export("nodePools", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()));
+     *         ctx.export("endpoint", myCluster.endpoint());
+     *         ctx.export("instanceGroupUrls", myCluster.nodePools()[0].instanceGroupUrls());
+     *         ctx.export("nodeConfig", myCluster.nodeConfigs());
+     *         ctx.export("nodePools", myCluster.nodePools());
      *     }
      * }
      * }
@@ -1182,10 +1182,10 @@ public final class ContainerFunctions {
      *             .location("us-east1-a")
      *             .build());
      * 
-     *         ctx.export("endpoint", myCluster.applyValue(getClusterResult -> getClusterResult.endpoint()));
-     *         ctx.export("instanceGroupUrls", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export("nodeConfig", myCluster.applyValue(getClusterResult -> getClusterResult.nodeConfigs()));
-     *         ctx.export("nodePools", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()));
+     *         ctx.export("endpoint", myCluster.endpoint());
+     *         ctx.export("instanceGroupUrls", myCluster.nodePools()[0].instanceGroupUrls());
+     *         ctx.export("nodeConfig", myCluster.nodeConfigs());
+     *         ctx.export("nodePools", myCluster.nodePools());
      *     }
      * }
      * }
@@ -1229,10 +1229,10 @@ public final class ContainerFunctions {
      *             .location("us-east1-a")
      *             .build());
      * 
-     *         ctx.export("endpoint", myCluster.applyValue(getClusterResult -> getClusterResult.endpoint()));
-     *         ctx.export("instanceGroupUrls", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export("nodeConfig", myCluster.applyValue(getClusterResult -> getClusterResult.nodeConfigs()));
-     *         ctx.export("nodePools", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()));
+     *         ctx.export("endpoint", myCluster.endpoint());
+     *         ctx.export("instanceGroupUrls", myCluster.nodePools()[0].instanceGroupUrls());
+     *         ctx.export("nodeConfig", myCluster.nodeConfigs());
+     *         ctx.export("nodePools", myCluster.nodePools());
      *     }
      * }
      * }
@@ -1276,10 +1276,10 @@ public final class ContainerFunctions {
      *             .location("us-east1-a")
      *             .build());
      * 
-     *         ctx.export("endpoint", myCluster.applyValue(getClusterResult -> getClusterResult.endpoint()));
-     *         ctx.export("instanceGroupUrls", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export("nodeConfig", myCluster.applyValue(getClusterResult -> getClusterResult.nodeConfigs()));
-     *         ctx.export("nodePools", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()));
+     *         ctx.export("endpoint", myCluster.endpoint());
+     *         ctx.export("instanceGroupUrls", myCluster.nodePools()[0].instanceGroupUrls());
+     *         ctx.export("nodeConfig", myCluster.nodeConfigs());
+     *         ctx.export("nodePools", myCluster.nodePools());
      *     }
      * }
      * }
@@ -1323,10 +1323,10 @@ public final class ContainerFunctions {
      *             .location("us-east1-a")
      *             .build());
      * 
-     *         ctx.export("endpoint", myCluster.applyValue(getClusterResult -> getClusterResult.endpoint()));
-     *         ctx.export("instanceGroupUrls", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()[0].instanceGroupUrls()));
-     *         ctx.export("nodeConfig", myCluster.applyValue(getClusterResult -> getClusterResult.nodeConfigs()));
-     *         ctx.export("nodePools", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()));
+     *         ctx.export("endpoint", myCluster.endpoint());
+     *         ctx.export("instanceGroupUrls", myCluster.nodePools()[0].instanceGroupUrls());
+     *         ctx.export("nodeConfig", myCluster.nodeConfigs());
+     *         ctx.export("nodePools", myCluster.nodePools());
      *     }
      * }
      * }
@@ -1384,12 +1384,12 @@ public final class ContainerFunctions {
      *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.releaseChannelDefaultVersion().STABLE());
+     *         ctx.export("stableChannelLatestVersion", central1b.releaseChannelLatestVersion().STABLE());
      *     }
      * }
      * }
@@ -1447,12 +1447,12 @@ public final class ContainerFunctions {
      *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.releaseChannelDefaultVersion().STABLE());
+     *         ctx.export("stableChannelLatestVersion", central1b.releaseChannelLatestVersion().STABLE());
      *     }
      * }
      * }
@@ -1510,12 +1510,12 @@ public final class ContainerFunctions {
      *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.releaseChannelDefaultVersion().STABLE());
+     *         ctx.export("stableChannelLatestVersion", central1b.releaseChannelLatestVersion().STABLE());
      *     }
      * }
      * }
@@ -1573,12 +1573,12 @@ public final class ContainerFunctions {
      *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.releaseChannelDefaultVersion().STABLE());
+     *         ctx.export("stableChannelLatestVersion", central1b.releaseChannelLatestVersion().STABLE());
      *     }
      * }
      * }
@@ -1636,12 +1636,12 @@ public final class ContainerFunctions {
      *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.releaseChannelDefaultVersion().STABLE());
+     *         ctx.export("stableChannelLatestVersion", central1b.releaseChannelLatestVersion().STABLE());
      *     }
      * }
      * }
@@ -1699,12 +1699,12 @@ public final class ContainerFunctions {
      *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.releaseChannelDefaultVersion().STABLE());
+     *         ctx.export("stableChannelLatestVersion", central1b.releaseChannelLatestVersion().STABLE());
      *     }
      * }
      * }
@@ -1762,12 +1762,12 @@ public final class ContainerFunctions {
      *         var foo = new Cluster("foo", ClusterArgs.builder()
      *             .name("test-cluster")
      *             .location("us-central1-b")
-     *             .nodeVersion(central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.latestNodeVersion()))
+     *             .nodeVersion(central1b.latestNodeVersion())
      *             .initialNodeCount(1)
      *             .build());
      * 
-     *         ctx.export("stableChannelDefaultVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelDefaultVersion().STABLE()));
-     *         ctx.export("stableChannelLatestVersion", central1b.applyValue(getEngineVersionsResult -> getEngineVersionsResult.releaseChannelLatestVersion().STABLE()));
+     *         ctx.export("stableChannelDefaultVersion", central1b.releaseChannelDefaultVersion().STABLE());
+     *         ctx.export("stableChannelLatestVersion", central1b.releaseChannelLatestVersion().STABLE());
      *     }
      * }
      * }
@@ -1814,7 +1814,7 @@ public final class ContainerFunctions {
      *             .name("debian")
      *             .build());
      * 
-     *         ctx.export("gcrLocation", debian.applyValue(getRegistryImageResult -> getRegistryImageResult.imageUrl()));
+     *         ctx.export("gcrLocation", debian.imageUrl());
      *     }
      * }
      * }
@@ -1861,7 +1861,7 @@ public final class ContainerFunctions {
      *             .name("debian")
      *             .build());
      * 
-     *         ctx.export("gcrLocation", debian.applyValue(getRegistryImageResult -> getRegistryImageResult.imageUrl()));
+     *         ctx.export("gcrLocation", debian.imageUrl());
      *     }
      * }
      * }
@@ -1908,7 +1908,7 @@ public final class ContainerFunctions {
      *             .name("debian")
      *             .build());
      * 
-     *         ctx.export("gcrLocation", debian.applyValue(getRegistryImageResult -> getRegistryImageResult.imageUrl()));
+     *         ctx.export("gcrLocation", debian.imageUrl());
      *     }
      * }
      * }
@@ -1955,7 +1955,7 @@ public final class ContainerFunctions {
      *             .name("debian")
      *             .build());
      * 
-     *         ctx.export("gcrLocation", debian.applyValue(getRegistryImageResult -> getRegistryImageResult.imageUrl()));
+     *         ctx.export("gcrLocation", debian.imageUrl());
      *     }
      * }
      * }
@@ -2002,7 +2002,7 @@ public final class ContainerFunctions {
      *             .name("debian")
      *             .build());
      * 
-     *         ctx.export("gcrLocation", debian.applyValue(getRegistryImageResult -> getRegistryImageResult.imageUrl()));
+     *         ctx.export("gcrLocation", debian.imageUrl());
      *     }
      * }
      * }
@@ -2045,9 +2045,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = ContainerFunctions.getRegistryRepository();
+     *         final var foo = ContainerFunctions.getRegistryRepository(GetRegistryRepositoryArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.repositoryUrl());
      *     }
      * }
      * }
@@ -2090,9 +2091,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = ContainerFunctions.getRegistryRepository();
+     *         final var foo = ContainerFunctions.getRegistryRepository(GetRegistryRepositoryArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.repositoryUrl());
      *     }
      * }
      * }
@@ -2135,9 +2137,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = ContainerFunctions.getRegistryRepository();
+     *         final var foo = ContainerFunctions.getRegistryRepository(GetRegistryRepositoryArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.repositoryUrl());
      *     }
      * }
      * }
@@ -2180,9 +2183,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = ContainerFunctions.getRegistryRepository();
+     *         final var foo = ContainerFunctions.getRegistryRepository(GetRegistryRepositoryArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.repositoryUrl());
      *     }
      * }
      * }
@@ -2225,9 +2229,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = ContainerFunctions.getRegistryRepository();
+     *         final var foo = ContainerFunctions.getRegistryRepository(GetRegistryRepositoryArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.repositoryUrl());
      *     }
      * }
      * }
@@ -2270,9 +2275,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = ContainerFunctions.getRegistryRepository();
+     *         final var foo = ContainerFunctions.getRegistryRepository(GetRegistryRepositoryArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.repositoryUrl());
      *     }
      * }
      * }
@@ -2315,9 +2321,10 @@ public final class ContainerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = ContainerFunctions.getRegistryRepository();
+     *         final var foo = ContainerFunctions.getRegistryRepository(GetRegistryRepositoryArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gcrLocation", foo.applyValue(getRegistryRepositoryResult -> getRegistryRepositoryResult.repositoryUrl()));
+     *         ctx.export("gcrLocation", foo.repositoryUrl());
      *     }
      * }
      * }

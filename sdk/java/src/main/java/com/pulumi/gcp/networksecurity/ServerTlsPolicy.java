@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .name("my-server-tls-policy")
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
- *             .allowOpen("false")
+ *             .allowOpen(false)
  *             .serverCertificate(ServerTlsPolicyServerCertificateArgs.builder()
  *                 .certificateProviderInstance(ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs.builder()
  *                     .pluginInstance("google_cloud_private_spiffe")
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
  *             .location("global")
- *             .allowOpen("false")
+ *             .allowOpen(false)
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
  *                 .clientValidationMode("ALLOW_INVALID_OR_MISSING_CLIENT_CERT")
  *                 .build())
@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .description("my description")
  *             .location("global")
- *             .allowOpen("false")
+ *             .allowOpen(false)
  *             .serverCertificate(ServerTlsPolicyServerCertificateArgs.builder()
  *                 .grpcEndpoint(ServerTlsPolicyServerCertificateGrpcEndpointArgs.builder()
  *                     .targetUri("unix:mypath")
@@ -182,6 +182,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificatemanager.TrustConfig;
  * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
  * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
  * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
@@ -198,7 +200,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var defaultTrustConfig = new TrustConfig("defaultTrustConfig", TrustConfigArgs.builder()
  *             .name("my-trust-config")
@@ -223,10 +226,10 @@ import javax.annotation.Nullable;
  *             .name("my-server-tls-policy")
  *             .description("my description")
  *             .location("global")
- *             .allowOpen("false")
+ *             .allowOpen(false)
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
  *                 .clientValidationMode("REJECT_INVALID")
- *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -> String.format("projects/%s/locations/global/trustConfigs/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(_name -> String.format("projects/%s/locations/global/trustConfigs/%s", project.number(),_name)))
  *                 .build())
  *             .labels(Map.of("foo", "bar"))
  *             .build());

@@ -42,6 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
  * import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBinding;
  * import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBindingArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TrimprefixArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -70,8 +72,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var accessLevelIdForUserAccessBinding = new AccessLevel("accessLevelIdForUserAccessBinding", AccessLevelArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
- *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
+ *             .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", _name)))
  *             .title("chromeos_no_lock")
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
@@ -88,7 +90,10 @@ import javax.annotation.Nullable;
  * 
  *         var gcpUserAccessBinding = new GcpUserAccessBinding("gcpUserAccessBinding", GcpUserAccessBindingArgs.builder()
  *             .organizationId("123456789")
- *             .groupKey(StdFunctions.trimprefix().applyValue(invoke -> invoke.result()))
+ *             .groupKey(StdFunctions.trimprefix(TrimprefixArgs.builder()
+ *                 .input(group.id())
+ *                 .prefix("groups/")
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .accessLevels(accessLevelIdForUserAccessBinding.name())
  *             .build());
  * 

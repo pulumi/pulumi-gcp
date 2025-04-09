@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         var policy = new AttestorIamPolicy("policy", AttestorIamPolicyArgs.builder()
  *             .project(attestor.project())
  *             .attestor(attestor.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *         var policy = new AttestorIamPolicy("policy", AttestorIamPolicyArgs.builder()
  *             .project(attestor.project())
  *             .attestor(attestor.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

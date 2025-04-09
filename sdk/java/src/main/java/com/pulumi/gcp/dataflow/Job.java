@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .tempGcsLocation("gs://my-bucket/tmp_dir")
  *             .enableStreamingEngine(true)
  *             .parameters(Map.ofEntries(
- *                 Map.entry("inputFilePattern", bucket1.url().applyValue(url -> String.format("%s/*.json", url))),
+ *                 Map.entry("inputFilePattern", bucket1.url().applyValue(_url -> String.format("%s/*.json", _url))),
  *                 Map.entry("outputTopic", topic.id())
  *             ))
  *             .transformNameMapping(Map.ofEntries(
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()
- *             .name(bigDataJobNameSuffix.dec().applyValue(dec -> String.format("dataflow-flextemplates-job-%s", dec)))
+ *             .name(bigDataJobNameSuffix.dec().applyValue(_dec -> String.format("dataflow-flextemplates-job-%s", _dec)))
  *             .region(region)
  *             .containerSpecGcsPath("gs://my-bucket/templates/template.json")
  *             .skipWaitOnJobTermination(true)

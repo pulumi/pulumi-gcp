@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *             .project(basicProfile.project())
  *             .location(basicProfile.location())
  *             .dataScanId(basicProfile.dataScanId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

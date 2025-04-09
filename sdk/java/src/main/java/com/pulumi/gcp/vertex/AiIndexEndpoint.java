@@ -79,14 +79,15 @@ import javax.annotation.Nullable;
  *             .reservedPeeringRanges(vertexRange.name())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .region("us-central1")
  *             .labels(Map.of("label-one", "value-one"))
- *             .network(vertexNetwork.name().applyValue(name -> String.format("projects/%s/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .network(vertexNetwork.name().applyValue(_name -> String.format("projects/%s/global/networks/%s", project.number(),_name)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(vertexVpcConnection)
  *                 .build());
@@ -124,7 +125,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var indexEndpoint = new AiIndexEndpoint("indexEndpoint", AiIndexEndpointArgs.builder()
  *             .displayName("sample-endpoint")
@@ -133,7 +135,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("label-one", "value-one"))
  *             .privateServiceConnectConfig(AiIndexEndpointPrivateServiceConnectConfigArgs.builder()
  *                 .enablePrivateServiceConnect(true)
- *                 .projectAllowlists(project.applyValue(getProjectResult -> getProjectResult.name()))
+ *                 .projectAllowlists(project.name())
  *                 .build())
  *             .build());
  * 

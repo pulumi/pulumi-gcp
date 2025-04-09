@@ -115,7 +115,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example = new Network("example", NetworkArgs.builder()
  *             .name("example-network")
@@ -138,7 +139,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("stage", "prod"),
  *                 Map.entry("region", "us-central1")
  *             ))
- *             .network(example.name().applyValue(name -> String.format("projects/%s/locations/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .network(example.name().applyValue(_name -> String.format("projects/%s/locations/global/networks/%s", project.number(),_name)))
  *             .address("1.2.3.4")
  *             .port(5353)
  *             .build());

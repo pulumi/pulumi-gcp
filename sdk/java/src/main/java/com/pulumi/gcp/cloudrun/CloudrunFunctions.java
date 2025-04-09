@@ -55,7 +55,8 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = CloudrunFunctions.getLocations();
+     *         final var available = CloudrunFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -101,7 +102,8 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = CloudrunFunctions.getLocations();
+     *         final var available = CloudrunFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -147,7 +149,8 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = CloudrunFunctions.getLocations();
+     *         final var available = CloudrunFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -193,7 +196,8 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = CloudrunFunctions.getLocations();
+     *         final var available = CloudrunFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -239,7 +243,8 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = CloudrunFunctions.getLocations();
+     *         final var available = CloudrunFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -285,7 +290,8 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = CloudrunFunctions.getLocations();
+     *         final var available = CloudrunFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -331,7 +337,8 @@ public final class CloudrunFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var available = CloudrunFunctions.getLocations();
+     *         final var available = CloudrunFunctions.getLocations(GetLocationsArgs.builder()
+     *             .build());
      * 
      *     }
      * }

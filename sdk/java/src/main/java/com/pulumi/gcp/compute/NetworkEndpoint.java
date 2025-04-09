@@ -91,14 +91,15 @@ import javax.annotation.Nullable;
  * 
  *         var endpoint_instance = new Instance("endpoint-instance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
  *             .name("endpoint-instance")
  *             .machineType("e2-medium")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                     .image(myImage.selfLink())
  *                     .build())
  *                 .build())
  *             .build());
@@ -107,14 +108,14 @@ import javax.annotation.Nullable;
  *             .networkEndpointGroup(neg.name())
  *             .instance(endpoint_instance.name())
  *             .port(neg.defaultPort())
- *             .ipAddress(endpoint_instance.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].networkIp()))
+ *             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
  *             .build());
  * 
  *         var group = new NetworkEndpointGroup("group", NetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .defaultPort("90")
+ *             .defaultPort(90)
  *             .zone("us-central1-a")
  *             .build());
  * 

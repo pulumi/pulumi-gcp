@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()
  *             .parent("organizations/123456789")
  *             .title("Scoped Access Policy")
- *             .scopes(project.number().applyValue(number -> String.format("projects/%s", number)))
+ *             .scopes(project.number().applyValue(_number -> String.format("projects/%s", _number)))
  *             .build());
  * 
  *     }

@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .project(regional_secret_basic.project())
  *             .location(regional_secret_basic.location())
  *             .secretId(regional_secret_basic.secretId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *             .project(regional_secret_basic.project())
  *             .location(regional_secret_basic.location())
  *             .secretId(regional_secret_basic.secretId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -357,7 +357,7 @@ import javax.annotation.Nullable;
  *             .project(regional_secret_basic.project())
  *             .location(regional_secret_basic.location())
  *             .secretId(regional_secret_basic.secretId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -409,7 +409,7 @@ import javax.annotation.Nullable;
  *             .project(regional_secret_basic.project())
  *             .location(regional_secret_basic.location())
  *             .secretId(regional_secret_basic.secretId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

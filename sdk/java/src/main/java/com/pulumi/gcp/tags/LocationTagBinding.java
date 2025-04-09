@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
- *             .parent(project.number().applyValue(number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", number,instance.instanceId())))
+ *             .parent(project.number().applyValue(_number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", _number,instance.instanceId())))
  *             .tagValue(value.id())
  *             .location("us-central1-a")
  *             .build());

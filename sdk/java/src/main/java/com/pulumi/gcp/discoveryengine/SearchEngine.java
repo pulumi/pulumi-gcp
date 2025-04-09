@@ -72,7 +72,8 @@ import javax.annotation.Nullable;
  *             .location(basic.location())
  *             .displayName("Example Display Name")
  *             .dataStoreIds(basic.dataStoreId())
- *             .searchEngineConfig()
+ *             .searchEngineConfig(SearchEngineSearchEngineConfigArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *     }

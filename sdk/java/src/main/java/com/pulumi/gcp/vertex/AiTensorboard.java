@@ -99,12 +99,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-name")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var tensorboard = new AiTensorboard("tensorboard", AiTensorboardArgs.builder()

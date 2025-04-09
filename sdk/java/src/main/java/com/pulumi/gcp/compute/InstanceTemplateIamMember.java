@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *         var policy = new InstanceTemplateIamPolicy("policy", InstanceTemplateIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .name(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *         var policy = new InstanceTemplateIamPolicy("policy", InstanceTemplateIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .name(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -349,7 +349,7 @@ import javax.annotation.Nullable;
  *         var policy = new InstanceTemplateIamPolicy("policy", InstanceTemplateIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .name(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -400,7 +400,7 @@ import javax.annotation.Nullable;
  *         var policy = new InstanceTemplateIamPolicy("policy", InstanceTemplateIamPolicyArgs.builder()
  *             .project(default_.project())
  *             .name(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

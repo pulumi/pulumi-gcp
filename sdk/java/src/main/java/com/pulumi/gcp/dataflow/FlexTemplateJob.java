@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()
- *             .name(bigDataJobNameSuffix.dec().applyValue(dec -> String.format("dataflow-flextemplates-job-%s", dec)))
+ *             .name(bigDataJobNameSuffix.dec().applyValue(_dec -> String.format("dataflow-flextemplates-job-%s", _dec)))
  *             .region(region)
  *             .containerSpecGcsPath("gs://my-bucket/templates/template.json")
  *             .skipWaitOnJobTermination(true)

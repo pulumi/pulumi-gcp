@@ -297,7 +297,7 @@ import javax.annotation.Nullable;
  *             .location(function.location())
  *             .cloudFunction(function.name())
  *             .role("roles/cloudfunctions.invoker")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var cloudRunInvoker = new IamMember("cloudRunInvoker", IamMemberArgs.builder()
@@ -305,7 +305,7 @@ import javax.annotation.Nullable;
  *             .location(function.location())
  *             .service(function.name())
  *             .role("roles/run.invoker")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var invokeCloudFunction = new Job("invokeCloudFunction", JobArgs.builder()
@@ -315,10 +315,10 @@ import javax.annotation.Nullable;
  *             .project(function.project())
  *             .region(function.location())
  *             .httpTarget(JobHttpTargetArgs.builder()
- *                 .uri(function.serviceConfig().applyValue(serviceConfig -> serviceConfig.uri()))
+ *                 .uri(function.serviceConfig().applyValue(_serviceConfig -> _serviceConfig.uri()))
  *                 .httpMethod("POST")
  *                 .oidcToken(JobHttpTargetOidcTokenArgs.builder()
- *                     .audience(function.serviceConfig().applyValue(serviceConfig -> String.format("%s/", serviceConfig.uri())))
+ *                     .audience(function.serviceConfig().applyValue(_serviceConfig -> String.format("%s/", _serviceConfig.uri())))
  *                     .serviceAccountEmail(account.email())
  *                     .build())
  *                 .build())
@@ -356,8 +356,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -389,14 +389,15 @@ import javax.annotation.Nullable;
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+ *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+ *             .build());
  * 
  *         // To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
  *         // (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
  *         var gcs_pubsub_publishing = new IAMMember("gcs-pubsub-publishing", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/pubsub.publisher")
- *             .member(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+ *             .member(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
  *             .build());
  * 
  *         var account = new Account("account", AccountArgs.builder()
@@ -408,7 +409,7 @@ import javax.annotation.Nullable;
  *         var invoking = new IAMMember("invoking", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/run.invoker")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(gcs_pubsub_publishing)
  *                 .build());
@@ -416,7 +417,7 @@ import javax.annotation.Nullable;
  *         var event_receiving = new IAMMember("event-receiving", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/eventarc.eventReceiver")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(invoking)
  *                 .build());
@@ -424,7 +425,7 @@ import javax.annotation.Nullable;
  *         var artifactregistry_reader = new IAMMember("artifactregistry-reader", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/artifactregistry.reader")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(event_receiving)
  *                 .build());
@@ -499,8 +500,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -548,13 +549,13 @@ import javax.annotation.Nullable;
  *         var invoking = new IAMMember("invoking", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/run.invoker")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var event_receiving = new IAMMember("event-receiving", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/eventarc.eventReceiver")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(invoking)
  *                 .build());
@@ -562,7 +563,7 @@ import javax.annotation.Nullable;
  *         var artifactregistry_reader = new IAMMember("artifactregistry-reader", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/artifactregistry.reader")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(event_receiving)
  *                 .build());
@@ -608,7 +609,7 @@ import javax.annotation.Nullable;
  *                         .build(),
  *                     FunctionEventTriggerEventFilterArgs.builder()
  *                         .attribute("resourceName")
- *                         .value(audit_log_bucket.name().applyValue(name -> String.format("/projects/_/buckets/%s/objects/*.txt", name)))
+ *                         .value(audit_log_bucket.name().applyValue(_name -> String.format("/projects/_/buckets/%s/objects/*.txt", _name)))
  *                         .operator("match-path-pattern")
  *                         .build())
  *                 .build())
@@ -642,15 +643,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
  * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -674,19 +675,19 @@ import javax.annotation.Nullable;
  *         var logWriter = new IAMMember("logWriter", IAMMemberArgs.builder()
  *             .project(account.project())
  *             .role("roles/logging.logWriter")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var artifactRegistryWriter = new IAMMember("artifactRegistryWriter", IAMMemberArgs.builder()
  *             .project(account.project())
  *             .role("roles/artifactregistry.writer")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var storageObjectAdmin = new IAMMember("storageObjectAdmin", IAMMemberArgs.builder()
  *             .project(account.project())
  *             .role("roles/storage.objectAdmin")
- *             .member(account.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(account.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -705,10 +706,10 @@ import javax.annotation.Nullable;
  *         var wait60s = new Sleep("wait60s", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
+ *                 .dependsOn(List.of(                
  *                     logWriter,
  *                     artifactRegistryWriter,
- *                     storageObjectAdmin)
+ *                     storageObjectAdmin))
  *                 .build());
  * 
  *         var function = new Function("function", FunctionArgs.builder()
@@ -766,8 +767,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -872,8 +873,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -1069,8 +1070,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -1086,7 +1087,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         final var project = "my-project-name";
  * 
- *         final var projectGetProject = OrganizationsFunctions.getProject();
+ *         final var projectGetProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .name(String.format("%s-gcf-source", project))
@@ -1101,7 +1103,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var eaSa = new ServiceIdentity("eaSa", ServiceIdentityArgs.builder()
- *             .project(projectGetProject.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(projectGetProject.projectId())
  *             .service("eventarc.googleapis.com")
  *             .build());
  * 
@@ -1115,10 +1117,10 @@ import javax.annotation.Nullable;
  *             .cryptoKeyId("cmek-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .members(            
- *                 String.format("serviceAccount:service-%s}{@literal @}{@code gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())),
- *                 String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())),
- *                 String.format("serviceAccount:service-%s}{@literal @}{@code gs-project-accounts.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())),
- *                 String.format("serviceAccount:service-%s}{@literal @}{@code serverless-robot-prod.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())),
+ *                 String.format("serviceAccount:service-%s}{@literal @}{@code gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.number()),
+ *                 String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", projectGetProject.number()),
+ *                 String.format("serviceAccount:service-%s}{@literal @}{@code gs-project-accounts.iam.gserviceaccount.com", projectGetProject.number()),
+ *                 String.format("serviceAccount:service-%s}{@literal @}{@code serverless-robot-prod.iam.gserviceaccount.com", projectGetProject.number()),
  *                 eaSa.member())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(eaSa)
@@ -1137,7 +1139,7 @@ import javax.annotation.Nullable;
  *             .location(encoded_ar_repo.location())
  *             .repository(encoded_ar_repo.name())
  *             .role("roles/artifactregistry.admin")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcf-admin-robot.iam.gserviceaccount.com", projectGetProject.number()))
  *             .build());
  * 
  *         var function = new Function("function", FunctionArgs.builder()
@@ -1247,7 +1249,8 @@ import javax.annotation.Nullable;
  *                         .object(object.name())
  *                         .build())
  *                     .build())
- *                 .automaticUpdatePolicy()
+ *                 .automaticUpdatePolicy(FunctionBuildConfigAutomaticUpdatePolicyArgs.builder()
+ *                     .build())
  *                 .build())
  *             .serviceConfig(FunctionServiceConfigArgs.builder()
  *                 .maxInstanceCount(3)
@@ -1351,7 +1354,8 @@ import javax.annotation.Nullable;
  *                         .object(object.name())
  *                         .build())
  *                     .build())
- *                 .onDeployUpdatePolicy()
+ *                 .onDeployUpdatePolicy(FunctionBuildConfigOnDeployUpdatePolicyArgs.builder()
+ *                     .build())
  *                 .build())
  *             .serviceConfig(FunctionServiceConfigArgs.builder()
  *                 .maxInstanceCount(3)

@@ -62,11 +62,12 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var addressGroup1 = new AddressGroup("addressGroup1", AddressGroupArgs.builder()
  *             .name("address-group")
- *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
+ *             .parent(project.id())
  *             .description("Global address group")
  *             .location("global")
  *             .items("208.80.154.224/32")
@@ -76,10 +77,10 @@ import javax.annotation.Nullable;
  * 
  *         var secureTagKey1 = new TagKey("secureTagKey1", TagKeyArgs.builder()
  *             .description("Tag key")
- *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
+ *             .parent(project.id())
  *             .purpose("GCE_FIREWALL")
  *             .shortName("tag-key")
- *             .purposeData(Map.of("network", String.format("%s/default", project.applyValue(getProjectResult -> getProjectResult.name()))))
+ *             .purposeData(Map.of("network", String.format("%s/default", project.name())))
  *             .build());
  * 
  *         var secureTagValue1 = new TagValue("secureTagValue1", TagValueArgs.builder()
@@ -132,8 +133,8 @@ import javax.annotation.Nullable;
  *                         .layer4Configs(NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
  *                             .ports(                            
- *                                 8080,
- *                                 7070)
+ *                                 "8080",
+ *                                 "7070")
  *                             .build())
  *                         .build())
  *                     .targetSecureTags(NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs.builder()
@@ -175,7 +176,7 @@ import javax.annotation.Nullable;
  *                     .action("apply_security_profile_group")
  *                     .direction("INGRESS")
  *                     .targetServiceAccounts("test}{@literal @}{@code google.com")
- *                     .securityProfileGroup(securityProfileGroup1.id().applyValue(id -> String.format("//networksecurity.googleapis.com/%s", id)))
+ *                     .securityProfileGroup(securityProfileGroup1.id().applyValue(_id -> String.format("//networksecurity.googleapis.com/%s", _id)))
  *                     .tlsInspect(true)
  *                     .match(NetworkFirewallPolicyWithRulesRuleMatchArgs.builder()
  *                         .srcIpRanges("0.0.0.0/0")
@@ -197,7 +198,7 @@ import javax.annotation.Nullable;
  *                         .srcNetworks(network.id())
  *                         .layer4Configs(NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
- *                             .ports(8080)
+ *                             .ports("8080")
  *                             .build())
  *                         .build())
  *                     .build(),
@@ -213,7 +214,7 @@ import javax.annotation.Nullable;
  *                         .destNetworkScope("INTERNET")
  *                         .layer4Configs(NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
- *                             .ports(8080)
+ *                             .ports("8080")
  *                             .build())
  *                         .build())
  *                     .build())

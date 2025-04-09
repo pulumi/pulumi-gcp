@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 

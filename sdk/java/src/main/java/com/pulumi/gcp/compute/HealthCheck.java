@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .sslHealthCheck(HealthCheckSslHealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 
@@ -341,7 +341,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpsHealthCheck(HealthCheckHttpsHealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 
@@ -429,7 +429,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .http2HealthCheck(HealthCheckHttp2HealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 
@@ -517,7 +517,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .grpcHealthCheck(HealthCheckGrpcHealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 
@@ -600,7 +600,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("22")
+ *                 .port(22)
  *                 .build())
  *             .logConfig(HealthCheckLogConfigArgs.builder()
  *                 .enable(true)

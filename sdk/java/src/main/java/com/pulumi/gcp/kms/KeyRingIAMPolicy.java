@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()
  *             .keyRingId(keyring.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * 
  *         var keyRing = new KeyRingIAMPolicy("keyRing", KeyRingIAMPolicyArgs.builder()
  *             .keyRingId(keyring.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

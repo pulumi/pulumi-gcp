@@ -520,7 +520,7 @@ import javax.annotation.Nullable;
  *         var encryptRole = new CryptoKeyIAMMember("encryptRole", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("example-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:bq-%s}{@literal @}{@code bigquery-encryption.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:bq-%s}{@literal @}{@code bigquery-encryption.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var dest = new Table("dest", TableArgs.builder()
@@ -659,7 +659,7 @@ import javax.annotation.Nullable;
  *         var job = new Job("job", JobArgs.builder()
  *             .jobId("job_extract")
  *             .extract(JobExtractArgs.builder()
- *                 .destinationUris(dest.url().applyValue(url -> String.format("%s/extract", url)))
+ *                 .destinationUris(dest.url().applyValue(_url -> String.format("%s/extract", _url)))
  *                 .sourceTable(JobExtractSourceTableArgs.builder()
  *                     .projectId(source_one.project())
  *                     .datasetId(source_one.datasetId())

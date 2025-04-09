@@ -116,7 +116,8 @@ import javax.annotation.Nullable;
  *                 Map.entry("key5", "someval5")
  *             ))
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -156,7 +157,8 @@ import javax.annotation.Nullable;
  *             .secretId("secret")
  *             .versionDestroyTtl("2592000s")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -198,12 +200,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var kms_secret_binding = new CryptoKeyIAMMember("kms-secret-binding", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-secretmanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-secretmanager.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var secret_with_automatic_cmek = new Secret("secret-with-automatic-cmek", SecretArgs.builder()

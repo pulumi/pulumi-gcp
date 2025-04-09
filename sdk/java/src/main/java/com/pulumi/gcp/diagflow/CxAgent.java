@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .advancedSettings(CxAgentAdvancedSettingsArgs.builder()
  *                 .audioExportGcsDestination(CxAgentAdvancedSettingsAudioExportGcsDestinationArgs.builder()
- *                     .uri(bucket.url().applyValue(url -> String.format("%s/prefix-", url)))
+ *                     .uri(bucket.url().applyValue(_url -> String.format("%s/prefix-", _url)))
  *                     .build())
  *                 .speechSettings(CxAgentAdvancedSettingsSpeechSettingsArgs.builder()
  *                     .endpointerSensitivity(30)

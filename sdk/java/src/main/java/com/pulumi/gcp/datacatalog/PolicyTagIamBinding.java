@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new PolicyTagIamPolicy("policy", PolicyTagIamPolicyArgs.builder()
  *             .policyTag(basicPolicyTag.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -206,7 +206,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new PolicyTagIamPolicy("policy", PolicyTagIamPolicyArgs.builder()
  *             .policyTag(basicPolicyTag.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

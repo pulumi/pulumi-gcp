@@ -52,11 +52,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example = new DocumentAiWarehouseLocation("example", DocumentAiWarehouseLocationArgs.builder()
  *             .location("us")
- *             .projectNumber(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .projectNumber(project.number())
  *             .accessControlMode("ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI")
  *             .databaseType("DB_INFRA_SPANNER")
  *             .kmsKey("dummy_key")

@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .project(runtime_template.project())
  *             .location(runtime_template.location())
  *             .runtimeTemplate(runtime_template.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *             .project(runtime_template.project())
  *             .location(runtime_template.location())
  *             .runtimeTemplate(runtime_template.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

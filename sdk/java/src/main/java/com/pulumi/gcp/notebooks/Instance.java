@@ -265,8 +265,8 @@ import javax.annotation.Nullable;
  *             .bootDiskSizeGb(110)
  *             .noPublicIp(true)
  *             .noProxyAccess(true)
- *             .network(myNetwork.applyValue(getNetworkResult -> getNetworkResult.id()))
- *             .subnet(mySubnetwork.applyValue(getSubnetworkResult -> getSubnetworkResult.id()))
+ *             .network(myNetwork.id())
+ *             .subnet(mySubnetwork.id())
  *             .labels(Map.of("k", "val"))
  *             .metadata(Map.of("terraform", "true"))
  *             .serviceAccountScopes(            

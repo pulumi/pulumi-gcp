@@ -84,7 +84,8 @@ import javax.annotation.Nullable;
  * 
  *         var mirror = new Instance("mirror", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .network(default_.id())
  *                 .build())
  *             .name("my-instance")
@@ -107,7 +108,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 

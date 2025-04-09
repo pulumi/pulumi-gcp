@@ -60,11 +60,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example = new LiteTopic("example", LiteTopicArgs.builder()
  *             .name("example-topic")
- *             .project(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *             .project(project.number())
  *             .partitionConfig(LiteTopicPartitionConfigArgs.builder()
  *                 .count(1)
  *                 .capacity(LiteTopicPartitionConfigCapacityArgs.builder()
@@ -73,7 +74,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .retentionConfig(LiteTopicRetentionConfigArgs.builder()
- *                 .perPartitionBytes(32212254720)
+ *                 .perPartitionBytes("32212254720")
  *                 .build())
  *             .build());
  * 

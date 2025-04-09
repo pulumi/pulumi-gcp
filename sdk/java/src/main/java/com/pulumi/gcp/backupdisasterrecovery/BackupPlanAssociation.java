@@ -74,7 +74,8 @@ import javax.annotation.Nullable;
  * 
  *         var myinstance = new Instance("myinstance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .network("default")
  *                 .build())
  *             .name("test-instance")
@@ -99,7 +100,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .backupVaultId("bv-bpa")
  *             .backupMinimumEnforcedRetentionDuration("100000s")
- *             .forceDelete("true")
+ *             .forceDelete(true)
  *             .build());
  * 
  *         var bp1 = new BackupPlan("bp1", BackupPlanArgs.builder()

@@ -67,7 +67,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .name("basic-cluster")
@@ -82,7 +83,7 @@ import javax.annotation.Nullable;
  *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .labels(Map.ofEntries(
  *                 Map.entry("my_key", "my_val"),
@@ -130,7 +131,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .name("cluster-with-maintenance")
@@ -145,7 +147,7 @@ import javax.annotation.Nullable;
  *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
  *                 .window(ClusterMaintenancePolicyWindowArgs.builder()
@@ -198,7 +200,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .name("local-control-plane-cluster")
@@ -213,7 +216,7 @@ import javax.annotation.Nullable;
  *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .externalLoadBalancerIpv4AddressPools("10.100.0.0-10.100.0.10")
  *             .controlPlane(ClusterControlPlaneArgs.builder()

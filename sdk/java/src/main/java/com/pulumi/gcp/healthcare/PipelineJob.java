@@ -72,7 +72,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example_dataset")
@@ -113,10 +114,10 @@ import javax.annotation.Nullable;
  *                             var mergeFileName = values.t2;
  *                             return String.format("gs://%s/%s", bucketName,mergeFileName);
  *                         }}{@code ))
- *                         .importUriPrefix(bucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                         .importUriPrefix(bucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                         .build())
  *                     .build())
- *                 .matchingUriPrefix(bucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                 .matchingUriPrefix(bucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                 .fhirStoreDestination(Output.tuple(dataset.id(), fhirstore.name()).applyValue(values -> }{{@code
  *                     var id = values.t1;
  *                     var name = values.t2;
@@ -128,7 +129,7 @@ import javax.annotation.Nullable;
  *         var hsa = new BucketIAMMember("hsa", BucketIAMMemberArgs.builder()
  *             .bucket(bucket.name())
  *             .role("roles/storage.objectUser")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-healthcare.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-healthcare.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *     }}{@code
@@ -174,7 +175,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .dataset(dataset.id())
  *             .backfillPipelineJob(PipelineJobBackfillPipelineJobArgs.builder()
- *                 .mappingPipelineJob(dataset.id().applyValue(id -> String.format("%s/pipelinejobs/example_mapping_pipeline", id)))
+ *                 .mappingPipelineJob(dataset.id().applyValue(_id -> String.format("%s/pipelinejobs/example_mapping_pipeline", _id)))
  *                 .build())
  *             .build());
  * 
@@ -224,7 +225,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example_dataset")
@@ -273,7 +275,7 @@ import javax.annotation.Nullable;
  *                             var mappingFileName = values.t2;
  *                             return String.format("gs://%s/%s", bucketName,mappingFileName);
  *                         }}{@code ))
- *                         .importUriPrefix(bucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                         .importUriPrefix(bucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                         .build())
  *                     .description("example description for mapping configuration")
  *                     .build())
@@ -296,7 +298,7 @@ import javax.annotation.Nullable;
  *         var hsa = new BucketIAMMember("hsa", BucketIAMMemberArgs.builder()
  *             .bucket(bucket.name())
  *             .role("roles/storage.objectUser")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-healthcare.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-healthcare.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *     }}{@code
@@ -349,7 +351,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var dataset = new Dataset("dataset", DatasetArgs.builder()
  *             .name("example_dataset")
@@ -390,10 +393,10 @@ import javax.annotation.Nullable;
  *                             var mergeFileName = values.t2;
  *                             return String.format("gs://%s/%s", bucketName,mergeFileName);
  *                         }}{@code ))
- *                         .importUriPrefix(bucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                         .importUriPrefix(bucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                         .build())
  *                     .build())
- *                 .matchingUriPrefix(bucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                 .matchingUriPrefix(bucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                 .fhirStoreDestination(Output.tuple(dataset.id(), destFhirstore.name()).applyValue(values -> }{{@code
  *                     var id = values.t1;
  *                     var name = values.t2;
@@ -430,7 +433,7 @@ import javax.annotation.Nullable;
  *                             var mappingFileName = values.t2;
  *                             return String.format("gs://%s/%s", bucketName,mappingFileName);
  *                         }}{@code ))
- *                         .importUriPrefix(bucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                         .importUriPrefix(bucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                         .build())
  *                     .description("example description for mapping configuration")
  *                     .build())
@@ -451,7 +454,7 @@ import javax.annotation.Nullable;
  *         var hsa = new BucketIAMMember("hsa", BucketIAMMemberArgs.builder()
  *             .bucket(bucket.name())
  *             .role("roles/storage.objectUser")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-healthcare.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-healthcare.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *     }}{@code

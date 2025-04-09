@@ -47,9 +47,9 @@ public final class RedisFunctions {
      *             .name("my-redis-instance")
      *             .build());
      * 
-     *         ctx.export("instanceMemorySizeGb", myInstance.applyValue(getInstanceResult -> getInstanceResult.memorySizeGb()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.connectMode()));
-     *         ctx.export("instanceAuthorizedNetwork", myInstance.applyValue(getInstanceResult -> getInstanceResult.authorizedNetwork()));
+     *         ctx.export("instanceMemorySizeGb", myInstance.memorySizeGb());
+     *         ctx.export("instanceConnectMode", myInstance.connectMode());
+     *         ctx.export("instanceAuthorizedNetwork", myInstance.authorizedNetwork());
      *     }
      * }
      * }
@@ -92,9 +92,9 @@ public final class RedisFunctions {
      *             .name("my-redis-instance")
      *             .build());
      * 
-     *         ctx.export("instanceMemorySizeGb", myInstance.applyValue(getInstanceResult -> getInstanceResult.memorySizeGb()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.connectMode()));
-     *         ctx.export("instanceAuthorizedNetwork", myInstance.applyValue(getInstanceResult -> getInstanceResult.authorizedNetwork()));
+     *         ctx.export("instanceMemorySizeGb", myInstance.memorySizeGb());
+     *         ctx.export("instanceConnectMode", myInstance.connectMode());
+     *         ctx.export("instanceAuthorizedNetwork", myInstance.authorizedNetwork());
      *     }
      * }
      * }
@@ -137,9 +137,9 @@ public final class RedisFunctions {
      *             .name("my-redis-instance")
      *             .build());
      * 
-     *         ctx.export("instanceMemorySizeGb", myInstance.applyValue(getInstanceResult -> getInstanceResult.memorySizeGb()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.connectMode()));
-     *         ctx.export("instanceAuthorizedNetwork", myInstance.applyValue(getInstanceResult -> getInstanceResult.authorizedNetwork()));
+     *         ctx.export("instanceMemorySizeGb", myInstance.memorySizeGb());
+     *         ctx.export("instanceConnectMode", myInstance.connectMode());
+     *         ctx.export("instanceAuthorizedNetwork", myInstance.authorizedNetwork());
      *     }
      * }
      * }
@@ -182,9 +182,9 @@ public final class RedisFunctions {
      *             .name("my-redis-instance")
      *             .build());
      * 
-     *         ctx.export("instanceMemorySizeGb", myInstance.applyValue(getInstanceResult -> getInstanceResult.memorySizeGb()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.connectMode()));
-     *         ctx.export("instanceAuthorizedNetwork", myInstance.applyValue(getInstanceResult -> getInstanceResult.authorizedNetwork()));
+     *         ctx.export("instanceMemorySizeGb", myInstance.memorySizeGb());
+     *         ctx.export("instanceConnectMode", myInstance.connectMode());
+     *         ctx.export("instanceAuthorizedNetwork", myInstance.authorizedNetwork());
      *     }
      * }
      * }
@@ -227,9 +227,9 @@ public final class RedisFunctions {
      *             .name("my-redis-instance")
      *             .build());
      * 
-     *         ctx.export("instanceMemorySizeGb", myInstance.applyValue(getInstanceResult -> getInstanceResult.memorySizeGb()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.connectMode()));
-     *         ctx.export("instanceAuthorizedNetwork", myInstance.applyValue(getInstanceResult -> getInstanceResult.authorizedNetwork()));
+     *         ctx.export("instanceMemorySizeGb", myInstance.memorySizeGb());
+     *         ctx.export("instanceConnectMode", myInstance.connectMode());
+     *         ctx.export("instanceAuthorizedNetwork", myInstance.authorizedNetwork());
      *     }
      * }
      * }

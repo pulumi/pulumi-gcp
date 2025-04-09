@@ -87,13 +87,13 @@ import javax.annotation.Nullable;
  *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()
  *             .project(customServiceAccount.project())
  *             .role("roles/compute.networkUser")
- *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(customServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()
  *             .project(customServiceAccount.project())
  *             .role("roles/storage.objectViewer")
- *             .member(customServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(customServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()

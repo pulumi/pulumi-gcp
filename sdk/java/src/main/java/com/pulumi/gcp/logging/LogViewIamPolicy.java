@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .location(loggingLogView.location())
  *             .bucket(loggingLogView.bucket())
  *             .name(loggingLogView.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *             .location(loggingLogView.location())
  *             .bucket(loggingLogView.bucket())
  *             .name(loggingLogView.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -362,7 +362,7 @@ import javax.annotation.Nullable;
  *             .location(loggingLogView.location())
  *             .bucket(loggingLogView.bucket())
  *             .name(loggingLogView.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -415,7 +415,7 @@ import javax.annotation.Nullable;
  *             .location(loggingLogView.location())
  *             .bucket(loggingLogView.bucket())
  *             .name(loggingLogView.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

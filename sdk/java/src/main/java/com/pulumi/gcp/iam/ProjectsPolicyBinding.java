@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicy;
  * import com.pulumi.gcp.iam.PrincipalAccessBoundaryPolicyArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.iam.ProjectsPolicyBinding;
  * import com.pulumi.gcp.iam.ProjectsPolicyBindingArgs;
  * import com.pulumi.gcp.iam.inputs.ProjectsPolicyBindingTargetArgs;
@@ -53,7 +53,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var pabPolicy = new PrincipalAccessBoundaryPolicy("pabPolicy", PrincipalAccessBoundaryPolicyArgs.builder()
  *             .organization("123456789")
@@ -65,18 +66,18 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(pabPolicy)
+ *                 .dependsOn(List.of(pabPolicy))
  *                 .build());
  * 
  *         var binding_for_all_project_principals = new ProjectsPolicyBinding("binding-for-all-project-principals", ProjectsPolicyBindingArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .location("global")
  *             .displayName("binding for all principals in the project")
  *             .policyKind("PRINCIPAL_ACCESS_BOUNDARY")
  *             .policyBindingId("binding-for-all-project-principals")
- *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", principalAccessBoundaryPolicyId)))
+ *             .policy(pabPolicy.principalAccessBoundaryPolicyId().applyValue(_principalAccessBoundaryPolicyId -> String.format("organizations/123456789/locations/global/principalAccessBoundaryPolicies/%s", _principalAccessBoundaryPolicyId)))
  *             .target(ProjectsPolicyBindingTargetArgs.builder()
- *                 .principalSet(String.format("//cloudresourcemanager.googleapis.com/projects/%s", project.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *                 .principalSet(String.format("//cloudresourcemanager.googleapis.com/projects/%s", project.projectId()))
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(wait60Seconds)

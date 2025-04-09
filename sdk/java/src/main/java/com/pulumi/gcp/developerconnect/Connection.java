@@ -154,6 +154,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
@@ -180,7 +182,8 @@ import javax.annotation.Nullable;
  *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()
  *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -204,7 +207,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .secretId(github_token_secret.secretId())
- *             .policyData(p4sa_secretAccessor.applyValue(p4sa_secretAccessor -> p4sa_secretAccessor.policyData()))
+ *             .policyData(p4sa_secretAccessor.applyValue(_p4sa_secretAccessor -> _p4sa_secretAccessor.policyData()))
  *             .build());
  * 
  *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
@@ -212,7 +215,7 @@ import javax.annotation.Nullable;
  *             .connectionId("my-connection")
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .githubApp("DEVELOPER_CONNECT")
- *                 .appInstallationId(123123)
+ *                 .appInstallationId("123123")
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
  *                     .oauthTokenSecretVersion(github_token_secret_version.id())
  *                     .build())
@@ -283,6 +286,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
@@ -307,7 +312,8 @@ import javax.annotation.Nullable;
  *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()
  *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -335,7 +341,7 @@ import javax.annotation.Nullable;
  *             .connectionId("my-connection")
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .githubApp("DEVELOPER_CONNECT")
- *                 .appInstallationId(123123)
+ *                 .appInstallationId("123123")
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
  *                     .oauthTokenSecretVersion(github_token_secret_version.id())
  *                     .build())
@@ -378,10 +384,10 @@ import javax.annotation.Nullable;
  *             .connectionId("tf-test-connection")
  *             .githubEnterpriseConfig(ConnectionGithubEnterpriseConfigArgs.builder()
  *                 .hostUri("https://ghe.proctor-staging-test.com")
- *                 .appId(864434)
+ *                 .appId("864434")
  *                 .privateKeySecretVersion("projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-private-key-f522d2/versions/latest")
  *                 .webhookSecretSecretVersion("projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-webhook-secret-3c806f/versions/latest")
- *                 .appInstallationId(837537)
+ *                 .appInstallationId("837537")
  *                 .build())
  *             .build());
  * 
@@ -406,6 +412,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
@@ -430,7 +438,8 @@ import javax.annotation.Nullable;
  *         var private_key_secret = new Secret("private-key-secret", SecretArgs.builder()
  *             .secretId("ghe-pk-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -444,7 +453,8 @@ import javax.annotation.Nullable;
  *         var webhook_secret_secret = new Secret("webhook-secret-secret", SecretArgs.builder()
  *             .secretId("ghe-token-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -477,8 +487,8 @@ import javax.annotation.Nullable;
  *                 .hostUri("https://ghe.com")
  *                 .privateKeySecretVersion(private_key_secret_version.id())
  *                 .webhookSecretSecretVersion(webhook_secret_secret_version.id())
- *                 .appId(100)
- *                 .appInstallationId(123123)
+ *                 .appId("100")
+ *                 .appInstallationId("123123")
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                

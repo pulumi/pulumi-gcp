@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .name("my-lb-neg")
  *             .network(default_.id())
  *             .subnetwork(defaultSubnetwork.id())
- *             .defaultPort("90")
+ *             .defaultPort(90)
  *             .zone("us-central1-a")
  *             .build());
  * 
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *         var neg = new NetworkEndpointGroup("neg", NetworkEndpointGroupArgs.builder()
  *             .name("my-lb-neg")
  *             .network(default_.id())
- *             .defaultPort("90")
+ *             .defaultPort(90)
  *             .zone("us-central1-a")
  *             .networkEndpointType("NON_GCP_PRIVATE_IP_PORT")
  *             .build());
