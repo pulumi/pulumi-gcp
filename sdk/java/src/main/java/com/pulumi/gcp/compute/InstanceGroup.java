@@ -97,11 +97,11 @@ import javax.annotation.Nullable;
  *             .namedPorts(            
  *                 InstanceGroupNamedPortArgs.builder()
  *                     .name("http")
- *                     .port("8080")
+ *                     .port(8080)
  *                     .build(),
  *                 InstanceGroupNamedPortArgs.builder()
  *                     .name("https")
- *                     .port("8443")
+ *                     .port(8443)
  *                     .build())
  *             .zone("us-central1-a")
  *             .build());

@@ -395,7 +395,7 @@ import javax.annotation.Nullable;
  *                 .version("3.1.2")
  *                 .build())
  *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
- *                 .scalingFactor("2")
+ *                 .scalingFactor(2.0)
  *                 .build())
  *             .build());
  * 
@@ -455,7 +455,7 @@ import javax.annotation.Nullable;
  *                 .enabled(true)
  *                 .cronSchedule("0 0 * * *")
  *                 .timeZone("UTC")
- *                 .backupLocation(bucket.name().applyValue(name -> String.format("gs://%s", name)))
+ *                 .backupLocation(bucket.name().applyValue(_name -> String.format("gs://%s", _name)))
  *                 .build())
  *             .labels(Map.of("env", "test"))
  *             .build());
@@ -505,7 +505,7 @@ import javax.annotation.Nullable;
  *                 .autoscalingConfig(MetastoreServiceScalingConfigAutoscalingConfigArgs.builder()
  *                     .autoscalingEnabled(true)
  *                     .limitConfig(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs.builder()
- *                         .maxScalingFactor(1)
+ *                         .maxScalingFactor(1.0)
  *                         .build())
  *                     .build())
  *                 .build())
@@ -557,7 +557,7 @@ import javax.annotation.Nullable;
  *                     .autoscalingEnabled(true)
  *                     .limitConfig(MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs.builder()
  *                         .minScalingFactor(0.1)
- *                         .maxScalingFactor(1)
+ *                         .maxScalingFactor(1.0)
  *                         .build())
  *                     .build())
  *                 .build())

@@ -75,7 +75,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .database(database.name())
  *             .retention("8467200s")
- *             .dailyRecurrence()
+ *             .dailyRecurrence(BackupScheduleDailyRecurrenceArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *     }

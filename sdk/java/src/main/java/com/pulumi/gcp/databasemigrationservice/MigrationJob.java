@@ -77,7 +77,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var sourceCsql = new DatabaseInstance("sourceCsql", DatabaseInstanceArgs.builder()
  *             .name("source-csql")
@@ -110,7 +111,7 @@ import javax.annotation.Nullable;
  *             .displayName("source-cp_display")
  *             .labels(Map.of("foo", "bar"))
  *             .mysql(ConnectionProfileMysqlArgs.builder()
- *                 .host(sourceCsql.ipAddresses().applyValue(ipAddresses -> ipAddresses[0].ipAddress()))
+ *                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
  *                 .port(3306)
  *                 .username(sourceSqldbUser.name())
  *                 .password(sourceSqldbUser.password())
@@ -219,7 +220,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var sourceCsql = new DatabaseInstance("sourceCsql", DatabaseInstanceArgs.builder()
  *             .name("source-csql")
@@ -252,7 +254,7 @@ import javax.annotation.Nullable;
  *             .displayName("source-cp_display")
  *             .labels(Map.of("foo", "bar"))
  *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
- *                 .host(sourceCsql.ipAddresses().applyValue(ipAddresses -> ipAddresses[0].ipAddress()))
+ *                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
  *                 .port(3306)
  *                 .username(sourceSqldbUser.name())
  *                 .password(sourceSqldbUser.password())
@@ -294,7 +296,8 @@ import javax.annotation.Nullable;
  *             .migrationJobId("my-migrationid")
  *             .displayName("my-migrationid_display")
  *             .labels(Map.of("foo", "bar"))
- *             .staticIpConnectivity()
+ *             .staticIpConnectivity(MigrationJobStaticIpConnectivityArgs.builder()
+ *                 .build())
  *             .source(sourceCp.name())
  *             .destination(destinationCp.name())
  *             .type("CONTINUOUS")
@@ -357,7 +360,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var sourceCsql = new DatabaseInstance("sourceCsql", DatabaseInstanceArgs.builder()
  *             .name("source-csql")
@@ -390,7 +394,7 @@ import javax.annotation.Nullable;
  *             .displayName("source-cp_display")
  *             .labels(Map.of("foo", "bar"))
  *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
- *                 .host(sourceCsql.ipAddresses().applyValue(ipAddresses -> ipAddresses[0].ipAddress()))
+ *                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
  *                 .port(3306)
  *                 .username(sourceSqldbUser.name())
  *                 .password(sourceSqldbUser.password())
@@ -463,7 +467,8 @@ import javax.annotation.Nullable;
  *             .migrationJobId("my-migrationid")
  *             .displayName("my-migrationid_display")
  *             .labels(Map.of("foo", "bar"))
- *             .staticIpConnectivity()
+ *             .staticIpConnectivity(MigrationJobStaticIpConnectivityArgs.builder()
+ *                 .build())
  *             .source(sourceCp.name())
  *             .destination(destinationCp.name())
  *             .type("CONTINUOUS")

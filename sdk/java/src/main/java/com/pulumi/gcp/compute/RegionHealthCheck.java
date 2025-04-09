@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .sslHealthCheck(RegionHealthCheckSslHealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 
@@ -248,7 +248,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -289,7 +289,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .logConfig(RegionHealthCheckLogConfigArgs.builder()
  *                 .enable(true)
@@ -380,7 +380,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .httpsHealthCheck(RegionHealthCheckHttpsHealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 
@@ -468,7 +468,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .http2HealthCheck(RegionHealthCheckHttp2HealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 
@@ -556,7 +556,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .grpcHealthCheck(RegionHealthCheckGrpcHealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 

@@ -93,6 +93,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
@@ -117,7 +119,8 @@ import javax.annotation.Nullable;
  *         var private_key_secret = new Secret("private-key-secret", SecretArgs.builder()
  *             .secretId("ghe-pk-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -131,7 +134,8 @@ import javax.annotation.Nullable;
  *         var webhook_secret_secret = new Secret("webhook-secret-secret", SecretArgs.builder()
  *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -195,6 +199,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
@@ -219,7 +225,8 @@ import javax.annotation.Nullable;
  *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()
  *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 

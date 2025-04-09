@@ -137,15 +137,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
- *             .parent(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .parent(String.format("projects/%s", project.number()))
  *             .shortName("tag_key")
  *             .build());
  * 
  *         var tagValue = new TagValue("tagValue", TagValueArgs.builder()
- *             .parent(tagKey.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .parent(tagKey.name().applyValue(_name -> String.format("tagKeys/%s", _name)))
  *             .shortName("tag_value")
  *             .build());
  * 
@@ -163,7 +164,7 @@ import javax.annotation.Nullable;
  *             .tags(Output.tuple(tagKey.shortName(), tagValue.shortName()).applyValue(values -> {
  *                 var tagKeyShortName = values.t1;
  *                 var tagValueShortName = values.t2;
- *                 return Map.of(String.format("%s/%s", project.applyValue(getProjectResult -> getProjectResult.projectId()),tagKeyShortName), tagValueShortName);
+ *                 return Map.of(String.format("%s/%s", project.projectId(),tagKeyShortName), tagValueShortName);
  *             }))
  *             .sourceContents("""
  * # This is a sample workflow. You can replace it with your source code.

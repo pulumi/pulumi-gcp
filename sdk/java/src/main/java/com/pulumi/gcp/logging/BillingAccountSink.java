@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .name("my-sink")
  *             .description("some explanation on what this is")
  *             .billingAccount("ABCDEF-012345-GHIJKL")
- *             .destination(log_bucket.name().applyValue(name -> String.format("storage.googleapis.com/%s", name)))
+ *             .destination(log_bucket.name().applyValue(_name -> String.format("storage.googleapis.com/%s", _name)))
  *             .build());
  * 
  *         var log_writer = new IAMBinding("log-writer", IAMBindingArgs.builder()

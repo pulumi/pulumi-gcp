@@ -173,7 +173,8 @@ import javax.annotation.Nullable;
  *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret-1")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -237,12 +238,13 @@ import javax.annotation.Nullable;
  *                 .dependsOn(secret_version_data)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(secret)
  *                 .build());
@@ -539,7 +541,8 @@ import javax.annotation.Nullable;
  *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret-1")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -577,12 +580,13 @@ import javax.annotation.Nullable;
  *                 .dependsOn(secret_version_data)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(secret)
  *                 .build());
@@ -794,7 +798,7 @@ import javax.annotation.Nullable;
  *                 .volumes(ServiceTemplateVolumeArgs.builder()
  *                     .name("nfs")
  *                     .nfs(ServiceTemplateVolumeNfsArgs.builder()
- *                         .server(defaultInstance.networks().applyValue(networks -> networks[0].ipAddresses()[0]))
+ *                         .server(defaultInstance.networks().applyValue(_networks -> _networks[0].ipAddresses()[0]))
  *                         .path("/share1")
  *                         .readOnly(false)
  *                         .build())
@@ -820,7 +824,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.Mesh;
  * import com.pulumi.gcp.networkservices.MeshArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.cloudrunv2.Service;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
@@ -846,7 +850,7 @@ import javax.annotation.Nullable;
  *         var waitForMesh = new Sleep("waitForMesh", SleepArgs.builder()
  *             .createDuration("1m")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(mesh)
+ *                 .dependsOn(List.of(mesh))
  *                 .build());
  * 
  *         var default_ = new Service("default", ServiceArgs.builder()
@@ -940,8 +944,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.ServiceBuildConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -955,10 +959,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *             .name(String.format("%s-gcf-source", project.projectId()))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -974,15 +979,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var actAs = new IAMMember("actAs", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .role("roles/iam.serviceAccountUser")
- *             .member(cloudbuildServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(cloudbuildServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var logsWriter = new IAMMember("logsWriter", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .role("roles/logging.logWriter")
- *             .member(cloudbuildServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(cloudbuildServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var default_ = new Service("default", ServiceArgs.builder()

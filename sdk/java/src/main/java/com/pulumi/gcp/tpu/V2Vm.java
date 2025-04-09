@@ -55,7 +55,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var available = TpuFunctions.getV2RuntimeVersions();
+ *         final var available = TpuFunctions.getV2RuntimeVersions(GetV2RuntimeVersionsArgs.builder()
+ *             .build());
  * 
  *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
  *             .name("test-tpu")
@@ -90,7 +91,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.Disk;
  * import com.pulumi.gcp.compute.DiskArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.tpu.V2Vm;
  * import com.pulumi.gcp.tpu.V2VmArgs;
  * import com.pulumi.gcp.tpu.inputs.V2VmAcceleratorConfigArgs;
@@ -113,9 +114,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var available = TpuFunctions.getV2RuntimeVersions();
+ *         final var available = TpuFunctions.getV2RuntimeVersions(GetV2RuntimeVersionsArgs.builder()
+ *             .build());
  * 
- *         final var availableGetV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+ *         final var availableGetV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes(GetV2AcceleratorTypesArgs.builder()
+ *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()
  *             .name("tpu-net")
@@ -146,7 +149,7 @@ import javax.annotation.Nullable;
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
  *             .createDuration("60s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(sa)
+ *                 .dependsOn(List.of(sa))
  *                 .build());
  * 
  *         var tpu = new V2Vm("tpu", V2VmArgs.builder()

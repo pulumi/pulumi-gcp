@@ -43,7 +43,8 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AppengineFunctions.getDefaultServiceAccount();
+     *         final var default = AppengineFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -84,7 +85,8 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AppengineFunctions.getDefaultServiceAccount();
+     *         final var default = AppengineFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -125,7 +127,8 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AppengineFunctions.getDefaultServiceAccount();
+     *         final var default = AppengineFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -166,7 +169,8 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AppengineFunctions.getDefaultServiceAccount();
+     *         final var default = AppengineFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -207,7 +211,8 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AppengineFunctions.getDefaultServiceAccount();
+     *         final var default = AppengineFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -248,7 +253,8 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AppengineFunctions.getDefaultServiceAccount();
+     *         final var default = AppengineFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }
@@ -289,7 +295,8 @@ public final class AppengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AppengineFunctions.getDefaultServiceAccount();
+     *         final var default = AppengineFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+     *             .build());
      * 
      *         ctx.export("defaultAccount", default_.email());
      *     }

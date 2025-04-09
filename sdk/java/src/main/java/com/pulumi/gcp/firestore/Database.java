@@ -146,7 +146,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("kms-key-ring")
@@ -162,7 +163,7 @@ import javax.annotation.Nullable;
  *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-firestore.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var database = new Database("database", DatabaseArgs.builder()
@@ -301,7 +302,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("kms-key-ring")
@@ -317,7 +319,7 @@ import javax.annotation.Nullable;
  *         var firestoreCmekKeyuser = new CryptoKeyIAMBinding("firestoreCmekKeyuser", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-firestore.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-firestore.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var database = new Database("database", DatabaseArgs.builder()

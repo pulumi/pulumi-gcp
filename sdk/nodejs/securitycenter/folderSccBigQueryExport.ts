@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     description: "This is a test description",
  *     location: "US",
  *     defaultTableExpirationMs: 3600000,
- *     defaultPartitionExpirationMs: undefined,
+ *     defaultPartitionExpirationMs: null,
  *     labels: {
  *         env: "default",
  *     },

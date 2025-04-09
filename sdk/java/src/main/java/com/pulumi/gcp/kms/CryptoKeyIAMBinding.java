@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  *         var cryptoKey = new CryptoKeyIAMPolicy("cryptoKey", CryptoKeyIAMPolicyArgs.builder()
  *             .cryptoKeyId(key.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

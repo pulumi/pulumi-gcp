@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -538,7 +538,7 @@ import javax.annotation.Nullable;
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debianImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                 .sourceImage(debianImage.selfLink())
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
@@ -571,7 +571,7 @@ import javax.annotation.Nullable;
  *             .backends(RegionBackendServiceBackendArgs.builder()
  *                 .group(rigm.instanceGroup())
  *                 .balancingMode("UTILIZATION")
- *                 .capacityScaler(1)
+ *                 .capacityScaler(1.0)
  *                 .build())
  *             .region("us-central1")
  *             .name("region-service")
@@ -735,7 +735,7 @@ import javax.annotation.Nullable;
  *         var defaultNetworkEndpointGroup = new NetworkEndpointGroup("defaultNetworkEndpointGroup", NetworkEndpointGroupArgs.builder()
  *             .name("network-endpoint")
  *             .network(default_.id())
- *             .defaultPort("90")
+ *             .defaultPort(90)
  *             .zone("us-central1-a")
  *             .networkEndpointType("GCE_VM_IP_PORT")
  *             .build());

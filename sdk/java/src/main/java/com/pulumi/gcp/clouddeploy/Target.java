@@ -59,7 +59,8 @@ import javax.annotation.Nullable;
  *         var primary = new Target("primary", TargetArgs.builder()
  *             .location("us-west1")
  *             .name("target")
- *             .deployParameters()
+ *             .deployParameters(Map.ofEntries(
+ *             ))
  *             .description("multi-target description")
  *             .executionConfigs(TargetExecutionConfigArgs.builder()
  *                 .usages(                
@@ -119,7 +120,8 @@ import javax.annotation.Nullable;
  *         var primary = new Target("primary", TargetArgs.builder()
  *             .location("us-west1")
  *             .name("target")
- *             .deployParameters()
+ *             .deployParameters(Map.ofEntries(
+ *             ))
  *             .description("basic description")
  *             .executionConfigs(TargetExecutionConfigArgs.builder()
  *                 .usages(                

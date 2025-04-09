@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  *             .name("cert-map")
  *             .description("My acceptance test certificate map")
  *             .labels(Map.ofEntries(
- *                 Map.entry("terraform", true),
- *                 Map.entry("acc-test", true)
+ *                 Map.entry("terraform", "true"),
+ *                 Map.entry("acc-test", "true")
  *             ))
  *             .build());
  * 

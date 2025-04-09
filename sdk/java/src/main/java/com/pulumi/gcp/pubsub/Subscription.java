@@ -309,7 +309,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }
@@ -388,7 +389,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }
@@ -443,18 +445,19 @@ import javax.annotation.Nullable;
  *             .displayName("BQ Write Service Account")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var bigqueryMetadataViewer = new IAMMember("bigqueryMetadataViewer", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .role("roles/bigquery.metadataViewer")
- *             .member(bqWriteServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(bqWriteServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var bigqueryDataEditor = new IAMMember("bigqueryDataEditor", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .role("roles/bigquery.dataEditor")
- *             .member(bqWriteServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(bqWriteServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var test = new Dataset("test", DatasetArgs.builder()
@@ -485,7 +488,7 @@ import javax.annotation.Nullable;
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format("%s.%s.%s", project.applyValue(getProjectResult -> getProjectResult),datasetId,tableId);
+ *                     return String.format("%s.%s.%s", project,datasetId,tableId);
  *                 }))
  *                 .serviceAccountEmail(bqWriteServiceAccount.email())
  *                 .build())
@@ -546,12 +549,13 @@ import javax.annotation.Nullable;
  *             .name("example-topic")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(example.name())
  *             .role("roles/storage.admin")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
@@ -623,12 +627,13 @@ import javax.annotation.Nullable;
  *             .name("example-topic")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(example.name())
  *             .role("roles/storage.admin")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
@@ -713,7 +718,7 @@ import javax.annotation.Nullable;
  *         var admin = new BucketIAMMember("admin", BucketIAMMemberArgs.builder()
  *             .bucket(example.name())
  *             .role("roles/storage.admin")
- *             .member(storageWriteServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(storageWriteServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
@@ -735,7 +740,8 @@ import javax.annotation.Nullable;
  *                     admin)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }

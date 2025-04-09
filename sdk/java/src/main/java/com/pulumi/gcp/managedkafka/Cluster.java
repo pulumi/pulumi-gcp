@@ -55,19 +55,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example = new Cluster("example", ClusterArgs.builder()
  *             .clusterId("my-cluster")
  *             .location("us-central1")
  *             .capacityConfig(ClusterCapacityConfigArgs.builder()
- *                 .vcpuCount(3)
- *                 .memoryBytes(3221225472)
+ *                 .vcpuCount("3")
+ *                 .memoryBytes("3221225472")
  *                 .build())
  *             .gcpConfig(ClusterGcpConfigArgs.builder()
  *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
  *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.number()))
  *                         .build())
  *                     .build())
  *                 .build())
@@ -130,19 +131,20 @@ import javax.annotation.Nullable;
  *             .keyRing(keyRing.id())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var example = new Cluster("example", ClusterArgs.builder()
  *             .clusterId("my-cluster")
  *             .location("us-central1")
  *             .capacityConfig(ClusterCapacityConfigArgs.builder()
- *                 .vcpuCount(3)
- *                 .memoryBytes(3221225472)
+ *                 .vcpuCount("3")
+ *                 .memoryBytes("3221225472")
  *                 .build())
  *             .gcpConfig(ClusterGcpConfigArgs.builder()
  *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
  *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.number()))
  *                         .build())
  *                     .build())
  *                 .kmsKey(key.id())
@@ -150,14 +152,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var kafkaServiceIdentity = new ServiceIdentity("kafkaServiceIdentity", ServiceIdentityArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .service("managedkafka.googleapis.com")
  *             .build());
  * 
  *         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(key.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-managedkafka.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-managedkafka.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *     }}{@code

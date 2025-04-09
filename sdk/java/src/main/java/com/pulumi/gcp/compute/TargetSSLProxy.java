@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.SSLCertificate;
  * import com.pulumi.gcp.compute.SSLCertificateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.compute.HealthCheck;
  * import com.pulumi.gcp.compute.HealthCheckArgs;
  * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
@@ -76,7 +78,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("443")
+ *                 .port(443)
  *                 .build())
  *             .build());
  * 

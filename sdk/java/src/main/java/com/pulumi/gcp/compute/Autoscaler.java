@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *                 "foo",
  *                 "bar")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debian9.applyValue(getImageResult -> getImageResult.id()))
+ *                 .sourceImage(debian9.id())
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network("default")
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *                 .metrics(AutoscalerAutoscalingPolicyMetricArgs.builder()
  *                     .name("pubsub.googleapis.com/subscription/num_undelivered_messages")
  *                     .filter("resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription")
- *                     .singleInstanceAssignment(65535)
+ *                     .singleInstanceAssignment(65535.0)
  *                     .build())
  *                 .build())
  *             .build());
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *                 "foo",
  *                 "bar")
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debian9.applyValue(getImageResult -> getImageResult.id()))
+ *                 .sourceImage(debian9.id())
  *                 .build())
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network("default")

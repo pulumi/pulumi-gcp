@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .network(producerNet.id())
  *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
  *                 .subnetworks(producerSubnet.id())
- *                 .limit(2)
+ *                 .limit("2")
  *                 .build())
  *             .build());
  * 

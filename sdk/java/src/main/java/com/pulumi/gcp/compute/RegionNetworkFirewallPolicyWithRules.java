@@ -58,11 +58,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var addressGroup1 = new AddressGroup("addressGroup1", AddressGroupArgs.builder()
  *             .name("address-group")
- *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
+ *             .parent(project.id())
  *             .description("Regional address group")
  *             .location("us-west2")
  *             .items("208.80.154.224/32")
@@ -72,10 +73,10 @@ import javax.annotation.Nullable;
  * 
  *         var secureTagKey1 = new TagKey("secureTagKey1", TagKeyArgs.builder()
  *             .description("Tag key")
- *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
+ *             .parent(project.id())
  *             .purpose("GCE_FIREWALL")
  *             .shortName("tag-key")
- *             .purposeData(Map.of("network", String.format("%s/default", project.applyValue(getProjectResult -> getProjectResult.name()))))
+ *             .purposeData(Map.of("network", String.format("%s/default", project.name())))
  *             .build());
  * 
  *         var secureTagValue1 = new TagValue("secureTagValue1", TagValueArgs.builder()
@@ -115,8 +116,8 @@ import javax.annotation.Nullable;
  *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
  *                             .ports(                            
- *                                 8080,
- *                                 7070)
+ *                                 "8080",
+ *                                 "7070")
  *                             .build())
  *                         .build())
  *                     .targetSecureTags(RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs.builder()
@@ -164,7 +165,7 @@ import javax.annotation.Nullable;
  *                         .srcNetworks(network.id())
  *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
- *                             .ports(8080)
+ *                             .ports("8080")
  *                             .build())
  *                         .build())
  *                     .build(),
@@ -180,7 +181,7 @@ import javax.annotation.Nullable;
  *                         .destNetworkScope("NON_INTERNET")
  *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
- *                             .ports(8080)
+ *                             .ports("8080")
  *                             .build())
  *                         .build())
  *                     .build())

@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  *         var admin_account_iam = new IAMPolicy("admin-account-iam", IAMPolicyArgs.builder()
  *             .serviceAccountId(sa.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -205,7 +205,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var default = ComputeFunctions.getDefaultServiceAccount();
+ *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+ *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
@@ -222,7 +223,7 @@ import javax.annotation.Nullable;
  *         var gce_default_account_iam = new IAMMember("gce-default-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(default_.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .member(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *     }}{@code
@@ -326,7 +327,7 @@ import javax.annotation.Nullable;
  * 
  *         var admin_account_iam = new IAMPolicy("admin-account-iam", IAMPolicyArgs.builder()
  *             .serviceAccountId(sa.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -458,7 +459,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var default = ComputeFunctions.getDefaultServiceAccount();
+ *         final var default = ComputeFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+ *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
  *             .accountId("my-service-account")
@@ -475,7 +477,7 @@ import javax.annotation.Nullable;
  *         var gce_default_account_iam = new IAMMember("gce-default-account-iam", IAMMemberArgs.builder()
  *             .serviceAccountId(default_.name())
  *             .role("roles/iam.serviceAccountUser")
- *             .member(sa.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(sa.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *     }}{@code

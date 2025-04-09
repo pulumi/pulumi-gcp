@@ -76,7 +76,8 @@ import javax.annotation.Nullable;
  *             .description("Zone for DCL")
  *             .displayName("Zone for DCL")
  *             .project("my-project-name")
- *             .labels()
+ *             .labels(Map.ofEntries(
+ *             ))
  *             .build());
  * 
  *     }

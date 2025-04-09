@@ -174,7 +174,8 @@ import javax.annotation.Nullable;
  *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -225,7 +226,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var secret_version_data = new SecretVersion("secret-version-data", SecretVersionArgs.builder()
  *             .secret(secret.name())
@@ -235,7 +237,7 @@ import javax.annotation.Nullable;
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(secret)
  *                 .build());
@@ -423,7 +425,8 @@ import javax.annotation.Nullable;
  *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -432,12 +435,13 @@ import javax.annotation.Nullable;
  *             .secretData("secret-data")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
  *             .secretId(secret.id())
  *             .role("roles/secretmanager.secretAccessor")
- *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(secret)
  *                 .build());

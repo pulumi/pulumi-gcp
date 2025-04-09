@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = OrganizationsFunctions.getClientConfig();
+ *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .displayName("apigee-org")
  *             .description("Terraform-provisioned Apigee Org.")
- *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .projectId(current.project())
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
  *             .build(), CustomResourceOptions.builder()
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = OrganizationsFunctions.getClientConfig();
+ *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
@@ -234,7 +234,7 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .displayName("apigee-org")
  *             .description("Terraform-provisioned Apigee Org.")
- *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .projectId(current.project())
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
  *             .build(), CustomResourceOptions.builder()
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  * 
  *         var apigee_nat = new NatAddress("apigee-nat", NatAddressArgs.builder()
  *             .name("my-nat-address")
- *             .activate("true")
+ *             .activate(true)
  *             .instanceId(apigeeInstance.id())
  *             .build());
  * 

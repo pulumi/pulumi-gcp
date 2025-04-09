@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .lake(example.lake())
  *             .dataplexZone(example.dataplexZone())
  *             .asset(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  *             .lake(example.lake())
  *             .dataplexZone(example.dataplexZone())
  *             .asset(example.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

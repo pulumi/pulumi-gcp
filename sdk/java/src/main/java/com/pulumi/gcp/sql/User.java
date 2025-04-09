@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+ *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
@@ -94,6 +94,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TrimsuffixArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -112,7 +114,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+ *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
  *             .databaseVersion("POSTGRES_15")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
@@ -179,7 +181,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+ *             .name(dbNameSuffix.hex().applyValue(_hex -> String.format("main-instance-%s", _hex)))
  *             .databaseVersion("MYSQL_8_0")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")

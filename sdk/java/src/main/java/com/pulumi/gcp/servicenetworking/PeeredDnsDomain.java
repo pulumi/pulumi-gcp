@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var name = new PeeredDnsDomain("name", PeeredDnsDomainArgs.builder()
- *             .project(10000000)
+ *             .project("10000000")
  *             .name("example-com")
  *             .network("default")
  *             .dnsSuffix("example.com.")

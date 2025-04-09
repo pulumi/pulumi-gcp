@@ -201,7 +201,8 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .accessConfigs()
+ *                 .accessConfigs(InstanceNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
  *                 .subnetwork(defaultSubnetwork.id())
  *                 .build())
  *             .name("instance")
@@ -209,7 +210,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(myImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                     .image(myImage.selfLink())
  *                     .build())
  *                 .build())
  *             .build());
@@ -219,7 +220,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .instance(defaultInstance.selfLink())
  *             .port(80)
- *             .ipAddress(defaultInstance.networkInterfaces().applyValue(networkInterfaces -> networkInterfaces[0].networkIp()))
+ *             .ipAddress(defaultInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
  *             .clientDestinationPort(8080)
  *             .build());
  * 

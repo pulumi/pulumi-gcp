@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *         var policy = new NoteIamPolicy("policy", NoteIamPolicyArgs.builder()
  *             .project(note.project())
  *             .note(note.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -206,7 +206,7 @@ import javax.annotation.Nullable;
  *         var policy = new NoteIamPolicy("policy", NoteIamPolicyArgs.builder()
  *             .project(note.project())
  *             .note(note.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

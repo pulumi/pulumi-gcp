@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .build())
- *             .forceDelete("false")
+ *             .forceDelete(false)
  *             .build());
  * 
  *         var basicTag = new Tag("basicTag", TagArgs.builder()
@@ -223,7 +223,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .build())
- *             .forceDelete("false")
+ *             .forceDelete(false)
  *             .build());
  * 
  *         var entryGroupTag = new Tag("entryGroupTag", TagArgs.builder()
@@ -362,7 +362,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .build())
- *             .forceDelete("false")
+ *             .forceDelete(false)
  *             .build());
  * 
  *         var basicTag = new Tag("basicTag", TagArgs.builder()
@@ -375,7 +375,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 TagFieldArgs.builder()
  *                     .fieldName("num_rows")
- *                     .doubleValue(5)
+ *                     .doubleValue(5.0)
  *                     .build(),
  *                 TagFieldArgs.builder()
  *                     .fieldName("pii_type")

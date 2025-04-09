@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -354,7 +354,7 @@ import javax.annotation.Nullable;
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -406,7 +406,7 @@ import javax.annotation.Nullable;
  *             .project(network_with_private_secondary_ip_ranges.project())
  *             .region(network_with_private_secondary_ip_ranges.region())
  *             .subnetwork(network_with_private_secondary_ip_ranges.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

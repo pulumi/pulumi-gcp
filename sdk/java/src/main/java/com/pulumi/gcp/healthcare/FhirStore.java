@@ -101,10 +101,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.healthcare.Dataset;
- * import com.pulumi.gcp.healthcare.DatasetArgs;
- * import com.pulumi.gcp.bigquery.Dataset;
- * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.healthcare.FhirStore;
  * import com.pulumi.gcp.healthcare.FhirStoreArgs;
  * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigArgs;
@@ -126,12 +122,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *         var dataset = new com.pulumi.gcp.healthcare.Dataset("dataset", com.pulumi.gcp.healthcare.DatasetArgs.builder()
  *             .name("example-dataset")
  *             .location("us-central1")
  *             .build());
  * 
- *         var bqDataset = new Dataset("bqDataset", DatasetArgs.builder()
+ *         var bqDataset = new com.pulumi.gcp.bigquery.Dataset("bqDataset", com.pulumi.gcp.bigquery.DatasetArgs.builder()
  *             .datasetId("bq_example_dataset")
  *             .friendlyName("test")
  *             .description("This is a test description")
@@ -160,7 +156,7 @@ import javax.annotation.Nullable;
  *                         .recursiveStructureDepth(3)
  *                         .lastUpdatedPartitionConfig(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs.builder()
  *                             .type("HOUR")
- *                             .expirationMs(1000000)
+ *                             .expirationMs("1000000")
  *                             .build())
  *                         .build())
  *                     .build())

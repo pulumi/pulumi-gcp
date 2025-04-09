@@ -136,8 +136,10 @@ import javax.annotation.Nullable;
  *             .database(database.name())
  *             .collection("chatrooms")
  *             .field("timestamp")
- *             .ttlConfig()
- *             .indexConfig()
+ *             .ttlConfig(FieldTtlConfigArgs.builder()
+ *                 .build())
+ *             .indexConfig(FieldIndexConfigArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *     }

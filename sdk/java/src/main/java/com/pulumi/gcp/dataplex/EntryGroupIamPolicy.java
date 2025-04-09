@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .project(testEntryGroupBasic.project())
  *             .location(testEntryGroupBasic.location())
  *             .entryGroupId(testEntryGroupBasic.entryGroupId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *             .project(testEntryGroupBasic.project())
  *             .location(testEntryGroupBasic.location())
  *             .entryGroupId(testEntryGroupBasic.entryGroupId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

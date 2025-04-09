@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .displayName("test-index")
  *             .description("index for test")
  *             .metadata(AiIndexMetadataArgs.builder()
- *                 .contentsDeltaUri(bucket.name().applyValue(name -> String.format("gs://%s/contents", name)))
+ *                 .contentsDeltaUri(bucket.name().applyValue(_name -> String.format("gs://%s/contents", _name)))
  *                 .config(AiIndexMetadataConfigArgs.builder()
  *                     .dimensions(2)
  *                     .approximateNeighborsCount(150)
@@ -112,14 +112,15 @@ import javax.annotation.Nullable;
  *             .name("network-name")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var vertexIndexEndpointDeployed = new AiIndexEndpoint("vertexIndexEndpointDeployed", AiIndexEndpointArgs.builder()
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .region("us-central1")
  *             .labels(Map.of("label-one", "value-one"))
- *             .network(String.format("projects/%s/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),vertexNetwork.applyValue(getNetworkResult -> getNetworkResult.name())))
+ *             .network(String.format("projects/%s/global/networks/%s", project.number(),vertexNetwork.name()))
  *             .build());
  * 
  *         var basicDeployedIndex = new AiIndexEndpointDeployedIndex("basicDeployedIndex", AiIndexEndpointDeployedIndexArgs.builder()
@@ -220,7 +221,7 @@ import javax.annotation.Nullable;
  *             .displayName("test-index")
  *             .description("index for test")
  *             .metadata(AiIndexMetadataArgs.builder()
- *                 .contentsDeltaUri(bucket.name().applyValue(name -> String.format("gs://%s/contents", name)))
+ *                 .contentsDeltaUri(bucket.name().applyValue(_name -> String.format("gs://%s/contents", _name)))
  *                 .config(AiIndexMetadataConfigArgs.builder()
  *                     .dimensions(2)
  *                     .approximateNeighborsCount(150)
@@ -241,14 +242,15 @@ import javax.annotation.Nullable;
  *             .name("network-name")
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var vertexIndexEndpointDeployed = new AiIndexEndpoint("vertexIndexEndpointDeployed", AiIndexEndpointArgs.builder()
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .region("us-central1")
  *             .labels(Map.of("label-one", "value-one"))
- *             .network(String.format("projects/%s/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),vertexNetwork.applyValue(getNetworkResult -> getNetworkResult.name())))
+ *             .network(String.format("projects/%s/global/networks/%s", project.number(),vertexNetwork.name()))
  *             .build());
  * 
  *         var basicDeployedIndex = new AiIndexEndpointDeployedIndex("basicDeployedIndex", AiIndexEndpointDeployedIndexArgs.builder()

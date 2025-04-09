@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *         var editor = new AccountIamPolicy("editor", AccountIamPolicyArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -182,7 +182,7 @@ import javax.annotation.Nullable;
  * 
  *         var editor = new AccountIamPolicy("editor", AccountIamPolicyArgs.builder()
  *             .billingAccountId("00AA00-000AAA-00AA0A")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

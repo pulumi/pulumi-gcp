@@ -75,16 +75,16 @@ import javax.annotation.Nullable;
  *             .managedZone("example.com")
  *             .name("www.example.com.")
  *             .type("TXT")
- *             .rrdatas(token.applyValue(getTokenResult -> getTokenResult.token()))
+ *             .rrdatas(token.token())
  *             .ttl(86400)
  *             .build());
  * 
  *         var exampleWebResource = new WebResource("exampleWebResource", WebResourceArgs.builder()
  *             .site(WebResourceSiteArgs.builder()
- *                 .type(token.applyValue(getTokenResult -> getTokenResult.type()))
- *                 .identifier(token.applyValue(getTokenResult -> getTokenResult.identifier()))
+ *                 .type(token.type())
+ *                 .identifier(token.identifier())
  *                 .build())
- *             .verificationMethod(token.applyValue(getTokenResult -> getTokenResult.verificationMethod()))
+ *             .verificationMethod(token.verificationMethod())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(example)
  *                 .build());

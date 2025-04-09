@@ -146,9 +146,11 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
- *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+ *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+ *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
  *             .uniformBucketLevelAccess(true)
@@ -160,7 +162,7 @@ import javax.annotation.Nullable;
  *         var cryptoKeyMember1 = new CryptoKeyIAMMember("cryptoKeyMember1", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("example-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code dataproc-accounts.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code dataproc-accounts.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var ms = new MetastoreService("ms", MetastoreServiceArgs.builder()
@@ -184,7 +186,7 @@ import javax.annotation.Nullable;
  *                 .softwareConfig(ClusterClusterConfigSoftwareConfigArgs.builder()
  *                     .overrideProperties(Map.ofEntries(
  *                         Map.entry("dataproc:dataproc.allow.zero.workers", "true"),
- *                         Map.entry("spark:spark.history.fs.logDirectory", bucket.name().applyValue(name -> String.format("gs://%s/*}&#47;{@code spark-job-history", name)))
+ *                         Map.entry("spark:spark.history.fs.logDirectory", bucket.name().applyValue(_name -> String.format("gs://%s/*}&#47;{@code spark-job-history", _name)))
  *                     ))
  *                     .build())
  *                 .endpointConfig(ClusterClusterConfigEndpointConfigArgs.builder()
@@ -220,7 +222,7 @@ import javax.annotation.Nullable;
  *                     .networkTags("tag1")
  *                     .kmsKey("example-key")
  *                     .networkUri("default")
- *                     .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                     .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *                     .stagingBucket(bucket.name())
  *                     .build())
  *                 .peripheralsConfig(BatchEnvironmentConfigPeripheralsConfigArgs.builder()

@@ -63,7 +63,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cluster = new Cluster("cluster", ClusterArgs.builder()
  *             .name("default")
@@ -78,7 +79,7 @@ import javax.annotation.Nullable;
  *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .build());
  * 
@@ -140,7 +141,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cluster = new Cluster("cluster", ClusterArgs.builder()
  *             .name("default")
@@ -155,7 +157,7 @@ import javax.annotation.Nullable;
  *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .build());
  * 
@@ -172,7 +174,7 @@ import javax.annotation.Nullable;
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId(cryptoKeyCryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-edgecontainer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-edgecontainer.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var default_ = new NodePool("default", NodePoolArgs.builder()
@@ -228,7 +230,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .name("")
@@ -243,7 +246,7 @@ import javax.annotation.Nullable;
  *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .externalLoadBalancerIpv4AddressPools("10.100.0.0-10.100.0.10")
  *             .controlPlane(ClusterControlPlaneArgs.builder()

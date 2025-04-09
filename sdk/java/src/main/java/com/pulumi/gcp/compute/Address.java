@@ -211,7 +211,7 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(debianImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                     .image(debianImage.selfLink())
  *                     .build())
  *                 .build())
  *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()

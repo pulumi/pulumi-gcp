@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *             .rules(            
  *                 RegionSecurityPolicyRuleArgs.builder()
  *                     .action("deny")
- *                     .priority("1000")
+ *                     .priority(1000)
  *                     .match(RegionSecurityPolicyRuleMatchArgs.builder()
  *                         .expr(RegionSecurityPolicyRuleMatchExprArgs.builder()
  *                             .expression("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2")
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 RegionSecurityPolicyRuleArgs.builder()
  *                     .action("deny")
- *                     .priority("2147483647")
+ *                     .priority(2147483647)
  *                     .match(RegionSecurityPolicyRuleMatchArgs.builder()
  *                         .versionedExpr("SRC_IPS_V1")
  *                         .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()

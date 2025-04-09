@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *                             .additionalUserLabels(Map.of("context", "test"))
  *                             .workerRegion("us-central1")
  *                             .workerZone("us-central1-a")
- *                             .enableStreamingEngine("false")
+ *                             .enableStreamingEngine(false)
  *                             .build())
  *                         .update(false)
  *                         .transformNameMapping(Map.of("name", "wrench"))

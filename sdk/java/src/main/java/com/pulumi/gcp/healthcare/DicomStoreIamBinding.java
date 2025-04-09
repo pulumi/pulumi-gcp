@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *         var dicomStore = new DicomStoreIamPolicy("dicomStore", DicomStoreIamPolicyArgs.builder()
  *             .dicomStoreId("your-dicom-store-id")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

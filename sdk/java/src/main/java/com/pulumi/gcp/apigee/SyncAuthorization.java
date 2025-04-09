@@ -90,12 +90,12 @@ import javax.annotation.Nullable;
  *         var synchronizer_iam = new IAMMember("synchronizer-iam", IAMMemberArgs.builder()
  *             .project(project.projectId())
  *             .role("roles/apigee.synchronizerManager")
- *             .member(serviceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .member(serviceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build());
  * 
  *         var apigeeSyncAuthorization = new SyncAuthorization("apigeeSyncAuthorization", SyncAuthorizationArgs.builder()
  *             .name(apigeeOrg.name())
- *             .identities(serviceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
+ *             .identities(serviceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(synchronizer_iam)
  *                 .build());

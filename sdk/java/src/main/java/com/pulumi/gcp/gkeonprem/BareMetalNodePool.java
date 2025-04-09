@@ -81,10 +81,12 @@ import javax.annotation.Nullable;
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
- *                         .labels()
+ *                         .labels(Map.ofEntries(
+ *                         ))
  *                         .operatingSystem("LINUX")
  *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                             .labels()
+ *                             .labels(Map.ofEntries(
+ *                             ))
  *                             .nodeIp("10.200.0.9")
  *                             .build())
  *                         .build())
@@ -210,10 +212,12 @@ import javax.annotation.Nullable;
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
- *                         .labels()
+ *                         .labels(Map.ofEntries(
+ *                         ))
  *                         .operatingSystem("LINUX")
  *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                             .labels()
+ *                             .labels(Map.ofEntries(
+ *                             ))
  *                             .nodeIp("10.200.0.9")
  *                             .build())
  *                         .build())
@@ -270,13 +274,16 @@ import javax.annotation.Nullable;
  *             .displayName("test-name")
  *             .bareMetalCluster(default_full.name())
  *             .location("us-west1")
- *             .annotations()
+ *             .annotations(Map.ofEntries(
+ *             ))
  *             .nodePoolConfig(BareMetalNodePoolNodePoolConfigArgs.builder()
  *                 .operatingSystem("LINUX")
- *                 .labels()
+ *                 .labels(Map.ofEntries(
+ *                 ))
  *                 .nodeConfigs(BareMetalNodePoolNodePoolConfigNodeConfigArgs.builder()
  *                     .nodeIp("10.200.0.11")
- *                     .labels()
+ *                     .labels(Map.ofEntries(
+ *                     ))
  *                     .build())
  *                 .taints(BareMetalNodePoolNodePoolConfigTaintArgs.builder()
  *                     .key("test-key")

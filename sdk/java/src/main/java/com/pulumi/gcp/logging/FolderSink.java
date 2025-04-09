@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .name("my-sink")
  *             .description("some explanation on what this is")
  *             .folder(my_folder.name())
- *             .destination(log_bucket.name().applyValue(name -> String.format("storage.googleapis.com/%s", name)))
+ *             .destination(log_bucket.name().applyValue(_name -> String.format("storage.googleapis.com/%s", _name)))
  *             .filter("resource.type = gce_instance AND severity >= WARNING")
  *             .build());
  * 

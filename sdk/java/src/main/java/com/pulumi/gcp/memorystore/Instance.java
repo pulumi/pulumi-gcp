@@ -101,14 +101,15 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var instance_basic = new Instance("instance-basic", InstanceArgs.builder()
  *             .instanceId("basic-instance")
  *             .shardCount(3)
  *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
  *                 .network(producerNet.id())
- *                 .projectId(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .projectId(project.projectId())
  *                 .build())
  *             .location("us-central1")
  *             .deletionProtectionEnabled(false)
@@ -195,14 +196,15 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var instance_full = new Instance("instance-full", InstanceArgs.builder()
  *             .instanceId("full-instance")
  *             .shardCount(3)
  *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
  *                 .network(producerNet.id())
- *                 .projectId(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .projectId(project.projectId())
  *                 .build())
  *             .location("us-central1")
  *             .replicaCount(2)
@@ -306,14 +308,15 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var instance_persistence_aof = new Instance("instance-persistence-aof", InstanceArgs.builder()
  *             .instanceId("aof-instance")
  *             .shardCount(3)
  *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
  *                 .network(producerNet.id())
- *                 .projectId(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .projectId(project.projectId())
  *                 .build())
  *             .location("us-central1")
  *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
@@ -396,7 +399,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         // Primary instance
  *         var primaryInstance = new Instance("primaryInstance", InstanceArgs.builder()
@@ -404,7 +408,7 @@ import javax.annotation.Nullable;
  *             .shardCount(1)
  *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
  *                 .network(primaryProducerNet.id())
- *                 .projectId(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .projectId(project.projectId())
  *                 .build())
  *             .location("asia-east1")
  *             .replicaCount(1)
@@ -458,7 +462,7 @@ import javax.annotation.Nullable;
  *             .shardCount(1)
  *             .desiredPscAutoConnections(InstanceDesiredPscAutoConnectionArgs.builder()
  *                 .network(secondaryProducerNet.id())
- *                 .projectId(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .projectId(project.projectId())
  *                 .build())
  *             .location("europe-north1")
  *             .replicaCount(1)

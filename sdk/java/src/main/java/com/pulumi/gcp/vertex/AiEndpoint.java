@@ -100,7 +100,8 @@ import javax.annotation.Nullable;
  *             .deleteContentsOnDestroy(true)
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
  *             .name("endpoint-name")
@@ -109,13 +110,13 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .region("us-central1")
  *             .labels(Map.of("label-one", "value-one"))
- *             .network(vertexNetwork.name().applyValue(name -> String.format("projects/%s/global/networks/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .network(vertexNetwork.name().applyValue(_name -> String.format("projects/%s/global/networks/%s", project.number(),_name)))
  *             .encryptionSpec(AiEndpointEncryptionSpecArgs.builder()
  *                 .kmsKeyName("kms-name")
  *                 .build())
  *             .predictRequestResponseLoggingConfig(AiEndpointPredictRequestResponseLoggingConfigArgs.builder()
  *                 .bigqueryDestination(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs.builder()
- *                     .outputUri(bqDataset.datasetId().applyValue(datasetId -> String.format("bq://%s.%s.request_response_logging", project.applyValue(getProjectResult -> getProjectResult.projectId()),datasetId)))
+ *                     .outputUri(bqDataset.datasetId().applyValue(_datasetId -> String.format("bq://%s.%s.request_response_logging", project.projectId(),_datasetId)))
  *                     .build())
  *                 .enabled(true)
  *                 .samplingRate(0.1)
@@ -131,7 +132,7 @@ import javax.annotation.Nullable;
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-name")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-aiplatform.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *     }}{@code
@@ -167,7 +168,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
  *             .name("endpoint-name_9394")
@@ -178,7 +180,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("label-one", "value-one"))
  *             .privateServiceConnectConfig(AiEndpointPrivateServiceConnectConfigArgs.builder()
  *                 .enablePrivateServiceConnect(true)
- *                 .projectAllowlists(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *                 .projectAllowlists(project.projectId())
  *                 .enableSecurePrivateServiceConnect(false)
  *                 .build())
  *             .build());
@@ -225,7 +227,8 @@ import javax.annotation.Nullable;
  *             .dedicatedEndpointEnabled(true)
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *     }
  * }

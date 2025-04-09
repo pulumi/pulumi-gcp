@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -347,7 +347,7 @@ import javax.annotation.Nullable;
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -398,7 +398,7 @@ import javax.annotation.Nullable;
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .project(secret_basic.project())
  *             .secretId(secret_basic.secretId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

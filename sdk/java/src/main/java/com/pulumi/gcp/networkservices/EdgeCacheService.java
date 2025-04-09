@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *                     .name("routes")
  *                     .routeRules(EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
  *                         .description("a route rule to match against")
- *                         .priority(1)
+ *                         .priority("1")
  *                         .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                             .prefixMatch("/")
  *                             .build())
@@ -199,7 +199,7 @@ import javax.annotation.Nullable;
  *                         .name("routes")
  *                         .routeRules(EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
  *                             .description("a route rule to match against")
- *                             .priority(1)
+ *                             .priority("1")
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                 .prefixMatch("/")
  *                                 .build())
@@ -224,7 +224,7 @@ import javax.annotation.Nullable;
  *                         .routeRules(                        
  *                             EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
  *                                 .description("an advanced route rule to match against")
- *                                 .priority(1)
+ *                                 .priority("1")
  *                                 .matchRules(                                
  *                                     EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                         .prefixMatch("/potato/")
@@ -302,7 +302,7 @@ import javax.annotation.Nullable;
  *                                 .build(),
  *                             EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
  *                                 .description("a second route rule to match against")
- *                                 .priority(2)
+ *                                 .priority("2")
  *                                 .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                     .fullPathMatch("/yay")
  *                                     .build())
@@ -376,7 +376,8 @@ import javax.annotation.Nullable;
  *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
  *             .secretId("secret-name")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -417,7 +418,7 @@ import javax.annotation.Nullable;
  *                     .routeRules(                    
  *                         EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
  *                             .description("a route rule to match against master playlist")
- *                             .priority(1)
+ *                             .priority("1")
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                 .pathTemplateMatch("/master.m3u8")
  *                                 .build())
@@ -442,7 +443,7 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
  *                             .description("a route rule to match against all playlists")
- *                             .priority(2)
+ *                             .priority("2")
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                 .pathTemplateMatch("/*.m3u8")
  *                                 .build())
@@ -470,7 +471,7 @@ import javax.annotation.Nullable;
  *                             .build(),
  *                         EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
  *                             .description("a route rule to match against")
- *                             .priority(3)
+ *                             .priority("3")
  *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
  *                                 .pathTemplateMatch("/**.m3u8")
  *                                 .build())

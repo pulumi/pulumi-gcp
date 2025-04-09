@@ -69,6 +69,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificatemanager.Certificate;
  * import com.pulumi.gcp.certificatemanager.CertificateArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.certificatemanager.TrustConfig;
  * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;

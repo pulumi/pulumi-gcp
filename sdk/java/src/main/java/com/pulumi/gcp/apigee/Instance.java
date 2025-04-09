@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = OrganizationsFunctions.getClientConfig();
+ *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
- *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .projectId(current.project())
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(apigeeVpcConnection)
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = OrganizationsFunctions.getClientConfig();
+ *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  * 
  *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
- *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .projectId(current.project())
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(apigeeVpcConnection)
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = OrganizationsFunctions.getClientConfig();
+ *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
@@ -232,7 +232,7 @@ import javax.annotation.Nullable;
  * 
  *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
- *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .projectId(current.project())
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(apigeeVpcConnection)
@@ -293,7 +293,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = OrganizationsFunctions.getClientConfig();
+ *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
@@ -338,7 +338,7 @@ import javax.annotation.Nullable;
  *             .analyticsRegion("us-central1")
  *             .displayName("apigee-org")
  *             .description("Auto-provisioned Apigee Org.")
- *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .projectId(current.project())
  *             .authorizedNetwork(apigeeNetwork.id())
  *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
  *             .build(), CustomResourceOptions.builder()

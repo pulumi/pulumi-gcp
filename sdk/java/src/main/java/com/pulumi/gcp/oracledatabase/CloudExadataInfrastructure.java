@@ -62,10 +62,10 @@ import javax.annotation.Nullable;
  *             .project("my-project")
  *             .properties(CloudExadataInfrastructurePropertiesArgs.builder()
  *                 .shape("Exadata.X9M")
- *                 .computeCount("2")
- *                 .storageCount("3")
+ *                 .computeCount(2)
+ *                 .storageCount(3)
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *     }
@@ -108,17 +108,17 @@ import javax.annotation.Nullable;
  *             .gcpOracleZone("us-east4-b-r1")
  *             .properties(CloudExadataInfrastructurePropertiesArgs.builder()
  *                 .shape("Exadata.X9M")
- *                 .computeCount("2")
- *                 .storageCount("3")
+ *                 .computeCount(2)
+ *                 .storageCount(3)
  *                 .customerContacts(CloudExadataInfrastructurePropertiesCustomerContactArgs.builder()
  *                     .email("xyz}{@literal @}{@code example.com")
  *                     .build())
  *                 .maintenanceWindow(CloudExadataInfrastructurePropertiesMaintenanceWindowArgs.builder()
- *                     .customActionTimeoutMins("20")
+ *                     .customActionTimeoutMins(20)
  *                     .daysOfWeeks("SUNDAY")
  *                     .hoursOfDays(4)
- *                     .isCustomActionTimeoutEnabled("0")
- *                     .leadTimeWeek("1")
+ *                     .isCustomActionTimeoutEnabled(false)
+ *                     .leadTimeWeek(1)
  *                     .months(                    
  *                         "JANUARY",
  *                         "APRIL",
@@ -128,10 +128,10 @@ import javax.annotation.Nullable;
  *                     .preference("CUSTOM_PREFERENCE")
  *                     .weeksOfMonths(4)
  *                     .build())
- *                 .totalStorageSizeGb("196608")
+ *                 .totalStorageSizeGb(196608)
  *                 .build())
  *             .labels(Map.of("label-one", "value-one"))
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *     }}{@code

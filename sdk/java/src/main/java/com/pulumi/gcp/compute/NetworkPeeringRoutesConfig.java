@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var networkPrimary = new Network("networkPrimary", NetworkArgs.builder()
  *             .name("primary-network")
- *             .autoCreateSubnetworks("false")
+ *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var networkSecondary = new Network("networkSecondary", NetworkArgs.builder()
  *             .name("secondary-network")
- *             .autoCreateSubnetworks("false")
+ *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var peeringPrimary = new NetworkPeering("peeringPrimary", NetworkPeeringArgs.builder()
@@ -165,16 +165,17 @@ import javax.annotation.Nullable;
  *                 .enablePrivateNodes(true)
  *                 .masterIpv4CidrBlock("10.42.0.0/28")
  *                 .build())
- *             .masterAuthorizedNetworksConfig()
+ *             .masterAuthorizedNetworksConfig(ClusterMasterAuthorizedNetworksConfigArgs.builder()
+ *                 .build())
  *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
- *                 .clusterSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[0].rangeName()))
- *                 .servicesSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[1].rangeName()))
+ *                 .clusterSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges[0].rangeName()))
+ *                 .servicesSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges[1].rangeName()))
  *                 .build())
  *             .deletionProtection(true)
  *             .build());
  * 
  *         var peeringGkeRoutes = new NetworkPeeringRoutesConfig("peeringGkeRoutes", NetworkPeeringRoutesConfigArgs.builder()
- *             .peering(privateCluster.privateClusterConfig().applyValue(privateClusterConfig -> privateClusterConfig.peeringName()))
+ *             .peering(privateCluster.privateClusterConfig().applyValue(_privateClusterConfig -> _privateClusterConfig.peeringName()))
  *             .network(containerNetwork.name())
  *             .importCustomRoutes(true)
  *             .exportCustomRoutes(true)

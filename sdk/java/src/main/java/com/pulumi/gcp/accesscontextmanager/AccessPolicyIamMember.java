@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new AccessPolicyIamPolicy("policy", AccessPolicyIamPolicyArgs.builder()
  *             .name(access_policy.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -205,7 +205,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new AccessPolicyIamPolicy("policy", AccessPolicyIamPolicyArgs.builder()
  *             .name(access_policy.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

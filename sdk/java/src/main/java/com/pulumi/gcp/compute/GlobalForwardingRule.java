@@ -174,7 +174,7 @@ import javax.annotation.Nullable;
  *                 .network("default")
  *                 .build())
  *             .disks(InstanceTemplateDiskArgs.builder()
- *                 .sourceImage(debianImage.applyValue(getImageResult -> getImageResult.selfLink()))
+ *                 .sourceImage(debianImage.selfLink())
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .build())
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *                 .group(igm.instanceGroup())
  *                 .balancingMode("RATE")
  *                 .capacityScaler(0.4)
- *                 .maxRatePerInstance(50)
+ *                 .maxRatePerInstance(50.0)
  *                 .build())
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
@@ -405,7 +405,7 @@ import javax.annotation.Nullable;
  *         var defaultNetworkEndpointGroup = new NetworkEndpointGroup("defaultNetworkEndpointGroup", NetworkEndpointGroupArgs.builder()
  *             .name("default-neg")
  *             .network(default_.id())
- *             .defaultPort("90")
+ *             .defaultPort(90)
  *             .zone("us-central1-a")
  *             .networkEndpointType("GCE_VM_IP_PORT")
  *             .build());
@@ -423,7 +423,7 @@ import javax.annotation.Nullable;
  *         var hybrid = new NetworkEndpointGroup("hybrid", NetworkEndpointGroupArgs.builder()
  *             .name("hybrid-neg")
  *             .network(default_.id())
- *             .defaultPort("90")
+ *             .defaultPort(90)
  *             .zone("us-central1-a")
  *             .networkEndpointType("NON_GCP_PRIVATE_IP_PORT")
  *             .build());
@@ -439,7 +439,7 @@ import javax.annotation.Nullable;
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -452,7 +452,7 @@ import javax.annotation.Nullable;
  *             .backends(BackendServiceBackendArgs.builder()
  *                 .group(defaultNetworkEndpointGroup.id())
  *                 .balancingMode("RATE")
- *                 .maxRatePerEndpoint(10)
+ *                 .maxRatePerEndpoint(10.0)
  *                 .build())
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
@@ -466,7 +466,7 @@ import javax.annotation.Nullable;
  *             .backends(BackendServiceBackendArgs.builder()
  *                 .group(hybrid.id())
  *                 .balancingMode("RATE")
- *                 .maxRatePerEndpoint(10)
+ *                 .maxRatePerEndpoint(10.0)
  *                 .build())
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());

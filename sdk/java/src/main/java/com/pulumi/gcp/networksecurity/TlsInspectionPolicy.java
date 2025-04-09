@@ -92,7 +92,8 @@ import javax.annotation.Nullable;
  *                         .isCa(false)
  *                         .build())
  *                     .keyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageArgs.builder()
- *                         .baseKeyUsage()
+ *                         .baseKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs.builder()
+ *                             .build())
  *                         .extendedKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs.builder()
  *                             .serverAuth(true)
  *                             .build())
@@ -137,12 +138,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var tlsInspectionPermission = new CaPoolIamMember("tlsInspectionPermission", CaPoolIamMemberArgs.builder()
  *             .caPool(default_.id())
  *             .role("roles/privateca.certificateManager")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-networksecurity.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-networksecurity.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy("defaultTlsInspectionPolicy", TlsInspectionPolicyArgs.builder()
@@ -199,6 +201,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificatemanager.TrustConfig;
  * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
  * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -230,7 +234,8 @@ import javax.annotation.Nullable;
  *                         .isCa(false)
  *                         .build())
  *                     .keyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageArgs.builder()
- *                         .baseKeyUsage()
+ *                         .baseKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs.builder()
+ *                             .build())
  *                         .extendedKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs.builder()
  *                             .serverAuth(true)
  *                             .build())

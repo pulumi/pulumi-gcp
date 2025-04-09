@@ -525,7 +525,7 @@ public final class IapFunctions {
      *             .build());
      * 
      *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
      *             .clientId(apps.googleusercontent().com())
      *             .build());
      * 
@@ -574,7 +574,7 @@ public final class IapFunctions {
      *             .build());
      * 
      *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
      *             .clientId(apps.googleusercontent().com())
      *             .build());
      * 
@@ -623,7 +623,7 @@ public final class IapFunctions {
      *             .build());
      * 
      *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
      *             .clientId(apps.googleusercontent().com())
      *             .build());
      * 
@@ -672,7 +672,7 @@ public final class IapFunctions {
      *             .build());
      * 
      *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
      *             .clientId(apps.googleusercontent().com())
      *             .build());
      * 
@@ -721,7 +721,7 @@ public final class IapFunctions {
      *             .build());
      * 
      *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
      *             .clientId(apps.googleusercontent().com())
      *             .build());
      * 

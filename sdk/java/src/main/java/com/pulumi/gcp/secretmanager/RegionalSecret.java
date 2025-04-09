@@ -102,12 +102,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var kms_secret_binding = new CryptoKeyIAMMember("kms-secret-binding", CryptoKeyIAMMemberArgs.builder()
  *             .cryptoKeyId("kms-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-secretmanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-secretmanager.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var regional_secret_with_cmek = new RegionalSecret("regional-secret-with-cmek", RegionalSecretArgs.builder()
@@ -159,7 +160,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("tf-topic")
@@ -168,7 +170,7 @@ import javax.annotation.Nullable;
  *         var secretsManagerAccess = new TopicIAMMember("secretsManagerAccess", TopicIAMMemberArgs.builder()
  *             .topic(topic.name())
  *             .role("roles/pubsub.publisher")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-secretmanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-secretmanager.iam.gserviceaccount.com", project.number()))
  *             .build());
  * 
  *         var regional_secret_with_rotation = new RegionalSecret("regional-secret-with-rotation", RegionalSecretArgs.builder()

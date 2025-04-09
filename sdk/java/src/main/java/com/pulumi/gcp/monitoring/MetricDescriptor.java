@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *             .conditions(AlertPolicyConditionArgs.builder()
  *                 .displayName("test condition")
  *                 .conditionThreshold(AlertPolicyConditionConditionThresholdArgs.builder()
- *                     .filter(withAlert.type().applyValue(type -> String.format("metric.type=\"%s\" AND resource.type=\"gce_instance\"", type)))
+ *                     .filter(withAlert.type().applyValue(_type -> String.format("metric.type=\"%s\" AND resource.type=\"gce_instance\"", _type)))
  *                     .duration("60s")
  *                     .comparison("COMPARISON_GT")
  *                     .build())

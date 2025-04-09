@@ -92,10 +92,12 @@ import javax.annotation.Nullable;
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
- *                         .labels()
+ *                         .labels(Map.ofEntries(
+ *                         ))
  *                         .operatingSystem("LINUX")
  *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                             .labels()
+ *                             .labels(Map.ofEntries(
+ *                             ))
  *                             .nodeIp("10.200.0.9")
  *                             .build())
  *                         .build())
@@ -210,10 +212,12 @@ import javax.annotation.Nullable;
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
- *                         .labels()
+ *                         .labels(Map.ofEntries(
+ *                         ))
  *                         .operatingSystem("LINUX")
  *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                             .labels()
+ *                             .labels(Map.ofEntries(
+ *                             ))
  *                             .nodeIp("10.200.0.9")
  *                             .build())
  *                         .build())
@@ -336,10 +340,12 @@ import javax.annotation.Nullable;
  *             .controlPlane(BareMetalClusterControlPlaneArgs.builder()
  *                 .controlPlaneNodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs.builder()
  *                     .nodePoolConfig(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs.builder()
- *                         .labels()
+ *                         .labels(Map.ofEntries(
+ *                         ))
  *                         .operatingSystem("LINUX")
  *                         .nodeConfigs(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                             .labels()
+ *                             .labels(Map.ofEntries(
+ *                             ))
  *                             .nodeIp("10.200.0.9")
  *                             .build())
  *                         .taints(BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs.builder()
@@ -384,10 +390,12 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .loadBalancerNodePoolConfig(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs.builder()
  *                         .nodePoolConfig(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs.builder()
- *                             .labels()
+ *                             .labels(Map.ofEntries(
+ *                             ))
  *                             .operatingSystem("LINUX")
  *                             .nodeConfigs(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs.builder()
- *                                 .labels()
+ *                                 .labels(Map.ofEntries(
+ *                                 ))
  *                                 .nodeIp("10.200.0.9")
  *                                 .build())
  *                             .taints(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs.builder()

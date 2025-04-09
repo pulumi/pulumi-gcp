@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *         var policy = new ApiConfigIamPolicy("policy", ApiConfigIamPolicyArgs.builder()
  *             .api(apiCfg.api())
  *             .apiConfig(apiCfg.apiConfigId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -206,7 +206,7 @@ import javax.annotation.Nullable;
  *         var policy = new ApiConfigIamPolicy("policy", ApiConfigIamPolicyArgs.builder()
  *             .api(apiCfg.api())
  *             .apiConfig(apiCfg.apiConfigId())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

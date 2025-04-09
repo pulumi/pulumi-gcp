@@ -70,25 +70,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         final var versions = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
  *             .location("us-west1")
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .build());
  * 
  *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()
  *             .name("basic")
  *             .location("us-west1")
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .description("Test cluster")
  *             .distribution("aks")
  *             .oidcConfig(AttachedClusterOidcConfigArgs.builder()
  *                 .issuerUrl("https://oidc.issuer.url")
  *                 .build())
- *             .platformVersion(versions.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]))
+ *             .platformVersion(versions.validVersions()[0])
  *             .fleet(AttachedClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .build());
  * 
@@ -123,6 +124,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AttachedClusterBinaryAuthorizationArgs;
  * import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigArgs;
  * import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigKubernetesSecretArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -136,16 +139,17 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         final var versions = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
  *             .location("us-west1")
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .build());
  * 
  *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()
  *             .name("basic")
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .location("us-west1")
  *             .description("Test cluster")
  *             .distribution("aks")
@@ -164,9 +168,9 @@ import javax.annotation.Nullable;
  *                     .input("}{{@code \"keys\":[}{{@code \"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"testid\",\"alg\":\"RS256\",\"n\":\"somedata\",\"e\":\"AQAB\"}}{@code ]}}{@code ")
  *                     .build()).result())
  *                 .build())
- *             .platformVersion(versions.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]))
+ *             .platformVersion(versions.validVersions()[0])
  *             .fleet(AttachedClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .loggingConfig(AttachedClusterLoggingConfigArgs.builder()
  *                 .componentConfig(AttachedClusterLoggingConfigComponentConfigArgs.builder()
@@ -227,25 +231,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         final var versions = ContainerFunctions.getAttachedVersions(GetAttachedVersionsArgs.builder()
  *             .location("us-west1")
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .build());
  * 
  *         var primary = new AttachedCluster("primary", AttachedClusterArgs.builder()
  *             .name("basic")
  *             .location("us-west1")
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .project(project.projectId())
  *             .description("Test cluster")
  *             .distribution("aks")
  *             .oidcConfig(AttachedClusterOidcConfigArgs.builder()
  *                 .issuerUrl("https://oidc.issuer.url")
  *                 .build())
- *             .platformVersion(versions.applyValue(getAttachedVersionsResult -> getAttachedVersionsResult.validVersions()[0]))
+ *             .platformVersion(versions.validVersions()[0])
  *             .fleet(AttachedClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .deletionPolicy("DELETE_IGNORE_ERRORS")
  *             .build());

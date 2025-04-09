@@ -68,7 +68,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cluster = new Cluster("cluster", ClusterArgs.builder()
  *             .name("default")
@@ -83,7 +84,7 @@ import javax.annotation.Nullable;
  *                 .servicesIpv4CidrBlocks("10.1.0.0/16")
  *                 .build())
  *             .fleet(ClusterFleetArgs.builder()
- *                 .project(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *                 .project(String.format("projects/%s", project.number()))
  *                 .build())
  *             .build());
  * 
@@ -102,7 +103,7 @@ import javax.annotation.Nullable;
  *         var default_ = new VpnConnection("default", VpnConnectionArgs.builder()
  *             .name("vpn-connection-1")
  *             .location("us-central1")
- *             .cluster(cluster.name().applyValue(name -> String.format("projects/%s/locations/us-east1/clusters/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .cluster(cluster.name().applyValue(_name -> String.format("projects/%s/locations/us-east1/clusters/%s", project.number(),_name)))
  *             .vpc(vpc.name())
  *             .enableHighAvailability(true)
  *             .labels(Map.ofEntries(

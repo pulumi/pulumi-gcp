@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  *                         .build(),
  *                     CaPoolIssuancePolicyAllowedKeyTypeArgs.builder()
  *                         .rsa(CaPoolIssuancePolicyAllowedKeyTypeRsaArgs.builder()
- *                             .minModulusSize(5)
- *                             .maxModulusSize(10)
+ *                             .minModulusSize("5")
+ *                             .maxModulusSize("10")
  *                             .build())
  *                         .build())
  *                 .maximumLifetime("50000s")

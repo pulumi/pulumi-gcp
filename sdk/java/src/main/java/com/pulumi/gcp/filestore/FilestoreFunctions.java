@@ -47,9 +47,9 @@ public final class FilestoreFunctions {
      *             .name("my-filestore-instance")
      *             .build());
      * 
-     *         ctx.export("instanceIpAddresses", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().ipAddresses()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().connectMode()));
-     *         ctx.export("instanceFileShareName", myInstance.applyValue(getInstanceResult -> getInstanceResult.fileShares().name()));
+     *         ctx.export("instanceIpAddresses", myInstance.networks().ipAddresses());
+     *         ctx.export("instanceConnectMode", myInstance.networks().connectMode());
+     *         ctx.export("instanceFileShareName", myInstance.fileShares().name());
      *     }
      * }
      * }
@@ -92,9 +92,9 @@ public final class FilestoreFunctions {
      *             .name("my-filestore-instance")
      *             .build());
      * 
-     *         ctx.export("instanceIpAddresses", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().ipAddresses()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().connectMode()));
-     *         ctx.export("instanceFileShareName", myInstance.applyValue(getInstanceResult -> getInstanceResult.fileShares().name()));
+     *         ctx.export("instanceIpAddresses", myInstance.networks().ipAddresses());
+     *         ctx.export("instanceConnectMode", myInstance.networks().connectMode());
+     *         ctx.export("instanceFileShareName", myInstance.fileShares().name());
      *     }
      * }
      * }
@@ -137,9 +137,9 @@ public final class FilestoreFunctions {
      *             .name("my-filestore-instance")
      *             .build());
      * 
-     *         ctx.export("instanceIpAddresses", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().ipAddresses()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().connectMode()));
-     *         ctx.export("instanceFileShareName", myInstance.applyValue(getInstanceResult -> getInstanceResult.fileShares().name()));
+     *         ctx.export("instanceIpAddresses", myInstance.networks().ipAddresses());
+     *         ctx.export("instanceConnectMode", myInstance.networks().connectMode());
+     *         ctx.export("instanceFileShareName", myInstance.fileShares().name());
      *     }
      * }
      * }
@@ -182,9 +182,9 @@ public final class FilestoreFunctions {
      *             .name("my-filestore-instance")
      *             .build());
      * 
-     *         ctx.export("instanceIpAddresses", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().ipAddresses()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().connectMode()));
-     *         ctx.export("instanceFileShareName", myInstance.applyValue(getInstanceResult -> getInstanceResult.fileShares().name()));
+     *         ctx.export("instanceIpAddresses", myInstance.networks().ipAddresses());
+     *         ctx.export("instanceConnectMode", myInstance.networks().connectMode());
+     *         ctx.export("instanceFileShareName", myInstance.fileShares().name());
      *     }
      * }
      * }
@@ -227,9 +227,9 @@ public final class FilestoreFunctions {
      *             .name("my-filestore-instance")
      *             .build());
      * 
-     *         ctx.export("instanceIpAddresses", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().ipAddresses()));
-     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().connectMode()));
-     *         ctx.export("instanceFileShareName", myInstance.applyValue(getInstanceResult -> getInstanceResult.fileShares().name()));
+     *         ctx.export("instanceIpAddresses", myInstance.networks().ipAddresses());
+     *         ctx.export("instanceConnectMode", myInstance.networks().connectMode());
+     *         ctx.export("instanceFileShareName", myInstance.fileShares().name());
      *     }
      * }
      * }

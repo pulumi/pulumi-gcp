@@ -71,14 +71,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
  *             .name("iap-bs-health-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 
@@ -91,7 +92,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var iapSettings = new Settings("iapSettings", SettingsArgs.builder()
- *             .name(default_.name().applyValue(name -> String.format("projects/%s/iap_web/compute-us-central1/services/%s", project.applyValue(getProjectResult -> getProjectResult.number()),name)))
+ *             .name(default_.name().applyValue(_name -> String.format("projects/%s/iap_web/compute-us-central1/services/%s", project.number(),_name)))
  *             .accessSettings(SettingsAccessSettingsArgs.builder()
  *                 .identitySources("WORKFORCE_IDENTITY_FEDERATION")
  *                 .allowedDomainsSettings(SettingsAccessSettingsAllowedDomainsSettingsArgs.builder()

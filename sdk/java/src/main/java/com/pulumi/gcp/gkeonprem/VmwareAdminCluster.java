@@ -157,7 +157,8 @@ import javax.annotation.Nullable;
  *             .bootstrapClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
  *             .onPremVersion("1.31.0-gke.35")
  *             .imageType("ubuntu_containerd")
- *             .annotations()
+ *             .annotations(Map.ofEntries(
+ *             ))
  *             .vcenter(VmwareAdminClusterVcenterArgs.builder()
  *                 .resourcePool("test resource pool")
  *                 .datastore("test data store")

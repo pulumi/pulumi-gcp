@@ -80,7 +80,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(getKeysResult -> getKeysResult).applyValue(fooDnsKeys -> fooDnsKeys.applyValue(getKeysResult -> getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
      *     }
      * }
      * }
@@ -144,7 +144,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(getKeysResult -> getKeysResult).applyValue(fooDnsKeys -> fooDnsKeys.applyValue(getKeysResult -> getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
      *     }
      * }
      * }
@@ -208,7 +208,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(getKeysResult -> getKeysResult).applyValue(fooDnsKeys -> fooDnsKeys.applyValue(getKeysResult -> getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
      *     }
      * }
      * }
@@ -272,7 +272,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(getKeysResult -> getKeysResult).applyValue(fooDnsKeys -> fooDnsKeys.applyValue(getKeysResult -> getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
      *     }
      * }
      * }
@@ -336,7 +336,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(getKeysResult -> getKeysResult).applyValue(fooDnsKeys -> fooDnsKeys.applyValue(getKeysResult -> getKeysResult.keySigningKeys()[0].dsRecord())));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
      *     }
      * }
      * }
@@ -384,10 +384,10 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         var dns = new RecordSet("dns", RecordSetArgs.builder()
-     *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .name(String.format("my-address.%s", envDnsZone.dnsName()))
      *             .type("TXT")
      *             .ttl(300)
-     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .managedZone(envDnsZone.name())
      *             .rrdatas("test")
      *             .build());
      * 
@@ -438,10 +438,10 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         var dns = new RecordSet("dns", RecordSetArgs.builder()
-     *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .name(String.format("my-address.%s", envDnsZone.dnsName()))
      *             .type("TXT")
      *             .ttl(300)
-     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .managedZone(envDnsZone.name())
      *             .rrdatas("test")
      *             .build());
      * 
@@ -492,10 +492,10 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         var dns = new RecordSet("dns", RecordSetArgs.builder()
-     *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .name(String.format("my-address.%s", envDnsZone.dnsName()))
      *             .type("TXT")
      *             .ttl(300)
-     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .managedZone(envDnsZone.name())
      *             .rrdatas("test")
      *             .build());
      * 
@@ -546,10 +546,10 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         var dns = new RecordSet("dns", RecordSetArgs.builder()
-     *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .name(String.format("my-address.%s", envDnsZone.dnsName()))
      *             .type("TXT")
      *             .ttl(300)
-     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .managedZone(envDnsZone.name())
      *             .rrdatas("test")
      *             .build());
      * 
@@ -600,10 +600,10 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         var dns = new RecordSet("dns", RecordSetArgs.builder()
-     *             .name(String.format("my-address.%s", envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .name(String.format("my-address.%s", envDnsZone.dnsName()))
      *             .type("TXT")
      *             .ttl(300)
-     *             .managedZone(envDnsZone.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .managedZone(envDnsZone.name())
      *             .rrdatas("test")
      *             .build());
      * 
@@ -1178,8 +1178,8 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
-     *             .name(String.format("my-record.%s", sample.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .managedZone(sample.name())
+     *             .name(String.format("my-record.%s", sample.dnsName()))
      *             .type("A")
      *             .build());
      * 
@@ -1231,8 +1231,8 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
-     *             .name(String.format("my-record.%s", sample.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .managedZone(sample.name())
+     *             .name(String.format("my-record.%s", sample.dnsName()))
      *             .type("A")
      *             .build());
      * 
@@ -1284,8 +1284,8 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
-     *             .name(String.format("my-record.%s", sample.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .managedZone(sample.name())
+     *             .name(String.format("my-record.%s", sample.dnsName()))
      *             .type("A")
      *             .build());
      * 
@@ -1337,8 +1337,8 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
-     *             .name(String.format("my-record.%s", sample.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .managedZone(sample.name())
+     *             .name(String.format("my-record.%s", sample.dnsName()))
      *             .type("A")
      *             .build());
      * 
@@ -1390,8 +1390,8 @@ public final class DnsFunctions {
      *             .build());
      * 
      *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
-     *             .managedZone(sample.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
-     *             .name(String.format("my-record.%s", sample.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .managedZone(sample.name())
+     *             .name(String.format("my-record.%s", sample.dnsName()))
      *             .type("A")
      *             .build());
      * 

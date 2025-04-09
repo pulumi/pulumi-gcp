@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new V2OrganizationSourceIamPolicy("policy", V2OrganizationSourceIamPolicyArgs.builder()
  *             .source(customSource.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new V2OrganizationSourceIamPolicy("policy", V2OrganizationSourceIamPolicyArgs.builder()
  *             .source(customSource.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

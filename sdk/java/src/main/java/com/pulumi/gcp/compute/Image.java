@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  *         var persistent = new Disk("persistent", DiskArgs.builder()
  *             .name("example-disk")
- *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
+ *             .image(debian.selfLink())
  *             .size(10)
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  * 
  *         var persistent = new Disk("persistent", DiskArgs.builder()
  *             .name("example-disk")
- *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
+ *             .image(debian.selfLink())
  *             .size(10)
  *             .type("pd-ssd")
  *             .zone("us-central1-a")
@@ -204,7 +204,7 @@ import javax.annotation.Nullable;
  * 
  *         var persistent = new Disk("persistent", DiskArgs.builder()
  *             .name("example-disk")
- *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
+ *             .image(debian.selfLink())
  *             .size(10)
  *             .type("pd-ssd")
  *             .zone("us-central1-a")

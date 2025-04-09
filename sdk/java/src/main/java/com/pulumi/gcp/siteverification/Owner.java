@@ -94,13 +94,13 @@ import javax.annotation.Nullable;
  * 
  *         final var token = SiteverificationFunctions.getToken(GetTokenArgs.builder()
  *             .type("SITE")
- *             .identifier(bucket.name().applyValue(name -> String.format("https://%s.storage.googleapis.com/", name)))
+ *             .identifier(bucket.name().applyValue(_name -> String.format("https://%s.storage.googleapis.com/", _name)))
  *             .verificationMethod("FILE")
  *             .build());
  * 
  *         var object = new BucketObject("object", BucketObjectArgs.builder()
- *             .name(token.applyValue(getTokenResult -> getTokenResult).applyValue(token -> token.applyValue(getTokenResult -> getTokenResult.token())))
- *             .content(token.applyValue(getTokenResult -> getTokenResult).applyValue(token -> String.format("google-site-verification: %s", token.applyValue(getTokenResult -> getTokenResult.token()))))
+ *             .name(token.applyValue(_token -> _token.token()))
+ *             .content(token.applyValue(_token -> String.format("google-site-verification: %s", _token.token())))
  *             .bucket(bucket.name())
  *             .build());
  * 
@@ -113,10 +113,10 @@ import javax.annotation.Nullable;
  * 
  *         var example = new WebResource("example", WebResourceArgs.builder()
  *             .site(WebResourceSiteArgs.builder()
- *                 .type(token.applyValue(getTokenResult -> getTokenResult).applyValue(token -> token.applyValue(getTokenResult -> getTokenResult.type())))
- *                 .identifier(token.applyValue(getTokenResult -> getTokenResult).applyValue(token -> token.applyValue(getTokenResult -> getTokenResult.identifier())))
+ *                 .type(token.applyValue(_token -> _token.type()))
+ *                 .identifier(token.applyValue(_token -> _token.identifier()))
  *                 .build())
- *             .verificationMethod(token.applyValue(getTokenResult -> getTokenResult).applyValue(token -> token.applyValue(getTokenResult -> getTokenResult.verificationMethod())))
+ *             .verificationMethod(token.applyValue(_token -> _token.verificationMethod()))
  *             .build());
  * 
  *         var exampleOwner = new Owner("exampleOwner", OwnerArgs.builder()

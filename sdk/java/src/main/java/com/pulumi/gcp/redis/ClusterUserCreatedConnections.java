@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip1Network1.id())
  *             .loadBalancingScheme("")
  *             .network(network1.id())
- *             .target(cluster_user_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[0].serviceAttachment()))
+ *             .target(cluster_user_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[0].serviceAttachment()))
  *             .build());
  * 
  *         var ip2Network1 = new Address("ip2Network1", AddressArgs.builder()
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip2Network1.id())
  *             .loadBalancingScheme("")
  *             .network(network1.id())
- *             .target(cluster_user_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[1].serviceAttachment()))
+ *             .target(cluster_user_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[1].serviceAttachment()))
  *             .build());
  * 
  *         var network2 = new Network("network2", NetworkArgs.builder()
@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip1Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
- *             .target(cluster_user_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[0].serviceAttachment()))
+ *             .target(cluster_user_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[0].serviceAttachment()))
  *             .build());
  * 
  *         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
@@ -155,10 +155,11 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip2Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
- *             .target(cluster_user_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[1].serviceAttachment()))
+ *             .target(cluster_user_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[1].serviceAttachment()))
  *             .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
  * 
  *         var cluster_user_conn = new ClusterUserCreatedConnections("cluster-user-conn", ClusterUserCreatedConnectionsArgs.builder()
  *             .name("cluster-user-conn")
@@ -172,8 +173,8 @@ import javax.annotation.Nullable;
  *                                 .address(ip1Network1.address())
  *                                 .forwardingRule(forwardingRule1Network1.id())
  *                                 .network(network1.id())
- *                                 .projectId(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *                                 .serviceAttachment(cluster_user_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[0].serviceAttachment()))
+ *                                 .projectId(project.projectId())
+ *                                 .serviceAttachment(cluster_user_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[0].serviceAttachment()))
  *                                 .build())
  *                             .build(),
  *                         ClusterUserCreatedConnectionsClusterEndpointConnectionArgs.builder()
@@ -182,7 +183,7 @@ import javax.annotation.Nullable;
  *                                 .address(ip2Network1.address())
  *                                 .forwardingRule(forwardingRule2Network1.id())
  *                                 .network(network1.id())
- *                                 .serviceAttachment(cluster_user_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[1].serviceAttachment()))
+ *                                 .serviceAttachment(cluster_user_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[1].serviceAttachment()))
  *                                 .build())
  *                             .build())
  *                     .build(),
@@ -194,7 +195,7 @@ import javax.annotation.Nullable;
  *                                 .address(ip1Network2.address())
  *                                 .forwardingRule(forwardingRule1Network2.id())
  *                                 .network(network2.id())
- *                                 .serviceAttachment(cluster_user_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[0].serviceAttachment()))
+ *                                 .serviceAttachment(cluster_user_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[0].serviceAttachment()))
  *                                 .build())
  *                             .build(),
  *                         ClusterUserCreatedConnectionsClusterEndpointConnectionArgs.builder()
@@ -203,7 +204,7 @@ import javax.annotation.Nullable;
  *                                 .address(ip2Network2.address())
  *                                 .forwardingRule(forwardingRule2Network2.id())
  *                                 .network(network2.id())
- *                                 .serviceAttachment(cluster_user_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[1].serviceAttachment()))
+ *                                 .serviceAttachment(cluster_user_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[1].serviceAttachment()))
  *                                 .build())
  *                             .build())
  *                     .build())
@@ -318,7 +319,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip1Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
- *             .target(cluster_user_auto_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[0].serviceAttachment()))
+ *             .target(cluster_user_auto_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[0].serviceAttachment()))
  *             .build());
  * 
  *         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
@@ -335,7 +336,7 @@ import javax.annotation.Nullable;
  *             .ipAddress(ip2Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
- *             .target(cluster_user_auto_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[1].serviceAttachment()))
+ *             .target(cluster_user_auto_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[1].serviceAttachment()))
  *             .build());
  * 
  *         var cluster_user_auto_conn = new ClusterUserCreatedConnections("cluster-user-auto-conn", ClusterUserCreatedConnectionsArgs.builder()
@@ -349,7 +350,7 @@ import javax.annotation.Nullable;
  *                             .address(ip1Network2.address())
  *                             .forwardingRule(forwardingRule1Network2.id())
  *                             .network(network2.id())
- *                             .serviceAttachment(cluster_user_auto_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[0].serviceAttachment()))
+ *                             .serviceAttachment(cluster_user_auto_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[0].serviceAttachment()))
  *                             .build())
  *                         .build(),
  *                     ClusterUserCreatedConnectionsClusterEndpointConnectionArgs.builder()
@@ -358,7 +359,7 @@ import javax.annotation.Nullable;
  *                             .address(ip2Network2.address())
  *                             .forwardingRule(forwardingRule2Network2.id())
  *                             .network(network2.id())
- *                             .serviceAttachment(cluster_user_auto_connCluster.pscServiceAttachments().applyValue(pscServiceAttachments -> pscServiceAttachments[1].serviceAttachment()))
+ *                             .serviceAttachment(cluster_user_auto_connCluster.pscServiceAttachments().applyValue(_pscServiceAttachments -> _pscServiceAttachments[1].serviceAttachment()))
  *                             .build())
  *                         .build())
  *                 .build())

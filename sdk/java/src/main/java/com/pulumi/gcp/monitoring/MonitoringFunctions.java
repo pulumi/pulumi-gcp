@@ -1462,7 +1462,7 @@ public final class MonitoringFunctions {
      * 
      *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.name())
      *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
@@ -1538,7 +1538,7 @@ public final class MonitoringFunctions {
      * 
      *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.name())
      *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
@@ -1614,7 +1614,7 @@ public final class MonitoringFunctions {
      * 
      *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.name())
      *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
@@ -1690,7 +1690,7 @@ public final class MonitoringFunctions {
      * 
      *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.name())
      *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
@@ -1766,7 +1766,7 @@ public final class MonitoringFunctions {
      * 
      *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.name())
      *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
@@ -1842,7 +1842,7 @@ public final class MonitoringFunctions {
      * 
      *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.name())
      *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
@@ -1918,7 +1918,7 @@ public final class MonitoringFunctions {
      * 
      *         var alertPolicy = new AlertPolicy("alertPolicy", AlertPolicyArgs.builder()
      *             .displayName("My Alert Policy")
-     *             .notificationChannels(basic.applyValue(getNotificationChannelResult -> getNotificationChannelResult.name()))
+     *             .notificationChannels(basic.name())
      *             .combiner("OR")
      *             .conditions(AlertPolicyConditionArgs.builder()
      *                 .displayName("test condition")
@@ -2202,9 +2202,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.uptimeCheckIps());
      *     }
      * }
      * }
@@ -2243,9 +2243,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.uptimeCheckIps());
      *     }
      * }
      * }
@@ -2284,9 +2284,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.uptimeCheckIps());
      *     }
      * }
      * }
@@ -2325,9 +2325,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.uptimeCheckIps());
      *     }
      * }
      * }
@@ -2366,9 +2366,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.uptimeCheckIps());
      *     }
      * }
      * }
@@ -2407,9 +2407,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.uptimeCheckIps());
      *     }
      * }
      * }
@@ -2448,9 +2448,9 @@ public final class MonitoringFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ips = MonitoringFunctions.getUptimeCheckIPs();
+     *         final var ips = MonitoringFunctions.getUptimeCheckIPs(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("ipList", ips.applyValue(getUptimeCheckIPsResult -> getUptimeCheckIPsResult.uptimeCheckIps()));
+     *         ctx.export("ipList", ips.uptimeCheckIps());
      *     }
      * }
      * }

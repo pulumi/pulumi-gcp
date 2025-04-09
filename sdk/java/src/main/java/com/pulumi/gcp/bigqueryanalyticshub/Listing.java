@@ -196,7 +196,8 @@ import javax.annotation.Nullable;
  *             .displayName("dcr_data_exchange")
  *             .description("example dcr data exchange")
  *             .sharingEnvironmentConfig(DataExchangeSharingEnvironmentConfigArgs.builder()
- *                 .dcrExchangeConfig()
+ *                 .dcrExchangeConfig(DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 

@@ -40,9 +40,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firebase.AppleApp;
  * import com.pulumi.gcp.firebase.AppleAppArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.firebase.AppCheckDeviceCheckConfig;
  * import com.pulumi.gcp.firebase.AppCheckDeviceCheckConfigArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -69,7 +71,7 @@ import javax.annotation.Nullable;
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(default_)
+ *                 .dependsOn(List.of(default_))
  *                 .build());
  * 
  *         var defaultAppCheckDeviceCheckConfig = new AppCheckDeviceCheckConfig("defaultAppCheckDeviceCheckConfig", AppCheckDeviceCheckConfigArgs.builder()

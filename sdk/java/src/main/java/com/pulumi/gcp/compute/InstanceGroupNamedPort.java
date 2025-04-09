@@ -86,14 +86,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myPort = new InstanceGroupNamedPort("myPort", InstanceGroupNamedPortArgs.builder()
- *             .group(myCluster.nodePools().applyValue(nodePools -> nodePools[0].instanceGroupUrls()[0]))
+ *             .group(myCluster.nodePools().applyValue(_nodePools -> _nodePools[0].instanceGroupUrls()[0]))
  *             .zone("us-central1-a")
  *             .name("http")
  *             .port(8080)
  *             .build());
  * 
  *         var myPorts = new InstanceGroupNamedPort("myPorts", InstanceGroupNamedPortArgs.builder()
- *             .group(myCluster.nodePools().applyValue(nodePools -> nodePools[0].instanceGroupUrls()[0]))
+ *             .group(myCluster.nodePools().applyValue(_nodePools -> _nodePools[0].instanceGroupUrls()[0]))
  *             .zone("us-central1-a")
  *             .name("https")
  *             .port(4443)

@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         var instance = new InstanceIAMPolicy("instance", InstanceIAMPolicyArgs.builder()
  *             .instance("your-instance-name")
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

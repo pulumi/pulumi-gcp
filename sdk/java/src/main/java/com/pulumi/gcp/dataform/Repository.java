@@ -64,7 +64,8 @@ import javax.annotation.Nullable;
  *         var secret = new Secret("secret", SecretArgs.builder()
  *             .secretId("my-secret")
  *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 

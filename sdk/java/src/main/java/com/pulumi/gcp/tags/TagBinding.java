@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var binding = new TagBinding("binding", TagBindingArgs.builder()
- *             .parent(project.number().applyValue(number -> String.format("//cloudresourcemanager.googleapis.com/projects/%s", number)))
+ *             .parent(project.number().applyValue(_number -> String.format("//cloudresourcemanager.googleapis.com/projects/%s", _number)))
  *             .tagValue(value.id())
  *             .build());
  * 

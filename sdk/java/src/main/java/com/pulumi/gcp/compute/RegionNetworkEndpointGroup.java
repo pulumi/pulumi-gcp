@@ -313,7 +313,8 @@ import javax.annotation.Nullable;
  *             .name("appengine-neg")
  *             .networkEndpointType("SERVERLESS")
  *             .region("us-central1")
- *             .appEngine()
+ *             .appEngine(RegionNetworkEndpointGroupAppEngineArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -421,7 +422,7 @@ import javax.annotation.Nullable;
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port("80")
+ *                 .port(80)
  *                 .build())
  *             .build());
  * 

@@ -69,7 +69,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enable notifications by giving the correct IAM permission to the unique service account.
- *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+ *         final var gcsAccount = StorageFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+ *             .build());
  * 
  *         var topic = new Topic("topic", TopicArgs.builder()
  *             .name("default_topic")
@@ -78,7 +79,7 @@ import javax.annotation.Nullable;
  *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
  *             .topic(topic.id())
  *             .role("roles/pubsub.publisher")
- *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+ *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
  *             .build());
  * 
  *         // End enabling notifications

@@ -63,19 +63,19 @@ import javax.annotation.Nullable;
  *                 .extensionRef("firebase/storage-resize-images")
  *                 .extensionVersion("0.2.2")
  *                 .params(Map.ofEntries(
- *                     Map.entry("DELETE_ORIGINAL_FILE", false),
- *                     Map.entry("MAKE_PUBLIC", false),
- *                     Map.entry("IMAGE_TYPE", false),
- *                     Map.entry("IS_ANIMATED", true),
- *                     Map.entry("FUNCTION_MEMORY", 1024),
- *                     Map.entry("DO_BACKFILL", false),
+ *                     Map.entry("DELETE_ORIGINAL_FILE", "false"),
+ *                     Map.entry("MAKE_PUBLIC", "false"),
+ *                     Map.entry("IMAGE_TYPE", "false"),
+ *                     Map.entry("IS_ANIMATED", "true"),
+ *                     Map.entry("FUNCTION_MEMORY", "1024"),
+ *                     Map.entry("DO_BACKFILL", "false"),
  *                     Map.entry("IMG_SIZES", "200x200"),
  *                     Map.entry("IMG_BUCKET", images.name())
  *                 ))
  *                 .systemParams(Map.ofEntries(
  *                     Map.entry("firebaseextensions.v1beta.function/location", ""),
- *                     Map.entry("firebaseextensions.v1beta.function/maxInstances", 3000),
- *                     Map.entry("firebaseextensions.v1beta.function/minInstances", 0),
+ *                     Map.entry("firebaseextensions.v1beta.function/maxInstances", "3000"),
+ *                     Map.entry("firebaseextensions.v1beta.function/minInstances", "0"),
  *                     Map.entry("firebaseextensions.v1beta.function/vpcConnectorEgressSettings", "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED")
  *                 ))
  *                 .allowedEventTypes("firebase.extensions.storage-resize-images.v1.onCompletion")

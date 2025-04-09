@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
  *             .bucket(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
  *             .bucket(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -342,7 +342,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
  *             .bucket(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code
@@ -392,7 +392,7 @@ import javax.annotation.Nullable;
  * 
  *         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
  *             .bucket(default_.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .policyData(admin.policyData())
  *             .build());
  * 
  *     }}{@code

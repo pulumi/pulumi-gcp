@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var access_level = new AccessLevel("access-level", AccessLevelArgs.builder()
- *             .parent(access_policy.name().applyValue(name -> String.format("accessPolicies/%s", name)))
- *             .name(access_policy.name().applyValue(name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", name)))
+ *             .parent(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s", _name)))
+ *             .name(access_policy.name().applyValue(_name -> String.format("accessPolicies/%s/accessLevels/chromeos_no_lock", _name)))
  *             .title("chromeos_no_lock")
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
