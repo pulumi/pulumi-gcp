@@ -321,6 +321,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         },
     ///         VmTrackingEnabled = true,
     ///         EnableControlPlaneV2 = true,
+    ///         EnableAdvancedCluster = true,
     ///         UpgradePolicy = new Gcp.GkeOnPrem.Inputs.VMwareClusterUpgradePolicyArgs
     ///         {
     ///             ControlPlaneOnly = true,
@@ -453,6 +454,12 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         [Output("effectiveAnnotations")]
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable advanced cluster. Default to false.
+        /// </summary>
+        [Output("enableAdvancedCluster")]
+        public Output<bool?> EnableAdvancedCluster { get; private set; } = null!;
 
         /// <summary>
         /// Enable control plane V2. Default to false.
@@ -712,6 +719,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Input<bool>? DisableBundledIngress { get; set; }
 
         /// <summary>
+        /// Enable advanced cluster. Default to false.
+        /// </summary>
+        [Input("enableAdvancedCluster")]
+        public Input<bool>? EnableAdvancedCluster { get; set; }
+
+        /// <summary>
         /// Enable control plane V2. Default to false.
         /// </summary>
         [Input("enableControlPlaneV2")]
@@ -871,6 +884,12 @@ namespace Pulumi.Gcp.GkeOnPrem
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
             set => _effectiveAnnotations = value;
         }
+
+        /// <summary>
+        /// Enable advanced cluster. Default to false.
+        /// </summary>
+        [Input("enableAdvancedCluster")]
+        public Input<bool>? EnableAdvancedCluster { get; set; }
 
         /// <summary>
         /// Enable control plane V2. Default to false.

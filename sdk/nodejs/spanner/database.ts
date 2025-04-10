@@ -110,12 +110,6 @@ export class Database extends pulumi.CustomResource {
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
     public readonly databaseDialect!: pulumi.Output<string>;
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements
-     * execute atomically with the creation of the database: if there is an
-     * error in any statement, the database is not created.
-     */
     public readonly ddls!: pulumi.Output<string[] | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
@@ -212,12 +206,6 @@ export interface DatabaseState {
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
     databaseDialect?: pulumi.Input<string>;
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements
-     * execute atomically with the creation of the database: if there is an
-     * error in any statement, the database is not created.
-     */
     ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
@@ -271,12 +259,6 @@ export interface DatabaseArgs {
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
     databaseDialect?: pulumi.Input<string>;
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements
-     * execute atomically with the creation of the database: if there is an
-     * error in any statement, the database is not created.
-     */
     ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false

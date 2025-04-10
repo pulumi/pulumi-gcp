@@ -3929,6 +3929,223 @@ func (o AccessPolicyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type GcpUserAccessBindingSessionSettings struct {
+	// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+	MaxInactivity *string `pulumi:"maxInactivity"`
+	// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+	SessionLength *string `pulumi:"sessionLength"`
+	// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+	SessionLengthEnabled *bool `pulumi:"sessionLengthEnabled"`
+	// Optional. The session challenges proposed to users when the Google Cloud session length is up.
+	// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+	SessionReauthMethod *string `pulumi:"sessionReauthMethod"`
+	// Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+	UseOidcMaxAge *bool `pulumi:"useOidcMaxAge"`
+}
+
+// GcpUserAccessBindingSessionSettingsInput is an input type that accepts GcpUserAccessBindingSessionSettingsArgs and GcpUserAccessBindingSessionSettingsOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingSessionSettingsInput` via:
+//
+//	GcpUserAccessBindingSessionSettingsArgs{...}
+type GcpUserAccessBindingSessionSettingsInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingSessionSettingsOutput() GcpUserAccessBindingSessionSettingsOutput
+	ToGcpUserAccessBindingSessionSettingsOutputWithContext(context.Context) GcpUserAccessBindingSessionSettingsOutput
+}
+
+type GcpUserAccessBindingSessionSettingsArgs struct {
+	// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+	MaxInactivity pulumi.StringPtrInput `pulumi:"maxInactivity"`
+	// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+	SessionLength pulumi.StringPtrInput `pulumi:"sessionLength"`
+	// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+	SessionLengthEnabled pulumi.BoolPtrInput `pulumi:"sessionLengthEnabled"`
+	// Optional. The session challenges proposed to users when the Google Cloud session length is up.
+	// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+	SessionReauthMethod pulumi.StringPtrInput `pulumi:"sessionReauthMethod"`
+	// Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+	UseOidcMaxAge pulumi.BoolPtrInput `pulumi:"useOidcMaxAge"`
+}
+
+func (GcpUserAccessBindingSessionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingSessionSettings)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingSessionSettingsArgs) ToGcpUserAccessBindingSessionSettingsOutput() GcpUserAccessBindingSessionSettingsOutput {
+	return i.ToGcpUserAccessBindingSessionSettingsOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingSessionSettingsArgs) ToGcpUserAccessBindingSessionSettingsOutputWithContext(ctx context.Context) GcpUserAccessBindingSessionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingSessionSettingsOutput)
+}
+
+func (i GcpUserAccessBindingSessionSettingsArgs) ToGcpUserAccessBindingSessionSettingsPtrOutput() GcpUserAccessBindingSessionSettingsPtrOutput {
+	return i.ToGcpUserAccessBindingSessionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingSessionSettingsArgs) ToGcpUserAccessBindingSessionSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingSessionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingSessionSettingsOutput).ToGcpUserAccessBindingSessionSettingsPtrOutputWithContext(ctx)
+}
+
+// GcpUserAccessBindingSessionSettingsPtrInput is an input type that accepts GcpUserAccessBindingSessionSettingsArgs, GcpUserAccessBindingSessionSettingsPtr and GcpUserAccessBindingSessionSettingsPtrOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingSessionSettingsPtrInput` via:
+//
+//	        GcpUserAccessBindingSessionSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpUserAccessBindingSessionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingSessionSettingsPtrOutput() GcpUserAccessBindingSessionSettingsPtrOutput
+	ToGcpUserAccessBindingSessionSettingsPtrOutputWithContext(context.Context) GcpUserAccessBindingSessionSettingsPtrOutput
+}
+
+type gcpUserAccessBindingSessionSettingsPtrType GcpUserAccessBindingSessionSettingsArgs
+
+func GcpUserAccessBindingSessionSettingsPtr(v *GcpUserAccessBindingSessionSettingsArgs) GcpUserAccessBindingSessionSettingsPtrInput {
+	return (*gcpUserAccessBindingSessionSettingsPtrType)(v)
+}
+
+func (*gcpUserAccessBindingSessionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingSessionSettings)(nil)).Elem()
+}
+
+func (i *gcpUserAccessBindingSessionSettingsPtrType) ToGcpUserAccessBindingSessionSettingsPtrOutput() GcpUserAccessBindingSessionSettingsPtrOutput {
+	return i.ToGcpUserAccessBindingSessionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpUserAccessBindingSessionSettingsPtrType) ToGcpUserAccessBindingSessionSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingSessionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingSessionSettingsPtrOutput)
+}
+
+type GcpUserAccessBindingSessionSettingsOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingSessionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingSessionSettings)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingSessionSettingsOutput) ToGcpUserAccessBindingSessionSettingsOutput() GcpUserAccessBindingSessionSettingsOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingSessionSettingsOutput) ToGcpUserAccessBindingSessionSettingsOutputWithContext(ctx context.Context) GcpUserAccessBindingSessionSettingsOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingSessionSettingsOutput) ToGcpUserAccessBindingSessionSettingsPtrOutput() GcpUserAccessBindingSessionSettingsPtrOutput {
+	return o.ToGcpUserAccessBindingSessionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GcpUserAccessBindingSessionSettingsOutput) ToGcpUserAccessBindingSessionSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingSessionSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBindingSessionSettings) *GcpUserAccessBindingSessionSettings {
+		return &v
+	}).(GcpUserAccessBindingSessionSettingsPtrOutput)
+}
+
+// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+func (o GcpUserAccessBindingSessionSettingsOutput) MaxInactivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingSessionSettings) *string { return v.MaxInactivity }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+func (o GcpUserAccessBindingSessionSettingsOutput) SessionLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingSessionSettings) *string { return v.SessionLength }).(pulumi.StringPtrOutput)
+}
+
+// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+func (o GcpUserAccessBindingSessionSettingsOutput) SessionLengthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingSessionSettings) *bool { return v.SessionLengthEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The session challenges proposed to users when the Google Cloud session length is up.
+// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+func (o GcpUserAccessBindingSessionSettingsOutput) SessionReauthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingSessionSettings) *string { return v.SessionReauthMethod }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+func (o GcpUserAccessBindingSessionSettingsOutput) UseOidcMaxAge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingSessionSettings) *bool { return v.UseOidcMaxAge }).(pulumi.BoolPtrOutput)
+}
+
+type GcpUserAccessBindingSessionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingSessionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingSessionSettings)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingSessionSettingsPtrOutput) ToGcpUserAccessBindingSessionSettingsPtrOutput() GcpUserAccessBindingSessionSettingsPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingSessionSettingsPtrOutput) ToGcpUserAccessBindingSessionSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingSessionSettingsPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingSessionSettingsPtrOutput) Elem() GcpUserAccessBindingSessionSettingsOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingSessionSettings) GcpUserAccessBindingSessionSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GcpUserAccessBindingSessionSettings
+		return ret
+	}).(GcpUserAccessBindingSessionSettingsOutput)
+}
+
+// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+func (o GcpUserAccessBindingSessionSettingsPtrOutput) MaxInactivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingSessionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInactivity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+func (o GcpUserAccessBindingSessionSettingsPtrOutput) SessionLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingSessionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionLength
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+func (o GcpUserAccessBindingSessionSettingsPtrOutput) SessionLengthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingSessionSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SessionLengthEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The session challenges proposed to users when the Google Cloud session length is up.
+// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+func (o GcpUserAccessBindingSessionSettingsPtrOutput) SessionReauthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingSessionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionReauthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+func (o GcpUserAccessBindingSessionSettingsPtrOutput) UseOidcMaxAge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingSessionSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseOidcMaxAge
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ServicePerimeterDryRunEgressPolicyEgressFrom struct {
 	// Identities can be an individual user, service account, Google group,
 	// or third-party identity. For third-party identity, only single identities
@@ -17049,6 +17266,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamBindingConditionPtrInput)(nil)).Elem(), AccessPolicyIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamMemberConditionInput)(nil)).Elem(), AccessPolicyIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamMemberConditionPtrInput)(nil)).Elem(), AccessPolicyIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingSessionSettingsInput)(nil)).Elem(), GcpUserAccessBindingSessionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingSessionSettingsPtrInput)(nil)).Elem(), GcpUserAccessBindingSessionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs{})
@@ -17249,6 +17468,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingSessionSettingsOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingSessionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput{})

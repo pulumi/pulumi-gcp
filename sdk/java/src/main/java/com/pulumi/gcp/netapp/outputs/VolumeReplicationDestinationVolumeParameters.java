@@ -5,6 +5,7 @@ package com.pulumi.gcp.netapp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.netapp.outputs.VolumeReplicationDestinationVolumeParametersTieringPolicy;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +28,12 @@ public final class VolumeReplicationDestinationVolumeParameters {
      * 
      */
     private String storagePool;
+    /**
+     * @return Tiering policy for the volume.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable VolumeReplicationDestinationVolumeParametersTieringPolicy tieringPolicy;
     /**
      * @return Name for the destination volume to be created. If not specified, the name of the source volume will be used.
      * 
@@ -56,6 +63,14 @@ public final class VolumeReplicationDestinationVolumeParameters {
         return this.storagePool;
     }
     /**
+     * @return Tiering policy for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<VolumeReplicationDestinationVolumeParametersTieringPolicy> tieringPolicy() {
+        return Optional.ofNullable(this.tieringPolicy);
+    }
+    /**
      * @return Name for the destination volume to be created. If not specified, the name of the source volume will be used.
      * 
      */
@@ -75,6 +90,7 @@ public final class VolumeReplicationDestinationVolumeParameters {
         private @Nullable String description;
         private @Nullable String shareName;
         private String storagePool;
+        private @Nullable VolumeReplicationDestinationVolumeParametersTieringPolicy tieringPolicy;
         private @Nullable String volumeId;
         public Builder() {}
         public Builder(VolumeReplicationDestinationVolumeParameters defaults) {
@@ -82,6 +98,7 @@ public final class VolumeReplicationDestinationVolumeParameters {
     	      this.description = defaults.description;
     	      this.shareName = defaults.shareName;
     	      this.storagePool = defaults.storagePool;
+    	      this.tieringPolicy = defaults.tieringPolicy;
     	      this.volumeId = defaults.volumeId;
         }
 
@@ -106,6 +123,12 @@ public final class VolumeReplicationDestinationVolumeParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder tieringPolicy(@Nullable VolumeReplicationDestinationVolumeParametersTieringPolicy tieringPolicy) {
+
+            this.tieringPolicy = tieringPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder volumeId(@Nullable String volumeId) {
 
             this.volumeId = volumeId;
@@ -116,6 +139,7 @@ public final class VolumeReplicationDestinationVolumeParameters {
             _resultValue.description = description;
             _resultValue.shareName = shareName;
             _resultValue.storagePool = storagePool;
+            _resultValue.tieringPolicy = tieringPolicy;
             _resultValue.volumeId = volumeId;
             return _resultValue;
         }

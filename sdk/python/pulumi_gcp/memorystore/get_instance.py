@@ -28,10 +28,13 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, id=None, instance_id=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, id=None, instance_id=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
+        if automated_backup_configs and not isinstance(automated_backup_configs, list):
+            raise TypeError("Expected argument 'automated_backup_configs' to be a list")
+        pulumi.set(__self__, "automated_backup_configs", automated_backup_configs)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -133,6 +136,11 @@ class GetInstanceResult:
     @pulumi.getter(name="authorizationMode")
     def authorization_mode(self) -> builtins.str:
         return pulumi.get(self, "authorization_mode")
+
+    @property
+    @pulumi.getter(name="automatedBackupConfigs")
+    def automated_backup_configs(self) -> Sequence['outputs.GetInstanceAutomatedBackupConfigResult']:
+        return pulumi.get(self, "automated_backup_configs")
 
     @property
     @pulumi.getter(name="createTime")
@@ -305,6 +313,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             yield self
         return GetInstanceResult(
             authorization_mode=self.authorization_mode,
+            automated_backup_configs=self.automated_backup_configs,
             create_time=self.create_time,
             cross_instance_replication_configs=self.cross_instance_replication_configs,
             deletion_protection_enabled=self.deletion_protection_enabled,
@@ -372,6 +381,7 @@ def get_instance(instance_id: Optional[builtins.str] = None,
 
     return AwaitableGetInstanceResult(
         authorization_mode=pulumi.get(__ret__, 'authorization_mode'),
+        automated_backup_configs=pulumi.get(__ret__, 'automated_backup_configs'),
         create_time=pulumi.get(__ret__, 'create_time'),
         cross_instance_replication_configs=pulumi.get(__ret__, 'cross_instance_replication_configs'),
         deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
@@ -436,6 +446,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[builtins.str]] = None
     __ret__ = pulumi.runtime.invoke_output('gcp:memorystore/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
         authorization_mode=pulumi.get(__response__, 'authorization_mode'),
+        automated_backup_configs=pulumi.get(__response__, 'automated_backup_configs'),
         create_time=pulumi.get(__response__, 'create_time'),
         cross_instance_replication_configs=pulumi.get(__response__, 'cross_instance_replication_configs'),
         deletion_protection_enabled=pulumi.get(__response__, 'deletion_protection_enabled'),

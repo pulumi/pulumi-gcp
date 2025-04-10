@@ -287,7 +287,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudfunctions"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudfunctionsv2"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -320,16 +320,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
-//				Project:             pulumi.String("my-project-name"),
-//				Name:                pulumi.String("cloud-function-via-hosting"),
-//				Description:         pulumi.String("A Cloud Function connected to Firebase Hosing"),
-//				Runtime:             pulumi.String("nodejs20"),
-//				AvailableMemoryMb:   pulumi.Int(128),
-//				SourceArchiveBucket: bucket.Name,
-//				SourceArchiveObject: object.Name,
-//				TriggerHttp:         pulumi.Bool(true),
-//				EntryPoint:          pulumi.String("helloHttp"),
+//			function, err := cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				Name:        pulumi.String("cloud-function-via-hosting"),
+//				Location:    pulumi.String("us-central1"),
+//				Description: pulumi.String("A Cloud Function connected to Firebase Hosing"),
+//				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
+//					Runtime:    pulumi.String("nodejs22"),
+//					EntryPoint: pulumi.String("helloHttp"),
+//					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
+//						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
+//							Bucket: bucket.Name,
+//							Object: object.Name,
+//						},
+//					},
+//				},
+//				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
+//					MaxInstanceCount: pulumi.Int(1),
+//					AvailableMemory:  pulumi.String("256M"),
+//					TimeoutSeconds:   pulumi.Int(60),
+//				},
 //			})
 //			if err != nil {
 //				return err

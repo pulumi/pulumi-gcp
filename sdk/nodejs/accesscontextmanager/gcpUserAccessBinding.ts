@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -101,9 +103,9 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
     }
 
     /**
-     * Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+     * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
-    public readonly accessLevels!: pulumi.Output<string>;
+    public readonly accessLevels!: pulumi.Output<string | undefined>;
     /**
      * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
      */
@@ -119,6 +121,11 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
      * - - -
      */
     public readonly organizationId!: pulumi.Output<string>;
+    /**
+     * Optional. The Google Cloud session length (GCSL) policy for the group key.
+     * Structure is documented below.
+     */
+    public readonly sessionSettings!: pulumi.Output<outputs.accesscontextmanager.GcpUserAccessBindingSessionSettings | undefined>;
 
     /**
      * Create a GcpUserAccessBinding resource with the given unique name, arguments, and options.
@@ -137,11 +144,9 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             resourceInputs["groupKey"] = state ? state.groupKey : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
+            resourceInputs["sessionSettings"] = state ? state.sessionSettings : undefined;
         } else {
             const args = argsOrState as GcpUserAccessBindingArgs | undefined;
-            if ((!args || args.accessLevels === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessLevels'");
-            }
             if ((!args || args.groupKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupKey'");
             }
@@ -151,6 +156,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             resourceInputs["accessLevels"] = args ? args.accessLevels : undefined;
             resourceInputs["groupKey"] = args ? args.groupKey : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["sessionSettings"] = args ? args.sessionSettings : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -163,7 +169,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
  */
 export interface GcpUserAccessBindingState {
     /**
-     * Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+     * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
     accessLevels?: pulumi.Input<string>;
     /**
@@ -181,6 +187,11 @@ export interface GcpUserAccessBindingState {
      * - - -
      */
     organizationId?: pulumi.Input<string>;
+    /**
+     * Optional. The Google Cloud session length (GCSL) policy for the group key.
+     * Structure is documented below.
+     */
+    sessionSettings?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingSessionSettings>;
 }
 
 /**
@@ -188,9 +199,9 @@ export interface GcpUserAccessBindingState {
  */
 export interface GcpUserAccessBindingArgs {
     /**
-     * Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+     * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
-    accessLevels: pulumi.Input<string>;
+    accessLevels?: pulumi.Input<string>;
     /**
      * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
      */
@@ -202,4 +213,9 @@ export interface GcpUserAccessBindingArgs {
      * - - -
      */
     organizationId: pulumi.Input<string>;
+    /**
+     * Optional. The Google Cloud session length (GCSL) policy for the group key.
+     * Structure is documented below.
+     */
+    sessionSettings?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingSessionSettings>;
 }

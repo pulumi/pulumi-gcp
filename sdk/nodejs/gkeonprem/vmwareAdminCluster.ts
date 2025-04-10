@@ -291,6 +291,10 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
+     * If set, the advanced cluster feature is enabled.
+     */
+    public /*out*/ readonly enableAdvancedCluster!: pulumi.Output<boolean>;
+    /**
      * The DNS name of VMware admin cluster's API server.
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
@@ -400,6 +404,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
+            resourceInputs["enableAdvancedCluster"] = state ? state.enableAdvancedCluster : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["fleets"] = state ? state.fleets : undefined;
@@ -445,6 +450,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
             resourceInputs["vcenter"] = args ? args.vcenter : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
+            resourceInputs["enableAdvancedCluster"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["fleets"] = undefined /*out*/;
@@ -506,6 +512,10 @@ export interface VmwareAdminClusterState {
      */
     description?: pulumi.Input<string>;
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, the advanced cluster feature is enabled.
+     */
+    enableAdvancedCluster?: pulumi.Input<boolean>;
     /**
      * The DNS name of VMware admin cluster's API server.
      */

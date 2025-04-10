@@ -20,6 +20,11 @@ __all__ = [
     'AutomationRule',
     'AutomationRuleAdvanceRolloutRule',
     'AutomationRulePromoteReleaseRule',
+    'AutomationRuleRepairRolloutRule',
+    'AutomationRuleRepairRolloutRuleRepairPhase',
+    'AutomationRuleRepairRolloutRuleRepairPhaseRetry',
+    'AutomationRuleRepairRolloutRuleRepairPhaseRollback',
+    'AutomationRuleTimedPromoteReleaseRule',
     'AutomationSelector',
     'AutomationSelectorTarget',
     'CustomTargetTypeCustomActions',
@@ -56,6 +61,20 @@ __all__ = [
     'DeliveryPipelineSerialPipelineStageStrategyStandard',
     'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy',
     'DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy',
+    'DeployPolicyRule',
+    'DeployPolicyRuleRolloutRestriction',
+    'DeployPolicyRuleRolloutRestrictionTimeWindows',
+    'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow',
+    'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate',
+    'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime',
+    'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate',
+    'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime',
+    'DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow',
+    'DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime',
+    'DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime',
+    'DeployPolicySelector',
+    'DeployPolicySelectorDeliveryPipeline',
+    'DeployPolicySelectorTarget',
     'TargetAnthosCluster',
     'TargetAssociatedEntity',
     'TargetAssociatedEntityAnthosCluster',
@@ -78,6 +97,10 @@ class AutomationRule(dict):
             suggest = "advance_rollout_rule"
         elif key == "promoteReleaseRule":
             suggest = "promote_release_rule"
+        elif key == "repairRolloutRule":
+            suggest = "repair_rollout_rule"
+        elif key == "timedPromoteReleaseRule":
+            suggest = "timed_promote_release_rule"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AutomationRule. Access the value via the '{suggest}' property getter instead.")
@@ -92,17 +115,27 @@ class AutomationRule(dict):
 
     def __init__(__self__, *,
                  advance_rollout_rule: Optional['outputs.AutomationRuleAdvanceRolloutRule'] = None,
-                 promote_release_rule: Optional['outputs.AutomationRulePromoteReleaseRule'] = None):
+                 promote_release_rule: Optional['outputs.AutomationRulePromoteReleaseRule'] = None,
+                 repair_rollout_rule: Optional['outputs.AutomationRuleRepairRolloutRule'] = None,
+                 timed_promote_release_rule: Optional['outputs.AutomationRuleTimedPromoteReleaseRule'] = None):
         """
         :param 'AutomationRuleAdvanceRolloutRuleArgs' advance_rollout_rule: Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
                Structure is documented below.
         :param 'AutomationRulePromoteReleaseRuleArgs' promote_release_rule: Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+               Structure is documented below.
+        :param 'AutomationRuleRepairRolloutRuleArgs' repair_rollout_rule: Optional. The RepairRolloutRule will automatically repair a failed rollout.
+               Structure is documented below.
+        :param 'AutomationRuleTimedPromoteReleaseRuleArgs' timed_promote_release_rule: Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
                Structure is documented below.
         """
         if advance_rollout_rule is not None:
             pulumi.set(__self__, "advance_rollout_rule", advance_rollout_rule)
         if promote_release_rule is not None:
             pulumi.set(__self__, "promote_release_rule", promote_release_rule)
+        if repair_rollout_rule is not None:
+            pulumi.set(__self__, "repair_rollout_rule", repair_rollout_rule)
+        if timed_promote_release_rule is not None:
+            pulumi.set(__self__, "timed_promote_release_rule", timed_promote_release_rule)
 
     @property
     @pulumi.getter(name="advanceRolloutRule")
@@ -121,6 +154,24 @@ class AutomationRule(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "promote_release_rule")
+
+    @property
+    @pulumi.getter(name="repairRolloutRule")
+    def repair_rollout_rule(self) -> Optional['outputs.AutomationRuleRepairRolloutRule']:
+        """
+        Optional. The RepairRolloutRule will automatically repair a failed rollout.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "repair_rollout_rule")
+
+    @property
+    @pulumi.getter(name="timedPromoteReleaseRule")
+    def timed_promote_release_rule(self) -> Optional['outputs.AutomationRuleTimedPromoteReleaseRule']:
+        """
+        Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "timed_promote_release_rule")
 
 
 @pulumi.output_type
@@ -149,8 +200,6 @@ class AutomationRuleAdvanceRolloutRule(dict):
         """
         :param builtins.str id: Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
         :param Sequence[builtins.str] source_phases: Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-               
-               - - -
         :param builtins.str wait: Optional. How long to wait after a rollout is finished.
         """
         pulumi.set(__self__, "id", id)
@@ -172,8 +221,6 @@ class AutomationRuleAdvanceRolloutRule(dict):
     def source_phases(self) -> Optional[Sequence[builtins.str]]:
         """
         Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-
-        - - -
         """
         return pulumi.get(self, "source_phases")
 
@@ -257,6 +304,318 @@ class AutomationRulePromoteReleaseRule(dict):
         Optional. How long the release need to be paused until being promoted to the next target.
         """
         return pulumi.get(self, "wait")
+
+
+@pulumi.output_type
+class AutomationRuleRepairRolloutRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repairPhases":
+            suggest = "repair_phases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleRepairRolloutRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleRepairRolloutRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleRepairRolloutRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 jobs: Optional[Sequence[builtins.str]] = None,
+                 phases: Optional[Sequence[builtins.str]] = None,
+                 repair_phases: Optional[Sequence['outputs.AutomationRuleRepairRolloutRuleRepairPhase']] = None):
+        """
+        :param builtins.str id: Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        :param Sequence[builtins.str] jobs: Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+        :param Sequence[builtins.str] phases: Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+        :param Sequence['AutomationRuleRepairRolloutRuleRepairPhaseArgs'] repair_phases: Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "id", id)
+        if jobs is not None:
+            pulumi.set(__self__, "jobs", jobs)
+        if phases is not None:
+            pulumi.set(__self__, "phases", phases)
+        if repair_phases is not None:
+            pulumi.set(__self__, "repair_phases", repair_phases)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def jobs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+        """
+        return pulumi.get(self, "jobs")
+
+    @property
+    @pulumi.getter
+    def phases(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+        """
+        return pulumi.get(self, "phases")
+
+    @property
+    @pulumi.getter(name="repairPhases")
+    def repair_phases(self) -> Optional[Sequence['outputs.AutomationRuleRepairRolloutRuleRepairPhase']]:
+        """
+        Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "repair_phases")
+
+
+@pulumi.output_type
+class AutomationRuleRepairRolloutRuleRepairPhase(dict):
+    def __init__(__self__, *,
+                 retry: Optional['outputs.AutomationRuleRepairRolloutRuleRepairPhaseRetry'] = None,
+                 rollback: Optional['outputs.AutomationRuleRepairRolloutRuleRepairPhaseRollback'] = None):
+        """
+        :param 'AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs' retry: Optional. Retries a failed job.
+               Structure is documented below.
+        :param 'AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs' rollback: Optional. Rolls back a Rollout.
+               Structure is documented below.
+        """
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
+        if rollback is not None:
+            pulumi.set(__self__, "rollback", rollback)
+
+    @property
+    @pulumi.getter
+    def retry(self) -> Optional['outputs.AutomationRuleRepairRolloutRuleRepairPhaseRetry']:
+        """
+        Optional. Retries a failed job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry")
+
+    @property
+    @pulumi.getter
+    def rollback(self) -> Optional['outputs.AutomationRuleRepairRolloutRuleRepairPhaseRollback']:
+        """
+        Optional. Rolls back a Rollout.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rollback")
+
+
+@pulumi.output_type
+class AutomationRuleRepairRolloutRuleRepairPhaseRetry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backoffMode":
+            suggest = "backoff_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleRepairRolloutRuleRepairPhaseRetry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleRepairRolloutRuleRepairPhaseRetry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleRepairRolloutRuleRepairPhaseRetry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attempts: builtins.str,
+                 backoff_mode: Optional[builtins.str] = None,
+                 wait: Optional[builtins.str] = None):
+        """
+        :param builtins.str attempts: Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        :param builtins.str backoff_mode: Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
+               Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
+        :param builtins.str wait: Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
+        """
+        pulumi.set(__self__, "attempts", attempts)
+        if backoff_mode is not None:
+            pulumi.set(__self__, "backoff_mode", backoff_mode)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def attempts(self) -> builtins.str:
+        """
+        Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        """
+        return pulumi.get(self, "attempts")
+
+    @property
+    @pulumi.getter(name="backoffMode")
+    def backoff_mode(self) -> Optional[builtins.str]:
+        """
+        Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
+        Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
+        """
+        return pulumi.get(self, "backoff_mode")
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[builtins.str]:
+        """
+        Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
+        """
+        return pulumi.get(self, "wait")
+
+
+@pulumi.output_type
+class AutomationRuleRepairRolloutRuleRepairPhaseRollback(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationPhase":
+            suggest = "destination_phase"
+        elif key == "disableRollbackIfRolloutPending":
+            suggest = "disable_rollback_if_rollout_pending"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleRepairRolloutRuleRepairPhaseRollback. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleRepairRolloutRuleRepairPhaseRollback.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleRepairRolloutRuleRepairPhaseRollback.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_phase: Optional[builtins.str] = None,
+                 disable_rollback_if_rollout_pending: Optional[builtins.bool] = None):
+        """
+        :param builtins.str destination_phase: Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
+        :param builtins.bool disable_rollback_if_rollout_pending: Optional. If pending rollout exists on the target, the rollback operation will be aborted.
+        """
+        if destination_phase is not None:
+            pulumi.set(__self__, "destination_phase", destination_phase)
+        if disable_rollback_if_rollout_pending is not None:
+            pulumi.set(__self__, "disable_rollback_if_rollout_pending", disable_rollback_if_rollout_pending)
+
+    @property
+    @pulumi.getter(name="destinationPhase")
+    def destination_phase(self) -> Optional[builtins.str]:
+        """
+        Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
+        """
+        return pulumi.get(self, "destination_phase")
+
+    @property
+    @pulumi.getter(name="disableRollbackIfRolloutPending")
+    def disable_rollback_if_rollout_pending(self) -> Optional[builtins.bool]:
+        """
+        Optional. If pending rollout exists on the target, the rollback operation will be aborted.
+        """
+        return pulumi.get(self, "disable_rollback_if_rollout_pending")
+
+
+@pulumi.output_type
+class AutomationRuleTimedPromoteReleaseRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeZone":
+            suggest = "time_zone"
+        elif key == "destinationPhase":
+            suggest = "destination_phase"
+        elif key == "destinationTargetId":
+            suggest = "destination_target_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomationRuleTimedPromoteReleaseRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomationRuleTimedPromoteReleaseRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomationRuleTimedPromoteReleaseRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 schedule: builtins.str,
+                 time_zone: builtins.str,
+                 destination_phase: Optional[builtins.str] = None,
+                 destination_target_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str id: Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        :param builtins.str schedule: Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
+        :param builtins.str time_zone: Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+        :param builtins.str destination_phase: Optional. The starting phase of the rollout created by this rule. Default to the first phase.
+               
+               - - -
+        :param builtins.str destination_target_id: Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
+               - The last segment of a target name
+               - "@next", the next target in the promotion sequence"
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if destination_phase is not None:
+            pulumi.set(__self__, "destination_phase", destination_phase)
+        if destination_target_id is not None:
+            pulumi.set(__self__, "destination_target_id", destination_target_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> builtins.str:
+        """
+        Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> builtins.str:
+        """
+        Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+        """
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter(name="destinationPhase")
+    def destination_phase(self) -> Optional[builtins.str]:
+        """
+        Optional. The starting phase of the rollout created by this rule. Default to the first phase.
+
+        - - -
+        """
+        return pulumi.get(self, "destination_phase")
+
+    @property
+    @pulumi.getter(name="destinationTargetId")
+    def destination_target_id(self) -> Optional[builtins.str]:
+        """
+        Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
+        - The last segment of a target name
+        - "@next", the next target in the promotion sequence"
+        """
+        return pulumi.get(self, "destination_target_id")
 
 
 @pulumi.output_type
@@ -1886,6 +2245,772 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy(dict):
         Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
         """
         return pulumi.get(self, "actions")
+
+
+@pulumi.output_type
+class DeployPolicyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rolloutRestriction":
+            suggest = "rollout_restriction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeployPolicyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeployPolicyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeployPolicyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rollout_restriction: Optional['outputs.DeployPolicyRuleRolloutRestriction'] = None):
+        """
+        :param 'DeployPolicyRuleRolloutRestrictionArgs' rollout_restriction: Optional. Rollout restrictions.
+               Structure is documented below.
+        """
+        if rollout_restriction is not None:
+            pulumi.set(__self__, "rollout_restriction", rollout_restriction)
+
+    @property
+    @pulumi.getter(name="rolloutRestriction")
+    def rollout_restriction(self) -> Optional['outputs.DeployPolicyRuleRolloutRestriction']:
+        """
+        Optional. Rollout restrictions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rollout_restriction")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestriction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeWindows":
+            suggest = "time_windows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeployPolicyRuleRolloutRestriction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeployPolicyRuleRolloutRestriction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeployPolicyRuleRolloutRestriction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 actions: Optional[Sequence[builtins.str]] = None,
+                 invokers: Optional[Sequence[builtins.str]] = None,
+                 time_windows: Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindows'] = None):
+        """
+        :param builtins.str id: Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+        :param Sequence[builtins.str] actions: Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+               Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
+        :param Sequence[builtins.str] invokers: Optional. What invoked the action. If left empty, all invoker types will be restricted.
+               Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsArgs' time_windows: Required. Time window within which actions are restricted.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "id", id)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if invokers is not None:
+            pulumi.set(__self__, "invokers", invokers)
+        if time_windows is not None:
+            pulumi.set(__self__, "time_windows", time_windows)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+        Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def invokers(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Optional. What invoked the action. If left empty, all invoker types will be restricted.
+        Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
+        """
+        return pulumi.get(self, "invokers")
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindows']:
+        """
+        Required. Time window within which actions are restricted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_windows")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestrictionTimeWindows(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeZone":
+            suggest = "time_zone"
+        elif key == "oneTimeWindows":
+            suggest = "one_time_windows"
+        elif key == "weeklyWindows":
+            suggest = "weekly_windows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeployPolicyRuleRolloutRestrictionTimeWindows. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeployPolicyRuleRolloutRestrictionTimeWindows.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeployPolicyRuleRolloutRestrictionTimeWindows.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_zone: builtins.str,
+                 one_time_windows: Optional[Sequence['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow']] = None,
+                 weekly_windows: Optional[Sequence['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow']] = None):
+        """
+        :param builtins.str time_zone: Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+        :param Sequence['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs'] one_time_windows: Optional. One-time windows within which actions are restricted.
+               Structure is documented below.
+        :param Sequence['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs'] weekly_windows: Optional. Recurring weekly windows within which actions are restricted.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "time_zone", time_zone)
+        if one_time_windows is not None:
+            pulumi.set(__self__, "one_time_windows", one_time_windows)
+        if weekly_windows is not None:
+            pulumi.set(__self__, "weekly_windows", weekly_windows)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> builtins.str:
+        """
+        Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+        """
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter(name="oneTimeWindows")
+    def one_time_windows(self) -> Optional[Sequence['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow']]:
+        """
+        Optional. One-time windows within which actions are restricted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "one_time_windows")
+
+    @property
+    @pulumi.getter(name="weeklyWindows")
+    def weekly_windows(self) -> Optional[Sequence['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow']]:
+        """
+        Optional. Recurring weekly windows within which actions are restricted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "weekly_windows")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endDate":
+            suggest = "end_date"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startDate":
+            suggest = "start_date"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_date: 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate',
+                 end_time: 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime',
+                 start_date: 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate',
+                 start_time: 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime'):
+        """
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs' end_date: Required. End date.
+               Structure is documented below.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs' end_time: Required. End time (exclusive). You may use 24:00 for the end of the day.
+               Structure is documented below.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs' start_date: Required. Start date.
+               Structure is documented below.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs' start_time: Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate':
+        """
+        Required. End date.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime':
+        """
+        Required. End time (exclusive). You may use 24:00 for the end of the day.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate':
+        """
+        Required. Start date.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> 'outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime':
+        """
+        Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate(dict):
+    def __init__(__self__, *,
+                 day: Optional[builtins.int] = None,
+                 month: Optional[builtins.int] = None,
+                 year: Optional[builtins.int] = None):
+        """
+        :param builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month.
+        :param builtins.int month: Month of a year. Must be from 1 to 12.
+        :param builtins.int year: Year of the date. Must be from 1 to 9999.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[builtins.int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[builtins.int]:
+        """
+        Month of a year. Must be from 1 to 12.
+        """
+        return pulumi.get(self, "month")
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[builtins.int]:
+        """
+        Year of the date. Must be from 1 to 9999.
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime(dict):
+    def __init__(__self__, *,
+                 hours: Optional[builtins.int] = None,
+                 minutes: Optional[builtins.int] = None,
+                 nanos: Optional[builtins.int] = None,
+                 seconds: Optional[builtins.int] = None):
+        """
+        :param builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param builtins.int minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+        :param builtins.int nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+               
+               - - -
+        :param builtins.int seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[builtins.int]:
+        """
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[builtins.int]:
+        """
+        Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[builtins.int]:
+        """
+        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+
+        - - -
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[builtins.int]:
+        """
+        Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate(dict):
+    def __init__(__self__, *,
+                 day: Optional[builtins.int] = None,
+                 month: Optional[builtins.int] = None,
+                 year: Optional[builtins.int] = None):
+        """
+        :param builtins.int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param builtins.int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param builtins.int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[builtins.int]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[builtins.int]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[builtins.int]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime(dict):
+    def __init__(__self__, *,
+                 hours: Optional[builtins.int] = None,
+                 minutes: Optional[builtins.int] = None,
+                 nanos: Optional[builtins.int] = None,
+                 seconds: Optional[builtins.int] = None):
+        """
+        :param builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param builtins.int minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+        :param builtins.int nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+        :param builtins.int seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[builtins.int]:
+        """
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[builtins.int]:
+        """
+        Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[builtins.int]:
+        """
+        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[builtins.int]:
+        """
+        Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "daysOfWeeks":
+            suggest = "days_of_weeks"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 days_of_weeks: Optional[Sequence[builtins.str]] = None,
+                 end_time: Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime'] = None,
+                 start_time: Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime'] = None):
+        """
+        :param Sequence[builtins.str] days_of_weeks: Optional. Days of week. If left empty, all days of the week will be included.
+               Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs' end_time: Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+               Structure is documented below.
+        :param 'DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs' start_time: Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+               Structure is documented below.
+        """
+        if days_of_weeks is not None:
+            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Optional. Days of week. If left empty, all days of the week will be included.
+        Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        return pulumi.get(self, "days_of_weeks")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime']:
+        """
+        Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional['outputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime']:
+        """
+        Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime(dict):
+    def __init__(__self__, *,
+                 hours: Optional[builtins.int] = None,
+                 minutes: Optional[builtins.int] = None,
+                 nanos: Optional[builtins.int] = None,
+                 seconds: Optional[builtins.int] = None):
+        """
+        :param builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param builtins.int minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+        :param builtins.int nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+               
+               - - -
+        :param builtins.int seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[builtins.int]:
+        """
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[builtins.int]:
+        """
+        Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[builtins.int]:
+        """
+        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+
+        - - -
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[builtins.int]:
+        """
+        Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime(dict):
+    def __init__(__self__, *,
+                 hours: Optional[builtins.int] = None,
+                 minutes: Optional[builtins.int] = None,
+                 nanos: Optional[builtins.int] = None,
+                 seconds: Optional[builtins.int] = None):
+        """
+        :param builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param builtins.int minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+        :param builtins.int nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+        :param builtins.int seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[builtins.int]:
+        """
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[builtins.int]:
+        """
+        Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[builtins.int]:
+        """
+        Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[builtins.int]:
+        """
+        Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class DeployPolicySelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deliveryPipeline":
+            suggest = "delivery_pipeline"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeployPolicySelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeployPolicySelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeployPolicySelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delivery_pipeline: Optional['outputs.DeployPolicySelectorDeliveryPipeline'] = None,
+                 target: Optional['outputs.DeployPolicySelectorTarget'] = None):
+        """
+        :param 'DeployPolicySelectorDeliveryPipelineArgs' delivery_pipeline: Contains attributes about a delivery pipeline.
+               Structure is documented below.
+        :param 'DeployPolicySelectorTargetArgs' target: Contains attributes about a target.
+               Structure is documented below.
+        """
+        if delivery_pipeline is not None:
+            pulumi.set(__self__, "delivery_pipeline", delivery_pipeline)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="deliveryPipeline")
+    def delivery_pipeline(self) -> Optional['outputs.DeployPolicySelectorDeliveryPipeline']:
+        """
+        Contains attributes about a delivery pipeline.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delivery_pipeline")
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional['outputs.DeployPolicySelectorTarget']:
+        """
+        Contains attributes about a target.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target")
+
+
+@pulumi.output_type
+class DeployPolicySelectorDeliveryPipeline(dict):
+    def __init__(__self__, *,
+                 id: Optional[builtins.str] = None,
+                 labels: Optional[Mapping[str, builtins.str]] = None):
+        """
+        :param builtins.str id: Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+               - The last segment of a pipeline name
+               - "*", all delivery pipelines in a location
+        :param Mapping[str, builtins.str] labels: DeliveryPipeline labels.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[builtins.str]:
+        """
+        Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+        - The last segment of a pipeline name
+        - "*", all delivery pipelines in a location
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        DeliveryPipeline labels.
+        """
+        return pulumi.get(self, "labels")
+
+
+@pulumi.output_type
+class DeployPolicySelectorTarget(dict):
+    def __init__(__self__, *,
+                 id: Optional[builtins.str] = None,
+                 labels: Optional[Mapping[str, builtins.str]] = None):
+        """
+        :param builtins.str id: ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+        :param Mapping[str, builtins.str] labels: Target labels.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[builtins.str]:
+        """
+        ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        Target labels.
+        """
+        return pulumi.get(self, "labels")
 
 
 @pulumi.output_type

@@ -53324,6 +53324,10 @@ if not MYPY:
         """
         Specifies the number of max logical switches.
         """
+        tpu_topology: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the shape of the TPU slice.
+        """
         vm_count: NotRequired[pulumi.Input[builtins.int]]
         """
         Number of VMs in this placement group. Google does not recommend that you use this field
@@ -53340,6 +53344,7 @@ class ResourcePolicyGroupPlacementPolicyArgs:
                  collocation: Optional[pulumi.Input[builtins.str]] = None,
                  gpu_topology: Optional[pulumi.Input[builtins.str]] = None,
                  max_distance: Optional[pulumi.Input[builtins.int]] = None,
+                 tpu_topology: Optional[pulumi.Input[builtins.str]] = None,
                  vm_count: Optional[pulumi.Input[builtins.int]] = None):
         """
         :param pulumi.Input[builtins.int] availability_domain_count: The number of availability domains instances will be spread across. If two instances are in different
@@ -53351,6 +53356,7 @@ class ResourcePolicyGroupPlacementPolicyArgs:
                Possible values are: `COLLOCATED`.
         :param pulumi.Input[builtins.str] gpu_topology: Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
         :param pulumi.Input[builtins.int] max_distance: Specifies the number of max logical switches.
+        :param pulumi.Input[builtins.str] tpu_topology: Specifies the shape of the TPU slice.
         :param pulumi.Input[builtins.int] vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
                exact number of VMs.
@@ -53363,6 +53369,8 @@ class ResourcePolicyGroupPlacementPolicyArgs:
             pulumi.set(__self__, "gpu_topology", gpu_topology)
         if max_distance is not None:
             pulumi.set(__self__, "max_distance", max_distance)
+        if tpu_topology is not None:
+            pulumi.set(__self__, "tpu_topology", tpu_topology)
         if vm_count is not None:
             pulumi.set(__self__, "vm_count", vm_count)
 
@@ -53418,6 +53426,18 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     @max_distance.setter
     def max_distance(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "max_distance", value)
+
+    @property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the shape of the TPU slice.
+        """
+        return pulumi.get(self, "tpu_topology")
+
+    @tpu_topology.setter
+    def tpu_topology(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "tpu_topology", value)
 
     @property
     @pulumi.getter(name="vmCount")

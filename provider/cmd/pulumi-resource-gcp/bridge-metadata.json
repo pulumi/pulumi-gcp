@@ -262,6 +262,9 @@
                 "fields": {
                     "access_levels": {
                         "maxItemsOne": true
+                    },
+                    "session_settings": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -1332,6 +1335,18 @@
                 "majorVersion": 8,
                 "fields": {
                     "attributes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_apigee_control_plane_access": {
+                "current": "gcp:apigee/controlPlaneAccess:ControlPlaneAccess",
+                "majorVersion": 8,
+                "fields": {
+                    "analytics_publisher_identities": {
+                        "maxItemsOne": false
+                    },
+                    "synchronizer_identities": {
                         "maxItemsOne": false
                     }
                 }
@@ -4910,6 +4925,35 @@
                                 },
                                 "promote_release_rule": {
                                     "maxItemsOne": true
+                                },
+                                "repair_rollout_rule": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "jobs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "phases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "repair_phases": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "retry": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "rollback": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "timed_promote_release_rule": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -5214,6 +5258,87 @@
             "google_clouddeploy_delivery_pipeline_iam_policy": {
                 "current": "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy",
                 "majorVersion": 8
+            },
+            "google_clouddeploy_deploy_policy": {
+                "current": "gcp:clouddeploy/deployPolicy:DeployPolicy",
+                "majorVersion": 8,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "rollout_restriction": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "actions": {
+                                                "maxItemsOne": false
+                                            },
+                                            "invokers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "time_windows": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "one_time_windows": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "end_date": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "end_time": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "start_date": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "start_time": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "weekly_windows": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "days_of_week": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "end_time": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "start_time": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "selectors": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "delivery_pipeline": {
+                                    "maxItemsOne": true
+                                },
+                                "target": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_clouddeploy_target": {
                 "current": "gcp:clouddeploy/target:Target",
@@ -17027,6 +17152,23 @@
                                         }
                                     }
                                 },
+                                "salesforce_excluded_objects": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "objects": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "fields": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "sql_server_excluded_objects": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -17277,6 +17419,47 @@
                                                                                 }
                                                                             }
                                                                         }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "salesforce_source_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "exclude_objects": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "objects": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "fields": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "include_objects": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "objects": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "fields": {
+                                                                        "maxItemsOne": false
                                                                     }
                                                                 }
                                                             }
@@ -19692,8 +19875,32 @@
                     }
                 }
             },
+            "google_folder_service_identity": {
+                "current": "gcp:folder/serviceIdentity:ServiceIdentity",
+                "majorVersion": 8
+            },
             "google_gemini_code_repository_index": {
                 "current": "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex",
+                "majorVersion": 8
+            },
+            "google_gemini_code_tools_setting": {
+                "current": "gcp:gemini/codeToolsSetting:CodeToolsSetting",
+                "majorVersion": 8,
+                "fields": {
+                    "enabled_tool": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "config": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_gemini_code_tools_setting_binding": {
+                "current": "gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding",
                 "majorVersion": 8
             },
             "google_gemini_data_sharing_with_google_setting": {
@@ -23315,6 +23522,23 @@
                 "current": "gcp:memorystore/instance:Instance",
                 "majorVersion": 8,
                 "fields": {
+                    "automated_backup_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "fixed_frequency_schedule": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "start_time": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "cross_instance_replication_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -24015,7 +24239,14 @@
                 "majorVersion": 8,
                 "fields": {
                     "destination_volume_parameters": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "tiering_policy": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "transfer_stats": {
                         "maxItemsOne": false
@@ -26513,6 +26744,349 @@
             },
             "google_os_config_v2_policy_orchestrator": {
                 "current": "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator",
+                "majorVersion": 8,
+                "fields": {
+                    "orchestrated_resource": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "os_policy_assignment_v1_payload": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "instance_filter": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "exclusion_labels": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "inclusion_labels": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "inventories": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "os_policies": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "resource_groups": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "inventory_filters": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "resources": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "exec": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "enforce": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "args": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        },
+                                                                                                        "file": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "gcs": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "remote": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "validate": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "args": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        },
+                                                                                                        "file": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "gcs": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "remote": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "file": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "file": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "gcs": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
+                                                                                                        "remote": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "pkg": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "apt": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "deb": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "source": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "gcs": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "remote": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "googet": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "msi": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "properties": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        },
+                                                                                                        "source": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "gcs": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "remote": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "rpm": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "source": {
+                                                                                                            "maxItemsOne": true,
+                                                                                                            "elem": {
+                                                                                                                "fields": {
+                                                                                                                    "gcs": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    },
+                                                                                                                    "remote": {
+                                                                                                                        "maxItemsOne": true
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "yum": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "zypper": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "repository": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "apt": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "components": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "goo": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "yum": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "gpg_keys": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "zypper": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "gpg_keys": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "rollout": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "disruption_budget": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "orchestration_scope": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "selectors": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "location_selector": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "included_locations": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "resource_hierarchy_selector": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "included_folders": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "included_projects": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "orchestration_state": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_iteration_state": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "error": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "details": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "previous_iteration_state": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "error": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "details": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_os_config_v2_policy_orchestrator_for_organization": {
+                "current": "gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization",
                 "majorVersion": 8,
                 "fields": {
                     "orchestrated_resource": {
@@ -31357,6 +31931,9 @@
                                     "maxItemsOne": false
                                 },
                                 "boot_disk": {
+                                    "maxItemsOne": true
+                                },
+                                "confidential_instance_config": {
                                     "maxItemsOne": true
                                 },
                                 "container_image": {
@@ -37268,6 +37845,23 @@
                 "current": "gcp:memorystore/getInstance:getInstance",
                 "majorVersion": 8,
                 "fields": {
+                    "automated_backup_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "fixed_frequency_schedule": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "start_time": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "cross_instance_replication_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -39772,6 +40366,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_clouddeploy_deploy_policy": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_clouddeploy_target": [
                 "effective_labels",
                 "terraform_labels"
@@ -40073,6 +40671,14 @@
                 "terraform_labels"
             ],
             "google_gemini_code_repository_index": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gemini_code_tools_setting": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gemini_code_tools_setting_binding": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -40437,6 +41043,10 @@
                 "terraform_labels"
             ],
             "google_os_config_v2_policy_orchestrator": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_os_config_v2_policy_orchestrator_for_organization": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -40890,6 +41500,7 @@
             "gcp:apigee/addonsConfig:AddonsConfig": 0,
             "gcp:apigee/api:Api": 0,
             "gcp:apigee/appGroup:AppGroup": 0,
+            "gcp:apigee/controlPlaneAccess:ControlPlaneAccess": 0,
             "gcp:apigee/developer:Developer": 0,
             "gcp:apigee/dnsZone:DnsZone": 0,
             "gcp:apigee/endpointAttachment:EndpointAttachment": 0,
@@ -41055,6 +41666,7 @@
             "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding": 0,
             "gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember": 0,
             "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy": 0,
+            "gcp:clouddeploy/deployPolicy:DeployPolicy": 0,
             "gcp:clouddeploy/target:Target": 0,
             "gcp:clouddeploy/targetIamBinding:TargetIamBinding": 0,
             "gcp:clouddeploy/targetIamMember:TargetIamMember": 0,
@@ -41469,7 +42081,10 @@
             "gcp:folder/iAMPolicy:IAMPolicy": 0,
             "gcp:folder/iamAuditConfig:IamAuditConfig": 0,
             "gcp:folder/organizationPolicy:OrganizationPolicy": 0,
+            "gcp:folder/serviceIdentity:ServiceIdentity": 0,
             "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex": 0,
+            "gcp:gemini/codeToolsSetting:CodeToolsSetting": 0,
+            "gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding": 0,
             "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting": 0,
             "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding": 0,
             "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting": 0,
@@ -41740,6 +42355,7 @@
             "gcp:osconfig/osPolicyAssignment:OsPolicyAssignment": 0,
             "gcp:osconfig/patchDeployment:PatchDeployment": 0,
             "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator": 0,
+            "gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization": 0,
             "gcp:oslogin/sshPublicKey:SshPublicKey": 0,
             "gcp:parallelstore/instance:Instance": 0,
             "gcp:parametermanager/parameter:Parameter": 0,

@@ -45,6 +45,7 @@ public final class GetBucketObjectContentResult {
     private String id;
     private String kmsKeyName;
     private String md5hash;
+    private String md5hexhash;
     private String mediaLink;
     private Map<String,String> metadata;
     private String name;
@@ -117,6 +118,9 @@ public final class GetBucketObjectContentResult {
     public String md5hash() {
         return this.md5hash;
     }
+    public String md5hexhash() {
+        return this.md5hexhash;
+    }
     public String mediaLink() {
         return this.mediaLink;
     }
@@ -170,6 +174,7 @@ public final class GetBucketObjectContentResult {
         private String id;
         private String kmsKeyName;
         private String md5hash;
+        private String md5hexhash;
         private String mediaLink;
         private Map<String,String> metadata;
         private String name;
@@ -198,6 +203,7 @@ public final class GetBucketObjectContentResult {
     	      this.id = defaults.id;
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.md5hash = defaults.md5hash;
+    	      this.md5hexhash = defaults.md5hexhash;
     	      this.mediaLink = defaults.mediaLink;
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
@@ -341,6 +347,14 @@ public final class GetBucketObjectContentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder md5hexhash(String md5hexhash) {
+            if (md5hexhash == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "md5hexhash");
+            }
+            this.md5hexhash = md5hexhash;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mediaLink(String mediaLink) {
             if (mediaLink == null) {
               throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "mediaLink");
@@ -433,6 +447,7 @@ public final class GetBucketObjectContentResult {
             _resultValue.id = id;
             _resultValue.kmsKeyName = kmsKeyName;
             _resultValue.md5hash = md5hash;
+            _resultValue.md5hexhash = md5hexhash;
             _resultValue.mediaLink = mediaLink;
             _resultValue.metadata = metadata;
             _resultValue.name = name;

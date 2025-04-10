@@ -182,6 +182,21 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
     }
 
     /**
+     * If set, the advanced cluster feature is enabled.
+     * 
+     */
+    @Import(name="enableAdvancedCluster")
+    private @Nullable Output<Boolean> enableAdvancedCluster;
+
+    /**
+     * @return If set, the advanced cluster feature is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAdvancedCluster() {
+        return Optional.ofNullable(this.enableAdvancedCluster);
+    }
+
+    /**
      * The DNS name of VMware admin cluster&#39;s API server.
      * 
      */
@@ -490,6 +505,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
         this.createTime = $.createTime;
         this.description = $.description;
         this.effectiveAnnotations = $.effectiveAnnotations;
+        this.enableAdvancedCluster = $.enableAdvancedCluster;
         this.endpoint = $.endpoint;
         this.etag = $.etag;
         this.fleets = $.fleets;
@@ -734,6 +750,27 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
+        }
+
+        /**
+         * @param enableAdvancedCluster If set, the advanced cluster feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAdvancedCluster(@Nullable Output<Boolean> enableAdvancedCluster) {
+            $.enableAdvancedCluster = enableAdvancedCluster;
+            return this;
+        }
+
+        /**
+         * @param enableAdvancedCluster If set, the advanced cluster feature is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAdvancedCluster(Boolean enableAdvancedCluster) {
+            return enableAdvancedCluster(Output.of(enableAdvancedCluster));
         }
 
         /**

@@ -175,16 +175,26 @@ import * as utilities from "../utilities";
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("function-source.zip"),
  * });
- * const _function = new gcp.cloudfunctions.Function("function", {
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     project: "my-project-name",
  *     name: "cloud-function-via-hosting",
+ *     location: "us-central1",
  *     description: "A Cloud Function connected to Firebase Hosing",
- *     runtime: "nodejs20",
- *     availableMemoryMb: 128,
- *     sourceArchiveBucket: bucket.name,
- *     sourceArchiveObject: object.name,
- *     triggerHttp: true,
- *     entryPoint: "helloHttp",
+ *     buildConfig: {
+ *         runtime: "nodejs22",
+ *         entryPoint: "helloHttp",
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *     },
  * });
  * const defaultHostingVersion = new gcp.firebase.HostingVersion("default", {
  *     siteId: _default.siteId,

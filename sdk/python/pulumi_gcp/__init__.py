@@ -736,6 +736,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/controlPlaneAccess",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/controlPlaneAccess:ControlPlaneAccess": "ControlPlaneAccess"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/developer",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -2052,6 +2060,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.clouddeploy",
   "classes": {
    "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy": "DeliveryPipelineIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddeploy/deployPolicy",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/deployPolicy:DeployPolicy": "DeployPolicy"
   }
  },
  {
@@ -5368,10 +5384,34 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "folder/serviceIdentity",
+  "fqn": "pulumi_gcp.folder",
+  "classes": {
+   "gcp:folder/serviceIdentity:ServiceIdentity": "ServiceIdentity"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "gemini/codeRepositoryIndex",
   "fqn": "pulumi_gcp.gemini",
   "classes": {
    "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex": "CodeRepositoryIndex"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/codeToolsSetting",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/codeToolsSetting:CodeToolsSetting": "CodeToolsSetting"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/codeToolsSettingBinding",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding": "CodeToolsSettingBinding"
   }
  },
  {
@@ -7532,6 +7572,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.osconfig",
   "classes": {
    "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator": "V2PolicyOrchestrator"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "osconfig/v2PolicyOrchestratorForOrganization",
+  "fqn": "pulumi_gcp.osconfig",
+  "classes": {
+   "gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization": "V2PolicyOrchestratorForOrganization"
   }
  },
  {

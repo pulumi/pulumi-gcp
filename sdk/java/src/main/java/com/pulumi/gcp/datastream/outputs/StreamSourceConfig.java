@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigOracleSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfig;
+import com.pulumi.gcp.datastream.outputs.StreamSourceConfigSalesforceSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigSqlServerSourceConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -34,6 +35,12 @@ public final class StreamSourceConfig {
      * 
      */
     private @Nullable StreamSourceConfigPostgresqlSourceConfig postgresqlSourceConfig;
+    /**
+     * @return Salesforce data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamSourceConfigSalesforceSourceConfig salesforceSourceConfig;
     /**
      * @return Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
      * 
@@ -72,6 +79,14 @@ public final class StreamSourceConfig {
         return Optional.ofNullable(this.postgresqlSourceConfig);
     }
     /**
+     * @return Salesforce data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamSourceConfigSalesforceSourceConfig> salesforceSourceConfig() {
+        return Optional.ofNullable(this.salesforceSourceConfig);
+    }
+    /**
      * @return Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
      * 
      */
@@ -99,6 +114,7 @@ public final class StreamSourceConfig {
         private @Nullable StreamSourceConfigMysqlSourceConfig mysqlSourceConfig;
         private @Nullable StreamSourceConfigOracleSourceConfig oracleSourceConfig;
         private @Nullable StreamSourceConfigPostgresqlSourceConfig postgresqlSourceConfig;
+        private @Nullable StreamSourceConfigSalesforceSourceConfig salesforceSourceConfig;
         private String sourceConnectionProfile;
         private @Nullable StreamSourceConfigSqlServerSourceConfig sqlServerSourceConfig;
         public Builder() {}
@@ -107,6 +123,7 @@ public final class StreamSourceConfig {
     	      this.mysqlSourceConfig = defaults.mysqlSourceConfig;
     	      this.oracleSourceConfig = defaults.oracleSourceConfig;
     	      this.postgresqlSourceConfig = defaults.postgresqlSourceConfig;
+    	      this.salesforceSourceConfig = defaults.salesforceSourceConfig;
     	      this.sourceConnectionProfile = defaults.sourceConnectionProfile;
     	      this.sqlServerSourceConfig = defaults.sqlServerSourceConfig;
         }
@@ -130,6 +147,12 @@ public final class StreamSourceConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder salesforceSourceConfig(@Nullable StreamSourceConfigSalesforceSourceConfig salesforceSourceConfig) {
+
+            this.salesforceSourceConfig = salesforceSourceConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceConnectionProfile(String sourceConnectionProfile) {
             if (sourceConnectionProfile == null) {
               throw new MissingRequiredPropertyException("StreamSourceConfig", "sourceConnectionProfile");
@@ -148,6 +171,7 @@ public final class StreamSourceConfig {
             _resultValue.mysqlSourceConfig = mysqlSourceConfig;
             _resultValue.oracleSourceConfig = oracleSourceConfig;
             _resultValue.postgresqlSourceConfig = postgresqlSourceConfig;
+            _resultValue.salesforceSourceConfig = salesforceSourceConfig;
             _resultValue.sourceConnectionProfile = sourceConnectionProfile;
             _resultValue.sqlServerSourceConfig = sqlServerSourceConfig;
             return _resultValue;

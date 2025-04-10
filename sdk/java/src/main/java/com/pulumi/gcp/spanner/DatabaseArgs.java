@@ -38,23 +38,9 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.databaseDialect);
     }
 
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements
-     * execute atomically with the creation of the database: if there is an
-     * error in any statement, the database is not created.
-     * 
-     */
     @Import(name="ddls")
     private @Nullable Output<List<String>> ddls;
 
-    /**
-     * @return An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements
-     * execute atomically with the creation of the database: if there is an
-     * error in any statement, the database is not created.
-     * 
-     */
     public Optional<Output<List<String>>> ddls() {
         return Optional.ofNullable(this.ddls);
     }
@@ -233,42 +219,15 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
             return databaseDialect(Output.of(databaseDialect));
         }
 
-        /**
-         * @param ddls An optional list of DDL statements to run inside the newly created
-         * database. Statements can create tables, indexes, etc. These statements
-         * execute atomically with the creation of the database: if there is an
-         * error in any statement, the database is not created.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ddls(@Nullable Output<List<String>> ddls) {
             $.ddls = ddls;
             return this;
         }
 
-        /**
-         * @param ddls An optional list of DDL statements to run inside the newly created
-         * database. Statements can create tables, indexes, etc. These statements
-         * execute atomically with the creation of the database: if there is an
-         * error in any statement, the database is not created.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ddls(List<String> ddls) {
             return ddls(Output.of(ddls));
         }
 
-        /**
-         * @param ddls An optional list of DDL statements to run inside the newly created
-         * database. Statements can create tables, indexes, etc. These statements
-         * execute atomically with the creation of the database: if there is an
-         * error in any statement, the database is not created.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ddls(String... ddls) {
             return ddls(List.of(ddls));
         }

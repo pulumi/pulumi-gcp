@@ -13,6 +13,464 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceAutomatedBackupConfig struct {
+	// Trigger automated backups at a fixed frequency.
+	// Structure is documented below.
+	FixedFrequencySchedule InstanceAutomatedBackupConfigFixedFrequencySchedule `pulumi:"fixedFrequencySchedule"`
+	// How long to keep automated backups before the backups are deleted.
+	// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The defaultValue is "3024000s"
+	Retention string `pulumi:"retention"`
+}
+
+// InstanceAutomatedBackupConfigInput is an input type that accepts InstanceAutomatedBackupConfigArgs and InstanceAutomatedBackupConfigOutput values.
+// You can construct a concrete instance of `InstanceAutomatedBackupConfigInput` via:
+//
+//	InstanceAutomatedBackupConfigArgs{...}
+type InstanceAutomatedBackupConfigInput interface {
+	pulumi.Input
+
+	ToInstanceAutomatedBackupConfigOutput() InstanceAutomatedBackupConfigOutput
+	ToInstanceAutomatedBackupConfigOutputWithContext(context.Context) InstanceAutomatedBackupConfigOutput
+}
+
+type InstanceAutomatedBackupConfigArgs struct {
+	// Trigger automated backups at a fixed frequency.
+	// Structure is documented below.
+	FixedFrequencySchedule InstanceAutomatedBackupConfigFixedFrequencyScheduleInput `pulumi:"fixedFrequencySchedule"`
+	// How long to keep automated backups before the backups are deleted.
+	// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The defaultValue is "3024000s"
+	Retention pulumi.StringInput `pulumi:"retention"`
+}
+
+func (InstanceAutomatedBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (i InstanceAutomatedBackupConfigArgs) ToInstanceAutomatedBackupConfigOutput() InstanceAutomatedBackupConfigOutput {
+	return i.ToInstanceAutomatedBackupConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceAutomatedBackupConfigArgs) ToInstanceAutomatedBackupConfigOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutomatedBackupConfigOutput)
+}
+
+func (i InstanceAutomatedBackupConfigArgs) ToInstanceAutomatedBackupConfigPtrOutput() InstanceAutomatedBackupConfigPtrOutput {
+	return i.ToInstanceAutomatedBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAutomatedBackupConfigArgs) ToInstanceAutomatedBackupConfigPtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutomatedBackupConfigOutput).ToInstanceAutomatedBackupConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceAutomatedBackupConfigPtrInput is an input type that accepts InstanceAutomatedBackupConfigArgs, InstanceAutomatedBackupConfigPtr and InstanceAutomatedBackupConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceAutomatedBackupConfigPtrInput` via:
+//
+//	        InstanceAutomatedBackupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceAutomatedBackupConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceAutomatedBackupConfigPtrOutput() InstanceAutomatedBackupConfigPtrOutput
+	ToInstanceAutomatedBackupConfigPtrOutputWithContext(context.Context) InstanceAutomatedBackupConfigPtrOutput
+}
+
+type instanceAutomatedBackupConfigPtrType InstanceAutomatedBackupConfigArgs
+
+func InstanceAutomatedBackupConfigPtr(v *InstanceAutomatedBackupConfigArgs) InstanceAutomatedBackupConfigPtrInput {
+	return (*instanceAutomatedBackupConfigPtrType)(v)
+}
+
+func (*instanceAutomatedBackupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (i *instanceAutomatedBackupConfigPtrType) ToInstanceAutomatedBackupConfigPtrOutput() InstanceAutomatedBackupConfigPtrOutput {
+	return i.ToInstanceAutomatedBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAutomatedBackupConfigPtrType) ToInstanceAutomatedBackupConfigPtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutomatedBackupConfigPtrOutput)
+}
+
+type InstanceAutomatedBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutomatedBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (o InstanceAutomatedBackupConfigOutput) ToInstanceAutomatedBackupConfigOutput() InstanceAutomatedBackupConfigOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigOutput) ToInstanceAutomatedBackupConfigOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigOutput) ToInstanceAutomatedBackupConfigPtrOutput() InstanceAutomatedBackupConfigPtrOutput {
+	return o.ToInstanceAutomatedBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAutomatedBackupConfigOutput) ToInstanceAutomatedBackupConfigPtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAutomatedBackupConfig) *InstanceAutomatedBackupConfig {
+		return &v
+	}).(InstanceAutomatedBackupConfigPtrOutput)
+}
+
+// Trigger automated backups at a fixed frequency.
+// Structure is documented below.
+func (o InstanceAutomatedBackupConfigOutput) FixedFrequencySchedule() InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o.ApplyT(func(v InstanceAutomatedBackupConfig) InstanceAutomatedBackupConfigFixedFrequencySchedule {
+		return v.FixedFrequencySchedule
+	}).(InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput)
+}
+
+// How long to keep automated backups before the backups are deleted.
+// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The defaultValue is "3024000s"
+func (o InstanceAutomatedBackupConfigOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAutomatedBackupConfig) string { return v.Retention }).(pulumi.StringOutput)
+}
+
+type InstanceAutomatedBackupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutomatedBackupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (o InstanceAutomatedBackupConfigPtrOutput) ToInstanceAutomatedBackupConfigPtrOutput() InstanceAutomatedBackupConfigPtrOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigPtrOutput) ToInstanceAutomatedBackupConfigPtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigPtrOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigPtrOutput) Elem() InstanceAutomatedBackupConfigOutput {
+	return o.ApplyT(func(v *InstanceAutomatedBackupConfig) InstanceAutomatedBackupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAutomatedBackupConfig
+		return ret
+	}).(InstanceAutomatedBackupConfigOutput)
+}
+
+// Trigger automated backups at a fixed frequency.
+// Structure is documented below.
+func (o InstanceAutomatedBackupConfigPtrOutput) FixedFrequencySchedule() InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o.ApplyT(func(v *InstanceAutomatedBackupConfig) *InstanceAutomatedBackupConfigFixedFrequencySchedule {
+		if v == nil {
+			return nil
+		}
+		return &v.FixedFrequencySchedule
+	}).(InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput)
+}
+
+// How long to keep automated backups before the backups are deleted.
+// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The defaultValue is "3024000s"
+func (o InstanceAutomatedBackupConfigPtrOutput) Retention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceAutomatedBackupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Retention
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceAutomatedBackupConfigFixedFrequencySchedule struct {
+	// The start time of every automated backup in UTC.
+	// It must be set to the start of an hour. This field is required.
+	// Structure is documented below.
+	StartTime InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime `pulumi:"startTime"`
+}
+
+// InstanceAutomatedBackupConfigFixedFrequencyScheduleInput is an input type that accepts InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs and InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput values.
+// You can construct a concrete instance of `InstanceAutomatedBackupConfigFixedFrequencyScheduleInput` via:
+//
+//	InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs{...}
+type InstanceAutomatedBackupConfigFixedFrequencyScheduleInput interface {
+	pulumi.Input
+
+	ToInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput
+	ToInstanceAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput
+}
+
+type InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs struct {
+	// The start time of every automated backup in UTC.
+	// It must be set to the start of an hour. This field is required.
+	// Structure is documented below.
+	StartTime InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput `pulumi:"startTime"`
+}
+
+func (InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (i InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return i.ToInstanceAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(context.Background())
+}
+
+func (i InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput)
+}
+
+func (i InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs) ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput() InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return i.ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs) ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput).ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx)
+}
+
+// InstanceAutomatedBackupConfigFixedFrequencySchedulePtrInput is an input type that accepts InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs, InstanceAutomatedBackupConfigFixedFrequencySchedulePtr and InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput values.
+// You can construct a concrete instance of `InstanceAutomatedBackupConfigFixedFrequencySchedulePtrInput` via:
+//
+//	        InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceAutomatedBackupConfigFixedFrequencySchedulePtrInput interface {
+	pulumi.Input
+
+	ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput() InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput
+	ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(context.Context) InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput
+}
+
+type instanceAutomatedBackupConfigFixedFrequencySchedulePtrType InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs
+
+func InstanceAutomatedBackupConfigFixedFrequencySchedulePtr(v *InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs) InstanceAutomatedBackupConfigFixedFrequencySchedulePtrInput {
+	return (*instanceAutomatedBackupConfigFixedFrequencySchedulePtrType)(v)
+}
+
+func (*instanceAutomatedBackupConfigFixedFrequencySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (i *instanceAutomatedBackupConfigFixedFrequencySchedulePtrType) ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput() InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return i.ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAutomatedBackupConfigFixedFrequencySchedulePtrType) ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput)
+}
+
+type InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput() InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o.ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAutomatedBackupConfigFixedFrequencySchedule) *InstanceAutomatedBackupConfigFixedFrequencySchedule {
+		return &v
+	}).(InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput)
+}
+
+// The start time of every automated backup in UTC.
+// It must be set to the start of an hour. This field is required.
+// Structure is documented below.
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) StartTime() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o.ApplyT(func(v InstanceAutomatedBackupConfigFixedFrequencySchedule) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		return v.StartTime
+	}).(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput)
+}
+
+type InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput) ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput() InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput) ToInstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput) Elem() InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o.ApplyT(func(v *InstanceAutomatedBackupConfigFixedFrequencySchedule) InstanceAutomatedBackupConfigFixedFrequencySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAutomatedBackupConfigFixedFrequencySchedule
+		return ret
+	}).(InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput)
+}
+
+// The start time of every automated backup in UTC.
+// It must be set to the start of an hour. This field is required.
+// Structure is documented below.
+func (o InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput) StartTime() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o.ApplyT(func(v *InstanceAutomatedBackupConfigFixedFrequencySchedule) *InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput)
+}
+
+type InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours int `pulumi:"hours"`
+}
+
+// InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput is an input type that accepts InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs and InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput values.
+// You can construct a concrete instance of `InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput` via:
+//
+//	InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{...}
+type InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput interface {
+	pulumi.Input
+
+	ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput
+	ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput
+}
+
+type InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntInput `pulumi:"hours"`
+}
+
+func (InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (i InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return i.ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(context.Background())
+}
+
+func (i InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput)
+}
+
+func (i InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return i.ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput).ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx)
+}
+
+// InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput is an input type that accepts InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs, InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtr and InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput values.
+// You can construct a concrete instance of `InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput` via:
+//
+//	        InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput interface {
+	pulumi.Input
+
+	ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput
+	ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput
+}
+
+type instanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs
+
+func InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtr(v *InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput {
+	return (*instanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType)(v)
+}
+
+func (*instanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (i *instanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return i.ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrType) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput)
+}
+
+type InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o.ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime) *InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		return &v
+	}).(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+type InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) ToInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutputWithContext(ctx context.Context) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput {
+	return o
+}
+
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) Elem() InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o.ApplyT(func(v *InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime) InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime
+		return ret
+	}).(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
 type InstanceCrossInstanceReplicationConfig struct {
 	// The instance role supports the following values:
 	// 1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
@@ -4199,6 +4657,322 @@ func (o InstanceZoneDistributionConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetInstanceAutomatedBackupConfig struct {
+	// Trigger automated backups at a fixed frequency.
+	FixedFrequencySchedules []GetInstanceAutomatedBackupConfigFixedFrequencySchedule `pulumi:"fixedFrequencySchedules"`
+	// How long to keep automated backups before the backups are deleted.
+	// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The defaultValue is "3024000s"
+	Retention string `pulumi:"retention"`
+}
+
+// GetInstanceAutomatedBackupConfigInput is an input type that accepts GetInstanceAutomatedBackupConfigArgs and GetInstanceAutomatedBackupConfigOutput values.
+// You can construct a concrete instance of `GetInstanceAutomatedBackupConfigInput` via:
+//
+//	GetInstanceAutomatedBackupConfigArgs{...}
+type GetInstanceAutomatedBackupConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutomatedBackupConfigOutput() GetInstanceAutomatedBackupConfigOutput
+	ToGetInstanceAutomatedBackupConfigOutputWithContext(context.Context) GetInstanceAutomatedBackupConfigOutput
+}
+
+type GetInstanceAutomatedBackupConfigArgs struct {
+	// Trigger automated backups at a fixed frequency.
+	FixedFrequencySchedules GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayInput `pulumi:"fixedFrequencySchedules"`
+	// How long to keep automated backups before the backups are deleted.
+	// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The defaultValue is "3024000s"
+	Retention pulumi.StringInput `pulumi:"retention"`
+}
+
+func (GetInstanceAutomatedBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (i GetInstanceAutomatedBackupConfigArgs) ToGetInstanceAutomatedBackupConfigOutput() GetInstanceAutomatedBackupConfigOutput {
+	return i.ToGetInstanceAutomatedBackupConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutomatedBackupConfigArgs) ToGetInstanceAutomatedBackupConfigOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutomatedBackupConfigOutput)
+}
+
+// GetInstanceAutomatedBackupConfigArrayInput is an input type that accepts GetInstanceAutomatedBackupConfigArray and GetInstanceAutomatedBackupConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutomatedBackupConfigArrayInput` via:
+//
+//	GetInstanceAutomatedBackupConfigArray{ GetInstanceAutomatedBackupConfigArgs{...} }
+type GetInstanceAutomatedBackupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutomatedBackupConfigArrayOutput() GetInstanceAutomatedBackupConfigArrayOutput
+	ToGetInstanceAutomatedBackupConfigArrayOutputWithContext(context.Context) GetInstanceAutomatedBackupConfigArrayOutput
+}
+
+type GetInstanceAutomatedBackupConfigArray []GetInstanceAutomatedBackupConfigInput
+
+func (GetInstanceAutomatedBackupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (i GetInstanceAutomatedBackupConfigArray) ToGetInstanceAutomatedBackupConfigArrayOutput() GetInstanceAutomatedBackupConfigArrayOutput {
+	return i.ToGetInstanceAutomatedBackupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutomatedBackupConfigArray) ToGetInstanceAutomatedBackupConfigArrayOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutomatedBackupConfigArrayOutput)
+}
+
+type GetInstanceAutomatedBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutomatedBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (o GetInstanceAutomatedBackupConfigOutput) ToGetInstanceAutomatedBackupConfigOutput() GetInstanceAutomatedBackupConfigOutput {
+	return o
+}
+
+func (o GetInstanceAutomatedBackupConfigOutput) ToGetInstanceAutomatedBackupConfigOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigOutput {
+	return o
+}
+
+// Trigger automated backups at a fixed frequency.
+func (o GetInstanceAutomatedBackupConfigOutput) FixedFrequencySchedules() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput {
+	return o.ApplyT(func(v GetInstanceAutomatedBackupConfig) []GetInstanceAutomatedBackupConfigFixedFrequencySchedule {
+		return v.FixedFrequencySchedules
+	}).(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput)
+}
+
+// How long to keep automated backups before the backups are deleted.
+// The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The defaultValue is "3024000s"
+func (o GetInstanceAutomatedBackupConfigOutput) Retention() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAutomatedBackupConfig) string { return v.Retention }).(pulumi.StringOutput)
+}
+
+type GetInstanceAutomatedBackupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutomatedBackupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutomatedBackupConfig)(nil)).Elem()
+}
+
+func (o GetInstanceAutomatedBackupConfigArrayOutput) ToGetInstanceAutomatedBackupConfigArrayOutput() GetInstanceAutomatedBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutomatedBackupConfigArrayOutput) ToGetInstanceAutomatedBackupConfigArrayOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutomatedBackupConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceAutomatedBackupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutomatedBackupConfig {
+		return vs[0].([]GetInstanceAutomatedBackupConfig)[vs[1].(int)]
+	}).(GetInstanceAutomatedBackupConfigOutput)
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencySchedule struct {
+	// The start time of every automated backup in UTC.
+	// It must be set to the start of an hour. This field is required.
+	StartTimes []GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime `pulumi:"startTimes"`
+}
+
+// GetInstanceAutomatedBackupConfigFixedFrequencyScheduleInput is an input type that accepts GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs and GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput values.
+// You can construct a concrete instance of `GetInstanceAutomatedBackupConfigFixedFrequencyScheduleInput` via:
+//
+//	GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs{...}
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput
+	ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs struct {
+	// The start time of every automated backup in UTC.
+	// It must be set to the start of an hour. This field is required.
+	StartTimes GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayInput `pulumi:"startTimes"`
+}
+
+func (GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (i GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return i.ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput)
+}
+
+// GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayInput is an input type that accepts GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArray and GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayInput` via:
+//
+//	GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArray{ GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs{...} }
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput
+	ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutputWithContext(context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArray []GetInstanceAutomatedBackupConfigFixedFrequencyScheduleInput
+
+func (GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (i GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArray) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput {
+	return i.ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArray) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput)
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return o
+}
+
+// The start time of every automated backup in UTC.
+// It must be set to the start of an hour. This field is required.
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput) StartTimes() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput {
+	return o.ApplyT(func(v GetInstanceAutomatedBackupConfigFixedFrequencySchedule) []GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		return v.StartTimes
+	}).(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput)
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutomatedBackupConfigFixedFrequencySchedule)(nil)).Elem()
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput) Index(i pulumi.IntInput) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutomatedBackupConfigFixedFrequencySchedule {
+		return vs[0].([]GetInstanceAutomatedBackupConfigFixedFrequencySchedule)[vs[1].(int)]
+	}).(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput)
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours int `pulumi:"hours"`
+}
+
+// GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput is an input type that accepts GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs and GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput values.
+// You can construct a concrete instance of `GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput` via:
+//
+//	GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{...}
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput
+	ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntInput `pulumi:"hours"`
+}
+
+func (GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (i GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return i.ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput)
+}
+
+// GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayInput is an input type that accepts GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArray and GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayInput` via:
+//
+//	GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArray{ GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{...} }
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput
+	ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutputWithContext(context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArray []GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput
+
+func (GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (i GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArray) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput {
+	return i.ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArray) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput)
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return o
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23.
+// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+type GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime)(nil)).Elem()
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput() GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput) ToGetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutputWithContext(ctx context.Context) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput) Index(i pulumi.IntInput) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+		return vs[0].([]GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime)[vs[1].(int)]
+	}).(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput)
+}
+
 type GetInstanceCrossInstanceReplicationConfig struct {
 	// The instance role supports the following values:
 	// 1. 'INSTANCE_ROLE_UNSPECIFIED': This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
@@ -7167,6 +7941,12 @@ func (o GetInstanceZoneDistributionConfigArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutomatedBackupConfigInput)(nil)).Elem(), InstanceAutomatedBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutomatedBackupConfigPtrInput)(nil)).Elem(), InstanceAutomatedBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutomatedBackupConfigFixedFrequencyScheduleInput)(nil)).Elem(), InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutomatedBackupConfigFixedFrequencySchedulePtrInput)(nil)).Elem(), InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput)(nil)).Elem(), InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrInput)(nil)).Elem(), InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigPtrInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCrossInstanceReplicationConfigMembershipInput)(nil)).Elem(), InstanceCrossInstanceReplicationConfigMembershipArgs{})
@@ -7220,6 +8000,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceStateInfoUpdateInfoArrayInput)(nil)).Elem(), InstanceStateInfoUpdateInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneDistributionConfigInput)(nil)).Elem(), InstanceZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneDistributionConfigPtrInput)(nil)).Elem(), InstanceZoneDistributionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutomatedBackupConfigInput)(nil)).Elem(), GetInstanceAutomatedBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutomatedBackupConfigArrayInput)(nil)).Elem(), GetInstanceAutomatedBackupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutomatedBackupConfigFixedFrequencyScheduleInput)(nil)).Elem(), GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayInput)(nil)).Elem(), GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeInput)(nil)).Elem(), GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayInput)(nil)).Elem(), GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigArrayInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceCrossInstanceReplicationConfigMembershipInput)(nil)).Elem(), GetInstanceCrossInstanceReplicationConfigMembershipArgs{})
@@ -7268,6 +8054,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceStateInfoUpdateInfoArrayInput)(nil)).Elem(), GetInstanceStateInfoUpdateInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceZoneDistributionConfigInput)(nil)).Elem(), GetInstanceZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceZoneDistributionConfigArrayInput)(nil)).Elem(), GetInstanceZoneDistributionConfigArray{})
+	pulumi.RegisterOutputType(InstanceAutomatedBackupConfigOutput{})
+	pulumi.RegisterOutputType(InstanceAutomatedBackupConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceAutomatedBackupConfigFixedFrequencyScheduleOutput{})
+	pulumi.RegisterOutputType(InstanceAutomatedBackupConfigFixedFrequencySchedulePtrOutput{})
+	pulumi.RegisterOutputType(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput{})
+	pulumi.RegisterOutputType(InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimePtrOutput{})
 	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigOutput{})
 	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceCrossInstanceReplicationConfigMembershipOutput{})
@@ -7321,6 +8113,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceStateInfoUpdateInfoArrayOutput{})
 	pulumi.RegisterOutputType(InstanceZoneDistributionConfigOutput{})
 	pulumi.RegisterOutputType(InstanceZoneDistributionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutomatedBackupConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutomatedBackupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceCrossInstanceReplicationConfigMembershipOutput{})

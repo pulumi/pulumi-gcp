@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex":
 		r = &CodeRepositoryIndex{}
+	case "gcp:gemini/codeToolsSetting:CodeToolsSetting":
+		r = &CodeToolsSetting{}
+	case "gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding":
+		r = &CodeToolsSettingBinding{}
 	case "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting":
 		r = &DataSharingWithGoogleSetting{}
 	case "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding":
@@ -63,6 +67,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gemini/codeRepositoryIndex",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/codeToolsSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/codeToolsSettingBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

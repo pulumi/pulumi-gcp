@@ -344,7 +344,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Containers = new[]
@@ -368,6 +367,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///             {
     ///                 Accelerator = "nvidia-l4",
     ///             },
+    ///             GpuZonalRedundancyDisabled = true,
     ///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
     ///             {
     ///                 MaxInstanceCount = 1,

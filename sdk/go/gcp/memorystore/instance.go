@@ -502,6 +502,9 @@ type Instance struct {
 	// AUTH_DISABLED
 	// IAM_AUTH
 	AuthorizationMode pulumi.StringOutput `pulumi:"authorizationMode"`
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig InstanceAutomatedBackupConfigPtrOutput `pulumi:"automatedBackupConfig"`
 	// Output only. Creation timestamp of the instance.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Cross instance replication config
@@ -657,6 +660,9 @@ type instanceState struct {
 	// AUTH_DISABLED
 	// IAM_AUTH
 	AuthorizationMode *string `pulumi:"authorizationMode"`
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig *InstanceAutomatedBackupConfig `pulumi:"automatedBackupConfig"`
 	// Output only. Creation timestamp of the instance.
 	CreateTime *string `pulumi:"createTime"`
 	// Cross instance replication config
@@ -769,6 +775,9 @@ type InstanceState struct {
 	// AUTH_DISABLED
 	// IAM_AUTH
 	AuthorizationMode pulumi.StringPtrInput
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig InstanceAutomatedBackupConfigPtrInput
 	// Output only. Creation timestamp of the instance.
 	CreateTime pulumi.StringPtrInput
 	// Cross instance replication config
@@ -885,6 +894,9 @@ type instanceArgs struct {
 	// AUTH_DISABLED
 	// IAM_AUTH
 	AuthorizationMode *string `pulumi:"authorizationMode"`
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig *InstanceAutomatedBackupConfig `pulumi:"automatedBackupConfig"`
 	// Cross instance replication config
 	// Structure is documented below.
 	CrossInstanceReplicationConfig *InstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfig"`
@@ -955,6 +967,9 @@ type InstanceArgs struct {
 	// AUTH_DISABLED
 	// IAM_AUTH
 	AuthorizationMode pulumi.StringPtrInput
+	// The automated backup config for a instance.
+	// Structure is documented below.
+	AutomatedBackupConfig InstanceAutomatedBackupConfigPtrInput
 	// Cross instance replication config
 	// Structure is documented below.
 	CrossInstanceReplicationConfig InstanceCrossInstanceReplicationConfigPtrInput
@@ -1111,6 +1126,12 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 // IAM_AUTH
 func (o InstanceOutput) AuthorizationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthorizationMode }).(pulumi.StringOutput)
+}
+
+// The automated backup config for a instance.
+// Structure is documented below.
+func (o InstanceOutput) AutomatedBackupConfig() InstanceAutomatedBackupConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceAutomatedBackupConfigPtrOutput { return v.AutomatedBackupConfig }).(InstanceAutomatedBackupConfigPtrOutput)
 }
 
 // Output only. Creation timestamp of the instance.

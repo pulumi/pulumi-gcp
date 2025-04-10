@@ -327,6 +327,30 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Resource Policy Placement Policy Tpu Topology
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var baz = new Gcp.Compute.ResourcePolicy("baz", new()
+    ///     {
+    ///         Name = "gce-policy",
+    ///         Region = "us-central1",
+    ///         GroupPlacementPolicy = new Gcp.Compute.Inputs.ResourcePolicyGroupPlacementPolicyArgs
+    ///         {
+    ///             VmCount = 2,
+    ///             Collocation = "COLLOCATED",
+    ///             TpuTopology = "4x4",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

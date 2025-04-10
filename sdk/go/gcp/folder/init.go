@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IamAuditConfig{}
 	case "gcp:folder/organizationPolicy:OrganizationPolicy":
 		r = &OrganizationPolicy{}
+	case "gcp:folder/serviceIdentity:ServiceIdentity":
+		r = &ServiceIdentity{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -74,6 +76,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"folder/organizationPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"folder/serviceIdentity",
 		&module{version},
 	)
 }

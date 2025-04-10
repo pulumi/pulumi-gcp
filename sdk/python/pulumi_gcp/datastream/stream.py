@@ -1409,7 +1409,6 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
-
         ## Import
 
         Stream can be imported using any of these accepted formats:
@@ -2355,7 +2354,6 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
-
         ## Import
 
         Stream can be imported using any of these accepted formats:

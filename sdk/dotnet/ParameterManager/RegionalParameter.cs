@@ -81,6 +81,27 @@ namespace Pulumi.Gcp.ParameterManager
     /// 
     /// });
     /// ```
+    /// ### Regional Parameter With Kms Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var regional_parameter_with_kms_key = new Gcp.ParameterManager.RegionalParameter("regional-parameter-with-kms-key", new()
+    ///     {
+    ///         ParameterId = "regional_parameter",
+    ///         Location = "us-central1",
+    ///         KmsKey = "kms-key",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -128,6 +149,13 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Output("format")]
         public Output<string?> Format { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+        /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        /// </summary>
+        [Output("kmsKey")]
+        public Output<string?> KmsKey { get; private set; } = null!;
 
         /// <summary>
         /// The labels assigned to this regional Parameter.
@@ -253,6 +281,13 @@ namespace Pulumi.Gcp.ParameterManager
         [Input("format")]
         public Input<string>? Format { get; set; }
 
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+        /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -334,6 +369,13 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
+
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+        /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

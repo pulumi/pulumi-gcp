@@ -619,6 +619,21 @@ class ResourcePolicy(pulumi.CustomResource):
                 "gpu_topology": "1x72",
             })
         ```
+        ### Resource Policy Placement Policy Tpu Topology
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            name="gce-policy",
+            region="us-central1",
+            group_placement_policy={
+                "vm_count": 2,
+                "collocation": "COLLOCATED",
+                "tpu_topology": "4x4",
+            })
+        ```
 
         ## Import
 
@@ -886,6 +901,21 @@ class ResourcePolicy(pulumi.CustomResource):
                 "vm_count": 2,
                 "collocation": "COLLOCATED",
                 "gpu_topology": "1x72",
+            })
+        ```
+        ### Resource Policy Placement Policy Tpu Topology
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            name="gce-policy",
+            region="us-central1",
+            group_placement_policy={
+                "vm_count": 2,
+                "collocation": "COLLOCATED",
+                "tpu_topology": "4x4",
             })
         ```
 

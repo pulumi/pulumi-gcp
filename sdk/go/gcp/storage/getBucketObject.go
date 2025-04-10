@@ -89,7 +89,8 @@ type LookupBucketObjectResult struct {
 	Id         string `pulumi:"id"`
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
-	Md5hash string `pulumi:"md5hash"`
+	Md5hash    string `pulumi:"md5hash"`
+	Md5hexhash string `pulumi:"md5hexhash"`
 	// (Computed) A url reference to download this object.
 	MediaLink  string                     `pulumi:"mediaLink"`
 	Metadata   map[string]string          `pulumi:"metadata"`
@@ -212,6 +213,10 @@ func (o LookupBucketObjectResultOutput) KmsKeyName() pulumi.StringOutput {
 // (Computed) Base 64 MD5 hash of the uploaded data.
 func (o LookupBucketObjectResultOutput) Md5hash() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Md5hash }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketObjectResultOutput) Md5hexhash() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Md5hexhash }).(pulumi.StringOutput)
 }
 
 // (Computed) A url reference to download this object.

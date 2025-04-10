@@ -35,16 +35,12 @@ public final class AutomationRuleAdvanceRolloutRuleArgs extends com.pulumi.resou
     /**
      * Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
      * 
-     * ***
-     * 
      */
     @Import(name="sourcePhases")
     private @Nullable Output<List<String>> sourcePhases;
 
     /**
      * @return Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> sourcePhases() {
@@ -116,8 +112,6 @@ public final class AutomationRuleAdvanceRolloutRuleArgs extends com.pulumi.resou
         /**
          * @param sourcePhases Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -129,8 +123,6 @@ public final class AutomationRuleAdvanceRolloutRuleArgs extends com.pulumi.resou
         /**
          * @param sourcePhases Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -140,8 +132,6 @@ public final class AutomationRuleAdvanceRolloutRuleArgs extends com.pulumi.resou
 
         /**
          * @param sourcePhases Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-         * 
-         * ***
          * 
          * @return builder
          * 

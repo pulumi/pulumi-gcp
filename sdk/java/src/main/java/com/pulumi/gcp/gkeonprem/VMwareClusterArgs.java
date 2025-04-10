@@ -184,6 +184,21 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable advanced cluster. Default to false.
+     * 
+     */
+    @Import(name="enableAdvancedCluster")
+    private @Nullable Output<Boolean> enableAdvancedCluster;
+
+    /**
+     * @return Enable advanced cluster. Default to false.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAdvancedCluster() {
+        return Optional.ofNullable(this.enableAdvancedCluster);
+    }
+
+    /**
      * Enable control plane V2. Default to false.
      * 
      */
@@ -352,6 +367,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.dataplaneV2 = $.dataplaneV2;
         this.description = $.description;
         this.disableBundledIngress = $.disableBundledIngress;
+        this.enableAdvancedCluster = $.enableAdvancedCluster;
         this.enableControlPlaneV2 = $.enableControlPlaneV2;
         this.loadBalancer = $.loadBalancer;
         this.location = $.location;
@@ -590,6 +606,27 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableBundledIngress(Boolean disableBundledIngress) {
             return disableBundledIngress(Output.of(disableBundledIngress));
+        }
+
+        /**
+         * @param enableAdvancedCluster Enable advanced cluster. Default to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAdvancedCluster(@Nullable Output<Boolean> enableAdvancedCluster) {
+            $.enableAdvancedCluster = enableAdvancedCluster;
+            return this;
+        }
+
+        /**
+         * @param enableAdvancedCluster Enable advanced cluster. Default to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAdvancedCluster(Boolean enableAdvancedCluster) {
+            return enableAdvancedCluster(Output.of(enableAdvancedCluster));
         }
 
         /**

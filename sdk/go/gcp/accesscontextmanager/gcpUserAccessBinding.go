@@ -120,8 +120,8 @@ import (
 type GcpUserAccessBinding struct {
 	pulumi.CustomResourceState
 
-	// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-	AccessLevels pulumi.StringOutput `pulumi:"accessLevels"`
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	AccessLevels pulumi.StringPtrOutput `pulumi:"accessLevels"`
 	// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
 	GroupKey pulumi.StringOutput `pulumi:"groupKey"`
 	// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
@@ -130,6 +130,9 @@ type GcpUserAccessBinding struct {
 	//
 	// ***
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
+	// Optional. The Google Cloud session length (GCSL) policy for the group key.
+	// Structure is documented below.
+	SessionSettings GcpUserAccessBindingSessionSettingsPtrOutput `pulumi:"sessionSettings"`
 }
 
 // NewGcpUserAccessBinding registers a new resource with the given unique name, arguments, and options.
@@ -139,9 +142,6 @@ func NewGcpUserAccessBinding(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccessLevels == nil {
-		return nil, errors.New("invalid value for required argument 'AccessLevels'")
-	}
 	if args.GroupKey == nil {
 		return nil, errors.New("invalid value for required argument 'GroupKey'")
 	}
@@ -171,7 +171,7 @@ func GetGcpUserAccessBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GcpUserAccessBinding resources.
 type gcpUserAccessBindingState struct {
-	// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
 	AccessLevels *string `pulumi:"accessLevels"`
 	// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
 	GroupKey *string `pulumi:"groupKey"`
@@ -181,10 +181,13 @@ type gcpUserAccessBindingState struct {
 	//
 	// ***
 	OrganizationId *string `pulumi:"organizationId"`
+	// Optional. The Google Cloud session length (GCSL) policy for the group key.
+	// Structure is documented below.
+	SessionSettings *GcpUserAccessBindingSessionSettings `pulumi:"sessionSettings"`
 }
 
 type GcpUserAccessBindingState struct {
-	// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
 	AccessLevels pulumi.StringPtrInput
 	// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
 	GroupKey pulumi.StringPtrInput
@@ -194,6 +197,9 @@ type GcpUserAccessBindingState struct {
 	//
 	// ***
 	OrganizationId pulumi.StringPtrInput
+	// Optional. The Google Cloud session length (GCSL) policy for the group key.
+	// Structure is documented below.
+	SessionSettings GcpUserAccessBindingSessionSettingsPtrInput
 }
 
 func (GcpUserAccessBindingState) ElementType() reflect.Type {
@@ -201,26 +207,32 @@ func (GcpUserAccessBindingState) ElementType() reflect.Type {
 }
 
 type gcpUserAccessBindingArgs struct {
-	// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-	AccessLevels string `pulumi:"accessLevels"`
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	AccessLevels *string `pulumi:"accessLevels"`
 	// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
 	GroupKey string `pulumi:"groupKey"`
 	// Required. ID of the parent organization.
 	//
 	// ***
 	OrganizationId string `pulumi:"organizationId"`
+	// Optional. The Google Cloud session length (GCSL) policy for the group key.
+	// Structure is documented below.
+	SessionSettings *GcpUserAccessBindingSessionSettings `pulumi:"sessionSettings"`
 }
 
 // The set of arguments for constructing a GcpUserAccessBinding resource.
 type GcpUserAccessBindingArgs struct {
-	// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-	AccessLevels pulumi.StringInput
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	AccessLevels pulumi.StringPtrInput
 	// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
 	GroupKey pulumi.StringInput
 	// Required. ID of the parent organization.
 	//
 	// ***
 	OrganizationId pulumi.StringInput
+	// Optional. The Google Cloud session length (GCSL) policy for the group key.
+	// Structure is documented below.
+	SessionSettings GcpUserAccessBindingSessionSettingsPtrInput
 }
 
 func (GcpUserAccessBindingArgs) ElementType() reflect.Type {
@@ -310,9 +322,9 @@ func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutputWithContext(ctx 
 	return o
 }
 
-// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-func (o GcpUserAccessBindingOutput) AccessLevels() pulumi.StringOutput {
-	return o.ApplyT(func(v *GcpUserAccessBinding) pulumi.StringOutput { return v.AccessLevels }).(pulumi.StringOutput)
+// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+func (o GcpUserAccessBindingOutput) AccessLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBinding) pulumi.StringPtrOutput { return v.AccessLevels }).(pulumi.StringPtrOutput)
 }
 
 // Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
@@ -330,6 +342,12 @@ func (o GcpUserAccessBindingOutput) Name() pulumi.StringOutput {
 // ***
 func (o GcpUserAccessBindingOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpUserAccessBinding) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// Optional. The Google Cloud session length (GCSL) policy for the group key.
+// Structure is documented below.
+func (o GcpUserAccessBindingOutput) SessionSettings() GcpUserAccessBindingSessionSettingsPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBinding) GcpUserAccessBindingSessionSettingsPtrOutput { return v.SessionSettings }).(GcpUserAccessBindingSessionSettingsPtrOutput)
 }
 
 type GcpUserAccessBindingArrayOutput struct{ *pulumi.OutputState }

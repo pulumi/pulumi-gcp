@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigArgs;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSalesforceSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -72,6 +73,23 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Salesforce data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="salesforceSourceConfig")
+    private @Nullable Output<StreamSourceConfigSalesforceSourceConfigArgs> salesforceSourceConfig;
+
+    /**
+     * @return Salesforce data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigSalesforceSourceConfigArgs>> salesforceSourceConfig() {
+        return Optional.ofNullable(this.salesforceSourceConfig);
+    }
+
+    /**
      * Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
      * 
      */
@@ -109,6 +127,7 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
         this.mysqlSourceConfig = $.mysqlSourceConfig;
         this.oracleSourceConfig = $.oracleSourceConfig;
         this.postgresqlSourceConfig = $.postgresqlSourceConfig;
+        this.salesforceSourceConfig = $.salesforceSourceConfig;
         this.sourceConnectionProfile = $.sourceConnectionProfile;
         this.sqlServerSourceConfig = $.sqlServerSourceConfig;
     }
@@ -198,6 +217,29 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder postgresqlSourceConfig(StreamSourceConfigPostgresqlSourceConfigArgs postgresqlSourceConfig) {
             return postgresqlSourceConfig(Output.of(postgresqlSourceConfig));
+        }
+
+        /**
+         * @param salesforceSourceConfig Salesforce data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceSourceConfig(@Nullable Output<StreamSourceConfigSalesforceSourceConfigArgs> salesforceSourceConfig) {
+            $.salesforceSourceConfig = salesforceSourceConfig;
+            return this;
+        }
+
+        /**
+         * @param salesforceSourceConfig Salesforce data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceSourceConfig(StreamSourceConfigSalesforceSourceConfigArgs salesforceSourceConfig) {
+            return salesforceSourceConfig(Output.of(salesforceSourceConfig));
         }
 
         /**

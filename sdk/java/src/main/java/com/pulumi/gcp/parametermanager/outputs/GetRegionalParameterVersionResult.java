@@ -26,6 +26,11 @@ public final class GetRegionalParameterVersionResult {
      * 
      */
     private String id;
+    /**
+     * @return The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    private String kmsKeyVersion;
     private String location;
     /**
      * @return The resource name of the Regional Parameter Version. Format:
@@ -68,6 +73,13 @@ public final class GetRegionalParameterVersionResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    public String kmsKeyVersion() {
+        return this.kmsKeyVersion;
     }
     public String location() {
         return this.location;
@@ -116,6 +128,7 @@ public final class GetRegionalParameterVersionResult {
         private String createTime;
         private Boolean disabled;
         private String id;
+        private String kmsKeyVersion;
         private String location;
         private String name;
         private String parameter;
@@ -129,6 +142,7 @@ public final class GetRegionalParameterVersionResult {
     	      this.createTime = defaults.createTime;
     	      this.disabled = defaults.disabled;
     	      this.id = defaults.id;
+    	      this.kmsKeyVersion = defaults.kmsKeyVersion;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.parameter = defaults.parameter;
@@ -160,6 +174,14 @@ public final class GetRegionalParameterVersionResult {
               throw new MissingRequiredPropertyException("GetRegionalParameterVersionResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKeyVersion(String kmsKeyVersion) {
+            if (kmsKeyVersion == null) {
+              throw new MissingRequiredPropertyException("GetRegionalParameterVersionResult", "kmsKeyVersion");
+            }
+            this.kmsKeyVersion = kmsKeyVersion;
             return this;
         }
         @CustomType.Setter
@@ -223,6 +245,7 @@ public final class GetRegionalParameterVersionResult {
             _resultValue.createTime = createTime;
             _resultValue.disabled = disabled;
             _resultValue.id = id;
+            _resultValue.kmsKeyVersion = kmsKeyVersion;
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.parameter = parameter;

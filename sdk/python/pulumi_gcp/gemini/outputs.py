@@ -14,12 +14,136 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'CodeToolsSettingEnabledTool',
+    'CodeToolsSettingEnabledToolConfig',
     'RepositoryGroupIamBindingCondition',
     'RepositoryGroupIamMemberCondition',
     'RepositoryGroupRepository',
 ]
+
+@pulumi.output_type
+class CodeToolsSettingEnabledTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountConnector":
+            suggest = "account_connector"
+        elif key == "uriOverride":
+            suggest = "uri_override"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CodeToolsSettingEnabledTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CodeToolsSettingEnabledTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CodeToolsSettingEnabledTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 handle: builtins.str,
+                 tool: builtins.str,
+                 account_connector: Optional[builtins.str] = None,
+                 configs: Optional[Sequence['outputs.CodeToolsSettingEnabledToolConfig']] = None,
+                 uri_override: Optional[builtins.str] = None):
+        """
+        :param builtins.str handle: Handle used to invoke the tool.
+        :param builtins.str tool: Link to the Tool
+        :param builtins.str account_connector: Link to the Dev Connect Account Connector that holds the user credentials.
+               projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
+        :param Sequence['CodeToolsSettingEnabledToolConfigArgs'] configs: Configuration parameters for the tool.
+               Structure is documented below.
+        :param builtins.str uri_override: Overridden URI, if allowed by Tool.
+        """
+        pulumi.set(__self__, "handle", handle)
+        pulumi.set(__self__, "tool", tool)
+        if account_connector is not None:
+            pulumi.set(__self__, "account_connector", account_connector)
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
+        if uri_override is not None:
+            pulumi.set(__self__, "uri_override", uri_override)
+
+    @property
+    @pulumi.getter
+    def handle(self) -> builtins.str:
+        """
+        Handle used to invoke the tool.
+        """
+        return pulumi.get(self, "handle")
+
+    @property
+    @pulumi.getter
+    def tool(self) -> builtins.str:
+        """
+        Link to the Tool
+        """
+        return pulumi.get(self, "tool")
+
+    @property
+    @pulumi.getter(name="accountConnector")
+    def account_connector(self) -> Optional[builtins.str]:
+        """
+        Link to the Dev Connect Account Connector that holds the user credentials.
+        projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
+        """
+        return pulumi.get(self, "account_connector")
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Optional[Sequence['outputs.CodeToolsSettingEnabledToolConfig']]:
+        """
+        Configuration parameters for the tool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter(name="uriOverride")
+    def uri_override(self) -> Optional[builtins.str]:
+        """
+        Overridden URI, if allowed by Tool.
+        """
+        return pulumi.get(self, "uri_override")
+
+
+@pulumi.output_type
+class CodeToolsSettingEnabledToolConfig(dict):
+    def __init__(__self__, *,
+                 key: builtins.str,
+                 value: builtins.str):
+        """
+        :param builtins.str key: Key of the configuration item.
+        :param builtins.str value: Value of the configuration item.
+               
+               - - -
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> builtins.str:
+        """
+        Key of the configuration item.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.str:
+        """
+        Value of the configuration item.
+
+        - - -
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class RepositoryGroupIamBindingCondition(dict):

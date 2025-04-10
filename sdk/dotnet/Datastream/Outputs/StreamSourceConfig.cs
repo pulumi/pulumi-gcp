@@ -29,6 +29,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly Outputs.StreamSourceConfigPostgresqlSourceConfig? PostgresqlSourceConfig;
         /// <summary>
+        /// Salesforce data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigSalesforceSourceConfig? SalesforceSourceConfig;
+        /// <summary>
         /// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         /// </summary>
         public readonly string SourceConnectionProfile;
@@ -46,6 +51,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             Outputs.StreamSourceConfigPostgresqlSourceConfig? postgresqlSourceConfig,
 
+            Outputs.StreamSourceConfigSalesforceSourceConfig? salesforceSourceConfig,
+
             string sourceConnectionProfile,
 
             Outputs.StreamSourceConfigSqlServerSourceConfig? sqlServerSourceConfig)
@@ -53,6 +60,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
             MysqlSourceConfig = mysqlSourceConfig;
             OracleSourceConfig = oracleSourceConfig;
             PostgresqlSourceConfig = postgresqlSourceConfig;
+            SalesforceSourceConfig = salesforceSourceConfig;
             SourceConnectionProfile = sourceConnectionProfile;
             SqlServerSourceConfig = sqlServerSourceConfig;
         }

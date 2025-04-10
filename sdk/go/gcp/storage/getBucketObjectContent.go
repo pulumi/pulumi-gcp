@@ -89,6 +89,7 @@ type GetBucketObjectContentResult struct {
 	Id            string                            `pulumi:"id"`
 	KmsKeyName    string                            `pulumi:"kmsKeyName"`
 	Md5hash       string                            `pulumi:"md5hash"`
+	Md5hexhash    string                            `pulumi:"md5hexhash"`
 	MediaLink     string                            `pulumi:"mediaLink"`
 	Metadata      map[string]string                 `pulumi:"metadata"`
 	Name          string                            `pulumi:"name"`
@@ -206,6 +207,10 @@ func (o GetBucketObjectContentResultOutput) KmsKeyName() pulumi.StringOutput {
 
 func (o GetBucketObjectContentResultOutput) Md5hash() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.Md5hash }).(pulumi.StringOutput)
+}
+
+func (o GetBucketObjectContentResultOutput) Md5hexhash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.Md5hexhash }).(pulumi.StringOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) MediaLink() pulumi.StringOutput {

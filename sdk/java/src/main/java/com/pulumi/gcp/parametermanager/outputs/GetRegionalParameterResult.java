@@ -23,6 +23,7 @@ public final class GetRegionalParameterResult {
      * 
      */
     private String id;
+    private String kmsKey;
     private Map<String,String> labels;
     private String location;
     private String name;
@@ -48,6 +49,9 @@ public final class GetRegionalParameterResult {
      */
     public String id() {
         return this.id;
+    }
+    public String kmsKey() {
+        return this.kmsKey;
     }
     public Map<String,String> labels() {
         return this.labels;
@@ -87,6 +91,7 @@ public final class GetRegionalParameterResult {
         private Map<String,String> effectiveLabels;
         private String format;
         private String id;
+        private String kmsKey;
         private Map<String,String> labels;
         private String location;
         private String name;
@@ -102,6 +107,7 @@ public final class GetRegionalParameterResult {
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
+    	      this.kmsKey = defaults.kmsKey;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -142,6 +148,14 @@ public final class GetRegionalParameterResult {
               throw new MissingRequiredPropertyException("GetRegionalParameterResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKey(String kmsKey) {
+            if (kmsKey == null) {
+              throw new MissingRequiredPropertyException("GetRegionalParameterResult", "kmsKey");
+            }
+            this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
@@ -215,6 +229,7 @@ public final class GetRegionalParameterResult {
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.format = format;
             _resultValue.id = id;
+            _resultValue.kmsKey = kmsKey;
             _resultValue.labels = labels;
             _resultValue.location = location;
             _resultValue.name = name;

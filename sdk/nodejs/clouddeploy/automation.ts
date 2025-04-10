@@ -103,8 +103,39 @@ import * as utilities from "../utilities";
  *         {
  *             advanceRolloutRule: {
  *                 id: "advance-rollout",
- *                 sourcePhases: ["deploy"],
+ *                 sourcePhases: ["canary"],
  *                 wait: "200s",
+ *             },
+ *         },
+ *         {
+ *             repairRolloutRule: {
+ *                 id: "repair-rollout",
+ *                 phases: ["stable"],
+ *                 jobs: ["deploy"],
+ *                 repairPhases: [
+ *                     {
+ *                         retry: {
+ *                             attempts: "1",
+ *                             wait: "200s",
+ *                             backoffMode: "BACKOFF_MODE_LINEAR",
+ *                         },
+ *                     },
+ *                     {
+ *                         rollback: {
+ *                             destinationPhase: "stable",
+ *                             disableRollbackIfRolloutPending: true,
+ *                         },
+ *                     },
+ *                 ],
+ *             },
+ *         },
+ *         {
+ *             timedPromoteReleaseRule: {
+ *                 id: "timed-promote-release",
+ *                 destinationTargetId: "@next",
+ *                 schedule: "0 9 * * 1",
+ *                 timeZone: "America/New_York",
+ *                 destinationPhase: "stable",
  *             },
  *         },
  *     ],

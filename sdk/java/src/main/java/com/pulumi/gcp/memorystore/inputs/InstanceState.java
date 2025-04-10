@@ -5,6 +5,7 @@ package com.pulumi.gcp.memorystore.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.memorystore.inputs.InstanceAutomatedBackupConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDiscoveryEndpointArgs;
@@ -48,6 +49,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> authorizationMode() {
         return Optional.ofNullable(this.authorizationMode);
+    }
+
+    /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="automatedBackupConfig")
+    private @Nullable Output<InstanceAutomatedBackupConfigArgs> automatedBackupConfig;
+
+    /**
+     * @return The automated backup config for a instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceAutomatedBackupConfigArgs>> automatedBackupConfig() {
+        return Optional.ofNullable(this.automatedBackupConfig);
     }
 
     /**
@@ -605,6 +623,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     private InstanceState(InstanceState $) {
         this.authorizationMode = $.authorizationMode;
+        this.automatedBackupConfig = $.automatedBackupConfig;
         this.createTime = $.createTime;
         this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
@@ -679,6 +698,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authorizationMode(String authorizationMode) {
             return authorizationMode(Output.of(authorizationMode));
+        }
+
+        /**
+         * @param automatedBackupConfig The automated backup config for a instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automatedBackupConfig(@Nullable Output<InstanceAutomatedBackupConfigArgs> automatedBackupConfig) {
+            $.automatedBackupConfig = automatedBackupConfig;
+            return this;
+        }
+
+        /**
+         * @param automatedBackupConfig The automated backup config for a instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automatedBackupConfig(InstanceAutomatedBackupConfigArgs automatedBackupConfig) {
+            return automatedBackupConfig(Output.of(automatedBackupConfig));
         }
 
         /**

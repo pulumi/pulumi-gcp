@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VolumeTieringPolicy {
     /**
-     * @return Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 7-183.
+     * @return Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 2-183.
      * Default is 31.
      * 
      */
@@ -28,7 +28,7 @@ public final class VolumeTieringPolicy {
 
     private VolumeTieringPolicy() {}
     /**
-     * @return Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 7-183.
+     * @return Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 2-183.
      * Default is 31.
      * 
      */

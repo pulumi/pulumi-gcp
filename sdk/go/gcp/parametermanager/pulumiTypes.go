@@ -830,6 +830,8 @@ type GetRegionalParametersParameter struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The format type of the regional parameter.
 	Format string `pulumi:"format"`
+	// The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+	KmsKey string `pulumi:"kmsKey"`
 	// The labels assigned to the regional parameter.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of regional parameter.
@@ -866,6 +868,8 @@ type GetRegionalParametersParameterArgs struct {
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
 	// The format type of the regional parameter.
 	Format pulumi.StringInput `pulumi:"format"`
+	// The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
 	// The labels assigned to the regional parameter.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The location of regional parameter.
@@ -948,6 +952,11 @@ func (o GetRegionalParametersParameterOutput) EffectiveLabels() pulumi.StringMap
 // The format type of the regional parameter.
 func (o GetRegionalParametersParameterOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+func (o GetRegionalParametersParameterOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // The labels assigned to the regional parameter.

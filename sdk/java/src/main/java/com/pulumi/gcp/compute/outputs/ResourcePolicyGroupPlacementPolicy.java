@@ -38,6 +38,11 @@ public final class ResourcePolicyGroupPlacementPolicy {
      */
     private @Nullable Integer maxDistance;
     /**
+     * @return Specifies the shape of the TPU slice.
+     * 
+     */
+    private @Nullable String tpuTopology;
+    /**
      * @return Number of VMs in this placement group. Google does not recommend that you use this field
      * unless you use a compact policy and you want your policy to work only if it contains this
      * exact number of VMs.
@@ -80,6 +85,13 @@ public final class ResourcePolicyGroupPlacementPolicy {
         return Optional.ofNullable(this.maxDistance);
     }
     /**
+     * @return Specifies the shape of the TPU slice.
+     * 
+     */
+    public Optional<String> tpuTopology() {
+        return Optional.ofNullable(this.tpuTopology);
+    }
+    /**
      * @return Number of VMs in this placement group. Google does not recommend that you use this field
      * unless you use a compact policy and you want your policy to work only if it contains this
      * exact number of VMs.
@@ -102,6 +114,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
         private @Nullable String collocation;
         private @Nullable String gpuTopology;
         private @Nullable Integer maxDistance;
+        private @Nullable String tpuTopology;
         private @Nullable Integer vmCount;
         public Builder() {}
         public Builder(ResourcePolicyGroupPlacementPolicy defaults) {
@@ -110,6 +123,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
     	      this.collocation = defaults.collocation;
     	      this.gpuTopology = defaults.gpuTopology;
     	      this.maxDistance = defaults.maxDistance;
+    	      this.tpuTopology = defaults.tpuTopology;
     	      this.vmCount = defaults.vmCount;
         }
 
@@ -138,6 +152,12 @@ public final class ResourcePolicyGroupPlacementPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder tpuTopology(@Nullable String tpuTopology) {
+
+            this.tpuTopology = tpuTopology;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vmCount(@Nullable Integer vmCount) {
 
             this.vmCount = vmCount;
@@ -149,6 +169,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
             _resultValue.collocation = collocation;
             _resultValue.gpuTopology = gpuTopology;
             _resultValue.maxDistance = maxDistance;
+            _resultValue.tpuTopology = tpuTopology;
             _resultValue.vmCount = vmCount;
             return _resultValue;
         }

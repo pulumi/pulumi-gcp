@@ -115,6 +115,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRulePromoteReleaseRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleAdvanceRolloutRuleArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleTimedPromoteReleaseRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -172,8 +174,38 @@ import javax.annotation.Nullable;
  *                 AutomationRuleArgs.builder()
  *                     .advanceRolloutRule(AutomationRuleAdvanceRolloutRuleArgs.builder()
  *                         .id("advance-rollout")
- *                         .sourcePhases("deploy")
+ *                         .sourcePhases("canary")
  *                         .wait("200s")
+ *                         .build())
+ *                     .build(),
+ *                 AutomationRuleArgs.builder()
+ *                     .repairRolloutRule(AutomationRuleRepairRolloutRuleArgs.builder()
+ *                         .id("repair-rollout")
+ *                         .phases("stable")
+ *                         .jobs("deploy")
+ *                         .repairPhases(                        
+ *                             AutomationRuleRepairRolloutRuleRepairPhaseArgs.builder()
+ *                                 .retry(AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs.builder()
+ *                                     .attempts("1")
+ *                                     .wait("200s")
+ *                                     .backoffMode("BACKOFF_MODE_LINEAR")
+ *                                     .build())
+ *                                 .build(),
+ *                             AutomationRuleRepairRolloutRuleRepairPhaseArgs.builder()
+ *                                 .rollback(AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs.builder()
+ *                                     .destinationPhase("stable")
+ *                                     .disableRollbackIfRolloutPending(true)
+ *                                     .build())
+ *                                 .build())
+ *                         .build())
+ *                     .build(),
+ *                 AutomationRuleArgs.builder()
+ *                     .timedPromoteReleaseRule(AutomationRuleTimedPromoteReleaseRuleArgs.builder()
+ *                         .id("timed-promote-release")
+ *                         .destinationTargetId("}{@literal @}{@code next")
+ *                         .schedule("0 9 * * 1")
+ *                         .timeZone("America/New_York")
+ *                         .destinationPhase("stable")
  *                         .build())
  *                     .build())
  *             .build());

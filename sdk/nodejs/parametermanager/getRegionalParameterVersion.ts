@@ -70,6 +70,10 @@ export interface GetRegionalParameterVersionResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     */
+    readonly kmsKeyVersion: string;
     readonly location: string;
     /**
      * The resource name of the Regional Parameter Version. Format:

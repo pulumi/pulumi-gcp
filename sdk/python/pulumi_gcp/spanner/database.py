@@ -40,10 +40,6 @@ class DatabaseArgs:
         :param pulumi.Input[builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ddls: An optional list of DDL statements to run inside the newly created
-               database. Statements can create tables, indexes, etc. These statements
-               execute atomically with the creation of the database: if there is an
-               error in any statement, the database is not created.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
@@ -108,12 +104,6 @@ class DatabaseArgs:
     @property
     @pulumi.getter
     def ddls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
-        """
-        An optional list of DDL statements to run inside the newly created
-        database. Statements can create tables, indexes, etc. These statements
-        execute atomically with the creation of the database: if there is an
-        error in any statement, the database is not created.
-        """
         return pulumi.get(self, "ddls")
 
     @ddls.setter
@@ -216,10 +206,6 @@ class _DatabaseState:
         :param pulumi.Input[builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ddls: An optional list of DDL statements to run inside the newly created
-               database. Statements can create tables, indexes, etc. These statements
-               execute atomically with the creation of the database: if there is an
-               error in any statement, the database is not created.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
@@ -277,12 +263,6 @@ class _DatabaseState:
     @property
     @pulumi.getter
     def ddls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
-        """
-        An optional list of DDL statements to run inside the newly created
-        database. Statements can create tables, indexes, etc. These statements
-        execute atomically with the creation of the database: if there is an
-        error in any statement, the database is not created.
-        """
         return pulumi.get(self, "ddls")
 
     @ddls.setter
@@ -482,10 +462,6 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ddls: An optional list of DDL statements to run inside the newly created
-               database. Statements can create tables, indexes, etc. These statements
-               execute atomically with the creation of the database: if there is an
-               error in any statement, the database is not created.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
@@ -653,10 +629,6 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ddls: An optional list of DDL statements to run inside the newly created
-               database. Statements can create tables, indexes, etc. These statements
-               execute atomically with the creation of the database: if there is an
-               error in any statement, the database is not created.
         :param pulumi.Input[builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
@@ -705,12 +677,6 @@ class Database(pulumi.CustomResource):
     @property
     @pulumi.getter
     def ddls(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
-        """
-        An optional list of DDL statements to run inside the newly created
-        database. Statements can create tables, indexes, etc. These statements
-        execute atomically with the creation of the database: if there is an
-        error in any statement, the database is not created.
-        """
         return pulumi.get(self, "ddls")
 
     @property

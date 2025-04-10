@@ -53,6 +53,7 @@ export interface GetInstanceArgs {
  */
 export interface GetInstanceResult {
     readonly authorizationMode: string;
+    readonly automatedBackupConfigs: outputs.memorystore.GetInstanceAutomatedBackupConfig[];
     readonly createTime: string;
     readonly crossInstanceReplicationConfigs: outputs.memorystore.GetInstanceCrossInstanceReplicationConfig[];
     readonly deletionProtectionEnabled: boolean;

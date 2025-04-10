@@ -358,7 +358,6 @@ import (
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
-//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
@@ -376,6 +375,7 @@ import (
 //					NodeSelector: &cloudrunv2.ServiceTemplateNodeSelectorArgs{
 //						Accelerator: pulumi.String("nvidia-l4"),
 //					},
+//					GpuZonalRedundancyDisabled: pulumi.Bool(true),
 //					Scaling: &cloudrunv2.ServiceTemplateScalingArgs{
 //						MaxInstanceCount: pulumi.Int(1),
 //					},

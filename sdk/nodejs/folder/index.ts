@@ -45,6 +45,11 @@ export type OrganizationPolicy = import("./organizationPolicy").OrganizationPoli
 export const OrganizationPolicy: typeof import("./organizationPolicy").OrganizationPolicy = null as any;
 utilities.lazyLoad(exports, ["OrganizationPolicy"], () => require("./organizationPolicy"));
 
+export { ServiceIdentityArgs, ServiceIdentityState } from "./serviceIdentity";
+export type ServiceIdentity = import("./serviceIdentity").ServiceIdentity;
+export const ServiceIdentity: typeof import("./serviceIdentity").ServiceIdentity = null as any;
+utilities.lazyLoad(exports, ["ServiceIdentity"], () => require("./serviceIdentity"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -62,6 +67,8 @@ const _module = {
                 return new IamAuditConfig(name, <any>undefined, { urn })
             case "gcp:folder/organizationPolicy:OrganizationPolicy":
                 return new OrganizationPolicy(name, <any>undefined, { urn })
+            case "gcp:folder/serviceIdentity:ServiceIdentity":
+                return new ServiceIdentity(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -73,3 +80,4 @@ pulumi.runtime.registerResourceModule("gcp", "folder/iAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "folder/iAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "folder/iamAuditConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "folder/organizationPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "folder/serviceIdentity", _module)

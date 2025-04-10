@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.Netapp
     ///         ServiceLevel = "PREMIUM",
     ///         CapacityGib = "2048",
     ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         AllowAutoTiering = true,
     ///     });
     /// 
     ///     var sourceVolume = new Gcp.Netapp.Volume("source_volume", new()
@@ -72,6 +73,11 @@ namespace Pulumi.Gcp.Netapp
     ///             VolumeId = "destination-volume",
     ///             ShareName = "source-volume",
     ///             Description = "This is a replicated volume",
+    ///             TieringPolicy = new Gcp.Netapp.Inputs.VolumeReplicationDestinationVolumeParametersTieringPolicyArgs
+    ///             {
+    ///                 CoolingThresholdDays = 20,
+    ///                 TierAction = "ENABLED",
+    ///             },
     ///         },
     ///         DeleteDestinationVolume = true,
     ///         WaitForMirror = true,

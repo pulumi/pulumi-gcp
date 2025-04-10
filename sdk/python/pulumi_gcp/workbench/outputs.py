@@ -20,6 +20,7 @@ __all__ = [
     'InstanceGceSetup',
     'InstanceGceSetupAcceleratorConfig',
     'InstanceGceSetupBootDisk',
+    'InstanceGceSetupConfidentialInstanceConfig',
     'InstanceGceSetupContainerImage',
     'InstanceGceSetupDataDisks',
     'InstanceGceSetupNetworkInterface',
@@ -42,6 +43,8 @@ class InstanceGceSetup(dict):
             suggest = "accelerator_configs"
         elif key == "bootDisk":
             suggest = "boot_disk"
+        elif key == "confidentialInstanceConfig":
+            suggest = "confidential_instance_config"
         elif key == "containerImage":
             suggest = "container_image"
         elif key == "dataDisks":
@@ -75,6 +78,7 @@ class InstanceGceSetup(dict):
     def __init__(__self__, *,
                  accelerator_configs: Optional[Sequence['outputs.InstanceGceSetupAcceleratorConfig']] = None,
                  boot_disk: Optional['outputs.InstanceGceSetupBootDisk'] = None,
+                 confidential_instance_config: Optional['outputs.InstanceGceSetupConfidentialInstanceConfig'] = None,
                  container_image: Optional['outputs.InstanceGceSetupContainerImage'] = None,
                  data_disks: Optional['outputs.InstanceGceSetupDataDisks'] = None,
                  disable_public_ip: Optional[builtins.bool] = None,
@@ -92,6 +96,8 @@ class InstanceGceSetup(dict):
                Currently supports only one accelerator configuration.
                Structure is documented below.
         :param 'InstanceGceSetupBootDiskArgs' boot_disk: The definition of a boot disk.
+               Structure is documented below.
+        :param 'InstanceGceSetupConfidentialInstanceConfigArgs' confidential_instance_config: Confidential instance configuration.
                Structure is documented below.
         :param 'InstanceGceSetupContainerImageArgs' container_image: Use a container image to start the workbench instance.
                Structure is documented below.
@@ -120,6 +126,8 @@ class InstanceGceSetup(dict):
             pulumi.set(__self__, "accelerator_configs", accelerator_configs)
         if boot_disk is not None:
             pulumi.set(__self__, "boot_disk", boot_disk)
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if data_disks is not None:
@@ -162,6 +170,15 @@ class InstanceGceSetup(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "boot_disk")
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional['outputs.InstanceGceSetupConfidentialInstanceConfig']:
+        """
+        Confidential instance configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "confidential_instance_config")
 
     @property
     @pulumi.getter(name="containerImage")
@@ -403,6 +420,44 @@ class InstanceGceSetupBootDisk(dict):
         Learn more about using your own encryption keys.'
         """
         return pulumi.get(self, "kms_key")
+
+
+@pulumi.output_type
+class InstanceGceSetupConfidentialInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGceSetupConfidentialInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGceSetupConfidentialInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGceSetupConfidentialInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 confidential_instance_type: Optional[builtins.str] = None):
+        """
+        :param builtins.str confidential_instance_type: Defines the type of technology used by the confidential instance.
+               Possible values are: `SEV`.
+        """
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[builtins.str]:
+        """
+        Defines the type of technology used by the confidential instance.
+        Possible values are: `SEV`.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
 
 @pulumi.output_type

@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleAdvanceRolloutRuleArgs;
 import com.pulumi.gcp.clouddeploy.inputs.AutomationRulePromoteReleaseRuleArgs;
+import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleArgs;
+import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleTimedPromoteReleaseRuleArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -50,11 +52,47 @@ public final class AutomationRuleArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.promoteReleaseRule);
     }
 
+    /**
+     * Optional. The RepairRolloutRule will automatically repair a failed rollout.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="repairRolloutRule")
+    private @Nullable Output<AutomationRuleRepairRolloutRuleArgs> repairRolloutRule;
+
+    /**
+     * @return Optional. The RepairRolloutRule will automatically repair a failed rollout.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AutomationRuleRepairRolloutRuleArgs>> repairRolloutRule() {
+        return Optional.ofNullable(this.repairRolloutRule);
+    }
+
+    /**
+     * Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="timedPromoteReleaseRule")
+    private @Nullable Output<AutomationRuleTimedPromoteReleaseRuleArgs> timedPromoteReleaseRule;
+
+    /**
+     * @return Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AutomationRuleTimedPromoteReleaseRuleArgs>> timedPromoteReleaseRule() {
+        return Optional.ofNullable(this.timedPromoteReleaseRule);
+    }
+
     private AutomationRuleArgs() {}
 
     private AutomationRuleArgs(AutomationRuleArgs $) {
         this.advanceRolloutRule = $.advanceRolloutRule;
         this.promoteReleaseRule = $.promoteReleaseRule;
+        this.repairRolloutRule = $.repairRolloutRule;
+        this.timedPromoteReleaseRule = $.timedPromoteReleaseRule;
     }
 
     public static Builder builder() {
@@ -119,6 +157,52 @@ public final class AutomationRuleArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder promoteReleaseRule(AutomationRulePromoteReleaseRuleArgs promoteReleaseRule) {
             return promoteReleaseRule(Output.of(promoteReleaseRule));
+        }
+
+        /**
+         * @param repairRolloutRule Optional. The RepairRolloutRule will automatically repair a failed rollout.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repairRolloutRule(@Nullable Output<AutomationRuleRepairRolloutRuleArgs> repairRolloutRule) {
+            $.repairRolloutRule = repairRolloutRule;
+            return this;
+        }
+
+        /**
+         * @param repairRolloutRule Optional. The RepairRolloutRule will automatically repair a failed rollout.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repairRolloutRule(AutomationRuleRepairRolloutRuleArgs repairRolloutRule) {
+            return repairRolloutRule(Output.of(repairRolloutRule));
+        }
+
+        /**
+         * @param timedPromoteReleaseRule Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timedPromoteReleaseRule(@Nullable Output<AutomationRuleTimedPromoteReleaseRuleArgs> timedPromoteReleaseRule) {
+            $.timedPromoteReleaseRule = timedPromoteReleaseRule;
+            return this;
+        }
+
+        /**
+         * @param timedPromoteReleaseRule Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timedPromoteReleaseRule(AutomationRuleTimedPromoteReleaseRuleArgs timedPromoteReleaseRule) {
+            return timedPromoteReleaseRule(Output.of(timedPromoteReleaseRule));
         }
 
         public AutomationRuleArgs build() {

@@ -40,6 +40,7 @@ __all__ = [
     'AccessLevelsAccessLevelCustomExpr',
     'AccessPolicyIamBindingCondition',
     'AccessPolicyIamMemberCondition',
+    'GcpUserAccessBindingSessionSettings',
     'ServicePerimeterDryRunEgressPolicyEgressFrom',
     'ServicePerimeterDryRunEgressPolicyEgressFromSource',
     'ServicePerimeterDryRunEgressPolicyEgressTo',
@@ -1654,6 +1655,100 @@ class AccessPolicyIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GcpUserAccessBindingSessionSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxInactivity":
+            suggest = "max_inactivity"
+        elif key == "sessionLength":
+            suggest = "session_length"
+        elif key == "sessionLengthEnabled":
+            suggest = "session_length_enabled"
+        elif key == "sessionReauthMethod":
+            suggest = "session_reauth_method"
+        elif key == "useOidcMaxAge":
+            suggest = "use_oidc_max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpUserAccessBindingSessionSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpUserAccessBindingSessionSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpUserAccessBindingSessionSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_inactivity: Optional[builtins.str] = None,
+                 session_length: Optional[builtins.str] = None,
+                 session_length_enabled: Optional[builtins.bool] = None,
+                 session_reauth_method: Optional[builtins.str] = None,
+                 use_oidc_max_age: Optional[builtins.bool] = None):
+        """
+        :param builtins.str max_inactivity: Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+        :param builtins.str session_length: Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+        :param builtins.bool session_length_enabled: Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+        :param builtins.str session_reauth_method: Optional. The session challenges proposed to users when the Google Cloud session length is up.
+               Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+        :param builtins.bool use_oidc_max_age: Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
+        """
+        if max_inactivity is not None:
+            pulumi.set(__self__, "max_inactivity", max_inactivity)
+        if session_length is not None:
+            pulumi.set(__self__, "session_length", session_length)
+        if session_length_enabled is not None:
+            pulumi.set(__self__, "session_length_enabled", session_length_enabled)
+        if session_reauth_method is not None:
+            pulumi.set(__self__, "session_reauth_method", session_reauth_method)
+        if use_oidc_max_age is not None:
+            pulumi.set(__self__, "use_oidc_max_age", use_oidc_max_age)
+
+    @property
+    @pulumi.getter(name="maxInactivity")
+    def max_inactivity(self) -> Optional[builtins.str]:
+        """
+        Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+        """
+        return pulumi.get(self, "max_inactivity")
+
+    @property
+    @pulumi.getter(name="sessionLength")
+    def session_length(self) -> Optional[builtins.str]:
+        """
+        Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+        """
+        return pulumi.get(self, "session_length")
+
+    @property
+    @pulumi.getter(name="sessionLengthEnabled")
+    def session_length_enabled(self) -> Optional[builtins.bool]:
+        """
+        Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+        """
+        return pulumi.get(self, "session_length_enabled")
+
+    @property
+    @pulumi.getter(name="sessionReauthMethod")
+    def session_reauth_method(self) -> Optional[builtins.str]:
+        """
+        Optional. The session challenges proposed to users when the Google Cloud session length is up.
+        Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+        """
+        return pulumi.get(self, "session_reauth_method")
+
+    @property
+    @pulumi.getter(name="useOidcMaxAge")
+    def use_oidc_max_age(self) -> Optional[builtins.bool]:
+        """
+        Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
+        """
+        return pulumi.get(self, "use_oidc_max_age")
 
 
 @pulumi.output_type

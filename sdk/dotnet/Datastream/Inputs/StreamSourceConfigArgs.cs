@@ -34,6 +34,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<Inputs.StreamSourceConfigPostgresqlSourceConfigArgs>? PostgresqlSourceConfig { get; set; }
 
         /// <summary>
+        /// Salesforce data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("salesforceSourceConfig")]
+        public Input<Inputs.StreamSourceConfigSalesforceSourceConfigArgs>? SalesforceSourceConfig { get; set; }
+
+        /// <summary>
         /// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
         /// </summary>
         [Input("sourceConnectionProfile", required: true)]

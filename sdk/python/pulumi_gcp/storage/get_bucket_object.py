@@ -28,7 +28,7 @@ class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, generation=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, generation=None, id=None, kms_key_name=None, md5hash=None, md5hexhash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -74,6 +74,9 @@ class GetBucketObjectResult:
         if md5hash and not isinstance(md5hash, str):
             raise TypeError("Expected argument 'md5hash' to be a str")
         pulumi.set(__self__, "md5hash", md5hash)
+        if md5hexhash and not isinstance(md5hexhash, str):
+            raise TypeError("Expected argument 'md5hexhash' to be a str")
+        pulumi.set(__self__, "md5hexhash", md5hexhash)
         if media_link and not isinstance(media_link, str):
             raise TypeError("Expected argument 'media_link' to be a str")
         pulumi.set(__self__, "media_link", media_link)
@@ -209,6 +212,11 @@ class GetBucketObjectResult:
         return pulumi.get(self, "md5hash")
 
     @property
+    @pulumi.getter
+    def md5hexhash(self) -> builtins.str:
+        return pulumi.get(self, "md5hexhash")
+
+    @property
     @pulumi.getter(name="mediaLink")
     def media_link(self) -> builtins.str:
         """
@@ -289,6 +297,7 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             id=self.id,
             kms_key_name=self.kms_key_name,
             md5hash=self.md5hash,
+            md5hexhash=self.md5hexhash,
             media_link=self.media_link,
             metadata=self.metadata,
             name=self.name,
@@ -347,6 +356,7 @@ def get_bucket_object(bucket: Optional[builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         md5hash=pulumi.get(__ret__, 'md5hash'),
+        md5hexhash=pulumi.get(__ret__, 'md5hexhash'),
         media_link=pulumi.get(__ret__, 'media_link'),
         metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
@@ -402,6 +412,7 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[Optional[builtins.str
         id=pulumi.get(__response__, 'id'),
         kms_key_name=pulumi.get(__response__, 'kms_key_name'),
         md5hash=pulumi.get(__response__, 'md5hash'),
+        md5hexhash=pulumi.get(__response__, 'md5hexhash'),
         media_link=pulumi.get(__response__, 'media_link'),
         metadata=pulumi.get(__response__, 'metadata'),
         name=pulumi.get(__response__, 'name'),

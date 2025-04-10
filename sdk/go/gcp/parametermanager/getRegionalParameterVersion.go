@@ -71,8 +71,10 @@ type LookupRegionalParameterVersionResult struct {
 	// The current state of the Regional Parameter Version.
 	Disabled bool `pulumi:"disabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	Location string `pulumi:"location"`
+	Id string `pulumi:"id"`
+	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	KmsKeyVersion string `pulumi:"kmsKeyVersion"`
+	Location      string `pulumi:"location"`
 	// The resource name of the Regional Parameter Version. Format:
 	// `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
 	Name      string `pulumi:"name"`
@@ -140,6 +142,11 @@ func (o LookupRegionalParameterVersionResultOutput) Disabled() pulumi.BoolOutput
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRegionalParameterVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalParameterVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+func (o LookupRegionalParameterVersionResultOutput) KmsKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionalParameterVersionResult) string { return v.KmsKeyVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionalParameterVersionResultOutput) Location() pulumi.StringOutput {

@@ -219,7 +219,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
- *     launchStage: "BETA",
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
@@ -235,6 +234,7 @@ import * as utilities from "../utilities";
  *         nodeSelector: {
  *             accelerator: "nvidia-l4",
  *         },
+ *         gpuZonalRedundancyDisabled: true,
  *         scaling: {
  *             maxInstanceCount: 1,
  *         },

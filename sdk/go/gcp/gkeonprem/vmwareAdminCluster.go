@@ -322,6 +322,8 @@ type VmwareAdminCluster struct {
 	// A human readable description of this VMware admin cluster.
 	Description          pulumi.StringOutput    `pulumi:"description"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	// If set, the advanced cluster feature is enabled.
+	EnableAdvancedCluster pulumi.BoolOutput `pulumi:"enableAdvancedCluster"`
 	// The DNS name of VMware admin cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// This checksum is computed by the server based on the value of other
@@ -436,6 +438,8 @@ type vmwareAdminClusterState struct {
 	// A human readable description of this VMware admin cluster.
 	Description          *string           `pulumi:"description"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	// If set, the advanced cluster feature is enabled.
+	EnableAdvancedCluster *bool `pulumi:"enableAdvancedCluster"`
 	// The DNS name of VMware admin cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
 	// This checksum is computed by the server based on the value of other
@@ -515,6 +519,8 @@ type VmwareAdminClusterState struct {
 	// A human readable description of this VMware admin cluster.
 	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
+	// If set, the advanced cluster feature is enabled.
+	EnableAdvancedCluster pulumi.BoolPtrInput
 	// The DNS name of VMware admin cluster's API server.
 	Endpoint pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other
@@ -797,6 +803,11 @@ func (o VmwareAdminClusterOutput) Description() pulumi.StringOutput {
 
 func (o VmwareAdminClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+// If set, the advanced cluster feature is enabled.
+func (o VmwareAdminClusterOutput) EnableAdvancedCluster() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VmwareAdminCluster) pulumi.BoolOutput { return v.EnableAdvancedCluster }).(pulumi.BoolOutput)
 }
 
 // The DNS name of VMware admin cluster's API server.

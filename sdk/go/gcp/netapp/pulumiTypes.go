@@ -672,6 +672,9 @@ type VolumeReplicationDestinationVolumeParameters struct {
 	ShareName *string `pulumi:"shareName"`
 	// Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
 	StoragePool string `pulumi:"storagePool"`
+	// Tiering policy for the volume.
+	// Structure is documented below.
+	TieringPolicy *VolumeReplicationDestinationVolumeParametersTieringPolicy `pulumi:"tieringPolicy"`
 	// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
 	VolumeId *string `pulumi:"volumeId"`
 }
@@ -694,6 +697,9 @@ type VolumeReplicationDestinationVolumeParametersArgs struct {
 	ShareName pulumi.StringPtrInput `pulumi:"shareName"`
 	// Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
 	StoragePool pulumi.StringInput `pulumi:"storagePool"`
+	// Tiering policy for the volume.
+	// Structure is documented below.
+	TieringPolicy VolumeReplicationDestinationVolumeParametersTieringPolicyPtrInput `pulumi:"tieringPolicy"`
 	// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
 	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
 }
@@ -790,6 +796,14 @@ func (o VolumeReplicationDestinationVolumeParametersOutput) StoragePool() pulumi
 	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParameters) string { return v.StoragePool }).(pulumi.StringOutput)
 }
 
+// Tiering policy for the volume.
+// Structure is documented below.
+func (o VolumeReplicationDestinationVolumeParametersOutput) TieringPolicy() VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParameters) *VolumeReplicationDestinationVolumeParametersTieringPolicy {
+		return v.TieringPolicy
+	}).(VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput)
+}
+
 // Name for the destination volume to be created. If not specified, the name of the source volume will be used.
 func (o VolumeReplicationDestinationVolumeParametersOutput) VolumeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParameters) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
@@ -849,6 +863,17 @@ func (o VolumeReplicationDestinationVolumeParametersPtrOutput) StoragePool() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// Tiering policy for the volume.
+// Structure is documented below.
+func (o VolumeReplicationDestinationVolumeParametersPtrOutput) TieringPolicy() VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParameters) *VolumeReplicationDestinationVolumeParametersTieringPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.TieringPolicy
+	}).(VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput)
+}
+
 // Name for the destination volume to be created. If not specified, the name of the source volume will be used.
 func (o VolumeReplicationDestinationVolumeParametersPtrOutput) VolumeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParameters) *string {
@@ -856,6 +881,174 @@ func (o VolumeReplicationDestinationVolumeParametersPtrOutput) VolumeId() pulumi
 			return nil
 		}
 		return v.VolumeId
+	}).(pulumi.StringPtrOutput)
+}
+
+type VolumeReplicationDestinationVolumeParametersTieringPolicy struct {
+	// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
+	// Default is 31.
+	CoolingThresholdDays *int `pulumi:"coolingThresholdDays"`
+	// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+	// Default value is `PAUSED`.
+	// Possible values are: `ENABLED`, `PAUSED`.
+	TierAction *string `pulumi:"tierAction"`
+}
+
+// VolumeReplicationDestinationVolumeParametersTieringPolicyInput is an input type that accepts VolumeReplicationDestinationVolumeParametersTieringPolicyArgs and VolumeReplicationDestinationVolumeParametersTieringPolicyOutput values.
+// You can construct a concrete instance of `VolumeReplicationDestinationVolumeParametersTieringPolicyInput` via:
+//
+//	VolumeReplicationDestinationVolumeParametersTieringPolicyArgs{...}
+type VolumeReplicationDestinationVolumeParametersTieringPolicyInput interface {
+	pulumi.Input
+
+	ToVolumeReplicationDestinationVolumeParametersTieringPolicyOutput() VolumeReplicationDestinationVolumeParametersTieringPolicyOutput
+	ToVolumeReplicationDestinationVolumeParametersTieringPolicyOutputWithContext(context.Context) VolumeReplicationDestinationVolumeParametersTieringPolicyOutput
+}
+
+type VolumeReplicationDestinationVolumeParametersTieringPolicyArgs struct {
+	// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
+	// Default is 31.
+	CoolingThresholdDays pulumi.IntPtrInput `pulumi:"coolingThresholdDays"`
+	// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+	// Default value is `PAUSED`.
+	// Possible values are: `ENABLED`, `PAUSED`.
+	TierAction pulumi.StringPtrInput `pulumi:"tierAction"`
+}
+
+func (VolumeReplicationDestinationVolumeParametersTieringPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersTieringPolicy)(nil)).Elem()
+}
+
+func (i VolumeReplicationDestinationVolumeParametersTieringPolicyArgs) ToVolumeReplicationDestinationVolumeParametersTieringPolicyOutput() VolumeReplicationDestinationVolumeParametersTieringPolicyOutput {
+	return i.ToVolumeReplicationDestinationVolumeParametersTieringPolicyOutputWithContext(context.Background())
+}
+
+func (i VolumeReplicationDestinationVolumeParametersTieringPolicyArgs) ToVolumeReplicationDestinationVolumeParametersTieringPolicyOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersTieringPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationDestinationVolumeParametersTieringPolicyOutput)
+}
+
+func (i VolumeReplicationDestinationVolumeParametersTieringPolicyArgs) ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput() VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return i.ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeReplicationDestinationVolumeParametersTieringPolicyArgs) ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationDestinationVolumeParametersTieringPolicyOutput).ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutputWithContext(ctx)
+}
+
+// VolumeReplicationDestinationVolumeParametersTieringPolicyPtrInput is an input type that accepts VolumeReplicationDestinationVolumeParametersTieringPolicyArgs, VolumeReplicationDestinationVolumeParametersTieringPolicyPtr and VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput values.
+// You can construct a concrete instance of `VolumeReplicationDestinationVolumeParametersTieringPolicyPtrInput` via:
+//
+//	        VolumeReplicationDestinationVolumeParametersTieringPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeReplicationDestinationVolumeParametersTieringPolicyPtrInput interface {
+	pulumi.Input
+
+	ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput() VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput
+	ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutputWithContext(context.Context) VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput
+}
+
+type volumeReplicationDestinationVolumeParametersTieringPolicyPtrType VolumeReplicationDestinationVolumeParametersTieringPolicyArgs
+
+func VolumeReplicationDestinationVolumeParametersTieringPolicyPtr(v *VolumeReplicationDestinationVolumeParametersTieringPolicyArgs) VolumeReplicationDestinationVolumeParametersTieringPolicyPtrInput {
+	return (*volumeReplicationDestinationVolumeParametersTieringPolicyPtrType)(v)
+}
+
+func (*volumeReplicationDestinationVolumeParametersTieringPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeReplicationDestinationVolumeParametersTieringPolicy)(nil)).Elem()
+}
+
+func (i *volumeReplicationDestinationVolumeParametersTieringPolicyPtrType) ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput() VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return i.ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeReplicationDestinationVolumeParametersTieringPolicyPtrType) ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput)
+}
+
+type VolumeReplicationDestinationVolumeParametersTieringPolicyOutput struct{ *pulumi.OutputState }
+
+func (VolumeReplicationDestinationVolumeParametersTieringPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersTieringPolicy)(nil)).Elem()
+}
+
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyOutput) ToVolumeReplicationDestinationVolumeParametersTieringPolicyOutput() VolumeReplicationDestinationVolumeParametersTieringPolicyOutput {
+	return o
+}
+
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyOutput) ToVolumeReplicationDestinationVolumeParametersTieringPolicyOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersTieringPolicyOutput {
+	return o
+}
+
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyOutput) ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput() VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return o.ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyOutput) ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeReplicationDestinationVolumeParametersTieringPolicy) *VolumeReplicationDestinationVolumeParametersTieringPolicy {
+		return &v
+	}).(VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput)
+}
+
+// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
+// Default is 31.
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyOutput) CoolingThresholdDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParametersTieringPolicy) *int { return v.CoolingThresholdDays }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+// Default value is `PAUSED`.
+// Possible values are: `ENABLED`, `PAUSED`.
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyOutput) TierAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeReplicationDestinationVolumeParametersTieringPolicy) *string { return v.TierAction }).(pulumi.StringPtrOutput)
+}
+
+type VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeReplicationDestinationVolumeParametersTieringPolicy)(nil)).Elem()
+}
+
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput) ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput() VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return o
+}
+
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput) ToVolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutputWithContext(ctx context.Context) VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput {
+	return o
+}
+
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput) Elem() VolumeReplicationDestinationVolumeParametersTieringPolicyOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParametersTieringPolicy) VolumeReplicationDestinationVolumeParametersTieringPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeReplicationDestinationVolumeParametersTieringPolicy
+		return ret
+	}).(VolumeReplicationDestinationVolumeParametersTieringPolicyOutput)
+}
+
+// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
+// Default is 31.
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput) CoolingThresholdDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParametersTieringPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoolingThresholdDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+// Default value is `PAUSED`.
+// Possible values are: `ENABLED`, `PAUSED`.
+func (o VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput) TierAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeReplicationDestinationVolumeParametersTieringPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TierAction
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2174,7 +2367,7 @@ func (o VolumeSnapshotPolicyWeeklySchedulePtrOutput) SnapshotsToKeep() pulumi.In
 }
 
 type VolumeTieringPolicy struct {
-	// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+	// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
 	// Default is 31.
 	CoolingThresholdDays *int `pulumi:"coolingThresholdDays"`
 	// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
@@ -2195,7 +2388,7 @@ type VolumeTieringPolicyInput interface {
 }
 
 type VolumeTieringPolicyArgs struct {
-	// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+	// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
 	// Default is 31.
 	CoolingThresholdDays pulumi.IntPtrInput `pulumi:"coolingThresholdDays"`
 	// Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
@@ -2281,7 +2474,7 @@ func (o VolumeTieringPolicyOutput) ToVolumeTieringPolicyPtrOutputWithContext(ctx
 	}).(VolumeTieringPolicyPtrOutput)
 }
 
-// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
 // Default is 31.
 func (o VolumeTieringPolicyOutput) CoolingThresholdDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VolumeTieringPolicy) *int { return v.CoolingThresholdDays }).(pulumi.IntPtrOutput)
@@ -2318,7 +2511,7 @@ func (o VolumeTieringPolicyPtrOutput) Elem() VolumeTieringPolicyOutput {
 	}).(VolumeTieringPolicyOutput)
 }
 
-// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
 // Default is 31.
 func (o VolumeTieringPolicyPtrOutput) CoolingThresholdDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VolumeTieringPolicy) *int {
@@ -2352,6 +2545,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountOptionArrayInput)(nil)).Elem(), VolumeMountOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersInput)(nil)).Elem(), VolumeReplicationDestinationVolumeParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersPtrInput)(nil)).Elem(), VolumeReplicationDestinationVolumeParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersTieringPolicyInput)(nil)).Elem(), VolumeReplicationDestinationVolumeParametersTieringPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationDestinationVolumeParametersTieringPolicyPtrInput)(nil)).Elem(), VolumeReplicationDestinationVolumeParametersTieringPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationTransferStatInput)(nil)).Elem(), VolumeReplicationTransferStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeReplicationTransferStatArrayInput)(nil)).Elem(), VolumeReplicationTransferStatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeRestoreParametersInput)(nil)).Elem(), VolumeRestoreParametersArgs{})
@@ -2378,6 +2573,8 @@ func init() {
 	pulumi.RegisterOutputType(VolumeMountOptionArrayOutput{})
 	pulumi.RegisterOutputType(VolumeReplicationDestinationVolumeParametersOutput{})
 	pulumi.RegisterOutputType(VolumeReplicationDestinationVolumeParametersPtrOutput{})
+	pulumi.RegisterOutputType(VolumeReplicationDestinationVolumeParametersTieringPolicyOutput{})
+	pulumi.RegisterOutputType(VolumeReplicationDestinationVolumeParametersTieringPolicyPtrOutput{})
 	pulumi.RegisterOutputType(VolumeReplicationTransferStatOutput{})
 	pulumi.RegisterOutputType(VolumeReplicationTransferStatArrayOutput{})
 	pulumi.RegisterOutputType(VolumeRestoreParametersOutput{})

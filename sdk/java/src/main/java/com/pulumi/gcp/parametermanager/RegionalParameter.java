@@ -139,6 +139,47 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Regional Parameter With Kms Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.parametermanager.RegionalParameter;
+ * import com.pulumi.gcp.parametermanager.RegionalParameterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var regional_parameter_with_kms_key = new RegionalParameter("regional-parameter-with-kms-key", RegionalParameterArgs.builder()
+ *             .parameterId("regional_parameter")
+ *             .location("us-central1")
+ *             .kmsKey("kms-key")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -212,6 +253,22 @@ public class RegionalParameter extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> format() {
         return Codegen.optional(this.format);
+    }
+    /**
+     * The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     * 
+     */
+    @Export(name="kmsKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKey;
+
+    /**
+     * @return The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     * 
+     */
+    public Output<Optional<String>> kmsKey() {
+        return Codegen.optional(this.kmsKey);
     }
     /**
      * The labels assigned to this regional Parameter.

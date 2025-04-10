@@ -139,6 +139,7 @@ namespace Pulumi.Gcp.MemoryStore
     public sealed class GetInstanceResult
     {
         public readonly string AuthorizationMode;
+        public readonly ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> AutomatedBackupConfigs;
         public readonly string CreateTime;
         public readonly ImmutableArray<Outputs.GetInstanceCrossInstanceReplicationConfigResult> CrossInstanceReplicationConfigs;
         public readonly bool DeletionProtectionEnabled;
@@ -178,6 +179,8 @@ namespace Pulumi.Gcp.MemoryStore
         [OutputConstructor]
         private GetInstanceResult(
             string authorizationMode,
+
+            ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> automatedBackupConfigs,
 
             string createTime,
 
@@ -244,6 +247,7 @@ namespace Pulumi.Gcp.MemoryStore
             ImmutableArray<Outputs.GetInstanceZoneDistributionConfigResult> zoneDistributionConfigs)
         {
             AuthorizationMode = authorizationMode;
+            AutomatedBackupConfigs = automatedBackupConfigs;
             CreateTime = createTime;
             CrossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
             DeletionProtectionEnabled = deletionProtectionEnabled;

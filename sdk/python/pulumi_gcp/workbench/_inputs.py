@@ -22,6 +22,8 @@ __all__ = [
     'InstanceGceSetupAcceleratorConfigArgsDict',
     'InstanceGceSetupBootDiskArgs',
     'InstanceGceSetupBootDiskArgsDict',
+    'InstanceGceSetupConfidentialInstanceConfigArgs',
+    'InstanceGceSetupConfidentialInstanceConfigArgsDict',
     'InstanceGceSetupContainerImageArgs',
     'InstanceGceSetupContainerImageArgsDict',
     'InstanceGceSetupDataDisksArgs',
@@ -60,6 +62,11 @@ if not MYPY:
         boot_disk: NotRequired[pulumi.Input['InstanceGceSetupBootDiskArgsDict']]
         """
         The definition of a boot disk.
+        Structure is documented below.
+        """
+        confidential_instance_config: NotRequired[pulumi.Input['InstanceGceSetupConfidentialInstanceConfigArgsDict']]
+        """
+        Confidential instance configuration.
         Structure is documented below.
         """
         container_image: NotRequired[pulumi.Input['InstanceGceSetupContainerImageArgsDict']]
@@ -125,6 +132,7 @@ class InstanceGceSetupArgs:
     def __init__(__self__, *,
                  accelerator_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupAcceleratorConfigArgs']]]] = None,
                  boot_disk: Optional[pulumi.Input['InstanceGceSetupBootDiskArgs']] = None,
+                 confidential_instance_config: Optional[pulumi.Input['InstanceGceSetupConfidentialInstanceConfigArgs']] = None,
                  container_image: Optional[pulumi.Input['InstanceGceSetupContainerImageArgs']] = None,
                  data_disks: Optional[pulumi.Input['InstanceGceSetupDataDisksArgs']] = None,
                  disable_public_ip: Optional[pulumi.Input[builtins.bool]] = None,
@@ -142,6 +150,8 @@ class InstanceGceSetupArgs:
                Currently supports only one accelerator configuration.
                Structure is documented below.
         :param pulumi.Input['InstanceGceSetupBootDiskArgs'] boot_disk: The definition of a boot disk.
+               Structure is documented below.
+        :param pulumi.Input['InstanceGceSetupConfidentialInstanceConfigArgs'] confidential_instance_config: Confidential instance configuration.
                Structure is documented below.
         :param pulumi.Input['InstanceGceSetupContainerImageArgs'] container_image: Use a container image to start the workbench instance.
                Structure is documented below.
@@ -170,6 +180,8 @@ class InstanceGceSetupArgs:
             pulumi.set(__self__, "accelerator_configs", accelerator_configs)
         if boot_disk is not None:
             pulumi.set(__self__, "boot_disk", boot_disk)
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if data_disks is not None:
@@ -220,6 +232,19 @@ class InstanceGceSetupArgs:
     @boot_disk.setter
     def boot_disk(self, value: Optional[pulumi.Input['InstanceGceSetupBootDiskArgs']]):
         pulumi.set(self, "boot_disk", value)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceGceSetupConfidentialInstanceConfigArgs']]:
+        """
+        Confidential instance configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "confidential_instance_config")
+
+    @confidential_instance_config.setter
+    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceGceSetupConfidentialInstanceConfigArgs']]):
+        pulumi.set(self, "confidential_instance_config", value)
 
     @property
     @pulumi.getter(name="containerImage")
@@ -531,6 +556,41 @@ class InstanceGceSetupBootDiskArgs:
     @kms_key.setter
     def kms_key(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key", value)
+
+
+if not MYPY:
+    class InstanceGceSetupConfidentialInstanceConfigArgsDict(TypedDict):
+        confidential_instance_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Defines the type of technology used by the confidential instance.
+        Possible values are: `SEV`.
+        """
+elif False:
+    InstanceGceSetupConfidentialInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceGceSetupConfidentialInstanceConfigArgs:
+    def __init__(__self__, *,
+                 confidential_instance_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] confidential_instance_type: Defines the type of technology used by the confidential instance.
+               Possible values are: `SEV`.
+        """
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Defines the type of technology used by the confidential instance.
+        Possible values are: `SEV`.
+        """
+        return pulumi.get(self, "confidential_instance_type")
+
+    @confidential_instance_type.setter
+    def confidential_instance_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "confidential_instance_type", value)
 
 
 if not MYPY:

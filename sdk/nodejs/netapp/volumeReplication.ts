@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     serviceLevel: "PREMIUM",
  *     capacityGib: "2048",
  *     network: _default.then(_default => _default.id),
+ *     allowAutoTiering: true,
  * });
  * const sourceVolume = new gcp.netapp.Volume("source_volume", {
  *     location: sourcePool.location,
@@ -52,6 +53,10 @@ import * as utilities from "../utilities";
  *         volumeId: "destination-volume",
  *         shareName: "source-volume",
  *         description: "This is a replicated volume",
+ *         tieringPolicy: {
+ *             coolingThresholdDays: 20,
+ *             tierAction: "ENABLED",
+ *         },
  *     },
  *     deleteDestinationVolume: true,
  *     waitForMirror: true,

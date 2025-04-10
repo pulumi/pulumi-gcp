@@ -1297,7 +1297,6 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
-            launch_stage="BETA",
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1313,6 +1312,7 @@ class Service(pulumi.CustomResource):
                 "node_selector": {
                     "accelerator": "nvidia-l4",
                 },
+                "gpu_zonal_redundancy_disabled": True,
                 "scaling": {
                     "max_instance_count": 1,
                 },
@@ -1898,7 +1898,6 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
-            launch_stage="BETA",
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1914,6 +1913,7 @@ class Service(pulumi.CustomResource):
                 "node_selector": {
                     "accelerator": "nvidia-l4",
                 },
+                "gpu_zonal_redundancy_disabled": True,
                 "scaling": {
                     "max_instance_count": 1,
                 },

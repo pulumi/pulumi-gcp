@@ -99,6 +99,47 @@ import (
 //	}
 //
 // ```
+// ### Regional Parameter Version With Kms Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			regional_parameter_basic, err := parametermanager.NewRegionalParameter(ctx, "regional-parameter-basic", &parametermanager.RegionalParameterArgs{
+//				ParameterId: pulumi.String("regional_parameter"),
+//				Location:    pulumi.String("us-central1"),
+//				KmsKey:      pulumi.String("kms-key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-kms-key", &parametermanager.RegionalParameterVersionArgs{
+//				Parameter:          regional_parameter_basic.ID(),
+//				ParameterVersionId: pulumi.String("regional_parameter_version"),
+//				ParameterData:      pulumi.String("regional-parameter-version-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RegionalParameterVersion can be imported using any of these accepted formats:
@@ -117,6 +158,9 @@ type RegionalParameterVersion struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
+	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+	// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	KmsKeyVersion pulumi.StringOutput `pulumi:"kmsKeyVersion"`
 	// Location of Parameter Manager Regional parameter resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the Regional Parameter Version. Format:
@@ -185,6 +229,9 @@ type regionalParameterVersionState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
 	Disabled *bool `pulumi:"disabled"`
+	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+	// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 	// Location of Parameter Manager Regional parameter resource.
 	Location *string `pulumi:"location"`
 	// The resource name of the Regional Parameter Version. Format:
@@ -208,6 +255,9 @@ type RegionalParameterVersionState struct {
 	CreateTime pulumi.StringPtrInput
 	// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
 	Disabled pulumi.BoolPtrInput
+	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+	// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+	KmsKeyVersion pulumi.StringPtrInput
 	// Location of Parameter Manager Regional parameter resource.
 	Location pulumi.StringPtrInput
 	// The resource name of the Regional Parameter Version. Format:
@@ -354,6 +404,12 @@ func (o RegionalParameterVersionOutput) CreateTime() pulumi.StringOutput {
 // The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
 func (o RegionalParameterVersionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionalParameterVersion) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+func (o RegionalParameterVersionOutput) KmsKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionalParameterVersion) pulumi.StringOutput { return v.KmsKeyVersion }).(pulumi.StringOutput)
 }
 
 // Location of Parameter Manager Regional parameter resource.

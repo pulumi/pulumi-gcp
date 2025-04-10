@@ -222,6 +222,22 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Resource Policy Placement Policy Tpu Topology
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const baz = new gcp.compute.ResourcePolicy("baz", {
+ *     name: "gce-policy",
+ *     region: "us-central1",
+ *     groupPlacementPolicy: {
+ *         vmCount: 2,
+ *         collocation: "COLLOCATED",
+ *         tpuTopology: "4x4",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

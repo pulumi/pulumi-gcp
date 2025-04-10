@@ -104,12 +104,8 @@ type Database struct {
 	// The dialect of the Cloud Spanner Database.
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
 	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
-	DatabaseDialect pulumi.StringOutput `pulumi:"databaseDialect"`
-	// An optional list of DDL statements to run inside the newly created
-	// database. Statements can create tables, indexes, etc. These statements
-	// execute atomically with the creation of the database: if there is an
-	// error in any statement, the database is not created.
-	Ddls pulumi.StringArrayOutput `pulumi:"ddls"`
+	DatabaseDialect pulumi.StringOutput      `pulumi:"databaseDialect"`
+	Ddls            pulumi.StringArrayOutput `pulumi:"ddls"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection   pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
@@ -173,12 +169,8 @@ type databaseState struct {
 	// The dialect of the Cloud Spanner Database.
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
 	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
-	DatabaseDialect *string `pulumi:"databaseDialect"`
-	// An optional list of DDL statements to run inside the newly created
-	// database. Statements can create tables, indexes, etc. These statements
-	// execute atomically with the creation of the database: if there is an
-	// error in any statement, the database is not created.
-	Ddls []string `pulumi:"ddls"`
+	DatabaseDialect *string  `pulumi:"databaseDialect"`
+	Ddls            []string `pulumi:"ddls"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection   *bool `pulumi:"deletionProtection"`
@@ -211,11 +203,7 @@ type DatabaseState struct {
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
 	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
 	DatabaseDialect pulumi.StringPtrInput
-	// An optional list of DDL statements to run inside the newly created
-	// database. Statements can create tables, indexes, etc. These statements
-	// execute atomically with the creation of the database: if there is an
-	// error in any statement, the database is not created.
-	Ddls pulumi.StringArrayInput
+	Ddls            pulumi.StringArrayInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection   pulumi.BoolPtrInput
@@ -251,12 +239,8 @@ type databaseArgs struct {
 	// The dialect of the Cloud Spanner Database.
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
 	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
-	DatabaseDialect *string `pulumi:"databaseDialect"`
-	// An optional list of DDL statements to run inside the newly created
-	// database. Statements can create tables, indexes, etc. These statements
-	// execute atomically with the creation of the database: if there is an
-	// error in any statement, the database is not created.
-	Ddls []string `pulumi:"ddls"`
+	DatabaseDialect *string  `pulumi:"databaseDialect"`
+	Ddls            []string `pulumi:"ddls"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection   *bool `pulumi:"deletionProtection"`
@@ -288,11 +272,7 @@ type DatabaseArgs struct {
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
 	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
 	DatabaseDialect pulumi.StringPtrInput
-	// An optional list of DDL statements to run inside the newly created
-	// database. Statements can create tables, indexes, etc. These statements
-	// execute atomically with the creation of the database: if there is an
-	// error in any statement, the database is not created.
-	Ddls pulumi.StringArrayInput
+	Ddls            pulumi.StringArrayInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection   pulumi.BoolPtrInput
@@ -412,10 +392,6 @@ func (o DatabaseOutput) DatabaseDialect() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DatabaseDialect }).(pulumi.StringOutput)
 }
 
-// An optional list of DDL statements to run inside the newly created
-// database. Statements can create tables, indexes, etc. These statements
-// execute atomically with the creation of the database: if there is an
-// error in any statement, the database is not created.
 func (o DatabaseOutput) Ddls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringArrayOutput { return v.Ddls }).(pulumi.StringArrayOutput)
 }

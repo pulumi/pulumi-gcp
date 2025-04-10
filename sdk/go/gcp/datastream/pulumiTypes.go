@@ -2765,6 +2765,9 @@ type StreamBackfillAll struct {
 	// PostgreSQL data source objects to avoid backfilling.
 	// Structure is documented below.
 	PostgresqlExcludedObjects *StreamBackfillAllPostgresqlExcludedObjects `pulumi:"postgresqlExcludedObjects"`
+	// Salesforce objects to avoid backfilling.
+	// Structure is documented below.
+	SalesforceExcludedObjects *StreamBackfillAllSalesforceExcludedObjects `pulumi:"salesforceExcludedObjects"`
 	// SQL Server data source objects to avoid backfilling.
 	// Structure is documented below.
 	SqlServerExcludedObjects *StreamBackfillAllSqlServerExcludedObjects `pulumi:"sqlServerExcludedObjects"`
@@ -2791,6 +2794,9 @@ type StreamBackfillAllArgs struct {
 	// PostgreSQL data source objects to avoid backfilling.
 	// Structure is documented below.
 	PostgresqlExcludedObjects StreamBackfillAllPostgresqlExcludedObjectsPtrInput `pulumi:"postgresqlExcludedObjects"`
+	// Salesforce objects to avoid backfilling.
+	// Structure is documented below.
+	SalesforceExcludedObjects StreamBackfillAllSalesforceExcludedObjectsPtrInput `pulumi:"salesforceExcludedObjects"`
 	// SQL Server data source objects to avoid backfilling.
 	// Structure is documented below.
 	SqlServerExcludedObjects StreamBackfillAllSqlServerExcludedObjectsPtrInput `pulumi:"sqlServerExcludedObjects"`
@@ -2893,6 +2899,14 @@ func (o StreamBackfillAllOutput) PostgresqlExcludedObjects() StreamBackfillAllPo
 	}).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
 }
 
+// Salesforce objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllOutput) SalesforceExcludedObjects() StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAll) *StreamBackfillAllSalesforceExcludedObjects {
+		return v.SalesforceExcludedObjects
+	}).(StreamBackfillAllSalesforceExcludedObjectsPtrOutput)
+}
+
 // SQL Server data source objects to avoid backfilling.
 // Structure is documented below.
 func (o StreamBackfillAllOutput) SqlServerExcludedObjects() StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
@@ -2956,6 +2970,17 @@ func (o StreamBackfillAllPtrOutput) PostgresqlExcludedObjects() StreamBackfillAl
 		}
 		return v.PostgresqlExcludedObjects
 	}).(StreamBackfillAllPostgresqlExcludedObjectsPtrOutput)
+}
+
+// Salesforce objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllPtrOutput) SalesforceExcludedObjects() StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamBackfillAll) *StreamBackfillAllSalesforceExcludedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.SalesforceExcludedObjects
+	}).(StreamBackfillAllSalesforceExcludedObjectsPtrOutput)
 }
 
 // SQL Server data source objects to avoid backfilling.
@@ -4630,6 +4655,357 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
 		return vs[0].([]StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn)[vs[1].(int)]
 	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
+}
+
+type StreamBackfillAllSalesforceExcludedObjects struct {
+	// Salesforce objects in Salesforce Org.
+	// Structure is documented below.
+	Objects []StreamBackfillAllSalesforceExcludedObjectsObject `pulumi:"objects"`
+}
+
+// StreamBackfillAllSalesforceExcludedObjectsInput is an input type that accepts StreamBackfillAllSalesforceExcludedObjectsArgs and StreamBackfillAllSalesforceExcludedObjectsOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSalesforceExcludedObjectsInput` via:
+//
+//	StreamBackfillAllSalesforceExcludedObjectsArgs{...}
+type StreamBackfillAllSalesforceExcludedObjectsInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSalesforceExcludedObjectsOutput() StreamBackfillAllSalesforceExcludedObjectsOutput
+	ToStreamBackfillAllSalesforceExcludedObjectsOutputWithContext(context.Context) StreamBackfillAllSalesforceExcludedObjectsOutput
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsArgs struct {
+	// Salesforce objects in Salesforce Org.
+	// Structure is documented below.
+	Objects StreamBackfillAllSalesforceExcludedObjectsObjectArrayInput `pulumi:"objects"`
+}
+
+func (StreamBackfillAllSalesforceExcludedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjects)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsArgs) ToStreamBackfillAllSalesforceExcludedObjectsOutput() StreamBackfillAllSalesforceExcludedObjectsOutput {
+	return i.ToStreamBackfillAllSalesforceExcludedObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsArgs) ToStreamBackfillAllSalesforceExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSalesforceExcludedObjectsOutput)
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsArgs) ToStreamBackfillAllSalesforceExcludedObjectsPtrOutput() StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllSalesforceExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsArgs) ToStreamBackfillAllSalesforceExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSalesforceExcludedObjectsOutput).ToStreamBackfillAllSalesforceExcludedObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamBackfillAllSalesforceExcludedObjectsPtrInput is an input type that accepts StreamBackfillAllSalesforceExcludedObjectsArgs, StreamBackfillAllSalesforceExcludedObjectsPtr and StreamBackfillAllSalesforceExcludedObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSalesforceExcludedObjectsPtrInput` via:
+//
+//	        StreamBackfillAllSalesforceExcludedObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamBackfillAllSalesforceExcludedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSalesforceExcludedObjectsPtrOutput() StreamBackfillAllSalesforceExcludedObjectsPtrOutput
+	ToStreamBackfillAllSalesforceExcludedObjectsPtrOutputWithContext(context.Context) StreamBackfillAllSalesforceExcludedObjectsPtrOutput
+}
+
+type streamBackfillAllSalesforceExcludedObjectsPtrType StreamBackfillAllSalesforceExcludedObjectsArgs
+
+func StreamBackfillAllSalesforceExcludedObjectsPtr(v *StreamBackfillAllSalesforceExcludedObjectsArgs) StreamBackfillAllSalesforceExcludedObjectsPtrInput {
+	return (*streamBackfillAllSalesforceExcludedObjectsPtrType)(v)
+}
+
+func (*streamBackfillAllSalesforceExcludedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllSalesforceExcludedObjects)(nil)).Elem()
+}
+
+func (i *streamBackfillAllSalesforceExcludedObjectsPtrType) ToStreamBackfillAllSalesforceExcludedObjectsPtrOutput() StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllSalesforceExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamBackfillAllSalesforceExcludedObjectsPtrType) ToStreamBackfillAllSalesforceExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSalesforceExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSalesforceExcludedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsOutput) ToStreamBackfillAllSalesforceExcludedObjectsOutput() StreamBackfillAllSalesforceExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsOutput) ToStreamBackfillAllSalesforceExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsOutput) ToStreamBackfillAllSalesforceExcludedObjectsPtrOutput() StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return o.ToStreamBackfillAllSalesforceExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsOutput) ToStreamBackfillAllSalesforceExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillAllSalesforceExcludedObjects) *StreamBackfillAllSalesforceExcludedObjects {
+		return &v
+	}).(StreamBackfillAllSalesforceExcludedObjectsPtrOutput)
+}
+
+// Salesforce objects in Salesforce Org.
+// Structure is documented below.
+func (o StreamBackfillAllSalesforceExcludedObjectsOutput) Objects() StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllSalesforceExcludedObjects) []StreamBackfillAllSalesforceExcludedObjectsObject {
+		return v.Objects
+	}).(StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput)
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSalesforceExcludedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllSalesforceExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsPtrOutput) ToStreamBackfillAllSalesforceExcludedObjectsPtrOutput() StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsPtrOutput) ToStreamBackfillAllSalesforceExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsPtrOutput) Elem() StreamBackfillAllSalesforceExcludedObjectsOutput {
+	return o.ApplyT(func(v *StreamBackfillAllSalesforceExcludedObjects) StreamBackfillAllSalesforceExcludedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamBackfillAllSalesforceExcludedObjects
+		return ret
+	}).(StreamBackfillAllSalesforceExcludedObjectsOutput)
+}
+
+// Salesforce objects in Salesforce Org.
+// Structure is documented below.
+func (o StreamBackfillAllSalesforceExcludedObjectsPtrOutput) Objects() StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput {
+	return o.ApplyT(func(v *StreamBackfillAllSalesforceExcludedObjects) []StreamBackfillAllSalesforceExcludedObjectsObject {
+		if v == nil {
+			return nil
+		}
+		return v.Objects
+	}).(StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput)
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObject struct {
+	// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+	// Structure is documented below.
+	Fields []StreamBackfillAllSalesforceExcludedObjectsObjectField `pulumi:"fields"`
+	// Name of object in Salesforce Org.
+	ObjectName *string `pulumi:"objectName"`
+}
+
+// StreamBackfillAllSalesforceExcludedObjectsObjectInput is an input type that accepts StreamBackfillAllSalesforceExcludedObjectsObjectArgs and StreamBackfillAllSalesforceExcludedObjectsObjectOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSalesforceExcludedObjectsObjectInput` via:
+//
+//	StreamBackfillAllSalesforceExcludedObjectsObjectArgs{...}
+type StreamBackfillAllSalesforceExcludedObjectsObjectInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSalesforceExcludedObjectsObjectOutput() StreamBackfillAllSalesforceExcludedObjectsObjectOutput
+	ToStreamBackfillAllSalesforceExcludedObjectsObjectOutputWithContext(context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectOutput
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObjectArgs struct {
+	// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+	// Structure is documented below.
+	Fields StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayInput `pulumi:"fields"`
+	// Name of object in Salesforce Org.
+	ObjectName pulumi.StringPtrInput `pulumi:"objectName"`
+}
+
+func (StreamBackfillAllSalesforceExcludedObjectsObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObject)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsObjectArgs) ToStreamBackfillAllSalesforceExcludedObjectsObjectOutput() StreamBackfillAllSalesforceExcludedObjectsObjectOutput {
+	return i.ToStreamBackfillAllSalesforceExcludedObjectsObjectOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsObjectArgs) ToStreamBackfillAllSalesforceExcludedObjectsObjectOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSalesforceExcludedObjectsObjectOutput)
+}
+
+// StreamBackfillAllSalesforceExcludedObjectsObjectArrayInput is an input type that accepts StreamBackfillAllSalesforceExcludedObjectsObjectArray and StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSalesforceExcludedObjectsObjectArrayInput` via:
+//
+//	StreamBackfillAllSalesforceExcludedObjectsObjectArray{ StreamBackfillAllSalesforceExcludedObjectsObjectArgs{...} }
+type StreamBackfillAllSalesforceExcludedObjectsObjectArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput() StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput
+	ToStreamBackfillAllSalesforceExcludedObjectsObjectArrayOutputWithContext(context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObjectArray []StreamBackfillAllSalesforceExcludedObjectsObjectInput
+
+func (StreamBackfillAllSalesforceExcludedObjectsObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSalesforceExcludedObjectsObject)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsObjectArray) ToStreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput() StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput {
+	return i.ToStreamBackfillAllSalesforceExcludedObjectsObjectArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsObjectArray) ToStreamBackfillAllSalesforceExcludedObjectsObjectArrayOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput)
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObjectOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSalesforceExcludedObjectsObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObject)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectOutput) ToStreamBackfillAllSalesforceExcludedObjectsObjectOutput() StreamBackfillAllSalesforceExcludedObjectsObjectOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectOutput) ToStreamBackfillAllSalesforceExcludedObjectsObjectOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectOutput {
+	return o
+}
+
+// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+// Structure is documented below.
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectOutput) Fields() StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllSalesforceExcludedObjectsObject) []StreamBackfillAllSalesforceExcludedObjectsObjectField {
+		return v.Fields
+	}).(StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput)
+}
+
+// Name of object in Salesforce Org.
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectOutput) ObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSalesforceExcludedObjectsObject) *string { return v.ObjectName }).(pulumi.StringPtrOutput)
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSalesforceExcludedObjectsObject)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput) ToStreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput() StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput) ToStreamBackfillAllSalesforceExcludedObjectsObjectArrayOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllSalesforceExcludedObjectsObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllSalesforceExcludedObjectsObject {
+		return vs[0].([]StreamBackfillAllSalesforceExcludedObjectsObject)[vs[1].(int)]
+	}).(StreamBackfillAllSalesforceExcludedObjectsObjectOutput)
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObjectField struct {
+	// Field name.
+	Name *string `pulumi:"name"`
+}
+
+// StreamBackfillAllSalesforceExcludedObjectsObjectFieldInput is an input type that accepts StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs and StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSalesforceExcludedObjectsObjectFieldInput` via:
+//
+//	StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs{...}
+type StreamBackfillAllSalesforceExcludedObjectsObjectFieldInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput() StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput
+	ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldOutputWithContext(context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs struct {
+	// Field name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObjectField)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs) ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput() StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput {
+	return i.ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs) ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput)
+}
+
+// StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayInput is an input type that accepts StreamBackfillAllSalesforceExcludedObjectsObjectFieldArray and StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayInput` via:
+//
+//	StreamBackfillAllSalesforceExcludedObjectsObjectFieldArray{ StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs{...} }
+type StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput() StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput
+	ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutputWithContext(context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObjectFieldArray []StreamBackfillAllSalesforceExcludedObjectsObjectFieldInput
+
+func (StreamBackfillAllSalesforceExcludedObjectsObjectFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSalesforceExcludedObjectsObjectField)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsObjectFieldArray) ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput() StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput {
+	return i.ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSalesforceExcludedObjectsObjectFieldArray) ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput)
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObjectField)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput) ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput() StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput) ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput {
+	return o
+}
+
+// Field name.
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSalesforceExcludedObjectsObjectField) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSalesforceExcludedObjectsObjectField)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput) ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput() StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput) ToStreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutputWithContext(ctx context.Context) StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllSalesforceExcludedObjectsObjectField {
+		return vs[0].([]StreamBackfillAllSalesforceExcludedObjectsObjectField)[vs[1].(int)]
+	}).(StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput)
 }
 
 type StreamBackfillAllSqlServerExcludedObjects struct {
@@ -7224,6 +7600,9 @@ type StreamSourceConfig struct {
 	// PostgreSQL data source configuration.
 	// Structure is documented below.
 	PostgresqlSourceConfig *StreamSourceConfigPostgresqlSourceConfig `pulumi:"postgresqlSourceConfig"`
+	// Salesforce data source configuration.
+	// Structure is documented below.
+	SalesforceSourceConfig *StreamSourceConfigSalesforceSourceConfig `pulumi:"salesforceSourceConfig"`
 	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
 	// SQL Server data source configuration.
@@ -7252,6 +7631,9 @@ type StreamSourceConfigArgs struct {
 	// PostgreSQL data source configuration.
 	// Structure is documented below.
 	PostgresqlSourceConfig StreamSourceConfigPostgresqlSourceConfigPtrInput `pulumi:"postgresqlSourceConfig"`
+	// Salesforce data source configuration.
+	// Structure is documented below.
+	SalesforceSourceConfig StreamSourceConfigSalesforceSourceConfigPtrInput `pulumi:"salesforceSourceConfig"`
 	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
 	SourceConnectionProfile pulumi.StringInput `pulumi:"sourceConnectionProfile"`
 	// SQL Server data source configuration.
@@ -7354,6 +7736,12 @@ func (o StreamSourceConfigOutput) PostgresqlSourceConfig() StreamSourceConfigPos
 	return o.ApplyT(func(v StreamSourceConfig) *StreamSourceConfigPostgresqlSourceConfig { return v.PostgresqlSourceConfig }).(StreamSourceConfigPostgresqlSourceConfigPtrOutput)
 }
 
+// Salesforce data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigOutput) SalesforceSourceConfig() StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfig) *StreamSourceConfigSalesforceSourceConfig { return v.SalesforceSourceConfig }).(StreamSourceConfigSalesforceSourceConfigPtrOutput)
+}
+
 // Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
 func (o StreamSourceConfigOutput) SourceConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfig) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
@@ -7420,6 +7808,17 @@ func (o StreamSourceConfigPtrOutput) PostgresqlSourceConfig() StreamSourceConfig
 		}
 		return v.PostgresqlSourceConfig
 	}).(StreamSourceConfigPostgresqlSourceConfigPtrOutput)
+}
+
+// Salesforce data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigPtrOutput) SalesforceSourceConfig() StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfig) *StreamSourceConfigSalesforceSourceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SalesforceSourceConfig
+	}).(StreamSourceConfigSalesforceSourceConfigPtrOutput)
 }
 
 // Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
@@ -12004,6 +12403,895 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput)
 }
 
+type StreamSourceConfigSalesforceSourceConfig struct {
+	// Salesforce objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects *StreamSourceConfigSalesforceSourceConfigExcludeObjects `pulumi:"excludeObjects"`
+	// Salesforce objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects *StreamSourceConfigSalesforceSourceConfigIncludeObjects `pulumi:"includeObjects"`
+	// Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
+	PollingInterval string `pulumi:"pollingInterval"`
+}
+
+// StreamSourceConfigSalesforceSourceConfigInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigArgs and StreamSourceConfigSalesforceSourceConfigOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigArgs{...}
+type StreamSourceConfigSalesforceSourceConfigInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigOutput() StreamSourceConfigSalesforceSourceConfigOutput
+	ToStreamSourceConfigSalesforceSourceConfigOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigArgs struct {
+	// Salesforce objects to exclude from the stream.
+	// Structure is documented below.
+	ExcludeObjects StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrInput `pulumi:"excludeObjects"`
+	// Salesforce objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrInput `pulumi:"includeObjects"`
+	// Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
+	PollingInterval pulumi.StringInput `pulumi:"pollingInterval"`
+}
+
+func (StreamSourceConfigSalesforceSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfig)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigArgs) ToStreamSourceConfigSalesforceSourceConfigOutput() StreamSourceConfigSalesforceSourceConfigOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigArgs) ToStreamSourceConfigSalesforceSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigOutput)
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigArgs) ToStreamSourceConfigSalesforceSourceConfigPtrOutput() StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigArgs) ToStreamSourceConfigSalesforceSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigOutput).ToStreamSourceConfigSalesforceSourceConfigPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSalesforceSourceConfigPtrInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigArgs, StreamSourceConfigSalesforceSourceConfigPtr and StreamSourceConfigSalesforceSourceConfigPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigPtrInput` via:
+//
+//	        StreamSourceConfigSalesforceSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSalesforceSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigPtrOutput() StreamSourceConfigSalesforceSourceConfigPtrOutput
+	ToStreamSourceConfigSalesforceSourceConfigPtrOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigPtrOutput
+}
+
+type streamSourceConfigSalesforceSourceConfigPtrType StreamSourceConfigSalesforceSourceConfigArgs
+
+func StreamSourceConfigSalesforceSourceConfigPtr(v *StreamSourceConfigSalesforceSourceConfigArgs) StreamSourceConfigSalesforceSourceConfigPtrInput {
+	return (*streamSourceConfigSalesforceSourceConfigPtrType)(v)
+}
+
+func (*streamSourceConfigSalesforceSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSalesforceSourceConfig)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSalesforceSourceConfigPtrType) ToStreamSourceConfigSalesforceSourceConfigPtrOutput() StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSalesforceSourceConfigPtrType) ToStreamSourceConfigSalesforceSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigPtrOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigOutput) ToStreamSourceConfigSalesforceSourceConfigOutput() StreamSourceConfigSalesforceSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigOutput) ToStreamSourceConfigSalesforceSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigOutput) ToStreamSourceConfigSalesforceSourceConfigPtrOutput() StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return o.ToStreamSourceConfigSalesforceSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigOutput) ToStreamSourceConfigSalesforceSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSalesforceSourceConfig) *StreamSourceConfigSalesforceSourceConfig {
+		return &v
+	}).(StreamSourceConfigSalesforceSourceConfigPtrOutput)
+}
+
+// Salesforce objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigOutput) ExcludeObjects() StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfig) *StreamSourceConfigSalesforceSourceConfigExcludeObjects {
+		return v.ExcludeObjects
+	}).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput)
+}
+
+// Salesforce objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigOutput) IncludeObjects() StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfig) *StreamSourceConfigSalesforceSourceConfigIncludeObjects {
+		return v.IncludeObjects
+	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
+func (o StreamSourceConfigSalesforceSourceConfigOutput) PollingInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfig) string { return v.PollingInterval }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSalesforceSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigPtrOutput) ToStreamSourceConfigSalesforceSourceConfigPtrOutput() StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigPtrOutput) ToStreamSourceConfigSalesforceSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigPtrOutput) Elem() StreamSourceConfigSalesforceSourceConfigOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSalesforceSourceConfig) StreamSourceConfigSalesforceSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSalesforceSourceConfig
+		return ret
+	}).(StreamSourceConfigSalesforceSourceConfigOutput)
+}
+
+// Salesforce objects to exclude from the stream.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigPtrOutput) ExcludeObjects() StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSalesforceSourceConfig) *StreamSourceConfigSalesforceSourceConfigExcludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeObjects
+	}).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput)
+}
+
+// Salesforce objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigPtrOutput) IncludeObjects() StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSalesforceSourceConfig) *StreamSourceConfigSalesforceSourceConfigIncludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeObjects
+	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
+func (o StreamSourceConfigSalesforceSourceConfigPtrOutput) PollingInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSalesforceSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PollingInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjects struct {
+	// Salesforce objects in data source.
+	// Structure is documented below.
+	Objects []StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject `pulumi:"objects"`
+}
+
+// StreamSourceConfigSalesforceSourceConfigExcludeObjectsInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs and StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigExcludeObjectsInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs{...}
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs struct {
+	// Salesforce objects in data source.
+	// Structure is documented below.
+	Objects StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayInput `pulumi:"objects"`
+}
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput)
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput).ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs, StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtr and StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput
+}
+
+type streamSourceConfigSalesforceSourceConfigExcludeObjectsPtrType StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs
+
+func StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtr(v *StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs) StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrInput {
+	return (*streamSourceConfigSalesforceSourceConfigExcludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigSalesforceSourceConfigExcludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSalesforceSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSalesforceSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSalesforceSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSalesforceSourceConfigExcludeObjects) *StreamSourceConfigSalesforceSourceConfigExcludeObjects {
+		return &v
+	}).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput)
+}
+
+// Salesforce objects in data source.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput) Objects() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfigExcludeObjects) []StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject {
+		return v.Objects
+	}).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSalesforceSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSalesforceSourceConfigExcludeObjects) StreamSourceConfigSalesforceSourceConfigExcludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSalesforceSourceConfigExcludeObjects
+		return ret
+	}).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput)
+}
+
+// Salesforce objects in data source.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput) Objects() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSalesforceSourceConfigExcludeObjects) []StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject {
+		if v == nil {
+			return nil
+		}
+		return v.Objects
+	}).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject struct {
+	// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+	// Structure is documented below.
+	Fields []StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField `pulumi:"fields"`
+	// Name of object in Salesforce Org.
+	ObjectName *string `pulumi:"objectName"`
+}
+
+// StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs and StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs{...}
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs struct {
+	// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+	// Structure is documented below.
+	Fields StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayInput `pulumi:"fields"`
+	// Name of object in Salesforce Org.
+	ObjectName pulumi.StringPtrInput `pulumi:"objectName"`
+}
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput)
+}
+
+// StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArray and StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArray{ StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs{...} }
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArray []StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectInput
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArray) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArray) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput {
+	return o
+}
+
+// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput) Fields() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject) []StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField {
+		return v.Fields
+	}).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput)
+}
+
+// Name of object in Salesforce Org.
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput) ObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject) *string { return v.ObjectName }).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject {
+		return vs[0].([]StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject)[vs[1].(int)]
+	}).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField struct {
+	// Field name.
+	Name *string `pulumi:"name"`
+}
+
+// StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs and StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs{...}
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs struct {
+	// Field name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput)
+}
+
+// StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArray and StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArray{ StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs{...} }
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput
+	ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArray []StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldInput
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArray) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArray) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput {
+	return o
+}
+
+// Field name.
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput() StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput) ToStreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField {
+		return vs[0].([]StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField)[vs[1].(int)]
+	}).(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjects struct {
+	// Salesforce objects in Salesforce Org.
+	// Structure is documented below.
+	Objects []StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject `pulumi:"objects"`
+}
+
+// StreamSourceConfigSalesforceSourceConfigIncludeObjectsInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs and StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigIncludeObjectsInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs{...}
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs struct {
+	// Salesforce objects in Salesforce Org.
+	// Structure is documented below.
+	Objects StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayInput `pulumi:"objects"`
+}
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput)
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput).ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs, StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtr and StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput
+}
+
+type streamSourceConfigSalesforceSourceConfigIncludeObjectsPtrType StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs
+
+func StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtr(v *StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs) StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrInput {
+	return (*streamSourceConfigSalesforceSourceConfigIncludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigSalesforceSourceConfigIncludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSalesforceSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSalesforceSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSalesforceSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSalesforceSourceConfigIncludeObjects) *StreamSourceConfigSalesforceSourceConfigIncludeObjects {
+		return &v
+	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Salesforce objects in Salesforce Org.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput) Objects() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfigIncludeObjects) []StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject {
+		return v.Objects
+	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSalesforceSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSalesforceSourceConfigIncludeObjects) StreamSourceConfigSalesforceSourceConfigIncludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSalesforceSourceConfigIncludeObjects
+		return ret
+	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput)
+}
+
+// Salesforce objects in Salesforce Org.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput) Objects() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSalesforceSourceConfigIncludeObjects) []StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject {
+		if v == nil {
+			return nil
+		}
+		return v.Objects
+	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject struct {
+	// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+	// Structure is documented below.
+	Fields []StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField `pulumi:"fields"`
+	// Name of object in Salesforce Org.
+	ObjectName *string `pulumi:"objectName"`
+}
+
+// StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs and StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs{...}
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs struct {
+	// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+	// Structure is documented below.
+	Fields StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayInput `pulumi:"fields"`
+	// Name of object in Salesforce Org.
+	ObjectName pulumi.StringPtrInput `pulumi:"objectName"`
+}
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput)
+}
+
+// StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArray and StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArray{ StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs{...} }
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArray []StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectInput
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArray) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArray) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput {
+	return o
+}
+
+// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+// Structure is documented below.
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput) Fields() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject) []StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField {
+		return v.Fields
+	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput)
+}
+
+// Name of object in Salesforce Org.
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput) ObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject) *string { return v.ObjectName }).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject {
+		return vs[0].([]StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject)[vs[1].(int)]
+	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField struct {
+	// Field name.
+	Name *string `pulumi:"name"`
+}
+
+// StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs and StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs{...}
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs struct {
+	// Field name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput)
+}
+
+// StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayInput is an input type that accepts StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArray and StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayInput` via:
+//
+//	StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArray{ StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs{...} }
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput
+	ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutputWithContext(context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArray []StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldInput
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArray) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput {
+	return i.ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArray) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput {
+	return o
+}
+
+// Field name.
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput() StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput) ToStreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutputWithContext(ctx context.Context) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField {
+		return vs[0].([]StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField)[vs[1].(int)]
+	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput)
+}
+
 type StreamSourceConfigSqlServerSourceConfig struct {
 	// CDC reader reads from change tables.
 	ChangeTables *StreamSourceConfigSqlServerSourceConfigChangeTables `pulumi:"changeTables"`
@@ -13659,6 +14947,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput)(nil)).Elem(), StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllSalesforceExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllSalesforceExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObjectInput)(nil)).Elem(), StreamBackfillAllSalesforceExcludedObjectsObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObjectArrayInput)(nil)).Elem(), StreamBackfillAllSalesforceExcludedObjectsObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObjectFieldInput)(nil)).Elem(), StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayInput)(nil)).Elem(), StreamBackfillAllSalesforceExcludedObjectsObjectFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsSchemaArgs{})
@@ -13755,6 +15049,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigChangeTablesInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigChangeTablesArgs{})
@@ -13831,6 +15139,12 @@ func init() {
 	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSalesforceExcludedObjectsOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSalesforceExcludedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSalesforceExcludedObjectsObjectOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsPtrOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsSchemaOutput{})
@@ -13927,6 +15241,20 @@ func init() {
 	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigExcludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigExcludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigIncludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigIncludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigChangeTablesOutput{})

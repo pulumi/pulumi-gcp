@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBindingArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingState;
+import com.pulumi.gcp.accesscontextmanager.outputs.GcpUserAccessBindingSessionSettings;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -119,18 +121,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding")
 public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
     /**
-     * Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
      * 
      */
     @Export(name="accessLevels", refs={String.class}, tree="[0]")
-    private Output<String> accessLevels;
+    private Output</* @Nullable */ String> accessLevels;
 
     /**
-     * @return Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * @return Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
      * 
      */
-    public Output<String> accessLevels() {
-        return this.accessLevels;
+    public Output<Optional<String>> accessLevels() {
+        return Codegen.optional(this.accessLevels);
     }
     /**
      * Required. Immutable. Google Group id whose members are subject to this binding&#39;s restrictions. See &#34;id&#34; in the G Suite Directory API&#39;s Groups resource. If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: &#34;01d520gv4vjcrht&#34;
@@ -177,6 +179,22 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
      */
     public Output<String> organizationId() {
         return this.organizationId;
+    }
+    /**
+     * Optional. The Google Cloud session length (GCSL) policy for the group key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sessionSettings", refs={GcpUserAccessBindingSessionSettings.class}, tree="[0]")
+    private Output</* @Nullable */ GcpUserAccessBindingSessionSettings> sessionSettings;
+
+    /**
+     * @return Optional. The Google Cloud session length (GCSL) policy for the group key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<GcpUserAccessBindingSessionSettings>> sessionSettings() {
+        return Codegen.optional(this.sessionSettings);
     }
 
     /**

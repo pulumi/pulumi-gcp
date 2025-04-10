@@ -28,7 +28,7 @@ class GetRegionalParameterResult:
     """
     A collection of values returned by getRegionalParameter.
     """
-    def __init__(__self__, create_time=None, effective_labels=None, format=None, id=None, labels=None, location=None, name=None, parameter_id=None, policy_members=None, project=None, pulumi_labels=None, update_time=None):
+    def __init__(__self__, create_time=None, effective_labels=None, format=None, id=None, kms_key=None, labels=None, location=None, name=None, parameter_id=None, policy_members=None, project=None, pulumi_labels=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -41,6 +41,9 @@ class GetRegionalParameterResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if kms_key and not isinstance(kms_key, str):
+            raise TypeError("Expected argument 'kms_key' to be a str")
+        pulumi.set(__self__, "kms_key", kms_key)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -88,6 +91,11 @@ class GetRegionalParameterResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> builtins.str:
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter
@@ -140,6 +148,7 @@ class AwaitableGetRegionalParameterResult(GetRegionalParameterResult):
             effective_labels=self.effective_labels,
             format=self.format,
             id=self.id,
+            kms_key=self.kms_key,
             labels=self.labels,
             location=self.location,
             name=self.name,
@@ -184,6 +193,7 @@ def get_regional_parameter(location: Optional[builtins.str] = None,
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         format=pulumi.get(__ret__, 'format'),
         id=pulumi.get(__ret__, 'id'),
+        kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
@@ -225,6 +235,7 @@ def get_regional_parameter_output(location: Optional[pulumi.Input[builtins.str]]
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         format=pulumi.get(__response__, 'format'),
         id=pulumi.get(__response__, 'id'),
+        kms_key=pulumi.get(__response__, 'kms_key'),
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),

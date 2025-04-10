@@ -6,8 +6,11 @@ package com.pulumi.gcp.accesscontextmanager;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingSessionSettingsArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GcpUserAccessBindingArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +18,18 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
     public static final GcpUserAccessBindingArgs Empty = new GcpUserAccessBindingArgs();
 
     /**
-     * Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
      * 
      */
-    @Import(name="accessLevels", required=true)
-    private Output<String> accessLevels;
+    @Import(name="accessLevels")
+    private @Nullable Output<String> accessLevels;
 
     /**
-     * @return Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * @return Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
      * 
      */
-    public Output<String> accessLevels() {
-        return this.accessLevels;
+    public Optional<Output<String>> accessLevels() {
+        return Optional.ofNullable(this.accessLevels);
     }
 
     /**
@@ -63,12 +66,30 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
         return this.organizationId;
     }
 
+    /**
+     * Optional. The Google Cloud session length (GCSL) policy for the group key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sessionSettings")
+    private @Nullable Output<GcpUserAccessBindingSessionSettingsArgs> sessionSettings;
+
+    /**
+     * @return Optional. The Google Cloud session length (GCSL) policy for the group key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GcpUserAccessBindingSessionSettingsArgs>> sessionSettings() {
+        return Optional.ofNullable(this.sessionSettings);
+    }
+
     private GcpUserAccessBindingArgs() {}
 
     private GcpUserAccessBindingArgs(GcpUserAccessBindingArgs $) {
         this.accessLevels = $.accessLevels;
         this.groupKey = $.groupKey;
         this.organizationId = $.organizationId;
+        this.sessionSettings = $.sessionSettings;
     }
 
     public static Builder builder() {
@@ -90,18 +111,18 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accessLevels Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+         * @param accessLevels Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
          * 
          * @return builder
          * 
          */
-        public Builder accessLevels(Output<String> accessLevels) {
+        public Builder accessLevels(@Nullable Output<String> accessLevels) {
             $.accessLevels = accessLevels;
             return this;
         }
 
         /**
-         * @param accessLevels Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+         * @param accessLevels Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
          * 
          * @return builder
          * 
@@ -156,10 +177,30 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
             return organizationId(Output.of(organizationId));
         }
 
+        /**
+         * @param sessionSettings Optional. The Google Cloud session length (GCSL) policy for the group key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionSettings(@Nullable Output<GcpUserAccessBindingSessionSettingsArgs> sessionSettings) {
+            $.sessionSettings = sessionSettings;
+            return this;
+        }
+
+        /**
+         * @param sessionSettings Optional. The Google Cloud session length (GCSL) policy for the group key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionSettings(GcpUserAccessBindingSessionSettingsArgs sessionSettings) {
+            return sessionSettings(Output.of(sessionSettings));
+        }
+
         public GcpUserAccessBindingArgs build() {
-            if ($.accessLevels == null) {
-                throw new MissingRequiredPropertyException("GcpUserAccessBindingArgs", "accessLevels");
-            }
             if ($.groupKey == null) {
                 throw new MissingRequiredPropertyException("GcpUserAccessBindingArgs", "groupKey");
             }

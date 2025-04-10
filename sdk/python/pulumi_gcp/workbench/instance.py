@@ -766,6 +766,30 @@ class Instance(pulumi.CustomResource):
                     act_as_permission,
                 ]))
         ```
+        ### Workbench Instance Confidential Compute
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-central1-a",
+            gce_setup={
+                "machine_type": "n2d-standard-2",
+                "shielded_instance_config": {
+                    "enable_secure_boot": True,
+                    "enable_vtpm": True,
+                    "enable_integrity_monitoring": True,
+                },
+                "metadata": {
+                    "terraform": "true",
+                },
+                "confidential_instance_config": {
+                    "confidential_instance_type": "SEV",
+                },
+            })
+        ```
 
         ## Import
 
@@ -989,6 +1013,30 @@ class Instance(pulumi.CustomResource):
                     static,
                     act_as_permission,
                 ]))
+        ```
+        ### Workbench Instance Confidential Compute
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.workbench.Instance("instance",
+            name="workbench-instance",
+            location="us-central1-a",
+            gce_setup={
+                "machine_type": "n2d-standard-2",
+                "shielded_instance_config": {
+                    "enable_secure_boot": True,
+                    "enable_vtpm": True,
+                    "enable_integrity_monitoring": True,
+                },
+                "metadata": {
+                    "terraform": "true",
+                },
+                "confidential_instance_config": {
+                    "confidential_instance_type": "SEV",
+                },
+            })
         ```
 
         ## Import

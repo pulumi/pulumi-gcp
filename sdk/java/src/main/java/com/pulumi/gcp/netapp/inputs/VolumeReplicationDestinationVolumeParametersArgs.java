@@ -6,6 +6,7 @@ package com.pulumi.gcp.netapp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.netapp.inputs.VolumeReplicationDestinationVolumeParametersTieringPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,6 +63,23 @@ public final class VolumeReplicationDestinationVolumeParametersArgs extends com.
     }
 
     /**
+     * Tiering policy for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tieringPolicy")
+    private @Nullable Output<VolumeReplicationDestinationVolumeParametersTieringPolicyArgs> tieringPolicy;
+
+    /**
+     * @return Tiering policy for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VolumeReplicationDestinationVolumeParametersTieringPolicyArgs>> tieringPolicy() {
+        return Optional.ofNullable(this.tieringPolicy);
+    }
+
+    /**
      * Name for the destination volume to be created. If not specified, the name of the source volume will be used.
      * 
      */
@@ -82,6 +100,7 @@ public final class VolumeReplicationDestinationVolumeParametersArgs extends com.
         this.description = $.description;
         this.shareName = $.shareName;
         this.storagePool = $.storagePool;
+        this.tieringPolicy = $.tieringPolicy;
         this.volumeId = $.volumeId;
     }
 
@@ -164,6 +183,29 @@ public final class VolumeReplicationDestinationVolumeParametersArgs extends com.
          */
         public Builder storagePool(String storagePool) {
             return storagePool(Output.of(storagePool));
+        }
+
+        /**
+         * @param tieringPolicy Tiering policy for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tieringPolicy(@Nullable Output<VolumeReplicationDestinationVolumeParametersTieringPolicyArgs> tieringPolicy) {
+            $.tieringPolicy = tieringPolicy;
+            return this;
+        }
+
+        /**
+         * @param tieringPolicy Tiering policy for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tieringPolicy(VolumeReplicationDestinationVolumeParametersTieringPolicyArgs tieringPolicy) {
+            return tieringPolicy(Output.of(tieringPolicy));
         }
 
         /**

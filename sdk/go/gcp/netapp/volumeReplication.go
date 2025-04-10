@@ -46,11 +46,12 @@ import (
 //				return err
 //			}
 //			destinationPool, err := netapp.NewStoragePool(ctx, "destination_pool", &netapp.StoragePoolArgs{
-//				Name:         pulumi.String("destination-pool"),
-//				Location:     pulumi.String("us-west2"),
-//				ServiceLevel: pulumi.String("PREMIUM"),
-//				CapacityGib:  pulumi.String("2048"),
-//				Network:      pulumi.String(_default.Id),
+//				Name:             pulumi.String("destination-pool"),
+//				Location:         pulumi.String("us-west2"),
+//				ServiceLevel:     pulumi.String("PREMIUM"),
+//				CapacityGib:      pulumi.String("2048"),
+//				Network:          pulumi.String(_default.Id),
+//				AllowAutoTiering: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -80,6 +81,10 @@ import (
 //					VolumeId:    pulumi.String("destination-volume"),
 //					ShareName:   pulumi.String("source-volume"),
 //					Description: pulumi.String("This is a replicated volume"),
+//					TieringPolicy: &netapp.VolumeReplicationDestinationVolumeParametersTieringPolicyArgs{
+//						CoolingThresholdDays: pulumi.Int(20),
+//						TierAction:           pulumi.String("ENABLED"),
+//					},
 //				},
 //				DeleteDestinationVolume: pulumi.Bool(true),
 //				WaitForMirror:           pulumi.Bool(true),

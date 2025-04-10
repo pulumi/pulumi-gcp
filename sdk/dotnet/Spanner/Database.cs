@@ -100,12 +100,6 @@ namespace Pulumi.Gcp.Spanner
         [Output("databaseDialect")]
         public Output<string> DatabaseDialect { get; private set; } = null!;
 
-        /// <summary>
-        /// An optional list of DDL statements to run inside the newly created
-        /// database. Statements can create tables, indexes, etc. These statements
-        /// execute atomically with the creation of the database: if there is an
-        /// error in any statement, the database is not created.
-        /// </summary>
         [Output("ddls")]
         public Output<ImmutableArray<string>> Ddls { get; private set; } = null!;
 
@@ -221,13 +215,6 @@ namespace Pulumi.Gcp.Spanner
 
         [Input("ddls")]
         private InputList<string>? _ddls;
-
-        /// <summary>
-        /// An optional list of DDL statements to run inside the newly created
-        /// database. Statements can create tables, indexes, etc. These statements
-        /// execute atomically with the creation of the database: if there is an
-        /// error in any statement, the database is not created.
-        /// </summary>
         public InputList<string> Ddls
         {
             get => _ddls ?? (_ddls = new InputList<string>());
@@ -302,13 +289,6 @@ namespace Pulumi.Gcp.Spanner
 
         [Input("ddls")]
         private InputList<string>? _ddls;
-
-        /// <summary>
-        /// An optional list of DDL statements to run inside the newly created
-        /// database. Statements can create tables, indexes, etc. These statements
-        /// execute atomically with the creation of the database: if there is an
-        /// error in any statement, the database is not created.
-        /// </summary>
         public InputList<string> Ddls
         {
             get => _ddls ?? (_ddls = new InputList<string>());

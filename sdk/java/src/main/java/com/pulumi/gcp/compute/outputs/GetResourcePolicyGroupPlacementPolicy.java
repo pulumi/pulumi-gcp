@@ -36,6 +36,11 @@ public final class GetResourcePolicyGroupPlacementPolicy {
      */
     private Integer maxDistance;
     /**
+     * @return Specifies the shape of the TPU slice.
+     * 
+     */
+    private String tpuTopology;
+    /**
      * @return Number of VMs in this placement group. Google does not recommend that you use this field
      * unless you use a compact policy and you want your policy to work only if it contains this
      * exact number of VMs.
@@ -77,6 +82,13 @@ public final class GetResourcePolicyGroupPlacementPolicy {
         return this.maxDistance;
     }
     /**
+     * @return Specifies the shape of the TPU slice.
+     * 
+     */
+    public String tpuTopology() {
+        return this.tpuTopology;
+    }
+    /**
      * @return Number of VMs in this placement group. Google does not recommend that you use this field
      * unless you use a compact policy and you want your policy to work only if it contains this
      * exact number of VMs.
@@ -99,6 +111,7 @@ public final class GetResourcePolicyGroupPlacementPolicy {
         private String collocation;
         private String gpuTopology;
         private Integer maxDistance;
+        private String tpuTopology;
         private Integer vmCount;
         public Builder() {}
         public Builder(GetResourcePolicyGroupPlacementPolicy defaults) {
@@ -107,6 +120,7 @@ public final class GetResourcePolicyGroupPlacementPolicy {
     	      this.collocation = defaults.collocation;
     	      this.gpuTopology = defaults.gpuTopology;
     	      this.maxDistance = defaults.maxDistance;
+    	      this.tpuTopology = defaults.tpuTopology;
     	      this.vmCount = defaults.vmCount;
         }
 
@@ -143,6 +157,14 @@ public final class GetResourcePolicyGroupPlacementPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder tpuTopology(String tpuTopology) {
+            if (tpuTopology == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyGroupPlacementPolicy", "tpuTopology");
+            }
+            this.tpuTopology = tpuTopology;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vmCount(Integer vmCount) {
             if (vmCount == null) {
               throw new MissingRequiredPropertyException("GetResourcePolicyGroupPlacementPolicy", "vmCount");
@@ -156,6 +178,7 @@ public final class GetResourcePolicyGroupPlacementPolicy {
             _resultValue.collocation = collocation;
             _resultValue.gpuTopology = gpuTopology;
             _resultValue.maxDistance = maxDistance;
+            _resultValue.tpuTopology = tpuTopology;
             _resultValue.vmCount = vmCount;
             return _resultValue;
         }

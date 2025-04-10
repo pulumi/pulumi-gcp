@@ -20,6 +20,12 @@ type AutomationRule struct {
 	// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
 	// Structure is documented below.
 	PromoteReleaseRule *AutomationRulePromoteReleaseRule `pulumi:"promoteReleaseRule"`
+	// Optional. The RepairRolloutRule will automatically repair a failed rollout.
+	// Structure is documented below.
+	RepairRolloutRule *AutomationRuleRepairRolloutRule `pulumi:"repairRolloutRule"`
+	// Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+	// Structure is documented below.
+	TimedPromoteReleaseRule *AutomationRuleTimedPromoteReleaseRule `pulumi:"timedPromoteReleaseRule"`
 }
 
 // AutomationRuleInput is an input type that accepts AutomationRuleArgs and AutomationRuleOutput values.
@@ -40,6 +46,12 @@ type AutomationRuleArgs struct {
 	// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
 	// Structure is documented below.
 	PromoteReleaseRule AutomationRulePromoteReleaseRulePtrInput `pulumi:"promoteReleaseRule"`
+	// Optional. The RepairRolloutRule will automatically repair a failed rollout.
+	// Structure is documented below.
+	RepairRolloutRule AutomationRuleRepairRolloutRulePtrInput `pulumi:"repairRolloutRule"`
+	// Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+	// Structure is documented below.
+	TimedPromoteReleaseRule AutomationRuleTimedPromoteReleaseRulePtrInput `pulumi:"timedPromoteReleaseRule"`
 }
 
 func (AutomationRuleArgs) ElementType() reflect.Type {
@@ -105,6 +117,18 @@ func (o AutomationRuleOutput) PromoteReleaseRule() AutomationRulePromoteReleaseR
 	return o.ApplyT(func(v AutomationRule) *AutomationRulePromoteReleaseRule { return v.PromoteReleaseRule }).(AutomationRulePromoteReleaseRulePtrOutput)
 }
 
+// Optional. The RepairRolloutRule will automatically repair a failed rollout.
+// Structure is documented below.
+func (o AutomationRuleOutput) RepairRolloutRule() AutomationRuleRepairRolloutRulePtrOutput {
+	return o.ApplyT(func(v AutomationRule) *AutomationRuleRepairRolloutRule { return v.RepairRolloutRule }).(AutomationRuleRepairRolloutRulePtrOutput)
+}
+
+// Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+// Structure is documented below.
+func (o AutomationRuleOutput) TimedPromoteReleaseRule() AutomationRuleTimedPromoteReleaseRulePtrOutput {
+	return o.ApplyT(func(v AutomationRule) *AutomationRuleTimedPromoteReleaseRule { return v.TimedPromoteReleaseRule }).(AutomationRuleTimedPromoteReleaseRulePtrOutput)
+}
+
 type AutomationRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (AutomationRuleArrayOutput) ElementType() reflect.Type {
@@ -129,8 +153,6 @@ type AutomationRuleAdvanceRolloutRule struct {
 	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
 	Id string `pulumi:"id"`
 	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-	//
-	// ***
 	SourcePhases []string `pulumi:"sourcePhases"`
 	// Optional. How long to wait after a rollout is finished.
 	Wait *string `pulumi:"wait"`
@@ -151,8 +173,6 @@ type AutomationRuleAdvanceRolloutRuleArgs struct {
 	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-	//
-	// ***
 	SourcePhases pulumi.StringArrayInput `pulumi:"sourcePhases"`
 	// Optional. How long to wait after a rollout is finished.
 	Wait pulumi.StringPtrInput `pulumi:"wait"`
@@ -241,8 +261,6 @@ func (o AutomationRuleAdvanceRolloutRuleOutput) Id() pulumi.StringOutput {
 }
 
 // Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-//
-// ***
 func (o AutomationRuleAdvanceRolloutRuleOutput) SourcePhases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AutomationRuleAdvanceRolloutRule) []string { return v.SourcePhases }).(pulumi.StringArrayOutput)
 }
@@ -287,8 +305,6 @@ func (o AutomationRuleAdvanceRolloutRulePtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 // Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-//
-// ***
 func (o AutomationRuleAdvanceRolloutRulePtrOutput) SourcePhases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AutomationRuleAdvanceRolloutRule) []string {
 		if v == nil {
@@ -499,6 +515,888 @@ func (o AutomationRulePromoteReleaseRulePtrOutput) Wait() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.Wait
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutomationRuleRepairRolloutRule struct {
+	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id string `pulumi:"id"`
+	// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+	Jobs []string `pulumi:"jobs"`
+	// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+	Phases []string `pulumi:"phases"`
+	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	// Structure is documented below.
+	RepairPhases []AutomationRuleRepairRolloutRuleRepairPhase `pulumi:"repairPhases"`
+}
+
+// AutomationRuleRepairRolloutRuleInput is an input type that accepts AutomationRuleRepairRolloutRuleArgs and AutomationRuleRepairRolloutRuleOutput values.
+// You can construct a concrete instance of `AutomationRuleRepairRolloutRuleInput` via:
+//
+//	AutomationRuleRepairRolloutRuleArgs{...}
+type AutomationRuleRepairRolloutRuleInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRepairRolloutRuleOutput() AutomationRuleRepairRolloutRuleOutput
+	ToAutomationRuleRepairRolloutRuleOutputWithContext(context.Context) AutomationRuleRepairRolloutRuleOutput
+}
+
+type AutomationRuleRepairRolloutRuleArgs struct {
+	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+	Jobs pulumi.StringArrayInput `pulumi:"jobs"`
+	// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+	Phases pulumi.StringArrayInput `pulumi:"phases"`
+	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	// Structure is documented below.
+	RepairPhases AutomationRuleRepairRolloutRuleRepairPhaseArrayInput `pulumi:"repairPhases"`
+}
+
+func (AutomationRuleRepairRolloutRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRepairRolloutRule)(nil)).Elem()
+}
+
+func (i AutomationRuleRepairRolloutRuleArgs) ToAutomationRuleRepairRolloutRuleOutput() AutomationRuleRepairRolloutRuleOutput {
+	return i.ToAutomationRuleRepairRolloutRuleOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRepairRolloutRuleArgs) ToAutomationRuleRepairRolloutRuleOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleOutput)
+}
+
+func (i AutomationRuleRepairRolloutRuleArgs) ToAutomationRuleRepairRolloutRulePtrOutput() AutomationRuleRepairRolloutRulePtrOutput {
+	return i.ToAutomationRuleRepairRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRepairRolloutRuleArgs) ToAutomationRuleRepairRolloutRulePtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleOutput).ToAutomationRuleRepairRolloutRulePtrOutputWithContext(ctx)
+}
+
+// AutomationRuleRepairRolloutRulePtrInput is an input type that accepts AutomationRuleRepairRolloutRuleArgs, AutomationRuleRepairRolloutRulePtr and AutomationRuleRepairRolloutRulePtrOutput values.
+// You can construct a concrete instance of `AutomationRuleRepairRolloutRulePtrInput` via:
+//
+//	        AutomationRuleRepairRolloutRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomationRuleRepairRolloutRulePtrInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRepairRolloutRulePtrOutput() AutomationRuleRepairRolloutRulePtrOutput
+	ToAutomationRuleRepairRolloutRulePtrOutputWithContext(context.Context) AutomationRuleRepairRolloutRulePtrOutput
+}
+
+type automationRuleRepairRolloutRulePtrType AutomationRuleRepairRolloutRuleArgs
+
+func AutomationRuleRepairRolloutRulePtr(v *AutomationRuleRepairRolloutRuleArgs) AutomationRuleRepairRolloutRulePtrInput {
+	return (*automationRuleRepairRolloutRulePtrType)(v)
+}
+
+func (*automationRuleRepairRolloutRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleRepairRolloutRule)(nil)).Elem()
+}
+
+func (i *automationRuleRepairRolloutRulePtrType) ToAutomationRuleRepairRolloutRulePtrOutput() AutomationRuleRepairRolloutRulePtrOutput {
+	return i.ToAutomationRuleRepairRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (i *automationRuleRepairRolloutRulePtrType) ToAutomationRuleRepairRolloutRulePtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRulePtrOutput)
+}
+
+type AutomationRuleRepairRolloutRuleOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRepairRolloutRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRepairRolloutRule)(nil)).Elem()
+}
+
+func (o AutomationRuleRepairRolloutRuleOutput) ToAutomationRuleRepairRolloutRuleOutput() AutomationRuleRepairRolloutRuleOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleOutput) ToAutomationRuleRepairRolloutRuleOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleOutput) ToAutomationRuleRepairRolloutRulePtrOutput() AutomationRuleRepairRolloutRulePtrOutput {
+	return o.ToAutomationRuleRepairRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (o AutomationRuleRepairRolloutRuleOutput) ToAutomationRuleRepairRolloutRulePtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationRuleRepairRolloutRule) *AutomationRuleRepairRolloutRule {
+		return &v
+	}).(AutomationRuleRepairRolloutRulePtrOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AutomationRuleRepairRolloutRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+func (o AutomationRuleRepairRolloutRuleOutput) Jobs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRule) []string { return v.Jobs }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+func (o AutomationRuleRepairRolloutRuleOutput) Phases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRule) []string { return v.Phases }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+// Structure is documented below.
+func (o AutomationRuleRepairRolloutRuleOutput) RepairPhases() AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRule) []AutomationRuleRepairRolloutRuleRepairPhase {
+		return v.RepairPhases
+	}).(AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput)
+}
+
+type AutomationRuleRepairRolloutRulePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRepairRolloutRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleRepairRolloutRule)(nil)).Elem()
+}
+
+func (o AutomationRuleRepairRolloutRulePtrOutput) ToAutomationRuleRepairRolloutRulePtrOutput() AutomationRuleRepairRolloutRulePtrOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRulePtrOutput) ToAutomationRuleRepairRolloutRulePtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRulePtrOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRulePtrOutput) Elem() AutomationRuleRepairRolloutRuleOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRule) AutomationRuleRepairRolloutRule {
+		if v != nil {
+			return *v
+		}
+		var ret AutomationRuleRepairRolloutRule
+		return ret
+	}).(AutomationRuleRepairRolloutRuleOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AutomationRuleRepairRolloutRulePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+func (o AutomationRuleRepairRolloutRulePtrOutput) Jobs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Jobs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+func (o AutomationRuleRepairRolloutRulePtrOutput) Phases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Phases
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+// Structure is documented below.
+func (o AutomationRuleRepairRolloutRulePtrOutput) RepairPhases() AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRule) []AutomationRuleRepairRolloutRuleRepairPhase {
+		if v == nil {
+			return nil
+		}
+		return v.RepairPhases
+	}).(AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput)
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhase struct {
+	// Optional. Retries a failed job.
+	// Structure is documented below.
+	Retry *AutomationRuleRepairRolloutRuleRepairPhaseRetry `pulumi:"retry"`
+	// Optional. Rolls back a Rollout.
+	// Structure is documented below.
+	Rollback *AutomationRuleRepairRolloutRuleRepairPhaseRollback `pulumi:"rollback"`
+}
+
+// AutomationRuleRepairRolloutRuleRepairPhaseInput is an input type that accepts AutomationRuleRepairRolloutRuleRepairPhaseArgs and AutomationRuleRepairRolloutRuleRepairPhaseOutput values.
+// You can construct a concrete instance of `AutomationRuleRepairRolloutRuleRepairPhaseInput` via:
+//
+//	AutomationRuleRepairRolloutRuleRepairPhaseArgs{...}
+type AutomationRuleRepairRolloutRuleRepairPhaseInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRepairRolloutRuleRepairPhaseOutput() AutomationRuleRepairRolloutRuleRepairPhaseOutput
+	ToAutomationRuleRepairRolloutRuleRepairPhaseOutputWithContext(context.Context) AutomationRuleRepairRolloutRuleRepairPhaseOutput
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseArgs struct {
+	// Optional. Retries a failed job.
+	// Structure is documented below.
+	Retry AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrInput `pulumi:"retry"`
+	// Optional. Rolls back a Rollout.
+	// Structure is documented below.
+	Rollback AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrInput `pulumi:"rollback"`
+}
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhase)(nil)).Elem()
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseOutput() AutomationRuleRepairRolloutRuleRepairPhaseOutput {
+	return i.ToAutomationRuleRepairRolloutRuleRepairPhaseOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleRepairPhaseOutput)
+}
+
+// AutomationRuleRepairRolloutRuleRepairPhaseArrayInput is an input type that accepts AutomationRuleRepairRolloutRuleRepairPhaseArray and AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput values.
+// You can construct a concrete instance of `AutomationRuleRepairRolloutRuleRepairPhaseArrayInput` via:
+//
+//	AutomationRuleRepairRolloutRuleRepairPhaseArray{ AutomationRuleRepairRolloutRuleRepairPhaseArgs{...} }
+type AutomationRuleRepairRolloutRuleRepairPhaseArrayInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRepairRolloutRuleRepairPhaseArrayOutput() AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput
+	ToAutomationRuleRepairRolloutRuleRepairPhaseArrayOutputWithContext(context.Context) AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseArray []AutomationRuleRepairRolloutRuleRepairPhaseInput
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutomationRuleRepairRolloutRuleRepairPhase)(nil)).Elem()
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseArray) ToAutomationRuleRepairRolloutRuleRepairPhaseArrayOutput() AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput {
+	return i.ToAutomationRuleRepairRolloutRuleRepairPhaseArrayOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseArray) ToAutomationRuleRepairRolloutRuleRepairPhaseArrayOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput)
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhase)(nil)).Elem()
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseOutput() AutomationRuleRepairRolloutRuleRepairPhaseOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseOutput {
+	return o
+}
+
+// Optional. Retries a failed job.
+// Structure is documented below.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseOutput) Retry() AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRuleRepairPhase) *AutomationRuleRepairRolloutRuleRepairPhaseRetry {
+		return v.Retry
+	}).(AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput)
+}
+
+// Optional. Rolls back a Rollout.
+// Structure is documented below.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseOutput) Rollback() AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRuleRepairPhase) *AutomationRuleRepairRolloutRuleRepairPhaseRollback {
+		return v.Rollback
+	}).(AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput)
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutomationRuleRepairRolloutRuleRepairPhase)(nil)).Elem()
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseArrayOutput() AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseArrayOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput) Index(i pulumi.IntInput) AutomationRuleRepairRolloutRuleRepairPhaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutomationRuleRepairRolloutRuleRepairPhase {
+		return vs[0].([]AutomationRuleRepairRolloutRuleRepairPhase)[vs[1].(int)]
+	}).(AutomationRuleRepairRolloutRuleRepairPhaseOutput)
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseRetry struct {
+	// Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+	Attempts string `pulumi:"attempts"`
+	// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
+	// Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
+	BackoffMode *string `pulumi:"backoffMode"`
+	// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
+	Wait *string `pulumi:"wait"`
+}
+
+// AutomationRuleRepairRolloutRuleRepairPhaseRetryInput is an input type that accepts AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs and AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput values.
+// You can construct a concrete instance of `AutomationRuleRepairRolloutRuleRepairPhaseRetryInput` via:
+//
+//	AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs{...}
+type AutomationRuleRepairRolloutRuleRepairPhaseRetryInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRepairRolloutRuleRepairPhaseRetryOutput() AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput
+	ToAutomationRuleRepairRolloutRuleRepairPhaseRetryOutputWithContext(context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs struct {
+	// Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+	Attempts pulumi.StringInput `pulumi:"attempts"`
+	// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
+	// Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
+	BackoffMode pulumi.StringPtrInput `pulumi:"backoffMode"`
+	// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
+	Wait pulumi.StringPtrInput `pulumi:"wait"`
+}
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseRetry)(nil)).Elem()
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryOutput() AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput {
+	return i.ToAutomationRuleRepairRolloutRuleRepairPhaseRetryOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput)
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput {
+	return i.ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput).ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutputWithContext(ctx)
+}
+
+// AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrInput is an input type that accepts AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs, AutomationRuleRepairRolloutRuleRepairPhaseRetryPtr and AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput values.
+// You can construct a concrete instance of `AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrInput` via:
+//
+//	        AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput
+	ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutputWithContext(context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput
+}
+
+type automationRuleRepairRolloutRuleRepairPhaseRetryPtrType AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs
+
+func AutomationRuleRepairRolloutRuleRepairPhaseRetryPtr(v *AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs) AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrInput {
+	return (*automationRuleRepairRolloutRuleRepairPhaseRetryPtrType)(v)
+}
+
+func (*automationRuleRepairRolloutRuleRepairPhaseRetryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleRepairRolloutRuleRepairPhaseRetry)(nil)).Elem()
+}
+
+func (i *automationRuleRepairRolloutRuleRepairPhaseRetryPtrType) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput {
+	return i.ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutputWithContext(context.Background())
+}
+
+func (i *automationRuleRepairRolloutRuleRepairPhaseRetryPtrType) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput)
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseRetry)(nil)).Elem()
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryOutput() AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput {
+	return o.ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutputWithContext(context.Background())
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationRuleRepairRolloutRuleRepairPhaseRetry) *AutomationRuleRepairRolloutRuleRepairPhaseRetry {
+		return &v
+	}).(AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput)
+}
+
+// Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput) Attempts() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRuleRepairPhaseRetry) string { return v.Attempts }).(pulumi.StringOutput)
+}
+
+// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
+// Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput) BackoffMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRuleRepairPhaseRetry) *string { return v.BackoffMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRuleRepairPhaseRetry) *string { return v.Wait }).(pulumi.StringPtrOutput)
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleRepairRolloutRuleRepairPhaseRetry)(nil)).Elem()
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput) Elem() AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRuleRepairPhaseRetry) AutomationRuleRepairRolloutRuleRepairPhaseRetry {
+		if v != nil {
+			return *v
+		}
+		var ret AutomationRuleRepairRolloutRuleRepairPhaseRetry
+		return ret
+	}).(AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput)
+}
+
+// Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput) Attempts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRuleRepairPhaseRetry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Attempts
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
+// Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput) BackoffMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRuleRepairPhaseRetry) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackoffMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRuleRepairPhaseRetry) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseRollback struct {
+	// Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
+	DestinationPhase *string `pulumi:"destinationPhase"`
+	// Optional. If pending rollout exists on the target, the rollback operation will be aborted.
+	DisableRollbackIfRolloutPending *bool `pulumi:"disableRollbackIfRolloutPending"`
+}
+
+// AutomationRuleRepairRolloutRuleRepairPhaseRollbackInput is an input type that accepts AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs and AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput values.
+// You can construct a concrete instance of `AutomationRuleRepairRolloutRuleRepairPhaseRollbackInput` via:
+//
+//	AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs{...}
+type AutomationRuleRepairRolloutRuleRepairPhaseRollbackInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput() AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput
+	ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackOutputWithContext(context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs struct {
+	// Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
+	DestinationPhase pulumi.StringPtrInput `pulumi:"destinationPhase"`
+	// Optional. If pending rollout exists on the target, the rollback operation will be aborted.
+	DisableRollbackIfRolloutPending pulumi.BoolPtrInput `pulumi:"disableRollbackIfRolloutPending"`
+}
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseRollback)(nil)).Elem()
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput() AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput {
+	return i.ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput)
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput {
+	return i.ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput).ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutputWithContext(ctx)
+}
+
+// AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrInput is an input type that accepts AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs, AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtr and AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput values.
+// You can construct a concrete instance of `AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrInput` via:
+//
+//	        AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput
+	ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutputWithContext(context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput
+}
+
+type automationRuleRepairRolloutRuleRepairPhaseRollbackPtrType AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs
+
+func AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtr(v *AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs) AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrInput {
+	return (*automationRuleRepairRolloutRuleRepairPhaseRollbackPtrType)(v)
+}
+
+func (*automationRuleRepairRolloutRuleRepairPhaseRollbackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleRepairRolloutRuleRepairPhaseRollback)(nil)).Elem()
+}
+
+func (i *automationRuleRepairRolloutRuleRepairPhaseRollbackPtrType) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput {
+	return i.ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutputWithContext(context.Background())
+}
+
+func (i *automationRuleRepairRolloutRuleRepairPhaseRollbackPtrType) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput)
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseRollback)(nil)).Elem()
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput() AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput {
+	return o.ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutputWithContext(context.Background())
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationRuleRepairRolloutRuleRepairPhaseRollback) *AutomationRuleRepairRolloutRuleRepairPhaseRollback {
+		return &v
+	}).(AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput)
+}
+
+// Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRuleRepairPhaseRollback) *string { return v.DestinationPhase }).(pulumi.StringPtrOutput)
+}
+
+// Optional. If pending rollout exists on the target, the rollback operation will be aborted.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput) DisableRollbackIfRolloutPending() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRepairRolloutRuleRepairPhaseRollback) *bool {
+		return v.DisableRollbackIfRolloutPending
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleRepairRolloutRuleRepairPhaseRollback)(nil)).Elem()
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput() AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput) ToAutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutputWithContext(ctx context.Context) AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput {
+	return o
+}
+
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput) Elem() AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRuleRepairPhaseRollback) AutomationRuleRepairRolloutRuleRepairPhaseRollback {
+		if v != nil {
+			return *v
+		}
+		var ret AutomationRuleRepairRolloutRuleRepairPhaseRollback
+		return ret
+	}).(AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput)
+}
+
+// Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRuleRepairPhaseRollback) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationPhase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. If pending rollout exists on the target, the rollback operation will be aborted.
+func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput) DisableRollbackIfRolloutPending() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleRepairRolloutRuleRepairPhaseRollback) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableRollbackIfRolloutPending
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AutomationRuleTimedPromoteReleaseRule struct {
+	// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
+	//
+	// ***
+	DestinationPhase *string `pulumi:"destinationPhase"`
+	// Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
+	// - The last segment of a target name
+	// - "@next", the next target in the promotion sequence"
+	DestinationTargetId *string `pulumi:"destinationTargetId"`
+	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id string `pulumi:"id"`
+	// Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
+	Schedule string `pulumi:"schedule"`
+	// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// AutomationRuleTimedPromoteReleaseRuleInput is an input type that accepts AutomationRuleTimedPromoteReleaseRuleArgs and AutomationRuleTimedPromoteReleaseRuleOutput values.
+// You can construct a concrete instance of `AutomationRuleTimedPromoteReleaseRuleInput` via:
+//
+//	AutomationRuleTimedPromoteReleaseRuleArgs{...}
+type AutomationRuleTimedPromoteReleaseRuleInput interface {
+	pulumi.Input
+
+	ToAutomationRuleTimedPromoteReleaseRuleOutput() AutomationRuleTimedPromoteReleaseRuleOutput
+	ToAutomationRuleTimedPromoteReleaseRuleOutputWithContext(context.Context) AutomationRuleTimedPromoteReleaseRuleOutput
+}
+
+type AutomationRuleTimedPromoteReleaseRuleArgs struct {
+	// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
+	//
+	// ***
+	DestinationPhase pulumi.StringPtrInput `pulumi:"destinationPhase"`
+	// Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
+	// - The last segment of a target name
+	// - "@next", the next target in the promotion sequence"
+	DestinationTargetId pulumi.StringPtrInput `pulumi:"destinationTargetId"`
+	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+	// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (AutomationRuleTimedPromoteReleaseRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleTimedPromoteReleaseRule)(nil)).Elem()
+}
+
+func (i AutomationRuleTimedPromoteReleaseRuleArgs) ToAutomationRuleTimedPromoteReleaseRuleOutput() AutomationRuleTimedPromoteReleaseRuleOutput {
+	return i.ToAutomationRuleTimedPromoteReleaseRuleOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleTimedPromoteReleaseRuleArgs) ToAutomationRuleTimedPromoteReleaseRuleOutputWithContext(ctx context.Context) AutomationRuleTimedPromoteReleaseRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleTimedPromoteReleaseRuleOutput)
+}
+
+func (i AutomationRuleTimedPromoteReleaseRuleArgs) ToAutomationRuleTimedPromoteReleaseRulePtrOutput() AutomationRuleTimedPromoteReleaseRulePtrOutput {
+	return i.ToAutomationRuleTimedPromoteReleaseRulePtrOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleTimedPromoteReleaseRuleArgs) ToAutomationRuleTimedPromoteReleaseRulePtrOutputWithContext(ctx context.Context) AutomationRuleTimedPromoteReleaseRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleTimedPromoteReleaseRuleOutput).ToAutomationRuleTimedPromoteReleaseRulePtrOutputWithContext(ctx)
+}
+
+// AutomationRuleTimedPromoteReleaseRulePtrInput is an input type that accepts AutomationRuleTimedPromoteReleaseRuleArgs, AutomationRuleTimedPromoteReleaseRulePtr and AutomationRuleTimedPromoteReleaseRulePtrOutput values.
+// You can construct a concrete instance of `AutomationRuleTimedPromoteReleaseRulePtrInput` via:
+//
+//	        AutomationRuleTimedPromoteReleaseRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomationRuleTimedPromoteReleaseRulePtrInput interface {
+	pulumi.Input
+
+	ToAutomationRuleTimedPromoteReleaseRulePtrOutput() AutomationRuleTimedPromoteReleaseRulePtrOutput
+	ToAutomationRuleTimedPromoteReleaseRulePtrOutputWithContext(context.Context) AutomationRuleTimedPromoteReleaseRulePtrOutput
+}
+
+type automationRuleTimedPromoteReleaseRulePtrType AutomationRuleTimedPromoteReleaseRuleArgs
+
+func AutomationRuleTimedPromoteReleaseRulePtr(v *AutomationRuleTimedPromoteReleaseRuleArgs) AutomationRuleTimedPromoteReleaseRulePtrInput {
+	return (*automationRuleTimedPromoteReleaseRulePtrType)(v)
+}
+
+func (*automationRuleTimedPromoteReleaseRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleTimedPromoteReleaseRule)(nil)).Elem()
+}
+
+func (i *automationRuleTimedPromoteReleaseRulePtrType) ToAutomationRuleTimedPromoteReleaseRulePtrOutput() AutomationRuleTimedPromoteReleaseRulePtrOutput {
+	return i.ToAutomationRuleTimedPromoteReleaseRulePtrOutputWithContext(context.Background())
+}
+
+func (i *automationRuleTimedPromoteReleaseRulePtrType) ToAutomationRuleTimedPromoteReleaseRulePtrOutputWithContext(ctx context.Context) AutomationRuleTimedPromoteReleaseRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleTimedPromoteReleaseRulePtrOutput)
+}
+
+type AutomationRuleTimedPromoteReleaseRuleOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleTimedPromoteReleaseRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleTimedPromoteReleaseRule)(nil)).Elem()
+}
+
+func (o AutomationRuleTimedPromoteReleaseRuleOutput) ToAutomationRuleTimedPromoteReleaseRuleOutput() AutomationRuleTimedPromoteReleaseRuleOutput {
+	return o
+}
+
+func (o AutomationRuleTimedPromoteReleaseRuleOutput) ToAutomationRuleTimedPromoteReleaseRuleOutputWithContext(ctx context.Context) AutomationRuleTimedPromoteReleaseRuleOutput {
+	return o
+}
+
+func (o AutomationRuleTimedPromoteReleaseRuleOutput) ToAutomationRuleTimedPromoteReleaseRulePtrOutput() AutomationRuleTimedPromoteReleaseRulePtrOutput {
+	return o.ToAutomationRuleTimedPromoteReleaseRulePtrOutputWithContext(context.Background())
+}
+
+func (o AutomationRuleTimedPromoteReleaseRuleOutput) ToAutomationRuleTimedPromoteReleaseRulePtrOutputWithContext(ctx context.Context) AutomationRuleTimedPromoteReleaseRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationRuleTimedPromoteReleaseRule) *AutomationRuleTimedPromoteReleaseRule {
+		return &v
+	}).(AutomationRuleTimedPromoteReleaseRulePtrOutput)
+}
+
+// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
+//
+// ***
+func (o AutomationRuleTimedPromoteReleaseRuleOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleTimedPromoteReleaseRule) *string { return v.DestinationPhase }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
+// - The last segment of a target name
+// - "@next", the next target in the promotion sequence"
+func (o AutomationRuleTimedPromoteReleaseRuleOutput) DestinationTargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleTimedPromoteReleaseRule) *string { return v.DestinationTargetId }).(pulumi.StringPtrOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AutomationRuleTimedPromoteReleaseRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleTimedPromoteReleaseRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
+func (o AutomationRuleTimedPromoteReleaseRuleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleTimedPromoteReleaseRule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+func (o AutomationRuleTimedPromoteReleaseRuleOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleTimedPromoteReleaseRule) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type AutomationRuleTimedPromoteReleaseRulePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleTimedPromoteReleaseRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleTimedPromoteReleaseRule)(nil)).Elem()
+}
+
+func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) ToAutomationRuleTimedPromoteReleaseRulePtrOutput() AutomationRuleTimedPromoteReleaseRulePtrOutput {
+	return o
+}
+
+func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) ToAutomationRuleTimedPromoteReleaseRulePtrOutputWithContext(ctx context.Context) AutomationRuleTimedPromoteReleaseRulePtrOutput {
+	return o
+}
+
+func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) Elem() AutomationRuleTimedPromoteReleaseRuleOutput {
+	return o.ApplyT(func(v *AutomationRuleTimedPromoteReleaseRule) AutomationRuleTimedPromoteReleaseRule {
+		if v != nil {
+			return *v
+		}
+		var ret AutomationRuleTimedPromoteReleaseRule
+		return ret
+	}).(AutomationRuleTimedPromoteReleaseRuleOutput)
+}
+
+// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
+//
+// ***
+func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleTimedPromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationPhase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
+// - The last segment of a target name
+// - "@next", the next target in the promotion sequence"
+func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) DestinationTargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleTimedPromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationTargetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleTimedPromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
+func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleTimedPromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleTimedPromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6046,6 +6944,1905 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) A
 	}).(pulumi.StringArrayOutput)
 }
 
+type DeployPolicyRule struct {
+	// Optional. Rollout restrictions.
+	// Structure is documented below.
+	RolloutRestriction *DeployPolicyRuleRolloutRestriction `pulumi:"rolloutRestriction"`
+}
+
+// DeployPolicyRuleInput is an input type that accepts DeployPolicyRuleArgs and DeployPolicyRuleOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleInput` via:
+//
+//	DeployPolicyRuleArgs{...}
+type DeployPolicyRuleInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleOutput() DeployPolicyRuleOutput
+	ToDeployPolicyRuleOutputWithContext(context.Context) DeployPolicyRuleOutput
+}
+
+type DeployPolicyRuleArgs struct {
+	// Optional. Rollout restrictions.
+	// Structure is documented below.
+	RolloutRestriction DeployPolicyRuleRolloutRestrictionPtrInput `pulumi:"rolloutRestriction"`
+}
+
+func (DeployPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRule)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleArgs) ToDeployPolicyRuleOutput() DeployPolicyRuleOutput {
+	return i.ToDeployPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleArgs) ToDeployPolicyRuleOutputWithContext(ctx context.Context) DeployPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleOutput)
+}
+
+// DeployPolicyRuleArrayInput is an input type that accepts DeployPolicyRuleArray and DeployPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleArrayInput` via:
+//
+//	DeployPolicyRuleArray{ DeployPolicyRuleArgs{...} }
+type DeployPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleArrayOutput() DeployPolicyRuleArrayOutput
+	ToDeployPolicyRuleArrayOutputWithContext(context.Context) DeployPolicyRuleArrayOutput
+}
+
+type DeployPolicyRuleArray []DeployPolicyRuleInput
+
+func (DeployPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployPolicyRule)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleArray) ToDeployPolicyRuleArrayOutput() DeployPolicyRuleArrayOutput {
+	return i.ToDeployPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleArray) ToDeployPolicyRuleArrayOutputWithContext(ctx context.Context) DeployPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleArrayOutput)
+}
+
+type DeployPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRule)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleOutput) ToDeployPolicyRuleOutput() DeployPolicyRuleOutput {
+	return o
+}
+
+func (o DeployPolicyRuleOutput) ToDeployPolicyRuleOutputWithContext(ctx context.Context) DeployPolicyRuleOutput {
+	return o
+}
+
+// Optional. Rollout restrictions.
+// Structure is documented below.
+func (o DeployPolicyRuleOutput) RolloutRestriction() DeployPolicyRuleRolloutRestrictionPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRule) *DeployPolicyRuleRolloutRestriction { return v.RolloutRestriction }).(DeployPolicyRuleRolloutRestrictionPtrOutput)
+}
+
+type DeployPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployPolicyRule)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleArrayOutput) ToDeployPolicyRuleArrayOutput() DeployPolicyRuleArrayOutput {
+	return o
+}
+
+func (o DeployPolicyRuleArrayOutput) ToDeployPolicyRuleArrayOutputWithContext(ctx context.Context) DeployPolicyRuleArrayOutput {
+	return o
+}
+
+func (o DeployPolicyRuleArrayOutput) Index(i pulumi.IntInput) DeployPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeployPolicyRule {
+		return vs[0].([]DeployPolicyRule)[vs[1].(int)]
+	}).(DeployPolicyRuleOutput)
+}
+
+type DeployPolicyRuleRolloutRestriction struct {
+	// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+	// Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
+	Actions []string `pulumi:"actions"`
+	// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id string `pulumi:"id"`
+	// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+	// Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
+	Invokers []string `pulumi:"invokers"`
+	// Required. Time window within which actions are restricted.
+	// Structure is documented below.
+	TimeWindows *DeployPolicyRuleRolloutRestrictionTimeWindows `pulumi:"timeWindows"`
+}
+
+// DeployPolicyRuleRolloutRestrictionInput is an input type that accepts DeployPolicyRuleRolloutRestrictionArgs and DeployPolicyRuleRolloutRestrictionOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionArgs{...}
+type DeployPolicyRuleRolloutRestrictionInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionOutput() DeployPolicyRuleRolloutRestrictionOutput
+	ToDeployPolicyRuleRolloutRestrictionOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionArgs struct {
+	// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+	// Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+	// Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
+	Invokers pulumi.StringArrayInput `pulumi:"invokers"`
+	// Required. Time window within which actions are restricted.
+	// Structure is documented below.
+	TimeWindows DeployPolicyRuleRolloutRestrictionTimeWindowsPtrInput `pulumi:"timeWindows"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestriction)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionArgs) ToDeployPolicyRuleRolloutRestrictionOutput() DeployPolicyRuleRolloutRestrictionOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionArgs) ToDeployPolicyRuleRolloutRestrictionOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionOutput)
+}
+
+func (i DeployPolicyRuleRolloutRestrictionArgs) ToDeployPolicyRuleRolloutRestrictionPtrOutput() DeployPolicyRuleRolloutRestrictionPtrOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionArgs) ToDeployPolicyRuleRolloutRestrictionPtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionOutput).ToDeployPolicyRuleRolloutRestrictionPtrOutputWithContext(ctx)
+}
+
+// DeployPolicyRuleRolloutRestrictionPtrInput is an input type that accepts DeployPolicyRuleRolloutRestrictionArgs, DeployPolicyRuleRolloutRestrictionPtr and DeployPolicyRuleRolloutRestrictionPtrOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionPtrInput` via:
+//
+//	        DeployPolicyRuleRolloutRestrictionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeployPolicyRuleRolloutRestrictionPtrInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionPtrOutput() DeployPolicyRuleRolloutRestrictionPtrOutput
+	ToDeployPolicyRuleRolloutRestrictionPtrOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionPtrOutput
+}
+
+type deployPolicyRuleRolloutRestrictionPtrType DeployPolicyRuleRolloutRestrictionArgs
+
+func DeployPolicyRuleRolloutRestrictionPtr(v *DeployPolicyRuleRolloutRestrictionArgs) DeployPolicyRuleRolloutRestrictionPtrInput {
+	return (*deployPolicyRuleRolloutRestrictionPtrType)(v)
+}
+
+func (*deployPolicyRuleRolloutRestrictionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicyRuleRolloutRestriction)(nil)).Elem()
+}
+
+func (i *deployPolicyRuleRolloutRestrictionPtrType) ToDeployPolicyRuleRolloutRestrictionPtrOutput() DeployPolicyRuleRolloutRestrictionPtrOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (i *deployPolicyRuleRolloutRestrictionPtrType) ToDeployPolicyRuleRolloutRestrictionPtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestriction)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionOutput) ToDeployPolicyRuleRolloutRestrictionOutput() DeployPolicyRuleRolloutRestrictionOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionOutput) ToDeployPolicyRuleRolloutRestrictionOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionOutput) ToDeployPolicyRuleRolloutRestrictionPtrOutput() DeployPolicyRuleRolloutRestrictionPtrOutput {
+	return o.ToDeployPolicyRuleRolloutRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (o DeployPolicyRuleRolloutRestrictionOutput) ToDeployPolicyRuleRolloutRestrictionPtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployPolicyRuleRolloutRestriction) *DeployPolicyRuleRolloutRestriction {
+		return &v
+	}).(DeployPolicyRuleRolloutRestrictionPtrOutput)
+}
+
+// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+// Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
+func (o DeployPolicyRuleRolloutRestrictionOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestriction) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o DeployPolicyRuleRolloutRestrictionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestriction) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+// Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
+func (o DeployPolicyRuleRolloutRestrictionOutput) Invokers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestriction) []string { return v.Invokers }).(pulumi.StringArrayOutput)
+}
+
+// Required. Time window within which actions are restricted.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionOutput) TimeWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestriction) *DeployPolicyRuleRolloutRestrictionTimeWindows {
+		return v.TimeWindows
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionPtrOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicyRuleRolloutRestriction)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionPtrOutput) ToDeployPolicyRuleRolloutRestrictionPtrOutput() DeployPolicyRuleRolloutRestrictionPtrOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionPtrOutput) ToDeployPolicyRuleRolloutRestrictionPtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionPtrOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Elem() DeployPolicyRuleRolloutRestrictionOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestriction) DeployPolicyRuleRolloutRestriction {
+		if v != nil {
+			return *v
+		}
+		var ret DeployPolicyRuleRolloutRestriction
+		return ret
+	}).(DeployPolicyRuleRolloutRestrictionOutput)
+}
+
+// Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+// Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
+func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestriction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestriction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. What invoked the action. If left empty, all invoker types will be restricted.
+// Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
+func (o DeployPolicyRuleRolloutRestrictionPtrOutput) Invokers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestriction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Invokers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. Time window within which actions are restricted.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionPtrOutput) TimeWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestriction) *DeployPolicyRuleRolloutRestrictionTimeWindows {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindows struct {
+	// Optional. One-time windows within which actions are restricted.
+	// Structure is documented below.
+	OneTimeWindows []DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow `pulumi:"oneTimeWindows"`
+	// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+	TimeZone string `pulumi:"timeZone"`
+	// Optional. Recurring weekly windows within which actions are restricted.
+	// Structure is documented below.
+	WeeklyWindows []DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow `pulumi:"weeklyWindows"`
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsArgs and DeployPolicyRuleRolloutRestrictionTimeWindowsOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsArgs{...}
+type DeployPolicyRuleRolloutRestrictionTimeWindowsInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsArgs struct {
+	// Optional. One-time windows within which actions are restricted.
+	// Structure is documented below.
+	OneTimeWindows DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayInput `pulumi:"oneTimeWindows"`
+	// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+	// Optional. Recurring weekly windows within which actions are restricted.
+	// Structure is documented below.
+	WeeklyWindows DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayInput `pulumi:"weeklyWindows"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindows)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsOutput)
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsOutput).ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutputWithContext(ctx)
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsPtrInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsArgs, DeployPolicyRuleRolloutRestrictionTimeWindowsPtr and DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsPtrInput` via:
+//
+//	        DeployPolicyRuleRolloutRestrictionTimeWindowsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeployPolicyRuleRolloutRestrictionTimeWindowsPtrInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput
+}
+
+type deployPolicyRuleRolloutRestrictionTimeWindowsPtrType DeployPolicyRuleRolloutRestrictionTimeWindowsArgs
+
+func DeployPolicyRuleRolloutRestrictionTimeWindowsPtr(v *DeployPolicyRuleRolloutRestrictionTimeWindowsArgs) DeployPolicyRuleRolloutRestrictionTimeWindowsPtrInput {
+	return (*deployPolicyRuleRolloutRestrictionTimeWindowsPtrType)(v)
+}
+
+func (*deployPolicyRuleRolloutRestrictionTimeWindowsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicyRuleRolloutRestrictionTimeWindows)(nil)).Elem()
+}
+
+func (i *deployPolicyRuleRolloutRestrictionTimeWindowsPtrType) ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutputWithContext(context.Background())
+}
+
+func (i *deployPolicyRuleRolloutRestrictionTimeWindowsPtrType) ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindows)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return o.ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutputWithContext(context.Background())
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployPolicyRuleRolloutRestrictionTimeWindows) *DeployPolicyRuleRolloutRestrictionTimeWindows {
+		return &v
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput)
+}
+
+// Optional. One-time windows within which actions are restricted.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) OneTimeWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindows) []DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
+		return v.OneTimeWindows
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput)
+}
+
+// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindows) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Optional. Recurring weekly windows within which actions are restricted.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOutput) WeeklyWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindows) []DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
+		return v.WeeklyWindows
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicyRuleRolloutRestrictionTimeWindows)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) Elem() DeployPolicyRuleRolloutRestrictionTimeWindowsOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindows) DeployPolicyRuleRolloutRestrictionTimeWindows {
+		if v != nil {
+			return *v
+		}
+		var ret DeployPolicyRuleRolloutRestrictionTimeWindows
+		return ret
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOutput)
+}
+
+// Optional. One-time windows within which actions are restricted.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) OneTimeWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindows) []DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
+		if v == nil {
+			return nil
+		}
+		return v.OneTimeWindows
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput)
+}
+
+// Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindows) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Recurring weekly windows within which actions are restricted.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput) WeeklyWindows() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindows) []DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyWindows
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow struct {
+	// Required. End date.
+	// Structure is documented below.
+	EndDate DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate `pulumi:"endDate"`
+	// Required. End time (exclusive). You may use 24:00 for the end of the day.
+	// Structure is documented below.
+	EndTime DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime `pulumi:"endTime"`
+	// Required. Start date.
+	// Structure is documented below.
+	StartDate DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate `pulumi:"startDate"`
+	// Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+	// Structure is documented below.
+	StartTime DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime `pulumi:"startTime"`
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs and DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs{...}
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs struct {
+	// Required. End date.
+	// Structure is documented below.
+	EndDate DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateInput `pulumi:"endDate"`
+	// Required. End time (exclusive). You may use 24:00 for the end of the day.
+	// Structure is documented below.
+	EndTime DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeInput `pulumi:"endTime"`
+	// Required. Start date.
+	// Structure is documented below.
+	StartDate DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateInput `pulumi:"startDate"`
+	// Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+	// Structure is documented below.
+	StartTime DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeInput `pulumi:"startTime"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput)
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArray and DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArray{ DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs{...} }
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArray []DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowInput
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArray) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArray) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput {
+	return o
+}
+
+// Required. End date.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) EndDate() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate {
+		return v.EndDate
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput)
+}
+
+// Required. End time (exclusive). You may use 24:00 for the end of the day.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) EndTime() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime {
+		return v.EndTime
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput)
+}
+
+// Required. Start date.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) StartDate() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate {
+		return v.StartDate
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput)
+}
+
+// Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput) StartTime() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime {
+		return v.StartTime
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput) Index(i pulumi.IntInput) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
+		return vs[0].([]DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow)[vs[1].(int)]
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999.
+	Year *int `pulumi:"year"`
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs and DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs{...}
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput {
+	return o
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+	//
+	// ***
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs and DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs{...}
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+	//
+	// ***
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput {
+	return o
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+//
+// ***
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs and DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs{...}
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput {
+	return o
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs and DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs{...}
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput {
+	return o
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow struct {
+	// Optional. Days of week. If left empty, all days of the week will be included.
+	// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
+	// Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+	// Structure is documented below.
+	EndTime *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime `pulumi:"endTime"`
+	// Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+	// Structure is documented below.
+	StartTime *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime `pulumi:"startTime"`
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs and DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs{...}
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs struct {
+	// Optional. Days of week. If left empty, all days of the week will be included.
+	// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
+	// Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+	// Structure is documented below.
+	EndTime DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrInput `pulumi:"endTime"`
+	// Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+	// Structure is documented below.
+	StartTime DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrInput `pulumi:"startTime"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput)
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArray and DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArray{ DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs{...} }
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArray []DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowInput
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArray) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArray) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput {
+	return o
+}
+
+// Optional. Days of week. If left empty, all days of the week will be included.
+// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
+}
+
+// Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) EndTime() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow) *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime {
+		return v.EndTime
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput)
+}
+
+// Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+// Structure is documented below.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput) StartTime() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow) *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime {
+		return v.StartTime
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput) Index(i pulumi.IntInput) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
+		return vs[0].([]DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow)[vs[1].(int)]
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+	//
+	// ***
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs and DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs{...}
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+	//
+	// ***
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput)
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput).ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutputWithContext(ctx)
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs, DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtr and DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrInput` via:
+//
+//	        DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput
+}
+
+type deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrType DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs
+
+func DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtr(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrInput {
+	return (*deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrType)(v)
+}
+
+func (*deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime)(nil)).Elem()
+}
+
+func (i *deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrType) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutputWithContext(context.Background())
+}
+
+func (i *deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrType) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
+	return o.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutputWithContext(context.Background())
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime {
+		return &v
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+//
+// ***
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput) Elem() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime {
+		if v != nil {
+			return *v
+		}
+		var ret DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime
+		return ret
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+//
+// ***
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs and DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeInput` via:
+//
+//	DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs{...}
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs struct {
+	// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime)(nil)).Elem()
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput)
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput).ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutputWithContext(ctx)
+}
+
+// DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrInput is an input type that accepts DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs, DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtr and DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput values.
+// You can construct a concrete instance of `DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrInput` via:
+//
+//	        DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrInput interface {
+	pulumi.Input
+
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput
+	ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutputWithContext(context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput
+}
+
+type deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrType DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs
+
+func DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtr(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrInput {
+	return (*deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrType)(v)
+}
+
+func (*deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime)(nil)).Elem()
+}
+
+func (i *deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrType) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
+	return i.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i *deployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrType) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
+	return o.ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutputWithContext(context.Background())
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime {
+		return &v
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime)(nil)).Elem()
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput) ToDeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutputWithContext(ctx context.Context) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput {
+	return o
+}
+
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput) Elem() DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime {
+		if v != nil {
+			return *v
+		}
+		var ret DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime
+		return ret
+	}).(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput)
+}
+
+// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type DeployPolicySelector struct {
+	// Contains attributes about a delivery pipeline.
+	// Structure is documented below.
+	DeliveryPipeline *DeployPolicySelectorDeliveryPipeline `pulumi:"deliveryPipeline"`
+	// Contains attributes about a target.
+	// Structure is documented below.
+	Target *DeployPolicySelectorTarget `pulumi:"target"`
+}
+
+// DeployPolicySelectorInput is an input type that accepts DeployPolicySelectorArgs and DeployPolicySelectorOutput values.
+// You can construct a concrete instance of `DeployPolicySelectorInput` via:
+//
+//	DeployPolicySelectorArgs{...}
+type DeployPolicySelectorInput interface {
+	pulumi.Input
+
+	ToDeployPolicySelectorOutput() DeployPolicySelectorOutput
+	ToDeployPolicySelectorOutputWithContext(context.Context) DeployPolicySelectorOutput
+}
+
+type DeployPolicySelectorArgs struct {
+	// Contains attributes about a delivery pipeline.
+	// Structure is documented below.
+	DeliveryPipeline DeployPolicySelectorDeliveryPipelinePtrInput `pulumi:"deliveryPipeline"`
+	// Contains attributes about a target.
+	// Structure is documented below.
+	Target DeployPolicySelectorTargetPtrInput `pulumi:"target"`
+}
+
+func (DeployPolicySelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicySelector)(nil)).Elem()
+}
+
+func (i DeployPolicySelectorArgs) ToDeployPolicySelectorOutput() DeployPolicySelectorOutput {
+	return i.ToDeployPolicySelectorOutputWithContext(context.Background())
+}
+
+func (i DeployPolicySelectorArgs) ToDeployPolicySelectorOutputWithContext(ctx context.Context) DeployPolicySelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicySelectorOutput)
+}
+
+// DeployPolicySelectorArrayInput is an input type that accepts DeployPolicySelectorArray and DeployPolicySelectorArrayOutput values.
+// You can construct a concrete instance of `DeployPolicySelectorArrayInput` via:
+//
+//	DeployPolicySelectorArray{ DeployPolicySelectorArgs{...} }
+type DeployPolicySelectorArrayInput interface {
+	pulumi.Input
+
+	ToDeployPolicySelectorArrayOutput() DeployPolicySelectorArrayOutput
+	ToDeployPolicySelectorArrayOutputWithContext(context.Context) DeployPolicySelectorArrayOutput
+}
+
+type DeployPolicySelectorArray []DeployPolicySelectorInput
+
+func (DeployPolicySelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployPolicySelector)(nil)).Elem()
+}
+
+func (i DeployPolicySelectorArray) ToDeployPolicySelectorArrayOutput() DeployPolicySelectorArrayOutput {
+	return i.ToDeployPolicySelectorArrayOutputWithContext(context.Background())
+}
+
+func (i DeployPolicySelectorArray) ToDeployPolicySelectorArrayOutputWithContext(ctx context.Context) DeployPolicySelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicySelectorArrayOutput)
+}
+
+type DeployPolicySelectorOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicySelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicySelector)(nil)).Elem()
+}
+
+func (o DeployPolicySelectorOutput) ToDeployPolicySelectorOutput() DeployPolicySelectorOutput {
+	return o
+}
+
+func (o DeployPolicySelectorOutput) ToDeployPolicySelectorOutputWithContext(ctx context.Context) DeployPolicySelectorOutput {
+	return o
+}
+
+// Contains attributes about a delivery pipeline.
+// Structure is documented below.
+func (o DeployPolicySelectorOutput) DeliveryPipeline() DeployPolicySelectorDeliveryPipelinePtrOutput {
+	return o.ApplyT(func(v DeployPolicySelector) *DeployPolicySelectorDeliveryPipeline { return v.DeliveryPipeline }).(DeployPolicySelectorDeliveryPipelinePtrOutput)
+}
+
+// Contains attributes about a target.
+// Structure is documented below.
+func (o DeployPolicySelectorOutput) Target() DeployPolicySelectorTargetPtrOutput {
+	return o.ApplyT(func(v DeployPolicySelector) *DeployPolicySelectorTarget { return v.Target }).(DeployPolicySelectorTargetPtrOutput)
+}
+
+type DeployPolicySelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicySelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeployPolicySelector)(nil)).Elem()
+}
+
+func (o DeployPolicySelectorArrayOutput) ToDeployPolicySelectorArrayOutput() DeployPolicySelectorArrayOutput {
+	return o
+}
+
+func (o DeployPolicySelectorArrayOutput) ToDeployPolicySelectorArrayOutputWithContext(ctx context.Context) DeployPolicySelectorArrayOutput {
+	return o
+}
+
+func (o DeployPolicySelectorArrayOutput) Index(i pulumi.IntInput) DeployPolicySelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeployPolicySelector {
+		return vs[0].([]DeployPolicySelector)[vs[1].(int)]
+	}).(DeployPolicySelectorOutput)
+}
+
+type DeployPolicySelectorDeliveryPipeline struct {
+	// Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+	// - The last segment of a pipeline name
+	// - "*", all delivery pipelines in a location
+	Id *string `pulumi:"id"`
+	// DeliveryPipeline labels.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// DeployPolicySelectorDeliveryPipelineInput is an input type that accepts DeployPolicySelectorDeliveryPipelineArgs and DeployPolicySelectorDeliveryPipelineOutput values.
+// You can construct a concrete instance of `DeployPolicySelectorDeliveryPipelineInput` via:
+//
+//	DeployPolicySelectorDeliveryPipelineArgs{...}
+type DeployPolicySelectorDeliveryPipelineInput interface {
+	pulumi.Input
+
+	ToDeployPolicySelectorDeliveryPipelineOutput() DeployPolicySelectorDeliveryPipelineOutput
+	ToDeployPolicySelectorDeliveryPipelineOutputWithContext(context.Context) DeployPolicySelectorDeliveryPipelineOutput
+}
+
+type DeployPolicySelectorDeliveryPipelineArgs struct {
+	// Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+	// - The last segment of a pipeline name
+	// - "*", all delivery pipelines in a location
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// DeliveryPipeline labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (DeployPolicySelectorDeliveryPipelineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicySelectorDeliveryPipeline)(nil)).Elem()
+}
+
+func (i DeployPolicySelectorDeliveryPipelineArgs) ToDeployPolicySelectorDeliveryPipelineOutput() DeployPolicySelectorDeliveryPipelineOutput {
+	return i.ToDeployPolicySelectorDeliveryPipelineOutputWithContext(context.Background())
+}
+
+func (i DeployPolicySelectorDeliveryPipelineArgs) ToDeployPolicySelectorDeliveryPipelineOutputWithContext(ctx context.Context) DeployPolicySelectorDeliveryPipelineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicySelectorDeliveryPipelineOutput)
+}
+
+func (i DeployPolicySelectorDeliveryPipelineArgs) ToDeployPolicySelectorDeliveryPipelinePtrOutput() DeployPolicySelectorDeliveryPipelinePtrOutput {
+	return i.ToDeployPolicySelectorDeliveryPipelinePtrOutputWithContext(context.Background())
+}
+
+func (i DeployPolicySelectorDeliveryPipelineArgs) ToDeployPolicySelectorDeliveryPipelinePtrOutputWithContext(ctx context.Context) DeployPolicySelectorDeliveryPipelinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicySelectorDeliveryPipelineOutput).ToDeployPolicySelectorDeliveryPipelinePtrOutputWithContext(ctx)
+}
+
+// DeployPolicySelectorDeliveryPipelinePtrInput is an input type that accepts DeployPolicySelectorDeliveryPipelineArgs, DeployPolicySelectorDeliveryPipelinePtr and DeployPolicySelectorDeliveryPipelinePtrOutput values.
+// You can construct a concrete instance of `DeployPolicySelectorDeliveryPipelinePtrInput` via:
+//
+//	        DeployPolicySelectorDeliveryPipelineArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeployPolicySelectorDeliveryPipelinePtrInput interface {
+	pulumi.Input
+
+	ToDeployPolicySelectorDeliveryPipelinePtrOutput() DeployPolicySelectorDeliveryPipelinePtrOutput
+	ToDeployPolicySelectorDeliveryPipelinePtrOutputWithContext(context.Context) DeployPolicySelectorDeliveryPipelinePtrOutput
+}
+
+type deployPolicySelectorDeliveryPipelinePtrType DeployPolicySelectorDeliveryPipelineArgs
+
+func DeployPolicySelectorDeliveryPipelinePtr(v *DeployPolicySelectorDeliveryPipelineArgs) DeployPolicySelectorDeliveryPipelinePtrInput {
+	return (*deployPolicySelectorDeliveryPipelinePtrType)(v)
+}
+
+func (*deployPolicySelectorDeliveryPipelinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicySelectorDeliveryPipeline)(nil)).Elem()
+}
+
+func (i *deployPolicySelectorDeliveryPipelinePtrType) ToDeployPolicySelectorDeliveryPipelinePtrOutput() DeployPolicySelectorDeliveryPipelinePtrOutput {
+	return i.ToDeployPolicySelectorDeliveryPipelinePtrOutputWithContext(context.Background())
+}
+
+func (i *deployPolicySelectorDeliveryPipelinePtrType) ToDeployPolicySelectorDeliveryPipelinePtrOutputWithContext(ctx context.Context) DeployPolicySelectorDeliveryPipelinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicySelectorDeliveryPipelinePtrOutput)
+}
+
+type DeployPolicySelectorDeliveryPipelineOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicySelectorDeliveryPipelineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicySelectorDeliveryPipeline)(nil)).Elem()
+}
+
+func (o DeployPolicySelectorDeliveryPipelineOutput) ToDeployPolicySelectorDeliveryPipelineOutput() DeployPolicySelectorDeliveryPipelineOutput {
+	return o
+}
+
+func (o DeployPolicySelectorDeliveryPipelineOutput) ToDeployPolicySelectorDeliveryPipelineOutputWithContext(ctx context.Context) DeployPolicySelectorDeliveryPipelineOutput {
+	return o
+}
+
+func (o DeployPolicySelectorDeliveryPipelineOutput) ToDeployPolicySelectorDeliveryPipelinePtrOutput() DeployPolicySelectorDeliveryPipelinePtrOutput {
+	return o.ToDeployPolicySelectorDeliveryPipelinePtrOutputWithContext(context.Background())
+}
+
+func (o DeployPolicySelectorDeliveryPipelineOutput) ToDeployPolicySelectorDeliveryPipelinePtrOutputWithContext(ctx context.Context) DeployPolicySelectorDeliveryPipelinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployPolicySelectorDeliveryPipeline) *DeployPolicySelectorDeliveryPipeline {
+		return &v
+	}).(DeployPolicySelectorDeliveryPipelinePtrOutput)
+}
+
+// Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+// - The last segment of a pipeline name
+// - "*", all delivery pipelines in a location
+func (o DeployPolicySelectorDeliveryPipelineOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeployPolicySelectorDeliveryPipeline) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// DeliveryPipeline labels.
+func (o DeployPolicySelectorDeliveryPipelineOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeployPolicySelectorDeliveryPipeline) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type DeployPolicySelectorDeliveryPipelinePtrOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicySelectorDeliveryPipelinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicySelectorDeliveryPipeline)(nil)).Elem()
+}
+
+func (o DeployPolicySelectorDeliveryPipelinePtrOutput) ToDeployPolicySelectorDeliveryPipelinePtrOutput() DeployPolicySelectorDeliveryPipelinePtrOutput {
+	return o
+}
+
+func (o DeployPolicySelectorDeliveryPipelinePtrOutput) ToDeployPolicySelectorDeliveryPipelinePtrOutputWithContext(ctx context.Context) DeployPolicySelectorDeliveryPipelinePtrOutput {
+	return o
+}
+
+func (o DeployPolicySelectorDeliveryPipelinePtrOutput) Elem() DeployPolicySelectorDeliveryPipelineOutput {
+	return o.ApplyT(func(v *DeployPolicySelectorDeliveryPipeline) DeployPolicySelectorDeliveryPipeline {
+		if v != nil {
+			return *v
+		}
+		var ret DeployPolicySelectorDeliveryPipeline
+		return ret
+	}).(DeployPolicySelectorDeliveryPipelineOutput)
+}
+
+// Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+// - The last segment of a pipeline name
+// - "*", all delivery pipelines in a location
+func (o DeployPolicySelectorDeliveryPipelinePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployPolicySelectorDeliveryPipeline) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// DeliveryPipeline labels.
+func (o DeployPolicySelectorDeliveryPipelinePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeployPolicySelectorDeliveryPipeline) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type DeployPolicySelectorTarget struct {
+	// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+	Id *string `pulumi:"id"`
+	// Target labels.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// DeployPolicySelectorTargetInput is an input type that accepts DeployPolicySelectorTargetArgs and DeployPolicySelectorTargetOutput values.
+// You can construct a concrete instance of `DeployPolicySelectorTargetInput` via:
+//
+//	DeployPolicySelectorTargetArgs{...}
+type DeployPolicySelectorTargetInput interface {
+	pulumi.Input
+
+	ToDeployPolicySelectorTargetOutput() DeployPolicySelectorTargetOutput
+	ToDeployPolicySelectorTargetOutputWithContext(context.Context) DeployPolicySelectorTargetOutput
+}
+
+type DeployPolicySelectorTargetArgs struct {
+	// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Target labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (DeployPolicySelectorTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicySelectorTarget)(nil)).Elem()
+}
+
+func (i DeployPolicySelectorTargetArgs) ToDeployPolicySelectorTargetOutput() DeployPolicySelectorTargetOutput {
+	return i.ToDeployPolicySelectorTargetOutputWithContext(context.Background())
+}
+
+func (i DeployPolicySelectorTargetArgs) ToDeployPolicySelectorTargetOutputWithContext(ctx context.Context) DeployPolicySelectorTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicySelectorTargetOutput)
+}
+
+func (i DeployPolicySelectorTargetArgs) ToDeployPolicySelectorTargetPtrOutput() DeployPolicySelectorTargetPtrOutput {
+	return i.ToDeployPolicySelectorTargetPtrOutputWithContext(context.Background())
+}
+
+func (i DeployPolicySelectorTargetArgs) ToDeployPolicySelectorTargetPtrOutputWithContext(ctx context.Context) DeployPolicySelectorTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicySelectorTargetOutput).ToDeployPolicySelectorTargetPtrOutputWithContext(ctx)
+}
+
+// DeployPolicySelectorTargetPtrInput is an input type that accepts DeployPolicySelectorTargetArgs, DeployPolicySelectorTargetPtr and DeployPolicySelectorTargetPtrOutput values.
+// You can construct a concrete instance of `DeployPolicySelectorTargetPtrInput` via:
+//
+//	        DeployPolicySelectorTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeployPolicySelectorTargetPtrInput interface {
+	pulumi.Input
+
+	ToDeployPolicySelectorTargetPtrOutput() DeployPolicySelectorTargetPtrOutput
+	ToDeployPolicySelectorTargetPtrOutputWithContext(context.Context) DeployPolicySelectorTargetPtrOutput
+}
+
+type deployPolicySelectorTargetPtrType DeployPolicySelectorTargetArgs
+
+func DeployPolicySelectorTargetPtr(v *DeployPolicySelectorTargetArgs) DeployPolicySelectorTargetPtrInput {
+	return (*deployPolicySelectorTargetPtrType)(v)
+}
+
+func (*deployPolicySelectorTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicySelectorTarget)(nil)).Elem()
+}
+
+func (i *deployPolicySelectorTargetPtrType) ToDeployPolicySelectorTargetPtrOutput() DeployPolicySelectorTargetPtrOutput {
+	return i.ToDeployPolicySelectorTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *deployPolicySelectorTargetPtrType) ToDeployPolicySelectorTargetPtrOutputWithContext(ctx context.Context) DeployPolicySelectorTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployPolicySelectorTargetPtrOutput)
+}
+
+type DeployPolicySelectorTargetOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicySelectorTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployPolicySelectorTarget)(nil)).Elem()
+}
+
+func (o DeployPolicySelectorTargetOutput) ToDeployPolicySelectorTargetOutput() DeployPolicySelectorTargetOutput {
+	return o
+}
+
+func (o DeployPolicySelectorTargetOutput) ToDeployPolicySelectorTargetOutputWithContext(ctx context.Context) DeployPolicySelectorTargetOutput {
+	return o
+}
+
+func (o DeployPolicySelectorTargetOutput) ToDeployPolicySelectorTargetPtrOutput() DeployPolicySelectorTargetPtrOutput {
+	return o.ToDeployPolicySelectorTargetPtrOutputWithContext(context.Background())
+}
+
+func (o DeployPolicySelectorTargetOutput) ToDeployPolicySelectorTargetPtrOutputWithContext(ctx context.Context) DeployPolicySelectorTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployPolicySelectorTarget) *DeployPolicySelectorTarget {
+		return &v
+	}).(DeployPolicySelectorTargetPtrOutput)
+}
+
+// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+func (o DeployPolicySelectorTargetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeployPolicySelectorTarget) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Target labels.
+func (o DeployPolicySelectorTargetOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeployPolicySelectorTarget) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type DeployPolicySelectorTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (DeployPolicySelectorTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployPolicySelectorTarget)(nil)).Elem()
+}
+
+func (o DeployPolicySelectorTargetPtrOutput) ToDeployPolicySelectorTargetPtrOutput() DeployPolicySelectorTargetPtrOutput {
+	return o
+}
+
+func (o DeployPolicySelectorTargetPtrOutput) ToDeployPolicySelectorTargetPtrOutputWithContext(ctx context.Context) DeployPolicySelectorTargetPtrOutput {
+	return o
+}
+
+func (o DeployPolicySelectorTargetPtrOutput) Elem() DeployPolicySelectorTargetOutput {
+	return o.ApplyT(func(v *DeployPolicySelectorTarget) DeployPolicySelectorTarget {
+		if v != nil {
+			return *v
+		}
+		var ret DeployPolicySelectorTarget
+		return ret
+	}).(DeployPolicySelectorTargetOutput)
+}
+
+// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+func (o DeployPolicySelectorTargetPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployPolicySelectorTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target labels.
+func (o DeployPolicySelectorTargetPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeployPolicySelectorTarget) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
 type TargetAnthosCluster struct {
 	// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
 	Membership *string `pulumi:"membership"`
@@ -7590,6 +10387,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleAdvanceRolloutRulePtrInput)(nil)).Elem(), AutomationRuleAdvanceRolloutRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRulePromoteReleaseRuleInput)(nil)).Elem(), AutomationRulePromoteReleaseRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRulePromoteReleaseRulePtrInput)(nil)).Elem(), AutomationRulePromoteReleaseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleRepairRolloutRuleInput)(nil)).Elem(), AutomationRuleRepairRolloutRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleRepairRolloutRulePtrInput)(nil)).Elem(), AutomationRuleRepairRolloutRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseInput)(nil)).Elem(), AutomationRuleRepairRolloutRuleRepairPhaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseArrayInput)(nil)).Elem(), AutomationRuleRepairRolloutRuleRepairPhaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseRetryInput)(nil)).Elem(), AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrInput)(nil)).Elem(), AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseRollbackInput)(nil)).Elem(), AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrInput)(nil)).Elem(), AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleTimedPromoteReleaseRuleInput)(nil)).Elem(), AutomationRuleTimedPromoteReleaseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleTimedPromoteReleaseRulePtrInput)(nil)).Elem(), AutomationRuleTimedPromoteReleaseRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorInput)(nil)).Elem(), AutomationSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorPtrInput)(nil)).Elem(), AutomationSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorTargetInput)(nil)).Elem(), AutomationSelectorTargetArgs{})
@@ -7662,6 +10469,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleInput)(nil)).Elem(), DeployPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleArrayInput)(nil)).Elem(), DeployPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionPtrInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsPtrInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrInput)(nil)).Elem(), DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicySelectorInput)(nil)).Elem(), DeployPolicySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicySelectorArrayInput)(nil)).Elem(), DeployPolicySelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicySelectorDeliveryPipelineInput)(nil)).Elem(), DeployPolicySelectorDeliveryPipelineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicySelectorDeliveryPipelinePtrInput)(nil)).Elem(), DeployPolicySelectorDeliveryPipelineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicySelectorTargetInput)(nil)).Elem(), DeployPolicySelectorTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeployPolicySelectorTargetPtrInput)(nil)).Elem(), DeployPolicySelectorTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAnthosClusterInput)(nil)).Elem(), TargetAnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAnthosClusterPtrInput)(nil)).Elem(), TargetAnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAssociatedEntityInput)(nil)).Elem(), TargetAssociatedEntityArgs{})
@@ -7690,6 +10521,16 @@ func init() {
 	pulumi.RegisterOutputType(AutomationRuleAdvanceRolloutRulePtrOutput{})
 	pulumi.RegisterOutputType(AutomationRulePromoteReleaseRuleOutput{})
 	pulumi.RegisterOutputType(AutomationRulePromoteReleaseRulePtrOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRepairRolloutRuleOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRepairRolloutRulePtrOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRepairRolloutRuleRepairPhaseOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRepairRolloutRuleRepairPhaseArrayOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRepairRolloutRuleRepairPhaseRetryOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRepairRolloutRuleRepairPhaseRetryPtrOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRepairRolloutRuleRepairPhaseRollbackOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput{})
+	pulumi.RegisterOutputType(AutomationRuleTimedPromoteReleaseRuleOutput{})
+	pulumi.RegisterOutputType(AutomationRuleTimedPromoteReleaseRulePtrOutput{})
 	pulumi.RegisterOutputType(AutomationSelectorOutput{})
 	pulumi.RegisterOutputType(AutomationSelectorPtrOutput{})
 	pulumi.RegisterOutputType(AutomationSelectorTargetOutput{})
@@ -7762,6 +10603,30 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionPtrOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsPtrOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArrayOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArrayOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeOutput{})
+	pulumi.RegisterOutputType(DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimePtrOutput{})
+	pulumi.RegisterOutputType(DeployPolicySelectorOutput{})
+	pulumi.RegisterOutputType(DeployPolicySelectorArrayOutput{})
+	pulumi.RegisterOutputType(DeployPolicySelectorDeliveryPipelineOutput{})
+	pulumi.RegisterOutputType(DeployPolicySelectorDeliveryPipelinePtrOutput{})
+	pulumi.RegisterOutputType(DeployPolicySelectorTargetOutput{})
+	pulumi.RegisterOutputType(DeployPolicySelectorTargetPtrOutput{})
 	pulumi.RegisterOutputType(TargetAnthosClusterOutput{})
 	pulumi.RegisterOutputType(TargetAnthosClusterPtrOutput{})
 	pulumi.RegisterOutputType(TargetAssociatedEntityOutput{})
