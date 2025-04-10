@@ -35,6 +35,13 @@ namespace Pulumi.Gcp.Workbench.Inputs
         public Input<Inputs.InstanceGceSetupBootDiskArgs>? BootDisk { get; set; }
 
         /// <summary>
+        /// Confidential instance configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("confidentialInstanceConfig")]
+        public Input<Inputs.InstanceGceSetupConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
+
+        /// <summary>
         /// Use a container image to start the workbench instance.
         /// Structure is documented below.
         /// </summary>

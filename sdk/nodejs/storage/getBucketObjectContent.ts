@@ -86,6 +86,7 @@ export interface GetBucketObjectContentResult {
     readonly id: string;
     readonly kmsKeyName: string;
     readonly md5hash: string;
+    readonly md5hexhash: string;
     readonly mediaLink: string;
     readonly metadata: {[key: string]: string};
     readonly name: string;

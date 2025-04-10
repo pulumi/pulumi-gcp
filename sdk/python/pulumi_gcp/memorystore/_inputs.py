@@ -16,6 +16,12 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'InstanceAutomatedBackupConfigArgs',
+    'InstanceAutomatedBackupConfigArgsDict',
+    'InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs',
+    'InstanceAutomatedBackupConfigFixedFrequencyScheduleArgsDict',
+    'InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs',
+    'InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgsDict',
     'InstanceCrossInstanceReplicationConfigArgs',
     'InstanceCrossInstanceReplicationConfigArgsDict',
     'InstanceCrossInstanceReplicationConfigMembershipArgs',
@@ -73,6 +79,136 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class InstanceAutomatedBackupConfigArgsDict(TypedDict):
+        fixed_frequency_schedule: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleArgsDict']
+        """
+        Trigger automated backups at a fixed frequency.
+        Structure is documented below.
+        """
+        retention: pulumi.Input[builtins.str]
+        """
+        How long to keep automated backups before the backups are deleted.
+        The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
+        """
+elif False:
+    InstanceAutomatedBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAutomatedBackupConfigArgs:
+    def __init__(__self__, *,
+                 fixed_frequency_schedule: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs'],
+                 retention: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs'] fixed_frequency_schedule: Trigger automated backups at a fixed frequency.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] retention: How long to keep automated backups before the backups are deleted.
+               The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
+        """
+        pulumi.set(__self__, "fixed_frequency_schedule", fixed_frequency_schedule)
+        pulumi.set(__self__, "retention", retention)
+
+    @property
+    @pulumi.getter(name="fixedFrequencySchedule")
+    def fixed_frequency_schedule(self) -> pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs']:
+        """
+        Trigger automated backups at a fixed frequency.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fixed_frequency_schedule")
+
+    @fixed_frequency_schedule.setter
+    def fixed_frequency_schedule(self, value: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs']):
+        pulumi.set(self, "fixed_frequency_schedule", value)
+
+    @property
+    @pulumi.getter
+    def retention(self) -> pulumi.Input[builtins.str]:
+        """
+        How long to keep automated backups before the backups are deleted.
+        The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "retention", value)
+
+
+if not MYPY:
+    class InstanceAutomatedBackupConfigFixedFrequencyScheduleArgsDict(TypedDict):
+        start_time: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgsDict']
+        """
+        The start time of every automated backup in UTC.
+        It must be set to the start of an hour. This field is required.
+        Structure is documented below.
+        """
+elif False:
+    InstanceAutomatedBackupConfigFixedFrequencyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs:
+    def __init__(__self__, *,
+                 start_time: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs']):
+        """
+        :param pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs'] start_time: The start time of every automated backup in UTC.
+               It must be set to the start of an hour. This field is required.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs']:
+        """
+        The start time of every automated backup in UTC.
+        It must be set to the start of an hour. This field is required.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input['InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs']):
+        pulumi.set(self, "start_time", value)
+
+
+if not MYPY:
+    class InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgsDict(TypedDict):
+        hours: pulumi.Input[builtins.int]
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+elif False:
+    InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs:
+    def __init__(__self__, *,
+                 hours: pulumi.Input[builtins.int]):
+        """
+        :param pulumi.Input[builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        pulumi.set(__self__, "hours", hours)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> pulumi.Input[builtins.int]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "hours", value)
+
 
 if not MYPY:
     class InstanceCrossInstanceReplicationConfigArgsDict(TypedDict):

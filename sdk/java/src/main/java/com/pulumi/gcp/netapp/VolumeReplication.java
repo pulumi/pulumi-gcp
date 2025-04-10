@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.netapp.VolumeReplication;
  * import com.pulumi.gcp.netapp.VolumeReplicationArgs;
  * import com.pulumi.gcp.netapp.inputs.VolumeReplicationDestinationVolumeParametersArgs;
+ * import com.pulumi.gcp.netapp.inputs.VolumeReplicationDestinationVolumeParametersTieringPolicyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -73,6 +74,7 @@ import javax.annotation.Nullable;
  *             .serviceLevel("PREMIUM")
  *             .capacityGib("2048")
  *             .network(default_.id())
+ *             .allowAutoTiering(true)
  *             .build());
  * 
  *         var sourceVolume = new Volume("sourceVolume", VolumeArgs.builder()
@@ -96,6 +98,10 @@ import javax.annotation.Nullable;
  *                 .volumeId("destination-volume")
  *                 .shareName("source-volume")
  *                 .description("This is a replicated volume")
+ *                 .tieringPolicy(VolumeReplicationDestinationVolumeParametersTieringPolicyArgs.builder()
+ *                     .coolingThresholdDays(20)
+ *                     .tierAction("ENABLED")
+ *                     .build())
  *                 .build())
  *             .deleteDestinationVolume(true)
  *             .waitForMirror(true)

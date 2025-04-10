@@ -10,6 +10,16 @@ export type CodeRepositoryIndex = import("./codeRepositoryIndex").CodeRepository
 export const CodeRepositoryIndex: typeof import("./codeRepositoryIndex").CodeRepositoryIndex = null as any;
 utilities.lazyLoad(exports, ["CodeRepositoryIndex"], () => require("./codeRepositoryIndex"));
 
+export { CodeToolsSettingArgs, CodeToolsSettingState } from "./codeToolsSetting";
+export type CodeToolsSetting = import("./codeToolsSetting").CodeToolsSetting;
+export const CodeToolsSetting: typeof import("./codeToolsSetting").CodeToolsSetting = null as any;
+utilities.lazyLoad(exports, ["CodeToolsSetting"], () => require("./codeToolsSetting"));
+
+export { CodeToolsSettingBindingArgs, CodeToolsSettingBindingState } from "./codeToolsSettingBinding";
+export type CodeToolsSettingBinding = import("./codeToolsSettingBinding").CodeToolsSettingBinding;
+export const CodeToolsSettingBinding: typeof import("./codeToolsSettingBinding").CodeToolsSettingBinding = null as any;
+utilities.lazyLoad(exports, ["CodeToolsSettingBinding"], () => require("./codeToolsSettingBinding"));
+
 export { DataSharingWithGoogleSettingArgs, DataSharingWithGoogleSettingState } from "./dataSharingWithGoogleSetting";
 export type DataSharingWithGoogleSetting = import("./dataSharingWithGoogleSetting").DataSharingWithGoogleSetting;
 export const DataSharingWithGoogleSetting: typeof import("./dataSharingWithGoogleSetting").DataSharingWithGoogleSetting = null as any;
@@ -82,6 +92,10 @@ const _module = {
         switch (type) {
             case "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex":
                 return new CodeRepositoryIndex(name, <any>undefined, { urn })
+            case "gcp:gemini/codeToolsSetting:CodeToolsSetting":
+                return new CodeToolsSetting(name, <any>undefined, { urn })
+            case "gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding":
+                return new CodeToolsSettingBinding(name, <any>undefined, { urn })
             case "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting":
                 return new DataSharingWithGoogleSetting(name, <any>undefined, { urn })
             case "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding":
@@ -112,6 +126,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "gemini/codeRepositoryIndex", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/codeToolsSetting", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/codeToolsSettingBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/dataSharingWithGoogleSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/dataSharingWithGoogleSettingBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/geminiGcpEnablementSetting", _module)

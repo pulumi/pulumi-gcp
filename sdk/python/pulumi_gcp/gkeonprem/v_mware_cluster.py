@@ -33,6 +33,7 @@ class VMwareClusterArgs:
                  dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disable_bundled_ingress: Optional[pulumi.Input[builtins.bool]] = None,
+                 enable_advanced_cluster: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[builtins.bool]] = None,
                  load_balancer: Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -65,6 +66,7 @@ class VMwareClusterArgs:
         :param pulumi.Input[builtins.str] description: (Output)
                The description of the validation check.
         :param pulumi.Input[builtins.bool] disable_bundled_ingress: Disable bundled ingress.
+        :param pulumi.Input[builtins.bool] enable_advanced_cluster: Enable advanced cluster. Default to false.
         :param pulumi.Input[builtins.bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input['VMwareClusterLoadBalancerArgs'] load_balancer: Load Balancer configuration.
         :param pulumi.Input[builtins.str] name: The VMware cluster name.
@@ -92,6 +94,8 @@ class VMwareClusterArgs:
             pulumi.set(__self__, "description", description)
         if disable_bundled_ingress is not None:
             pulumi.set(__self__, "disable_bundled_ingress", disable_bundled_ingress)
+        if enable_advanced_cluster is not None:
+            pulumi.set(__self__, "enable_advanced_cluster", enable_advanced_cluster)
         if enable_control_plane_v2 is not None:
             pulumi.set(__self__, "enable_control_plane_v2", enable_control_plane_v2)
         if load_balancer is not None:
@@ -254,6 +258,18 @@ class VMwareClusterArgs:
         pulumi.set(self, "disable_bundled_ingress", value)
 
     @property
+    @pulumi.getter(name="enableAdvancedCluster")
+    def enable_advanced_cluster(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable advanced cluster. Default to false.
+        """
+        return pulumi.get(self, "enable_advanced_cluster")
+
+    @enable_advanced_cluster.setter
+    def enable_advanced_cluster(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_advanced_cluster", value)
+
+    @property
     @pulumi.getter(name="enableControlPlaneV2")
     def enable_control_plane_v2(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -374,6 +390,7 @@ class _VMwareClusterState:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disable_bundled_ingress: Optional[pulumi.Input[builtins.bool]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 enable_advanced_cluster: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  etag: Optional[pulumi.Input[builtins.str]] = None,
@@ -418,6 +435,7 @@ class _VMwareClusterState:
         :param pulumi.Input[builtins.str] description: (Output)
                The description of the validation check.
         :param pulumi.Input[builtins.bool] disable_bundled_ingress: Disable bundled ingress.
+        :param pulumi.Input[builtins.bool] enable_advanced_cluster: Enable advanced cluster. Default to false.
         :param pulumi.Input[builtins.bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[builtins.str] endpoint: The DNS name of VMware User Cluster's API server.
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other
@@ -481,6 +499,8 @@ class _VMwareClusterState:
             pulumi.set(__self__, "disable_bundled_ingress", disable_bundled_ingress)
         if effective_annotations is not None:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
+        if enable_advanced_cluster is not None:
+            pulumi.set(__self__, "enable_advanced_cluster", enable_advanced_cluster)
         if enable_control_plane_v2 is not None:
             pulumi.set(__self__, "enable_control_plane_v2", enable_control_plane_v2)
         if endpoint is not None:
@@ -674,6 +694,18 @@ class _VMwareClusterState:
     @effective_annotations.setter
     def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="enableAdvancedCluster")
+    def enable_advanced_cluster(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable advanced cluster. Default to false.
+        """
+        return pulumi.get(self, "enable_advanced_cluster")
+
+    @enable_advanced_cluster.setter
+    def enable_advanced_cluster(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_advanced_cluster", value)
 
     @property
     @pulumi.getter(name="enableControlPlaneV2")
@@ -957,6 +989,7 @@ class VMwareCluster(pulumi.CustomResource):
                  dataplane_v2: Optional[pulumi.Input[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disable_bundled_ingress: Optional[pulumi.Input[builtins.bool]] = None,
+                 enable_advanced_cluster: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[builtins.bool]] = None,
                  load_balancer: Optional[pulumi.Input[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict']]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -1177,6 +1210,7 @@ class VMwareCluster(pulumi.CustomResource):
             },
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
+            enable_advanced_cluster=True,
             upgrade_policy={
                 "control_plane_only": True,
             },
@@ -1238,6 +1272,7 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: (Output)
                The description of the validation check.
         :param pulumi.Input[builtins.bool] disable_bundled_ingress: Disable bundled ingress.
+        :param pulumi.Input[builtins.bool] enable_advanced_cluster: Enable advanced cluster. Default to false.
         :param pulumi.Input[builtins.bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict']] load_balancer: Load Balancer configuration.
         :param pulumi.Input[builtins.str] location: The location of the resource.
@@ -1463,6 +1498,7 @@ class VMwareCluster(pulumi.CustomResource):
             },
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
+            enable_advanced_cluster=True,
             upgrade_policy={
                 "control_plane_only": True,
             },
@@ -1527,6 +1563,7 @@ class VMwareCluster(pulumi.CustomResource):
                  dataplane_v2: Optional[pulumi.Input[Union['VMwareClusterDataplaneV2Args', 'VMwareClusterDataplaneV2ArgsDict']]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disable_bundled_ingress: Optional[pulumi.Input[builtins.bool]] = None,
+                 enable_advanced_cluster: Optional[pulumi.Input[builtins.bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[builtins.bool]] = None,
                  load_balancer: Optional[pulumi.Input[Union['VMwareClusterLoadBalancerArgs', 'VMwareClusterLoadBalancerArgsDict']]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -1560,6 +1597,7 @@ class VMwareCluster(pulumi.CustomResource):
             __props__.__dict__["dataplane_v2"] = dataplane_v2
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_bundled_ingress"] = disable_bundled_ingress
+            __props__.__dict__["enable_advanced_cluster"] = enable_advanced_cluster
             __props__.__dict__["enable_control_plane_v2"] = enable_control_plane_v2
             __props__.__dict__["load_balancer"] = load_balancer
             if location is None and not opts.urn:
@@ -1610,6 +1648,7 @@ class VMwareCluster(pulumi.CustomResource):
             description: Optional[pulumi.Input[builtins.str]] = None,
             disable_bundled_ingress: Optional[pulumi.Input[builtins.bool]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            enable_advanced_cluster: Optional[pulumi.Input[builtins.bool]] = None,
             enable_control_plane_v2: Optional[pulumi.Input[builtins.bool]] = None,
             endpoint: Optional[pulumi.Input[builtins.str]] = None,
             etag: Optional[pulumi.Input[builtins.str]] = None,
@@ -1659,6 +1698,7 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: (Output)
                The description of the validation check.
         :param pulumi.Input[builtins.bool] disable_bundled_ingress: Disable bundled ingress.
+        :param pulumi.Input[builtins.bool] enable_advanced_cluster: Enable advanced cluster. Default to false.
         :param pulumi.Input[builtins.bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[builtins.str] endpoint: The DNS name of VMware User Cluster's API server.
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other
@@ -1714,6 +1754,7 @@ class VMwareCluster(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_bundled_ingress"] = disable_bundled_ingress
         __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["enable_advanced_cluster"] = enable_advanced_cluster
         __props__.__dict__["enable_control_plane_v2"] = enable_control_plane_v2
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["etag"] = etag
@@ -1839,6 +1880,14 @@ class VMwareCluster(pulumi.CustomResource):
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, builtins.str]]:
         return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="enableAdvancedCluster")
+    def enable_advanced_cluster(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Enable advanced cluster. Default to false.
+        """
+        return pulumi.get(self, "enable_advanced_cluster")
 
     @property
     @pulumi.getter(name="enableControlPlaneV2")

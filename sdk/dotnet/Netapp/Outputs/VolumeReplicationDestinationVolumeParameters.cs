@@ -26,6 +26,11 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// </summary>
         public readonly string StoragePool;
         /// <summary>
+        /// Tiering policy for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.VolumeReplicationDestinationVolumeParametersTieringPolicy? TieringPolicy;
+        /// <summary>
         /// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
         /// </summary>
         public readonly string? VolumeId;
@@ -38,11 +43,14 @@ namespace Pulumi.Gcp.Netapp.Outputs
 
             string storagePool,
 
+            Outputs.VolumeReplicationDestinationVolumeParametersTieringPolicy? tieringPolicy,
+
             string? volumeId)
         {
             Description = description;
             ShareName = shareName;
             StoragePool = storagePool;
+            TieringPolicy = tieringPolicy;
             VolumeId = volumeId;
         }
     }

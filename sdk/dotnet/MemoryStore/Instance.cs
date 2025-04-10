@@ -505,6 +505,13 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<string> AuthorizationMode { get; private set; } = null!;
 
         /// <summary>
+        /// The automated backup config for a instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("automatedBackupConfig")]
+        public Output<Outputs.InstanceAutomatedBackupConfig?> AutomatedBackupConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Creation timestamp of the instance.
         /// </summary>
         [Output("createTime")]
@@ -794,6 +801,13 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? AuthorizationMode { get; set; }
 
         /// <summary>
+        /// The automated backup config for a instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("automatedBackupConfig")]
+        public Input<Inputs.InstanceAutomatedBackupConfigArgs>? AutomatedBackupConfig { get; set; }
+
+        /// <summary>
         /// Cross instance replication config
         /// Structure is documented below.
         /// </summary>
@@ -957,6 +971,13 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }
+
+        /// <summary>
+        /// The automated backup config for a instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("automatedBackupConfig")]
+        public Input<Inputs.InstanceAutomatedBackupConfigGetArgs>? AutomatedBackupConfig { get; set; }
 
         /// <summary>
         /// Output only. Creation timestamp of the instance.

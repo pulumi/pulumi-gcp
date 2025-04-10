@@ -62,6 +62,7 @@ type LookupInstanceArgs struct {
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
 	AuthorizationMode               string                                      `pulumi:"authorizationMode"`
+	AutomatedBackupConfigs          []GetInstanceAutomatedBackupConfig          `pulumi:"automatedBackupConfigs"`
 	CreateTime                      string                                      `pulumi:"createTime"`
 	CrossInstanceReplicationConfigs []GetInstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfigs"`
 	DeletionProtectionEnabled       bool                                        `pulumi:"deletionProtectionEnabled"`
@@ -140,6 +141,10 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 
 func (o LookupInstanceResultOutput) AuthorizationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.AuthorizationMode }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) AutomatedBackupConfigs() GetInstanceAutomatedBackupConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceAutomatedBackupConfig { return v.AutomatedBackupConfigs }).(GetInstanceAutomatedBackupConfigArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {

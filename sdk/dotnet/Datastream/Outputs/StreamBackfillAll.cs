@@ -29,6 +29,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly Outputs.StreamBackfillAllPostgresqlExcludedObjects? PostgresqlExcludedObjects;
         /// <summary>
+        /// Salesforce objects to avoid backfilling.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamBackfillAllSalesforceExcludedObjects? SalesforceExcludedObjects;
+        /// <summary>
         /// SQL Server data source objects to avoid backfilling.
         /// Structure is documented below.
         /// </summary>
@@ -42,11 +47,14 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             Outputs.StreamBackfillAllPostgresqlExcludedObjects? postgresqlExcludedObjects,
 
+            Outputs.StreamBackfillAllSalesforceExcludedObjects? salesforceExcludedObjects,
+
             Outputs.StreamBackfillAllSqlServerExcludedObjects? sqlServerExcludedObjects)
         {
             MysqlExcludedObjects = mysqlExcludedObjects;
             OracleExcludedObjects = oracleExcludedObjects;
             PostgresqlExcludedObjects = postgresqlExcludedObjects;
+            SalesforceExcludedObjects = salesforceExcludedObjects;
             SqlServerExcludedObjects = sqlServerExcludedObjects;
         }
     }

@@ -276,6 +276,42 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// ### Workbench Instance Confidential Compute
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Workbench.Instance("instance", new()
+    ///     {
+    ///         Name = "workbench-instance",
+    ///         Location = "us-central1-a",
+    ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
+    ///         {
+    ///             MachineType = "n2d-standard-2",
+    ///             ShieldedInstanceConfig = new Gcp.Workbench.Inputs.InstanceGceSetupShieldedInstanceConfigArgs
+    ///             {
+    ///                 EnableSecureBoot = true,
+    ///                 EnableVtpm = true,
+    ///                 EnableIntegrityMonitoring = true,
+    ///             },
+    ///             Metadata = 
+    ///             {
+    ///                 { "terraform", "true" },
+    ///             },
+    ///             ConfidentialInstanceConfig = new Gcp.Workbench.Inputs.InstanceGceSetupConfidentialInstanceConfigArgs
+    ///             {
+    ///                 ConfidentialInstanceType = "SEV",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

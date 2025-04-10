@@ -22,6 +22,9 @@ type InstanceGceSetup struct {
 	// The definition of a boot disk.
 	// Structure is documented below.
 	BootDisk *InstanceGceSetupBootDisk `pulumi:"bootDisk"`
+	// Confidential instance configuration.
+	// Structure is documented below.
+	ConfidentialInstanceConfig *InstanceGceSetupConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Use a container image to start the workbench instance.
 	// Structure is documented below.
 	ContainerImage *InstanceGceSetupContainerImage `pulumi:"containerImage"`
@@ -77,6 +80,9 @@ type InstanceGceSetupArgs struct {
 	// The definition of a boot disk.
 	// Structure is documented below.
 	BootDisk InstanceGceSetupBootDiskPtrInput `pulumi:"bootDisk"`
+	// Confidential instance configuration.
+	// Structure is documented below.
+	ConfidentialInstanceConfig InstanceGceSetupConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
 	// Use a container image to start the workbench instance.
 	// Structure is documented below.
 	ContainerImage InstanceGceSetupContainerImagePtrInput `pulumi:"containerImage"`
@@ -203,6 +209,14 @@ func (o InstanceGceSetupOutput) BootDisk() InstanceGceSetupBootDiskPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetup) *InstanceGceSetupBootDisk { return v.BootDisk }).(InstanceGceSetupBootDiskPtrOutput)
 }
 
+// Confidential instance configuration.
+// Structure is documented below.
+func (o InstanceGceSetupOutput) ConfidentialInstanceConfig() InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetup) *InstanceGceSetupConfidentialInstanceConfig {
+		return v.ConfidentialInstanceConfig
+	}).(InstanceGceSetupConfidentialInstanceConfigPtrOutput)
+}
+
 // Use a container image to start the workbench instance.
 // Structure is documented below.
 func (o InstanceGceSetupOutput) ContainerImage() InstanceGceSetupContainerImagePtrOutput {
@@ -315,6 +329,17 @@ func (o InstanceGceSetupPtrOutput) BootDisk() InstanceGceSetupBootDiskPtrOutput 
 		}
 		return v.BootDisk
 	}).(InstanceGceSetupBootDiskPtrOutput)
+}
+
+// Confidential instance configuration.
+// Structure is documented below.
+func (o InstanceGceSetupPtrOutput) ConfidentialInstanceConfig() InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetup) *InstanceGceSetupConfidentialInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceConfig
+	}).(InstanceGceSetupConfidentialInstanceConfigPtrOutput)
 }
 
 // Use a container image to start the workbench instance.
@@ -766,6 +791,147 @@ func (o InstanceGceSetupBootDiskPtrOutput) KmsKey() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceGceSetupConfidentialInstanceConfig struct {
+	// Defines the type of technology used by the confidential instance.
+	// Possible values are: `SEV`.
+	ConfidentialInstanceType *string `pulumi:"confidentialInstanceType"`
+}
+
+// InstanceGceSetupConfidentialInstanceConfigInput is an input type that accepts InstanceGceSetupConfidentialInstanceConfigArgs and InstanceGceSetupConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `InstanceGceSetupConfidentialInstanceConfigInput` via:
+//
+//	InstanceGceSetupConfidentialInstanceConfigArgs{...}
+type InstanceGceSetupConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupConfidentialInstanceConfigOutput() InstanceGceSetupConfidentialInstanceConfigOutput
+	ToInstanceGceSetupConfidentialInstanceConfigOutputWithContext(context.Context) InstanceGceSetupConfidentialInstanceConfigOutput
+}
+
+type InstanceGceSetupConfidentialInstanceConfigArgs struct {
+	// Defines the type of technology used by the confidential instance.
+	// Possible values are: `SEV`.
+	ConfidentialInstanceType pulumi.StringPtrInput `pulumi:"confidentialInstanceType"`
+}
+
+func (InstanceGceSetupConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceGceSetupConfidentialInstanceConfigArgs) ToInstanceGceSetupConfidentialInstanceConfigOutput() InstanceGceSetupConfidentialInstanceConfigOutput {
+	return i.ToInstanceGceSetupConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupConfidentialInstanceConfigArgs) ToInstanceGceSetupConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceGceSetupConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupConfidentialInstanceConfigOutput)
+}
+
+func (i InstanceGceSetupConfidentialInstanceConfigArgs) ToInstanceGceSetupConfidentialInstanceConfigPtrOutput() InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceGceSetupConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupConfidentialInstanceConfigArgs) ToInstanceGceSetupConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupConfidentialInstanceConfigOutput).ToInstanceGceSetupConfidentialInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceGceSetupConfidentialInstanceConfigPtrInput is an input type that accepts InstanceGceSetupConfidentialInstanceConfigArgs, InstanceGceSetupConfidentialInstanceConfigPtr and InstanceGceSetupConfidentialInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceGceSetupConfidentialInstanceConfigPtrInput` via:
+//
+//	        InstanceGceSetupConfidentialInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceGceSetupConfidentialInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupConfidentialInstanceConfigPtrOutput() InstanceGceSetupConfidentialInstanceConfigPtrOutput
+	ToInstanceGceSetupConfidentialInstanceConfigPtrOutputWithContext(context.Context) InstanceGceSetupConfidentialInstanceConfigPtrOutput
+}
+
+type instanceGceSetupConfidentialInstanceConfigPtrType InstanceGceSetupConfidentialInstanceConfigArgs
+
+func InstanceGceSetupConfidentialInstanceConfigPtr(v *InstanceGceSetupConfidentialInstanceConfigArgs) InstanceGceSetupConfidentialInstanceConfigPtrInput {
+	return (*instanceGceSetupConfidentialInstanceConfigPtrType)(v)
+}
+
+func (*instanceGceSetupConfidentialInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGceSetupConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i *instanceGceSetupConfidentialInstanceConfigPtrType) ToInstanceGceSetupConfidentialInstanceConfigPtrOutput() InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return i.ToInstanceGceSetupConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceGceSetupConfidentialInstanceConfigPtrType) ToInstanceGceSetupConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupConfidentialInstanceConfigPtrOutput)
+}
+
+type InstanceGceSetupConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceGceSetupConfidentialInstanceConfigOutput) ToInstanceGceSetupConfidentialInstanceConfigOutput() InstanceGceSetupConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceGceSetupConfidentialInstanceConfigOutput) ToInstanceGceSetupConfidentialInstanceConfigOutputWithContext(ctx context.Context) InstanceGceSetupConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceGceSetupConfidentialInstanceConfigOutput) ToInstanceGceSetupConfidentialInstanceConfigPtrOutput() InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return o.ToInstanceGceSetupConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGceSetupConfidentialInstanceConfigOutput) ToInstanceGceSetupConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGceSetupConfidentialInstanceConfig) *InstanceGceSetupConfidentialInstanceConfig {
+		return &v
+	}).(InstanceGceSetupConfidentialInstanceConfigPtrOutput)
+}
+
+// Defines the type of technology used by the confidential instance.
+// Possible values are: `SEV`.
+func (o InstanceGceSetupConfidentialInstanceConfigOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetupConfidentialInstanceConfig) *string { return v.ConfidentialInstanceType }).(pulumi.StringPtrOutput)
+}
+
+type InstanceGceSetupConfidentialInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupConfidentialInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGceSetupConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceGceSetupConfidentialInstanceConfigPtrOutput) ToInstanceGceSetupConfidentialInstanceConfigPtrOutput() InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceGceSetupConfidentialInstanceConfigPtrOutput) ToInstanceGceSetupConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceGceSetupConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceGceSetupConfidentialInstanceConfigPtrOutput) Elem() InstanceGceSetupConfidentialInstanceConfigOutput {
+	return o.ApplyT(func(v *InstanceGceSetupConfidentialInstanceConfig) InstanceGceSetupConfidentialInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGceSetupConfidentialInstanceConfig
+		return ret
+	}).(InstanceGceSetupConfidentialInstanceConfigOutput)
+}
+
+// Defines the type of technology used by the confidential instance.
+// Possible values are: `SEV`.
+func (o InstanceGceSetupConfidentialInstanceConfigPtrOutput) ConfidentialInstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetupConfidentialInstanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2502,6 +2668,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupAcceleratorConfigArrayInput)(nil)).Elem(), InstanceGceSetupAcceleratorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupBootDiskInput)(nil)).Elem(), InstanceGceSetupBootDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupBootDiskPtrInput)(nil)).Elem(), InstanceGceSetupBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupConfidentialInstanceConfigInput)(nil)).Elem(), InstanceGceSetupConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupConfidentialInstanceConfigPtrInput)(nil)).Elem(), InstanceGceSetupConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupContainerImageInput)(nil)).Elem(), InstanceGceSetupContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupContainerImagePtrInput)(nil)).Elem(), InstanceGceSetupContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupDataDisksInput)(nil)).Elem(), InstanceGceSetupDataDisksArgs{})
@@ -2530,6 +2698,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGceSetupAcceleratorConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupBootDiskOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupBootDiskPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupConfidentialInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupContainerImageOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupContainerImagePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupDataDisksOutput{})

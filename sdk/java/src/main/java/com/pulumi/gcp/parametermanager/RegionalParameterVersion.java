@@ -117,6 +117,56 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Regional Parameter Version With Kms Key
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.parametermanager.RegionalParameter;
+ * import com.pulumi.gcp.parametermanager.RegionalParameterArgs;
+ * import com.pulumi.gcp.parametermanager.RegionalParameterVersion;
+ * import com.pulumi.gcp.parametermanager.RegionalParameterVersionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var regional_parameter_basic = new RegionalParameter("regional-parameter-basic", RegionalParameterArgs.builder()
+ *             .parameterId("regional_parameter")
+ *             .location("us-central1")
+ *             .kmsKey("kms-key")
+ *             .build());
+ * 
+ *         var regional_parameter_version_with_kms_key = new RegionalParameterVersion("regional-parameter-version-with-kms-key", RegionalParameterVersionArgs.builder()
+ *             .parameter(regional_parameter_basic.id())
+ *             .parameterVersionId("regional_parameter_version")
+ *             .parameterData("regional-parameter-version-data")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * RegionalParameterVersion can be imported using any of these accepted formats:
@@ -159,6 +209,22 @@ public class RegionalParameterVersion extends com.pulumi.resources.CustomResourc
      */
     public Output<Optional<Boolean>> disabled() {
         return Codegen.optional(this.disabled);
+    }
+    /**
+     * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    @Export(name="kmsKeyVersion", refs={String.class}, tree="[0]")
+    private Output<String> kmsKeyVersion;
+
+    /**
+     * @return The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     * 
+     */
+    public Output<String> kmsKeyVersion() {
+        return this.kmsKeyVersion;
     }
     /**
      * Location of Parameter Manager Regional parameter resource.

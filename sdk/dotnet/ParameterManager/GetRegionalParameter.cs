@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.ParameterManager
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string KmsKey;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Location;
         public readonly string Name;
@@ -169,6 +170,8 @@ namespace Pulumi.Gcp.ParameterManager
             string format,
 
             string id,
+
+            string kmsKey,
 
             ImmutableDictionary<string, string> labels,
 
@@ -190,6 +193,7 @@ namespace Pulumi.Gcp.ParameterManager
             EffectiveLabels = effectiveLabels;
             Format = format;
             Id = id;
+            KmsKey = kmsKey;
             Labels = labels;
             Location = location;
             Name = name;

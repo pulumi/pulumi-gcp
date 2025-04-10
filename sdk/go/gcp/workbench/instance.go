@@ -291,6 +291,46 @@ import (
 //	}
 //
 // ```
+// ### Workbench Instance Confidential Compute
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/workbench"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
+//				Name:     pulumi.String("workbench-instance"),
+//				Location: pulumi.String("us-central1-a"),
+//				GceSetup: &workbench.InstanceGceSetupArgs{
+//					MachineType: pulumi.String("n2d-standard-2"),
+//					ShieldedInstanceConfig: &workbench.InstanceGceSetupShieldedInstanceConfigArgs{
+//						EnableSecureBoot:          pulumi.Bool(true),
+//						EnableVtpm:                pulumi.Bool(true),
+//						EnableIntegrityMonitoring: pulumi.Bool(true),
+//					},
+//					Metadata: pulumi.StringMap{
+//						"terraform": pulumi.String("true"),
+//					},
+//					ConfidentialInstanceConfig: &workbench.InstanceGceSetupConfidentialInstanceConfigArgs{
+//						ConfidentialInstanceType: pulumi.String("SEV"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

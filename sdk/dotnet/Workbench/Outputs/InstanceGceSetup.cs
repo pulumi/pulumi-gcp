@@ -26,6 +26,11 @@ namespace Pulumi.Gcp.Workbench.Outputs
         /// </summary>
         public readonly Outputs.InstanceGceSetupBootDisk? BootDisk;
         /// <summary>
+        /// Confidential instance configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstanceGceSetupConfidentialInstanceConfig? ConfidentialInstanceConfig;
+        /// <summary>
         /// Use a container image to start the workbench instance.
         /// Structure is documented below.
         /// </summary>
@@ -87,6 +92,8 @@ namespace Pulumi.Gcp.Workbench.Outputs
 
             Outputs.InstanceGceSetupBootDisk? bootDisk,
 
+            Outputs.InstanceGceSetupConfidentialInstanceConfig? confidentialInstanceConfig,
+
             Outputs.InstanceGceSetupContainerImage? containerImage,
 
             Outputs.InstanceGceSetupDataDisks? dataDisks,
@@ -111,6 +118,7 @@ namespace Pulumi.Gcp.Workbench.Outputs
         {
             AcceleratorConfigs = acceleratorConfigs;
             BootDisk = bootDisk;
+            ConfidentialInstanceConfig = confidentialInstanceConfig;
             ContainerImage = containerImage;
             DataDisks = dataDisks;
             DisablePublicIp = disablePublicIp;

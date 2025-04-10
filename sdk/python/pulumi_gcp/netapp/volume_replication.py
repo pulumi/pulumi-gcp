@@ -693,7 +693,8 @@ class VolumeReplication(pulumi.CustomResource):
             location="us-west2",
             service_level="PREMIUM",
             capacity_gib="2048",
-            network=default.id)
+            network=default.id,
+            allow_auto_tiering=True)
         source_volume = gcp.netapp.Volume("source_volume",
             location=source_pool.location,
             name="source-volume",
@@ -713,6 +714,10 @@ class VolumeReplication(pulumi.CustomResource):
                 "volume_id": "destination-volume",
                 "share_name": "source-volume",
                 "description": "This is a replicated volume",
+                "tiering_policy": {
+                    "cooling_threshold_days": 20,
+                    "tier_action": "ENABLED",
+                },
             },
             delete_destination_volume=True,
             wait_for_mirror=True,
@@ -798,7 +803,8 @@ class VolumeReplication(pulumi.CustomResource):
             location="us-west2",
             service_level="PREMIUM",
             capacity_gib="2048",
-            network=default.id)
+            network=default.id,
+            allow_auto_tiering=True)
         source_volume = gcp.netapp.Volume("source_volume",
             location=source_pool.location,
             name="source-volume",
@@ -818,6 +824,10 @@ class VolumeReplication(pulumi.CustomResource):
                 "volume_id": "destination-volume",
                 "share_name": "source-volume",
                 "description": "This is a replicated volume",
+                "tiering_policy": {
+                    "cooling_threshold_days": 20,
+                    "tier_action": "ENABLED",
+                },
             },
             delete_destination_volume=True,
             wait_for_mirror=True,

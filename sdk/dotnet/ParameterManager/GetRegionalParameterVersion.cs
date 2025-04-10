@@ -175,6 +175,10 @@ namespace Pulumi.Gcp.ParameterManager
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        /// </summary>
+        public readonly string KmsKeyVersion;
         public readonly string Location;
         /// <summary>
         /// The resource name of the Regional Parameter Version. Format:
@@ -201,6 +205,8 @@ namespace Pulumi.Gcp.ParameterManager
 
             string id,
 
+            string kmsKeyVersion,
+
             string location,
 
             string name,
@@ -218,6 +224,7 @@ namespace Pulumi.Gcp.ParameterManager
             CreateTime = createTime;
             Disabled = disabled;
             Id = id;
+            KmsKeyVersion = kmsKeyVersion;
             Location = location;
             Name = name;
             Parameter = parameter;

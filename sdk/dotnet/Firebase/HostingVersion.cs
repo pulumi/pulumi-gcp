@@ -278,17 +278,31 @@ namespace Pulumi.Gcp.Firebase
     ///         Source = new FileAsset("function-source.zip"),
     ///     });
     /// 
-    ///     var function = new Gcp.CloudFunctions.Function("function", new()
+    ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Name = "cloud-function-via-hosting",
+    ///         Location = "us-central1",
     ///         Description = "A Cloud Function connected to Firebase Hosing",
-    ///         Runtime = "nodejs20",
-    ///         AvailableMemoryMb = 128,
-    ///         SourceArchiveBucket = bucket.Name,
-    ///         SourceArchiveObject = @object.Name,
-    ///         TriggerHttp = true,
-    ///         EntryPoint = "helloHttp",
+    ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
+    ///         {
+    ///             Runtime = "nodejs22",
+    ///             EntryPoint = "helloHttp",
+    ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
+    ///             {
+    ///                 StorageSource = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceStorageSourceArgs
+    ///                 {
+    ///                     Bucket = bucket.Name,
+    ///                     Object = @object.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ServiceConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionServiceConfigArgs
+    ///         {
+    ///             MaxInstanceCount = 1,
+    ///             AvailableMemory = "256M",
+    ///             TimeoutSeconds = 60,
+    ///         },
     ///     });
     /// 
     ///     var defaultHostingVersion = new Gcp.Firebase.HostingVersion("default", new()

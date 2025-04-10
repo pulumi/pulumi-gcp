@@ -7,6 +7,8 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .code_repository_index import *
+from .code_tools_setting import *
+from .code_tools_setting_binding import *
 from .data_sharing_with_google_setting import *
 from .data_sharing_with_google_setting_binding import *
 from .gemini_gcp_enablement_setting import *

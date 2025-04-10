@@ -27,7 +27,7 @@ class GetRegionalParameterVersionResult:
     """
     A collection of values returned by getRegionalParameterVersion.
     """
-    def __init__(__self__, create_time=None, disabled=None, id=None, location=None, name=None, parameter=None, parameter_data=None, parameter_version_id=None, project=None, update_time=None):
+    def __init__(__self__, create_time=None, disabled=None, id=None, kms_key_version=None, location=None, name=None, parameter=None, parameter_data=None, parameter_version_id=None, project=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,6 +37,9 @@ class GetRegionalParameterVersionResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if kms_key_version and not isinstance(kms_key_version, str):
+            raise TypeError("Expected argument 'kms_key_version' to be a str")
+        pulumi.set(__self__, "kms_key_version", kms_key_version)
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
@@ -82,6 +85,14 @@ class GetRegionalParameterVersionResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> builtins.str:
+        """
+        The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        """
+        return pulumi.get(self, "kms_key_version")
 
     @property
     @pulumi.getter
@@ -138,6 +149,7 @@ class AwaitableGetRegionalParameterVersionResult(GetRegionalParameterVersionResu
             create_time=self.create_time,
             disabled=self.disabled,
             id=self.id,
+            kms_key_version=self.kms_key_version,
             location=self.location,
             name=self.name,
             parameter=self.parameter,
@@ -186,6 +198,7 @@ def get_regional_parameter_version(location: Optional[builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         disabled=pulumi.get(__ret__, 'disabled'),
         id=pulumi.get(__ret__, 'id'),
+        kms_key_version=pulumi.get(__ret__, 'kms_key_version'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         parameter=pulumi.get(__ret__, 'parameter'),
@@ -231,6 +244,7 @@ def get_regional_parameter_version_output(location: Optional[pulumi.Input[Option
         create_time=pulumi.get(__response__, 'create_time'),
         disabled=pulumi.get(__response__, 'disabled'),
         id=pulumi.get(__response__, 'id'),
+        kms_key_version=pulumi.get(__response__, 'kms_key_version'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         parameter=pulumi.get(__response__, 'parameter'),

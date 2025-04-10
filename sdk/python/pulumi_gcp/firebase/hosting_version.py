@@ -306,16 +306,26 @@ class HostingVersion(pulumi.CustomResource):
             name="function-source.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
-        function = gcp.cloudfunctions.Function("function",
+        function = gcp.cloudfunctionsv2.Function("function",
             project="my-project-name",
             name="cloud-function-via-hosting",
+            location="us-central1",
             description="A Cloud Function connected to Firebase Hosing",
-            runtime="nodejs20",
-            available_memory_mb=128,
-            source_archive_bucket=bucket.name,
-            source_archive_object=object.name,
-            trigger_http=True,
-            entry_point="helloHttp")
+            build_config={
+                "runtime": "nodejs22",
+                "entry_point": "helloHttp",
+                "source": {
+                    "storage_source": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+            })
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
             config={
@@ -513,16 +523,26 @@ class HostingVersion(pulumi.CustomResource):
             name="function-source.zip",
             bucket=bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
-        function = gcp.cloudfunctions.Function("function",
+        function = gcp.cloudfunctionsv2.Function("function",
             project="my-project-name",
             name="cloud-function-via-hosting",
+            location="us-central1",
             description="A Cloud Function connected to Firebase Hosing",
-            runtime="nodejs20",
-            available_memory_mb=128,
-            source_archive_bucket=bucket.name,
-            source_archive_object=object.name,
-            trigger_http=True,
-            entry_point="helloHttp")
+            build_config={
+                "runtime": "nodejs22",
+                "entry_point": "helloHttp",
+                "source": {
+                    "storage_source": {
+                        "bucket": bucket.name,
+                        "object": object.name,
+                    },
+                },
+            },
+            service_config={
+                "max_instance_count": 1,
+                "available_memory": "256M",
+                "timeout_seconds": 60,
+            })
         default_hosting_version = gcp.firebase.HostingVersion("default",
             site_id=default.site_id,
             config={

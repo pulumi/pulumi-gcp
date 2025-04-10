@@ -13,6 +13,257 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CodeToolsSettingEnabledTool struct {
+	// Link to the Dev Connect Account Connector that holds the user credentials.
+	// projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
+	AccountConnector *string `pulumi:"accountConnector"`
+	// Configuration parameters for the tool.
+	// Structure is documented below.
+	Configs []CodeToolsSettingEnabledToolConfig `pulumi:"configs"`
+	// Handle used to invoke the tool.
+	Handle string `pulumi:"handle"`
+	// Link to the Tool
+	Tool string `pulumi:"tool"`
+	// Overridden URI, if allowed by Tool.
+	UriOverride *string `pulumi:"uriOverride"`
+}
+
+// CodeToolsSettingEnabledToolInput is an input type that accepts CodeToolsSettingEnabledToolArgs and CodeToolsSettingEnabledToolOutput values.
+// You can construct a concrete instance of `CodeToolsSettingEnabledToolInput` via:
+//
+//	CodeToolsSettingEnabledToolArgs{...}
+type CodeToolsSettingEnabledToolInput interface {
+	pulumi.Input
+
+	ToCodeToolsSettingEnabledToolOutput() CodeToolsSettingEnabledToolOutput
+	ToCodeToolsSettingEnabledToolOutputWithContext(context.Context) CodeToolsSettingEnabledToolOutput
+}
+
+type CodeToolsSettingEnabledToolArgs struct {
+	// Link to the Dev Connect Account Connector that holds the user credentials.
+	// projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
+	AccountConnector pulumi.StringPtrInput `pulumi:"accountConnector"`
+	// Configuration parameters for the tool.
+	// Structure is documented below.
+	Configs CodeToolsSettingEnabledToolConfigArrayInput `pulumi:"configs"`
+	// Handle used to invoke the tool.
+	Handle pulumi.StringInput `pulumi:"handle"`
+	// Link to the Tool
+	Tool pulumi.StringInput `pulumi:"tool"`
+	// Overridden URI, if allowed by Tool.
+	UriOverride pulumi.StringPtrInput `pulumi:"uriOverride"`
+}
+
+func (CodeToolsSettingEnabledToolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CodeToolsSettingEnabledTool)(nil)).Elem()
+}
+
+func (i CodeToolsSettingEnabledToolArgs) ToCodeToolsSettingEnabledToolOutput() CodeToolsSettingEnabledToolOutput {
+	return i.ToCodeToolsSettingEnabledToolOutputWithContext(context.Background())
+}
+
+func (i CodeToolsSettingEnabledToolArgs) ToCodeToolsSettingEnabledToolOutputWithContext(ctx context.Context) CodeToolsSettingEnabledToolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CodeToolsSettingEnabledToolOutput)
+}
+
+// CodeToolsSettingEnabledToolArrayInput is an input type that accepts CodeToolsSettingEnabledToolArray and CodeToolsSettingEnabledToolArrayOutput values.
+// You can construct a concrete instance of `CodeToolsSettingEnabledToolArrayInput` via:
+//
+//	CodeToolsSettingEnabledToolArray{ CodeToolsSettingEnabledToolArgs{...} }
+type CodeToolsSettingEnabledToolArrayInput interface {
+	pulumi.Input
+
+	ToCodeToolsSettingEnabledToolArrayOutput() CodeToolsSettingEnabledToolArrayOutput
+	ToCodeToolsSettingEnabledToolArrayOutputWithContext(context.Context) CodeToolsSettingEnabledToolArrayOutput
+}
+
+type CodeToolsSettingEnabledToolArray []CodeToolsSettingEnabledToolInput
+
+func (CodeToolsSettingEnabledToolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CodeToolsSettingEnabledTool)(nil)).Elem()
+}
+
+func (i CodeToolsSettingEnabledToolArray) ToCodeToolsSettingEnabledToolArrayOutput() CodeToolsSettingEnabledToolArrayOutput {
+	return i.ToCodeToolsSettingEnabledToolArrayOutputWithContext(context.Background())
+}
+
+func (i CodeToolsSettingEnabledToolArray) ToCodeToolsSettingEnabledToolArrayOutputWithContext(ctx context.Context) CodeToolsSettingEnabledToolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CodeToolsSettingEnabledToolArrayOutput)
+}
+
+type CodeToolsSettingEnabledToolOutput struct{ *pulumi.OutputState }
+
+func (CodeToolsSettingEnabledToolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CodeToolsSettingEnabledTool)(nil)).Elem()
+}
+
+func (o CodeToolsSettingEnabledToolOutput) ToCodeToolsSettingEnabledToolOutput() CodeToolsSettingEnabledToolOutput {
+	return o
+}
+
+func (o CodeToolsSettingEnabledToolOutput) ToCodeToolsSettingEnabledToolOutputWithContext(ctx context.Context) CodeToolsSettingEnabledToolOutput {
+	return o
+}
+
+// Link to the Dev Connect Account Connector that holds the user credentials.
+// projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
+func (o CodeToolsSettingEnabledToolOutput) AccountConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CodeToolsSettingEnabledTool) *string { return v.AccountConnector }).(pulumi.StringPtrOutput)
+}
+
+// Configuration parameters for the tool.
+// Structure is documented below.
+func (o CodeToolsSettingEnabledToolOutput) Configs() CodeToolsSettingEnabledToolConfigArrayOutput {
+	return o.ApplyT(func(v CodeToolsSettingEnabledTool) []CodeToolsSettingEnabledToolConfig { return v.Configs }).(CodeToolsSettingEnabledToolConfigArrayOutput)
+}
+
+// Handle used to invoke the tool.
+func (o CodeToolsSettingEnabledToolOutput) Handle() pulumi.StringOutput {
+	return o.ApplyT(func(v CodeToolsSettingEnabledTool) string { return v.Handle }).(pulumi.StringOutput)
+}
+
+// Link to the Tool
+func (o CodeToolsSettingEnabledToolOutput) Tool() pulumi.StringOutput {
+	return o.ApplyT(func(v CodeToolsSettingEnabledTool) string { return v.Tool }).(pulumi.StringOutput)
+}
+
+// Overridden URI, if allowed by Tool.
+func (o CodeToolsSettingEnabledToolOutput) UriOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CodeToolsSettingEnabledTool) *string { return v.UriOverride }).(pulumi.StringPtrOutput)
+}
+
+type CodeToolsSettingEnabledToolArrayOutput struct{ *pulumi.OutputState }
+
+func (CodeToolsSettingEnabledToolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CodeToolsSettingEnabledTool)(nil)).Elem()
+}
+
+func (o CodeToolsSettingEnabledToolArrayOutput) ToCodeToolsSettingEnabledToolArrayOutput() CodeToolsSettingEnabledToolArrayOutput {
+	return o
+}
+
+func (o CodeToolsSettingEnabledToolArrayOutput) ToCodeToolsSettingEnabledToolArrayOutputWithContext(ctx context.Context) CodeToolsSettingEnabledToolArrayOutput {
+	return o
+}
+
+func (o CodeToolsSettingEnabledToolArrayOutput) Index(i pulumi.IntInput) CodeToolsSettingEnabledToolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CodeToolsSettingEnabledTool {
+		return vs[0].([]CodeToolsSettingEnabledTool)[vs[1].(int)]
+	}).(CodeToolsSettingEnabledToolOutput)
+}
+
+type CodeToolsSettingEnabledToolConfig struct {
+	// Key of the configuration item.
+	Key string `pulumi:"key"`
+	// Value of the configuration item.
+	//
+	// ***
+	Value string `pulumi:"value"`
+}
+
+// CodeToolsSettingEnabledToolConfigInput is an input type that accepts CodeToolsSettingEnabledToolConfigArgs and CodeToolsSettingEnabledToolConfigOutput values.
+// You can construct a concrete instance of `CodeToolsSettingEnabledToolConfigInput` via:
+//
+//	CodeToolsSettingEnabledToolConfigArgs{...}
+type CodeToolsSettingEnabledToolConfigInput interface {
+	pulumi.Input
+
+	ToCodeToolsSettingEnabledToolConfigOutput() CodeToolsSettingEnabledToolConfigOutput
+	ToCodeToolsSettingEnabledToolConfigOutputWithContext(context.Context) CodeToolsSettingEnabledToolConfigOutput
+}
+
+type CodeToolsSettingEnabledToolConfigArgs struct {
+	// Key of the configuration item.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the configuration item.
+	//
+	// ***
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (CodeToolsSettingEnabledToolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CodeToolsSettingEnabledToolConfig)(nil)).Elem()
+}
+
+func (i CodeToolsSettingEnabledToolConfigArgs) ToCodeToolsSettingEnabledToolConfigOutput() CodeToolsSettingEnabledToolConfigOutput {
+	return i.ToCodeToolsSettingEnabledToolConfigOutputWithContext(context.Background())
+}
+
+func (i CodeToolsSettingEnabledToolConfigArgs) ToCodeToolsSettingEnabledToolConfigOutputWithContext(ctx context.Context) CodeToolsSettingEnabledToolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CodeToolsSettingEnabledToolConfigOutput)
+}
+
+// CodeToolsSettingEnabledToolConfigArrayInput is an input type that accepts CodeToolsSettingEnabledToolConfigArray and CodeToolsSettingEnabledToolConfigArrayOutput values.
+// You can construct a concrete instance of `CodeToolsSettingEnabledToolConfigArrayInput` via:
+//
+//	CodeToolsSettingEnabledToolConfigArray{ CodeToolsSettingEnabledToolConfigArgs{...} }
+type CodeToolsSettingEnabledToolConfigArrayInput interface {
+	pulumi.Input
+
+	ToCodeToolsSettingEnabledToolConfigArrayOutput() CodeToolsSettingEnabledToolConfigArrayOutput
+	ToCodeToolsSettingEnabledToolConfigArrayOutputWithContext(context.Context) CodeToolsSettingEnabledToolConfigArrayOutput
+}
+
+type CodeToolsSettingEnabledToolConfigArray []CodeToolsSettingEnabledToolConfigInput
+
+func (CodeToolsSettingEnabledToolConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CodeToolsSettingEnabledToolConfig)(nil)).Elem()
+}
+
+func (i CodeToolsSettingEnabledToolConfigArray) ToCodeToolsSettingEnabledToolConfigArrayOutput() CodeToolsSettingEnabledToolConfigArrayOutput {
+	return i.ToCodeToolsSettingEnabledToolConfigArrayOutputWithContext(context.Background())
+}
+
+func (i CodeToolsSettingEnabledToolConfigArray) ToCodeToolsSettingEnabledToolConfigArrayOutputWithContext(ctx context.Context) CodeToolsSettingEnabledToolConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CodeToolsSettingEnabledToolConfigArrayOutput)
+}
+
+type CodeToolsSettingEnabledToolConfigOutput struct{ *pulumi.OutputState }
+
+func (CodeToolsSettingEnabledToolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CodeToolsSettingEnabledToolConfig)(nil)).Elem()
+}
+
+func (o CodeToolsSettingEnabledToolConfigOutput) ToCodeToolsSettingEnabledToolConfigOutput() CodeToolsSettingEnabledToolConfigOutput {
+	return o
+}
+
+func (o CodeToolsSettingEnabledToolConfigOutput) ToCodeToolsSettingEnabledToolConfigOutputWithContext(ctx context.Context) CodeToolsSettingEnabledToolConfigOutput {
+	return o
+}
+
+// Key of the configuration item.
+func (o CodeToolsSettingEnabledToolConfigOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v CodeToolsSettingEnabledToolConfig) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the configuration item.
+//
+// ***
+func (o CodeToolsSettingEnabledToolConfigOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CodeToolsSettingEnabledToolConfig) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CodeToolsSettingEnabledToolConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (CodeToolsSettingEnabledToolConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CodeToolsSettingEnabledToolConfig)(nil)).Elem()
+}
+
+func (o CodeToolsSettingEnabledToolConfigArrayOutput) ToCodeToolsSettingEnabledToolConfigArrayOutput() CodeToolsSettingEnabledToolConfigArrayOutput {
+	return o
+}
+
+func (o CodeToolsSettingEnabledToolConfigArrayOutput) ToCodeToolsSettingEnabledToolConfigArrayOutputWithContext(ctx context.Context) CodeToolsSettingEnabledToolConfigArrayOutput {
+	return o
+}
+
+func (o CodeToolsSettingEnabledToolConfigArrayOutput) Index(i pulumi.IntInput) CodeToolsSettingEnabledToolConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CodeToolsSettingEnabledToolConfig {
+		return vs[0].([]CodeToolsSettingEnabledToolConfig)[vs[1].(int)]
+	}).(CodeToolsSettingEnabledToolConfigOutput)
+}
+
 type RepositoryGroupIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -458,12 +709,20 @@ func (o RepositoryGroupRepositoryArrayOutput) Index(i pulumi.IntInput) Repositor
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolInput)(nil)).Elem(), CodeToolsSettingEnabledToolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolArrayInput)(nil)).Elem(), CodeToolsSettingEnabledToolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolConfigInput)(nil)).Elem(), CodeToolsSettingEnabledToolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolConfigArrayInput)(nil)).Elem(), CodeToolsSettingEnabledToolConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGroupIamBindingConditionInput)(nil)).Elem(), RepositoryGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGroupIamBindingConditionPtrInput)(nil)).Elem(), RepositoryGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGroupIamMemberConditionInput)(nil)).Elem(), RepositoryGroupIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGroupIamMemberConditionPtrInput)(nil)).Elem(), RepositoryGroupIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGroupRepositoryInput)(nil)).Elem(), RepositoryGroupRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGroupRepositoryArrayInput)(nil)).Elem(), RepositoryGroupRepositoryArray{})
+	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolOutput{})
+	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolArrayOutput{})
+	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolConfigOutput{})
+	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolConfigArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryGroupIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryGroupIamMemberConditionOutput{})

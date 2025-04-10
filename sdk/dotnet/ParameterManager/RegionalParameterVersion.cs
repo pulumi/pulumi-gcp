@@ -74,6 +74,35 @@ namespace Pulumi.Gcp.ParameterManager
     /// 
     /// });
     /// ```
+    /// ### Regional Parameter Version With Kms Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var regional_parameter_basic = new Gcp.ParameterManager.RegionalParameter("regional-parameter-basic", new()
+    ///     {
+    ///         ParameterId = "regional_parameter",
+    ///         Location = "us-central1",
+    ///         KmsKey = "kms-key",
+    ///     });
+    /// 
+    ///     var regional_parameter_version_with_kms_key = new Gcp.ParameterManager.RegionalParameterVersion("regional-parameter-version-with-kms-key", new()
+    ///     {
+    ///         Parameter = regional_parameter_basic.Id,
+    ///         ParameterVersionId = "regional_parameter_version",
+    ///         ParameterData = "regional-parameter-version-data",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RegionalParameterVersion can be imported using any of these accepted formats:
@@ -100,6 +129,13 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+        /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        /// </summary>
+        [Output("kmsKeyVersion")]
+        public Output<string> KmsKeyVersion { get; private set; } = null!;
 
         /// <summary>
         /// Location of Parameter Manager Regional parameter resource.
@@ -249,6 +285,13 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
+        /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+        /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        /// </summary>
+        [Input("kmsKeyVersion")]
+        public Input<string>? KmsKeyVersion { get; set; }
 
         /// <summary>
         /// Location of Parameter Manager Regional parameter resource.

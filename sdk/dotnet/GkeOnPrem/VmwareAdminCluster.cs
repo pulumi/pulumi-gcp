@@ -383,6 +383,12 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
         /// <summary>
+        /// If set, the advanced cluster feature is enabled.
+        /// </summary>
+        [Output("enableAdvancedCluster")]
+        public Output<bool> EnableAdvancedCluster { get; private set; } = null!;
+
+        /// <summary>
         /// The DNS name of VMware admin cluster's API server.
         /// </summary>
         [Output("endpoint")]
@@ -741,6 +747,12 @@ namespace Pulumi.Gcp.GkeOnPrem
             get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
             set => _effectiveAnnotations = value;
         }
+
+        /// <summary>
+        /// If set, the advanced cluster feature is enabled.
+        /// </summary>
+        [Input("enableAdvancedCluster")]
+        public Input<bool>? EnableAdvancedCluster { get; set; }
 
         /// <summary>
         /// The DNS name of VMware admin cluster's API server.

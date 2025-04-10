@@ -334,8 +334,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
- * import com.pulumi.gcp.cloudfunctions.Function;
- * import com.pulumi.gcp.cloudfunctions.FunctionArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.Function;
+ * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
  * import com.pulumi.gcp.firebase.HostingVersion;
  * import com.pulumi.gcp.firebase.HostingVersionArgs;
  * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
@@ -376,13 +380,23 @@ import javax.annotation.Nullable;
  *         var function = new Function("function", FunctionArgs.builder()
  *             .project("my-project-name")
  *             .name("cloud-function-via-hosting")
+ *             .location("us-central1")
  *             .description("A Cloud Function connected to Firebase Hosing")
- *             .runtime("nodejs20")
- *             .availableMemoryMb(128)
- *             .sourceArchiveBucket(bucket.name())
- *             .sourceArchiveObject(object.name())
- *             .triggerHttp(true)
- *             .entryPoint("helloHttp")
+ *             .buildConfig(FunctionBuildConfigArgs.builder()
+ *                 .runtime("nodejs22")
+ *                 .entryPoint("helloHttp")
+ *                 .source(FunctionBuildConfigSourceArgs.builder()
+ *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
+ *                         .bucket(bucket.name())
+ *                         .object(object.name())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .serviceConfig(FunctionServiceConfigArgs.builder()
+ *                 .maxInstanceCount(1)
+ *                 .availableMemory("256M")
+ *                 .timeoutSeconds(60)
+ *                 .build())
  *             .build());
  * 
  *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()

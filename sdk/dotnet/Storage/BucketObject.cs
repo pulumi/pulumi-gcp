@@ -154,6 +154,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Md5hash { get; private set; } = null!;
 
         /// <summary>
+        /// Hex value of md5hash
+        /// </summary>
+        [Output("md5hexhash")]
+        public Output<string> Md5hexhash { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) A url reference to download this object.
         /// </summary>
         [Output("mediaLink")]
@@ -510,6 +516,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("md5hash")]
         public Input<string>? Md5hash { get; set; }
+
+        /// <summary>
+        /// Hex value of md5hash
+        /// </summary>
+        [Input("md5hexhash")]
+        public Input<string>? Md5hexhash { get; set; }
 
         /// <summary>
         /// (Computed) A url reference to download this object.

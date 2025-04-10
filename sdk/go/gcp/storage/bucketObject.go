@@ -118,6 +118,8 @@ type BucketObject struct {
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash pulumi.StringOutput `pulumi:"md5hash"`
+	// Hex value of md5hash
+	Md5hexhash pulumi.StringOutput `pulumi:"md5hexhash"`
 	// (Computed) A url reference to download this object.
 	MediaLink pulumi.StringOutput `pulumi:"mediaLink"`
 	// User-provided metadata, in key/value pairs.
@@ -219,6 +221,8 @@ type bucketObjectState struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash *string `pulumi:"md5hash"`
+	// Hex value of md5hash
+	Md5hexhash *string `pulumi:"md5hexhash"`
 	// (Computed) A url reference to download this object.
 	MediaLink *string `pulumi:"mediaLink"`
 	// User-provided metadata, in key/value pairs.
@@ -277,6 +281,8 @@ type BucketObjectState struct {
 	KmsKeyName pulumi.StringPtrInput
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash pulumi.StringPtrInput
+	// Hex value of md5hash
+	Md5hexhash pulumi.StringPtrInput
 	// (Computed) A url reference to download this object.
 	MediaLink pulumi.StringPtrInput
 	// User-provided metadata, in key/value pairs.
@@ -556,6 +562,11 @@ func (o BucketObjectOutput) KmsKeyName() pulumi.StringOutput {
 // (Computed) Base 64 MD5 hash of the uploaded data.
 func (o BucketObjectOutput) Md5hash() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Md5hash }).(pulumi.StringOutput)
+}
+
+// Hex value of md5hash
+func (o BucketObjectOutput) Md5hexhash() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Md5hexhash }).(pulumi.StringOutput)
 }
 
 // (Computed) A url reference to download this object.

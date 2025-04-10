@@ -6,6 +6,7 @@ package com.pulumi.gcp.workbench.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupAcceleratorConfig;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupBootDisk;
+import com.pulumi.gcp.workbench.outputs.InstanceGceSetupConfidentialInstanceConfig;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupContainerImage;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupDataDisks;
 import com.pulumi.gcp.workbench.outputs.InstanceGceSetupNetworkInterface;
@@ -36,6 +37,12 @@ public final class InstanceGceSetup {
      * 
      */
     private @Nullable InstanceGceSetupBootDisk bootDisk;
+    /**
+     * @return Confidential instance configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable InstanceGceSetupConfidentialInstanceConfig confidentialInstanceConfig;
     /**
      * @return Use a container image to start the workbench instance.
      * Structure is documented below.
@@ -121,6 +128,14 @@ public final class InstanceGceSetup {
      */
     public Optional<InstanceGceSetupBootDisk> bootDisk() {
         return Optional.ofNullable(this.bootDisk);
+    }
+    /**
+     * @return Confidential instance configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<InstanceGceSetupConfidentialInstanceConfig> confidentialInstanceConfig() {
+        return Optional.ofNullable(this.confidentialInstanceConfig);
     }
     /**
      * @return Use a container image to start the workbench instance.
@@ -222,6 +237,7 @@ public final class InstanceGceSetup {
     public static final class Builder {
         private @Nullable List<InstanceGceSetupAcceleratorConfig> acceleratorConfigs;
         private @Nullable InstanceGceSetupBootDisk bootDisk;
+        private @Nullable InstanceGceSetupConfidentialInstanceConfig confidentialInstanceConfig;
         private @Nullable InstanceGceSetupContainerImage containerImage;
         private @Nullable InstanceGceSetupDataDisks dataDisks;
         private @Nullable Boolean disablePublicIp;
@@ -238,6 +254,7 @@ public final class InstanceGceSetup {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorConfigs = defaults.acceleratorConfigs;
     	      this.bootDisk = defaults.bootDisk;
+    	      this.confidentialInstanceConfig = defaults.confidentialInstanceConfig;
     	      this.containerImage = defaults.containerImage;
     	      this.dataDisks = defaults.dataDisks;
     	      this.disablePublicIp = defaults.disablePublicIp;
@@ -264,6 +281,12 @@ public final class InstanceGceSetup {
         public Builder bootDisk(@Nullable InstanceGceSetupBootDisk bootDisk) {
 
             this.bootDisk = bootDisk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder confidentialInstanceConfig(@Nullable InstanceGceSetupConfidentialInstanceConfig confidentialInstanceConfig) {
+
+            this.confidentialInstanceConfig = confidentialInstanceConfig;
             return this;
         }
         @CustomType.Setter
@@ -345,6 +368,7 @@ public final class InstanceGceSetup {
             final var _resultValue = new InstanceGceSetup();
             _resultValue.acceleratorConfigs = acceleratorConfigs;
             _resultValue.bootDisk = bootDisk;
+            _resultValue.confidentialInstanceConfig = confidentialInstanceConfig;
             _resultValue.containerImage = containerImage;
             _resultValue.dataDisks = dataDisks;
             _resultValue.disablePublicIp = disablePublicIp;

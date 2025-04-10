@@ -59,6 +59,7 @@ export interface GetRegionalParameterResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly kmsKey: string;
     readonly labels: {[key: string]: string};
     readonly location: string;
     readonly name: string;

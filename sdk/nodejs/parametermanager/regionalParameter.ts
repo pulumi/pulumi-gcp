@@ -56,6 +56,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Regional Parameter With Kms Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const regional_parameter_with_kms_key = new gcp.parametermanager.RegionalParameter("regional-parameter-with-kms-key", {
+ *     parameterId: "regional_parameter",
+ *     location: "us-central1",
+ *     kmsKey: "kms-key",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -124,6 +137,11 @@ export class RegionalParameter extends pulumi.CustomResource {
      */
     public readonly format!: pulumi.Output<string | undefined>;
     /**
+     * The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     */
+    public readonly kmsKey!: pulumi.Output<string | undefined>;
+    /**
      * The labels assigned to this regional Parameter.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
      * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -189,6 +207,7 @@ export class RegionalParameter extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["format"] = state ? state.format : undefined;
+            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -206,6 +225,7 @@ export class RegionalParameter extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parameterId'");
             }
             resourceInputs["format"] = args ? args.format : undefined;
+            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["parameterId"] = args ? args.parameterId : undefined;
@@ -242,6 +262,11 @@ export interface RegionalParameterState {
      * Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
      */
     format?: pulumi.Input<string>;
+    /**
+     * The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     */
+    kmsKey?: pulumi.Input<string>;
     /**
      * The labels assigned to this regional Parameter.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -303,6 +328,11 @@ export interface RegionalParameterArgs {
      * Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
      */
     format?: pulumi.Input<string>;
+    /**
+     * The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     */
+    kmsKey?: pulumi.Input<string>;
     /**
      * The labels assigned to this regional Parameter.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,

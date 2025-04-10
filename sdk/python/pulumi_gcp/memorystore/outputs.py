@@ -17,6 +17,9 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'InstanceAutomatedBackupConfig',
+    'InstanceAutomatedBackupConfigFixedFrequencySchedule',
+    'InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime',
     'InstanceCrossInstanceReplicationConfig',
     'InstanceCrossInstanceReplicationConfigMembership',
     'InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance',
@@ -44,6 +47,9 @@ __all__ = [
     'InstanceStateInfo',
     'InstanceStateInfoUpdateInfo',
     'InstanceZoneDistributionConfig',
+    'GetInstanceAutomatedBackupConfigResult',
+    'GetInstanceAutomatedBackupConfigFixedFrequencyScheduleResult',
+    'GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult',
     'GetInstanceCrossInstanceReplicationConfigResult',
     'GetInstanceCrossInstanceReplicationConfigMembershipResult',
     'GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceResult',
@@ -69,6 +75,117 @@ __all__ = [
     'GetInstanceStateInfoUpdateInfoResult',
     'GetInstanceZoneDistributionConfigResult',
 ]
+
+@pulumi.output_type
+class InstanceAutomatedBackupConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedFrequencySchedule":
+            suggest = "fixed_frequency_schedule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAutomatedBackupConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAutomatedBackupConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAutomatedBackupConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fixed_frequency_schedule: 'outputs.InstanceAutomatedBackupConfigFixedFrequencySchedule',
+                 retention: builtins.str):
+        """
+        :param 'InstanceAutomatedBackupConfigFixedFrequencyScheduleArgs' fixed_frequency_schedule: Trigger automated backups at a fixed frequency.
+               Structure is documented below.
+        :param builtins.str retention: How long to keep automated backups before the backups are deleted.
+               The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
+        """
+        pulumi.set(__self__, "fixed_frequency_schedule", fixed_frequency_schedule)
+        pulumi.set(__self__, "retention", retention)
+
+    @property
+    @pulumi.getter(name="fixedFrequencySchedule")
+    def fixed_frequency_schedule(self) -> 'outputs.InstanceAutomatedBackupConfigFixedFrequencySchedule':
+        """
+        Trigger automated backups at a fixed frequency.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fixed_frequency_schedule")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> builtins.str:
+        """
+        How long to keep automated backups before the backups are deleted.
+        The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
+        """
+        return pulumi.get(self, "retention")
+
+
+@pulumi.output_type
+class InstanceAutomatedBackupConfigFixedFrequencySchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAutomatedBackupConfigFixedFrequencySchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAutomatedBackupConfigFixedFrequencySchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAutomatedBackupConfigFixedFrequencySchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 start_time: 'outputs.InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime'):
+        """
+        :param 'InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs' start_time: The start time of every automated backup in UTC.
+               It must be set to the start of an hour. This field is required.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> 'outputs.InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime':
+        """
+        The start time of every automated backup in UTC.
+        It must be set to the start of an hour. This field is required.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime(dict):
+    def __init__(__self__, *,
+                 hours: builtins.int):
+        """
+        :param builtins.int hours: Hours of day in 24 hour format. Should be from 0 to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        pulumi.set(__self__, "hours", hours)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> builtins.int:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
 
 @pulumi.output_type
 class InstanceCrossInstanceReplicationConfig(dict):
@@ -1842,6 +1959,79 @@ class InstanceZoneDistributionConfig(dict):
         Ignored for MULTI_ZONE mode.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class GetInstanceAutomatedBackupConfigResult(dict):
+    def __init__(__self__, *,
+                 fixed_frequency_schedules: Sequence['outputs.GetInstanceAutomatedBackupConfigFixedFrequencyScheduleResult'],
+                 retention: builtins.str):
+        """
+        :param Sequence['GetInstanceAutomatedBackupConfigFixedFrequencyScheduleArgs'] fixed_frequency_schedules: Trigger automated backups at a fixed frequency.
+        :param builtins.str retention: How long to keep automated backups before the backups are deleted.
+               The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
+        """
+        pulumi.set(__self__, "fixed_frequency_schedules", fixed_frequency_schedules)
+        pulumi.set(__self__, "retention", retention)
+
+    @property
+    @pulumi.getter(name="fixedFrequencySchedules")
+    def fixed_frequency_schedules(self) -> Sequence['outputs.GetInstanceAutomatedBackupConfigFixedFrequencyScheduleResult']:
+        """
+        Trigger automated backups at a fixed frequency.
+        """
+        return pulumi.get(self, "fixed_frequency_schedules")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> builtins.str:
+        """
+        How long to keep automated backups before the backups are deleted.
+        The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The default_value is "3024000s"
+        """
+        return pulumi.get(self, "retention")
+
+
+@pulumi.output_type
+class GetInstanceAutomatedBackupConfigFixedFrequencyScheduleResult(dict):
+    def __init__(__self__, *,
+                 start_times: Sequence['outputs.GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult']):
+        """
+        :param Sequence['GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs'] start_times: The start time of every automated backup in UTC.
+               It must be set to the start of an hour. This field is required.
+        """
+        pulumi.set(__self__, "start_times", start_times)
+
+    @property
+    @pulumi.getter(name="startTimes")
+    def start_times(self) -> Sequence['outputs.GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult']:
+        """
+        The start time of every automated backup in UTC.
+        It must be set to the start of an hour. This field is required.
+        """
+        return pulumi.get(self, "start_times")
+
+
+@pulumi.output_type
+class GetInstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: builtins.int):
+        """
+        :param builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        pulumi.set(__self__, "hours", hours)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> builtins.int:
+        """
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
 
 
 @pulumi.output_type

@@ -1421,7 +1421,6 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// Stream can be imported using any of these accepted formats:

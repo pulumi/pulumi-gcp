@@ -228,6 +228,21 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Hex value of md5hash
+     * 
+     */
+    @Import(name="md5hexhash")
+    private @Nullable Output<String> md5hexhash;
+
+    /**
+     * @return Hex value of md5hash
+     * 
+     */
+    public Optional<Output<String>> md5hexhash() {
+        return Optional.ofNullable(this.md5hexhash);
+    }
+
+    /**
      * (Computed) A url reference to download this object.
      * 
      */
@@ -395,6 +410,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         this.generation = $.generation;
         this.kmsKeyName = $.kmsKeyName;
         this.md5hash = $.md5hash;
+        this.md5hexhash = $.md5hexhash;
         this.mediaLink = $.mediaLink;
         this.metadata = $.metadata;
         this.name = $.name;
@@ -708,6 +724,27 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder md5hash(String md5hash) {
             return md5hash(Output.of(md5hash));
+        }
+
+        /**
+         * @param md5hexhash Hex value of md5hash
+         * 
+         * @return builder
+         * 
+         */
+        public Builder md5hexhash(@Nullable Output<String> md5hexhash) {
+            $.md5hexhash = md5hexhash;
+            return this;
+        }
+
+        /**
+         * @param md5hexhash Hex value of md5hash
+         * 
+         * @return builder
+         * 
+         */
+        public Builder md5hexhash(String md5hexhash) {
+            return md5hexhash(Output.of(md5hexhash));
         }
 
         /**

@@ -181,6 +181,31 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Workbench Instance Confidential Compute
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.workbench.Instance("instance", {
+ *     name: "workbench-instance",
+ *     location: "us-central1-a",
+ *     gceSetup: {
+ *         machineType: "n2d-standard-2",
+ *         shieldedInstanceConfig: {
+ *             enableSecureBoot: true,
+ *             enableVtpm: true,
+ *             enableIntegrityMonitoring: true,
+ *         },
+ *         metadata: {
+ *             terraform: "true",
+ *         },
+ *         confidentialInstanceConfig: {
+ *             confidentialInstanceType: "SEV",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

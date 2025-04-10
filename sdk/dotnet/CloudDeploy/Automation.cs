@@ -160,9 +160,55 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                     Id = "advance-rollout",
     ///                     SourcePhases = new[]
     ///                     {
-    ///                         "deploy",
+    ///                         "canary",
     ///                     },
     ///                     Wait = "200s",
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudDeploy.Inputs.AutomationRuleArgs
+    ///             {
+    ///                 RepairRolloutRule = new Gcp.CloudDeploy.Inputs.AutomationRuleRepairRolloutRuleArgs
+    ///                 {
+    ///                     Id = "repair-rollout",
+    ///                     Phases = new[]
+    ///                     {
+    ///                         "stable",
+    ///                     },
+    ///                     Jobs = new[]
+    ///                     {
+    ///                         "deploy",
+    ///                     },
+    ///                     RepairPhases = new[]
+    ///                     {
+    ///                         new Gcp.CloudDeploy.Inputs.AutomationRuleRepairRolloutRuleRepairPhaseArgs
+    ///                         {
+    ///                             Retry = new Gcp.CloudDeploy.Inputs.AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs
+    ///                             {
+    ///                                 Attempts = "1",
+    ///                                 Wait = "200s",
+    ///                                 BackoffMode = "BACKOFF_MODE_LINEAR",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudDeploy.Inputs.AutomationRuleRepairRolloutRuleRepairPhaseArgs
+    ///                         {
+    ///                             Rollback = new Gcp.CloudDeploy.Inputs.AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs
+    ///                             {
+    ///                                 DestinationPhase = "stable",
+    ///                                 DisableRollbackIfRolloutPending = true,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudDeploy.Inputs.AutomationRuleArgs
+    ///             {
+    ///                 TimedPromoteReleaseRule = new Gcp.CloudDeploy.Inputs.AutomationRuleTimedPromoteReleaseRuleArgs
+    ///                 {
+    ///                     Id = "timed-promote-release",
+    ///                     DestinationTargetId = "@next",
+    ///                     Schedule = "0 9 * * 1",
+    ///                     TimeZone = "America/New_York",
+    ///                     DestinationPhase = "stable",
     ///                 },
     ///             },
     ///         },

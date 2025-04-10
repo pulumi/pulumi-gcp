@@ -150,9 +150,44 @@ import (
 //						AdvanceRolloutRule: &clouddeploy.AutomationRuleAdvanceRolloutRuleArgs{
 //							Id: pulumi.String("advance-rollout"),
 //							SourcePhases: pulumi.StringArray{
-//								pulumi.String("deploy"),
+//								pulumi.String("canary"),
 //							},
 //							Wait: pulumi.String("200s"),
+//						},
+//					},
+//					&clouddeploy.AutomationRuleArgs{
+//						RepairRolloutRule: &clouddeploy.AutomationRuleRepairRolloutRuleArgs{
+//							Id: pulumi.String("repair-rollout"),
+//							Phases: pulumi.StringArray{
+//								pulumi.String("stable"),
+//							},
+//							Jobs: pulumi.StringArray{
+//								pulumi.String("deploy"),
+//							},
+//							RepairPhases: clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseArray{
+//								&clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseArgs{
+//									Retry: &clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs{
+//										Attempts:    pulumi.String("1"),
+//										Wait:        pulumi.String("200s"),
+//										BackoffMode: pulumi.String("BACKOFF_MODE_LINEAR"),
+//									},
+//								},
+//								&clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseArgs{
+//									Rollback: &clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs{
+//										DestinationPhase:                pulumi.String("stable"),
+//										DisableRollbackIfRolloutPending: pulumi.Bool(true),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&clouddeploy.AutomationRuleArgs{
+//						TimedPromoteReleaseRule: &clouddeploy.AutomationRuleTimedPromoteReleaseRuleArgs{
+//							Id:                  pulumi.String("timed-promote-release"),
+//							DestinationTargetId: pulumi.String("@next"),
+//							Schedule:            pulumi.String("0 9 * * 1"),
+//							TimeZone:            pulumi.String("America/New_York"),
+//							DestinationPhase:    pulumi.String("stable"),
 //						},
 //					},
 //				},

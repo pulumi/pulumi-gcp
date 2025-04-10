@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs;
+import com.pulumi.gcp.datastream.inputs.StreamBackfillAllSalesforceExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllSqlServerExcludedObjectsArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -70,6 +71,23 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Salesforce objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="salesforceExcludedObjects")
+    private @Nullable Output<StreamBackfillAllSalesforceExcludedObjectsArgs> salesforceExcludedObjects;
+
+    /**
+     * @return Salesforce objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamBackfillAllSalesforceExcludedObjectsArgs>> salesforceExcludedObjects() {
+        return Optional.ofNullable(this.salesforceExcludedObjects);
+    }
+
+    /**
      * SQL Server data source objects to avoid backfilling.
      * Structure is documented below.
      * 
@@ -92,6 +110,7 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
         this.mysqlExcludedObjects = $.mysqlExcludedObjects;
         this.oracleExcludedObjects = $.oracleExcludedObjects;
         this.postgresqlExcludedObjects = $.postgresqlExcludedObjects;
+        this.salesforceExcludedObjects = $.salesforceExcludedObjects;
         this.sqlServerExcludedObjects = $.sqlServerExcludedObjects;
     }
 
@@ -180,6 +199,29 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder postgresqlExcludedObjects(StreamBackfillAllPostgresqlExcludedObjectsArgs postgresqlExcludedObjects) {
             return postgresqlExcludedObjects(Output.of(postgresqlExcludedObjects));
+        }
+
+        /**
+         * @param salesforceExcludedObjects Salesforce objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceExcludedObjects(@Nullable Output<StreamBackfillAllSalesforceExcludedObjectsArgs> salesforceExcludedObjects) {
+            $.salesforceExcludedObjects = salesforceExcludedObjects;
+            return this;
+        }
+
+        /**
+         * @param salesforceExcludedObjects Salesforce objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder salesforceExcludedObjects(StreamBackfillAllSalesforceExcludedObjectsArgs salesforceExcludedObjects) {
+            return salesforceExcludedObjects(Output.of(salesforceExcludedObjects));
         }
 
         /**

@@ -22,6 +22,7 @@ __all__ = [
     'VolumeExportPolicyRule',
     'VolumeMountOption',
     'VolumeReplicationDestinationVolumeParameters',
+    'VolumeReplicationDestinationVolumeParametersTieringPolicy',
     'VolumeReplicationTransferStat',
     'VolumeRestoreParameters',
     'VolumeSnapshotPolicy',
@@ -385,6 +386,8 @@ class VolumeReplicationDestinationVolumeParameters(dict):
             suggest = "storage_pool"
         elif key == "shareName":
             suggest = "share_name"
+        elif key == "tieringPolicy":
+            suggest = "tiering_policy"
         elif key == "volumeId":
             suggest = "volume_id"
 
@@ -403,11 +406,14 @@ class VolumeReplicationDestinationVolumeParameters(dict):
                  storage_pool: builtins.str,
                  description: Optional[builtins.str] = None,
                  share_name: Optional[builtins.str] = None,
+                 tiering_policy: Optional['outputs.VolumeReplicationDestinationVolumeParametersTieringPolicy'] = None,
                  volume_id: Optional[builtins.str] = None):
         """
         :param builtins.str storage_pool: Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
         :param builtins.str description: Description for the destination volume.
         :param builtins.str share_name: Share name for destination volume. If not specified, name of source volume's share name will be used.
+        :param 'VolumeReplicationDestinationVolumeParametersTieringPolicyArgs' tiering_policy: Tiering policy for the volume.
+               Structure is documented below.
         :param builtins.str volume_id: Name for the destination volume to be created. If not specified, the name of the source volume will be used.
         """
         pulumi.set(__self__, "storage_pool", storage_pool)
@@ -415,6 +421,8 @@ class VolumeReplicationDestinationVolumeParameters(dict):
             pulumi.set(__self__, "description", description)
         if share_name is not None:
             pulumi.set(__self__, "share_name", share_name)
+        if tiering_policy is not None:
+            pulumi.set(__self__, "tiering_policy", tiering_policy)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -443,12 +451,77 @@ class VolumeReplicationDestinationVolumeParameters(dict):
         return pulumi.get(self, "share_name")
 
     @property
+    @pulumi.getter(name="tieringPolicy")
+    def tiering_policy(self) -> Optional['outputs.VolumeReplicationDestinationVolumeParametersTieringPolicy']:
+        """
+        Tiering policy for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tiering_policy")
+
+    @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[builtins.str]:
         """
         Name for the destination volume to be created. If not specified, the name of the source volume will be used.
         """
         return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class VolumeReplicationDestinationVolumeParametersTieringPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coolingThresholdDays":
+            suggest = "cooling_threshold_days"
+        elif key == "tierAction":
+            suggest = "tier_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeReplicationDestinationVolumeParametersTieringPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeReplicationDestinationVolumeParametersTieringPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeReplicationDestinationVolumeParametersTieringPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cooling_threshold_days: Optional[builtins.int] = None,
+                 tier_action: Optional[builtins.str] = None):
+        """
+        :param builtins.int cooling_threshold_days: Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
+               Default is 31.
+        :param builtins.str tier_action: Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+               Default value is `PAUSED`.
+               Possible values are: `ENABLED`, `PAUSED`.
+        """
+        if cooling_threshold_days is not None:
+            pulumi.set(__self__, "cooling_threshold_days", cooling_threshold_days)
+        if tier_action is not None:
+            pulumi.set(__self__, "tier_action", tier_action)
+
+    @property
+    @pulumi.getter(name="coolingThresholdDays")
+    def cooling_threshold_days(self) -> Optional[builtins.int]:
+        """
+        Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
+        Default is 31.
+        """
+        return pulumi.get(self, "cooling_threshold_days")
+
+    @property
+    @pulumi.getter(name="tierAction")
+    def tier_action(self) -> Optional[builtins.str]:
+        """
+        Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+        Default value is `PAUSED`.
+        Possible values are: `ENABLED`, `PAUSED`.
+        """
+        return pulumi.get(self, "tier_action")
 
 
 @pulumi.output_type
@@ -1038,7 +1111,7 @@ class VolumeTieringPolicy(dict):
                  cooling_threshold_days: Optional[builtins.int] = None,
                  tier_action: Optional[builtins.str] = None):
         """
-        :param builtins.int cooling_threshold_days: Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+        :param builtins.int cooling_threshold_days: Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
                Default is 31.
         :param builtins.str tier_action: Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
                Default value is `PAUSED`.
@@ -1053,7 +1126,7 @@ class VolumeTieringPolicy(dict):
     @pulumi.getter(name="coolingThresholdDays")
     def cooling_threshold_days(self) -> Optional[builtins.int]:
         """
-        Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+        Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
         Default is 31.
         """
         return pulumi.get(self, "cooling_threshold_days")

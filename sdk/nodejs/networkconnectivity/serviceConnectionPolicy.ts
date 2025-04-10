@@ -11,9 +11,10 @@ import * as utilities from "../utilities";
  *
  * To get more information about ServiceConnectionPolicy, see:
  *
- * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/networkconnectivity/rest/v1/projects.locations.networkConnectionPolicies)
+ * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.serviceConnectionPolicies)
  * * How-to Guides
  *     * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
+ *     * [About Service Connectivity Automation](https://cloud.google.com/vpc/docs/about-service-connectivity-automation)
  *
  * ## Example Usage
  *

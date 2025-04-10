@@ -318,6 +318,7 @@ class _VmwareAdminClusterState:
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 enable_advanced_cluster: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  etag: Optional[pulumi.Input[builtins.str]] = None,
                  fleets: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterFleetArgs']]]] = None,
@@ -352,6 +353,7 @@ class _VmwareAdminClusterState:
         :param pulumi.Input['VmwareAdminClusterControlPlaneNodeArgs'] control_plane_node: The VMware admin cluster control plane node configuration.
         :param pulumi.Input[builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: A human readable description of this VMware admin cluster.
+        :param pulumi.Input[builtins.bool] enable_advanced_cluster: If set, the advanced cluster feature is enabled.
         :param pulumi.Input[builtins.str] endpoint: The DNS name of VMware admin cluster's API server.
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -407,6 +409,8 @@ class _VmwareAdminClusterState:
             pulumi.set(__self__, "description", description)
         if effective_annotations is not None:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
+        if enable_advanced_cluster is not None:
+            pulumi.set(__self__, "enable_advanced_cluster", enable_advanced_cluster)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if etag is not None:
@@ -565,6 +569,18 @@ class _VmwareAdminClusterState:
     @effective_annotations.setter
     def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="enableAdvancedCluster")
+    def enable_advanced_cluster(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If set, the advanced cluster feature is enabled.
+        """
+        return pulumi.get(self, "enable_advanced_cluster")
+
+    @enable_advanced_cluster.setter
+    def enable_advanced_cluster(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_advanced_cluster", value)
 
     @property
     @pulumi.getter
@@ -1337,6 +1353,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
             __props__.__dict__["vcenter"] = vcenter
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["enable_advanced_cluster"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["fleets"] = None
@@ -1366,6 +1383,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            enable_advanced_cluster: Optional[pulumi.Input[builtins.bool]] = None,
             endpoint: Optional[pulumi.Input[builtins.str]] = None,
             etag: Optional[pulumi.Input[builtins.str]] = None,
             fleets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmwareAdminClusterFleetArgs', 'VmwareAdminClusterFleetArgsDict']]]]] = None,
@@ -1405,6 +1423,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']] control_plane_node: The VMware admin cluster control plane node configuration.
         :param pulumi.Input[builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: A human readable description of this VMware admin cluster.
+        :param pulumi.Input[builtins.bool] enable_advanced_cluster: If set, the advanced cluster feature is enabled.
         :param pulumi.Input[builtins.str] endpoint: The DNS name of VMware admin cluster's API server.
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -1454,6 +1473,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["enable_advanced_cluster"] = enable_advanced_cluster
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["etag"] = etag
         __props__.__dict__["fleets"] = fleets
@@ -1555,6 +1575,14 @@ class VmwareAdminCluster(pulumi.CustomResource):
     @pulumi.getter(name="effectiveAnnotations")
     def effective_annotations(self) -> pulumi.Output[Mapping[str, builtins.str]]:
         return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="enableAdvancedCluster")
+    def enable_advanced_cluster(self) -> pulumi.Output[builtins.bool]:
+        """
+        If set, the advanced cluster feature is enabled.
+        """
+        return pulumi.get(self, "enable_advanced_cluster")
 
     @property
     @pulumi.getter

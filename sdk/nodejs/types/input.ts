@@ -471,6 +471,30 @@ export namespace accesscontextmanager {
         title: pulumi.Input<string>;
     }
 
+    export interface GcpUserAccessBindingSessionSettings {
+        /**
+         * Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+         */
+        maxInactivity?: pulumi.Input<string>;
+        /**
+         * Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+         */
+        sessionLength?: pulumi.Input<string>;
+        /**
+         * Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+         */
+        sessionLengthEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optional. The session challenges proposed to users when the Google Cloud session length is up.
+         * Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+         */
+        sessionReauthMethod?: pulumi.Input<string>;
+        /**
+         * Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+         */
+        useOidcMaxAge?: pulumi.Input<boolean>;
+    }
+
     export interface ServicePerimeterDryRunEgressPolicyEgressFrom {
         /**
          * Identities can be an individual user, service account, Google group,
@@ -11870,6 +11894,16 @@ export namespace clouddeploy {
          * Structure is documented below.
          */
         promoteReleaseRule?: pulumi.Input<inputs.clouddeploy.AutomationRulePromoteReleaseRule>;
+        /**
+         * Optional. The RepairRolloutRule will automatically repair a failed rollout.
+         * Structure is documented below.
+         */
+        repairRolloutRule?: pulumi.Input<inputs.clouddeploy.AutomationRuleRepairRolloutRule>;
+        /**
+         * Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+         * Structure is documented below.
+         */
+        timedPromoteReleaseRule?: pulumi.Input<inputs.clouddeploy.AutomationRuleTimedPromoteReleaseRule>;
     }
 
     export interface AutomationRuleAdvanceRolloutRule {
@@ -11879,8 +11913,6 @@ export namespace clouddeploy {
         id: pulumi.Input<string>;
         /**
          * Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-         *
-         * - - -
          */
         sourcePhases?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -11906,6 +11938,93 @@ export namespace clouddeploy {
          * Optional. How long the release need to be paused until being promoted to the next target.
          */
         wait?: pulumi.Input<string>;
+    }
+
+    export interface AutomationRuleRepairRolloutRule {
+        /**
+         * Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+         */
+        jobs?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
+         */
+        phases?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+         * Structure is documented below.
+         */
+        repairPhases?: pulumi.Input<pulumi.Input<inputs.clouddeploy.AutomationRuleRepairRolloutRuleRepairPhase>[]>;
+    }
+
+    export interface AutomationRuleRepairRolloutRuleRepairPhase {
+        /**
+         * Optional. Retries a failed job.
+         * Structure is documented below.
+         */
+        retry?: pulumi.Input<inputs.clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseRetry>;
+        /**
+         * Optional. Rolls back a Rollout.
+         * Structure is documented below.
+         */
+        rollback?: pulumi.Input<inputs.clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseRollback>;
+    }
+
+    export interface AutomationRuleRepairRolloutRuleRepairPhaseRetry {
+        /**
+         * Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+         */
+        attempts: pulumi.Input<string>;
+        /**
+         * Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0.
+         * Possible values are: `BACKOFF_MODE_UNSPECIFIED`, `BACKOFF_MODE_LINEAR`, `BACKOFF_MODE_EXPONENTIAL`.
+         */
+        backoffMode?: pulumi.Input<string>;
+        /**
+         * Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: `3.5s`.
+         */
+        wait?: pulumi.Input<string>;
+    }
+
+    export interface AutomationRuleRepairRolloutRuleRepairPhaseRollback {
+        /**
+         * Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
+         */
+        destinationPhase?: pulumi.Input<string>;
+        /**
+         * Optional. If pending rollout exists on the target, the rollback operation will be aborted.
+         */
+        disableRollbackIfRolloutPending?: pulumi.Input<boolean>;
+    }
+
+    export interface AutomationRuleTimedPromoteReleaseRule {
+        /**
+         * Optional. The starting phase of the rollout created by this rule. Default to the first phase.
+         *
+         * - - -
+         */
+        destinationPhase?: pulumi.Input<string>;
+        /**
+         * Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
+         * - The last segment of a target name
+         * - "@next", the next target in the promotion sequence"
+         */
+        destinationTargetId?: pulumi.Input<string>;
+        /**
+         * Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
+         */
+        schedule: pulumi.Input<string>;
+        /**
+         * Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+         */
+        timeZone: pulumi.Input<string>;
     }
 
     export interface AutomationSelector {
@@ -12357,6 +12476,241 @@ export namespace clouddeploy {
          * Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
          */
         actions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DeployPolicyRule {
+        /**
+         * Optional. Rollout restrictions.
+         * Structure is documented below.
+         */
+        rolloutRestriction?: pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestriction>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestriction {
+        /**
+         * Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted.
+         * Each value may be one of: `ADVANCE`, `APPROVE`, `CANCEL`, `CREATE`, `IGNORE_JOB`, `RETRY_JOB`, `ROLLBACK`, `TERMINATE_JOBRUN`.
+         */
+        actions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required. ID of the rule. This id must be unique in the `DeployPolicy` resource to which this rule belongs. The format is `a-z{0,62}`.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Optional. What invoked the action. If left empty, all invoker types will be restricted.
+         * Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
+         */
+        invokers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required. Time window within which actions are restricted.
+         * Structure is documented below.
+         */
+        timeWindows?: pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestrictionTimeWindows>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestrictionTimeWindows {
+        /**
+         * Optional. One-time windows within which actions are restricted.
+         * Structure is documented below.
+         */
+        oneTimeWindows?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow>[]>;
+        /**
+         * Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
+         */
+        timeZone: pulumi.Input<string>;
+        /**
+         * Optional. Recurring weekly windows within which actions are restricted.
+         * Structure is documented below.
+         */
+        weeklyWindows?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow>[]>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
+        /**
+         * Required. End date.
+         * Structure is documented below.
+         */
+        endDate: pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate>;
+        /**
+         * Required. End time (exclusive). You may use 24:00 for the end of the day.
+         * Structure is documented below.
+         */
+        endTime: pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime>;
+        /**
+         * Required. Start date.
+         * Structure is documented below.
+         */
+        startDate: pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate>;
+        /**
+         * Required. Start time (inclusive). Use 00:00 for the beginning of the day.
+         * Structure is documented below.
+         */
+        startTime: pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month.
+         */
+        day?: pulumi.Input<number>;
+        /**
+         * Month of a year. Must be from 1 to 12.
+         */
+        month?: pulumi.Input<number>;
+        /**
+         * Year of the date. Must be from 1 to 9999.
+         */
+        year?: pulumi.Input<number>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime {
+        /**
+         * Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+         *
+         * - - -
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: pulumi.Input<number>;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+         */
+        month?: pulumi.Input<number>;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+         */
+        year?: pulumi.Input<number>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTime {
+        /**
+         * Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
+        /**
+         * Optional. Days of week. If left empty, all days of the week will be included.
+         * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+         * Structure is documented below.
+         */
+        endTime?: pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime>;
+        /**
+         * Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
+         * Structure is documented below.
+         */
+        startTime?: pulumi.Input<inputs.clouddeploy.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime {
+        /**
+         * Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+         *
+         * - - -
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime {
+        /**
+         * Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface DeployPolicySelector {
+        /**
+         * Contains attributes about a delivery pipeline.
+         * Structure is documented below.
+         */
+        deliveryPipeline?: pulumi.Input<inputs.clouddeploy.DeployPolicySelectorDeliveryPipeline>;
+        /**
+         * Contains attributes about a target.
+         * Structure is documented below.
+         */
+        target?: pulumi.Input<inputs.clouddeploy.DeployPolicySelectorTarget>;
+    }
+
+    export interface DeployPolicySelectorDeliveryPipeline {
+        /**
+         * Optional. ID of the DeliveryPipeline. The value of this field could be one of the following:
+         * - The last segment of a pipeline name
+         * - "*", all delivery pipelines in a location
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * DeliveryPipeline labels.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface DeployPolicySelectorTarget {
+        /**
+         * ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Target labels.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface TargetAnthosCluster {
@@ -28759,6 +29113,10 @@ export namespace compute {
          * Specifies the number of max logical switches.
          */
         maxDistance?: pulumi.Input<number>;
+        /**
+         * Specifies the shape of the TPU slice.
+         */
+        tpuTopology?: pulumi.Input<string>;
         /**
          * Number of VMs in this placement group. Google does not recommend that you use this field
          * unless you use a compact policy and you want your policy to work only if it contains this
@@ -48330,6 +48688,11 @@ export namespace datastream {
          */
         postgresqlExcludedObjects?: pulumi.Input<inputs.datastream.StreamBackfillAllPostgresqlExcludedObjects>;
         /**
+         * Salesforce objects to avoid backfilling.
+         * Structure is documented below.
+         */
+        salesforceExcludedObjects?: pulumi.Input<inputs.datastream.StreamBackfillAllSalesforceExcludedObjects>;
+        /**
          * SQL Server data source objects to avoid backfilling.
          * Structure is documented below.
          */
@@ -48549,6 +48912,33 @@ export namespace datastream {
          * Column scale.
          */
         scale?: pulumi.Input<number>;
+    }
+
+    export interface StreamBackfillAllSalesforceExcludedObjects {
+        /**
+         * Salesforce objects in Salesforce Org.
+         * Structure is documented below.
+         */
+        objects: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllSalesforceExcludedObjectsObject>[]>;
+    }
+
+    export interface StreamBackfillAllSalesforceExcludedObjectsObject {
+        /**
+         * Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+         * Structure is documented below.
+         */
+        fields?: pulumi.Input<pulumi.Input<inputs.datastream.StreamBackfillAllSalesforceExcludedObjectsObjectField>[]>;
+        /**
+         * Name of object in Salesforce Org.
+         */
+        objectName?: pulumi.Input<string>;
+    }
+
+    export interface StreamBackfillAllSalesforceExcludedObjectsObjectField {
+        /**
+         * Field name.
+         */
+        name?: pulumi.Input<string>;
     }
 
     export interface StreamBackfillAllSqlServerExcludedObjects {
@@ -48806,6 +49196,11 @@ export namespace datastream {
          * Structure is documented below.
          */
         postgresqlSourceConfig?: pulumi.Input<inputs.datastream.StreamSourceConfigPostgresqlSourceConfig>;
+        /**
+         * Salesforce data source configuration.
+         * Structure is documented below.
+         */
+        salesforceSourceConfig?: pulumi.Input<inputs.datastream.StreamSourceConfigSalesforceSourceConfig>;
         /**
          * Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
          */
@@ -49347,6 +49742,77 @@ export namespace datastream {
          * Column scale.
          */
         scale?: pulumi.Input<number>;
+    }
+
+    export interface StreamSourceConfigSalesforceSourceConfig {
+        /**
+         * Salesforce objects to exclude from the stream.
+         * Structure is documented below.
+         */
+        excludeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigSalesforceSourceConfigExcludeObjects>;
+        /**
+         * Salesforce objects to retrieve from the source.
+         * Structure is documented below.
+         */
+        includeObjects?: pulumi.Input<inputs.datastream.StreamSourceConfigSalesforceSourceConfigIncludeObjects>;
+        /**
+         * Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
+         */
+        pollingInterval: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigSalesforceSourceConfigExcludeObjects {
+        /**
+         * Salesforce objects in data source.
+         * Structure is documented below.
+         */
+        objects: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject>[]>;
+    }
+
+    export interface StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject {
+        /**
+         * Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+         * Structure is documented below.
+         */
+        fields?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField>[]>;
+        /**
+         * Name of object in Salesforce Org.
+         */
+        objectName?: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField {
+        /**
+         * Field name.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigSalesforceSourceConfigIncludeObjects {
+        /**
+         * Salesforce objects in Salesforce Org.
+         * Structure is documented below.
+         */
+        objects: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject>[]>;
+    }
+
+    export interface StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject {
+        /**
+         * Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+         * Structure is documented below.
+         */
+        fields?: pulumi.Input<pulumi.Input<inputs.datastream.StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField>[]>;
+        /**
+         * Name of object in Salesforce Org.
+         */
+        objectName?: pulumi.Input<string>;
+    }
+
+    export interface StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField {
+        /**
+         * Field name.
+         */
+        name?: pulumi.Input<string>;
     }
 
     export interface StreamSourceConfigSqlServerSourceConfig {
@@ -55332,6 +55798,44 @@ export namespace folder {
 }
 
 export namespace gemini {
+    export interface CodeToolsSettingEnabledTool {
+        /**
+         * Link to the Dev Connect Account Connector that holds the user credentials.
+         * projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
+         */
+        accountConnector?: pulumi.Input<string>;
+        /**
+         * Configuration parameters for the tool.
+         * Structure is documented below.
+         */
+        configs?: pulumi.Input<pulumi.Input<inputs.gemini.CodeToolsSettingEnabledToolConfig>[]>;
+        /**
+         * Handle used to invoke the tool.
+         */
+        handle: pulumi.Input<string>;
+        /**
+         * Link to the Tool
+         */
+        tool: pulumi.Input<string>;
+        /**
+         * Overridden URI, if allowed by Tool.
+         */
+        uriOverride?: pulumi.Input<string>;
+    }
+
+    export interface CodeToolsSettingEnabledToolConfig {
+        /**
+         * Key of the configuration item.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value of the configuration item.
+         *
+         * - - -
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface RepositoryGroupIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -63256,6 +63760,37 @@ export namespace memcache {
 }
 
 export namespace memorystore {
+    export interface InstanceAutomatedBackupConfig {
+        /**
+         * Trigger automated backups at a fixed frequency.
+         * Structure is documented below.
+         */
+        fixedFrequencySchedule: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfigFixedFrequencySchedule>;
+        /**
+         * How long to keep automated backups before the backups are deleted.
+         * The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s". The defaultValue is "3024000s"
+         */
+        retention: pulumi.Input<string>;
+    }
+
+    export interface InstanceAutomatedBackupConfigFixedFrequencySchedule {
+        /**
+         * The start time of every automated backup in UTC.
+         * It must be set to the start of an hour. This field is required.
+         * Structure is documented below.
+         */
+        startTime: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime>;
+    }
+
+    export interface InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         * An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours: pulumi.Input<number>;
+    }
+
     export interface InstanceCrossInstanceReplicationConfig {
         /**
          * The instance role supports the following values:
@@ -65652,9 +66187,28 @@ export namespace netapp {
          */
         storagePool: pulumi.Input<string>;
         /**
+         * Tiering policy for the volume.
+         * Structure is documented below.
+         */
+        tieringPolicy?: pulumi.Input<inputs.netapp.VolumeReplicationDestinationVolumeParametersTieringPolicy>;
+        /**
          * Name for the destination volume to be created. If not specified, the name of the source volume will be used.
          */
         volumeId?: pulumi.Input<string>;
+    }
+
+    export interface VolumeReplicationDestinationVolumeParametersTieringPolicy {
+        /**
+         * Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
+         * Default is 31.
+         */
+        coolingThresholdDays?: pulumi.Input<number>;
+        /**
+         * Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+         * Default value is `PAUSED`.
+         * Possible values are: `ENABLED`, `PAUSED`.
+         */
+        tierAction?: pulumi.Input<string>;
     }
 
     export interface VolumeReplicationTransferStat {
@@ -65811,7 +66365,7 @@ export namespace netapp {
 
     export interface VolumeTieringPolicy {
         /**
-         * Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+         * Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
          * Default is 31.
          */
         coolingThresholdDays?: pulumi.Input<number>;
@@ -72811,6 +73365,1252 @@ export namespace osconfig {
          * Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
          */
         percentage?: pulumi.Input<number>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResource {
+        /**
+         * Optional. ID of the resource to be used while generating set of affected resources.
+         * For UPSERT action the value is auto-generated during PolicyOrchestrator
+         * creation when not set. When the value is set it should following next
+         * restrictions:
+         * * Must contain only lowercase letters, numbers, and hyphens.
+         * * Must start with a letter.
+         * * Must be between 1-63 characters.
+         * * Must end with a number or a letter.
+         * * Must be unique within the project.
+         * For DELETE action, ID must be specified explicitly during
+         * PolicyOrchestrator creation.
+         *
+         *
+         * <a name="nestedOrchestratedResourceOsPolicyAssignmentV1Payload"></a>The `osPolicyAssignmentV1Payload` block supports:
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * OS policy assignment is an API resource that is used to
+         * apply a set of OS policies to a dynamically targeted group of Compute Engine
+         * VM instances.
+         * An OS policy is used to define the desired state configuration for a
+         * Compute Engine VM instance through a set of configuration resources that
+         * provide capabilities such as installing or removing software packages, or
+         * executing a script.
+         * For more information about the OS policy resource definitions and examples,
+         * see
+         * [OS policy and OS policy
+         * assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
+         * Structure is documented below.
+         */
+        osPolicyAssignmentV1Payload?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1Payload>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1Payload {
+        /**
+         * Output only. Indicates that this revision has been successfully rolled out in this zone
+         * and new VMs will be assigned OS policies from this revision.
+         *
+         * For a given OS policy assignment, there is only one revision with a value
+         * of 'true' for this field.
+         */
+        baseline?: pulumi.Input<boolean>;
+        /**
+         * Output only. Indicates that this revision deletes the OS policy assignment.
+         */
+        deleted?: pulumi.Input<boolean>;
+        /**
+         * OS policy assignment description.
+         * Length of the description is limited to 1024 characters.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Output only. This checksum is computed by the server based on the value of other
+         * fields, and may be sent on update and delete requests to ensure the
+         * client has an up-to-date value before proceeding.
+         */
+        etag?: pulumi.Input<string>;
+        /**
+         * Filters to select target VMs for an assignment.
+         *
+         * If more than one filter criteria is specified below, a VM will be selected
+         * if and only if it satisfies all of them.
+         */
+        instanceFilter: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter>;
+        /**
+         * Immutable. Identifier. In form of
+         * * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+         * * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+         * * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Required. List of OS policies to be applied to the VMs.
+         */
+        osPolicies: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy>[]>;
+        /**
+         * Output only. Set to true, if the there are ongoing changes being applied by the
+         * orchestrator.
+         */
+        reconciling?: pulumi.Input<boolean>;
+        /**
+         * Output only. The timestamp that the revision was created.
+         */
+        revisionCreateTime?: pulumi.Input<string>;
+        /**
+         * Output only. The assignment revision ID
+         * A new revision is committed whenever a rollout is triggered for a OS policy
+         * assignment
+         */
+        revisionId?: pulumi.Input<string>;
+        /**
+         * Message to configure the rollout at the zonal level for the OS policy
+         * assignment.
+         */
+        rollout: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout>;
+        /**
+         * Output only. OS policy assignment rollout state
+         * Possible values:
+         * ROLLOUT_STATE_UNSPECIFIED
+         * IN_PROGRESS
+         * CANCELLING
+         * CANCELLED
+         * SUCCEEDED
+         */
+        rolloutState?: pulumi.Input<string>;
+        /**
+         * Output only. Server generated unique id for the OS policy assignment resource.
+         */
+        uid?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter {
+        /**
+         * Target all VMs in the project. If true, no other criteria is
+         * permitted.
+         */
+        all?: pulumi.Input<boolean>;
+        /**
+         * List of label sets used for VM exclusion.
+         * If the list has more than one label set, the VM is excluded if any
+         * of the label sets are applicable for the VM.
+         * Structure is documented below.
+         */
+        exclusionLabels?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel>[]>;
+        /**
+         * List of label sets used for VM inclusion.
+         * If the list has more than one `LabelSet`, the VM is included if any
+         * of the label sets are applicable for the VM.
+         * Structure is documented below.
+         */
+        inclusionLabels?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel>[]>;
+        /**
+         * List of inventories to select VMs.
+         * A VM is selected if its inventory data matches at least one of the
+         * following inventories.
+         * Structure is documented below.
+         */
+        inventories?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory>[]>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel {
+        /**
+         * Labels are identified by key/value pairs in this map.
+         * A VM should contain all the key/value pairs specified in this
+         * map to be selected.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel {
+        /**
+         * Labels are identified by key/value pairs in this map.
+         * A VM should contain all the key/value pairs specified in this
+         * map to be selected.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory {
+        /**
+         * Required. The OS short name
+         */
+        osShortName: pulumi.Input<string>;
+        /**
+         * The OS version
+         * Prefix matches are supported if asterisk(*) is provided as the
+         * last character. For example, to match all versions with a major
+         * version of `7`, specify the following value for this field `7.*`
+         * An empty string matches all OS versions.
+         */
+        osVersion?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy {
+        /**
+         * This flag determines the OS policy compliance status when none of the
+         * resource groups within the policy are applicable for a VM. Set this value
+         * to `true` if the policy needs to be reported as compliant even if the
+         * policy has nothing to validate or enforce.
+         */
+        allowNoResourceGroupMatch?: pulumi.Input<boolean>;
+        /**
+         * Policy description.
+         * Length of the description is limited to 1024 characters.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Required. The id of the OS policy with the following restrictions:
+         * * Must contain only lowercase letters, numbers, and hyphens.
+         * * Must start with a letter.
+         * * Must be between 1-63 characters.
+         * * Must end with a number or a letter.
+         * * Must be unique within the assignment.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Required. Policy mode
+         * Possible values:
+         * MODE_UNSPECIFIED
+         * VALIDATION
+         * ENFORCEMENT
+         */
+        mode: pulumi.Input<string>;
+        /**
+         * Required. List of resource groups for the policy.
+         * For a particular VM, resource groups are evaluated in the order specified
+         * and the first resource group that is applicable is selected and the rest
+         * are ignored.
+         * If none of the resource groups are applicable for a VM, the VM is
+         * considered to be non-compliant w.r.t this policy. This behavior can be
+         * toggled by the flag `allowNoResourceGroupMatch`
+         * Structure is documented below.
+         */
+        resourceGroups: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup>[]>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup {
+        /**
+         * List of inventory filters for the resource group.
+         * The resources in this resource group are applied to the target VM if it
+         * satisfies at least one of the following inventory filters.
+         * For example, to apply this resource group to VMs running either `RHEL` or
+         * `CentOS` operating systems, specify 2 items for the list with following
+         * values:
+         * inventory_filters[0].os_short_name='rhel' and
+         * inventory_filters[1].os_short_name='centos'
+         * If the list is empty, this resource group will be applied to the target
+         * VM unconditionally.
+         * Structure is documented below.
+         */
+        inventoryFilters?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter>[]>;
+        /**
+         * Required. List of resources configured for this resource group.
+         * The resources are executed in the exact order specified here.
+         * Structure is documented below.
+         */
+        resources: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource>[]>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter {
+        /**
+         * Required. The OS short name
+         */
+        osShortName: pulumi.Input<string>;
+        /**
+         * The OS version
+         * Prefix matches are supported if asterisk(*) is provided as the
+         * last character. For example, to match all versions with a major
+         * version of `7`, specify the following value for this field `7.*`
+         * An empty string matches all OS versions.
+         */
+        osVersion?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource {
+        /**
+         * A resource that allows executing scripts on the VM.
+         * The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
+         * accept a script as an argument to execute.
+         * When the `ExecResource` is applied by the agent, it first executes the
+         * script in the `validate` stage. The `validate` stage can signal that the
+         * `ExecResource` is already in the desired state by returning an exit code
+         * of `100`. If the `ExecResource` is not in the desired state, it should
+         * return an exit code of `101`. Any other exit code returned by this stage
+         * is considered an error.
+         * If the `ExecResource` is not in the desired state based on the exit code
+         * from the `validate` stage, the agent proceeds to execute the script from
+         * the `enforce` stage. If the `ExecResource` is already in the desired
+         * state, the `enforce` stage will not be run.
+         * Similar to `validate` stage, the `enforce` stage should return an exit
+         * code of `100` to indicate that the resource in now in its desired state.
+         * Any other exit code is considered an error.
+         * NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to
+         * have an explicit indicator of `in desired state`, `not in desired state`
+         * and errors. Because, for example, Powershell will always return an exit
+         * code of `0` unless an `exit` statement is provided in the script. So, for
+         * reasons of consistency and being explicit, exit codes `100` and `101`
+         * were chosen.
+         * Structure is documented below.
+         */
+        exec?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec>;
+        /**
+         * A resource that manages the state of a file.
+         * Structure is documented below.
+         */
+        file?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile>;
+        /**
+         * Required. The id of the resource with the following restrictions:
+         * * Must contain only lowercase letters, numbers, and hyphens.
+         * * Must start with a letter.
+         * * Must be between 1-63 characters.
+         * * Must end with a number or a letter.
+         * * Must be unique within the OS policy.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * A resource that manages a system package.
+         * Structure is documented below.
+         */
+        pkg?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg>;
+        /**
+         * A resource that manages a package repository.
+         * Structure is documented below.
+         */
+        repository?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec {
+        /**
+         * A file or script to execute.
+         * Structure is documented below.
+         */
+        enforce?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce>;
+        /**
+         * A file or script to execute.
+         * Structure is documented below.
+         */
+        validate: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce {
+        /**
+         * Optional arguments to pass to the source during execution.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A remote or local file.
+         * Structure is documented below.
+         */
+        file?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile>;
+        /**
+         * Required. The script interpreter to use.
+         * Possible values:
+         * INTERPRETER_UNSPECIFIED
+         * NONE
+         * SHELL
+         * POWERSHELL
+         */
+        interpreter: pulumi.Input<string>;
+        /**
+         * Only recorded for enforce Exec.
+         * Path to an output file (that is created by this Exec) whose
+         * content will be recorded in OSPolicyResourceCompliance after a
+         * successful run. Absence or failure to read this file will result in
+         * this ExecResource being non-compliant. Output file size is limited to
+         * 500K bytes.
+         */
+        outputFilePath?: pulumi.Input<string>;
+        /**
+         * An inline script.
+         * The size of the script is limited to 32KiB.
+         */
+        script?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile {
+        /**
+         * Defaults to false. When false, files are subject to validations
+         * based on the file type:
+         * Remote: A checksum must be specified.
+         * Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: pulumi.Input<boolean>;
+        /**
+         * Specifies a file available as a Cloud Storage Object.
+         * Structure is documented below.
+         */
+        gcs?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs>;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: pulumi.Input<string>;
+        /**
+         * Specifies a file available via some URI.
+         * Structure is documented below.
+         */
+        remote?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: pulumi.Input<string>;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: pulumi.Input<string>;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the
+         * protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate {
+        /**
+         * Optional arguments to pass to the source during execution.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A remote or local file.
+         * Structure is documented below.
+         */
+        file?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile>;
+        /**
+         * Required. The script interpreter to use.
+         * Possible values:
+         * INTERPRETER_UNSPECIFIED
+         * NONE
+         * SHELL
+         * POWERSHELL
+         */
+        interpreter: pulumi.Input<string>;
+        /**
+         * Only recorded for enforce Exec.
+         * Path to an output file (that is created by this Exec) whose
+         * content will be recorded in OSPolicyResourceCompliance after a
+         * successful run. Absence or failure to read this file will result in
+         * this ExecResource being non-compliant. Output file size is limited to
+         * 500K bytes.
+         */
+        outputFilePath?: pulumi.Input<string>;
+        /**
+         * An inline script.
+         * The size of the script is limited to 32KiB.
+         */
+        script?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile {
+        /**
+         * Defaults to false. When false, files are subject to validations
+         * based on the file type:
+         * Remote: A checksum must be specified.
+         * Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: pulumi.Input<boolean>;
+        /**
+         * Specifies a file available as a Cloud Storage Object.
+         * Structure is documented below.
+         */
+        gcs?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs>;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: pulumi.Input<string>;
+        /**
+         * Specifies a file available via some URI.
+         * Structure is documented below.
+         */
+        remote?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: pulumi.Input<string>;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: pulumi.Input<string>;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the
+         * protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile {
+        /**
+         * A a file with this content.
+         * The size of the content is limited to 32KiB.
+         */
+        content?: pulumi.Input<string>;
+        /**
+         * A remote or local file.
+         * Structure is documented below.
+         */
+        file?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile>;
+        /**
+         * Required. The absolute path of the file within the VM.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * Consists of three octal digits which represent, in
+         * order, the permissions of the owner, group, and other users for the
+         * file (similarly to the numeric mode used in the linux chmod
+         * utility). Each digit represents a three bit number with the 4 bit
+         * corresponding to the read permissions, the 2 bit corresponds to the
+         * write bit, and the one bit corresponds to the execute permission.
+         * Default behavior is 755.
+         * Below are some examples of permissions and their associated values:
+         * read, write, and execute: 7
+         * read and execute: 5
+         * read and write: 6
+         * read only: 4
+         */
+        permissions?: pulumi.Input<string>;
+        /**
+         * Required. Desired state of the file.
+         * Possible values:
+         * DESIRED_STATE_UNSPECIFIED
+         * PRESENT
+         * ABSENT
+         * CONTENTS_MATCH
+         */
+        state: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile {
+        /**
+         * Defaults to false. When false, files are subject to validations
+         * based on the file type:
+         * Remote: A checksum must be specified.
+         * Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: pulumi.Input<boolean>;
+        /**
+         * Specifies a file available as a Cloud Storage Object.
+         * Structure is documented below.
+         */
+        gcs?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs>;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: pulumi.Input<string>;
+        /**
+         * Specifies a file available via some URI.
+         * Structure is documented below.
+         */
+        remote?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: pulumi.Input<string>;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: pulumi.Input<string>;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the
+         * protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg {
+        /**
+         * A package managed by APT.
+         * - install: `apt-get update && apt-get -y install [name]`
+         * - remove: `apt-get -y remove [name]`
+         * Structure is documented below.
+         */
+        apt?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt>;
+        /**
+         * A deb package file. dpkg packages only support INSTALLED state.
+         * Structure is documented below.
+         */
+        deb?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb>;
+        /**
+         * Required. The desired state the agent should maintain for this package.
+         * Possible values:
+         * DESIRED_STATE_UNSPECIFIED
+         * INSTALLED
+         * REMOVED
+         */
+        desiredState: pulumi.Input<string>;
+        /**
+         * A package managed by GooGet.
+         * - install: `googet -noconfirm install package`
+         * - remove: `googet -noconfirm remove package`
+         * Structure is documented below.
+         */
+        googet?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget>;
+        /**
+         * An MSI package. MSI packages only support INSTALLED state.
+         * Structure is documented below.
+         */
+        msi?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi>;
+        /**
+         * An RPM package file. RPM packages only support INSTALLED state.
+         * Structure is documented below.
+         */
+        rpm?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm>;
+        /**
+         * A package managed by YUM.
+         * - install: `yum -y install package`
+         * - remove: `yum -y remove package`
+         * Structure is documented below.
+         */
+        yum?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum>;
+        /**
+         * A package managed by Zypper.
+         * - install: `zypper -y install package`
+         * - remove: `zypper -y rm package`
+         * Structure is documented below.
+         */
+        zypper?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt {
+        /**
+         * Required. Package name.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb {
+        /**
+         * Whether dependencies should also be installed.
+         * - install when false: `dpkg -i package`
+         * - install when true: `apt-get update && apt-get -y install
+         * package.deb`
+         */
+        pullDeps?: pulumi.Input<boolean>;
+        /**
+         * A remote or local file.
+         * Structure is documented below.
+         */
+        source: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource {
+        /**
+         * Defaults to false. When false, files are subject to validations
+         * based on the file type:
+         * Remote: A checksum must be specified.
+         * Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: pulumi.Input<boolean>;
+        /**
+         * Specifies a file available as a Cloud Storage Object.
+         * Structure is documented below.
+         */
+        gcs?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs>;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: pulumi.Input<string>;
+        /**
+         * Specifies a file available via some URI.
+         * Structure is documented below.
+         */
+        remote?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: pulumi.Input<string>;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: pulumi.Input<string>;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the
+         * protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget {
+        /**
+         * Required. Package name.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi {
+        /**
+         * Additional properties to use during installation.
+         * This should be in the format of Property=Setting.
+         * Appended to the defaults of `ACTION=INSTALL
+         * REBOOT=ReallySuppress`.
+         */
+        properties?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A remote or local file.
+         * Structure is documented below.
+         */
+        source: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource {
+        /**
+         * Defaults to false. When false, files are subject to validations
+         * based on the file type:
+         * Remote: A checksum must be specified.
+         * Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: pulumi.Input<boolean>;
+        /**
+         * Specifies a file available as a Cloud Storage Object.
+         * Structure is documented below.
+         */
+        gcs?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs>;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: pulumi.Input<string>;
+        /**
+         * Specifies a file available via some URI.
+         * Structure is documented below.
+         */
+        remote?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: pulumi.Input<string>;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: pulumi.Input<string>;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the
+         * protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm {
+        /**
+         * Whether dependencies should also be installed.
+         * - install when false: `rpm --upgrade --replacepkgs package.rpm`
+         * - install when true: `yum -y install package.rpm` or
+         * `zypper -y install package.rpm`
+         */
+        pullDeps?: pulumi.Input<boolean>;
+        /**
+         * A remote or local file.
+         * Structure is documented below.
+         */
+        source: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource {
+        /**
+         * Defaults to false. When false, files are subject to validations
+         * based on the file type:
+         * Remote: A checksum must be specified.
+         * Cloud Storage: An object generation number must be specified.
+         */
+        allowInsecure?: pulumi.Input<boolean>;
+        /**
+         * Specifies a file available as a Cloud Storage Object.
+         * Structure is documented below.
+         */
+        gcs?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs>;
+        /**
+         * A local path within the VM to use.
+         */
+        localPath?: pulumi.Input<string>;
+        /**
+         * Specifies a file available via some URI.
+         * Structure is documented below.
+         */
+        remote?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+        /**
+         * Required. Bucket of the Cloud Storage object.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * Generation number of the Cloud Storage object.
+         */
+        generation?: pulumi.Input<string>;
+        /**
+         * Required. Name of the Cloud Storage object.
+         */
+        object: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+        /**
+         * SHA256 checksum of the remote file.
+         */
+        sha256Checksum?: pulumi.Input<string>;
+        /**
+         * Required. URI from which to fetch the object. It should contain both the
+         * protocol and path following the format `{protocol}://{location}`.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum {
+        /**
+         * Required. Package name.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper {
+        /**
+         * Required. Package name.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository {
+        /**
+         * Represents a single apt package repository. These will be added to
+         * a repo file that will be managed at
+         * `/etc/apt/sources.list.d/google_osconfig.list`.
+         * Structure is documented below.
+         */
+        apt?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt>;
+        /**
+         * Represents a Goo package repository. These are added to a repo file
+         * that is managed at
+         * `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
+         * Structure is documented below.
+         */
+        goo?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo>;
+        /**
+         * Represents a single yum package repository. These are added to a
+         * repo file that is managed at
+         * `/etc/yum.repos.d/google_osconfig.repo`.
+         * Structure is documented below.
+         */
+        yum?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum>;
+        /**
+         * Represents a single zypper package repository. These are added to a
+         * repo file that is managed at
+         * `/etc/zypp/repos.d/google_osconfig.repo`.
+         * Structure is documented below.
+         */
+        zypper?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt {
+        /**
+         * Required. Type of archive files in this repository.
+         * Possible values:
+         * ARCHIVE_TYPE_UNSPECIFIED
+         * DEB
+         * DEB_SRC
+         */
+        archiveType: pulumi.Input<string>;
+        /**
+         * Required. List of components for this repository. Must contain at least one
+         * item.
+         */
+        components: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required. Distribution of this repository.
+         */
+        distribution: pulumi.Input<string>;
+        /**
+         * URI of the key file for this repository. The agent maintains a
+         * keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+         */
+        gpgKey?: pulumi.Input<string>;
+        /**
+         * Required. URI for this repository.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo {
+        /**
+         * Required. The name of the repository.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Required. The url of the repository.
+         */
+        url: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum {
+        /**
+         * Required. The location of the repository directory.
+         */
+        baseUrl: pulumi.Input<string>;
+        /**
+         * The display name of the repository.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * URIs of GPG keys.
+         */
+        gpgKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required. A one word, unique name for this repository. This is  the `repo
+         * id` in the yum config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique
+         * identifier when checking for resource conflicts.
+         */
+        id: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper {
+        /**
+         * Required. The location of the repository directory.
+         */
+        baseUrl: pulumi.Input<string>;
+        /**
+         * The display name of the repository.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * URIs of GPG keys.
+         */
+        gpgKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required. A one word, unique name for this repository. This is the `repo
+         * id` in the zypper config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique
+         * identifier when checking for GuestPolicy conflicts.
+         */
+        id: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout {
+        /**
+         * Message encapsulating a value that can be either absolute ("fixed") or
+         * relative ("percent") to a value.
+         * Structure is documented below.
+         */
+        disruptionBudget: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget>;
+        /**
+         * Required. This determines the minimum duration of time to wait after the
+         * configuration changes are applied through the current rollout. A
+         * VM continues to count towards the `disruptionBudget` at least
+         * until this duration of time has passed after configuration changes are
+         * applied.
+         */
+        minWaitDuration: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget {
+        /**
+         * Specifies a fixed value.
+         */
+        fixed?: pulumi.Input<number>;
+        /**
+         * Specifies the relative value defined as a percentage, which will be
+         * multiplied by a reference value.
+         *
+         * - - -
+         */
+        percent?: pulumi.Input<number>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationScope {
+        /**
+         * Optional. Selectors of the orchestration scope. There is a logical AND between each
+         * selector defined.
+         * When there is no explicit `ResourceHierarchySelector` selector specified,
+         * the scope is by default bounded to the parent of the policy orchestrator
+         * resource.
+         * Structure is documented below.
+         */
+        selectors?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector>[]>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector {
+        /**
+         * Selector containing locations in scope.
+         * Structure is documented below.
+         */
+        locationSelector?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelector>;
+        /**
+         * Selector containing Cloud Resource Manager resource hierarchy nodes.
+         * Structure is documented below.
+         */
+        resourceHierarchySelector?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelector>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelector {
+        /**
+         * Optional. Names of the locations in scope.
+         * Format: `us-central1-a`
+         */
+        includedLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelector {
+        /**
+         * Optional. Names of the folders in scope.
+         * Format: `folders/{folder_id}`
+         */
+        includedFolders?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. Names of the projects in scope.
+         * Format: `projects/{project_number}`
+         */
+        includedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationState {
+        /**
+         * (Output)
+         * Describes the state of a single iteration of the orchestrator.
+         * Structure is documented below.
+         */
+        currentIterationStates?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState>[]>;
+        /**
+         * Describes the state of a single iteration of the orchestrator.
+         * Structure is documented below.
+         */
+        previousIterationState?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState {
+        /**
+         * The `Status` type defines a logical error model that is suitable for
+         * different programming environments, including REST APIs and RPC APIs. It is
+         * used by [gRPC](https://github.com/grpc). Each `Status` message contains
+         * three pieces of data: error code, error message, and error details.
+         * You can find out more about this error model and how to work with it in the
+         * [API Design Guide](https://cloud.google.com/apis/design/errors).
+         * Structure is documented below.
+         */
+        error?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateError>;
+        /**
+         * (Output)
+         * Output only. Number of orchestration actions which failed so far. For more details,
+         * query the Cloud Logs.
+         */
+        failedActions?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Finish time of the wave iteration.
+         */
+        finishTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Overall number of actions done by the orchestrator so far.
+         */
+        performedActions?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. An estimated percentage of the progress. Number between 0 and 100.
+         */
+        progress?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Output only. Handle to the Progressive Rollouts API rollout resource, which contains
+         * detailed information about a particular orchestration iteration.
+         */
+        rolloutResource?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Start time of the wave iteration.
+         */
+        startTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. State of the iteration.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * PROCESSING
+         * COMPLETED
+         * FAILED
+         * CANCELLED
+         * UNKNOWN
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateError {
+        /**
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * A list of messages that carry the error details.  There is a common set of
+         * message types for APIs to use.
+         * Structure is documented below.
+         */
+        details?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetail>[]>;
+        /**
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetail {
+        /**
+         * A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
+         */
+        typeUrl?: pulumi.Input<string>;
+        /**
+         * (Optional)
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState {
+        /**
+         * The `Status` type defines a logical error model that is suitable for
+         * different programming environments, including REST APIs and RPC APIs. It is
+         * used by [gRPC](https://github.com/grpc). Each `Status` message contains
+         * three pieces of data: error code, error message, and error details.
+         * You can find out more about this error model and how to work with it in the
+         * [API Design Guide](https://cloud.google.com/apis/design/errors).
+         * Structure is documented below.
+         */
+        error?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateError>;
+        /**
+         * (Output)
+         * Output only. Number of orchestration actions which failed so far. For more details,
+         * query the Cloud Logs.
+         */
+        failedActions?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Finish time of the wave iteration.
+         */
+        finishTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Overall number of actions done by the orchestrator so far.
+         */
+        performedActions?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. An estimated percentage of the progress. Number between 0 and 100.
+         */
+        progress?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Output only. Handle to the Progressive Rollouts API rollout resource, which contains
+         * detailed information about a particular orchestration iteration.
+         */
+        rolloutResource?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Start time of the wave iteration.
+         */
+        startTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. State of the iteration.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * PROCESSING
+         * COMPLETED
+         * FAILED
+         * CANCELLED
+         * UNKNOWN
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateError {
+        /**
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * A list of messages that carry the error details.  There is a common set of
+         * message types for APIs to use.
+         * Structure is documented below.
+         */
+        details?: pulumi.Input<pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetail>[]>;
+        /**
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetail {
+        /**
+         * A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
+         */
+        typeUrl?: pulumi.Input<string>;
+        /**
+         * (Optional)
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface V2PolicyOrchestratorOrchestratedResource {
@@ -81652,6 +83452,11 @@ export namespace workbench {
          */
         bootDisk?: pulumi.Input<inputs.workbench.InstanceGceSetupBootDisk>;
         /**
+         * Confidential instance configuration.
+         * Structure is documented below.
+         */
+        confidentialInstanceConfig?: pulumi.Input<inputs.workbench.InstanceGceSetupConfidentialInstanceConfig>;
+        /**
          * Use a container image to start the workbench instance.
          * Structure is documented below.
          */
@@ -81744,6 +83549,14 @@ export namespace workbench {
          * Learn more about using your own encryption keys.'
          */
         kmsKey?: pulumi.Input<string>;
+    }
+
+    export interface InstanceGceSetupConfidentialInstanceConfig {
+        /**
+         * Defines the type of technology used by the confidential instance.
+         * Possible values are: `SEV`.
+         */
+        confidentialInstanceType?: pulumi.Input<string>;
     }
 
     export interface InstanceGceSetupContainerImage {

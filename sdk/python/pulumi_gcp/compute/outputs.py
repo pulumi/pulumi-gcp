@@ -39836,6 +39836,8 @@ class ResourcePolicyGroupPlacementPolicy(dict):
             suggest = "gpu_topology"
         elif key == "maxDistance":
             suggest = "max_distance"
+        elif key == "tpuTopology":
+            suggest = "tpu_topology"
         elif key == "vmCount":
             suggest = "vm_count"
 
@@ -39855,6 +39857,7 @@ class ResourcePolicyGroupPlacementPolicy(dict):
                  collocation: Optional[builtins.str] = None,
                  gpu_topology: Optional[builtins.str] = None,
                  max_distance: Optional[builtins.int] = None,
+                 tpu_topology: Optional[builtins.str] = None,
                  vm_count: Optional[builtins.int] = None):
         """
         :param builtins.int availability_domain_count: The number of availability domains instances will be spread across. If two instances are in different
@@ -39866,6 +39869,7 @@ class ResourcePolicyGroupPlacementPolicy(dict):
                Possible values are: `COLLOCATED`.
         :param builtins.str gpu_topology: Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
         :param builtins.int max_distance: Specifies the number of max logical switches.
+        :param builtins.str tpu_topology: Specifies the shape of the TPU slice.
         :param builtins.int vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
                exact number of VMs.
@@ -39878,6 +39882,8 @@ class ResourcePolicyGroupPlacementPolicy(dict):
             pulumi.set(__self__, "gpu_topology", gpu_topology)
         if max_distance is not None:
             pulumi.set(__self__, "max_distance", max_distance)
+        if tpu_topology is not None:
+            pulumi.set(__self__, "tpu_topology", tpu_topology)
         if vm_count is not None:
             pulumi.set(__self__, "vm_count", vm_count)
 
@@ -39917,6 +39923,14 @@ class ResourcePolicyGroupPlacementPolicy(dict):
         Specifies the number of max logical switches.
         """
         return pulumi.get(self, "max_distance")
+
+    @property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> Optional[builtins.str]:
+        """
+        Specifies the shape of the TPU slice.
+        """
+        return pulumi.get(self, "tpu_topology")
 
     @property
     @pulumi.getter(name="vmCount")
@@ -64939,6 +64953,7 @@ class GetResourcePolicyGroupPlacementPolicyResult(dict):
                  collocation: builtins.str,
                  gpu_topology: builtins.str,
                  max_distance: builtins.int,
+                 tpu_topology: builtins.str,
                  vm_count: builtins.int):
         """
         :param builtins.int availability_domain_count: The number of availability domains instances will be spread across. If two instances are in different
@@ -64949,6 +64964,7 @@ class GetResourcePolicyGroupPlacementPolicyResult(dict):
                attached. Possible values: ["COLLOCATED"]
         :param builtins.str gpu_topology: Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
         :param builtins.int max_distance: Specifies the number of max logical switches.
+        :param builtins.str tpu_topology: Specifies the shape of the TPU slice.
         :param builtins.int vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
                exact number of VMs.
@@ -64957,6 +64973,7 @@ class GetResourcePolicyGroupPlacementPolicyResult(dict):
         pulumi.set(__self__, "collocation", collocation)
         pulumi.set(__self__, "gpu_topology", gpu_topology)
         pulumi.set(__self__, "max_distance", max_distance)
+        pulumi.set(__self__, "tpu_topology", tpu_topology)
         pulumi.set(__self__, "vm_count", vm_count)
 
     @property
@@ -64994,6 +65011,14 @@ class GetResourcePolicyGroupPlacementPolicyResult(dict):
         Specifies the number of max logical switches.
         """
         return pulumi.get(self, "max_distance")
+
+    @property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> builtins.str:
+        """
+        Specifies the shape of the TPU slice.
+        """
+        return pulumi.get(self, "tpu_topology")
 
     @property
     @pulumi.getter(name="vmCount")

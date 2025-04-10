@@ -6,6 +6,8 @@ package com.pulumi.gcp.clouddeploy.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.clouddeploy.outputs.AutomationRuleAdvanceRolloutRule;
 import com.pulumi.gcp.clouddeploy.outputs.AutomationRulePromoteReleaseRule;
+import com.pulumi.gcp.clouddeploy.outputs.AutomationRuleRepairRolloutRule;
+import com.pulumi.gcp.clouddeploy.outputs.AutomationRuleTimedPromoteReleaseRule;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,6 +26,18 @@ public final class AutomationRule {
      * 
      */
     private @Nullable AutomationRulePromoteReleaseRule promoteReleaseRule;
+    /**
+     * @return Optional. The RepairRolloutRule will automatically repair a failed rollout.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AutomationRuleRepairRolloutRule repairRolloutRule;
+    /**
+     * @return Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AutomationRuleTimedPromoteReleaseRule timedPromoteReleaseRule;
 
     private AutomationRule() {}
     /**
@@ -42,6 +56,22 @@ public final class AutomationRule {
     public Optional<AutomationRulePromoteReleaseRule> promoteReleaseRule() {
         return Optional.ofNullable(this.promoteReleaseRule);
     }
+    /**
+     * @return Optional. The RepairRolloutRule will automatically repair a failed rollout.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AutomationRuleRepairRolloutRule> repairRolloutRule() {
+        return Optional.ofNullable(this.repairRolloutRule);
+    }
+    /**
+     * @return Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AutomationRuleTimedPromoteReleaseRule> timedPromoteReleaseRule() {
+        return Optional.ofNullable(this.timedPromoteReleaseRule);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,11 +84,15 @@ public final class AutomationRule {
     public static final class Builder {
         private @Nullable AutomationRuleAdvanceRolloutRule advanceRolloutRule;
         private @Nullable AutomationRulePromoteReleaseRule promoteReleaseRule;
+        private @Nullable AutomationRuleRepairRolloutRule repairRolloutRule;
+        private @Nullable AutomationRuleTimedPromoteReleaseRule timedPromoteReleaseRule;
         public Builder() {}
         public Builder(AutomationRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.advanceRolloutRule = defaults.advanceRolloutRule;
     	      this.promoteReleaseRule = defaults.promoteReleaseRule;
+    	      this.repairRolloutRule = defaults.repairRolloutRule;
+    	      this.timedPromoteReleaseRule = defaults.timedPromoteReleaseRule;
         }
 
         @CustomType.Setter
@@ -73,10 +107,24 @@ public final class AutomationRule {
             this.promoteReleaseRule = promoteReleaseRule;
             return this;
         }
+        @CustomType.Setter
+        public Builder repairRolloutRule(@Nullable AutomationRuleRepairRolloutRule repairRolloutRule) {
+
+            this.repairRolloutRule = repairRolloutRule;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder timedPromoteReleaseRule(@Nullable AutomationRuleTimedPromoteReleaseRule timedPromoteReleaseRule) {
+
+            this.timedPromoteReleaseRule = timedPromoteReleaseRule;
+            return this;
+        }
         public AutomationRule build() {
             final var _resultValue = new AutomationRule();
             _resultValue.advanceRolloutRule = advanceRolloutRule;
             _resultValue.promoteReleaseRule = promoteReleaseRule;
+            _resultValue.repairRolloutRule = repairRolloutRule;
+            _resultValue.timedPromoteReleaseRule = timedPromoteReleaseRule;
             return _resultValue;
         }
     }

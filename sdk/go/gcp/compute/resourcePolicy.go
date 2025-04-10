@@ -391,6 +391,37 @@ import (
 //	}
 //
 // ```
+// ### Resource Policy Placement Policy Tpu Topology
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewResourcePolicy(ctx, "baz", &compute.ResourcePolicyArgs{
+//				Name:   pulumi.String("gce-policy"),
+//				Region: pulumi.String("us-central1"),
+//				GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
+//					VmCount:     pulumi.Int(2),
+//					Collocation: pulumi.String("COLLOCATED"),
+//					TpuTopology: pulumi.String("4x4"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

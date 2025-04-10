@@ -408,6 +408,7 @@ class GetRegionalParametersParameterResult(dict):
                  create_time: builtins.str,
                  effective_labels: Mapping[str, builtins.str],
                  format: builtins.str,
+                 kms_key: builtins.str,
                  labels: Mapping[str, builtins.str],
                  location: builtins.str,
                  name: builtins.str,
@@ -419,6 +420,7 @@ class GetRegionalParametersParameterResult(dict):
         """
         :param builtins.str create_time: The time at which the regional parameter was created.
         :param builtins.str format: The format type of the regional parameter.
+        :param builtins.str kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param Mapping[str, builtins.str] labels: The labels assigned to the regional parameter.
         :param builtins.str location: The location of regional parameter.
         :param builtins.str name: The resource name of the regional parameter. Format: `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
@@ -432,6 +434,7 @@ class GetRegionalParametersParameterResult(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "kms_key", kms_key)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -461,6 +464,14 @@ class GetRegionalParametersParameterResult(dict):
         The format type of the regional parameter.
         """
         return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> builtins.str:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter

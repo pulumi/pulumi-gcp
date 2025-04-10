@@ -134,23 +134,9 @@ public class Database extends com.pulumi.resources.CustomResource {
     public Output<String> databaseDialect() {
         return this.databaseDialect;
     }
-    /**
-     * An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements
-     * execute atomically with the creation of the database: if there is an
-     * error in any statement, the database is not created.
-     * 
-     */
     @Export(name="ddls", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ddls;
 
-    /**
-     * @return An optional list of DDL statements to run inside the newly created
-     * database. Statements can create tables, indexes, etc. These statements
-     * execute atomically with the creation of the database: if there is an
-     * error in any statement, the database is not created.
-     * 
-     */
     public Output<Optional<List<String>>> ddls() {
         return Codegen.optional(this.ddls);
     }

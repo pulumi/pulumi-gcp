@@ -216,6 +216,7 @@ import * as utilities from "../utilities";
  *     },
  *     vmTrackingEnabled: true,
  *     enableControlPlaneV2: true,
+ *     enableAdvancedCluster: true,
  *     upgradePolicy: {
  *         controlPlaneOnly: true,
  *     },
@@ -341,6 +342,10 @@ export class VMwareCluster extends pulumi.CustomResource {
     public readonly disableBundledIngress!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Enable advanced cluster. Default to false.
+     */
+    public readonly enableAdvancedCluster!: pulumi.Output<boolean | undefined>;
+    /**
      * Enable control plane V2. Default to false.
      */
     public readonly enableControlPlaneV2!: pulumi.Output<boolean | undefined>;
@@ -465,6 +470,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disableBundledIngress"] = state ? state.disableBundledIngress : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
+            resourceInputs["enableAdvancedCluster"] = state ? state.enableAdvancedCluster : undefined;
             resourceInputs["enableControlPlaneV2"] = state ? state.enableControlPlaneV2 : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -509,6 +515,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["dataplaneV2"] = args ? args.dataplaneV2 : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disableBundledIngress"] = args ? args.disableBundledIngress : undefined;
+            resourceInputs["enableAdvancedCluster"] = args ? args.enableAdvancedCluster : undefined;
             resourceInputs["enableControlPlaneV2"] = args ? args.enableControlPlaneV2 : undefined;
             resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -598,6 +605,10 @@ export interface VMwareClusterState {
      */
     disableBundledIngress?: pulumi.Input<boolean>;
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Enable advanced cluster. Default to false.
+     */
+    enableAdvancedCluster?: pulumi.Input<boolean>;
     /**
      * Enable control plane V2. Default to false.
      */
@@ -749,6 +760,10 @@ export interface VMwareClusterArgs {
      * Disable bundled ingress.
      */
     disableBundledIngress?: pulumi.Input<boolean>;
+    /**
+     * Enable advanced cluster. Default to false.
+     */
+    enableAdvancedCluster?: pulumi.Input<boolean>;
     /**
      * Enable control plane V2. Default to false.
      */

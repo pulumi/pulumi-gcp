@@ -203,6 +203,7 @@ namespace Pulumi.Gcp.Storage
         public readonly string Id;
         public readonly string KmsKeyName;
         public readonly string Md5hash;
+        public readonly string Md5hexhash;
         public readonly string MediaLink;
         public readonly ImmutableDictionary<string, string> Metadata;
         public readonly string Name;
@@ -247,6 +248,8 @@ namespace Pulumi.Gcp.Storage
 
             string md5hash,
 
+            string md5hexhash,
+
             string mediaLink,
 
             ImmutableDictionary<string, string> metadata,
@@ -281,6 +284,7 @@ namespace Pulumi.Gcp.Storage
             Id = id;
             KmsKeyName = kmsKeyName;
             Md5hash = md5hash;
+            Md5hexhash = md5hexhash;
             MediaLink = mediaLink;
             Metadata = metadata;
             Name = name;

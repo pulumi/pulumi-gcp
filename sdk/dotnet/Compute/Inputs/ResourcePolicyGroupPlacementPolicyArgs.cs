@@ -42,6 +42,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? MaxDistance { get; set; }
 
         /// <summary>
+        /// Specifies the shape of the TPU slice.
+        /// </summary>
+        [Input("tpuTopology")]
+        public Input<string>? TpuTopology { get; set; }
+
+        /// <summary>
         /// Number of VMs in this placement group. Google does not recommend that you use this field
         /// unless you use a compact policy and you want your policy to work only if it contains this
         /// exact number of VMs.

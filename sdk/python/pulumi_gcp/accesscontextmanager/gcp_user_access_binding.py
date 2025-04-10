@@ -14,39 +14,35 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GcpUserAccessBindingArgs', 'GcpUserAccessBinding']
 
 @pulumi.input_type
 class GcpUserAccessBindingArgs:
     def __init__(__self__, *,
-                 access_levels: pulumi.Input[builtins.str],
                  group_key: pulumi.Input[builtins.str],
-                 organization_id: pulumi.Input[builtins.str]):
+                 organization_id: pulumi.Input[builtins.str],
+                 access_levels: Optional[pulumi.Input[builtins.str]] = None,
+                 session_settings: Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']] = None):
         """
         The set of arguments for constructing a GcpUserAccessBinding resource.
-        :param pulumi.Input[builtins.str] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[builtins.str] organization_id: Required. ID of the parent organization.
                
                
                - - -
+        :param pulumi.Input[builtins.str] access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input['GcpUserAccessBindingSessionSettingsArgs'] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "access_levels", access_levels)
         pulumi.set(__self__, "group_key", group_key)
         pulumi.set(__self__, "organization_id", organization_id)
-
-    @property
-    @pulumi.getter(name="accessLevels")
-    def access_levels(self) -> pulumi.Input[builtins.str]:
-        """
-        Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-        """
-        return pulumi.get(self, "access_levels")
-
-    @access_levels.setter
-    def access_levels(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "access_levels", value)
+        if access_levels is not None:
+            pulumi.set(__self__, "access_levels", access_levels)
+        if session_settings is not None:
+            pulumi.set(__self__, "session_settings", session_settings)
 
     @property
     @pulumi.getter(name="groupKey")
@@ -75,6 +71,31 @@ class GcpUserAccessBindingArgs:
     def organization_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "organization_id", value)
 
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "access_levels")
+
+    @access_levels.setter
+    def access_levels(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "access_levels", value)
+
+    @property
+    @pulumi.getter(name="sessionSettings")
+    def session_settings(self) -> Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']]:
+        """
+        Optional. The Google Cloud session length (GCSL) policy for the group key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "session_settings")
+
+    @session_settings.setter
+    def session_settings(self, value: Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']]):
+        pulumi.set(self, "session_settings", value)
+
 
 @pulumi.input_type
 class _GcpUserAccessBindingState:
@@ -82,16 +103,19 @@ class _GcpUserAccessBindingState:
                  access_levels: Optional[pulumi.Input[builtins.str]] = None,
                  group_key: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[builtins.str]] = None):
+                 organization_id: Optional[pulumi.Input[builtins.str]] = None,
+                 session_settings: Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering GcpUserAccessBinding resources.
-        :param pulumi.Input[builtins.str] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[builtins.str] access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[builtins.str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[builtins.str] organization_id: Required. ID of the parent organization.
                
                
                - - -
+        :param pulumi.Input['GcpUserAccessBindingSessionSettingsArgs'] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
+               Structure is documented below.
         """
         if access_levels is not None:
             pulumi.set(__self__, "access_levels", access_levels)
@@ -101,12 +125,14 @@ class _GcpUserAccessBindingState:
             pulumi.set(__self__, "name", name)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
+        if session_settings is not None:
+            pulumi.set(__self__, "session_settings", session_settings)
 
     @property
     @pulumi.getter(name="accessLevels")
     def access_levels(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         """
         return pulumi.get(self, "access_levels")
 
@@ -153,6 +179,19 @@ class _GcpUserAccessBindingState:
     def organization_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
+    @property
+    @pulumi.getter(name="sessionSettings")
+    def session_settings(self) -> Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']]:
+        """
+        Optional. The Google Cloud session length (GCSL) policy for the group key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "session_settings")
+
+    @session_settings.setter
+    def session_settings(self, value: Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']]):
+        pulumi.set(self, "session_settings", value)
+
 
 class GcpUserAccessBinding(pulumi.CustomResource):
     @overload
@@ -162,6 +201,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  access_levels: Optional[pulumi.Input[builtins.str]] = None,
                  group_key: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
+                 session_settings: Optional[pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None,
                  __props__=None):
         """
         Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access.
@@ -227,12 +267,14 @@ class GcpUserAccessBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[builtins.str] access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[builtins.str] organization_id: Required. ID of the parent organization.
                
                
                - - -
+        :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
+               Structure is documented below.
         """
         ...
     @overload
@@ -320,6 +362,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  access_levels: Optional[pulumi.Input[builtins.str]] = None,
                  group_key: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
+                 session_settings: Optional[pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,8 +372,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GcpUserAccessBindingArgs.__new__(GcpUserAccessBindingArgs)
 
-            if access_levels is None and not opts.urn:
-                raise TypeError("Missing required property 'access_levels'")
             __props__.__dict__["access_levels"] = access_levels
             if group_key is None and not opts.urn:
                 raise TypeError("Missing required property 'group_key'")
@@ -338,6 +379,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["session_settings"] = session_settings
             __props__.__dict__["name"] = None
         super(GcpUserAccessBinding, __self__).__init__(
             'gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding',
@@ -352,7 +394,8 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             access_levels: Optional[pulumi.Input[builtins.str]] = None,
             group_key: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[builtins.str]] = None) -> 'GcpUserAccessBinding':
+            organization_id: Optional[pulumi.Input[builtins.str]] = None,
+            session_settings: Optional[pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None) -> 'GcpUserAccessBinding':
         """
         Get an existing GcpUserAccessBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -360,13 +403,15 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[builtins.str] access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[builtins.str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[builtins.str] organization_id: Required. ID of the parent organization.
                
                
                - - -
+        :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -376,13 +421,14 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         __props__.__dict__["group_key"] = group_key
         __props__.__dict__["name"] = name
         __props__.__dict__["organization_id"] = organization_id
+        __props__.__dict__["session_settings"] = session_settings
         return GcpUserAccessBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accessLevels")
-    def access_levels(self) -> pulumi.Output[builtins.str]:
+    def access_levels(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         """
         return pulumi.get(self, "access_levels")
 
@@ -412,4 +458,13 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter(name="sessionSettings")
+    def session_settings(self) -> pulumi.Output[Optional['outputs.GcpUserAccessBindingSessionSettings']]:
+        """
+        Optional. The Google Cloud session length (GCSL) policy for the group key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "session_settings")
 

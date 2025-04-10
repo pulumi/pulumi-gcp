@@ -5,6 +5,7 @@ package com.pulumi.gcp.memorystore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.memorystore.outputs.GetInstanceAutomatedBackupConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceCrossInstanceReplicationConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDiscoveryEndpoint;
@@ -29,6 +30,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInstanceResult {
     private String authorizationMode;
+    private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
     private String createTime;
     private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
     private Boolean deletionProtectionEnabled;
@@ -69,6 +71,9 @@ public final class GetInstanceResult {
     private GetInstanceResult() {}
     public String authorizationMode() {
         return this.authorizationMode;
+    }
+    public List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs() {
+        return this.automatedBackupConfigs;
     }
     public String createTime() {
         return this.createTime;
@@ -181,6 +186,7 @@ public final class GetInstanceResult {
     @CustomType.Builder
     public static final class Builder {
         private String authorizationMode;
+        private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
         private String createTime;
         private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
         private Boolean deletionProtectionEnabled;
@@ -217,6 +223,7 @@ public final class GetInstanceResult {
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorizationMode = defaults.authorizationMode;
+    	      this.automatedBackupConfigs = defaults.automatedBackupConfigs;
     	      this.createTime = defaults.createTime;
     	      this.crossInstanceReplicationConfigs = defaults.crossInstanceReplicationConfigs;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
@@ -258,6 +265,17 @@ public final class GetInstanceResult {
             }
             this.authorizationMode = authorizationMode;
             return this;
+        }
+        @CustomType.Setter
+        public Builder automatedBackupConfigs(List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs) {
+            if (automatedBackupConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "automatedBackupConfigs");
+            }
+            this.automatedBackupConfigs = automatedBackupConfigs;
+            return this;
+        }
+        public Builder automatedBackupConfigs(GetInstanceAutomatedBackupConfig... automatedBackupConfigs) {
+            return automatedBackupConfigs(List.of(automatedBackupConfigs));
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
@@ -550,6 +568,7 @@ public final class GetInstanceResult {
         public GetInstanceResult build() {
             final var _resultValue = new GetInstanceResult();
             _resultValue.authorizationMode = authorizationMode;
+            _resultValue.automatedBackupConfigs = automatedBackupConfigs;
             _resultValue.createTime = createTime;
             _resultValue.crossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;

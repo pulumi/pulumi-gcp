@@ -17,7 +17,7 @@ public final class VolumeTieringPolicyArgs extends com.pulumi.resources.Resource
     public static final VolumeTieringPolicyArgs Empty = new VolumeTieringPolicyArgs();
 
     /**
-     * Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 7-183.
+     * Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 2-183.
      * Default is 31.
      * 
      */
@@ -25,7 +25,7 @@ public final class VolumeTieringPolicyArgs extends com.pulumi.resources.Resource
     private @Nullable Output<Integer> coolingThresholdDays;
 
     /**
-     * @return Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 7-183.
+     * @return Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 2-183.
      * Default is 31.
      * 
      */
@@ -78,7 +78,7 @@ public final class VolumeTieringPolicyArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param coolingThresholdDays Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 7-183.
+         * @param coolingThresholdDays Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 2-183.
          * Default is 31.
          * 
          * @return builder
@@ -90,7 +90,7 @@ public final class VolumeTieringPolicyArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param coolingThresholdDays Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 7-183.
+         * @param coolingThresholdDays Optional. Time in days to mark the volume&#39;s data block as cold and make it eligible for tiering, can be range from 2-183.
          * Default is 31.
          * 
          * @return builder

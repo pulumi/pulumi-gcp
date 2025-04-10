@@ -196,6 +196,7 @@ namespace Pulumi.Gcp.Storage
         /// (Computed) Base 64 MD5 hash of the uploaded data.
         /// </summary>
         public readonly string Md5hash;
+        public readonly string Md5hexhash;
         /// <summary>
         /// (Computed) A url reference to download this object.
         /// </summary>
@@ -252,6 +253,8 @@ namespace Pulumi.Gcp.Storage
 
             string md5hash,
 
+            string md5hexhash,
+
             string mediaLink,
 
             ImmutableDictionary<string, string> metadata,
@@ -285,6 +288,7 @@ namespace Pulumi.Gcp.Storage
             Id = id;
             KmsKeyName = kmsKeyName;
             Md5hash = md5hash;
+            Md5hexhash = md5hexhash;
             MediaLink = mediaLink;
             Metadata = metadata;
             Name = name;

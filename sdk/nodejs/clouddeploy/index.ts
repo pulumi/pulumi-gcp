@@ -50,6 +50,11 @@ export type DeliveryPipelineIamPolicy = import("./deliveryPipelineIamPolicy").De
 export const DeliveryPipelineIamPolicy: typeof import("./deliveryPipelineIamPolicy").DeliveryPipelineIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DeliveryPipelineIamPolicy"], () => require("./deliveryPipelineIamPolicy"));
 
+export { DeployPolicyArgs, DeployPolicyState } from "./deployPolicy";
+export type DeployPolicy = import("./deployPolicy").DeployPolicy;
+export const DeployPolicy: typeof import("./deployPolicy").DeployPolicy = null as any;
+utilities.lazyLoad(exports, ["DeployPolicy"], () => require("./deployPolicy"));
+
 export { GetCustomTargetTypeIamPolicyArgs, GetCustomTargetTypeIamPolicyResult, GetCustomTargetTypeIamPolicyOutputArgs } from "./getCustomTargetTypeIamPolicy";
 export const getCustomTargetTypeIamPolicy: typeof import("./getCustomTargetTypeIamPolicy").getCustomTargetTypeIamPolicy = null as any;
 export const getCustomTargetTypeIamPolicyOutput: typeof import("./getCustomTargetTypeIamPolicy").getCustomTargetTypeIamPolicyOutput = null as any;
@@ -108,6 +113,8 @@ const _module = {
                 return new DeliveryPipelineIamMember(name, <any>undefined, { urn })
             case "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy":
                 return new DeliveryPipelineIamPolicy(name, <any>undefined, { urn })
+            case "gcp:clouddeploy/deployPolicy:DeployPolicy":
+                return new DeployPolicy(name, <any>undefined, { urn })
             case "gcp:clouddeploy/target:Target":
                 return new Target(name, <any>undefined, { urn })
             case "gcp:clouddeploy/targetIamBinding:TargetIamBinding":
@@ -130,6 +137,7 @@ pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipeline", _mo
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipelineIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipelineIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipelineIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deployPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/target", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/targetIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/targetIamMember", _module)

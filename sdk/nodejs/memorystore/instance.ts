@@ -370,6 +370,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly authorizationMode!: pulumi.Output<string>;
     /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     */
+    public readonly automatedBackupConfig!: pulumi.Output<outputs.memorystore.InstanceAutomatedBackupConfig | undefined>;
+    /**
      * Output only. Creation timestamp of the instance.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -552,6 +557,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["authorizationMode"] = state ? state.authorizationMode : undefined;
+            resourceInputs["automatedBackupConfig"] = state ? state.automatedBackupConfig : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["crossInstanceReplicationConfig"] = state ? state.crossInstanceReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
@@ -595,6 +601,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'shardCount'");
             }
             resourceInputs["authorizationMode"] = args ? args.authorizationMode : undefined;
+            resourceInputs["automatedBackupConfig"] = args ? args.automatedBackupConfig : undefined;
             resourceInputs["crossInstanceReplicationConfig"] = args ? args.crossInstanceReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
             resourceInputs["desiredPscAutoConnections"] = args ? args.desiredPscAutoConnections : undefined;
@@ -644,6 +651,11 @@ export interface InstanceState {
      * IAM_AUTH
      */
     authorizationMode?: pulumi.Input<string>;
+    /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     */
+    automatedBackupConfig?: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfig>;
     /**
      * Output only. Creation timestamp of the instance.
      */
@@ -824,6 +836,11 @@ export interface InstanceArgs {
      * IAM_AUTH
      */
     authorizationMode?: pulumi.Input<string>;
+    /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     */
+    automatedBackupConfig?: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfig>;
     /**
      * Cross instance replication config
      * Structure is documented below.

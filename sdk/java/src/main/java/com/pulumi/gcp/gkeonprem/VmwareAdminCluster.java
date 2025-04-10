@@ -491,6 +491,20 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
         return this.effectiveAnnotations;
     }
     /**
+     * If set, the advanced cluster feature is enabled.
+     * 
+     */
+    @Export(name="enableAdvancedCluster", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableAdvancedCluster;
+
+    /**
+     * @return If set, the advanced cluster feature is enabled.
+     * 
+     */
+    public Output<Boolean> enableAdvancedCluster() {
+        return this.enableAdvancedCluster;
+    }
+    /**
      * The DNS name of VMware admin cluster&#39;s API server.
      * 
      */

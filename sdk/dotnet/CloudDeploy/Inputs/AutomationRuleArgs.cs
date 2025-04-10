@@ -26,6 +26,20 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         [Input("promoteReleaseRule")]
         public Input<Inputs.AutomationRulePromoteReleaseRuleArgs>? PromoteReleaseRule { get; set; }
 
+        /// <summary>
+        /// Optional. The RepairRolloutRule will automatically repair a failed rollout.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("repairRolloutRule")]
+        public Input<Inputs.AutomationRuleRepairRolloutRuleArgs>? RepairRolloutRule { get; set; }
+
+        /// <summary>
+        /// Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("timedPromoteReleaseRule")]
+        public Input<Inputs.AutomationRuleTimedPromoteReleaseRuleArgs>? TimedPromoteReleaseRule { get; set; }
+
         public AutomationRuleArgs()
         {
         }

@@ -49,6 +49,25 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
+ * ### Regional Parameter Version With Kms Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const regional_parameter_basic = new gcp.parametermanager.RegionalParameter("regional-parameter-basic", {
+ *     parameterId: "regional_parameter",
+ *     location: "us-central1",
+ *     kmsKey: "kms-key",
+ * });
+ * const regional_parameter_version_with_kms_key = new gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-kms-key", {
+ *     parameter: regional_parameter_basic.id,
+ *     parameterVersionId: "regional_parameter_version",
+ *     parameterData: "regional-parameter-version-data",
+ * });
+ * ```
+ *
  * ## Import
  *
  * RegionalParameterVersion can be imported using any of these accepted formats:
@@ -98,6 +117,11 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     */
+    public /*out*/ readonly kmsKeyVersion!: pulumi.Output<string>;
+    /**
      * Location of Parameter Manager Regional parameter resource.
      */
     public /*out*/ readonly location!: pulumi.Output<string>;
@@ -142,6 +166,7 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
             const state = argsOrState as RegionalParameterVersionState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["kmsKeyVersion"] = state ? state.kmsKeyVersion : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parameter"] = state ? state.parameter : undefined;
@@ -164,6 +189,7 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
             resourceInputs["parameterData"] = args?.parameterData ? pulumi.secret(args.parameterData) : undefined;
             resourceInputs["parameterVersionId"] = args ? args.parameterVersionId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["kmsKeyVersion"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -187,6 +213,11 @@ export interface RegionalParameterVersionState {
      * The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+     * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+     */
+    kmsKeyVersion?: pulumi.Input<string>;
     /**
      * Location of Parameter Manager Regional parameter resource.
      */

@@ -110,10 +110,10 @@ namespace Pulumi.Gcp.AccessContextManager
     public partial class GcpUserAccessBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         /// </summary>
         [Output("accessLevels")]
-        public Output<string> AccessLevels { get; private set; } = null!;
+        public Output<string?> AccessLevels { get; private set; } = null!;
 
         /// <summary>
         /// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
@@ -135,6 +135,13 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The Google Cloud session length (GCSL) policy for the group key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sessionSettings")]
+        public Output<Outputs.GcpUserAccessBindingSessionSettings?> SessionSettings { get; private set; } = null!;
 
 
         /// <summary>
@@ -183,10 +190,10 @@ namespace Pulumi.Gcp.AccessContextManager
     public sealed class GcpUserAccessBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         /// </summary>
-        [Input("accessLevels", required: true)]
-        public Input<string> AccessLevels { get; set; } = null!;
+        [Input("accessLevels")]
+        public Input<string>? AccessLevels { get; set; }
 
         /// <summary>
         /// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
@@ -203,6 +210,13 @@ namespace Pulumi.Gcp.AccessContextManager
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. The Google Cloud session length (GCSL) policy for the group key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sessionSettings")]
+        public Input<Inputs.GcpUserAccessBindingSessionSettingsArgs>? SessionSettings { get; set; }
+
         public GcpUserAccessBindingArgs()
         {
         }
@@ -212,7 +226,7 @@ namespace Pulumi.Gcp.AccessContextManager
     public sealed class GcpUserAccessBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         /// </summary>
         [Input("accessLevels")]
         public Input<string>? AccessLevels { get; set; }
@@ -237,6 +251,13 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
+
+        /// <summary>
+        /// Optional. The Google Cloud session length (GCSL) policy for the group key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sessionSettings")]
+        public Input<Inputs.GcpUserAccessBindingSessionSettingsGetArgs>? SessionSettings { get; set; }
 
         public GcpUserAccessBindingState()
         {

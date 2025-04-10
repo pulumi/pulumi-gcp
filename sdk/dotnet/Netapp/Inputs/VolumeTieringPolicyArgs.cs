@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Netapp.Inputs
     public sealed class VolumeTieringPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+        /// Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
         /// Default is 31.
         /// </summary>
         [Input("coolingThresholdDays")]

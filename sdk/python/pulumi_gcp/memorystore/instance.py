@@ -26,6 +26,7 @@ class InstanceArgs:
                  location: pulumi.Input[builtins.str],
                  shard_count: pulumi.Input[builtins.int],
                  authorization_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 automated_backup_config: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']] = None,
                  cross_instance_replication_config: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
@@ -58,6 +59,8 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
+        :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
+               Structure is documented below.
         :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
         :param pulumi.Input[builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
@@ -97,6 +100,8 @@ class InstanceArgs:
         pulumi.set(__self__, "shard_count", shard_count)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
+        if automated_backup_config is not None:
+            pulumi.set(__self__, "automated_backup_config", automated_backup_config)
         if cross_instance_replication_config is not None:
             pulumi.set(__self__, "cross_instance_replication_config", cross_instance_replication_config)
         if deletion_protection_enabled is not None:
@@ -185,6 +190,19 @@ class InstanceArgs:
     @authorization_mode.setter
     def authorization_mode(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "authorization_mode", value)
+
+    @property
+    @pulumi.getter(name="automatedBackupConfig")
+    def automated_backup_config(self) -> Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]:
+        """
+        The automated backup config for a instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "automated_backup_config")
+
+    @automated_backup_config.setter
+    def automated_backup_config(self, value: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]):
+        pulumi.set(self, "automated_backup_config", value)
 
     @property
     @pulumi.getter(name="crossInstanceReplicationConfig")
@@ -378,6 +396,7 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  authorization_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 automated_backup_config: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  cross_instance_replication_config: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -414,6 +433,8 @@ class _InstanceState:
         :param pulumi.Input[builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
+        :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. Creation timestamp of the instance.
         :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
@@ -492,6 +513,8 @@ class _InstanceState:
         """
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
+        if automated_backup_config is not None:
+            pulumi.set(__self__, "automated_backup_config", automated_backup_config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if cross_instance_replication_config is not None:
@@ -568,6 +591,19 @@ class _InstanceState:
     @authorization_mode.setter
     def authorization_mode(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "authorization_mode", value)
+
+    @property
+    @pulumi.getter(name="automatedBackupConfig")
+    def automated_backup_config(self) -> Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]:
+        """
+        The automated backup config for a instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "automated_backup_config")
+
+    @automated_backup_config.setter
+    def automated_backup_config(self, value: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]):
+        pulumi.set(self, "automated_backup_config", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -992,6 +1028,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
                  cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
@@ -1319,6 +1356,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
+        :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']] automated_backup_config: The automated backup config for a instance.
+               Structure is documented below.
         :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
         :param pulumi.Input[builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
@@ -1692,6 +1731,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
                  cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
@@ -1719,6 +1759,7 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["authorization_mode"] = authorization_mode
+            __props__.__dict__["automated_backup_config"] = automated_backup_config
             __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
             __props__.__dict__["desired_psc_auto_connections"] = desired_psc_auto_connections
@@ -1769,6 +1810,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[builtins.str]] = None,
+            automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1810,6 +1852,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
                IAM_AUTH
+        :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']] automated_backup_config: The automated backup config for a instance.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. Creation timestamp of the instance.
         :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
@@ -1891,6 +1935,7 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["authorization_mode"] = authorization_mode
+        __props__.__dict__["automated_backup_config"] = automated_backup_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
@@ -1933,6 +1978,15 @@ class Instance(pulumi.CustomResource):
         IAM_AUTH
         """
         return pulumi.get(self, "authorization_mode")
+
+    @property
+    @pulumi.getter(name="automatedBackupConfig")
+    def automated_backup_config(self) -> pulumi.Output[Optional['outputs.InstanceAutomatedBackupConfig']]:
+        """
+        The automated backup config for a instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "automated_backup_config")
 
     @property
     @pulumi.getter(name="createTime")

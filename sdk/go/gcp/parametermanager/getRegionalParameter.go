@@ -66,6 +66,7 @@ type LookupRegionalParameterResult struct {
 	Format          string            `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string                             `pulumi:"id"`
+	KmsKey        string                             `pulumi:"kmsKey"`
 	Labels        map[string]string                  `pulumi:"labels"`
 	Location      string                             `pulumi:"location"`
 	Name          string                             `pulumi:"name"`
@@ -129,6 +130,10 @@ func (o LookupRegionalParameterResultOutput) Format() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRegionalParameterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalParameterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionalParameterResultOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionalParameterResult) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionalParameterResultOutput) Labels() pulumi.StringMapOutput {

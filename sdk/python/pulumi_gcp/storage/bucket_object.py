@@ -329,6 +329,7 @@ class _BucketObjectState:
                  generation: Optional[pulumi.Input[builtins.int]] = None,
                  kms_key_name: Optional[pulumi.Input[builtins.str]] = None,
                  md5hash: Optional[pulumi.Input[builtins.str]] = None,
+                 md5hexhash: Optional[pulumi.Input[builtins.str]] = None,
                  media_link: Optional[pulumi.Input[builtins.str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -355,6 +356,7 @@ class _BucketObjectState:
         :param pulumi.Input[builtins.int] generation: (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
         :param pulumi.Input[builtins.str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
+        :param pulumi.Input[builtins.str] md5hexhash: Hex value of md5hash
         :param pulumi.Input[builtins.str] media_link: (Computed) A url reference to download this object.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: User-provided metadata, in key/value pairs.
                
@@ -401,6 +403,8 @@ class _BucketObjectState:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if md5hash is not None:
             pulumi.set(__self__, "md5hash", md5hash)
+        if md5hexhash is not None:
+            pulumi.set(__self__, "md5hexhash", md5hexhash)
         if media_link is not None:
             pulumi.set(__self__, "media_link", media_link)
         if metadata is not None:
@@ -586,6 +590,18 @@ class _BucketObjectState:
     @md5hash.setter
     def md5hash(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "md5hash", value)
+
+    @property
+    @pulumi.getter
+    def md5hexhash(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Hex value of md5hash
+        """
+        return pulumi.get(self, "md5hexhash")
+
+    @md5hexhash.setter
+    def md5hexhash(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "md5hexhash", value)
 
     @property
     @pulumi.getter(name="mediaLink")
@@ -908,6 +924,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["crc32c"] = None
             __props__.__dict__["generation"] = None
             __props__.__dict__["md5hash"] = None
+            __props__.__dict__["md5hexhash"] = None
             __props__.__dict__["media_link"] = None
             __props__.__dict__["output_name"] = None
             __props__.__dict__["self_link"] = None
@@ -937,6 +954,7 @@ class BucketObject(pulumi.CustomResource):
             generation: Optional[pulumi.Input[builtins.int]] = None,
             kms_key_name: Optional[pulumi.Input[builtins.str]] = None,
             md5hash: Optional[pulumi.Input[builtins.str]] = None,
+            md5hexhash: Optional[pulumi.Input[builtins.str]] = None,
             media_link: Optional[pulumi.Input[builtins.str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -968,6 +986,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] generation: (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
         :param pulumi.Input[builtins.str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
+        :param pulumi.Input[builtins.str] md5hexhash: Hex value of md5hash
         :param pulumi.Input[builtins.str] media_link: (Computed) A url reference to download this object.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: User-provided metadata, in key/value pairs.
                
@@ -1004,6 +1023,7 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["generation"] = generation
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["md5hash"] = md5hash
+        __props__.__dict__["md5hexhash"] = md5hexhash
         __props__.__dict__["media_link"] = media_link
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
@@ -1125,6 +1145,14 @@ class BucketObject(pulumi.CustomResource):
         (Computed) Base 64 MD5 hash of the uploaded data.
         """
         return pulumi.get(self, "md5hash")
+
+    @property
+    @pulumi.getter
+    def md5hexhash(self) -> pulumi.Output[builtins.str]:
+        """
+        Hex value of md5hash
+        """
+        return pulumi.get(self, "md5hexhash")
 
     @property
     @pulumi.getter(name="mediaLink")

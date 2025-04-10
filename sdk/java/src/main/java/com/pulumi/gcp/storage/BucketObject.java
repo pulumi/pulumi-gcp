@@ -310,6 +310,20 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return this.md5hash;
     }
     /**
+     * Hex value of md5hash
+     * 
+     */
+    @Export(name="md5hexhash", refs={String.class}, tree="[0]")
+    private Output<String> md5hexhash;
+
+    /**
+     * @return Hex value of md5hash
+     * 
+     */
+    public Output<String> md5hexhash() {
+        return this.md5hexhash;
+    }
+    /**
      * (Computed) A url reference to download this object.
      * 
      */

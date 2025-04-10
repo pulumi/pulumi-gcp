@@ -99,6 +99,7 @@ class _RegionalParameterVersionState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  disabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 kms_key_version: Optional[pulumi.Input[builtins.str]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  parameter: Optional[pulumi.Input[builtins.str]] = None,
@@ -109,6 +110,8 @@ class _RegionalParameterVersionState:
         Input properties used for looking up and filtering RegionalParameterVersion resources.
         :param pulumi.Input[builtins.str] create_time: The time at which the Regional Parameter Version was created.
         :param pulumi.Input[builtins.bool] disabled: The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
+        :param pulumi.Input[builtins.str] kms_key_version: The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+               `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
         :param pulumi.Input[builtins.str] location: Location of Parameter Manager Regional parameter resource.
         :param pulumi.Input[builtins.str] name: The resource name of the Regional Parameter Version. Format:
                `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
@@ -125,6 +128,8 @@ class _RegionalParameterVersionState:
             pulumi.set(__self__, "create_time", create_time)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -161,6 +166,19 @@ class _RegionalParameterVersionState:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+        `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        """
+        return pulumi.get(self, "kms_key_version")
+
+    @kms_key_version.setter
+    def kms_key_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_version", value)
 
     @property
     @pulumi.getter
@@ -292,6 +310,23 @@ class RegionalParameterVersion(pulumi.CustomResource):
                 "key2": "val2",
             }))
         ```
+        ### Regional Parameter Version With Kms Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        regional_parameter_basic = gcp.parametermanager.RegionalParameter("regional-parameter-basic",
+            parameter_id="regional_parameter",
+            location="us-central1",
+            kms_key="kms-key")
+        regional_parameter_version_with_kms_key = gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-kms-key",
+            parameter=regional_parameter_basic.id,
+            parameter_version_id="regional_parameter_version",
+            parameter_data="regional-parameter-version-data")
+        ```
+
         ## Import
 
         RegionalParameterVersion can be imported using any of these accepted formats:
@@ -363,6 +398,23 @@ class RegionalParameterVersion(pulumi.CustomResource):
                 "key2": "val2",
             }))
         ```
+        ### Regional Parameter Version With Kms Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        regional_parameter_basic = gcp.parametermanager.RegionalParameter("regional-parameter-basic",
+            parameter_id="regional_parameter",
+            location="us-central1",
+            kms_key="kms-key")
+        regional_parameter_version_with_kms_key = gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-kms-key",
+            parameter=regional_parameter_basic.id,
+            parameter_version_id="regional_parameter_version",
+            parameter_data="regional-parameter-version-data")
+        ```
+
         ## Import
 
         RegionalParameterVersion can be imported using any of these accepted formats:
@@ -414,6 +466,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parameter_version_id'")
             __props__.__dict__["parameter_version_id"] = parameter_version_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["kms_key_version"] = None
             __props__.__dict__["location"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
@@ -431,6 +484,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             disabled: Optional[pulumi.Input[builtins.bool]] = None,
+            kms_key_version: Optional[pulumi.Input[builtins.str]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             parameter: Optional[pulumi.Input[builtins.str]] = None,
@@ -446,6 +500,8 @@ class RegionalParameterVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] create_time: The time at which the Regional Parameter Version was created.
         :param pulumi.Input[builtins.bool] disabled: The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
+        :param pulumi.Input[builtins.str] kms_key_version: The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+               `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
         :param pulumi.Input[builtins.str] location: Location of Parameter Manager Regional parameter resource.
         :param pulumi.Input[builtins.str] name: The resource name of the Regional Parameter Version. Format:
                `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
@@ -464,6 +520,7 @@ class RegionalParameterVersion(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["disabled"] = disabled
+        __props__.__dict__["kms_key_version"] = kms_key_version
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["parameter"] = parameter
@@ -487,6 +544,15 @@ class RegionalParameterVersion(pulumi.CustomResource):
         The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
         """
         return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> pulumi.Output[builtins.str]:
+        """
+        The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
+        `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+        """
+        return pulumi.get(self, "kms_key_version")
 
     @property
     @pulumi.getter

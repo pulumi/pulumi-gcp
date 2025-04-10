@@ -330,6 +330,56 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Workbench Instance Confidential Compute
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.workbench.Instance;
+ * import com.pulumi.gcp.workbench.InstanceArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupConfidentialInstanceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .name("workbench-instance")
+ *             .location("us-central1-a")
+ *             .gceSetup(InstanceGceSetupArgs.builder()
+ *                 .machineType("n2d-standard-2")
+ *                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
+ *                     .enableSecureBoot(true)
+ *                     .enableVtpm(true)
+ *                     .enableIntegrityMonitoring(true)
+ *                     .build())
+ *                 .metadata(Map.of("terraform", "true"))
+ *                 .confidentialInstanceConfig(InstanceGceSetupConfidentialInstanceConfigArgs.builder()
+ *                     .confidentialInstanceType("SEV")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

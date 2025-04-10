@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingSessionSettingsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
     public static final GcpUserAccessBindingState Empty = new GcpUserAccessBindingState();
 
     /**
-     * Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
      * 
      */
     @Import(name="accessLevels")
     private @Nullable Output<String> accessLevels;
 
     /**
-     * @return Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * @return Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
      * 
      */
     public Optional<Output<String>> accessLevels() {
@@ -79,6 +80,23 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.organizationId);
     }
 
+    /**
+     * Optional. The Google Cloud session length (GCSL) policy for the group key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sessionSettings")
+    private @Nullable Output<GcpUserAccessBindingSessionSettingsArgs> sessionSettings;
+
+    /**
+     * @return Optional. The Google Cloud session length (GCSL) policy for the group key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GcpUserAccessBindingSessionSettingsArgs>> sessionSettings() {
+        return Optional.ofNullable(this.sessionSettings);
+    }
+
     private GcpUserAccessBindingState() {}
 
     private GcpUserAccessBindingState(GcpUserAccessBindingState $) {
@@ -86,6 +104,7 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
         this.groupKey = $.groupKey;
         this.name = $.name;
         this.organizationId = $.organizationId;
+        this.sessionSettings = $.sessionSettings;
     }
 
     public static Builder builder() {
@@ -107,7 +126,7 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessLevels Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+         * @param accessLevels Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
          * 
          * @return builder
          * 
@@ -118,7 +137,7 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessLevels Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+         * @param accessLevels Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
          * 
          * @return builder
          * 
@@ -192,6 +211,29 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
+        }
+
+        /**
+         * @param sessionSettings Optional. The Google Cloud session length (GCSL) policy for the group key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionSettings(@Nullable Output<GcpUserAccessBindingSessionSettingsArgs> sessionSettings) {
+            $.sessionSettings = sessionSettings;
+            return this;
+        }
+
+        /**
+         * @param sessionSettings Optional. The Google Cloud session length (GCSL) policy for the group key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionSettings(GcpUserAccessBindingSessionSettingsArgs sessionSettings) {
+            return sessionSettings(Output.of(sessionSettings));
         }
 
         public GcpUserAccessBindingState build() {

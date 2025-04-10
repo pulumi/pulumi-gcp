@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupAcceleratorConfigArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
+import com.pulumi.gcp.workbench.inputs.InstanceGceSetupConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupContainerImageArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupNetworkInterfaceArgs;
@@ -62,6 +63,23 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<InstanceGceSetupBootDiskArgs>> bootDisk() {
         return Optional.ofNullable(this.bootDisk);
+    }
+
+    /**
+     * Confidential instance configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="confidentialInstanceConfig")
+    private @Nullable Output<InstanceGceSetupConfidentialInstanceConfigArgs> confidentialInstanceConfig;
+
+    /**
+     * @return Confidential instance configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceGceSetupConfidentialInstanceConfigArgs>> confidentialInstanceConfig() {
+        return Optional.ofNullable(this.confidentialInstanceConfig);
     }
 
     /**
@@ -256,6 +274,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
     private InstanceGceSetupArgs(InstanceGceSetupArgs $) {
         this.acceleratorConfigs = $.acceleratorConfigs;
         this.bootDisk = $.bootDisk;
+        this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.containerImage = $.containerImage;
         this.dataDisks = $.dataDisks;
         this.disablePublicIp = $.disablePublicIp;
@@ -348,6 +367,29 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder bootDisk(InstanceGceSetupBootDiskArgs bootDisk) {
             return bootDisk(Output.of(bootDisk));
+        }
+
+        /**
+         * @param confidentialInstanceConfig Confidential instance configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialInstanceConfig(@Nullable Output<InstanceGceSetupConfidentialInstanceConfigArgs> confidentialInstanceConfig) {
+            $.confidentialInstanceConfig = confidentialInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param confidentialInstanceConfig Confidential instance configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialInstanceConfig(InstanceGceSetupConfidentialInstanceConfigArgs confidentialInstanceConfig) {
+            return confidentialInstanceConfig(Output.of(confidentialInstanceConfig));
         }
 
         /**

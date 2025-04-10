@@ -285,8 +285,9 @@ import (
 //					WindowsDataplaneV2Enabled: pulumi.Bool(true),
 //					AdvancedNetworking:        pulumi.Bool(true),
 //				},
-//				VmTrackingEnabled:    pulumi.Bool(true),
-//				EnableControlPlaneV2: pulumi.Bool(true),
+//				VmTrackingEnabled:     pulumi.Bool(true),
+//				EnableControlPlaneV2:  pulumi.Bool(true),
+//				EnableAdvancedCluster: pulumi.Bool(true),
 //				UpgradePolicy: &gkeonprem.VMwareClusterUpgradePolicyArgs{
 //					ControlPlaneOnly: pulumi.Bool(true),
 //				},
@@ -372,6 +373,8 @@ type VMwareCluster struct {
 	// Disable bundled ingress.
 	DisableBundledIngress pulumi.BoolPtrOutput   `pulumi:"disableBundledIngress"`
 	EffectiveAnnotations  pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	// Enable advanced cluster. Default to false.
+	EnableAdvancedCluster pulumi.BoolPtrOutput `pulumi:"enableAdvancedCluster"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrOutput `pulumi:"enableControlPlaneV2"`
 	// The DNS name of VMware User Cluster's API server.
@@ -508,6 +511,8 @@ type vmwareClusterState struct {
 	// Disable bundled ingress.
 	DisableBundledIngress *bool             `pulumi:"disableBundledIngress"`
 	EffectiveAnnotations  map[string]string `pulumi:"effectiveAnnotations"`
+	// Enable advanced cluster. Default to false.
+	EnableAdvancedCluster *bool `pulumi:"enableAdvancedCluster"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 *bool `pulumi:"enableControlPlaneV2"`
 	// The DNS name of VMware User Cluster's API server.
@@ -603,6 +608,8 @@ type VMwareClusterState struct {
 	// Disable bundled ingress.
 	DisableBundledIngress pulumi.BoolPtrInput
 	EffectiveAnnotations  pulumi.StringMapInput
+	// Enable advanced cluster. Default to false.
+	EnableAdvancedCluster pulumi.BoolPtrInput
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrInput
 	// The DNS name of VMware User Cluster's API server.
@@ -697,6 +704,8 @@ type vmwareClusterArgs struct {
 	Description *string `pulumi:"description"`
 	// Disable bundled ingress.
 	DisableBundledIngress *bool `pulumi:"disableBundledIngress"`
+	// Enable advanced cluster. Default to false.
+	EnableAdvancedCluster *bool `pulumi:"enableAdvancedCluster"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 *bool `pulumi:"enableControlPlaneV2"`
 	// Load Balancer configuration.
@@ -750,6 +759,8 @@ type VMwareClusterArgs struct {
 	Description pulumi.StringPtrInput
 	// Disable bundled ingress.
 	DisableBundledIngress pulumi.BoolPtrInput
+	// Enable advanced cluster. Default to false.
+	EnableAdvancedCluster pulumi.BoolPtrInput
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrInput
 	// Load Balancer configuration.
@@ -927,6 +938,11 @@ func (o VMwareClusterOutput) DisableBundledIngress() pulumi.BoolPtrOutput {
 
 func (o VMwareClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+// Enable advanced cluster. Default to false.
+func (o VMwareClusterOutput) EnableAdvancedCluster() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VMwareCluster) pulumi.BoolPtrOutput { return v.EnableAdvancedCluster }).(pulumi.BoolPtrOutput)
 }
 
 // Enable control plane V2. Default to false.

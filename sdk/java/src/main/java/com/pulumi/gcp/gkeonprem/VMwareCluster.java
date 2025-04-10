@@ -342,6 +342,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .vmTrackingEnabled(true)
  *             .enableControlPlaneV2(true)
+ *             .enableAdvancedCluster(true)
  *             .upgradePolicy(VMwareClusterUpgradePolicyArgs.builder()
  *                 .controlPlaneOnly(true)
  *                 .build())
@@ -570,6 +571,20 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
 
     public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
+    }
+    /**
+     * Enable advanced cluster. Default to false.
+     * 
+     */
+    @Export(name="enableAdvancedCluster", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableAdvancedCluster;
+
+    /**
+     * @return Enable advanced cluster. Default to false.
+     * 
+     */
+    public Output<Optional<Boolean>> enableAdvancedCluster() {
+        return Codegen.optional(this.enableAdvancedCluster);
     }
     /**
      * Enable control plane V2. Default to false.

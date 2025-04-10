@@ -87,6 +87,21 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
     }
 
     /**
+     * Specifies the shape of the TPU slice.
+     * 
+     */
+    @Import(name="tpuTopology")
+    private @Nullable Output<String> tpuTopology;
+
+    /**
+     * @return Specifies the shape of the TPU slice.
+     * 
+     */
+    public Optional<Output<String>> tpuTopology() {
+        return Optional.ofNullable(this.tpuTopology);
+    }
+
+    /**
      * Number of VMs in this placement group. Google does not recommend that you use this field
      * unless you use a compact policy and you want your policy to work only if it contains this
      * exact number of VMs.
@@ -112,6 +127,7 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
         this.collocation = $.collocation;
         this.gpuTopology = $.gpuTopology;
         this.maxDistance = $.maxDistance;
+        this.tpuTopology = $.tpuTopology;
         this.vmCount = $.vmCount;
     }
 
@@ -225,6 +241,27 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
          */
         public Builder maxDistance(Integer maxDistance) {
             return maxDistance(Output.of(maxDistance));
+        }
+
+        /**
+         * @param tpuTopology Specifies the shape of the TPU slice.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tpuTopology(@Nullable Output<String> tpuTopology) {
+            $.tpuTopology = tpuTopology;
+            return this;
+        }
+
+        /**
+         * @param tpuTopology Specifies the shape of the TPU slice.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tpuTopology(String tpuTopology) {
+            return tpuTopology(Output.of(tpuTopology));
         }
 
         /**

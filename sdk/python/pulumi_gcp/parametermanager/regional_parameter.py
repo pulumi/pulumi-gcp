@@ -25,6 +25,7 @@ class RegionalParameterArgs:
                  location: pulumi.Input[builtins.str],
                  parameter_id: pulumi.Input[builtins.str],
                  format: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -37,6 +38,8 @@ class RegionalParameterArgs:
         :param pulumi.Input[builtins.str] format: The format type of the regional parameter.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
+        :param pulumi.Input[builtins.str] kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+               `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this regional Parameter.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -55,6 +58,8 @@ class RegionalParameterArgs:
         pulumi.set(__self__, "parameter_id", parameter_id)
         if format is not None:
             pulumi.set(__self__, "format", format)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -102,6 +107,19 @@ class RegionalParameterArgs:
         pulumi.set(self, "format", value)
 
     @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+        `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -143,6 +161,7 @@ class _RegionalParameterState:
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  format: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -158,6 +177,8 @@ class _RegionalParameterState:
         :param pulumi.Input[builtins.str] format: The format type of the regional parameter.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
+        :param pulumi.Input[builtins.str] kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+               `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this regional Parameter.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -190,6 +211,8 @@ class _RegionalParameterState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if format is not None:
             pulumi.set(__self__, "format", format)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -244,6 +267,19 @@ class _RegionalParameterState:
     @format.setter
     def format(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+        `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter
@@ -365,6 +401,7 @@ class RegionalParameter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  format: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  parameter_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -417,6 +454,18 @@ class RegionalParameter(pulumi.CustomResource):
                 "key5": "val5",
             })
         ```
+        ### Regional Parameter With Kms Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        regional_parameter_with_kms_key = gcp.parametermanager.RegionalParameter("regional-parameter-with-kms-key",
+            parameter_id="regional_parameter",
+            location="us-central1",
+            kms_key="kms-key")
+        ```
 
         ## Import
 
@@ -447,6 +496,8 @@ class RegionalParameter(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] format: The format type of the regional parameter.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
+        :param pulumi.Input[builtins.str] kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+               `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this regional Parameter.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -519,6 +570,18 @@ class RegionalParameter(pulumi.CustomResource):
                 "key5": "val5",
             })
         ```
+        ### Regional Parameter With Kms Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        regional_parameter_with_kms_key = gcp.parametermanager.RegionalParameter("regional-parameter-with-kms-key",
+            parameter_id="regional_parameter",
+            location="us-central1",
+            kms_key="kms-key")
+        ```
 
         ## Import
 
@@ -560,6 +623,7 @@ class RegionalParameter(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  format: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  parameter_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -574,6 +638,7 @@ class RegionalParameter(pulumi.CustomResource):
             __props__ = RegionalParameterArgs.__new__(RegionalParameterArgs)
 
             __props__.__dict__["format"] = format
+            __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -603,6 +668,7 @@ class RegionalParameter(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             format: Optional[pulumi.Input[builtins.str]] = None,
+            kms_key: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -623,6 +689,8 @@ class RegionalParameter(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] format: The format type of the regional parameter.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
+        :param pulumi.Input[builtins.str] kms_key: The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+               `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this regional Parameter.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
                and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -656,6 +724,7 @@ class RegionalParameter(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["format"] = format
+        __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -691,6 +760,15 @@ class RegionalParameter(pulumi.CustomResource):
         Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
         """
         return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
+        `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter

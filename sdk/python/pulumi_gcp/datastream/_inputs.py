@@ -70,6 +70,12 @@ __all__ = [
     'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgsDict',
     'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs',
     'StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict',
+    'StreamBackfillAllSalesforceExcludedObjectsArgs',
+    'StreamBackfillAllSalesforceExcludedObjectsArgsDict',
+    'StreamBackfillAllSalesforceExcludedObjectsObjectArgs',
+    'StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict',
+    'StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs',
+    'StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict',
     'StreamBackfillAllSqlServerExcludedObjectsArgs',
     'StreamBackfillAllSqlServerExcludedObjectsArgsDict',
     'StreamBackfillAllSqlServerExcludedObjectsSchemaArgs',
@@ -166,6 +172,20 @@ __all__ = [
     'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgsDict',
     'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs',
     'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict',
+    'StreamSourceConfigSalesforceSourceConfigArgs',
+    'StreamSourceConfigSalesforceSourceConfigArgsDict',
+    'StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs',
+    'StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict',
+    'StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs',
+    'StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict',
+    'StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs',
+    'StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict',
+    'StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs',
+    'StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict',
+    'StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs',
+    'StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict',
+    'StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs',
+    'StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict',
     'StreamSourceConfigSqlServerSourceConfigArgs',
     'StreamSourceConfigSqlServerSourceConfigArgsDict',
     'StreamSourceConfigSqlServerSourceConfigChangeTablesArgs',
@@ -1517,6 +1537,11 @@ if not MYPY:
         PostgreSQL data source objects to avoid backfilling.
         Structure is documented below.
         """
+        salesforce_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgsDict']]
+        """
+        Salesforce objects to avoid backfilling.
+        Structure is documented below.
+        """
         sql_server_excluded_objects: NotRequired[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsArgsDict']]
         """
         SQL Server data source objects to avoid backfilling.
@@ -1531,6 +1556,7 @@ class StreamBackfillAllArgs:
                  mysql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs']] = None,
                  oracle_excluded_objects: Optional[pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs']] = None,
                  postgresql_excluded_objects: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']] = None,
+                 salesforce_excluded_objects: Optional[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgs']] = None,
                  sql_server_excluded_objects: Optional[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsArgs']] = None):
         """
         :param pulumi.Input['StreamBackfillAllMysqlExcludedObjectsArgs'] mysql_excluded_objects: MySQL data source objects to avoid backfilling.
@@ -1538,6 +1564,8 @@ class StreamBackfillAllArgs:
         :param pulumi.Input['StreamBackfillAllOracleExcludedObjectsArgs'] oracle_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
         :param pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs'] postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+               Structure is documented below.
+        :param pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgs'] salesforce_excluded_objects: Salesforce objects to avoid backfilling.
                Structure is documented below.
         :param pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsArgs'] sql_server_excluded_objects: SQL Server data source objects to avoid backfilling.
                Structure is documented below.
@@ -1548,6 +1576,8 @@ class StreamBackfillAllArgs:
             pulumi.set(__self__, "oracle_excluded_objects", oracle_excluded_objects)
         if postgresql_excluded_objects is not None:
             pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
+        if salesforce_excluded_objects is not None:
+            pulumi.set(__self__, "salesforce_excluded_objects", salesforce_excluded_objects)
         if sql_server_excluded_objects is not None:
             pulumi.set(__self__, "sql_server_excluded_objects", sql_server_excluded_objects)
 
@@ -1589,6 +1619,19 @@ class StreamBackfillAllArgs:
     @postgresql_excluded_objects.setter
     def postgresql_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsArgs']]):
         pulumi.set(self, "postgresql_excluded_objects", value)
+
+    @property
+    @pulumi.getter(name="salesforceExcludedObjects")
+    def salesforce_excluded_objects(self) -> Optional[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgs']]:
+        """
+        Salesforce objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "salesforce_excluded_objects")
+
+    @salesforce_excluded_objects.setter
+    def salesforce_excluded_objects(self, value: Optional[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsArgs']]):
+        pulumi.set(self, "salesforce_excluded_objects", value)
 
     @property
     @pulumi.getter(name="sqlServerExcludedObjects")
@@ -2586,6 +2629,127 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @scale.setter
     def scale(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "scale", value)
+
+
+if not MYPY:
+    class StreamBackfillAllSalesforceExcludedObjectsArgsDict(TypedDict):
+        objects: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict']]]
+        """
+        Salesforce objects in Salesforce Org.
+        Structure is documented below.
+        """
+elif False:
+    StreamBackfillAllSalesforceExcludedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamBackfillAllSalesforceExcludedObjectsArgs:
+    def __init__(__self__, *,
+                 objects: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectArgs']]] objects: Salesforce objects in Salesforce Org.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "objects", objects)
+
+    @property
+    @pulumi.getter
+    def objects(self) -> pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectArgs']]]:
+        """
+        Salesforce objects in Salesforce Org.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "objects")
+
+    @objects.setter
+    def objects(self, value: pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectArgs']]]):
+        pulumi.set(self, "objects", value)
+
+
+if not MYPY:
+    class StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict(TypedDict):
+        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict']]]]
+        """
+        Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+        Structure is documented below.
+        """
+        object_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of object in Salesforce Org.
+        """
+elif False:
+    StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamBackfillAllSalesforceExcludedObjectsObjectArgs:
+    def __init__(__self__, *,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]] = None,
+                 object_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]] fields: Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] object_name: Name of object in Salesforce Org.
+        """
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if object_name is not None:
+            pulumi.set(__self__, "object_name", object_name)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]]:
+        """
+        Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @property
+    @pulumi.getter(name="objectName")
+    def object_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of object in Salesforce Org.
+        """
+        return pulumi.get(self, "object_name")
+
+    @object_name.setter
+    def object_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "object_name", value)
+
+
+if not MYPY:
+    class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Field name.
+        """
+elif False:
+    StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: Field name.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Field name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:
@@ -3675,6 +3839,11 @@ if not MYPY:
         PostgreSQL data source configuration.
         Structure is documented below.
         """
+        salesforce_source_config: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgsDict']]
+        """
+        Salesforce data source configuration.
+        Structure is documented below.
+        """
         sql_server_source_config: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigArgsDict']]
         """
         SQL Server data source configuration.
@@ -3690,6 +3859,7 @@ class StreamSourceConfigArgs:
                  mysql_source_config: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigArgs']] = None,
                  oracle_source_config: Optional[pulumi.Input['StreamSourceConfigOracleSourceConfigArgs']] = None,
                  postgresql_source_config: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']] = None,
+                 salesforce_source_config: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgs']] = None,
                  sql_server_source_config: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigArgs']] = None):
         """
         :param pulumi.Input[builtins.str] source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
@@ -3698,6 +3868,8 @@ class StreamSourceConfigArgs:
         :param pulumi.Input['StreamSourceConfigOracleSourceConfigArgs'] oracle_source_config: MySQL data source configuration.
                Structure is documented below.
         :param pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs'] postgresql_source_config: PostgreSQL data source configuration.
+               Structure is documented below.
+        :param pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgs'] salesforce_source_config: Salesforce data source configuration.
                Structure is documented below.
         :param pulumi.Input['StreamSourceConfigSqlServerSourceConfigArgs'] sql_server_source_config: SQL Server data source configuration.
                Structure is documented below.
@@ -3709,6 +3881,8 @@ class StreamSourceConfigArgs:
             pulumi.set(__self__, "oracle_source_config", oracle_source_config)
         if postgresql_source_config is not None:
             pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
+        if salesforce_source_config is not None:
+            pulumi.set(__self__, "salesforce_source_config", salesforce_source_config)
         if sql_server_source_config is not None:
             pulumi.set(__self__, "sql_server_source_config", sql_server_source_config)
 
@@ -3762,6 +3936,19 @@ class StreamSourceConfigArgs:
     @postgresql_source_config.setter
     def postgresql_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigArgs']]):
         pulumi.set(self, "postgresql_source_config", value)
+
+    @property
+    @pulumi.getter(name="salesforceSourceConfig")
+    def salesforce_source_config(self) -> Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgs']]:
+        """
+        Salesforce data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "salesforce_source_config")
+
+    @salesforce_source_config.setter
+    def salesforce_source_config(self, value: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigArgs']]):
+        pulumi.set(self, "salesforce_source_config", value)
 
     @property
     @pulumi.getter(name="sqlServerSourceConfig")
@@ -6204,6 +6391,325 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @scale.setter
     def scale(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "scale", value)
+
+
+if not MYPY:
+    class StreamSourceConfigSalesforceSourceConfigArgsDict(TypedDict):
+        polling_interval: pulumi.Input[builtins.str]
+        """
+        Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
+        """
+        exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict']]
+        """
+        Salesforce objects to exclude from the stream.
+        Structure is documented below.
+        """
+        include_objects: NotRequired[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict']]
+        """
+        Salesforce objects to retrieve from the source.
+        Structure is documented below.
+        """
+elif False:
+    StreamSourceConfigSalesforceSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigSalesforceSourceConfigArgs:
+    def __init__(__self__, *,
+                 polling_interval: pulumi.Input[builtins.str],
+                 exclude_objects: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']] = None,
+                 include_objects: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']] = None):
+        """
+        :param pulumi.Input[builtins.str] polling_interval: Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
+        :param pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs'] exclude_objects: Salesforce objects to exclude from the stream.
+               Structure is documented below.
+        :param pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs'] include_objects: Salesforce objects to retrieve from the source.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "polling_interval", polling_interval)
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+
+    @property
+    @pulumi.getter(name="pollingInterval")
+    def polling_interval(self) -> pulumi.Input[builtins.str]:
+        """
+        Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
+        """
+        return pulumi.get(self, "polling_interval")
+
+    @polling_interval.setter
+    def polling_interval(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "polling_interval", value)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']]:
+        """
+        Salesforce objects to exclude from the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @exclude_objects.setter
+    def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']]):
+        pulumi.set(self, "exclude_objects", value)
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']]:
+        """
+        Salesforce objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @include_objects.setter
+    def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']]):
+        pulumi.set(self, "include_objects", value)
+
+
+if not MYPY:
+    class StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict(TypedDict):
+        objects: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict']]]
+        """
+        Salesforce objects in data source.
+        Structure is documented below.
+        """
+elif False:
+    StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs:
+    def __init__(__self__, *,
+                 objects: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs']]] objects: Salesforce objects in data source.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "objects", objects)
+
+    @property
+    @pulumi.getter
+    def objects(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs']]]:
+        """
+        Salesforce objects in data source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "objects")
+
+    @objects.setter
+    def objects(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs']]]):
+        pulumi.set(self, "objects", value)
+
+
+if not MYPY:
+    class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict(TypedDict):
+        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict']]]]
+        """
+        Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+        Structure is documented below.
+        """
+        object_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of object in Salesforce Org.
+        """
+elif False:
+    StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgs:
+    def __init__(__self__, *,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]] = None,
+                 object_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]] fields: Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] object_name: Name of object in Salesforce Org.
+        """
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if object_name is not None:
+            pulumi.set(__self__, "object_name", object_name)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]]:
+        """
+        Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @property
+    @pulumi.getter(name="objectName")
+    def object_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of object in Salesforce Org.
+        """
+        return pulumi.get(self, "object_name")
+
+    @object_name.setter
+    def object_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "object_name", value)
+
+
+if not MYPY:
+    class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Field name.
+        """
+elif False:
+    StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: Field name.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Field name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict(TypedDict):
+        objects: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict']]]
+        """
+        Salesforce objects in Salesforce Org.
+        Structure is documented below.
+        """
+elif False:
+    StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs:
+    def __init__(__self__, *,
+                 objects: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs']]] objects: Salesforce objects in Salesforce Org.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "objects", objects)
+
+    @property
+    @pulumi.getter
+    def objects(self) -> pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs']]]:
+        """
+        Salesforce objects in Salesforce Org.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "objects")
+
+    @objects.setter
+    def objects(self, value: pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs']]]):
+        pulumi.set(self, "objects", value)
+
+
+if not MYPY:
+    class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict(TypedDict):
+        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict']]]]
+        """
+        Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+        Structure is documented below.
+        """
+        object_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of object in Salesforce Org.
+        """
+elif False:
+    StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgs:
+    def __init__(__self__, *,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]] = None,
+                 object_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]] fields: Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] object_name: Name of object in Salesforce Org.
+        """
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if object_name is not None:
+            pulumi.set(__self__, "object_name", object_name)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]]:
+        """
+        Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @property
+    @pulumi.getter(name="objectName")
+    def object_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of object in Salesforce Org.
+        """
+        return pulumi.get(self, "object_name")
+
+    @object_name.setter
+    def object_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "object_name", value)
+
+
+if not MYPY:
+    class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Field name.
+        """
+elif False:
+    StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] name: Field name.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Field name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:

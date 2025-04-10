@@ -25,6 +25,11 @@ public final class GetRegionalParametersParameter {
      */
     private String format;
     /**
+     * @return The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     * 
+     */
+    private String kmsKey;
+    /**
      * @return The labels assigned to the regional parameter.
      * 
      */
@@ -83,6 +88,13 @@ public final class GetRegionalParametersParameter {
      */
     public String format() {
         return this.format;
+    }
+    /**
+     * @return The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
+     * 
+     */
+    public String kmsKey() {
+        return this.kmsKey;
     }
     /**
      * @return The labels assigned to the regional parameter.
@@ -154,6 +166,7 @@ public final class GetRegionalParametersParameter {
         private String createTime;
         private Map<String,String> effectiveLabels;
         private String format;
+        private String kmsKey;
         private Map<String,String> labels;
         private String location;
         private String name;
@@ -168,6 +181,7 @@ public final class GetRegionalParametersParameter {
     	      this.createTime = defaults.createTime;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.format = defaults.format;
+    	      this.kmsKey = defaults.kmsKey;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -200,6 +214,14 @@ public final class GetRegionalParametersParameter {
               throw new MissingRequiredPropertyException("GetRegionalParametersParameter", "format");
             }
             this.format = format;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKey(String kmsKey) {
+            if (kmsKey == null) {
+              throw new MissingRequiredPropertyException("GetRegionalParametersParameter", "kmsKey");
+            }
+            this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
@@ -274,6 +296,7 @@ public final class GetRegionalParametersParameter {
             _resultValue.createTime = createTime;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.format = format;
+            _resultValue.kmsKey = kmsKey;
             _resultValue.labels = labels;
             _resultValue.location = location;
             _resultValue.name = name;

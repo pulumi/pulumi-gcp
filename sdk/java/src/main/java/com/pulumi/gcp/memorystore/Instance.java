@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.memorystore.InstanceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceState;
+import com.pulumi.gcp.memorystore.outputs.InstanceAutomatedBackupConfig;
 import com.pulumi.gcp.memorystore.outputs.InstanceCrossInstanceReplicationConfig;
 import com.pulumi.gcp.memorystore.outputs.InstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.InstanceDiscoveryEndpoint;
@@ -543,6 +544,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> authorizationMode() {
         return this.authorizationMode;
+    }
+    /**
+     * The automated backup config for a instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="automatedBackupConfig", refs={InstanceAutomatedBackupConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceAutomatedBackupConfig> automatedBackupConfig;
+
+    /**
+     * @return The automated backup config for a instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceAutomatedBackupConfig>> automatedBackupConfig() {
+        return Codegen.optional(this.automatedBackupConfig);
     }
     /**
      * Output only. Creation timestamp of the instance.

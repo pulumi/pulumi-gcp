@@ -35,6 +35,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? MaxDistance;
         /// <summary>
+        /// Specifies the shape of the TPU slice.
+        /// </summary>
+        public readonly string? TpuTopology;
+        /// <summary>
         /// Number of VMs in this placement group. Google does not recommend that you use this field
         /// unless you use a compact policy and you want your policy to work only if it contains this
         /// exact number of VMs.
@@ -51,12 +55,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? maxDistance,
 
+            string? tpuTopology,
+
             int? vmCount)
         {
             AvailabilityDomainCount = availabilityDomainCount;
             Collocation = collocation;
             GpuTopology = gpuTopology;
             MaxDistance = maxDistance;
+            TpuTopology = tpuTopology;
             VmCount = vmCount;
         }
     }

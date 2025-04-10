@@ -31,6 +31,13 @@ namespace Pulumi.Gcp.Netapp.Inputs
         public Input<string> StoragePool { get; set; } = null!;
 
         /// <summary>
+        /// Tiering policy for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tieringPolicy")]
+        public Input<Inputs.VolumeReplicationDestinationVolumeParametersTieringPolicyArgs>? TieringPolicy { get; set; }
+
+        /// <summary>
         /// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
         /// </summary>
         [Input("volumeId")]

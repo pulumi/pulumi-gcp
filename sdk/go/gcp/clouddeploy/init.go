@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeliveryPipelineIamMember{}
 	case "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy":
 		r = &DeliveryPipelineIamPolicy{}
+	case "gcp:clouddeploy/deployPolicy:DeployPolicy":
+		r = &DeployPolicy{}
 	case "gcp:clouddeploy/target:Target":
 		r = &Target{}
 	case "gcp:clouddeploy/targetIamBinding:TargetIamBinding":
@@ -103,6 +105,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"clouddeploy/deliveryPipelineIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"clouddeploy/deployPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
