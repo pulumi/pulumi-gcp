@@ -1843,6 +1843,15 @@ func Provider() tfbridge.ProviderInfo {
 			"google_cloud_run_v2_job": {Tok: gcpResource(gcpCloudRunV2, "Job")},
 			"google_cloud_run_v2_service": {
 				Tok: gcpResource(gcpCloudRunV2, "Service"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": tfbridge.AutoNameWithCustomOptions("",
+						tfbridge.AutoNameOptions{
+							Separator: "-",
+							Maxlen:    50,
+							Randlen:   7,
+							Transform: strings.ToLower,
+						}),
+				},
 
 				TransformFromState: func(_ context.Context, pMap resource.PropertyMap) (resource.PropertyMap, error) {
 					//`port` is an object type in the current version of this provider.
