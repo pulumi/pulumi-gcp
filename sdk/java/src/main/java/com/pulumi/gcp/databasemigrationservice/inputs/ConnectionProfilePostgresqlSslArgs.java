@@ -5,7 +5,6 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,22 +16,22 @@ public final class ConnectionProfilePostgresqlSslArgs extends com.pulumi.resourc
     public static final ConnectionProfilePostgresqlSslArgs Empty = new ConnectionProfilePostgresqlSslArgs();
 
     /**
-     * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
+     * Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
      * The replica will use this certificate to verify it&#39;s connecting to the right host.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="caCertificate", required=true)
-    private Output<String> caCertificate;
+    @Import(name="caCertificate")
+    private @Nullable Output<String> caCertificate;
 
     /**
-     * @return Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
+     * @return Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
      * The replica will use this certificate to verify it&#39;s connecting to the right host.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> caCertificate() {
-        return this.caCertificate;
+    public Optional<Output<String>> caCertificate() {
+        return Optional.ofNullable(this.caCertificate);
     }
 
     /**
@@ -118,20 +117,20 @@ public final class ConnectionProfilePostgresqlSslArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param caCertificate Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
+         * @param caCertificate Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
          * The replica will use this certificate to verify it&#39;s connecting to the right host.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
-        public Builder caCertificate(Output<String> caCertificate) {
+        public Builder caCertificate(@Nullable Output<String> caCertificate) {
             $.caCertificate = caCertificate;
             return this;
         }
 
         /**
-         * @param caCertificate Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
+         * @param caCertificate Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
          * The replica will use this certificate to verify it&#39;s connecting to the right host.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
@@ -216,9 +215,6 @@ public final class ConnectionProfilePostgresqlSslArgs extends com.pulumi.resourc
         }
 
         public ConnectionProfilePostgresqlSslArgs build() {
-            if ($.caCertificate == null) {
-                throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlSslArgs", "caCertificate");
-            }
             return $;
         }
     }

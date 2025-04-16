@@ -11,6 +11,12 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.inputs.GetAiEndpointIamPolicyArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiEndpointIamPolicyPlainArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiFeatureGroupIamPolicyArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiFeatureGroupIamPolicyPlainArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyPlainArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreIamPolicyArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreIamPolicyPlainArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreEntitytypeIamPolicyArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreEntitytypeIamPolicyPlainArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreIamPolicyArgs;
@@ -18,6 +24,9 @@ import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreIamPolicyPlainArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiIndexArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiIndexPlainArgs;
 import com.pulumi.gcp.vertex.outputs.GetAiEndpointIamPolicyResult;
+import com.pulumi.gcp.vertex.outputs.GetAiFeatureGroupIamPolicyResult;
+import com.pulumi.gcp.vertex.outputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyResult;
+import com.pulumi.gcp.vertex.outputs.GetAiFeatureOnlineStoreIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiFeaturestoreEntitytypeIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiFeaturestoreIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexResult;
@@ -233,6 +242,626 @@ public final class VertexFunctions {
      */
     public static CompletableFuture<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicyPlain(GetAiEndpointIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", TypeShape.of(GetAiEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
+     *             .region(featureGroup.region())
+     *             .featureGroup(featureGroup.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs args) {
+        return getAiFeatureGroupIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
+     *             .region(featureGroup.region())
+     *             .featureGroup(featureGroup.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicyPlain(GetAiFeatureGroupIamPolicyPlainArgs args) {
+        return getAiFeatureGroupIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
+     *             .region(featureGroup.region())
+     *             .featureGroup(featureGroup.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy", TypeShape.of(GetAiFeatureGroupIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
+     *             .region(featureGroup.region())
+     *             .featureGroup(featureGroup.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy", TypeShape.of(GetAiFeatureGroupIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
+     *             .region(featureGroup.region())
+     *             .featureGroup(featureGroup.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicyPlain(GetAiFeatureGroupIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy", TypeShape.of(GetAiFeatureGroupIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
+     *             .region(featureview.region())
+     *             .featureOnlineStore(featureview.featureOnlineStore())
+     *             .featureView(featureview.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs args) {
+        return getAiFeatureOnlineStoreFeatureviewIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
+     *             .region(featureview.region())
+     *             .featureOnlineStore(featureview.featureOnlineStore())
+     *             .featureView(featureview.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStoreFeatureviewIamPolicyPlain(GetAiFeatureOnlineStoreFeatureviewIamPolicyPlainArgs args) {
+        return getAiFeatureOnlineStoreFeatureviewIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
+     *             .region(featureview.region())
+     *             .featureOnlineStore(featureview.featureOnlineStore())
+     *             .featureView(featureview.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
+     *             .region(featureview.region())
+     *             .featureOnlineStore(featureview.featureOnlineStore())
+     *             .featureView(featureview.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
+     *             .region(featureview.region())
+     *             .featureOnlineStore(featureview.featureOnlineStore())
+     *             .featureView(featureview.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnlineStoreFeatureviewIamPolicyPlain(GetAiFeatureOnlineStoreFeatureviewIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreFeatureviewIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
+     *             .region(featureOnlineStore.region())
+     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs args) {
+        return getAiFeatureOnlineStoreIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
+     *             .region(featureOnlineStore.region())
+     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicyPlain(GetAiFeatureOnlineStoreIamPolicyPlainArgs args) {
+        return getAiFeatureOnlineStoreIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
+     *             .region(featureOnlineStore.region())
+     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureOnlineStoreIamPolicy:getAiFeatureOnlineStoreIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
+     *             .region(featureOnlineStore.region())
+     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiFeatureOnlineStoreIamPolicy:getAiFeatureOnlineStoreIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vertex.VertexFunctions;
+     * import com.pulumi.gcp.vertex.inputs.GetAiFeatureOnlineStoreIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
+     *             .region(featureOnlineStore.region())
+     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIamPolicyPlain(GetAiFeatureOnlineStoreIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vertex/getAiFeatureOnlineStoreIamPolicy:getAiFeatureOnlineStoreIamPolicy", TypeShape.of(GetAiFeatureOnlineStoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

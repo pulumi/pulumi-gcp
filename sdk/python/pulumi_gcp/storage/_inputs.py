@@ -62,6 +62,8 @@ __all__ = [
     'ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict',
     'ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs',
     'ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict',
+    'ControlFolderIntelligenceConfigTrialConfigArgs',
+    'ControlFolderIntelligenceConfigTrialConfigArgsDict',
     'ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs',
     'ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgsDict',
     'ControlOrganizationIntelligenceConfigFilterArgs',
@@ -74,6 +76,8 @@ __all__ = [
     'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict',
     'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs',
     'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict',
+    'ControlOrganizationIntelligenceConfigTrialConfigArgs',
+    'ControlOrganizationIntelligenceConfigTrialConfigArgsDict',
     'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs',
     'ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict',
     'ControlProjectIntelligenceConfigFilterArgs',
@@ -86,6 +90,8 @@ __all__ = [
     'ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict',
     'ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs',
     'ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict',
+    'ControlProjectIntelligenceConfigTrialConfigArgs',
+    'ControlProjectIntelligenceConfigTrialConfigArgsDict',
     'DefaultObjectAccessControlProjectTeamArgs',
     'DefaultObjectAccessControlProjectTeamArgsDict',
     'InsightsReportConfigCsvOptionsArgs',
@@ -1665,6 +1671,41 @@ class ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs:
 
 
 if not MYPY:
+    class ControlFolderIntelligenceConfigTrialConfigArgsDict(TypedDict):
+        expire_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The time at which the trial expires.
+        """
+elif False:
+    ControlFolderIntelligenceConfigTrialConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlFolderIntelligenceConfigTrialConfigArgs:
+    def __init__(__self__, *,
+                 expire_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expire_time: (Output)
+               The time at which the trial expires.
+        """
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The time at which the trial expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "expire_time", value)
+
+
+if not MYPY:
     class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedDict):
         effective_edition: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -1951,6 +1992,41 @@ class ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsAr
 
 
 if not MYPY:
+    class ControlOrganizationIntelligenceConfigTrialConfigArgsDict(TypedDict):
+        expire_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The time at which the trial expires.
+        """
+elif False:
+    ControlOrganizationIntelligenceConfigTrialConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlOrganizationIntelligenceConfigTrialConfigArgs:
+    def __init__(__self__, *,
+                 expire_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expire_time: (Output)
+               The time at which the trial expires.
+        """
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The time at which the trial expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "expire_time", value)
+
+
+if not MYPY:
     class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgsDict(TypedDict):
         effective_edition: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -2234,6 +2310,41 @@ class ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs:
     @locations.setter
     def locations(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
         pulumi.set(self, "locations", value)
+
+
+if not MYPY:
+    class ControlProjectIntelligenceConfigTrialConfigArgsDict(TypedDict):
+        expire_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The time at which the trial expires.
+        """
+elif False:
+    ControlProjectIntelligenceConfigTrialConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ControlProjectIntelligenceConfigTrialConfigArgs:
+    def __init__(__self__, *,
+                 expire_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expire_time: (Output)
+               The time at which the trial expires.
+        """
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The time at which the trial expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "expire_time", value)
 
 
 if not MYPY:

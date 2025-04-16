@@ -156,7 +156,7 @@ type AiFeatureGroup struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of feature group. eg us-central1
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -436,8 +436,8 @@ func (o AiFeatureGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // The region of feature group. eg us-central1
-func (o AiFeatureGroupOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiFeatureGroup) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+func (o AiFeatureGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiFeatureGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

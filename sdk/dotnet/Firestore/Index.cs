@@ -99,6 +99,7 @@ namespace Pulumi.Gcp.Firestore
     ///         Collection = "atestcollection",
     ///         QueryScope = "COLLECTION_RECURSIVE",
     ///         ApiScope = "DATASTORE_MODE_API",
+    ///         Density = "SPARSE_ALL",
     ///         Fields = new[]
     ///         {
     ///             new Gcp.Firestore.Inputs.IndexFieldArgs
@@ -204,6 +205,100 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Index Mongodb Compatible Scope
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id-mongodb-compatible",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         ApiScope = "MONGODB_COMPATIBLE_API",
+    ///         QueryScope = "COLLECTION_GROUP",
+    ///         Multikey = true,
+    ///         Density = "DENSE",
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "name",
+    ///                 Order = "ASCENDING",
+    ///             },
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 Order = "DESCENDING",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Index Sparse Any
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id-sparse-any",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         ApiScope = "MONGODB_COMPATIBLE_API",
+    ///         QueryScope = "COLLECTION_GROUP",
+    ///         Multikey = true,
+    ///         Density = "SPARSE_ANY",
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "name",
+    ///                 Order = "ASCENDING",
+    ///             },
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 Order = "DESCENDING",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -221,7 +316,8 @@ namespace Pulumi.Gcp.Firestore
     public partial class Index : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
+        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
+        /// "MONGODB_COMPATIBLE_API"]
         /// </summary>
         [Output("apiScope")]
         public Output<string?> ApiScope { get; private set; } = null!;
@@ -239,6 +335,12 @@ namespace Pulumi.Gcp.Firestore
         public Output<string?> Database { get; private set; } = null!;
 
         /// <summary>
+        /// The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        /// </summary>
+        [Output("density")]
+        public Output<string> Density { get; private set; } = null!;
+
+        /// <summary>
         /// The fields supported by this index. The last non-stored field entry is
         /// always for the field path `__name__`. If, on creation, `__name__` was not
         /// specified as the last field, it will be added automatically with the same
@@ -249,6 +351,15 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<Outputs.IndexField>> Fields { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+        /// paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+        /// most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+        /// will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        /// </summary>
+        [Output("multikey")]
+        public Output<bool?> Multikey { get; private set; } = null!;
 
         /// <summary>
         /// A server defined name for this index. Format:
@@ -314,7 +425,8 @@ namespace Pulumi.Gcp.Firestore
     public sealed class IndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
+        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
+        /// "MONGODB_COMPATIBLE_API"]
         /// </summary>
         [Input("apiScope")]
         public Input<string>? ApiScope { get; set; }
@@ -330,6 +442,12 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
+
+        /// <summary>
+        /// The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        /// </summary>
+        [Input("density")]
+        public Input<string>? Density { get; set; }
 
         [Input("fields", required: true)]
         private InputList<Inputs.IndexFieldArgs>? _fields;
@@ -348,6 +466,15 @@ namespace Pulumi.Gcp.Firestore
             get => _fields ?? (_fields = new InputList<Inputs.IndexFieldArgs>());
             set => _fields = value;
         }
+
+        /// <summary>
+        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+        /// paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+        /// most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+        /// will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        /// </summary>
+        [Input("multikey")]
+        public Input<bool>? Multikey { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -368,7 +495,8 @@ namespace Pulumi.Gcp.Firestore
     public sealed class IndexState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
+        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
+        /// "MONGODB_COMPATIBLE_API"]
         /// </summary>
         [Input("apiScope")]
         public Input<string>? ApiScope { get; set; }
@@ -384,6 +512,12 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
+
+        /// <summary>
+        /// The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        /// </summary>
+        [Input("density")]
+        public Input<string>? Density { get; set; }
 
         [Input("fields")]
         private InputList<Inputs.IndexFieldGetArgs>? _fields;
@@ -402,6 +536,15 @@ namespace Pulumi.Gcp.Firestore
             get => _fields ?? (_fields = new InputList<Inputs.IndexFieldGetArgs>());
             set => _fields = value;
         }
+
+        /// <summary>
+        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+        /// paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+        /// most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+        /// will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        /// </summary>
+        [Input("multikey")]
+        public Input<bool>? Multikey { get; set; }
 
         /// <summary>
         /// A server defined name for this index. Format:

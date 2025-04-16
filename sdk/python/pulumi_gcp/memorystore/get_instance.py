@@ -28,13 +28,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, id=None, instance_id=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, managed_backup_sources=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_configs and not isinstance(automated_backup_configs, list):
             raise TypeError("Expected argument 'automated_backup_configs' to be a list")
         pulumi.set(__self__, "automated_backup_configs", automated_backup_configs)
+        if backup_collection and not isinstance(backup_collection, str):
+            raise TypeError("Expected argument 'backup_collection' to be a str")
+        pulumi.set(__self__, "backup_collection", backup_collection)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -62,6 +65,9 @@ class GetInstanceResult:
         if engine_version and not isinstance(engine_version, str):
             raise TypeError("Expected argument 'engine_version' to be a str")
         pulumi.set(__self__, "engine_version", engine_version)
+        if gcs_sources and not isinstance(gcs_sources, list):
+            raise TypeError("Expected argument 'gcs_sources' to be a list")
+        pulumi.set(__self__, "gcs_sources", gcs_sources)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -80,6 +86,9 @@ class GetInstanceResult:
         if maintenance_schedules and not isinstance(maintenance_schedules, list):
             raise TypeError("Expected argument 'maintenance_schedules' to be a list")
         pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
+        if managed_backup_sources and not isinstance(managed_backup_sources, list):
+            raise TypeError("Expected argument 'managed_backup_sources' to be a list")
+        pulumi.set(__self__, "managed_backup_sources", managed_backup_sources)
         if mode and not isinstance(mode, str):
             raise TypeError("Expected argument 'mode' to be a str")
         pulumi.set(__self__, "mode", mode)
@@ -143,6 +152,11 @@ class GetInstanceResult:
         return pulumi.get(self, "automated_backup_configs")
 
     @property
+    @pulumi.getter(name="backupCollection")
+    def backup_collection(self) -> builtins.str:
+        return pulumi.get(self, "backup_collection")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> builtins.str:
         return pulumi.get(self, "create_time")
@@ -188,6 +202,11 @@ class GetInstanceResult:
         return pulumi.get(self, "engine_version")
 
     @property
+    @pulumi.getter(name="gcsSources")
+    def gcs_sources(self) -> Sequence['outputs.GetInstanceGcsSourceResult']:
+        return pulumi.get(self, "gcs_sources")
+
+    @property
     @pulumi.getter
     def id(self) -> builtins.str:
         """
@@ -219,6 +238,11 @@ class GetInstanceResult:
     @pulumi.getter(name="maintenanceSchedules")
     def maintenance_schedules(self) -> Sequence['outputs.GetInstanceMaintenanceScheduleResult']:
         return pulumi.get(self, "maintenance_schedules")
+
+    @property
+    @pulumi.getter(name="managedBackupSources")
+    def managed_backup_sources(self) -> Sequence['outputs.GetInstanceManagedBackupSourceResult']:
+        return pulumi.get(self, "managed_backup_sources")
 
     @property
     @pulumi.getter
@@ -314,6 +338,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             authorization_mode=self.authorization_mode,
             automated_backup_configs=self.automated_backup_configs,
+            backup_collection=self.backup_collection,
             create_time=self.create_time,
             cross_instance_replication_configs=self.cross_instance_replication_configs,
             deletion_protection_enabled=self.deletion_protection_enabled,
@@ -323,12 +348,14 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             endpoints=self.endpoints,
             engine_configs=self.engine_configs,
             engine_version=self.engine_version,
+            gcs_sources=self.gcs_sources,
             id=self.id,
             instance_id=self.instance_id,
             labels=self.labels,
             location=self.location,
             maintenance_policies=self.maintenance_policies,
             maintenance_schedules=self.maintenance_schedules,
+            managed_backup_sources=self.managed_backup_sources,
             mode=self.mode,
             name=self.name,
             node_configs=self.node_configs,
@@ -382,6 +409,7 @@ def get_instance(instance_id: Optional[builtins.str] = None,
     return AwaitableGetInstanceResult(
         authorization_mode=pulumi.get(__ret__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__ret__, 'automated_backup_configs'),
+        backup_collection=pulumi.get(__ret__, 'backup_collection'),
         create_time=pulumi.get(__ret__, 'create_time'),
         cross_instance_replication_configs=pulumi.get(__ret__, 'cross_instance_replication_configs'),
         deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
@@ -391,12 +419,14 @@ def get_instance(instance_id: Optional[builtins.str] = None,
         endpoints=pulumi.get(__ret__, 'endpoints'),
         engine_configs=pulumi.get(__ret__, 'engine_configs'),
         engine_version=pulumi.get(__ret__, 'engine_version'),
+        gcs_sources=pulumi.get(__ret__, 'gcs_sources'),
         id=pulumi.get(__ret__, 'id'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__ret__, 'maintenance_schedules'),
+        managed_backup_sources=pulumi.get(__ret__, 'managed_backup_sources'),
         mode=pulumi.get(__ret__, 'mode'),
         name=pulumi.get(__ret__, 'name'),
         node_configs=pulumi.get(__ret__, 'node_configs'),
@@ -447,6 +477,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[builtins.str]] = None
     return __ret__.apply(lambda __response__: GetInstanceResult(
         authorization_mode=pulumi.get(__response__, 'authorization_mode'),
         automated_backup_configs=pulumi.get(__response__, 'automated_backup_configs'),
+        backup_collection=pulumi.get(__response__, 'backup_collection'),
         create_time=pulumi.get(__response__, 'create_time'),
         cross_instance_replication_configs=pulumi.get(__response__, 'cross_instance_replication_configs'),
         deletion_protection_enabled=pulumi.get(__response__, 'deletion_protection_enabled'),
@@ -456,12 +487,14 @@ def get_instance_output(instance_id: Optional[pulumi.Input[builtins.str]] = None
         endpoints=pulumi.get(__response__, 'endpoints'),
         engine_configs=pulumi.get(__response__, 'engine_configs'),
         engine_version=pulumi.get(__response__, 'engine_version'),
+        gcs_sources=pulumi.get(__response__, 'gcs_sources'),
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),
         maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__response__, 'maintenance_schedules'),
+        managed_backup_sources=pulumi.get(__response__, 'managed_backup_sources'),
         mode=pulumi.get(__response__, 'mode'),
         name=pulumi.get(__response__, 'name'),
         node_configs=pulumi.get(__response__, 'node_configs'),

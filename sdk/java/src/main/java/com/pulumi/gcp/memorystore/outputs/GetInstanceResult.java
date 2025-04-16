@@ -10,8 +10,10 @@ import com.pulumi.gcp.memorystore.outputs.GetInstanceCrossInstanceReplicationCon
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceDiscoveryEndpoint;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceEndpoint;
+import com.pulumi.gcp.memorystore.outputs.GetInstanceGcsSource;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceMaintenancePolicy;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceMaintenanceSchedule;
+import com.pulumi.gcp.memorystore.outputs.GetInstanceManagedBackupSource;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceNodeConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstancePersistenceConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstancePscAttachmentDetail;
@@ -31,6 +33,7 @@ import javax.annotation.Nullable;
 public final class GetInstanceResult {
     private String authorizationMode;
     private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
+    private String backupCollection;
     private String createTime;
     private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
     private Boolean deletionProtectionEnabled;
@@ -40,6 +43,7 @@ public final class GetInstanceResult {
     private List<GetInstanceEndpoint> endpoints;
     private Map<String,String> engineConfigs;
     private String engineVersion;
+    private List<GetInstanceGcsSource> gcsSources;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -50,6 +54,7 @@ public final class GetInstanceResult {
     private @Nullable String location;
     private List<GetInstanceMaintenancePolicy> maintenancePolicies;
     private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
+    private List<GetInstanceManagedBackupSource> managedBackupSources;
     private String mode;
     private String name;
     private List<GetInstanceNodeConfig> nodeConfigs;
@@ -74,6 +79,9 @@ public final class GetInstanceResult {
     }
     public List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs() {
         return this.automatedBackupConfigs;
+    }
+    public String backupCollection() {
+        return this.backupCollection;
     }
     public String createTime() {
         return this.createTime;
@@ -102,6 +110,9 @@ public final class GetInstanceResult {
     public String engineVersion() {
         return this.engineVersion;
     }
+    public List<GetInstanceGcsSource> gcsSources() {
+        return this.gcsSources;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -123,6 +134,9 @@ public final class GetInstanceResult {
     }
     public List<GetInstanceMaintenanceSchedule> maintenanceSchedules() {
         return this.maintenanceSchedules;
+    }
+    public List<GetInstanceManagedBackupSource> managedBackupSources() {
+        return this.managedBackupSources;
     }
     public String mode() {
         return this.mode;
@@ -187,6 +201,7 @@ public final class GetInstanceResult {
     public static final class Builder {
         private String authorizationMode;
         private List<GetInstanceAutomatedBackupConfig> automatedBackupConfigs;
+        private String backupCollection;
         private String createTime;
         private List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
         private Boolean deletionProtectionEnabled;
@@ -196,12 +211,14 @@ public final class GetInstanceResult {
         private List<GetInstanceEndpoint> endpoints;
         private Map<String,String> engineConfigs;
         private String engineVersion;
+        private List<GetInstanceGcsSource> gcsSources;
         private String id;
         private String instanceId;
         private Map<String,String> labels;
         private @Nullable String location;
         private List<GetInstanceMaintenancePolicy> maintenancePolicies;
         private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
+        private List<GetInstanceManagedBackupSource> managedBackupSources;
         private String mode;
         private String name;
         private List<GetInstanceNodeConfig> nodeConfigs;
@@ -224,6 +241,7 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.authorizationMode = defaults.authorizationMode;
     	      this.automatedBackupConfigs = defaults.automatedBackupConfigs;
+    	      this.backupCollection = defaults.backupCollection;
     	      this.createTime = defaults.createTime;
     	      this.crossInstanceReplicationConfigs = defaults.crossInstanceReplicationConfigs;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
@@ -233,12 +251,14 @@ public final class GetInstanceResult {
     	      this.endpoints = defaults.endpoints;
     	      this.engineConfigs = defaults.engineConfigs;
     	      this.engineVersion = defaults.engineVersion;
+    	      this.gcsSources = defaults.gcsSources;
     	      this.id = defaults.id;
     	      this.instanceId = defaults.instanceId;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.maintenanceSchedules = defaults.maintenanceSchedules;
+    	      this.managedBackupSources = defaults.managedBackupSources;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
     	      this.nodeConfigs = defaults.nodeConfigs;
@@ -276,6 +296,14 @@ public final class GetInstanceResult {
         }
         public Builder automatedBackupConfigs(GetInstanceAutomatedBackupConfig... automatedBackupConfigs) {
             return automatedBackupConfigs(List.of(automatedBackupConfigs));
+        }
+        @CustomType.Setter
+        public Builder backupCollection(String backupCollection) {
+            if (backupCollection == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "backupCollection");
+            }
+            this.backupCollection = backupCollection;
+            return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
@@ -362,6 +390,17 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder gcsSources(List<GetInstanceGcsSource> gcsSources) {
+            if (gcsSources == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "gcsSources");
+            }
+            this.gcsSources = gcsSources;
+            return this;
+        }
+        public Builder gcsSources(GetInstanceGcsSource... gcsSources) {
+            return gcsSources(List.of(gcsSources));
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "id");
@@ -412,6 +451,17 @@ public final class GetInstanceResult {
         }
         public Builder maintenanceSchedules(GetInstanceMaintenanceSchedule... maintenanceSchedules) {
             return maintenanceSchedules(List.of(maintenanceSchedules));
+        }
+        @CustomType.Setter
+        public Builder managedBackupSources(List<GetInstanceManagedBackupSource> managedBackupSources) {
+            if (managedBackupSources == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "managedBackupSources");
+            }
+            this.managedBackupSources = managedBackupSources;
+            return this;
+        }
+        public Builder managedBackupSources(GetInstanceManagedBackupSource... managedBackupSources) {
+            return managedBackupSources(List.of(managedBackupSources));
         }
         @CustomType.Setter
         public Builder mode(String mode) {
@@ -569,6 +619,7 @@ public final class GetInstanceResult {
             final var _resultValue = new GetInstanceResult();
             _resultValue.authorizationMode = authorizationMode;
             _resultValue.automatedBackupConfigs = automatedBackupConfigs;
+            _resultValue.backupCollection = backupCollection;
             _resultValue.createTime = createTime;
             _resultValue.crossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
@@ -578,12 +629,14 @@ public final class GetInstanceResult {
             _resultValue.endpoints = endpoints;
             _resultValue.engineConfigs = engineConfigs;
             _resultValue.engineVersion = engineVersion;
+            _resultValue.gcsSources = gcsSources;
             _resultValue.id = id;
             _resultValue.instanceId = instanceId;
             _resultValue.labels = labels;
             _resultValue.location = location;
             _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.maintenanceSchedules = maintenanceSchedules;
+            _resultValue.managedBackupSources = managedBackupSources;
             _resultValue.mode = mode;
             _resultValue.name = name;
             _resultValue.nodeConfigs = nodeConfigs;

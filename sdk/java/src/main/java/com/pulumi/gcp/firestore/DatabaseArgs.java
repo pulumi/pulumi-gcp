@@ -72,6 +72,23 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.concurrencyMode);
     }
 
+    /**
+     * The database edition.
+     * Possible values are: `STANDARD`, `ENTERPRISE`.
+     * 
+     */
+    @Import(name="databaseEdition")
+    private @Nullable Output<String> databaseEdition;
+
+    /**
+     * @return The database edition.
+     * Possible values are: `STANDARD`, `ENTERPRISE`.
+     * 
+     */
+    public Optional<Output<String>> databaseEdition() {
+        return Optional.ofNullable(this.databaseEdition);
+    }
+
     @Import(name="deleteProtectionState")
     private @Nullable Output<String> deleteProtectionState;
 
@@ -203,6 +220,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         this.appEngineIntegrationMode = $.appEngineIntegrationMode;
         this.cmekConfig = $.cmekConfig;
         this.concurrencyMode = $.concurrencyMode;
+        this.databaseEdition = $.databaseEdition;
         this.deleteProtectionState = $.deleteProtectionState;
         this.deletionPolicy = $.deletionPolicy;
         this.locationId = $.locationId;
@@ -301,6 +319,29 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder concurrencyMode(String concurrencyMode) {
             return concurrencyMode(Output.of(concurrencyMode));
+        }
+
+        /**
+         * @param databaseEdition The database edition.
+         * Possible values are: `STANDARD`, `ENTERPRISE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseEdition(@Nullable Output<String> databaseEdition) {
+            $.databaseEdition = databaseEdition;
+            return this;
+        }
+
+        /**
+         * @param databaseEdition The database edition.
+         * Possible values are: `STANDARD`, `ENTERPRISE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseEdition(String databaseEdition) {
+            return databaseEdition(Output.of(databaseEdition));
         }
 
         public Builder deleteProtectionState(@Nullable Output<String> deleteProtectionState) {

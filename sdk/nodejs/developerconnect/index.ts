@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AccountConnectorArgs, AccountConnectorState } from "./accountConnector";
+export type AccountConnector = import("./accountConnector").AccountConnector;
+export const AccountConnector: typeof import("./accountConnector").AccountConnector = null as any;
+utilities.lazyLoad(exports, ["AccountConnector"], () => require("./accountConnector"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:developerconnect/accountConnector:AccountConnector":
+                return new AccountConnector(name, <any>undefined, { urn })
             case "gcp:developerconnect/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "gcp:developerconnect/gitRepositoryLink:GitRepositoryLink":
@@ -29,5 +36,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "developerconnect/accountConnector", _module)
 pulumi.runtime.registerResourceModule("gcp", "developerconnect/connection", _module)
 pulumi.runtime.registerResourceModule("gcp", "developerconnect/gitRepositoryLink", _module)

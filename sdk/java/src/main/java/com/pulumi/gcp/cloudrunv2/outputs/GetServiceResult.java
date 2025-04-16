@@ -41,6 +41,7 @@ public final class GetServiceResult {
     private String etag;
     private String expireTime;
     private String generation;
+    private Boolean iapEnabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -123,6 +124,9 @@ public final class GetServiceResult {
     }
     public String generation() {
         return this.generation;
+    }
+    public Boolean iapEnabled() {
+        return this.iapEnabled;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -225,6 +229,7 @@ public final class GetServiceResult {
         private String etag;
         private String expireTime;
         private String generation;
+        private Boolean iapEnabled;
         private String id;
         private String ingress;
         private Boolean invokerIamDisabled;
@@ -269,6 +274,7 @@ public final class GetServiceResult {
     	      this.etag = defaults.etag;
     	      this.expireTime = defaults.expireTime;
     	      this.generation = defaults.generation;
+    	      this.iapEnabled = defaults.iapEnabled;
     	      this.id = defaults.id;
     	      this.ingress = defaults.ingress;
     	      this.invokerIamDisabled = defaults.invokerIamDisabled;
@@ -448,6 +454,14 @@ public final class GetServiceResult {
               throw new MissingRequiredPropertyException("GetServiceResult", "generation");
             }
             this.generation = generation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder iapEnabled(Boolean iapEnabled) {
+            if (iapEnabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "iapEnabled");
+            }
+            this.iapEnabled = iapEnabled;
             return this;
         }
         @CustomType.Setter
@@ -668,6 +682,7 @@ public final class GetServiceResult {
             _resultValue.etag = etag;
             _resultValue.expireTime = expireTime;
             _resultValue.generation = generation;
+            _resultValue.iapEnabled = iapEnabled;
             _resultValue.id = id;
             _resultValue.ingress = ingress;
             _resultValue.invokerIamDisabled = invokerIamDisabled;

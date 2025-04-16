@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SnapshotSourceDiskEncryptionKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the encryption key that is stored in Google Cloud KMS.
+        /// </summary>
+        [Input("kmsKeySelfLink")]
+        public Input<string>? KmsKeySelfLink { get; set; }
+
+        /// <summary>
         /// The service account used for the encryption request for the given KMS key.
         /// If absent, the Compute Engine Service Agent service account is used.
         /// </summary>
@@ -34,6 +40,24 @@ namespace Pulumi.Gcp.Compute.Inputs
             {
                 var emptySecret = Output.CreateSecret(0);
                 _rawKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("rsaEncryptedKey")]
+        private Input<string>? _rsaEncryptedKey;
+
+        /// <summary>
+        /// Specifies an encryption key stored in Google Cloud KMS, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public Input<string>? RsaEncryptedKey
+        {
+            get => _rsaEncryptedKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rsaEncryptedKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 

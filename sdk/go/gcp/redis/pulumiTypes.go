@@ -1591,6 +1591,143 @@ func (o ClusterDiscoveryEndpointPscConfigPtrOutput) Network() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterGcsSource struct {
+	// URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+	Uris []string `pulumi:"uris"`
+}
+
+// ClusterGcsSourceInput is an input type that accepts ClusterGcsSourceArgs and ClusterGcsSourceOutput values.
+// You can construct a concrete instance of `ClusterGcsSourceInput` via:
+//
+//	ClusterGcsSourceArgs{...}
+type ClusterGcsSourceInput interface {
+	pulumi.Input
+
+	ToClusterGcsSourceOutput() ClusterGcsSourceOutput
+	ToClusterGcsSourceOutputWithContext(context.Context) ClusterGcsSourceOutput
+}
+
+type ClusterGcsSourceArgs struct {
+	// URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (ClusterGcsSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterGcsSource)(nil)).Elem()
+}
+
+func (i ClusterGcsSourceArgs) ToClusterGcsSourceOutput() ClusterGcsSourceOutput {
+	return i.ToClusterGcsSourceOutputWithContext(context.Background())
+}
+
+func (i ClusterGcsSourceArgs) ToClusterGcsSourceOutputWithContext(ctx context.Context) ClusterGcsSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGcsSourceOutput)
+}
+
+func (i ClusterGcsSourceArgs) ToClusterGcsSourcePtrOutput() ClusterGcsSourcePtrOutput {
+	return i.ToClusterGcsSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterGcsSourceArgs) ToClusterGcsSourcePtrOutputWithContext(ctx context.Context) ClusterGcsSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGcsSourceOutput).ToClusterGcsSourcePtrOutputWithContext(ctx)
+}
+
+// ClusterGcsSourcePtrInput is an input type that accepts ClusterGcsSourceArgs, ClusterGcsSourcePtr and ClusterGcsSourcePtrOutput values.
+// You can construct a concrete instance of `ClusterGcsSourcePtrInput` via:
+//
+//	        ClusterGcsSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterGcsSourcePtrInput interface {
+	pulumi.Input
+
+	ToClusterGcsSourcePtrOutput() ClusterGcsSourcePtrOutput
+	ToClusterGcsSourcePtrOutputWithContext(context.Context) ClusterGcsSourcePtrOutput
+}
+
+type clusterGcsSourcePtrType ClusterGcsSourceArgs
+
+func ClusterGcsSourcePtr(v *ClusterGcsSourceArgs) ClusterGcsSourcePtrInput {
+	return (*clusterGcsSourcePtrType)(v)
+}
+
+func (*clusterGcsSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterGcsSource)(nil)).Elem()
+}
+
+func (i *clusterGcsSourcePtrType) ToClusterGcsSourcePtrOutput() ClusterGcsSourcePtrOutput {
+	return i.ToClusterGcsSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterGcsSourcePtrType) ToClusterGcsSourcePtrOutputWithContext(ctx context.Context) ClusterGcsSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGcsSourcePtrOutput)
+}
+
+type ClusterGcsSourceOutput struct{ *pulumi.OutputState }
+
+func (ClusterGcsSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterGcsSource)(nil)).Elem()
+}
+
+func (o ClusterGcsSourceOutput) ToClusterGcsSourceOutput() ClusterGcsSourceOutput {
+	return o
+}
+
+func (o ClusterGcsSourceOutput) ToClusterGcsSourceOutputWithContext(ctx context.Context) ClusterGcsSourceOutput {
+	return o
+}
+
+func (o ClusterGcsSourceOutput) ToClusterGcsSourcePtrOutput() ClusterGcsSourcePtrOutput {
+	return o.ToClusterGcsSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterGcsSourceOutput) ToClusterGcsSourcePtrOutputWithContext(ctx context.Context) ClusterGcsSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterGcsSource) *ClusterGcsSource {
+		return &v
+	}).(ClusterGcsSourcePtrOutput)
+}
+
+// URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+func (o ClusterGcsSourceOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterGcsSource) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type ClusterGcsSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterGcsSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterGcsSource)(nil)).Elem()
+}
+
+func (o ClusterGcsSourcePtrOutput) ToClusterGcsSourcePtrOutput() ClusterGcsSourcePtrOutput {
+	return o
+}
+
+func (o ClusterGcsSourcePtrOutput) ToClusterGcsSourcePtrOutputWithContext(ctx context.Context) ClusterGcsSourcePtrOutput {
+	return o
+}
+
+func (o ClusterGcsSourcePtrOutput) Elem() ClusterGcsSourceOutput {
+	return o.ApplyT(func(v *ClusterGcsSource) ClusterGcsSource {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterGcsSource
+		return ret
+	}).(ClusterGcsSourceOutput)
+}
+
+// URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+func (o ClusterGcsSourcePtrOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterGcsSource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Uris
+	}).(pulumi.StringArrayOutput)
+}
+
 type ClusterMaintenancePolicy struct {
 	// (Output)
 	// Output only. The time when the policy was created.
@@ -2191,6 +2328,147 @@ func (o ClusterMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) ClusterM
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMaintenanceSchedule {
 		return vs[0].([]ClusterMaintenanceSchedule)[vs[1].(int)]
 	}).(ClusterMaintenanceScheduleOutput)
+}
+
+type ClusterManagedBackupSource struct {
+	// Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+	// like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+	Backup string `pulumi:"backup"`
+}
+
+// ClusterManagedBackupSourceInput is an input type that accepts ClusterManagedBackupSourceArgs and ClusterManagedBackupSourceOutput values.
+// You can construct a concrete instance of `ClusterManagedBackupSourceInput` via:
+//
+//	ClusterManagedBackupSourceArgs{...}
+type ClusterManagedBackupSourceInput interface {
+	pulumi.Input
+
+	ToClusterManagedBackupSourceOutput() ClusterManagedBackupSourceOutput
+	ToClusterManagedBackupSourceOutputWithContext(context.Context) ClusterManagedBackupSourceOutput
+}
+
+type ClusterManagedBackupSourceArgs struct {
+	// Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+	// like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+	Backup pulumi.StringInput `pulumi:"backup"`
+}
+
+func (ClusterManagedBackupSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterManagedBackupSource)(nil)).Elem()
+}
+
+func (i ClusterManagedBackupSourceArgs) ToClusterManagedBackupSourceOutput() ClusterManagedBackupSourceOutput {
+	return i.ToClusterManagedBackupSourceOutputWithContext(context.Background())
+}
+
+func (i ClusterManagedBackupSourceArgs) ToClusterManagedBackupSourceOutputWithContext(ctx context.Context) ClusterManagedBackupSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterManagedBackupSourceOutput)
+}
+
+func (i ClusterManagedBackupSourceArgs) ToClusterManagedBackupSourcePtrOutput() ClusterManagedBackupSourcePtrOutput {
+	return i.ToClusterManagedBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterManagedBackupSourceArgs) ToClusterManagedBackupSourcePtrOutputWithContext(ctx context.Context) ClusterManagedBackupSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterManagedBackupSourceOutput).ToClusterManagedBackupSourcePtrOutputWithContext(ctx)
+}
+
+// ClusterManagedBackupSourcePtrInput is an input type that accepts ClusterManagedBackupSourceArgs, ClusterManagedBackupSourcePtr and ClusterManagedBackupSourcePtrOutput values.
+// You can construct a concrete instance of `ClusterManagedBackupSourcePtrInput` via:
+//
+//	        ClusterManagedBackupSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterManagedBackupSourcePtrInput interface {
+	pulumi.Input
+
+	ToClusterManagedBackupSourcePtrOutput() ClusterManagedBackupSourcePtrOutput
+	ToClusterManagedBackupSourcePtrOutputWithContext(context.Context) ClusterManagedBackupSourcePtrOutput
+}
+
+type clusterManagedBackupSourcePtrType ClusterManagedBackupSourceArgs
+
+func ClusterManagedBackupSourcePtr(v *ClusterManagedBackupSourceArgs) ClusterManagedBackupSourcePtrInput {
+	return (*clusterManagedBackupSourcePtrType)(v)
+}
+
+func (*clusterManagedBackupSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterManagedBackupSource)(nil)).Elem()
+}
+
+func (i *clusterManagedBackupSourcePtrType) ToClusterManagedBackupSourcePtrOutput() ClusterManagedBackupSourcePtrOutput {
+	return i.ToClusterManagedBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterManagedBackupSourcePtrType) ToClusterManagedBackupSourcePtrOutputWithContext(ctx context.Context) ClusterManagedBackupSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterManagedBackupSourcePtrOutput)
+}
+
+type ClusterManagedBackupSourceOutput struct{ *pulumi.OutputState }
+
+func (ClusterManagedBackupSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterManagedBackupSource)(nil)).Elem()
+}
+
+func (o ClusterManagedBackupSourceOutput) ToClusterManagedBackupSourceOutput() ClusterManagedBackupSourceOutput {
+	return o
+}
+
+func (o ClusterManagedBackupSourceOutput) ToClusterManagedBackupSourceOutputWithContext(ctx context.Context) ClusterManagedBackupSourceOutput {
+	return o
+}
+
+func (o ClusterManagedBackupSourceOutput) ToClusterManagedBackupSourcePtrOutput() ClusterManagedBackupSourcePtrOutput {
+	return o.ToClusterManagedBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterManagedBackupSourceOutput) ToClusterManagedBackupSourcePtrOutputWithContext(ctx context.Context) ClusterManagedBackupSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterManagedBackupSource) *ClusterManagedBackupSource {
+		return &v
+	}).(ClusterManagedBackupSourcePtrOutput)
+}
+
+// Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+// like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+func (o ClusterManagedBackupSourceOutput) Backup() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterManagedBackupSource) string { return v.Backup }).(pulumi.StringOutput)
+}
+
+type ClusterManagedBackupSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterManagedBackupSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterManagedBackupSource)(nil)).Elem()
+}
+
+func (o ClusterManagedBackupSourcePtrOutput) ToClusterManagedBackupSourcePtrOutput() ClusterManagedBackupSourcePtrOutput {
+	return o
+}
+
+func (o ClusterManagedBackupSourcePtrOutput) ToClusterManagedBackupSourcePtrOutputWithContext(ctx context.Context) ClusterManagedBackupSourcePtrOutput {
+	return o
+}
+
+func (o ClusterManagedBackupSourcePtrOutput) Elem() ClusterManagedBackupSourceOutput {
+	return o.ApplyT(func(v *ClusterManagedBackupSource) ClusterManagedBackupSource {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterManagedBackupSource
+		return ret
+	}).(ClusterManagedBackupSourceOutput)
+}
+
+// Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+// like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+func (o ClusterManagedBackupSourcePtrOutput) Backup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterManagedBackupSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Backup
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterPersistenceConfig struct {
@@ -6189,6 +6467,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointArrayInput)(nil)).Elem(), ClusterDiscoveryEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointPscConfigInput)(nil)).Elem(), ClusterDiscoveryEndpointPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointPscConfigPtrInput)(nil)).Elem(), ClusterDiscoveryEndpointPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcsSourceInput)(nil)).Elem(), ClusterGcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGcsSourcePtrInput)(nil)).Elem(), ClusterGcsSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyInput)(nil)).Elem(), ClusterMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyPtrInput)(nil)).Elem(), ClusterMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindowInput)(nil)).Elem(), ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{})
@@ -6196,6 +6476,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput)(nil)).Elem(), ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenanceScheduleInput)(nil)).Elem(), ClusterMaintenanceScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenanceScheduleArrayInput)(nil)).Elem(), ClusterMaintenanceScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterManagedBackupSourceInput)(nil)).Elem(), ClusterManagedBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterManagedBackupSourcePtrInput)(nil)).Elem(), ClusterManagedBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigInput)(nil)).Elem(), ClusterPersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigPtrInput)(nil)).Elem(), ClusterPersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigAofConfigInput)(nil)).Elem(), ClusterPersistenceConfigAofConfigArgs{})
@@ -6269,6 +6551,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterDiscoveryEndpointArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDiscoveryEndpointPscConfigOutput{})
 	pulumi.RegisterOutputType(ClusterDiscoveryEndpointPscConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterGcsSourceOutput{})
+	pulumi.RegisterOutputType(ClusterGcsSourcePtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput{})
@@ -6276,6 +6560,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenanceScheduleOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenanceScheduleArrayOutput{})
+	pulumi.RegisterOutputType(ClusterManagedBackupSourceOutput{})
+	pulumi.RegisterOutputType(ClusterManagedBackupSourcePtrOutput{})
 	pulumi.RegisterOutputType(ClusterPersistenceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterPersistenceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPersistenceConfigAofConfigOutput{})

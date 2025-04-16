@@ -90,6 +90,7 @@ class _ControlFolderIntelligenceConfigState:
                  effective_intelligence_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs']]]] = None,
                  filter: Optional[pulumi.Input['ControlFolderIntelligenceConfigFilterArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 trial_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ControlFolderIntelligenceConfigTrialConfigArgs']]]] = None,
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ControlFolderIntelligenceConfig resources.
@@ -102,6 +103,8 @@ class _ControlFolderIntelligenceConfigState:
                
                
                - - -
+        :param pulumi.Input[Sequence[pulumi.Input['ControlFolderIntelligenceConfigTrialConfigArgs']]] trial_configs: The trial configuration of the Storage Intelligence resource.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] update_time: The time at which the Storage Intelligence Config resource is last updated.
         """
         if edition_config is not None:
@@ -112,6 +115,8 @@ class _ControlFolderIntelligenceConfigState:
             pulumi.set(__self__, "filter", filter)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if trial_configs is not None:
+            pulumi.set(__self__, "trial_configs", trial_configs)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -167,6 +172,19 @@ class _ControlFolderIntelligenceConfigState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="trialConfigs")
+    def trial_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ControlFolderIntelligenceConfigTrialConfigArgs']]]]:
+        """
+        The trial configuration of the Storage Intelligence resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trial_configs")
+
+    @trial_configs.setter
+    def trial_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ControlFolderIntelligenceConfigTrialConfigArgs']]]]):
+        pulumi.set(self, "trial_configs", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -329,6 +347,7 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
             __props__.__dict__["filter"] = filter
             __props__.__dict__["name"] = name
             __props__.__dict__["effective_intelligence_configs"] = None
+            __props__.__dict__["trial_configs"] = None
             __props__.__dict__["update_time"] = None
         super(ControlFolderIntelligenceConfig, __self__).__init__(
             'gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig',
@@ -344,6 +363,7 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
             effective_intelligence_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs', 'ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgsDict']]]]] = None,
             filter: Optional[pulumi.Input[Union['ControlFolderIntelligenceConfigFilterArgs', 'ControlFolderIntelligenceConfigFilterArgsDict']]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
+            trial_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ControlFolderIntelligenceConfigTrialConfigArgs', 'ControlFolderIntelligenceConfigTrialConfigArgsDict']]]]] = None,
             update_time: Optional[pulumi.Input[builtins.str]] = None) -> 'ControlFolderIntelligenceConfig':
         """
         Get an existing ControlFolderIntelligenceConfig resource's state with the given name, id, and optional extra
@@ -361,6 +381,8 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ControlFolderIntelligenceConfigTrialConfigArgs', 'ControlFolderIntelligenceConfigTrialConfigArgsDict']]]] trial_configs: The trial configuration of the Storage Intelligence resource.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] update_time: The time at which the Storage Intelligence Config resource is last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -371,6 +393,7 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
         __props__.__dict__["effective_intelligence_configs"] = effective_intelligence_configs
         __props__.__dict__["filter"] = filter
         __props__.__dict__["name"] = name
+        __props__.__dict__["trial_configs"] = trial_configs
         __props__.__dict__["update_time"] = update_time
         return ControlFolderIntelligenceConfig(resource_name, opts=opts, __props__=__props__)
 
@@ -410,6 +433,15 @@ class ControlFolderIntelligenceConfig(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="trialConfigs")
+    def trial_configs(self) -> pulumi.Output[Sequence['outputs.ControlFolderIntelligenceConfigTrialConfig']]:
+        """
+        The trial configuration of the Storage Intelligence resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trial_configs")
 
     @property
     @pulumi.getter(name="updateTime")

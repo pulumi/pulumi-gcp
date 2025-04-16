@@ -93,6 +93,13 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The trial configuration of the Storage Intelligence resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("trialConfigs")]
+        public Output<ImmutableArray<Outputs.ControlProjectIntelligenceConfigTrialConfig>> TrialConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// The time at which the Storage Intelligence Config resource is last updated.
         /// </summary>
         [Output("updateTime")]
@@ -208,6 +215,19 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("trialConfigs")]
+        private InputList<Inputs.ControlProjectIntelligenceConfigTrialConfigGetArgs>? _trialConfigs;
+
+        /// <summary>
+        /// The trial configuration of the Storage Intelligence resource.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ControlProjectIntelligenceConfigTrialConfigGetArgs> TrialConfigs
+        {
+            get => _trialConfigs ?? (_trialConfigs = new InputList<Inputs.ControlProjectIntelligenceConfigTrialConfigGetArgs>());
+            set => _trialConfigs = value;
+        }
 
         /// <summary>
         /// The time at which the Storage Intelligence Config resource is last updated.

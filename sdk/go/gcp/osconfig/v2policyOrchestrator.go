@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// PolicyOrchestrator helps managing project+zone level policy resources (e.g.
+// OS Policy Assignments), by providing tools to create, update and delete them
+// across projects and locations, at scale.
+//
 // ## Example Usage
 //
 // ### Osconfigv2 Policy Orchestrator Basic

@@ -703,7 +703,7 @@ class VolumeRestoreParameters(dict):
                  source_backup: Optional[builtins.str] = None,
                  source_snapshot: Optional[builtins.str] = None):
         """
-        :param builtins.str source_backup: Full name of the snapshot to use for creating this volume.
+        :param builtins.str source_backup: Full name of the backup to use for creating this volume.
                `source_snapshot` and `source_backup` cannot be used simultaneously.
                Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
         :param builtins.str source_snapshot: Full name of the snapshot to use for creating this volume.
@@ -719,7 +719,7 @@ class VolumeRestoreParameters(dict):
     @pulumi.getter(name="sourceBackup")
     def source_backup(self) -> Optional[builtins.str]:
         """
-        Full name of the snapshot to use for creating this volume.
+        Full name of the backup to use for creating this volume.
         `source_snapshot` and `source_backup` cannot be used simultaneously.
         Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
         """

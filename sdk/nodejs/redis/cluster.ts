@@ -492,6 +492,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly automatedBackupConfig!: pulumi.Output<outputs.redis.ClusterAutomatedBackupConfig | undefined>;
     /**
+     * The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     */
+    public /*out*/ readonly backupCollection!: pulumi.Output<string>;
+    /**
      * The timestamp associated with the cluster creation request. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
      * digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -516,6 +521,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly discoveryEndpoints!: pulumi.Output<outputs.redis.ClusterDiscoveryEndpoint[]>;
     /**
+     * Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+     * Structure is documented below.
+     */
+    public readonly gcsSource!: pulumi.Output<outputs.redis.ClusterGcsSource | undefined>;
+    /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
     public readonly kmsKey!: pulumi.Output<string | undefined>;
@@ -529,6 +539,11 @@ export class Cluster extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.redis.ClusterMaintenanceSchedule[]>;
+    /**
+     * Backups that generated and managed by memorystore.
+     * Structure is documented below.
+     */
+    public readonly managedBackupSource!: pulumi.Output<outputs.redis.ClusterManagedBackupSource | undefined>;
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -637,13 +652,16 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["authorizationMode"] = state ? state.authorizationMode : undefined;
             resourceInputs["automatedBackupConfig"] = state ? state.automatedBackupConfig : undefined;
+            resourceInputs["backupCollection"] = state ? state.backupCollection : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["crossClusterReplicationConfig"] = state ? state.crossClusterReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
             resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
+            resourceInputs["gcsSource"] = state ? state.gcsSource : undefined;
             resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
+            resourceInputs["managedBackupSource"] = state ? state.managedBackupSource : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeType"] = state ? state.nodeType : undefined;
             resourceInputs["persistenceConfig"] = state ? state.persistenceConfig : undefined;
@@ -671,8 +689,10 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["automatedBackupConfig"] = args ? args.automatedBackupConfig : undefined;
             resourceInputs["crossClusterReplicationConfig"] = args ? args.crossClusterReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
+            resourceInputs["gcsSource"] = args ? args.gcsSource : undefined;
             resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["managedBackupSource"] = args ? args.managedBackupSource : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
@@ -684,6 +704,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["shardCount"] = args ? args.shardCount : undefined;
             resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
             resourceInputs["zoneDistributionConfig"] = args ? args.zoneDistributionConfig : undefined;
+            resourceInputs["backupCollection"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
             resourceInputs["maintenanceSchedules"] = undefined /*out*/;
@@ -716,6 +737,11 @@ export interface ClusterState {
      */
     automatedBackupConfig?: pulumi.Input<inputs.redis.ClusterAutomatedBackupConfig>;
     /**
+     * The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     */
+    backupCollection?: pulumi.Input<string>;
+    /**
      * The timestamp associated with the cluster creation request. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
      * digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -740,6 +766,11 @@ export interface ClusterState {
      */
     discoveryEndpoints?: pulumi.Input<pulumi.Input<inputs.redis.ClusterDiscoveryEndpoint>[]>;
     /**
+     * Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+     * Structure is documented below.
+     */
+    gcsSource?: pulumi.Input<inputs.redis.ClusterGcsSource>;
+    /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
     kmsKey?: pulumi.Input<string>;
@@ -753,6 +784,11 @@ export interface ClusterState {
      * Structure is documented below.
      */
     maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.redis.ClusterMaintenanceSchedule>[]>;
+    /**
+     * Backups that generated and managed by memorystore.
+     * Structure is documented below.
+     */
+    managedBackupSource?: pulumi.Input<inputs.redis.ClusterManagedBackupSource>;
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -874,6 +910,11 @@ export interface ClusterArgs {
      */
     deletionProtectionEnabled?: pulumi.Input<boolean>;
     /**
+     * Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+     * Structure is documented below.
+     */
+    gcsSource?: pulumi.Input<inputs.redis.ClusterGcsSource>;
+    /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
     kmsKey?: pulumi.Input<string>;
@@ -882,6 +923,11 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.redis.ClusterMaintenancePolicy>;
+    /**
+     * Backups that generated and managed by memorystore.
+     * Structure is documented below.
+     */
+    managedBackupSource?: pulumi.Input<inputs.redis.ClusterManagedBackupSource>;
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}

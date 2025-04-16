@@ -675,6 +675,9 @@ type Cluster struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig ClusterAutomatedBackupConfigPtrOutput `pulumi:"automatedBackupConfig"`
+	// The backup collection full resource name.
+	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+	BackupCollection pulumi.StringOutput `pulumi:"backupCollection"`
 	// The timestamp associated with the cluster creation request. A timestamp in
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -691,6 +694,9 @@ type Cluster struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayOutput `pulumi:"discoveryEndpoints"`
+	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+	// Structure is documented below.
+	GcsSource ClusterGcsSourcePtrOutput `pulumi:"gcsSource"`
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// Maintenance policy for a cluster
@@ -699,6 +705,9 @@ type Cluster struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules ClusterMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
+	// Backups that generated and managed by memorystore.
+	// Structure is documented below.
+	ManagedBackupSource ClusterManagedBackupSourcePtrOutput `pulumi:"managedBackupSource"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	//
@@ -796,6 +805,9 @@ type clusterState struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig *ClusterAutomatedBackupConfig `pulumi:"automatedBackupConfig"`
+	// The backup collection full resource name.
+	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+	BackupCollection *string `pulumi:"backupCollection"`
 	// The timestamp associated with the cluster creation request. A timestamp in
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -812,6 +824,9 @@ type clusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints []ClusterDiscoveryEndpoint `pulumi:"discoveryEndpoints"`
+	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+	// Structure is documented below.
+	GcsSource *ClusterGcsSource `pulumi:"gcsSource"`
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Maintenance policy for a cluster
@@ -820,6 +835,9 @@ type clusterState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules []ClusterMaintenanceSchedule `pulumi:"maintenanceSchedules"`
+	// Backups that generated and managed by memorystore.
+	// Structure is documented below.
+	ManagedBackupSource *ClusterManagedBackupSource `pulumi:"managedBackupSource"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	//
@@ -885,6 +903,9 @@ type ClusterState struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig ClusterAutomatedBackupConfigPtrInput
+	// The backup collection full resource name.
+	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+	BackupCollection pulumi.StringPtrInput
 	// The timestamp associated with the cluster creation request. A timestamp in
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -901,6 +922,9 @@ type ClusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayInput
+	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+	// Structure is documented below.
+	GcsSource ClusterGcsSourcePtrInput
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey pulumi.StringPtrInput
 	// Maintenance policy for a cluster
@@ -909,6 +933,9 @@ type ClusterState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules ClusterMaintenanceScheduleArrayInput
+	// Backups that generated and managed by memorystore.
+	// Structure is documented below.
+	ManagedBackupSource ClusterManagedBackupSourcePtrInput
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	//
@@ -985,11 +1012,17 @@ type clusterArgs struct {
 	// If the value if set to true, any delete cluster operation will fail.
 	// Default value is true.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
+	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+	// Structure is documented below.
+	GcsSource *ClusterGcsSource `pulumi:"gcsSource"`
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Backups that generated and managed by memorystore.
+	// Structure is documented below.
+	ManagedBackupSource *ClusterManagedBackupSource `pulumi:"managedBackupSource"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	//
@@ -1046,11 +1079,17 @@ type ClusterArgs struct {
 	// If the value if set to true, any delete cluster operation will fail.
 	// Default value is true.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
+	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+	// Structure is documented below.
+	GcsSource ClusterGcsSourcePtrInput
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey pulumi.StringPtrInput
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
+	// Backups that generated and managed by memorystore.
+	// Structure is documented below.
+	ManagedBackupSource ClusterManagedBackupSourcePtrInput
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	//
@@ -1191,6 +1230,12 @@ func (o ClusterOutput) AutomatedBackupConfig() ClusterAutomatedBackupConfigPtrOu
 	return o.ApplyT(func(v *Cluster) ClusterAutomatedBackupConfigPtrOutput { return v.AutomatedBackupConfig }).(ClusterAutomatedBackupConfigPtrOutput)
 }
 
+// The backup collection full resource name.
+// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+func (o ClusterOutput) BackupCollection() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.BackupCollection }).(pulumi.StringOutput)
+}
+
 // The timestamp associated with the cluster creation request. A timestamp in
 // RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 // digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -1219,6 +1264,12 @@ func (o ClusterOutput) DiscoveryEndpoints() ClusterDiscoveryEndpointArrayOutput 
 	return o.ApplyT(func(v *Cluster) ClusterDiscoveryEndpointArrayOutput { return v.DiscoveryEndpoints }).(ClusterDiscoveryEndpointArrayOutput)
 }
 
+// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+// Structure is documented below.
+func (o ClusterOutput) GcsSource() ClusterGcsSourcePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterGcsSourcePtrOutput { return v.GcsSource }).(ClusterGcsSourcePtrOutput)
+}
+
 // The KMS key used to encrypt the at-rest data of the cluster.
 func (o ClusterOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.KmsKey }).(pulumi.StringPtrOutput)
@@ -1234,6 +1285,12 @@ func (o ClusterOutput) MaintenancePolicy() ClusterMaintenancePolicyPtrOutput {
 // Structure is documented below.
 func (o ClusterOutput) MaintenanceSchedules() ClusterMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(ClusterMaintenanceScheduleArrayOutput)
+}
+
+// Backups that generated and managed by memorystore.
+// Structure is documented below.
+func (o ClusterOutput) ManagedBackupSource() ClusterManagedBackupSourcePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterManagedBackupSourcePtrOutput { return v.ManagedBackupSource }).(ClusterManagedBackupSourcePtrOutput)
 }
 
 // Unique name of the resource in this scope including project and location using the form:

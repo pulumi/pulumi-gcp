@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.MemoryStore
     {
         public readonly string AuthorizationMode;
         public readonly ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> AutomatedBackupConfigs;
+        public readonly string BackupCollection;
         public readonly string CreateTime;
         public readonly ImmutableArray<Outputs.GetInstanceCrossInstanceReplicationConfigResult> CrossInstanceReplicationConfigs;
         public readonly bool DeletionProtectionEnabled;
@@ -149,6 +150,7 @@ namespace Pulumi.Gcp.MemoryStore
         public readonly ImmutableArray<Outputs.GetInstanceEndpointResult> Endpoints;
         public readonly ImmutableDictionary<string, string> EngineConfigs;
         public readonly string EngineVersion;
+        public readonly ImmutableArray<Outputs.GetInstanceGcsSourceResult> GcsSources;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -158,6 +160,7 @@ namespace Pulumi.Gcp.MemoryStore
         public readonly string? Location;
         public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> MaintenancePolicies;
         public readonly ImmutableArray<Outputs.GetInstanceMaintenanceScheduleResult> MaintenanceSchedules;
+        public readonly ImmutableArray<Outputs.GetInstanceManagedBackupSourceResult> ManagedBackupSources;
         public readonly string Mode;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetInstanceNodeConfigResult> NodeConfigs;
@@ -182,6 +185,8 @@ namespace Pulumi.Gcp.MemoryStore
 
             ImmutableArray<Outputs.GetInstanceAutomatedBackupConfigResult> automatedBackupConfigs,
 
+            string backupCollection,
+
             string createTime,
 
             ImmutableArray<Outputs.GetInstanceCrossInstanceReplicationConfigResult> crossInstanceReplicationConfigs,
@@ -200,6 +205,8 @@ namespace Pulumi.Gcp.MemoryStore
 
             string engineVersion,
 
+            ImmutableArray<Outputs.GetInstanceGcsSourceResult> gcsSources,
+
             string id,
 
             string instanceId,
@@ -211,6 +218,8 @@ namespace Pulumi.Gcp.MemoryStore
             ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> maintenancePolicies,
 
             ImmutableArray<Outputs.GetInstanceMaintenanceScheduleResult> maintenanceSchedules,
+
+            ImmutableArray<Outputs.GetInstanceManagedBackupSourceResult> managedBackupSources,
 
             string mode,
 
@@ -248,6 +257,7 @@ namespace Pulumi.Gcp.MemoryStore
         {
             AuthorizationMode = authorizationMode;
             AutomatedBackupConfigs = automatedBackupConfigs;
+            BackupCollection = backupCollection;
             CreateTime = createTime;
             CrossInstanceReplicationConfigs = crossInstanceReplicationConfigs;
             DeletionProtectionEnabled = deletionProtectionEnabled;
@@ -257,12 +267,14 @@ namespace Pulumi.Gcp.MemoryStore
             Endpoints = endpoints;
             EngineConfigs = engineConfigs;
             EngineVersion = engineVersion;
+            GcsSources = gcsSources;
             Id = id;
             InstanceId = instanceId;
             Labels = labels;
             Location = location;
             MaintenancePolicies = maintenancePolicies;
             MaintenanceSchedules = maintenanceSchedules;
+            ManagedBackupSources = managedBackupSources;
             Mode = mode;
             Name = name;
             NodeConfigs = nodeConfigs;

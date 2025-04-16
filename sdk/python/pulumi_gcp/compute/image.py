@@ -34,8 +34,11 @@ class ImageArgs:
                  raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']] = None,
                  source_disk: Optional[pulumi.Input[builtins.str]] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']] = None,
                  source_image: Optional[pulumi.Input[builtins.str]] = None,
+                 source_image_encryption_key: Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']] = None,
                  source_snapshot: Optional[pulumi.Input[builtins.str]] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a Image resource.
@@ -78,12 +81,18 @@ class ImageArgs:
         :param pulumi.Input[builtins.str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
+        :param pulumi.Input['ImageSourceDiskEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if
+               the source disk is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
                URL of one of the following:
                * The selfLink URL
                * This property
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input['ImageSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] source_snapshot: URL of the source snapshot used to create this image.
                In order to create an image, you must provide the full or partial URL of one of the following:
                * The selfLink URL
@@ -91,6 +100,9 @@ class ImageArgs:
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if
+               the source snapshot is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
@@ -119,10 +131,16 @@ class ImageArgs:
             pulumi.set(__self__, "shielded_instance_initial_state", shielded_instance_initial_state)
         if source_disk is not None:
             pulumi.set(__self__, "source_disk", source_disk)
+        if source_disk_encryption_key is not None:
+            pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
         if source_image is not None:
             pulumi.set(__self__, "source_image", source_image)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         if source_snapshot is not None:
             pulumi.set(__self__, "source_snapshot", source_snapshot)
+        if source_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
 
@@ -298,6 +316,20 @@ class ImageArgs:
         pulumi.set(self, "source_disk", value)
 
     @property
+    @pulumi.getter(name="sourceDiskEncryptionKey")
+    def source_disk_encryption_key(self) -> Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source disk. Required if
+        the source disk is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_disk_encryption_key")
+
+    @source_disk_encryption_key.setter
+    def source_disk_encryption_key(self, value: Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']]):
+        pulumi.set(self, "source_disk_encryption_key", value)
+
+    @property
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -313,6 +345,20 @@ class ImageArgs:
     @source_image.setter
     def source_image(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "source_image", value)
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source image. Required if
+        the source image is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @source_image_encryption_key.setter
+    def source_image_encryption_key(self, value: Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']]):
+        pulumi.set(self, "source_image_encryption_key", value)
 
     @property
     @pulumi.getter(name="sourceSnapshot")
@@ -331,6 +377,20 @@ class ImageArgs:
     @source_snapshot.setter
     def source_snapshot(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "source_snapshot", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source snapshot. Required if
+        the source snapshot is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @source_snapshot_encryption_key.setter
+    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']]):
+        pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @property
     @pulumi.getter(name="storageLocations")
@@ -368,8 +428,11 @@ class _ImageState:
                  self_link: Optional[pulumi.Input[builtins.str]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input['ImageShieldedInstanceInitialStateArgs']] = None,
                  source_disk: Optional[pulumi.Input[builtins.str]] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']] = None,
                  source_image: Optional[pulumi.Input[builtins.str]] = None,
+                 source_image_encryption_key: Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']] = None,
                  source_snapshot: Optional[pulumi.Input[builtins.str]] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Image resources.
@@ -421,12 +484,18 @@ class _ImageState:
         :param pulumi.Input[builtins.str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
+        :param pulumi.Input['ImageSourceDiskEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if
+               the source disk is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
                URL of one of the following:
                * The selfLink URL
                * This property
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input['ImageSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] source_snapshot: URL of the source snapshot used to create this image.
                In order to create an image, you must provide the full or partial URL of one of the following:
                * The selfLink URL
@@ -434,6 +503,9 @@ class _ImageState:
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if
+               the source snapshot is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
@@ -474,10 +546,16 @@ class _ImageState:
             pulumi.set(__self__, "shielded_instance_initial_state", shielded_instance_initial_state)
         if source_disk is not None:
             pulumi.set(__self__, "source_disk", source_disk)
+        if source_disk_encryption_key is not None:
+            pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
         if source_image is not None:
             pulumi.set(__self__, "source_image", source_image)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         if source_snapshot is not None:
             pulumi.set(__self__, "source_snapshot", source_snapshot)
+        if source_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
 
@@ -728,6 +806,20 @@ class _ImageState:
         pulumi.set(self, "source_disk", value)
 
     @property
+    @pulumi.getter(name="sourceDiskEncryptionKey")
+    def source_disk_encryption_key(self) -> Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source disk. Required if
+        the source disk is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_disk_encryption_key")
+
+    @source_disk_encryption_key.setter
+    def source_disk_encryption_key(self, value: Optional[pulumi.Input['ImageSourceDiskEncryptionKeyArgs']]):
+        pulumi.set(self, "source_disk_encryption_key", value)
+
+    @property
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -743,6 +835,20 @@ class _ImageState:
     @source_image.setter
     def source_image(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "source_image", value)
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source image. Required if
+        the source image is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @source_image_encryption_key.setter
+    def source_image_encryption_key(self, value: Optional[pulumi.Input['ImageSourceImageEncryptionKeyArgs']]):
+        pulumi.set(self, "source_image_encryption_key", value)
 
     @property
     @pulumi.getter(name="sourceSnapshot")
@@ -761,6 +867,20 @@ class _ImageState:
     @source_snapshot.setter
     def source_snapshot(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "source_snapshot", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']]:
+        """
+        The customer-supplied encryption key of the source snapshot. Required if
+        the source snapshot is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @source_snapshot_encryption_key.setter
+    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['ImageSourceSnapshotEncryptionKeyArgs']]):
+        pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @property
     @pulumi.getter(name="storageLocations")
@@ -794,8 +914,11 @@ class Image(pulumi.CustomResource):
                  raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
                  source_disk: Optional[pulumi.Input[builtins.str]] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
                  source_image: Optional[pulumi.Input[builtins.str]] = None,
+                 source_image_encryption_key: Optional[pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
                  source_snapshot: Optional[pulumi.Input[builtins.str]] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  __props__=None):
         """
@@ -962,12 +1085,18 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
+        :param pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if
+               the source disk is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
                URL of one of the following:
                * The selfLink URL
                * This property
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] source_snapshot: URL of the source snapshot used to create this image.
                In order to create an image, you must provide the full or partial URL of one of the following:
                * The selfLink URL
@@ -975,6 +1104,9 @@ class Image(pulumi.CustomResource):
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if
+               the source snapshot is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
@@ -1135,8 +1267,11 @@ class Image(pulumi.CustomResource):
                  raw_disk: Optional[pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
                  source_disk: Optional[pulumi.Input[builtins.str]] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
                  source_image: Optional[pulumi.Input[builtins.str]] = None,
+                 source_image_encryption_key: Optional[pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
                  source_snapshot: Optional[pulumi.Input[builtins.str]] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1159,8 +1294,11 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["raw_disk"] = raw_disk
             __props__.__dict__["shielded_instance_initial_state"] = shielded_instance_initial_state
             __props__.__dict__["source_disk"] = source_disk
+            __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
             __props__.__dict__["source_image"] = source_image
+            __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
             __props__.__dict__["source_snapshot"] = source_snapshot
+            __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["archive_size_bytes"] = None
             __props__.__dict__["creation_timestamp"] = None
@@ -1198,8 +1336,11 @@ class Image(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[builtins.str]] = None,
             shielded_instance_initial_state: Optional[pulumi.Input[Union['ImageShieldedInstanceInitialStateArgs', 'ImageShieldedInstanceInitialStateArgsDict']]] = None,
             source_disk: Optional[pulumi.Input[builtins.str]] = None,
+            source_disk_encryption_key: Optional[pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']]] = None,
             source_image: Optional[pulumi.Input[builtins.str]] = None,
+            source_image_encryption_key: Optional[pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']]] = None,
             source_snapshot: Optional[pulumi.Input[builtins.str]] = None,
+            source_snapshot_encryption_key: Optional[pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']]] = None,
             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
@@ -1256,12 +1397,18 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] source_disk: The source disk to create this image based on.
                You must provide either this property or the
                rawDisk.source property but not both to create an image.
+        :param pulumi.Input[Union['ImageSourceDiskEncryptionKeyArgs', 'ImageSourceDiskEncryptionKeyArgsDict']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if
+               the source disk is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial
                URL of one of the following:
                * The selfLink URL
                * This property
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input[Union['ImageSourceImageEncryptionKeyArgs', 'ImageSourceImageEncryptionKeyArgsDict']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] source_snapshot: URL of the source snapshot used to create this image.
                In order to create an image, you must provide the full or partial URL of one of the following:
                * The selfLink URL
@@ -1269,6 +1416,9 @@ class Image(pulumi.CustomResource):
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input[Union['ImageSourceSnapshotEncryptionKeyArgs', 'ImageSourceSnapshotEncryptionKeyArgsDict']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if
+               the source snapshot is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
@@ -1295,8 +1445,11 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["shielded_instance_initial_state"] = shielded_instance_initial_state
         __props__.__dict__["source_disk"] = source_disk
+        __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
         __props__.__dict__["source_image"] = source_image
+        __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
         __props__.__dict__["source_snapshot"] = source_snapshot
+        __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
         __props__.__dict__["storage_locations"] = storage_locations
         return Image(resource_name, opts=opts, __props__=__props__)
 
@@ -1475,6 +1628,16 @@ class Image(pulumi.CustomResource):
         return pulumi.get(self, "source_disk")
 
     @property
+    @pulumi.getter(name="sourceDiskEncryptionKey")
+    def source_disk_encryption_key(self) -> pulumi.Output[Optional['outputs.ImageSourceDiskEncryptionKey']]:
+        """
+        The customer-supplied encryption key of the source disk. Required if
+        the source disk is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_disk_encryption_key")
+
+    @property
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> pulumi.Output[Optional[builtins.str]]:
         """
@@ -1486,6 +1649,16 @@ class Image(pulumi.CustomResource):
         * The sourceDisk URL
         """
         return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> pulumi.Output[Optional['outputs.ImageSourceImageEncryptionKey']]:
+        """
+        The customer-supplied encryption key of the source image. Required if
+        the source image is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
 
     @property
     @pulumi.getter(name="sourceSnapshot")
@@ -1500,6 +1673,16 @@ class Image(pulumi.CustomResource):
         * The sourceDisk URL
         """
         return pulumi.get(self, "source_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> pulumi.Output[Optional['outputs.ImageSourceSnapshotEncryptionKey']]:
+        """
+        The customer-supplied encryption key of the source snapshot. Required if
+        the source snapshot is protected by a customer-supplied encryption key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
 
     @property
     @pulumi.getter(name="storageLocations")

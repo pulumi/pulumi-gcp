@@ -14,19 +14,26 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class TableExternalCatalogTableOptionsStorageDescriptor
     {
         /// <summary>
-        /// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+        /// Specifies the fully qualified class name of the
+        /// InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
+        /// maximum length is 128 characters.
         /// </summary>
         public readonly string? InputFormat;
         /// <summary>
-        /// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+        /// The physical location of the table (e.g.
+        /// 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+        /// 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
         /// </summary>
         public readonly string? LocationUri;
         /// <summary>
-        /// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+        /// Specifies the fully qualified class name of the
+        /// OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
+        /// maximum length is 128 characters.
         /// </summary>
         public readonly string? OutputFormat;
         /// <summary>
-        /// Serializer and deserializer information.
+        /// Serializer and deserializer information. Structure
+        /// is documented below.
         /// </summary>
         public readonly Outputs.TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo? SerdeInfo;
 

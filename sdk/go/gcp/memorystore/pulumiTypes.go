@@ -2647,6 +2647,147 @@ func (o InstanceEndpointConnectionPscAutoConnectionPtrOutput) ServiceAttachment(
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceGcsSource struct {
+	// URIs of the GCS objects to import.
+	// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+	Uris []string `pulumi:"uris"`
+}
+
+// InstanceGcsSourceInput is an input type that accepts InstanceGcsSourceArgs and InstanceGcsSourceOutput values.
+// You can construct a concrete instance of `InstanceGcsSourceInput` via:
+//
+//	InstanceGcsSourceArgs{...}
+type InstanceGcsSourceInput interface {
+	pulumi.Input
+
+	ToInstanceGcsSourceOutput() InstanceGcsSourceOutput
+	ToInstanceGcsSourceOutputWithContext(context.Context) InstanceGcsSourceOutput
+}
+
+type InstanceGcsSourceArgs struct {
+	// URIs of the GCS objects to import.
+	// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (InstanceGcsSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGcsSource)(nil)).Elem()
+}
+
+func (i InstanceGcsSourceArgs) ToInstanceGcsSourceOutput() InstanceGcsSourceOutput {
+	return i.ToInstanceGcsSourceOutputWithContext(context.Background())
+}
+
+func (i InstanceGcsSourceArgs) ToInstanceGcsSourceOutputWithContext(ctx context.Context) InstanceGcsSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGcsSourceOutput)
+}
+
+func (i InstanceGcsSourceArgs) ToInstanceGcsSourcePtrOutput() InstanceGcsSourcePtrOutput {
+	return i.ToInstanceGcsSourcePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGcsSourceArgs) ToInstanceGcsSourcePtrOutputWithContext(ctx context.Context) InstanceGcsSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGcsSourceOutput).ToInstanceGcsSourcePtrOutputWithContext(ctx)
+}
+
+// InstanceGcsSourcePtrInput is an input type that accepts InstanceGcsSourceArgs, InstanceGcsSourcePtr and InstanceGcsSourcePtrOutput values.
+// You can construct a concrete instance of `InstanceGcsSourcePtrInput` via:
+//
+//	        InstanceGcsSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceGcsSourcePtrInput interface {
+	pulumi.Input
+
+	ToInstanceGcsSourcePtrOutput() InstanceGcsSourcePtrOutput
+	ToInstanceGcsSourcePtrOutputWithContext(context.Context) InstanceGcsSourcePtrOutput
+}
+
+type instanceGcsSourcePtrType InstanceGcsSourceArgs
+
+func InstanceGcsSourcePtr(v *InstanceGcsSourceArgs) InstanceGcsSourcePtrInput {
+	return (*instanceGcsSourcePtrType)(v)
+}
+
+func (*instanceGcsSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGcsSource)(nil)).Elem()
+}
+
+func (i *instanceGcsSourcePtrType) ToInstanceGcsSourcePtrOutput() InstanceGcsSourcePtrOutput {
+	return i.ToInstanceGcsSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceGcsSourcePtrType) ToInstanceGcsSourcePtrOutputWithContext(ctx context.Context) InstanceGcsSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGcsSourcePtrOutput)
+}
+
+type InstanceGcsSourceOutput struct{ *pulumi.OutputState }
+
+func (InstanceGcsSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGcsSource)(nil)).Elem()
+}
+
+func (o InstanceGcsSourceOutput) ToInstanceGcsSourceOutput() InstanceGcsSourceOutput {
+	return o
+}
+
+func (o InstanceGcsSourceOutput) ToInstanceGcsSourceOutputWithContext(ctx context.Context) InstanceGcsSourceOutput {
+	return o
+}
+
+func (o InstanceGcsSourceOutput) ToInstanceGcsSourcePtrOutput() InstanceGcsSourcePtrOutput {
+	return o.ToInstanceGcsSourcePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGcsSourceOutput) ToInstanceGcsSourcePtrOutputWithContext(ctx context.Context) InstanceGcsSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGcsSource) *InstanceGcsSource {
+		return &v
+	}).(InstanceGcsSourcePtrOutput)
+}
+
+// URIs of the GCS objects to import.
+// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+func (o InstanceGcsSourceOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceGcsSource) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type InstanceGcsSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGcsSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGcsSource)(nil)).Elem()
+}
+
+func (o InstanceGcsSourcePtrOutput) ToInstanceGcsSourcePtrOutput() InstanceGcsSourcePtrOutput {
+	return o
+}
+
+func (o InstanceGcsSourcePtrOutput) ToInstanceGcsSourcePtrOutputWithContext(ctx context.Context) InstanceGcsSourcePtrOutput {
+	return o
+}
+
+func (o InstanceGcsSourcePtrOutput) Elem() InstanceGcsSourceOutput {
+	return o.ApplyT(func(v *InstanceGcsSource) InstanceGcsSource {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGcsSource
+		return ret
+	}).(InstanceGcsSourceOutput)
+}
+
+// URIs of the GCS objects to import.
+// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+func (o InstanceGcsSourcePtrOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceGcsSource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Uris
+	}).(pulumi.StringArrayOutput)
+}
+
 type InstanceMaintenancePolicy struct {
 	// (Output)
 	// The time when the policy was created.
@@ -3247,6 +3388,143 @@ func (o InstanceMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) Instanc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceMaintenanceSchedule {
 		return vs[0].([]InstanceMaintenanceSchedule)[vs[1].(int)]
 	}).(InstanceMaintenanceScheduleOutput)
+}
+
+type InstanceManagedBackupSource struct {
+	// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+	Backup string `pulumi:"backup"`
+}
+
+// InstanceManagedBackupSourceInput is an input type that accepts InstanceManagedBackupSourceArgs and InstanceManagedBackupSourceOutput values.
+// You can construct a concrete instance of `InstanceManagedBackupSourceInput` via:
+//
+//	InstanceManagedBackupSourceArgs{...}
+type InstanceManagedBackupSourceInput interface {
+	pulumi.Input
+
+	ToInstanceManagedBackupSourceOutput() InstanceManagedBackupSourceOutput
+	ToInstanceManagedBackupSourceOutputWithContext(context.Context) InstanceManagedBackupSourceOutput
+}
+
+type InstanceManagedBackupSourceArgs struct {
+	// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+	Backup pulumi.StringInput `pulumi:"backup"`
+}
+
+func (InstanceManagedBackupSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceManagedBackupSource)(nil)).Elem()
+}
+
+func (i InstanceManagedBackupSourceArgs) ToInstanceManagedBackupSourceOutput() InstanceManagedBackupSourceOutput {
+	return i.ToInstanceManagedBackupSourceOutputWithContext(context.Background())
+}
+
+func (i InstanceManagedBackupSourceArgs) ToInstanceManagedBackupSourceOutputWithContext(ctx context.Context) InstanceManagedBackupSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceManagedBackupSourceOutput)
+}
+
+func (i InstanceManagedBackupSourceArgs) ToInstanceManagedBackupSourcePtrOutput() InstanceManagedBackupSourcePtrOutput {
+	return i.ToInstanceManagedBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceManagedBackupSourceArgs) ToInstanceManagedBackupSourcePtrOutputWithContext(ctx context.Context) InstanceManagedBackupSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceManagedBackupSourceOutput).ToInstanceManagedBackupSourcePtrOutputWithContext(ctx)
+}
+
+// InstanceManagedBackupSourcePtrInput is an input type that accepts InstanceManagedBackupSourceArgs, InstanceManagedBackupSourcePtr and InstanceManagedBackupSourcePtrOutput values.
+// You can construct a concrete instance of `InstanceManagedBackupSourcePtrInput` via:
+//
+//	        InstanceManagedBackupSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceManagedBackupSourcePtrInput interface {
+	pulumi.Input
+
+	ToInstanceManagedBackupSourcePtrOutput() InstanceManagedBackupSourcePtrOutput
+	ToInstanceManagedBackupSourcePtrOutputWithContext(context.Context) InstanceManagedBackupSourcePtrOutput
+}
+
+type instanceManagedBackupSourcePtrType InstanceManagedBackupSourceArgs
+
+func InstanceManagedBackupSourcePtr(v *InstanceManagedBackupSourceArgs) InstanceManagedBackupSourcePtrInput {
+	return (*instanceManagedBackupSourcePtrType)(v)
+}
+
+func (*instanceManagedBackupSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceManagedBackupSource)(nil)).Elem()
+}
+
+func (i *instanceManagedBackupSourcePtrType) ToInstanceManagedBackupSourcePtrOutput() InstanceManagedBackupSourcePtrOutput {
+	return i.ToInstanceManagedBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceManagedBackupSourcePtrType) ToInstanceManagedBackupSourcePtrOutputWithContext(ctx context.Context) InstanceManagedBackupSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceManagedBackupSourcePtrOutput)
+}
+
+type InstanceManagedBackupSourceOutput struct{ *pulumi.OutputState }
+
+func (InstanceManagedBackupSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceManagedBackupSource)(nil)).Elem()
+}
+
+func (o InstanceManagedBackupSourceOutput) ToInstanceManagedBackupSourceOutput() InstanceManagedBackupSourceOutput {
+	return o
+}
+
+func (o InstanceManagedBackupSourceOutput) ToInstanceManagedBackupSourceOutputWithContext(ctx context.Context) InstanceManagedBackupSourceOutput {
+	return o
+}
+
+func (o InstanceManagedBackupSourceOutput) ToInstanceManagedBackupSourcePtrOutput() InstanceManagedBackupSourcePtrOutput {
+	return o.ToInstanceManagedBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceManagedBackupSourceOutput) ToInstanceManagedBackupSourcePtrOutputWithContext(ctx context.Context) InstanceManagedBackupSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceManagedBackupSource) *InstanceManagedBackupSource {
+		return &v
+	}).(InstanceManagedBackupSourcePtrOutput)
+}
+
+// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+func (o InstanceManagedBackupSourceOutput) Backup() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceManagedBackupSource) string { return v.Backup }).(pulumi.StringOutput)
+}
+
+type InstanceManagedBackupSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceManagedBackupSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceManagedBackupSource)(nil)).Elem()
+}
+
+func (o InstanceManagedBackupSourcePtrOutput) ToInstanceManagedBackupSourcePtrOutput() InstanceManagedBackupSourcePtrOutput {
+	return o
+}
+
+func (o InstanceManagedBackupSourcePtrOutput) ToInstanceManagedBackupSourcePtrOutputWithContext(ctx context.Context) InstanceManagedBackupSourcePtrOutput {
+	return o
+}
+
+func (o InstanceManagedBackupSourcePtrOutput) Elem() InstanceManagedBackupSourceOutput {
+	return o.ApplyT(func(v *InstanceManagedBackupSource) InstanceManagedBackupSource {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceManagedBackupSource
+		return ret
+	}).(InstanceManagedBackupSourceOutput)
+}
+
+// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+func (o InstanceManagedBackupSourcePtrOutput) Backup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceManagedBackupSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Backup
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceNodeConfig struct {
@@ -6269,6 +6547,106 @@ func (o GetInstanceEndpointConnectionPscAutoConnectionArrayOutput) Index(i pulum
 	}).(GetInstanceEndpointConnectionPscAutoConnectionOutput)
 }
 
+type GetInstanceGcsSource struct {
+	// URIs of the GCS objects to import.
+	// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+	Uris []string `pulumi:"uris"`
+}
+
+// GetInstanceGcsSourceInput is an input type that accepts GetInstanceGcsSourceArgs and GetInstanceGcsSourceOutput values.
+// You can construct a concrete instance of `GetInstanceGcsSourceInput` via:
+//
+//	GetInstanceGcsSourceArgs{...}
+type GetInstanceGcsSourceInput interface {
+	pulumi.Input
+
+	ToGetInstanceGcsSourceOutput() GetInstanceGcsSourceOutput
+	ToGetInstanceGcsSourceOutputWithContext(context.Context) GetInstanceGcsSourceOutput
+}
+
+type GetInstanceGcsSourceArgs struct {
+	// URIs of the GCS objects to import.
+	// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (GetInstanceGcsSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGcsSource)(nil)).Elem()
+}
+
+func (i GetInstanceGcsSourceArgs) ToGetInstanceGcsSourceOutput() GetInstanceGcsSourceOutput {
+	return i.ToGetInstanceGcsSourceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGcsSourceArgs) ToGetInstanceGcsSourceOutputWithContext(ctx context.Context) GetInstanceGcsSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGcsSourceOutput)
+}
+
+// GetInstanceGcsSourceArrayInput is an input type that accepts GetInstanceGcsSourceArray and GetInstanceGcsSourceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGcsSourceArrayInput` via:
+//
+//	GetInstanceGcsSourceArray{ GetInstanceGcsSourceArgs{...} }
+type GetInstanceGcsSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGcsSourceArrayOutput() GetInstanceGcsSourceArrayOutput
+	ToGetInstanceGcsSourceArrayOutputWithContext(context.Context) GetInstanceGcsSourceArrayOutput
+}
+
+type GetInstanceGcsSourceArray []GetInstanceGcsSourceInput
+
+func (GetInstanceGcsSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGcsSource)(nil)).Elem()
+}
+
+func (i GetInstanceGcsSourceArray) ToGetInstanceGcsSourceArrayOutput() GetInstanceGcsSourceArrayOutput {
+	return i.ToGetInstanceGcsSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGcsSourceArray) ToGetInstanceGcsSourceArrayOutputWithContext(ctx context.Context) GetInstanceGcsSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGcsSourceArrayOutput)
+}
+
+type GetInstanceGcsSourceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGcsSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGcsSource)(nil)).Elem()
+}
+
+func (o GetInstanceGcsSourceOutput) ToGetInstanceGcsSourceOutput() GetInstanceGcsSourceOutput {
+	return o
+}
+
+func (o GetInstanceGcsSourceOutput) ToGetInstanceGcsSourceOutputWithContext(ctx context.Context) GetInstanceGcsSourceOutput {
+	return o
+}
+
+// URIs of the GCS objects to import.
+// Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+func (o GetInstanceGcsSourceOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceGcsSource) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceGcsSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGcsSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGcsSource)(nil)).Elem()
+}
+
+func (o GetInstanceGcsSourceArrayOutput) ToGetInstanceGcsSourceArrayOutput() GetInstanceGcsSourceArrayOutput {
+	return o
+}
+
+func (o GetInstanceGcsSourceArrayOutput) ToGetInstanceGcsSourceArrayOutputWithContext(ctx context.Context) GetInstanceGcsSourceArrayOutput {
+	return o
+}
+
+func (o GetInstanceGcsSourceArrayOutput) Index(i pulumi.IntInput) GetInstanceGcsSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGcsSource {
+		return vs[0].([]GetInstanceGcsSource)[vs[1].(int)]
+	}).(GetInstanceGcsSourceOutput)
+}
+
 type GetInstanceMaintenancePolicy struct {
 	// The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -6821,6 +7199,103 @@ func (o GetInstanceMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) GetI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceMaintenanceSchedule {
 		return vs[0].([]GetInstanceMaintenanceSchedule)[vs[1].(int)]
 	}).(GetInstanceMaintenanceScheduleOutput)
+}
+
+type GetInstanceManagedBackupSource struct {
+	// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+	Backup string `pulumi:"backup"`
+}
+
+// GetInstanceManagedBackupSourceInput is an input type that accepts GetInstanceManagedBackupSourceArgs and GetInstanceManagedBackupSourceOutput values.
+// You can construct a concrete instance of `GetInstanceManagedBackupSourceInput` via:
+//
+//	GetInstanceManagedBackupSourceArgs{...}
+type GetInstanceManagedBackupSourceInput interface {
+	pulumi.Input
+
+	ToGetInstanceManagedBackupSourceOutput() GetInstanceManagedBackupSourceOutput
+	ToGetInstanceManagedBackupSourceOutputWithContext(context.Context) GetInstanceManagedBackupSourceOutput
+}
+
+type GetInstanceManagedBackupSourceArgs struct {
+	// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+	Backup pulumi.StringInput `pulumi:"backup"`
+}
+
+func (GetInstanceManagedBackupSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceManagedBackupSource)(nil)).Elem()
+}
+
+func (i GetInstanceManagedBackupSourceArgs) ToGetInstanceManagedBackupSourceOutput() GetInstanceManagedBackupSourceOutput {
+	return i.ToGetInstanceManagedBackupSourceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceManagedBackupSourceArgs) ToGetInstanceManagedBackupSourceOutputWithContext(ctx context.Context) GetInstanceManagedBackupSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceManagedBackupSourceOutput)
+}
+
+// GetInstanceManagedBackupSourceArrayInput is an input type that accepts GetInstanceManagedBackupSourceArray and GetInstanceManagedBackupSourceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceManagedBackupSourceArrayInput` via:
+//
+//	GetInstanceManagedBackupSourceArray{ GetInstanceManagedBackupSourceArgs{...} }
+type GetInstanceManagedBackupSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceManagedBackupSourceArrayOutput() GetInstanceManagedBackupSourceArrayOutput
+	ToGetInstanceManagedBackupSourceArrayOutputWithContext(context.Context) GetInstanceManagedBackupSourceArrayOutput
+}
+
+type GetInstanceManagedBackupSourceArray []GetInstanceManagedBackupSourceInput
+
+func (GetInstanceManagedBackupSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceManagedBackupSource)(nil)).Elem()
+}
+
+func (i GetInstanceManagedBackupSourceArray) ToGetInstanceManagedBackupSourceArrayOutput() GetInstanceManagedBackupSourceArrayOutput {
+	return i.ToGetInstanceManagedBackupSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceManagedBackupSourceArray) ToGetInstanceManagedBackupSourceArrayOutputWithContext(ctx context.Context) GetInstanceManagedBackupSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceManagedBackupSourceArrayOutput)
+}
+
+type GetInstanceManagedBackupSourceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceManagedBackupSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceManagedBackupSource)(nil)).Elem()
+}
+
+func (o GetInstanceManagedBackupSourceOutput) ToGetInstanceManagedBackupSourceOutput() GetInstanceManagedBackupSourceOutput {
+	return o
+}
+
+func (o GetInstanceManagedBackupSourceOutput) ToGetInstanceManagedBackupSourceOutputWithContext(ctx context.Context) GetInstanceManagedBackupSourceOutput {
+	return o
+}
+
+// Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+func (o GetInstanceManagedBackupSourceOutput) Backup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceManagedBackupSource) string { return v.Backup }).(pulumi.StringOutput)
+}
+
+type GetInstanceManagedBackupSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceManagedBackupSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceManagedBackupSource)(nil)).Elem()
+}
+
+func (o GetInstanceManagedBackupSourceArrayOutput) ToGetInstanceManagedBackupSourceArrayOutput() GetInstanceManagedBackupSourceArrayOutput {
+	return o
+}
+
+func (o GetInstanceManagedBackupSourceArrayOutput) ToGetInstanceManagedBackupSourceArrayOutputWithContext(ctx context.Context) GetInstanceManagedBackupSourceArrayOutput {
+	return o
+}
+
+func (o GetInstanceManagedBackupSourceArrayOutput) Index(i pulumi.IntInput) GetInstanceManagedBackupSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceManagedBackupSource {
+		return vs[0].([]GetInstanceManagedBackupSource)[vs[1].(int)]
+	}).(GetInstanceManagedBackupSourceOutput)
 }
 
 type GetInstanceNodeConfig struct {
@@ -7975,6 +8450,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointConnectionArrayInput)(nil)).Elem(), InstanceEndpointConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointConnectionPscAutoConnectionInput)(nil)).Elem(), InstanceEndpointConnectionPscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEndpointConnectionPscAutoConnectionPtrInput)(nil)).Elem(), InstanceEndpointConnectionPscAutoConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGcsSourceInput)(nil)).Elem(), InstanceGcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGcsSourcePtrInput)(nil)).Elem(), InstanceGcsSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyPtrInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{})
@@ -7982,6 +8459,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceScheduleInput)(nil)).Elem(), InstanceMaintenanceScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceScheduleArrayInput)(nil)).Elem(), InstanceMaintenanceScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceManagedBackupSourceInput)(nil)).Elem(), InstanceManagedBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceManagedBackupSourcePtrInput)(nil)).Elem(), InstanceManagedBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigInput)(nil)).Elem(), InstanceNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigArrayInput)(nil)).Elem(), InstanceNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigInput)(nil)).Elem(), InstancePersistenceConfigArgs{})
@@ -8028,6 +8507,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEndpointConnectionArrayInput)(nil)).Elem(), GetInstanceEndpointConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEndpointConnectionPscAutoConnectionInput)(nil)).Elem(), GetInstanceEndpointConnectionPscAutoConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEndpointConnectionPscAutoConnectionArrayInput)(nil)).Elem(), GetInstanceEndpointConnectionPscAutoConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGcsSourceInput)(nil)).Elem(), GetInstanceGcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGcsSourceArrayInput)(nil)).Elem(), GetInstanceGcsSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyInput)(nil)).Elem(), GetInstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput)(nil)).Elem(), GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{})
@@ -8036,6 +8517,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput)(nil)).Elem(), GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenanceScheduleInput)(nil)).Elem(), GetInstanceMaintenanceScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenanceScheduleArrayInput)(nil)).Elem(), GetInstanceMaintenanceScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceManagedBackupSourceInput)(nil)).Elem(), GetInstanceManagedBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceManagedBackupSourceArrayInput)(nil)).Elem(), GetInstanceManagedBackupSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeConfigInput)(nil)).Elem(), GetInstanceNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeConfigArrayInput)(nil)).Elem(), GetInstanceNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigInput)(nil)).Elem(), GetInstancePersistenceConfigArgs{})
@@ -8088,6 +8571,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceEndpointConnectionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceEndpointConnectionPscAutoConnectionOutput{})
 	pulumi.RegisterOutputType(InstanceEndpointConnectionPscAutoConnectionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGcsSourceOutput{})
+	pulumi.RegisterOutputType(InstanceGcsSourcePtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput{})
@@ -8095,6 +8580,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenanceScheduleOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenanceScheduleArrayOutput{})
+	pulumi.RegisterOutputType(InstanceManagedBackupSourceOutput{})
+	pulumi.RegisterOutputType(InstanceManagedBackupSourcePtrOutput{})
 	pulumi.RegisterOutputType(InstanceNodeConfigOutput{})
 	pulumi.RegisterOutputType(InstanceNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstancePersistenceConfigOutput{})
@@ -8141,6 +8628,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceEndpointConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceEndpointConnectionPscAutoConnectionOutput{})
 	pulumi.RegisterOutputType(GetInstanceEndpointConnectionPscAutoConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGcsSourceOutput{})
+	pulumi.RegisterOutputType(GetInstanceGcsSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput{})
@@ -8149,6 +8638,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenanceScheduleOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenanceScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceManagedBackupSourceOutput{})
+	pulumi.RegisterOutputType(GetInstanceManagedBackupSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePersistenceConfigOutput{})

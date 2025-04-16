@@ -328,6 +328,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> SourceDisk { get; private set; } = null!;
 
         /// <summary>
+        /// The customer-supplied encryption key of the source disk. Required if
+        /// the source disk is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sourceDiskEncryptionKey")]
+        public Output<Outputs.ImageSourceDiskEncryptionKey?> SourceDiskEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
         /// URL of one of the following:
         /// * The selfLink URL
@@ -337,6 +345,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("sourceImage")]
         public Output<string?> SourceImage { get; private set; } = null!;
+
+        /// <summary>
+        /// The customer-supplied encryption key of the source image. Required if
+        /// the source image is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sourceImageEncryptionKey")]
+        public Output<Outputs.ImageSourceImageEncryptionKey?> SourceImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
         /// URL of the source snapshot used to create this image.
@@ -349,6 +365,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("sourceSnapshot")]
         public Output<string?> SourceSnapshot { get; private set; } = null!;
+
+        /// <summary>
+        /// The customer-supplied encryption key of the source snapshot. Required if
+        /// the source snapshot is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sourceSnapshotEncryptionKey")]
+        public Output<Outputs.ImageSourceSnapshotEncryptionKey?> SourceSnapshotEncryptionKey { get; private set; } = null!;
 
         /// <summary>
         /// Cloud Storage bucket storage location of the image
@@ -527,6 +551,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SourceDisk { get; set; }
 
         /// <summary>
+        /// The customer-supplied encryption key of the source disk. Required if
+        /// the source disk is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceDiskEncryptionKey")]
+        public Input<Inputs.ImageSourceDiskEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
+
+        /// <summary>
         /// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
         /// URL of one of the following:
         /// * The selfLink URL
@@ -536,6 +568,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
+
+        /// <summary>
+        /// The customer-supplied encryption key of the source image. Required if
+        /// the source image is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceImageEncryptionKey")]
+        public Input<Inputs.ImageSourceImageEncryptionKeyArgs>? SourceImageEncryptionKey { get; set; }
 
         /// <summary>
         /// URL of the source snapshot used to create this image.
@@ -548,6 +588,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceSnapshot")]
         public Input<string>? SourceSnapshot { get; set; }
+
+        /// <summary>
+        /// The customer-supplied encryption key of the source snapshot. Required if
+        /// the source snapshot is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceSnapshotEncryptionKey")]
+        public Input<Inputs.ImageSourceSnapshotEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;
@@ -748,6 +796,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SourceDisk { get; set; }
 
         /// <summary>
+        /// The customer-supplied encryption key of the source disk. Required if
+        /// the source disk is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceDiskEncryptionKey")]
+        public Input<Inputs.ImageSourceDiskEncryptionKeyGetArgs>? SourceDiskEncryptionKey { get; set; }
+
+        /// <summary>
         /// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
         /// URL of one of the following:
         /// * The selfLink URL
@@ -757,6 +813,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceImage")]
         public Input<string>? SourceImage { get; set; }
+
+        /// <summary>
+        /// The customer-supplied encryption key of the source image. Required if
+        /// the source image is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceImageEncryptionKey")]
+        public Input<Inputs.ImageSourceImageEncryptionKeyGetArgs>? SourceImageEncryptionKey { get; set; }
 
         /// <summary>
         /// URL of the source snapshot used to create this image.
@@ -769,6 +833,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceSnapshot")]
         public Input<string>? SourceSnapshot { get; set; }
+
+        /// <summary>
+        /// The customer-supplied encryption key of the source snapshot. Required if
+        /// the source snapshot is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceSnapshotEncryptionKey")]
+        public Input<Inputs.ImageSourceSnapshotEncryptionKeyGetArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

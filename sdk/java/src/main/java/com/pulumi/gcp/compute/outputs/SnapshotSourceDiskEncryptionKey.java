@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SnapshotSourceDiskEncryptionKey {
     /**
+     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
+    private @Nullable String kmsKeySelfLink;
+    /**
      * @return The service account used for the encryption request for the given KMS key.
      * If absent, the Compute Engine Service Agent service account is used.
      * 
@@ -24,8 +29,22 @@ public final class SnapshotSourceDiskEncryptionKey {
      * 
      */
     private @Nullable String rawKey;
+    /**
+     * @return Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    private @Nullable String rsaEncryptedKey;
 
     private SnapshotSourceDiskEncryptionKey() {}
+    /**
+     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
+    public Optional<String> kmsKeySelfLink() {
+        return Optional.ofNullable(this.kmsKeySelfLink);
+    }
     /**
      * @return The service account used for the encryption request for the given KMS key.
      * If absent, the Compute Engine Service Agent service account is used.
@@ -43,6 +62,15 @@ public final class SnapshotSourceDiskEncryptionKey {
     public Optional<String> rawKey() {
         return Optional.ofNullable(this.rawKey);
     }
+    /**
+     * @return Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<String> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -53,15 +81,25 @@ public final class SnapshotSourceDiskEncryptionKey {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String kmsKeySelfLink;
         private @Nullable String kmsKeyServiceAccount;
         private @Nullable String rawKey;
+        private @Nullable String rsaEncryptedKey;
         public Builder() {}
         public Builder(SnapshotSourceDiskEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
     	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
         }
 
+        @CustomType.Setter
+        public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
+
+            this.kmsKeySelfLink = kmsKeySelfLink;
+            return this;
+        }
         @CustomType.Setter
         public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
 
@@ -74,10 +112,18 @@ public final class SnapshotSourceDiskEncryptionKey {
             this.rawKey = rawKey;
             return this;
         }
+        @CustomType.Setter
+        public Builder rsaEncryptedKey(@Nullable String rsaEncryptedKey) {
+
+            this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
         public SnapshotSourceDiskEncryptionKey build() {
             final var _resultValue = new SnapshotSourceDiskEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
             _resultValue.rawKey = rawKey;
+            _resultValue.rsaEncryptedKey = rsaEncryptedKey;
             return _resultValue;
         }
     }

@@ -52,6 +52,7 @@ export interface GetControlOrganizationIntelligenceConfigResult {
      */
     readonly id: string;
     readonly name: string;
+    readonly trialConfigs: outputs.storage.GetControlOrganizationIntelligenceConfigTrialConfig[];
     readonly updateTime: string;
 }
 /**

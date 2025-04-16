@@ -18,14 +18,22 @@ public final class TableExternalCatalogTableOptionsArgs extends com.pulumi.resou
     public static final TableExternalCatalogTableOptionsArgs Empty = new TableExternalCatalogTableOptionsArgs();
 
     /**
-     * The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form &lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt; or projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;.
+     * The connection specifying the credentials to be
+     * used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+     * connection is needed to read the open source table from BigQuery Engine. The
+     * connection_id can have the form `&lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt;`
+     * or `projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;`.
      * 
      */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
 
     /**
-     * @return The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form &lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt; or projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;.
+     * @return The connection specifying the credentials to be
+     * used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+     * connection is needed to read the open source table from BigQuery Engine. The
+     * connection_id can have the form `&lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt;`
+     * or `projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;`.
      * 
      */
     public Optional<Output<String>> connectionId() {
@@ -33,14 +41,18 @@ public final class TableExternalCatalogTableOptionsArgs extends com.pulumi.resou
     }
 
     /**
-     * A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+     * A map of key value pairs defining the parameters and
+     * properties of the open source table. Corresponds with hive meta store table
+     * parameters. Maximum size of 4Mib.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<Map<String,String>> parameters;
 
     /**
-     * @return A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+     * @return A map of key value pairs defining the parameters and
+     * properties of the open source table. Corresponds with hive meta store table
+     * parameters. Maximum size of 4Mib.
      * 
      */
     public Optional<Output<Map<String,String>>> parameters() {
@@ -48,14 +60,16 @@ public final class TableExternalCatalogTableOptionsArgs extends com.pulumi.resou
     }
 
     /**
-     * A storage descriptor containing information about the physical storage of this table.
+     * A storage descriptor containing information
+     * about the physical storage of this table. Structure is documented below.
      * 
      */
     @Import(name="storageDescriptor")
     private @Nullable Output<TableExternalCatalogTableOptionsStorageDescriptorArgs> storageDescriptor;
 
     /**
-     * @return A storage descriptor containing information about the physical storage of this table.
+     * @return A storage descriptor containing information
+     * about the physical storage of this table. Structure is documented below.
      * 
      */
     public Optional<Output<TableExternalCatalogTableOptionsStorageDescriptorArgs>> storageDescriptor() {
@@ -89,7 +103,11 @@ public final class TableExternalCatalogTableOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param connectionId The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form &lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt; or projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;.
+         * @param connectionId The connection specifying the credentials to be
+         * used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+         * connection is needed to read the open source table from BigQuery Engine. The
+         * connection_id can have the form `&lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt;`
+         * or `projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;`.
          * 
          * @return builder
          * 
@@ -100,7 +118,11 @@ public final class TableExternalCatalogTableOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param connectionId The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form &lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt; or projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;.
+         * @param connectionId The connection specifying the credentials to be
+         * used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+         * connection is needed to read the open source table from BigQuery Engine. The
+         * connection_id can have the form `&lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt;`
+         * or `projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;`.
          * 
          * @return builder
          * 
@@ -110,7 +132,9 @@ public final class TableExternalCatalogTableOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param parameters A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+         * @param parameters A map of key value pairs defining the parameters and
+         * properties of the open source table. Corresponds with hive meta store table
+         * parameters. Maximum size of 4Mib.
          * 
          * @return builder
          * 
@@ -121,7 +145,9 @@ public final class TableExternalCatalogTableOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param parameters A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+         * @param parameters A map of key value pairs defining the parameters and
+         * properties of the open source table. Corresponds with hive meta store table
+         * parameters. Maximum size of 4Mib.
          * 
          * @return builder
          * 
@@ -131,7 +157,8 @@ public final class TableExternalCatalogTableOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param storageDescriptor A storage descriptor containing information about the physical storage of this table.
+         * @param storageDescriptor A storage descriptor containing information
+         * about the physical storage of this table. Structure is documented below.
          * 
          * @return builder
          * 
@@ -142,7 +169,8 @@ public final class TableExternalCatalogTableOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param storageDescriptor A storage descriptor containing information about the physical storage of this table.
+         * @param storageDescriptor A storage descriptor containing information
+         * about the physical storage of this table. Structure is documented below.
          * 
          * @return builder
          * 

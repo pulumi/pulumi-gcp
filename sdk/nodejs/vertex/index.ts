@@ -45,6 +45,21 @@ export type AiFeatureGroupFeature = import("./aiFeatureGroupFeature").AiFeatureG
 export const AiFeatureGroupFeature: typeof import("./aiFeatureGroupFeature").AiFeatureGroupFeature = null as any;
 utilities.lazyLoad(exports, ["AiFeatureGroupFeature"], () => require("./aiFeatureGroupFeature"));
 
+export { AiFeatureGroupIamBindingArgs, AiFeatureGroupIamBindingState } from "./aiFeatureGroupIamBinding";
+export type AiFeatureGroupIamBinding = import("./aiFeatureGroupIamBinding").AiFeatureGroupIamBinding;
+export const AiFeatureGroupIamBinding: typeof import("./aiFeatureGroupIamBinding").AiFeatureGroupIamBinding = null as any;
+utilities.lazyLoad(exports, ["AiFeatureGroupIamBinding"], () => require("./aiFeatureGroupIamBinding"));
+
+export { AiFeatureGroupIamMemberArgs, AiFeatureGroupIamMemberState } from "./aiFeatureGroupIamMember";
+export type AiFeatureGroupIamMember = import("./aiFeatureGroupIamMember").AiFeatureGroupIamMember;
+export const AiFeatureGroupIamMember: typeof import("./aiFeatureGroupIamMember").AiFeatureGroupIamMember = null as any;
+utilities.lazyLoad(exports, ["AiFeatureGroupIamMember"], () => require("./aiFeatureGroupIamMember"));
+
+export { AiFeatureGroupIamPolicyArgs, AiFeatureGroupIamPolicyState } from "./aiFeatureGroupIamPolicy";
+export type AiFeatureGroupIamPolicy = import("./aiFeatureGroupIamPolicy").AiFeatureGroupIamPolicy;
+export const AiFeatureGroupIamPolicy: typeof import("./aiFeatureGroupIamPolicy").AiFeatureGroupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AiFeatureGroupIamPolicy"], () => require("./aiFeatureGroupIamPolicy"));
+
 export { AiFeatureOnlineStoreArgs, AiFeatureOnlineStoreState } from "./aiFeatureOnlineStore";
 export type AiFeatureOnlineStore = import("./aiFeatureOnlineStore").AiFeatureOnlineStore;
 export const AiFeatureOnlineStore: typeof import("./aiFeatureOnlineStore").AiFeatureOnlineStore = null as any;
@@ -54,6 +69,36 @@ export { AiFeatureOnlineStoreFeatureviewArgs, AiFeatureOnlineStoreFeatureviewSta
 export type AiFeatureOnlineStoreFeatureview = import("./aiFeatureOnlineStoreFeatureview").AiFeatureOnlineStoreFeatureview;
 export const AiFeatureOnlineStoreFeatureview: typeof import("./aiFeatureOnlineStoreFeatureview").AiFeatureOnlineStoreFeatureview = null as any;
 utilities.lazyLoad(exports, ["AiFeatureOnlineStoreFeatureview"], () => require("./aiFeatureOnlineStoreFeatureview"));
+
+export { AiFeatureOnlineStoreFeatureviewIamBindingArgs, AiFeatureOnlineStoreFeatureviewIamBindingState } from "./aiFeatureOnlineStoreFeatureviewIamBinding";
+export type AiFeatureOnlineStoreFeatureviewIamBinding = import("./aiFeatureOnlineStoreFeatureviewIamBinding").AiFeatureOnlineStoreFeatureviewIamBinding;
+export const AiFeatureOnlineStoreFeatureviewIamBinding: typeof import("./aiFeatureOnlineStoreFeatureviewIamBinding").AiFeatureOnlineStoreFeatureviewIamBinding = null as any;
+utilities.lazyLoad(exports, ["AiFeatureOnlineStoreFeatureviewIamBinding"], () => require("./aiFeatureOnlineStoreFeatureviewIamBinding"));
+
+export { AiFeatureOnlineStoreFeatureviewIamMemberArgs, AiFeatureOnlineStoreFeatureviewIamMemberState } from "./aiFeatureOnlineStoreFeatureviewIamMember";
+export type AiFeatureOnlineStoreFeatureviewIamMember = import("./aiFeatureOnlineStoreFeatureviewIamMember").AiFeatureOnlineStoreFeatureviewIamMember;
+export const AiFeatureOnlineStoreFeatureviewIamMember: typeof import("./aiFeatureOnlineStoreFeatureviewIamMember").AiFeatureOnlineStoreFeatureviewIamMember = null as any;
+utilities.lazyLoad(exports, ["AiFeatureOnlineStoreFeatureviewIamMember"], () => require("./aiFeatureOnlineStoreFeatureviewIamMember"));
+
+export { AiFeatureOnlineStoreFeatureviewIamPolicyArgs, AiFeatureOnlineStoreFeatureviewIamPolicyState } from "./aiFeatureOnlineStoreFeatureviewIamPolicy";
+export type AiFeatureOnlineStoreFeatureviewIamPolicy = import("./aiFeatureOnlineStoreFeatureviewIamPolicy").AiFeatureOnlineStoreFeatureviewIamPolicy;
+export const AiFeatureOnlineStoreFeatureviewIamPolicy: typeof import("./aiFeatureOnlineStoreFeatureviewIamPolicy").AiFeatureOnlineStoreFeatureviewIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AiFeatureOnlineStoreFeatureviewIamPolicy"], () => require("./aiFeatureOnlineStoreFeatureviewIamPolicy"));
+
+export { AiFeatureOnlineStoreIamBindingArgs, AiFeatureOnlineStoreIamBindingState } from "./aiFeatureOnlineStoreIamBinding";
+export type AiFeatureOnlineStoreIamBinding = import("./aiFeatureOnlineStoreIamBinding").AiFeatureOnlineStoreIamBinding;
+export const AiFeatureOnlineStoreIamBinding: typeof import("./aiFeatureOnlineStoreIamBinding").AiFeatureOnlineStoreIamBinding = null as any;
+utilities.lazyLoad(exports, ["AiFeatureOnlineStoreIamBinding"], () => require("./aiFeatureOnlineStoreIamBinding"));
+
+export { AiFeatureOnlineStoreIamMemberArgs, AiFeatureOnlineStoreIamMemberState } from "./aiFeatureOnlineStoreIamMember";
+export type AiFeatureOnlineStoreIamMember = import("./aiFeatureOnlineStoreIamMember").AiFeatureOnlineStoreIamMember;
+export const AiFeatureOnlineStoreIamMember: typeof import("./aiFeatureOnlineStoreIamMember").AiFeatureOnlineStoreIamMember = null as any;
+utilities.lazyLoad(exports, ["AiFeatureOnlineStoreIamMember"], () => require("./aiFeatureOnlineStoreIamMember"));
+
+export { AiFeatureOnlineStoreIamPolicyArgs, AiFeatureOnlineStoreIamPolicyState } from "./aiFeatureOnlineStoreIamPolicy";
+export type AiFeatureOnlineStoreIamPolicy = import("./aiFeatureOnlineStoreIamPolicy").AiFeatureOnlineStoreIamPolicy;
+export const AiFeatureOnlineStoreIamPolicy: typeof import("./aiFeatureOnlineStoreIamPolicy").AiFeatureOnlineStoreIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AiFeatureOnlineStoreIamPolicy"], () => require("./aiFeatureOnlineStoreIamPolicy"));
 
 export { AiFeatureStoreArgs, AiFeatureStoreState } from "./aiFeatureStore";
 export type AiFeatureStore = import("./aiFeatureStore").AiFeatureStore;
@@ -130,6 +175,21 @@ export const getAiEndpointIamPolicy: typeof import("./getAiEndpointIamPolicy").g
 export const getAiEndpointIamPolicyOutput: typeof import("./getAiEndpointIamPolicy").getAiEndpointIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAiEndpointIamPolicy","getAiEndpointIamPolicyOutput"], () => require("./getAiEndpointIamPolicy"));
 
+export { GetAiFeatureGroupIamPolicyArgs, GetAiFeatureGroupIamPolicyResult, GetAiFeatureGroupIamPolicyOutputArgs } from "./getAiFeatureGroupIamPolicy";
+export const getAiFeatureGroupIamPolicy: typeof import("./getAiFeatureGroupIamPolicy").getAiFeatureGroupIamPolicy = null as any;
+export const getAiFeatureGroupIamPolicyOutput: typeof import("./getAiFeatureGroupIamPolicy").getAiFeatureGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAiFeatureGroupIamPolicy","getAiFeatureGroupIamPolicyOutput"], () => require("./getAiFeatureGroupIamPolicy"));
+
+export { GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs, GetAiFeatureOnlineStoreFeatureviewIamPolicyResult, GetAiFeatureOnlineStoreFeatureviewIamPolicyOutputArgs } from "./getAiFeatureOnlineStoreFeatureviewIamPolicy";
+export const getAiFeatureOnlineStoreFeatureviewIamPolicy: typeof import("./getAiFeatureOnlineStoreFeatureviewIamPolicy").getAiFeatureOnlineStoreFeatureviewIamPolicy = null as any;
+export const getAiFeatureOnlineStoreFeatureviewIamPolicyOutput: typeof import("./getAiFeatureOnlineStoreFeatureviewIamPolicy").getAiFeatureOnlineStoreFeatureviewIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAiFeatureOnlineStoreFeatureviewIamPolicy","getAiFeatureOnlineStoreFeatureviewIamPolicyOutput"], () => require("./getAiFeatureOnlineStoreFeatureviewIamPolicy"));
+
+export { GetAiFeatureOnlineStoreIamPolicyArgs, GetAiFeatureOnlineStoreIamPolicyResult, GetAiFeatureOnlineStoreIamPolicyOutputArgs } from "./getAiFeatureOnlineStoreIamPolicy";
+export const getAiFeatureOnlineStoreIamPolicy: typeof import("./getAiFeatureOnlineStoreIamPolicy").getAiFeatureOnlineStoreIamPolicy = null as any;
+export const getAiFeatureOnlineStoreIamPolicyOutput: typeof import("./getAiFeatureOnlineStoreIamPolicy").getAiFeatureOnlineStoreIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAiFeatureOnlineStoreIamPolicy","getAiFeatureOnlineStoreIamPolicyOutput"], () => require("./getAiFeatureOnlineStoreIamPolicy"));
+
 export { GetAiFeaturestoreEntitytypeIamPolicyArgs, GetAiFeaturestoreEntitytypeIamPolicyResult, GetAiFeaturestoreEntitytypeIamPolicyOutputArgs } from "./getAiFeaturestoreEntitytypeIamPolicy";
 export const getAiFeaturestoreEntitytypeIamPolicy: typeof import("./getAiFeaturestoreEntitytypeIamPolicy").getAiFeaturestoreEntitytypeIamPolicy = null as any;
 export const getAiFeaturestoreEntitytypeIamPolicyOutput: typeof import("./getAiFeaturestoreEntitytypeIamPolicy").getAiFeaturestoreEntitytypeIamPolicyOutput = null as any;
@@ -166,10 +226,28 @@ const _module = {
                 return new AiFeatureGroup(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature":
                 return new AiFeatureGroupFeature(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureGroupIamBinding:AiFeatureGroupIamBinding":
+                return new AiFeatureGroupIamBinding(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureGroupIamMember:AiFeatureGroupIamMember":
+                return new AiFeatureGroupIamMember(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureGroupIamPolicy:AiFeatureGroupIamPolicy":
+                return new AiFeatureGroupIamPolicy(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore":
                 return new AiFeatureOnlineStore(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview":
                 return new AiFeatureOnlineStoreFeatureview(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamBinding:AiFeatureOnlineStoreFeatureviewIamBinding":
+                return new AiFeatureOnlineStoreFeatureviewIamBinding(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamMember:AiFeatureOnlineStoreFeatureviewIamMember":
+                return new AiFeatureOnlineStoreFeatureviewIamMember(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy":
+                return new AiFeatureOnlineStoreFeatureviewIamPolicy(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureOnlineStoreIamBinding:AiFeatureOnlineStoreIamBinding":
+                return new AiFeatureOnlineStoreIamBinding(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureOnlineStoreIamMember:AiFeatureOnlineStoreIamMember":
+                return new AiFeatureOnlineStoreIamMember(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureOnlineStoreIamPolicy:AiFeatureOnlineStoreIamPolicy":
+                return new AiFeatureOnlineStoreIamPolicy(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureStore:AiFeatureStore":
                 return new AiFeatureStore(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType":
@@ -211,8 +289,17 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamMember", _modu
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroupFeature", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroupIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroupIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroupIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStoreFeatureview", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStoreFeatureviewIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStoreFeatureviewIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStoreFeatureviewIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStoreIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStoreIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStoreIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreEntityType", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreEntityTypeFeature", _module)

@@ -52,6 +52,10 @@ __all__ = [
     'AiFeatureGroupBigQueryArgsDict',
     'AiFeatureGroupBigQueryBigQuerySourceArgs',
     'AiFeatureGroupBigQueryBigQuerySourceArgsDict',
+    'AiFeatureGroupIamBindingConditionArgs',
+    'AiFeatureGroupIamBindingConditionArgsDict',
+    'AiFeatureGroupIamMemberConditionArgs',
+    'AiFeatureGroupIamMemberConditionArgsDict',
     'AiFeatureOnlineStoreBigtableArgs',
     'AiFeatureOnlineStoreBigtableArgsDict',
     'AiFeatureOnlineStoreBigtableAutoScalingArgs',
@@ -68,6 +72,10 @@ __all__ = [
     'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict',
     'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs',
     'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgsDict',
+    'AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs',
+    'AiFeatureOnlineStoreFeatureviewIamBindingConditionArgsDict',
+    'AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs',
+    'AiFeatureOnlineStoreFeatureviewIamMemberConditionArgsDict',
     'AiFeatureOnlineStoreFeatureviewSyncConfigArgs',
     'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs',
@@ -76,6 +84,10 @@ __all__ = [
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgsDict',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict',
+    'AiFeatureOnlineStoreIamBindingConditionArgs',
+    'AiFeatureOnlineStoreIamBindingConditionArgsDict',
+    'AiFeatureOnlineStoreIamMemberConditionArgs',
+    'AiFeatureOnlineStoreIamMemberConditionArgsDict',
     'AiFeatureOnlineStoreOptimizedArgs',
     'AiFeatureOnlineStoreOptimizedArgsDict',
     'AiFeatureStoreEncryptionSpecArgs',
@@ -1490,6 +1502,100 @@ class AiFeatureGroupBigQueryBigQuerySourceArgs:
 
 
 if not MYPY:
+    class AiFeatureGroupIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        title: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AiFeatureGroupIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiFeatureGroupIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class AiFeatureGroupIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        title: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AiFeatureGroupIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiFeatureGroupIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
     class AiFeatureOnlineStoreBigtableArgsDict(TypedDict):
         auto_scaling: pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgsDict']
         """
@@ -1912,6 +2018,100 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs:
 
 
 if not MYPY:
+    class AiFeatureOnlineStoreFeatureviewIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        title: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AiFeatureOnlineStoreFeatureviewIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class AiFeatureOnlineStoreFeatureviewIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        title: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AiFeatureOnlineStoreFeatureviewIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
     class AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict(TypedDict):
         cron: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -2148,6 +2348,100 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs:
     @leaf_node_embedding_count.setter
     def leaf_node_embedding_count(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "leaf_node_embedding_count", value)
+
+
+if not MYPY:
+    class AiFeatureOnlineStoreIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        title: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AiFeatureOnlineStoreIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiFeatureOnlineStoreIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class AiFeatureOnlineStoreIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        title: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AiFeatureOnlineStoreIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiFeatureOnlineStoreIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
 
 
 if not MYPY:

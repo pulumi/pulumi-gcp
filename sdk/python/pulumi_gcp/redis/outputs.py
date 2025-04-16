@@ -28,10 +28,12 @@ __all__ = [
     'ClusterCrossClusterReplicationConfigSecondaryCluster',
     'ClusterDiscoveryEndpoint',
     'ClusterDiscoveryEndpointPscConfig',
+    'ClusterGcsSource',
     'ClusterMaintenancePolicy',
     'ClusterMaintenancePolicyWeeklyMaintenanceWindow',
     'ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime',
     'ClusterMaintenanceSchedule',
+    'ClusterManagedBackupSource',
     'ClusterPersistenceConfig',
     'ClusterPersistenceConfigAofConfig',
     'ClusterPersistenceConfigRdbConfig',
@@ -551,6 +553,24 @@ class ClusterDiscoveryEndpointPscConfig(dict):
 
 
 @pulumi.output_type
+class ClusterGcsSource(dict):
+    def __init__(__self__, *,
+                 uris: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] uris: URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[builtins.str]:
+        """
+        URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class ClusterMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -859,6 +879,26 @@ class ClusterMaintenanceSchedule(dict):
         resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class ClusterManagedBackupSource(dict):
+    def __init__(__self__, *,
+                 backup: builtins.str):
+        """
+        :param builtins.str backup: Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+               like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+        """
+        pulumi.set(__self__, "backup", backup)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> builtins.str:
+        """
+        Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+        like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+        """
+        return pulumi.get(self, "backup")
 
 
 @pulumi.output_type

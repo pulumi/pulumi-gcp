@@ -12,11 +12,11 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
 
     public sealed class ConnectionProfileMysqlSslArgs : global::Pulumi.ResourceArgs
     {
-        [Input("caCertificate", required: true)]
+        [Input("caCertificate")]
         private Input<string>? _caCertificate;
 
         /// <summary>
-        /// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        /// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         /// The replica will use this certificate to verify it's connecting to the right host.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>

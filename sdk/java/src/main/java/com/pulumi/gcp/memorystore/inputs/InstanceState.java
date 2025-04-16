@@ -10,8 +10,10 @@ import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigA
 import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDiscoveryEndpointArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceEndpointArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceGcsSourceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceMaintenanceScheduleArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceManagedBackupSourceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceNodeConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePscAttachmentDetailArgs;
@@ -66,6 +68,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<InstanceAutomatedBackupConfigArgs>> automatedBackupConfig() {
         return Optional.ofNullable(this.automatedBackupConfig);
+    }
+
+    /**
+     * The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     * 
+     */
+    @Import(name="backupCollection")
+    private @Nullable Output<String> backupCollection;
+
+    /**
+     * @return The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     * 
+     */
+    public Optional<Output<String>> backupCollection() {
+        return Optional.ofNullable(this.backupCollection);
     }
 
     /**
@@ -212,6 +231,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * GCS source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gcsSource")
+    private @Nullable Output<InstanceGcsSourceArgs> gcsSource;
+
+    /**
+     * @return GCS source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceGcsSourceArgs>> gcsSource() {
+        return Optional.ofNullable(this.gcsSource);
+    }
+
+    /**
      * Required. The ID to use for the instance, which will become the final component of
      * the instance&#39;s resource name.
      * This value is subject to the following restrictions:
@@ -310,6 +346,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<InstanceMaintenanceScheduleArgs>>> maintenanceSchedules() {
         return Optional.ofNullable(this.maintenanceSchedules);
+    }
+
+    /**
+     * Managed backup source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="managedBackupSource")
+    private @Nullable Output<InstanceManagedBackupSourceArgs> managedBackupSource;
+
+    /**
+     * @return Managed backup source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceManagedBackupSourceArgs>> managedBackupSource() {
+        return Optional.ofNullable(this.managedBackupSource);
     }
 
     /**
@@ -624,6 +677,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.authorizationMode = $.authorizationMode;
         this.automatedBackupConfig = $.automatedBackupConfig;
+        this.backupCollection = $.backupCollection;
         this.createTime = $.createTime;
         this.crossInstanceReplicationConfig = $.crossInstanceReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
@@ -633,11 +687,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.endpoints = $.endpoints;
         this.engineConfigs = $.engineConfigs;
         this.engineVersion = $.engineVersion;
+        this.gcsSource = $.gcsSource;
         this.instanceId = $.instanceId;
         this.labels = $.labels;
         this.location = $.location;
         this.maintenancePolicy = $.maintenancePolicy;
         this.maintenanceSchedules = $.maintenanceSchedules;
+        this.managedBackupSource = $.managedBackupSource;
         this.mode = $.mode;
         this.name = $.name;
         this.nodeConfigs = $.nodeConfigs;
@@ -721,6 +777,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder automatedBackupConfig(InstanceAutomatedBackupConfigArgs automatedBackupConfig) {
             return automatedBackupConfig(Output.of(automatedBackupConfig));
+        }
+
+        /**
+         * @param backupCollection The backup collection full resource name.
+         * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupCollection(@Nullable Output<String> backupCollection) {
+            $.backupCollection = backupCollection;
+            return this;
+        }
+
+        /**
+         * @param backupCollection The backup collection full resource name.
+         * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupCollection(String backupCollection) {
+            return backupCollection(Output.of(backupCollection));
         }
 
         /**
@@ -954,6 +1033,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gcsSource GCS source for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsSource(@Nullable Output<InstanceGcsSourceArgs> gcsSource) {
+            $.gcsSource = gcsSource;
+            return this;
+        }
+
+        /**
+         * @param gcsSource GCS source for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsSource(InstanceGcsSourceArgs gcsSource) {
+            return gcsSource(Output.of(gcsSource));
+        }
+
+        /**
          * @param instanceId Required. The ID to use for the instance, which will become the final component of
          * the instance&#39;s resource name.
          * This value is subject to the following restrictions:
@@ -1093,6 +1195,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenanceSchedules(InstanceMaintenanceScheduleArgs... maintenanceSchedules) {
             return maintenanceSchedules(List.of(maintenanceSchedules));
+        }
+
+        /**
+         * @param managedBackupSource Managed backup source for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBackupSource(@Nullable Output<InstanceManagedBackupSourceArgs> managedBackupSource) {
+            $.managedBackupSource = managedBackupSource;
+            return this;
+        }
+
+        /**
+         * @param managedBackupSource Managed backup source for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBackupSource(InstanceManagedBackupSourceArgs managedBackupSource) {
+            return managedBackupSource(Output.of(managedBackupSource));
         }
 
         /**

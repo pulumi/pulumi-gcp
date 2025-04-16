@@ -9,7 +9,9 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.memorystore.inputs.InstanceAutomatedBackupConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceCrossInstanceReplicationConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceDesiredPscAutoConnectionArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceGcsSourceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceManagedBackupSourceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
 import java.lang.Boolean;
@@ -140,6 +142,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * GCS source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gcsSource")
+    private @Nullable Output<InstanceGcsSourceArgs> gcsSource;
+
+    /**
+     * @return GCS source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceGcsSourceArgs>> gcsSource() {
+        return Optional.ofNullable(this.gcsSource);
+    }
+
+    /**
      * Required. The ID to use for the instance, which will become the final component of
      * the instance&#39;s resource name.
      * This value is subject to the following restrictions:
@@ -221,6 +240,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<InstanceMaintenancePolicyArgs>> maintenancePolicy() {
         return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
+     * Managed backup source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="managedBackupSource")
+    private @Nullable Output<InstanceManagedBackupSourceArgs> managedBackupSource;
+
+    /**
+     * @return Managed backup source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceManagedBackupSourceArgs>> managedBackupSource() {
+        return Optional.ofNullable(this.managedBackupSource);
     }
 
     /**
@@ -383,10 +419,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.desiredPscAutoConnections = $.desiredPscAutoConnections;
         this.engineConfigs = $.engineConfigs;
         this.engineVersion = $.engineVersion;
+        this.gcsSource = $.gcsSource;
         this.instanceId = $.instanceId;
         this.labels = $.labels;
         this.location = $.location;
         this.maintenancePolicy = $.maintenancePolicy;
+        this.managedBackupSource = $.managedBackupSource;
         this.mode = $.mode;
         this.nodeType = $.nodeType;
         this.persistenceConfig = $.persistenceConfig;
@@ -581,6 +619,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gcsSource GCS source for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsSource(@Nullable Output<InstanceGcsSourceArgs> gcsSource) {
+            $.gcsSource = gcsSource;
+            return this;
+        }
+
+        /**
+         * @param gcsSource GCS source for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsSource(InstanceGcsSourceArgs gcsSource) {
+            return gcsSource(Output.of(gcsSource));
+        }
+
+        /**
          * @param instanceId Required. The ID to use for the instance, which will become the final component of
          * the instance&#39;s resource name.
          * This value is subject to the following restrictions:
@@ -686,6 +747,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenancePolicy(InstanceMaintenancePolicyArgs maintenancePolicy) {
             return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
+         * @param managedBackupSource Managed backup source for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBackupSource(@Nullable Output<InstanceManagedBackupSourceArgs> managedBackupSource) {
+            $.managedBackupSource = managedBackupSource;
+            return this;
+        }
+
+        /**
+         * @param managedBackupSource Managed backup source for the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBackupSource(InstanceManagedBackupSourceArgs managedBackupSource) {
+            return managedBackupSource(Output.of(managedBackupSource));
         }
 
         /**

@@ -16,7 +16,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
     public static final VolumeRestoreParametersArgs Empty = new VolumeRestoreParametersArgs();
 
     /**
-     * Full name of the snapshot to use for creating this volume.
+     * Full name of the backup to use for creating this volume.
      * `source_snapshot` and `source_backup` cannot be used simultaneously.
      * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
      * 
@@ -25,7 +25,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> sourceBackup;
 
     /**
-     * @return Full name of the snapshot to use for creating this volume.
+     * @return Full name of the backup to use for creating this volume.
      * `source_snapshot` and `source_backup` cannot be used simultaneously.
      * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
      * 
@@ -79,7 +79,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sourceBackup Full name of the snapshot to use for creating this volume.
+         * @param sourceBackup Full name of the backup to use for creating this volume.
          * `source_snapshot` and `source_backup` cannot be used simultaneously.
          * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
          * 
@@ -92,7 +92,7 @@ public final class VolumeRestoreParametersArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sourceBackup Full name of the snapshot to use for creating this volume.
+         * @param sourceBackup Full name of the backup to use for creating this volume.
          * `source_snapshot` and `source_backup` cannot be used simultaneously.
          * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
          * 

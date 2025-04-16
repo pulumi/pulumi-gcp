@@ -883,7 +883,7 @@ if not MYPY:
     class VolumeRestoreParametersArgsDict(TypedDict):
         source_backup: NotRequired[pulumi.Input[builtins.str]]
         """
-        Full name of the snapshot to use for creating this volume.
+        Full name of the backup to use for creating this volume.
         `source_snapshot` and `source_backup` cannot be used simultaneously.
         Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
         """
@@ -902,7 +902,7 @@ class VolumeRestoreParametersArgs:
                  source_backup: Optional[pulumi.Input[builtins.str]] = None,
                  source_snapshot: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] source_backup: Full name of the snapshot to use for creating this volume.
+        :param pulumi.Input[builtins.str] source_backup: Full name of the backup to use for creating this volume.
                `source_snapshot` and `source_backup` cannot be used simultaneously.
                Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
         :param pulumi.Input[builtins.str] source_snapshot: Full name of the snapshot to use for creating this volume.
@@ -918,7 +918,7 @@ class VolumeRestoreParametersArgs:
     @pulumi.getter(name="sourceBackup")
     def source_backup(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Full name of the snapshot to use for creating this volume.
+        Full name of the backup to use for creating this volume.
         `source_snapshot` and `source_backup` cannot be used simultaneously.
         Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
         """

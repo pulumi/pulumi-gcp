@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
     public sealed class ConnectionProfilePostgresqlSsl
     {
         /// <summary>
-        /// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        /// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         /// The replica will use this certificate to verify it's connecting to the right host.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string CaCertificate;
+        public readonly string? CaCertificate;
         /// <summary>
         /// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
         /// If this field is used then the 'clientKey' field is mandatory
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
 
         [OutputConstructor]
         private ConnectionProfilePostgresqlSsl(
-            string caCertificate,
+            string? caCertificate,
 
             string? clientCertificate,
 

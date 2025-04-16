@@ -344,6 +344,45 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firestore Database Enterprise
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var enterprise_db = new Database("enterprise-db", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .databaseEdition("ENTERPRISE")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -437,6 +476,22 @@ public class Database extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The database edition.
+     * Possible values are: `STANDARD`, `ENTERPRISE`.
+     * 
+     */
+    @Export(name="databaseEdition", refs={String.class}, tree="[0]")
+    private Output<String> databaseEdition;
+
+    /**
+     * @return The database edition.
+     * Possible values are: `STANDARD`, `ENTERPRISE`.
+     * 
+     */
+    public Output<String> databaseEdition() {
+        return this.databaseEdition;
     }
     @Export(name="deleteProtectionState", refs={String.class}, tree="[0]")
     private Output<String> deleteProtectionState;

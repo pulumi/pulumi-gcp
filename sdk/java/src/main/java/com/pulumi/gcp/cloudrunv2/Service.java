@@ -1029,6 +1029,51 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloudrunv2 Service Iap
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-iap-service")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .ingress("INGRESS_TRAFFIC_ALL")
+ *             .launchStage("BETA")
+ *             .iapEnabled(true)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -1310,6 +1355,20 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> generation() {
         return this.generation;
+    }
+    /**
+     * Used to enable/disable IAP for the service.
+     * 
+     */
+    @Export(name="iapEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> iapEnabled;
+
+    /**
+     * @return Used to enable/disable IAP for the service.
+     * 
+     */
+    public Output<Optional<Boolean>> iapEnabled() {
+        return Codegen.optional(this.iapEnabled);
     }
     /**
      * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or

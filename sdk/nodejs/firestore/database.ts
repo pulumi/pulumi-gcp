@@ -161,6 +161,21 @@ import * as utilities from "../utilities";
  *     dependsOn: [firestoreCmekKeyuser],
  * });
  * ```
+ * ### Firestore Database Enterprise
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const enterprise_db = new gcp.firestore.Database("enterprise-db", {
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deletionPolicy: "DELETE",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -235,6 +250,11 @@ export class Database extends pulumi.CustomResource {
      * Output only. The timestamp at which this database was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The database edition.
+     * Possible values are: `STANDARD`, `ENTERPRISE`.
+     */
+    public readonly databaseEdition!: pulumi.Output<string>;
     public readonly deleteProtectionState!: pulumi.Output<string>;
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -328,6 +348,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["cmekConfig"] = state ? state.cmekConfig : undefined;
             resourceInputs["concurrencyMode"] = state ? state.concurrencyMode : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["databaseEdition"] = state ? state.databaseEdition : undefined;
             resourceInputs["deleteProtectionState"] = state ? state.deleteProtectionState : undefined;
             resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["earliestVersionTime"] = state ? state.earliestVersionTime : undefined;
@@ -352,6 +373,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["appEngineIntegrationMode"] = args ? args.appEngineIntegrationMode : undefined;
             resourceInputs["cmekConfig"] = args ? args.cmekConfig : undefined;
             resourceInputs["concurrencyMode"] = args ? args.concurrencyMode : undefined;
+            resourceInputs["databaseEdition"] = args ? args.databaseEdition : undefined;
             resourceInputs["deleteProtectionState"] = args ? args.deleteProtectionState : undefined;
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["locationId"] = args ? args.locationId : undefined;
@@ -397,6 +419,11 @@ export interface DatabaseState {
      * Output only. The timestamp at which this database was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The database edition.
+     * Possible values are: `STANDARD`, `ENTERPRISE`.
+     */
+    databaseEdition?: pulumi.Input<string>;
     deleteProtectionState?: pulumi.Input<string>;
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -495,6 +522,11 @@ export interface DatabaseArgs {
      * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      */
     concurrencyMode?: pulumi.Input<string>;
+    /**
+     * The database edition.
+     * Possible values are: `STANDARD`, `ENTERPRISE`.
+     */
+    databaseEdition?: pulumi.Input<string>;
     deleteProtectionState?: pulumi.Input<string>;
     deletionPolicy?: pulumi.Input<string>;
     /**

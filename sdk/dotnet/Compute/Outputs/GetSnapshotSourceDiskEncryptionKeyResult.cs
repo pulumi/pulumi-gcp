@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetSnapshotSourceDiskEncryptionKeyResult
     {
         /// <summary>
+        /// The name of the encryption key that is stored in Google Cloud KMS.
+        /// </summary>
+        public readonly string KmsKeySelfLink;
+        /// <summary>
         /// The service account used for the encryption request for the given KMS key.
         /// If absent, the Compute Engine Service Agent service account is used.
         /// </summary>
@@ -23,15 +27,26 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// RFC 4648 base64 to either encrypt or decrypt this resource.
         /// </summary>
         public readonly string RawKey;
+        /// <summary>
+        /// Specifies an encryption key stored in Google Cloud KMS, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// </summary>
+        public readonly string RsaEncryptedKey;
 
         [OutputConstructor]
         private GetSnapshotSourceDiskEncryptionKeyResult(
+            string kmsKeySelfLink,
+
             string kmsKeyServiceAccount,
 
-            string rawKey)
+            string rawKey,
+
+            string rsaEncryptedKey)
         {
+            KmsKeySelfLink = kmsKeySelfLink;
             KmsKeyServiceAccount = kmsKeyServiceAccount;
             RawKey = rawKey;
+            RsaEncryptedKey = rsaEncryptedKey;
         }
     }
 }

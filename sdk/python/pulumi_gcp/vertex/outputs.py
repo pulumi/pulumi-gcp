@@ -35,6 +35,8 @@ __all__ = [
     'AiEndpointPrivateServiceConnectConfig',
     'AiFeatureGroupBigQuery',
     'AiFeatureGroupBigQueryBigQuerySource',
+    'AiFeatureGroupIamBindingCondition',
+    'AiFeatureGroupIamMemberCondition',
     'AiFeatureOnlineStoreBigtable',
     'AiFeatureOnlineStoreBigtableAutoScaling',
     'AiFeatureOnlineStoreDedicatedServingEndpoint',
@@ -43,10 +45,14 @@ __all__ = [
     'AiFeatureOnlineStoreFeatureviewBigQuerySource',
     'AiFeatureOnlineStoreFeatureviewFeatureRegistrySource',
     'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup',
+    'AiFeatureOnlineStoreFeatureviewIamBindingCondition',
+    'AiFeatureOnlineStoreFeatureviewIamMemberCondition',
     'AiFeatureOnlineStoreFeatureviewSyncConfig',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfig',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig',
+    'AiFeatureOnlineStoreIamBindingCondition',
+    'AiFeatureOnlineStoreIamMemberCondition',
     'AiFeatureOnlineStoreOptimized',
     'AiFeatureStoreEncryptionSpec',
     'AiFeatureStoreEntityTypeIamBindingCondition',
@@ -1221,6 +1227,60 @@ class AiFeatureGroupBigQueryBigQuerySource(dict):
 
 
 @pulumi.output_type
+class AiFeatureGroupIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AiFeatureGroupIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class AiFeatureOnlineStoreBigtable(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1603,6 +1663,60 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup(dict):
 
 
 @pulumi.output_type
+class AiFeatureOnlineStoreFeatureviewIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreFeatureviewIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class AiFeatureOnlineStoreFeatureviewSyncConfig(dict):
     def __init__(__self__, *,
                  cron: Optional[builtins.str] = None):
@@ -1788,6 +1902,60 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig(dict):
         Number of embeddings on each leaf node. The default value is 1000 if not set.
         """
         return pulumi.get(self, "leaf_node_embedding_count")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

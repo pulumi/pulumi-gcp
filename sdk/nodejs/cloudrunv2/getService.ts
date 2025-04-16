@@ -75,6 +75,7 @@ export interface GetServiceResult {
     readonly etag: string;
     readonly expireTime: string;
     readonly generation: string;
+    readonly iapEnabled: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

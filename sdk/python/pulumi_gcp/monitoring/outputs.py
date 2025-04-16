@@ -4586,25 +4586,37 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(dict):
 
 @pulumi.output_type
 class UptimeCheckConfigHttpCheckAuthInfo(dict):
-    def __init__(__self__, *,
-                 password: builtins.str,
-                 username: builtins.str):
-        """
-        :param builtins.str password: The password to authenticate.
-               **Note**: This property is sensitive and will not be displayed in the plan.
-        :param builtins.str username: The username to authenticate.
-        """
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordWoVersion":
+            suggest = "password_wo_version"
 
-    @property
-    @pulumi.getter
-    def password(self) -> builtins.str:
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UptimeCheckConfigHttpCheckAuthInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UptimeCheckConfigHttpCheckAuthInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UptimeCheckConfigHttpCheckAuthInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 username: builtins.str,
+                 password: Optional[builtins.str] = None,
+                 password_wo_version: Optional[builtins.str] = None):
         """
-        The password to authenticate.
-        **Note**: This property is sensitive and will not be displayed in the plan.
+        :param builtins.str username: The username to authenticate.
+        :param builtins.str password: The password to authenticate.
+        :param builtins.str password_wo_version: The password write-only version.
         """
-        return pulumi.get(self, "password")
+        pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
 
     @property
     @pulumi.getter
@@ -4613,6 +4625,22 @@ class UptimeCheckConfigHttpCheckAuthInfo(dict):
         The username to authenticate.
         """
         return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[builtins.str]:
+        """
+        The password to authenticate.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[builtins.str]:
+        """
+        The password write-only version.
+        """
+        return pulumi.get(self, "password_wo_version")
 
 
 @pulumi.output_type

@@ -86,6 +86,9 @@ type ControlFolderIntelligenceConfig struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The trial configuration of the Storage Intelligence resource.
+	// Structure is documented below.
+	TrialConfigs ControlFolderIntelligenceConfigTrialConfigArrayOutput `pulumi:"trialConfigs"`
 	// The time at which the Storage Intelligence Config resource is last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -132,6 +135,9 @@ type controlFolderIntelligenceConfigState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// The trial configuration of the Storage Intelligence resource.
+	// Structure is documented below.
+	TrialConfigs []ControlFolderIntelligenceConfigTrialConfig `pulumi:"trialConfigs"`
 	// The time at which the Storage Intelligence Config resource is last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -149,6 +155,9 @@ type ControlFolderIntelligenceConfigState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// The trial configuration of the Storage Intelligence resource.
+	// Structure is documented below.
+	TrialConfigs ControlFolderIntelligenceConfigTrialConfigArrayInput
 	// The time at which the Storage Intelligence Config resource is last updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -295,6 +304,14 @@ func (o ControlFolderIntelligenceConfigOutput) Filter() ControlFolderIntelligenc
 // ***
 func (o ControlFolderIntelligenceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlFolderIntelligenceConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The trial configuration of the Storage Intelligence resource.
+// Structure is documented below.
+func (o ControlFolderIntelligenceConfigOutput) TrialConfigs() ControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return o.ApplyT(func(v *ControlFolderIntelligenceConfig) ControlFolderIntelligenceConfigTrialConfigArrayOutput {
+		return v.TrialConfigs
+	}).(ControlFolderIntelligenceConfigTrialConfigArrayOutput)
 }
 
 // The time at which the Storage Intelligence Config resource is last updated.

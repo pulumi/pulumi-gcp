@@ -292,6 +292,36 @@ import (
 //	}
 //
 // ```
+// ### Firestore Database Enterprise
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firestore.NewDatabase(ctx, "enterprise-db", &firestore.DatabaseArgs{
+//				Project:         pulumi.String("my-project-name"),
+//				Name:            pulumi.String("database-id"),
+//				LocationId:      pulumi.String("nam5"),
+//				Type:            pulumi.String("FIRESTORE_NATIVE"),
+//				DatabaseEdition: pulumi.String("ENTERPRISE"),
+//				DeletionPolicy:  pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -331,7 +361,10 @@ type Database struct {
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringOutput `pulumi:"concurrencyMode"`
 	// Output only. The timestamp at which this database was created.
-	CreateTime            pulumi.StringOutput    `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The database edition.
+	// Possible values are: `STANDARD`, `ENTERPRISE`.
+	DatabaseEdition       pulumi.StringOutput    `pulumi:"databaseEdition"`
 	DeleteProtectionState pulumi.StringOutput    `pulumi:"deleteProtectionState"`
 	DeletionPolicy        pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
@@ -434,7 +467,10 @@ type databaseState struct {
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode *string `pulumi:"concurrencyMode"`
 	// Output only. The timestamp at which this database was created.
-	CreateTime            *string `pulumi:"createTime"`
+	CreateTime *string `pulumi:"createTime"`
+	// The database edition.
+	// Possible values are: `STANDARD`, `ENTERPRISE`.
+	DatabaseEdition       *string `pulumi:"databaseEdition"`
 	DeleteProtectionState *string `pulumi:"deleteProtectionState"`
 	DeletionPolicy        *string `pulumi:"deletionPolicy"`
 	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
@@ -502,7 +538,10 @@ type DatabaseState struct {
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringPtrInput
 	// Output only. The timestamp at which this database was created.
-	CreateTime            pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// The database edition.
+	// Possible values are: `STANDARD`, `ENTERPRISE`.
+	DatabaseEdition       pulumi.StringPtrInput
 	DeleteProtectionState pulumi.StringPtrInput
 	DeletionPolicy        pulumi.StringPtrInput
 	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
@@ -572,7 +611,10 @@ type databaseArgs struct {
 	CmekConfig *DatabaseCmekConfig `pulumi:"cmekConfig"`
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-	ConcurrencyMode       *string `pulumi:"concurrencyMode"`
+	ConcurrencyMode *string `pulumi:"concurrencyMode"`
+	// The database edition.
+	// Possible values are: `STANDARD`, `ENTERPRISE`.
+	DatabaseEdition       *string `pulumi:"databaseEdition"`
 	DeleteProtectionState *string `pulumi:"deleteProtectionState"`
 	DeletionPolicy        *string `pulumi:"deletionPolicy"`
 	// The location of the database. Available locations are listed at
@@ -617,7 +659,10 @@ type DatabaseArgs struct {
 	CmekConfig DatabaseCmekConfigPtrInput
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-	ConcurrencyMode       pulumi.StringPtrInput
+	ConcurrencyMode pulumi.StringPtrInput
+	// The database edition.
+	// Possible values are: `STANDARD`, `ENTERPRISE`.
+	DatabaseEdition       pulumi.StringPtrInput
 	DeleteProtectionState pulumi.StringPtrInput
 	DeletionPolicy        pulumi.StringPtrInput
 	// The location of the database. Available locations are listed at
@@ -760,6 +805,12 @@ func (o DatabaseOutput) ConcurrencyMode() pulumi.StringOutput {
 // Output only. The timestamp at which this database was created.
 func (o DatabaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The database edition.
+// Possible values are: `STANDARD`, `ENTERPRISE`.
+func (o DatabaseOutput) DatabaseEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DatabaseEdition }).(pulumi.StringOutput)
 }
 
 func (o DatabaseOutput) DeleteProtectionState() pulumi.StringOutput {

@@ -17,14 +17,18 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
     public static final TableExternalCatalogTableOptionsStorageDescriptorArgs Empty = new TableExternalCatalogTableOptionsStorageDescriptorArgs();
 
     /**
-     * Specifies the fully qualified class name of the InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The maximum length is 128 characters.
+     * Specifies the fully qualified class name of the
+     * InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The
+     * maximum length is 128 characters.
      * 
      */
     @Import(name="inputFormat")
     private @Nullable Output<String> inputFormat;
 
     /**
-     * @return Specifies the fully qualified class name of the InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The maximum length is 128 characters.
+     * @return Specifies the fully qualified class name of the
+     * InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The
+     * maximum length is 128 characters.
      * 
      */
     public Optional<Output<String>> inputFormat() {
@@ -32,14 +36,18 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
     }
 
     /**
-     * The physical location of the table (e.g. &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
+     * The physical location of the table (e.g.
+     * &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or
+     * &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
      * 
      */
     @Import(name="locationUri")
     private @Nullable Output<String> locationUri;
 
     /**
-     * @return The physical location of the table (e.g. &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
+     * @return The physical location of the table (e.g.
+     * &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or
+     * &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
      * 
      */
     public Optional<Output<String>> locationUri() {
@@ -47,14 +55,18 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
     }
 
     /**
-     * Specifies the fully qualified class name of the OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The maximum length is 128 characters.
+     * Specifies the fully qualified class name of the
+     * OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The
+     * maximum length is 128 characters.
      * 
      */
     @Import(name="outputFormat")
     private @Nullable Output<String> outputFormat;
 
     /**
-     * @return Specifies the fully qualified class name of the OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The maximum length is 128 characters.
+     * @return Specifies the fully qualified class name of the
+     * OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The
+     * maximum length is 128 characters.
      * 
      */
     public Optional<Output<String>> outputFormat() {
@@ -62,14 +74,16 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
     }
 
     /**
-     * Serializer and deserializer information.
+     * Serializer and deserializer information. Structure
+     * is documented below.
      * 
      */
     @Import(name="serdeInfo")
     private @Nullable Output<TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs> serdeInfo;
 
     /**
-     * @return Serializer and deserializer information.
+     * @return Serializer and deserializer information. Structure
+     * is documented below.
      * 
      */
     public Optional<Output<TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs>> serdeInfo() {
@@ -104,7 +118,9 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
         }
 
         /**
-         * @param inputFormat Specifies the fully qualified class name of the InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The maximum length is 128 characters.
+         * @param inputFormat Specifies the fully qualified class name of the
+         * InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The
+         * maximum length is 128 characters.
          * 
          * @return builder
          * 
@@ -115,7 +131,9 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
         }
 
         /**
-         * @param inputFormat Specifies the fully qualified class name of the InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The maximum length is 128 characters.
+         * @param inputFormat Specifies the fully qualified class name of the
+         * InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The
+         * maximum length is 128 characters.
          * 
          * @return builder
          * 
@@ -125,7 +143,9 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
         }
 
         /**
-         * @param locationUri The physical location of the table (e.g. &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
+         * @param locationUri The physical location of the table (e.g.
+         * &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or
+         * &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
          * 
          * @return builder
          * 
@@ -136,7 +156,9 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
         }
 
         /**
-         * @param locationUri The physical location of the table (e.g. &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
+         * @param locationUri The physical location of the table (e.g.
+         * &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or
+         * &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
          * 
          * @return builder
          * 
@@ -146,7 +168,9 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
         }
 
         /**
-         * @param outputFormat Specifies the fully qualified class name of the OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The maximum length is 128 characters.
+         * @param outputFormat Specifies the fully qualified class name of the
+         * OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The
+         * maximum length is 128 characters.
          * 
          * @return builder
          * 
@@ -157,7 +181,9 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
         }
 
         /**
-         * @param outputFormat Specifies the fully qualified class name of the OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The maximum length is 128 characters.
+         * @param outputFormat Specifies the fully qualified class name of the
+         * OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The
+         * maximum length is 128 characters.
          * 
          * @return builder
          * 
@@ -167,7 +193,8 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
         }
 
         /**
-         * @param serdeInfo Serializer and deserializer information.
+         * @param serdeInfo Serializer and deserializer information. Structure
+         * is documented below.
          * 
          * @return builder
          * 
@@ -178,7 +205,8 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorArgs extends
         }
 
         /**
-         * @param serdeInfo Serializer and deserializer information.
+         * @param serdeInfo Serializer and deserializer information. Structure
+         * is documented below.
          * 
          * @return builder
          * 

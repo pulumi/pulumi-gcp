@@ -718,7 +718,7 @@ class AiFeatureGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> pulumi.Output[Optional[builtins.str]]:
+    def region(self) -> pulumi.Output[builtins.str]:
         """
         The region of feature group. eg us-central1
         """

@@ -6227,14 +6227,17 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs:
 
 if not MYPY:
     class UptimeCheckConfigHttpCheckAuthInfoArgsDict(TypedDict):
-        password: pulumi.Input[builtins.str]
-        """
-        The password to authenticate.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
         username: pulumi.Input[builtins.str]
         """
         The username to authenticate.
+        """
+        password: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The password to authenticate.
+        """
+        password_wo_version: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The password write-only version.
         """
 elif False:
     UptimeCheckConfigHttpCheckAuthInfoArgsDict: TypeAlias = Mapping[str, Any]
@@ -6242,28 +6245,19 @@ elif False:
 @pulumi.input_type
 class UptimeCheckConfigHttpCheckAuthInfoArgs:
     def __init__(__self__, *,
-                 password: pulumi.Input[builtins.str],
-                 username: pulumi.Input[builtins.str]):
+                 username: pulumi.Input[builtins.str],
+                 password: Optional[pulumi.Input[builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] password: The password to authenticate.
-               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] username: The username to authenticate.
+        :param pulumi.Input[builtins.str] password: The password to authenticate.
+        :param pulumi.Input[builtins.str] password_wo_version: The password write-only version.
         """
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def password(self) -> pulumi.Input[builtins.str]:
-        """
-        The password to authenticate.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "password", value)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
 
     @property
     @pulumi.getter
@@ -6276,6 +6270,30 @@ class UptimeCheckConfigHttpCheckAuthInfoArgs:
     @username.setter
     def username(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The password to authenticate.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The password write-only version.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "password_wo_version", value)
 
 
 if not MYPY:

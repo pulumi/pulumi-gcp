@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute
     /// A Region Backend Service defines a regionally-scoped group of virtual
     /// machines that will serve traffic for load balancing.
     /// 
+    /// &gt; **Note:** Recreating a `gcp.compute.RegionBackendService` that references other dependent resources like `gcp.compute.InstanceGroup` will give a `resourceInUseByAnotherResource` error, when decreasing the number of other dependent resources.
+    /// Use `lifecycle.create_before_destroy` on the dependent resources to avoid this type of error as shown in the Dynamic Backend Count example.
+    /// 
     /// To get more information about RegionBackendService, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
@@ -560,7 +563,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// RegionBackendService can be imported using any of these accepted formats:

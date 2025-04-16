@@ -13,7 +13,11 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class TableExternalCatalogTableOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form &lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt; or projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;.
+        /// The connection specifying the credentials to be
+        /// used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+        /// connection is needed to read the open source table from BigQuery Engine. The
+        /// connection_id can have the form `&lt;project_id&gt;.&lt;location_id&gt;.&lt;connection_id&gt;`
+        /// or `projects/&lt;project_id&gt;/locations/&lt;location_id&gt;/connections/&lt;connection_id&gt;`.
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
@@ -22,7 +26,9 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         private InputMap<string>? _parameters;
 
         /// <summary>
-        /// A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+        /// A map of key value pairs defining the parameters and
+        /// properties of the open source table. Corresponds with hive meta store table
+        /// parameters. Maximum size of 4Mib.
         /// </summary>
         public InputMap<string> Parameters
         {
@@ -31,7 +37,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         }
 
         /// <summary>
-        /// A storage descriptor containing information about the physical storage of this table.
+        /// A storage descriptor containing information
+        /// about the physical storage of this table. Structure is documented below.
         /// </summary>
         [Input("storageDescriptor")]
         public Input<Inputs.TableExternalCatalogTableOptionsStorageDescriptorArgs>? StorageDescriptor { get; set; }

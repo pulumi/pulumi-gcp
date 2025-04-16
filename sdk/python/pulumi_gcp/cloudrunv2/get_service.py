@@ -28,7 +28,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, build_configs=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, build_configs=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, iap_enabled=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -83,6 +83,9 @@ class GetServiceResult:
         if generation and not isinstance(generation, str):
             raise TypeError("Expected argument 'generation' to be a str")
         pulumi.set(__self__, "generation", generation)
+        if iap_enabled and not isinstance(iap_enabled, bool):
+            raise TypeError("Expected argument 'iap_enabled' to be a bool")
+        pulumi.set(__self__, "iap_enabled", iap_enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -244,6 +247,11 @@ class GetServiceResult:
         return pulumi.get(self, "generation")
 
     @property
+    @pulumi.getter(name="iapEnabled")
+    def iap_enabled(self) -> builtins.bool:
+        return pulumi.get(self, "iap_enabled")
+
+    @property
     @pulumi.getter
     def id(self) -> builtins.str:
         """
@@ -386,6 +394,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             etag=self.etag,
             expire_time=self.expire_time,
             generation=self.generation,
+            iap_enabled=self.iap_enabled,
             id=self.id,
             ingress=self.ingress,
             invoker_iam_disabled=self.invoker_iam_disabled,
@@ -464,6 +473,7 @@ def get_service(location: Optional[builtins.str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         generation=pulumi.get(__ret__, 'generation'),
+        iap_enabled=pulumi.get(__ret__, 'iap_enabled'),
         id=pulumi.get(__ret__, 'id'),
         ingress=pulumi.get(__ret__, 'ingress'),
         invoker_iam_disabled=pulumi.get(__ret__, 'invoker_iam_disabled'),
@@ -539,6 +549,7 @@ def get_service_output(location: Optional[pulumi.Input[Optional[builtins.str]]] 
         etag=pulumi.get(__response__, 'etag'),
         expire_time=pulumi.get(__response__, 'expire_time'),
         generation=pulumi.get(__response__, 'generation'),
+        iap_enabled=pulumi.get(__response__, 'iap_enabled'),
         id=pulumi.get(__response__, 'id'),
         ingress=pulumi.get(__response__, 'ingress'),
         invoker_iam_disabled=pulumi.get(__response__, 'invoker_iam_disabled'),

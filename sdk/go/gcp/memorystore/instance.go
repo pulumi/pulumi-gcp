@@ -505,6 +505,9 @@ type Instance struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig InstanceAutomatedBackupConfigPtrOutput `pulumi:"automatedBackupConfig"`
+	// The backup collection full resource name.
+	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+	BackupCollection pulumi.StringOutput `pulumi:"backupCollection"`
 	// Output only. Creation timestamp of the instance.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Cross instance replication config
@@ -527,6 +530,9 @@ type Instance struct {
 	EngineConfigs pulumi.StringMapOutput `pulumi:"engineConfigs"`
 	// Optional. Engine version of the instance.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
+	// GCS source for the instance.
+	// Structure is documented below.
+	GcsSource InstanceGcsSourcePtrOutput `pulumi:"gcsSource"`
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
 	// This value is subject to the following restrictions:
@@ -550,6 +556,9 @@ type Instance struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules InstanceMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
+	// Managed backup source for the instance.
+	// Structure is documented below.
+	ManagedBackupSource InstanceManagedBackupSourcePtrOutput `pulumi:"managedBackupSource"`
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -663,6 +672,9 @@ type instanceState struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig *InstanceAutomatedBackupConfig `pulumi:"automatedBackupConfig"`
+	// The backup collection full resource name.
+	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+	BackupCollection *string `pulumi:"backupCollection"`
 	// Output only. Creation timestamp of the instance.
 	CreateTime *string `pulumi:"createTime"`
 	// Cross instance replication config
@@ -685,6 +697,9 @@ type instanceState struct {
 	EngineConfigs map[string]string `pulumi:"engineConfigs"`
 	// Optional. Engine version of the instance.
 	EngineVersion *string `pulumi:"engineVersion"`
+	// GCS source for the instance.
+	// Structure is documented below.
+	GcsSource *InstanceGcsSource `pulumi:"gcsSource"`
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
 	// This value is subject to the following restrictions:
@@ -708,6 +723,9 @@ type instanceState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules []InstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
+	// Managed backup source for the instance.
+	// Structure is documented below.
+	ManagedBackupSource *InstanceManagedBackupSource `pulumi:"managedBackupSource"`
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -778,6 +796,9 @@ type InstanceState struct {
 	// The automated backup config for a instance.
 	// Structure is documented below.
 	AutomatedBackupConfig InstanceAutomatedBackupConfigPtrInput
+	// The backup collection full resource name.
+	// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+	BackupCollection pulumi.StringPtrInput
 	// Output only. Creation timestamp of the instance.
 	CreateTime pulumi.StringPtrInput
 	// Cross instance replication config
@@ -800,6 +821,9 @@ type InstanceState struct {
 	EngineConfigs pulumi.StringMapInput
 	// Optional. Engine version of the instance.
 	EngineVersion pulumi.StringPtrInput
+	// GCS source for the instance.
+	// Structure is documented below.
+	GcsSource InstanceGcsSourcePtrInput
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
 	// This value is subject to the following restrictions:
@@ -823,6 +847,9 @@ type InstanceState struct {
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules InstanceMaintenanceScheduleArrayInput
+	// Managed backup source for the instance.
+	// Structure is documented below.
+	ManagedBackupSource InstanceManagedBackupSourcePtrInput
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -908,6 +935,9 @@ type instanceArgs struct {
 	EngineConfigs map[string]string `pulumi:"engineConfigs"`
 	// Optional. Engine version of the instance.
 	EngineVersion *string `pulumi:"engineVersion"`
+	// GCS source for the instance.
+	// Structure is documented below.
+	GcsSource *InstanceGcsSource `pulumi:"gcsSource"`
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
 	// This value is subject to the following restrictions:
@@ -928,6 +958,9 @@ type instanceArgs struct {
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Managed backup source for the instance.
+	// Structure is documented below.
+	ManagedBackupSource *InstanceManagedBackupSource `pulumi:"managedBackupSource"`
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -981,6 +1014,9 @@ type InstanceArgs struct {
 	EngineConfigs pulumi.StringMapInput
 	// Optional. Engine version of the instance.
 	EngineVersion pulumi.StringPtrInput
+	// GCS source for the instance.
+	// Structure is documented below.
+	GcsSource InstanceGcsSourcePtrInput
 	// Required. The ID to use for the instance, which will become the final component of
 	// the instance's resource name.
 	// This value is subject to the following restrictions:
@@ -1001,6 +1037,9 @@ type InstanceArgs struct {
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy InstanceMaintenancePolicyPtrInput
+	// Managed backup source for the instance.
+	// Structure is documented below.
+	ManagedBackupSource InstanceManagedBackupSourcePtrInput
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -1134,6 +1173,12 @@ func (o InstanceOutput) AutomatedBackupConfig() InstanceAutomatedBackupConfigPtr
 	return o.ApplyT(func(v *Instance) InstanceAutomatedBackupConfigPtrOutput { return v.AutomatedBackupConfig }).(InstanceAutomatedBackupConfigPtrOutput)
 }
 
+// The backup collection full resource name.
+// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+func (o InstanceOutput) BackupCollection() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BackupCollection }).(pulumi.StringOutput)
+}
+
 // Output only. Creation timestamp of the instance.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -1185,6 +1230,12 @@ func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
+// GCS source for the instance.
+// Structure is documented below.
+func (o InstanceOutput) GcsSource() InstanceGcsSourcePtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceGcsSourcePtrOutput { return v.GcsSource }).(InstanceGcsSourcePtrOutput)
+}
+
 // Required. The ID to use for the instance, which will become the final component of
 // the instance's resource name.
 // This value is subject to the following restrictions:
@@ -1221,6 +1272,12 @@ func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
 // Structure is documented below.
 func (o InstanceOutput) MaintenanceSchedules() InstanceMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(InstanceMaintenanceScheduleArrayOutput)
+}
+
+// Managed backup source for the instance.
+// Structure is documented below.
+func (o InstanceOutput) ManagedBackupSource() InstanceManagedBackupSourcePtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceManagedBackupSourcePtrOutput { return v.ManagedBackupSource }).(InstanceManagedBackupSourcePtrOutput)
 }
 
 // Optional. cluster or cluster-disabled.

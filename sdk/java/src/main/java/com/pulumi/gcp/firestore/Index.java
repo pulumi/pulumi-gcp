@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.firestore.IndexArgs;
 import com.pulumi.gcp.firestore.inputs.IndexState;
 import com.pulumi.gcp.firestore.outputs.IndexField;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -137,6 +138,7 @@ import javax.annotation.Nullable;
  *             .collection("atestcollection")
  *             .queryScope("COLLECTION_RECURSIVE")
  *             .apiScope("DATASTORE_MODE_API")
+ *             .density("SPARSE_ALL")
  *             .fields(            
  *                 IndexFieldArgs.builder()
  *                     .fieldPath("name")
@@ -272,6 +274,130 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firestore Index Mongodb Compatible Scope
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-id-mongodb-compatible")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .databaseEdition("ENTERPRISE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var my_index = new Index("my-index", IndexArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("atestcollection")
+ *             .apiScope("MONGODB_COMPATIBLE_API")
+ *             .queryScope("COLLECTION_GROUP")
+ *             .multikey(true)
+ *             .density("DENSE")
+ *             .fields(            
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath("name")
+ *                     .order("ASCENDING")
+ *                     .build(),
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath("description")
+ *                     .order("DESCENDING")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firestore Index Sparse Any
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Index;
+ * import com.pulumi.gcp.firestore.IndexArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-id-sparse-any")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .databaseEdition("ENTERPRISE")
+ *             .deleteProtectionState("DELETE_PROTECTION_DISABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var my_index = new Index("my-index", IndexArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("atestcollection")
+ *             .apiScope("MONGODB_COMPATIBLE_API")
+ *             .queryScope("COLLECTION_GROUP")
+ *             .multikey(true)
+ *             .density("SPARSE_ANY")
+ *             .fields(            
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath("name")
+ *                     .order("ASCENDING")
+ *                     .build(),
+ *                 IndexFieldArgs.builder()
+ *                     .fieldPath("description")
+ *                     .order("DESCENDING")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -289,14 +415,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firestore/index:Index")
 public class Index extends com.pulumi.resources.CustomResource {
     /**
-     * The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
+     * The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
+     * &#34;MONGODB_COMPATIBLE_API&#34;]
      * 
      */
     @Export(name="apiScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiScope;
 
     /**
-     * @return The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
+     * @return The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
+     * &#34;MONGODB_COMPATIBLE_API&#34;]
      * 
      */
     public Output<Optional<String>> apiScope() {
@@ -331,6 +459,20 @@ public class Index extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.database);
     }
     /**
+     * The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+     * 
+     */
+    @Export(name="density", refs={String.class}, tree="[0]")
+    private Output<String> density;
+
+    /**
+     * @return The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+     * 
+     */
+    public Output<String> density() {
+        return this.density;
+    }
+    /**
      * The fields supported by this index. The last non-stored field entry is
      * always for the field path `__name__`. If, on creation, `__name__` was not
      * specified as the last field, it will be added automatically with the same
@@ -355,6 +497,26 @@ public class Index extends com.pulumi.resources.CustomResource {
      */
     public Output<List<IndexField>> fields() {
         return this.fields;
+    }
+    /**
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * 
+     */
+    @Export(name="multikey", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> multikey;
+
+    /**
+     * @return Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * 
+     */
+    public Output<Optional<Boolean>> multikey() {
+        return Codegen.optional(this.multikey);
     }
     /**
      * A server defined name for this index. Format:

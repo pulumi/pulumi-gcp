@@ -2766,6 +2766,332 @@ func (o AiFeatureGroupBigQueryBigQuerySourcePtrOutput) InputUri() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiFeatureGroupIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureGroupIamBindingConditionInput is an input type that accepts AiFeatureGroupIamBindingConditionArgs and AiFeatureGroupIamBindingConditionOutput values.
+// You can construct a concrete instance of `AiFeatureGroupIamBindingConditionInput` via:
+//
+//	AiFeatureGroupIamBindingConditionArgs{...}
+type AiFeatureGroupIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureGroupIamBindingConditionOutput() AiFeatureGroupIamBindingConditionOutput
+	ToAiFeatureGroupIamBindingConditionOutputWithContext(context.Context) AiFeatureGroupIamBindingConditionOutput
+}
+
+type AiFeatureGroupIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureGroupIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (i AiFeatureGroupIamBindingConditionArgs) ToAiFeatureGroupIamBindingConditionOutput() AiFeatureGroupIamBindingConditionOutput {
+	return i.ToAiFeatureGroupIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureGroupIamBindingConditionArgs) ToAiFeatureGroupIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureGroupIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupIamBindingConditionOutput)
+}
+
+func (i AiFeatureGroupIamBindingConditionArgs) ToAiFeatureGroupIamBindingConditionPtrOutput() AiFeatureGroupIamBindingConditionPtrOutput {
+	return i.ToAiFeatureGroupIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureGroupIamBindingConditionArgs) ToAiFeatureGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureGroupIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupIamBindingConditionOutput).ToAiFeatureGroupIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureGroupIamBindingConditionPtrInput is an input type that accepts AiFeatureGroupIamBindingConditionArgs, AiFeatureGroupIamBindingConditionPtr and AiFeatureGroupIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureGroupIamBindingConditionPtrInput` via:
+//
+//	        AiFeatureGroupIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureGroupIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureGroupIamBindingConditionPtrOutput() AiFeatureGroupIamBindingConditionPtrOutput
+	ToAiFeatureGroupIamBindingConditionPtrOutputWithContext(context.Context) AiFeatureGroupIamBindingConditionPtrOutput
+}
+
+type aiFeatureGroupIamBindingConditionPtrType AiFeatureGroupIamBindingConditionArgs
+
+func AiFeatureGroupIamBindingConditionPtr(v *AiFeatureGroupIamBindingConditionArgs) AiFeatureGroupIamBindingConditionPtrInput {
+	return (*aiFeatureGroupIamBindingConditionPtrType)(v)
+}
+
+func (*aiFeatureGroupIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureGroupIamBindingConditionPtrType) ToAiFeatureGroupIamBindingConditionPtrOutput() AiFeatureGroupIamBindingConditionPtrOutput {
+	return i.ToAiFeatureGroupIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureGroupIamBindingConditionPtrType) ToAiFeatureGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureGroupIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupIamBindingConditionPtrOutput)
+}
+
+type AiFeatureGroupIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureGroupIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureGroupIamBindingConditionOutput) ToAiFeatureGroupIamBindingConditionOutput() AiFeatureGroupIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureGroupIamBindingConditionOutput) ToAiFeatureGroupIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureGroupIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureGroupIamBindingConditionOutput) ToAiFeatureGroupIamBindingConditionPtrOutput() AiFeatureGroupIamBindingConditionPtrOutput {
+	return o.ToAiFeatureGroupIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureGroupIamBindingConditionOutput) ToAiFeatureGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureGroupIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureGroupIamBindingCondition) *AiFeatureGroupIamBindingCondition {
+		return &v
+	}).(AiFeatureGroupIamBindingConditionPtrOutput)
+}
+
+func (o AiFeatureGroupIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureGroupIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureGroupIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureGroupIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureGroupIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureGroupIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureGroupIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureGroupIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureGroupIamBindingConditionPtrOutput) ToAiFeatureGroupIamBindingConditionPtrOutput() AiFeatureGroupIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureGroupIamBindingConditionPtrOutput) ToAiFeatureGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureGroupIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureGroupIamBindingConditionPtrOutput) Elem() AiFeatureGroupIamBindingConditionOutput {
+	return o.ApplyT(func(v *AiFeatureGroupIamBindingCondition) AiFeatureGroupIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureGroupIamBindingCondition
+		return ret
+	}).(AiFeatureGroupIamBindingConditionOutput)
+}
+
+func (o AiFeatureGroupIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureGroupIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureGroupIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureGroupIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureGroupIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureGroupIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureGroupIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureGroupIamMemberConditionInput is an input type that accepts AiFeatureGroupIamMemberConditionArgs and AiFeatureGroupIamMemberConditionOutput values.
+// You can construct a concrete instance of `AiFeatureGroupIamMemberConditionInput` via:
+//
+//	AiFeatureGroupIamMemberConditionArgs{...}
+type AiFeatureGroupIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureGroupIamMemberConditionOutput() AiFeatureGroupIamMemberConditionOutput
+	ToAiFeatureGroupIamMemberConditionOutputWithContext(context.Context) AiFeatureGroupIamMemberConditionOutput
+}
+
+type AiFeatureGroupIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureGroupIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (i AiFeatureGroupIamMemberConditionArgs) ToAiFeatureGroupIamMemberConditionOutput() AiFeatureGroupIamMemberConditionOutput {
+	return i.ToAiFeatureGroupIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureGroupIamMemberConditionArgs) ToAiFeatureGroupIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureGroupIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupIamMemberConditionOutput)
+}
+
+func (i AiFeatureGroupIamMemberConditionArgs) ToAiFeatureGroupIamMemberConditionPtrOutput() AiFeatureGroupIamMemberConditionPtrOutput {
+	return i.ToAiFeatureGroupIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureGroupIamMemberConditionArgs) ToAiFeatureGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureGroupIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupIamMemberConditionOutput).ToAiFeatureGroupIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureGroupIamMemberConditionPtrInput is an input type that accepts AiFeatureGroupIamMemberConditionArgs, AiFeatureGroupIamMemberConditionPtr and AiFeatureGroupIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureGroupIamMemberConditionPtrInput` via:
+//
+//	        AiFeatureGroupIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureGroupIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureGroupIamMemberConditionPtrOutput() AiFeatureGroupIamMemberConditionPtrOutput
+	ToAiFeatureGroupIamMemberConditionPtrOutputWithContext(context.Context) AiFeatureGroupIamMemberConditionPtrOutput
+}
+
+type aiFeatureGroupIamMemberConditionPtrType AiFeatureGroupIamMemberConditionArgs
+
+func AiFeatureGroupIamMemberConditionPtr(v *AiFeatureGroupIamMemberConditionArgs) AiFeatureGroupIamMemberConditionPtrInput {
+	return (*aiFeatureGroupIamMemberConditionPtrType)(v)
+}
+
+func (*aiFeatureGroupIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureGroupIamMemberConditionPtrType) ToAiFeatureGroupIamMemberConditionPtrOutput() AiFeatureGroupIamMemberConditionPtrOutput {
+	return i.ToAiFeatureGroupIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureGroupIamMemberConditionPtrType) ToAiFeatureGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureGroupIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupIamMemberConditionPtrOutput)
+}
+
+type AiFeatureGroupIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureGroupIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureGroupIamMemberConditionOutput) ToAiFeatureGroupIamMemberConditionOutput() AiFeatureGroupIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureGroupIamMemberConditionOutput) ToAiFeatureGroupIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureGroupIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureGroupIamMemberConditionOutput) ToAiFeatureGroupIamMemberConditionPtrOutput() AiFeatureGroupIamMemberConditionPtrOutput {
+	return o.ToAiFeatureGroupIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureGroupIamMemberConditionOutput) ToAiFeatureGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureGroupIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureGroupIamMemberCondition) *AiFeatureGroupIamMemberCondition {
+		return &v
+	}).(AiFeatureGroupIamMemberConditionPtrOutput)
+}
+
+func (o AiFeatureGroupIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureGroupIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureGroupIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureGroupIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureGroupIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureGroupIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureGroupIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureGroupIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureGroupIamMemberConditionPtrOutput) ToAiFeatureGroupIamMemberConditionPtrOutput() AiFeatureGroupIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureGroupIamMemberConditionPtrOutput) ToAiFeatureGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureGroupIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureGroupIamMemberConditionPtrOutput) Elem() AiFeatureGroupIamMemberConditionOutput {
+	return o.ApplyT(func(v *AiFeatureGroupIamMemberCondition) AiFeatureGroupIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureGroupIamMemberCondition
+		return ret
+	}).(AiFeatureGroupIamMemberConditionOutput)
+}
+
+func (o AiFeatureGroupIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureGroupIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureGroupIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureGroupIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureGroupIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureOnlineStoreBigtable struct {
 	// Autoscaling config applied to Bigtable Instance.
 	// Structure is documented below.
@@ -3994,6 +4320,332 @@ func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOut
 	}).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput)
 }
 
+type AiFeatureOnlineStoreFeatureviewIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureOnlineStoreFeatureviewIamBindingConditionInput is an input type that accepts AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs and AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewIamBindingConditionInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs{...}
+type AiFeatureOnlineStoreFeatureviewIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewIamBindingConditionOutput() AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput
+	ToAiFeatureOnlineStoreFeatureviewIamBindingConditionOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewIamBindingCondition)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionOutput() AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput)
+}
+
+func (i AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput).ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrInput is an input type that accepts AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs, AiFeatureOnlineStoreFeatureviewIamBindingConditionPtr and AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrInput` via:
+//
+//	        AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput
+	ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput
+}
+
+type aiFeatureOnlineStoreFeatureviewIamBindingConditionPtrType AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs
+
+func AiFeatureOnlineStoreFeatureviewIamBindingConditionPtr(v *AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs) AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrInput {
+	return (*aiFeatureOnlineStoreFeatureviewIamBindingConditionPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreFeatureviewIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewIamBindingCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewIamBindingConditionPtrType) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewIamBindingConditionPtrType) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionOutput() AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput {
+	return o.ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreFeatureviewIamBindingCondition) *AiFeatureOnlineStoreFeatureviewIamBindingCondition {
+		return &v
+	}).(AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput) ToAiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput) Elem() AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamBindingCondition) AiFeatureOnlineStoreFeatureviewIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreFeatureviewIamBindingCondition
+		return ret
+	}).(AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureOnlineStoreFeatureviewIamMemberConditionInput is an input type that accepts AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs and AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewIamMemberConditionInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs{...}
+type AiFeatureOnlineStoreFeatureviewIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewIamMemberConditionOutput() AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput
+	ToAiFeatureOnlineStoreFeatureviewIamMemberConditionOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewIamMemberCondition)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionOutput() AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput)
+}
+
+func (i AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput).ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrInput is an input type that accepts AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs, AiFeatureOnlineStoreFeatureviewIamMemberConditionPtr and AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrInput` via:
+//
+//	        AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput
+	ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput
+}
+
+type aiFeatureOnlineStoreFeatureviewIamMemberConditionPtrType AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs
+
+func AiFeatureOnlineStoreFeatureviewIamMemberConditionPtr(v *AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs) AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrInput {
+	return (*aiFeatureOnlineStoreFeatureviewIamMemberConditionPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreFeatureviewIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewIamMemberCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewIamMemberConditionPtrType) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewIamMemberConditionPtrType) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionOutput() AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput {
+	return o.ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreFeatureviewIamMemberCondition) *AiFeatureOnlineStoreFeatureviewIamMemberCondition {
+		return &v
+	}).(AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput() AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput) ToAiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput) Elem() AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamMemberCondition) AiFeatureOnlineStoreFeatureviewIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreFeatureviewIamMemberCondition
+		return ret
+	}).(AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureOnlineStoreFeatureviewSyncConfig struct {
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
@@ -4656,6 +5308,332 @@ func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput) 
 			return nil
 		}
 		return v.LeafNodeEmbeddingCount
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureOnlineStoreIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureOnlineStoreIamBindingConditionInput is an input type that accepts AiFeatureOnlineStoreIamBindingConditionArgs and AiFeatureOnlineStoreIamBindingConditionOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreIamBindingConditionInput` via:
+//
+//	AiFeatureOnlineStoreIamBindingConditionArgs{...}
+type AiFeatureOnlineStoreIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreIamBindingConditionOutput() AiFeatureOnlineStoreIamBindingConditionOutput
+	ToAiFeatureOnlineStoreIamBindingConditionOutputWithContext(context.Context) AiFeatureOnlineStoreIamBindingConditionOutput
+}
+
+type AiFeatureOnlineStoreIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureOnlineStoreIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreIamBindingConditionArgs) ToAiFeatureOnlineStoreIamBindingConditionOutput() AiFeatureOnlineStoreIamBindingConditionOutput {
+	return i.ToAiFeatureOnlineStoreIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreIamBindingConditionArgs) ToAiFeatureOnlineStoreIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreIamBindingConditionOutput)
+}
+
+func (i AiFeatureOnlineStoreIamBindingConditionArgs) ToAiFeatureOnlineStoreIamBindingConditionPtrOutput() AiFeatureOnlineStoreIamBindingConditionPtrOutput {
+	return i.ToAiFeatureOnlineStoreIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreIamBindingConditionArgs) ToAiFeatureOnlineStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreIamBindingConditionOutput).ToAiFeatureOnlineStoreIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreIamBindingConditionPtrInput is an input type that accepts AiFeatureOnlineStoreIamBindingConditionArgs, AiFeatureOnlineStoreIamBindingConditionPtr and AiFeatureOnlineStoreIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreIamBindingConditionPtrInput` via:
+//
+//	        AiFeatureOnlineStoreIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreIamBindingConditionPtrOutput() AiFeatureOnlineStoreIamBindingConditionPtrOutput
+	ToAiFeatureOnlineStoreIamBindingConditionPtrOutputWithContext(context.Context) AiFeatureOnlineStoreIamBindingConditionPtrOutput
+}
+
+type aiFeatureOnlineStoreIamBindingConditionPtrType AiFeatureOnlineStoreIamBindingConditionArgs
+
+func AiFeatureOnlineStoreIamBindingConditionPtr(v *AiFeatureOnlineStoreIamBindingConditionArgs) AiFeatureOnlineStoreIamBindingConditionPtrInput {
+	return (*aiFeatureOnlineStoreIamBindingConditionPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreIamBindingConditionPtrType) ToAiFeatureOnlineStoreIamBindingConditionPtrOutput() AiFeatureOnlineStoreIamBindingConditionPtrOutput {
+	return i.ToAiFeatureOnlineStoreIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreIamBindingConditionPtrType) ToAiFeatureOnlineStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreIamBindingConditionPtrOutput)
+}
+
+type AiFeatureOnlineStoreIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionOutput) ToAiFeatureOnlineStoreIamBindingConditionOutput() AiFeatureOnlineStoreIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionOutput) ToAiFeatureOnlineStoreIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionOutput) ToAiFeatureOnlineStoreIamBindingConditionPtrOutput() AiFeatureOnlineStoreIamBindingConditionPtrOutput {
+	return o.ToAiFeatureOnlineStoreIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionOutput) ToAiFeatureOnlineStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreIamBindingCondition) *AiFeatureOnlineStoreIamBindingCondition {
+		return &v
+	}).(AiFeatureOnlineStoreIamBindingConditionPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureOnlineStoreIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionPtrOutput) ToAiFeatureOnlineStoreIamBindingConditionPtrOutput() AiFeatureOnlineStoreIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionPtrOutput) ToAiFeatureOnlineStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionPtrOutput) Elem() AiFeatureOnlineStoreIamBindingConditionOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreIamBindingCondition) AiFeatureOnlineStoreIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreIamBindingCondition
+		return ret
+	}).(AiFeatureOnlineStoreIamBindingConditionOutput)
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureOnlineStoreIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureOnlineStoreIamMemberConditionInput is an input type that accepts AiFeatureOnlineStoreIamMemberConditionArgs and AiFeatureOnlineStoreIamMemberConditionOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreIamMemberConditionInput` via:
+//
+//	AiFeatureOnlineStoreIamMemberConditionArgs{...}
+type AiFeatureOnlineStoreIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreIamMemberConditionOutput() AiFeatureOnlineStoreIamMemberConditionOutput
+	ToAiFeatureOnlineStoreIamMemberConditionOutputWithContext(context.Context) AiFeatureOnlineStoreIamMemberConditionOutput
+}
+
+type AiFeatureOnlineStoreIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureOnlineStoreIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreIamMemberConditionArgs) ToAiFeatureOnlineStoreIamMemberConditionOutput() AiFeatureOnlineStoreIamMemberConditionOutput {
+	return i.ToAiFeatureOnlineStoreIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreIamMemberConditionArgs) ToAiFeatureOnlineStoreIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreIamMemberConditionOutput)
+}
+
+func (i AiFeatureOnlineStoreIamMemberConditionArgs) ToAiFeatureOnlineStoreIamMemberConditionPtrOutput() AiFeatureOnlineStoreIamMemberConditionPtrOutput {
+	return i.ToAiFeatureOnlineStoreIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreIamMemberConditionArgs) ToAiFeatureOnlineStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreIamMemberConditionOutput).ToAiFeatureOnlineStoreIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreIamMemberConditionPtrInput is an input type that accepts AiFeatureOnlineStoreIamMemberConditionArgs, AiFeatureOnlineStoreIamMemberConditionPtr and AiFeatureOnlineStoreIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreIamMemberConditionPtrInput` via:
+//
+//	        AiFeatureOnlineStoreIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreIamMemberConditionPtrOutput() AiFeatureOnlineStoreIamMemberConditionPtrOutput
+	ToAiFeatureOnlineStoreIamMemberConditionPtrOutputWithContext(context.Context) AiFeatureOnlineStoreIamMemberConditionPtrOutput
+}
+
+type aiFeatureOnlineStoreIamMemberConditionPtrType AiFeatureOnlineStoreIamMemberConditionArgs
+
+func AiFeatureOnlineStoreIamMemberConditionPtr(v *AiFeatureOnlineStoreIamMemberConditionArgs) AiFeatureOnlineStoreIamMemberConditionPtrInput {
+	return (*aiFeatureOnlineStoreIamMemberConditionPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreIamMemberConditionPtrType) ToAiFeatureOnlineStoreIamMemberConditionPtrOutput() AiFeatureOnlineStoreIamMemberConditionPtrOutput {
+	return i.ToAiFeatureOnlineStoreIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreIamMemberConditionPtrType) ToAiFeatureOnlineStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreIamMemberConditionPtrOutput)
+}
+
+type AiFeatureOnlineStoreIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionOutput) ToAiFeatureOnlineStoreIamMemberConditionOutput() AiFeatureOnlineStoreIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionOutput) ToAiFeatureOnlineStoreIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionOutput) ToAiFeatureOnlineStoreIamMemberConditionPtrOutput() AiFeatureOnlineStoreIamMemberConditionPtrOutput {
+	return o.ToAiFeatureOnlineStoreIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionOutput) ToAiFeatureOnlineStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreIamMemberCondition) *AiFeatureOnlineStoreIamMemberCondition {
+		return &v
+	}).(AiFeatureOnlineStoreIamMemberConditionPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureOnlineStoreIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionPtrOutput) ToAiFeatureOnlineStoreIamMemberConditionPtrOutput() AiFeatureOnlineStoreIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionPtrOutput) ToAiFeatureOnlineStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionPtrOutput) Elem() AiFeatureOnlineStoreIamMemberConditionOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreIamMemberCondition) AiFeatureOnlineStoreIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreIamMemberCondition
+		return ret
+	}).(AiFeatureOnlineStoreIamMemberConditionOutput)
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureOnlineStoreIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10401,6 +11379,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryPtrInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryBigQuerySourceInput)(nil)).Elem(), AiFeatureGroupBigQueryBigQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryBigQuerySourcePtrInput)(nil)).Elem(), AiFeatureGroupBigQueryBigQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupIamBindingConditionInput)(nil)).Elem(), AiFeatureGroupIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupIamBindingConditionPtrInput)(nil)).Elem(), AiFeatureGroupIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupIamMemberConditionInput)(nil)).Elem(), AiFeatureGroupIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupIamMemberConditionPtrInput)(nil)).Elem(), AiFeatureGroupIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreBigtableInput)(nil)).Elem(), AiFeatureOnlineStoreBigtableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreBigtablePtrInput)(nil)).Elem(), AiFeatureOnlineStoreBigtableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreBigtableAutoScalingInput)(nil)).Elem(), AiFeatureOnlineStoreBigtableAutoScalingArgs{})
@@ -10417,6 +11399,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewIamBindingConditionInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewIamMemberConditionInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewSyncConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewSyncConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs{})
@@ -10425,6 +11411,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreIamBindingConditionInput)(nil)).Elem(), AiFeatureOnlineStoreIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreIamBindingConditionPtrInput)(nil)).Elem(), AiFeatureOnlineStoreIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreIamMemberConditionInput)(nil)).Elem(), AiFeatureOnlineStoreIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreIamMemberConditionPtrInput)(nil)).Elem(), AiFeatureOnlineStoreIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreOptimizedInput)(nil)).Elem(), AiFeatureOnlineStoreOptimizedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreOptimizedPtrInput)(nil)).Elem(), AiFeatureOnlineStoreOptimizedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
@@ -10537,6 +11527,10 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryBigQuerySourceOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryBigQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureGroupIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureGroupIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureGroupIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureGroupIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreBigtableOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreBigtablePtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreBigtableAutoScalingOutput{})
@@ -10553,6 +11547,10 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewSyncConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput{})
@@ -10561,6 +11559,10 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreOptimizedOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreOptimizedPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecOutput{})

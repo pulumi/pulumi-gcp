@@ -13,6 +13,194 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AccountConnectorProviderOauthConfig struct {
+	// Required. User selected scopes to apply to the Oauth config
+	// In the event of changing scopes, user records under AccountConnector will
+	// be deleted and users will re-auth again.
+	Scopes []string `pulumi:"scopes"`
+	// List of providers that are owned by Developer Connect.
+	// Possible values:
+	// GITHUB
+	// GITLAB
+	// GOOGLE
+	// SENTRY
+	// ROVO
+	SystemProviderId *string `pulumi:"systemProviderId"`
+}
+
+// AccountConnectorProviderOauthConfigInput is an input type that accepts AccountConnectorProviderOauthConfigArgs and AccountConnectorProviderOauthConfigOutput values.
+// You can construct a concrete instance of `AccountConnectorProviderOauthConfigInput` via:
+//
+//	AccountConnectorProviderOauthConfigArgs{...}
+type AccountConnectorProviderOauthConfigInput interface {
+	pulumi.Input
+
+	ToAccountConnectorProviderOauthConfigOutput() AccountConnectorProviderOauthConfigOutput
+	ToAccountConnectorProviderOauthConfigOutputWithContext(context.Context) AccountConnectorProviderOauthConfigOutput
+}
+
+type AccountConnectorProviderOauthConfigArgs struct {
+	// Required. User selected scopes to apply to the Oauth config
+	// In the event of changing scopes, user records under AccountConnector will
+	// be deleted and users will re-auth again.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// List of providers that are owned by Developer Connect.
+	// Possible values:
+	// GITHUB
+	// GITLAB
+	// GOOGLE
+	// SENTRY
+	// ROVO
+	SystemProviderId pulumi.StringPtrInput `pulumi:"systemProviderId"`
+}
+
+func (AccountConnectorProviderOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountConnectorProviderOauthConfig)(nil)).Elem()
+}
+
+func (i AccountConnectorProviderOauthConfigArgs) ToAccountConnectorProviderOauthConfigOutput() AccountConnectorProviderOauthConfigOutput {
+	return i.ToAccountConnectorProviderOauthConfigOutputWithContext(context.Background())
+}
+
+func (i AccountConnectorProviderOauthConfigArgs) ToAccountConnectorProviderOauthConfigOutputWithContext(ctx context.Context) AccountConnectorProviderOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorProviderOauthConfigOutput)
+}
+
+func (i AccountConnectorProviderOauthConfigArgs) ToAccountConnectorProviderOauthConfigPtrOutput() AccountConnectorProviderOauthConfigPtrOutput {
+	return i.ToAccountConnectorProviderOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AccountConnectorProviderOauthConfigArgs) ToAccountConnectorProviderOauthConfigPtrOutputWithContext(ctx context.Context) AccountConnectorProviderOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorProviderOauthConfigOutput).ToAccountConnectorProviderOauthConfigPtrOutputWithContext(ctx)
+}
+
+// AccountConnectorProviderOauthConfigPtrInput is an input type that accepts AccountConnectorProviderOauthConfigArgs, AccountConnectorProviderOauthConfigPtr and AccountConnectorProviderOauthConfigPtrOutput values.
+// You can construct a concrete instance of `AccountConnectorProviderOauthConfigPtrInput` via:
+//
+//	        AccountConnectorProviderOauthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccountConnectorProviderOauthConfigPtrInput interface {
+	pulumi.Input
+
+	ToAccountConnectorProviderOauthConfigPtrOutput() AccountConnectorProviderOauthConfigPtrOutput
+	ToAccountConnectorProviderOauthConfigPtrOutputWithContext(context.Context) AccountConnectorProviderOauthConfigPtrOutput
+}
+
+type accountConnectorProviderOauthConfigPtrType AccountConnectorProviderOauthConfigArgs
+
+func AccountConnectorProviderOauthConfigPtr(v *AccountConnectorProviderOauthConfigArgs) AccountConnectorProviderOauthConfigPtrInput {
+	return (*accountConnectorProviderOauthConfigPtrType)(v)
+}
+
+func (*accountConnectorProviderOauthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountConnectorProviderOauthConfig)(nil)).Elem()
+}
+
+func (i *accountConnectorProviderOauthConfigPtrType) ToAccountConnectorProviderOauthConfigPtrOutput() AccountConnectorProviderOauthConfigPtrOutput {
+	return i.ToAccountConnectorProviderOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *accountConnectorProviderOauthConfigPtrType) ToAccountConnectorProviderOauthConfigPtrOutputWithContext(ctx context.Context) AccountConnectorProviderOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountConnectorProviderOauthConfigPtrOutput)
+}
+
+type AccountConnectorProviderOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (AccountConnectorProviderOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountConnectorProviderOauthConfig)(nil)).Elem()
+}
+
+func (o AccountConnectorProviderOauthConfigOutput) ToAccountConnectorProviderOauthConfigOutput() AccountConnectorProviderOauthConfigOutput {
+	return o
+}
+
+func (o AccountConnectorProviderOauthConfigOutput) ToAccountConnectorProviderOauthConfigOutputWithContext(ctx context.Context) AccountConnectorProviderOauthConfigOutput {
+	return o
+}
+
+func (o AccountConnectorProviderOauthConfigOutput) ToAccountConnectorProviderOauthConfigPtrOutput() AccountConnectorProviderOauthConfigPtrOutput {
+	return o.ToAccountConnectorProviderOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AccountConnectorProviderOauthConfigOutput) ToAccountConnectorProviderOauthConfigPtrOutputWithContext(ctx context.Context) AccountConnectorProviderOauthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountConnectorProviderOauthConfig) *AccountConnectorProviderOauthConfig {
+		return &v
+	}).(AccountConnectorProviderOauthConfigPtrOutput)
+}
+
+// Required. User selected scopes to apply to the Oauth config
+// In the event of changing scopes, user records under AccountConnector will
+// be deleted and users will re-auth again.
+func (o AccountConnectorProviderOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccountConnectorProviderOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// List of providers that are owned by Developer Connect.
+// Possible values:
+// GITHUB
+// GITLAB
+// GOOGLE
+// SENTRY
+// ROVO
+func (o AccountConnectorProviderOauthConfigOutput) SystemProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountConnectorProviderOauthConfig) *string { return v.SystemProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccountConnectorProviderOauthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AccountConnectorProviderOauthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountConnectorProviderOauthConfig)(nil)).Elem()
+}
+
+func (o AccountConnectorProviderOauthConfigPtrOutput) ToAccountConnectorProviderOauthConfigPtrOutput() AccountConnectorProviderOauthConfigPtrOutput {
+	return o
+}
+
+func (o AccountConnectorProviderOauthConfigPtrOutput) ToAccountConnectorProviderOauthConfigPtrOutputWithContext(ctx context.Context) AccountConnectorProviderOauthConfigPtrOutput {
+	return o
+}
+
+func (o AccountConnectorProviderOauthConfigPtrOutput) Elem() AccountConnectorProviderOauthConfigOutput {
+	return o.ApplyT(func(v *AccountConnectorProviderOauthConfig) AccountConnectorProviderOauthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AccountConnectorProviderOauthConfig
+		return ret
+	}).(AccountConnectorProviderOauthConfigOutput)
+}
+
+// Required. User selected scopes to apply to the Oauth config
+// In the event of changing scopes, user records under AccountConnector will
+// be deleted and users will re-auth again.
+func (o AccountConnectorProviderOauthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountConnectorProviderOauthConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of providers that are owned by Developer Connect.
+// Possible values:
+// GITHUB
+// GITLAB
+// GOOGLE
+// SENTRY
+// ROVO
+func (o AccountConnectorProviderOauthConfigPtrOutput) SystemProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountConnectorProviderOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionBitbucketCloudConfig struct {
 	// Represents a personal access token that authorized the Connection,
 	// and associated metadata.
@@ -3843,6 +4031,8 @@ func (o ConnectionInstallationStateArrayOutput) Index(i pulumi.IntInput) Connect
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProviderOauthConfigInput)(nil)).Elem(), AccountConnectorProviderOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProviderOauthConfigPtrInput)(nil)).Elem(), AccountConnectorProviderOauthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigInput)(nil)).Elem(), ConnectionBitbucketCloudConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigPtrInput)(nil)).Elem(), ConnectionBitbucketCloudConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionBitbucketCloudConfigAuthorizerCredentialInput)(nil)).Elem(), ConnectionBitbucketCloudConfigAuthorizerCredentialArgs{})
@@ -3883,6 +4073,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabEnterpriseConfigServiceDirectoryConfigPtrInput)(nil)).Elem(), ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateInput)(nil)).Elem(), ConnectionInstallationStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateArrayInput)(nil)).Elem(), ConnectionInstallationStateArray{})
+	pulumi.RegisterOutputType(AccountConnectorProviderOauthConfigOutput{})
+	pulumi.RegisterOutputType(AccountConnectorProviderOauthConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigAuthorizerCredentialOutput{})

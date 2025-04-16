@@ -12,6 +12,7 @@ import com.pulumi.gcp.storage.ControlFolderIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.ControlFolderIntelligenceConfigState;
 import com.pulumi.gcp.storage.outputs.ControlFolderIntelligenceConfigEffectiveIntelligenceConfig;
 import com.pulumi.gcp.storage.outputs.ControlFolderIntelligenceConfigFilter;
+import com.pulumi.gcp.storage.outputs.ControlFolderIntelligenceConfigTrialConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -155,6 +156,22 @@ public class ControlFolderIntelligenceConfig extends com.pulumi.resources.Custom
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The trial configuration of the Storage Intelligence resource.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="trialConfigs", refs={List.class,ControlFolderIntelligenceConfigTrialConfig.class}, tree="[0,1]")
+    private Output<List<ControlFolderIntelligenceConfigTrialConfig>> trialConfigs;
+
+    /**
+     * @return The trial configuration of the Storage Intelligence resource.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ControlFolderIntelligenceConfigTrialConfig>> trialConfigs() {
+        return this.trialConfigs;
     }
     /**
      * The time at which the Storage Intelligence Config resource is last updated.

@@ -13,8 +13,10 @@ import com.pulumi.gcp.redis.inputs.ClusterState;
 import com.pulumi.gcp.redis.outputs.ClusterAutomatedBackupConfig;
 import com.pulumi.gcp.redis.outputs.ClusterCrossClusterReplicationConfig;
 import com.pulumi.gcp.redis.outputs.ClusterDiscoveryEndpoint;
+import com.pulumi.gcp.redis.outputs.ClusterGcsSource;
 import com.pulumi.gcp.redis.outputs.ClusterMaintenancePolicy;
 import com.pulumi.gcp.redis.outputs.ClusterMaintenanceSchedule;
+import com.pulumi.gcp.redis.outputs.ClusterManagedBackupSource;
 import com.pulumi.gcp.redis.outputs.ClusterPersistenceConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConnection;
@@ -745,6 +747,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.automatedBackupConfig);
     }
     /**
+     * The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     * 
+     */
+    @Export(name="backupCollection", refs={String.class}, tree="[0]")
+    private Output<String> backupCollection;
+
+    /**
+     * @return The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     * 
+     */
+    public Output<String> backupCollection() {
+        return this.backupCollection;
+    }
+    /**
      * The timestamp associated with the cluster creation request. A timestamp in
      * RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional
      * digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
@@ -817,6 +835,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.discoveryEndpoints;
     }
     /**
+     * Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="gcsSource", refs={ClusterGcsSource.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterGcsSource> gcsSource;
+
+    /**
+     * @return Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterGcsSource>> gcsSource() {
+        return Codegen.optional(this.gcsSource);
+    }
+    /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      * 
      */
@@ -861,6 +895,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ClusterMaintenanceSchedule>> maintenanceSchedules() {
         return this.maintenanceSchedules;
+    }
+    /**
+     * Backups that generated and managed by memorystore.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="managedBackupSource", refs={ClusterManagedBackupSource.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterManagedBackupSource> managedBackupSource;
+
+    /**
+     * @return Backups that generated and managed by memorystore.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterManagedBackupSource>> managedBackupSource() {
+        return Codegen.optional(this.managedBackupSource);
     }
     /**
      * Unique name of the resource in this scope including project and location using the form:

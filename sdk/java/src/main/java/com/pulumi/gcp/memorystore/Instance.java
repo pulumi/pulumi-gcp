@@ -15,8 +15,10 @@ import com.pulumi.gcp.memorystore.outputs.InstanceCrossInstanceReplicationConfig
 import com.pulumi.gcp.memorystore.outputs.InstanceDesiredPscAutoConnection;
 import com.pulumi.gcp.memorystore.outputs.InstanceDiscoveryEndpoint;
 import com.pulumi.gcp.memorystore.outputs.InstanceEndpoint;
+import com.pulumi.gcp.memorystore.outputs.InstanceGcsSource;
 import com.pulumi.gcp.memorystore.outputs.InstanceMaintenancePolicy;
 import com.pulumi.gcp.memorystore.outputs.InstanceMaintenanceSchedule;
+import com.pulumi.gcp.memorystore.outputs.InstanceManagedBackupSource;
 import com.pulumi.gcp.memorystore.outputs.InstanceNodeConfig;
 import com.pulumi.gcp.memorystore.outputs.InstancePersistenceConfig;
 import com.pulumi.gcp.memorystore.outputs.InstancePscAttachmentDetail;
@@ -562,6 +564,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.automatedBackupConfig);
     }
     /**
+     * The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     * 
+     */
+    @Export(name="backupCollection", refs={String.class}, tree="[0]")
+    private Output<String> backupCollection;
+
+    /**
+     * @return The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     * 
+     */
+    public Output<String> backupCollection() {
+        return this.backupCollection;
+    }
+    /**
      * Output only. Creation timestamp of the instance.
      * 
      */
@@ -696,6 +714,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.engineVersion;
     }
     /**
+     * GCS source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="gcsSource", refs={InstanceGcsSource.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceGcsSource> gcsSource;
+
+    /**
+     * @return GCS source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceGcsSource>> gcsSource() {
+        return Codegen.optional(this.gcsSource);
+    }
+    /**
      * Required. The ID to use for the instance, which will become the final component of
      * the instance&#39;s resource name.
      * This value is subject to the following restrictions:
@@ -790,6 +824,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules() {
         return this.maintenanceSchedules;
+    }
+    /**
+     * Managed backup source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="managedBackupSource", refs={InstanceManagedBackupSource.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceManagedBackupSource> managedBackupSource;
+
+    /**
+     * @return Managed backup source for the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceManagedBackupSource>> managedBackupSource() {
+        return Codegen.optional(this.managedBackupSource);
     }
     /**
      * Optional. cluster or cluster-disabled.

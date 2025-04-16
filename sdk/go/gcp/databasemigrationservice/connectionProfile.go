@@ -93,6 +93,7 @@ import (
 //						ClientKey:         sqlClientCert.PrivateKey,
 //						ClientCertificate: sqlClientCert.Cert,
 //						CaCertificate:     sqlClientCert.ServerCaCert,
+//						Type:              pulumi.String("SERVER_CLIENT"),
 //					},
 //					CloudSqlId: pulumi.String("my-database"),
 //				},
@@ -205,6 +206,157 @@ import (
 //						ClientKey:         sqlClientCert.PrivateKey,
 //						ClientCertificate: sqlClientCert.Cert,
 //						CaCertificate:     sqlClientCert.ServerCaCert,
+//						Type:              pulumi.String("SERVER_CLIENT"),
+//					},
+//					CloudSqlId: pulumi.String("my-database"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sqldbUser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Database Migration Service Connection Profile Postgres No Ssl
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			postgresqldb, err := sql.NewDatabaseInstance(ctx, "postgresqldb", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-database"),
+//				DatabaseVersion: pulumi.String("POSTGRES_12"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-custom-2-13312"),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sqlClientCert, err := sql.NewSslCert(ctx, "sql_client_cert", &sql.SslCertArgs{
+//				CommonName: pulumi.String("my-cert"),
+//				Instance:   postgresqldb.Name,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				postgresqldb,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			sqldbUser, err := sql.NewUser(ctx, "sqldb_user", &sql.UserArgs{
+//				Name:     pulumi.String("my-username"),
+//				Instance: postgresqldb.Name,
+//				Password: pulumi.String("my-password"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sqlClientCert,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "postgresprofile", &databasemigrationservice.ConnectionProfileArgs{
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("my-profileid"),
+//				DisplayName:         pulumi.String("my-profileid_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
+//					Host: postgresqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
+//						return &ipAddresses[0].IpAddress, nil
+//					}).(pulumi.StringPtrOutput),
+//					Port:     pulumi.Int(5432),
+//					Username: sqldbUser.Name,
+//					Password: sqldbUser.Password,
+//					Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
+//						Type: pulumi.String("NONE"),
+//					},
+//					CloudSqlId: pulumi.String("my-database"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sqldbUser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Database Migration Service Connection Profile Postgres Required Ssl
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			postgresqldb, err := sql.NewDatabaseInstance(ctx, "postgresqldb", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-database"),
+//				DatabaseVersion: pulumi.String("POSTGRES_12"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-custom-2-13312"),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sqlClientCert, err := sql.NewSslCert(ctx, "sql_client_cert", &sql.SslCertArgs{
+//				CommonName: pulumi.String("my-cert"),
+//				Instance:   postgresqldb.Name,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				postgresqldb,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			sqldbUser, err := sql.NewUser(ctx, "sqldb_user", &sql.UserArgs{
+//				Name:     pulumi.String("my-username"),
+//				Instance: postgresqldb.Name,
+//				Password: pulumi.String("my-password"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sqlClientCert,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "postgresprofile", &databasemigrationservice.ConnectionProfileArgs{
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("my-profileid"),
+//				DisplayName:         pulumi.String("my-profileid_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
+//					Host: postgresqldb.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
+//						return &ipAddresses[0].IpAddress, nil
+//					}).(pulumi.StringPtrOutput),
+//					Port:     pulumi.Int(5432),
+//					Username: sqldbUser.Name,
+//					Password: sqldbUser.Password,
+//					Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
+//						Type: pulumi.String("REQUIRED"),
 //					},
 //					CloudSqlId: pulumi.String("my-database"),
 //				},

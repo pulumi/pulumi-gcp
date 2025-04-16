@@ -62,6 +62,7 @@ import * as utilities from "../utilities";
  *             clientKey: sqlClientCert.privateKey,
  *             clientCertificate: sqlClientCert.cert,
  *             caCertificate: sqlClientCert.serverCaCert,
+ *             type: "SERVER_CLIENT",
  *         },
  *         cloudSqlId: "my-database",
  *     },
@@ -144,6 +145,103 @@ import * as utilities from "../utilities";
  *             clientKey: sqlClientCert.privateKey,
  *             clientCertificate: sqlClientCert.cert,
  *             caCertificate: sqlClientCert.serverCaCert,
+ *             type: "SERVER_CLIENT",
+ *         },
+ *         cloudSqlId: "my-database",
+ *     },
+ * }, {
+ *     dependsOn: [sqldbUser],
+ * });
+ * ```
+ * ### Database Migration Service Connection Profile Postgres No Ssl
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const postgresqldb = new gcp.sql.DatabaseInstance("postgresqldb", {
+ *     name: "my-database",
+ *     databaseVersion: "POSTGRES_12",
+ *     settings: {
+ *         tier: "db-custom-2-13312",
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const sqlClientCert = new gcp.sql.SslCert("sql_client_cert", {
+ *     commonName: "my-cert",
+ *     instance: postgresqldb.name,
+ * }, {
+ *     dependsOn: [postgresqldb],
+ * });
+ * const sqldbUser = new gcp.sql.User("sqldb_user", {
+ *     name: "my-username",
+ *     instance: postgresqldb.name,
+ *     password: "my-password",
+ * }, {
+ *     dependsOn: [sqlClientCert],
+ * });
+ * const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
+ *     location: "us-central1",
+ *     connectionProfileId: "my-profileid",
+ *     displayName: "my-profileid_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     postgresql: {
+ *         host: postgresqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         port: 5432,
+ *         username: sqldbUser.name,
+ *         password: sqldbUser.password,
+ *         ssl: {
+ *             type: "NONE",
+ *         },
+ *         cloudSqlId: "my-database",
+ *     },
+ * }, {
+ *     dependsOn: [sqldbUser],
+ * });
+ * ```
+ * ### Database Migration Service Connection Profile Postgres Required Ssl
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const postgresqldb = new gcp.sql.DatabaseInstance("postgresqldb", {
+ *     name: "my-database",
+ *     databaseVersion: "POSTGRES_12",
+ *     settings: {
+ *         tier: "db-custom-2-13312",
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const sqlClientCert = new gcp.sql.SslCert("sql_client_cert", {
+ *     commonName: "my-cert",
+ *     instance: postgresqldb.name,
+ * }, {
+ *     dependsOn: [postgresqldb],
+ * });
+ * const sqldbUser = new gcp.sql.User("sqldb_user", {
+ *     name: "my-username",
+ *     instance: postgresqldb.name,
+ *     password: "my-password",
+ * }, {
+ *     dependsOn: [sqlClientCert],
+ * });
+ * const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
+ *     location: "us-central1",
+ *     connectionProfileId: "my-profileid",
+ *     displayName: "my-profileid_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     postgresql: {
+ *         host: postgresqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         port: 5432,
+ *         username: sqldbUser.name,
+ *         password: sqldbUser.password,
+ *         ssl: {
+ *             type: "REQUIRED",
  *         },
  *         cloudSqlId: "my-database",
  *     },

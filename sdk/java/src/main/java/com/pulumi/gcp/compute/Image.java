@@ -14,6 +14,9 @@ import com.pulumi.gcp.compute.outputs.ImageGuestOsFeature;
 import com.pulumi.gcp.compute.outputs.ImageImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.ImageRawDisk;
 import com.pulumi.gcp.compute.outputs.ImageShieldedInstanceInitialState;
+import com.pulumi.gcp.compute.outputs.ImageSourceDiskEncryptionKey;
+import com.pulumi.gcp.compute.outputs.ImageSourceImageEncryptionKey;
+import com.pulumi.gcp.compute.outputs.ImageSourceSnapshotEncryptionKey;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -560,6 +563,24 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceDisk);
     }
     /**
+     * The customer-supplied encryption key of the source disk. Required if
+     * the source disk is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sourceDiskEncryptionKey", refs={ImageSourceDiskEncryptionKey.class}, tree="[0]")
+    private Output</* @Nullable */ ImageSourceDiskEncryptionKey> sourceDiskEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption key of the source disk. Required if
+     * the source disk is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ImageSourceDiskEncryptionKey>> sourceDiskEncryptionKey() {
+        return Codegen.optional(this.sourceDiskEncryptionKey);
+    }
+    /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
      * * The selfLink URL
@@ -582,6 +603,24 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sourceImage() {
         return Codegen.optional(this.sourceImage);
+    }
+    /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sourceImageEncryptionKey", refs={ImageSourceImageEncryptionKey.class}, tree="[0]")
+    private Output</* @Nullable */ ImageSourceImageEncryptionKey> sourceImageEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ImageSourceImageEncryptionKey>> sourceImageEncryptionKey() {
+        return Codegen.optional(this.sourceImageEncryptionKey);
     }
     /**
      * URL of the source snapshot used to create this image.
@@ -608,6 +647,24 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sourceSnapshot() {
         return Codegen.optional(this.sourceSnapshot);
+    }
+    /**
+     * The customer-supplied encryption key of the source snapshot. Required if
+     * the source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sourceSnapshotEncryptionKey", refs={ImageSourceSnapshotEncryptionKey.class}, tree="[0]")
+    private Output</* @Nullable */ ImageSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption key of the source snapshot. Required if
+     * the source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ImageSourceSnapshotEncryptionKey>> sourceSnapshotEncryptionKey() {
+        return Codegen.optional(this.sourceSnapshotEncryptionKey);
     }
     /**
      * Cloud Storage bucket storage location of the image

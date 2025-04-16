@@ -8,8 +8,10 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.redis.inputs.ClusterAutomatedBackupConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterDiscoveryEndpointArgs;
+import com.pulumi.gcp.redis.inputs.ClusterGcsSourceArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenanceScheduleArgs;
+import com.pulumi.gcp.redis.inputs.ClusterManagedBackupSourceArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConnectionArgs;
@@ -65,6 +67,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterAutomatedBackupConfigArgs>> automatedBackupConfig() {
         return Optional.ofNullable(this.automatedBackupConfig);
+    }
+
+    /**
+     * The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     * 
+     */
+    @Import(name="backupCollection")
+    private @Nullable Output<String> backupCollection;
+
+    /**
+     * @return The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     * 
+     */
+    public Optional<Output<String>> backupCollection() {
+        return Optional.ofNullable(this.backupCollection);
     }
 
     /**
@@ -144,6 +163,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gcsSource")
+    private @Nullable Output<ClusterGcsSourceArgs> gcsSource;
+
+    /**
+     * @return Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterGcsSourceArgs>> gcsSource() {
+        return Optional.ofNullable(this.gcsSource);
+    }
+
+    /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      * 
      */
@@ -190,6 +226,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<ClusterMaintenanceScheduleArgs>>> maintenanceSchedules() {
         return Optional.ofNullable(this.maintenanceSchedules);
+    }
+
+    /**
+     * Backups that generated and managed by memorystore.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="managedBackupSource")
+    private @Nullable Output<ClusterManagedBackupSourceArgs> managedBackupSource;
+
+    /**
+     * @return Backups that generated and managed by memorystore.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterManagedBackupSourceArgs>> managedBackupSource() {
+        return Optional.ofNullable(this.managedBackupSource);
     }
 
     /**
@@ -505,13 +558,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState(ClusterState $) {
         this.authorizationMode = $.authorizationMode;
         this.automatedBackupConfig = $.automatedBackupConfig;
+        this.backupCollection = $.backupCollection;
         this.createTime = $.createTime;
         this.crossClusterReplicationConfig = $.crossClusterReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.discoveryEndpoints = $.discoveryEndpoints;
+        this.gcsSource = $.gcsSource;
         this.kmsKey = $.kmsKey;
         this.maintenancePolicy = $.maintenancePolicy;
         this.maintenanceSchedules = $.maintenanceSchedules;
+        this.managedBackupSource = $.managedBackupSource;
         this.name = $.name;
         this.nodeType = $.nodeType;
         this.persistenceConfig = $.persistenceConfig;
@@ -596,6 +652,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder automatedBackupConfig(ClusterAutomatedBackupConfigArgs automatedBackupConfig) {
             return automatedBackupConfig(Output.of(automatedBackupConfig));
+        }
+
+        /**
+         * @param backupCollection The backup collection full resource name.
+         * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupCollection(@Nullable Output<String> backupCollection) {
+            $.backupCollection = backupCollection;
+            return this;
+        }
+
+        /**
+         * @param backupCollection The backup collection full resource name.
+         * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupCollection(String backupCollection) {
+            return backupCollection(Output.of(backupCollection));
         }
 
         /**
@@ -712,6 +791,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gcsSource Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsSource(@Nullable Output<ClusterGcsSourceArgs> gcsSource) {
+            $.gcsSource = gcsSource;
+            return this;
+        }
+
+        /**
+         * @param gcsSource Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsSource(ClusterGcsSourceArgs gcsSource) {
+            return gcsSource(Output.of(gcsSource));
+        }
+
+        /**
          * @param kmsKey The KMS key used to encrypt the at-rest data of the cluster.
          * 
          * @return builder
@@ -787,6 +889,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenanceSchedules(ClusterMaintenanceScheduleArgs... maintenanceSchedules) {
             return maintenanceSchedules(List.of(maintenanceSchedules));
+        }
+
+        /**
+         * @param managedBackupSource Backups that generated and managed by memorystore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBackupSource(@Nullable Output<ClusterManagedBackupSourceArgs> managedBackupSource) {
+            $.managedBackupSource = managedBackupSource;
+            return this;
+        }
+
+        /**
+         * @param managedBackupSource Backups that generated and managed by memorystore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBackupSource(ClusterManagedBackupSourceArgs managedBackupSource) {
+            return managedBackupSource(Output.of(managedBackupSource));
         }
 
         /**

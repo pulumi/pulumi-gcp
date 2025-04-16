@@ -3468,6 +3468,106 @@ func (o ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOut
 	}).(pulumi.StringArrayOutput)
 }
 
+type ControlFolderIntelligenceConfigTrialConfig struct {
+	// (Output)
+	// The time at which the trial expires.
+	ExpireTime *string `pulumi:"expireTime"`
+}
+
+// ControlFolderIntelligenceConfigTrialConfigInput is an input type that accepts ControlFolderIntelligenceConfigTrialConfigArgs and ControlFolderIntelligenceConfigTrialConfigOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigTrialConfigInput` via:
+//
+//	ControlFolderIntelligenceConfigTrialConfigArgs{...}
+type ControlFolderIntelligenceConfigTrialConfigInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigTrialConfigOutput() ControlFolderIntelligenceConfigTrialConfigOutput
+	ToControlFolderIntelligenceConfigTrialConfigOutputWithContext(context.Context) ControlFolderIntelligenceConfigTrialConfigOutput
+}
+
+type ControlFolderIntelligenceConfigTrialConfigArgs struct {
+	// (Output)
+	// The time at which the trial expires.
+	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+}
+
+func (ControlFolderIntelligenceConfigTrialConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i ControlFolderIntelligenceConfigTrialConfigArgs) ToControlFolderIntelligenceConfigTrialConfigOutput() ControlFolderIntelligenceConfigTrialConfigOutput {
+	return i.ToControlFolderIntelligenceConfigTrialConfigOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigTrialConfigArgs) ToControlFolderIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigTrialConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigTrialConfigOutput)
+}
+
+// ControlFolderIntelligenceConfigTrialConfigArrayInput is an input type that accepts ControlFolderIntelligenceConfigTrialConfigArray and ControlFolderIntelligenceConfigTrialConfigArrayOutput values.
+// You can construct a concrete instance of `ControlFolderIntelligenceConfigTrialConfigArrayInput` via:
+//
+//	ControlFolderIntelligenceConfigTrialConfigArray{ ControlFolderIntelligenceConfigTrialConfigArgs{...} }
+type ControlFolderIntelligenceConfigTrialConfigArrayInput interface {
+	pulumi.Input
+
+	ToControlFolderIntelligenceConfigTrialConfigArrayOutput() ControlFolderIntelligenceConfigTrialConfigArrayOutput
+	ToControlFolderIntelligenceConfigTrialConfigArrayOutputWithContext(context.Context) ControlFolderIntelligenceConfigTrialConfigArrayOutput
+}
+
+type ControlFolderIntelligenceConfigTrialConfigArray []ControlFolderIntelligenceConfigTrialConfigInput
+
+func (ControlFolderIntelligenceConfigTrialConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlFolderIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i ControlFolderIntelligenceConfigTrialConfigArray) ToControlFolderIntelligenceConfigTrialConfigArrayOutput() ControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return i.ToControlFolderIntelligenceConfigTrialConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ControlFolderIntelligenceConfigTrialConfigArray) ToControlFolderIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlFolderIntelligenceConfigTrialConfigArrayOutput)
+}
+
+type ControlFolderIntelligenceConfigTrialConfigOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigTrialConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlFolderIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigTrialConfigOutput) ToControlFolderIntelligenceConfigTrialConfigOutput() ControlFolderIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigTrialConfigOutput) ToControlFolderIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+// (Output)
+// The time at which the trial expires.
+func (o ControlFolderIntelligenceConfigTrialConfigOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlFolderIntelligenceConfigTrialConfig) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+type ControlFolderIntelligenceConfigTrialConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlFolderIntelligenceConfigTrialConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlFolderIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o ControlFolderIntelligenceConfigTrialConfigArrayOutput) ToControlFolderIntelligenceConfigTrialConfigArrayOutput() ControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigTrialConfigArrayOutput) ToControlFolderIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) ControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o ControlFolderIntelligenceConfigTrialConfigArrayOutput) Index(i pulumi.IntInput) ControlFolderIntelligenceConfigTrialConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlFolderIntelligenceConfigTrialConfig {
+		return vs[0].([]ControlFolderIntelligenceConfigTrialConfig)[vs[1].(int)]
+	}).(ControlFolderIntelligenceConfigTrialConfigOutput)
+}
+
 type ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig struct {
 	// (Output)
 	// The `StorageIntelligence` edition that is applicable for the resource.
@@ -4358,6 +4458,106 @@ func (o ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations
 	}).(pulumi.StringArrayOutput)
 }
 
+type ControlOrganizationIntelligenceConfigTrialConfig struct {
+	// (Output)
+	// The time at which the trial expires.
+	ExpireTime *string `pulumi:"expireTime"`
+}
+
+// ControlOrganizationIntelligenceConfigTrialConfigInput is an input type that accepts ControlOrganizationIntelligenceConfigTrialConfigArgs and ControlOrganizationIntelligenceConfigTrialConfigOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigTrialConfigInput` via:
+//
+//	ControlOrganizationIntelligenceConfigTrialConfigArgs{...}
+type ControlOrganizationIntelligenceConfigTrialConfigInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigTrialConfigOutput() ControlOrganizationIntelligenceConfigTrialConfigOutput
+	ToControlOrganizationIntelligenceConfigTrialConfigOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigTrialConfigOutput
+}
+
+type ControlOrganizationIntelligenceConfigTrialConfigArgs struct {
+	// (Output)
+	// The time at which the trial expires.
+	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+}
+
+func (ControlOrganizationIntelligenceConfigTrialConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i ControlOrganizationIntelligenceConfigTrialConfigArgs) ToControlOrganizationIntelligenceConfigTrialConfigOutput() ControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return i.ToControlOrganizationIntelligenceConfigTrialConfigOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigTrialConfigArgs) ToControlOrganizationIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigTrialConfigOutput)
+}
+
+// ControlOrganizationIntelligenceConfigTrialConfigArrayInput is an input type that accepts ControlOrganizationIntelligenceConfigTrialConfigArray and ControlOrganizationIntelligenceConfigTrialConfigArrayOutput values.
+// You can construct a concrete instance of `ControlOrganizationIntelligenceConfigTrialConfigArrayInput` via:
+//
+//	ControlOrganizationIntelligenceConfigTrialConfigArray{ ControlOrganizationIntelligenceConfigTrialConfigArgs{...} }
+type ControlOrganizationIntelligenceConfigTrialConfigArrayInput interface {
+	pulumi.Input
+
+	ToControlOrganizationIntelligenceConfigTrialConfigArrayOutput() ControlOrganizationIntelligenceConfigTrialConfigArrayOutput
+	ToControlOrganizationIntelligenceConfigTrialConfigArrayOutputWithContext(context.Context) ControlOrganizationIntelligenceConfigTrialConfigArrayOutput
+}
+
+type ControlOrganizationIntelligenceConfigTrialConfigArray []ControlOrganizationIntelligenceConfigTrialConfigInput
+
+func (ControlOrganizationIntelligenceConfigTrialConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlOrganizationIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i ControlOrganizationIntelligenceConfigTrialConfigArray) ToControlOrganizationIntelligenceConfigTrialConfigArrayOutput() ControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+	return i.ToControlOrganizationIntelligenceConfigTrialConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ControlOrganizationIntelligenceConfigTrialConfigArray) ToControlOrganizationIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlOrganizationIntelligenceConfigTrialConfigArrayOutput)
+}
+
+type ControlOrganizationIntelligenceConfigTrialConfigOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigTrialConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlOrganizationIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigTrialConfigOutput) ToControlOrganizationIntelligenceConfigTrialConfigOutput() ControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigTrialConfigOutput) ToControlOrganizationIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+// (Output)
+// The time at which the trial expires.
+func (o ControlOrganizationIntelligenceConfigTrialConfigOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlOrganizationIntelligenceConfigTrialConfig) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+type ControlOrganizationIntelligenceConfigTrialConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlOrganizationIntelligenceConfigTrialConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlOrganizationIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o ControlOrganizationIntelligenceConfigTrialConfigArrayOutput) ToControlOrganizationIntelligenceConfigTrialConfigArrayOutput() ControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigTrialConfigArrayOutput) ToControlOrganizationIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) ControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o ControlOrganizationIntelligenceConfigTrialConfigArrayOutput) Index(i pulumi.IntInput) ControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlOrganizationIntelligenceConfigTrialConfig {
+		return vs[0].([]ControlOrganizationIntelligenceConfigTrialConfig)[vs[1].(int)]
+	}).(ControlOrganizationIntelligenceConfigTrialConfigOutput)
+}
+
 type ControlProjectIntelligenceConfigEffectiveIntelligenceConfig struct {
 	// (Output)
 	// The `StorageIntelligence` edition that is applicable for the resource.
@@ -5244,6 +5444,106 @@ func (o ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOu
 		}
 		return v.Locations
 	}).(pulumi.StringArrayOutput)
+}
+
+type ControlProjectIntelligenceConfigTrialConfig struct {
+	// (Output)
+	// The time at which the trial expires.
+	ExpireTime *string `pulumi:"expireTime"`
+}
+
+// ControlProjectIntelligenceConfigTrialConfigInput is an input type that accepts ControlProjectIntelligenceConfigTrialConfigArgs and ControlProjectIntelligenceConfigTrialConfigOutput values.
+// You can construct a concrete instance of `ControlProjectIntelligenceConfigTrialConfigInput` via:
+//
+//	ControlProjectIntelligenceConfigTrialConfigArgs{...}
+type ControlProjectIntelligenceConfigTrialConfigInput interface {
+	pulumi.Input
+
+	ToControlProjectIntelligenceConfigTrialConfigOutput() ControlProjectIntelligenceConfigTrialConfigOutput
+	ToControlProjectIntelligenceConfigTrialConfigOutputWithContext(context.Context) ControlProjectIntelligenceConfigTrialConfigOutput
+}
+
+type ControlProjectIntelligenceConfigTrialConfigArgs struct {
+	// (Output)
+	// The time at which the trial expires.
+	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+}
+
+func (ControlProjectIntelligenceConfigTrialConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i ControlProjectIntelligenceConfigTrialConfigArgs) ToControlProjectIntelligenceConfigTrialConfigOutput() ControlProjectIntelligenceConfigTrialConfigOutput {
+	return i.ToControlProjectIntelligenceConfigTrialConfigOutputWithContext(context.Background())
+}
+
+func (i ControlProjectIntelligenceConfigTrialConfigArgs) ToControlProjectIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) ControlProjectIntelligenceConfigTrialConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectIntelligenceConfigTrialConfigOutput)
+}
+
+// ControlProjectIntelligenceConfigTrialConfigArrayInput is an input type that accepts ControlProjectIntelligenceConfigTrialConfigArray and ControlProjectIntelligenceConfigTrialConfigArrayOutput values.
+// You can construct a concrete instance of `ControlProjectIntelligenceConfigTrialConfigArrayInput` via:
+//
+//	ControlProjectIntelligenceConfigTrialConfigArray{ ControlProjectIntelligenceConfigTrialConfigArgs{...} }
+type ControlProjectIntelligenceConfigTrialConfigArrayInput interface {
+	pulumi.Input
+
+	ToControlProjectIntelligenceConfigTrialConfigArrayOutput() ControlProjectIntelligenceConfigTrialConfigArrayOutput
+	ToControlProjectIntelligenceConfigTrialConfigArrayOutputWithContext(context.Context) ControlProjectIntelligenceConfigTrialConfigArrayOutput
+}
+
+type ControlProjectIntelligenceConfigTrialConfigArray []ControlProjectIntelligenceConfigTrialConfigInput
+
+func (ControlProjectIntelligenceConfigTrialConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlProjectIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i ControlProjectIntelligenceConfigTrialConfigArray) ToControlProjectIntelligenceConfigTrialConfigArrayOutput() ControlProjectIntelligenceConfigTrialConfigArrayOutput {
+	return i.ToControlProjectIntelligenceConfigTrialConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ControlProjectIntelligenceConfigTrialConfigArray) ToControlProjectIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) ControlProjectIntelligenceConfigTrialConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlProjectIntelligenceConfigTrialConfigArrayOutput)
+}
+
+type ControlProjectIntelligenceConfigTrialConfigOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectIntelligenceConfigTrialConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlProjectIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o ControlProjectIntelligenceConfigTrialConfigOutput) ToControlProjectIntelligenceConfigTrialConfigOutput() ControlProjectIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+func (o ControlProjectIntelligenceConfigTrialConfigOutput) ToControlProjectIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) ControlProjectIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+// (Output)
+// The time at which the trial expires.
+func (o ControlProjectIntelligenceConfigTrialConfigOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ControlProjectIntelligenceConfigTrialConfig) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+type ControlProjectIntelligenceConfigTrialConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlProjectIntelligenceConfigTrialConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlProjectIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o ControlProjectIntelligenceConfigTrialConfigArrayOutput) ToControlProjectIntelligenceConfigTrialConfigArrayOutput() ControlProjectIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o ControlProjectIntelligenceConfigTrialConfigArrayOutput) ToControlProjectIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) ControlProjectIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o ControlProjectIntelligenceConfigTrialConfigArrayOutput) Index(i pulumi.IntInput) ControlProjectIntelligenceConfigTrialConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlProjectIntelligenceConfigTrialConfig {
+		return vs[0].([]ControlProjectIntelligenceConfigTrialConfig)[vs[1].(int)]
+	}).(ControlProjectIntelligenceConfigTrialConfigOutput)
 }
 
 type DefaultObjectAccessControlProjectTeam struct {
@@ -15249,6 +15549,103 @@ func (o GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArra
 	}).(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput)
 }
 
+type GetControlFolderIntelligenceConfigTrialConfig struct {
+	// The time at which the trial expires.
+	ExpireTime string `pulumi:"expireTime"`
+}
+
+// GetControlFolderIntelligenceConfigTrialConfigInput is an input type that accepts GetControlFolderIntelligenceConfigTrialConfigArgs and GetControlFolderIntelligenceConfigTrialConfigOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigTrialConfigInput` via:
+//
+//	GetControlFolderIntelligenceConfigTrialConfigArgs{...}
+type GetControlFolderIntelligenceConfigTrialConfigInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigTrialConfigOutput() GetControlFolderIntelligenceConfigTrialConfigOutput
+	ToGetControlFolderIntelligenceConfigTrialConfigOutputWithContext(context.Context) GetControlFolderIntelligenceConfigTrialConfigOutput
+}
+
+type GetControlFolderIntelligenceConfigTrialConfigArgs struct {
+	// The time at which the trial expires.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+}
+
+func (GetControlFolderIntelligenceConfigTrialConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigTrialConfigArgs) ToGetControlFolderIntelligenceConfigTrialConfigOutput() GetControlFolderIntelligenceConfigTrialConfigOutput {
+	return i.ToGetControlFolderIntelligenceConfigTrialConfigOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigTrialConfigArgs) ToGetControlFolderIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigTrialConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigTrialConfigOutput)
+}
+
+// GetControlFolderIntelligenceConfigTrialConfigArrayInput is an input type that accepts GetControlFolderIntelligenceConfigTrialConfigArray and GetControlFolderIntelligenceConfigTrialConfigArrayOutput values.
+// You can construct a concrete instance of `GetControlFolderIntelligenceConfigTrialConfigArrayInput` via:
+//
+//	GetControlFolderIntelligenceConfigTrialConfigArray{ GetControlFolderIntelligenceConfigTrialConfigArgs{...} }
+type GetControlFolderIntelligenceConfigTrialConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetControlFolderIntelligenceConfigTrialConfigArrayOutput() GetControlFolderIntelligenceConfigTrialConfigArrayOutput
+	ToGetControlFolderIntelligenceConfigTrialConfigArrayOutputWithContext(context.Context) GetControlFolderIntelligenceConfigTrialConfigArrayOutput
+}
+
+type GetControlFolderIntelligenceConfigTrialConfigArray []GetControlFolderIntelligenceConfigTrialConfigInput
+
+func (GetControlFolderIntelligenceConfigTrialConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i GetControlFolderIntelligenceConfigTrialConfigArray) ToGetControlFolderIntelligenceConfigTrialConfigArrayOutput() GetControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return i.ToGetControlFolderIntelligenceConfigTrialConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlFolderIntelligenceConfigTrialConfigArray) ToGetControlFolderIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlFolderIntelligenceConfigTrialConfigArrayOutput)
+}
+
+type GetControlFolderIntelligenceConfigTrialConfigOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigTrialConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlFolderIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigTrialConfigOutput) ToGetControlFolderIntelligenceConfigTrialConfigOutput() GetControlFolderIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigTrialConfigOutput) ToGetControlFolderIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+// The time at which the trial expires.
+func (o GetControlFolderIntelligenceConfigTrialConfigOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlFolderIntelligenceConfigTrialConfig) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+type GetControlFolderIntelligenceConfigTrialConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlFolderIntelligenceConfigTrialConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlFolderIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o GetControlFolderIntelligenceConfigTrialConfigArrayOutput) ToGetControlFolderIntelligenceConfigTrialConfigArrayOutput() GetControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigTrialConfigArrayOutput) ToGetControlFolderIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) GetControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o GetControlFolderIntelligenceConfigTrialConfigArrayOutput) Index(i pulumi.IntInput) GetControlFolderIntelligenceConfigTrialConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlFolderIntelligenceConfigTrialConfig {
+		return vs[0].([]GetControlFolderIntelligenceConfigTrialConfig)[vs[1].(int)]
+	}).(GetControlFolderIntelligenceConfigTrialConfigOutput)
+}
+
 type GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig struct {
 	// The 'StorageIntelligence' edition that is applicable for the resource.
 	EffectiveEdition string `pulumi:"effectiveEdition"`
@@ -15885,6 +16282,103 @@ func (o GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocati
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation {
 		return vs[0].([]GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation)[vs[1].(int)]
 	}).(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigTrialConfig struct {
+	// The time at which the trial expires.
+	ExpireTime string `pulumi:"expireTime"`
+}
+
+// GetControlOrganizationIntelligenceConfigTrialConfigInput is an input type that accepts GetControlOrganizationIntelligenceConfigTrialConfigArgs and GetControlOrganizationIntelligenceConfigTrialConfigOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigTrialConfigInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigTrialConfigArgs{...}
+type GetControlOrganizationIntelligenceConfigTrialConfigInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigTrialConfigOutput() GetControlOrganizationIntelligenceConfigTrialConfigOutput
+	ToGetControlOrganizationIntelligenceConfigTrialConfigOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigTrialConfigOutput
+}
+
+type GetControlOrganizationIntelligenceConfigTrialConfigArgs struct {
+	// The time at which the trial expires.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+}
+
+func (GetControlOrganizationIntelligenceConfigTrialConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigTrialConfigArgs) ToGetControlOrganizationIntelligenceConfigTrialConfigOutput() GetControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigTrialConfigOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigTrialConfigArgs) ToGetControlOrganizationIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigTrialConfigOutput)
+}
+
+// GetControlOrganizationIntelligenceConfigTrialConfigArrayInput is an input type that accepts GetControlOrganizationIntelligenceConfigTrialConfigArray and GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput values.
+// You can construct a concrete instance of `GetControlOrganizationIntelligenceConfigTrialConfigArrayInput` via:
+//
+//	GetControlOrganizationIntelligenceConfigTrialConfigArray{ GetControlOrganizationIntelligenceConfigTrialConfigArgs{...} }
+type GetControlOrganizationIntelligenceConfigTrialConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetControlOrganizationIntelligenceConfigTrialConfigArrayOutput() GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput
+	ToGetControlOrganizationIntelligenceConfigTrialConfigArrayOutputWithContext(context.Context) GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput
+}
+
+type GetControlOrganizationIntelligenceConfigTrialConfigArray []GetControlOrganizationIntelligenceConfigTrialConfigInput
+
+func (GetControlOrganizationIntelligenceConfigTrialConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i GetControlOrganizationIntelligenceConfigTrialConfigArray) ToGetControlOrganizationIntelligenceConfigTrialConfigArrayOutput() GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+	return i.ToGetControlOrganizationIntelligenceConfigTrialConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlOrganizationIntelligenceConfigTrialConfigArray) ToGetControlOrganizationIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigTrialConfigOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigTrialConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlOrganizationIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigTrialConfigOutput) ToGetControlOrganizationIntelligenceConfigTrialConfigOutput() GetControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigTrialConfigOutput) ToGetControlOrganizationIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+// The time at which the trial expires.
+func (o GetControlOrganizationIntelligenceConfigTrialConfigOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlOrganizationIntelligenceConfigTrialConfig) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+type GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlOrganizationIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput) ToGetControlOrganizationIntelligenceConfigTrialConfigArrayOutput() GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput) ToGetControlOrganizationIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput) Index(i pulumi.IntInput) GetControlOrganizationIntelligenceConfigTrialConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlOrganizationIntelligenceConfigTrialConfig {
+		return vs[0].([]GetControlOrganizationIntelligenceConfigTrialConfig)[vs[1].(int)]
+	}).(GetControlOrganizationIntelligenceConfigTrialConfigOutput)
 }
 
 type GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig struct {
@@ -16525,6 +17019,103 @@ func (o GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArr
 	}).(GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationOutput)
 }
 
+type GetControlProjectIntelligenceConfigTrialConfig struct {
+	// The time at which the trial expires.
+	ExpireTime string `pulumi:"expireTime"`
+}
+
+// GetControlProjectIntelligenceConfigTrialConfigInput is an input type that accepts GetControlProjectIntelligenceConfigTrialConfigArgs and GetControlProjectIntelligenceConfigTrialConfigOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceConfigTrialConfigInput` via:
+//
+//	GetControlProjectIntelligenceConfigTrialConfigArgs{...}
+type GetControlProjectIntelligenceConfigTrialConfigInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceConfigTrialConfigOutput() GetControlProjectIntelligenceConfigTrialConfigOutput
+	ToGetControlProjectIntelligenceConfigTrialConfigOutputWithContext(context.Context) GetControlProjectIntelligenceConfigTrialConfigOutput
+}
+
+type GetControlProjectIntelligenceConfigTrialConfigArgs struct {
+	// The time at which the trial expires.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+}
+
+func (GetControlProjectIntelligenceConfigTrialConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceConfigTrialConfigArgs) ToGetControlProjectIntelligenceConfigTrialConfigOutput() GetControlProjectIntelligenceConfigTrialConfigOutput {
+	return i.ToGetControlProjectIntelligenceConfigTrialConfigOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceConfigTrialConfigArgs) ToGetControlProjectIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) GetControlProjectIntelligenceConfigTrialConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceConfigTrialConfigOutput)
+}
+
+// GetControlProjectIntelligenceConfigTrialConfigArrayInput is an input type that accepts GetControlProjectIntelligenceConfigTrialConfigArray and GetControlProjectIntelligenceConfigTrialConfigArrayOutput values.
+// You can construct a concrete instance of `GetControlProjectIntelligenceConfigTrialConfigArrayInput` via:
+//
+//	GetControlProjectIntelligenceConfigTrialConfigArray{ GetControlProjectIntelligenceConfigTrialConfigArgs{...} }
+type GetControlProjectIntelligenceConfigTrialConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetControlProjectIntelligenceConfigTrialConfigArrayOutput() GetControlProjectIntelligenceConfigTrialConfigArrayOutput
+	ToGetControlProjectIntelligenceConfigTrialConfigArrayOutputWithContext(context.Context) GetControlProjectIntelligenceConfigTrialConfigArrayOutput
+}
+
+type GetControlProjectIntelligenceConfigTrialConfigArray []GetControlProjectIntelligenceConfigTrialConfigInput
+
+func (GetControlProjectIntelligenceConfigTrialConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (i GetControlProjectIntelligenceConfigTrialConfigArray) ToGetControlProjectIntelligenceConfigTrialConfigArrayOutput() GetControlProjectIntelligenceConfigTrialConfigArrayOutput {
+	return i.ToGetControlProjectIntelligenceConfigTrialConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetControlProjectIntelligenceConfigTrialConfigArray) ToGetControlProjectIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceConfigTrialConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetControlProjectIntelligenceConfigTrialConfigArrayOutput)
+}
+
+type GetControlProjectIntelligenceConfigTrialConfigOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceConfigTrialConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetControlProjectIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceConfigTrialConfigOutput) ToGetControlProjectIntelligenceConfigTrialConfigOutput() GetControlProjectIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceConfigTrialConfigOutput) ToGetControlProjectIntelligenceConfigTrialConfigOutputWithContext(ctx context.Context) GetControlProjectIntelligenceConfigTrialConfigOutput {
+	return o
+}
+
+// The time at which the trial expires.
+func (o GetControlProjectIntelligenceConfigTrialConfigOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetControlProjectIntelligenceConfigTrialConfig) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+type GetControlProjectIntelligenceConfigTrialConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetControlProjectIntelligenceConfigTrialConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetControlProjectIntelligenceConfigTrialConfig)(nil)).Elem()
+}
+
+func (o GetControlProjectIntelligenceConfigTrialConfigArrayOutput) ToGetControlProjectIntelligenceConfigTrialConfigArrayOutput() GetControlProjectIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceConfigTrialConfigArrayOutput) ToGetControlProjectIntelligenceConfigTrialConfigArrayOutputWithContext(ctx context.Context) GetControlProjectIntelligenceConfigTrialConfigArrayOutput {
+	return o
+}
+
+func (o GetControlProjectIntelligenceConfigTrialConfigArrayOutput) Index(i pulumi.IntInput) GetControlProjectIntelligenceConfigTrialConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetControlProjectIntelligenceConfigTrialConfig {
+		return vs[0].([]GetControlProjectIntelligenceConfigTrialConfig)[vs[1].(int)]
+	}).(GetControlProjectIntelligenceConfigTrialConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassInput)(nil)).Elem(), BucketAutoclassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassPtrInput)(nil)).Elem(), BucketAutoclassArgs{})
@@ -16570,6 +17161,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput)(nil)).Elem(), ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigTrialConfigInput)(nil)).Elem(), ControlFolderIntelligenceConfigTrialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlFolderIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), ControlFolderIntelligenceConfigTrialConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterArgs{})
@@ -16582,6 +17175,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigTrialConfigInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigTrialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlOrganizationIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), ControlOrganizationIntelligenceConfigTrialConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigFilterInput)(nil)).Elem(), ControlProjectIntelligenceConfigFilterArgs{})
@@ -16594,6 +17189,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsPtrInput)(nil)).Elem(), ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsInput)(nil)).Elem(), ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsPtrInput)(nil)).Elem(), ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigTrialConfigInput)(nil)).Elem(), ControlProjectIntelligenceConfigTrialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlProjectIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), ControlProjectIntelligenceConfigTrialConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigCsvOptionsInput)(nil)).Elem(), InsightsReportConfigCsvOptionsArgs{})
@@ -16724,6 +17321,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigTrialConfigInput)(nil)).Elem(), GetControlFolderIntelligenceConfigTrialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlFolderIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), GetControlFolderIntelligenceConfigTrialConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterArgs{})
@@ -16736,6 +17335,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigTrialConfigInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigTrialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlOrganizationIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), GetControlOrganizationIntelligenceConfigTrialConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigInput)(nil)).Elem(), GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigFilterInput)(nil)).Elem(), GetControlProjectIntelligenceConfigFilterArgs{})
@@ -16748,6 +17349,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationInput)(nil)).Elem(), GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigTrialConfigInput)(nil)).Elem(), GetControlProjectIntelligenceConfigTrialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigTrialConfigArray{})
 	pulumi.RegisterOutputType(BucketAutoclassOutput{})
 	pulumi.RegisterOutputType(BucketAutoclassPtrOutput{})
 	pulumi.RegisterOutputType(BucketCorOutput{})
@@ -16792,6 +17395,8 @@ func init() {
 	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput{})
 	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsOutput{})
 	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigTrialConfigOutput{})
+	pulumi.RegisterOutputType(ControlFolderIntelligenceConfigTrialConfigArrayOutput{})
 	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterOutput{})
@@ -16804,6 +17409,8 @@ func init() {
 	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput{})
 	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsOutput{})
 	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigTrialConfigOutput{})
+	pulumi.RegisterOutputType(ControlOrganizationIntelligenceConfigTrialConfigArrayOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigFilterOutput{})
@@ -16816,6 +17423,8 @@ func init() {
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsPtrOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsOutput{})
 	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsPtrOutput{})
+	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigTrialConfigOutput{})
+	pulumi.RegisterOutputType(ControlProjectIntelligenceConfigTrialConfigArrayOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(InsightsReportConfigCsvOptionsOutput{})
@@ -16946,6 +17555,8 @@ func init() {
 	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput{})
 	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationOutput{})
 	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigTrialConfigOutput{})
+	pulumi.RegisterOutputType(GetControlFolderIntelligenceConfigTrialConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterOutput{})
@@ -16958,6 +17569,8 @@ func init() {
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationOutput{})
 	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigTrialConfigOutput{})
+	pulumi.RegisterOutputType(GetControlOrganizationIntelligenceConfigTrialConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigFilterOutput{})
@@ -16970,4 +17583,6 @@ func init() {
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketArrayOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationOutput{})
 	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigTrialConfigOutput{})
+	pulumi.RegisterOutputType(GetControlProjectIntelligenceConfigTrialConfigArrayOutput{})
 }

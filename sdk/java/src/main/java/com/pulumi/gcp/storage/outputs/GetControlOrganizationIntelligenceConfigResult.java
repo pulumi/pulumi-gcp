@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig;
 import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceConfigFilter;
+import com.pulumi.gcp.storage.outputs.GetControlOrganizationIntelligenceConfigTrialConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +23,7 @@ public final class GetControlOrganizationIntelligenceConfigResult {
      */
     private String id;
     private String name;
+    private List<GetControlOrganizationIntelligenceConfigTrialConfig> trialConfigs;
     private String updateTime;
 
     private GetControlOrganizationIntelligenceConfigResult() {}
@@ -44,6 +46,9 @@ public final class GetControlOrganizationIntelligenceConfigResult {
     public String name() {
         return this.name;
     }
+    public List<GetControlOrganizationIntelligenceConfigTrialConfig> trialConfigs() {
+        return this.trialConfigs;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -62,6 +67,7 @@ public final class GetControlOrganizationIntelligenceConfigResult {
         private List<GetControlOrganizationIntelligenceConfigFilter> filters;
         private String id;
         private String name;
+        private List<GetControlOrganizationIntelligenceConfigTrialConfig> trialConfigs;
         private String updateTime;
         public Builder() {}
         public Builder(GetControlOrganizationIntelligenceConfigResult defaults) {
@@ -71,6 +77,7 @@ public final class GetControlOrganizationIntelligenceConfigResult {
     	      this.filters = defaults.filters;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.trialConfigs = defaults.trialConfigs;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -121,6 +128,17 @@ public final class GetControlOrganizationIntelligenceConfigResult {
             return this;
         }
         @CustomType.Setter
+        public Builder trialConfigs(List<GetControlOrganizationIntelligenceConfigTrialConfig> trialConfigs) {
+            if (trialConfigs == null) {
+              throw new MissingRequiredPropertyException("GetControlOrganizationIntelligenceConfigResult", "trialConfigs");
+            }
+            this.trialConfigs = trialConfigs;
+            return this;
+        }
+        public Builder trialConfigs(GetControlOrganizationIntelligenceConfigTrialConfig... trialConfigs) {
+            return trialConfigs(List.of(trialConfigs));
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetControlOrganizationIntelligenceConfigResult", "updateTime");
@@ -135,6 +153,7 @@ public final class GetControlOrganizationIntelligenceConfigResult {
             _resultValue.filters = filters;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.trialConfigs = trialConfigs;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

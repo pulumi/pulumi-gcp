@@ -4,7 +4,6 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionProfileMysqlSsl {
     /**
-     * @return Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
+     * @return Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
      * The replica will use this certificate to verify it&#39;s connecting to the right host.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String caCertificate;
+    private @Nullable String caCertificate;
     /**
      * @return Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
      * If this field is used then the &#39;clientKey&#39; field is mandatory
@@ -42,13 +41,13 @@ public final class ConnectionProfileMysqlSsl {
 
     private ConnectionProfileMysqlSsl() {}
     /**
-     * @return Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
+     * @return Input only. The x509 PEM-encoded certificate of the CA that signed the source database server&#39;s certificate.
      * The replica will use this certificate to verify it&#39;s connecting to the right host.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String caCertificate() {
-        return this.caCertificate;
+    public Optional<String> caCertificate() {
+        return Optional.ofNullable(this.caCertificate);
     }
     /**
      * @return Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
@@ -86,7 +85,7 @@ public final class ConnectionProfileMysqlSsl {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String caCertificate;
+        private @Nullable String caCertificate;
         private @Nullable String clientCertificate;
         private @Nullable String clientKey;
         private @Nullable String type;
@@ -100,10 +99,8 @@ public final class ConnectionProfileMysqlSsl {
         }
 
         @CustomType.Setter
-        public Builder caCertificate(String caCertificate) {
-            if (caCertificate == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfileMysqlSsl", "caCertificate");
-            }
+        public Builder caCertificate(@Nullable String caCertificate) {
+
             this.caCertificate = caCertificate;
             return this;
         }

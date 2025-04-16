@@ -86,6 +86,9 @@ type ControlOrganizationIntelligenceConfig struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The trial configuration of the Storage Intelligence resource.
+	// Structure is documented below.
+	TrialConfigs ControlOrganizationIntelligenceConfigTrialConfigArrayOutput `pulumi:"trialConfigs"`
 	// The time at which the Storage Intelligence Config resource is last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -132,6 +135,9 @@ type controlOrganizationIntelligenceConfigState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// The trial configuration of the Storage Intelligence resource.
+	// Structure is documented below.
+	TrialConfigs []ControlOrganizationIntelligenceConfigTrialConfig `pulumi:"trialConfigs"`
 	// The time at which the Storage Intelligence Config resource is last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -149,6 +155,9 @@ type ControlOrganizationIntelligenceConfigState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// The trial configuration of the Storage Intelligence resource.
+	// Structure is documented below.
+	TrialConfigs ControlOrganizationIntelligenceConfigTrialConfigArrayInput
 	// The time at which the Storage Intelligence Config resource is last updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -295,6 +304,14 @@ func (o ControlOrganizationIntelligenceConfigOutput) Filter() ControlOrganizatio
 // ***
 func (o ControlOrganizationIntelligenceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The trial configuration of the Storage Intelligence resource.
+// Structure is documented below.
+func (o ControlOrganizationIntelligenceConfigOutput) TrialConfigs() ControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfig) ControlOrganizationIntelligenceConfigTrialConfigArrayOutput {
+		return v.TrialConfigs
+	}).(ControlOrganizationIntelligenceConfigTrialConfigArrayOutput)
 }
 
 // The time at which the Storage Intelligence Config resource is last updated.

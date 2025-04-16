@@ -54,6 +54,7 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly authorizationMode: string;
     readonly automatedBackupConfigs: outputs.memorystore.GetInstanceAutomatedBackupConfig[];
+    readonly backupCollection: string;
     readonly createTime: string;
     readonly crossInstanceReplicationConfigs: outputs.memorystore.GetInstanceCrossInstanceReplicationConfig[];
     readonly deletionProtectionEnabled: boolean;
@@ -63,6 +64,7 @@ export interface GetInstanceResult {
     readonly endpoints: outputs.memorystore.GetInstanceEndpoint[];
     readonly engineConfigs: {[key: string]: string};
     readonly engineVersion: string;
+    readonly gcsSources: outputs.memorystore.GetInstanceGcsSource[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -72,6 +74,7 @@ export interface GetInstanceResult {
     readonly location?: string;
     readonly maintenancePolicies: outputs.memorystore.GetInstanceMaintenancePolicy[];
     readonly maintenanceSchedules: outputs.memorystore.GetInstanceMaintenanceSchedule[];
+    readonly managedBackupSources: outputs.memorystore.GetInstanceManagedBackupSource[];
     readonly mode: string;
     readonly name: string;
     readonly nodeConfigs: outputs.memorystore.GetInstanceNodeConfig[];

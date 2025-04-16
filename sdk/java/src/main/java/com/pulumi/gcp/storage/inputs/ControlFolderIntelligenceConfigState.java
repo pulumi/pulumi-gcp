@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.storage.inputs.ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.ControlFolderIntelligenceConfigFilterArgs;
+import com.pulumi.gcp.storage.inputs.ControlFolderIntelligenceConfigTrialConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -87,6 +88,23 @@ public final class ControlFolderIntelligenceConfigState extends com.pulumi.resou
     }
 
     /**
+     * The trial configuration of the Storage Intelligence resource.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="trialConfigs")
+    private @Nullable Output<List<ControlFolderIntelligenceConfigTrialConfigArgs>> trialConfigs;
+
+    /**
+     * @return The trial configuration of the Storage Intelligence resource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ControlFolderIntelligenceConfigTrialConfigArgs>>> trialConfigs() {
+        return Optional.ofNullable(this.trialConfigs);
+    }
+
+    /**
      * The time at which the Storage Intelligence Config resource is last updated.
      * 
      */
@@ -108,6 +126,7 @@ public final class ControlFolderIntelligenceConfigState extends com.pulumi.resou
         this.effectiveIntelligenceConfigs = $.effectiveIntelligenceConfigs;
         this.filter = $.filter;
         this.name = $.name;
+        this.trialConfigs = $.trialConfigs;
         this.updateTime = $.updateTime;
     }
 
@@ -230,6 +249,40 @@ public final class ControlFolderIntelligenceConfigState extends com.pulumi.resou
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param trialConfigs The trial configuration of the Storage Intelligence resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trialConfigs(@Nullable Output<List<ControlFolderIntelligenceConfigTrialConfigArgs>> trialConfigs) {
+            $.trialConfigs = trialConfigs;
+            return this;
+        }
+
+        /**
+         * @param trialConfigs The trial configuration of the Storage Intelligence resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trialConfigs(List<ControlFolderIntelligenceConfigTrialConfigArgs> trialConfigs) {
+            return trialConfigs(Output.of(trialConfigs));
+        }
+
+        /**
+         * @param trialConfigs The trial configuration of the Storage Intelligence resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trialConfigs(ControlFolderIntelligenceConfigTrialConfigArgs... trialConfigs) {
+            return trialConfigs(List.of(trialConfigs));
         }
 
         /**

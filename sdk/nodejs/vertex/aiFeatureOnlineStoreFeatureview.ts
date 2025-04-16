@@ -179,8 +179,8 @@ import * as utilities from "../utilities";
  *
  * const testProject = gcp.organizations.getProject({});
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test_35305",
- *     name: "tf-test_62793",
+ *     projectId: "tf-test_49082",
+ *     name: "tf-test_60365",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -555,9 +555,6 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
             if ((!args || args.featureOnlineStore === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'featureOnlineStore'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'region'");
-            }
             resourceInputs["bigQuerySource"] = args ? args.bigQuerySource : undefined;
             resourceInputs["featureOnlineStore"] = args ? args.featureOnlineStore : undefined;
             resourceInputs["featureRegistrySource"] = args ? args.featureRegistrySource : undefined;
@@ -689,7 +686,7 @@ export interface AiFeatureOnlineStoreFeatureviewArgs {
      *
      * - - -
      */
-    region: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
      * Structure is documented below.

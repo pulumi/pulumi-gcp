@@ -52,6 +52,7 @@ export interface GetControlFolderIntelligenceConfigResult {
      */
     readonly id: string;
     readonly name: string;
+    readonly trialConfigs: outputs.storage.GetControlFolderIntelligenceConfigTrialConfig[];
     readonly updateTime: string;
 }
 /**

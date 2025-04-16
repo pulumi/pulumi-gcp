@@ -31,12 +31,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.sleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.managedkafka.Cluster;
  * import com.pulumi.gcp.managedkafka.ClusterArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
@@ -47,6 +49,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.managedkafka.inputs.ConnectClusterCapacityConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ConnectClusterGcpConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ConnectClusterGcpConfigAccessConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,29 +63,46 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mkcNetwork = new Network("mkcNetwork", NetworkArgs.builder()
- *             .name("my-network")
- *             .autoCreateSubnetworks(false)
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("tf-test_91980")
+ *             .name("tf-test_37118")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
- *         var mkcSubnet = new Subnetwork("mkcSubnet", SubnetworkArgs.builder()
- *             .name("my-subnetwork")
- *             .ipCidrRange("10.2.0.0/16")
- *             .region("us-central1")
- *             .network(mkcNetwork.id())
- *             .build());
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(List.of(project))
+ *                 .build());
  * 
- *         var mkcAdditionalSubnet = new Subnetwork("mkcAdditionalSubnet", SubnetworkArgs.builder()
- *             .name("my-additional-subnetwork-0")
+ *         var compute = new Service("compute", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("compute.googleapis.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
+ * 
+ *         var managedkafka = new Service("managedkafka", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("managedkafka.googleapis.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
+ * 
+ *         var mkcSecondarySubnet = new Subnetwork("mkcSecondarySubnet", SubnetworkArgs.builder()
+ *             .project(project.projectId())
+ *             .name("my-secondary-subnetwork")
  *             .ipCidrRange("10.3.0.0/16")
  *             .region("us-central1")
- *             .network(mkcNetwork.id())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .build());
+ *             .network("default")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(compute)
+ *                 .build());
  * 
  *         var gmkCluster = new Cluster("gmkCluster", ClusterArgs.builder()
+ *             .project(project.projectId())
  *             .clusterId("my-cluster")
  *             .location("us-central1")
  *             .capacityConfig(ClusterCapacityConfigArgs.builder()
@@ -92,15 +112,22 @@ import javax.annotation.Nullable;
  *             .gcpConfig(ClusterGcpConfigArgs.builder()
  *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
  *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .subnet(mkcSubnet.id().applyValue(_id -> String.format("projects/%s/regions/us-central1/subnetworks/%s", project.projectId(),_id)))
+ *                         .subnet(project.projectId().applyValue(_projectId -> String.format("projects/%s/regions/us-central1/subnetworks/default", _projectId)))
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(managedkafka)
+ *                 .build());
  * 
  *         var example = new ConnectCluster("example", ConnectClusterArgs.builder()
+ *             .project(project.projectId())
  *             .connectClusterId("my-connect-cluster")
- *             .kafkaCluster(gmkCluster.clusterId().applyValue(_clusterId -> String.format("projects/%s/locations/us-central1/clusters/%s", project.projectId(),_clusterId)))
+ *             .kafkaCluster(Output.tuple(project.projectId(), gmkCluster.clusterId()).applyValue(values -> {
+ *                 var projectId = values.t1;
+ *                 var clusterId = values.t2;
+ *                 return String.format("projects/%s/locations/us-central1/clusters/%s", projectId,clusterId);
+ *             }))
  *             .location("us-central1")
  *             .capacityConfig(ConnectClusterCapacityConfigArgs.builder()
  *                 .vcpuCount("12")
@@ -109,14 +136,20 @@ import javax.annotation.Nullable;
  *             .gcpConfig(ConnectClusterGcpConfigArgs.builder()
  *                 .accessConfig(ConnectClusterGcpConfigAccessConfigArgs.builder()
  *                     .networkConfigs(ConnectClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .primarySubnet(mkcSubnet.id().applyValue(_id -> String.format("projects/%s/regions/us-central1/subnetworks/%s", project.projectId(),_id)))
- *                         .additionalSubnets(mkcAdditionalSubnet.id())
- *                         .dnsDomainNames(gmkCluster.clusterId().applyValue(_clusterId -> String.format("%s.us-central1.managedkafka-staging.%s.cloud-staging.goog", _clusterId,project.projectId())))
+ *                         .primarySubnet(project.projectId().applyValue(_projectId -> String.format("projects/%s/regions/us-central1/subnetworks/default", _projectId)))
+ *                         .additionalSubnets(mkcSecondarySubnet.id())
+ *                         .dnsDomainNames(Output.tuple(gmkCluster.clusterId(), project.projectId()).applyValue(values -> {
+ *                             var clusterId = values.t1;
+ *                             var projectId = values.t2;
+ *                             return String.format("%s.us-central1.managedkafka.%s.cloud.goog", clusterId,projectId);
+ *                         }))
  *                         .build())
  *                     .build())
  *                 .build())
  *             .labels(Map.of("key", "value"))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(managedkafka)
+ *                 .build());
  * 
  *     }
  * }

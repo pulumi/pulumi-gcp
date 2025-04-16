@@ -15,9 +15,12 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     {
         /// <summary>
         /// The password to authenticate.
-        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
+        /// <summary>
+        /// The password write-only version.
+        /// </summary>
+        public readonly string? PasswordWoVersion;
         /// <summary>
         /// The username to authenticate.
         /// </summary>
@@ -25,11 +28,14 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
         [OutputConstructor]
         private UptimeCheckConfigHttpCheckAuthInfo(
-            string password,
+            string? password,
+
+            string? passwordWoVersion,
 
             string username)
         {
             Password = password;
+            PasswordWoVersion = passwordWoVersion;
             Username = username;
         }
     }

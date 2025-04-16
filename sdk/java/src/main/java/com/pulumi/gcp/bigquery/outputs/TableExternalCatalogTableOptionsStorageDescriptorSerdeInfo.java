@@ -19,12 +19,16 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
      */
     private @Nullable String name;
     /**
-     * @return Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+     * @return Key-value pairs that define the initialization
+     * parameters for the serialization library. Maximum size 10 Kib.
      * 
      */
     private @Nullable Map<String,String> parameters;
     /**
-     * @return Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+     * @return Specifies a fully-qualified class name of
+     * the serialization library that is responsible for the translation of data
+     * between table representation and the underlying low-level input and output
+     * format structures. The maximum length is 256 characters.
      * 
      */
     private String serializationLibrary;
@@ -38,14 +42,18 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+     * @return Key-value pairs that define the initialization
+     * parameters for the serialization library. Maximum size 10 Kib.
      * 
      */
     public Map<String,String> parameters() {
         return this.parameters == null ? Map.of() : this.parameters;
     }
     /**
-     * @return Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+     * @return Specifies a fully-qualified class name of
+     * the serialization library that is responsible for the translation of data
+     * between table representation and the underlying low-level input and output
+     * format structures. The maximum length is 256 characters.
      * 
      */
     public String serializationLibrary() {

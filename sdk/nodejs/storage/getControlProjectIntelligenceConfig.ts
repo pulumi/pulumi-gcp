@@ -52,6 +52,7 @@ export interface GetControlProjectIntelligenceConfigResult {
      */
     readonly id: string;
     readonly name: string;
+    readonly trialConfigs: outputs.storage.GetControlProjectIntelligenceConfigTrialConfig[];
     readonly updateTime: string;
 }
 /**

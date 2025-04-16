@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetControlFolderIntelligenceConfigTrialConfigResult> TrialConfigs;
         public readonly string UpdateTime;
 
         [OutputConstructor]
@@ -151,6 +152,8 @@ namespace Pulumi.Gcp.Storage
 
             string name,
 
+            ImmutableArray<Outputs.GetControlFolderIntelligenceConfigTrialConfigResult> trialConfigs,
+
             string updateTime)
         {
             EditionConfig = editionConfig;
@@ -158,6 +161,7 @@ namespace Pulumi.Gcp.Storage
             Filters = filters;
             Id = id;
             Name = name;
+            TrialConfigs = trialConfigs;
             UpdateTime = updateTime;
         }
     }

@@ -7,15 +7,21 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class UptimeCheckConfigHttpCheckAuthInfo {
     /**
      * @return The password to authenticate.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String password;
+    private @Nullable String password;
+    /**
+     * @return The password write-only version.
+     * 
+     */
+    private @Nullable String passwordWoVersion;
     /**
      * @return The username to authenticate.
      * 
@@ -25,11 +31,17 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
     private UptimeCheckConfigHttpCheckAuthInfo() {}
     /**
      * @return The password to authenticate.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
+    }
+    /**
+     * @return The password write-only version.
+     * 
+     */
+    public Optional<String> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
     /**
      * @return The username to authenticate.
@@ -48,21 +60,27 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String password;
+        private @Nullable String password;
+        private @Nullable String passwordWoVersion;
         private String username;
         public Builder() {}
         public Builder(UptimeCheckConfigHttpCheckAuthInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
+    	      this.passwordWoVersion = defaults.passwordWoVersion;
     	      this.username = defaults.username;
         }
 
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("UptimeCheckConfigHttpCheckAuthInfo", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWoVersion(@Nullable String passwordWoVersion) {
+
+            this.passwordWoVersion = passwordWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +94,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
         public UptimeCheckConfigHttpCheckAuthInfo build() {
             final var _resultValue = new UptimeCheckConfigHttpCheckAuthInfo();
             _resultValue.password = password;
+            _resultValue.passwordWoVersion = passwordWoVersion;
             _resultValue.username = username;
             return _resultValue;
         }

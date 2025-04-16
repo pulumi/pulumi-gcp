@@ -2337,10 +2337,10 @@ func (o ConnectionProfileMysqlPtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type ConnectionProfileMysqlSsl struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 	// The replica will use this certificate to verify it's connecting to the right host.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	CaCertificate string `pulumi:"caCertificate"`
+	CaCertificate *string `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
 	// If this field is used then the 'clientKey' field is mandatory
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -2366,10 +2366,10 @@ type ConnectionProfileMysqlSslInput interface {
 }
 
 type ConnectionProfileMysqlSslArgs struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 	// The replica will use this certificate to verify it's connecting to the right host.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
 	// If this field is used then the 'clientKey' field is mandatory
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -2460,11 +2460,11 @@ func (o ConnectionProfileMysqlSslOutput) ToConnectionProfileMysqlSslPtrOutputWit
 	}).(ConnectionProfileMysqlSslPtrOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 // The replica will use this certificate to verify it's connecting to the right host.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionProfileMysqlSslOutput) CaCertificate() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfileMysqlSsl) string { return v.CaCertificate }).(pulumi.StringOutput)
+func (o ConnectionProfileMysqlSslOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMysqlSsl) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
 }
 
 // Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
@@ -2511,7 +2511,7 @@ func (o ConnectionProfileMysqlSslPtrOutput) Elem() ConnectionProfileMysqlSslOutp
 	}).(ConnectionProfileMysqlSslOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 // The replica will use this certificate to verify it's connecting to the right host.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfileMysqlSslPtrOutput) CaCertificate() pulumi.StringPtrOutput {
@@ -2519,7 +2519,7 @@ func (o ConnectionProfileMysqlSslPtrOutput) CaCertificate() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.CaCertificate
+		return v.CaCertificate
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3259,10 +3259,10 @@ func (o ConnectionProfileOraclePrivateConnectivityPtrOutput) PrivateConnection()
 }
 
 type ConnectionProfileOracleSsl struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 	// The replica will use this certificate to verify it's connecting to the right host.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	CaCertificate string `pulumi:"caCertificate"`
+	CaCertificate *string `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
 	// If this field is used then the 'clientKey' field is mandatory
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -3288,10 +3288,10 @@ type ConnectionProfileOracleSslInput interface {
 }
 
 type ConnectionProfileOracleSslArgs struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 	// The replica will use this certificate to verify it's connecting to the right host.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
 	// If this field is used then the 'clientKey' field is mandatory
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -3382,11 +3382,11 @@ func (o ConnectionProfileOracleSslOutput) ToConnectionProfileOracleSslPtrOutputW
 	}).(ConnectionProfileOracleSslPtrOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 // The replica will use this certificate to verify it's connecting to the right host.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionProfileOracleSslOutput) CaCertificate() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfileOracleSsl) string { return v.CaCertificate }).(pulumi.StringOutput)
+func (o ConnectionProfileOracleSslOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOracleSsl) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
 }
 
 // Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
@@ -3433,7 +3433,7 @@ func (o ConnectionProfileOracleSslPtrOutput) Elem() ConnectionProfileOracleSslOu
 	}).(ConnectionProfileOracleSslOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 // The replica will use this certificate to verify it's connecting to the right host.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfileOracleSslPtrOutput) CaCertificate() pulumi.StringPtrOutput {
@@ -3441,7 +3441,7 @@ func (o ConnectionProfileOracleSslPtrOutput) CaCertificate() pulumi.StringPtrOut
 		if v == nil {
 			return nil
 		}
-		return &v.CaCertificate
+		return v.CaCertificate
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3908,10 +3908,10 @@ func (o ConnectionProfilePostgresqlPtrOutput) Username() pulumi.StringPtrOutput 
 }
 
 type ConnectionProfilePostgresqlSsl struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 	// The replica will use this certificate to verify it's connecting to the right host.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	CaCertificate string `pulumi:"caCertificate"`
+	CaCertificate *string `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
 	// If this field is used then the 'clientKey' field is mandatory
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -3937,10 +3937,10 @@ type ConnectionProfilePostgresqlSslInput interface {
 }
 
 type ConnectionProfilePostgresqlSslArgs struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 	// The replica will use this certificate to verify it's connecting to the right host.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
 	// If this field is used then the 'clientKey' field is mandatory
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -4031,11 +4031,11 @@ func (o ConnectionProfilePostgresqlSslOutput) ToConnectionProfilePostgresqlSslPt
 	}).(ConnectionProfilePostgresqlSslPtrOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 // The replica will use this certificate to verify it's connecting to the right host.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionProfilePostgresqlSslOutput) CaCertificate() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfilePostgresqlSsl) string { return v.CaCertificate }).(pulumi.StringOutput)
+func (o ConnectionProfilePostgresqlSslOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlSsl) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
 }
 
 // Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
@@ -4082,7 +4082,7 @@ func (o ConnectionProfilePostgresqlSslPtrOutput) Elem() ConnectionProfilePostgre
 	}).(ConnectionProfilePostgresqlSslOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
 // The replica will use this certificate to verify it's connecting to the right host.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfilePostgresqlSslPtrOutput) CaCertificate() pulumi.StringPtrOutput {
@@ -4090,7 +4090,7 @@ func (o ConnectionProfilePostgresqlSslPtrOutput) CaCertificate() pulumi.StringPt
 		if v == nil {
 			return nil
 		}
-		return &v.CaCertificate
+		return v.CaCertificate
 	}).(pulumi.StringPtrOutput)
 }
 

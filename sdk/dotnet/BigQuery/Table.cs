@@ -204,7 +204,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<int> ExpirationTime { get; private set; } = null!;
 
         /// <summary>
-        /// Options defining open source compatible table.
+        /// Options defining open source
+        /// compatible table. Structure is documented below.
         /// </summary>
         [Output("externalCatalogTableOptions")]
         public Output<Outputs.TableExternalCatalogTableOptions?> ExternalCatalogTableOptions { get; private set; } = null!;
@@ -325,7 +326,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Schema { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies metadata of the foreign data type definition in field schema.
+        /// Specifies metadata of the foreign data
+        /// type definition in field schema. Structure is documented below.
         /// </summary>
         [Output("schemaForeignTypeInfo")]
         public Output<Outputs.TableSchemaForeignTypeInfo?> SchemaForeignTypeInfo { get; private set; } = null!;
@@ -496,7 +498,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<int>? ExpirationTime { get; set; }
 
         /// <summary>
-        /// Options defining open source compatible table.
+        /// Options defining open source
+        /// compatible table. Structure is documented below.
         /// </summary>
         [Input("externalCatalogTableOptions")]
         public Input<Inputs.TableExternalCatalogTableOptionsArgs>? ExternalCatalogTableOptions { get; set; }
@@ -593,7 +596,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// Specifies metadata of the foreign data type definition in field schema.
+        /// Specifies metadata of the foreign data
+        /// type definition in field schema. Structure is documented below.
         /// </summary>
         [Input("schemaForeignTypeInfo")]
         public Input<Inputs.TableSchemaForeignTypeInfoArgs>? SchemaForeignTypeInfo { get; set; }
@@ -752,7 +756,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<int>? ExpirationTime { get; set; }
 
         /// <summary>
-        /// Options defining open source compatible table.
+        /// Options defining open source
+        /// compatible table. Structure is documented below.
         /// </summary>
         [Input("externalCatalogTableOptions")]
         public Input<Inputs.TableExternalCatalogTableOptionsGetArgs>? ExternalCatalogTableOptions { get; set; }
@@ -895,7 +900,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// Specifies metadata of the foreign data type definition in field schema.
+        /// Specifies metadata of the foreign data
+        /// type definition in field schema. Structure is documented below.
         /// </summary>
         [Input("schemaForeignTypeInfo")]
         public Input<Inputs.TableSchemaForeignTypeInfoGetArgs>? SchemaForeignTypeInfo { get; set; }

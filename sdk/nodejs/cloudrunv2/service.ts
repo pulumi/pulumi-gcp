@@ -564,6 +564,26 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Cloudrunv2 Service Iap
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-iap-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     launchStage: "BETA",
+ *     iapEnabled: true,
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -692,6 +712,10 @@ export class Service extends pulumi.CustomResource {
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
     public /*out*/ readonly generation!: pulumi.Output<string>;
+    /**
+     * Used to enable/disable IAP for the service.
+     */
+    public readonly iapEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
      * INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
@@ -833,6 +857,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["generation"] = state ? state.generation : undefined;
+            resourceInputs["iapEnabled"] = state ? state.iapEnabled : undefined;
             resourceInputs["ingress"] = state ? state.ingress : undefined;
             resourceInputs["invokerIamDisabled"] = state ? state.invokerIamDisabled : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -872,6 +897,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["defaultUriDisabled"] = args ? args.defaultUriDisabled : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["iapEnabled"] = args ? args.iapEnabled : undefined;
             resourceInputs["ingress"] = args ? args.ingress : undefined;
             resourceInputs["invokerIamDisabled"] = args ? args.invokerIamDisabled : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -990,6 +1016,10 @@ export interface ServiceState {
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
     generation?: pulumi.Input<string>;
+    /**
+     * Used to enable/disable IAP for the service.
+     */
+    iapEnabled?: pulumi.Input<boolean>;
     /**
      * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
      * INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
@@ -1146,6 +1176,10 @@ export interface ServiceArgs {
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Used to enable/disable IAP for the service.
+     */
+    iapEnabled?: pulumi.Input<boolean>;
     /**
      * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
      * INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",

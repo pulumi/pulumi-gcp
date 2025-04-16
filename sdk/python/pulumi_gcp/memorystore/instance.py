@@ -32,8 +32,10 @@ class InstanceArgs:
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  engine_version: Optional[pulumi.Input[builtins.str]] = None,
+                 gcs_source: Optional[pulumi.Input['InstanceGcsSourceArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
+                 managed_backup_source: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']] = None,
                  mode: Optional[pulumi.Input[builtins.str]] = None,
                  node_type: Optional[pulumi.Input[builtins.str]] = None,
                  persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
@@ -67,10 +69,14 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: Immutable. User inputs for the auto-created PSC connections.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[builtins.str] engine_version: Optional. Engine version of the instance.
+        :param pulumi.Input['InstanceGcsSourceArgs'] gcs_source: GCS source for the instance.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
+        :param pulumi.Input['InstanceManagedBackupSourceArgs'] managed_backup_source: Managed backup source for the instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] mode: Optional. cluster or cluster-disabled.
                Possible values:
@@ -112,10 +118,14 @@ class InstanceArgs:
             pulumi.set(__self__, "engine_configs", engine_configs)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
+        if gcs_source is not None:
+            pulumi.set(__self__, "gcs_source", gcs_source)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if managed_backup_source is not None:
+            pulumi.set(__self__, "managed_backup_source", managed_backup_source)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if node_type is not None:
@@ -266,6 +276,19 @@ class InstanceArgs:
         pulumi.set(self, "engine_version", value)
 
     @property
+    @pulumi.getter(name="gcsSource")
+    def gcs_source(self) -> Optional[pulumi.Input['InstanceGcsSourceArgs']]:
+        """
+        GCS source for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_source")
+
+    @gcs_source.setter
+    def gcs_source(self, value: Optional[pulumi.Input['InstanceGcsSourceArgs']]):
+        pulumi.set(self, "gcs_source", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -291,6 +314,19 @@ class InstanceArgs:
     @maintenance_policy.setter
     def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="managedBackupSource")
+    def managed_backup_source(self) -> Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]:
+        """
+        Managed backup source for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_backup_source")
+
+    @managed_backup_source.setter
+    def managed_backup_source(self, value: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]):
+        pulumi.set(self, "managed_backup_source", value)
 
     @property
     @pulumi.getter
@@ -397,6 +433,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  authorization_mode: Optional[pulumi.Input[builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']] = None,
+                 backup_collection: Optional[pulumi.Input[builtins.str]] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  cross_instance_replication_config: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -406,11 +443,13 @@ class _InstanceState:
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  engine_version: Optional[pulumi.Input[builtins.str]] = None,
+                 gcs_source: Optional[pulumi.Input['InstanceGcsSourceArgs']] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
+                 managed_backup_source: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']] = None,
                  mode: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeConfigArgs']]]] = None,
@@ -435,6 +474,8 @@ class _InstanceState:
                IAM_AUTH
         :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] backup_collection: The backup collection full resource name.
+               Example: projects/{project}/locations/{location}/backupCollections/{collection}
         :param pulumi.Input[builtins.str] create_time: Output only. Creation timestamp of the instance.
         :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
@@ -448,6 +489,8 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[builtins.str] engine_version: Optional. Engine version of the instance.
+        :param pulumi.Input['InstanceGcsSourceArgs'] gcs_source: GCS source for the instance.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] instance_id: Required. The ID to use for the instance, which will become the final component of
                the instance's resource name.
                This value is subject to the following restrictions:
@@ -466,6 +509,8 @@ class _InstanceState:
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
+               Structure is documented below.
+        :param pulumi.Input['InstanceManagedBackupSourceArgs'] managed_backup_source: Managed backup source for the instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] mode: Optional. cluster or cluster-disabled.
                Possible values:
@@ -515,6 +560,8 @@ class _InstanceState:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_config is not None:
             pulumi.set(__self__, "automated_backup_config", automated_backup_config)
+        if backup_collection is not None:
+            pulumi.set(__self__, "backup_collection", backup_collection)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if cross_instance_replication_config is not None:
@@ -533,6 +580,8 @@ class _InstanceState:
             pulumi.set(__self__, "engine_configs", engine_configs)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
+        if gcs_source is not None:
+            pulumi.set(__self__, "gcs_source", gcs_source)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if labels is not None:
@@ -543,6 +592,8 @@ class _InstanceState:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_schedules is not None:
             pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
+        if managed_backup_source is not None:
+            pulumi.set(__self__, "managed_backup_source", managed_backup_source)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
@@ -604,6 +655,19 @@ class _InstanceState:
     @automated_backup_config.setter
     def automated_backup_config(self, value: Optional[pulumi.Input['InstanceAutomatedBackupConfigArgs']]):
         pulumi.set(self, "automated_backup_config", value)
+
+    @property
+    @pulumi.getter(name="backupCollection")
+    def backup_collection(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The backup collection full resource name.
+        Example: projects/{project}/locations/{location}/backupCollections/{collection}
+        """
+        return pulumi.get(self, "backup_collection")
+
+    @backup_collection.setter
+    def backup_collection(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "backup_collection", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -718,6 +782,19 @@ class _InstanceState:
         pulumi.set(self, "engine_version", value)
 
     @property
+    @pulumi.getter(name="gcsSource")
+    def gcs_source(self) -> Optional[pulumi.Input['InstanceGcsSourceArgs']]:
+        """
+        GCS source for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_source")
+
+    @gcs_source.setter
+    def gcs_source(self, value: Optional[pulumi.Input['InstanceGcsSourceArgs']]):
+        pulumi.set(self, "gcs_source", value)
+
+    @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -790,6 +867,19 @@ class _InstanceState:
     @maintenance_schedules.setter
     def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
+
+    @property
+    @pulumi.getter(name="managedBackupSource")
+    def managed_backup_source(self) -> Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]:
+        """
+        Managed backup source for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_backup_source")
+
+    @managed_backup_source.setter
+    def managed_backup_source(self, value: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]):
+        pulumi.set(self, "managed_backup_source", value)
 
     @property
     @pulumi.getter
@@ -1034,10 +1124,12 @@ class Instance(pulumi.CustomResource):
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  engine_version: Optional[pulumi.Input[builtins.str]] = None,
+                 gcs_source: Optional[pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
                  mode: Optional[pulumi.Input[builtins.str]] = None,
                  node_type: Optional[pulumi.Input[builtins.str]] = None,
                  persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
@@ -1364,6 +1456,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: Immutable. User inputs for the auto-created PSC connections.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[builtins.str] engine_version: Optional. Engine version of the instance.
+        :param pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']] gcs_source: GCS source for the instance.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] instance_id: Required. The ID to use for the instance, which will become the final component of
                the instance's resource name.
                This value is subject to the following restrictions:
@@ -1380,6 +1474,8 @@ class Instance(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
         :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
+        :param pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']] managed_backup_source: Managed backup source for the instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] mode: Optional. cluster or cluster-disabled.
                Possible values:
@@ -1737,10 +1833,12 @@ class Instance(pulumi.CustomResource):
                  desired_psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
                  engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  engine_version: Optional[pulumi.Input[builtins.str]] = None,
+                 gcs_source: Optional[pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
                  mode: Optional[pulumi.Input[builtins.str]] = None,
                  node_type: Optional[pulumi.Input[builtins.str]] = None,
                  persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
@@ -1765,6 +1863,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["desired_psc_auto_connections"] = desired_psc_auto_connections
             __props__.__dict__["engine_configs"] = engine_configs
             __props__.__dict__["engine_version"] = engine_version
+            __props__.__dict__["gcs_source"] = gcs_source
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -1773,6 +1872,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["managed_backup_source"] = managed_backup_source
             __props__.__dict__["mode"] = mode
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["persistence_config"] = persistence_config
@@ -1783,6 +1883,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["shard_count"] = shard_count
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
             __props__.__dict__["zone_distribution_config"] = zone_distribution_config
+            __props__.__dict__["backup_collection"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoints"] = None
             __props__.__dict__["effective_labels"] = None
@@ -1811,6 +1912,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[builtins.str]] = None,
             automated_backup_config: Optional[pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
+            backup_collection: Optional[pulumi.Input[builtins.str]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             cross_instance_replication_config: Optional[pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1820,11 +1922,13 @@ class Instance(pulumi.CustomResource):
             endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
             engine_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             engine_version: Optional[pulumi.Input[builtins.str]] = None,
+            gcs_source: Optional[pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']]] = None,
             instance_id: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
+            managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
             mode: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             node_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]]]] = None,
@@ -1854,6 +1958,8 @@ class Instance(pulumi.CustomResource):
                IAM_AUTH
         :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] backup_collection: The backup collection full resource name.
+               Example: projects/{project}/locations/{location}/backupCollections/{collection}
         :param pulumi.Input[builtins.str] create_time: Output only. Creation timestamp of the instance.
         :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
@@ -1867,6 +1973,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] engine_configs: Optional. User-provided engine configurations for the instance.
         :param pulumi.Input[builtins.str] engine_version: Optional. Engine version of the instance.
+        :param pulumi.Input[Union['InstanceGcsSourceArgs', 'InstanceGcsSourceArgsDict']] gcs_source: GCS source for the instance.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] instance_id: Required. The ID to use for the instance, which will become the final component of
                the instance's resource name.
                This value is subject to the following restrictions:
@@ -1885,6 +1993,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]] maintenance_schedules: Upcoming maintenance schedule.
+               Structure is documented below.
+        :param pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']] managed_backup_source: Managed backup source for the instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] mode: Optional. cluster or cluster-disabled.
                Possible values:
@@ -1936,6 +2046,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["authorization_mode"] = authorization_mode
         __props__.__dict__["automated_backup_config"] = automated_backup_config
+        __props__.__dict__["backup_collection"] = backup_collection
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
@@ -1945,11 +2056,13 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["endpoints"] = endpoints
         __props__.__dict__["engine_configs"] = engine_configs
         __props__.__dict__["engine_version"] = engine_version
+        __props__.__dict__["gcs_source"] = gcs_source
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["maintenance_schedules"] = maintenance_schedules
+        __props__.__dict__["managed_backup_source"] = managed_backup_source
         __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["node_configs"] = node_configs
@@ -1987,6 +2100,15 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "automated_backup_config")
+
+    @property
+    @pulumi.getter(name="backupCollection")
+    def backup_collection(self) -> pulumi.Output[builtins.str]:
+        """
+        The backup collection full resource name.
+        Example: projects/{project}/locations/{location}/backupCollections/{collection}
+        """
+        return pulumi.get(self, "backup_collection")
 
     @property
     @pulumi.getter(name="createTime")
@@ -2065,6 +2187,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "engine_version")
 
     @property
+    @pulumi.getter(name="gcsSource")
+    def gcs_source(self) -> pulumi.Output[Optional['outputs.InstanceGcsSource']]:
+        """
+        GCS source for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_source")
+
+    @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[builtins.str]:
         """
@@ -2117,6 +2248,15 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "maintenance_schedules")
+
+    @property
+    @pulumi.getter(name="managedBackupSource")
+    def managed_backup_source(self) -> pulumi.Output[Optional['outputs.InstanceManagedBackupSource']]:
+        """
+        Managed backup source for the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_backup_source")
 
     @property
     @pulumi.getter

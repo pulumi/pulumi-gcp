@@ -9,6 +9,9 @@ import com.pulumi.gcp.compute.inputs.ImageGuestOsFeatureArgs;
 import com.pulumi.gcp.compute.inputs.ImageImageEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.ImageRawDiskArgs;
 import com.pulumi.gcp.compute.inputs.ImageShieldedInstanceInitialStateArgs;
+import com.pulumi.gcp.compute.inputs.ImageSourceDiskEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.ImageSourceImageEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.ImageSourceSnapshotEncryptionKeyArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -351,6 +354,25 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The customer-supplied encryption key of the source disk. Required if
+     * the source disk is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sourceDiskEncryptionKey")
+    private @Nullable Output<ImageSourceDiskEncryptionKeyArgs> sourceDiskEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption key of the source disk. Required if
+     * the source disk is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ImageSourceDiskEncryptionKeyArgs>> sourceDiskEncryptionKey() {
+        return Optional.ofNullable(this.sourceDiskEncryptionKey);
+    }
+
+    /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
      * * The selfLink URL
@@ -373,6 +395,25 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> sourceImage() {
         return Optional.ofNullable(this.sourceImage);
+    }
+
+    /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sourceImageEncryptionKey")
+    private @Nullable Output<ImageSourceImageEncryptionKeyArgs> sourceImageEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ImageSourceImageEncryptionKeyArgs>> sourceImageEncryptionKey() {
+        return Optional.ofNullable(this.sourceImageEncryptionKey);
     }
 
     /**
@@ -400,6 +441,25 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> sourceSnapshot() {
         return Optional.ofNullable(this.sourceSnapshot);
+    }
+
+    /**
+     * The customer-supplied encryption key of the source snapshot. Required if
+     * the source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sourceSnapshotEncryptionKey")
+    private @Nullable Output<ImageSourceSnapshotEncryptionKeyArgs> sourceSnapshotEncryptionKey;
+
+    /**
+     * @return The customer-supplied encryption key of the source snapshot. Required if
+     * the source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ImageSourceSnapshotEncryptionKeyArgs>> sourceSnapshotEncryptionKey() {
+        return Optional.ofNullable(this.sourceSnapshotEncryptionKey);
     }
 
     /**
@@ -442,8 +502,11 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.shieldedInstanceInitialState = $.shieldedInstanceInitialState;
         this.sourceDisk = $.sourceDisk;
+        this.sourceDiskEncryptionKey = $.sourceDiskEncryptionKey;
         this.sourceImage = $.sourceImage;
+        this.sourceImageEncryptionKey = $.sourceImageEncryptionKey;
         this.sourceSnapshot = $.sourceSnapshot;
+        this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
         this.storageLocations = $.storageLocations;
     }
 
@@ -924,6 +987,31 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param sourceDiskEncryptionKey The customer-supplied encryption key of the source disk. Required if
+         * the source disk is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDiskEncryptionKey(@Nullable Output<ImageSourceDiskEncryptionKeyArgs> sourceDiskEncryptionKey) {
+            $.sourceDiskEncryptionKey = sourceDiskEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceDiskEncryptionKey The customer-supplied encryption key of the source disk. Required if
+         * the source disk is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDiskEncryptionKey(ImageSourceDiskEncryptionKeyArgs sourceDiskEncryptionKey) {
+            return sourceDiskEncryptionKey(Output.of(sourceDiskEncryptionKey));
+        }
+
+        /**
          * @param sourceImage URL of the source image used to create this image. In order to create an image, you must provide the full or partial
          * URL of one of the following:
          * * The selfLink URL
@@ -952,6 +1040,31 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceImage(String sourceImage) {
             return sourceImage(Output.of(sourceImage));
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The customer-supplied encryption key of the source image. Required if
+         * the source image is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(@Nullable Output<ImageSourceImageEncryptionKeyArgs> sourceImageEncryptionKey) {
+            $.sourceImageEncryptionKey = sourceImageEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceImageEncryptionKey The customer-supplied encryption key of the source image. Required if
+         * the source image is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceImageEncryptionKey(ImageSourceImageEncryptionKeyArgs sourceImageEncryptionKey) {
+            return sourceImageEncryptionKey(Output.of(sourceImageEncryptionKey));
         }
 
         /**
@@ -985,6 +1098,31 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceSnapshot(String sourceSnapshot) {
             return sourceSnapshot(Output.of(sourceSnapshot));
+        }
+
+        /**
+         * @param sourceSnapshotEncryptionKey The customer-supplied encryption key of the source snapshot. Required if
+         * the source snapshot is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshotEncryptionKey(@Nullable Output<ImageSourceSnapshotEncryptionKeyArgs> sourceSnapshotEncryptionKey) {
+            $.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param sourceSnapshotEncryptionKey The customer-supplied encryption key of the source snapshot. Required if
+         * the source snapshot is protected by a customer-supplied encryption key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshotEncryptionKey(ImageSourceSnapshotEncryptionKeyArgs sourceSnapshotEncryptionKey) {
+            return sourceSnapshotEncryptionKey(Output.of(sourceSnapshotEncryptionKey));
         }
 
         /**

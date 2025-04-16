@@ -6834,34 +6834,48 @@ export namespace bigquery {
 
     export interface TableExternalCatalogTableOptions {
         /**
-         * The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+         * The connection specifying the credentials to be
+         * used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+         * connection is needed to read the open source table from BigQuery Engine. The
+         * connectionId can have the form `<project_id>.<location_id>.<connection_id>`
+         * or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
          */
         connectionId?: pulumi.Input<string>;
         /**
-         * A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+         * A map of key value pairs defining the parameters and
+         * properties of the open source table. Corresponds with hive meta store table
+         * parameters. Maximum size of 4Mib.
          */
         parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * A storage descriptor containing information about the physical storage of this table.
+         * A storage descriptor containing information
+         * about the physical storage of this table. Structure is documented below.
          */
         storageDescriptor?: pulumi.Input<inputs.bigquery.TableExternalCatalogTableOptionsStorageDescriptor>;
     }
 
     export interface TableExternalCatalogTableOptionsStorageDescriptor {
         /**
-         * Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+         * Specifies the fully qualified class name of the
+         * InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
+         * maximum length is 128 characters.
          */
         inputFormat?: pulumi.Input<string>;
         /**
-         * The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+         * The physical location of the table (e.g.
+         * 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+         * 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
          */
         locationUri?: pulumi.Input<string>;
         /**
-         * Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+         * Specifies the fully qualified class name of the
+         * OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
+         * maximum length is 128 characters.
          */
         outputFormat?: pulumi.Input<string>;
         /**
-         * Serializer and deserializer information.
+         * Serializer and deserializer information. Structure
+         * is documented below.
          */
         serdeInfo?: pulumi.Input<inputs.bigquery.TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo>;
     }
@@ -6872,11 +6886,15 @@ export namespace bigquery {
          */
         name?: pulumi.Input<string>;
         /**
-         * Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+         * Key-value pairs that define the initialization
+         * parameters for the serialization library. Maximum size 10 Kib.
          */
         parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+         * Specifies a fully-qualified class name of
+         * the serialization library that is responsible for the translation of data
+         * between table representation and the underlying low-level input and output
+         * format structures. The maximum length is 256 characters.
          */
         serializationLibrary: pulumi.Input<string>;
     }
@@ -7242,7 +7260,8 @@ export namespace bigquery {
 
     export interface TableSchemaForeignTypeInfo {
         /**
-         * Specifies the system which defines the foreign data type.
+         * Specifies the system which defines the foreign data
+         * type.
          */
         typeSystem: pulumi.Input<string>;
     }
@@ -19489,6 +19508,96 @@ export namespace compute {
         fileType?: pulumi.Input<string>;
     }
 
+    export interface ImageSourceDiskEncryptionKey {
+        /**
+         * The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+         * in the cloud console. Your project's Compute Engine System service account
+         * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+         * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the
+         * given KMS key. If absent, the Compute Engine default service
+         * account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
+    }
+
+    export interface ImageSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+         * in the cloud console. Your project's Compute Engine System service account
+         * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+         * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the
+         * given KMS key. If absent, the Compute Engine default service
+         * account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
+    }
+
+    export interface ImageSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+         * in the cloud console. Your project's Compute Engine System service account
+         * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+         * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * The service account being used for the encryption request for the
+         * given KMS key. If absent, the Compute Engine default service
+         * account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
+    }
+
     export interface InstanceAdvancedMachineFeatures {
         /**
          * Defines whether the instance should have nested virtualization  enabled. Defaults to false.
@@ -30313,6 +30422,10 @@ export namespace compute {
 
     export interface SnapshotSourceDiskEncryptionKey {
         /**
+         * The name of the encryption key that is stored in Google Cloud KMS.
+         */
+        kmsKeySelfLink?: pulumi.Input<string>;
+        /**
          * The service account used for the encryption request for the given KMS key.
          * If absent, the Compute Engine Service Agent service account is used.
          */
@@ -30323,6 +30436,12 @@ export namespace compute {
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         rawKey?: pulumi.Input<string>;
+        /**
+         * Specifies an encryption key stored in Google Cloud KMS, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rsaEncryptedKey?: pulumi.Input<string>;
     }
 
     export interface SubnetworkIAMBindingCondition {
@@ -37417,11 +37536,11 @@ export namespace databasemigrationservice {
 
     export interface ConnectionProfileMysqlSsl {
         /**
-         * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+         * Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
          * The replica will use this certificate to verify it's connecting to the right host.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        caCertificate: pulumi.Input<string>;
+        caCertificate?: pulumi.Input<string>;
         /**
          * Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
          * If this field is used then the 'clientKey' field is mandatory
@@ -37525,11 +37644,11 @@ export namespace databasemigrationservice {
 
     export interface ConnectionProfileOracleSsl {
         /**
-         * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+         * Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
          * The replica will use this certificate to verify it's connecting to the right host.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        caCertificate: pulumi.Input<string>;
+        caCertificate?: pulumi.Input<string>;
         /**
          * Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
          * If this field is used then the 'clientKey' field is mandatory
@@ -37598,11 +37717,11 @@ export namespace databasemigrationservice {
 
     export interface ConnectionProfilePostgresqlSsl {
         /**
-         * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+         * Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
          * The replica will use this certificate to verify it's connecting to the right host.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        caCertificate: pulumi.Input<string>;
+        caCertificate?: pulumi.Input<string>;
         /**
          * Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
          * If this field is used then the 'clientKey' field is mandatory
@@ -50049,6 +50168,25 @@ export namespace deploymentmanager {
 }
 
 export namespace developerconnect {
+    export interface AccountConnectorProviderOauthConfig {
+        /**
+         * Required. User selected scopes to apply to the Oauth config
+         * In the event of changing scopes, user records under AccountConnector will
+         * be deleted and users will re-auth again.
+         */
+        scopes: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of providers that are owned by Developer Connect.
+         * Possible values:
+         * GITHUB
+         * GITLAB
+         * GOOGLE
+         * SENTRY
+         * ROVO
+         */
+        systemProviderId?: pulumi.Input<string>;
+    }
+
     export interface ConnectionBitbucketCloudConfig {
         /**
          * Represents a personal access token that authorized the Connection,
@@ -63523,7 +63661,7 @@ export namespace managedkafka {
 
     export interface ClusterGcpConfigAccessConfig {
         /**
-         * Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+         * Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
          * Structure is documented below.
          */
         networkConfigs: pulumi.Input<pulumi.Input<inputs.managedkafka.ClusterGcpConfigAccessConfigNetworkConfig>[]>;
@@ -63531,7 +63669,7 @@ export namespace managedkafka {
 
     export interface ClusterGcpConfigAccessConfigNetworkConfig {
         /**
-         * Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
+         * Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
          */
         subnet: pulumi.Input<string>;
     }
@@ -64047,6 +64185,14 @@ export namespace memorystore {
         serviceAttachment?: pulumi.Input<string>;
     }
 
+    export interface InstanceGcsSource {
+        /**
+         * URIs of the GCS objects to import.
+         * Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+         */
+        uris: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface InstanceMaintenancePolicy {
         /**
          * (Output)
@@ -64144,6 +64290,13 @@ export namespace memorystore {
          * resolution and up to nine fractional digits.
          */
         startTime?: pulumi.Input<string>;
+    }
+
+    export interface InstanceManagedBackupSource {
+        /**
+         * Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+         */
+        backup: pulumi.Input<string>;
     }
 
     export interface InstanceNodeConfig {
@@ -65990,9 +66143,12 @@ export namespace monitoring {
     export interface UptimeCheckConfigHttpCheckAuthInfo {
         /**
          * The password to authenticate.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
+        /**
+         * The password write-only version.
+         */
+        passwordWoVersion?: pulumi.Input<string>;
         /**
          * The username to authenticate.
          */
@@ -66258,7 +66414,7 @@ export namespace netapp {
 
     export interface VolumeRestoreParameters {
         /**
-         * Full name of the snapshot to use for creating this volume.
+         * Full name of the backup to use for creating this volume.
          * `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
          * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
          */
@@ -76997,6 +77153,13 @@ export namespace redis {
         network?: pulumi.Input<string>;
     }
 
+    export interface ClusterGcsSource {
+        /**
+         * URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+         */
+        uris: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ClusterMaintenancePolicy {
         /**
          * (Output)
@@ -77094,6 +77257,14 @@ export namespace redis {
          * resolution and up to nine fractional digits.
          */
         startTime?: pulumi.Input<string>;
+    }
+
+    export interface ClusterManagedBackupSource {
+        /**
+         * Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+         * like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+         */
+        backup: pulumi.Input<string>;
     }
 
     export interface ClusterPersistenceConfig {
@@ -80279,6 +80450,14 @@ export namespace storage {
         locations: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface ControlFolderIntelligenceConfigTrialConfig {
+        /**
+         * (Output)
+         * The time at which the trial expires.
+         */
+        expireTime?: pulumi.Input<string>;
+    }
+
     export interface ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig {
         /**
          * (Output)
@@ -80343,6 +80522,14 @@ export namespace storage {
         locations: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface ControlOrganizationIntelligenceConfigTrialConfig {
+        /**
+         * (Output)
+         * The time at which the trial expires.
+         */
+        expireTime?: pulumi.Input<string>;
+    }
+
     export interface ControlProjectIntelligenceConfigEffectiveIntelligenceConfig {
         /**
          * (Output)
@@ -80405,6 +80592,14 @@ export namespace storage {
          * List of locations.
          */
         locations: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ControlProjectIntelligenceConfigTrialConfig {
+        /**
+         * (Output)
+         * The time at which the trial expires.
+         */
+        expireTime?: pulumi.Input<string>;
     }
 
     export interface DefaultObjectAccessControlProjectTeam {
@@ -82442,6 +82637,18 @@ export namespace vertex {
         inputUri: pulumi.Input<string>;
     }
 
+    export interface AiFeatureGroupIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureGroupIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface AiFeatureOnlineStoreBigtable {
         /**
          * Autoscaling config applied to Bigtable Instance.
@@ -82535,6 +82742,18 @@ export namespace vertex {
         featureIds: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface AiFeatureOnlineStoreFeatureviewIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureOnlineStoreFeatureviewIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface AiFeatureOnlineStoreFeatureviewSyncConfig {
         /**
          * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -82585,6 +82804,18 @@ export namespace vertex {
          * Number of embeddings on each leaf node. The default value is 1000 if not set.
          */
         leafNodeEmbeddingCount?: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureOnlineStoreIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureOnlineStoreIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface AiFeatureOnlineStoreOptimized {
