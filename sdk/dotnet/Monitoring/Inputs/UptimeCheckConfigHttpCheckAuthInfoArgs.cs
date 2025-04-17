@@ -12,12 +12,11 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
     public sealed class UptimeCheckConfigHttpCheckAuthInfoArgs : global::Pulumi.ResourceArgs
     {
-        [Input("password", required: true)]
+        [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
         /// The password to authenticate.
-        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? Password
         {
@@ -28,6 +27,12 @@ namespace Pulumi.Gcp.Monitoring.Inputs
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The password write-only version.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<string>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// The username to authenticate.

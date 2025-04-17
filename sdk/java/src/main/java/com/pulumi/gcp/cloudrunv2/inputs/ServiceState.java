@@ -299,6 +299,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Used to enable/disable IAP for the service.
+     * 
+     */
+    @Import(name="iapEnabled")
+    private @Nullable Output<Boolean> iapEnabled;
+
+    /**
+     * @return Used to enable/disable IAP for the service.
+     * 
+     */
+    public Optional<Output<Boolean>> iapEnabled() {
+        return Optional.ofNullable(this.iapEnabled);
+    }
+
+    /**
      * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
      * INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: [&#34;INGRESS_TRAFFIC_ALL&#34;,
      * &#34;INGRESS_TRAFFIC_INTERNAL_ONLY&#34;, &#34;INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER&#34;]
@@ -689,6 +704,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.etag = $.etag;
         this.expireTime = $.expireTime;
         this.generation = $.generation;
+        this.iapEnabled = $.iapEnabled;
         this.ingress = $.ingress;
         this.invokerIamDisabled = $.invokerIamDisabled;
         this.labels = $.labels;
@@ -1124,6 +1140,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder generation(String generation) {
             return generation(Output.of(generation));
+        }
+
+        /**
+         * @param iapEnabled Used to enable/disable IAP for the service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iapEnabled(@Nullable Output<Boolean> iapEnabled) {
+            $.iapEnabled = iapEnabled;
+            return this;
+        }
+
+        /**
+         * @param iapEnabled Used to enable/disable IAP for the service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iapEnabled(Boolean iapEnabled) {
+            return iapEnabled(Output.of(iapEnabled));
         }
 
         /**

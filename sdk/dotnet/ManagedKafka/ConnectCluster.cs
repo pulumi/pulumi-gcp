@@ -19,35 +19,72 @@ namespace Pulumi.Gcp.ManagedKafka
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mkcNetwork = new Gcp.Compute.Network("mkc_network", new()
+    ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         Name = "my-network",
-    ///         AutoCreateSubnetworks = false,
+    ///         ProjectId = "tf-test_91980",
+    ///         Name = "tf-test_37118",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
-    ///     var mkcSubnet = new Gcp.Compute.Subnetwork("mkc_subnet", new()
+    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
     ///     {
-    ///         Name = "my-subnetwork",
-    ///         IpCidrRange = "10.2.0.0/16",
-    ///         Region = "us-central1",
-    ///         Network = mkcNetwork.Id,
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             project,
+    ///         },
     ///     });
     /// 
-    ///     var mkcAdditionalSubnet = new Gcp.Compute.Subnetwork("mkc_additional_subnet", new()
+    ///     var compute = new Gcp.Projects.Service("compute", new()
     ///     {
-    ///         Name = "my-additional-subnetwork-0",
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "compute.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     var managedkafka = new Gcp.Projects.Service("managedkafka", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "managedkafka.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     var mkcSecondarySubnet = new Gcp.Compute.Subnetwork("mkc_secondary_subnet", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Name = "my-secondary-subnetwork",
     ///         IpCidrRange = "10.3.0.0/16",
     ///         Region = "us-central1",
-    ///         Network = mkcNetwork.Id,
+    ///         Network = "default",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             compute,
+    ///         },
     ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var gmkCluster = new Gcp.ManagedKafka.Cluster("gmk_cluster", new()
     ///     {
+    ///         Project = project.ProjectId,
     ///         ClusterId = "my-cluster",
     ///         Location = "us-central1",
     ///         CapacityConfig = new Gcp.ManagedKafka.Inputs.ClusterCapacityConfigArgs
@@ -63,26 +100,28 @@ namespace Pulumi.Gcp.ManagedKafka
     ///                 {
     ///                     new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs
     ///                     {
-    ///                         Subnet = Output.Tuple(project, mkcSubnet.Id).Apply(values =&gt;
-    ///                         {
-    ///                             var project = values.Item1;
-    ///                             var id = values.Item2;
-    ///                             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/regions/us-central1/subnetworks/{id}";
-    ///                         }),
+    ///                         Subnet = project.ProjectId.Apply(projectId =&gt; $"projects/{projectId}/regions/us-central1/subnetworks/default"),
     ///                     },
     ///                 },
     ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             managedkafka,
     ///         },
     ///     });
     /// 
     ///     var example = new Gcp.ManagedKafka.ConnectCluster("example", new()
     ///     {
+    ///         Project = project.ProjectId,
     ///         ConnectClusterId = "my-connect-cluster",
-    ///         KafkaCluster = Output.Tuple(project, gmkCluster.ClusterId).Apply(values =&gt;
+    ///         KafkaCluster = Output.Tuple(project.ProjectId, gmkCluster.ClusterId).Apply(values =&gt;
     ///         {
-    ///             var project = values.Item1;
+    ///             var projectId = values.Item1;
     ///             var clusterId = values.Item2;
-    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1/clusters/{clusterId}";
+    ///             return $"projects/{projectId}/locations/us-central1/clusters/{clusterId}";
     ///         }),
     ///         Location = "us-central1",
     ///         CapacityConfig = new Gcp.ManagedKafka.Inputs.ConnectClusterCapacityConfigArgs
@@ -98,23 +137,18 @@ namespace Pulumi.Gcp.ManagedKafka
     ///                 {
     ///                     new Gcp.ManagedKafka.Inputs.ConnectClusterGcpConfigAccessConfigNetworkConfigArgs
     ///                     {
-    ///                         PrimarySubnet = Output.Tuple(project, mkcSubnet.Id).Apply(values =&gt;
-    ///                         {
-    ///                             var project = values.Item1;
-    ///                             var id = values.Item2;
-    ///                             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/regions/us-central1/subnetworks/{id}";
-    ///                         }),
+    ///                         PrimarySubnet = project.ProjectId.Apply(projectId =&gt; $"projects/{projectId}/regions/us-central1/subnetworks/default"),
     ///                         AdditionalSubnets = new[]
     ///                         {
-    ///                             mkcAdditionalSubnet.Id,
+    ///                             mkcSecondarySubnet.Id,
     ///                         },
     ///                         DnsDomainNames = new[]
     ///                         {
-    ///                             Output.Tuple(gmkCluster.ClusterId, project).Apply(values =&gt;
+    ///                             Output.Tuple(gmkCluster.ClusterId, project.ProjectId).Apply(values =&gt;
     ///                             {
     ///                                 var clusterId = values.Item1;
-    ///                                 var project = values.Item2;
-    ///                                 return $"{clusterId}.us-central1.managedkafka-staging.{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}.cloud-staging.goog";
+    ///                                 var projectId = values.Item2;
+    ///                                 return $"{clusterId}.us-central1.managedkafka.{projectId}.cloud.goog";
     ///                             }),
     ///                         },
     ///                     },
@@ -124,6 +158,12 @@ namespace Pulumi.Gcp.ManagedKafka
     ///         Labels = 
     ///         {
     ///             { "key", "value" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             managedkafka,
     ///         },
     ///     });
     /// 

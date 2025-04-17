@@ -129,8 +129,8 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
      * ***
      * 
      */
-    @Import(name="region", required=true)
-    private Output<String> region;
+    @Import(name="region")
+    private @Nullable Output<String> region;
 
     /**
      * @return The region for the resource. It should be the same as the featureonlinestore region.
@@ -138,8 +138,8 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
      * ***
      * 
      */
-    public Output<String> region() {
-        return this.region;
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     /**
@@ -354,7 +354,7 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder region(Output<String> region) {
+        public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
@@ -420,9 +420,6 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
         public AiFeatureOnlineStoreFeatureviewArgs build() {
             if ($.featureOnlineStore == null) {
                 throw new MissingRequiredPropertyException("AiFeatureOnlineStoreFeatureviewArgs", "featureOnlineStore");
-            }
-            if ($.region == null) {
-                throw new MissingRequiredPropertyException("AiFeatureOnlineStoreFeatureviewArgs", "region");
             }
             return $;
         }

@@ -400,7 +400,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_41150",
+    ///             FilenameSuffix = "-_11380",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -456,7 +456,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_89313",
+    ///             FilenameSuffix = "-_35305",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
@@ -521,7 +521,7 @@ namespace Pulumi.Gcp.PubSub
     ///         {
     ///             Bucket = example.Name,
     ///             FilenamePrefix = "pre-",
-    ///             FilenameSuffix = "-_60646",
+    ///             FilenameSuffix = "-_62793",
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",

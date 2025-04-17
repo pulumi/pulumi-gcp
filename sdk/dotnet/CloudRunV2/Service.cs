@@ -921,6 +921,38 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Iap
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-iap-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         LaunchStage = "BETA",
+    ///         IapEnabled = true,
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -1059,6 +1091,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("generation")]
         public Output<string> Generation { get; private set; } = null!;
+
+        /// <summary>
+        /// Used to enable/disable IAP for the service.
+        /// </summary>
+        [Output("iapEnabled")]
+        public Output<bool?> IapEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
@@ -1336,6 +1374,12 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Used to enable/disable IAP for the service.
+        /// </summary>
+        [Input("iapEnabled")]
+        public Input<bool>? IapEnabled { get; set; }
+
+        /// <summary>
         /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
         /// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
         /// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
@@ -1572,6 +1616,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("generation")]
         public Input<string>? Generation { get; set; }
+
+        /// <summary>
+        /// Used to enable/disable IAP for the service.
+        /// </summary>
+        [Input("iapEnabled")]
+        public Input<bool>? IapEnabled { get; set; }
 
         /// <summary>
         /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or

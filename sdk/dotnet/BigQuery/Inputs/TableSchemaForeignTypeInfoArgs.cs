@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class TableSchemaForeignTypeInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the system which defines the foreign data type.
+        /// Specifies the system which defines the foreign data
+        /// type.
         /// </summary>
         [Input("typeSystem", required: true)]
         public Input<string> TypeSystem { get; set; } = null!;

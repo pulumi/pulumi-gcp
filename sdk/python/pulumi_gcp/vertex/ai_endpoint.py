@@ -731,7 +731,7 @@ class AiEndpoint(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_9394",
+            name="endpoint-name_55438",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -752,7 +752,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_11380",
+            name="endpoint-name_32706",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -897,7 +897,7 @@ class AiEndpoint(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_9394",
+            name="endpoint-name_55438",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
@@ -918,7 +918,7 @@ class AiEndpoint(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         endpoint = gcp.vertex.AiEndpoint("endpoint",
-            name="endpoint-name_11380",
+            name="endpoint-name_32706",
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",

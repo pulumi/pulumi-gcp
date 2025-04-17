@@ -8,7 +8,9 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.redis.inputs.ClusterAutomatedBackupConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigArgs;
+import com.pulumi.gcp.redis.inputs.ClusterGcsSourceArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+import com.pulumi.gcp.redis.inputs.ClusterManagedBackupSourceArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
@@ -99,6 +101,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gcsSource")
+    private @Nullable Output<ClusterGcsSourceArgs> gcsSource;
+
+    /**
+     * @return Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterGcsSourceArgs>> gcsSource() {
+        return Optional.ofNullable(this.gcsSource);
+    }
+
+    /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      * 
      */
@@ -128,6 +147,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterMaintenancePolicyArgs>> maintenancePolicy() {
         return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
+     * Backups that generated and managed by memorystore.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="managedBackupSource")
+    private @Nullable Output<ClusterManagedBackupSourceArgs> managedBackupSource;
+
+    /**
+     * @return Backups that generated and managed by memorystore.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterManagedBackupSourceArgs>> managedBackupSource() {
+        return Optional.ofNullable(this.managedBackupSource);
     }
 
     /**
@@ -334,8 +370,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.automatedBackupConfig = $.automatedBackupConfig;
         this.crossClusterReplicationConfig = $.crossClusterReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
+        this.gcsSource = $.gcsSource;
         this.kmsKey = $.kmsKey;
         this.maintenancePolicy = $.maintenancePolicy;
+        this.managedBackupSource = $.managedBackupSource;
         this.name = $.name;
         this.nodeType = $.nodeType;
         this.persistenceConfig = $.persistenceConfig;
@@ -464,6 +502,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gcsSource Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsSource(@Nullable Output<ClusterGcsSourceArgs> gcsSource) {
+            $.gcsSource = gcsSource;
+            return this;
+        }
+
+        /**
+         * @param gcsSource Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsSource(ClusterGcsSourceArgs gcsSource) {
+            return gcsSource(Output.of(gcsSource));
+        }
+
+        /**
          * @param kmsKey The KMS key used to encrypt the at-rest data of the cluster.
          * 
          * @return builder
@@ -505,6 +566,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenancePolicy(ClusterMaintenancePolicyArgs maintenancePolicy) {
             return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
+         * @param managedBackupSource Backups that generated and managed by memorystore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBackupSource(@Nullable Output<ClusterManagedBackupSourceArgs> managedBackupSource) {
+            $.managedBackupSource = managedBackupSource;
+            return this;
+        }
+
+        /**
+         * @param managedBackupSource Backups that generated and managed by memorystore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedBackupSource(ClusterManagedBackupSourceArgs managedBackupSource) {
+            return managedBackupSource(Output.of(managedBackupSource));
         }
 
         /**

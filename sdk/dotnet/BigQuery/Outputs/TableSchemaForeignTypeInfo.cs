@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class TableSchemaForeignTypeInfo
     {
         /// <summary>
-        /// Specifies the system which defines the foreign data type.
+        /// Specifies the system which defines the foreign data
+        /// type.
         /// </summary>
         public readonly string TypeSystem;
 

@@ -34,10 +34,12 @@ __all__ = [
     'InstanceEndpoint',
     'InstanceEndpointConnection',
     'InstanceEndpointConnectionPscAutoConnection',
+    'InstanceGcsSource',
     'InstanceMaintenancePolicy',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindow',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime',
     'InstanceMaintenanceSchedule',
+    'InstanceManagedBackupSource',
     'InstanceNodeConfig',
     'InstancePersistenceConfig',
     'InstancePersistenceConfigAofConfig',
@@ -61,10 +63,12 @@ __all__ = [
     'GetInstanceEndpointResult',
     'GetInstanceEndpointConnectionResult',
     'GetInstanceEndpointConnectionPscAutoConnectionResult',
+    'GetInstanceGcsSourceResult',
     'GetInstanceMaintenancePolicyResult',
     'GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult',
     'GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult',
     'GetInstanceMaintenanceScheduleResult',
+    'GetInstanceManagedBackupSourceResult',
     'GetInstanceNodeConfigResult',
     'GetInstancePersistenceConfigResult',
     'GetInstancePersistenceConfigAofConfigResult',
@@ -1016,6 +1020,26 @@ class InstanceEndpointConnectionPscAutoConnection(dict):
 
 
 @pulumi.output_type
+class InstanceGcsSource(dict):
+    def __init__(__self__, *,
+                 uris: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] uris: URIs of the GCS objects to import.
+               Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[builtins.str]:
+        """
+        URIs of the GCS objects to import.
+        Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class InstanceMaintenancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1324,6 +1348,24 @@ class InstanceMaintenanceSchedule(dict):
         resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class InstanceManagedBackupSource(dict):
+    def __init__(__self__, *,
+                 backup: builtins.str):
+        """
+        :param builtins.str backup: Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        """
+        pulumi.set(__self__, "backup", backup)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> builtins.str:
+        """
+        Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        """
+        return pulumi.get(self, "backup")
 
 
 @pulumi.output_type
@@ -2472,6 +2514,26 @@ class GetInstanceEndpointConnectionPscAutoConnectionResult(dict):
 
 
 @pulumi.output_type
+class GetInstanceGcsSourceResult(dict):
+    def __init__(__self__, *,
+                 uris: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] uris: URIs of the GCS objects to import.
+               Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[builtins.str]:
+        """
+        URIs of the GCS objects to import.
+        Example: gs://bucket1/object1, gs//bucket2/folder2/object2
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class GetInstanceMaintenancePolicyResult(dict):
     def __init__(__self__, *,
                  create_time: builtins.str,
@@ -2694,6 +2756,24 @@ class GetInstanceMaintenanceScheduleResult(dict):
         resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetInstanceManagedBackupSourceResult(dict):
+    def __init__(__self__, *,
+                 backup: builtins.str):
+        """
+        :param builtins.str backup: Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        """
+        pulumi.set(__self__, "backup", backup)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> builtins.str:
+        """
+        Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.
+        """
+        return pulumi.get(self, "backup")
 
 
 @pulumi.output_type

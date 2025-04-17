@@ -375,6 +375,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly automatedBackupConfig!: pulumi.Output<outputs.memorystore.InstanceAutomatedBackupConfig | undefined>;
     /**
+     * The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     */
+    public /*out*/ readonly backupCollection!: pulumi.Output<string>;
+    /**
      * Output only. Creation timestamp of the instance.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -415,6 +420,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
+     * GCS source for the instance.
+     * Structure is documented below.
+     */
+    public readonly gcsSource!: pulumi.Output<outputs.memorystore.InstanceGcsSource | undefined>;
+    /**
      * Required. The ID to use for the instance, which will become the final component of
      * the instance's resource name.
      * This value is subject to the following restrictions:
@@ -448,6 +458,11 @@ export class Instance extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.memorystore.InstanceMaintenanceSchedule[]>;
+    /**
+     * Managed backup source for the instance.
+     * Structure is documented below.
+     */
+    public readonly managedBackupSource!: pulumi.Output<outputs.memorystore.InstanceManagedBackupSource | undefined>;
     /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
@@ -558,6 +573,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["authorizationMode"] = state ? state.authorizationMode : undefined;
             resourceInputs["automatedBackupConfig"] = state ? state.automatedBackupConfig : undefined;
+            resourceInputs["backupCollection"] = state ? state.backupCollection : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["crossInstanceReplicationConfig"] = state ? state.crossInstanceReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
@@ -567,11 +583,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["endpoints"] = state ? state.endpoints : undefined;
             resourceInputs["engineConfigs"] = state ? state.engineConfigs : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["gcsSource"] = state ? state.gcsSource : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
+            resourceInputs["managedBackupSource"] = state ? state.managedBackupSource : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeConfigs"] = state ? state.nodeConfigs : undefined;
@@ -607,10 +625,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["desiredPscAutoConnections"] = args ? args.desiredPscAutoConnections : undefined;
             resourceInputs["engineConfigs"] = args ? args.engineConfigs : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["gcsSource"] = args ? args.gcsSource : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["managedBackupSource"] = args ? args.managedBackupSource : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
@@ -619,6 +639,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["shardCount"] = args ? args.shardCount : undefined;
             resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
             resourceInputs["zoneDistributionConfig"] = args ? args.zoneDistributionConfig : undefined;
+            resourceInputs["backupCollection"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -656,6 +677,11 @@ export interface InstanceState {
      * Structure is documented below.
      */
     automatedBackupConfig?: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfig>;
+    /**
+     * The backup collection full resource name.
+     * Example: projects/{project}/locations/{location}/backupCollections/{collection}
+     */
+    backupCollection?: pulumi.Input<string>;
     /**
      * Output only. Creation timestamp of the instance.
      */
@@ -697,6 +723,11 @@ export interface InstanceState {
      */
     engineVersion?: pulumi.Input<string>;
     /**
+     * GCS source for the instance.
+     * Structure is documented below.
+     */
+    gcsSource?: pulumi.Input<inputs.memorystore.InstanceGcsSource>;
+    /**
      * Required. The ID to use for the instance, which will become the final component of
      * the instance's resource name.
      * This value is subject to the following restrictions:
@@ -730,6 +761,11 @@ export interface InstanceState {
      * Structure is documented below.
      */
     maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceMaintenanceSchedule>[]>;
+    /**
+     * Managed backup source for the instance.
+     * Structure is documented below.
+     */
+    managedBackupSource?: pulumi.Input<inputs.memorystore.InstanceManagedBackupSource>;
     /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
@@ -863,6 +899,11 @@ export interface InstanceArgs {
      */
     engineVersion?: pulumi.Input<string>;
     /**
+     * GCS source for the instance.
+     * Structure is documented below.
+     */
+    gcsSource?: pulumi.Input<inputs.memorystore.InstanceGcsSource>;
+    /**
      * Required. The ID to use for the instance, which will become the final component of
      * the instance's resource name.
      * This value is subject to the following restrictions:
@@ -891,6 +932,11 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.memorystore.InstanceMaintenancePolicy>;
+    /**
+     * Managed backup source for the instance.
+     * Structure is documented below.
+     */
+    managedBackupSource?: pulumi.Input<inputs.memorystore.InstanceManagedBackupSource>;
     /**
      * Optional. cluster or cluster-disabled.
      * Possible values:

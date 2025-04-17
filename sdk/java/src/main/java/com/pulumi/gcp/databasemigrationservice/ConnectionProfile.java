@@ -115,6 +115,7 @@ import javax.annotation.Nullable;
  *                     .clientKey(sqlClientCert.privateKey())
  *                     .clientCertificate(sqlClientCert.cert())
  *                     .caCertificate(sqlClientCert.serverCaCert())
+ *                     .type("SERVER_CLIENT")
  *                     .build())
  *                 .cloudSqlId("my-database")
  *                 .build())
@@ -229,6 +230,173 @@ import javax.annotation.Nullable;
  *                     .clientKey(sqlClientCert.privateKey())
  *                     .clientCertificate(sqlClientCert.cert())
  *                     .caCertificate(sqlClientCert.serverCaCert())
+ *                     .type("SERVER_CLIENT")
+ *                     .build())
+ *                 .cloudSqlId("my-database")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sqldbUser)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Database Migration Service Connection Profile Postgres No Ssl
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.SslCert;
+ * import com.pulumi.gcp.sql.SslCertArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var postgresqldb = new DatabaseInstance("postgresqldb", DatabaseInstanceArgs.builder()
+ *             .name("my-database")
+ *             .databaseVersion("POSTGRES_12")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-custom-2-13312")
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()
+ *             .commonName("my-cert")
+ *             .instance(postgresqldb.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(postgresqldb)
+ *                 .build());
+ * 
+ *         var sqldbUser = new User("sqldbUser", UserArgs.builder()
+ *             .name("my-username")
+ *             .instance(postgresqldb.name())
+ *             .password("my-password")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sqlClientCert)
+ *                 .build());
+ * 
+ *         var postgresprofile = new ConnectionProfile("postgresprofile", ConnectionProfileArgs.builder()
+ *             .location("us-central1")
+ *             .connectionProfileId("my-profileid")
+ *             .displayName("my-profileid_display")
+ *             .labels(Map.of("foo", "bar"))
+ *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
+ *                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+ *                 .port(5432)
+ *                 .username(sqldbUser.name())
+ *                 .password(sqldbUser.password())
+ *                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
+ *                     .type("NONE")
+ *                     .build())
+ *                 .cloudSqlId("my-database")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sqldbUser)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Database Migration Service Connection Profile Postgres Required Ssl
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.SslCert;
+ * import com.pulumi.gcp.sql.SslCertArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var postgresqldb = new DatabaseInstance("postgresqldb", DatabaseInstanceArgs.builder()
+ *             .name("my-database")
+ *             .databaseVersion("POSTGRES_12")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-custom-2-13312")
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var sqlClientCert = new SslCert("sqlClientCert", SslCertArgs.builder()
+ *             .commonName("my-cert")
+ *             .instance(postgresqldb.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(postgresqldb)
+ *                 .build());
+ * 
+ *         var sqldbUser = new User("sqldbUser", UserArgs.builder()
+ *             .name("my-username")
+ *             .instance(postgresqldb.name())
+ *             .password("my-password")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sqlClientCert)
+ *                 .build());
+ * 
+ *         var postgresprofile = new ConnectionProfile("postgresprofile", ConnectionProfileArgs.builder()
+ *             .location("us-central1")
+ *             .connectionProfileId("my-profileid")
+ *             .displayName("my-profileid_display")
+ *             .labels(Map.of("foo", "bar"))
+ *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
+ *                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+ *                 .port(5432)
+ *                 .username(sqldbUser.name())
+ *                 .password(sqldbUser.password())
+ *                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
+ *                     .type("REQUIRED")
  *                     .build())
  *                 .cloudSqlId("my-database")
  *                 .build())

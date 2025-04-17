@@ -27,6 +27,7 @@ class DatabaseArgs:
                  app_engine_integration_mode: Optional[pulumi.Input[builtins.str]] = None,
                  cmek_config: Optional[pulumi.Input['DatabaseCmekConfigArgs']] = None,
                  concurrency_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 database_edition: Optional[pulumi.Input[builtins.str]] = None,
                  delete_protection_state: Optional[pulumi.Input[builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -51,6 +52,8 @@ class DatabaseArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+        :param pulumi.Input[builtins.str] database_edition: The database edition.
+               Possible values are: `STANDARD`, `ENTERPRISE`.
         :param pulumi.Input[builtins.str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -75,6 +78,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "cmek_config", cmek_config)
         if concurrency_mode is not None:
             pulumi.set(__self__, "concurrency_mode", concurrency_mode)
+        if database_edition is not None:
+            pulumi.set(__self__, "database_edition", database_edition)
         if delete_protection_state is not None:
             pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if deletion_policy is not None:
@@ -159,6 +164,19 @@ class DatabaseArgs:
         pulumi.set(self, "concurrency_mode", value)
 
     @property
+    @pulumi.getter(name="databaseEdition")
+    def database_edition(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The database edition.
+        Possible values are: `STANDARD`, `ENTERPRISE`.
+        """
+        return pulumi.get(self, "database_edition")
+
+    @database_edition.setter
+    def database_edition(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "database_edition", value)
+
+    @property
     @pulumi.getter(name="deleteProtectionState")
     def delete_protection_state(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "delete_protection_state")
@@ -232,6 +250,7 @@ class _DatabaseState:
                  cmek_config: Optional[pulumi.Input['DatabaseCmekConfigArgs']] = None,
                  concurrency_mode: Optional[pulumi.Input[builtins.str]] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
+                 database_edition: Optional[pulumi.Input[builtins.str]] = None,
                  delete_protection_state: Optional[pulumi.Input[builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[builtins.str]] = None,
                  earliest_version_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -256,6 +275,8 @@ class _DatabaseState:
         :param pulumi.Input[builtins.str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[builtins.str] create_time: Output only. The timestamp at which this database was created.
+        :param pulumi.Input[builtins.str] database_edition: The database edition.
+               Possible values are: `STANDARD`, `ENTERPRISE`.
         :param pulumi.Input[builtins.str] earliest_version_time: Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
                This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -305,6 +326,8 @@ class _DatabaseState:
             pulumi.set(__self__, "concurrency_mode", concurrency_mode)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if database_edition is not None:
+            pulumi.set(__self__, "database_edition", database_edition)
         if delete_protection_state is not None:
             pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if deletion_policy is not None:
@@ -384,6 +407,19 @@ class _DatabaseState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="databaseEdition")
+    def database_edition(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The database edition.
+        Possible values are: `STANDARD`, `ENTERPRISE`.
+        """
+        return pulumi.get(self, "database_edition")
+
+    @database_edition.setter
+    def database_edition(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "database_edition", value)
 
     @property
     @pulumi.getter(name="deleteProtectionState")
@@ -573,6 +609,7 @@ class Database(pulumi.CustomResource):
                  app_engine_integration_mode: Optional[pulumi.Input[builtins.str]] = None,
                  cmek_config: Optional[pulumi.Input[Union['DatabaseCmekConfigArgs', 'DatabaseCmekConfigArgsDict']]] = None,
                  concurrency_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 database_edition: Optional[pulumi.Input[builtins.str]] = None,
                  delete_protection_state: Optional[pulumi.Input[builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[builtins.str]] = None,
                  location_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -722,6 +759,20 @@ class Database(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
+        ### Firestore Database Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        enterprise_db = gcp.firestore.Database("enterprise-db",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            deletion_policy="DELETE")
+        ```
 
         ## Import
 
@@ -757,6 +808,8 @@ class Database(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+        :param pulumi.Input[builtins.str] database_edition: The database edition.
+               Possible values are: `STANDARD`, `ENTERPRISE`.
         :param pulumi.Input[builtins.str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[builtins.str] name: The ID to use for the database, which will become the final
@@ -929,6 +982,20 @@ class Database(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
+        ### Firestore Database Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        enterprise_db = gcp.firestore.Database("enterprise-db",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            deletion_policy="DELETE")
+        ```
 
         ## Import
 
@@ -972,6 +1039,7 @@ class Database(pulumi.CustomResource):
                  app_engine_integration_mode: Optional[pulumi.Input[builtins.str]] = None,
                  cmek_config: Optional[pulumi.Input[Union['DatabaseCmekConfigArgs', 'DatabaseCmekConfigArgsDict']]] = None,
                  concurrency_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 database_edition: Optional[pulumi.Input[builtins.str]] = None,
                  delete_protection_state: Optional[pulumi.Input[builtins.str]] = None,
                  deletion_policy: Optional[pulumi.Input[builtins.str]] = None,
                  location_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -991,6 +1059,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["app_engine_integration_mode"] = app_engine_integration_mode
             __props__.__dict__["cmek_config"] = cmek_config
             __props__.__dict__["concurrency_mode"] = concurrency_mode
+            __props__.__dict__["database_edition"] = database_edition
             __props__.__dict__["delete_protection_state"] = delete_protection_state
             __props__.__dict__["deletion_policy"] = deletion_policy
             if location_id is None and not opts.urn:
@@ -1023,6 +1092,7 @@ class Database(pulumi.CustomResource):
             cmek_config: Optional[pulumi.Input[Union['DatabaseCmekConfigArgs', 'DatabaseCmekConfigArgsDict']]] = None,
             concurrency_mode: Optional[pulumi.Input[builtins.str]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
+            database_edition: Optional[pulumi.Input[builtins.str]] = None,
             delete_protection_state: Optional[pulumi.Input[builtins.str]] = None,
             deletion_policy: Optional[pulumi.Input[builtins.str]] = None,
             earliest_version_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -1052,6 +1122,8 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[builtins.str] create_time: Output only. The timestamp at which this database was created.
+        :param pulumi.Input[builtins.str] database_edition: The database edition.
+               Possible values are: `STANDARD`, `ENTERPRISE`.
         :param pulumi.Input[builtins.str] earliest_version_time: Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
                This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -1101,6 +1173,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["cmek_config"] = cmek_config
         __props__.__dict__["concurrency_mode"] = concurrency_mode
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["database_edition"] = database_edition
         __props__.__dict__["delete_protection_state"] = delete_protection_state
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["earliest_version_time"] = earliest_version_time
@@ -1152,6 +1225,15 @@ class Database(pulumi.CustomResource):
         Output only. The timestamp at which this database was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="databaseEdition")
+    def database_edition(self) -> pulumi.Output[builtins.str]:
+        """
+        The database edition.
+        Possible values are: `STANDARD`, `ENTERPRISE`.
+        """
+        return pulumi.get(self, "database_edition")
 
     @property
     @pulumi.getter(name="deleteProtectionState")

@@ -174,6 +174,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly string Etag;
         public readonly string ExpireTime;
         public readonly string Generation;
+        public readonly bool IapEnabled;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -239,6 +240,8 @@ namespace Pulumi.Gcp.CloudRunV2
 
             string generation,
 
+            bool iapEnabled,
+
             string id,
 
             string ingress,
@@ -303,6 +306,7 @@ namespace Pulumi.Gcp.CloudRunV2
             Etag = etag;
             ExpireTime = expireTime;
             Generation = generation;
+            IapEnabled = iapEnabled;
             Id = id;
             Ingress = ingress;
             InvokerIamDisabled = invokerIamDisabled;

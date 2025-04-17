@@ -33,14 +33,16 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArg
     }
 
     /**
-     * Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+     * Key-value pairs that define the initialization
+     * parameters for the serialization library. Maximum size 10 Kib.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<Map<String,String>> parameters;
 
     /**
-     * @return Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+     * @return Key-value pairs that define the initialization
+     * parameters for the serialization library. Maximum size 10 Kib.
      * 
      */
     public Optional<Output<Map<String,String>>> parameters() {
@@ -48,14 +50,20 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArg
     }
 
     /**
-     * Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+     * Specifies a fully-qualified class name of
+     * the serialization library that is responsible for the translation of data
+     * between table representation and the underlying low-level input and output
+     * format structures. The maximum length is 256 characters.
      * 
      */
     @Import(name="serializationLibrary", required=true)
     private Output<String> serializationLibrary;
 
     /**
-     * @return Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+     * @return Specifies a fully-qualified class name of
+     * the serialization library that is responsible for the translation of data
+     * between table representation and the underlying low-level input and output
+     * format structures. The maximum length is 256 characters.
      * 
      */
     public Output<String> serializationLibrary() {
@@ -110,7 +118,8 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArg
         }
 
         /**
-         * @param parameters Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+         * @param parameters Key-value pairs that define the initialization
+         * parameters for the serialization library. Maximum size 10 Kib.
          * 
          * @return builder
          * 
@@ -121,7 +130,8 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArg
         }
 
         /**
-         * @param parameters Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+         * @param parameters Key-value pairs that define the initialization
+         * parameters for the serialization library. Maximum size 10 Kib.
          * 
          * @return builder
          * 
@@ -131,7 +141,10 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArg
         }
 
         /**
-         * @param serializationLibrary Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+         * @param serializationLibrary Specifies a fully-qualified class name of
+         * the serialization library that is responsible for the translation of data
+         * between table representation and the underlying low-level input and output
+         * format structures. The maximum length is 256 characters.
          * 
          * @return builder
          * 
@@ -142,7 +155,10 @@ public final class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArg
         }
 
         /**
-         * @param serializationLibrary Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+         * @param serializationLibrary Specifies a fully-qualified class name of
+         * the serialization library that is responsible for the translation of data
+         * between table representation and the underlying low-level input and output
+         * format structures. The maximum length is 256 characters.
          * 
          * @return builder
          * 

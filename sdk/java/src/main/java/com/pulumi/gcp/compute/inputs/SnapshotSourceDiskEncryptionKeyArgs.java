@@ -16,6 +16,21 @@ public final class SnapshotSourceDiskEncryptionKeyArgs extends com.pulumi.resour
     public static final SnapshotSourceDiskEncryptionKeyArgs Empty = new SnapshotSourceDiskEncryptionKeyArgs();
 
     /**
+     * The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
+    @Import(name="kmsKeySelfLink")
+    private @Nullable Output<String> kmsKeySelfLink;
+
+    /**
+     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
+    public Optional<Output<String>> kmsKeySelfLink() {
+        return Optional.ofNullable(this.kmsKeySelfLink);
+    }
+
+    /**
      * The service account used for the encryption request for the given KMS key.
      * If absent, the Compute Engine Service Agent service account is used.
      * 
@@ -51,11 +66,32 @@ public final class SnapshotSourceDiskEncryptionKeyArgs extends com.pulumi.resour
         return Optional.ofNullable(this.rawKey);
     }
 
+    /**
+     * Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    @Import(name="rsaEncryptedKey")
+    private @Nullable Output<String> rsaEncryptedKey;
+
+    /**
+     * @return Specifies an encryption key stored in Google Cloud KMS, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     */
+    public Optional<Output<String>> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
+    }
+
     private SnapshotSourceDiskEncryptionKeyArgs() {}
 
     private SnapshotSourceDiskEncryptionKeyArgs(SnapshotSourceDiskEncryptionKeyArgs $) {
+        this.kmsKeySelfLink = $.kmsKeySelfLink;
         this.kmsKeyServiceAccount = $.kmsKeyServiceAccount;
         this.rawKey = $.rawKey;
+        this.rsaEncryptedKey = $.rsaEncryptedKey;
     }
 
     public static Builder builder() {
@@ -74,6 +110,27 @@ public final class SnapshotSourceDiskEncryptionKeyArgs extends com.pulumi.resour
 
         public Builder(SnapshotSourceDiskEncryptionKeyArgs defaults) {
             $ = new SnapshotSourceDiskEncryptionKeyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param kmsKeySelfLink The name of the encryption key that is stored in Google Cloud KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeySelfLink(@Nullable Output<String> kmsKeySelfLink) {
+            $.kmsKeySelfLink = kmsKeySelfLink;
+            return this;
+        }
+
+        /**
+         * @param kmsKeySelfLink The name of the encryption key that is stored in Google Cloud KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeySelfLink(String kmsKeySelfLink) {
+            return kmsKeySelfLink(Output.of(kmsKeySelfLink));
         }
 
         /**
@@ -122,6 +179,31 @@ public final class SnapshotSourceDiskEncryptionKeyArgs extends com.pulumi.resour
          */
         public Builder rawKey(String rawKey) {
             return rawKey(Output.of(rawKey));
+        }
+
+        /**
+         * @param rsaEncryptedKey Specifies an encryption key stored in Google Cloud KMS, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKey(@Nullable Output<String> rsaEncryptedKey) {
+            $.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+
+        /**
+         * @param rsaEncryptedKey Specifies an encryption key stored in Google Cloud KMS, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKey(String rsaEncryptedKey) {
+            return rsaEncryptedKey(Output.of(rsaEncryptedKey));
         }
 
         public SnapshotSourceDiskEncryptionKeyArgs build() {

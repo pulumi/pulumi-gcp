@@ -63,6 +63,7 @@ type LookupInstanceArgs struct {
 type LookupInstanceResult struct {
 	AuthorizationMode               string                                      `pulumi:"authorizationMode"`
 	AutomatedBackupConfigs          []GetInstanceAutomatedBackupConfig          `pulumi:"automatedBackupConfigs"`
+	BackupCollection                string                                      `pulumi:"backupCollection"`
 	CreateTime                      string                                      `pulumi:"createTime"`
 	CrossInstanceReplicationConfigs []GetInstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfigs"`
 	DeletionProtectionEnabled       bool                                        `pulumi:"deletionProtectionEnabled"`
@@ -72,6 +73,7 @@ type LookupInstanceResult struct {
 	Endpoints                       []GetInstanceEndpoint                       `pulumi:"endpoints"`
 	EngineConfigs                   map[string]string                           `pulumi:"engineConfigs"`
 	EngineVersion                   string                                      `pulumi:"engineVersion"`
+	GcsSources                      []GetInstanceGcsSource                      `pulumi:"gcsSources"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                      string                              `pulumi:"id"`
 	InstanceId              string                              `pulumi:"instanceId"`
@@ -79,6 +81,7 @@ type LookupInstanceResult struct {
 	Location                *string                             `pulumi:"location"`
 	MaintenancePolicies     []GetInstanceMaintenancePolicy      `pulumi:"maintenancePolicies"`
 	MaintenanceSchedules    []GetInstanceMaintenanceSchedule    `pulumi:"maintenanceSchedules"`
+	ManagedBackupSources    []GetInstanceManagedBackupSource    `pulumi:"managedBackupSources"`
 	Mode                    string                              `pulumi:"mode"`
 	Name                    string                              `pulumi:"name"`
 	NodeConfigs             []GetInstanceNodeConfig             `pulumi:"nodeConfigs"`
@@ -147,6 +150,10 @@ func (o LookupInstanceResultOutput) AutomatedBackupConfigs() GetInstanceAutomate
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceAutomatedBackupConfig { return v.AutomatedBackupConfigs }).(GetInstanceAutomatedBackupConfigArrayOutput)
 }
 
+func (o LookupInstanceResultOutput) BackupCollection() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.BackupCollection }).(pulumi.StringOutput)
+}
+
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -185,6 +192,10 @@ func (o LookupInstanceResultOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
+func (o LookupInstanceResultOutput) GcsSources() GetInstanceGcsSourceArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceGcsSource { return v.GcsSources }).(GetInstanceGcsSourceArrayOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Id }).(pulumi.StringOutput)
@@ -208,6 +219,10 @@ func (o LookupInstanceResultOutput) MaintenancePolicies() GetInstanceMaintenance
 
 func (o LookupInstanceResultOutput) MaintenanceSchedules() GetInstanceMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceMaintenanceSchedule { return v.MaintenanceSchedules }).(GetInstanceMaintenanceScheduleArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) ManagedBackupSources() GetInstanceManagedBackupSourceArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceManagedBackupSource { return v.ManagedBackupSources }).(GetInstanceManagedBackupSourceArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) Mode() pulumi.StringOutput {

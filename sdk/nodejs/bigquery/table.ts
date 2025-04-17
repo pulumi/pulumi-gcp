@@ -187,7 +187,8 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly expirationTime!: pulumi.Output<number>;
     /**
-     * Options defining open source compatible table.
+     * Options defining open source
+     * compatible table. Structure is documented below.
      */
     public readonly externalCatalogTableOptions!: pulumi.Output<outputs.bigquery.TableExternalCatalogTableOptions | undefined>;
     /**
@@ -274,7 +275,8 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly schema!: pulumi.Output<string>;
     /**
-     * Specifies metadata of the foreign data type definition in field schema.
+     * Specifies metadata of the foreign data
+     * type definition in field schema. Structure is documented below.
      */
     public readonly schemaForeignTypeInfo!: pulumi.Output<outputs.bigquery.TableSchemaForeignTypeInfo | undefined>;
     /**
@@ -489,7 +491,8 @@ export interface TableState {
      */
     expirationTime?: pulumi.Input<number>;
     /**
-     * Options defining open source compatible table.
+     * Options defining open source
+     * compatible table. Structure is documented below.
      */
     externalCatalogTableOptions?: pulumi.Input<inputs.bigquery.TableExternalCatalogTableOptions>;
     /**
@@ -576,7 +579,8 @@ export interface TableState {
      */
     schema?: pulumi.Input<string>;
     /**
-     * Specifies metadata of the foreign data type definition in field schema.
+     * Specifies metadata of the foreign data
+     * type definition in field schema. Structure is documented below.
      */
     schemaForeignTypeInfo?: pulumi.Input<inputs.bigquery.TableSchemaForeignTypeInfo>;
     /**
@@ -664,7 +668,8 @@ export interface TableArgs {
      */
     expirationTime?: pulumi.Input<number>;
     /**
-     * Options defining open source compatible table.
+     * Options defining open source
+     * compatible table. Structure is documented below.
      */
     externalCatalogTableOptions?: pulumi.Input<inputs.bigquery.TableExternalCatalogTableOptions>;
     /**
@@ -727,7 +732,8 @@ export interface TableArgs {
      */
     schema?: pulumi.Input<string>;
     /**
-     * Specifies metadata of the foreign data type definition in field schema.
+     * Specifies metadata of the foreign data
+     * type definition in field schema. Structure is documented below.
      */
     schemaForeignTypeInfo?: pulumi.Input<inputs.bigquery.TableSchemaForeignTypeInfo>;
     /**

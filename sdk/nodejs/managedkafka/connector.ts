@@ -14,29 +14,46 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
  *
- * const mkcNetwork = new gcp.compute.Network("mkc_network", {
- *     name: "my-network-0",
- *     autoCreateSubnetworks: false,
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "tf-test_80332",
+ *     name: "tf-test_13293",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * });
- * const mkcSubnet = new gcp.compute.Subnetwork("mkc_subnet", {
- *     name: "my-subnetwork-0",
- *     ipCidrRange: "10.4.0.0/16",
- *     region: "us-central1",
- *     network: mkcNetwork.id,
+ * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
  * });
- * const mkcAdditionalSubnet = new gcp.compute.Subnetwork("mkc_additional_subnet", {
- *     name: "my-additional-subnetwork-0",
+ * const compute = new gcp.projects.Service("compute", {
+ *     project: project.projectId,
+ *     service: "compute.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const managedkafka = new gcp.projects.Service("managedkafka", {
+ *     project: project.projectId,
+ *     service: "managedkafka.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const mkcSecondarySubnet = new gcp.compute.Subnetwork("mkc_secondary_subnet", {
+ *     project: project.projectId,
+ *     name: "my-secondary-subnetwork-00",
  *     ipCidrRange: "10.5.0.0/16",
  *     region: "us-central1",
- *     network: mkcNetwork.id,
+ *     network: "default",
+ * }, {
+ *     dependsOn: [compute],
  * });
  * const cpsTopic = new gcp.pubsub.Topic("cps_topic", {
+ *     project: project.projectId,
  *     name: "my-cps-topic",
  *     messageRetentionDuration: "86600s",
  * });
- * const project = gcp.organizations.getProject({});
  * const gmkCluster = new gcp.managedkafka.Cluster("gmk_cluster", {
+ *     project: project.projectId,
  *     clusterId: "my-cluster",
  *     location: "us-central1",
  *     capacityConfig: {
@@ -46,21 +63,27 @@ import * as utilities from "../utilities";
  *     gcpConfig: {
  *         accessConfig: {
  *             networkConfigs: [{
- *                 subnet: pulumi.all([project, mkcSubnet.id]).apply(([project, id]) => `projects/${project.projectId}/regions/us-central1/subnetworks/${id}`),
+ *                 subnet: pulumi.interpolate`projects/${project.projectId}/regions/us-central1/subnetworks/default`,
  *             }],
  *         },
  *     },
+ * }, {
+ *     dependsOn: [managedkafka],
  * });
  * const gmkTopic = new gcp.managedkafka.Topic("gmk_topic", {
+ *     project: project.projectId,
  *     topicId: "my-topic",
  *     cluster: gmkCluster.clusterId,
  *     location: "us-central1",
  *     partitionCount: 2,
  *     replicationFactor: 3,
+ * }, {
+ *     dependsOn: [managedkafka],
  * });
  * const mkcCluster = new gcp.managedkafka.ConnectCluster("mkc_cluster", {
+ *     project: project.projectId,
  *     connectClusterId: "my-connect-cluster",
- *     kafkaCluster: pulumi.all([project, gmkCluster.clusterId]).apply(([project, clusterId]) => `projects/${project.projectId}/locations/us-central1/clusters/${clusterId}`),
+ *     kafkaCluster: pulumi.interpolate`projects/${project.projectId}/locations/us-central1/clusters/${gmkCluster.clusterId}`,
  *     location: "us-central1",
  *     capacityConfig: {
  *         vcpuCount: "12",
@@ -69,17 +92,20 @@ import * as utilities from "../utilities";
  *     gcpConfig: {
  *         accessConfig: {
  *             networkConfigs: [{
- *                 primarySubnet: pulumi.all([project, mkcSubnet.id]).apply(([project, id]) => `projects/${project.projectId}/regions/us-central1/subnetworks/${id}`),
- *                 additionalSubnets: [mkcAdditionalSubnet.id],
- *                 dnsDomainNames: [pulumi.all([gmkCluster.clusterId, project]).apply(([clusterId, project]) => `${clusterId}.us-central1.managedkafka-staging.${project.projectId}.cloud-staging.goog`)],
+ *                 primarySubnet: pulumi.interpolate`projects/${project.projectId}/regions/us-central1/subnetworks/default`,
+ *                 additionalSubnets: [mkcSecondarySubnet.id],
+ *                 dnsDomainNames: [pulumi.interpolate`${gmkCluster.clusterId}.us-central1.managedkafka.${project.projectId}.cloud.goog`],
  *             }],
  *         },
  *     },
  *     labels: {
  *         key: "value",
  *     },
+ * }, {
+ *     dependsOn: [managedkafka],
  * });
  * const example = new gcp.managedkafka.Connector("example", {
+ *     project: project.projectId,
  *     connectorId: "my-connector",
  *     connectCluster: mkcCluster.connectClusterId,
  *     location: "us-central1",
@@ -89,7 +115,7 @@ import * as utilities from "../utilities";
  *         "tasks.max": "1",
  *         topics: gmkTopic.topicId,
  *         "cps.topic": cpsTopic.name,
- *         "cps.project": project.then(project => project.projectId),
+ *         "cps.project": project.projectId,
  *         "value.converter": "org.apache.kafka.connect.storage.StringConverter",
  *         "key.converter": "org.apache.kafka.connect.storage.StringConverter",
  *     },
@@ -97,6 +123,8 @@ import * as utilities from "../utilities";
  *         minimumBackoff: "60s",
  *         maximumBackoff: "1800s",
  *     },
+ * }, {
+ *     dependsOn: [managedkafka],
  * });
  * ```
  *

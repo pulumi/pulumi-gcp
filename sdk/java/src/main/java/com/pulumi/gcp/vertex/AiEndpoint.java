@@ -172,7 +172,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
- *             .name("endpoint-name_9394")
+ *             .name("endpoint-name_55438")
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .location("us-central1")
@@ -218,7 +218,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
- *             .name("endpoint-name_11380")
+ *             .name("endpoint-name_32706")
  *             .displayName("sample-endpoint")
  *             .description("A sample vertex endpoint")
  *             .location("us-central1")

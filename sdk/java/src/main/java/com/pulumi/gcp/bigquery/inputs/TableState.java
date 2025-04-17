@@ -229,14 +229,16 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Options defining open source compatible table.
+     * Options defining open source
+     * compatible table. Structure is documented below.
      * 
      */
     @Import(name="externalCatalogTableOptions")
     private @Nullable Output<TableExternalCatalogTableOptionsArgs> externalCatalogTableOptions;
 
     /**
-     * @return Options defining open source compatible table.
+     * @return Options defining open source
+     * compatible table. Structure is documented below.
      * 
      */
     public Optional<Output<TableExternalCatalogTableOptionsArgs>> externalCatalogTableOptions() {
@@ -522,14 +524,16 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies metadata of the foreign data type definition in field schema.
+     * Specifies metadata of the foreign data
+     * type definition in field schema. Structure is documented below.
      * 
      */
     @Import(name="schemaForeignTypeInfo")
     private @Nullable Output<TableSchemaForeignTypeInfoArgs> schemaForeignTypeInfo;
 
     /**
-     * @return Specifies metadata of the foreign data type definition in field schema.
+     * @return Specifies metadata of the foreign data
+     * type definition in field schema. Structure is documented below.
      * 
      */
     public Optional<Output<TableSchemaForeignTypeInfoArgs>> schemaForeignTypeInfo() {
@@ -1004,7 +1008,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalCatalogTableOptions Options defining open source compatible table.
+         * @param externalCatalogTableOptions Options defining open source
+         * compatible table. Structure is documented below.
          * 
          * @return builder
          * 
@@ -1015,7 +1020,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalCatalogTableOptions Options defining open source compatible table.
+         * @param externalCatalogTableOptions Options defining open source
+         * compatible table. Structure is documented below.
          * 
          * @return builder
          * 
@@ -1399,7 +1405,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaForeignTypeInfo Specifies metadata of the foreign data type definition in field schema.
+         * @param schemaForeignTypeInfo Specifies metadata of the foreign data
+         * type definition in field schema. Structure is documented below.
          * 
          * @return builder
          * 
@@ -1410,7 +1417,8 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaForeignTypeInfo Specifies metadata of the foreign data type definition in field schema.
+         * @param schemaForeignTypeInfo Specifies metadata of the foreign data
+         * type definition in field schema. Structure is documented below.
          * 
          * @return builder
          * 

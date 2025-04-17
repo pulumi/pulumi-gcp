@@ -97,6 +97,11 @@ export class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The trial configuration of the Storage Intelligence resource.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly trialConfigs!: pulumi.Output<outputs.storage.ControlProjectIntelligenceConfigTrialConfig[]>;
+    /**
      * The time at which the Storage Intelligence Config resource is last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -118,6 +123,7 @@ export class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
             resourceInputs["effectiveIntelligenceConfigs"] = state ? state.effectiveIntelligenceConfigs : undefined;
             resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["trialConfigs"] = state ? state.trialConfigs : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as ControlProjectIntelligenceConfigArgs | undefined;
@@ -125,6 +131,7 @@ export class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["effectiveIntelligenceConfigs"] = undefined /*out*/;
+            resourceInputs["trialConfigs"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -157,6 +164,11 @@ export interface ControlProjectIntelligenceConfigState {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * The trial configuration of the Storage Intelligence resource.
+     * Structure is documented below.
+     */
+    trialConfigs?: pulumi.Input<pulumi.Input<inputs.storage.ControlProjectIntelligenceConfigTrialConfig>[]>;
     /**
      * The time at which the Storage Intelligence Config resource is last updated.
      */

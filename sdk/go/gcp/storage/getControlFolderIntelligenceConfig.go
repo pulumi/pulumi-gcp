@@ -63,9 +63,10 @@ type LookupControlFolderIntelligenceConfigResult struct {
 	EffectiveIntelligenceConfigs []GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig `pulumi:"effectiveIntelligenceConfigs"`
 	Filters                      []GetControlFolderIntelligenceConfigFilter                      `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	Name       string `pulumi:"name"`
-	UpdateTime string `pulumi:"updateTime"`
+	Id           string                                          `pulumi:"id"`
+	Name         string                                          `pulumi:"name"`
+	TrialConfigs []GetControlFolderIntelligenceConfigTrialConfig `pulumi:"trialConfigs"`
+	UpdateTime   string                                          `pulumi:"updateTime"`
 }
 
 func LookupControlFolderIntelligenceConfigOutput(ctx *pulumi.Context, args LookupControlFolderIntelligenceConfigOutputArgs, opts ...pulumi.InvokeOption) LookupControlFolderIntelligenceConfigResultOutput {
@@ -125,6 +126,12 @@ func (o LookupControlFolderIntelligenceConfigResultOutput) Id() pulumi.StringOut
 
 func (o LookupControlFolderIntelligenceConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupControlFolderIntelligenceConfigResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupControlFolderIntelligenceConfigResultOutput) TrialConfigs() GetControlFolderIntelligenceConfigTrialConfigArrayOutput {
+	return o.ApplyT(func(v LookupControlFolderIntelligenceConfigResult) []GetControlFolderIntelligenceConfigTrialConfig {
+		return v.TrialConfigs
+	}).(GetControlFolderIntelligenceConfigTrialConfigArrayOutput)
 }
 
 func (o LookupControlFolderIntelligenceConfigResultOutput) UpdateTime() pulumi.StringOutput {

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ManagedKafka.Inputs
         private InputList<Inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs>? _networkConfigs;
 
         /// <summary>
-        /// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
+        /// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs> NetworkConfigs

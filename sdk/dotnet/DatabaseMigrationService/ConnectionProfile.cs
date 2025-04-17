@@ -89,6 +89,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///                 ClientKey = sqlClientCert.PrivateKey,
     ///                 ClientCertificate = sqlClientCert.Cert,
     ///                 CaCertificate = sqlClientCert.ServerCaCert,
+    ///                 Type = "SERVER_CLIENT",
     ///             },
     ///             CloudSqlId = "my-database",
     ///         },
@@ -211,6 +212,161 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///                 ClientKey = sqlClientCert.PrivateKey,
     ///                 ClientCertificate = sqlClientCert.Cert,
     ///                 CaCertificate = sqlClientCert.ServerCaCert,
+    ///                 Type = "SERVER_CLIENT",
+    ///             },
+    ///             CloudSqlId = "my-database",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             sqldbUser,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Database Migration Service Connection Profile Postgres No Ssl
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var postgresqldb = new Gcp.Sql.DatabaseInstance("postgresqldb", new()
+    ///     {
+    ///         Name = "my-database",
+    ///         DatabaseVersion = "POSTGRES_12",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-custom-2-13312",
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var sqlClientCert = new Gcp.Sql.SslCert("sql_client_cert", new()
+    ///     {
+    ///         CommonName = "my-cert",
+    ///         Instance = postgresqldb.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             postgresqldb,
+    ///         },
+    ///     });
+    /// 
+    ///     var sqldbUser = new Gcp.Sql.User("sqldb_user", new()
+    ///     {
+    ///         Name = "my-username",
+    ///         Instance = postgresqldb.Name,
+    ///         Password = "my-password",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             sqlClientCert,
+    ///         },
+    ///     });
+    /// 
+    ///     var postgresprofile = new Gcp.DatabaseMigrationService.ConnectionProfile("postgresprofile", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "my-profileid",
+    ///         DisplayName = "my-profileid_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Postgresql = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlArgs
+    ///         {
+    ///             Host = postgresqldb.IpAddresses.Apply(ipAddresses =&gt; ipAddresses[0].IpAddress),
+    ///             Port = 5432,
+    ///             Username = sqldbUser.Name,
+    ///             Password = sqldbUser.Password,
+    ///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
+    ///             {
+    ///                 Type = "NONE",
+    ///             },
+    ///             CloudSqlId = "my-database",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             sqldbUser,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Database Migration Service Connection Profile Postgres Required Ssl
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var postgresqldb = new Gcp.Sql.DatabaseInstance("postgresqldb", new()
+    ///     {
+    ///         Name = "my-database",
+    ///         DatabaseVersion = "POSTGRES_12",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-custom-2-13312",
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var sqlClientCert = new Gcp.Sql.SslCert("sql_client_cert", new()
+    ///     {
+    ///         CommonName = "my-cert",
+    ///         Instance = postgresqldb.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             postgresqldb,
+    ///         },
+    ///     });
+    /// 
+    ///     var sqldbUser = new Gcp.Sql.User("sqldb_user", new()
+    ///     {
+    ///         Name = "my-username",
+    ///         Instance = postgresqldb.Name,
+    ///         Password = "my-password",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             sqlClientCert,
+    ///         },
+    ///     });
+    /// 
+    ///     var postgresprofile = new Gcp.DatabaseMigrationService.ConnectionProfile("postgresprofile", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "my-profileid",
+    ///         DisplayName = "my-profileid_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Postgresql = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlArgs
+    ///         {
+    ///             Host = postgresqldb.IpAddresses.Apply(ipAddresses =&gt; ipAddresses[0].IpAddress),
+    ///             Port = 5432,
+    ///             Username = sqldbUser.Name,
+    ///             Password = sqldbUser.Password,
+    ///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
+    ///             {
+    ///                 Type = "REQUIRED",
     ///             },
     ///             CloudSqlId = "my-database",
     ///         },

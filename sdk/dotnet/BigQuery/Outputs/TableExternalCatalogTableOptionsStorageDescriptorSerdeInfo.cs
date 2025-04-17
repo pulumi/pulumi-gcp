@@ -18,11 +18,15 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+        /// Key-value pairs that define the initialization
+        /// parameters for the serialization library. Maximum size 10 Kib.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Parameters;
         /// <summary>
-        /// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+        /// Specifies a fully-qualified class name of
+        /// the serialization library that is responsible for the translation of data
+        /// between table representation and the underlying low-level input and output
+        /// format structures. The maximum length is 256 characters.
         /// </summary>
         public readonly string SerializationLibrary;
 

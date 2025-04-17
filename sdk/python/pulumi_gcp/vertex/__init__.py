@@ -14,8 +14,17 @@ from .ai_endpoint_iam_member import *
 from .ai_endpoint_iam_policy import *
 from .ai_feature_group import *
 from .ai_feature_group_feature import *
+from .ai_feature_group_iam_binding import *
+from .ai_feature_group_iam_member import *
+from .ai_feature_group_iam_policy import *
 from .ai_feature_online_store import *
 from .ai_feature_online_store_featureview import *
+from .ai_feature_online_store_featureview_iam_binding import *
+from .ai_feature_online_store_featureview_iam_member import *
+from .ai_feature_online_store_featureview_iam_policy import *
+from .ai_feature_online_store_iam_binding import *
+from .ai_feature_online_store_iam_member import *
+from .ai_feature_online_store_iam_policy import *
 from .ai_feature_store import *
 from .ai_feature_store_entity_type import *
 from .ai_feature_store_entity_type_feature import *
@@ -31,6 +40,9 @@ from .ai_index_endpoint_deployed_index import *
 from .ai_metadata_store import *
 from .ai_tensorboard import *
 from .get_ai_endpoint_iam_policy import *
+from .get_ai_feature_group_iam_policy import *
+from .get_ai_feature_online_store_featureview_iam_policy import *
+from .get_ai_feature_online_store_iam_policy import *
 from .get_ai_featurestore_entitytype_iam_policy import *
 from .get_ai_featurestore_iam_policy import *
 from .get_ai_index import *

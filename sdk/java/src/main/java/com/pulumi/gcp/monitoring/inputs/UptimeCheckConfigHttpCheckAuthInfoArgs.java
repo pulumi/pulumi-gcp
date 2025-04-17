@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,19 +18,32 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
     /**
      * The password to authenticate.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return The password to authenticate.
-     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * The password write-only version.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<String> passwordWoVersion;
+
+    /**
+     * @return The password write-only version.
+     * 
+     */
+    public Optional<Output<String>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
 
     /**
@@ -50,6 +65,7 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
     private UptimeCheckConfigHttpCheckAuthInfoArgs(UptimeCheckConfigHttpCheckAuthInfoArgs $) {
         this.password = $.password;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.username = $.username;
     }
 
@@ -73,25 +89,44 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
 
         /**
          * @param password The password to authenticate.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
         /**
          * @param password The password to authenticate.
-         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWoVersion The password write-only version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<String> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion The password write-only version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(String passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
         /**
@@ -116,9 +151,6 @@ public final class UptimeCheckConfigHttpCheckAuthInfoArgs extends com.pulumi.res
         }
 
         public UptimeCheckConfigHttpCheckAuthInfoArgs build() {
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("UptimeCheckConfigHttpCheckAuthInfoArgs", "password");
-            }
             if ($.username == null) {
                 throw new MissingRequiredPropertyException("UptimeCheckConfigHttpCheckAuthInfoArgs", "username");
             }

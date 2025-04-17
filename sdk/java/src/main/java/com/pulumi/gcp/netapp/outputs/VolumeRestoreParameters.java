@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VolumeRestoreParameters {
     /**
-     * @return Full name of the snapshot to use for creating this volume.
+     * @return Full name of the backup to use for creating this volume.
      * `source_snapshot` and `source_backup` cannot be used simultaneously.
      * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
      * 
@@ -28,7 +28,7 @@ public final class VolumeRestoreParameters {
 
     private VolumeRestoreParameters() {}
     /**
-     * @return Full name of the snapshot to use for creating this volume.
+     * @return Full name of the backup to use for creating this volume.
      * `source_snapshot` and `source_backup` cannot be used simultaneously.
      * Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
      * 

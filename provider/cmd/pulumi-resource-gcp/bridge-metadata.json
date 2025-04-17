@@ -6699,6 +6699,15 @@
                             }
                         }
                     },
+                    "source_disk_encryption_key": {
+                        "maxItemsOne": true
+                    },
+                    "source_image_encryption_key": {
+                        "maxItemsOne": true
+                    },
+                    "source_snapshot_encryption_key": {
+                        "maxItemsOne": true
+                    },
                     "storage_locations": {
                         "maxItemsOne": false
                     }
@@ -17558,6 +17567,22 @@
                     }
                 }
             },
+            "google_developer_connect_account_connector": {
+                "current": "gcp:developerconnect/accountConnector:AccountConnector",
+                "majorVersion": 8,
+                "fields": {
+                    "provider_oauth_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_developer_connect_connection": {
                 "current": "gcp:developerconnect/connection:Connection",
                 "majorVersion": 8,
@@ -23588,6 +23613,16 @@
                             }
                         }
                     },
+                    "gcs_source": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "maintenance_policy": {
                         "maxItemsOne": true,
                         "elem": {
@@ -23607,6 +23642,9 @@
                     },
                     "maintenance_schedule": {
                         "maxItemsOne": false
+                    },
+                    "managed_backup_source": {
+                        "maxItemsOne": true
                     },
                     "node_config": {
                         "maxItemsOne": false
@@ -28783,6 +28821,16 @@
                             }
                         }
                     },
+                    "gcs_source": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "maintenance_policy": {
                         "maxItemsOne": true,
                         "elem": {
@@ -28802,6 +28850,9 @@
                     },
                     "maintenance_schedule": {
                         "maxItemsOne": false
+                    },
+                    "managed_backup_source": {
+                        "maxItemsOne": true
                     },
                     "persistence_config": {
                         "maxItemsOne": true,
@@ -30440,6 +30491,9 @@
                                 }
                             }
                         }
+                    },
+                    "trial_config": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -30496,6 +30550,9 @@
                                 }
                             }
                         }
+                    },
+                    "trial_config": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -30552,6 +30609,9 @@
                                 }
                             }
                         }
+                    },
+                    "trial_config": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -31448,6 +31508,31 @@
                 "current": "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature",
                 "majorVersion": 8
             },
+            "google_vertex_ai_feature_group_iam_binding": {
+                "current": "gcp:vertex/aiFeatureGroupIamBinding:AiFeatureGroupIamBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_vertex_ai_feature_group_iam_member": {
+                "current": "gcp:vertex/aiFeatureGroupIamMember:AiFeatureGroupIamMember",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_vertex_ai_feature_group_iam_policy": {
+                "current": "gcp:vertex/aiFeatureGroupIamPolicy:AiFeatureGroupIamPolicy",
+                "majorVersion": 8
+            },
             "google_vertex_ai_feature_online_store": {
                 "current": "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore",
                 "majorVersion": 8,
@@ -31538,6 +31623,56 @@
                         }
                     }
                 }
+            },
+            "google_vertex_ai_feature_online_store_featureview_iam_binding": {
+                "current": "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamBinding:AiFeatureOnlineStoreFeatureviewIamBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_vertex_ai_feature_online_store_featureview_iam_member": {
+                "current": "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamMember:AiFeatureOnlineStoreFeatureviewIamMember",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_vertex_ai_feature_online_store_featureview_iam_policy": {
+                "current": "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy",
+                "majorVersion": 8
+            },
+            "google_vertex_ai_feature_online_store_iam_binding": {
+                "current": "gcp:vertex/aiFeatureOnlineStoreIamBinding:AiFeatureOnlineStoreIamBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_vertex_ai_feature_online_store_iam_member": {
+                "current": "gcp:vertex/aiFeatureOnlineStoreIamMember:AiFeatureOnlineStoreIamMember",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_vertex_ai_feature_online_store_iam_policy": {
+                "current": "gcp:vertex/aiFeatureOnlineStoreIamPolicy:AiFeatureOnlineStoreIamPolicy",
+                "majorVersion": 8
             },
             "google_vertex_ai_featurestore": {
                 "current": "gcp:vertex/aiFeatureStore:AiFeatureStore",
@@ -37911,6 +38046,16 @@
                             }
                         }
                     },
+                    "gcs_source": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "maintenance_policy": {
                         "maxItemsOne": false,
                         "elem": {
@@ -37929,6 +38074,9 @@
                         }
                     },
                     "maintenance_schedule": {
+                        "maxItemsOne": false
+                    },
+                    "managed_backup_source": {
                         "maxItemsOne": false
                     },
                     "node_config": {
@@ -39775,6 +39923,9 @@
                                 }
                             }
                         }
+                    },
+                    "trial_config": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -39831,6 +39982,9 @@
                                 }
                             }
                         }
+                    },
+                    "trial_config": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -39887,6 +40041,9 @@
                                 }
                             }
                         }
+                    },
+                    "trial_config": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -39973,6 +40130,18 @@
             },
             "google_vertex_ai_endpoint_iam_policy": {
                 "current": "gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy",
+                "majorVersion": 8
+            },
+            "google_vertex_ai_feature_group_iam_policy": {
+                "current": "gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy",
+                "majorVersion": 8
+            },
+            "google_vertex_ai_feature_online_store_featureview_iam_policy": {
+                "current": "gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy",
+                "majorVersion": 8
+            },
+            "google_vertex_ai_feature_online_store_iam_policy": {
+                "current": "gcp:vertex/getAiFeatureOnlineStoreIamPolicy:getAiFeatureOnlineStoreIamPolicy",
                 "majorVersion": 8
             },
             "google_vertex_ai_featurestore_entitytype_iam_policy": {
@@ -40579,6 +40748,10 @@
                 "terraform_labels"
             ],
             "google_datastream_stream": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_developer_connect_account_connector": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -41988,6 +42161,7 @@
             "gcp:datastream/privateConnection:PrivateConnection": 0,
             "gcp:datastream/stream:Stream": 0,
             "gcp:deploymentmanager/deployment:Deployment": 0,
+            "gcp:developerconnect/accountConnector:AccountConnector": 0,
             "gcp:developerconnect/connection:Connection": 0,
             "gcp:developerconnect/gitRepositoryLink:GitRepositoryLink": 0,
             "gcp:diagflow/agent:Agent": 0,
@@ -42546,8 +42720,17 @@
             "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": 0,
             "gcp:vertex/aiFeatureGroup:AiFeatureGroup": 0,
             "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature": 0,
+            "gcp:vertex/aiFeatureGroupIamBinding:AiFeatureGroupIamBinding": 0,
+            "gcp:vertex/aiFeatureGroupIamMember:AiFeatureGroupIamMember": 0,
+            "gcp:vertex/aiFeatureGroupIamPolicy:AiFeatureGroupIamPolicy": 0,
             "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": 0,
             "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview": 0,
+            "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamBinding:AiFeatureOnlineStoreFeatureviewIamBinding": 0,
+            "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamMember:AiFeatureOnlineStoreFeatureviewIamMember": 0,
+            "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy": 0,
+            "gcp:vertex/aiFeatureOnlineStoreIamBinding:AiFeatureOnlineStoreIamBinding": 0,
+            "gcp:vertex/aiFeatureOnlineStoreIamMember:AiFeatureOnlineStoreIamMember": 0,
+            "gcp:vertex/aiFeatureOnlineStoreIamPolicy:AiFeatureOnlineStoreIamPolicy": 0,
             "gcp:vertex/aiFeatureStore:AiFeatureStore": 0,
             "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType": 0,
             "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature": 0,
@@ -42948,6 +43131,9 @@
             "gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes": 0,
             "gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions": 0,
             "gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy": 0,
+            "gcp:vertex/getAiFeatureGroupIamPolicy:getAiFeatureGroupIamPolicy": 0,
+            "gcp:vertex/getAiFeatureOnlineStoreFeatureviewIamPolicy:getAiFeatureOnlineStoreFeatureviewIamPolicy": 0,
+            "gcp:vertex/getAiFeatureOnlineStoreIamPolicy:getAiFeatureOnlineStoreIamPolicy": 0,
             "gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy": 0,
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": 0,
             "gcp:vertex/getAiIndex:getAiIndex": 0,

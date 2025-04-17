@@ -236,6 +236,28 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Database Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var enterprise_db = new Gcp.Firestore.Database("enterprise-db", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -292,6 +314,13 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The database edition.
+        /// Possible values are: `STANDARD`, `ENTERPRISE`.
+        /// </summary>
+        [Output("databaseEdition")]
+        public Output<string> DatabaseEdition { get; private set; } = null!;
 
         [Output("deleteProtectionState")]
         public Output<string> DeleteProtectionState { get; private set; } = null!;
@@ -463,6 +492,13 @@ namespace Pulumi.Gcp.Firestore
         [Input("concurrencyMode")]
         public Input<string>? ConcurrencyMode { get; set; }
 
+        /// <summary>
+        /// The database edition.
+        /// Possible values are: `STANDARD`, `ENTERPRISE`.
+        /// </summary>
+        [Input("databaseEdition")]
+        public Input<string>? DatabaseEdition { get; set; }
+
         [Input("deleteProtectionState")]
         public Input<string>? DeleteProtectionState { get; set; }
 
@@ -554,6 +590,13 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The database edition.
+        /// Possible values are: `STANDARD`, `ENTERPRISE`.
+        /// </summary>
+        [Input("databaseEdition")]
+        public Input<string>? DatabaseEdition { get; set; }
 
         [Input("deleteProtectionState")]
         public Input<string>? DeleteProtectionState { get; set; }

@@ -5,7 +5,7 @@ Subject: [PATCH] Remove _wo attributes
 
 
 diff --git a/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go b/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
-index 89bd23a94..643699a0b 100644
+index d33561cff..0d6e59b00 100644
 --- a/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
 +++ b/google-beta/services/bigquerydatatransfer/resource_bigquery_data_transfer_config.go
 @@ -29,17 +29,14 @@ import (
@@ -80,7 +80,7 @@ index 89bd23a94..643699a0b 100644
  						},
  					},
  				},
-@@ -1096,12 +1064,6 @@ func resourceBigqueryDataTransferConfigEncoder(d *schema.ResourceData, meta inte
+@@ -1105,12 +1073,6 @@ func resourceBigqueryDataTransferConfigEncoder(d *schema.ResourceData, meta inte
  			params[sp] = auth.(string)
  		}
  	}
@@ -93,7 +93,7 @@ index 89bd23a94..643699a0b 100644
  
  	obj["params"] = params
  
-@@ -1115,8 +1077,6 @@ func resourceBigqueryDataTransferConfigDecoder(d *schema.ResourceData, meta inte
+@@ -1124,8 +1086,6 @@ func resourceBigqueryDataTransferConfigDecoder(d *schema.ResourceData, meta inte
  			if _, apiOk := params[sp]; apiOk {
  				if _, exists := d.GetOkExists("sensitive_params.0." + sp); exists {
  					delete(params, sp)
@@ -117,7 +117,7 @@ index 5336d0218..827d90369 100644
    - field: 'service_account_name'
      provider_only: true
 diff --git a/google-beta/services/secretmanager/resource_secret_manager_secret_version.go b/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
-index 717a6ee1d..27e241345 100644
+index 4598d2305..84fb8d3d8 100644
 --- a/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
 +++ b/google-beta/services/secretmanager/resource_secret_manager_secret_version.go
 @@ -29,9 +29,7 @@ import (
@@ -157,7 +157,7 @@ index 717a6ee1d..27e241345 100644
  			"secret": {
  				Type:             schema.TypeString,
  				Required:         true,
-@@ -536,12 +521,6 @@ func expandSecretManagerSecretVersionPayload(v interface{}, d tpgresource.Terraf
+@@ -545,12 +530,6 @@ func expandSecretManagerSecretVersionPayload(v interface{}, d tpgresource.Terraf
  	} else if val := reflect.ValueOf(transformedSecretData); val.IsValid() && !tpgresource.IsEmptyValue(val) {
  		transformed["data"] = transformedSecretData
  	}
@@ -170,7 +170,7 @@ index 717a6ee1d..27e241345 100644
  	return transformed, nil
  }
  
-@@ -555,17 +534,6 @@ func expandSecretManagerSecretVersionPayloadSecretData(v interface{}, d tpgresou
+@@ -564,17 +543,6 @@ func expandSecretManagerSecretVersionPayloadSecretData(v interface{}, d tpgresou
  	}
  	return base64.StdEncoding.EncodeToString([]byte(v.(string))), nil
  }
@@ -219,15 +219,6 @@ index 58e1ecb2a..bd0084f13 100644
 -				Optional:      true,
 -				Sensitive:     true,
 -				ConflictsWith: []string{"password_wo"},
--				Description: `The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
--				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.`,
--			},
--
--			"password_wo": {
--				Type:          schema.TypeString,
--				Optional:      true,
--				WriteOnly:     true,
--				ConflictsWith: []string{"password"},
 +				Type:      schema.TypeString,
 +				Optional:  true,
 +				Sensitive: true,
@@ -235,6 +226,15 @@ index 58e1ecb2a..bd0084f13 100644
  				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.`,
  			},
  
+-			"password_wo": {
+-				Type:          schema.TypeString,
+-				Optional:      true,
+-				WriteOnly:     true,
+-				ConflictsWith: []string{"password"},
+-				Description: `The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
+-				either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.`,
+-			},
+-
 -			"password_wo_version": {
 -				Type:         schema.TypeInt,
 -				Optional:     true,

@@ -26,42 +26,64 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/managedkafka"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mkcNetwork, err := compute.NewNetwork(ctx, "mkc_network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("my-network"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("tf-test_91980"),
+//				Name:           pulumi.String("tf-test_37118"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			mkcSubnet, err := compute.NewSubnetwork(ctx, "mkc_subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("my-subnetwork"),
-//				IpCidrRange: pulumi.String("10.2.0.0/16"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     mkcNetwork.ID(),
-//			})
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
 //			if err != nil {
 //				return err
 //			}
-//			mkcAdditionalSubnet, err := compute.NewSubnetwork(ctx, "mkc_additional_subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("my-additional-subnetwork-0"),
+//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("compute.googleapis.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			managedkafka, err := projects.NewService(ctx, "managedkafka", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("managedkafka.googleapis.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			mkcSecondarySubnet, err := compute.NewSubnetwork(ctx, "mkc_secondary_subnet", &compute.SubnetworkArgs{
+//				Project:     project.ProjectId,
+//				Name:        pulumi.String("my-secondary-subnetwork"),
 //				IpCidrRange: pulumi.String("10.3.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     mkcNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//				Network:     pulumi.String("default"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				compute,
+//			}))
 //			if err != nil {
 //				return err
 //			}
 //			gmkCluster, err := managedkafka.NewCluster(ctx, "gmk_cluster", &managedkafka.ClusterArgs{
+//				Project:   project.ProjectId,
 //				ClusterId: pulumi.String("my-cluster"),
 //				Location:  pulumi.String("us-central1"),
 //				CapacityConfig: &managedkafka.ClusterCapacityConfigArgs{
@@ -72,21 +94,26 @@ import (
 //					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
 //						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
 //							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								Subnet: mkcSubnet.ID().ApplyT(func(id string) (string, error) {
-//									return fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/%v", project.ProjectId, id), nil
+//								Subnet: project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//									return fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/default", projectId), nil
 //								}).(pulumi.StringOutput),
 //							},
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				managedkafka,
+//			}))
 //			if err != nil {
 //				return err
 //			}
 //			_, err = managedkafka.NewConnectCluster(ctx, "example", &managedkafka.ConnectClusterArgs{
+//				Project:          project.ProjectId,
 //				ConnectClusterId: pulumi.String("my-connect-cluster"),
-//				KafkaCluster: gmkCluster.ClusterId.ApplyT(func(clusterId string) (string, error) {
-//					return fmt.Sprintf("projects/%v/locations/us-central1/clusters/%v", project.ProjectId, clusterId), nil
+//				KafkaCluster: pulumi.All(project.ProjectId, gmkCluster.ClusterId).ApplyT(func(_args []interface{}) (string, error) {
+//					projectId := _args[0].(string)
+//					clusterId := _args[1].(string)
+//					return fmt.Sprintf("projects/%v/locations/us-central1/clusters/%v", projectId, clusterId), nil
 //				}).(pulumi.StringOutput),
 //				Location: pulumi.String("us-central1"),
 //				CapacityConfig: &managedkafka.ConnectClusterCapacityConfigArgs{
@@ -97,15 +124,17 @@ import (
 //					AccessConfig: &managedkafka.ConnectClusterGcpConfigAccessConfigArgs{
 //						NetworkConfigs: managedkafka.ConnectClusterGcpConfigAccessConfigNetworkConfigArray{
 //							&managedkafka.ConnectClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								PrimarySubnet: mkcSubnet.ID().ApplyT(func(id string) (string, error) {
-//									return fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/%v", project.ProjectId, id), nil
+//								PrimarySubnet: project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//									return fmt.Sprintf("projects/%v/regions/us-central1/subnetworks/default", projectId), nil
 //								}).(pulumi.StringOutput),
 //								AdditionalSubnets: pulumi.StringArray{
-//									mkcAdditionalSubnet.ID(),
+//									mkcSecondarySubnet.ID(),
 //								},
 //								DnsDomainNames: pulumi.StringArray{
-//									gmkCluster.ClusterId.ApplyT(func(clusterId string) (string, error) {
-//										return fmt.Sprintf("%v.us-central1.managedkafka-staging.%v.cloud-staging.goog", clusterId, project.ProjectId), nil
+//									pulumi.All(gmkCluster.ClusterId, project.ProjectId).ApplyT(func(_args []interface{}) (string, error) {
+//										clusterId := _args[0].(string)
+//										projectId := _args[1].(string)
+//										return fmt.Sprintf("%v.us-central1.managedkafka.%v.cloud.goog", clusterId, projectId), nil
 //									}).(pulumi.StringOutput),
 //								},
 //							},
@@ -115,7 +144,9 @@ import (
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				managedkafka,
+//			}))
 //			if err != nil {
 //				return err
 //			}

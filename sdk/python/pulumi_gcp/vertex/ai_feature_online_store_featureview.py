@@ -23,21 +23,17 @@ __all__ = ['AiFeatureOnlineStoreFeatureviewArgs', 'AiFeatureOnlineStoreFeaturevi
 class AiFeatureOnlineStoreFeatureviewArgs:
     def __init__(__self__, *,
                  feature_online_store: pulumi.Input[builtins.str],
-                 region: pulumi.Input[builtins.str],
                  big_query_source: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']] = None,
                  feature_registry_source: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 region: Optional[pulumi.Input[builtins.str]] = None,
                  sync_config: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewSyncConfigArgs']] = None,
                  vector_search_config: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']] = None):
         """
         The set of arguments for constructing a AiFeatureOnlineStoreFeatureview resource.
         :param pulumi.Input[builtins.str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
-        :param pulumi.Input[builtins.str] region: The region for the resource. It should be the same as the featureonlinestore region.
-               
-               
-               - - -
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs'] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs'] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
@@ -49,13 +45,16 @@ class AiFeatureOnlineStoreFeatureviewArgs:
         :param pulumi.Input[builtins.str] name: Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] region: The region for the resource. It should be the same as the featureonlinestore region.
+               
+               
+               - - -
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewSyncConfigArgs'] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs'] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
                Structure is documented below.
         """
         pulumi.set(__self__, "feature_online_store", feature_online_store)
-        pulumi.set(__self__, "region", region)
         if big_query_source is not None:
             pulumi.set(__self__, "big_query_source", big_query_source)
         if feature_registry_source is not None:
@@ -66,6 +65,8 @@ class AiFeatureOnlineStoreFeatureviewArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sync_config is not None:
             pulumi.set(__self__, "sync_config", sync_config)
         if vector_search_config is not None:
@@ -82,21 +83,6 @@ class AiFeatureOnlineStoreFeatureviewArgs:
     @feature_online_store.setter
     def feature_online_store(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "feature_online_store", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[builtins.str]:
-        """
-        The region for the resource. It should be the same as the featureonlinestore region.
-
-
-        - - -
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="bigQuerySource")
@@ -163,6 +149,21 @@ class AiFeatureOnlineStoreFeatureviewArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region for the resource. It should be the same as the featureonlinestore region.
+
+
+        - - -
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="syncConfig")
@@ -619,8 +620,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_35305",
-            name="tf-test_62793",
+            project_id="tf-test_49082",
+            name="tf-test_60365",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1064,8 +1065,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_35305",
-            name="tf-test_62793",
+            project_id="tf-test_49082",
+            name="tf-test_60365",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1348,8 +1349,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["sync_config"] = sync_config
             __props__.__dict__["vector_search_config"] = vector_search_config

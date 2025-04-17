@@ -700,6 +700,13 @@ namespace Pulumi.Gcp.Redis
         public Output<Outputs.ClusterAutomatedBackupConfig?> AutomatedBackupConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The backup collection full resource name.
+        /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+        /// </summary>
+        [Output("backupCollection")]
+        public Output<string> BackupCollection { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp associated with the cluster creation request. A timestamp in
         /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
         /// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -732,6 +739,13 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableArray<Outputs.ClusterDiscoveryEndpoint>> DiscoveryEndpoints { get; private set; } = null!;
 
         /// <summary>
+        /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("gcsSource")]
+        public Output<Outputs.ClusterGcsSource?> GcsSource { get; private set; } = null!;
+
+        /// <summary>
         /// The KMS key used to encrypt the at-rest data of the cluster.
         /// </summary>
         [Output("kmsKey")]
@@ -750,6 +764,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("maintenanceSchedules")]
         public Output<ImmutableArray<Outputs.ClusterMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
+
+        /// <summary>
+        /// Backups that generated and managed by memorystore.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("managedBackupSource")]
+        public Output<Outputs.ClusterManagedBackupSource?> ManagedBackupSource { get; private set; } = null!;
 
         /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:
@@ -956,6 +977,13 @@ namespace Pulumi.Gcp.Redis
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         /// <summary>
+        /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gcsSource")]
+        public Input<Inputs.ClusterGcsSourceArgs>? GcsSource { get; set; }
+
+        /// <summary>
         /// The KMS key used to encrypt the at-rest data of the cluster.
         /// </summary>
         [Input("kmsKey")]
@@ -967,6 +995,13 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.ClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// Backups that generated and managed by memorystore.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("managedBackupSource")]
+        public Input<Inputs.ClusterManagedBackupSourceArgs>? ManagedBackupSource { get; set; }
 
         /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:
@@ -1087,6 +1122,13 @@ namespace Pulumi.Gcp.Redis
         public Input<Inputs.ClusterAutomatedBackupConfigGetArgs>? AutomatedBackupConfig { get; set; }
 
         /// <summary>
+        /// The backup collection full resource name.
+        /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+        /// </summary>
+        [Input("backupCollection")]
+        public Input<string>? BackupCollection { get; set; }
+
+        /// <summary>
         /// The timestamp associated with the cluster creation request. A timestamp in
         /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
         /// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -1125,6 +1167,13 @@ namespace Pulumi.Gcp.Redis
         }
 
         /// <summary>
+        /// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gcsSource")]
+        public Input<Inputs.ClusterGcsSourceGetArgs>? GcsSource { get; set; }
+
+        /// <summary>
         /// The KMS key used to encrypt the at-rest data of the cluster.
         /// </summary>
         [Input("kmsKey")]
@@ -1149,6 +1198,13 @@ namespace Pulumi.Gcp.Redis
             get => _maintenanceSchedules ?? (_maintenanceSchedules = new InputList<Inputs.ClusterMaintenanceScheduleGetArgs>());
             set => _maintenanceSchedules = value;
         }
+
+        /// <summary>
+        /// Backups that generated and managed by memorystore.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("managedBackupSource")]
+        public Input<Inputs.ClusterManagedBackupSourceGetArgs>? ManagedBackupSource { get; set; }
 
         /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:

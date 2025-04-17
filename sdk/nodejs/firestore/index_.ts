@@ -77,6 +77,7 @@ import * as utilities from "../utilities";
  *     collection: "atestcollection",
  *     queryScope: "COLLECTION_RECURSIVE",
  *     apiScope: "DATASTORE_MODE_API",
+ *     density: "SPARSE_ALL",
  *     fields: [
  *         {
  *             fieldPath: "name",
@@ -150,6 +151,76 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Firestore Index Mongodb Compatible Scope
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id-mongodb-compatible",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     apiScope: "MONGODB_COMPATIBLE_API",
+ *     queryScope: "COLLECTION_GROUP",
+ *     multikey: true,
+ *     density: "DENSE",
+ *     fields: [
+ *         {
+ *             fieldPath: "name",
+ *             order: "ASCENDING",
+ *         },
+ *         {
+ *             fieldPath: "description",
+ *             order: "DESCENDING",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Firestore Index Sparse Any
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id-sparse-any",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     databaseEdition: "ENTERPRISE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     apiScope: "MONGODB_COMPATIBLE_API",
+ *     queryScope: "COLLECTION_GROUP",
+ *     multikey: true,
+ *     density: "SPARSE_ANY",
+ *     fields: [
+ *         {
+ *             fieldPath: "name",
+ *             order: "ASCENDING",
+ *         },
+ *         {
+ *             fieldPath: "description",
+ *             order: "DESCENDING",
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -192,7 +263,8 @@ export class Index extends pulumi.CustomResource {
     }
 
     /**
-     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
+     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
+     * "MONGODB_COMPATIBLE_API"]
      */
     public readonly apiScope!: pulumi.Output<string | undefined>;
     /**
@@ -204,6 +276,10 @@ export class Index extends pulumi.CustomResource {
      */
     public readonly database!: pulumi.Output<string | undefined>;
     /**
+     * The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+     */
+    public readonly density!: pulumi.Output<string>;
+    /**
      * The fields supported by this index. The last non-stored field entry is
      * always for the field path `__name__`. If, on creation, `__name__` was not
      * specified as the last field, it will be added automatically with the same
@@ -213,6 +289,13 @@ export class Index extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly fields!: pulumi.Output<outputs.firestore.IndexField[]>;
+    /**
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     */
+    public readonly multikey!: pulumi.Output<boolean | undefined>;
     /**
      * A server defined name for this index. Format:
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
@@ -241,7 +324,9 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["apiScope"] = state ? state.apiScope : undefined;
             resourceInputs["collection"] = state ? state.collection : undefined;
             resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["density"] = state ? state.density : undefined;
             resourceInputs["fields"] = state ? state.fields : undefined;
+            resourceInputs["multikey"] = state ? state.multikey : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["queryScope"] = state ? state.queryScope : undefined;
@@ -256,7 +341,9 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["apiScope"] = args ? args.apiScope : undefined;
             resourceInputs["collection"] = args ? args.collection : undefined;
             resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["density"] = args ? args.density : undefined;
             resourceInputs["fields"] = args ? args.fields : undefined;
+            resourceInputs["multikey"] = args ? args.multikey : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["queryScope"] = args ? args.queryScope : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -271,7 +358,8 @@ export class Index extends pulumi.CustomResource {
  */
 export interface IndexState {
     /**
-     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
+     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
+     * "MONGODB_COMPATIBLE_API"]
      */
     apiScope?: pulumi.Input<string>;
     /**
@@ -283,6 +371,10 @@ export interface IndexState {
      */
     database?: pulumi.Input<string>;
     /**
+     * The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+     */
+    density?: pulumi.Input<string>;
+    /**
      * The fields supported by this index. The last non-stored field entry is
      * always for the field path `__name__`. If, on creation, `__name__` was not
      * specified as the last field, it will be added automatically with the same
@@ -292,6 +384,13 @@ export interface IndexState {
      * Structure is documented below.
      */
     fields?: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
+    /**
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     */
+    multikey?: pulumi.Input<boolean>;
     /**
      * A server defined name for this index. Format:
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
@@ -310,7 +409,8 @@ export interface IndexState {
  */
 export interface IndexArgs {
     /**
-     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API"]
+     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
+     * "MONGODB_COMPATIBLE_API"]
      */
     apiScope?: pulumi.Input<string>;
     /**
@@ -322,6 +422,10 @@ export interface IndexArgs {
      */
     database?: pulumi.Input<string>;
     /**
+     * The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+     */
+    density?: pulumi.Input<string>;
+    /**
      * The fields supported by this index. The last non-stored field entry is
      * always for the field path `__name__`. If, on creation, `__name__` was not
      * specified as the last field, it will be added automatically with the same
@@ -331,6 +435,13 @@ export interface IndexArgs {
      * Structure is documented below.
      */
     fields: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
+    /**
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     */
+    multikey?: pulumi.Input<boolean>;
     project?: pulumi.Input<string>;
     /**
      * The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",

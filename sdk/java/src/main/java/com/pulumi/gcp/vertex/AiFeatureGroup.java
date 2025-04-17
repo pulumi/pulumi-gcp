@@ -284,14 +284,14 @@ public class AiFeatureGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return The region of feature group. eg us-central1
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * The timestamp of when the FeatureGroup was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.

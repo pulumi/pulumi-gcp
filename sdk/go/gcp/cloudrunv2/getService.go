@@ -84,6 +84,7 @@ type LookupServiceResult struct {
 	Etag                 string                          `pulumi:"etag"`
 	ExpireTime           string                          `pulumi:"expireTime"`
 	Generation           string                          `pulumi:"generation"`
+	IapEnabled           bool                            `pulumi:"iapEnabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                    string                        `pulumi:"id"`
 	Ingress               string                        `pulumi:"ingress"`
@@ -221,6 +222,10 @@ func (o LookupServiceResultOutput) ExpireTime() pulumi.StringOutput {
 
 func (o LookupServiceResultOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) IapEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.IapEnabled }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

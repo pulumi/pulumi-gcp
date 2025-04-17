@@ -28,7 +28,7 @@ class GetControlProjectIntelligenceConfigResult:
     """
     A collection of values returned by getControlProjectIntelligenceConfig.
     """
-    def __init__(__self__, edition_config=None, effective_intelligence_configs=None, filters=None, id=None, name=None, update_time=None):
+    def __init__(__self__, edition_config=None, effective_intelligence_configs=None, filters=None, id=None, name=None, trial_configs=None, update_time=None):
         if edition_config and not isinstance(edition_config, str):
             raise TypeError("Expected argument 'edition_config' to be a str")
         pulumi.set(__self__, "edition_config", edition_config)
@@ -44,6 +44,9 @@ class GetControlProjectIntelligenceConfigResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if trial_configs and not isinstance(trial_configs, list):
+            raise TypeError("Expected argument 'trial_configs' to be a list")
+        pulumi.set(__self__, "trial_configs", trial_configs)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -77,6 +80,11 @@ class GetControlProjectIntelligenceConfigResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="trialConfigs")
+    def trial_configs(self) -> Sequence['outputs.GetControlProjectIntelligenceConfigTrialConfigResult']:
+        return pulumi.get(self, "trial_configs")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> builtins.str:
         return pulumi.get(self, "update_time")
@@ -93,6 +101,7 @@ class AwaitableGetControlProjectIntelligenceConfigResult(GetControlProjectIntell
             filters=self.filters,
             id=self.id,
             name=self.name,
+            trial_configs=self.trial_configs,
             update_time=self.update_time)
 
 
@@ -127,6 +136,7 @@ def get_control_project_intelligence_config(name: Optional[builtins.str] = None,
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        trial_configs=pulumi.get(__ret__, 'trial_configs'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_control_project_intelligence_config_output(name: Optional[pulumi.Input[builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetControlProjectIntelligenceConfigResult]:
@@ -158,4 +168,5 @@ def get_control_project_intelligence_config_output(name: Optional[pulumi.Input[b
         filters=pulumi.get(__response__, 'filters'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        trial_configs=pulumi.get(__response__, 'trial_configs'),
         update_time=pulumi.get(__response__, 'update_time')))

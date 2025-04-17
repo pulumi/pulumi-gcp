@@ -11,14 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class TableSchemaForeignTypeInfo {
     /**
-     * @return Specifies the system which defines the foreign data type.
+     * @return Specifies the system which defines the foreign data
+     * type.
      * 
      */
     private String typeSystem;
 
     private TableSchemaForeignTypeInfo() {}
     /**
-     * @return Specifies the system which defines the foreign data type.
+     * @return Specifies the system which defines the foreign data
+     * type.
      * 
      */
     public String typeSystem() {

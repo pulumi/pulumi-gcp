@@ -170,7 +170,8 @@ type Table struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime pulumi.IntOutput `pulumi:"expirationTime"`
-	// Options defining open source compatible table.
+	// Options defining open source
+	// compatible table. Structure is documented below.
 	ExternalCatalogTableOptions TableExternalCatalogTableOptionsPtrOutput `pulumi:"externalCatalogTableOptions"`
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
@@ -223,7 +224,8 @@ type Table struct {
 	ResourceTags pulumi.StringMapOutput `pulumi:"resourceTags"`
 	// A JSON schema for the table.
 	Schema pulumi.StringOutput `pulumi:"schema"`
-	// Specifies metadata of the foreign data type definition in field schema.
+	// Specifies metadata of the foreign data
+	// type definition in field schema. Structure is documented below.
 	SchemaForeignTypeInfo TableSchemaForeignTypeInfoPtrOutput `pulumi:"schemaForeignTypeInfo"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -337,7 +339,8 @@ type tableState struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime *int `pulumi:"expirationTime"`
-	// Options defining open source compatible table.
+	// Options defining open source
+	// compatible table. Structure is documented below.
 	ExternalCatalogTableOptions *TableExternalCatalogTableOptions `pulumi:"externalCatalogTableOptions"`
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
@@ -390,7 +393,8 @@ type tableState struct {
 	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
-	// Specifies metadata of the foreign data type definition in field schema.
+	// Specifies metadata of the foreign data
+	// type definition in field schema. Structure is documented below.
 	SchemaForeignTypeInfo *TableSchemaForeignTypeInfo `pulumi:"schemaForeignTypeInfo"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -464,7 +468,8 @@ type TableState struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime pulumi.IntPtrInput
-	// Options defining open source compatible table.
+	// Options defining open source
+	// compatible table. Structure is documented below.
 	ExternalCatalogTableOptions TableExternalCatalogTableOptionsPtrInput
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
@@ -517,7 +522,8 @@ type TableState struct {
 	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
-	// Specifies metadata of the foreign data type definition in field schema.
+	// Specifies metadata of the foreign data
+	// type definition in field schema. Structure is documented below.
 	SchemaForeignTypeInfo TableSchemaForeignTypeInfoPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -574,7 +580,8 @@ type tableArgs struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime *int `pulumi:"expirationTime"`
-	// Options defining open source compatible table.
+	// Options defining open source
+	// compatible table. Structure is documented below.
 	ExternalCatalogTableOptions *TableExternalCatalogTableOptions `pulumi:"externalCatalogTableOptions"`
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
@@ -615,7 +622,8 @@ type tableArgs struct {
 	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
-	// Specifies metadata of the foreign data type definition in field schema.
+	// Specifies metadata of the foreign data
+	// type definition in field schema. Structure is documented below.
 	SchemaForeignTypeInfo *TableSchemaForeignTypeInfo `pulumi:"schemaForeignTypeInfo"`
 	// Defines the primary key and foreign keys.
 	// Structure is documented below.
@@ -665,7 +673,8 @@ type TableArgs struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime pulumi.IntPtrInput
-	// Options defining open source compatible table.
+	// Options defining open source
+	// compatible table. Structure is documented below.
 	ExternalCatalogTableOptions TableExternalCatalogTableOptionsPtrInput
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
@@ -706,7 +715,8 @@ type TableArgs struct {
 	ResourceTags pulumi.StringMapInput
 	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
-	// Specifies metadata of the foreign data type definition in field schema.
+	// Specifies metadata of the foreign data
+	// type definition in field schema. Structure is documented below.
 	SchemaForeignTypeInfo TableSchemaForeignTypeInfoPtrInput
 	// Defines the primary key and foreign keys.
 	// Structure is documented below.
@@ -892,7 +902,8 @@ func (o TableOutput) ExpirationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntOutput { return v.ExpirationTime }).(pulumi.IntOutput)
 }
 
-// Options defining open source compatible table.
+// Options defining open source
+// compatible table. Structure is documented below.
 func (o TableOutput) ExternalCatalogTableOptions() TableExternalCatalogTableOptionsPtrOutput {
 	return o.ApplyT(func(v *Table) TableExternalCatalogTableOptionsPtrOutput { return v.ExternalCatalogTableOptions }).(TableExternalCatalogTableOptionsPtrOutput)
 }
@@ -996,7 +1007,8 @@ func (o TableOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
 }
 
-// Specifies metadata of the foreign data type definition in field schema.
+// Specifies metadata of the foreign data
+// type definition in field schema. Structure is documented below.
 func (o TableOutput) SchemaForeignTypeInfo() TableSchemaForeignTypeInfoPtrOutput {
 	return o.ApplyT(func(v *Table) TableSchemaForeignTypeInfoPtrOutput { return v.SchemaForeignTypeInfo }).(TableSchemaForeignTypeInfoPtrOutput)
 }

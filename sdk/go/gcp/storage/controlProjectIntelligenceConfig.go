@@ -80,6 +80,9 @@ type ControlProjectIntelligenceConfig struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The trial configuration of the Storage Intelligence resource.
+	// Structure is documented below.
+	TrialConfigs ControlProjectIntelligenceConfigTrialConfigArrayOutput `pulumi:"trialConfigs"`
 	// The time at which the Storage Intelligence Config resource is last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -126,6 +129,9 @@ type controlProjectIntelligenceConfigState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// The trial configuration of the Storage Intelligence resource.
+	// Structure is documented below.
+	TrialConfigs []ControlProjectIntelligenceConfigTrialConfig `pulumi:"trialConfigs"`
 	// The time at which the Storage Intelligence Config resource is last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -143,6 +149,9 @@ type ControlProjectIntelligenceConfigState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// The trial configuration of the Storage Intelligence resource.
+	// Structure is documented below.
+	TrialConfigs ControlProjectIntelligenceConfigTrialConfigArrayInput
 	// The time at which the Storage Intelligence Config resource is last updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -289,6 +298,14 @@ func (o ControlProjectIntelligenceConfigOutput) Filter() ControlProjectIntellige
 // ***
 func (o ControlProjectIntelligenceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlProjectIntelligenceConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The trial configuration of the Storage Intelligence resource.
+// Structure is documented below.
+func (o ControlProjectIntelligenceConfigOutput) TrialConfigs() ControlProjectIntelligenceConfigTrialConfigArrayOutput {
+	return o.ApplyT(func(v *ControlProjectIntelligenceConfig) ControlProjectIntelligenceConfigTrialConfigArrayOutput {
+		return v.TrialConfigs
+	}).(ControlProjectIntelligenceConfigTrialConfigArrayOutput)
 }
 
 // The time at which the Storage Intelligence Config resource is last updated.

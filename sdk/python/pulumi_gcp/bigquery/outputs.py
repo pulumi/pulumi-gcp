@@ -4699,9 +4699,16 @@ class TableExternalCatalogTableOptions(dict):
                  parameters: Optional[Mapping[str, builtins.str]] = None,
                  storage_descriptor: Optional['outputs.TableExternalCatalogTableOptionsStorageDescriptor'] = None):
         """
-        :param builtins.str connection_id: The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
-        :param Mapping[str, builtins.str] parameters: A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
-        :param 'TableExternalCatalogTableOptionsStorageDescriptorArgs' storage_descriptor: A storage descriptor containing information about the physical storage of this table.
+        :param builtins.str connection_id: The connection specifying the credentials to be
+               used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+               connection is needed to read the open source table from BigQuery Engine. The
+               connection_id can have the form `<project_id>.<location_id>.<connection_id>`
+               or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
+        :param Mapping[str, builtins.str] parameters: A map of key value pairs defining the parameters and
+               properties of the open source table. Corresponds with hive meta store table
+               parameters. Maximum size of 4Mib.
+        :param 'TableExternalCatalogTableOptionsStorageDescriptorArgs' storage_descriptor: A storage descriptor containing information
+               about the physical storage of this table. Structure is documented below.
         """
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
@@ -4714,7 +4721,11 @@ class TableExternalCatalogTableOptions(dict):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[builtins.str]:
         """
-        The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+        The connection specifying the credentials to be
+        used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+        connection is needed to read the open source table from BigQuery Engine. The
+        connection_id can have the form `<project_id>.<location_id>.<connection_id>`
+        or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
         """
         return pulumi.get(self, "connection_id")
 
@@ -4722,7 +4733,9 @@ class TableExternalCatalogTableOptions(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Mapping[str, builtins.str]]:
         """
-        A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+        A map of key value pairs defining the parameters and
+        properties of the open source table. Corresponds with hive meta store table
+        parameters. Maximum size of 4Mib.
         """
         return pulumi.get(self, "parameters")
 
@@ -4730,7 +4743,8 @@ class TableExternalCatalogTableOptions(dict):
     @pulumi.getter(name="storageDescriptor")
     def storage_descriptor(self) -> Optional['outputs.TableExternalCatalogTableOptionsStorageDescriptor']:
         """
-        A storage descriptor containing information about the physical storage of this table.
+        A storage descriptor containing information
+        about the physical storage of this table. Structure is documented below.
         """
         return pulumi.get(self, "storage_descriptor")
 
@@ -4766,10 +4780,17 @@ class TableExternalCatalogTableOptionsStorageDescriptor(dict):
                  output_format: Optional[builtins.str] = None,
                  serde_info: Optional['outputs.TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo'] = None):
         """
-        :param builtins.str input_format: Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
-        :param builtins.str location_uri: The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
-        :param builtins.str output_format: Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
-        :param 'TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs' serde_info: Serializer and deserializer information.
+        :param builtins.str input_format: Specifies the fully qualified class name of the
+               InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
+               maximum length is 128 characters.
+        :param builtins.str location_uri: The physical location of the table (e.g.
+               'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+               'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+        :param builtins.str output_format: Specifies the fully qualified class name of the
+               OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
+               maximum length is 128 characters.
+        :param 'TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs' serde_info: Serializer and deserializer information. Structure
+               is documented below.
         """
         if input_format is not None:
             pulumi.set(__self__, "input_format", input_format)
@@ -4784,7 +4805,9 @@ class TableExternalCatalogTableOptionsStorageDescriptor(dict):
     @pulumi.getter(name="inputFormat")
     def input_format(self) -> Optional[builtins.str]:
         """
-        Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+        Specifies the fully qualified class name of the
+        InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
+        maximum length is 128 characters.
         """
         return pulumi.get(self, "input_format")
 
@@ -4792,7 +4815,9 @@ class TableExternalCatalogTableOptionsStorageDescriptor(dict):
     @pulumi.getter(name="locationUri")
     def location_uri(self) -> Optional[builtins.str]:
         """
-        The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+        The physical location of the table (e.g.
+        'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+        'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
         """
         return pulumi.get(self, "location_uri")
 
@@ -4800,7 +4825,9 @@ class TableExternalCatalogTableOptionsStorageDescriptor(dict):
     @pulumi.getter(name="outputFormat")
     def output_format(self) -> Optional[builtins.str]:
         """
-        Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+        Specifies the fully qualified class name of the
+        OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
+        maximum length is 128 characters.
         """
         return pulumi.get(self, "output_format")
 
@@ -4808,7 +4835,8 @@ class TableExternalCatalogTableOptionsStorageDescriptor(dict):
     @pulumi.getter(name="serdeInfo")
     def serde_info(self) -> Optional['outputs.TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo']:
         """
-        Serializer and deserializer information.
+        Serializer and deserializer information. Structure
+        is documented below.
         """
         return pulumi.get(self, "serde_info")
 
@@ -4837,9 +4865,13 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo(dict):
                  name: Optional[builtins.str] = None,
                  parameters: Optional[Mapping[str, builtins.str]] = None):
         """
-        :param builtins.str serialization_library: Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+        :param builtins.str serialization_library: Specifies a fully-qualified class name of
+               the serialization library that is responsible for the translation of data
+               between table representation and the underlying low-level input and output
+               format structures. The maximum length is 256 characters.
         :param builtins.str name: Name of the SerDe. The maximum length is 256 characters.
-        :param Mapping[str, builtins.str] parameters: Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+        :param Mapping[str, builtins.str] parameters: Key-value pairs that define the initialization
+               parameters for the serialization library. Maximum size 10 Kib.
         """
         pulumi.set(__self__, "serialization_library", serialization_library)
         if name is not None:
@@ -4851,7 +4883,10 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo(dict):
     @pulumi.getter(name="serializationLibrary")
     def serialization_library(self) -> builtins.str:
         """
-        Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+        Specifies a fully-qualified class name of
+        the serialization library that is responsible for the translation of data
+        between table representation and the underlying low-level input and output
+        format structures. The maximum length is 256 characters.
         """
         return pulumi.get(self, "serialization_library")
 
@@ -4867,7 +4902,8 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo(dict):
     @pulumi.getter
     def parameters(self) -> Optional[Mapping[str, builtins.str]]:
         """
-        Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+        Key-value pairs that define the initialization
+        parameters for the serialization library. Maximum size 10 Kib.
         """
         return pulumi.get(self, "parameters")
 
@@ -6081,7 +6117,8 @@ class TableSchemaForeignTypeInfo(dict):
     def __init__(__self__, *,
                  type_system: builtins.str):
         """
-        :param builtins.str type_system: Specifies the system which defines the foreign data type.
+        :param builtins.str type_system: Specifies the system which defines the foreign data
+               type.
         """
         pulumi.set(__self__, "type_system", type_system)
 
@@ -6089,7 +6126,8 @@ class TableSchemaForeignTypeInfo(dict):
     @pulumi.getter(name="typeSystem")
     def type_system(self) -> builtins.str:
         """
-        Specifies the system which defines the foreign data type.
+        Specifies the system which defines the foreign data
+        type.
         """
         return pulumi.get(self, "type_system")
 

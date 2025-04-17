@@ -101,6 +101,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Uptime Check Config Http Password Wo
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Uptime Check Config Status Code
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -377,6 +381,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Ephemeral Attributes Reference
+ * 
+ * The following write-only attributes are supported:
  * 
  * ## Import
  * 

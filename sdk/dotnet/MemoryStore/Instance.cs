@@ -512,6 +512,13 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<Outputs.InstanceAutomatedBackupConfig?> AutomatedBackupConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The backup collection full resource name.
+        /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+        /// </summary>
+        [Output("backupCollection")]
+        public Output<string> BackupCollection { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Creation timestamp of the instance.
         /// </summary>
         [Output("createTime")]
@@ -570,6 +577,13 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
+        /// GCS source for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("gcsSource")]
+        public Output<Outputs.InstanceGcsSource?> GcsSource { get; private set; } = null!;
+
+        /// <summary>
         /// Required. The ID to use for the instance, which will become the final component of
         /// the instance's resource name.
         /// This value is subject to the following restrictions:
@@ -612,6 +626,13 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Output("maintenanceSchedules")]
         public Output<ImmutableArray<Outputs.InstanceMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
+
+        /// <summary>
+        /// Managed backup source for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("managedBackupSource")]
+        public Output<Outputs.InstanceManagedBackupSource?> ManagedBackupSource { get; private set; } = null!;
 
         /// <summary>
         /// Optional. cluster or cluster-disabled.
@@ -851,6 +872,13 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
+        /// GCS source for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gcsSource")]
+        public Input<Inputs.InstanceGcsSourceArgs>? GcsSource { get; set; }
+
+        /// <summary>
         /// Required. The ID to use for the instance, which will become the final component of
         /// the instance's resource name.
         /// This value is subject to the following restrictions:
@@ -892,6 +920,13 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// Managed backup source for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("managedBackupSource")]
+        public Input<Inputs.InstanceManagedBackupSourceArgs>? ManagedBackupSource { get; set; }
 
         /// <summary>
         /// Optional. cluster or cluster-disabled.
@@ -978,6 +1013,13 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("automatedBackupConfig")]
         public Input<Inputs.InstanceAutomatedBackupConfigGetArgs>? AutomatedBackupConfig { get; set; }
+
+        /// <summary>
+        /// The backup collection full resource name.
+        /// Example: projects/{project}/locations/{location}/backupCollections/{collection}
+        /// </summary>
+        [Input("backupCollection")]
+        public Input<string>? BackupCollection { get; set; }
 
         /// <summary>
         /// Output only. Creation timestamp of the instance.
@@ -1072,6 +1114,13 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
+        /// GCS source for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gcsSource")]
+        public Input<Inputs.InstanceGcsSourceGetArgs>? GcsSource { get; set; }
+
+        /// <summary>
         /// Required. The ID to use for the instance, which will become the final component of
         /// the instance's resource name.
         /// This value is subject to the following restrictions:
@@ -1126,6 +1175,13 @@ namespace Pulumi.Gcp.MemoryStore
             get => _maintenanceSchedules ?? (_maintenanceSchedules = new InputList<Inputs.InstanceMaintenanceScheduleGetArgs>());
             set => _maintenanceSchedules = value;
         }
+
+        /// <summary>
+        /// Managed backup source for the instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("managedBackupSource")]
+        public Input<Inputs.InstanceManagedBackupSourceGetArgs>? ManagedBackupSource { get; set; }
 
         /// <summary>
         /// Optional. cluster or cluster-disabled.

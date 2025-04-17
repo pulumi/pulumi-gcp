@@ -4640,6 +4640,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "developerconnect/accountConnector",
+  "fqn": "pulumi_gcp.developerconnect",
+  "classes": {
+   "gcp:developerconnect/accountConnector:AccountConnector": "AccountConnector"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "developerconnect/connection",
   "fqn": "pulumi_gcp.developerconnect",
   "classes": {
@@ -9104,6 +9112,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiFeatureGroupIamBinding",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureGroupIamBinding:AiFeatureGroupIamBinding": "AiFeatureGroupIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureGroupIamMember",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureGroupIamMember:AiFeatureGroupIamMember": "AiFeatureGroupIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureGroupIamPolicy",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureGroupIamPolicy:AiFeatureGroupIamPolicy": "AiFeatureGroupIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiFeatureOnlineStore",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -9116,6 +9148,54 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview": "AiFeatureOnlineStoreFeatureview"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureOnlineStoreFeatureviewIamBinding",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamBinding:AiFeatureOnlineStoreFeatureviewIamBinding": "AiFeatureOnlineStoreFeatureviewIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureOnlineStoreFeatureviewIamMember",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamMember:AiFeatureOnlineStoreFeatureviewIamMember": "AiFeatureOnlineStoreFeatureviewIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureOnlineStoreFeatureviewIamPolicy",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy": "AiFeatureOnlineStoreFeatureviewIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureOnlineStoreIamBinding",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureOnlineStoreIamBinding:AiFeatureOnlineStoreIamBinding": "AiFeatureOnlineStoreIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureOnlineStoreIamMember",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureOnlineStoreIamMember:AiFeatureOnlineStoreIamMember": "AiFeatureOnlineStoreIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureOnlineStoreIamPolicy",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureOnlineStoreIamPolicy:AiFeatureOnlineStoreIamPolicy": "AiFeatureOnlineStoreIamPolicy"
   }
  },
  {

@@ -605,6 +605,29 @@ class Service(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloud Run Service Iap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
+            location="us-central1",
+            metadata={
+                "annotations": {
+                    "run.googleapis.com/launch-stage": "BETA",
+                    "run.googleapis.com/iap-enabled": "true",
+                },
+            },
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                    }],
+                },
+            })
+        ```
 
         ## Import
 
@@ -926,6 +949,29 @@ class Service(pulumi.CustomResource):
                             "medium": "Memory",
                             "size_limit": "128Mi",
                         },
+                    }],
+                },
+            })
+        ```
+        ### Cloud Run Service Iap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
+            location="us-central1",
+            metadata={
+                "annotations": {
+                    "run.googleapis.com/launch-stage": "BETA",
+                    "run.googleapis.com/iap-enabled": "true",
+                },
+            },
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
                     }],
                 },
             })

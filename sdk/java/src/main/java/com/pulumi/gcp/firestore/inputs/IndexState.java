@@ -6,6 +6,7 @@ package com.pulumi.gcp.firestore.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,14 +19,16 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     public static final IndexState Empty = new IndexState();
 
     /**
-     * The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
+     * The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
+     * &#34;MONGODB_COMPATIBLE_API&#34;]
      * 
      */
     @Import(name="apiScope")
     private @Nullable Output<String> apiScope;
 
     /**
-     * @return The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
+     * @return The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
+     * &#34;MONGODB_COMPATIBLE_API&#34;]
      * 
      */
     public Optional<Output<String>> apiScope() {
@@ -63,6 +66,21 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+     * 
+     */
+    @Import(name="density")
+    private @Nullable Output<String> density;
+
+    /**
+     * @return The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+     * 
+     */
+    public Optional<Output<String>> density() {
+        return Optional.ofNullable(this.density);
+    }
+
+    /**
      * The fields supported by this index. The last non-stored field entry is
      * always for the field path `__name__`. If, on creation, `__name__` was not
      * specified as the last field, it will be added automatically with the same
@@ -87,6 +105,27 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<IndexFieldArgs>>> fields() {
         return Optional.ofNullable(this.fields);
+    }
+
+    /**
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * 
+     */
+    @Import(name="multikey")
+    private @Nullable Output<Boolean> multikey;
+
+    /**
+     * @return Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * 
+     */
+    public Optional<Output<Boolean>> multikey() {
+        return Optional.ofNullable(this.multikey);
     }
 
     /**
@@ -136,7 +175,9 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         this.apiScope = $.apiScope;
         this.collection = $.collection;
         this.database = $.database;
+        this.density = $.density;
         this.fields = $.fields;
+        this.multikey = $.multikey;
         this.name = $.name;
         this.project = $.project;
         this.queryScope = $.queryScope;
@@ -161,7 +202,8 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiScope The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
+         * @param apiScope The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
+         * &#34;MONGODB_COMPATIBLE_API&#34;]
          * 
          * @return builder
          * 
@@ -172,7 +214,8 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiScope The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;]
+         * @param apiScope The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
+         * &#34;MONGODB_COMPATIBLE_API&#34;]
          * 
          * @return builder
          * 
@@ -224,6 +267,27 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param density The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder density(@Nullable Output<String> density) {
+            $.density = density;
+            return this;
+        }
+
+        /**
+         * @param density The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder density(String density) {
+            return density(Output.of(density));
+        }
+
+        /**
          * @param fields The fields supported by this index. The last non-stored field entry is
          * always for the field path `__name__`. If, on creation, `__name__` was not
          * specified as the last field, it will be added automatically with the same
@@ -270,6 +334,33 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fields(IndexFieldArgs... fields) {
             return fields(List.of(fields));
+        }
+
+        /**
+         * @param multikey Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+         * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+         * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+         * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multikey(@Nullable Output<Boolean> multikey) {
+            $.multikey = multikey;
+            return this;
+        }
+
+        /**
+         * @param multikey Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
+         * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
+         * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
+         * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multikey(Boolean multikey) {
+            return multikey(Output.of(multikey));
         }
 
         /**

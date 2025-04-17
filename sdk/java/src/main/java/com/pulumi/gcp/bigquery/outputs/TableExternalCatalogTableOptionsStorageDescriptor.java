@@ -13,50 +13,64 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TableExternalCatalogTableOptionsStorageDescriptor {
     /**
-     * @return Specifies the fully qualified class name of the InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The maximum length is 128 characters.
+     * @return Specifies the fully qualified class name of the
+     * InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The
+     * maximum length is 128 characters.
      * 
      */
     private @Nullable String inputFormat;
     /**
-     * @return The physical location of the table (e.g. &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
+     * @return The physical location of the table (e.g.
+     * &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or
+     * &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
      * 
      */
     private @Nullable String locationUri;
     /**
-     * @return Specifies the fully qualified class name of the OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The maximum length is 128 characters.
+     * @return Specifies the fully qualified class name of the
+     * OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The
+     * maximum length is 128 characters.
      * 
      */
     private @Nullable String outputFormat;
     /**
-     * @return Serializer and deserializer information.
+     * @return Serializer and deserializer information. Structure
+     * is documented below.
      * 
      */
     private @Nullable TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo serdeInfo;
 
     private TableExternalCatalogTableOptionsStorageDescriptor() {}
     /**
-     * @return Specifies the fully qualified class name of the InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The maximum length is 128 characters.
+     * @return Specifies the fully qualified class name of the
+     * InputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcInputFormat&#34;). The
+     * maximum length is 128 characters.
      * 
      */
     public Optional<String> inputFormat() {
         return Optional.ofNullable(this.inputFormat);
     }
     /**
-     * @return The physical location of the table (e.g. &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
+     * @return The physical location of the table (e.g.
+     * &#39;gs://spark-dataproc-data/pangea-data/case_sensitive/&#39; or
+     * &#39;gs://spark-dataproc-data/pangea-data/*&#39;). The maximum length is 2056 bytes.
      * 
      */
     public Optional<String> locationUri() {
         return Optional.ofNullable(this.locationUri);
     }
     /**
-     * @return Specifies the fully qualified class name of the OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The maximum length is 128 characters.
+     * @return Specifies the fully qualified class name of the
+     * OutputFormat (e.g. &#34;org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat&#34;). The
+     * maximum length is 128 characters.
      * 
      */
     public Optional<String> outputFormat() {
         return Optional.ofNullable(this.outputFormat);
     }
     /**
-     * @return Serializer and deserializer information.
+     * @return Serializer and deserializer information. Structure
+     * is documented below.
      * 
      */
     public Optional<TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo> serdeInfo() {

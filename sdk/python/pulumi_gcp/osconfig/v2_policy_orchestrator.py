@@ -499,6 +499,10 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
+        PolicyOrchestrator helps managing project+zone level policy resources (e.g.
+        OS Policy Assignments), by providing tools to create, update and delete them
+        across projects and locations, at scale.
+
         ## Example Usage
 
         ### Osconfigv2 Policy Orchestrator Basic
@@ -607,6 +611,10 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
                  args: V2PolicyOrchestratorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        PolicyOrchestrator helps managing project+zone level policy resources (e.g.
+        OS Policy Assignments), by providing tools to create, update and delete them
+        across projects and locations, at scale.
+
         ## Example Usage
 
         ### Osconfigv2 Policy Orchestrator Basic

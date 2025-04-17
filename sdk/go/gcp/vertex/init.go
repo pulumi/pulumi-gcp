@@ -37,10 +37,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiFeatureGroup{}
 	case "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature":
 		r = &AiFeatureGroupFeature{}
+	case "gcp:vertex/aiFeatureGroupIamBinding:AiFeatureGroupIamBinding":
+		r = &AiFeatureGroupIamBinding{}
+	case "gcp:vertex/aiFeatureGroupIamMember:AiFeatureGroupIamMember":
+		r = &AiFeatureGroupIamMember{}
+	case "gcp:vertex/aiFeatureGroupIamPolicy:AiFeatureGroupIamPolicy":
+		r = &AiFeatureGroupIamPolicy{}
 	case "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore":
 		r = &AiFeatureOnlineStore{}
 	case "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview":
 		r = &AiFeatureOnlineStoreFeatureview{}
+	case "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamBinding:AiFeatureOnlineStoreFeatureviewIamBinding":
+		r = &AiFeatureOnlineStoreFeatureviewIamBinding{}
+	case "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamMember:AiFeatureOnlineStoreFeatureviewIamMember":
+		r = &AiFeatureOnlineStoreFeatureviewIamMember{}
+	case "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy":
+		r = &AiFeatureOnlineStoreFeatureviewIamPolicy{}
+	case "gcp:vertex/aiFeatureOnlineStoreIamBinding:AiFeatureOnlineStoreIamBinding":
+		r = &AiFeatureOnlineStoreIamBinding{}
+	case "gcp:vertex/aiFeatureOnlineStoreIamMember:AiFeatureOnlineStoreIamMember":
+		r = &AiFeatureOnlineStoreIamMember{}
+	case "gcp:vertex/aiFeatureOnlineStoreIamPolicy:AiFeatureOnlineStoreIamPolicy":
+		r = &AiFeatureOnlineStoreIamPolicy{}
 	case "gcp:vertex/aiFeatureStore:AiFeatureStore":
 		r = &AiFeatureStore{}
 	case "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType":
@@ -124,12 +142,57 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"vertex/aiFeatureGroupIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureGroupIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureGroupIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"vertex/aiFeatureOnlineStore",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiFeatureOnlineStoreFeatureview",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureOnlineStoreFeatureviewIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureOnlineStoreFeatureviewIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureOnlineStoreFeatureviewIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureOnlineStoreIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureOnlineStoreIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureOnlineStoreIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

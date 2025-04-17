@@ -475,6 +475,45 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// ### Cloud Run Service Iap
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-srv",
+    ///         Location = "us-central1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///         {
+    ///             Annotations = 
+    ///             {
+    ///                 { "run.googleapis.com/launch-stage", "BETA" },
+    ///                 { "run.googleapis.com/iap-enabled", "true" },
+    ///             },
+    ///         },
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "gcr.io/cloudrun/hello",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

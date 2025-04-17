@@ -40,18 +40,21 @@ __all__ = [
     'ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocations',
     'ControlFolderIntelligenceConfigFilterIncludedCloudStorageBuckets',
     'ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations',
+    'ControlFolderIntelligenceConfigTrialConfig',
     'ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig',
     'ControlOrganizationIntelligenceConfigFilter',
     'ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets',
     'ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations',
     'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets',
     'ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations',
+    'ControlOrganizationIntelligenceConfigTrialConfig',
     'ControlProjectIntelligenceConfigEffectiveIntelligenceConfig',
     'ControlProjectIntelligenceConfigFilter',
     'ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets',
     'ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations',
     'ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets',
     'ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations',
+    'ControlProjectIntelligenceConfigTrialConfig',
     'DefaultObjectAccessControlProjectTeam',
     'InsightsReportConfigCsvOptions',
     'InsightsReportConfigFrequencyOptions',
@@ -117,18 +120,21 @@ __all__ = [
     'GetControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationResult',
     'GetControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketResult',
     'GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationResult',
+    'GetControlFolderIntelligenceConfigTrialConfigResult',
     'GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigResult',
     'GetControlOrganizationIntelligenceConfigFilterResult',
     'GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketResult',
     'GetControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationResult',
     'GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketResult',
     'GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationResult',
+    'GetControlOrganizationIntelligenceConfigTrialConfigResult',
     'GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigResult',
     'GetControlProjectIntelligenceConfigFilterResult',
     'GetControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketResult',
     'GetControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationResult',
     'GetControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketResult',
     'GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationResult',
+    'GetControlProjectIntelligenceConfigTrialConfigResult',
 ]
 
 @pulumi.output_type
@@ -1340,6 +1346,44 @@ class ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocations(dict):
 
 
 @pulumi.output_type
+class ControlFolderIntelligenceConfigTrialConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expireTime":
+            suggest = "expire_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlFolderIntelligenceConfigTrialConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlFolderIntelligenceConfigTrialConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlFolderIntelligenceConfigTrialConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expire_time: Optional[builtins.str] = None):
+        """
+        :param builtins.str expire_time: (Output)
+               The time at which the trial expires.
+        """
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        The time at which the trial expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+
+@pulumi.output_type
 class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1586,6 +1630,44 @@ class ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations(d
 
 
 @pulumi.output_type
+class ControlOrganizationIntelligenceConfigTrialConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expireTime":
+            suggest = "expire_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlOrganizationIntelligenceConfigTrialConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlOrganizationIntelligenceConfigTrialConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlOrganizationIntelligenceConfigTrialConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expire_time: Optional[builtins.str] = None):
+        """
+        :param builtins.str expire_time: (Output)
+               The time at which the trial expires.
+        """
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        The time at which the trial expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+
+@pulumi.output_type
 class ControlProjectIntelligenceConfigEffectiveIntelligenceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1829,6 +1911,44 @@ class ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations(dict):
         List of locations.
         """
         return pulumi.get(self, "locations")
+
+
+@pulumi.output_type
+class ControlProjectIntelligenceConfigTrialConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expireTime":
+            suggest = "expire_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ControlProjectIntelligenceConfigTrialConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ControlProjectIntelligenceConfigTrialConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ControlProjectIntelligenceConfigTrialConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expire_time: Optional[builtins.str] = None):
+        """
+        :param builtins.str expire_time: (Output)
+               The time at which the trial expires.
+        """
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        The time at which the trial expires.
+        """
+        return pulumi.get(self, "expire_time")
 
 
 @pulumi.output_type
@@ -5176,6 +5296,24 @@ class GetControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationResult
 
 
 @pulumi.output_type
+class GetControlFolderIntelligenceConfigTrialConfigResult(dict):
+    def __init__(__self__, *,
+                 expire_time: builtins.str):
+        """
+        :param builtins.str expire_time: The time at which the trial expires.
+        """
+        pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> builtins.str:
+        """
+        The time at which the trial expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+
+@pulumi.output_type
 class GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigResult(dict):
     def __init__(__self__, *,
                  effective_edition: builtins.str,
@@ -5328,6 +5466,24 @@ class GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocation
 
 
 @pulumi.output_type
+class GetControlOrganizationIntelligenceConfigTrialConfigResult(dict):
+    def __init__(__self__, *,
+                 expire_time: builtins.str):
+        """
+        :param builtins.str expire_time: The time at which the trial expires.
+        """
+        pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> builtins.str:
+        """
+        The time at which the trial expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+
+@pulumi.output_type
 class GetControlProjectIntelligenceConfigEffectiveIntelligenceConfigResult(dict):
     def __init__(__self__, *,
                  effective_edition: builtins.str,
@@ -5477,5 +5633,23 @@ class GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationResul
         List of locations.
         """
         return pulumi.get(self, "locations")
+
+
+@pulumi.output_type
+class GetControlProjectIntelligenceConfigTrialConfigResult(dict):
+    def __init__(__self__, *,
+                 expire_time: builtins.str):
+        """
+        :param builtins.str expire_time: The time at which the trial expires.
+        """
+        pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> builtins.str:
+        """
+        The time at which the trial expires.
+        """
+        return pulumi.get(self, "expire_time")
 
 

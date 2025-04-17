@@ -11723,8 +11723,9 @@ func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) Index(i
 
 type UptimeCheckConfigHttpCheckAuthInfo struct {
 	// The password to authenticate.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
+	// The password write-only version.
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The username to authenticate.
 	Username string `pulumi:"username"`
 }
@@ -11742,8 +11743,9 @@ type UptimeCheckConfigHttpCheckAuthInfoInput interface {
 
 type UptimeCheckConfigHttpCheckAuthInfoArgs struct {
 	// The password to authenticate.
-	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The password write-only version.
+	PasswordWoVersion pulumi.StringPtrInput `pulumi:"passwordWoVersion"`
 	// The username to authenticate.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -11826,9 +11828,13 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) ToUptimeCheckConfigHttpCheckAu
 }
 
 // The password to authenticate.
-// **Note**: This property is sensitive and will not be displayed in the plan.
-func (o UptimeCheckConfigHttpCheckAuthInfoOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Password }).(pulumi.StringOutput)
+func (o UptimeCheckConfigHttpCheckAuthInfoOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The password write-only version.
+func (o UptimeCheckConfigHttpCheckAuthInfoOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) *string { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // The username to authenticate.
@@ -11861,13 +11867,22 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Elem() UptimeCheckConfigHtt
 }
 
 // The password to authenticate.
-// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password write-only version.
+func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 

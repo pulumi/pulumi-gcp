@@ -286,8 +286,8 @@ import (
 //				return err
 //			}
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_35305"),
-//				Name:           pulumi.String("tf-test_62793"),
+//				ProjectId:      pulumi.String("tf-test_49082"),
+//				Name:           pulumi.String("tf-test_60365"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -692,9 +692,6 @@ func NewAiFeatureOnlineStoreFeatureview(ctx *pulumi.Context,
 	if args.FeatureOnlineStore == nil {
 		return nil, errors.New("invalid value for required argument 'FeatureOnlineStore'")
 	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
 		"pulumiLabels",
@@ -828,7 +825,7 @@ type aiFeatureOnlineStoreFeatureviewArgs struct {
 	// The region for the resource. It should be the same as the featureonlinestore region.
 	//
 	// ***
-	Region string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
 	SyncConfig *AiFeatureOnlineStoreFeatureviewSyncConfig `pulumi:"syncConfig"`
@@ -860,7 +857,7 @@ type AiFeatureOnlineStoreFeatureviewArgs struct {
 	// The region for the resource. It should be the same as the featureonlinestore region.
 	//
 	// ***
-	Region pulumi.StringInput
+	Region pulumi.StringPtrInput
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
 	SyncConfig AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput

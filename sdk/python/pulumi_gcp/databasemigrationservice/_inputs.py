@@ -1370,9 +1370,9 @@ class ConnectionProfileMysqlArgs:
 
 if not MYPY:
     class ConnectionProfileMysqlSslArgsDict(TypedDict):
-        ca_certificate: pulumi.Input[builtins.str]
+        ca_certificate: NotRequired[pulumi.Input[builtins.str]]
         """
-        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         The replica will use this certificate to verify it's connecting to the right host.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -1399,12 +1399,12 @@ elif False:
 @pulumi.input_type
 class ConnectionProfileMysqlSslArgs:
     def __init__(__self__, *,
-                 ca_certificate: pulumi.Input[builtins.str],
+                 ca_certificate: Optional[pulumi.Input[builtins.str]] = None,
                  client_certificate: Optional[pulumi.Input[builtins.str]] = None,
                  client_key: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] ca_certificate: Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        :param pulumi.Input[builtins.str] ca_certificate: Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
                The replica will use this certificate to verify it's connecting to the right host.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] client_certificate: Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
@@ -1416,7 +1416,8 @@ class ConnectionProfileMysqlSslArgs:
         :param pulumi.Input[builtins.str] type: (Output)
                The current connection profile state.
         """
-        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
@@ -1426,16 +1427,16 @@ class ConnectionProfileMysqlSslArgs:
 
     @property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> pulumi.Input[builtins.str]:
+    def ca_certificate(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         The replica will use this certificate to verify it's connecting to the right host.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: pulumi.Input[builtins.str]):
+    def ca_certificate(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @property
@@ -1856,9 +1857,9 @@ class ConnectionProfileOraclePrivateConnectivityArgs:
 
 if not MYPY:
     class ConnectionProfileOracleSslArgsDict(TypedDict):
-        ca_certificate: pulumi.Input[builtins.str]
+        ca_certificate: NotRequired[pulumi.Input[builtins.str]]
         """
-        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         The replica will use this certificate to verify it's connecting to the right host.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -1885,12 +1886,12 @@ elif False:
 @pulumi.input_type
 class ConnectionProfileOracleSslArgs:
     def __init__(__self__, *,
-                 ca_certificate: pulumi.Input[builtins.str],
+                 ca_certificate: Optional[pulumi.Input[builtins.str]] = None,
                  client_certificate: Optional[pulumi.Input[builtins.str]] = None,
                  client_key: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] ca_certificate: Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        :param pulumi.Input[builtins.str] ca_certificate: Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
                The replica will use this certificate to verify it's connecting to the right host.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] client_certificate: Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
@@ -1902,7 +1903,8 @@ class ConnectionProfileOracleSslArgs:
         :param pulumi.Input[builtins.str] type: (Output)
                The current connection profile state.
         """
-        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
@@ -1912,16 +1914,16 @@ class ConnectionProfileOracleSslArgs:
 
     @property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> pulumi.Input[builtins.str]:
+    def ca_certificate(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         The replica will use this certificate to verify it's connecting to the right host.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: pulumi.Input[builtins.str]):
+    def ca_certificate(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @property
@@ -2187,9 +2189,9 @@ class ConnectionProfilePostgresqlArgs:
 
 if not MYPY:
     class ConnectionProfilePostgresqlSslArgsDict(TypedDict):
-        ca_certificate: pulumi.Input[builtins.str]
+        ca_certificate: NotRequired[pulumi.Input[builtins.str]]
         """
-        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         The replica will use this certificate to verify it's connecting to the right host.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -2216,12 +2218,12 @@ elif False:
 @pulumi.input_type
 class ConnectionProfilePostgresqlSslArgs:
     def __init__(__self__, *,
-                 ca_certificate: pulumi.Input[builtins.str],
+                 ca_certificate: Optional[pulumi.Input[builtins.str]] = None,
                  client_certificate: Optional[pulumi.Input[builtins.str]] = None,
                  client_key: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] ca_certificate: Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        :param pulumi.Input[builtins.str] ca_certificate: Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
                The replica will use this certificate to verify it's connecting to the right host.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] client_certificate: Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
@@ -2233,7 +2235,8 @@ class ConnectionProfilePostgresqlSslArgs:
         :param pulumi.Input[builtins.str] type: (Output)
                The current connection profile state.
         """
-        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if ca_certificate is not None:
+            pulumi.set(__self__, "ca_certificate", ca_certificate)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
@@ -2243,16 +2246,16 @@ class ConnectionProfilePostgresqlSslArgs:
 
     @property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> pulumi.Input[builtins.str]:
+    def ca_certificate(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+        Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         The replica will use this certificate to verify it's connecting to the right host.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: pulumi.Input[builtins.str]):
+    def ca_certificate(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @property

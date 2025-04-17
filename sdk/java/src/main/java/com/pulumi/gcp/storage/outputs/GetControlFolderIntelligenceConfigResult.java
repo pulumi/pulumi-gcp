@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceConfigEffectiveIntelligenceConfig;
 import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceConfigFilter;
+import com.pulumi.gcp.storage.outputs.GetControlFolderIntelligenceConfigTrialConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +23,7 @@ public final class GetControlFolderIntelligenceConfigResult {
      */
     private String id;
     private String name;
+    private List<GetControlFolderIntelligenceConfigTrialConfig> trialConfigs;
     private String updateTime;
 
     private GetControlFolderIntelligenceConfigResult() {}
@@ -44,6 +46,9 @@ public final class GetControlFolderIntelligenceConfigResult {
     public String name() {
         return this.name;
     }
+    public List<GetControlFolderIntelligenceConfigTrialConfig> trialConfigs() {
+        return this.trialConfigs;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -62,6 +67,7 @@ public final class GetControlFolderIntelligenceConfigResult {
         private List<GetControlFolderIntelligenceConfigFilter> filters;
         private String id;
         private String name;
+        private List<GetControlFolderIntelligenceConfigTrialConfig> trialConfigs;
         private String updateTime;
         public Builder() {}
         public Builder(GetControlFolderIntelligenceConfigResult defaults) {
@@ -71,6 +77,7 @@ public final class GetControlFolderIntelligenceConfigResult {
     	      this.filters = defaults.filters;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.trialConfigs = defaults.trialConfigs;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -121,6 +128,17 @@ public final class GetControlFolderIntelligenceConfigResult {
             return this;
         }
         @CustomType.Setter
+        public Builder trialConfigs(List<GetControlFolderIntelligenceConfigTrialConfig> trialConfigs) {
+            if (trialConfigs == null) {
+              throw new MissingRequiredPropertyException("GetControlFolderIntelligenceConfigResult", "trialConfigs");
+            }
+            this.trialConfigs = trialConfigs;
+            return this;
+        }
+        public Builder trialConfigs(GetControlFolderIntelligenceConfigTrialConfig... trialConfigs) {
+            return trialConfigs(List.of(trialConfigs));
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetControlFolderIntelligenceConfigResult", "updateTime");
@@ -135,6 +153,7 @@ public final class GetControlFolderIntelligenceConfigResult {
             _resultValue.filters = filters;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.trialConfigs = trialConfigs;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

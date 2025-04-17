@@ -12035,11 +12035,18 @@ func (o TableEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrO
 }
 
 type TableExternalCatalogTableOptions struct {
-	// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+	// The connection specifying the credentials to be
+	// used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+	// connection is needed to read the open source table from BigQuery Engine. The
+	// connectionId can have the form `<project_id>.<location_id>.<connection_id>`
+	// or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
 	ConnectionId *string `pulumi:"connectionId"`
-	// A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+	// A map of key value pairs defining the parameters and
+	// properties of the open source table. Corresponds with hive meta store table
+	// parameters. Maximum size of 4Mib.
 	Parameters map[string]string `pulumi:"parameters"`
-	// A storage descriptor containing information about the physical storage of this table.
+	// A storage descriptor containing information
+	// about the physical storage of this table. Structure is documented below.
 	StorageDescriptor *TableExternalCatalogTableOptionsStorageDescriptor `pulumi:"storageDescriptor"`
 }
 
@@ -12055,11 +12062,18 @@ type TableExternalCatalogTableOptionsInput interface {
 }
 
 type TableExternalCatalogTableOptionsArgs struct {
-	// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+	// The connection specifying the credentials to be
+	// used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+	// connection is needed to read the open source table from BigQuery Engine. The
+	// connectionId can have the form `<project_id>.<location_id>.<connection_id>`
+	// or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
-	// A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+	// A map of key value pairs defining the parameters and
+	// properties of the open source table. Corresponds with hive meta store table
+	// parameters. Maximum size of 4Mib.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	// A storage descriptor containing information about the physical storage of this table.
+	// A storage descriptor containing information
+	// about the physical storage of this table. Structure is documented below.
 	StorageDescriptor TableExternalCatalogTableOptionsStorageDescriptorPtrInput `pulumi:"storageDescriptor"`
 }
 
@@ -12140,17 +12154,24 @@ func (o TableExternalCatalogTableOptionsOutput) ToTableExternalCatalogTableOptio
 	}).(TableExternalCatalogTableOptionsPtrOutput)
 }
 
-// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+// The connection specifying the credentials to be
+// used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+// connection is needed to read the open source table from BigQuery Engine. The
+// connectionId can have the form `<project_id>.<location_id>.<connection_id>`
+// or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
 func (o TableExternalCatalogTableOptionsOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalCatalogTableOptions) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
 
-// A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+// A map of key value pairs defining the parameters and
+// properties of the open source table. Corresponds with hive meta store table
+// parameters. Maximum size of 4Mib.
 func (o TableExternalCatalogTableOptionsOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TableExternalCatalogTableOptions) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-// A storage descriptor containing information about the physical storage of this table.
+// A storage descriptor containing information
+// about the physical storage of this table. Structure is documented below.
 func (o TableExternalCatalogTableOptionsOutput) StorageDescriptor() TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
 	return o.ApplyT(func(v TableExternalCatalogTableOptions) *TableExternalCatalogTableOptionsStorageDescriptor {
 		return v.StorageDescriptor
@@ -12181,7 +12202,11 @@ func (o TableExternalCatalogTableOptionsPtrOutput) Elem() TableExternalCatalogTa
 	}).(TableExternalCatalogTableOptionsOutput)
 }
 
-// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+// The connection specifying the credentials to be
+// used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
+// connection is needed to read the open source table from BigQuery Engine. The
+// connectionId can have the form `<project_id>.<location_id>.<connection_id>`
+// or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
 func (o TableExternalCatalogTableOptionsPtrOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalCatalogTableOptions) *string {
 		if v == nil {
@@ -12191,7 +12216,9 @@ func (o TableExternalCatalogTableOptionsPtrOutput) ConnectionId() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+// A map of key value pairs defining the parameters and
+// properties of the open source table. Corresponds with hive meta store table
+// parameters. Maximum size of 4Mib.
 func (o TableExternalCatalogTableOptionsPtrOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TableExternalCatalogTableOptions) map[string]string {
 		if v == nil {
@@ -12201,7 +12228,8 @@ func (o TableExternalCatalogTableOptionsPtrOutput) Parameters() pulumi.StringMap
 	}).(pulumi.StringMapOutput)
 }
 
-// A storage descriptor containing information about the physical storage of this table.
+// A storage descriptor containing information
+// about the physical storage of this table. Structure is documented below.
 func (o TableExternalCatalogTableOptionsPtrOutput) StorageDescriptor() TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
 	return o.ApplyT(func(v *TableExternalCatalogTableOptions) *TableExternalCatalogTableOptionsStorageDescriptor {
 		if v == nil {
@@ -12212,13 +12240,20 @@ func (o TableExternalCatalogTableOptionsPtrOutput) StorageDescriptor() TableExte
 }
 
 type TableExternalCatalogTableOptionsStorageDescriptor struct {
-	// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+	// Specifies the fully qualified class name of the
+	// InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
+	// maximum length is 128 characters.
 	InputFormat *string `pulumi:"inputFormat"`
-	// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+	// The physical location of the table (e.g.
+	// 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+	// 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
 	LocationUri *string `pulumi:"locationUri"`
-	// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+	// Specifies the fully qualified class name of the
+	// OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
+	// maximum length is 128 characters.
 	OutputFormat *string `pulumi:"outputFormat"`
-	// Serializer and deserializer information.
+	// Serializer and deserializer information. Structure
+	// is documented below.
 	SerdeInfo *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo `pulumi:"serdeInfo"`
 }
 
@@ -12234,13 +12269,20 @@ type TableExternalCatalogTableOptionsStorageDescriptorInput interface {
 }
 
 type TableExternalCatalogTableOptionsStorageDescriptorArgs struct {
-	// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+	// Specifies the fully qualified class name of the
+	// InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
+	// maximum length is 128 characters.
 	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
-	// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+	// The physical location of the table (e.g.
+	// 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+	// 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
 	LocationUri pulumi.StringPtrInput `pulumi:"locationUri"`
-	// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+	// Specifies the fully qualified class name of the
+	// OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
+	// maximum length is 128 characters.
 	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
-	// Serializer and deserializer information.
+	// Serializer and deserializer information. Structure
+	// is documented below.
 	SerdeInfo TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrInput `pulumi:"serdeInfo"`
 }
 
@@ -12321,22 +12363,29 @@ func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) ToTableExternal
 	}).(TableExternalCatalogTableOptionsStorageDescriptorPtrOutput)
 }
 
-// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+// Specifies the fully qualified class name of the
+// InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
+// maximum length is 128 characters.
 func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) InputFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptor) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
 }
 
-// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+// The physical location of the table (e.g.
+// 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+// 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
 func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) LocationUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptor) *string { return v.LocationUri }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+// Specifies the fully qualified class name of the
+// OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
+// maximum length is 128 characters.
 func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) OutputFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptor) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
 }
 
-// Serializer and deserializer information.
+// Serializer and deserializer information. Structure
+// is documented below.
 func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) SerdeInfo() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
 	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptor) *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
 		return v.SerdeInfo
@@ -12367,7 +12416,9 @@ func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) Elem() Table
 	}).(TableExternalCatalogTableOptionsStorageDescriptorOutput)
 }
 
-// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+// Specifies the fully qualified class name of the
+// InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The
+// maximum length is 128 characters.
 func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) InputFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptor) *string {
 		if v == nil {
@@ -12377,7 +12428,9 @@ func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) InputFormat(
 	}).(pulumi.StringPtrOutput)
 }
 
-// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+// The physical location of the table (e.g.
+// 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+// 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
 func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) LocationUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptor) *string {
 		if v == nil {
@@ -12387,7 +12440,9 @@ func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) LocationUri(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+// Specifies the fully qualified class name of the
+// OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
+// maximum length is 128 characters.
 func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) OutputFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptor) *string {
 		if v == nil {
@@ -12397,7 +12452,8 @@ func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) OutputFormat
 	}).(pulumi.StringPtrOutput)
 }
 
-// Serializer and deserializer information.
+// Serializer and deserializer information. Structure
+// is documented below.
 func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) SerdeInfo() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
 	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptor) *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
 		if v == nil {
@@ -12410,9 +12466,13 @@ func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) SerdeInfo() 
 type TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo struct {
 	// Name of the SerDe. The maximum length is 256 characters.
 	Name *string `pulumi:"name"`
-	// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+	// Key-value pairs that define the initialization
+	// parameters for the serialization library. Maximum size 10 Kib.
 	Parameters map[string]string `pulumi:"parameters"`
-	// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+	// Specifies a fully-qualified class name of
+	// the serialization library that is responsible for the translation of data
+	// between table representation and the underlying low-level input and output
+	// format structures. The maximum length is 256 characters.
 	SerializationLibrary string `pulumi:"serializationLibrary"`
 }
 
@@ -12430,9 +12490,13 @@ type TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoInput interface {
 type TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs struct {
 	// Name of the SerDe. The maximum length is 256 characters.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+	// Key-value pairs that define the initialization
+	// parameters for the serialization library. Maximum size 10 Kib.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+	// Specifies a fully-qualified class name of
+	// the serialization library that is responsible for the translation of data
+	// between table representation and the underlying low-level input and output
+	// format structures. The maximum length is 256 characters.
 	SerializationLibrary pulumi.StringInput `pulumi:"serializationLibrary"`
 }
 
@@ -12518,14 +12582,18 @@ func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) Name()
 	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+// Key-value pairs that define the initialization
+// parameters for the serialization library. Maximum size 10 Kib.
 func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) map[string]string {
 		return v.Parameters
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+// Specifies a fully-qualified class name of
+// the serialization library that is responsible for the translation of data
+// between table representation and the underlying low-level input and output
+// format structures. The maximum length is 256 characters.
 func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) SerializationLibrary() pulumi.StringOutput {
 	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) string {
 		return v.SerializationLibrary
@@ -12566,7 +12634,8 @@ func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) Nam
 	}).(pulumi.StringPtrOutput)
 }
 
-// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+// Key-value pairs that define the initialization
+// parameters for the serialization library. Maximum size 10 Kib.
 func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) map[string]string {
 		if v == nil {
@@ -12576,7 +12645,10 @@ func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) Par
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+// Specifies a fully-qualified class name of
+// the serialization library that is responsible for the translation of data
+// between table representation and the underlying low-level input and output
+// format structures. The maximum length is 256 characters.
 func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) SerializationLibrary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) *string {
 		if v == nil {
@@ -15428,7 +15500,8 @@ func (o TableRangePartitioningRangePtrOutput) Start() pulumi.IntPtrOutput {
 }
 
 type TableSchemaForeignTypeInfo struct {
-	// Specifies the system which defines the foreign data type.
+	// Specifies the system which defines the foreign data
+	// type.
 	TypeSystem string `pulumi:"typeSystem"`
 }
 
@@ -15444,7 +15517,8 @@ type TableSchemaForeignTypeInfoInput interface {
 }
 
 type TableSchemaForeignTypeInfoArgs struct {
-	// Specifies the system which defines the foreign data type.
+	// Specifies the system which defines the foreign data
+	// type.
 	TypeSystem pulumi.StringInput `pulumi:"typeSystem"`
 }
 
@@ -15525,7 +15599,8 @@ func (o TableSchemaForeignTypeInfoOutput) ToTableSchemaForeignTypeInfoPtrOutputW
 	}).(TableSchemaForeignTypeInfoPtrOutput)
 }
 
-// Specifies the system which defines the foreign data type.
+// Specifies the system which defines the foreign data
+// type.
 func (o TableSchemaForeignTypeInfoOutput) TypeSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v TableSchemaForeignTypeInfo) string { return v.TypeSystem }).(pulumi.StringOutput)
 }
@@ -15554,7 +15629,8 @@ func (o TableSchemaForeignTypeInfoPtrOutput) Elem() TableSchemaForeignTypeInfoOu
 	}).(TableSchemaForeignTypeInfoOutput)
 }
 
-// Specifies the system which defines the foreign data type.
+// Specifies the system which defines the foreign data
+// type.
 func (o TableSchemaForeignTypeInfoPtrOutput) TypeSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableSchemaForeignTypeInfo) *string {
 		if v == nil {

@@ -67,7 +67,8 @@ class TableArgs:
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
-        :param pulumi.Input['TableExternalCatalogTableOptionsArgs'] external_catalog_table_options: Options defining open source compatible table.
+        :param pulumi.Input['TableExternalCatalogTableOptionsArgs'] external_catalog_table_options: Options defining open source
+               compatible table. Structure is documented below.
         :param pulumi.Input['TableExternalDataConfigurationArgs'] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
@@ -97,7 +98,8 @@ class TableArgs:
                expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
                for more details.
         :param pulumi.Input[builtins.str] schema: A JSON schema for the table.
-        :param pulumi.Input['TableSchemaForeignTypeInfoArgs'] schema_foreign_type_info: Specifies metadata of the foreign data type definition in field schema.
+        :param pulumi.Input['TableSchemaForeignTypeInfoArgs'] schema_foreign_type_info: Specifies metadata of the foreign data
+               type definition in field schema. Structure is documented below.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
         :param pulumi.Input[builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By
@@ -271,7 +273,8 @@ class TableArgs:
     @pulumi.getter(name="externalCatalogTableOptions")
     def external_catalog_table_options(self) -> Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]:
         """
-        Options defining open source compatible table.
+        Options defining open source
+        compatible table. Structure is documented below.
         """
         return pulumi.get(self, "external_catalog_table_options")
 
@@ -422,7 +425,8 @@ class TableArgs:
     @pulumi.getter(name="schemaForeignTypeInfo")
     def schema_foreign_type_info(self) -> Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]:
         """
-        Specifies metadata of the foreign data type definition in field schema.
+        Specifies metadata of the foreign data
+        type definition in field schema. Structure is documented below.
         """
         return pulumi.get(self, "schema_foreign_type_info")
 
@@ -574,7 +578,8 @@ class _TableState:
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
-        :param pulumi.Input['TableExternalCatalogTableOptionsArgs'] external_catalog_table_options: Options defining open source compatible table.
+        :param pulumi.Input['TableExternalCatalogTableOptionsArgs'] external_catalog_table_options: Options defining open source
+               compatible table. Structure is documented below.
         :param pulumi.Input['TableExternalDataConfigurationArgs'] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
@@ -610,7 +615,8 @@ class _TableState:
                expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
                for more details.
         :param pulumi.Input[builtins.str] schema: A JSON schema for the table.
-        :param pulumi.Input['TableSchemaForeignTypeInfoArgs'] schema_foreign_type_info: Specifies metadata of the foreign data type definition in field schema.
+        :param pulumi.Input['TableSchemaForeignTypeInfoArgs'] schema_foreign_type_info: Specifies metadata of the foreign data
+               type definition in field schema. Structure is documented below.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
@@ -850,7 +856,8 @@ class _TableState:
     @pulumi.getter(name="externalCatalogTableOptions")
     def external_catalog_table_options(self) -> Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]:
         """
-        Options defining open source compatible table.
+        Options defining open source
+        compatible table. Structure is documented below.
         """
         return pulumi.get(self, "external_catalog_table_options")
 
@@ -1073,7 +1080,8 @@ class _TableState:
     @pulumi.getter(name="schemaForeignTypeInfo")
     def schema_foreign_type_info(self) -> Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]:
         """
-        Specifies metadata of the foreign data type definition in field schema.
+        Specifies metadata of the foreign data
+        type definition in field schema. Structure is documented below.
         """
         return pulumi.get(self, "schema_foreign_type_info")
 
@@ -1321,7 +1329,8 @@ class Table(pulumi.CustomResource):
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
-        :param pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']] external_catalog_table_options: Options defining open source compatible table.
+        :param pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']] external_catalog_table_options: Options defining open source
+               compatible table. Structure is documented below.
         :param pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
@@ -1351,7 +1360,8 @@ class Table(pulumi.CustomResource):
                expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
                for more details.
         :param pulumi.Input[builtins.str] schema: A JSON schema for the table.
-        :param pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']] schema_foreign_type_info: Specifies metadata of the foreign data type definition in field schema.
+        :param pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']] schema_foreign_type_info: Specifies metadata of the foreign data
+               type definition in field schema. Structure is documented below.
         :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
         :param pulumi.Input[builtins.str] table_id: A unique ID for the resource.
@@ -1637,7 +1647,8 @@ class Table(pulumi.CustomResource):
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
-        :param pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']] external_catalog_table_options: Options defining open source compatible table.
+        :param pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']] external_catalog_table_options: Options defining open source
+               compatible table. Structure is documented below.
         :param pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
@@ -1673,7 +1684,8 @@ class Table(pulumi.CustomResource):
                expected to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
                for more details.
         :param pulumi.Input[builtins.str] schema: A JSON schema for the table.
-        :param pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']] schema_foreign_type_info: Specifies metadata of the foreign data type definition in field schema.
+        :param pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']] schema_foreign_type_info: Specifies metadata of the foreign data
+               type definition in field schema. Structure is documented below.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
@@ -1842,7 +1854,8 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="externalCatalogTableOptions")
     def external_catalog_table_options(self) -> pulumi.Output[Optional['outputs.TableExternalCatalogTableOptions']]:
         """
-        Options defining open source compatible table.
+        Options defining open source
+        compatible table. Structure is documented below.
         """
         return pulumi.get(self, "external_catalog_table_options")
 
@@ -1997,7 +2010,8 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="schemaForeignTypeInfo")
     def schema_foreign_type_info(self) -> pulumi.Output[Optional['outputs.TableSchemaForeignTypeInfo']]:
         """
-        Specifies metadata of the foreign data type definition in field schema.
+        Specifies metadata of the foreign data
+        type definition in field schema. Structure is documented below.
         """
         return pulumi.get(self, "schema_foreign_type_info")
 

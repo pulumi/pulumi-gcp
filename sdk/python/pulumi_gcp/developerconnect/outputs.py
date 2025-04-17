@@ -17,6 +17,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AccountConnectorProviderOauthConfig',
     'ConnectionBitbucketCloudConfig',
     'ConnectionBitbucketCloudConfigAuthorizerCredential',
     'ConnectionBitbucketCloudConfigReadAuthorizerCredential',
@@ -38,6 +39,69 @@ __all__ = [
     'ConnectionGitlabEnterpriseConfigServiceDirectoryConfig',
     'ConnectionInstallationState',
 ]
+
+@pulumi.output_type
+class AccountConnectorProviderOauthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "systemProviderId":
+            suggest = "system_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccountConnectorProviderOauthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccountConnectorProviderOauthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccountConnectorProviderOauthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 scopes: Sequence[builtins.str],
+                 system_provider_id: Optional[builtins.str] = None):
+        """
+        :param Sequence[builtins.str] scopes: Required. User selected scopes to apply to the Oauth config
+               In the event of changing scopes, user records under AccountConnector will
+               be deleted and users will re-auth again.
+        :param builtins.str system_provider_id: List of providers that are owned by Developer Connect.
+               Possible values:
+               GITHUB
+               GITLAB
+               GOOGLE
+               SENTRY
+               ROVO
+        """
+        pulumi.set(__self__, "scopes", scopes)
+        if system_provider_id is not None:
+            pulumi.set(__self__, "system_provider_id", system_provider_id)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[builtins.str]:
+        """
+        Required. User selected scopes to apply to the Oauth config
+        In the event of changing scopes, user records under AccountConnector will
+        be deleted and users will re-auth again.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="systemProviderId")
+    def system_provider_id(self) -> Optional[builtins.str]:
+        """
+        List of providers that are owned by Developer Connect.
+        Possible values:
+        GITHUB
+        GITLAB
+        GOOGLE
+        SENTRY
+        ROVO
+        """
+        return pulumi.get(self, "system_provider_id")
+
 
 @pulumi.output_type
 class ConnectionBitbucketCloudConfig(dict):

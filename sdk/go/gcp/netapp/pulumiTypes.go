@@ -1243,7 +1243,7 @@ func (o VolumeReplicationTransferStatArrayOutput) Index(i pulumi.IntInput) Volum
 }
 
 type VolumeRestoreParameters struct {
-	// Full name of the snapshot to use for creating this volume.
+	// Full name of the backup to use for creating this volume.
 	// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
 	// Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
 	SourceBackup *string `pulumi:"sourceBackup"`
@@ -1265,7 +1265,7 @@ type VolumeRestoreParametersInput interface {
 }
 
 type VolumeRestoreParametersArgs struct {
-	// Full name of the snapshot to use for creating this volume.
+	// Full name of the backup to use for creating this volume.
 	// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
 	// Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
 	SourceBackup pulumi.StringPtrInput `pulumi:"sourceBackup"`
@@ -1352,7 +1352,7 @@ func (o VolumeRestoreParametersOutput) ToVolumeRestoreParametersPtrOutputWithCon
 	}).(VolumeRestoreParametersPtrOutput)
 }
 
-// Full name of the snapshot to use for creating this volume.
+// Full name of the backup to use for creating this volume.
 // `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
 // Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
 func (o VolumeRestoreParametersOutput) SourceBackup() pulumi.StringPtrOutput {
@@ -1390,7 +1390,7 @@ func (o VolumeRestoreParametersPtrOutput) Elem() VolumeRestoreParametersOutput {
 	}).(VolumeRestoreParametersOutput)
 }
 
-// Full name of the snapshot to use for creating this volume.
+// Full name of the backup to use for creating this volume.
 // `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
 // Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
 func (o VolumeRestoreParametersPtrOutput) SourceBackup() pulumi.StringPtrOutput {

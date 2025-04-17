@@ -338,7 +338,7 @@ func (o ClusterGcpConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
 }
 
 type ClusterGcpConfigAccessConfig struct {
-	// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+	// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
 	// Structure is documented below.
 	NetworkConfigs []ClusterGcpConfigAccessConfigNetworkConfig `pulumi:"networkConfigs"`
 }
@@ -355,7 +355,7 @@ type ClusterGcpConfigAccessConfigInput interface {
 }
 
 type ClusterGcpConfigAccessConfigArgs struct {
-	// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+	// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
 	// Structure is documented below.
 	NetworkConfigs ClusterGcpConfigAccessConfigNetworkConfigArrayInput `pulumi:"networkConfigs"`
 }
@@ -437,7 +437,7 @@ func (o ClusterGcpConfigAccessConfigOutput) ToClusterGcpConfigAccessConfigPtrOut
 	}).(ClusterGcpConfigAccessConfigPtrOutput)
 }
 
-// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
 // Structure is documented below.
 func (o ClusterGcpConfigAccessConfigOutput) NetworkConfigs() ClusterGcpConfigAccessConfigNetworkConfigArrayOutput {
 	return o.ApplyT(func(v ClusterGcpConfigAccessConfig) []ClusterGcpConfigAccessConfigNetworkConfig {
@@ -469,7 +469,7 @@ func (o ClusterGcpConfigAccessConfigPtrOutput) Elem() ClusterGcpConfigAccessConf
 	}).(ClusterGcpConfigAccessConfigOutput)
 }
 
-// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `networkConfigs` blocks.
+// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `networkConfigs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `networkConfigs` blocks.
 // Structure is documented below.
 func (o ClusterGcpConfigAccessConfigPtrOutput) NetworkConfigs() ClusterGcpConfigAccessConfigNetworkConfigArrayOutput {
 	return o.ApplyT(func(v *ClusterGcpConfigAccessConfig) []ClusterGcpConfigAccessConfigNetworkConfig {
@@ -481,7 +481,7 @@ func (o ClusterGcpConfigAccessConfigPtrOutput) NetworkConfigs() ClusterGcpConfig
 }
 
 type ClusterGcpConfigAccessConfigNetworkConfig struct {
-	// Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
+	// Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
 	Subnet string `pulumi:"subnet"`
 }
 
@@ -497,7 +497,7 @@ type ClusterGcpConfigAccessConfigNetworkConfigInput interface {
 }
 
 type ClusterGcpConfigAccessConfigNetworkConfigArgs struct {
-	// Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
+	// Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
 	Subnet pulumi.StringInput `pulumi:"subnet"`
 }
 
@@ -552,7 +552,7 @@ func (o ClusterGcpConfigAccessConfigNetworkConfigOutput) ToClusterGcpConfigAcces
 	return o
 }
 
-// Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. The subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
+// Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
 func (o ClusterGcpConfigAccessConfigNetworkConfigOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterGcpConfigAccessConfigNetworkConfig) string { return v.Subnet }).(pulumi.StringOutput)
 }

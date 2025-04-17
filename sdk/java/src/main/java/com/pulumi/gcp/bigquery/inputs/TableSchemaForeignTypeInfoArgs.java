@@ -15,14 +15,16 @@ public final class TableSchemaForeignTypeInfoArgs extends com.pulumi.resources.R
     public static final TableSchemaForeignTypeInfoArgs Empty = new TableSchemaForeignTypeInfoArgs();
 
     /**
-     * Specifies the system which defines the foreign data type.
+     * Specifies the system which defines the foreign data
+     * type.
      * 
      */
     @Import(name="typeSystem", required=true)
     private Output<String> typeSystem;
 
     /**
-     * @return Specifies the system which defines the foreign data type.
+     * @return Specifies the system which defines the foreign data
+     * type.
      * 
      */
     public Output<String> typeSystem() {
@@ -54,7 +56,8 @@ public final class TableSchemaForeignTypeInfoArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param typeSystem Specifies the system which defines the foreign data type.
+         * @param typeSystem Specifies the system which defines the foreign data
+         * type.
          * 
          * @return builder
          * 
@@ -65,7 +68,8 @@ public final class TableSchemaForeignTypeInfoArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param typeSystem Specifies the system which defines the foreign data type.
+         * @param typeSystem Specifies the system which defines the foreign data
+         * type.
          * 
          * @return builder
          * 

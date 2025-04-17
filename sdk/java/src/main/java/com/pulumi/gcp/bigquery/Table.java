@@ -337,14 +337,16 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.expirationTime;
     }
     /**
-     * Options defining open source compatible table.
+     * Options defining open source
+     * compatible table. Structure is documented below.
      * 
      */
     @Export(name="externalCatalogTableOptions", refs={TableExternalCatalogTableOptions.class}, tree="[0]")
     private Output</* @Nullable */ TableExternalCatalogTableOptions> externalCatalogTableOptions;
 
     /**
-     * @return Options defining open source compatible table.
+     * @return Options defining open source
+     * compatible table. Structure is documented below.
      * 
      */
     public Output<Optional<TableExternalCatalogTableOptions>> externalCatalogTableOptions() {
@@ -613,14 +615,16 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.schema;
     }
     /**
-     * Specifies metadata of the foreign data type definition in field schema.
+     * Specifies metadata of the foreign data
+     * type definition in field schema. Structure is documented below.
      * 
      */
     @Export(name="schemaForeignTypeInfo", refs={TableSchemaForeignTypeInfo.class}, tree="[0]")
     private Output</* @Nullable */ TableSchemaForeignTypeInfo> schemaForeignTypeInfo;
 
     /**
-     * @return Specifies metadata of the foreign data type definition in field schema.
+     * @return Specifies metadata of the foreign data
+     * type definition in field schema. Structure is documented below.
      * 
      */
     public Output<Optional<TableSchemaForeignTypeInfo>> schemaForeignTypeInfo() {

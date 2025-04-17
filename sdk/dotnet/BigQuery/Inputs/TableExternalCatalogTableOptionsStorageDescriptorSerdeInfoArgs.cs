@@ -22,7 +22,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         private InputMap<string>? _parameters;
 
         /// <summary>
-        /// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+        /// Key-value pairs that define the initialization
+        /// parameters for the serialization library. Maximum size 10 Kib.
         /// </summary>
         public InputMap<string> Parameters
         {
@@ -31,7 +32,10 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         }
 
         /// <summary>
-        /// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+        /// Specifies a fully-qualified class name of
+        /// the serialization library that is responsible for the translation of data
+        /// between table representation and the underlying low-level input and output
+        /// format structures. The maximum length is 256 characters.
         /// </summary>
         [Input("serializationLibrary", required: true)]
         public Input<string> SerializationLibrary { get; set; } = null!;

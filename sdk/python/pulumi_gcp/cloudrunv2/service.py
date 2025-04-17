@@ -33,6 +33,7 @@ class ServiceArgs:
                  default_uri_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 iap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  ingress: Optional[pulumi.Input[builtins.str]] = None,
                  invoker_iam_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -62,6 +63,7 @@ class ServiceArgs:
                https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
+        :param pulumi.Input[builtins.bool] iap_enabled: Used to enable/disable IAP for the service.
         :param pulumi.Input[builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
@@ -106,6 +108,8 @@ class ServiceArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if iap_enabled is not None:
+            pulumi.set(__self__, "iap_enabled", iap_enabled)
         if ingress is not None:
             pulumi.set(__self__, "ingress", ingress)
         if invoker_iam_disabled is not None:
@@ -262,6 +266,18 @@ class ServiceArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="iapEnabled")
+    def iap_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Used to enable/disable IAP for the service.
+        """
+        return pulumi.get(self, "iap_enabled")
+
+    @iap_enabled.setter
+    def iap_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "iap_enabled", value)
+
+    @property
     @pulumi.getter
     def ingress(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -392,6 +408,7 @@ class _ServiceState:
                  etag: Optional[pulumi.Input[builtins.str]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
                  generation: Optional[pulumi.Input[builtins.str]] = None,
+                 iap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  ingress: Optional[pulumi.Input[builtins.str]] = None,
                  invoker_iam_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -441,6 +458,7 @@ class _ServiceState:
         :param pulumi.Input[builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
         :param pulumi.Input[builtins.str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+        :param pulumi.Input[builtins.bool] iap_enabled: Used to enable/disable IAP for the service.
         :param pulumi.Input[builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
@@ -523,6 +541,8 @@ class _ServiceState:
             pulumi.set(__self__, "expire_time", expire_time)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
+        if iap_enabled is not None:
+            pulumi.set(__self__, "iap_enabled", iap_enabled)
         if ingress is not None:
             pulumi.set(__self__, "ingress", ingress)
         if invoker_iam_disabled is not None:
@@ -786,6 +806,18 @@ class _ServiceState:
     @generation.setter
     def generation(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter(name="iapEnabled")
+    def iap_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Used to enable/disable IAP for the service.
+        """
+        return pulumi.get(self, "iap_enabled")
+
+    @iap_enabled.setter
+    def iap_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "iap_enabled", value)
 
     @property
     @pulumi.getter
@@ -1087,6 +1119,7 @@ class Service(pulumi.CustomResource):
                  default_uri_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 iap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  ingress: Optional[pulumi.Input[builtins.str]] = None,
                  invoker_iam_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -1623,6 +1656,25 @@ class Service(pulumi.CustomResource):
                     logs_writer,
                 ]))
         ```
+        ### Cloudrunv2 Service Iap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-iap-service",
+            location="us-central1",
+            deletion_protection=False,
+            ingress="INGRESS_TRAFFIC_ALL",
+            launch_stage="BETA",
+            iap_enabled=True,
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
 
         ## Import
 
@@ -1666,6 +1718,7 @@ class Service(pulumi.CustomResource):
                https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
+        :param pulumi.Input[builtins.bool] iap_enabled: Used to enable/disable IAP for the service.
         :param pulumi.Input[builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
@@ -2224,6 +2277,25 @@ class Service(pulumi.CustomResource):
                     logs_writer,
                 ]))
         ```
+        ### Cloudrunv2 Service Iap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-iap-service",
+            location="us-central1",
+            deletion_protection=False,
+            ingress="INGRESS_TRAFFIC_ALL",
+            launch_stage="BETA",
+            iap_enabled=True,
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
 
         ## Import
 
@@ -2273,6 +2345,7 @@ class Service(pulumi.CustomResource):
                  default_uri_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 iap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  ingress: Optional[pulumi.Input[builtins.str]] = None,
                  invoker_iam_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -2301,6 +2374,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["default_uri_disabled"] = default_uri_disabled
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
+            __props__.__dict__["iap_enabled"] = iap_enabled
             __props__.__dict__["ingress"] = ingress
             __props__.__dict__["invoker_iam_disabled"] = invoker_iam_disabled
             __props__.__dict__["labels"] = labels
@@ -2366,6 +2440,7 @@ class Service(pulumi.CustomResource):
             etag: Optional[pulumi.Input[builtins.str]] = None,
             expire_time: Optional[pulumi.Input[builtins.str]] = None,
             generation: Optional[pulumi.Input[builtins.str]] = None,
+            iap_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             ingress: Optional[pulumi.Input[builtins.str]] = None,
             invoker_iam_disabled: Optional[pulumi.Input[builtins.bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -2420,6 +2495,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
         :param pulumi.Input[builtins.str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+        :param pulumi.Input[builtins.bool] iap_enabled: Used to enable/disable IAP for the service.
         :param pulumi.Input[builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
@@ -2488,6 +2564,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["generation"] = generation
+        __props__.__dict__["iap_enabled"] = iap_enabled
         __props__.__dict__["ingress"] = ingress
         __props__.__dict__["invoker_iam_disabled"] = invoker_iam_disabled
         __props__.__dict__["labels"] = labels
@@ -2658,6 +2735,14 @@ class Service(pulumi.CustomResource):
         A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         """
         return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter(name="iapEnabled")
+    def iap_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Used to enable/disable IAP for the service.
+        """
+        return pulumi.get(self, "iap_enabled")
 
     @property
     @pulumi.getter

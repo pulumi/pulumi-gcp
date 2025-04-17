@@ -272,6 +272,12 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly sourceDisk!: pulumi.Output<string | undefined>;
     /**
+     * The customer-supplied encryption key of the source disk. Required if
+     * the source disk is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    public readonly sourceDiskEncryptionKey!: pulumi.Output<outputs.compute.ImageSourceDiskEncryptionKey | undefined>;
+    /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
      * * The selfLink URL
@@ -280,6 +286,12 @@ export class Image extends pulumi.CustomResource {
      * * The sourceDisk URL
      */
     public readonly sourceImage!: pulumi.Output<string | undefined>;
+    /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    public readonly sourceImageEncryptionKey!: pulumi.Output<outputs.compute.ImageSourceImageEncryptionKey | undefined>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
@@ -290,6 +302,12 @@ export class Image extends pulumi.CustomResource {
      * * The sourceDisk URL
      */
     public readonly sourceSnapshot!: pulumi.Output<string | undefined>;
+    /**
+     * The customer-supplied encryption key of the source snapshot. Required if
+     * the source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    public readonly sourceSnapshotEncryptionKey!: pulumi.Output<outputs.compute.ImageSourceSnapshotEncryptionKey | undefined>;
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
@@ -328,8 +346,11 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["shieldedInstanceInitialState"] = state ? state.shieldedInstanceInitialState : undefined;
             resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
+            resourceInputs["sourceDiskEncryptionKey"] = state ? state.sourceDiskEncryptionKey : undefined;
             resourceInputs["sourceImage"] = state ? state.sourceImage : undefined;
+            resourceInputs["sourceImageEncryptionKey"] = state ? state.sourceImageEncryptionKey : undefined;
             resourceInputs["sourceSnapshot"] = state ? state.sourceSnapshot : undefined;
+            resourceInputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["storageLocations"] = state ? state.storageLocations : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
@@ -345,8 +366,11 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["rawDisk"] = args ? args.rawDisk : undefined;
             resourceInputs["shieldedInstanceInitialState"] = args ? args.shieldedInstanceInitialState : undefined;
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
+            resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
             resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
+            resourceInputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
             resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
+            resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
             resourceInputs["archiveSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -469,6 +493,12 @@ export interface ImageState {
      */
     sourceDisk?: pulumi.Input<string>;
     /**
+     * The customer-supplied encryption key of the source disk. Required if
+     * the source disk is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceDiskEncryptionKey>;
+    /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
      * * The selfLink URL
@@ -477,6 +507,12 @@ export interface ImageState {
      * * The sourceDisk URL
      */
     sourceImage?: pulumi.Input<string>;
+    /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceImageEncryptionKey>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
@@ -487,6 +523,12 @@ export interface ImageState {
      * * The sourceDisk URL
      */
     sourceSnapshot?: pulumi.Input<string>;
+    /**
+     * The customer-supplied encryption key of the source snapshot. Required if
+     * the source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceSnapshotEncryptionKey>;
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
@@ -575,6 +617,12 @@ export interface ImageArgs {
      */
     sourceDisk?: pulumi.Input<string>;
     /**
+     * The customer-supplied encryption key of the source disk. Required if
+     * the source disk is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceDiskEncryptionKey>;
+    /**
      * URL of the source image used to create this image. In order to create an image, you must provide the full or partial
      * URL of one of the following:
      * * The selfLink URL
@@ -583,6 +631,12 @@ export interface ImageArgs {
      * * The sourceDisk URL
      */
     sourceImage?: pulumi.Input<string>;
+    /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceImageEncryptionKey>;
     /**
      * URL of the source snapshot used to create this image.
      * In order to create an image, you must provide the full or partial URL of one of the following:
@@ -593,6 +647,12 @@ export interface ImageArgs {
      * * The sourceDisk URL
      */
     sourceSnapshot?: pulumi.Input<string>;
+    /**
+     * The customer-supplied encryption key of the source snapshot. Required if
+     * the source snapshot is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.ImageSourceSnapshotEncryptionKey>;
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).

@@ -277,6 +277,10 @@ type Image struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk pulumi.StringPtrOutput `pulumi:"sourceDisk"`
+	// The customer-supplied encryption key of the source disk. Required if
+	// the source disk is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceDiskEncryptionKey ImageSourceDiskEncryptionKeyPtrOutput `pulumi:"sourceDiskEncryptionKey"`
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
 	// * The selfLink URL
@@ -284,6 +288,10 @@ type Image struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceImage pulumi.StringPtrOutput `pulumi:"sourceImage"`
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey ImageSourceImageEncryptionKeyPtrOutput `pulumi:"sourceImageEncryptionKey"`
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
 	// * The selfLink URL
@@ -292,6 +300,10 @@ type Image struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot pulumi.StringPtrOutput `pulumi:"sourceSnapshot"`
+	// The customer-supplied encryption key of the source snapshot. Required if
+	// the source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceSnapshotEncryptionKey ImageSourceSnapshotEncryptionKeyPtrOutput `pulumi:"sourceSnapshotEncryptionKey"`
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
 	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
@@ -398,6 +410,10 @@ type imageState struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk *string `pulumi:"sourceDisk"`
+	// The customer-supplied encryption key of the source disk. Required if
+	// the source disk is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceDiskEncryptionKey *ImageSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
 	// * The selfLink URL
@@ -405,6 +421,10 @@ type imageState struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceImage *string `pulumi:"sourceImage"`
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey *ImageSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKey"`
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
 	// * The selfLink URL
@@ -413,6 +433,10 @@ type imageState struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
+	// The customer-supplied encryption key of the source snapshot. Required if
+	// the source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceSnapshotEncryptionKey *ImageSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
 	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
@@ -485,6 +509,10 @@ type ImageState struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk pulumi.StringPtrInput
+	// The customer-supplied encryption key of the source disk. Required if
+	// the source disk is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceDiskEncryptionKey ImageSourceDiskEncryptionKeyPtrInput
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
 	// * The selfLink URL
@@ -492,6 +520,10 @@ type ImageState struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceImage pulumi.StringPtrInput
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey ImageSourceImageEncryptionKeyPtrInput
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
 	// * The selfLink URL
@@ -500,6 +532,10 @@ type ImageState struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot pulumi.StringPtrInput
+	// The customer-supplied encryption key of the source snapshot. Required if
+	// the source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceSnapshotEncryptionKey ImageSourceSnapshotEncryptionKeyPtrInput
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
 	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
@@ -561,6 +597,10 @@ type imageArgs struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk *string `pulumi:"sourceDisk"`
+	// The customer-supplied encryption key of the source disk. Required if
+	// the source disk is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceDiskEncryptionKey *ImageSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
 	// * The selfLink URL
@@ -568,6 +608,10 @@ type imageArgs struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceImage *string `pulumi:"sourceImage"`
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey *ImageSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKey"`
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
 	// * The selfLink URL
@@ -576,6 +620,10 @@ type imageArgs struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
+	// The customer-supplied encryption key of the source snapshot. Required if
+	// the source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceSnapshotEncryptionKey *ImageSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
 	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
@@ -634,6 +682,10 @@ type ImageArgs struct {
 	// You must provide either this property or the
 	// rawDisk.source property but not both to create an image.
 	SourceDisk pulumi.StringPtrInput
+	// The customer-supplied encryption key of the source disk. Required if
+	// the source disk is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceDiskEncryptionKey ImageSourceDiskEncryptionKeyPtrInput
 	// URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 	// URL of one of the following:
 	// * The selfLink URL
@@ -641,6 +693,10 @@ type ImageArgs struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceImage pulumi.StringPtrInput
+	// The customer-supplied encryption key of the source image. Required if
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceImageEncryptionKey ImageSourceImageEncryptionKeyPtrInput
 	// URL of the source snapshot used to create this image.
 	// In order to create an image, you must provide the full or partial URL of one of the following:
 	// * The selfLink URL
@@ -649,6 +705,10 @@ type ImageArgs struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot pulumi.StringPtrInput
+	// The customer-supplied encryption key of the source snapshot. Required if
+	// the source snapshot is protected by a customer-supplied encryption key.
+	// Structure is documented below.
+	SourceSnapshotEncryptionKey ImageSourceSnapshotEncryptionKeyPtrInput
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
 	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
@@ -861,6 +921,13 @@ func (o ImageOutput) SourceDisk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.SourceDisk }).(pulumi.StringPtrOutput)
 }
 
+// The customer-supplied encryption key of the source disk. Required if
+// the source disk is protected by a customer-supplied encryption key.
+// Structure is documented below.
+func (o ImageOutput) SourceDiskEncryptionKey() ImageSourceDiskEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *Image) ImageSourceDiskEncryptionKeyPtrOutput { return v.SourceDiskEncryptionKey }).(ImageSourceDiskEncryptionKeyPtrOutput)
+}
+
 // URL of the source image used to create this image. In order to create an image, you must provide the full or partial
 // URL of one of the following:
 // * The selfLink URL
@@ -869,6 +936,13 @@ func (o ImageOutput) SourceDisk() pulumi.StringPtrOutput {
 // * The sourceDisk URL
 func (o ImageOutput) SourceImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.SourceImage }).(pulumi.StringPtrOutput)
+}
+
+// The customer-supplied encryption key of the source image. Required if
+// the source image is protected by a customer-supplied encryption key.
+// Structure is documented below.
+func (o ImageOutput) SourceImageEncryptionKey() ImageSourceImageEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *Image) ImageSourceImageEncryptionKeyPtrOutput { return v.SourceImageEncryptionKey }).(ImageSourceImageEncryptionKeyPtrOutput)
 }
 
 // URL of the source snapshot used to create this image.
@@ -880,6 +954,13 @@ func (o ImageOutput) SourceImage() pulumi.StringPtrOutput {
 // * The sourceDisk URL
 func (o ImageOutput) SourceSnapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
+// The customer-supplied encryption key of the source snapshot. Required if
+// the source snapshot is protected by a customer-supplied encryption key.
+// Structure is documented below.
+func (o ImageOutput) SourceSnapshotEncryptionKey() ImageSourceSnapshotEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *Image) ImageSourceSnapshotEncryptionKeyPtrOutput { return v.SourceSnapshotEncryptionKey }).(ImageSourceSnapshotEncryptionKeyPtrOutput)
 }
 
 // Cloud Storage bucket storage location of the image

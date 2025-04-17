@@ -38,6 +38,8 @@ __all__ = [
     'ClusterDiscoveryEndpointArgsDict',
     'ClusterDiscoveryEndpointPscConfigArgs',
     'ClusterDiscoveryEndpointPscConfigArgsDict',
+    'ClusterGcsSourceArgs',
+    'ClusterGcsSourceArgsDict',
     'ClusterMaintenancePolicyArgs',
     'ClusterMaintenancePolicyArgsDict',
     'ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs',
@@ -46,6 +48,8 @@ __all__ = [
     'ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict',
     'ClusterMaintenanceScheduleArgs',
     'ClusterMaintenanceScheduleArgsDict',
+    'ClusterManagedBackupSourceArgs',
+    'ClusterManagedBackupSourceArgsDict',
     'ClusterPersistenceConfigArgs',
     'ClusterPersistenceConfigArgsDict',
     'ClusterPersistenceConfigAofConfigArgs',
@@ -749,6 +753,37 @@ class ClusterDiscoveryEndpointPscConfigArgs:
 
 
 if not MYPY:
+    class ClusterGcsSourceArgsDict(TypedDict):
+        uris: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        """
+        URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+        """
+elif False:
+    ClusterGcsSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterGcsSourceArgs:
+    def __init__(__self__, *,
+                 uris: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] uris: URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+        """
+        URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+        """
+        return pulumi.get(self, "uris")
+
+    @uris.setter
+    def uris(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        pulumi.set(self, "uris", value)
+
+
+if not MYPY:
     class ClusterMaintenancePolicyArgsDict(TypedDict):
         create_time: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -1157,6 +1192,40 @@ class ClusterMaintenanceScheduleArgs:
     @start_time.setter
     def start_time(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "start_time", value)
+
+
+if not MYPY:
+    class ClusterManagedBackupSourceArgsDict(TypedDict):
+        backup: pulumi.Input[builtins.str]
+        """
+        Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+        like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+        """
+elif False:
+    ClusterManagedBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterManagedBackupSourceArgs:
+    def __init__(__self__, *,
+                 backup: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] backup: Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+               like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+        """
+        pulumi.set(__self__, "backup", backup)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> pulumi.Input[builtins.str]:
+        """
+        Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,
+        like projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "backup", value)
 
 
 if not MYPY:

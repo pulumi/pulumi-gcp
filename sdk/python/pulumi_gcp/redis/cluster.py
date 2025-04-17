@@ -27,8 +27,10 @@ class ClusterArgs:
                  automated_backup_config: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 gcs_source: Optional[pulumi.Input['ClusterGcsSourceArgs']] = None,
                  kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
+                 managed_backup_source: Optional[pulumi.Input['ClusterManagedBackupSourceArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  node_type: Optional[pulumi.Input[builtins.str]] = None,
                  persistence_config: Optional[pulumi.Input['ClusterPersistenceConfigArgs']] = None,
@@ -52,8 +54,12 @@ class ClusterArgs:
         :param pulumi.Input[builtins.bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
                If the value if set to true, any delete cluster operation will fail.
                Default value is true.
+        :param pulumi.Input['ClusterGcsSourceArgs'] gcs_source: Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
+        :param pulumi.Input['ClusterManagedBackupSourceArgs'] managed_backup_source: Backups that generated and managed by memorystore.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -92,10 +98,14 @@ class ClusterArgs:
             pulumi.set(__self__, "cross_cluster_replication_config", cross_cluster_replication_config)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        if gcs_source is not None:
+            pulumi.set(__self__, "gcs_source", gcs_source)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if managed_backup_source is not None:
+            pulumi.set(__self__, "managed_backup_source", managed_backup_source)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_type is not None:
@@ -184,6 +194,19 @@ class ClusterArgs:
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @property
+    @pulumi.getter(name="gcsSource")
+    def gcs_source(self) -> Optional[pulumi.Input['ClusterGcsSourceArgs']]:
+        """
+        Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_source")
+
+    @gcs_source.setter
+    def gcs_source(self, value: Optional[pulumi.Input['ClusterGcsSourceArgs']]):
+        pulumi.set(self, "gcs_source", value)
+
+    @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -207,6 +230,19 @@ class ClusterArgs:
     @maintenance_policy.setter
     def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="managedBackupSource")
+    def managed_backup_source(self) -> Optional[pulumi.Input['ClusterManagedBackupSourceArgs']]:
+        """
+        Backups that generated and managed by memorystore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_backup_source")
+
+    @managed_backup_source.setter
+    def managed_backup_source(self, value: Optional[pulumi.Input['ClusterManagedBackupSourceArgs']]):
+        pulumi.set(self, "managed_backup_source", value)
 
     @property
     @pulumi.getter
@@ -351,13 +387,16 @@ class _ClusterState:
     def __init__(__self__, *,
                  authorization_mode: Optional[pulumi.Input[builtins.str]] = None,
                  automated_backup_config: Optional[pulumi.Input['ClusterAutomatedBackupConfigArgs']] = None,
+                 backup_collection: Optional[pulumi.Input[builtins.str]] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
+                 gcs_source: Optional[pulumi.Input['ClusterGcsSourceArgs']] = None,
                  kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]] = None,
+                 managed_backup_source: Optional[pulumi.Input['ClusterManagedBackupSourceArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  node_type: Optional[pulumi.Input[builtins.str]] = None,
                  persistence_config: Optional[pulumi.Input['ClusterPersistenceConfigArgs']] = None,
@@ -383,6 +422,8 @@ class _ClusterState:
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         :param pulumi.Input['ClusterAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] backup_collection: The backup collection full resource name.
+               Example: projects/{project}/locations/{location}/backupCollections/{collection}
         :param pulumi.Input[builtins.str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -395,10 +436,14 @@ class _ClusterState:
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
+        :param pulumi.Input['ClusterGcsSourceArgs'] gcs_source: Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
+               Structure is documented below.
+        :param pulumi.Input['ClusterManagedBackupSourceArgs'] managed_backup_source: Backups that generated and managed by memorystore.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -443,6 +488,8 @@ class _ClusterState:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if automated_backup_config is not None:
             pulumi.set(__self__, "automated_backup_config", automated_backup_config)
+        if backup_collection is not None:
+            pulumi.set(__self__, "backup_collection", backup_collection)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if cross_cluster_replication_config is not None:
@@ -451,12 +498,16 @@ class _ClusterState:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if discovery_endpoints is not None:
             pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
+        if gcs_source is not None:
+            pulumi.set(__self__, "gcs_source", gcs_source)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_schedules is not None:
             pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
+        if managed_backup_source is not None:
+            pulumi.set(__self__, "managed_backup_source", managed_backup_source)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_type is not None:
@@ -522,6 +573,19 @@ class _ClusterState:
         pulumi.set(self, "automated_backup_config", value)
 
     @property
+    @pulumi.getter(name="backupCollection")
+    def backup_collection(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The backup collection full resource name.
+        Example: projects/{project}/locations/{location}/backupCollections/{collection}
+        """
+        return pulumi.get(self, "backup_collection")
+
+    @backup_collection.setter
+    def backup_collection(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "backup_collection", value)
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -578,6 +642,19 @@ class _ClusterState:
         pulumi.set(self, "discovery_endpoints", value)
 
     @property
+    @pulumi.getter(name="gcsSource")
+    def gcs_source(self) -> Optional[pulumi.Input['ClusterGcsSourceArgs']]:
+        """
+        Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_source")
+
+    @gcs_source.setter
+    def gcs_source(self, value: Optional[pulumi.Input['ClusterGcsSourceArgs']]):
+        pulumi.set(self, "gcs_source", value)
+
+    @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -614,6 +691,19 @@ class _ClusterState:
     @maintenance_schedules.setter
     def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
+
+    @property
+    @pulumi.getter(name="managedBackupSource")
+    def managed_backup_source(self) -> Optional[pulumi.Input['ClusterManagedBackupSourceArgs']]:
+        """
+        Backups that generated and managed by memorystore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_backup_source")
+
+    @managed_backup_source.setter
+    def managed_backup_source(self, value: Optional[pulumi.Input['ClusterManagedBackupSourceArgs']]):
+        pulumi.set(self, "managed_backup_source", value)
 
     @property
     @pulumi.getter
@@ -861,8 +951,10 @@ class Cluster(pulumi.CustomResource):
                  automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 gcs_source: Optional[pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
                  kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 managed_backup_source: Optional[pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  node_type: Optional[pulumi.Input[builtins.str]] = None,
                  persistence_config: Optional[pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
@@ -1299,8 +1391,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
                If the value if set to true, any delete cluster operation will fail.
                Default value is true.
+        :param pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']] gcs_source: Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']] managed_backup_source: Backups that generated and managed by memorystore.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -1768,8 +1864,10 @@ class Cluster(pulumi.CustomResource):
                  automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 gcs_source: Optional[pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
                  kms_key: Optional[pulumi.Input[builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 managed_backup_source: Optional[pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  node_type: Optional[pulumi.Input[builtins.str]] = None,
                  persistence_config: Optional[pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
@@ -1794,8 +1892,10 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["automated_backup_config"] = automated_backup_config
             __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
+            __props__.__dict__["gcs_source"] = gcs_source
             __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["managed_backup_source"] = managed_backup_source
             __props__.__dict__["name"] = name
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["persistence_config"] = persistence_config
@@ -1809,6 +1909,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["shard_count"] = shard_count
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
             __props__.__dict__["zone_distribution_config"] = zone_distribution_config
+            __props__.__dict__["backup_collection"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoints"] = None
             __props__.__dict__["maintenance_schedules"] = None
@@ -1831,13 +1932,16 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[builtins.str]] = None,
             automated_backup_config: Optional[pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
+            backup_collection: Optional[pulumi.Input[builtins.str]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
             cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
+            gcs_source: Optional[pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
             kms_key: Optional[pulumi.Input[builtins.str]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]]] = None,
+            managed_backup_source: Optional[pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             node_type: Optional[pulumi.Input[builtins.str]] = None,
             persistence_config: Optional[pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
@@ -1868,6 +1972,8 @@ class Cluster(pulumi.CustomResource):
                Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         :param pulumi.Input[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] backup_collection: The backup collection full resource name.
+               Example: projects/{project}/locations/{location}/backupCollections/{collection}
         :param pulumi.Input[builtins.str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -1880,10 +1986,14 @@ class Cluster(pulumi.CustomResource):
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
+        :param pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']] gcs_source: Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]] maintenance_schedules: Upcoming maintenance schedule.
+               Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']] managed_backup_source: Backups that generated and managed by memorystore.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -1930,13 +2040,16 @@ class Cluster(pulumi.CustomResource):
 
         __props__.__dict__["authorization_mode"] = authorization_mode
         __props__.__dict__["automated_backup_config"] = automated_backup_config
+        __props__.__dict__["backup_collection"] = backup_collection
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
+        __props__.__dict__["gcs_source"] = gcs_source
         __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["maintenance_schedules"] = maintenance_schedules
+        __props__.__dict__["managed_backup_source"] = managed_backup_source
         __props__.__dict__["name"] = name
         __props__.__dict__["node_type"] = node_type
         __props__.__dict__["persistence_config"] = persistence_config
@@ -1975,6 +2088,15 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "automated_backup_config")
+
+    @property
+    @pulumi.getter(name="backupCollection")
+    def backup_collection(self) -> pulumi.Output[builtins.str]:
+        """
+        The backup collection full resource name.
+        Example: projects/{project}/locations/{location}/backupCollections/{collection}
+        """
+        return pulumi.get(self, "backup_collection")
 
     @property
     @pulumi.getter(name="createTime")
@@ -2017,6 +2139,15 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "discovery_endpoints")
 
     @property
+    @pulumi.getter(name="gcsSource")
+    def gcs_source(self) -> pulumi.Output[Optional['outputs.ClusterGcsSource']]:
+        """
+        Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs_source")
+
+    @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> pulumi.Output[Optional[builtins.str]]:
         """
@@ -2041,6 +2172,15 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "maintenance_schedules")
+
+    @property
+    @pulumi.getter(name="managedBackupSource")
+    def managed_backup_source(self) -> pulumi.Output[Optional['outputs.ClusterManagedBackupSource']]:
+        """
+        Backups that generated and managed by memorystore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_backup_source")
 
     @property
     @pulumi.getter

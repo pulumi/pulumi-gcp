@@ -12,6 +12,7 @@ import com.pulumi.gcp.storage.ControlOrganizationIntelligenceConfigArgs;
 import com.pulumi.gcp.storage.inputs.ControlOrganizationIntelligenceConfigState;
 import com.pulumi.gcp.storage.outputs.ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig;
 import com.pulumi.gcp.storage.outputs.ControlOrganizationIntelligenceConfigFilter;
+import com.pulumi.gcp.storage.outputs.ControlOrganizationIntelligenceConfigTrialConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -155,6 +156,22 @@ public class ControlOrganizationIntelligenceConfig extends com.pulumi.resources.
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The trial configuration of the Storage Intelligence resource.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="trialConfigs", refs={List.class,ControlOrganizationIntelligenceConfigTrialConfig.class}, tree="[0,1]")
+    private Output<List<ControlOrganizationIntelligenceConfigTrialConfig>> trialConfigs;
+
+    /**
+     * @return The trial configuration of the Storage Intelligence resource.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ControlOrganizationIntelligenceConfigTrialConfig>> trialConfigs() {
+        return this.trialConfigs;
     }
     /**
      * The time at which the Storage Intelligence Config resource is last updated.

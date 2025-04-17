@@ -103,6 +103,9 @@ __all__ = [
     'ImageShieldedInstanceInitialStateDbx',
     'ImageShieldedInstanceInitialStateKek',
     'ImageShieldedInstanceInitialStatePk',
+    'ImageSourceDiskEncryptionKey',
+    'ImageSourceImageEncryptionKey',
+    'ImageSourceSnapshotEncryptionKey',
     'InstanceAdvancedMachineFeatures',
     'InstanceAttachedDisk',
     'InstanceBootDisk',
@@ -8020,6 +8023,306 @@ class ImageShieldedInstanceInitialStatePk(dict):
         The file type of source file.
         """
         return pulumi.get(self, "file_type")
+
+
+@pulumi.output_type
+class ImageSourceDiskEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageSourceDiskEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageSourceDiskEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageSourceDiskEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[builtins.str] = None,
+                 kms_key_service_account: Optional[builtins.str] = None,
+                 raw_key: Optional[builtins.str] = None,
+                 rsa_encrypted_key: Optional[builtins.str] = None):
+        """
+        :param builtins.str kms_key_self_link: The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+               in the cloud console. Your project's Compute Engine System service account
+               (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+               `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+               See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        :param builtins.str kms_key_service_account: The service account being used for the encryption request for the
+               given KMS key. If absent, the Compute Engine default service
+               account is used.
+        :param builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param builtins.str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+               customer-supplied encryption key to either encrypt or decrypt
+               this resource. You can provide either the rawKey or the rsaEncryptedKey.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[builtins.str]:
+        """
+        The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+        in the cloud console. Your project's Compute Engine System service account
+        (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+        `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[builtins.str]:
+        """
+        The service account being used for the encryption request for the
+        given KMS key. If absent, the Compute Engine default service
+        account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[builtins.str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[builtins.str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        customer-supplied encryption key to either encrypt or decrypt
+        this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+
+@pulumi.output_type
+class ImageSourceImageEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageSourceImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageSourceImageEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageSourceImageEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[builtins.str] = None,
+                 kms_key_service_account: Optional[builtins.str] = None,
+                 raw_key: Optional[builtins.str] = None,
+                 rsa_encrypted_key: Optional[builtins.str] = None):
+        """
+        :param builtins.str kms_key_self_link: The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+               in the cloud console. Your project's Compute Engine System service account
+               (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+               `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+               See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        :param builtins.str kms_key_service_account: The service account being used for the encryption request for the
+               given KMS key. If absent, the Compute Engine default service
+               account is used.
+        :param builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param builtins.str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+               customer-supplied encryption key to either encrypt or decrypt
+               this resource. You can provide either the rawKey or the rsaEncryptedKey.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[builtins.str]:
+        """
+        The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+        in the cloud console. Your project's Compute Engine System service account
+        (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+        `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[builtins.str]:
+        """
+        The service account being used for the encryption request for the
+        given KMS key. If absent, the Compute Engine default service
+        account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[builtins.str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[builtins.str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        customer-supplied encryption key to either encrypt or decrypt
+        this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+
+@pulumi.output_type
+class ImageSourceSnapshotEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageSourceSnapshotEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[builtins.str] = None,
+                 kms_key_service_account: Optional[builtins.str] = None,
+                 raw_key: Optional[builtins.str] = None,
+                 rsa_encrypted_key: Optional[builtins.str] = None):
+        """
+        :param builtins.str kms_key_self_link: The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+               in the cloud console. Your project's Compute Engine System service account
+               (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+               `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+               See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        :param builtins.str kms_key_service_account: The service account being used for the encryption request for the
+               given KMS key. If absent, the Compute Engine default service
+               account is used.
+        :param builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param builtins.str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+               customer-supplied encryption key to either encrypt or decrypt
+               this resource. You can provide either the rawKey or the rsaEncryptedKey.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[builtins.str]:
+        """
+        The self link of the encryption key used to decrypt this resource. Also called KmsKeyName
+        in the cloud console. Your project's Compute Engine System service account
+        (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+        `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[builtins.str]:
+        """
+        The service account being used for the encryption request for the
+        given KMS key. If absent, the Compute Engine default service
+        account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[builtins.str]:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[builtins.str]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        customer-supplied encryption key to either encrypt or decrypt
+        this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
 
 
 @pulumi.output_type
@@ -44880,10 +45183,14 @@ class SnapshotSourceDiskEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "kmsKeyServiceAccount":
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
             suggest = "kms_key_service_account"
         elif key == "rawKey":
             suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SnapshotSourceDiskEncryptionKey. Access the value via the '{suggest}' property getter instead.")
@@ -44897,19 +45204,37 @@ class SnapshotSourceDiskEncryptionKey(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 kms_key_self_link: Optional[builtins.str] = None,
                  kms_key_service_account: Optional[builtins.str] = None,
-                 raw_key: Optional[builtins.str] = None):
+                 raw_key: Optional[builtins.str] = None,
+                 rsa_encrypted_key: Optional[builtins.str] = None):
         """
+        :param builtins.str kms_key_self_link: The name of the encryption key that is stored in Google Cloud KMS.
         :param builtins.str kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param builtins.str rsa_encrypted_key: Specifies an encryption key stored in Google Cloud KMS, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
         if raw_key is not None:
             pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[builtins.str]:
+        """
+        The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key_self_link")
 
     @property
     @pulumi.getter(name="kmsKeyServiceAccount")
@@ -44929,6 +45254,16 @@ class SnapshotSourceDiskEncryptionKey(dict):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[builtins.str]:
+        """
+        Specifies an encryption key stored in Google Cloud KMS, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
 
 
 @pulumi.output_type
@@ -67945,16 +68280,31 @@ class GetSnapshotSnapshotEncryptionKeyResult(dict):
 @pulumi.output_type
 class GetSnapshotSourceDiskEncryptionKeyResult(dict):
     def __init__(__self__, *,
+                 kms_key_self_link: builtins.str,
                  kms_key_service_account: builtins.str,
-                 raw_key: builtins.str):
+                 raw_key: builtins.str,
+                 rsa_encrypted_key: builtins.str):
         """
+        :param builtins.str kms_key_self_link: The name of the encryption key that is stored in Google Cloud KMS.
         :param builtins.str kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
+        :param builtins.str rsa_encrypted_key: Specifies an encryption key stored in Google Cloud KMS, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
         """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
         pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> builtins.str:
+        """
+        The name of the encryption key that is stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key_self_link")
 
     @property
     @pulumi.getter(name="kmsKeyServiceAccount")
@@ -67973,6 +68323,15 @@ class GetSnapshotSourceDiskEncryptionKeyResult(dict):
         RFC 4648 base64 to either encrypt or decrypt this resource.
         """
         return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> builtins.str:
+        """
+        Specifies an encryption key stored in Google Cloud KMS, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
 
 
 @pulumi.output_type
