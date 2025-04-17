@@ -3619,21 +3619,24 @@ index e126a5e06..a5fc3aab7 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index 3b3b747de..dd92cd104 100644
+index 3b3b747de..27b3edfa3 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
-@@ -30,9 +30,8 @@ To get more information about UptimeCheckConfig, see:
+@@ -30,12 +30,8 @@ To get more information about UptimeCheckConfig, see:
  * How-to Guides
      * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
  
 -~> **Warning:** All arguments including the following potentially sensitive
 -values will be stored in the raw state as plain text: `http_check.auth_info.password`.
 -[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
+-
+-~> **Note:**  All arguments marked as write-only values will not be stored in the state: `http_check.auth_info.password_wo`.
+-[Read more about Write-only Attributes](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 +~> **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
 +state as plain-text.
  
- ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `http_check.auth_info.password_wo`.
- [Read more about Write-only Attributes](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
+ ## Example Usage - Uptime Check Config Http
+ 
 diff --git a/website/docs/r/notebooks_instance.html.markdown b/website/docs/r/notebooks_instance.html.markdown
 index 3bd2c0ec7..4c73c36ca 100644
 --- a/website/docs/r/notebooks_instance.html.markdown
