@@ -419,8 +419,8 @@ namespace Pulumi.Gcp.SecretManager
         /// <summary>
         /// This must be unique within the project.
         /// </summary>
-        [Input("secretId", required: true)]
-        public Input<string> SecretId { get; set; } = null!;
+        [Input("secretId")]
+        public Input<string>? SecretId { get; set; }
 
         [Input("topics")]
         private InputList<Inputs.SecretTopicArgs>? _topics;

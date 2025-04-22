@@ -278,9 +278,6 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.replication === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'replication'");
             }
-            if ((!args || args.secretId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'secretId'");
-            }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["expireTime"] = args ? args.expireTime : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -444,7 +441,7 @@ export interface SecretArgs {
     /**
      * This must be unique within the project.
      */
-    secretId: pulumi.Input<string>;
+    secretId?: pulumi.Input<string>;
     /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
      * or its versions.

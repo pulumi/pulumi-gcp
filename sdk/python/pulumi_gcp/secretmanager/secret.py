@@ -23,12 +23,12 @@ __all__ = ['SecretArgs', 'Secret']
 class SecretArgs:
     def __init__(__self__, *,
                  replication: pulumi.Input['SecretReplicationArgs'],
-                 secret_id: pulumi.Input[builtins.str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
+                 secret_id: Optional[pulumi.Input[builtins.str]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
                  ttl: Optional[pulumi.Input[builtins.str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -38,7 +38,6 @@ class SecretArgs:
         :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
                client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
                characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
@@ -60,6 +59,7 @@ class SecretArgs:
                refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
                the topics configured on the Secret. 'topics' must be set to configure rotation.
+        :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
         :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
                or its versions.
         :param pulumi.Input[builtins.str] ttl: The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -73,7 +73,6 @@ class SecretArgs:
                a disabled state and the actual destruction happens after this TTL expires.
         """
         pulumi.set(__self__, "replication", replication)
-        pulumi.set(__self__, "secret_id", secret_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if expire_time is not None:
@@ -84,6 +83,8 @@ class SecretArgs:
             pulumi.set(__self__, "project", project)
         if rotation is not None:
             pulumi.set(__self__, "rotation", rotation)
+        if secret_id is not None:
+            pulumi.set(__self__, "secret_id", secret_id)
         if topics is not None:
             pulumi.set(__self__, "topics", topics)
         if ttl is not None:
@@ -106,18 +107,6 @@ class SecretArgs:
     @replication.setter
     def replication(self, value: pulumi.Input['SecretReplicationArgs']):
         pulumi.set(self, "replication", value)
-
-    @property
-    @pulumi.getter(name="secretId")
-    def secret_id(self) -> pulumi.Input[builtins.str]:
-        """
-        This must be unique within the project.
-        """
-        return pulumi.get(self, "secret_id")
-
-    @secret_id.setter
-    def secret_id(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "secret_id", value)
 
     @property
     @pulumi.getter
@@ -192,6 +181,18 @@ class SecretArgs:
     @rotation.setter
     def rotation(self, value: Optional[pulumi.Input['SecretRotationArgs']]):
         pulumi.set(self, "rotation", value)
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This must be unique within the project.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @secret_id.setter
+    def secret_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secret_id", value)
 
     @property
     @pulumi.getter
@@ -900,8 +901,6 @@ class Secret(pulumi.CustomResource):
                 raise TypeError("Missing required property 'replication'")
             __props__.__dict__["replication"] = replication
             __props__.__dict__["rotation"] = rotation
-            if secret_id is None and not opts.urn:
-                raise TypeError("Missing required property 'secret_id'")
             __props__.__dict__["secret_id"] = secret_id
             __props__.__dict__["topics"] = topics
             __props__.__dict__["ttl"] = ttl

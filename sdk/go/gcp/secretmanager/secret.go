@@ -276,9 +276,6 @@ func NewSecret(ctx *pulumi.Context,
 	if args.Replication == nil {
 		return nil, errors.New("invalid value for required argument 'Replication'")
 	}
-	if args.SecretId == nil {
-		return nil, errors.New("invalid value for required argument 'SecretId'")
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
 		"pulumiLabels",
@@ -464,7 +461,7 @@ type secretArgs struct {
 	// the topics configured on the Secret. 'topics' must be set to configure rotation.
 	Rotation *SecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
-	SecretId string `pulumi:"secretId"`
+	SecretId *string `pulumi:"secretId"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
 	// or its versions.
 	Topics []SecretTopic `pulumi:"topics"`
@@ -515,7 +512,7 @@ type SecretArgs struct {
 	// the topics configured on the Secret. 'topics' must be set to configure rotation.
 	Rotation SecretRotationPtrInput
 	// This must be unique within the project.
-	SecretId pulumi.StringInput
+	SecretId pulumi.StringPtrInput
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
 	// or its versions.
 	Topics SecretTopicArrayInput

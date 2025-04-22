@@ -145,15 +145,15 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
      * This must be unique within the project.
      * 
      */
-    @Import(name="secretId", required=true)
-    private Output<String> secretId;
+    @Import(name="secretId")
+    private @Nullable Output<String> secretId;
 
     /**
      * @return This must be unique within the project.
      * 
      */
-    public Output<String> secretId() {
-        return this.secretId;
+    public Optional<Output<String>> secretId() {
+        return Optional.ofNullable(this.secretId);
     }
 
     /**
@@ -422,7 +422,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder secretId(Output<String> secretId) {
+        public Builder secretId(@Nullable Output<String> secretId) {
             $.secretId = secretId;
             return this;
         }
@@ -549,9 +549,6 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         public SecretArgs build() {
             if ($.replication == null) {
                 throw new MissingRequiredPropertyException("SecretArgs", "replication");
-            }
-            if ($.secretId == null) {
-                throw new MissingRequiredPropertyException("SecretArgs", "secretId");
             }
             return $;
         }

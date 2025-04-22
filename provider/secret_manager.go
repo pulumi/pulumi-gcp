@@ -47,5 +47,8 @@ func resourceSecretManagerSecret() *tfbridge.ResourceInfo {
 		) (resource.PropertyMap, error) {
 			return fixReplicationAuto(pm), nil
 		},
+		Fields: map[string]*tfbridge.SchemaInfo{
+			"secret_id": tfbridge.AutoName("secretId", 255, "-"),
+		},
 	}
 }
