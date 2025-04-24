@@ -1239,3 +1239,15 @@ func TestBigqueryMaterializedViewReplace(t *testing.T) {
 	pt.WritePulumiYaml(t, pulumiYAMLContents2)
 	pt.Up(t)
 }
+
+func TestSecurityPolicy(t *testing.T) {
+	pt := pulumiTest(t, "test-programs/security-policy/security-policy-1")
+	pt.Up(t)
+
+	program2, err := os.ReadFile("test-programs/security-policy/Pulumi.yaml")
+	require.NoError(t, err)
+	pt.WritePulumiYaml(t, string(program2))
+
+	res := pt.Preview(t)
+	require.NotContains(t, res.StdOut, "Failed to calculate preview")
+}

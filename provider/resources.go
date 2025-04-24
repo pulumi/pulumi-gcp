@@ -1115,7 +1115,10 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_router_bgp_peer.html.markdown",
 				},
 			},
-			"google_compute_security_policy":            {Tok: gcpResource(gcpCompute, "SecurityPolicy")},
+			"google_compute_security_policy": {
+				Tok:    gcpResource(gcpCompute, "SecurityPolicy"),
+				Fields: nameField(lowercaseAutoName()),
+			},
 			"google_security_scanner_scan_config":       {Tok: gcpResource(gcpCompute, "SecurityScanConfig")},
 			"google_compute_shared_vpc_host_project":    {Tok: gcpResource(gcpCompute, "SharedVPCHostProject")},
 			"google_compute_shared_vpc_service_project": {Tok: gcpResource(gcpCompute, "SharedVPCServiceProject")},
