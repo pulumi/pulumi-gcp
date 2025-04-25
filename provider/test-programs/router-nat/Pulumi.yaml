@@ -37,3 +37,5 @@ resources:
         - name: ${subnet.id}
           sourceIpRangesToNats:
             - ALL_IP_RANGES
+    options:
+      ignoreChanges: ["type"]
