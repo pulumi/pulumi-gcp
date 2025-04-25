@@ -1108,6 +1108,14 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_router_nat": {
 				Tok:    gcpResource(gcpCompute, "RouterNat"),
 				Fields: nameField(lowercaseAutoName()),
+				TransformFromState: func(_ context.Context, pMap resource.PropertyMap) (resource.PropertyMap, error) {
+					if _, ok := pMap["endpointTypes"]; !ok {
+						pMap["endpointTypes"] = resource.NewArrayProperty([]resource.PropertyValue{
+							resource.NewStringProperty("ENDPOINT_TYPE_VM"),
+						})
+					}
+					return pMap, nil
+				},
 			},
 			"google_compute_router_peer": {
 				Tok: gcpResource(gcpCompute, "RouterPeer"),
