@@ -417,6 +417,36 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Connection Profile Salesforce
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         DisplayName = "Salesforce Source",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         CreateWithoutValidation = true,
+    ///         SalesforceProfile = new Gcp.Datastream.Inputs.ConnectionProfileSalesforceProfileArgs
+    ///         {
+    ///             Domain = "fake-domain.my.salesforce.com",
+    ///             UserCredentials = new Gcp.Datastream.Inputs.ConnectionProfileSalesforceProfileUserCredentialsArgs
+    ///             {
+    ///                 Username = "fake-username",
+    ///                 SecretManagerStoredPassword = "fake-password",
+    ///                 SecretManagerStoredSecurityToken = "fake-token",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Datastream Connection Profile Postgres Secret Manager
     /// 
     /// ```csharp

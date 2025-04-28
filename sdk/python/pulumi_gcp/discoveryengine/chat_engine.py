@@ -463,7 +463,7 @@ class ChatEngine(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_data_store = gcp.discoveryengine.DataStore("test_data_store",
-            location="global",
+            location="eu",
             data_store_id="data-store",
             display_name="Structured datastore",
             industry_vertical="GENERIC",
@@ -471,7 +471,7 @@ class ChatEngine(pulumi.CustomResource):
             solution_types=["SOLUTION_TYPE_CHAT"])
         agent = gcp.diagflow.CxAgent("agent",
             display_name="dialogflowcx-agent",
-            location="global",
+            location="europe-west3",
             default_language_code="en",
             time_zone="America/Los_Angeles")
         primary = gcp.discoveryengine.ChatEngine("primary",
@@ -486,6 +486,7 @@ class ChatEngine(pulumi.CustomResource):
             },
             chat_engine_config={
                 "dialogflow_agent_to_link": agent.id,
+                "allow_cross_region": True,
             })
         ```
 
@@ -591,7 +592,7 @@ class ChatEngine(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_data_store = gcp.discoveryengine.DataStore("test_data_store",
-            location="global",
+            location="eu",
             data_store_id="data-store",
             display_name="Structured datastore",
             industry_vertical="GENERIC",
@@ -599,7 +600,7 @@ class ChatEngine(pulumi.CustomResource):
             solution_types=["SOLUTION_TYPE_CHAT"])
         agent = gcp.diagflow.CxAgent("agent",
             display_name="dialogflowcx-agent",
-            location="global",
+            location="europe-west3",
             default_language_code="en",
             time_zone="America/Los_Angeles")
         primary = gcp.discoveryengine.ChatEngine("primary",
@@ -614,6 +615,7 @@ class ChatEngine(pulumi.CustomResource):
             },
             chat_engine_config={
                 "dialogflow_agent_to_link": agent.id,
+                "allow_cross_region": True,
             })
         ```
 

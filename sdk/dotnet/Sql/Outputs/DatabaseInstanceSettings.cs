@@ -42,6 +42,14 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Data cache configurations.
         /// </summary>
         public readonly Outputs.DatabaseInstanceSettingsDataCacheConfig? DataCacheConfig;
+        /// <summary>
+        /// Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+        /// </summary>
+        public readonly int? DataDiskProvisionedIops;
+        /// <summary>
+        /// Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+        /// </summary>
+        public readonly int? DataDiskProvisionedThroughput;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> DatabaseFlags;
         /// <summary>
         /// Configuration to protect against accidental instance deletion.
@@ -57,11 +65,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int? DiskAutoresizeLimit;
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         /// </summary>
         public readonly int? DiskSize;
         /// <summary>
-        /// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+        /// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
@@ -91,6 +99,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Pricing plan for this instance, can only be `PER_USE`.
         /// </summary>
         public readonly string? PricingPlan;
+        /// <summary>
+        /// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+        /// </summary>
+        public readonly bool? RetainBackupsOnDelete;
         public readonly Outputs.DatabaseInstanceSettingsSqlServerAuditConfig? SqlServerAuditConfig;
         /// <summary>
         /// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
@@ -130,6 +142,10 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             Outputs.DatabaseInstanceSettingsDataCacheConfig? dataCacheConfig,
 
+            int? dataDiskProvisionedIops,
+
+            int? dataDiskProvisionedThroughput,
+
             ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> databaseFlags,
 
             bool? deletionProtectionEnabled,
@@ -162,6 +178,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? pricingPlan,
 
+            bool? retainBackupsOnDelete,
+
             Outputs.DatabaseInstanceSettingsSqlServerAuditConfig? sqlServerAuditConfig,
 
             string tier,
@@ -180,6 +198,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             Collation = collation;
             ConnectorEnforcement = connectorEnforcement;
             DataCacheConfig = dataCacheConfig;
+            DataDiskProvisionedIops = dataDiskProvisionedIops;
+            DataDiskProvisionedThroughput = dataDiskProvisionedThroughput;
             DatabaseFlags = databaseFlags;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DenyMaintenancePeriod = denyMaintenancePeriod;
@@ -196,6 +216,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             MaintenanceWindow = maintenanceWindow;
             PasswordValidationPolicy = passwordValidationPolicy;
             PricingPlan = pricingPlan;
+            RetainBackupsOnDelete = retainBackupsOnDelete;
             SqlServerAuditConfig = sqlServerAuditConfig;
             Tier = tier;
             TimeZone = timeZone;

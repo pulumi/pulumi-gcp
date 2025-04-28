@@ -38,7 +38,10 @@ class ClientArgs:
         :param pulumi.Input[builtins.bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[builtins.str] run_as_service_account: User input run-as service account, if empty, will bring up a new default service account.
+        :param pulumi.Input[builtins.str] run_as_service_account: (Optional, Deprecated)
+               User input run-as service account, if empty, will bring up a new default service account.
+               
+               > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         pulumi.set(__self__, "location", location)
         if cloud_kms_config is not None:
@@ -47,6 +50,9 @@ class ClientArgs:
             pulumi.set(__self__, "create_sample_integrations", create_sample_integrations)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if run_as_service_account is not None:
+            warnings.warn("""`run_as_service_account` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""run_as_service_account is deprecated: `run_as_service_account` is deprecated and will be removed in a future major release.""")
         if run_as_service_account is not None:
             pulumi.set(__self__, "run_as_service_account", run_as_service_account)
 
@@ -105,9 +111,13 @@ class ClientArgs:
 
     @property
     @pulumi.getter(name="runAsServiceAccount")
+    @_utilities.deprecated("""`run_as_service_account` is deprecated and will be removed in a future major release.""")
     def run_as_service_account(self) -> Optional[pulumi.Input[builtins.str]]:
         """
+        (Optional, Deprecated)
         User input run-as service account, if empty, will bring up a new default service account.
+
+        > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         return pulumi.get(self, "run_as_service_account")
 
@@ -135,7 +145,10 @@ class _ClientState:
                - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[builtins.str] run_as_service_account: User input run-as service account, if empty, will bring up a new default service account.
+        :param pulumi.Input[builtins.str] run_as_service_account: (Optional, Deprecated)
+               User input run-as service account, if empty, will bring up a new default service account.
+               
+               > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         if cloud_kms_config is not None:
             pulumi.set(__self__, "cloud_kms_config", cloud_kms_config)
@@ -145,6 +158,9 @@ class _ClientState:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if run_as_service_account is not None:
+            warnings.warn("""`run_as_service_account` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""run_as_service_account is deprecated: `run_as_service_account` is deprecated and will be removed in a future major release.""")
         if run_as_service_account is not None:
             pulumi.set(__self__, "run_as_service_account", run_as_service_account)
 
@@ -203,9 +219,13 @@ class _ClientState:
 
     @property
     @pulumi.getter(name="runAsServiceAccount")
+    @_utilities.deprecated("""`run_as_service_account` is deprecated and will be removed in a future major release.""")
     def run_as_service_account(self) -> Optional[pulumi.Input[builtins.str]]:
         """
+        (Optional, Deprecated)
         User input run-as service account, if empty, will bring up a new default service account.
+
+        > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         return pulumi.get(self, "run_as_service_account")
 
@@ -258,13 +278,9 @@ class Client(pulumi.CustomResource):
         cryptokey = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
             key_ring=keyring.id)
         test_key = gcp.kms.get_kms_crypto_key_version(crypto_key=cryptokey.id)
-        service_account = gcp.serviceaccount.Account("service_account",
-            account_id="service-acc",
-            display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
             location="us-east1",
             create_sample_integrations=True,
-            run_as_service_account=service_account.email,
             cloud_kms_config={
                 "kms_location": "us-east1",
                 "kms_ring": std.basename(input=keyring.id).result,
@@ -309,7 +325,10 @@ class Client(pulumi.CustomResource):
                - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[builtins.str] run_as_service_account: User input run-as service account, if empty, will bring up a new default service account.
+        :param pulumi.Input[builtins.str] run_as_service_account: (Optional, Deprecated)
+               User input run-as service account, if empty, will bring up a new default service account.
+               
+               > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         ...
     @overload
@@ -350,13 +369,9 @@ class Client(pulumi.CustomResource):
         cryptokey = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
             key_ring=keyring.id)
         test_key = gcp.kms.get_kms_crypto_key_version(crypto_key=cryptokey.id)
-        service_account = gcp.serviceaccount.Account("service_account",
-            account_id="service-acc",
-            display_name="Service Account")
         example = gcp.applicationintegration.Client("example",
             location="us-east1",
             create_sample_integrations=True,
-            run_as_service_account=service_account.email,
             cloud_kms_config={
                 "kms_location": "us-east1",
                 "kms_ring": std.basename(input=keyring.id).result,
@@ -457,7 +472,10 @@ class Client(pulumi.CustomResource):
                - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[builtins.str] run_as_service_account: User input run-as service account, if empty, will bring up a new default service account.
+        :param pulumi.Input[builtins.str] run_as_service_account: (Optional, Deprecated)
+               User input run-as service account, if empty, will bring up a new default service account.
+               
+               > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -509,9 +527,13 @@ class Client(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runAsServiceAccount")
+    @_utilities.deprecated("""`run_as_service_account` is deprecated and will be removed in a future major release.""")
     def run_as_service_account(self) -> pulumi.Output[Optional[builtins.str]]:
         """
+        (Optional, Deprecated)
         User input run-as service account, if empty, will bring up a new default service account.
+
+        > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         """
         return pulumi.get(self, "run_as_service_account")
 

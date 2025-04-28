@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .anywhere_cache import *
+from .batch_operations_job import *
 from .bucket import *
 from .bucket_access_control import *
 from .bucket_acl import *

@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,13 @@ public final class InstanceMachineConfig {
      * 
      */
     private @Nullable Integer cpuCount;
+    /**
+     * @return Machine type of the VM instance.
+     * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
+     * `cpu_count` must match the number of vCPUs in the machine type.
+     * 
+     */
+    private @Nullable String machineType;
 
     private InstanceMachineConfig() {}
     /**
@@ -24,6 +32,15 @@ public final class InstanceMachineConfig {
      */
     public Optional<Integer> cpuCount() {
         return Optional.ofNullable(this.cpuCount);
+    }
+    /**
+     * @return Machine type of the VM instance.
+     * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
+     * `cpu_count` must match the number of vCPUs in the machine type.
+     * 
+     */
+    public Optional<String> machineType() {
+        return Optional.ofNullable(this.machineType);
     }
 
     public static Builder builder() {
@@ -36,10 +53,12 @@ public final class InstanceMachineConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer cpuCount;
+        private @Nullable String machineType;
         public Builder() {}
         public Builder(InstanceMachineConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCount = defaults.cpuCount;
+    	      this.machineType = defaults.machineType;
         }
 
         @CustomType.Setter
@@ -48,9 +67,16 @@ public final class InstanceMachineConfig {
             this.cpuCount = cpuCount;
             return this;
         }
+        @CustomType.Setter
+        public Builder machineType(@Nullable String machineType) {
+
+            this.machineType = machineType;
+            return this;
+        }
         public InstanceMachineConfig build() {
             final var _resultValue = new InstanceMachineConfig();
             _resultValue.cpuCount = cpuCount;
+            _resultValue.machineType = machineType;
             return _resultValue;
         }
     }

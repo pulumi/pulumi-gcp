@@ -1409,6 +1409,14 @@ Object.defineProperty(exports, "sqlCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const storageBatchOperationsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "storageBatchOperationsCustomEndpoint", {
+    get() {
+        return __config.get("storageBatchOperationsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const storageControlCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "storageControlCustomEndpoint", {
     get() {

@@ -471,6 +471,90 @@ export namespace accesscontextmanager {
         title: pulumi.Input<string>;
     }
 
+    export interface GcpUserAccessBindingScopedAccessSetting {
+        /**
+         * Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+         * Structure is documented below.
+         */
+        activeSettings?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingActiveSettings>;
+        /**
+         * Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+         * Structure is documented below.
+         */
+        dryRunSettings?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingDryRunSettings>;
+        /**
+         * Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
+         * Structure is documented below.
+         */
+        scope?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingScope>;
+    }
+
+    export interface GcpUserAccessBindingScopedAccessSettingActiveSettings {
+        /**
+         * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+         */
+        accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. Session settings applied to user access on a given AccessScope.
+         * Structure is documented below.
+         */
+        sessionSettings?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings>;
+    }
+
+    export interface GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings {
+        /**
+         * Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+         */
+        maxInactivity?: pulumi.Input<string>;
+        /**
+         * Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+         */
+        sessionLength?: pulumi.Input<string>;
+        /**
+         * Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+         */
+        sessionLengthEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optional. The session challenges proposed to users when the Google Cloud session length is up.
+         * Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+         */
+        sessionReauthMethod?: pulumi.Input<string>;
+        /**
+         * Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+         */
+        useOidcMaxAge?: pulumi.Input<boolean>;
+    }
+
+    export interface GcpUserAccessBindingScopedAccessSettingDryRunSettings {
+        /**
+         * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+         */
+        accessLevels?: pulumi.Input<string>;
+    }
+
+    export interface GcpUserAccessBindingScopedAccessSettingScope {
+        /**
+         * Optional. Client scope for this access scope.
+         * Structure is documented below.
+         */
+        clientScope?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingScopeClientScope>;
+    }
+
+    export interface GcpUserAccessBindingScopedAccessSettingScopeClientScope {
+        /**
+         * Optional. The application that is subject to this binding's scope.
+         * Structure is documented below.
+         */
+        restrictedClientApplication?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication>;
+    }
+
+    export interface GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
+        /**
+         * The OAuth client ID of the application.
+         */
+        clientId?: pulumi.Input<string>;
+    }
+
     export interface GcpUserAccessBindingSessionSettings {
         /**
          * Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
@@ -2559,6 +2643,12 @@ export namespace alloydb {
          * The number of CPU's in the VM instance.
          */
         cpuCount?: pulumi.Input<number>;
+        /**
+         * Machine type of the VM instance.
+         * E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+         * `cpuCount` must match the number of vCPUs in the machine type.
+         */
+        machineType?: pulumi.Input<string>;
     }
 
     export interface InstanceNetworkConfig {
@@ -2589,6 +2679,10 @@ export namespace alloydb {
     }
 
     export interface InstanceObservabilityConfig {
+        /**
+         * Whether assistive experiences are enabled for this AlloyDB instance.
+         */
+        assistiveExperiencesEnabled?: pulumi.Input<boolean>;
         /**
          * Observability feature status for an instance.
          */
@@ -8719,6 +8813,14 @@ export namespace certificateauthority {
          */
         allowedKeyTypes?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyAllowedKeyType>[]>;
         /**
+         * The duration to backdate all certificates issued from this CaPool. If not set, the
+         * certificates will be issued with a notBeforeTime of the issuance time (i.e. the current
+         * time). If set, the certificates will be issued with a notBeforeTime of the issuance
+         * time minus the backdate_duration. The notAfterTime will be adjusted to preserve the
+         * requested lifetime. The backdateDuration must be less than or equal to 48 hours.
+         */
+        backdateDuration?: pulumi.Input<string>;
+        /**
          * A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
          * includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
          * request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
@@ -12346,8 +12448,6 @@ export namespace clouddeploy {
         profiles?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Whether to run verify tests after the deployment.
-         *
-         * - - -
          */
         verify?: pulumi.Input<boolean>;
     }
@@ -14989,7 +15089,7 @@ export namespace cloudrunv2 {
          */
         executionEnvironment?: pulumi.Input<string>;
         /**
-         * Number of retries allowed per Task, before marking this Task failed.
+         * Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
          */
         maxRetries?: pulumi.Input<number>;
         /**
@@ -17729,6 +17829,16 @@ export namespace compute {
          * CPU utilization target for the group. Valid range is [0.0, 1.0].
          */
         maxUtilization?: pulumi.Input<number>;
+        /**
+         * This field indicates whether this backend should be fully utilized before sending traffic to backends
+         * with default preference. This field cannot be set when loadBalancingScheme is set to 'EXTERNAL'. The possible values are:
+         * - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+         * based on RTT.
+         * - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
+         * traffic would be assigned based on the load balancing algorithm you use. This is the default
+         * Possible values are: `PREFERRED`, `DEFAULT`.
+         */
+        preference?: pulumi.Input<string>;
     }
 
     export interface BackendServiceBackendCustomMetric {
@@ -17796,6 +17906,11 @@ export namespace compute {
          * Structure is documented below.
          */
         negativeCachingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceCdnPolicyNegativeCachingPolicy>[]>;
+        /**
+         * If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+         * to the origin.
+         */
+        requestCoalescing?: pulumi.Input<boolean>;
         /**
          * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
          */
@@ -18121,12 +18236,37 @@ export namespace compute {
          */
         enable?: pulumi.Input<boolean>;
         /**
+         * This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
+         * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+         * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+         */
+        optionalFields?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Specifies the optional logging mode for the load balancer traffic.
+         * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+         * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+         */
+        optionalMode?: pulumi.Input<string>;
+        /**
          * This field can only be specified if logging is enabled for this backend service. The value of
          * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
          * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
          * The default value is 1.0.
          */
         sampleRate?: pulumi.Input<number>;
+    }
+
+    export interface BackendServiceMaxStreamDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution.
+         * Durations less than one second are represented with a 0 seconds field and a positive nanos field.
+         * Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
+         */
+        seconds: pulumi.Input<string>;
     }
 
     export interface BackendServiceOutlierDetection {
@@ -30444,6 +30584,142 @@ export namespace compute {
         rsaEncryptedKey?: pulumi.Input<string>;
     }
 
+    export interface StoragePoolIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface StoragePoolIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface StoragePoolResourceStatus {
+        /**
+         * (Output)
+         * Number of disks used.
+         */
+        diskCount?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Timestamp of the last successful resize in RFC3339 text format.
+         */
+        lastResizeTimestamp?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Maximum allowed aggregate disk size in gigabytes.
+         */
+        maxTotalProvisionedDiskCapacityGb?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Space used by data stored in disks within the storage pool (in bytes).
+         * This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+         */
+        poolUsedCapacityBytes?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+         */
+        poolUsedIops?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the disks' provisioned throughput in MB/s.
+         */
+        poolUsedThroughput?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Amount of data written into the pool, before it is compacted.
+         */
+        poolUserWrittenBytes?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the capacity provisioned in disks in this storage pool.
+         * A disk's provisioned capacity is the same as its total capacity.
+         */
+        totalProvisionedDiskCapacityGb?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the disks' provisioned IOPS.
+         */
+        totalProvisionedDiskIops?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the disks' provisioned throughput in MB/s,
+         * minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+         */
+        totalProvisionedDiskThroughput?: pulumi.Input<string>;
+    }
+
+    export interface StoragePoolStatus {
+        /**
+         * (Output)
+         * Number of disks used.
+         */
+        diskCount?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Timestamp of the last successful resize in RFC3339 text format.
+         */
+        lastResizeTimestamp?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Maximum allowed aggregate disk size in gigabytes.
+         */
+        maxTotalProvisionedDiskCapacityGb?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Space used by data stored in disks within the storage pool (in bytes).
+         * This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+         */
+        poolUsedCapacityBytes?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+         */
+        poolUsedIops?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the disks' provisioned throughput in MB/s.
+         */
+        poolUsedThroughput?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Amount of data written into the pool, before it is compacted.
+         */
+        poolUserWrittenBytes?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the capacity provisioned in disks in this storage pool.
+         * A disk's provisioned capacity is the same as its total capacity.
+         */
+        totalProvisionedDiskCapacityGb?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the disks' provisioned IOPS.
+         */
+        totalProvisionedDiskIops?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Sum of all the disks' provisioned throughput in MB/s,
+         * minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+         */
+        totalProvisionedDiskThroughput?: pulumi.Input<string>;
+    }
+
     export interface SubnetworkIAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -34606,6 +34882,10 @@ export namespace container {
          */
         fastSocket?: pulumi.Input<inputs.container.ClusterNodeConfigFastSocket>;
         /**
+         * Enables Flex Start provisioning model for the node pool.
+         */
+        flexStart?: pulumi.Input<boolean>;
+        /**
          * Parameters for the Google Container Filesystem (GCFS).
          * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
          * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -35540,6 +35820,10 @@ export namespace container {
          * Structure is documented below.
          */
         fastSocket?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigFastSocket>;
+        /**
+         * Enables Flex Start provisioning model for the node pool.
+         */
+        flexStart?: pulumi.Input<boolean>;
         /**
          * Parameters for the Google Container Filesystem (GCFS).
          * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -36570,7 +36854,7 @@ export namespace container {
          */
         bootDiskKmsKey?: pulumi.Input<string>;
         /**
-         * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+         * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
          */
         confidentialNodes?: pulumi.Input<inputs.container.NodePoolNodeConfigConfidentialNodes>;
         /**
@@ -36605,6 +36889,10 @@ export namespace container {
          * Enable or disable NCCL Fast Socket in the node pool.
          */
         fastSocket?: pulumi.Input<inputs.container.NodePoolNodeConfigFastSocket>;
+        /**
+         * Enables Flex Start provisioning model for the node pool
+         */
+        flexStart?: pulumi.Input<boolean>;
         /**
          * GCFS configuration for this node.
          */
@@ -52836,6 +53124,16 @@ export namespace discoveryengine {
          */
         agentCreationConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineChatEngineConfigAgentCreationConfig>;
         /**
+         * If the flag set to true, we allow the agent and engine are in
+         * different locations, otherwise the agent and engine are required to be
+         * in the same location. The flag is set to false by default.
+         * Note that the `allowCrossRegion` are one-time consumed by and passed
+         * to EngineService.CreateEngine. It means they cannot be retrieved using
+         * EngineService.GetEngine or EngineService.ListEngines API after engine
+         * creation.
+         */
+        allowCrossRegion?: pulumi.Input<boolean>;
+        /**
          * The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
          * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
          */
@@ -55660,6 +55958,8 @@ export namespace firebaserules {
         files: pulumi.Input<pulumi.Input<inputs.firebaserules.RulesetSourceFile>[]>;
         /**
          * `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+         *
+         * - - -
          */
         language?: pulumi.Input<string>;
     }
@@ -55675,8 +55975,6 @@ export namespace firebaserules {
         fingerprint?: pulumi.Input<string>;
         /**
          * File name.
-         *
-         * - - -
          */
         name: pulumi.Input<string>;
     }
@@ -56967,6 +57265,10 @@ export namespace gkehub {
 
     export interface FeatureMembershipConfigmanagementConfigSync {
         /**
+         * The override configurations for the Config Sync Deployments. Structure is documented below.
+         */
+        deploymentOverrides?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncDeploymentOverride>[]>;
+        /**
          * Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
          */
         enabled?: pulumi.Input<boolean>;
@@ -56996,6 +57298,44 @@ export namespace gkehub {
          * Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
          */
         stopSyncing?: pulumi.Input<boolean>;
+    }
+
+    export interface FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
+        /**
+         * The override configurations for the containers in the Deployment. Structure is documented below.
+         */
+        containers?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>[]>;
+        /**
+         * The name of the Deployment.
+         */
+        deploymentName?: pulumi.Input<string>;
+        /**
+         * The namespace of the Deployment.
+         */
+        deploymentNamespace?: pulumi.Input<string>;
+    }
+
+    export interface FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer {
+        /**
+         * The name of the container.
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * The CPU limit of the container.
+         */
+        cpuLimit?: pulumi.Input<string>;
+        /**
+         * The CPU request of the container.
+         */
+        cpuRequest?: pulumi.Input<string>;
+        /**
+         * The memory limit of the container.
+         */
+        memoryLimit?: pulumi.Input<string>;
+        /**
+         * The memory request of the container.
+         */
+        memoryRequest?: pulumi.Input<string>;
     }
 
     export interface FeatureMembershipConfigmanagementConfigSyncGit {
@@ -61421,6 +61761,30 @@ export namespace iap {
          * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
          * consider it to be an entirely different resource and will treat it as such.
          */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebCloudRunServiceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface WebCloudRunServiceIamMemberCondition {
         description?: pulumi.Input<string>;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -76240,8 +76604,6 @@ export namespace projects {
         packageName: pulumi.Input<string>;
         /**
          * The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
-         *
-         * - - -
          */
         sha1Fingerprint: pulumi.Input<string>;
     }
@@ -79729,6 +80091,14 @@ export namespace sql {
          * Data cache configurations.
          */
         dataCacheConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsDataCacheConfig>;
+        /**
+         * Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+         */
+        dataDiskProvisionedIops?: pulumi.Input<number>;
+        /**
+         * Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+         */
+        dataDiskProvisionedThroughput?: pulumi.Input<number>;
         databaseFlags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsDatabaseFlag>[]>;
         /**
          * Configuration to protect against accidental instance deletion.
@@ -79744,11 +80114,11 @@ export namespace sql {
          */
         diskAutoresizeLimit?: pulumi.Input<number>;
         /**
-         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
          */
         diskSize?: pulumi.Input<number>;
         /**
-         * The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+         * The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
          */
         diskType?: pulumi.Input<string>;
         /**
@@ -79778,6 +80148,10 @@ export namespace sql {
          * Pricing plan for this instance, can only be `PER_USE`.
          */
         pricingPlan?: pulumi.Input<string>;
+        /**
+         * When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+         */
+        retainBackupsOnDelete?: pulumi.Input<boolean>;
         sqlServerAuditConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsSqlServerAuditConfig>;
         /**
          * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
@@ -79922,6 +80296,10 @@ export namespace sql {
          */
         allocatedIpRange?: pulumi.Input<string>;
         authorizedNetworks?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>[]>;
+        /**
+         * The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+         */
+        customSubjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
          */
@@ -80120,6 +80498,101 @@ export namespace sql {
 }
 
 export namespace storage {
+    export interface BatchOperationsJobBucketList {
+        /**
+         * List of buckets and their objects to be transformed.
+         * Structure is documented below.
+         */
+        buckets: pulumi.Input<inputs.storage.BatchOperationsJobBucketListBuckets>;
+    }
+
+    export interface BatchOperationsJobBucketListBuckets {
+        /**
+         * Bucket name for the objects to be transformed.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+         * Structure is documented below.
+         */
+        manifest?: pulumi.Input<inputs.storage.BatchOperationsJobBucketListBucketsManifest>;
+        /**
+         * Specifies objects matching a prefix set.
+         * Structure is documented below.
+         */
+        prefixList?: pulumi.Input<inputs.storage.BatchOperationsJobBucketListBucketsPrefixList>;
+    }
+
+    export interface BatchOperationsJobBucketListBucketsManifest {
+        /**
+         * Specifies objects in a manifest file.
+         */
+        manifestLocation?: pulumi.Input<string>;
+    }
+
+    export interface BatchOperationsJobBucketListBucketsPrefixList {
+        /**
+         * (Optional)
+         */
+        includedObjectPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BatchOperationsJobDeleteObject {
+        /**
+         * enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+         */
+        permanentObjectDeletionEnabled: pulumi.Input<boolean>;
+    }
+
+    export interface BatchOperationsJobPutMetadata {
+        /**
+         * Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+         */
+        cacheControl?: pulumi.Input<string>;
+        /**
+         * Content-Disposition of the object data.
+         */
+        contentDisposition?: pulumi.Input<string>;
+        /**
+         * Content Encoding of the object data.
+         */
+        contentEncoding?: pulumi.Input<string>;
+        /**
+         * Content-Language of the object data.
+         */
+        contentLanguage?: pulumi.Input<string>;
+        /**
+         * Content-Type of the object data.
+         */
+        contentType?: pulumi.Input<string>;
+        /**
+         * User-provided metadata, in key/value pairs.
+         */
+        customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Updates the objects fixed custom time metadata.
+         */
+        customTime?: pulumi.Input<string>;
+    }
+
+    export interface BatchOperationsJobPutObjectHold {
+        /**
+         * set/unset to update event based hold for objects.
+         */
+        eventBasedHold?: pulumi.Input<string>;
+        /**
+         * set/unset to update temporary based hold for objects.
+         */
+        temporaryHold?: pulumi.Input<string>;
+    }
+
+    export interface BatchOperationsJobRewriteObject {
+        /**
+         * valid kms key
+         */
+        kmsKey: pulumi.Input<string>;
+    }
+
     export interface BucketAutoclass {
         /**
          * While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.

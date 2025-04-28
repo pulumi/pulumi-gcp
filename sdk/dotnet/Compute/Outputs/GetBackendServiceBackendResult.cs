@@ -119,6 +119,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// CPU utilization target for the group. Valid range is [0.0, 1.0].
         /// </summary>
         public readonly double MaxUtilization;
+        /// <summary>
+        /// This field indicates whether this backend should be fully utilized before sending traffic to backends
+        /// with default preference. This field cannot be set when loadBalancingScheme is set to 'EXTERNAL'. The possible values are:
+        ///   - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+        ///     based on RTT.
+        ///   - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
+        ///     traffic would be assigned based on the load balancing algorithm you use. This is the default Possible values: ["PREFERRED", "DEFAULT"]
+        /// </summary>
+        public readonly string Preference;
 
         [OutputConstructor]
         private GetBackendServiceBackendResult(
@@ -144,7 +153,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             double maxRatePerInstance,
 
-            double maxUtilization)
+            double maxUtilization,
+
+            string preference)
         {
             BalancingMode = balancingMode;
             CapacityScaler = capacityScaler;
@@ -158,6 +169,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             MaxRatePerEndpoint = maxRatePerEndpoint;
             MaxRatePerInstance = maxRatePerInstance;
             MaxUtilization = maxUtilization;
+            Preference = preference;
         }
     }
 }

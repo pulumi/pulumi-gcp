@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
  *
  * const project = new gcp.organizations.Project("project", {
  *     projectId: "my-project",
@@ -46,11 +47,14 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [servicenetworking],
  * });
+ * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [compute],
+ * });
  * const apigeeNetwork = new gcp.compute.Network("apigee_network", {
  *     name: "apigee-network",
  *     project: project.projectId,
  * }, {
- *     dependsOn: [compute],
+ *     dependsOn: [wait120Seconds],
  * });
  * const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
  *     name: "apigee-range",

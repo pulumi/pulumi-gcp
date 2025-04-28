@@ -222,7 +222,7 @@ type RuntimeTemplate struct {
 	EncryptionSpec RuntimeTemplateEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// EUC configuration of the NotebookRuntimeTemplate.
 	// Structure is documented below.
-	EucConfig RuntimeTemplateEucConfigPtrOutput `pulumi:"eucConfig"`
+	EucConfig RuntimeTemplateEucConfigOutput `pulumi:"eucConfig"`
 	// Notebook Idle Shutdown configuration for the runtime.
 	// Structure is documented below.
 	IdleShutdownConfig RuntimeTemplateIdleShutdownConfigOutput `pulumi:"idleShutdownConfig"`
@@ -252,7 +252,7 @@ type RuntimeTemplate struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Runtime Shielded VM spec.
 	// Structure is documented below.
-	ShieldedVmConfig RuntimeTemplateShieldedVmConfigPtrOutput `pulumi:"shieldedVmConfig"`
+	ShieldedVmConfig RuntimeTemplateShieldedVmConfigOutput `pulumi:"shieldedVmConfig"`
 	// The notebook software configuration of the notebook runtime.
 	// Structure is documented below.
 	SoftwareConfig RuntimeTemplateSoftwareConfigPtrOutput `pulumi:"softwareConfig"`
@@ -613,8 +613,8 @@ func (o RuntimeTemplateOutput) EncryptionSpec() RuntimeTemplateEncryptionSpecPtr
 
 // EUC configuration of the NotebookRuntimeTemplate.
 // Structure is documented below.
-func (o RuntimeTemplateOutput) EucConfig() RuntimeTemplateEucConfigPtrOutput {
-	return o.ApplyT(func(v *RuntimeTemplate) RuntimeTemplateEucConfigPtrOutput { return v.EucConfig }).(RuntimeTemplateEucConfigPtrOutput)
+func (o RuntimeTemplateOutput) EucConfig() RuntimeTemplateEucConfigOutput {
+	return o.ApplyT(func(v *RuntimeTemplate) RuntimeTemplateEucConfigOutput { return v.EucConfig }).(RuntimeTemplateEucConfigOutput)
 }
 
 // Notebook Idle Shutdown configuration for the runtime.
@@ -673,8 +673,8 @@ func (o RuntimeTemplateOutput) PulumiLabels() pulumi.StringMapOutput {
 
 // Runtime Shielded VM spec.
 // Structure is documented below.
-func (o RuntimeTemplateOutput) ShieldedVmConfig() RuntimeTemplateShieldedVmConfigPtrOutput {
-	return o.ApplyT(func(v *RuntimeTemplate) RuntimeTemplateShieldedVmConfigPtrOutput { return v.ShieldedVmConfig }).(RuntimeTemplateShieldedVmConfigPtrOutput)
+func (o RuntimeTemplateOutput) ShieldedVmConfig() RuntimeTemplateShieldedVmConfigOutput {
+	return o.ApplyT(func(v *RuntimeTemplate) RuntimeTemplateShieldedVmConfigOutput { return v.ShieldedVmConfig }).(RuntimeTemplateShieldedVmConfigOutput)
 }
 
 // The notebook software configuration of the notebook runtime.

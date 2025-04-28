@@ -27,6 +27,7 @@ class UptimeCheckConfigArgs:
                  checker_type: Optional[pulumi.Input[builtins.str]] = None,
                  content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
                  http_check: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']] = None,
+                 log_check_failures: Optional[pulumi.Input[builtins.bool]] = None,
                  monitored_resource: Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']] = None,
                  period: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -48,6 +49,7 @@ class UptimeCheckConfigArgs:
                Structure is documented below.
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
+        :param pulumi.Input[builtins.bool] log_check_failures: Specifies whether to log the results of failed probes to Cloud Logging.
         :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The [monitored resource]
                (https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
@@ -72,6 +74,8 @@ class UptimeCheckConfigArgs:
             pulumi.set(__self__, "content_matchers", content_matchers)
         if http_check is not None:
             pulumi.set(__self__, "http_check", http_check)
+        if log_check_failures is not None:
+            pulumi.set(__self__, "log_check_failures", log_check_failures)
         if monitored_resource is not None:
             pulumi.set(__self__, "monitored_resource", monitored_resource)
         if period is not None:
@@ -154,6 +158,18 @@ class UptimeCheckConfigArgs:
     @http_check.setter
     def http_check(self, value: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']]):
         pulumi.set(self, "http_check", value)
+
+    @property
+    @pulumi.getter(name="logCheckFailures")
+    def log_check_failures(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether to log the results of failed probes to Cloud Logging.
+        """
+        return pulumi.get(self, "log_check_failures")
+
+    @log_check_failures.setter
+    def log_check_failures(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_check_failures", value)
 
     @property
     @pulumi.getter(name="monitoredResource")
@@ -266,6 +282,7 @@ class _UptimeCheckConfigState:
                  content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  http_check: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']] = None,
+                 log_check_failures: Optional[pulumi.Input[builtins.bool]] = None,
                  monitored_resource: Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  period: Optional[pulumi.Input[builtins.str]] = None,
@@ -286,6 +303,7 @@ class _UptimeCheckConfigState:
         :param pulumi.Input[builtins.str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
+        :param pulumi.Input[builtins.bool] log_check_failures: Specifies whether to log the results of failed probes to Cloud Logging.
         :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The [monitored resource]
                (https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
@@ -316,6 +334,8 @@ class _UptimeCheckConfigState:
             pulumi.set(__self__, "display_name", display_name)
         if http_check is not None:
             pulumi.set(__self__, "http_check", http_check)
+        if log_check_failures is not None:
+            pulumi.set(__self__, "log_check_failures", log_check_failures)
         if monitored_resource is not None:
             pulumi.set(__self__, "monitored_resource", monitored_resource)
         if name is not None:
@@ -389,6 +409,18 @@ class _UptimeCheckConfigState:
     @http_check.setter
     def http_check(self, value: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']]):
         pulumi.set(self, "http_check", value)
+
+    @property
+    @pulumi.getter(name="logCheckFailures")
+    def log_check_failures(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Specifies whether to log the results of failed probes to Cloud Logging.
+        """
+        return pulumi.get(self, "log_check_failures")
+
+    @log_check_failures.setter
+    def log_check_failures(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_check_failures", value)
 
     @property
     @pulumi.getter(name="monitoredResource")
@@ -542,6 +574,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  http_check: Optional[pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
+                 log_check_failures: Optional[pulumi.Input[builtins.bool]] = None,
                  monitored_resource: Optional[pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']]] = None,
                  period: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -572,6 +605,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         http = gcp.monitoring.UptimeCheckConfig("http",
             display_name="http-uptime-check",
             timeout="60s",
+            log_check_failures=True,
             user_labels={
                 "example-key": "example-value",
             },
@@ -783,6 +817,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
+        :param pulumi.Input[builtins.bool] log_check_failures: Specifies whether to log the results of failed probes to Cloud Logging.
         :param pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']] monitored_resource: The [monitored resource]
                (https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
@@ -829,6 +864,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         http = gcp.monitoring.UptimeCheckConfig("http",
             display_name="http-uptime-check",
             timeout="60s",
+            log_check_failures=True,
             user_labels={
                 "example-key": "example-value",
             },
@@ -1050,6 +1086,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  http_check: Optional[pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
+                 log_check_failures: Optional[pulumi.Input[builtins.bool]] = None,
                  monitored_resource: Optional[pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']]] = None,
                  period: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -1074,6 +1111,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["http_check"] = http_check
+            __props__.__dict__["log_check_failures"] = log_check_failures
             __props__.__dict__["monitored_resource"] = monitored_resource
             __props__.__dict__["period"] = period
             __props__.__dict__["project"] = project
@@ -1101,6 +1139,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
             display_name: Optional[pulumi.Input[builtins.str]] = None,
             http_check: Optional[pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
+            log_check_failures: Optional[pulumi.Input[builtins.bool]] = None,
             monitored_resource: Optional[pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             period: Optional[pulumi.Input[builtins.str]] = None,
@@ -1126,6 +1165,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
+        :param pulumi.Input[builtins.bool] log_check_failures: Specifies whether to log the results of failed probes to Cloud Logging.
         :param pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']] monitored_resource: The [monitored resource]
                (https://cloud.google.com/monitoring/api/resources) associated with the
                configuration. The following monitored resource types are supported for
@@ -1156,6 +1196,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         __props__.__dict__["content_matchers"] = content_matchers
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["http_check"] = http_check
+        __props__.__dict__["log_check_failures"] = log_check_failures
         __props__.__dict__["monitored_resource"] = monitored_resource
         __props__.__dict__["name"] = name
         __props__.__dict__["period"] = period
@@ -1203,6 +1244,14 @@ class UptimeCheckConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "http_check")
+
+    @property
+    @pulumi.getter(name="logCheckFailures")
+    def log_check_failures(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Specifies whether to log the results of failed probes to Cloud Logging.
+        """
+        return pulumi.get(self, "log_check_failures")
 
     @property
     @pulumi.getter(name="monitoredResource")

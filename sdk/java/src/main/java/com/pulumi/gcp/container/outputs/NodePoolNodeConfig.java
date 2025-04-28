@@ -48,7 +48,7 @@ public final class NodePoolNodeConfig {
      */
     private @Nullable String bootDiskKmsKey;
     /**
-     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
      * 
      */
     private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
@@ -92,6 +92,11 @@ public final class NodePoolNodeConfig {
      * 
      */
     private @Nullable NodePoolNodeConfigFastSocket fastSocket;
+    /**
+     * @return Enables Flex Start provisioning model for the node pool
+     * 
+     */
+    private @Nullable Boolean flexStart;
     /**
      * @return GCFS configuration for this node.
      * 
@@ -277,7 +282,7 @@ public final class NodePoolNodeConfig {
         return Optional.ofNullable(this.bootDiskKmsKey);
     }
     /**
-     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
      * 
      */
     public Optional<NodePoolNodeConfigConfidentialNodes> confidentialNodes() {
@@ -338,6 +343,13 @@ public final class NodePoolNodeConfig {
      */
     public Optional<NodePoolNodeConfigFastSocket> fastSocket() {
         return Optional.ofNullable(this.fastSocket);
+    }
+    /**
+     * @return Enables Flex Start provisioning model for the node pool
+     * 
+     */
+    public Optional<Boolean> flexStart() {
+        return Optional.ofNullable(this.flexStart);
     }
     /**
      * @return GCFS configuration for this node.
@@ -594,6 +606,7 @@ public final class NodePoolNodeConfig {
         private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
         private @Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
         private @Nullable NodePoolNodeConfigFastSocket fastSocket;
+        private @Nullable Boolean flexStart;
         private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
         private @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable NodePoolNodeConfigGvnic gvnic;
@@ -641,6 +654,7 @@ public final class NodePoolNodeConfig {
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
     	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
     	      this.fastSocket = defaults.fastSocket;
+    	      this.flexStart = defaults.flexStart;
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
@@ -743,6 +757,12 @@ public final class NodePoolNodeConfig {
         public Builder fastSocket(@Nullable NodePoolNodeConfigFastSocket fastSocket) {
 
             this.fastSocket = fastSocket;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder flexStart(@Nullable Boolean flexStart) {
+
+            this.flexStart = flexStart;
             return this;
         }
         @CustomType.Setter
@@ -974,6 +994,7 @@ public final class NodePoolNodeConfig {
             _resultValue.ephemeralStorageConfig = ephemeralStorageConfig;
             _resultValue.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             _resultValue.fastSocket = fastSocket;
+            _resultValue.flexStart = flexStart;
             _resultValue.gcfsConfig = gcfsConfig;
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.gvnic = gvnic;

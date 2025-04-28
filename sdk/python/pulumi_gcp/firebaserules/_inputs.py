@@ -67,6 +67,8 @@ if not MYPY:
         language: NotRequired[pulumi.Input[builtins.str]]
         """
         `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+
+        - - -
         """
 elif False:
     RulesetSourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -79,6 +81,8 @@ class RulesetSourceArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['RulesetSourceFileArgs']]] files: `File` set constituting the `Source` bundle.
         :param pulumi.Input[builtins.str] language: `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+               
+               - - -
         """
         pulumi.set(__self__, "files", files)
         if language is not None:
@@ -101,6 +105,8 @@ class RulesetSourceArgs:
     def language(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+
+        - - -
         """
         return pulumi.get(self, "language")
 
@@ -118,8 +124,6 @@ if not MYPY:
         name: pulumi.Input[builtins.str]
         """
         File name.
-
-        - - -
         """
         fingerprint: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -137,8 +141,6 @@ class RulesetSourceFileArgs:
         """
         :param pulumi.Input[builtins.str] content: Textual Content.
         :param pulumi.Input[builtins.str] name: File name.
-               
-               - - -
         :param pulumi.Input[builtins.str] fingerprint: Fingerprint (e.g. github sha) associated with the `File`.
         """
         pulumi.set(__self__, "content", content)
@@ -163,8 +165,6 @@ class RulesetSourceFileArgs:
     def name(self) -> pulumi.Input[builtins.str]:
         """
         File name.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

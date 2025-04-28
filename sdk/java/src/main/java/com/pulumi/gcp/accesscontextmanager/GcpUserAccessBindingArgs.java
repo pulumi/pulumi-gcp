@@ -6,8 +6,10 @@ package com.pulumi.gcp.accesscontextmanager;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingScopedAccessSettingArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingSessionSettingsArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -67,6 +69,23 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Optional. A list of scoped access settings that set this binding&#39;s restrictions on a subset of applications.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scopedAccessSettings")
+    private @Nullable Output<List<GcpUserAccessBindingScopedAccessSettingArgs>> scopedAccessSettings;
+
+    /**
+     * @return Optional. A list of scoped access settings that set this binding&#39;s restrictions on a subset of applications.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<GcpUserAccessBindingScopedAccessSettingArgs>>> scopedAccessSettings() {
+        return Optional.ofNullable(this.scopedAccessSettings);
+    }
+
+    /**
      * Optional. The Google Cloud session length (GCSL) policy for the group key.
      * Structure is documented below.
      * 
@@ -89,6 +108,7 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
         this.accessLevels = $.accessLevels;
         this.groupKey = $.groupKey;
         this.organizationId = $.organizationId;
+        this.scopedAccessSettings = $.scopedAccessSettings;
         this.sessionSettings = $.sessionSettings;
     }
 
@@ -175,6 +195,40 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
+        }
+
+        /**
+         * @param scopedAccessSettings Optional. A list of scoped access settings that set this binding&#39;s restrictions on a subset of applications.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopedAccessSettings(@Nullable Output<List<GcpUserAccessBindingScopedAccessSettingArgs>> scopedAccessSettings) {
+            $.scopedAccessSettings = scopedAccessSettings;
+            return this;
+        }
+
+        /**
+         * @param scopedAccessSettings Optional. A list of scoped access settings that set this binding&#39;s restrictions on a subset of applications.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopedAccessSettings(List<GcpUserAccessBindingScopedAccessSettingArgs> scopedAccessSettings) {
+            return scopedAccessSettings(Output.of(scopedAccessSettings));
+        }
+
+        /**
+         * @param scopedAccessSettings Optional. A list of scoped access settings that set this binding&#39;s restrictions on a subset of applications.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopedAccessSettings(GcpUserAccessBindingScopedAccessSettingArgs... scopedAccessSettings) {
+            return scopedAccessSettings(List.of(scopedAccessSettings));
         }
 
         /**

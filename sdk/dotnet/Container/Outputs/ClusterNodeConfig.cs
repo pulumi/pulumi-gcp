@@ -64,6 +64,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeConfigFastSocket? FastSocket;
         /// <summary>
+        /// Enables Flex Start provisioning model for the node pool.
+        /// </summary>
+        public readonly bool? FlexStart;
+        /// <summary>
         /// Parameters for the Google Container Filesystem (GCFS).
         /// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
         /// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -275,6 +279,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodeConfigFastSocket? fastSocket,
 
+            bool? flexStart,
+
             Outputs.ClusterNodeConfigGcfsConfig? gcfsConfig,
 
             ImmutableArray<Outputs.ClusterNodeConfigGuestAccelerator> guestAccelerators,
@@ -352,6 +358,7 @@ namespace Pulumi.Gcp.Container.Outputs
             EphemeralStorageConfig = ephemeralStorageConfig;
             EphemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             FastSocket = fastSocket;
+            FlexStart = flexStart;
             GcfsConfig = gcfsConfig;
             GuestAccelerators = guestAccelerators;
             Gvnic = gvnic;

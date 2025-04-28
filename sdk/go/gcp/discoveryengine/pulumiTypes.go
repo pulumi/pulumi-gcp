@@ -18,6 +18,14 @@ type ChatEngineChatEngineConfig struct {
 	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
 	// Structure is documented below.
 	AgentCreationConfig *ChatEngineChatEngineConfigAgentCreationConfig `pulumi:"agentCreationConfig"`
+	// If the flag set to true, we allow the agent and engine are in
+	// different locations, otherwise the agent and engine are required to be
+	// in the same location. The flag is set to false by default.
+	// Note that the `allowCrossRegion` are one-time consumed by and passed
+	// to EngineService.CreateEngine. It means they cannot be retrieved using
+	// EngineService.GetEngine or EngineService.ListEngines API after engine
+	// creation.
+	AllowCrossRegion *bool `pulumi:"allowCrossRegion"`
 	// The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
 	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
 	DialogflowAgentToLink *string `pulumi:"dialogflowAgentToLink"`
@@ -39,6 +47,14 @@ type ChatEngineChatEngineConfigArgs struct {
 	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
 	// Structure is documented below.
 	AgentCreationConfig ChatEngineChatEngineConfigAgentCreationConfigPtrInput `pulumi:"agentCreationConfig"`
+	// If the flag set to true, we allow the agent and engine are in
+	// different locations, otherwise the agent and engine are required to be
+	// in the same location. The flag is set to false by default.
+	// Note that the `allowCrossRegion` are one-time consumed by and passed
+	// to EngineService.CreateEngine. It means they cannot be retrieved using
+	// EngineService.GetEngine or EngineService.ListEngines API after engine
+	// creation.
+	AllowCrossRegion pulumi.BoolPtrInput `pulumi:"allowCrossRegion"`
 	// The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
 	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
 	DialogflowAgentToLink pulumi.StringPtrInput `pulumi:"dialogflowAgentToLink"`
@@ -130,6 +146,17 @@ func (o ChatEngineChatEngineConfigOutput) AgentCreationConfig() ChatEngineChatEn
 	}).(ChatEngineChatEngineConfigAgentCreationConfigPtrOutput)
 }
 
+// If the flag set to true, we allow the agent and engine are in
+// different locations, otherwise the agent and engine are required to be
+// in the same location. The flag is set to false by default.
+// Note that the `allowCrossRegion` are one-time consumed by and passed
+// to EngineService.CreateEngine. It means they cannot be retrieved using
+// EngineService.GetEngine or EngineService.ListEngines API after engine
+// creation.
+func (o ChatEngineChatEngineConfigOutput) AllowCrossRegion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ChatEngineChatEngineConfig) *bool { return v.AllowCrossRegion }).(pulumi.BoolPtrOutput)
+}
+
 // The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
 // Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
 func (o ChatEngineChatEngineConfigOutput) DialogflowAgentToLink() pulumi.StringPtrOutput {
@@ -170,6 +197,22 @@ func (o ChatEngineChatEngineConfigPtrOutput) AgentCreationConfig() ChatEngineCha
 		}
 		return v.AgentCreationConfig
 	}).(ChatEngineChatEngineConfigAgentCreationConfigPtrOutput)
+}
+
+// If the flag set to true, we allow the agent and engine are in
+// different locations, otherwise the agent and engine are required to be
+// in the same location. The flag is set to false by default.
+// Note that the `allowCrossRegion` are one-time consumed by and passed
+// to EngineService.CreateEngine. It means they cannot be retrieved using
+// EngineService.GetEngine or EngineService.ListEngines API after engine
+// creation.
+func (o ChatEngineChatEngineConfigPtrOutput) AllowCrossRegion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ChatEngineChatEngineConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCrossRegion
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.

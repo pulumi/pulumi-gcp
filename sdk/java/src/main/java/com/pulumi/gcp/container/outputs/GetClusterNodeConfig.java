@@ -47,7 +47,7 @@ public final class GetClusterNodeConfig {
      */
     private String bootDiskKmsKey;
     /**
-     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
      * 
      */
     private List<GetClusterNodeConfigConfidentialNode> confidentialNodes;
@@ -91,6 +91,11 @@ public final class GetClusterNodeConfig {
      * 
      */
     private List<GetClusterNodeConfigFastSocket> fastSockets;
+    /**
+     * @return Enables Flex Start provisioning model for the node pool
+     * 
+     */
+    private Boolean flexStart;
     /**
      * @return GCFS configuration for this node.
      * 
@@ -273,7 +278,7 @@ public final class GetClusterNodeConfig {
         return this.bootDiskKmsKey;
     }
     /**
-     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
      * 
      */
     public List<GetClusterNodeConfigConfidentialNode> confidentialNodes() {
@@ -334,6 +339,13 @@ public final class GetClusterNodeConfig {
      */
     public List<GetClusterNodeConfigFastSocket> fastSockets() {
         return this.fastSockets;
+    }
+    /**
+     * @return Enables Flex Start provisioning model for the node pool
+     * 
+     */
+    public Boolean flexStart() {
+        return this.flexStart;
     }
     /**
      * @return GCFS configuration for this node.
@@ -587,6 +599,7 @@ public final class GetClusterNodeConfig {
         private List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
         private List<GetClusterNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
         private List<GetClusterNodeConfigFastSocket> fastSockets;
+        private Boolean flexStart;
         private List<GetClusterNodeConfigGcfsConfig> gcfsConfigs;
         private List<GetClusterNodeConfigGuestAccelerator> guestAccelerators;
         private List<GetClusterNodeConfigGvnic> gvnics;
@@ -634,6 +647,7 @@ public final class GetClusterNodeConfig {
     	      this.ephemeralStorageConfigs = defaults.ephemeralStorageConfigs;
     	      this.ephemeralStorageLocalSsdConfigs = defaults.ephemeralStorageLocalSsdConfigs;
     	      this.fastSockets = defaults.fastSockets;
+    	      this.flexStart = defaults.flexStart;
     	      this.gcfsConfigs = defaults.gcfsConfigs;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnics = defaults.gvnics;
@@ -777,6 +791,14 @@ public final class GetClusterNodeConfig {
         }
         public Builder fastSockets(GetClusterNodeConfigFastSocket... fastSockets) {
             return fastSockets(List.of(fastSockets));
+        }
+        @CustomType.Setter
+        public Builder flexStart(Boolean flexStart) {
+            if (flexStart == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "flexStart");
+            }
+            this.flexStart = flexStart;
+            return this;
         }
         @CustomType.Setter
         public Builder gcfsConfigs(List<GetClusterNodeConfigGcfsConfig> gcfsConfigs) {
@@ -1109,6 +1131,7 @@ public final class GetClusterNodeConfig {
             _resultValue.ephemeralStorageConfigs = ephemeralStorageConfigs;
             _resultValue.ephemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
             _resultValue.fastSockets = fastSockets;
+            _resultValue.flexStart = flexStart;
             _resultValue.gcfsConfigs = gcfsConfigs;
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.gvnics = gvnics;

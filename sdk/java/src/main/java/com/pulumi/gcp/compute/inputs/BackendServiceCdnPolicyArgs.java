@@ -158,6 +158,23 @@ public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+     * to the origin.
+     * 
+     */
+    @Import(name="requestCoalescing")
+    private @Nullable Output<Boolean> requestCoalescing;
+
+    /**
+     * @return If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+     * to the origin.
+     * 
+     */
+    public Optional<Output<Boolean>> requestCoalescing() {
+        return Optional.ofNullable(this.requestCoalescing);
+    }
+
+    /**
      * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
      * 
      */
@@ -214,6 +231,7 @@ public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.Reso
         this.maxTtl = $.maxTtl;
         this.negativeCaching = $.negativeCaching;
         this.negativeCachingPolicies = $.negativeCachingPolicies;
+        this.requestCoalescing = $.requestCoalescing;
         this.serveWhileStale = $.serveWhileStale;
         this.signedUrlCacheMaxAgeSec = $.signedUrlCacheMaxAgeSec;
     }
@@ -442,6 +460,29 @@ public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.Reso
          */
         public Builder negativeCachingPolicies(BackendServiceCdnPolicyNegativeCachingPolicyArgs... negativeCachingPolicies) {
             return negativeCachingPolicies(List.of(negativeCachingPolicies));
+        }
+
+        /**
+         * @param requestCoalescing If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+         * to the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestCoalescing(@Nullable Output<Boolean> requestCoalescing) {
+            $.requestCoalescing = requestCoalescing;
+            return this;
+        }
+
+        /**
+         * @param requestCoalescing If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+         * to the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestCoalescing(Boolean requestCoalescing) {
+            return requestCoalescing(Output.of(requestCoalescing));
         }
 
         /**

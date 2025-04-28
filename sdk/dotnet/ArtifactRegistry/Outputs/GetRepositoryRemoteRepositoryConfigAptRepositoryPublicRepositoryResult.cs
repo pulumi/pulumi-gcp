@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult
     {
         /// <summary>
-        /// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
+        /// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
         /// </summary>
         public readonly string RepositoryBase;
         /// <summary>

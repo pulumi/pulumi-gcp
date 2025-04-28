@@ -21043,6 +21043,8 @@ type ClusterNodeConfig struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket *ClusterNodeConfigFastSocket `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool.
+	FlexStart *bool `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -21197,6 +21199,8 @@ type ClusterNodeConfigArgs struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket ClusterNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool.
+	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -21449,6 +21453,11 @@ func (o ClusterNodeConfigOutput) EphemeralStorageLocalSsdConfig() ClusterNodeCon
 // Structure is documented below.
 func (o ClusterNodeConfigOutput) FastSocket() ClusterNodeConfigFastSocketPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigFastSocket { return v.FastSocket }).(ClusterNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool.
+func (o ClusterNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -21800,6 +21809,16 @@ func (o ClusterNodeConfigPtrOutput) FastSocket() ClusterNodeConfigFastSocketPtrO
 		}
 		return v.FastSocket
 	}).(ClusterNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool.
+func (o ClusterNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FlexStart
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -29579,6 +29598,8 @@ type ClusterNodePoolNodeConfig struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket *ClusterNodePoolNodeConfigFastSocket `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool.
+	FlexStart *bool `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -29733,6 +29754,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket ClusterNodePoolNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool.
+	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -29993,6 +30016,11 @@ func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfig() Cluste
 // Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) FastSocket() ClusterNodePoolNodeConfigFastSocketPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigFastSocket { return v.FastSocket }).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool.
+func (o ClusterNodePoolNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -30362,6 +30390,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) FastSocket() ClusterNodePoolNodeConf
 		}
 		return v.FastSocket
 	}).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool.
+func (o ClusterNodePoolNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FlexStart
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -40436,7 +40474,7 @@ type NodePoolNodeConfig struct {
 	AdvancedMachineFeatures *NodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes *NodePoolNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfig *NodePoolNodeConfigContainerdConfig `pulumi:"containerdConfig"`
@@ -40454,6 +40492,8 @@ type NodePoolNodeConfig struct {
 	EphemeralStorageLocalSsdConfig *NodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSocket *NodePoolNodeConfigFastSocket `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart *bool `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfig *NodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -40541,7 +40581,7 @@ type NodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures NodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes NodePoolNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfig NodePoolNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
@@ -40559,6 +40599,8 @@ type NodePoolNodeConfigArgs struct {
 	EphemeralStorageLocalSsdConfig NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSocket NodePoolNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfig NodePoolNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -40719,7 +40761,7 @@ func (o NodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 func (o NodePoolNodeConfigOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes { return v.ConfidentialNodes }).(NodePoolNodeConfigConfidentialNodesPtrOutput)
 }
@@ -40764,6 +40806,11 @@ func (o NodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfig() NodePoolNodeC
 // Enable or disable NCCL Fast Socket in the node pool.
 func (o NodePoolNodeConfigOutput) FastSocket() NodePoolNodeConfigFastSocketPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigFastSocket { return v.FastSocket }).(NodePoolNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool
+func (o NodePoolNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
 
 // GCFS configuration for this node.
@@ -40980,7 +41027,7 @@ func (o NodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 func (o NodePoolNodeConfigPtrOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes {
 		if v == nil {
@@ -41068,6 +41115,16 @@ func (o NodePoolNodeConfigPtrOutput) FastSocket() NodePoolNodeConfigFastSocketPt
 		}
 		return v.FastSocket
 	}).(NodePoolNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool
+func (o NodePoolNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FlexStart
+	}).(pulumi.BoolPtrOutput)
 }
 
 // GCFS configuration for this node.
@@ -53228,7 +53285,7 @@ type GetClusterNodeConfig struct {
 	AdvancedMachineFeatures []GetClusterNodeConfigAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes []GetClusterNodeConfigConfidentialNode `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfigs []GetClusterNodeConfigContainerdConfig `pulumi:"containerdConfigs"`
@@ -53246,6 +53303,8 @@ type GetClusterNodeConfig struct {
 	EphemeralStorageLocalSsdConfigs []GetClusterNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSockets []GetClusterNodeConfigFastSocket `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart bool `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfigs []GetClusterNodeConfigGcfsConfig `pulumi:"gcfsConfigs"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -53330,7 +53389,7 @@ type GetClusterNodeConfigArgs struct {
 	AdvancedMachineFeatures GetClusterNodeConfigAdvancedMachineFeatureArrayInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes GetClusterNodeConfigConfidentialNodeArrayInput `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfigs GetClusterNodeConfigContainerdConfigArrayInput `pulumi:"containerdConfigs"`
@@ -53348,6 +53407,8 @@ type GetClusterNodeConfigArgs struct {
 	EphemeralStorageLocalSsdConfigs GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSockets GetClusterNodeConfigFastSocketArrayInput `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart pulumi.BoolInput `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfigs GetClusterNodeConfigGcfsConfigArrayInput `pulumi:"gcfsConfigs"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -53479,7 +53540,7 @@ func (o GetClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
 
-// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 func (o GetClusterNodeConfigOutput) ConfidentialNodes() GetClusterNodeConfigConfidentialNodeArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigConfidentialNode { return v.ConfidentialNodes }).(GetClusterNodeConfigConfidentialNodeArrayOutput)
 }
@@ -53526,6 +53587,11 @@ func (o GetClusterNodeConfigOutput) EphemeralStorageLocalSsdConfigs() GetCluster
 // Enable or disable NCCL Fast Socket in the node pool.
 func (o GetClusterNodeConfigOutput) FastSockets() GetClusterNodeConfigFastSocketArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigFastSocket { return v.FastSockets }).(GetClusterNodeConfigFastSocketArrayOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool
+func (o GetClusterNodeConfigOutput) FlexStart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) bool { return v.FlexStart }).(pulumi.BoolOutput)
 }
 
 // GCFS configuration for this node.
@@ -59060,7 +59126,7 @@ type GetClusterNodePoolNodeConfig struct {
 	AdvancedMachineFeatures []GetClusterNodePoolNodeConfigAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes []GetClusterNodePoolNodeConfigConfidentialNode `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfigs []GetClusterNodePoolNodeConfigContainerdConfig `pulumi:"containerdConfigs"`
@@ -59078,6 +59144,8 @@ type GetClusterNodePoolNodeConfig struct {
 	EphemeralStorageLocalSsdConfigs []GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSockets []GetClusterNodePoolNodeConfigFastSocket `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart bool `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfigs []GetClusterNodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfigs"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -59162,7 +59230,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes GetClusterNodePoolNodeConfigConfidentialNodeArrayInput `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfigs GetClusterNodePoolNodeConfigContainerdConfigArrayInput `pulumi:"containerdConfigs"`
@@ -59180,6 +59248,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	EphemeralStorageLocalSsdConfigs GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayInput `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSockets GetClusterNodePoolNodeConfigFastSocketArrayInput `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart pulumi.BoolInput `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfigs GetClusterNodePoolNodeConfigGcfsConfigArrayInput `pulumi:"gcfsConfigs"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -59311,7 +59381,7 @@ func (o GetClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
 
-// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 func (o GetClusterNodePoolNodeConfigOutput) ConfidentialNodes() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigConfidentialNode {
 		return v.ConfidentialNodes
@@ -59364,6 +59434,11 @@ func (o GetClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfigs() Ge
 // Enable or disable NCCL Fast Socket in the node pool.
 func (o GetClusterNodePoolNodeConfigOutput) FastSockets() GetClusterNodePoolNodeConfigFastSocketArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigFastSocket { return v.FastSockets }).(GetClusterNodePoolNodeConfigFastSocketArrayOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool
+func (o GetClusterNodePoolNodeConfigOutput) FlexStart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.FlexStart }).(pulumi.BoolOutput)
 }
 
 // GCFS configuration for this node.

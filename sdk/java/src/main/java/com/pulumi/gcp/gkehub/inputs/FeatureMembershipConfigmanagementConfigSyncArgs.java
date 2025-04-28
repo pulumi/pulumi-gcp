@@ -5,10 +5,12 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncOciArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +19,21 @@ import javax.annotation.Nullable;
 public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureMembershipConfigmanagementConfigSyncArgs Empty = new FeatureMembershipConfigmanagementConfigSyncArgs();
+
+    /**
+     * The override configurations for the Config Sync Deployments. Structure is documented below.
+     * 
+     */
+    @Import(name="deploymentOverrides")
+    private @Nullable Output<List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs>> deploymentOverrides;
+
+    /**
+     * @return The override configurations for the Config Sync Deployments. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs>>> deploymentOverrides() {
+        return Optional.ofNullable(this.deploymentOverrides);
+    }
 
     /**
      * Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
@@ -130,6 +147,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     private FeatureMembershipConfigmanagementConfigSyncArgs() {}
 
     private FeatureMembershipConfigmanagementConfigSyncArgs(FeatureMembershipConfigmanagementConfigSyncArgs $) {
+        this.deploymentOverrides = $.deploymentOverrides;
         this.enabled = $.enabled;
         this.git = $.git;
         this.metricsGcpServiceAccountEmail = $.metricsGcpServiceAccountEmail;
@@ -155,6 +173,37 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
 
         public Builder(FeatureMembershipConfigmanagementConfigSyncArgs defaults) {
             $ = new FeatureMembershipConfigmanagementConfigSyncArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deploymentOverrides The override configurations for the Config Sync Deployments. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentOverrides(@Nullable Output<List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs>> deploymentOverrides) {
+            $.deploymentOverrides = deploymentOverrides;
+            return this;
+        }
+
+        /**
+         * @param deploymentOverrides The override configurations for the Config Sync Deployments. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentOverrides(List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs> deploymentOverrides) {
+            return deploymentOverrides(Output.of(deploymentOverrides));
+        }
+
+        /**
+         * @param deploymentOverrides The override configurations for the Config Sync Deployments. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentOverrides(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs... deploymentOverrides) {
+            return deploymentOverrides(List.of(deploymentOverrides));
         }
 
         /**

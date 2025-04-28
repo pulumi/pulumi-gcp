@@ -87,7 +87,7 @@ import (
 //						Action:        pulumi.String("allow"),
 //						Direction:     pulumi.String("EGRESS"),
 //						TargetResources: pulumi.StringArray{
-//							pulumi.Sprintf("https://www.googleapis.com/compute/beta/projects/%v/global/networks/default", project.Name),
+//							pulumi.Sprintf("https://www.googleapis.com/compute/beta/projects/%v/global/networks/default", project.ProjectId),
 //						},
 //						Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
 //							DestIpRanges: pulumi.StringArray{

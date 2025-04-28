@@ -66,7 +66,15 @@ import (
 //				Project: project.ProjectId,
 //				Service: pulumi.String("managedkafka.googleapis.com"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				wait60Seconds,
+//				compute,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: "120s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				managedkafka,
 //			}))
 //			if err != nil {
 //				return err
@@ -78,7 +86,7 @@ import (
 //				Region:      pulumi.String("us-central1"),
 //				Network:     pulumi.String("default"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
+//				wait120Seconds,
 //			}))
 //			if err != nil {
 //				return err

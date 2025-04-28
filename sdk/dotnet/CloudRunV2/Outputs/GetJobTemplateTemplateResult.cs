@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string ExecutionEnvironment;
         /// <summary>
-        /// Number of retries allowed per Task, before marking this Task failed.
+        /// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
         /// </summary>
         public readonly int MaxRetries;
         /// <summary>

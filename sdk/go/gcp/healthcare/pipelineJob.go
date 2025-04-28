@@ -152,7 +152,7 @@ import (
 //				Dataset:  dataset.ID(),
 //				BackfillPipelineJob: &healthcare.PipelineJobBackfillPipelineJobArgs{
 //					MappingPipelineJob: dataset.ID().ApplyT(func(id string) (string, error) {
-//						return fmt.Sprintf("%v/pipelinejobs/example_mapping_pipeline", id), nil
+//						return fmt.Sprintf("%v/pipelineJobs/example_mapping_pipeline_job", id), nil
 //					}).(pulumi.StringOutput),
 //				},
 //			})

@@ -34,6 +34,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -75,11 +76,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: "120s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				compute,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
 //				Name:    pulumi.String("apigee-network"),
 //				Project: project.ProjectId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				compute,
+//				wait120Seconds,
 //			}))
 //			if err != nil {
 //				return err

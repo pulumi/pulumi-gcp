@@ -194,6 +194,7 @@ class ProviderArgs:
                  source_repo_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  spanner_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_batch_operations_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  storage_control_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  storage_insights_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
@@ -565,6 +566,8 @@ class ProviderArgs:
             pulumi.set(__self__, "spanner_custom_endpoint", spanner_custom_endpoint)
         if sql_custom_endpoint is not None:
             pulumi.set(__self__, "sql_custom_endpoint", sql_custom_endpoint)
+        if storage_batch_operations_custom_endpoint is not None:
+            pulumi.set(__self__, "storage_batch_operations_custom_endpoint", storage_batch_operations_custom_endpoint)
         if storage_control_custom_endpoint is not None:
             pulumi.set(__self__, "storage_control_custom_endpoint", storage_control_custom_endpoint)
         if storage_custom_endpoint is not None:
@@ -2162,6 +2165,15 @@ class ProviderArgs:
         pulumi.set(self, "sql_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="storageBatchOperationsCustomEndpoint")
+    def storage_batch_operations_custom_endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "storage_batch_operations_custom_endpoint")
+
+    @storage_batch_operations_custom_endpoint.setter
+    def storage_batch_operations_custom_endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "storage_batch_operations_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="storageControlCustomEndpoint")
     def storage_control_custom_endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "storage_control_custom_endpoint")
@@ -2502,6 +2514,7 @@ class Provider(pulumi.ProviderResource):
                  source_repo_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  spanner_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_batch_operations_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  storage_control_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  storage_insights_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
@@ -2730,6 +2743,7 @@ class Provider(pulumi.ProviderResource):
                  source_repo_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  spanner_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_batch_operations_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  storage_control_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  storage_insights_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
@@ -2934,6 +2948,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["source_repo_custom_endpoint"] = source_repo_custom_endpoint
             __props__.__dict__["spanner_custom_endpoint"] = spanner_custom_endpoint
             __props__.__dict__["sql_custom_endpoint"] = sql_custom_endpoint
+            __props__.__dict__["storage_batch_operations_custom_endpoint"] = storage_batch_operations_custom_endpoint
             __props__.__dict__["storage_control_custom_endpoint"] = storage_control_custom_endpoint
             __props__.__dict__["storage_custom_endpoint"] = storage_custom_endpoint
             __props__.__dict__["storage_insights_custom_endpoint"] = storage_insights_custom_endpoint
@@ -3791,6 +3806,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="sqlCustomEndpoint")
     def sql_custom_endpoint(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "sql_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="storageBatchOperationsCustomEndpoint")
+    def storage_batch_operations_custom_endpoint(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "storage_batch_operations_custom_endpoint")
 
     @property
     @pulumi.getter(name="storageControlCustomEndpoint")

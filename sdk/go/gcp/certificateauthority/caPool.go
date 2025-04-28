@@ -92,7 +92,8 @@ import (
 //							},
 //						},
 //					},
-//					MaximumLifetime: pulumi.String("50000s"),
+//					BackdateDuration: pulumi.String("3600s"),
+//					MaximumLifetime:  pulumi.String("50000s"),
 //					AllowedIssuanceModes: &certificateauthority.CaPoolIssuancePolicyAllowedIssuanceModesArgs{
 //						AllowCsrBasedIssuance:    pulumi.Bool(true),
 //						AllowConfigBasedIssuance: pulumi.Bool(true),

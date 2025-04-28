@@ -33,7 +33,7 @@ class KeyRingImportJobArgs:
                
                - - -
         :param pulumi.Input[builtins.str] import_method: The wrapping method to be used for incoming key material.
-               Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+               Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         :param pulumi.Input[builtins.str] key_ring: The KeyRing that this import job belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[builtins.str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
@@ -65,7 +65,7 @@ class KeyRingImportJobArgs:
     def import_method(self) -> pulumi.Input[builtins.str]:
         """
         The wrapping method to be used for incoming key material.
-        Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+        Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         """
         return pulumi.get(self, "import_method")
 
@@ -126,7 +126,7 @@ class _KeyRingImportJobState:
                
                - - -
         :param pulumi.Input[builtins.str] import_method: The wrapping method to be used for incoming key material.
-               Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+               Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         :param pulumi.Input[builtins.str] key_ring: The KeyRing that this import job belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[builtins.str] name: The resource name for this ImportJob in the format projects/*/locations/*/keyRings/*/importJobs/*.
@@ -204,7 +204,7 @@ class _KeyRingImportJobState:
     def import_method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The wrapping method to be used for incoming key material.
-        Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+        Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         """
         return pulumi.get(self, "import_method")
 
@@ -324,7 +324,7 @@ class KeyRingImportJob(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[builtins.str] import_method: The wrapping method to be used for incoming key material.
-               Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+               Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         :param pulumi.Input[builtins.str] key_ring: The KeyRing that this import job belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[builtins.str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
@@ -449,7 +449,7 @@ class KeyRingImportJob(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[builtins.str] import_method: The wrapping method to be used for incoming key material.
-               Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+               Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         :param pulumi.Input[builtins.str] key_ring: The KeyRing that this import job belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
         :param pulumi.Input[builtins.str] name: The resource name for this ImportJob in the format projects/*/locations/*/keyRings/*/importJobs/*.
@@ -511,7 +511,7 @@ class KeyRingImportJob(pulumi.CustomResource):
     def import_method(self) -> pulumi.Output[builtins.str]:
         """
         The wrapping method to be used for incoming key material.
-        Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+        Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         """
         return pulumi.get(self, "import_method")
 

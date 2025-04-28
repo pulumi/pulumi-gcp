@@ -58,7 +58,6 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/applicationintegration"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -90,13 +89,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("service-acc"),
-//				DisplayName: pulumi.String("Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			invokeBasename, err := std.Basename(ctx, &std.BasenameArgs{
 //				Input: keyring.Id,
 //			}, nil)
@@ -118,7 +110,6 @@ import (
 //			_, err = applicationintegration.NewClient(ctx, "example", &applicationintegration.ClientArgs{
 //				Location:                 pulumi.String("us-east1"),
 //				CreateSampleIntegrations: pulumi.Bool(true),
-//				RunAsServiceAccount:      serviceAccount.Email,
 //				CloudKmsConfig: &applicationintegration.ClientCloudKmsConfigArgs{
 //					KmsLocation:  pulumi.String("us-east1"),
 //					KmsRing:      pulumi.String(invokeBasename.Result),
@@ -174,7 +165,12 @@ type Client struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// (Optional, Deprecated)
 	// User input run-as service account, if empty, will bring up a new default service account.
+	//
+	// > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `runAsServiceAccount` is deprecated and will be removed in a future major release.
 	RunAsServiceAccount pulumi.StringPtrOutput `pulumi:"runAsServiceAccount"`
 }
 
@@ -223,7 +219,12 @@ type clientState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Deprecated)
 	// User input run-as service account, if empty, will bring up a new default service account.
+	//
+	// > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `runAsServiceAccount` is deprecated and will be removed in a future major release.
 	RunAsServiceAccount *string `pulumi:"runAsServiceAccount"`
 }
 
@@ -240,7 +241,12 @@ type ClientState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// User input run-as service account, if empty, will bring up a new default service account.
+	//
+	// > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `runAsServiceAccount` is deprecated and will be removed in a future major release.
 	RunAsServiceAccount pulumi.StringPtrInput
 }
 
@@ -261,7 +267,12 @@ type clientArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Deprecated)
 	// User input run-as service account, if empty, will bring up a new default service account.
+	//
+	// > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `runAsServiceAccount` is deprecated and will be removed in a future major release.
 	RunAsServiceAccount *string `pulumi:"runAsServiceAccount"`
 }
 
@@ -279,7 +290,12 @@ type ClientArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// User input run-as service account, if empty, will bring up a new default service account.
+	//
+	// > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `runAsServiceAccount` is deprecated and will be removed in a future major release.
 	RunAsServiceAccount pulumi.StringPtrInput
 }
 
@@ -394,7 +410,12 @@ func (o ClientOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // User input run-as service account, if empty, will bring up a new default service account.
+//
+// > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
+//
+// Deprecated: `runAsServiceAccount` is deprecated and will be removed in a future major release.
 func (o ClientOutput) RunAsServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.RunAsServiceAccount }).(pulumi.StringPtrOutput)
 }

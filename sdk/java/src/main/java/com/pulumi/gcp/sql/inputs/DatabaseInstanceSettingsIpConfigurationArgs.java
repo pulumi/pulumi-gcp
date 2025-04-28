@@ -42,6 +42,21 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
+     * The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * 
+     */
+    @Import(name="customSubjectAlternativeNames")
+    private @Nullable Output<List<String>> customSubjectAlternativeNames;
+
+    /**
+     * @return The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * 
+     */
+    public Optional<Output<List<String>>> customSubjectAlternativeNames() {
+        return Optional.ofNullable(this.customSubjectAlternativeNames);
+    }
+
+    /**
      * Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
      * 
      */
@@ -163,6 +178,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     private DatabaseInstanceSettingsIpConfigurationArgs(DatabaseInstanceSettingsIpConfigurationArgs $) {
         this.allocatedIpRange = $.allocatedIpRange;
         this.authorizedNetworks = $.authorizedNetworks;
+        this.customSubjectAlternativeNames = $.customSubjectAlternativeNames;
         this.enablePrivatePathForGoogleCloudServices = $.enablePrivatePathForGoogleCloudServices;
         this.ipv4Enabled = $.ipv4Enabled;
         this.privateNetwork = $.privateNetwork;
@@ -222,6 +238,37 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
 
         public Builder authorizedNetworks(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs... authorizedNetworks) {
             return authorizedNetworks(List.of(authorizedNetworks));
+        }
+
+        /**
+         * @param customSubjectAlternativeNames The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customSubjectAlternativeNames(@Nullable Output<List<String>> customSubjectAlternativeNames) {
+            $.customSubjectAlternativeNames = customSubjectAlternativeNames;
+            return this;
+        }
+
+        /**
+         * @param customSubjectAlternativeNames The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customSubjectAlternativeNames(List<String> customSubjectAlternativeNames) {
+            return customSubjectAlternativeNames(Output.of(customSubjectAlternativeNames));
+        }
+
+        /**
+         * @param customSubjectAlternativeNames The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customSubjectAlternativeNames(String... customSubjectAlternativeNames) {
+            return customSubjectAlternativeNames(List.of(customSubjectAlternativeNames));
         }
 
         /**

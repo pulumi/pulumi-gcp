@@ -122,6 +122,11 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
+     * Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+     * Structure is documented below.
+     */
+    public readonly scopedAccessSettings!: pulumi.Output<outputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSetting[] | undefined>;
+    /**
      * Optional. The Google Cloud session length (GCSL) policy for the group key.
      * Structure is documented below.
      */
@@ -144,6 +149,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             resourceInputs["groupKey"] = state ? state.groupKey : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
+            resourceInputs["scopedAccessSettings"] = state ? state.scopedAccessSettings : undefined;
             resourceInputs["sessionSettings"] = state ? state.sessionSettings : undefined;
         } else {
             const args = argsOrState as GcpUserAccessBindingArgs | undefined;
@@ -156,6 +162,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             resourceInputs["accessLevels"] = args ? args.accessLevels : undefined;
             resourceInputs["groupKey"] = args ? args.groupKey : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["scopedAccessSettings"] = args ? args.scopedAccessSettings : undefined;
             resourceInputs["sessionSettings"] = args ? args.sessionSettings : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -188,6 +195,11 @@ export interface GcpUserAccessBindingState {
      */
     organizationId?: pulumi.Input<string>;
     /**
+     * Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+     * Structure is documented below.
+     */
+    scopedAccessSettings?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSetting>[]>;
+    /**
      * Optional. The Google Cloud session length (GCSL) policy for the group key.
      * Structure is documented below.
      */
@@ -213,6 +225,11 @@ export interface GcpUserAccessBindingArgs {
      * - - -
      */
     organizationId: pulumi.Input<string>;
+    /**
+     * Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+     * Structure is documented below.
+     */
+    scopedAccessSettings?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSetting>[]>;
     /**
      * Optional. The Google Cloud session length (GCSL) policy for the group key.
      * Structure is documented below.

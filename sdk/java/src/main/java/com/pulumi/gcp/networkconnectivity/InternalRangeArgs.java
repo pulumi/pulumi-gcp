@@ -36,7 +36,26 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+     * Only IPv4 CIDR ranges are supported.
+     * 
+     */
+    @Import(name="excludeCidrRanges")
+    private @Nullable Output<List<String>> excludeCidrRanges;
+
+    /**
+     * @return Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+     * Only IPv4 CIDR ranges are supported.
+     * 
+     */
+    public Optional<Output<List<String>>> excludeCidrRanges() {
+        return Optional.ofNullable(this.excludeCidrRanges);
+    }
+
+    /**
      * The IP range that this internal range defines.
+     * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+     * NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
      * 
      */
     @Import(name="ipCidrRange")
@@ -44,6 +63,8 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The IP range that this internal range defines.
+     * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+     * NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
      * 
      */
     public Optional<Output<String>> ipCidrRange() {
@@ -159,6 +180,8 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
      * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+     * NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+     * a redundant parameter.
      * 
      */
     @Import(name="prefixLength")
@@ -167,6 +190,8 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
      * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+     * NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+     * a redundant parameter.
      * 
      */
     public Optional<Output<Integer>> prefixLength() {
@@ -228,6 +253,7 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
 
     private InternalRangeArgs(InternalRangeArgs $) {
         this.description = $.description;
+        this.excludeCidrRanges = $.excludeCidrRanges;
         this.ipCidrRange = $.ipCidrRange;
         this.labels = $.labels;
         this.migration = $.migration;
@@ -281,7 +307,43 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param excludeCidrRanges Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+         * Only IPv4 CIDR ranges are supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeCidrRanges(@Nullable Output<List<String>> excludeCidrRanges) {
+            $.excludeCidrRanges = excludeCidrRanges;
+            return this;
+        }
+
+        /**
+         * @param excludeCidrRanges Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+         * Only IPv4 CIDR ranges are supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeCidrRanges(List<String> excludeCidrRanges) {
+            return excludeCidrRanges(Output.of(excludeCidrRanges));
+        }
+
+        /**
+         * @param excludeCidrRanges Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+         * Only IPv4 CIDR ranges are supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeCidrRanges(String... excludeCidrRanges) {
+            return excludeCidrRanges(List.of(excludeCidrRanges));
+        }
+
+        /**
          * @param ipCidrRange The IP range that this internal range defines.
+         * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+         * NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
          * 
          * @return builder
          * 
@@ -293,6 +355,8 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipCidrRange The IP range that this internal range defines.
+         * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+         * NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
          * 
          * @return builder
          * 
@@ -457,6 +521,8 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param prefixLength An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
          * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+         * NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+         * a redundant parameter.
          * 
          * @return builder
          * 
@@ -469,6 +535,8 @@ public final class InternalRangeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param prefixLength An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
          * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+         * NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+         * a redundant parameter.
          * 
          * @return builder
          * 

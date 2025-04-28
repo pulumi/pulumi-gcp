@@ -25,6 +25,7 @@ class GcpUserAccessBindingArgs:
                  group_key: pulumi.Input[builtins.str],
                  organization_id: pulumi.Input[builtins.str],
                  access_levels: Optional[pulumi.Input[builtins.str]] = None,
+                 scoped_access_settings: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]]] = None,
                  session_settings: Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']] = None):
         """
         The set of arguments for constructing a GcpUserAccessBinding resource.
@@ -34,6 +35,8 @@ class GcpUserAccessBindingArgs:
                
                - - -
         :param pulumi.Input[builtins.str] access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+               Structure is documented below.
         :param pulumi.Input['GcpUserAccessBindingSessionSettingsArgs'] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
                Structure is documented below.
         """
@@ -41,6 +44,8 @@ class GcpUserAccessBindingArgs:
         pulumi.set(__self__, "organization_id", organization_id)
         if access_levels is not None:
             pulumi.set(__self__, "access_levels", access_levels)
+        if scoped_access_settings is not None:
+            pulumi.set(__self__, "scoped_access_settings", scoped_access_settings)
         if session_settings is not None:
             pulumi.set(__self__, "session_settings", session_settings)
 
@@ -84,6 +89,19 @@ class GcpUserAccessBindingArgs:
         pulumi.set(self, "access_levels", value)
 
     @property
+    @pulumi.getter(name="scopedAccessSettings")
+    def scoped_access_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]]]:
+        """
+        Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scoped_access_settings")
+
+    @scoped_access_settings.setter
+    def scoped_access_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]]]):
+        pulumi.set(self, "scoped_access_settings", value)
+
+    @property
     @pulumi.getter(name="sessionSettings")
     def session_settings(self) -> Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']]:
         """
@@ -104,6 +122,7 @@ class _GcpUserAccessBindingState:
                  group_key: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
+                 scoped_access_settings: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]]] = None,
                  session_settings: Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering GcpUserAccessBinding resources.
@@ -114,6 +133,8 @@ class _GcpUserAccessBindingState:
                
                
                - - -
+        :param pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+               Structure is documented below.
         :param pulumi.Input['GcpUserAccessBindingSessionSettingsArgs'] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
                Structure is documented below.
         """
@@ -125,6 +146,8 @@ class _GcpUserAccessBindingState:
             pulumi.set(__self__, "name", name)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
+        if scoped_access_settings is not None:
+            pulumi.set(__self__, "scoped_access_settings", scoped_access_settings)
         if session_settings is not None:
             pulumi.set(__self__, "session_settings", session_settings)
 
@@ -180,6 +203,19 @@ class _GcpUserAccessBindingState:
         pulumi.set(self, "organization_id", value)
 
     @property
+    @pulumi.getter(name="scopedAccessSettings")
+    def scoped_access_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]]]:
+        """
+        Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scoped_access_settings")
+
+    @scoped_access_settings.setter
+    def scoped_access_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]]]):
+        pulumi.set(self, "scoped_access_settings", value)
+
+    @property
     @pulumi.getter(name="sessionSettings")
     def session_settings(self) -> Optional[pulumi.Input['GcpUserAccessBindingSessionSettingsArgs']]:
         """
@@ -201,6 +237,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  access_levels: Optional[pulumi.Input[builtins.str]] = None,
                  group_key: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
+                 scoped_access_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]]] = None,
                  session_settings: Optional[pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None,
                  __props__=None):
         """
@@ -273,6 +310,8 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+               Structure is documented below.
         :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
                Structure is documented below.
         """
@@ -362,6 +401,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  access_levels: Optional[pulumi.Input[builtins.str]] = None,
                  group_key: Optional[pulumi.Input[builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[builtins.str]] = None,
+                 scoped_access_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]]] = None,
                  session_settings: Optional[pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -379,6 +419,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["scoped_access_settings"] = scoped_access_settings
             __props__.__dict__["session_settings"] = session_settings
             __props__.__dict__["name"] = None
         super(GcpUserAccessBinding, __self__).__init__(
@@ -395,6 +436,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             group_key: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             organization_id: Optional[pulumi.Input[builtins.str]] = None,
+            scoped_access_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]]] = None,
             session_settings: Optional[pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None) -> 'GcpUserAccessBinding':
         """
         Get an existing GcpUserAccessBinding resource's state with the given name, id, and optional extra
@@ -410,6 +452,8 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+               Structure is documented below.
         :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
                Structure is documented below.
         """
@@ -421,6 +465,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         __props__.__dict__["group_key"] = group_key
         __props__.__dict__["name"] = name
         __props__.__dict__["organization_id"] = organization_id
+        __props__.__dict__["scoped_access_settings"] = scoped_access_settings
         __props__.__dict__["session_settings"] = session_settings
         return GcpUserAccessBinding(resource_name, opts=opts, __props__=__props__)
 
@@ -458,6 +503,15 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter(name="scopedAccessSettings")
+    def scoped_access_settings(self) -> pulumi.Output[Optional[Sequence['outputs.GcpUserAccessBindingScopedAccessSetting']]]:
+        """
+        Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scoped_access_settings")
 
     @property
     @pulumi.getter(name="sessionSettings")

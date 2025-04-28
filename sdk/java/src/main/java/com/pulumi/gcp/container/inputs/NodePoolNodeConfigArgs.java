@@ -72,14 +72,14 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
      * 
      */
     @Import(name="confidentialNodes")
     private @Nullable Output<NodePoolNodeConfigConfidentialNodesArgs> confidentialNodes;
 
     /**
-     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
      * 
      */
     public Optional<Output<NodePoolNodeConfigConfidentialNodesArgs>> confidentialNodes() {
@@ -204,6 +204,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<NodePoolNodeConfigFastSocketArgs>> fastSocket() {
         return Optional.ofNullable(this.fastSocket);
+    }
+
+    /**
+     * Enables Flex Start provisioning model for the node pool
+     * 
+     */
+    @Import(name="flexStart")
+    private @Nullable Output<Boolean> flexStart;
+
+    /**
+     * @return Enables Flex Start provisioning model for the node pool
+     * 
+     */
+    public Optional<Output<Boolean>> flexStart() {
+        return Optional.ofNullable(this.flexStart);
     }
 
     /**
@@ -721,6 +736,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
         this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
         this.fastSocket = $.fastSocket;
+        this.flexStart = $.flexStart;
         this.gcfsConfig = $.gcfsConfig;
         this.guestAccelerators = $.guestAccelerators;
         this.gvnic = $.gvnic;
@@ -817,7 +833,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param confidentialNodes Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+         * @param confidentialNodes Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
          * 
          * @return builder
          * 
@@ -828,7 +844,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param confidentialNodes Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+         * @param confidentialNodes Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
          * 
          * @return builder
          * 
@@ -1013,6 +1029,27 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder fastSocket(NodePoolNodeConfigFastSocketArgs fastSocket) {
             return fastSocket(Output.of(fastSocket));
+        }
+
+        /**
+         * @param flexStart Enables Flex Start provisioning model for the node pool
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexStart(@Nullable Output<Boolean> flexStart) {
+            $.flexStart = flexStart;
+            return this;
+        }
+
+        /**
+         * @param flexStart Enables Flex Start provisioning model for the node pool
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexStart(Boolean flexStart) {
+            return flexStart(Output.of(flexStart));
         }
 
         /**

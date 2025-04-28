@@ -657,6 +657,16 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.BackendServiceLogConfig>;
     /**
+     * Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+     * beginning of the stream until the response has been completely processed, including all retries. A stream that
+     * does not complete in this duration is closed.
+     * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+     * This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+     * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
+     */
+    public readonly maxStreamDuration!: pulumi.Output<outputs.compute.BackendServiceMaxStreamDuration | undefined>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -777,6 +787,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["localityLbPolicies"] = state ? state.localityLbPolicies : undefined;
             resourceInputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
+            resourceInputs["maxStreamDuration"] = state ? state.maxStreamDuration : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["outlierDetection"] = state ? state.outlierDetection : undefined;
             resourceInputs["portName"] = state ? state.portName : undefined;
@@ -812,6 +823,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["localityLbPolicies"] = args ? args.localityLbPolicies : undefined;
             resourceInputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
+            resourceInputs["maxStreamDuration"] = args ? args.maxStreamDuration : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["outlierDetection"] = args ? args.outlierDetection : undefined;
             resourceInputs["portName"] = args ? args.portName : undefined;
@@ -1024,6 +1036,16 @@ export interface BackendServiceState {
      * Structure is documented below.
      */
     logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
+    /**
+     * Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+     * beginning of the stream until the response has been completely processed, including all retries. A stream that
+     * does not complete in this duration is closed.
+     * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+     * This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+     * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
+     */
+    maxStreamDuration?: pulumi.Input<inputs.compute.BackendServiceMaxStreamDuration>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -1287,6 +1309,16 @@ export interface BackendServiceArgs {
      * Structure is documented below.
      */
     logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
+    /**
+     * Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+     * beginning of the stream until the response has been completely processed, including all retries. A stream that
+     * does not complete in this duration is closed.
+     * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+     * This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+     * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
+     */
+    maxStreamDuration?: pulumi.Input<inputs.compute.BackendServiceMaxStreamDuration>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

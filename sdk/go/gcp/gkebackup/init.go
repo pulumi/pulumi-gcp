@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:gkebackup/backupChannel:BackupChannel":
+		r = &BackupChannel{}
 	case "gcp:gkebackup/backupPlan:BackupPlan":
 		r = &BackupPlan{}
 	case "gcp:gkebackup/backupPlanIamBinding:BackupPlanIamBinding":
@@ -29,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPlanIamMember{}
 	case "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy":
 		r = &BackupPlanIamPolicy{}
+	case "gcp:gkebackup/restoreChannel:RestoreChannel":
+		r = &RestoreChannel{}
 	case "gcp:gkebackup/restorePlan:RestorePlan":
 		r = &RestorePlan{}
 	case "gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding":
@@ -52,6 +56,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"gkebackup/backupChannel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"gkebackup/backupPlan",
 		&module{version},
 	)
@@ -68,6 +77,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkebackup/backupPlanIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkebackup/restoreChannel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

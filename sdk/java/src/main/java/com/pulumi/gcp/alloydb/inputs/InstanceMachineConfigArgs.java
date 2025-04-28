@@ -6,6 +6,7 @@ package com.pulumi.gcp.alloydb.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,30 @@ public final class InstanceMachineConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.cpuCount);
     }
 
+    /**
+     * Machine type of the VM instance.
+     * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
+     * `cpu_count` must match the number of vCPUs in the machine type.
+     * 
+     */
+    @Import(name="machineType")
+    private @Nullable Output<String> machineType;
+
+    /**
+     * @return Machine type of the VM instance.
+     * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
+     * `cpu_count` must match the number of vCPUs in the machine type.
+     * 
+     */
+    public Optional<Output<String>> machineType() {
+        return Optional.ofNullable(this.machineType);
+    }
+
     private InstanceMachineConfigArgs() {}
 
     private InstanceMachineConfigArgs(InstanceMachineConfigArgs $) {
         this.cpuCount = $.cpuCount;
+        this.machineType = $.machineType;
     }
 
     public static Builder builder() {
@@ -73,6 +94,31 @@ public final class InstanceMachineConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder cpuCount(Integer cpuCount) {
             return cpuCount(Output.of(cpuCount));
+        }
+
+        /**
+         * @param machineType Machine type of the VM instance.
+         * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
+         * `cpu_count` must match the number of vCPUs in the machine type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineType(@Nullable Output<String> machineType) {
+            $.machineType = machineType;
+            return this;
+        }
+
+        /**
+         * @param machineType Machine type of the VM instance.
+         * E.g. &#34;n2-highmem-4&#34;, &#34;n2-highmem-8&#34;, &#34;c4a-highmem-4-lssd&#34;.
+         * `cpu_count` must match the number of vCPUs in the machine type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineType(String machineType) {
+            return machineType(Output.of(machineType));
         }
 
         public InstanceMachineConfigArgs build() {

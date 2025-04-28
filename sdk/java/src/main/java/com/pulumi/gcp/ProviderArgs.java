@@ -1232,6 +1232,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sqlCustomEndpoint);
     }
 
+    @Import(name="storageBatchOperationsCustomEndpoint")
+    private @Nullable Output<String> storageBatchOperationsCustomEndpoint;
+
+    public Optional<Output<String>> storageBatchOperationsCustomEndpoint() {
+        return Optional.ofNullable(this.storageBatchOperationsCustomEndpoint);
+    }
+
     @Import(name="storageControlCustomEndpoint")
     private @Nullable Output<String> storageControlCustomEndpoint;
 
@@ -1534,6 +1541,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.sourceRepoCustomEndpoint = $.sourceRepoCustomEndpoint;
         this.spannerCustomEndpoint = $.spannerCustomEndpoint;
         this.sqlCustomEndpoint = $.sqlCustomEndpoint;
+        this.storageBatchOperationsCustomEndpoint = $.storageBatchOperationsCustomEndpoint;
         this.storageControlCustomEndpoint = $.storageControlCustomEndpoint;
         this.storageCustomEndpoint = $.storageCustomEndpoint;
         this.storageInsightsCustomEndpoint = $.storageInsightsCustomEndpoint;
@@ -3135,6 +3143,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder sqlCustomEndpoint(String sqlCustomEndpoint) {
             return sqlCustomEndpoint(Output.of(sqlCustomEndpoint));
+        }
+
+        public Builder storageBatchOperationsCustomEndpoint(@Nullable Output<String> storageBatchOperationsCustomEndpoint) {
+            $.storageBatchOperationsCustomEndpoint = storageBatchOperationsCustomEndpoint;
+            return this;
+        }
+
+        public Builder storageBatchOperationsCustomEndpoint(String storageBatchOperationsCustomEndpoint) {
+            return storageBatchOperationsCustomEndpoint(Output.of(storageBatchOperationsCustomEndpoint));
         }
 
         public Builder storageControlCustomEndpoint(@Nullable Output<String> storageControlCustomEndpoint) {

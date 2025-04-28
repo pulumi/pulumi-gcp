@@ -26,6 +26,18 @@ namespace Pulumi.Gcp.Sql.Inputs
             set => _authorizedNetworks = value;
         }
 
+        [Input("customSubjectAlternativeNames")]
+        private InputList<string>? _customSubjectAlternativeNames;
+
+        /// <summary>
+        /// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        /// </summary>
+        public InputList<string> CustomSubjectAlternativeNames
+        {
+            get => _customSubjectAlternativeNames ?? (_customSubjectAlternativeNames = new InputList<string>());
+            set => _customSubjectAlternativeNames = value;
+        }
+
         /// <summary>
         /// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
         /// </summary>

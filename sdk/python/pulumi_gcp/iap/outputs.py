@@ -41,6 +41,8 @@ __all__ = [
     'TunnelInstanceIAMMemberCondition',
     'WebBackendServiceIamBindingCondition',
     'WebBackendServiceIamMemberCondition',
+    'WebCloudRunServiceIamBindingCondition',
+    'WebCloudRunServiceIamMemberCondition',
     'WebIamBindingCondition',
     'WebIamMemberCondition',
     'WebRegionBackendServiceIamBindingCondition',
@@ -1414,6 +1416,80 @@ class WebBackendServiceIamMemberCondition(dict):
         identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
         consider it to be an entirely different resource and will treat it as such.
         """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class WebCloudRunServiceIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        """
+        :param builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class WebCloudRunServiceIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: builtins.str,
+                 title: builtins.str,
+                 description: Optional[builtins.str] = None):
+        """
+        :param builtins.str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param builtins.str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> builtins.str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
         return pulumi.get(self, "description")
 
 

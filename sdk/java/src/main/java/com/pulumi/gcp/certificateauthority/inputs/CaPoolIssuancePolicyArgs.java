@@ -57,6 +57,29 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The duration to backdate all certificates issued from this CaPool. If not set, the
+     * certificates will be issued with a not_before_time of the issuance time (i.e. the current
+     * time). If set, the certificates will be issued with a not_before_time of the issuance
+     * time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+     * requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+     * 
+     */
+    @Import(name="backdateDuration")
+    private @Nullable Output<String> backdateDuration;
+
+    /**
+     * @return The duration to backdate all certificates issued from this CaPool. If not set, the
+     * certificates will be issued with a not_before_time of the issuance time (i.e. the current
+     * time). If set, the certificates will be issued with a not_before_time of the issuance
+     * time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+     * requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+     * 
+     */
+    public Optional<Output<String>> backdateDuration() {
+        return Optional.ofNullable(this.backdateDuration);
+    }
+
+    /**
      * A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
      * includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
      * request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
@@ -120,6 +143,7 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
     private CaPoolIssuancePolicyArgs(CaPoolIssuancePolicyArgs $) {
         this.allowedIssuanceModes = $.allowedIssuanceModes;
         this.allowedKeyTypes = $.allowedKeyTypes;
+        this.backdateDuration = $.backdateDuration;
         this.baselineValues = $.baselineValues;
         this.identityConstraints = $.identityConstraints;
         this.maximumLifetime = $.maximumLifetime;
@@ -201,6 +225,35 @@ public final class CaPoolIssuancePolicyArgs extends com.pulumi.resources.Resourc
          */
         public Builder allowedKeyTypes(CaPoolIssuancePolicyAllowedKeyTypeArgs... allowedKeyTypes) {
             return allowedKeyTypes(List.of(allowedKeyTypes));
+        }
+
+        /**
+         * @param backdateDuration The duration to backdate all certificates issued from this CaPool. If not set, the
+         * certificates will be issued with a not_before_time of the issuance time (i.e. the current
+         * time). If set, the certificates will be issued with a not_before_time of the issuance
+         * time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+         * requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backdateDuration(@Nullable Output<String> backdateDuration) {
+            $.backdateDuration = backdateDuration;
+            return this;
+        }
+
+        /**
+         * @param backdateDuration The duration to backdate all certificates issued from this CaPool. If not set, the
+         * certificates will be issued with a not_before_time of the issuance time (i.e. the current
+         * time). If set, the certificates will be issued with a not_before_time of the issuance
+         * time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+         * requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backdateDuration(String backdateDuration) {
+            return backdateDuration(Output.of(backdateDuration));
         }
 
         /**

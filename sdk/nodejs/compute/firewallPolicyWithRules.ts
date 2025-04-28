@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *             enableLogging: true,
  *             action: "allow",
  *             direction: "EGRESS",
- *             targetResources: [project.then(project => `https://www.googleapis.com/compute/beta/projects/${project.name}/global/networks/default`)],
+ *             targetResources: [project.then(project => `https://www.googleapis.com/compute/beta/projects/${project.projectId}/global/networks/default`)],
  *             match: {
  *                 destIpRanges: ["11.100.0.1/32"],
  *                 destFqdns: [

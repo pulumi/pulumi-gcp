@@ -541,6 +541,9 @@ public final class Config {
     public Optional<String> sqlCustomEndpoint() {
         return Codegen.stringProp("sqlCustomEndpoint").config(config).get();
     }
+    public Optional<String> storageBatchOperationsCustomEndpoint() {
+        return Codegen.stringProp("storageBatchOperationsCustomEndpoint").config(config).get();
+    }
     public Optional<String> storageControlCustomEndpoint() {
         return Codegen.stringProp("storageControlCustomEndpoint").config(config).get();
     }

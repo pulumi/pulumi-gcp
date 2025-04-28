@@ -95,14 +95,15 @@ type LookupBackendServiceResult struct {
 	HealthChecks []string               `pulumi:"healthChecks"`
 	Iaps         []GetBackendServiceIap `pulumi:"iaps"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string                              `pulumi:"id"`
-	IpAddressSelectionPolicy string                              `pulumi:"ipAddressSelectionPolicy"`
-	LoadBalancingScheme      string                              `pulumi:"loadBalancingScheme"`
-	LocalityLbPolicies       []GetBackendServiceLocalityLbPolicy `pulumi:"localityLbPolicies"`
-	LocalityLbPolicy         string                              `pulumi:"localityLbPolicy"`
-	LogConfigs               []GetBackendServiceLogConfig        `pulumi:"logConfigs"`
-	Name                     string                              `pulumi:"name"`
-	OutlierDetections        []GetBackendServiceOutlierDetection `pulumi:"outlierDetections"`
+	Id                       string                               `pulumi:"id"`
+	IpAddressSelectionPolicy string                               `pulumi:"ipAddressSelectionPolicy"`
+	LoadBalancingScheme      string                               `pulumi:"loadBalancingScheme"`
+	LocalityLbPolicies       []GetBackendServiceLocalityLbPolicy  `pulumi:"localityLbPolicies"`
+	LocalityLbPolicy         string                               `pulumi:"localityLbPolicy"`
+	LogConfigs               []GetBackendServiceLogConfig         `pulumi:"logConfigs"`
+	MaxStreamDurations       []GetBackendServiceMaxStreamDuration `pulumi:"maxStreamDurations"`
+	Name                     string                               `pulumi:"name"`
+	OutlierDetections        []GetBackendServiceOutlierDetection  `pulumi:"outlierDetections"`
 	// The name of a service that has been added to an instance group in this backend.
 	PortName string  `pulumi:"portName"`
 	Project  *string `pulumi:"project"`
@@ -261,6 +262,10 @@ func (o LookupBackendServiceResultOutput) LocalityLbPolicy() pulumi.StringOutput
 
 func (o LookupBackendServiceResultOutput) LogConfigs() GetBackendServiceLogConfigArrayOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceLogConfig { return v.LogConfigs }).(GetBackendServiceLogConfigArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) MaxStreamDurations() GetBackendServiceMaxStreamDurationArrayOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceMaxStreamDuration { return v.MaxStreamDurations }).(GetBackendServiceMaxStreamDurationArrayOutput)
 }
 
 func (o LookupBackendServiceResultOutput) Name() pulumi.StringOutput {

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Alloydb.Outputs
     public sealed class GetInstanceObservabilityConfigResult
     {
         /// <summary>
+        /// Whether assistive experiences are enabled for this AlloyDB instance.
+        /// </summary>
+        public readonly bool AssistiveExperiencesEnabled;
+        /// <summary>
         /// Observability feature status for an instance.
         /// </summary>
         public readonly bool Enabled;
@@ -48,6 +52,8 @@ namespace Pulumi.Gcp.Alloydb.Outputs
 
         [OutputConstructor]
         private GetInstanceObservabilityConfigResult(
+            bool assistiveExperiencesEnabled,
+
             bool enabled,
 
             int maxQueryStringLength,
@@ -64,6 +70,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
 
             bool trackWaitEvents)
         {
+            AssistiveExperiencesEnabled = assistiveExperiencesEnabled;
             Enabled = enabled;
             MaxQueryStringLength = maxQueryStringLength;
             PreserveComments = preserveComments;

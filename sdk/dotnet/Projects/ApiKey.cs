@@ -234,6 +234,10 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -314,6 +318,10 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -362,6 +370,10 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

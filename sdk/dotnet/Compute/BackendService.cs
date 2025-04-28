@@ -871,6 +871,18 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.BackendServiceLogConfig> LogConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+        /// beginning of the stream until the response has been completely processed, including all retries. A stream that
+        /// does not complete in this duration is closed.
+        /// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+        /// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+        /// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maxStreamDuration")]
+        public Output<Outputs.BackendServiceMaxStreamDuration?> MaxStreamDuration { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1270,6 +1282,18 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.BackendServiceLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
+        /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+        /// beginning of the stream until the response has been completely processed, including all retries. A stream that
+        /// does not complete in this duration is closed.
+        /// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+        /// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+        /// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maxStreamDuration")]
+        public Input<Inputs.BackendServiceMaxStreamDurationArgs>? MaxStreamDuration { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1642,6 +1666,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.BackendServiceLogConfigGetArgs>? LogConfig { get; set; }
+
+        /// <summary>
+        /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+        /// beginning of the stream until the response has been completely processed, including all retries. A stream that
+        /// does not complete in this duration is closed.
+        /// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+        /// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+        /// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maxStreamDuration")]
+        public Input<Inputs.BackendServiceMaxStreamDurationGetArgs>? MaxStreamDuration { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is

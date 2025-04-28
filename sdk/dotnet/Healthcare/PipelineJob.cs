@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.Healthcare
     ///         Dataset = dataset.Id,
     ///         BackfillPipelineJob = new Gcp.Healthcare.Inputs.PipelineJobBackfillPipelineJobArgs
     ///         {
-    ///             MappingPipelineJob = dataset.Id.Apply(id =&gt; $"{id}/pipelinejobs/example_mapping_pipeline"),
+    ///             MappingPipelineJob = dataset.Id.Apply(id =&gt; $"{id}/pipelineJobs/example_mapping_pipeline_job"),
     ///         },
     ///     });
     /// 

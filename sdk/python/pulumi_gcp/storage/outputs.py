@@ -17,6 +17,14 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BatchOperationsJobBucketList',
+    'BatchOperationsJobBucketListBuckets',
+    'BatchOperationsJobBucketListBucketsManifest',
+    'BatchOperationsJobBucketListBucketsPrefixList',
+    'BatchOperationsJobDeleteObject',
+    'BatchOperationsJobPutMetadata',
+    'BatchOperationsJobPutObjectHold',
+    'BatchOperationsJobRewriteObject',
     'BucketAutoclass',
     'BucketCor',
     'BucketCustomPlacementConfig',
@@ -136,6 +144,401 @@ __all__ = [
     'GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationResult',
     'GetControlProjectIntelligenceConfigTrialConfigResult',
 ]
+
+@pulumi.output_type
+class BatchOperationsJobBucketList(dict):
+    def __init__(__self__, *,
+                 buckets: 'outputs.BatchOperationsJobBucketListBuckets'):
+        """
+        :param 'BatchOperationsJobBucketListBucketsArgs' buckets: List of buckets and their objects to be transformed.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "buckets", buckets)
+
+    @property
+    @pulumi.getter
+    def buckets(self) -> 'outputs.BatchOperationsJobBucketListBuckets':
+        """
+        List of buckets and their objects to be transformed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "buckets")
+
+
+@pulumi.output_type
+class BatchOperationsJobBucketListBuckets(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "prefixList":
+            suggest = "prefix_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchOperationsJobBucketListBuckets. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchOperationsJobBucketListBuckets.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchOperationsJobBucketListBuckets.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: builtins.str,
+                 manifest: Optional['outputs.BatchOperationsJobBucketListBucketsManifest'] = None,
+                 prefix_list: Optional['outputs.BatchOperationsJobBucketListBucketsPrefixList'] = None):
+        """
+        :param builtins.str bucket: Bucket name for the objects to be transformed.
+        :param 'BatchOperationsJobBucketListBucketsManifestArgs' manifest: contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+               Structure is documented below.
+        :param 'BatchOperationsJobBucketListBucketsPrefixListArgs' prefix_list: Specifies objects matching a prefix set.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if manifest is not None:
+            pulumi.set(__self__, "manifest", manifest)
+        if prefix_list is not None:
+            pulumi.set(__self__, "prefix_list", prefix_list)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> builtins.str:
+        """
+        Bucket name for the objects to be transformed.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def manifest(self) -> Optional['outputs.BatchOperationsJobBucketListBucketsManifest']:
+        """
+        contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "manifest")
+
+    @property
+    @pulumi.getter(name="prefixList")
+    def prefix_list(self) -> Optional['outputs.BatchOperationsJobBucketListBucketsPrefixList']:
+        """
+        Specifies objects matching a prefix set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "prefix_list")
+
+
+@pulumi.output_type
+class BatchOperationsJobBucketListBucketsManifest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "manifestLocation":
+            suggest = "manifest_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchOperationsJobBucketListBucketsManifest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchOperationsJobBucketListBucketsManifest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchOperationsJobBucketListBucketsManifest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 manifest_location: Optional[builtins.str] = None):
+        """
+        :param builtins.str manifest_location: Specifies objects in a manifest file.
+        """
+        if manifest_location is not None:
+            pulumi.set(__self__, "manifest_location", manifest_location)
+
+    @property
+    @pulumi.getter(name="manifestLocation")
+    def manifest_location(self) -> Optional[builtins.str]:
+        """
+        Specifies objects in a manifest file.
+        """
+        return pulumi.get(self, "manifest_location")
+
+
+@pulumi.output_type
+class BatchOperationsJobBucketListBucketsPrefixList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includedObjectPrefixes":
+            suggest = "included_object_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchOperationsJobBucketListBucketsPrefixList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchOperationsJobBucketListBucketsPrefixList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchOperationsJobBucketListBucketsPrefixList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 included_object_prefixes: Optional[Sequence[builtins.str]] = None):
+        """
+        :param Sequence[builtins.str] included_object_prefixes: (Optional)
+        """
+        if included_object_prefixes is not None:
+            pulumi.set(__self__, "included_object_prefixes", included_object_prefixes)
+
+    @property
+    @pulumi.getter(name="includedObjectPrefixes")
+    def included_object_prefixes(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "included_object_prefixes")
+
+
+@pulumi.output_type
+class BatchOperationsJobDeleteObject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "permanentObjectDeletionEnabled":
+            suggest = "permanent_object_deletion_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchOperationsJobDeleteObject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchOperationsJobDeleteObject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchOperationsJobDeleteObject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 permanent_object_deletion_enabled: builtins.bool):
+        """
+        :param builtins.bool permanent_object_deletion_enabled: enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+        """
+        pulumi.set(__self__, "permanent_object_deletion_enabled", permanent_object_deletion_enabled)
+
+    @property
+    @pulumi.getter(name="permanentObjectDeletionEnabled")
+    def permanent_object_deletion_enabled(self) -> builtins.bool:
+        """
+        enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+        """
+        return pulumi.get(self, "permanent_object_deletion_enabled")
+
+
+@pulumi.output_type
+class BatchOperationsJobPutMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cacheControl":
+            suggest = "cache_control"
+        elif key == "contentDisposition":
+            suggest = "content_disposition"
+        elif key == "contentEncoding":
+            suggest = "content_encoding"
+        elif key == "contentLanguage":
+            suggest = "content_language"
+        elif key == "contentType":
+            suggest = "content_type"
+        elif key == "customMetadata":
+            suggest = "custom_metadata"
+        elif key == "customTime":
+            suggest = "custom_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchOperationsJobPutMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchOperationsJobPutMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchOperationsJobPutMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cache_control: Optional[builtins.str] = None,
+                 content_disposition: Optional[builtins.str] = None,
+                 content_encoding: Optional[builtins.str] = None,
+                 content_language: Optional[builtins.str] = None,
+                 content_type: Optional[builtins.str] = None,
+                 custom_metadata: Optional[Mapping[str, builtins.str]] = None,
+                 custom_time: Optional[builtins.str] = None):
+        """
+        :param builtins.str cache_control: Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+        :param builtins.str content_disposition: Content-Disposition of the object data.
+        :param builtins.str content_encoding: Content Encoding of the object data.
+        :param builtins.str content_language: Content-Language of the object data.
+        :param builtins.str content_type: Content-Type of the object data.
+        :param Mapping[str, builtins.str] custom_metadata: User-provided metadata, in key/value pairs.
+        :param builtins.str custom_time: Updates the objects fixed custom time metadata.
+        """
+        if cache_control is not None:
+            pulumi.set(__self__, "cache_control", cache_control)
+        if content_disposition is not None:
+            pulumi.set(__self__, "content_disposition", content_disposition)
+        if content_encoding is not None:
+            pulumi.set(__self__, "content_encoding", content_encoding)
+        if content_language is not None:
+            pulumi.set(__self__, "content_language", content_language)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if custom_metadata is not None:
+            pulumi.set(__self__, "custom_metadata", custom_metadata)
+        if custom_time is not None:
+            pulumi.set(__self__, "custom_time", custom_time)
+
+    @property
+    @pulumi.getter(name="cacheControl")
+    def cache_control(self) -> Optional[builtins.str]:
+        """
+        Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+        """
+        return pulumi.get(self, "cache_control")
+
+    @property
+    @pulumi.getter(name="contentDisposition")
+    def content_disposition(self) -> Optional[builtins.str]:
+        """
+        Content-Disposition of the object data.
+        """
+        return pulumi.get(self, "content_disposition")
+
+    @property
+    @pulumi.getter(name="contentEncoding")
+    def content_encoding(self) -> Optional[builtins.str]:
+        """
+        Content Encoding of the object data.
+        """
+        return pulumi.get(self, "content_encoding")
+
+    @property
+    @pulumi.getter(name="contentLanguage")
+    def content_language(self) -> Optional[builtins.str]:
+        """
+        Content-Language of the object data.
+        """
+        return pulumi.get(self, "content_language")
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[builtins.str]:
+        """
+        Content-Type of the object data.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter(name="customMetadata")
+    def custom_metadata(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        User-provided metadata, in key/value pairs.
+        """
+        return pulumi.get(self, "custom_metadata")
+
+    @property
+    @pulumi.getter(name="customTime")
+    def custom_time(self) -> Optional[builtins.str]:
+        """
+        Updates the objects fixed custom time metadata.
+        """
+        return pulumi.get(self, "custom_time")
+
+
+@pulumi.output_type
+class BatchOperationsJobPutObjectHold(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventBasedHold":
+            suggest = "event_based_hold"
+        elif key == "temporaryHold":
+            suggest = "temporary_hold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchOperationsJobPutObjectHold. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchOperationsJobPutObjectHold.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchOperationsJobPutObjectHold.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_based_hold: Optional[builtins.str] = None,
+                 temporary_hold: Optional[builtins.str] = None):
+        """
+        :param builtins.str event_based_hold: set/unset to update event based hold for objects.
+        :param builtins.str temporary_hold: set/unset to update temporary based hold for objects.
+        """
+        if event_based_hold is not None:
+            pulumi.set(__self__, "event_based_hold", event_based_hold)
+        if temporary_hold is not None:
+            pulumi.set(__self__, "temporary_hold", temporary_hold)
+
+    @property
+    @pulumi.getter(name="eventBasedHold")
+    def event_based_hold(self) -> Optional[builtins.str]:
+        """
+        set/unset to update event based hold for objects.
+        """
+        return pulumi.get(self, "event_based_hold")
+
+    @property
+    @pulumi.getter(name="temporaryHold")
+    def temporary_hold(self) -> Optional[builtins.str]:
+        """
+        set/unset to update temporary based hold for objects.
+        """
+        return pulumi.get(self, "temporary_hold")
+
+
+@pulumi.output_type
+class BatchOperationsJobRewriteObject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchOperationsJobRewriteObject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchOperationsJobRewriteObject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchOperationsJobRewriteObject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: builtins.str):
+        """
+        :param builtins.str kms_key: valid kms key
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> builtins.str:
+        """
+        valid kms key
+        """
+        return pulumi.get(self, "kms_key")
+
 
 @pulumi.output_type
 class BucketAutoclass(dict):

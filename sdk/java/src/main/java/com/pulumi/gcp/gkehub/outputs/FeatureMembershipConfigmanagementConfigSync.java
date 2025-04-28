@@ -4,16 +4,23 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverride;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementConfigSyncGit;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagementConfigSyncOci;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureMembershipConfigmanagementConfigSync {
+    /**
+     * @return The override configurations for the Config Sync Deployments. Structure is documented below.
+     * 
+     */
+    private @Nullable List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> deploymentOverrides;
     /**
      * @return Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
      * 
@@ -53,6 +60,13 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     private @Nullable Boolean stopSyncing;
 
     private FeatureMembershipConfigmanagementConfigSync() {}
+    /**
+     * @return The override configurations for the Config Sync Deployments. Structure is documented below.
+     * 
+     */
+    public List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> deploymentOverrides() {
+        return this.deploymentOverrides == null ? List.of() : this.deploymentOverrides;
+    }
     /**
      * @return Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
      * 
@@ -114,6 +128,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> deploymentOverrides;
         private @Nullable Boolean enabled;
         private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
         private @Nullable String metricsGcpServiceAccountEmail;
@@ -124,6 +139,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         public Builder() {}
         public Builder(FeatureMembershipConfigmanagementConfigSync defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deploymentOverrides = defaults.deploymentOverrides;
     	      this.enabled = defaults.enabled;
     	      this.git = defaults.git;
     	      this.metricsGcpServiceAccountEmail = defaults.metricsGcpServiceAccountEmail;
@@ -133,6 +149,15 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     	      this.stopSyncing = defaults.stopSyncing;
         }
 
+        @CustomType.Setter
+        public Builder deploymentOverrides(@Nullable List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> deploymentOverrides) {
+
+            this.deploymentOverrides = deploymentOverrides;
+            return this;
+        }
+        public Builder deploymentOverrides(FeatureMembershipConfigmanagementConfigSyncDeploymentOverride... deploymentOverrides) {
+            return deploymentOverrides(List.of(deploymentOverrides));
+        }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
@@ -177,6 +202,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         }
         public FeatureMembershipConfigmanagementConfigSync build() {
             final var _resultValue = new FeatureMembershipConfigmanagementConfigSync();
+            _resultValue.deploymentOverrides = deploymentOverrides;
             _resultValue.enabled = enabled;
             _resultValue.git = git;
             _resultValue.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;

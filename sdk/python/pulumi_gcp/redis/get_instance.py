@@ -28,7 +28,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, effective_labels=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, pulumi_labels=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, effective_labels=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, pulumi_labels=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tags=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -134,6 +134,9 @@ class GetInstanceResult:
         if server_ca_certs and not isinstance(server_ca_certs, list):
             raise TypeError("Expected argument 'server_ca_certs' to be a list")
         pulumi.set(__self__, "server_ca_certs", server_ca_certs)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         pulumi.set(__self__, "tier", tier)
@@ -321,6 +324,11 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter
+    def tags(self) -> Mapping[str, builtins.str]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
     def tier(self) -> builtins.str:
         return pulumi.get(self, "tier")
 
@@ -371,6 +379,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             reserved_ip_range=self.reserved_ip_range,
             secondary_ip_range=self.secondary_ip_range,
             server_ca_certs=self.server_ca_certs,
+            tags=self.tags,
             tier=self.tier,
             transit_encryption_mode=self.transit_encryption_mode)
 
@@ -446,6 +455,7 @@ def get_instance(name: Optional[builtins.str] = None,
         reserved_ip_range=pulumi.get(__ret__, 'reserved_ip_range'),
         secondary_ip_range=pulumi.get(__ret__, 'secondary_ip_range'),
         server_ca_certs=pulumi.get(__ret__, 'server_ca_certs'),
+        tags=pulumi.get(__ret__, 'tags'),
         tier=pulumi.get(__ret__, 'tier'),
         transit_encryption_mode=pulumi.get(__ret__, 'transit_encryption_mode'))
 def get_instance_output(name: Optional[pulumi.Input[builtins.str]] = None,
@@ -518,5 +528,6 @@ def get_instance_output(name: Optional[pulumi.Input[builtins.str]] = None,
         reserved_ip_range=pulumi.get(__response__, 'reserved_ip_range'),
         secondary_ip_range=pulumi.get(__response__, 'secondary_ip_range'),
         server_ca_certs=pulumi.get(__response__, 'server_ca_certs'),
+        tags=pulumi.get(__response__, 'tags'),
         tier=pulumi.get(__response__, 'tier'),
         transit_encryption_mode=pulumi.get(__response__, 'transit_encryption_mode')))

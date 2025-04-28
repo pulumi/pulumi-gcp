@@ -425,6 +425,16 @@ export const getSnapshotIamPolicy: typeof import("./getSnapshotIamPolicy").getSn
 export const getSnapshotIamPolicyOutput: typeof import("./getSnapshotIamPolicy").getSnapshotIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSnapshotIamPolicy","getSnapshotIamPolicyOutput"], () => require("./getSnapshotIamPolicy"));
 
+export { GetStoragePoolIamPolicyArgs, GetStoragePoolIamPolicyResult, GetStoragePoolIamPolicyOutputArgs } from "./getStoragePoolIamPolicy";
+export const getStoragePoolIamPolicy: typeof import("./getStoragePoolIamPolicy").getStoragePoolIamPolicy = null as any;
+export const getStoragePoolIamPolicyOutput: typeof import("./getStoragePoolIamPolicy").getStoragePoolIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getStoragePoolIamPolicy","getStoragePoolIamPolicyOutput"], () => require("./getStoragePoolIamPolicy"));
+
+export { GetStoragePoolTypesArgs, GetStoragePoolTypesResult, GetStoragePoolTypesOutputArgs } from "./getStoragePoolTypes";
+export const getStoragePoolTypes: typeof import("./getStoragePoolTypes").getStoragePoolTypes = null as any;
+export const getStoragePoolTypesOutput: typeof import("./getStoragePoolTypes").getStoragePoolTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getStoragePoolTypes","getStoragePoolTypesOutput"], () => require("./getStoragePoolTypes"));
+
 export { GetSubnetworkArgs, GetSubnetworkResult, GetSubnetworkOutputArgs } from "./getSubnetwork";
 export const getSubnetwork: typeof import("./getSubnetwork").getSubnetwork = null as any;
 export const getSubnetworkOutput: typeof import("./getSubnetwork").getSubnetworkOutput = null as any;
@@ -940,6 +950,11 @@ export type ResourcePolicy = import("./resourcePolicy").ResourcePolicy;
 export const ResourcePolicy: typeof import("./resourcePolicy").ResourcePolicy = null as any;
 utilities.lazyLoad(exports, ["ResourcePolicy"], () => require("./resourcePolicy"));
 
+export { ResourcePolicyAttachmentArgs, ResourcePolicyAttachmentState } from "./resourcePolicyAttachment";
+export type ResourcePolicyAttachment = import("./resourcePolicyAttachment").ResourcePolicyAttachment;
+export const ResourcePolicyAttachment: typeof import("./resourcePolicyAttachment").ResourcePolicyAttachment = null as any;
+utilities.lazyLoad(exports, ["ResourcePolicyAttachment"], () => require("./resourcePolicyAttachment"));
+
 export { RouteArgs, RouteState } from "./route";
 export type Route = import("./route").Route;
 export const Route: typeof import("./route").Route = null as any;
@@ -1039,6 +1054,26 @@ export { SSLPolicyArgs, SSLPolicyState } from "./sslpolicy";
 export type SSLPolicy = import("./sslpolicy").SSLPolicy;
 export const SSLPolicy: typeof import("./sslpolicy").SSLPolicy = null as any;
 utilities.lazyLoad(exports, ["SSLPolicy"], () => require("./sslpolicy"));
+
+export { StoragePoolArgs, StoragePoolState } from "./storagePool";
+export type StoragePool = import("./storagePool").StoragePool;
+export const StoragePool: typeof import("./storagePool").StoragePool = null as any;
+utilities.lazyLoad(exports, ["StoragePool"], () => require("./storagePool"));
+
+export { StoragePoolIamBindingArgs, StoragePoolIamBindingState } from "./storagePoolIamBinding";
+export type StoragePoolIamBinding = import("./storagePoolIamBinding").StoragePoolIamBinding;
+export const StoragePoolIamBinding: typeof import("./storagePoolIamBinding").StoragePoolIamBinding = null as any;
+utilities.lazyLoad(exports, ["StoragePoolIamBinding"], () => require("./storagePoolIamBinding"));
+
+export { StoragePoolIamMemberArgs, StoragePoolIamMemberState } from "./storagePoolIamMember";
+export type StoragePoolIamMember = import("./storagePoolIamMember").StoragePoolIamMember;
+export const StoragePoolIamMember: typeof import("./storagePoolIamMember").StoragePoolIamMember = null as any;
+utilities.lazyLoad(exports, ["StoragePoolIamMember"], () => require("./storagePoolIamMember"));
+
+export { StoragePoolIamPolicyArgs, StoragePoolIamPolicyState } from "./storagePoolIamPolicy";
+export type StoragePoolIamPolicy = import("./storagePoolIamPolicy").StoragePoolIamPolicy;
+export const StoragePoolIamPolicy: typeof import("./storagePoolIamPolicy").StoragePoolIamPolicy = null as any;
+utilities.lazyLoad(exports, ["StoragePoolIamPolicy"], () => require("./storagePoolIamPolicy"));
 
 export { SubnetworkArgs, SubnetworkState } from "./subnetwork";
 export type Subnetwork = import("./subnetwork").Subnetwork;
@@ -1365,6 +1400,8 @@ const _module = {
                 return new ResizeRequest(name, <any>undefined, { urn })
             case "gcp:compute/resourcePolicy:ResourcePolicy":
                 return new ResourcePolicy(name, <any>undefined, { urn })
+            case "gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment":
+                return new ResourcePolicyAttachment(name, <any>undefined, { urn })
             case "gcp:compute/route:Route":
                 return new Route(name, <any>undefined, { urn })
             case "gcp:compute/router:Router":
@@ -1403,6 +1440,14 @@ const _module = {
                 return new SnapshotIamMember(name, <any>undefined, { urn })
             case "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy":
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/storagePool:StoragePool":
+                return new StoragePool(name, <any>undefined, { urn })
+            case "gcp:compute/storagePoolIamBinding:StoragePoolIamBinding":
+                return new StoragePoolIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/storagePoolIamMember:StoragePoolIamMember":
+                return new StoragePoolIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/storagePoolIamPolicy:StoragePoolIamPolicy":
+                return new StoragePoolIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/subnetwork:Subnetwork":
                 return new Subnetwork(name, <any>undefined, { urn })
             case "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding":
@@ -1561,6 +1606,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionUrlMap", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/reservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/resizeRequest", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/resourcePolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/resourcePolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/route", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/router", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerInterface", _module)
@@ -1580,6 +1626,10 @@ pulumi.runtime.registerResourceModule("gcp", "compute/snapshot", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/storagePool", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/storagePoolIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/storagePoolIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/storagePoolIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/subnetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIAMMember", _module)

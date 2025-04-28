@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Compute
     ///                 Direction = "EGRESS",
     ///                 TargetResources = new[]
     ///                 {
-    ///                     $"https://www.googleapis.com/compute/beta/projects/{project.Apply(getProjectResult =&gt; getProjectResult.Name)}/global/networks/default",
+    ///                     $"https://www.googleapis.com/compute/beta/projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/global/networks/default",
     ///                 },
     ///                 Match = new Gcp.Compute.Inputs.FirewallPolicyWithRulesRuleMatchArgs
     ///                 {

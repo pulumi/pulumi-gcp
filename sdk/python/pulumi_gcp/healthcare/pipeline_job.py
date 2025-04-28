@@ -504,7 +504,7 @@ class PipelineJob(pulumi.CustomResource):
             location="us-central1",
             dataset=dataset.id,
             backfill_pipeline_job={
-                "mapping_pipeline_job": dataset.id.apply(lambda id: f"{id}/pipelinejobs/example_mapping_pipeline"),
+                "mapping_pipeline_job": dataset.id.apply(lambda id: f"{id}/pipelineJobs/example_mapping_pipeline_job"),
             })
         ```
         ### Healthcare Pipeline Job Whistle Mapping
@@ -809,7 +809,7 @@ class PipelineJob(pulumi.CustomResource):
             location="us-central1",
             dataset=dataset.id,
             backfill_pipeline_job={
-                "mapping_pipeline_job": dataset.id.apply(lambda id: f"{id}/pipelinejobs/example_mapping_pipeline"),
+                "mapping_pipeline_job": dataset.id.apply(lambda id: f"{id}/pipelineJobs/example_mapping_pipeline_job"),
             })
         ```
         ### Healthcare Pipeline Job Whistle Mapping
