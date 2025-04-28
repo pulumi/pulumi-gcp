@@ -31,9 +31,8 @@ func fixEmptyLabels(_ context.Context, req shimv2.PlanStateEditRequest) (cty.Val
 
 	// Apply default labels first.
 	if pConfig := resource.FromResourcePropertyValue(resource.NewProperty(req.ProviderConfig)); pConfig.IsMap() {
-		l := pConfig.AsMap().Get("defaultLabels")
-		if l.IsMap() {
-			programLabels = l.AsMap()
+		if labels, ok := pConfig.AsMap().GetOk("defaultLabels"); ok && labels.IsMap() {
+			programLabels = labels.AsMap()
 		}
 	}
 
@@ -41,7 +40,7 @@ func fixEmptyLabels(_ context.Context, req shimv2.PlanStateEditRequest) (cty.Val
 	if inputs, ok := (resource.PropertyPath{labelsPropertyName}.Get(resource.NewProperty(req.NewInputs))); ok {
 		if labels := resource.FromResourcePropertyValue(inputs); labels.IsMap() {
 			for k, v := range labels.AsMap().AsMap() {
-				programLabels.Set(k, v)
+				programLabels = programLabels.Set(k, v)
 			}
 		}
 	}
