@@ -217,6 +217,9 @@ class _PolicyTagIamBindingState:
 
 
 class PolicyTagIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datacatalog/policyTagIamBinding:PolicyTagIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

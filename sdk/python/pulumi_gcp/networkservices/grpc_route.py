@@ -412,6 +412,9 @@ class _GrpcRouteState:
 
 
 class GrpcRoute(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/grpcRoute:GrpcRoute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

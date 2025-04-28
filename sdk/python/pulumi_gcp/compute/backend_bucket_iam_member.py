@@ -254,6 +254,9 @@ class _BackendBucketIamMemberState:
 
 
 class BackendBucketIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/backendBucketIamMember:BackendBucketIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

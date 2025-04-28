@@ -768,6 +768,9 @@ class _StandardAppVersionState:
 
 
 class StandardAppVersion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:appengine/standardAppVersion:StandardAppVersion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

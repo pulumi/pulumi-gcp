@@ -293,6 +293,9 @@ class _FunctionIamBindingState:
 
 
 class FunctionIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudfunctions/functionIamBinding:FunctionIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

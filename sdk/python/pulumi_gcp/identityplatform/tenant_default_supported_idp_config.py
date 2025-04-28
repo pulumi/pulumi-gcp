@@ -294,6 +294,9 @@ class _TenantDefaultSupportedIdpConfigState:
 
 
 class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

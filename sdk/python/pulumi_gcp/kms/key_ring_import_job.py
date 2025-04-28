@@ -278,6 +278,9 @@ class _KeyRingImportJobState:
 
 
 class KeyRingImportJob(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/keyRingImportJob:KeyRingImportJob"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

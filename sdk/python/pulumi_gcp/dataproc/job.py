@@ -595,6 +595,9 @@ class _JobState:
 
 
 class Job(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/job:Job"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

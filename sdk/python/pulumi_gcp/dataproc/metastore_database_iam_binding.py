@@ -300,6 +300,9 @@ class _MetastoreDatabaseIamBindingState:
 
 
 class MetastoreDatabaseIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/metastoreDatabaseIamBinding:MetastoreDatabaseIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

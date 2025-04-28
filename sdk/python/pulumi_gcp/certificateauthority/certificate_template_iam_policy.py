@@ -192,6 +192,9 @@ class _CertificateTemplateIamPolicyState:
 
 
 class CertificateTemplateIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:certificateauthority/certificateTemplateIamPolicy:CertificateTemplateIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

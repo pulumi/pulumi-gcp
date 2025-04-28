@@ -221,6 +221,9 @@ class _ManagedFolderState:
 
 
 class ManagedFolder(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/managedFolder:ManagedFolder"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

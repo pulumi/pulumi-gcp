@@ -209,6 +209,9 @@ class _ProjectExclusionState:
 
 
 class ProjectExclusion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/projectExclusion:ProjectExclusion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

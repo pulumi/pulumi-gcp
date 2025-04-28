@@ -405,6 +405,9 @@ class _RuntimeState:
 
 
 class Runtime(pulumi.CustomResource):
+
+    pulumi_type = "gcp:colab/runtime:Runtime"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

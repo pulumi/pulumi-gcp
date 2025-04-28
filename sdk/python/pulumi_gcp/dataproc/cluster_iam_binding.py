@@ -293,6 +293,9 @@ class _ClusterIAMBindingState:
 
 
 class ClusterIAMBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

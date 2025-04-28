@@ -480,6 +480,9 @@ class _GitRepositoryLinkState:
 
 
 class GitRepositoryLink(pulumi.CustomResource):
+
+    pulumi_type = "gcp:developerconnect/gitRepositoryLink:GitRepositoryLink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

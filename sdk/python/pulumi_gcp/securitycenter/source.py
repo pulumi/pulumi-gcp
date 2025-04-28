@@ -178,6 +178,9 @@ class _SourceState:
 
 
 class Source(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/source:Source"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

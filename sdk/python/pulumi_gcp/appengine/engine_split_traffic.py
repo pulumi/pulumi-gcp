@@ -158,6 +158,9 @@ class _EngineSplitTrafficState:
 
 
 class EngineSplitTraffic(pulumi.CustomResource):
+
+    pulumi_type = "gcp:appengine/engineSplitTraffic:EngineSplitTraffic"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

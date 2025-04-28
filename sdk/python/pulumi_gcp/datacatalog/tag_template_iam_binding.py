@@ -277,6 +277,9 @@ class _TagTemplateIamBindingState:
 
 
 class TagTemplateIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

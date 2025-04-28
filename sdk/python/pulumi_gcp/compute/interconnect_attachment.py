@@ -1163,6 +1163,9 @@ class _InterconnectAttachmentState:
 
 
 class InterconnectAttachment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/interconnectAttachment:InterconnectAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -820,6 +820,9 @@ class _JobState:
 
 
 class Job(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudrunv2/job:Job"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

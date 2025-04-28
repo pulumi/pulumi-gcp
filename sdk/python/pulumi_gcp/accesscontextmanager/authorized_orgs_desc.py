@@ -365,6 +365,9 @@ class _AuthorizedOrgsDescState:
 
 
 class AuthorizedOrgsDesc(pulumi.CustomResource):
+
+    pulumi_type = "gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

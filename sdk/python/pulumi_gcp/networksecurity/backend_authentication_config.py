@@ -404,6 +404,9 @@ class _BackendAuthenticationConfigState:
 
 
 class BackendAuthenticationConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

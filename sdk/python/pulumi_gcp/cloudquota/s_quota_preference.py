@@ -435,6 +435,9 @@ class _SQuotaPreferenceState:
 
 
 class SQuotaPreference(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudquota/sQuotaPreference:SQuotaPreference"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -253,6 +253,9 @@ class _NoteIamBindingState:
 
 
 class NoteIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:containeranalysis/noteIamBinding:NoteIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

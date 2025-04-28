@@ -283,6 +283,9 @@ class _GenericServiceState:
 
 
 class GenericService(pulumi.CustomResource):
+
+    pulumi_type = "gcp:monitoring/genericService:GenericService"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

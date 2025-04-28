@@ -973,6 +973,9 @@ class _DatasetState:
 
 
 class Dataset(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/dataset:Dataset"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

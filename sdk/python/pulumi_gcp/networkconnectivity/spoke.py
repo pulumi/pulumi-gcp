@@ -560,6 +560,9 @@ class _SpokeState:
 
 
 class Spoke(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkconnectivity/spoke:Spoke"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

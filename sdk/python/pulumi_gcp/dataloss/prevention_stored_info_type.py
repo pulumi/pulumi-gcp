@@ -323,6 +323,9 @@ class _PreventionStoredInfoTypeState:
 
 
 class PreventionStoredInfoType(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

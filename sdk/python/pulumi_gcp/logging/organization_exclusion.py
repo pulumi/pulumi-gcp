@@ -204,6 +204,9 @@ class _OrganizationExclusionState:
 
 
 class OrganizationExclusion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/organizationExclusion:OrganizationExclusion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

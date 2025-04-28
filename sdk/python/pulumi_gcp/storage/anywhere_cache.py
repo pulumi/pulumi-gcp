@@ -260,6 +260,9 @@ class _AnywhereCacheState:
 
 
 class AnywhereCache(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/anywhereCache:AnywhereCache"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

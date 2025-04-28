@@ -290,6 +290,9 @@ class _ObjectAccessControlState:
 
 
 class ObjectAccessControl(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/objectAccessControl:ObjectAccessControl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

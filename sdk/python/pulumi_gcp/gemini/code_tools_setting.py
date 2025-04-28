@@ -282,6 +282,9 @@ class _CodeToolsSettingState:
 
 
 class CodeToolsSetting(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gemini/codeToolsSetting:CodeToolsSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

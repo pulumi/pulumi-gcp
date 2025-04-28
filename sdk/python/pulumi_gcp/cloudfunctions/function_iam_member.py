@@ -293,6 +293,9 @@ class _FunctionIamMemberState:
 
 
 class FunctionIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudfunctions/functionIamMember:FunctionIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

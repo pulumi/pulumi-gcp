@@ -281,6 +281,9 @@ class _VPNGatewayState:
 
 
 class VPNGateway(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/vPNGateway:VPNGateway"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

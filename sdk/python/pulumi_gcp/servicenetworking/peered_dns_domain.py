@@ -208,6 +208,9 @@ class _PeeredDnsDomainState:
 
 
 class PeeredDnsDomain(pulumi.CustomResource):
+
+    pulumi_type = "gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

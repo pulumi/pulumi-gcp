@@ -437,6 +437,9 @@ class _ProjectSinkState:
 
 
 class ProjectSink(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/projectSink:ProjectSink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

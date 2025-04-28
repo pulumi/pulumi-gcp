@@ -243,6 +243,9 @@ class _ParameterVersionState:
 
 
 class ParameterVersion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:parametermanager/parameterVersion:ParameterVersion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

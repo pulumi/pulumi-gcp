@@ -251,6 +251,9 @@ class _ProjectCustomModuleState:
 
 
 class ProjectCustomModule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/projectCustomModule:ProjectCustomModule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -156,6 +156,9 @@ class _VpcscConfigState:
 
 
 class VpcscConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:artifactregistry/vpcscConfig:VpcscConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

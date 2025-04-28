@@ -149,6 +149,9 @@ class _HostingVersionState:
 
 
 class HostingVersion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/hostingVersion:HostingVersion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

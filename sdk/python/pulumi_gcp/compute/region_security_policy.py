@@ -422,6 +422,9 @@ class _RegionSecurityPolicyState:
 
 
 class RegionSecurityPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

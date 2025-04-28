@@ -217,6 +217,9 @@ class _ServiceProjectAttachmentState:
 
 
 class ServiceProjectAttachment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

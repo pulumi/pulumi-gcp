@@ -365,6 +365,9 @@ class _RegionTargetTcpProxyState:
 
 
 class RegionTargetTcpProxy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -297,6 +297,9 @@ class _SecurityGatewayIamBindingState:
 
 
 class SecurityGatewayIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -148,6 +148,9 @@ class _ServicePerimeterDryRunResourceState:
 
 
 class ServicePerimeterDryRunResource(pulumi.CustomResource):
+
+    pulumi_type = "gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

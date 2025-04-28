@@ -228,6 +228,9 @@ class _AppCheckRecaptchaV3ConfigState:
 
 
 class AppCheckRecaptchaV3Config(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

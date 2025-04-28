@@ -337,6 +337,9 @@ class _BackupPlanAssociationState:
 
 
 class BackupPlanAssociation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

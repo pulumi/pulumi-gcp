@@ -232,6 +232,9 @@ class _ConsumersIamBindingState:
 
 
 class ConsumersIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:endpoints/consumersIamBinding:ConsumersIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

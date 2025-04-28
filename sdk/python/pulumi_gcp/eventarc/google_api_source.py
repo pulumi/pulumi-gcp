@@ -519,6 +519,9 @@ class _GoogleApiSourceState:
 
 
 class GoogleApiSource(pulumi.CustomResource):
+
+    pulumi_type = "gcp:eventarc/googleApiSource:GoogleApiSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -272,6 +272,9 @@ class _OauthIdpConfigState:
 
 
 class OauthIdpConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:identityplatform/oauthIdpConfig:OauthIdpConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

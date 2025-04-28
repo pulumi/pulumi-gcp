@@ -284,6 +284,9 @@ class _DatabaseIAMMemberState:
 
 
 class DatabaseIAMMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:spanner/databaseIAMMember:DatabaseIAMMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

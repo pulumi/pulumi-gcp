@@ -65,6 +65,9 @@ class _SharedVPCHostProjectState:
 
 
 class SharedVPCHostProject(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/sharedVPCHostProject:SharedVPCHostProject"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

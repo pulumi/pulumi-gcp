@@ -435,6 +435,9 @@ class _AuthzPolicyState:
 
 
 class AuthzPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/authzPolicy:AuthzPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

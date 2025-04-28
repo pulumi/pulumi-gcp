@@ -262,6 +262,9 @@ class _DocumentAiWarehouseLocationState:
 
 
 class DocumentAiWarehouseLocation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

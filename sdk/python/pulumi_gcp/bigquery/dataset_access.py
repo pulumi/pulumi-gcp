@@ -561,6 +561,9 @@ class _DatasetAccessState:
 
 
 class DatasetAccess(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/datasetAccess:DatasetAccess"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

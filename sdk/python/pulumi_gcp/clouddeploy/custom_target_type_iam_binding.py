@@ -190,6 +190,9 @@ class _CustomTargetTypeIamBindingState:
 
 
 class CustomTargetTypeIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:clouddeploy/customTargetTypeIamBinding:CustomTargetTypeIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

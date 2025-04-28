@@ -212,6 +212,9 @@ class _DocumentAiWarehouseDocumentSchemaState:
 
 
 class DocumentAiWarehouseDocumentSchema(pulumi.CustomResource):
+
+    pulumi_type = "gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

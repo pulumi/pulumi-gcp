@@ -289,6 +289,9 @@ class _MetastoreFederationIamMemberState:
 
 
 class MetastoreFederationIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

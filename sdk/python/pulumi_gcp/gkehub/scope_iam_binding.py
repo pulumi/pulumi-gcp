@@ -245,6 +245,9 @@ class _ScopeIamBindingState:
 
 
 class ScopeIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkehub/scopeIamBinding:ScopeIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

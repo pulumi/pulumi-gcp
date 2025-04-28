@@ -532,6 +532,9 @@ class _GdcServiceInstanceState:
 
 
 class GdcServiceInstance(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/gdcServiceInstance:GdcServiceInstance"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

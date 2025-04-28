@@ -298,6 +298,9 @@ class _AddressGroupIamMemberState:
 
 
 class AddressGroupIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

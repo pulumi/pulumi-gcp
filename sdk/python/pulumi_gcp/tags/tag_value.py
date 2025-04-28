@@ -212,6 +212,9 @@ class _TagValueState:
 
 
 class TagValue(pulumi.CustomResource):
+
+    pulumi_type = "gcp:tags/tagValue:TagValue"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

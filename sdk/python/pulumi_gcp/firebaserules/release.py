@@ -193,6 +193,9 @@ class _ReleaseState:
 
 
 class Release(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebaserules/release:Release"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

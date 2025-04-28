@@ -528,6 +528,9 @@ class _CxSecuritySettingsState:
 
 
 class CxSecuritySettings(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/cxSecuritySettings:CxSecuritySettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -388,6 +388,9 @@ class _AppGatewayState:
 
 
 class AppGateway(pulumi.CustomResource):
+
+    pulumi_type = "gcp:beyondcorp/appGateway:AppGateway"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

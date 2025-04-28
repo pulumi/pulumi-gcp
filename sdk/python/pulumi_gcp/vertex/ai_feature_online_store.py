@@ -474,6 +474,9 @@ class _AiFeatureOnlineStoreState:
 
 
 class AiFeatureOnlineStore(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

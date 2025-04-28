@@ -878,6 +878,9 @@ class _MetastoreServiceState:
 
 
 class MetastoreService(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/metastoreService:MetastoreService"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

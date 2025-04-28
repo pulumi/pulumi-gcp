@@ -466,6 +466,9 @@ class _HttpHealthCheckState:
 
 
 class HttpHealthCheck(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/httpHealthCheck:HttpHealthCheck"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

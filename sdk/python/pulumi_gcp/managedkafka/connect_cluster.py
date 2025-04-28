@@ -365,6 +365,9 @@ class _ConnectClusterState:
 
 
 class ConnectCluster(pulumi.CustomResource):
+
+    pulumi_type = "gcp:managedkafka/connectCluster:ConnectCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

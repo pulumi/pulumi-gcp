@@ -316,6 +316,9 @@ class _PublicAdvertisedPrefixState:
 
 
 class PublicAdvertisedPrefix(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

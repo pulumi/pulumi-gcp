@@ -225,6 +225,9 @@ class _CryptoKeyIAMMemberState:
 
 
 class CryptoKeyIAMMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

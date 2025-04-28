@@ -354,6 +354,9 @@ class _TargetGrpcProxyState:
 
 
 class TargetGrpcProxy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/targetGrpcProxy:TargetGrpcProxy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

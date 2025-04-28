@@ -288,6 +288,9 @@ class _LiteTopicState:
 
 
 class LiteTopic(pulumi.CustomResource):
+
+    pulumi_type = "gcp:pubsub/liteTopic:LiteTopic"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

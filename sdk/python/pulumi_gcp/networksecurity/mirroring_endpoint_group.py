@@ -443,6 +443,9 @@ class _MirroringEndpointGroupState:
 
 
 class MirroringEndpointGroup(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

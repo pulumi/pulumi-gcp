@@ -312,6 +312,9 @@ class _WorkstationConfigIamMemberState:
 
 
 class WorkstationConfigIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

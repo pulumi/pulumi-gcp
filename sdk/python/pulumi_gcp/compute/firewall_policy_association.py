@@ -172,6 +172,9 @@ class _FirewallPolicyAssociationState:
 
 
 class FirewallPolicyAssociation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

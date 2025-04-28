@@ -217,6 +217,9 @@ class _PolicyTagIamMemberState:
 
 
 class PolicyTagIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datacatalog/policyTagIamMember:PolicyTagIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

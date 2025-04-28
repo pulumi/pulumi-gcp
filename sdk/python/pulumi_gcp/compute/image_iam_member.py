@@ -265,6 +265,9 @@ class _ImageIamMemberState:
 
 
 class ImageIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/imageIamMember:ImageIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

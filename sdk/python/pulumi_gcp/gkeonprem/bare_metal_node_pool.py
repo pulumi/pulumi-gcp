@@ -425,6 +425,9 @@ class _BareMetalNodePoolState:
 
 
 class BareMetalNodePool(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

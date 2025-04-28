@@ -619,6 +619,9 @@ class _ConnectionProfileState:
 
 
 class ConnectionProfile(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datastream/connectionProfile:ConnectionProfile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

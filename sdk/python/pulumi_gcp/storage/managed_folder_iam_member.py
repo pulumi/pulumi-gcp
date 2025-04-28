@@ -260,6 +260,9 @@ class _ManagedFolderIamMemberState:
 
 
 class ManagedFolderIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/managedFolderIamMember:ManagedFolderIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

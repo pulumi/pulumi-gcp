@@ -976,6 +976,9 @@ class _VMwareClusterState:
 
 
 class VMwareCluster(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkeonprem/vMwareCluster:VMwareCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

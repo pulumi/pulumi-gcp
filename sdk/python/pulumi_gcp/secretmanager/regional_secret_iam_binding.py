@@ -301,6 +301,9 @@ class _RegionalSecretIamBindingState:
 
 
 class RegionalSecretIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:secretmanager/regionalSecretIamBinding:RegionalSecretIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

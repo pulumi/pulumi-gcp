@@ -305,6 +305,9 @@ class _InstanceIAMMemberState:
 
 
 class InstanceIAMMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceIAMMember:InstanceIAMMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

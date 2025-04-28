@@ -289,6 +289,9 @@ class _GatewayIamMemberState:
 
 
 class GatewayIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigateway/gatewayIamMember:GatewayIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -294,6 +294,9 @@ class _FeatureIamBindingState:
 
 
 class FeatureIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkehub/featureIamBinding:FeatureIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

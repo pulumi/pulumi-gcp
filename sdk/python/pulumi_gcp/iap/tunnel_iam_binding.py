@@ -234,6 +234,9 @@ class _TunnelIamBindingState:
 
 
 class TunnelIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/tunnelIamBinding:TunnelIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

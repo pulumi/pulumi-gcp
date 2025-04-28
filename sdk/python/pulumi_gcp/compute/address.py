@@ -750,6 +750,9 @@ class _AddressState:
 
 
 class Address(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/address:Address"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

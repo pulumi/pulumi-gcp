@@ -353,6 +353,9 @@ class _TargetHttpProxyState:
 
 
 class TargetHttpProxy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/targetHttpProxy:TargetHttpProxy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

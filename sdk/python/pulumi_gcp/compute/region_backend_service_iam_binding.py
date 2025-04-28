@@ -314,6 +314,9 @@ class _RegionBackendServiceIamBindingState:
 
 
 class RegionBackendServiceIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionBackendServiceIamBinding:RegionBackendServiceIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

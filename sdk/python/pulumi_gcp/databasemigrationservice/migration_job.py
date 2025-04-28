@@ -704,6 +704,9 @@ class _MigrationJobState:
 
 
 class MigrationJob(pulumi.CustomResource):
+
+    pulumi_type = "gcp:databasemigrationservice/migrationJob:MigrationJob"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

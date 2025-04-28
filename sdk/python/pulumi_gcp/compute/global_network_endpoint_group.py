@@ -261,6 +261,9 @@ class _GlobalNetworkEndpointGroupState:
 
 
 class GlobalNetworkEndpointGroup(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

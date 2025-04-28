@@ -105,6 +105,9 @@ class _DefaultObjectACLState:
 
 
 class DefaultObjectACL(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/defaultObjectACL:DefaultObjectACL"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

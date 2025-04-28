@@ -229,6 +229,9 @@ class _BucketIAMMemberState:
 
 
 class BucketIAMMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/bucketIAMMember:BucketIAMMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

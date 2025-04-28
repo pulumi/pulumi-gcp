@@ -503,6 +503,9 @@ class _AssetState:
 
 
 class Asset(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/asset:Asset"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

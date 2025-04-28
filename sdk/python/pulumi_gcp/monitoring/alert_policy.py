@@ -457,6 +457,9 @@ class _AlertPolicyState:
 
 
 class AlertPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:monitoring/alertPolicy:AlertPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

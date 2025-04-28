@@ -297,6 +297,9 @@ class _OrganizationBucketConfigState:
 
 
 class OrganizationBucketConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/organizationBucketConfig:OrganizationBucketConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -289,6 +289,9 @@ class _DatascanIamMemberState:
 
 
 class DatascanIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/datascanIamMember:DatascanIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

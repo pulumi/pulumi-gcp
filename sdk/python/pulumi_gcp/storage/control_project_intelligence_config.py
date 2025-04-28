@@ -200,6 +200,9 @@ class _ControlProjectIntelligenceConfigState:
 
 
 class ControlProjectIntelligenceConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

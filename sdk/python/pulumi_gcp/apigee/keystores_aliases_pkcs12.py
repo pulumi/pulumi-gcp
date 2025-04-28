@@ -296,6 +296,9 @@ class _KeystoresAliasesPkcs12State:
 
 
 class KeystoresAliasesPkcs12(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

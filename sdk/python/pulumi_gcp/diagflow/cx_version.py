@@ -219,6 +219,9 @@ class _CxVersionState:
 
 
 class CxVersion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/cxVersion:CxVersion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

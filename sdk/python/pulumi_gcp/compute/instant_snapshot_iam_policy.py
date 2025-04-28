@@ -193,6 +193,9 @@ class _InstantSnapshotIamPolicyState:
 
 
 class InstantSnapshotIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instantSnapshotIamPolicy:InstantSnapshotIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

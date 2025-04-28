@@ -433,6 +433,9 @@ class _AddressGroupState:
 
 
 class AddressGroup(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/addressGroup:AddressGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

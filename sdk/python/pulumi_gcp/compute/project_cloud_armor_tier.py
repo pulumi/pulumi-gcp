@@ -117,6 +117,9 @@ class _ProjectCloudArmorTierState:
 
 
 class ProjectCloudArmorTier(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -144,6 +144,9 @@ class _ScopeIamPolicyState:
 
 
 class ScopeIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkehub/scopeIamPolicy:ScopeIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

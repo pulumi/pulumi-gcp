@@ -494,6 +494,9 @@ class _BranchRuleState:
 
 
 class BranchRule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securesourcemanager/branchRule:BranchRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

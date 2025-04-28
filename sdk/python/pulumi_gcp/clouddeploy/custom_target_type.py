@@ -421,6 +421,9 @@ class _CustomTargetTypeState:
 
 
 class CustomTargetType(pulumi.CustomResource):
+
+    pulumi_type = "gcp:clouddeploy/customTargetType:CustomTargetType"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -13,7 +13,6 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/pulumi/providertest/flags"
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
@@ -23,9 +22,7 @@ import (
 // Runs a benchmark test using the provider BenchmarkConfig
 func RunBenchmark(t *testing.T, bench BenchmarkConfig) {
 	t.Run("benchmark", func(t *testing.T) {
-		if !(BenchmarkFlag.IsSet() || RecordBenchmarkFlag.IsSet()) {
-			t.Skipf("Skip benchmarking because %s", BenchmarkFlag.WhyNotSet())
-		}
+		t.Skip("Skip benchmarking because")
 
 		if bench.TracingDir == "" {
 			bench.TracingDir = t.TempDir()
@@ -41,7 +38,7 @@ func RunBenchmark(t *testing.T, bench BenchmarkConfig) {
 		programTestAsSpanBenchmark(t, bench)
 
 		// After collecting traces, either compare or record
-		if RecordBenchmarkFlag.IsSet() {
+		if RecordBenchmarkFlag {
 			copyFile(
 				t,
 				path.Join(bench.TracingDir, bench.outFileName()),
@@ -113,20 +110,10 @@ func copyFile(t *testing.T, sourcePath, destPath string) {
 // providertest doesn't expose a real flags implementation, so just pretend for now
 var (
 	//("benchmark", "Run benchmarks of provider test programs and compare with recorded values")
-	BenchmarkFlag = hardcodedFlag{set: false}
+	BenchmarkFlag = false
 	//("record-benchmark", "Run benchmarks of provider test programs and record results")
-	RecordBenchmarkFlag = hardcodedFlag{set: false}
+	RecordBenchmarkFlag = false
 )
-
-type hardcodedFlag struct {
-	set bool
-}
-
-var _ = flags.Flag(hardcodedFlag{})
-
-func (h hardcodedFlag) IsSet() bool       { return h.set }
-func (h hardcodedFlag) WhySet() string    { return "hardcoded" }
-func (h hardcodedFlag) WhyNotSet() string { return "hardcoded" }
 
 // Create line in benchmark format representing this span
 func benchmarkFromSpan(span Span) (string, error) {

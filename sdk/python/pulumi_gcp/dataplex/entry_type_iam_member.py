@@ -289,6 +289,9 @@ class _EntryTypeIamMemberState:
 
 
 class EntryTypeIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/entryTypeIamMember:EntryTypeIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

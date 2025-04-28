@@ -182,6 +182,9 @@ class _DenyPolicyState:
 
 
 class DenyPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iam/denyPolicy:DenyPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -470,6 +470,9 @@ class _ServicePerimeterState:
 
 
 class ServicePerimeter(pulumi.CustomResource):
+
+    pulumi_type = "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

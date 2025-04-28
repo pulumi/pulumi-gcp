@@ -237,6 +237,9 @@ class _FulfillmentState:
 
 
 class Fulfillment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/fulfillment:Fulfillment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

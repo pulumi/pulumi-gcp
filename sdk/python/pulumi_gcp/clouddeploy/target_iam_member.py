@@ -190,6 +190,9 @@ class _TargetIamMemberState:
 
 
 class TargetIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:clouddeploy/targetIamMember:TargetIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

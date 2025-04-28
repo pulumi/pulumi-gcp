@@ -265,6 +265,9 @@ class _MachineImageIamBindingState:
 
 
 class MachineImageIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/machineImageIamBinding:MachineImageIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

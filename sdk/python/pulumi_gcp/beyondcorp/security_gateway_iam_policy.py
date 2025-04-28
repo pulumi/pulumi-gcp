@@ -184,6 +184,9 @@ class _SecurityGatewayIamPolicyState:
 
 
 class SecurityGatewayIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:beyondcorp/securityGatewayIamPolicy:SecurityGatewayIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

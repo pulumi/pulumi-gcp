@@ -531,6 +531,9 @@ class _CxIntentState:
 
 
 class CxIntent(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/cxIntent:CxIntent"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

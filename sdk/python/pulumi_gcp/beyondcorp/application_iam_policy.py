@@ -167,6 +167,9 @@ class _ApplicationIamPolicyState:
 
 
 class ApplicationIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:beyondcorp/applicationIamPolicy:ApplicationIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

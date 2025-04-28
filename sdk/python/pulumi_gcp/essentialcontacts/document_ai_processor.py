@@ -223,6 +223,9 @@ class _DocumentAiProcessorState:
 
 
 class DocumentAiProcessor(pulumi.CustomResource):
+
+    pulumi_type = "gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

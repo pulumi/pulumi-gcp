@@ -141,6 +141,9 @@ class _InstanceIamPolicyState:
 
 
 class InstanceIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:workbench/instanceIamPolicy:InstanceIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

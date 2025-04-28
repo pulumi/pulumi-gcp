@@ -219,6 +219,9 @@ class _ResponsePolicyState:
 
 
 class ResponsePolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dns/responsePolicy:ResponsePolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -289,6 +289,9 @@ class _TunnelInstanceIAMBindingState:
 
 
 class TunnelInstanceIAMBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

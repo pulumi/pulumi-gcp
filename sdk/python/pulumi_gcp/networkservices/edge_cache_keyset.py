@@ -334,6 +334,9 @@ class _EdgeCacheKeysetState:
 
 
 class EdgeCacheKeyset(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

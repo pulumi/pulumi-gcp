@@ -437,6 +437,9 @@ class _FirewallEndpointAssociationState:
 
 
 class FirewallEndpointAssociation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

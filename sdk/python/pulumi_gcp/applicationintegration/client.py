@@ -215,6 +215,9 @@ class _ClientState:
 
 
 class Client(pulumi.CustomResource):
+
+    pulumi_type = "gcp:applicationintegration/client:Client"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

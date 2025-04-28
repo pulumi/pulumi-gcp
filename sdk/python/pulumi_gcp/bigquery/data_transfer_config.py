@@ -669,6 +669,9 @@ class _DataTransferConfigState:
 
 
 class DataTransferConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/dataTransferConfig:DataTransferConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

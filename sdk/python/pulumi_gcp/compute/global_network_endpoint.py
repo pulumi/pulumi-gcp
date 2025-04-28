@@ -212,6 +212,9 @@ class _GlobalNetworkEndpointState:
 
 
 class GlobalNetworkEndpoint(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

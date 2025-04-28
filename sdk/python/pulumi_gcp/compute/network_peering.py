@@ -326,6 +326,9 @@ class _NetworkPeeringState:
 
 
 class NetworkPeering(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/networkPeering:NetworkPeering"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -334,6 +334,9 @@ class _V2FolderMuteConfigState:
 
 
 class V2FolderMuteConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/v2FolderMuteConfig:V2FolderMuteConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

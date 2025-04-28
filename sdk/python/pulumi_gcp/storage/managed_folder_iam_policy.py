@@ -147,6 +147,9 @@ class _ManagedFolderIamPolicyState:
 
 
 class ManagedFolderIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

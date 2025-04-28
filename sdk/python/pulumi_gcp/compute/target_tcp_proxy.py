@@ -329,6 +329,9 @@ class _TargetTCPProxyState:
 
 
 class TargetTCPProxy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/targetTCPProxy:TargetTCPProxy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

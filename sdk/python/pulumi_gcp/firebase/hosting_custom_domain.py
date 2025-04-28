@@ -582,6 +582,9 @@ class _HostingCustomDomainState:
 
 
 class HostingCustomDomain(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/hostingCustomDomain:HostingCustomDomain"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -289,6 +289,9 @@ class _DataPolicyIamBindingState:
 
 
 class DataPolicyIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquerydatapolicy/dataPolicyIamBinding:DataPolicyIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -477,6 +477,9 @@ class _HaVpnGatewayState:
 
 
 class HaVpnGateway(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/haVpnGateway:HaVpnGateway"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

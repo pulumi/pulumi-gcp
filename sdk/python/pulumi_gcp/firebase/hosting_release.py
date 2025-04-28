@@ -277,6 +277,9 @@ class _HostingReleaseState:
 
 
 class HostingRelease(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/hostingRelease:HostingRelease"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
