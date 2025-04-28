@@ -2346,8 +2346,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_router_nat":    {Tok: gcpDataSource(gcpCompute, "getRouterNat")},
 			"google_compute_router_status": {Tok: gcpDataSource(gcpCompute, "RouterStatus")}, // fixed via alias
-			"google_compute_disk":          {Tok: gcpDataSource(gcpCompute, "getDisk")},
-			"google_compute_snapshot":      {Tok: gcpDataSource(gcpCompute, "getSnapshot")},
+			"google_compute_storage_pool_types": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"google_compute_disk":     {Tok: gcpDataSource(gcpCompute, "getDisk")},
+			"google_compute_snapshot": {Tok: gcpDataSource(gcpCompute, "getSnapshot")},
 
 			"google_composer_image_versions": {
 				Tok: gcpDataSource(gcpComposer, "getImageVersions"),
