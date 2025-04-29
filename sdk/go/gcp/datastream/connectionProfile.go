@@ -458,6 +458,42 @@ import (
 //	}
 //
 // ```
+// ### Datastream Connection Profile Salesforce
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
+//				DisplayName:             pulumi.String("Salesforce Source"),
+//				Location:                pulumi.String("us-central1"),
+//				ConnectionProfileId:     pulumi.String("source-profile"),
+//				CreateWithoutValidation: pulumi.Bool(true),
+//				SalesforceProfile: &datastream.ConnectionProfileSalesforceProfileArgs{
+//					Domain: pulumi.String("fake-domain.my.salesforce.com"),
+//					UserCredentials: &datastream.ConnectionProfileSalesforceProfileUserCredentialsArgs{
+//						Username:                         pulumi.String("fake-username"),
+//						SecretManagerStoredPassword:      pulumi.String("fake-password"),
+//						SecretManagerStoredSecurityToken: pulumi.String("fake-token"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Datastream Connection Profile Postgres Secret Manager
 //
 // ```go

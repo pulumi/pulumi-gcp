@@ -18,6 +18,28 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
+        [Input("optionalFields")]
+        private InputList<string>? _optionalFields;
+
+        /// <summary>
+        /// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
+        /// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+        /// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        /// </summary>
+        public InputList<string> OptionalFields
+        {
+            get => _optionalFields ?? (_optionalFields = new InputList<string>());
+            set => _optionalFields = value;
+        }
+
+        /// <summary>
+        /// Specifies the optional logging mode for the load balancer traffic.
+        /// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+        /// Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+        /// </summary>
+        [Input("optionalMode")]
+        public Input<string>? OptionalMode { get; set; }
+
         /// <summary>
         /// This field can only be specified if logging is enabled for this backend service. The value of
         /// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer

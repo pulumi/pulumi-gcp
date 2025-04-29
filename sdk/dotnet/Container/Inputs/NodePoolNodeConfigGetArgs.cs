@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? BootDiskKmsKey { get; set; }
 
         /// <summary>
-        /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         /// </summary>
         [Input("confidentialNodes")]
         public Input<Inputs.NodePoolNodeConfigConfidentialNodesGetArgs>? ConfidentialNodes { get; set; }
@@ -83,6 +83,12 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("fastSocket")]
         public Input<Inputs.NodePoolNodeConfigFastSocketGetArgs>? FastSocket { get; set; }
+
+        /// <summary>
+        /// Enables Flex Start provisioning model for the node pool
+        /// </summary>
+        [Input("flexStart")]
+        public Input<bool>? FlexStart { get; set; }
 
         /// <summary>
         /// GCFS configuration for this node.

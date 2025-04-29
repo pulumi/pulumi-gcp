@@ -833,6 +833,14 @@ if not MYPY:
         """
         Data cache configurations.
         """
+        data_disk_provisioned_iops: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+        """
+        data_disk_provisioned_throughput: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+        """
         database_flags: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgsDict']]]]
         deletion_protection_enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -849,11 +857,11 @@ if not MYPY:
         """
         disk_size: NotRequired[pulumi.Input[builtins.int]]
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         """
         disk_type: NotRequired[pulumi.Input[builtins.str]]
         """
-        The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+        The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
         """
         edition: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -881,6 +889,10 @@ if not MYPY:
         pricing_plan: NotRequired[pulumi.Input[builtins.str]]
         """
         Pricing plan for this instance, can only be `PER_USE`.
+        """
+        retain_backups_on_delete: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
         """
         sql_server_audit_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgsDict']]
         time_zone: NotRequired[pulumi.Input[builtins.str]]
@@ -911,6 +923,8 @@ class DatabaseInstanceSettingsArgs:
                  collation: Optional[pulumi.Input[builtins.str]] = None,
                  connector_enforcement: Optional[pulumi.Input[builtins.str]] = None,
                  data_cache_config: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']] = None,
+                 data_disk_provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
+                 data_disk_provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  deny_maintenance_period: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']] = None,
@@ -927,6 +941,7 @@ class DatabaseInstanceSettingsArgs:
                  maintenance_window: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']] = None,
                  password_validation_policy: Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgs']] = None,
                  pricing_plan: Optional[pulumi.Input[builtins.str]] = None,
+                 retain_backups_on_delete: Optional[pulumi.Input[builtins.bool]] = None,
                  sql_server_audit_config: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']] = None,
                  time_zone: Optional[pulumi.Input[builtins.str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -946,17 +961,20 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[builtins.str] collation: The name of server instance collation.
         :param pulumi.Input[builtins.str] connector_enforcement: Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
         :param pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs'] data_cache_config: Data cache configurations.
+        :param pulumi.Input[builtins.int] data_disk_provisioned_iops: Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+        :param pulumi.Input[builtins.int] data_disk_provisioned_throughput: Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
         :param pulumi.Input[builtins.bool] deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param pulumi.Input[builtins.bool] disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
         :param pulumi.Input[builtins.int] disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param pulumi.Input[builtins.int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
-        :param pulumi.Input[builtins.str] disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+        :param pulumi.Input[builtins.int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+        :param pulumi.Input[builtins.str] disk_type: The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
         :param pulumi.Input[builtins.str] edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         :param pulumi.Input[builtins.bool] enable_dataplex_integration: Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
         :param pulumi.Input[builtins.bool] enable_google_ml_integration: Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
         :param pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs'] insights_config: Configuration of Query Insights.
         :param pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs'] maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
         :param pulumi.Input[builtins.str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
+        :param pulumi.Input[builtins.bool] retain_backups_on_delete: When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
         :param pulumi.Input[builtins.str] time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] user_labels: A set of key/value user label pairs to assign to the instance.
         :param pulumi.Input[builtins.int] version: Used to make sure changes to the `settings` block are
@@ -979,6 +997,10 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         if data_cache_config is not None:
             pulumi.set(__self__, "data_cache_config", data_cache_config)
+        if data_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "data_disk_provisioned_iops", data_disk_provisioned_iops)
+        if data_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "data_disk_provisioned_throughput", data_disk_provisioned_throughput)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
         if deletion_protection_enabled is not None:
@@ -1011,6 +1033,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "password_validation_policy", password_validation_policy)
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
+        if retain_backups_on_delete is not None:
+            pulumi.set(__self__, "retain_backups_on_delete", retain_backups_on_delete)
         if sql_server_audit_config is not None:
             pulumi.set(__self__, "sql_server_audit_config", sql_server_audit_config)
         if time_zone is not None:
@@ -1128,6 +1152,30 @@ class DatabaseInstanceSettingsArgs:
         pulumi.set(self, "data_cache_config", value)
 
     @property
+    @pulumi.getter(name="dataDiskProvisionedIops")
+    def data_disk_provisioned_iops(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+        """
+        return pulumi.get(self, "data_disk_provisioned_iops")
+
+    @data_disk_provisioned_iops.setter
+    def data_disk_provisioned_iops(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "data_disk_provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="dataDiskProvisionedThroughput")
+    def data_disk_provisioned_throughput(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+        """
+        return pulumi.get(self, "data_disk_provisioned_throughput")
+
+    @data_disk_provisioned_throughput.setter
+    def data_disk_provisioned_throughput(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "data_disk_provisioned_throughput", value)
+
+    @property
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]:
         return pulumi.get(self, "database_flags")
@@ -1185,7 +1233,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         """
         return pulumi.get(self, "disk_size")
 
@@ -1197,7 +1245,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+        The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
         """
         return pulumi.get(self, "disk_type")
 
@@ -1303,6 +1351,18 @@ class DatabaseInstanceSettingsArgs:
     @pricing_plan.setter
     def pricing_plan(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "pricing_plan", value)
+
+    @property
+    @pulumi.getter(name="retainBackupsOnDelete")
+    def retain_backups_on_delete(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+        """
+        return pulumi.get(self, "retain_backups_on_delete")
+
+    @retain_backups_on_delete.setter
+    def retain_backups_on_delete(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "retain_backups_on_delete", value)
 
     @property
     @pulumi.getter(name="sqlServerAuditConfig")
@@ -1899,6 +1959,10 @@ if not MYPY:
         The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         """
         authorized_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgsDict']]]]
+        custom_subject_alternative_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        """
         enable_private_path_for_google_cloud_services: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
@@ -1941,6 +2005,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     def __init__(__self__, *,
                  allocated_ip_range: Optional[pulumi.Input[builtins.str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]] = None,
+                 custom_subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  enable_private_path_for_google_cloud_services: Optional[pulumi.Input[builtins.bool]] = None,
                  ipv4_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  private_network: Optional[pulumi.Input[builtins.str]] = None,
@@ -1950,6 +2015,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                  ssl_mode: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] custom_subject_alternative_names: The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
         :param pulumi.Input[builtins.bool] enable_private_path_for_google_cloud_services: Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
         :param pulumi.Input[builtins.bool] ipv4_enabled: Whether this Cloud SQL instance should be assigned
                a public IPV4 address. At least `ipv4_enabled` must be enabled or a
@@ -1968,6 +2034,8 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         if authorized_networks is not None:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
+        if custom_subject_alternative_names is not None:
+            pulumi.set(__self__, "custom_subject_alternative_names", custom_subject_alternative_names)
         if enable_private_path_for_google_cloud_services is not None:
             pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
         if ipv4_enabled is not None:
@@ -2003,6 +2071,18 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     @authorized_networks.setter
     def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]):
         pulumi.set(self, "authorized_networks", value)
+
+    @property
+    @pulumi.getter(name="customSubjectAlternativeNames")
+    def custom_subject_alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        """
+        return pulumi.get(self, "custom_subject_alternative_names")
+
+    @custom_subject_alternative_names.setter
+    def custom_subject_alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "custom_subject_alternative_names", value)
 
     @property
     @pulumi.getter(name="enablePrivatePathForGoogleCloudServices")

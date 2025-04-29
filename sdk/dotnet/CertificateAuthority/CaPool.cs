@@ -89,6 +89,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                     },
     ///                 },
     ///             },
+    ///             BackdateDuration = "3600s",
     ///             MaximumLifetime = "50000s",
     ///             AllowedIssuanceModes = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyAllowedIssuanceModesArgs
     ///             {

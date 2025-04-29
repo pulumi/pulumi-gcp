@@ -38,6 +38,7 @@ class MetastoreServiceArgs:
                  scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
                  scheduled_backup: Optional[pulumi.Input['MetastoreServiceScheduledBackupArgs']] = None,
                  service_id: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -82,6 +83,9 @@ class MetastoreServiceArgs:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[builtins.str] tier: The tier of the service.
@@ -119,6 +123,8 @@ class MetastoreServiceArgs:
             pulumi.set(__self__, "scheduled_backup", scheduled_backup)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if telemetry_config is not None:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
@@ -341,6 +347,20 @@ class MetastoreServiceArgs:
         pulumi.set(self, "service_id", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="telemetryConfig")
     def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
         """
@@ -394,6 +414,7 @@ class _MetastoreServiceState:
                  service_id: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  state_message: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input[builtins.str]] = None,
                  uid: Optional[pulumi.Input[builtins.str]] = None,
@@ -449,6 +470,9 @@ class _MetastoreServiceState:
                - - -
         :param pulumi.Input[builtins.str] state: The current state of the metastore service.
         :param pulumi.Input[builtins.str] state_message: Additional information about the current state of the metastore service, if available.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[builtins.str] tier: The tier of the service.
@@ -504,6 +528,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "state", state)
         if state_message is not None:
             pulumi.set(__self__, "state_message", state_message)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if telemetry_config is not None:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
@@ -827,6 +853,20 @@ class _MetastoreServiceState:
         pulumi.set(self, "state_message", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="telemetryConfig")
     def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
         """
@@ -898,6 +938,7 @@ class MetastoreService(pulumi.CustomResource):
                  scaling_config: Optional[pulumi.Input[Union['MetastoreServiceScalingConfigArgs', 'MetastoreServiceScalingConfigArgsDict']]] = None,
                  scheduled_backup: Optional[pulumi.Input[Union['MetastoreServiceScheduledBackupArgs', 'MetastoreServiceScheduledBackupArgsDict']]] = None,
                  service_id: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  telemetry_config: Optional[pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
                  tier: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -1254,6 +1295,9 @@ class MetastoreService(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[builtins.str] tier: The tier of the service.
@@ -1607,6 +1651,7 @@ class MetastoreService(pulumi.CustomResource):
                  scaling_config: Optional[pulumi.Input[Union['MetastoreServiceScalingConfigArgs', 'MetastoreServiceScalingConfigArgsDict']]] = None,
                  scheduled_backup: Optional[pulumi.Input[Union['MetastoreServiceScheduledBackupArgs', 'MetastoreServiceScheduledBackupArgsDict']]] = None,
                  service_id: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  telemetry_config: Optional[pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
                  tier: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -1634,6 +1679,7 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["scaling_config"] = scaling_config
             __props__.__dict__["scheduled_backup"] = scheduled_backup
             __props__.__dict__["service_id"] = service_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["telemetry_config"] = telemetry_config
             __props__.__dict__["tier"] = tier
             __props__.__dict__["artifact_gcs_uri"] = None
@@ -1682,6 +1728,7 @@ class MetastoreService(pulumi.CustomResource):
             service_id: Optional[pulumi.Input[builtins.str]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
             state_message: Optional[pulumi.Input[builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             telemetry_config: Optional[pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']]] = None,
             tier: Optional[pulumi.Input[builtins.str]] = None,
             uid: Optional[pulumi.Input[builtins.str]] = None,
@@ -1742,6 +1789,9 @@ class MetastoreService(pulumi.CustomResource):
                - - -
         :param pulumi.Input[builtins.str] state: The current state of the metastore service.
         :param pulumi.Input[builtins.str] state_message: Additional information about the current state of the metastore service, if available.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[builtins.str] tier: The tier of the service.
@@ -1777,6 +1827,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["state"] = state
         __props__.__dict__["state_message"] = state_message
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["telemetry_config"] = telemetry_config
         __props__.__dict__["tier"] = tier
         __props__.__dict__["uid"] = uid
@@ -1999,6 +2050,16 @@ class MetastoreService(pulumi.CustomResource):
         Additional information about the current state of the metastore service, if available.
         """
         return pulumi.get(self, "state_message")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="telemetryConfig")

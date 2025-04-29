@@ -402,14 +402,16 @@ class ConnectCluster(pulumi.CustomResource):
         managedkafka = gcp.projects.Service("managedkafka",
             project=project.project_id,
             service="managedkafka.googleapis.com",
-            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
         mkc_secondary_subnet = gcp.compute.Subnetwork("mkc_secondary_subnet",
             project=project.project_id,
             name="my-secondary-subnetwork",
             ip_cidr_range="10.3.0.0/16",
             region="us-central1",
             network="default",
-            opts = pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         gmk_cluster = gcp.managedkafka.Cluster("gmk_cluster",
             project=project.project_id,
             cluster_id="my-cluster",
@@ -527,14 +529,16 @@ class ConnectCluster(pulumi.CustomResource):
         managedkafka = gcp.projects.Service("managedkafka",
             project=project.project_id,
             service="managedkafka.googleapis.com",
-            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
         mkc_secondary_subnet = gcp.compute.Subnetwork("mkc_secondary_subnet",
             project=project.project_id,
             name="my-secondary-subnetwork",
             ip_cidr_range="10.3.0.0/16",
             region="us-central1",
             network="default",
-            opts = pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         gmk_cluster = gcp.managedkafka.Cluster("gmk_cluster",
             project=project.project_id,
             cluster_id="my-cluster",

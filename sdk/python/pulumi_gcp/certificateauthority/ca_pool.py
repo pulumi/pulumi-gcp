@@ -413,6 +413,7 @@ class CaPool(pulumi.CustomResource):
                         },
                     },
                 ],
+                "backdate_duration": "3600s",
                 "maximum_lifetime": "50000s",
                 "allowed_issuance_modes": {
                     "allow_csr_based_issuance": True,
@@ -625,6 +626,7 @@ class CaPool(pulumi.CustomResource):
                         },
                     },
                 ],
+                "backdate_duration": "3600s",
                 "maximum_lifetime": "50000s",
                 "allowed_issuance_modes": {
                     "allow_csr_based_issuance": True,

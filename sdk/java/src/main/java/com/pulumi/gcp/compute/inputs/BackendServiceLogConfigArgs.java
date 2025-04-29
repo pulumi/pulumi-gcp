@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +31,44 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<Boolean>> enable() {
         return Optional.ofNullable(this.enable);
+    }
+
+    /**
+     * This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
+     * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+     * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+     * 
+     */
+    @Import(name="optionalFields")
+    private @Nullable Output<List<String>> optionalFields;
+
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
+     * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+     * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+     * 
+     */
+    public Optional<Output<List<String>>> optionalFields() {
+        return Optional.ofNullable(this.optionalFields);
+    }
+
+    /**
+     * Specifies the optional logging mode for the load balancer traffic.
+     * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+     * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+     * 
+     */
+    @Import(name="optionalMode")
+    private @Nullable Output<String> optionalMode;
+
+    /**
+     * @return Specifies the optional logging mode for the load balancer traffic.
+     * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+     * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+     * 
+     */
+    public Optional<Output<String>> optionalMode() {
+        return Optional.ofNullable(this.optionalMode);
     }
 
     /**
@@ -56,6 +96,8 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
 
     private BackendServiceLogConfigArgs(BackendServiceLogConfigArgs $) {
         this.enable = $.enable;
+        this.optionalFields = $.optionalFields;
+        this.optionalMode = $.optionalMode;
         this.sampleRate = $.sampleRate;
     }
 
@@ -96,6 +138,68 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
          */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
+        }
+
+        /**
+         * @param optionalFields This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
+         * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+         * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalFields(@Nullable Output<List<String>> optionalFields) {
+            $.optionalFields = optionalFields;
+            return this;
+        }
+
+        /**
+         * @param optionalFields This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
+         * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+         * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalFields(List<String> optionalFields) {
+            return optionalFields(Output.of(optionalFields));
+        }
+
+        /**
+         * @param optionalFields This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
+         * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+         * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalFields(String... optionalFields) {
+            return optionalFields(List.of(optionalFields));
+        }
+
+        /**
+         * @param optionalMode Specifies the optional logging mode for the load balancer traffic.
+         * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+         * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalMode(@Nullable Output<String> optionalMode) {
+            $.optionalMode = optionalMode;
+            return this;
+        }
+
+        /**
+         * @param optionalMode Specifies the optional logging mode for the load balancer traffic.
+         * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+         * Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionalMode(String optionalMode) {
+            return optionalMode(Output.of(optionalMode));
         }
 
         /**

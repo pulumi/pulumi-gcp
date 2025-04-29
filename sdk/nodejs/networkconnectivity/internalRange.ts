@@ -199,7 +199,14 @@ export class InternalRange extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+     * Only IPv4 CIDR ranges are supported.
+     */
+    public readonly excludeCidrRanges!: pulumi.Output<string[] | undefined>;
+    /**
      * The IP range that this internal range defines.
+     * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+     * NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
@@ -238,6 +245,8 @@ export class InternalRange extends pulumi.CustomResource {
     /**
      * An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
      * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+     * NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
+     * a redundant parameter.
      */
     public readonly prefixLength!: pulumi.Output<number | undefined>;
     /**
@@ -282,6 +291,7 @@ export class InternalRange extends pulumi.CustomResource {
             const state = argsOrState as InternalRangeState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["excludeCidrRanges"] = state ? state.excludeCidrRanges : undefined;
             resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["migration"] = state ? state.migration : undefined;
@@ -307,6 +317,7 @@ export class InternalRange extends pulumi.CustomResource {
                 throw new Error("Missing required property 'usage'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["excludeCidrRanges"] = args ? args.excludeCidrRanges : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["migration"] = args ? args.migration : undefined;
@@ -342,7 +353,14 @@ export interface InternalRangeState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+     * Only IPv4 CIDR ranges are supported.
+     */
+    excludeCidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The IP range that this internal range defines.
+     * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+     * NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
@@ -381,6 +399,8 @@ export interface InternalRangeState {
     /**
      * An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
      * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+     * NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
+     * a redundant parameter.
      */
     prefixLength?: pulumi.Input<number>;
     /**
@@ -420,7 +440,14 @@ export interface InternalRangeArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+     * Only IPv4 CIDR ranges are supported.
+     */
+    excludeCidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The IP range that this internal range defines.
+     * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+     * NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
@@ -459,6 +486,8 @@ export interface InternalRangeArgs {
     /**
      * An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
      * If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+     * NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
+     * a redundant parameter.
      */
     prefixLength?: pulumi.Input<number>;
     /**

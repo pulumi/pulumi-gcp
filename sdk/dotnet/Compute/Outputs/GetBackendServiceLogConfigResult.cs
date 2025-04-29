@@ -18,6 +18,17 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool Enable;
         /// <summary>
+        /// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
+        /// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+        /// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        /// </summary>
+        public readonly ImmutableArray<string> OptionalFields;
+        /// <summary>
+        /// Specifies the optional logging mode for the load balancer traffic.
+        /// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+        /// </summary>
+        public readonly string OptionalMode;
+        /// <summary>
         /// This field can only be specified if logging is enabled for this backend service. The value of
         /// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
         /// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -29,9 +40,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         private GetBackendServiceLogConfigResult(
             bool enable,
 
+            ImmutableArray<string> optionalFields,
+
+            string optionalMode,
+
             double sampleRate)
         {
             Enable = enable;
+            OptionalFields = optionalFields;
+            OptionalMode = optionalMode;
             SampleRate = sampleRate;
         }
     }

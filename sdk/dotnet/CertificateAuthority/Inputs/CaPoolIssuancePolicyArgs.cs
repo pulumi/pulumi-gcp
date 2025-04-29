@@ -34,6 +34,16 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         }
 
         /// <summary>
+        /// The duration to backdate all certificates issued from this CaPool. If not set, the
+        /// certificates will be issued with a not_before_time of the issuance time (i.e. the current
+        /// time). If set, the certificates will be issued with a not_before_time of the issuance
+        /// time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+        /// requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+        /// </summary>
+        [Input("backdateDuration")]
+        public Input<string>? BackdateDuration { get; set; }
+
+        /// <summary>
         /// A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
         /// includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
         /// request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate

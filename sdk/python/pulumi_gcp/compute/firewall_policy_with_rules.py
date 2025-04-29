@@ -338,7 +338,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": True,
                     "action": "allow",
                     "direction": "EGRESS",
-                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.name}/global/networks/default"],
+                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.project_id}/global/networks/default"],
                     "match": {
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [
@@ -519,7 +519,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": True,
                     "action": "allow",
                     "direction": "EGRESS",
-                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.name}/global/networks/default"],
+                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.project_id}/global/networks/default"],
                     "match": {
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [

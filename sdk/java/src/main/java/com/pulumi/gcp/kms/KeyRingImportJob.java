@@ -105,7 +105,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
     }
     /**
      * The wrapping method to be used for incoming key material.
-     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
      * 
      */
     @Export(name="importMethod", refs={String.class}, tree="[0]")
@@ -113,7 +113,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The wrapping method to be used for incoming key material.
-     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
      * 
      */
     public Output<String> importMethod() {

@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.outputs.GetBackendServiceCustomMetric;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLogConfig;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceMaxStreamDuration;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceSecuritySetting;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceStrongSessionAffinityCooky;
@@ -83,6 +84,7 @@ public final class GetBackendServiceResult {
     private List<GetBackendServiceLocalityLbPolicy> localityLbPolicies;
     private String localityLbPolicy;
     private List<GetBackendServiceLogConfig> logConfigs;
+    private List<GetBackendServiceMaxStreamDuration> maxStreamDurations;
     private String name;
     private List<GetBackendServiceOutlierDetection> outlierDetections;
     /**
@@ -222,6 +224,9 @@ public final class GetBackendServiceResult {
     public List<GetBackendServiceLogConfig> logConfigs() {
         return this.logConfigs;
     }
+    public List<GetBackendServiceMaxStreamDuration> maxStreamDurations() {
+        return this.maxStreamDurations;
+    }
     public String name() {
         return this.name;
     }
@@ -315,6 +320,7 @@ public final class GetBackendServiceResult {
         private List<GetBackendServiceLocalityLbPolicy> localityLbPolicies;
         private String localityLbPolicy;
         private List<GetBackendServiceLogConfig> logConfigs;
+        private List<GetBackendServiceMaxStreamDuration> maxStreamDurations;
         private String name;
         private List<GetBackendServiceOutlierDetection> outlierDetections;
         private String portName;
@@ -355,6 +361,7 @@ public final class GetBackendServiceResult {
     	      this.localityLbPolicies = defaults.localityLbPolicies;
     	      this.localityLbPolicy = defaults.localityLbPolicy;
     	      this.logConfigs = defaults.logConfigs;
+    	      this.maxStreamDurations = defaults.maxStreamDurations;
     	      this.name = defaults.name;
     	      this.outlierDetections = defaults.outlierDetections;
     	      this.portName = defaults.portName;
@@ -596,6 +603,17 @@ public final class GetBackendServiceResult {
             return logConfigs(List.of(logConfigs));
         }
         @CustomType.Setter
+        public Builder maxStreamDurations(List<GetBackendServiceMaxStreamDuration> maxStreamDurations) {
+            if (maxStreamDurations == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "maxStreamDurations");
+            }
+            this.maxStreamDurations = maxStreamDurations;
+            return this;
+        }
+        public Builder maxStreamDurations(GetBackendServiceMaxStreamDuration... maxStreamDurations) {
+            return maxStreamDurations(List.of(maxStreamDurations));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceResult", "name");
@@ -735,6 +753,7 @@ public final class GetBackendServiceResult {
             _resultValue.localityLbPolicies = localityLbPolicies;
             _resultValue.localityLbPolicy = localityLbPolicy;
             _resultValue.logConfigs = logConfigs;
+            _resultValue.maxStreamDurations = maxStreamDurations;
             _resultValue.name = name;
             _resultValue.outlierDetections = outlierDetections;
             _resultValue.portName = portName;

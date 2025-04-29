@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -16,6 +18,19 @@ public final class GetBackendServiceLogConfig {
      * 
      */
     private Boolean enable;
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
+     * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+     * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+     * 
+     */
+    private List<String> optionalFields;
+    /**
+     * @return Specifies the optional logging mode for the load balancer traffic.
+     * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: [&#34;INCLUDE_ALL_OPTIONAL&#34;, &#34;EXCLUDE_ALL_OPTIONAL&#34;, &#34;CUSTOM&#34;]
+     * 
+     */
+    private String optionalMode;
     /**
      * @return This field can only be specified if logging is enabled for this backend service. The value of
      * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
@@ -32,6 +47,23 @@ public final class GetBackendServiceLogConfig {
      */
     public Boolean enable() {
         return this.enable;
+    }
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and &#34;logConfig.optionalMode&#34;
+     * was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+     * For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+     * 
+     */
+    public List<String> optionalFields() {
+        return this.optionalFields;
+    }
+    /**
+     * @return Specifies the optional logging mode for the load balancer traffic.
+     * Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: [&#34;INCLUDE_ALL_OPTIONAL&#34;, &#34;EXCLUDE_ALL_OPTIONAL&#34;, &#34;CUSTOM&#34;]
+     * 
+     */
+    public String optionalMode() {
+        return this.optionalMode;
     }
     /**
      * @return This field can only be specified if logging is enabled for this backend service. The value of
@@ -54,11 +86,15 @@ public final class GetBackendServiceLogConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enable;
+        private List<String> optionalFields;
+        private String optionalMode;
         private Double sampleRate;
         public Builder() {}
         public Builder(GetBackendServiceLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
+    	      this.optionalFields = defaults.optionalFields;
+    	      this.optionalMode = defaults.optionalMode;
     	      this.sampleRate = defaults.sampleRate;
         }
 
@@ -68,6 +104,25 @@ public final class GetBackendServiceLogConfig {
               throw new MissingRequiredPropertyException("GetBackendServiceLogConfig", "enable");
             }
             this.enable = enable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder optionalFields(List<String> optionalFields) {
+            if (optionalFields == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceLogConfig", "optionalFields");
+            }
+            this.optionalFields = optionalFields;
+            return this;
+        }
+        public Builder optionalFields(String... optionalFields) {
+            return optionalFields(List.of(optionalFields));
+        }
+        @CustomType.Setter
+        public Builder optionalMode(String optionalMode) {
+            if (optionalMode == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceLogConfig", "optionalMode");
+            }
+            this.optionalMode = optionalMode;
             return this;
         }
         @CustomType.Setter
@@ -81,6 +136,8 @@ public final class GetBackendServiceLogConfig {
         public GetBackendServiceLogConfig build() {
             final var _resultValue = new GetBackendServiceLogConfig();
             _resultValue.enable = enable;
+            _resultValue.optionalFields = optionalFields;
+            _resultValue.optionalMode = optionalMode;
             _resultValue.sampleRate = sampleRate;
             return _resultValue;
         }

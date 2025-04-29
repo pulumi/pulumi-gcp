@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class FeatureMembershipConfigmanagementConfigSyncGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("deploymentOverrides")]
+        private InputList<Inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideGetArgs>? _deploymentOverrides;
+
+        /// <summary>
+        /// The override configurations for the Config Sync Deployments. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideGetArgs> DeploymentOverrides
+        {
+            get => _deploymentOverrides ?? (_deploymentOverrides = new InputList<Inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideGetArgs>());
+            set => _deploymentOverrides = value;
+        }
+
         /// <summary>
         /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         /// </summary>

@@ -568,6 +568,9 @@ func GetSpannerCustomEndpoint(ctx *pulumi.Context) string {
 func GetSqlCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:sqlCustomEndpoint")
 }
+func GetStorageBatchOperationsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:storageBatchOperationsCustomEndpoint")
+}
 func GetStorageControlCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:storageControlCustomEndpoint")
 }

@@ -90,6 +90,8 @@ from .get_security_policy import *
 from .get_snapshot import *
 from .get_snapshot_iam_policy import *
 from .get_ssl_policy import *
+from .get_storage_pool_iam_policy import *
+from .get_storage_pool_types import *
 from .get_subnetwork import *
 from .get_subnetwork_iam_policy import *
 from .get_subnetworks import *
@@ -193,6 +195,7 @@ from .region_url_map import *
 from .reservation import *
 from .resize_request import *
 from .resource_policy import *
+from .resource_policy_attachment import *
 from .route import *
 from .router import *
 from .router_interface import *
@@ -213,6 +216,10 @@ from .snapshot_iam_member import *
 from .snapshot_iam_policy import *
 from .ssl_certificate import *
 from .ssl_policy import *
+from .storage_pool import *
+from .storage_pool_iam_binding import *
+from .storage_pool_iam_member import *
+from .storage_pool_iam_policy import *
 from .subnetwork import *
 from .subnetwork_iam_binding import *
 from .subnetwork_iam_member import *

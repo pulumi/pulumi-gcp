@@ -130,6 +130,9 @@ type GcpUserAccessBinding struct {
 	//
 	// ***
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
+	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+	// Structure is documented below.
+	ScopedAccessSettings GcpUserAccessBindingScopedAccessSettingArrayOutput `pulumi:"scopedAccessSettings"`
 	// Optional. The Google Cloud session length (GCSL) policy for the group key.
 	// Structure is documented below.
 	SessionSettings GcpUserAccessBindingSessionSettingsPtrOutput `pulumi:"sessionSettings"`
@@ -181,6 +184,9 @@ type gcpUserAccessBindingState struct {
 	//
 	// ***
 	OrganizationId *string `pulumi:"organizationId"`
+	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+	// Structure is documented below.
+	ScopedAccessSettings []GcpUserAccessBindingScopedAccessSetting `pulumi:"scopedAccessSettings"`
 	// Optional. The Google Cloud session length (GCSL) policy for the group key.
 	// Structure is documented below.
 	SessionSettings *GcpUserAccessBindingSessionSettings `pulumi:"sessionSettings"`
@@ -197,6 +203,9 @@ type GcpUserAccessBindingState struct {
 	//
 	// ***
 	OrganizationId pulumi.StringPtrInput
+	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+	// Structure is documented below.
+	ScopedAccessSettings GcpUserAccessBindingScopedAccessSettingArrayInput
 	// Optional. The Google Cloud session length (GCSL) policy for the group key.
 	// Structure is documented below.
 	SessionSettings GcpUserAccessBindingSessionSettingsPtrInput
@@ -215,6 +224,9 @@ type gcpUserAccessBindingArgs struct {
 	//
 	// ***
 	OrganizationId string `pulumi:"organizationId"`
+	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+	// Structure is documented below.
+	ScopedAccessSettings []GcpUserAccessBindingScopedAccessSetting `pulumi:"scopedAccessSettings"`
 	// Optional. The Google Cloud session length (GCSL) policy for the group key.
 	// Structure is documented below.
 	SessionSettings *GcpUserAccessBindingSessionSettings `pulumi:"sessionSettings"`
@@ -230,6 +242,9 @@ type GcpUserAccessBindingArgs struct {
 	//
 	// ***
 	OrganizationId pulumi.StringInput
+	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+	// Structure is documented below.
+	ScopedAccessSettings GcpUserAccessBindingScopedAccessSettingArrayInput
 	// Optional. The Google Cloud session length (GCSL) policy for the group key.
 	// Structure is documented below.
 	SessionSettings GcpUserAccessBindingSessionSettingsPtrInput
@@ -342,6 +357,14 @@ func (o GcpUserAccessBindingOutput) Name() pulumi.StringOutput {
 // ***
 func (o GcpUserAccessBindingOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpUserAccessBinding) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+// Structure is documented below.
+func (o GcpUserAccessBindingOutput) ScopedAccessSettings() GcpUserAccessBindingScopedAccessSettingArrayOutput {
+	return o.ApplyT(func(v *GcpUserAccessBinding) GcpUserAccessBindingScopedAccessSettingArrayOutput {
+		return v.ScopedAccessSettings
+	}).(GcpUserAccessBindingScopedAccessSettingArrayOutput)
 }
 
 // Optional. The Google Cloud session length (GCSL) policy for the group key.

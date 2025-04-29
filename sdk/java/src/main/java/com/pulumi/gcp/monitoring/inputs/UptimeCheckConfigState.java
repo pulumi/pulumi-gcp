@@ -11,6 +11,7 @@ import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigResourceGroupArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigSyntheticMonitorArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigTcpCheckArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -87,6 +88,21 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<UptimeCheckConfigHttpCheckArgs>> httpCheck() {
         return Optional.ofNullable(this.httpCheck);
+    }
+
+    /**
+     * Specifies whether to log the results of failed probes to Cloud Logging.
+     * 
+     */
+    @Import(name="logCheckFailures")
+    private @Nullable Output<Boolean> logCheckFailures;
+
+    /**
+     * @return Specifies whether to log the results of failed probes to Cloud Logging.
+     * 
+     */
+    public Optional<Output<Boolean>> logCheckFailures() {
+        return Optional.ofNullable(this.logCheckFailures);
     }
 
     /**
@@ -279,6 +295,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         this.contentMatchers = $.contentMatchers;
         this.displayName = $.displayName;
         this.httpCheck = $.httpCheck;
+        this.logCheckFailures = $.logCheckFailures;
         this.monitoredResource = $.monitoredResource;
         this.name = $.name;
         this.period = $.period;
@@ -409,6 +426,27 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder httpCheck(UptimeCheckConfigHttpCheckArgs httpCheck) {
             return httpCheck(Output.of(httpCheck));
+        }
+
+        /**
+         * @param logCheckFailures Specifies whether to log the results of failed probes to Cloud Logging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logCheckFailures(@Nullable Output<Boolean> logCheckFailures) {
+            $.logCheckFailures = logCheckFailures;
+            return this;
+        }
+
+        /**
+         * @param logCheckFailures Specifies whether to log the results of failed probes to Cloud Logging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logCheckFailures(Boolean logCheckFailures) {
+            return logCheckFailures(Output.of(logCheckFailures));
         }
 
         /**

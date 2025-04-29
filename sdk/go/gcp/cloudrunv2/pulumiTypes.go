@@ -1082,7 +1082,7 @@ type JobTemplateTemplate struct {
 	// The execution environment being used to host this Task.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment *string `pulumi:"executionEnvironment"`
-	// Number of retries allowed per Task, before marking this Task failed.
+	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -1117,7 +1117,7 @@ type JobTemplateTemplateArgs struct {
 	// The execution environment being used to host this Task.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment pulumi.StringPtrInput `pulumi:"executionEnvironment"`
-	// Number of retries allowed per Task, before marking this Task failed.
+	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -1226,7 +1226,7 @@ func (o JobTemplateTemplateOutput) ExecutionEnvironment() pulumi.StringPtrOutput
 	return o.ApplyT(func(v JobTemplateTemplate) *string { return v.ExecutionEnvironment }).(pulumi.StringPtrOutput)
 }
 
-// Number of retries allowed per Task, before marking this Task failed.
+// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 func (o JobTemplateTemplateOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplate) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
@@ -1310,7 +1310,7 @@ func (o JobTemplateTemplatePtrOutput) ExecutionEnvironment() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of retries allowed per Task, before marking this Task failed.
+// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 func (o JobTemplateTemplatePtrOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplate) *int {
 		if v == nil {
@@ -11385,7 +11385,7 @@ type GetJobTemplateTemplate struct {
 	EncryptionKey string `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
 	ExecutionEnvironment string `pulumi:"executionEnvironment"`
-	// Number of retries allowed per Task, before marking this Task failed.
+	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries int `pulumi:"maxRetries"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -11417,7 +11417,7 @@ type GetJobTemplateTemplateArgs struct {
 	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
 	ExecutionEnvironment pulumi.StringInput `pulumi:"executionEnvironment"`
-	// Number of retries allowed per Task, before marking this Task failed.
+	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
@@ -11497,7 +11497,7 @@ func (o GetJobTemplateTemplateOutput) ExecutionEnvironment() pulumi.StringOutput
 	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
 }
 
-// Number of retries allowed per Task, before marking this Task failed.
+// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
 func (o GetJobTemplateTemplateOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) int { return v.MaxRetries }).(pulumi.IntOutput)
 }

@@ -60,6 +60,7 @@ public final class GetInstanceResult {
     private String reservedIpRange;
     private String secondaryIpRange;
     private List<GetInstanceServerCaCert> serverCaCerts;
+    private Map<String,String> tags;
     private String tier;
     private String transitEncryptionMode;
 
@@ -173,6 +174,9 @@ public final class GetInstanceResult {
     public List<GetInstanceServerCaCert> serverCaCerts() {
         return this.serverCaCerts;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
     public String tier() {
         return this.tier;
     }
@@ -224,6 +228,7 @@ public final class GetInstanceResult {
         private String reservedIpRange;
         private String secondaryIpRange;
         private List<GetInstanceServerCaCert> serverCaCerts;
+        private Map<String,String> tags;
         private String tier;
         private String transitEncryptionMode;
         public Builder() {}
@@ -264,6 +269,7 @@ public final class GetInstanceResult {
     	      this.reservedIpRange = defaults.reservedIpRange;
     	      this.secondaryIpRange = defaults.secondaryIpRange;
     	      this.serverCaCerts = defaults.serverCaCerts;
+    	      this.tags = defaults.tags;
     	      this.tier = defaults.tier;
     	      this.transitEncryptionMode = defaults.transitEncryptionMode;
         }
@@ -560,6 +566,14 @@ public final class GetInstanceResult {
             return serverCaCerts(List.of(serverCaCerts));
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tier(String tier) {
             if (tier == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "tier");
@@ -612,6 +626,7 @@ public final class GetInstanceResult {
             _resultValue.reservedIpRange = reservedIpRange;
             _resultValue.secondaryIpRange = secondaryIpRange;
             _resultValue.serverCaCerts = serverCaCerts;
+            _resultValue.tags = tags;
             _resultValue.tier = tier;
             _resultValue.transitEncryptionMode = transitEncryptionMode;
             return _resultValue;

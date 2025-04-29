@@ -18,6 +18,7 @@ import com.pulumi.gcp.compute.outputs.BackendServiceCustomMetric;
 import com.pulumi.gcp.compute.outputs.BackendServiceIap;
 import com.pulumi.gcp.compute.outputs.BackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceLogConfig;
+import com.pulumi.gcp.compute.outputs.BackendServiceMaxStreamDuration;
 import com.pulumi.gcp.compute.outputs.BackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.BackendServiceSecuritySettings;
 import com.pulumi.gcp.compute.outputs.BackendServiceStrongSessionAffinityCookie;
@@ -1405,6 +1406,32 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<BackendServiceLogConfig> logConfig() {
         return this.logConfig;
+    }
+    /**
+     * Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+     * beginning of the stream until the response has been completely processed, including all retries. A stream that
+     * does not complete in this duration is closed.
+     * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+     * This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+     * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="maxStreamDuration", refs={BackendServiceMaxStreamDuration.class}, tree="[0]")
+    private Output</* @Nullable */ BackendServiceMaxStreamDuration> maxStreamDuration;
+
+    /**
+     * @return Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+     * beginning of the stream until the response has been completely processed, including all retries. A stream that
+     * does not complete in this duration is closed.
+     * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+     * This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+     * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackendServiceMaxStreamDuration>> maxStreamDuration() {
+        return Codegen.optional(this.maxStreamDuration);
     }
     /**
      * Name of the resource. Provided by the client when the resource is

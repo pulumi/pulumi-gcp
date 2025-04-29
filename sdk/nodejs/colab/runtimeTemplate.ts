@@ -200,7 +200,7 @@ export class RuntimeTemplate extends pulumi.CustomResource {
      * EUC configuration of the NotebookRuntimeTemplate.
      * Structure is documented below.
      */
-    public readonly eucConfig!: pulumi.Output<outputs.colab.RuntimeTemplateEucConfig | undefined>;
+    public readonly eucConfig!: pulumi.Output<outputs.colab.RuntimeTemplateEucConfig>;
     /**
      * Notebook Idle Shutdown configuration for the runtime.
      * Structure is documented below.
@@ -211,7 +211,7 @@ export class RuntimeTemplate extends pulumi.CustomResource {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      *
@@ -251,7 +251,7 @@ export class RuntimeTemplate extends pulumi.CustomResource {
      * Runtime Shielded VM spec.
      * Structure is documented below.
      */
-    public readonly shieldedVmConfig!: pulumi.Output<outputs.colab.RuntimeTemplateShieldedVmConfig | undefined>;
+    public readonly shieldedVmConfig!: pulumi.Output<outputs.colab.RuntimeTemplateShieldedVmConfig>;
     /**
      * The notebook software configuration of the notebook runtime.
      * Structure is documented below.

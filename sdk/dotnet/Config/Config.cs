@@ -1257,6 +1257,13 @@ namespace Pulumi.Gcp
             set => _sqlCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _storageBatchOperationsCustomEndpoint = new __Value<string?>(() => __config.Get("storageBatchOperationsCustomEndpoint"));
+        public static string? StorageBatchOperationsCustomEndpoint
+        {
+            get => _storageBatchOperationsCustomEndpoint.Get();
+            set => _storageBatchOperationsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _storageControlCustomEndpoint = new __Value<string?>(() => __config.Get("storageControlCustomEndpoint"));
         public static string? StorageControlCustomEndpoint
         {

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string BootDiskKmsKey;
         /// <summary>
-        /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult> ConfidentialNodes;
         /// <summary>
@@ -57,6 +57,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Enable or disable NCCL Fast Socket in the node pool.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigFastSocketResult> FastSockets;
+        /// <summary>
+        /// Enables Flex Start provisioning model for the node pool
+        /// </summary>
+        public readonly bool FlexStart;
         /// <summary>
         /// GCFS configuration for this node.
         /// </summary>
@@ -214,6 +218,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigFastSocketResult> fastSockets,
 
+            bool flexStart,
+
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGcfsConfigResult> gcfsConfigs,
 
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGuestAcceleratorResult> guestAccelerators,
@@ -291,6 +297,7 @@ namespace Pulumi.Gcp.Container.Outputs
             EphemeralStorageConfigs = ephemeralStorageConfigs;
             EphemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
             FastSockets = fastSockets;
+            FlexStart = flexStart;
             GcfsConfigs = gcfsConfigs;
             GuestAccelerators = guestAccelerators;
             Gvnics = gvnics;

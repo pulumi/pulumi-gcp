@@ -44,6 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.time.sleep;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
@@ -100,11 +102,17 @@ import javax.annotation.Nullable;
  *                 .dependsOn(servicenetworking)
  *                 .build());
  * 
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(List.of(compute))
+ *                 .build());
+ * 
  *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
  *             .name("apigee-network")
  *             .project(project.projectId())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(compute)
+ *                 .dependsOn(wait120Seconds)
  *                 .build());
  * 
  *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()

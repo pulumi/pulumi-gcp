@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Alloydb.Inputs
     public sealed class InstanceObservabilityConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether assistive experiences are enabled for this AlloyDB instance.
+        /// </summary>
+        [Input("assistiveExperiencesEnabled")]
+        public Input<bool>? AssistiveExperiencesEnabled { get; set; }
+
+        /// <summary>
         /// Observability feature status for an instance.
         /// </summary>
         [Input("enabled")]

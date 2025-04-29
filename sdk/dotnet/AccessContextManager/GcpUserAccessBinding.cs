@@ -137,6 +137,13 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("scopedAccessSettings")]
+        public Output<ImmutableArray<Outputs.GcpUserAccessBindingScopedAccessSetting>> ScopedAccessSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The Google Cloud session length (GCSL) policy for the group key.
         /// Structure is documented below.
         /// </summary>
@@ -210,6 +217,19 @@ namespace Pulumi.Gcp.AccessContextManager
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
+        [Input("scopedAccessSettings")]
+        private InputList<Inputs.GcpUserAccessBindingScopedAccessSettingArgs>? _scopedAccessSettings;
+
+        /// <summary>
+        /// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.GcpUserAccessBindingScopedAccessSettingArgs> ScopedAccessSettings
+        {
+            get => _scopedAccessSettings ?? (_scopedAccessSettings = new InputList<Inputs.GcpUserAccessBindingScopedAccessSettingArgs>());
+            set => _scopedAccessSettings = value;
+        }
+
         /// <summary>
         /// Optional. The Google Cloud session length (GCSL) policy for the group key.
         /// Structure is documented below.
@@ -251,6 +271,19 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
+
+        [Input("scopedAccessSettings")]
+        private InputList<Inputs.GcpUserAccessBindingScopedAccessSettingGetArgs>? _scopedAccessSettings;
+
+        /// <summary>
+        /// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.GcpUserAccessBindingScopedAccessSettingGetArgs> ScopedAccessSettings
+        {
+            get => _scopedAccessSettings ?? (_scopedAccessSettings = new InputList<Inputs.GcpUserAccessBindingScopedAccessSettingGetArgs>());
+            set => _scopedAccessSettings = value;
+        }
 
         /// <summary>
         /// Optional. The Google Cloud session length (GCSL) policy for the group key.

@@ -205,6 +205,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetBackendServiceLocalityLbPolicyResult> LocalityLbPolicies;
         public readonly string LocalityLbPolicy;
         public readonly ImmutableArray<Outputs.GetBackendServiceLogConfigResult> LogConfigs;
+        public readonly ImmutableArray<Outputs.GetBackendServiceMaxStreamDurationResult> MaxStreamDurations;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetBackendServiceOutlierDetectionResult> OutlierDetections;
         /// <summary>
@@ -284,6 +285,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetBackendServiceLogConfigResult> logConfigs,
 
+            ImmutableArray<Outputs.GetBackendServiceMaxStreamDurationResult> maxStreamDurations,
+
             string name,
 
             ImmutableArray<Outputs.GetBackendServiceOutlierDetectionResult> outlierDetections,
@@ -334,6 +337,7 @@ namespace Pulumi.Gcp.Compute
             LocalityLbPolicies = localityLbPolicies;
             LocalityLbPolicy = localityLbPolicy;
             LogConfigs = logConfigs;
+            MaxStreamDurations = maxStreamDurations;
             Name = name;
             OutlierDetections = outlierDetections;
             PortName = portName;

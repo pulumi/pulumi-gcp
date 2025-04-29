@@ -219,6 +219,21 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Enables Flex Start provisioning model for the node pool.
+     * 
+     */
+    @Import(name="flexStart")
+    private @Nullable Output<Boolean> flexStart;
+
+    /**
+     * @return Enables Flex Start provisioning model for the node pool.
+     * 
+     */
+    public Optional<Output<Boolean>> flexStart() {
+        return Optional.ofNullable(this.flexStart);
+    }
+
+    /**
      * Parameters for the Google Container Filesystem (GCFS).
      * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
      * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -819,6 +834,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
         this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
         this.fastSocket = $.fastSocket;
+        this.flexStart = $.flexStart;
         this.gcfsConfig = $.gcfsConfig;
         this.guestAccelerators = $.guestAccelerators;
         this.gvnic = $.gvnic;
@@ -1123,6 +1139,27 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
          */
         public Builder fastSocket(ClusterNodePoolNodeConfigFastSocketArgs fastSocket) {
             return fastSocket(Output.of(fastSocket));
+        }
+
+        /**
+         * @param flexStart Enables Flex Start provisioning model for the node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexStart(@Nullable Output<Boolean> flexStart) {
+            $.flexStart = flexStart;
+            return this;
+        }
+
+        /**
+         * @param flexStart Enables Flex Start provisioning model for the node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexStart(Boolean flexStart) {
+            return flexStart(Output.of(flexStart));
         }
 
         /**

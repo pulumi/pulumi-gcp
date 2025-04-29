@@ -4008,6 +4008,12 @@ type CaPoolIssuancePolicy struct {
 	// Otherwise, any key may be used.
 	// Structure is documented below.
 	AllowedKeyTypes []CaPoolIssuancePolicyAllowedKeyType `pulumi:"allowedKeyTypes"`
+	// The duration to backdate all certificates issued from this CaPool. If not set, the
+	// certificates will be issued with a notBeforeTime of the issuance time (i.e. the current
+	// time). If set, the certificates will be issued with a notBeforeTime of the issuance
+	// time minus the backdate_duration. The notAfterTime will be adjusted to preserve the
+	// requested lifetime. The backdateDuration must be less than or equal to 48 hours.
+	BackdateDuration *string `pulumi:"backdateDuration"`
 	// A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
 	// includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
 	// request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
@@ -4042,6 +4048,12 @@ type CaPoolIssuancePolicyArgs struct {
 	// Otherwise, any key may be used.
 	// Structure is documented below.
 	AllowedKeyTypes CaPoolIssuancePolicyAllowedKeyTypeArrayInput `pulumi:"allowedKeyTypes"`
+	// The duration to backdate all certificates issued from this CaPool. If not set, the
+	// certificates will be issued with a notBeforeTime of the issuance time (i.e. the current
+	// time). If set, the certificates will be issued with a notBeforeTime of the issuance
+	// time minus the backdate_duration. The notAfterTime will be adjusted to preserve the
+	// requested lifetime. The backdateDuration must be less than or equal to 48 hours.
+	BackdateDuration pulumi.StringPtrInput `pulumi:"backdateDuration"`
 	// A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
 	// includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
 	// request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
@@ -4147,6 +4159,15 @@ func (o CaPoolIssuancePolicyOutput) AllowedKeyTypes() CaPoolIssuancePolicyAllowe
 	return o.ApplyT(func(v CaPoolIssuancePolicy) []CaPoolIssuancePolicyAllowedKeyType { return v.AllowedKeyTypes }).(CaPoolIssuancePolicyAllowedKeyTypeArrayOutput)
 }
 
+// The duration to backdate all certificates issued from this CaPool. If not set, the
+// certificates will be issued with a notBeforeTime of the issuance time (i.e. the current
+// time). If set, the certificates will be issued with a notBeforeTime of the issuance
+// time minus the backdate_duration. The notAfterTime will be adjusted to preserve the
+// requested lifetime. The backdateDuration must be less than or equal to 48 hours.
+func (o CaPoolIssuancePolicyOutput) BackdateDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CaPoolIssuancePolicy) *string { return v.BackdateDuration }).(pulumi.StringPtrOutput)
+}
+
 // A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
 // includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
 // request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
@@ -4214,6 +4235,20 @@ func (o CaPoolIssuancePolicyPtrOutput) AllowedKeyTypes() CaPoolIssuancePolicyAll
 		}
 		return v.AllowedKeyTypes
 	}).(CaPoolIssuancePolicyAllowedKeyTypeArrayOutput)
+}
+
+// The duration to backdate all certificates issued from this CaPool. If not set, the
+// certificates will be issued with a notBeforeTime of the issuance time (i.e. the current
+// time). If set, the certificates will be issued with a notBeforeTime of the issuance
+// time minus the backdate_duration. The notAfterTime will be adjusted to preserve the
+// requested lifetime. The backdateDuration must be less than or equal to 48 hours.
+func (o CaPoolIssuancePolicyPtrOutput) BackdateDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CaPoolIssuancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackdateDuration
+	}).(pulumi.StringPtrOutput)
 }
 
 // A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request

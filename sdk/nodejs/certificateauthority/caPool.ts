@@ -64,6 +64,7 @@ import * as utilities from "../utilities";
  *                 },
  *             },
  *         ],
+ *         backdateDuration: "3600s",
  *         maximumLifetime: "50000s",
  *         allowedIssuanceModes: {
  *             allowCsrBasedIssuance: true,

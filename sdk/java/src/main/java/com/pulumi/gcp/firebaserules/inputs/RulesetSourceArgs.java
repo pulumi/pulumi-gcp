@@ -36,12 +36,16 @@ public final class RulesetSourceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
      * 
+     * ***
+     * 
      */
     @Import(name="language")
     private @Nullable Output<String> language;
 
     /**
      * @return `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> language() {
@@ -107,6 +111,8 @@ public final class RulesetSourceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param language `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -117,6 +123,8 @@ public final class RulesetSourceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param language `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -128,6 +128,17 @@ public final class BackendServiceBackend {
      * 
      */
     private @Nullable Double maxUtilization;
+    /**
+     * @return This field indicates whether this backend should be fully utilized before sending traffic to backends
+     * with default preference. This field cannot be set when loadBalancingScheme is set to &#39;EXTERNAL&#39;. The possible values are:
+     * - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+     *   based on RTT.
+     * - DEFAULT: If preferred backends don&#39;t have enough capacity, backends in this layer would be used and
+     *   traffic would be assigned based on the load balancing algorithm you use. This is the default
+     *   Possible values are: `PREFERRED`, `DEFAULT`.
+     * 
+     */
+    private @Nullable String preference;
 
     private BackendServiceBackend() {}
     /**
@@ -266,6 +277,19 @@ public final class BackendServiceBackend {
     public Optional<Double> maxUtilization() {
         return Optional.ofNullable(this.maxUtilization);
     }
+    /**
+     * @return This field indicates whether this backend should be fully utilized before sending traffic to backends
+     * with default preference. This field cannot be set when loadBalancingScheme is set to &#39;EXTERNAL&#39;. The possible values are:
+     * - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+     *   based on RTT.
+     * - DEFAULT: If preferred backends don&#39;t have enough capacity, backends in this layer would be used and
+     *   traffic would be assigned based on the load balancing algorithm you use. This is the default
+     *   Possible values are: `PREFERRED`, `DEFAULT`.
+     * 
+     */
+    public Optional<String> preference() {
+        return Optional.ofNullable(this.preference);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -288,6 +312,7 @@ public final class BackendServiceBackend {
         private @Nullable Double maxRatePerEndpoint;
         private @Nullable Double maxRatePerInstance;
         private @Nullable Double maxUtilization;
+        private @Nullable String preference;
         public Builder() {}
         public Builder(BackendServiceBackend defaults) {
     	      Objects.requireNonNull(defaults);
@@ -303,6 +328,7 @@ public final class BackendServiceBackend {
     	      this.maxRatePerEndpoint = defaults.maxRatePerEndpoint;
     	      this.maxRatePerInstance = defaults.maxRatePerInstance;
     	      this.maxUtilization = defaults.maxUtilization;
+    	      this.preference = defaults.preference;
         }
 
         @CustomType.Setter
@@ -382,6 +408,12 @@ public final class BackendServiceBackend {
             this.maxUtilization = maxUtilization;
             return this;
         }
+        @CustomType.Setter
+        public Builder preference(@Nullable String preference) {
+
+            this.preference = preference;
+            return this;
+        }
         public BackendServiceBackend build() {
             final var _resultValue = new BackendServiceBackend();
             _resultValue.balancingMode = balancingMode;
@@ -396,6 +428,7 @@ public final class BackendServiceBackend {
             _resultValue.maxRatePerEndpoint = maxRatePerEndpoint;
             _resultValue.maxRatePerInstance = maxRatePerInstance;
             _resultValue.maxUtilization = maxUtilization;
+            _resultValue.preference = preference;
             return _resultValue;
         }
     }

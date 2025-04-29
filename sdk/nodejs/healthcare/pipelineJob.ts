@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     dataset: dataset.id,
  *     backfillPipelineJob: {
- *         mappingPipelineJob: pulumi.interpolate`${dataset.id}/pipelinejobs/example_mapping_pipeline`,
+ *         mappingPipelineJob: pulumi.interpolate`${dataset.id}/pipelineJobs/example_mapping_pipeline_job`,
  *     },
  * });
  * ```

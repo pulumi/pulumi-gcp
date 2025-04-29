@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceObservabilityConfig {
     /**
+     * @return Whether assistive experiences are enabled for this AlloyDB instance.
+     * 
+     */
+    private Boolean assistiveExperiencesEnabled;
+    /**
      * @return Observability feature status for an instance.
      * 
      */
@@ -53,6 +58,13 @@ public final class GetInstanceObservabilityConfig {
     private Boolean trackWaitEvents;
 
     private GetInstanceObservabilityConfig() {}
+    /**
+     * @return Whether assistive experiences are enabled for this AlloyDB instance.
+     * 
+     */
+    public Boolean assistiveExperiencesEnabled() {
+        return this.assistiveExperiencesEnabled;
+    }
     /**
      * @return Observability feature status for an instance.
      * 
@@ -119,6 +131,7 @@ public final class GetInstanceObservabilityConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean assistiveExperiencesEnabled;
         private Boolean enabled;
         private Integer maxQueryStringLength;
         private Boolean preserveComments;
@@ -130,6 +143,7 @@ public final class GetInstanceObservabilityConfig {
         public Builder() {}
         public Builder(GetInstanceObservabilityConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.assistiveExperiencesEnabled = defaults.assistiveExperiencesEnabled;
     	      this.enabled = defaults.enabled;
     	      this.maxQueryStringLength = defaults.maxQueryStringLength;
     	      this.preserveComments = defaults.preserveComments;
@@ -140,6 +154,14 @@ public final class GetInstanceObservabilityConfig {
     	      this.trackWaitEvents = defaults.trackWaitEvents;
         }
 
+        @CustomType.Setter
+        public Builder assistiveExperiencesEnabled(Boolean assistiveExperiencesEnabled) {
+            if (assistiveExperiencesEnabled == null) {
+              throw new MissingRequiredPropertyException("GetInstanceObservabilityConfig", "assistiveExperiencesEnabled");
+            }
+            this.assistiveExperiencesEnabled = assistiveExperiencesEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -206,6 +228,7 @@ public final class GetInstanceObservabilityConfig {
         }
         public GetInstanceObservabilityConfig build() {
             final var _resultValue = new GetInstanceObservabilityConfig();
+            _resultValue.assistiveExperiencesEnabled = assistiveExperiencesEnabled;
             _resultValue.enabled = enabled;
             _resultValue.maxQueryStringLength = maxQueryStringLength;
             _resultValue.preserveComments = preserveComments;

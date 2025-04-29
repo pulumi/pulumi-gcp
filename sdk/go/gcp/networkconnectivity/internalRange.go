@@ -284,7 +284,12 @@ type InternalRange struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+	// Only IPv4 CIDR ranges are supported.
+	ExcludeCidrRanges pulumi.StringArrayOutput `pulumi:"excludeCidrRanges"`
 	// The IP range that this internal range defines.
+	// NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+	// NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// User-defined labels.
 	//
@@ -308,6 +313,8 @@ type InternalRange struct {
 	Peering pulumi.StringOutput `pulumi:"peering"`
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+	// NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
+	// a redundant parameter.
 	PrefixLength pulumi.IntPtrOutput `pulumi:"prefixLength"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -375,7 +382,12 @@ type internalRangeState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+	// Only IPv4 CIDR ranges are supported.
+	ExcludeCidrRanges []string `pulumi:"excludeCidrRanges"`
 	// The IP range that this internal range defines.
+	// NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+	// NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// User-defined labels.
 	//
@@ -399,6 +411,8 @@ type internalRangeState struct {
 	Peering *string `pulumi:"peering"`
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+	// NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
+	// a redundant parameter.
 	PrefixLength *int `pulumi:"prefixLength"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -423,7 +437,12 @@ type InternalRangeState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+	// Only IPv4 CIDR ranges are supported.
+	ExcludeCidrRanges pulumi.StringArrayInput
 	// The IP range that this internal range defines.
+	// NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+	// NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
 	IpCidrRange pulumi.StringPtrInput
 	// User-defined labels.
 	//
@@ -447,6 +466,8 @@ type InternalRangeState struct {
 	Peering pulumi.StringPtrInput
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+	// NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
+	// a redundant parameter.
 	PrefixLength pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -473,7 +494,12 @@ func (InternalRangeState) ElementType() reflect.Type {
 type internalRangeArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+	// Only IPv4 CIDR ranges are supported.
+	ExcludeCidrRanges []string `pulumi:"excludeCidrRanges"`
 	// The IP range that this internal range defines.
+	// NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+	// NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// User-defined labels.
 	//
@@ -497,6 +523,8 @@ type internalRangeArgs struct {
 	Peering string `pulumi:"peering"`
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+	// NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
+	// a redundant parameter.
 	PrefixLength *int `pulumi:"prefixLength"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -513,7 +541,12 @@ type internalRangeArgs struct {
 type InternalRangeArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+	// Only IPv4 CIDR ranges are supported.
+	ExcludeCidrRanges pulumi.StringArrayInput
 	// The IP range that this internal range defines.
+	// NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+	// NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
 	IpCidrRange pulumi.StringPtrInput
 	// User-defined labels.
 	//
@@ -537,6 +570,8 @@ type InternalRangeArgs struct {
 	Peering pulumi.StringInput
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+	// NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
+	// a redundant parameter.
 	PrefixLength pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -646,7 +681,15 @@ func (o InternalRangeOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InternalRange) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+// Only IPv4 CIDR ranges are supported.
+func (o InternalRangeOutput) ExcludeCidrRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InternalRange) pulumi.StringArrayOutput { return v.ExcludeCidrRanges }).(pulumi.StringArrayOutput)
+}
+
 // The IP range that this internal range defines.
+// NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+// NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
 func (o InternalRangeOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *InternalRange) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
 }
@@ -691,6 +734,8 @@ func (o InternalRangeOutput) Peering() pulumi.StringOutput {
 
 // An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 // If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+// NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
+// a redundant parameter.
 func (o InternalRangeOutput) PrefixLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InternalRange) pulumi.IntPtrOutput { return v.PrefixLength }).(pulumi.IntPtrOutput)
 }

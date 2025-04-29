@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Firebaserules.Outputs
         public readonly ImmutableArray<Outputs.RulesetSourceFile> Files;
         /// <summary>
         /// `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+        /// 
+        /// - - -
         /// </summary>
         public readonly string? Language;
 

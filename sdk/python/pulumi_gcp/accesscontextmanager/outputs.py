@@ -40,6 +40,13 @@ __all__ = [
     'AccessLevelsAccessLevelCustomExpr',
     'AccessPolicyIamBindingCondition',
     'AccessPolicyIamMemberCondition',
+    'GcpUserAccessBindingScopedAccessSetting',
+    'GcpUserAccessBindingScopedAccessSettingActiveSettings',
+    'GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings',
+    'GcpUserAccessBindingScopedAccessSettingDryRunSettings',
+    'GcpUserAccessBindingScopedAccessSettingScope',
+    'GcpUserAccessBindingScopedAccessSettingScopeClientScope',
+    'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication',
     'GcpUserAccessBindingSessionSettings',
     'ServicePerimeterDryRunEgressPolicyEgressFrom',
     'ServicePerimeterDryRunEgressPolicyEgressFromSource',
@@ -1655,6 +1662,368 @@ class AccessPolicyIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GcpUserAccessBindingScopedAccessSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeSettings":
+            suggest = "active_settings"
+        elif key == "dryRunSettings":
+            suggest = "dry_run_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpUserAccessBindingScopedAccessSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpUserAccessBindingScopedAccessSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpUserAccessBindingScopedAccessSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active_settings: Optional['outputs.GcpUserAccessBindingScopedAccessSettingActiveSettings'] = None,
+                 dry_run_settings: Optional['outputs.GcpUserAccessBindingScopedAccessSettingDryRunSettings'] = None,
+                 scope: Optional['outputs.GcpUserAccessBindingScopedAccessSettingScope'] = None):
+        """
+        :param 'GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs' active_settings: Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+               Structure is documented below.
+        :param 'GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs' dry_run_settings: Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+               Structure is documented below.
+        :param 'GcpUserAccessBindingScopedAccessSettingScopeArgs' scope: Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
+               Structure is documented below.
+        """
+        if active_settings is not None:
+            pulumi.set(__self__, "active_settings", active_settings)
+        if dry_run_settings is not None:
+            pulumi.set(__self__, "dry_run_settings", dry_run_settings)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter(name="activeSettings")
+    def active_settings(self) -> Optional['outputs.GcpUserAccessBindingScopedAccessSettingActiveSettings']:
+        """
+        Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "active_settings")
+
+    @property
+    @pulumi.getter(name="dryRunSettings")
+    def dry_run_settings(self) -> Optional['outputs.GcpUserAccessBindingScopedAccessSettingDryRunSettings']:
+        """
+        Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dry_run_settings")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional['outputs.GcpUserAccessBindingScopedAccessSettingScope']:
+        """
+        Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class GcpUserAccessBindingScopedAccessSettingActiveSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevels":
+            suggest = "access_levels"
+        elif key == "sessionSettings":
+            suggest = "session_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpUserAccessBindingScopedAccessSettingActiveSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpUserAccessBindingScopedAccessSettingActiveSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpUserAccessBindingScopedAccessSettingActiveSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_levels: Optional[Sequence[builtins.str]] = None,
+                 session_settings: Optional['outputs.GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings'] = None):
+        """
+        :param Sequence[builtins.str] access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param 'GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs' session_settings: Optional. Session settings applied to user access on a given AccessScope.
+               Structure is documented below.
+        """
+        if access_levels is not None:
+            pulumi.set(__self__, "access_levels", access_levels)
+        if session_settings is not None:
+            pulumi.set(__self__, "session_settings", session_settings)
+
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "access_levels")
+
+    @property
+    @pulumi.getter(name="sessionSettings")
+    def session_settings(self) -> Optional['outputs.GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings']:
+        """
+        Optional. Session settings applied to user access on a given AccessScope.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "session_settings")
+
+
+@pulumi.output_type
+class GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxInactivity":
+            suggest = "max_inactivity"
+        elif key == "sessionLength":
+            suggest = "session_length"
+        elif key == "sessionLengthEnabled":
+            suggest = "session_length_enabled"
+        elif key == "sessionReauthMethod":
+            suggest = "session_reauth_method"
+        elif key == "useOidcMaxAge":
+            suggest = "use_oidc_max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_inactivity: Optional[builtins.str] = None,
+                 session_length: Optional[builtins.str] = None,
+                 session_length_enabled: Optional[builtins.bool] = None,
+                 session_reauth_method: Optional[builtins.str] = None,
+                 use_oidc_max_age: Optional[builtins.bool] = None):
+        """
+        :param builtins.str max_inactivity: Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+        :param builtins.str session_length: Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+        :param builtins.bool session_length_enabled: Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+        :param builtins.str session_reauth_method: Optional. The session challenges proposed to users when the Google Cloud session length is up.
+               Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+        :param builtins.bool use_oidc_max_age: Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
+        """
+        if max_inactivity is not None:
+            pulumi.set(__self__, "max_inactivity", max_inactivity)
+        if session_length is not None:
+            pulumi.set(__self__, "session_length", session_length)
+        if session_length_enabled is not None:
+            pulumi.set(__self__, "session_length_enabled", session_length_enabled)
+        if session_reauth_method is not None:
+            pulumi.set(__self__, "session_reauth_method", session_reauth_method)
+        if use_oidc_max_age is not None:
+            pulumi.set(__self__, "use_oidc_max_age", use_oidc_max_age)
+
+    @property
+    @pulumi.getter(name="maxInactivity")
+    def max_inactivity(self) -> Optional[builtins.str]:
+        """
+        Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+        """
+        return pulumi.get(self, "max_inactivity")
+
+    @property
+    @pulumi.getter(name="sessionLength")
+    def session_length(self) -> Optional[builtins.str]:
+        """
+        Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+        """
+        return pulumi.get(self, "session_length")
+
+    @property
+    @pulumi.getter(name="sessionLengthEnabled")
+    def session_length_enabled(self) -> Optional[builtins.bool]:
+        """
+        Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+        """
+        return pulumi.get(self, "session_length_enabled")
+
+    @property
+    @pulumi.getter(name="sessionReauthMethod")
+    def session_reauth_method(self) -> Optional[builtins.str]:
+        """
+        Optional. The session challenges proposed to users when the Google Cloud session length is up.
+        Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+        """
+        return pulumi.get(self, "session_reauth_method")
+
+    @property
+    @pulumi.getter(name="useOidcMaxAge")
+    def use_oidc_max_age(self) -> Optional[builtins.bool]:
+        """
+        Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
+        """
+        return pulumi.get(self, "use_oidc_max_age")
+
+
+@pulumi.output_type
+class GcpUserAccessBindingScopedAccessSettingDryRunSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevels":
+            suggest = "access_levels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpUserAccessBindingScopedAccessSettingDryRunSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpUserAccessBindingScopedAccessSettingDryRunSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpUserAccessBindingScopedAccessSettingDryRunSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_levels: Optional[builtins.str] = None):
+        """
+        :param builtins.str access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        if access_levels is not None:
+            pulumi.set(__self__, "access_levels", access_levels)
+
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> Optional[builtins.str]:
+        """
+        Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "access_levels")
+
+
+@pulumi.output_type
+class GcpUserAccessBindingScopedAccessSettingScope(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientScope":
+            suggest = "client_scope"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpUserAccessBindingScopedAccessSettingScope. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpUserAccessBindingScopedAccessSettingScope.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpUserAccessBindingScopedAccessSettingScope.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_scope: Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScope'] = None):
+        """
+        :param 'GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs' client_scope: Optional. Client scope for this access scope.
+               Structure is documented below.
+        """
+        if client_scope is not None:
+            pulumi.set(__self__, "client_scope", client_scope)
+
+    @property
+    @pulumi.getter(name="clientScope")
+    def client_scope(self) -> Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScope']:
+        """
+        Optional. Client scope for this access scope.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_scope")
+
+
+@pulumi.output_type
+class GcpUserAccessBindingScopedAccessSettingScopeClientScope(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "restrictedClientApplication":
+            suggest = "restricted_client_application"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpUserAccessBindingScopedAccessSettingScopeClientScope. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpUserAccessBindingScopedAccessSettingScopeClientScope.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpUserAccessBindingScopedAccessSettingScopeClientScope.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 restricted_client_application: Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication'] = None):
+        """
+        :param 'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs' restricted_client_application: Optional. The application that is subject to this binding's scope.
+               Structure is documented below.
+        """
+        if restricted_client_application is not None:
+            pulumi.set(__self__, "restricted_client_application", restricted_client_application)
+
+    @property
+    @pulumi.getter(name="restrictedClientApplication")
+    def restricted_client_application(self) -> Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication']:
+        """
+        Optional. The application that is subject to this binding's scope.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restricted_client_application")
+
+
+@pulumi.output_type
+class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str client_id: The OAuth client ID of the application.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[builtins.str]:
+        """
+        The OAuth client ID of the application.
+        """
+        return pulumi.get(self, "client_id")
 
 
 @pulumi.output_type

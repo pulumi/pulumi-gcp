@@ -84,6 +84,8 @@ __all__ = [
     'BackendServiceLocalityLbPolicyPolicyArgsDict',
     'BackendServiceLogConfigArgs',
     'BackendServiceLogConfigArgsDict',
+    'BackendServiceMaxStreamDurationArgs',
+    'BackendServiceMaxStreamDurationArgsDict',
     'BackendServiceOutlierDetectionArgs',
     'BackendServiceOutlierDetectionArgsDict',
     'BackendServiceOutlierDetectionBaseEjectionTimeArgs',
@@ -1174,6 +1176,14 @@ __all__ = [
     'SnapshotSnapshotEncryptionKeyArgsDict',
     'SnapshotSourceDiskEncryptionKeyArgs',
     'SnapshotSourceDiskEncryptionKeyArgsDict',
+    'StoragePoolIamBindingConditionArgs',
+    'StoragePoolIamBindingConditionArgsDict',
+    'StoragePoolIamMemberConditionArgs',
+    'StoragePoolIamMemberConditionArgsDict',
+    'StoragePoolResourceStatusArgs',
+    'StoragePoolResourceStatusArgsDict',
+    'StoragePoolStatusArgs',
+    'StoragePoolStatusArgsDict',
     'SubnetworkIAMBindingConditionArgs',
     'SubnetworkIAMBindingConditionArgsDict',
     'SubnetworkIAMMemberConditionArgs',
@@ -3046,6 +3056,16 @@ if not MYPY:
         Used when balancingMode is UTILIZATION. This ratio defines the
         CPU utilization target for the group. Valid range is [0.0, 1.0].
         """
+        preference: NotRequired[pulumi.Input[builtins.str]]
+        """
+        This field indicates whether this backend should be fully utilized before sending traffic to backends
+        with default preference. This field cannot be set when loadBalancingScheme is set to 'EXTERNAL'. The possible values are:
+        - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+        based on RTT.
+        - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
+        traffic would be assigned based on the load balancing algorithm you use. This is the default
+        Possible values are: `PREFERRED`, `DEFAULT`.
+        """
 elif False:
     BackendServiceBackendArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3063,7 +3083,8 @@ class BackendServiceBackendArgs:
                  max_rate: Optional[pulumi.Input[builtins.int]] = None,
                  max_rate_per_endpoint: Optional[pulumi.Input[builtins.float]] = None,
                  max_rate_per_instance: Optional[pulumi.Input[builtins.float]] = None,
-                 max_utilization: Optional[pulumi.Input[builtins.float]] = None):
+                 max_utilization: Optional[pulumi.Input[builtins.float]] = None,
+                 preference: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] group: The fully-qualified URL of an Instance Group or Network Endpoint
                Group resource. In case of instance group this defines the list
@@ -3129,6 +3150,13 @@ class BackendServiceBackendArgs:
                either maxRate or maxRatePerInstance must be set.
         :param pulumi.Input[builtins.float] max_utilization: Used when balancingMode is UTILIZATION. This ratio defines the
                CPU utilization target for the group. Valid range is [0.0, 1.0].
+        :param pulumi.Input[builtins.str] preference: This field indicates whether this backend should be fully utilized before sending traffic to backends
+               with default preference. This field cannot be set when loadBalancingScheme is set to 'EXTERNAL'. The possible values are:
+               - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+               based on RTT.
+               - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
+               traffic would be assigned based on the load balancing algorithm you use. This is the default
+               Possible values are: `PREFERRED`, `DEFAULT`.
         """
         pulumi.set(__self__, "group", group)
         if balancing_mode is not None:
@@ -3153,6 +3181,8 @@ class BackendServiceBackendArgs:
             pulumi.set(__self__, "max_rate_per_instance", max_rate_per_instance)
         if max_utilization is not None:
             pulumi.set(__self__, "max_utilization", max_utilization)
+        if preference is not None:
+            pulumi.set(__self__, "preference", preference)
 
     @property
     @pulumi.getter
@@ -3350,6 +3380,24 @@ class BackendServiceBackendArgs:
     def max_utilization(self, value: Optional[pulumi.Input[builtins.float]]):
         pulumi.set(self, "max_utilization", value)
 
+    @property
+    @pulumi.getter
+    def preference(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This field indicates whether this backend should be fully utilized before sending traffic to backends
+        with default preference. This field cannot be set when loadBalancingScheme is set to 'EXTERNAL'. The possible values are:
+        - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+        based on RTT.
+        - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
+        traffic would be assigned based on the load balancing algorithm you use. This is the default
+        Possible values are: `PREFERRED`, `DEFAULT`.
+        """
+        return pulumi.get(self, "preference")
+
+    @preference.setter
+    def preference(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "preference", value)
+
 
 if not MYPY:
     class BackendServiceBackendCustomMetricArgsDict(TypedDict):
@@ -3490,6 +3538,11 @@ if not MYPY:
         Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
         Structure is documented below.
         """
+        request_coalescing: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+        to the origin.
+        """
         serve_while_stale: NotRequired[pulumi.Input[builtins.int]]
         """
         Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
@@ -3520,6 +3573,7 @@ class BackendServiceCdnPolicyArgs:
                  max_ttl: Optional[pulumi.Input[builtins.int]] = None,
                  negative_caching: Optional[pulumi.Input[builtins.bool]] = None,
                  negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 request_coalescing: Optional[pulumi.Input[builtins.bool]] = None,
                  serve_while_stale: Optional[pulumi.Input[builtins.int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[builtins.int]] = None):
         """
@@ -3539,6 +3593,8 @@ class BackendServiceCdnPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
                Structure is documented below.
+        :param pulumi.Input[builtins.bool] request_coalescing: If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+               to the origin.
         :param pulumi.Input[builtins.int] serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
         :param pulumi.Input[builtins.int] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request
                will be considered fresh, defaults to 1hr (3600s). After this
@@ -3566,6 +3622,8 @@ class BackendServiceCdnPolicyArgs:
             pulumi.set(__self__, "negative_caching", negative_caching)
         if negative_caching_policies is not None:
             pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        if request_coalescing is not None:
+            pulumi.set(__self__, "request_coalescing", request_coalescing)
         if serve_while_stale is not None:
             pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
@@ -3674,6 +3732,19 @@ class BackendServiceCdnPolicyArgs:
     @negative_caching_policies.setter
     def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]):
         pulumi.set(self, "negative_caching_policies", value)
+
+    @property
+    @pulumi.getter(name="requestCoalescing")
+    def request_coalescing(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+        to the origin.
+        """
+        return pulumi.get(self, "request_coalescing")
+
+    @request_coalescing.setter
+    def request_coalescing(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "request_coalescing", value)
 
     @property
     @pulumi.getter(name="serveWhileStale")
@@ -4998,6 +5069,18 @@ if not MYPY:
         """
         Whether to enable logging for the load balancer traffic served by this backend service.
         """
+        optional_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
+        was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+        For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        """
+        optional_mode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the optional logging mode for the load balancer traffic.
+        Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+        Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+        """
         sample_rate: NotRequired[pulumi.Input[builtins.float]]
         """
         This field can only be specified if logging is enabled for this backend service. The value of
@@ -5012,9 +5095,17 @@ elif False:
 class BackendServiceLogConfigArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[builtins.bool]] = None,
+                 optional_fields: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 optional_mode: Optional[pulumi.Input[builtins.str]] = None,
                  sample_rate: Optional[pulumi.Input[builtins.float]] = None):
         """
         :param pulumi.Input[builtins.bool] enable: Whether to enable logging for the load balancer traffic served by this backend service.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] optional_fields: This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
+               was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+               For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        :param pulumi.Input[builtins.str] optional_mode: Specifies the optional logging mode for the load balancer traffic.
+               Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+               Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
         :param pulumi.Input[builtins.float] sample_rate: This field can only be specified if logging is enabled for this backend service. The value of
                the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
                where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -5022,6 +5113,10 @@ class BackendServiceLogConfigArgs:
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
+        if optional_fields is not None:
+            pulumi.set(__self__, "optional_fields", optional_fields)
+        if optional_mode is not None:
+            pulumi.set(__self__, "optional_mode", optional_mode)
         if sample_rate is not None:
             pulumi.set(__self__, "sample_rate", sample_rate)
 
@@ -5038,6 +5133,34 @@ class BackendServiceLogConfigArgs:
         pulumi.set(self, "enable", value)
 
     @property
+    @pulumi.getter(name="optionalFields")
+    def optional_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
+        was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+        For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        """
+        return pulumi.get(self, "optional_fields")
+
+    @optional_fields.setter
+    def optional_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "optional_fields", value)
+
+    @property
+    @pulumi.getter(name="optionalMode")
+    def optional_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the optional logging mode for the load balancer traffic.
+        Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
+        Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+        """
+        return pulumi.get(self, "optional_mode")
+
+    @optional_mode.setter
+    def optional_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "optional_mode", value)
+
+    @property
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> Optional[pulumi.Input[builtins.float]]:
         """
@@ -5051,6 +5174,63 @@ class BackendServiceLogConfigArgs:
     @sample_rate.setter
     def sample_rate(self, value: Optional[pulumi.Input[builtins.float]]):
         pulumi.set(self, "sample_rate", value)
+
+
+if not MYPY:
+    class BackendServiceMaxStreamDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[builtins.str]
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
+        """
+        nanos: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution.
+        Durations less than one second are represented with a 0 seconds field and a positive nanos field.
+        Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    BackendServiceMaxStreamDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceMaxStreamDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[builtins.str],
+                 nanos: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
+        :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution.
+               Durations less than one second are represented with a 0 seconds field and a positive nanos field.
+               Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[builtins.str]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution.
+        Durations less than one second are represented with a 0 seconds field and a positive nanos field.
+        Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "nanos", value)
 
 
 if not MYPY:
@@ -59160,6 +59340,634 @@ class SnapshotSourceDiskEncryptionKeyArgs:
     @rsa_encrypted_key.setter
     def rsa_encrypted_key(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "rsa_encrypted_key", value)
+
+
+if not MYPY:
+    class StoragePoolIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    StoragePoolIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StoragePoolIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class StoragePoolIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    StoragePoolIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StoragePoolIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class StoragePoolResourceStatusArgsDict(TypedDict):
+        disk_count: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Number of disks used.
+        """
+        last_resize_timestamp: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Timestamp of the last successful resize in RFC3339 text format.
+        """
+        max_total_provisioned_disk_capacity_gb: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Maximum allowed aggregate disk size in gigabytes.
+        """
+        pool_used_capacity_bytes: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Space used by data stored in disks within the storage pool (in bytes).
+        This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        """
+        pool_used_iops: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        """
+        pool_used_throughput: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the disks' provisioned throughput in MB/s.
+        """
+        pool_user_written_bytes: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Amount of data written into the pool, before it is compacted.
+        """
+        total_provisioned_disk_capacity_gb: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the capacity provisioned in disks in this storage pool.
+        A disk's provisioned capacity is the same as its total capacity.
+        """
+        total_provisioned_disk_iops: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the disks' provisioned IOPS.
+        """
+        total_provisioned_disk_throughput: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the disks' provisioned throughput in MB/s,
+        minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+elif False:
+    StoragePoolResourceStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StoragePoolResourceStatusArgs:
+    def __init__(__self__, *,
+                 disk_count: Optional[pulumi.Input[builtins.str]] = None,
+                 last_resize_timestamp: Optional[pulumi.Input[builtins.str]] = None,
+                 max_total_provisioned_disk_capacity_gb: Optional[pulumi.Input[builtins.str]] = None,
+                 pool_used_capacity_bytes: Optional[pulumi.Input[builtins.str]] = None,
+                 pool_used_iops: Optional[pulumi.Input[builtins.str]] = None,
+                 pool_used_throughput: Optional[pulumi.Input[builtins.str]] = None,
+                 pool_user_written_bytes: Optional[pulumi.Input[builtins.str]] = None,
+                 total_provisioned_disk_capacity_gb: Optional[pulumi.Input[builtins.str]] = None,
+                 total_provisioned_disk_iops: Optional[pulumi.Input[builtins.str]] = None,
+                 total_provisioned_disk_throughput: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] disk_count: (Output)
+               Number of disks used.
+        :param pulumi.Input[builtins.str] last_resize_timestamp: (Output)
+               Timestamp of the last successful resize in RFC3339 text format.
+        :param pulumi.Input[builtins.str] max_total_provisioned_disk_capacity_gb: (Output)
+               Maximum allowed aggregate disk size in gigabytes.
+        :param pulumi.Input[builtins.str] pool_used_capacity_bytes: (Output)
+               Space used by data stored in disks within the storage pool (in bytes).
+               This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        :param pulumi.Input[builtins.str] pool_used_iops: (Output)
+               Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        :param pulumi.Input[builtins.str] pool_used_throughput: (Output)
+               Sum of all the disks' provisioned throughput in MB/s.
+        :param pulumi.Input[builtins.str] pool_user_written_bytes: (Output)
+               Amount of data written into the pool, before it is compacted.
+        :param pulumi.Input[builtins.str] total_provisioned_disk_capacity_gb: (Output)
+               Sum of all the capacity provisioned in disks in this storage pool.
+               A disk's provisioned capacity is the same as its total capacity.
+        :param pulumi.Input[builtins.str] total_provisioned_disk_iops: (Output)
+               Sum of all the disks' provisioned IOPS.
+        :param pulumi.Input[builtins.str] total_provisioned_disk_throughput: (Output)
+               Sum of all the disks' provisioned throughput in MB/s,
+               minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        if disk_count is not None:
+            pulumi.set(__self__, "disk_count", disk_count)
+        if last_resize_timestamp is not None:
+            pulumi.set(__self__, "last_resize_timestamp", last_resize_timestamp)
+        if max_total_provisioned_disk_capacity_gb is not None:
+            pulumi.set(__self__, "max_total_provisioned_disk_capacity_gb", max_total_provisioned_disk_capacity_gb)
+        if pool_used_capacity_bytes is not None:
+            pulumi.set(__self__, "pool_used_capacity_bytes", pool_used_capacity_bytes)
+        if pool_used_iops is not None:
+            pulumi.set(__self__, "pool_used_iops", pool_used_iops)
+        if pool_used_throughput is not None:
+            pulumi.set(__self__, "pool_used_throughput", pool_used_throughput)
+        if pool_user_written_bytes is not None:
+            pulumi.set(__self__, "pool_user_written_bytes", pool_user_written_bytes)
+        if total_provisioned_disk_capacity_gb is not None:
+            pulumi.set(__self__, "total_provisioned_disk_capacity_gb", total_provisioned_disk_capacity_gb)
+        if total_provisioned_disk_iops is not None:
+            pulumi.set(__self__, "total_provisioned_disk_iops", total_provisioned_disk_iops)
+        if total_provisioned_disk_throughput is not None:
+            pulumi.set(__self__, "total_provisioned_disk_throughput", total_provisioned_disk_throughput)
+
+    @property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Number of disks used.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @disk_count.setter
+    def disk_count(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "disk_count", value)
+
+    @property
+    @pulumi.getter(name="lastResizeTimestamp")
+    def last_resize_timestamp(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Timestamp of the last successful resize in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_resize_timestamp")
+
+    @last_resize_timestamp.setter
+    def last_resize_timestamp(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_resize_timestamp", value)
+
+    @property
+    @pulumi.getter(name="maxTotalProvisionedDiskCapacityGb")
+    def max_total_provisioned_disk_capacity_gb(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Maximum allowed aggregate disk size in gigabytes.
+        """
+        return pulumi.get(self, "max_total_provisioned_disk_capacity_gb")
+
+    @max_total_provisioned_disk_capacity_gb.setter
+    def max_total_provisioned_disk_capacity_gb(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "max_total_provisioned_disk_capacity_gb", value)
+
+    @property
+    @pulumi.getter(name="poolUsedCapacityBytes")
+    def pool_used_capacity_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Space used by data stored in disks within the storage pool (in bytes).
+        This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        """
+        return pulumi.get(self, "pool_used_capacity_bytes")
+
+    @pool_used_capacity_bytes.setter
+    def pool_used_capacity_bytes(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pool_used_capacity_bytes", value)
+
+    @property
+    @pulumi.getter(name="poolUsedIops")
+    def pool_used_iops(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        """
+        return pulumi.get(self, "pool_used_iops")
+
+    @pool_used_iops.setter
+    def pool_used_iops(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pool_used_iops", value)
+
+    @property
+    @pulumi.getter(name="poolUsedThroughput")
+    def pool_used_throughput(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the disks' provisioned throughput in MB/s.
+        """
+        return pulumi.get(self, "pool_used_throughput")
+
+    @pool_used_throughput.setter
+    def pool_used_throughput(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pool_used_throughput", value)
+
+    @property
+    @pulumi.getter(name="poolUserWrittenBytes")
+    def pool_user_written_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Amount of data written into the pool, before it is compacted.
+        """
+        return pulumi.get(self, "pool_user_written_bytes")
+
+    @pool_user_written_bytes.setter
+    def pool_user_written_bytes(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pool_user_written_bytes", value)
+
+    @property
+    @pulumi.getter(name="totalProvisionedDiskCapacityGb")
+    def total_provisioned_disk_capacity_gb(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the capacity provisioned in disks in this storage pool.
+        A disk's provisioned capacity is the same as its total capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_capacity_gb")
+
+    @total_provisioned_disk_capacity_gb.setter
+    def total_provisioned_disk_capacity_gb(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_provisioned_disk_capacity_gb", value)
+
+    @property
+    @pulumi.getter(name="totalProvisionedDiskIops")
+    def total_provisioned_disk_iops(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the disks' provisioned IOPS.
+        """
+        return pulumi.get(self, "total_provisioned_disk_iops")
+
+    @total_provisioned_disk_iops.setter
+    def total_provisioned_disk_iops(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_provisioned_disk_iops", value)
+
+    @property
+    @pulumi.getter(name="totalProvisionedDiskThroughput")
+    def total_provisioned_disk_throughput(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the disks' provisioned throughput in MB/s,
+        minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_throughput")
+
+    @total_provisioned_disk_throughput.setter
+    def total_provisioned_disk_throughput(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_provisioned_disk_throughput", value)
+
+
+if not MYPY:
+    class StoragePoolStatusArgsDict(TypedDict):
+        disk_count: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Number of disks used.
+        """
+        last_resize_timestamp: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Timestamp of the last successful resize in RFC3339 text format.
+        """
+        max_total_provisioned_disk_capacity_gb: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Maximum allowed aggregate disk size in gigabytes.
+        """
+        pool_used_capacity_bytes: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Space used by data stored in disks within the storage pool (in bytes).
+        This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        """
+        pool_used_iops: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        """
+        pool_used_throughput: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the disks' provisioned throughput in MB/s.
+        """
+        pool_user_written_bytes: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Amount of data written into the pool, before it is compacted.
+        """
+        total_provisioned_disk_capacity_gb: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the capacity provisioned in disks in this storage pool.
+        A disk's provisioned capacity is the same as its total capacity.
+        """
+        total_provisioned_disk_iops: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the disks' provisioned IOPS.
+        """
+        total_provisioned_disk_throughput: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        Sum of all the disks' provisioned throughput in MB/s,
+        minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+elif False:
+    StoragePoolStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StoragePoolStatusArgs:
+    def __init__(__self__, *,
+                 disk_count: Optional[pulumi.Input[builtins.str]] = None,
+                 last_resize_timestamp: Optional[pulumi.Input[builtins.str]] = None,
+                 max_total_provisioned_disk_capacity_gb: Optional[pulumi.Input[builtins.str]] = None,
+                 pool_used_capacity_bytes: Optional[pulumi.Input[builtins.str]] = None,
+                 pool_used_iops: Optional[pulumi.Input[builtins.str]] = None,
+                 pool_used_throughput: Optional[pulumi.Input[builtins.str]] = None,
+                 pool_user_written_bytes: Optional[pulumi.Input[builtins.str]] = None,
+                 total_provisioned_disk_capacity_gb: Optional[pulumi.Input[builtins.str]] = None,
+                 total_provisioned_disk_iops: Optional[pulumi.Input[builtins.str]] = None,
+                 total_provisioned_disk_throughput: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] disk_count: (Output)
+               Number of disks used.
+        :param pulumi.Input[builtins.str] last_resize_timestamp: (Output)
+               Timestamp of the last successful resize in RFC3339 text format.
+        :param pulumi.Input[builtins.str] max_total_provisioned_disk_capacity_gb: (Output)
+               Maximum allowed aggregate disk size in gigabytes.
+        :param pulumi.Input[builtins.str] pool_used_capacity_bytes: (Output)
+               Space used by data stored in disks within the storage pool (in bytes).
+               This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        :param pulumi.Input[builtins.str] pool_used_iops: (Output)
+               Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        :param pulumi.Input[builtins.str] pool_used_throughput: (Output)
+               Sum of all the disks' provisioned throughput in MB/s.
+        :param pulumi.Input[builtins.str] pool_user_written_bytes: (Output)
+               Amount of data written into the pool, before it is compacted.
+        :param pulumi.Input[builtins.str] total_provisioned_disk_capacity_gb: (Output)
+               Sum of all the capacity provisioned in disks in this storage pool.
+               A disk's provisioned capacity is the same as its total capacity.
+        :param pulumi.Input[builtins.str] total_provisioned_disk_iops: (Output)
+               Sum of all the disks' provisioned IOPS.
+        :param pulumi.Input[builtins.str] total_provisioned_disk_throughput: (Output)
+               Sum of all the disks' provisioned throughput in MB/s,
+               minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        if disk_count is not None:
+            pulumi.set(__self__, "disk_count", disk_count)
+        if last_resize_timestamp is not None:
+            pulumi.set(__self__, "last_resize_timestamp", last_resize_timestamp)
+        if max_total_provisioned_disk_capacity_gb is not None:
+            pulumi.set(__self__, "max_total_provisioned_disk_capacity_gb", max_total_provisioned_disk_capacity_gb)
+        if pool_used_capacity_bytes is not None:
+            pulumi.set(__self__, "pool_used_capacity_bytes", pool_used_capacity_bytes)
+        if pool_used_iops is not None:
+            pulumi.set(__self__, "pool_used_iops", pool_used_iops)
+        if pool_used_throughput is not None:
+            pulumi.set(__self__, "pool_used_throughput", pool_used_throughput)
+        if pool_user_written_bytes is not None:
+            pulumi.set(__self__, "pool_user_written_bytes", pool_user_written_bytes)
+        if total_provisioned_disk_capacity_gb is not None:
+            pulumi.set(__self__, "total_provisioned_disk_capacity_gb", total_provisioned_disk_capacity_gb)
+        if total_provisioned_disk_iops is not None:
+            pulumi.set(__self__, "total_provisioned_disk_iops", total_provisioned_disk_iops)
+        if total_provisioned_disk_throughput is not None:
+            pulumi.set(__self__, "total_provisioned_disk_throughput", total_provisioned_disk_throughput)
+
+    @property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Number of disks used.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @disk_count.setter
+    def disk_count(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "disk_count", value)
+
+    @property
+    @pulumi.getter(name="lastResizeTimestamp")
+    def last_resize_timestamp(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Timestamp of the last successful resize in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_resize_timestamp")
+
+    @last_resize_timestamp.setter
+    def last_resize_timestamp(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_resize_timestamp", value)
+
+    @property
+    @pulumi.getter(name="maxTotalProvisionedDiskCapacityGb")
+    def max_total_provisioned_disk_capacity_gb(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Maximum allowed aggregate disk size in gigabytes.
+        """
+        return pulumi.get(self, "max_total_provisioned_disk_capacity_gb")
+
+    @max_total_provisioned_disk_capacity_gb.setter
+    def max_total_provisioned_disk_capacity_gb(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "max_total_provisioned_disk_capacity_gb", value)
+
+    @property
+    @pulumi.getter(name="poolUsedCapacityBytes")
+    def pool_used_capacity_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Space used by data stored in disks within the storage pool (in bytes).
+        This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        """
+        return pulumi.get(self, "pool_used_capacity_bytes")
+
+    @pool_used_capacity_bytes.setter
+    def pool_used_capacity_bytes(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pool_used_capacity_bytes", value)
+
+    @property
+    @pulumi.getter(name="poolUsedIops")
+    def pool_used_iops(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        """
+        return pulumi.get(self, "pool_used_iops")
+
+    @pool_used_iops.setter
+    def pool_used_iops(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pool_used_iops", value)
+
+    @property
+    @pulumi.getter(name="poolUsedThroughput")
+    def pool_used_throughput(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the disks' provisioned throughput in MB/s.
+        """
+        return pulumi.get(self, "pool_used_throughput")
+
+    @pool_used_throughput.setter
+    def pool_used_throughput(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pool_used_throughput", value)
+
+    @property
+    @pulumi.getter(name="poolUserWrittenBytes")
+    def pool_user_written_bytes(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Amount of data written into the pool, before it is compacted.
+        """
+        return pulumi.get(self, "pool_user_written_bytes")
+
+    @pool_user_written_bytes.setter
+    def pool_user_written_bytes(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pool_user_written_bytes", value)
+
+    @property
+    @pulumi.getter(name="totalProvisionedDiskCapacityGb")
+    def total_provisioned_disk_capacity_gb(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the capacity provisioned in disks in this storage pool.
+        A disk's provisioned capacity is the same as its total capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_capacity_gb")
+
+    @total_provisioned_disk_capacity_gb.setter
+    def total_provisioned_disk_capacity_gb(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_provisioned_disk_capacity_gb", value)
+
+    @property
+    @pulumi.getter(name="totalProvisionedDiskIops")
+    def total_provisioned_disk_iops(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the disks' provisioned IOPS.
+        """
+        return pulumi.get(self, "total_provisioned_disk_iops")
+
+    @total_provisioned_disk_iops.setter
+    def total_provisioned_disk_iops(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_provisioned_disk_iops", value)
+
+    @property
+    @pulumi.getter(name="totalProvisionedDiskThroughput")
+    def total_provisioned_disk_throughput(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        Sum of all the disks' provisioned throughput in MB/s,
+        minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_throughput")
+
+    @total_provisioned_disk_throughput.setter
+    def total_provisioned_disk_throughput(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_provisioned_disk_throughput", value)
 
 
 if not MYPY:

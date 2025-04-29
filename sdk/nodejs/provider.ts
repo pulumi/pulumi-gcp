@@ -193,6 +193,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly sourceRepoCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly spannerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly sqlCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly storageBatchOperationsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly storageControlCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly storageCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly storageInsightsCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -395,6 +396,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["sourceRepoCustomEndpoint"] = args ? args.sourceRepoCustomEndpoint : undefined;
             resourceInputs["spannerCustomEndpoint"] = args ? args.spannerCustomEndpoint : undefined;
             resourceInputs["sqlCustomEndpoint"] = args ? args.sqlCustomEndpoint : undefined;
+            resourceInputs["storageBatchOperationsCustomEndpoint"] = args ? args.storageBatchOperationsCustomEndpoint : undefined;
             resourceInputs["storageControlCustomEndpoint"] = args ? args.storageControlCustomEndpoint : undefined;
             resourceInputs["storageCustomEndpoint"] = args ? args.storageCustomEndpoint : undefined;
             resourceInputs["storageInsightsCustomEndpoint"] = args ? args.storageInsightsCustomEndpoint : undefined;
@@ -598,6 +600,7 @@ export interface ProviderArgs {
     sourceRepoCustomEndpoint?: pulumi.Input<string>;
     spannerCustomEndpoint?: pulumi.Input<string>;
     sqlCustomEndpoint?: pulumi.Input<string>;
+    storageBatchOperationsCustomEndpoint?: pulumi.Input<string>;
     storageControlCustomEndpoint?: pulumi.Input<string>;
     storageCustomEndpoint?: pulumi.Input<string>;
     storageInsightsCustomEndpoint?: pulumi.Input<string>;

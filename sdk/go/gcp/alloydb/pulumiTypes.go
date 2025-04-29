@@ -4103,6 +4103,10 @@ func (o InstanceClientConnectionConfigSslConfigPtrOutput) SslMode() pulumi.Strin
 type InstanceMachineConfig struct {
 	// The number of CPU's in the VM instance.
 	CpuCount *int `pulumi:"cpuCount"`
+	// Machine type of the VM instance.
+	// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+	// `cpuCount` must match the number of vCPUs in the machine type.
+	MachineType *string `pulumi:"machineType"`
 }
 
 // InstanceMachineConfigInput is an input type that accepts InstanceMachineConfigArgs and InstanceMachineConfigOutput values.
@@ -4119,6 +4123,10 @@ type InstanceMachineConfigInput interface {
 type InstanceMachineConfigArgs struct {
 	// The number of CPU's in the VM instance.
 	CpuCount pulumi.IntPtrInput `pulumi:"cpuCount"`
+	// Machine type of the VM instance.
+	// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+	// `cpuCount` must match the number of vCPUs in the machine type.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 }
 
 func (InstanceMachineConfigArgs) ElementType() reflect.Type {
@@ -4203,6 +4211,13 @@ func (o InstanceMachineConfigOutput) CpuCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMachineConfig) *int { return v.CpuCount }).(pulumi.IntPtrOutput)
 }
 
+// Machine type of the VM instance.
+// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+// `cpuCount` must match the number of vCPUs in the machine type.
+func (o InstanceMachineConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMachineConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
 type InstanceMachineConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceMachineConfigPtrOutput) ElementType() reflect.Type {
@@ -4235,6 +4250,18 @@ func (o InstanceMachineConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
 		}
 		return v.CpuCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// Machine type of the VM instance.
+// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+// `cpuCount` must match the number of vCPUs in the machine type.
+func (o InstanceMachineConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMachineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceNetworkConfig struct {
@@ -4532,6 +4559,8 @@ func (o InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) Index(i pulum
 }
 
 type InstanceObservabilityConfig struct {
+	// Whether assistive experiences are enabled for this AlloyDB instance.
+	AssistiveExperiencesEnabled *bool `pulumi:"assistiveExperiencesEnabled"`
 	// Observability feature status for an instance.
 	Enabled *bool `pulumi:"enabled"`
 	// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
@@ -4562,6 +4591,8 @@ type InstanceObservabilityConfigInput interface {
 }
 
 type InstanceObservabilityConfigArgs struct {
+	// Whether assistive experiences are enabled for this AlloyDB instance.
+	AssistiveExperiencesEnabled pulumi.BoolPtrInput `pulumi:"assistiveExperiencesEnabled"`
 	// Observability feature status for an instance.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
@@ -4657,6 +4688,11 @@ func (o InstanceObservabilityConfigOutput) ToInstanceObservabilityConfigPtrOutpu
 	}).(InstanceObservabilityConfigPtrOutput)
 }
 
+// Whether assistive experiences are enabled for this AlloyDB instance.
+func (o InstanceObservabilityConfigOutput) AssistiveExperiencesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.AssistiveExperiencesEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Observability feature status for an instance.
 func (o InstanceObservabilityConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceObservabilityConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -4719,6 +4755,16 @@ func (o InstanceObservabilityConfigPtrOutput) Elem() InstanceObservabilityConfig
 		var ret InstanceObservabilityConfig
 		return ret
 	}).(InstanceObservabilityConfigOutput)
+}
+
+// Whether assistive experiences are enabled for this AlloyDB instance.
+func (o InstanceObservabilityConfigPtrOutput) AssistiveExperiencesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AssistiveExperiencesEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Observability feature status for an instance.
@@ -8332,6 +8378,10 @@ func (o GetInstanceClientConnectionConfigSslConfigArrayOutput) Index(i pulumi.In
 type GetInstanceMachineConfig struct {
 	// The number of CPU's in the VM instance.
 	CpuCount int `pulumi:"cpuCount"`
+	// Machine type of the VM instance.
+	// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+	// 'cpu_count' must match the number of vCPUs in the machine type.
+	MachineType string `pulumi:"machineType"`
 }
 
 // GetInstanceMachineConfigInput is an input type that accepts GetInstanceMachineConfigArgs and GetInstanceMachineConfigOutput values.
@@ -8348,6 +8398,10 @@ type GetInstanceMachineConfigInput interface {
 type GetInstanceMachineConfigArgs struct {
 	// The number of CPU's in the VM instance.
 	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
+	// Machine type of the VM instance.
+	// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+	// 'cpu_count' must match the number of vCPUs in the machine type.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
 }
 
 func (GetInstanceMachineConfigArgs) ElementType() reflect.Type {
@@ -8404,6 +8458,13 @@ func (o GetInstanceMachineConfigOutput) ToGetInstanceMachineConfigOutputWithCont
 // The number of CPU's in the VM instance.
 func (o GetInstanceMachineConfigOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMachineConfig) int { return v.CpuCount }).(pulumi.IntOutput)
+}
+
+// Machine type of the VM instance.
+// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+// 'cpu_count' must match the number of vCPUs in the machine type.
+func (o GetInstanceMachineConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceMachineConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
 type GetInstanceMachineConfigArrayOutput struct{ *pulumi.OutputState }
@@ -8653,6 +8714,8 @@ func (o GetInstanceNetworkConfigAuthorizedExternalNetworkArrayOutput) Index(i pu
 }
 
 type GetInstanceObservabilityConfig struct {
+	// Whether assistive experiences are enabled for this AlloyDB instance.
+	AssistiveExperiencesEnabled bool `pulumi:"assistiveExperiencesEnabled"`
 	// Observability feature status for an instance.
 	Enabled bool `pulumi:"enabled"`
 	// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
@@ -8683,6 +8746,8 @@ type GetInstanceObservabilityConfigInput interface {
 }
 
 type GetInstanceObservabilityConfigArgs struct {
+	// Whether assistive experiences are enabled for this AlloyDB instance.
+	AssistiveExperiencesEnabled pulumi.BoolInput `pulumi:"assistiveExperiencesEnabled"`
 	// Observability feature status for an instance.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
@@ -8750,6 +8815,11 @@ func (o GetInstanceObservabilityConfigOutput) ToGetInstanceObservabilityConfigOu
 
 func (o GetInstanceObservabilityConfigOutput) ToGetInstanceObservabilityConfigOutputWithContext(ctx context.Context) GetInstanceObservabilityConfigOutput {
 	return o
+}
+
+// Whether assistive experiences are enabled for this AlloyDB instance.
+func (o GetInstanceObservabilityConfigOutput) AssistiveExperiencesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceObservabilityConfig) bool { return v.AssistiveExperiencesEnabled }).(pulumi.BoolOutput)
 }
 
 // Observability feature status for an instance.

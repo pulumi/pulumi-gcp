@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The wrapping method to be used for incoming key material.
-        /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+        /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         /// </summary>
         [Output("importMethod")]
         public Output<string> ImportMethod { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The wrapping method to be used for incoming key material.
-        /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+        /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         /// </summary>
         [Input("importMethod", required: true)]
         public Input<string> ImportMethod { get; set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The wrapping method to be used for incoming key material.
-        /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+        /// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
         /// </summary>
         [Input("importMethod")]
         public Input<string>? ImportMethod { get; set; }

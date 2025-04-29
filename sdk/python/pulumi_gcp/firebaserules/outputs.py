@@ -49,6 +49,8 @@ class RulesetSource(dict):
         """
         :param Sequence['RulesetSourceFileArgs'] files: `File` set constituting the `Source` bundle.
         :param builtins.str language: `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+               
+               - - -
         """
         pulumi.set(__self__, "files", files)
         if language is not None:
@@ -67,6 +69,8 @@ class RulesetSource(dict):
     def language(self) -> Optional[builtins.str]:
         """
         `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+
+        - - -
         """
         return pulumi.get(self, "language")
 
@@ -80,8 +84,6 @@ class RulesetSourceFile(dict):
         """
         :param builtins.str content: Textual Content.
         :param builtins.str name: File name.
-               
-               - - -
         :param builtins.str fingerprint: Fingerprint (e.g. github sha) associated with the `File`.
         """
         pulumi.set(__self__, "content", content)
@@ -102,8 +104,6 @@ class RulesetSourceFile(dict):
     def name(self) -> builtins.str:
         """
         File name.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

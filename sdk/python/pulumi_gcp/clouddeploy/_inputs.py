@@ -2223,8 +2223,6 @@ if not MYPY:
         verify: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether to run verify tests after the deployment.
-
-        - - -
         """
 elif False:
     DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2245,8 +2243,6 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
         :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs'] predeploy: Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
         :param pulumi.Input[builtins.bool] verify: Whether to run verify tests after the deployment.
-               
-               - - -
         """
         pulumi.set(__self__, "percentage", percentage)
         pulumi.set(__self__, "phase_id", phase_id)
@@ -2324,8 +2320,6 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     def verify(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Whether to run verify tests after the deployment.
-
-        - - -
         """
         return pulumi.get(self, "verify")
 

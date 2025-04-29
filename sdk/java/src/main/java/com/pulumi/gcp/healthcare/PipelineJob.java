@@ -175,7 +175,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .dataset(dataset.id())
  *             .backfillPipelineJob(PipelineJobBackfillPipelineJobArgs.builder()
- *                 .mappingPipelineJob(dataset.id().applyValue(_id -> String.format("%s/pipelinejobs/example_mapping_pipeline", _id)))
+ *                 .mappingPipelineJob(dataset.id().applyValue(_id -> String.format("%s/pipelineJobs/example_mapping_pipeline_job", _id)))
  *                 .build())
  *             .build());
  * 

@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string>? ExecutionEnvironment { get; set; }
 
         /// <summary>
-        /// Number of retries allowed per Task, before marking this Task failed.
+        /// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }

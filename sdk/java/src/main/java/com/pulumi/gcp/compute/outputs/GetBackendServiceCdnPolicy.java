@@ -61,6 +61,12 @@ public final class GetBackendServiceCdnPolicy {
      */
     private List<GetBackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
     /**
+     * @return If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+     * to the origin.
+     * 
+     */
+    private Boolean requestCoalescing;
+    /**
      * @return Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
      * 
      */
@@ -142,6 +148,14 @@ public final class GetBackendServiceCdnPolicy {
         return this.negativeCachingPolicies;
     }
     /**
+     * @return If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+     * to the origin.
+     * 
+     */
+    public Boolean requestCoalescing() {
+        return this.requestCoalescing;
+    }
+    /**
      * @return Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
      * 
      */
@@ -182,6 +196,7 @@ public final class GetBackendServiceCdnPolicy {
         private Integer maxTtl;
         private Boolean negativeCaching;
         private List<GetBackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
+        private Boolean requestCoalescing;
         private Integer serveWhileStale;
         private Integer signedUrlCacheMaxAgeSec;
         public Builder() {}
@@ -195,6 +210,7 @@ public final class GetBackendServiceCdnPolicy {
     	      this.maxTtl = defaults.maxTtl;
     	      this.negativeCaching = defaults.negativeCaching;
     	      this.negativeCachingPolicies = defaults.negativeCachingPolicies;
+    	      this.requestCoalescing = defaults.requestCoalescing;
     	      this.serveWhileStale = defaults.serveWhileStale;
     	      this.signedUrlCacheMaxAgeSec = defaults.signedUrlCacheMaxAgeSec;
         }
@@ -273,6 +289,14 @@ public final class GetBackendServiceCdnPolicy {
             return negativeCachingPolicies(List.of(negativeCachingPolicies));
         }
         @CustomType.Setter
+        public Builder requestCoalescing(Boolean requestCoalescing) {
+            if (requestCoalescing == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "requestCoalescing");
+            }
+            this.requestCoalescing = requestCoalescing;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serveWhileStale(Integer serveWhileStale) {
             if (serveWhileStale == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "serveWhileStale");
@@ -298,6 +322,7 @@ public final class GetBackendServiceCdnPolicy {
             _resultValue.maxTtl = maxTtl;
             _resultValue.negativeCaching = negativeCaching;
             _resultValue.negativeCachingPolicies = negativeCachingPolicies;
+            _resultValue.requestCoalescing = requestCoalescing;
             _resultValue.serveWhileStale = serveWhileStale;
             _resultValue.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
             return _resultValue;

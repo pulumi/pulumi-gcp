@@ -178,6 +178,7 @@ namespace Pulumi.Gcp.Dataproc
         public readonly string ServiceId;
         public readonly string State;
         public readonly string StateMessage;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly ImmutableArray<Outputs.GetMetastoreServiceTelemetryConfigResult> TelemetryConfigs;
         public readonly string Tier;
         public readonly string Uid;
@@ -235,6 +236,8 @@ namespace Pulumi.Gcp.Dataproc
 
             string stateMessage,
 
+            ImmutableDictionary<string, string> tags,
+
             ImmutableArray<Outputs.GetMetastoreServiceTelemetryConfigResult> telemetryConfigs,
 
             string tier,
@@ -268,6 +271,7 @@ namespace Pulumi.Gcp.Dataproc
             ServiceId = serviceId;
             State = state;
             StateMessage = stateMessage;
+            Tags = tags;
             TelemetryConfigs = telemetryConfigs;
             Tier = tier;
             Uid = uid;

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:storage/anywhereCache:AnywhereCache":
 		r = &AnywhereCache{}
+	case "gcp:storage/batchOperationsJob:BatchOperationsJob":
+		r = &BatchOperationsJob{}
 	case "gcp:storage/bucket:Bucket":
 		r = &Bucket{}
 	case "gcp:storage/bucketACL:BucketACL":
@@ -87,6 +89,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/anywhereCache",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/batchOperationsJob",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

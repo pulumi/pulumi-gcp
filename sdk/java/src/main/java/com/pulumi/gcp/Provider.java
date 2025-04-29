@@ -1019,6 +1019,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> sqlCustomEndpoint() {
         return Codegen.optional(this.sqlCustomEndpoint);
     }
+    @Export(name="storageBatchOperationsCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> storageBatchOperationsCustomEndpoint;
+
+    public Output<Optional<String>> storageBatchOperationsCustomEndpoint() {
+        return Codegen.optional(this.storageBatchOperationsCustomEndpoint);
+    }
     @Export(name="storageControlCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageControlCustomEndpoint;
 

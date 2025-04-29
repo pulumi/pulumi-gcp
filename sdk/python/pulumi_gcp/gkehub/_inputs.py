@@ -60,6 +60,10 @@ __all__ = [
     'FeatureMembershipConfigmanagementBinauthzArgsDict',
     'FeatureMembershipConfigmanagementConfigSyncArgs',
     'FeatureMembershipConfigmanagementConfigSyncArgsDict',
+    'FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs',
+    'FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgsDict',
+    'FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs',
+    'FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgsDict',
     'FeatureMembershipConfigmanagementConfigSyncGitArgs',
     'FeatureMembershipConfigmanagementConfigSyncGitArgsDict',
     'FeatureMembershipConfigmanagementConfigSyncOciArgs',
@@ -1924,6 +1928,10 @@ class FeatureMembershipConfigmanagementBinauthzArgs:
 
 if not MYPY:
     class FeatureMembershipConfigmanagementConfigSyncArgsDict(TypedDict):
+        deployment_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgsDict']]]]
+        """
+        The override configurations for the Config Sync Deployments. Structure is documented below.
+        """
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
         Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
@@ -1960,6 +1968,7 @@ elif False:
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncArgs:
     def __init__(__self__, *,
+                 deployment_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  git: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']] = None,
                  metrics_gcp_service_account_email: Optional[pulumi.Input[builtins.str]] = None,
@@ -1968,6 +1977,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
                  source_format: Optional[pulumi.Input[builtins.str]] = None,
                  stop_syncing: Optional[pulumi.Input[builtins.bool]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]] deployment_overrides: The override configurations for the Config Sync Deployments. Structure is documented below.
         :param pulumi.Input[builtins.bool] enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: (Optional) Structure is documented below.
         :param pulumi.Input[builtins.str] metrics_gcp_service_account_email: Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
@@ -1978,6 +1988,8 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
         :param pulumi.Input[builtins.str] source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         :param pulumi.Input[builtins.bool] stop_syncing: Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
         """
+        if deployment_overrides is not None:
+            pulumi.set(__self__, "deployment_overrides", deployment_overrides)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if git is not None:
@@ -1992,6 +2004,18 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
             pulumi.set(__self__, "source_format", source_format)
         if stop_syncing is not None:
             pulumi.set(__self__, "stop_syncing", stop_syncing)
+
+    @property
+    @pulumi.getter(name="deploymentOverrides")
+    def deployment_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]]:
+        """
+        The override configurations for the Config Sync Deployments. Structure is documented below.
+        """
+        return pulumi.get(self, "deployment_overrides")
+
+    @deployment_overrides.setter
+    def deployment_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]]):
+        pulumi.set(self, "deployment_overrides", value)
 
     @property
     @pulumi.getter
@@ -2078,6 +2102,190 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     @stop_syncing.setter
     def stop_syncing(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "stop_syncing", value)
+
+
+if not MYPY:
+    class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgsDict(TypedDict):
+        containers: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgsDict']]]]
+        """
+        The override configurations for the containers in the Deployment. Structure is documented below.
+        """
+        deployment_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the Deployment.
+        """
+        deployment_namespace: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The namespace of the Deployment.
+        """
+elif False:
+    FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs:
+    def __init__(__self__, *,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]] = None,
+                 deployment_name: Optional[pulumi.Input[builtins.str]] = None,
+                 deployment_namespace: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]] containers: The override configurations for the containers in the Deployment. Structure is documented below.
+        :param pulumi.Input[builtins.str] deployment_name: The name of the Deployment.
+        :param pulumi.Input[builtins.str] deployment_namespace: The namespace of the Deployment.
+        """
+        if containers is not None:
+            pulumi.set(__self__, "containers", containers)
+        if deployment_name is not None:
+            pulumi.set(__self__, "deployment_name", deployment_name)
+        if deployment_namespace is not None:
+            pulumi.set(__self__, "deployment_namespace", deployment_namespace)
+
+    @property
+    @pulumi.getter
+    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]]:
+        """
+        The override configurations for the containers in the Deployment. Structure is documented below.
+        """
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]]):
+        pulumi.set(self, "containers", value)
+
+    @property
+    @pulumi.getter(name="deploymentName")
+    def deployment_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the Deployment.
+        """
+        return pulumi.get(self, "deployment_name")
+
+    @deployment_name.setter
+    def deployment_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "deployment_name", value)
+
+    @property
+    @pulumi.getter(name="deploymentNamespace")
+    def deployment_namespace(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The namespace of the Deployment.
+        """
+        return pulumi.get(self, "deployment_namespace")
+
+    @deployment_namespace.setter
+    def deployment_namespace(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "deployment_namespace", value)
+
+
+if not MYPY:
+    class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgsDict(TypedDict):
+        container_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the container.
+        """
+        cpu_limit: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The CPU limit of the container.
+        """
+        cpu_request: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The CPU request of the container.
+        """
+        memory_limit: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The memory limit of the container.
+        """
+        memory_request: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The memory request of the container.
+        """
+elif False:
+    FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs:
+    def __init__(__self__, *,
+                 container_name: Optional[pulumi.Input[builtins.str]] = None,
+                 cpu_limit: Optional[pulumi.Input[builtins.str]] = None,
+                 cpu_request: Optional[pulumi.Input[builtins.str]] = None,
+                 memory_limit: Optional[pulumi.Input[builtins.str]] = None,
+                 memory_request: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] container_name: The name of the container.
+        :param pulumi.Input[builtins.str] cpu_limit: The CPU limit of the container.
+        :param pulumi.Input[builtins.str] cpu_request: The CPU request of the container.
+        :param pulumi.Input[builtins.str] memory_limit: The memory limit of the container.
+        :param pulumi.Input[builtins.str] memory_request: The memory request of the container.
+        """
+        if container_name is not None:
+            pulumi.set(__self__, "container_name", container_name)
+        if cpu_limit is not None:
+            pulumi.set(__self__, "cpu_limit", cpu_limit)
+        if cpu_request is not None:
+            pulumi.set(__self__, "cpu_request", cpu_request)
+        if memory_limit is not None:
+            pulumi.set(__self__, "memory_limit", memory_limit)
+        if memory_request is not None:
+            pulumi.set(__self__, "memory_request", memory_request)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the container.
+        """
+        return pulumi.get(self, "container_name")
+
+    @container_name.setter
+    def container_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "container_name", value)
+
+    @property
+    @pulumi.getter(name="cpuLimit")
+    def cpu_limit(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The CPU limit of the container.
+        """
+        return pulumi.get(self, "cpu_limit")
+
+    @cpu_limit.setter
+    def cpu_limit(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cpu_limit", value)
+
+    @property
+    @pulumi.getter(name="cpuRequest")
+    def cpu_request(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The CPU request of the container.
+        """
+        return pulumi.get(self, "cpu_request")
+
+    @cpu_request.setter
+    def cpu_request(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cpu_request", value)
+
+    @property
+    @pulumi.getter(name="memoryLimit")
+    def memory_limit(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The memory limit of the container.
+        """
+        return pulumi.get(self, "memory_limit")
+
+    @memory_limit.setter
+    def memory_limit(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "memory_limit", value)
+
+    @property
+    @pulumi.getter(name="memoryRequest")
+    def memory_request(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The memory request of the container.
+        """
+        return pulumi.get(self, "memory_request")
+
+    @memory_request.setter
+    def memory_request(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "memory_request", value)
 
 
 if not MYPY:

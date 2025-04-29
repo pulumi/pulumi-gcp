@@ -47,7 +47,7 @@ public final class GetClusterNodePoolNodeConfig {
      */
     private String bootDiskKmsKey;
     /**
-     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
      * 
      */
     private List<GetClusterNodePoolNodeConfigConfidentialNode> confidentialNodes;
@@ -91,6 +91,11 @@ public final class GetClusterNodePoolNodeConfig {
      * 
      */
     private List<GetClusterNodePoolNodeConfigFastSocket> fastSockets;
+    /**
+     * @return Enables Flex Start provisioning model for the node pool
+     * 
+     */
+    private Boolean flexStart;
     /**
      * @return GCFS configuration for this node.
      * 
@@ -273,7 +278,7 @@ public final class GetClusterNodePoolNodeConfig {
         return this.bootDiskKmsKey;
     }
     /**
-     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
      * 
      */
     public List<GetClusterNodePoolNodeConfigConfidentialNode> confidentialNodes() {
@@ -334,6 +339,13 @@ public final class GetClusterNodePoolNodeConfig {
      */
     public List<GetClusterNodePoolNodeConfigFastSocket> fastSockets() {
         return this.fastSockets;
+    }
+    /**
+     * @return Enables Flex Start provisioning model for the node pool
+     * 
+     */
+    public Boolean flexStart() {
+        return this.flexStart;
     }
     /**
      * @return GCFS configuration for this node.
@@ -587,6 +599,7 @@ public final class GetClusterNodePoolNodeConfig {
         private List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
         private List<GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
         private List<GetClusterNodePoolNodeConfigFastSocket> fastSockets;
+        private Boolean flexStart;
         private List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs;
         private List<GetClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private List<GetClusterNodePoolNodeConfigGvnic> gvnics;
@@ -634,6 +647,7 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.ephemeralStorageConfigs = defaults.ephemeralStorageConfigs;
     	      this.ephemeralStorageLocalSsdConfigs = defaults.ephemeralStorageLocalSsdConfigs;
     	      this.fastSockets = defaults.fastSockets;
+    	      this.flexStart = defaults.flexStart;
     	      this.gcfsConfigs = defaults.gcfsConfigs;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnics = defaults.gvnics;
@@ -777,6 +791,14 @@ public final class GetClusterNodePoolNodeConfig {
         }
         public Builder fastSockets(GetClusterNodePoolNodeConfigFastSocket... fastSockets) {
             return fastSockets(List.of(fastSockets));
+        }
+        @CustomType.Setter
+        public Builder flexStart(Boolean flexStart) {
+            if (flexStart == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "flexStart");
+            }
+            this.flexStart = flexStart;
+            return this;
         }
         @CustomType.Setter
         public Builder gcfsConfigs(List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs) {
@@ -1109,6 +1131,7 @@ public final class GetClusterNodePoolNodeConfig {
             _resultValue.ephemeralStorageConfigs = ephemeralStorageConfigs;
             _resultValue.ephemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
             _resultValue.fastSockets = fastSockets;
+            _resultValue.flexStart = flexStart;
             _resultValue.gcfsConfigs = gcfsConfigs;
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.gvnics = gvnics;

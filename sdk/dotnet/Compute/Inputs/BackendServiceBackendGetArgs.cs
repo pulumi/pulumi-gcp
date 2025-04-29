@@ -142,6 +142,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("maxUtilization")]
         public Input<double>? MaxUtilization { get; set; }
 
+        /// <summary>
+        /// This field indicates whether this backend should be fully utilized before sending traffic to backends
+        /// with default preference. This field cannot be set when loadBalancingScheme is set to 'EXTERNAL'. The possible values are:
+        /// - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+        /// based on RTT.
+        /// - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
+        /// traffic would be assigned based on the load balancing algorithm you use. This is the default
+        /// Possible values are: `PREFERRED`, `DEFAULT`.
+        /// </summary>
+        [Input("preference")]
+        public Input<string>? Preference { get; set; }
+
         public BackendServiceBackendGetArgs()
         {
         }

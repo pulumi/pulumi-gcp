@@ -68,17 +68,10 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///         CryptoKey = cryptokey.Apply(getKMSCryptoKeyResult =&gt; getKMSCryptoKeyResult.Id),
     ///     });
     /// 
-    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
-    ///     {
-    ///         AccountId = "service-acc",
-    ///         DisplayName = "Service Account",
-    ///     });
-    /// 
     ///     var example = new Gcp.ApplicationIntegration.Client("example", new()
     ///     {
     ///         Location = "us-east1",
     ///         CreateSampleIntegrations = true,
-    ///         RunAsServiceAccount = serviceAccount.Email,
     ///         CloudKmsConfig = new Gcp.ApplicationIntegration.Inputs.ClientCloudKmsConfigArgs
     ///         {
     ///             KmsLocation = "us-east1",
@@ -158,7 +151,10 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// User input run-as service account, if empty, will bring up a new default service account.
+        /// 
+        /// &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("runAsServiceAccount")]
         public Output<string?> RunAsServiceAccount { get; private set; } = null!;
@@ -239,7 +235,10 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// User input run-as service account, if empty, will bring up a new default service account.
+        /// 
+        /// &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("runAsServiceAccount")]
         public Input<string>? RunAsServiceAccount { get; set; }
@@ -282,7 +281,10 @@ namespace Pulumi.Gcp.ApplicationIntegration
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// User input run-as service account, if empty, will bring up a new default service account.
+        /// 
+        /// &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("runAsServiceAccount")]
         public Input<string>? RunAsServiceAccount { get; set; }

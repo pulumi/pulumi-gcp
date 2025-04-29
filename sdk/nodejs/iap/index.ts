@@ -80,6 +80,11 @@ export const getWebBackendServiceIamPolicy: typeof import("./getWebBackendServic
 export const getWebBackendServiceIamPolicyOutput: typeof import("./getWebBackendServiceIamPolicy").getWebBackendServiceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getWebBackendServiceIamPolicy","getWebBackendServiceIamPolicyOutput"], () => require("./getWebBackendServiceIamPolicy"));
 
+export { GetWebCloudRunServiceIamPolicyArgs, GetWebCloudRunServiceIamPolicyResult, GetWebCloudRunServiceIamPolicyOutputArgs } from "./getWebCloudRunServiceIamPolicy";
+export const getWebCloudRunServiceIamPolicy: typeof import("./getWebCloudRunServiceIamPolicy").getWebCloudRunServiceIamPolicy = null as any;
+export const getWebCloudRunServiceIamPolicyOutput: typeof import("./getWebCloudRunServiceIamPolicy").getWebCloudRunServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWebCloudRunServiceIamPolicy","getWebCloudRunServiceIamPolicyOutput"], () => require("./getWebCloudRunServiceIamPolicy"));
+
 export { GetWebIamPolicyArgs, GetWebIamPolicyResult, GetWebIamPolicyOutputArgs } from "./getWebIamPolicy";
 export const getWebIamPolicy: typeof import("./getWebIamPolicy").getWebIamPolicy = null as any;
 export const getWebIamPolicyOutput: typeof import("./getWebIamPolicy").getWebIamPolicyOutput = null as any;
@@ -169,6 +174,21 @@ export { WebBackendServiceIamPolicyArgs, WebBackendServiceIamPolicyState } from 
 export type WebBackendServiceIamPolicy = import("./webBackendServiceIamPolicy").WebBackendServiceIamPolicy;
 export const WebBackendServiceIamPolicy: typeof import("./webBackendServiceIamPolicy").WebBackendServiceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["WebBackendServiceIamPolicy"], () => require("./webBackendServiceIamPolicy"));
+
+export { WebCloudRunServiceIamBindingArgs, WebCloudRunServiceIamBindingState } from "./webCloudRunServiceIamBinding";
+export type WebCloudRunServiceIamBinding = import("./webCloudRunServiceIamBinding").WebCloudRunServiceIamBinding;
+export const WebCloudRunServiceIamBinding: typeof import("./webCloudRunServiceIamBinding").WebCloudRunServiceIamBinding = null as any;
+utilities.lazyLoad(exports, ["WebCloudRunServiceIamBinding"], () => require("./webCloudRunServiceIamBinding"));
+
+export { WebCloudRunServiceIamMemberArgs, WebCloudRunServiceIamMemberState } from "./webCloudRunServiceIamMember";
+export type WebCloudRunServiceIamMember = import("./webCloudRunServiceIamMember").WebCloudRunServiceIamMember;
+export const WebCloudRunServiceIamMember: typeof import("./webCloudRunServiceIamMember").WebCloudRunServiceIamMember = null as any;
+utilities.lazyLoad(exports, ["WebCloudRunServiceIamMember"], () => require("./webCloudRunServiceIamMember"));
+
+export { WebCloudRunServiceIamPolicyArgs, WebCloudRunServiceIamPolicyState } from "./webCloudRunServiceIamPolicy";
+export type WebCloudRunServiceIamPolicy = import("./webCloudRunServiceIamPolicy").WebCloudRunServiceIamPolicy;
+export const WebCloudRunServiceIamPolicy: typeof import("./webCloudRunServiceIamPolicy").WebCloudRunServiceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["WebCloudRunServiceIamPolicy"], () => require("./webCloudRunServiceIamPolicy"));
 
 export { WebIamBindingArgs, WebIamBindingState } from "./webIamBinding";
 export type WebIamBinding = import("./webIamBinding").WebIamBinding;
@@ -279,6 +299,12 @@ const _module = {
                 return new WebBackendServiceIamMember(name, <any>undefined, { urn })
             case "gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy":
                 return new WebBackendServiceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:iap/webCloudRunServiceIamBinding:WebCloudRunServiceIamBinding":
+                return new WebCloudRunServiceIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/webCloudRunServiceIamMember:WebCloudRunServiceIamMember":
+                return new WebCloudRunServiceIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/webCloudRunServiceIamPolicy:WebCloudRunServiceIamPolicy":
+                return new WebCloudRunServiceIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/webIamBinding:WebIamBinding":
                 return new WebIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/webIamMember:WebIamMember":
@@ -330,6 +356,9 @@ pulumi.runtime.registerResourceModule("gcp", "iap/tunnelInstanceIAMPolicy", _mod
 pulumi.runtime.registerResourceModule("gcp", "iap/webBackendServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webBackendServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webBackendServiceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webCloudRunServiceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webCloudRunServiceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webCloudRunServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webIamPolicy", _module)

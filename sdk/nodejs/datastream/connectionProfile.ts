@@ -292,6 +292,27 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Datastream Connection Profile Salesforce
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
+ *     displayName: "Salesforce Source",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     createWithoutValidation: true,
+ *     salesforceProfile: {
+ *         domain: "fake-domain.my.salesforce.com",
+ *         userCredentials: {
+ *             username: "fake-username",
+ *             secretManagerStoredPassword: "fake-password",
+ *             secretManagerStoredSecurityToken: "fake-token",
+ *         },
+ *     },
+ * });
+ * ```
  * ### Datastream Connection Profile Postgres Secret Manager
  *
  * ```typescript

@@ -17,6 +17,21 @@ public final class InstanceObservabilityConfigArgs extends com.pulumi.resources.
     public static final InstanceObservabilityConfigArgs Empty = new InstanceObservabilityConfigArgs();
 
     /**
+     * Whether assistive experiences are enabled for this AlloyDB instance.
+     * 
+     */
+    @Import(name="assistiveExperiencesEnabled")
+    private @Nullable Output<Boolean> assistiveExperiencesEnabled;
+
+    /**
+     * @return Whether assistive experiences are enabled for this AlloyDB instance.
+     * 
+     */
+    public Optional<Output<Boolean>> assistiveExperiencesEnabled() {
+        return Optional.ofNullable(this.assistiveExperiencesEnabled);
+    }
+
+    /**
      * Observability feature status for an instance.
      * 
      */
@@ -139,6 +154,7 @@ public final class InstanceObservabilityConfigArgs extends com.pulumi.resources.
     private InstanceObservabilityConfigArgs() {}
 
     private InstanceObservabilityConfigArgs(InstanceObservabilityConfigArgs $) {
+        this.assistiveExperiencesEnabled = $.assistiveExperiencesEnabled;
         this.enabled = $.enabled;
         this.maxQueryStringLength = $.maxQueryStringLength;
         this.preserveComments = $.preserveComments;
@@ -165,6 +181,27 @@ public final class InstanceObservabilityConfigArgs extends com.pulumi.resources.
 
         public Builder(InstanceObservabilityConfigArgs defaults) {
             $ = new InstanceObservabilityConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param assistiveExperiencesEnabled Whether assistive experiences are enabled for this AlloyDB instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assistiveExperiencesEnabled(@Nullable Output<Boolean> assistiveExperiencesEnabled) {
+            $.assistiveExperiencesEnabled = assistiveExperiencesEnabled;
+            return this;
+        }
+
+        /**
+         * @param assistiveExperiencesEnabled Whether assistive experiences are enabled for this AlloyDB instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assistiveExperiencesEnabled(Boolean assistiveExperiencesEnabled) {
+            return assistiveExperiencesEnabled(Output.of(assistiveExperiencesEnabled));
         }
 
         /**

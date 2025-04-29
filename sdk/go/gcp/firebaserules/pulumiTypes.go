@@ -114,6 +114,8 @@ type RulesetSource struct {
 	// `File` set constituting the `Source` bundle.
 	Files []RulesetSourceFile `pulumi:"files"`
 	// `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+	//
+	// ***
 	Language *string `pulumi:"language"`
 }
 
@@ -132,6 +134,8 @@ type RulesetSourceArgs struct {
 	// `File` set constituting the `Source` bundle.
 	Files RulesetSourceFileArrayInput `pulumi:"files"`
 	// `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+	//
+	// ***
 	Language pulumi.StringPtrInput `pulumi:"language"`
 }
 
@@ -218,6 +222,8 @@ func (o RulesetSourceOutput) Files() RulesetSourceFileArrayOutput {
 }
 
 // `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+//
+// ***
 func (o RulesetSourceOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetSource) *string { return v.Language }).(pulumi.StringPtrOutput)
 }
@@ -257,6 +263,8 @@ func (o RulesetSourcePtrOutput) Files() RulesetSourceFileArrayOutput {
 }
 
 // `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+//
+// ***
 func (o RulesetSourcePtrOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesetSource) *string {
 		if v == nil {
@@ -272,8 +280,6 @@ type RulesetSourceFile struct {
 	// Fingerprint (e.g. github sha) associated with the `File`.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// File name.
-	//
-	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -294,8 +300,6 @@ type RulesetSourceFileArgs struct {
 	// Fingerprint (e.g. github sha) associated with the `File`.
 	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
 	// File name.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -361,8 +365,6 @@ func (o RulesetSourceFileOutput) Fingerprint() pulumi.StringPtrOutput {
 }
 
 // File name.
-//
-// ***
 func (o RulesetSourceFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RulesetSourceFile) string { return v.Name }).(pulumi.StringOutput)
 }

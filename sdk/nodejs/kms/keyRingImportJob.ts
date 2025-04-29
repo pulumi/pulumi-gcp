@@ -85,7 +85,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
     public readonly importJobId!: pulumi.Output<string>;
     /**
      * The wrapping method to be used for incoming key material.
-     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
      */
     public readonly importMethod!: pulumi.Output<string>;
     /**
@@ -189,7 +189,7 @@ export interface KeyRingImportJobState {
     importJobId?: pulumi.Input<string>;
     /**
      * The wrapping method to be used for incoming key material.
-     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
      */
     importMethod?: pulumi.Input<string>;
     /**
@@ -231,7 +231,7 @@ export interface KeyRingImportJobArgs {
     importJobId: pulumi.Input<string>;
     /**
      * The wrapping method to be used for incoming key material.
-     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
      */
     importMethod: pulumi.Input<string>;
     /**

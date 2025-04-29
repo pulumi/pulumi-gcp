@@ -54,6 +54,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.BackendServiceCdnPolicyNegativeCachingPolicy> NegativeCachingPolicies;
         /// <summary>
+        /// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+        /// to the origin.
+        /// </summary>
+        public readonly bool? RequestCoalescing;
+        /// <summary>
         /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
         /// </summary>
         public readonly int? ServeWhileStale;
@@ -88,6 +93,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.BackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies,
 
+            bool? requestCoalescing,
+
             int? serveWhileStale,
 
             int? signedUrlCacheMaxAgeSec)
@@ -100,6 +107,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             MaxTtl = maxTtl;
             NegativeCaching = negativeCaching;
             NegativeCachingPolicies = negativeCachingPolicies;
+            RequestCoalescing = requestCoalescing;
             ServeWhileStale = serveWhileStale;
             SignedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
         }

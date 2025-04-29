@@ -5161,7 +5161,7 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryArrayOutput) Index(i pul
 }
 
 type GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository struct {
-	// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
+	// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
 	RepositoryBase string `pulumi:"repositoryBase"`
 	// Specific repository from the base.
 	RepositoryPath string `pulumi:"repositoryPath"`
@@ -5179,7 +5179,7 @@ type GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryInput inter
 }
 
 type GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs struct {
-	// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
+	// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
 	RepositoryBase pulumi.StringInput `pulumi:"repositoryBase"`
 	// Specific repository from the base.
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
@@ -5236,7 +5236,7 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) 
 	return o
 }
 
-// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
+// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
 func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) RepositoryBase() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository) string {
 		return v.RepositoryBase

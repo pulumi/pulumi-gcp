@@ -184,6 +184,7 @@ type Provider struct {
 	SourceRepoCustomEndpoint               pulumi.StringPtrOutput `pulumi:"sourceRepoCustomEndpoint"`
 	SpannerCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"spannerCustomEndpoint"`
 	SqlCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"sqlCustomEndpoint"`
+	StorageBatchOperationsCustomEndpoint   pulumi.StringPtrOutput `pulumi:"storageBatchOperationsCustomEndpoint"`
 	StorageControlCustomEndpoint           pulumi.StringPtrOutput `pulumi:"storageControlCustomEndpoint"`
 	StorageCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"storageCustomEndpoint"`
 	StorageInsightsCustomEndpoint          pulumi.StringPtrOutput `pulumi:"storageInsightsCustomEndpoint"`
@@ -415,6 +416,7 @@ type providerArgs struct {
 	SourceRepoCustomEndpoint               *string                      `pulumi:"sourceRepoCustomEndpoint"`
 	SpannerCustomEndpoint                  *string                      `pulumi:"spannerCustomEndpoint"`
 	SqlCustomEndpoint                      *string                      `pulumi:"sqlCustomEndpoint"`
+	StorageBatchOperationsCustomEndpoint   *string                      `pulumi:"storageBatchOperationsCustomEndpoint"`
 	StorageControlCustomEndpoint           *string                      `pulumi:"storageControlCustomEndpoint"`
 	StorageCustomEndpoint                  *string                      `pulumi:"storageCustomEndpoint"`
 	StorageInsightsCustomEndpoint          *string                      `pulumi:"storageInsightsCustomEndpoint"`
@@ -610,6 +612,7 @@ type ProviderArgs struct {
 	SourceRepoCustomEndpoint               pulumi.StringPtrInput
 	SpannerCustomEndpoint                  pulumi.StringPtrInput
 	SqlCustomEndpoint                      pulumi.StringPtrInput
+	StorageBatchOperationsCustomEndpoint   pulumi.StringPtrInput
 	StorageControlCustomEndpoint           pulumi.StringPtrInput
 	StorageCustomEndpoint                  pulumi.StringPtrInput
 	StorageInsightsCustomEndpoint          pulumi.StringPtrInput
@@ -1329,6 +1332,10 @@ func (o ProviderOutput) SpannerCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) SqlCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SqlCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) StorageBatchOperationsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.StorageBatchOperationsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) StorageControlCustomEndpoint() pulumi.StringPtrOutput {

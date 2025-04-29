@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.BackendServiceCustomMetricArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceIapArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceLocalityLbPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigArgs;
+import com.pulumi.gcp.compute.inputs.BackendServiceMaxStreamDurationArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceOutlierDetectionArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceSecuritySettingsArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceStrongSessionAffinityCookieArgs;
@@ -564,6 +565,33 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+     * beginning of the stream until the response has been completely processed, including all retries. A stream that
+     * does not complete in this duration is closed.
+     * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+     * This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+     * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maxStreamDuration")
+    private @Nullable Output<BackendServiceMaxStreamDurationArgs> maxStreamDuration;
+
+    /**
+     * @return Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+     * beginning of the stream until the response has been completely processed, including all retries. A stream that
+     * does not complete in this duration is closed.
+     * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+     * This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+     * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackendServiceMaxStreamDurationArgs>> maxStreamDuration() {
+        return Optional.ofNullable(this.maxStreamDuration);
+    }
+
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -846,6 +874,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         this.localityLbPolicies = $.localityLbPolicies;
         this.localityLbPolicy = $.localityLbPolicy;
         this.logConfig = $.logConfig;
+        this.maxStreamDuration = $.maxStreamDuration;
         this.name = $.name;
         this.outlierDetection = $.outlierDetection;
         this.portName = $.portName;
@@ -1608,6 +1637,39 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder logConfig(BackendServiceLogConfigArgs logConfig) {
             return logConfig(Output.of(logConfig));
+        }
+
+        /**
+         * @param maxStreamDuration Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+         * beginning of the stream until the response has been completely processed, including all retries. A stream that
+         * does not complete in this duration is closed.
+         * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+         * This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+         * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxStreamDuration(@Nullable Output<BackendServiceMaxStreamDurationArgs> maxStreamDuration) {
+            $.maxStreamDuration = maxStreamDuration;
+            return this;
+        }
+
+        /**
+         * @param maxStreamDuration Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+         * beginning of the stream until the response has been completely processed, including all retries. A stream that
+         * does not complete in this duration is closed.
+         * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+         * This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+         * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxStreamDuration(BackendServiceMaxStreamDurationArgs maxStreamDuration) {
+            return maxStreamDuration(Output.of(maxStreamDuration));
         }
 
         /**

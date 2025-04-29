@@ -81,6 +81,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
+        /// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
+        /// to the origin.
+        /// </summary>
+        [Input("requestCoalescing")]
+        public Input<bool>? RequestCoalescing { get; set; }
+
+        /// <summary>
         /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
         /// </summary>
         [Input("serveWhileStale")]

@@ -1584,6 +1584,8 @@ class InstanceMachineConfig(dict):
         suggest = None
         if key == "cpuCount":
             suggest = "cpu_count"
+        elif key == "machineType":
+            suggest = "machine_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceMachineConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1597,12 +1599,18 @@ class InstanceMachineConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 cpu_count: Optional[builtins.int] = None):
+                 cpu_count: Optional[builtins.int] = None,
+                 machine_type: Optional[builtins.str] = None):
         """
         :param builtins.int cpu_count: The number of CPU's in the VM instance.
+        :param builtins.str machine_type: Machine type of the VM instance.
+               E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+               `cpu_count` must match the number of vCPUs in the machine type.
         """
         if cpu_count is not None:
             pulumi.set(__self__, "cpu_count", cpu_count)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
 
     @property
     @pulumi.getter(name="cpuCount")
@@ -1611,6 +1619,16 @@ class InstanceMachineConfig(dict):
         The number of CPU's in the VM instance.
         """
         return pulumi.get(self, "cpu_count")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[builtins.str]:
+        """
+        Machine type of the VM instance.
+        E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+        `cpu_count` must match the number of vCPUs in the machine type.
+        """
+        return pulumi.get(self, "machine_type")
 
 
 @pulumi.output_type
@@ -1728,7 +1746,9 @@ class InstanceObservabilityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxQueryStringLength":
+        if key == "assistiveExperiencesEnabled":
+            suggest = "assistive_experiences_enabled"
+        elif key == "maxQueryStringLength":
             suggest = "max_query_string_length"
         elif key == "preserveComments":
             suggest = "preserve_comments"
@@ -1755,6 +1775,7 @@ class InstanceObservabilityConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 assistive_experiences_enabled: Optional[builtins.bool] = None,
                  enabled: Optional[builtins.bool] = None,
                  max_query_string_length: Optional[builtins.int] = None,
                  preserve_comments: Optional[builtins.bool] = None,
@@ -1764,6 +1785,7 @@ class InstanceObservabilityConfig(dict):
                  track_wait_event_types: Optional[builtins.bool] = None,
                  track_wait_events: Optional[builtins.bool] = None):
         """
+        :param builtins.bool assistive_experiences_enabled: Whether assistive experiences are enabled for this AlloyDB instance.
         :param builtins.bool enabled: Observability feature status for an instance.
         :param builtins.int max_query_string_length: Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
         :param builtins.bool preserve_comments: Preserve comments in the query string.
@@ -1773,6 +1795,8 @@ class InstanceObservabilityConfig(dict):
         :param builtins.bool track_wait_event_types: Record wait event types during query execution for an instance.
         :param builtins.bool track_wait_events: Record wait events during query execution for an instance.
         """
+        if assistive_experiences_enabled is not None:
+            pulumi.set(__self__, "assistive_experiences_enabled", assistive_experiences_enabled)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if max_query_string_length is not None:
@@ -1789,6 +1813,14 @@ class InstanceObservabilityConfig(dict):
             pulumi.set(__self__, "track_wait_event_types", track_wait_event_types)
         if track_wait_events is not None:
             pulumi.set(__self__, "track_wait_events", track_wait_events)
+
+    @property
+    @pulumi.getter(name="assistiveExperiencesEnabled")
+    def assistive_experiences_enabled(self) -> Optional[builtins.bool]:
+        """
+        Whether assistive experiences are enabled for this AlloyDB instance.
+        """
+        return pulumi.get(self, "assistive_experiences_enabled")
 
     @property
     @pulumi.getter
@@ -2950,11 +2982,16 @@ class GetInstanceClientConnectionConfigSslConfigResult(dict):
 @pulumi.output_type
 class GetInstanceMachineConfigResult(dict):
     def __init__(__self__, *,
-                 cpu_count: builtins.int):
+                 cpu_count: builtins.int,
+                 machine_type: builtins.str):
         """
         :param builtins.int cpu_count: The number of CPU's in the VM instance.
+        :param builtins.str machine_type: Machine type of the VM instance.
+               E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+               'cpu_count' must match the number of vCPUs in the machine type.
         """
         pulumi.set(__self__, "cpu_count", cpu_count)
+        pulumi.set(__self__, "machine_type", machine_type)
 
     @property
     @pulumi.getter(name="cpuCount")
@@ -2963,6 +3000,16 @@ class GetInstanceMachineConfigResult(dict):
         The number of CPU's in the VM instance.
         """
         return pulumi.get(self, "cpu_count")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> builtins.str:
+        """
+        Machine type of the VM instance.
+        E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+        'cpu_count' must match the number of vCPUs in the machine type.
+        """
+        return pulumi.get(self, "machine_type")
 
 
 @pulumi.output_type
@@ -3034,6 +3081,7 @@ class GetInstanceNetworkConfigAuthorizedExternalNetworkResult(dict):
 @pulumi.output_type
 class GetInstanceObservabilityConfigResult(dict):
     def __init__(__self__, *,
+                 assistive_experiences_enabled: builtins.bool,
                  enabled: builtins.bool,
                  max_query_string_length: builtins.int,
                  preserve_comments: builtins.bool,
@@ -3043,6 +3091,7 @@ class GetInstanceObservabilityConfigResult(dict):
                  track_wait_event_types: builtins.bool,
                  track_wait_events: builtins.bool):
         """
+        :param builtins.bool assistive_experiences_enabled: Whether assistive experiences are enabled for this AlloyDB instance.
         :param builtins.bool enabled: Observability feature status for an instance.
         :param builtins.int max_query_string_length: Query string length. The default value is 10240. Any integer between 1024 and 100000 is considered valid.
         :param builtins.bool preserve_comments: Preserve comments in the query string.
@@ -3052,6 +3101,7 @@ class GetInstanceObservabilityConfigResult(dict):
         :param builtins.bool track_wait_event_types: Record wait event types during query execution for an instance.
         :param builtins.bool track_wait_events: Record wait events during query execution for an instance.
         """
+        pulumi.set(__self__, "assistive_experiences_enabled", assistive_experiences_enabled)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "max_query_string_length", max_query_string_length)
         pulumi.set(__self__, "preserve_comments", preserve_comments)
@@ -3060,6 +3110,14 @@ class GetInstanceObservabilityConfigResult(dict):
         pulumi.set(__self__, "track_active_queries", track_active_queries)
         pulumi.set(__self__, "track_wait_event_types", track_wait_event_types)
         pulumi.set(__self__, "track_wait_events", track_wait_events)
+
+    @property
+    @pulumi.getter(name="assistiveExperiencesEnabled")
+    def assistive_experiences_enabled(self) -> builtins.bool:
+        """
+        Whether assistive experiences are enabled for this AlloyDB instance.
+        """
+        return pulumi.get(self, "assistive_experiences_enabled")
 
     @property
     @pulumi.getter

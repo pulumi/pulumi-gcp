@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * const http = new gcp.monitoring.UptimeCheckConfig("http", {
  *     displayName: "http-uptime-check",
  *     timeout: "60s",
+ *     logCheckFailures: true,
  *     userLabels: {
  *         "example-key": "example-value",
  *     },
@@ -285,6 +286,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly httpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
     /**
+     * Specifies whether to log the results of failed probes to Cloud Logging.
+     */
+    public readonly logCheckFailures!: pulumi.Output<boolean | undefined>;
+    /**
      * The [monitored resource]
      * (https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
@@ -356,6 +361,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["contentMatchers"] = state ? state.contentMatchers : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["httpCheck"] = state ? state.httpCheck : undefined;
+            resourceInputs["logCheckFailures"] = state ? state.logCheckFailures : undefined;
             resourceInputs["monitoredResource"] = state ? state.monitoredResource : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
@@ -379,6 +385,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["contentMatchers"] = args ? args.contentMatchers : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["httpCheck"] = args ? args.httpCheck : undefined;
+            resourceInputs["logCheckFailures"] = args ? args.logCheckFailures : undefined;
             resourceInputs["monitoredResource"] = args ? args.monitoredResource : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -419,6 +426,10 @@ export interface UptimeCheckConfigState {
      * Structure is documented below.
      */
     httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
+    /**
+     * Specifies whether to log the results of failed probes to Cloud Logging.
+     */
+    logCheckFailures?: pulumi.Input<boolean>;
     /**
      * The [monitored resource]
      * (https://cloud.google.com/monitoring/api/resources) associated with the
@@ -498,6 +509,10 @@ export interface UptimeCheckConfigArgs {
      * Structure is documented below.
      */
     httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
+    /**
+     * Specifies whether to log the results of failed probes to Cloud Logging.
+     */
+    logCheckFailures?: pulumi.Input<boolean>;
     /**
      * The [monitored resource]
      * (https://cloud.google.com/monitoring/api/resources) associated with the

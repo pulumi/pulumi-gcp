@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BackupChannelArgs, BackupChannelState } from "./backupChannel";
+export type BackupChannel = import("./backupChannel").BackupChannel;
+export const BackupChannel: typeof import("./backupChannel").BackupChannel = null as any;
+utilities.lazyLoad(exports, ["BackupChannel"], () => require("./backupChannel"));
+
 export { BackupPlanArgs, BackupPlanState } from "./backupPlan";
 export type BackupPlan = import("./backupPlan").BackupPlan;
 export const BackupPlan: typeof import("./backupPlan").BackupPlan = null as any;
@@ -35,6 +40,11 @@ export const getRestorePlanIamPolicy: typeof import("./getRestorePlanIamPolicy")
 export const getRestorePlanIamPolicyOutput: typeof import("./getRestorePlanIamPolicy").getRestorePlanIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRestorePlanIamPolicy","getRestorePlanIamPolicyOutput"], () => require("./getRestorePlanIamPolicy"));
 
+export { RestoreChannelArgs, RestoreChannelState } from "./restoreChannel";
+export type RestoreChannel = import("./restoreChannel").RestoreChannel;
+export const RestoreChannel: typeof import("./restoreChannel").RestoreChannel = null as any;
+utilities.lazyLoad(exports, ["RestoreChannel"], () => require("./restoreChannel"));
+
 export { RestorePlanArgs, RestorePlanState } from "./restorePlan";
 export type RestorePlan = import("./restorePlan").RestorePlan;
 export const RestorePlan: typeof import("./restorePlan").RestorePlan = null as any;
@@ -60,6 +70,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:gkebackup/backupChannel:BackupChannel":
+                return new BackupChannel(name, <any>undefined, { urn })
             case "gcp:gkebackup/backupPlan:BackupPlan":
                 return new BackupPlan(name, <any>undefined, { urn })
             case "gcp:gkebackup/backupPlanIamBinding:BackupPlanIamBinding":
@@ -68,6 +80,8 @@ const _module = {
                 return new BackupPlanIamMember(name, <any>undefined, { urn })
             case "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy":
                 return new BackupPlanIamPolicy(name, <any>undefined, { urn })
+            case "gcp:gkebackup/restoreChannel:RestoreChannel":
+                return new RestoreChannel(name, <any>undefined, { urn })
             case "gcp:gkebackup/restorePlan:RestorePlan":
                 return new RestorePlan(name, <any>undefined, { urn })
             case "gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding":
@@ -81,10 +95,12 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupChannel", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlan", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlanIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlanIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlanIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkebackup/restoreChannel", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/restorePlan", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/restorePlanIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/restorePlanIamMember", _module)

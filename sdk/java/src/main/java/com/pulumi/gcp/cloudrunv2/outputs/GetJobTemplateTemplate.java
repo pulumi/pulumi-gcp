@@ -31,7 +31,7 @@ public final class GetJobTemplateTemplate {
      */
     private String executionEnvironment;
     /**
-     * @return Number of retries allowed per Task, before marking this Task failed.
+     * @return Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
      * 
      */
     private Integer maxRetries;
@@ -81,7 +81,7 @@ public final class GetJobTemplateTemplate {
         return this.executionEnvironment;
     }
     /**
-     * @return Number of retries allowed per Task, before marking this Task failed.
+     * @return Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
      * 
      */
     public Integer maxRetries() {
