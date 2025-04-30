@@ -247,6 +247,9 @@ class _LiteSubscriptionState:
 
 
 class LiteSubscription(pulumi.CustomResource):
+
+    pulumi_type = "gcp:pubsub/liteSubscription:LiteSubscription"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

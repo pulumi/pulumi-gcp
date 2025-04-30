@@ -682,6 +682,9 @@ class _RegionalSecretState:
 
 
 class RegionalSecret(pulumi.CustomResource):
+
+    pulumi_type = "gcp:secretmanager/regionalSecret:RegionalSecret"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

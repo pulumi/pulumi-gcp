@@ -128,6 +128,9 @@ class _SharedVPCServiceProjectState:
 
 
 class SharedVPCServiceProject(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

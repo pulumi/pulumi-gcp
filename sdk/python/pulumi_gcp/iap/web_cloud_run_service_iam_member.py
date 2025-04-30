@@ -305,6 +305,9 @@ class _WebCloudRunServiceIamMemberState:
 
 
 class WebCloudRunServiceIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/webCloudRunServiceIamMember:WebCloudRunServiceIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -308,6 +308,9 @@ class _AppleAppState:
 
 
 class AppleApp(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/appleApp:AppleApp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

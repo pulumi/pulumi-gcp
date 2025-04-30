@@ -219,6 +219,9 @@ class _LogViewIamPolicyState:
 
 
 class LogViewIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/logViewIamPolicy:LogViewIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

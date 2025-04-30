@@ -298,6 +298,9 @@ class _ManagementProjectSecurityHealthAnalyticsCustomModuleState:
 
 
 class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/managementProjectSecurityHealthAnalyticsCustomModule:ManagementProjectSecurityHealthAnalyticsCustomModule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

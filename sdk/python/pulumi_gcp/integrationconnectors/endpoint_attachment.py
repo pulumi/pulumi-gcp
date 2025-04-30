@@ -366,6 +366,9 @@ class _EndpointAttachmentState:
 
 
 class EndpointAttachment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:integrationconnectors/endpointAttachment:EndpointAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

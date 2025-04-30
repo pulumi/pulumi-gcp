@@ -237,6 +237,9 @@ class _InboundSamlConfigState:
 
 
 class InboundSamlConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:identityplatform/inboundSamlConfig:InboundSamlConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

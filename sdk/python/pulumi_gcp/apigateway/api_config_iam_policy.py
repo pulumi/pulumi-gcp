@@ -179,6 +179,9 @@ class _ApiConfigIamPolicyState:
 
 
 class ApiConfigIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigateway/apiConfigIamPolicy:ApiConfigIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

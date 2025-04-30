@@ -446,6 +446,9 @@ class _MirroringDeploymentState:
 
 
 class MirroringDeployment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/mirroringDeployment:MirroringDeployment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

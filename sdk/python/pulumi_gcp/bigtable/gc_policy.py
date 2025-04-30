@@ -381,6 +381,9 @@ class _GCPolicyState:
 
 
 class GCPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigtable/gCPolicy:GCPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

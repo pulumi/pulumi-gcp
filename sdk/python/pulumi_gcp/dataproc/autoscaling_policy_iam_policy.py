@@ -212,6 +212,9 @@ class _AutoscalingPolicyIamPolicyState:
 
 
 class AutoscalingPolicyIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -145,6 +145,9 @@ class _EnvGroupState:
 
 
 class EnvGroup(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/envGroup:EnvGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

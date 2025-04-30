@@ -116,6 +116,9 @@ class _BucketIAMPolicyState:
 
 
 class BucketIAMPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/bucketIAMPolicy:BucketIAMPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

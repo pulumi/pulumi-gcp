@@ -710,6 +710,9 @@ class _NetworkState:
 
 
 class Network(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/network:Network"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

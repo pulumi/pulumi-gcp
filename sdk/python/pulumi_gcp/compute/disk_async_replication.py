@@ -106,6 +106,9 @@ class _DiskAsyncReplicationState:
 
 
 class DiskAsyncReplication(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/diskAsyncReplication:DiskAsyncReplication"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

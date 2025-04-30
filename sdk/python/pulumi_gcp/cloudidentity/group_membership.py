@@ -234,6 +234,9 @@ class _GroupMembershipState:
 
 
 class GroupMembership(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudidentity/groupMembership:GroupMembership"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

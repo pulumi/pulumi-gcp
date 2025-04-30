@@ -196,6 +196,9 @@ class _SettingsState:
 
 
 class Settings(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/settings:Settings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

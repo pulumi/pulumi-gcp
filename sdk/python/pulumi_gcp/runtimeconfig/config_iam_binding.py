@@ -253,6 +253,9 @@ class _ConfigIamBindingState:
 
 
 class ConfigIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:runtimeconfig/configIamBinding:ConfigIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

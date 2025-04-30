@@ -305,6 +305,9 @@ class _WebCloudRunServiceIamBindingState:
 
 
 class WebCloudRunServiceIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/webCloudRunServiceIamBinding:WebCloudRunServiceIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

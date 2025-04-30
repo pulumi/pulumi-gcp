@@ -1048,6 +1048,9 @@ class _FlexibleAppVersionState:
 
 
 class FlexibleAppVersion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:appengine/flexibleAppVersion:FlexibleAppVersion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

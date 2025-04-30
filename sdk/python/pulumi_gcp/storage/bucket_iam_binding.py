@@ -229,6 +229,9 @@ class _BucketIAMBindingState:
 
 
 class BucketIAMBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/bucketIAMBinding:BucketIAMBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

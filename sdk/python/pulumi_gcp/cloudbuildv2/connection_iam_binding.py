@@ -294,6 +294,9 @@ class _ConnectionIAMBindingState:
 
 
 class ConnectionIAMBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

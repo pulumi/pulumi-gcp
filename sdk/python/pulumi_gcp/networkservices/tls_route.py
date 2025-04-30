@@ -287,6 +287,9 @@ class _TlsRouteState:
 
 
 class TlsRoute(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/tlsRoute:TlsRoute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

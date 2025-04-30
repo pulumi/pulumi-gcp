@@ -162,6 +162,9 @@ class _ControlPlaneAccessState:
 
 
 class ControlPlaneAccess(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/controlPlaneAccess:ControlPlaneAccess"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

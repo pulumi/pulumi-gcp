@@ -329,6 +329,9 @@ class _RepositoryReleaseConfigState:
 
 
 class RepositoryReleaseConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

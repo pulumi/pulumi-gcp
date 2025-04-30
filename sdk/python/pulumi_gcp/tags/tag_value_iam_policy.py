@@ -116,6 +116,9 @@ class _TagValueIamPolicyState:
 
 
 class TagValueIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:tags/tagValueIamPolicy:TagValueIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

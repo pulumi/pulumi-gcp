@@ -349,6 +349,9 @@ class _PacketMirroringState:
 
 
 class PacketMirroring(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/packetMirroring:PacketMirroring"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

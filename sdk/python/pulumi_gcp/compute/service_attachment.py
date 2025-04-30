@@ -598,6 +598,9 @@ class _ServiceAttachmentState:
 
 
 class ServiceAttachment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/serviceAttachment:ServiceAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

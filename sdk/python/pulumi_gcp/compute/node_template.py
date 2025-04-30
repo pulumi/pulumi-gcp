@@ -484,6 +484,9 @@ class _NodeTemplateState:
 
 
 class NodeTemplate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/nodeTemplate:NodeTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

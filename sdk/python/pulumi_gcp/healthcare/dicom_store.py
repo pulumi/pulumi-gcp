@@ -317,6 +317,9 @@ class _DicomStoreState:
 
 
 class DicomStore(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/dicomStore:DicomStore"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

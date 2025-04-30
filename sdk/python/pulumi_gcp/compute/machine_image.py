@@ -295,6 +295,9 @@ class _MachineImageState:
 
 
 class MachineImage(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/machineImage:MachineImage"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

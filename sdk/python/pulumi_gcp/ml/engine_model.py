@@ -362,6 +362,9 @@ class _EngineModelState:
 
 
 class EngineModel(pulumi.CustomResource):
+
+    pulumi_type = "gcp:ml/engineModel:EngineModel"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

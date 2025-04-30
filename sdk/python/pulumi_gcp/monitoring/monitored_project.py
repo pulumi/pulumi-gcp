@@ -125,6 +125,9 @@ class _MonitoredProjectState:
 
 
 class MonitoredProject(pulumi.CustomResource):
+
+    pulumi_type = "gcp:monitoring/monitoredProject:MonitoredProject"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -232,6 +232,9 @@ class _ConsumersIamMemberState:
 
 
 class ConsumersIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:endpoints/consumersIamMember:ConsumersIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

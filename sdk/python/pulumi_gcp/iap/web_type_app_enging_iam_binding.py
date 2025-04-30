@@ -265,6 +265,9 @@ class _WebTypeAppEngingIamBindingState:
 
 
 class WebTypeAppEngingIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

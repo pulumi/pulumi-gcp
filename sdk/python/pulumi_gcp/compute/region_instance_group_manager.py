@@ -1094,6 +1094,9 @@ class _RegionInstanceGroupManagerState:
 
 
 class RegionInstanceGroupManager(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

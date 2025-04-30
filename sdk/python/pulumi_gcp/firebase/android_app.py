@@ -330,6 +330,9 @@ class _AndroidAppState:
 
 
 class AndroidApp(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/androidApp:AndroidApp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

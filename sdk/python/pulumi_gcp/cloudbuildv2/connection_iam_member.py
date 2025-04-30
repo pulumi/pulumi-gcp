@@ -294,6 +294,9 @@ class _ConnectionIAMMemberState:
 
 
 class ConnectionIAMMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -307,6 +307,9 @@ class _CxTestCaseState:
 
 
 class CxTestCase(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/cxTestCase:CxTestCase"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

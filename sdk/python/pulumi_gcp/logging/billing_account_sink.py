@@ -348,6 +348,9 @@ class _BillingAccountSinkState:
 
 
 class BillingAccountSink(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/billingAccountSink:BillingAccountSink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -294,6 +294,9 @@ class _FeatureIamMemberState:
 
 
 class FeatureIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkehub/featureIamMember:FeatureIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

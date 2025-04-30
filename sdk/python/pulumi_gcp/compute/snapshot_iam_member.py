@@ -254,6 +254,9 @@ class _SnapshotIamMemberState:
 
 
 class SnapshotIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/snapshotIamMember:SnapshotIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

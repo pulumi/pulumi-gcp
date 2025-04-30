@@ -257,6 +257,9 @@ class _DatasetIamBindingState:
 
 
 class DatasetIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/datasetIamBinding:DatasetIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

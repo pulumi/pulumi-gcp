@@ -340,6 +340,9 @@ class _AiDatasetState:
 
 
 class AiDataset(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiDataset:AiDataset"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

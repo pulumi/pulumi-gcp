@@ -575,6 +575,9 @@ class _AuthzExtensionState:
 
 
 class AuthzExtension(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/authzExtension:AuthzExtension"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

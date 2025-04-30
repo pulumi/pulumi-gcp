@@ -334,6 +334,9 @@ class _PreventionJobTriggerState:
 
 
 class PreventionJobTrigger(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataloss/preventionJobTrigger:PreventionJobTrigger"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

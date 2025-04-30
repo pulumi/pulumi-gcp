@@ -288,6 +288,9 @@ class _TableIamMemberState:
 
 
 class TableIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigtable/tableIamMember:TableIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

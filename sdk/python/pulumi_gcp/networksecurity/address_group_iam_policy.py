@@ -197,6 +197,9 @@ class _AddressGroupIamPolicyState:
 
 
 class AddressGroupIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

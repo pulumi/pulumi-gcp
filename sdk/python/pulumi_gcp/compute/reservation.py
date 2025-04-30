@@ -348,6 +348,9 @@ class _ReservationState:
 
 
 class Reservation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/reservation:Reservation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

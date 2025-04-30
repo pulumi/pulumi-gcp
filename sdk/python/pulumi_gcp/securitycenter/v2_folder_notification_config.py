@@ -268,6 +268,9 @@ class _V2FolderNotificationConfigState:
 
 
 class V2FolderNotificationConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

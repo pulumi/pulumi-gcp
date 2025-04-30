@@ -95,6 +95,9 @@ class _ApplicationUrlDispatchRulesState:
 
 
 class ApplicationUrlDispatchRules(pulumi.CustomResource):
+
+    pulumi_type = "gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

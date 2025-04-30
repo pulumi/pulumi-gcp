@@ -277,6 +277,9 @@ class _LakeIamBindingState:
 
 
 class LakeIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/lakeIamBinding:LakeIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

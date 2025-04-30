@@ -921,6 +921,9 @@ class _FlexTemplateJobState:
 
 
 class FlexTemplateJob(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataflow/flexTemplateJob:FlexTemplateJob"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

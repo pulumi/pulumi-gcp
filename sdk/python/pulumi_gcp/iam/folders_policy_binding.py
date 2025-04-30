@@ -483,6 +483,9 @@ class _FoldersPolicyBindingState:
 
 
 class FoldersPolicyBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

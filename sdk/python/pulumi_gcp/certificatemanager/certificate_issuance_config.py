@@ -426,6 +426,9 @@ class _CertificateIssuanceConfigState:
 
 
 class CertificateIssuanceConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

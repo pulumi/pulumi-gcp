@@ -390,6 +390,9 @@ class _GuestPoliciesState:
 
 
 class GuestPolicies(pulumi.CustomResource):
+
+    pulumi_type = "gcp:osconfig/guestPolicies:GuestPolicies"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

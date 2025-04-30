@@ -220,6 +220,9 @@ class _ConnectionIamPolicyState:
 
 
 class ConnectionIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

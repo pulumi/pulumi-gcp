@@ -252,6 +252,9 @@ class _UrlListState:
 
 
 class UrlList(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/urlList:UrlList"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

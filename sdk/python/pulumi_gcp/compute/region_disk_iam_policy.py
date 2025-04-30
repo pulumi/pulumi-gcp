@@ -193,6 +193,9 @@ class _RegionDiskIamPolicyState:
 
 
 class RegionDiskIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

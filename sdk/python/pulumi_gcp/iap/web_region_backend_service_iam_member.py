@@ -289,6 +289,9 @@ class _WebRegionBackendServiceIamMemberState:
 
 
 class WebRegionBackendServiceIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

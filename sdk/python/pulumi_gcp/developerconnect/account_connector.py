@@ -386,6 +386,9 @@ class _AccountConnectorState:
 
 
 class AccountConnector(pulumi.CustomResource):
+
+    pulumi_type = "gcp:developerconnect/accountConnector:AccountConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

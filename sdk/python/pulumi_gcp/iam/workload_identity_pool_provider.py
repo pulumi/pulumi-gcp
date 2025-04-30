@@ -736,6 +736,9 @@ class _WorkloadIdentityPoolProviderState:
 
 
 class WorkloadIdentityPoolProvider(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

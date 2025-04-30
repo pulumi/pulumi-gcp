@@ -1055,6 +1055,9 @@ class _RegionDiskState:
 
 
 class RegionDisk(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionDisk:RegionDisk"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

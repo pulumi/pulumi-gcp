@@ -277,6 +277,9 @@ class _TagTemplateIamMemberState:
 
 
 class TagTemplateIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

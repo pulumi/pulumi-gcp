@@ -219,6 +219,9 @@ class _ServicePerimeterEgressPolicyState:
 
 
 class ServicePerimeterEgressPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

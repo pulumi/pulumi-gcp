@@ -192,6 +192,9 @@ class _WebCloudRunServiceIamPolicyState:
 
 
 class WebCloudRunServiceIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/webCloudRunServiceIamPolicy:WebCloudRunServiceIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

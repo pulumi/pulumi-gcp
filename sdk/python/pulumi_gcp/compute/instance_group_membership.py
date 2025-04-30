@@ -176,6 +176,9 @@ class _InstanceGroupMembershipState:
 
 
 class InstanceGroupMembership(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceGroupMembership:InstanceGroupMembership"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

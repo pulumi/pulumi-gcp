@@ -323,6 +323,9 @@ class _AssetIamBindingState:
 
 
 class AssetIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/assetIamBinding:AssetIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

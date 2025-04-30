@@ -417,6 +417,9 @@ class _TlsInspectionPolicyState:
 
 
 class TlsInspectionPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

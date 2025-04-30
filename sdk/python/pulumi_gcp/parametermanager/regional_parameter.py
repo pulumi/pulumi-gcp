@@ -396,6 +396,9 @@ class _RegionalParameterState:
 
 
 class RegionalParameter(pulumi.CustomResource):
+
+    pulumi_type = "gcp:parametermanager/regionalParameter:RegionalParameter"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -181,6 +181,9 @@ class _RegionDiskResourcePolicyAttachmentState:
 
 
 class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

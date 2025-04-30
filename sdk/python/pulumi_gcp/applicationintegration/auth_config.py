@@ -542,6 +542,9 @@ class _AuthConfigState:
 
 
 class AuthConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:applicationintegration/authConfig:AuthConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

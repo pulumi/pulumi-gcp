@@ -140,6 +140,9 @@ class _IAMPolicyState:
 
 
 class IAMPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:organizations/iAMPolicy:IAMPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

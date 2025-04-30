@@ -147,6 +147,9 @@ class _IamMemberRemoveState:
 
 
 class IamMemberRemove(pulumi.CustomResource):
+
+    pulumi_type = "gcp:projects/iamMemberRemove:IamMemberRemove"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

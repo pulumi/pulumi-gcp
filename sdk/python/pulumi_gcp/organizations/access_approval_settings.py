@@ -258,6 +258,9 @@ class _AccessApprovalSettingsState:
 
 
 class AccessApprovalSettings(pulumi.CustomResource):
+
+    pulumi_type = "gcp:organizations/accessApprovalSettings:AccessApprovalSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -396,6 +396,9 @@ class _BatchOperationsJobState:
 
 
 class BatchOperationsJob(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/batchOperationsJob:BatchOperationsJob"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

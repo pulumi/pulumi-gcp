@@ -102,6 +102,9 @@ class _ProjectState:
 
 
 class Project(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/project:Project"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

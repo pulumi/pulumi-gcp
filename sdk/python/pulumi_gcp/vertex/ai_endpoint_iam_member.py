@@ -189,6 +189,9 @@ class _AiEndpointIamMemberState:
 
 
 class AiEndpointIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

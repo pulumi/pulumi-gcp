@@ -376,6 +376,9 @@ class _SearchEngineState:
 
 
 class SearchEngine(pulumi.CustomResource):
+
+    pulumi_type = "gcp:discoveryengine/searchEngine:SearchEngine"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

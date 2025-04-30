@@ -292,6 +292,9 @@ class _DatabaseInstanceState:
 
 
 class DatabaseInstance(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/databaseInstance:DatabaseInstance"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

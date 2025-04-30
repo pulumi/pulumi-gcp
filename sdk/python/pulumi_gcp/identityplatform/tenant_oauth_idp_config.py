@@ -302,6 +302,9 @@ class _TenantOauthIdpConfigState:
 
 
 class TenantOauthIdpConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

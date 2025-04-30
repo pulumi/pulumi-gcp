@@ -835,6 +835,9 @@ class _V2VmState:
 
 
 class V2Vm(pulumi.CustomResource):
+
+    pulumi_type = "gcp:tpu/v2Vm:V2Vm"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

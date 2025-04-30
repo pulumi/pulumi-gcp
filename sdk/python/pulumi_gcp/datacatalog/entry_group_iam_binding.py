@@ -277,6 +277,9 @@ class _EntryGroupIamBindingState:
 
 
 class EntryGroupIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datacatalog/entryGroupIamBinding:EntryGroupIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

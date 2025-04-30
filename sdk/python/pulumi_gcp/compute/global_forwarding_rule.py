@@ -1235,6 +1235,9 @@ class _GlobalForwardingRuleState:
 
 
 class GlobalForwardingRule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/globalForwardingRule:GlobalForwardingRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

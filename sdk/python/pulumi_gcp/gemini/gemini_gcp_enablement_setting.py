@@ -300,6 +300,9 @@ class _GeminiGcpEnablementSettingState:
 
 
 class GeminiGcpEnablementSetting(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

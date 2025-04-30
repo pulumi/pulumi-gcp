@@ -229,6 +229,9 @@ class _EntryGroupState:
 
 
 class EntryGroup(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datacatalog/entryGroup:EntryGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

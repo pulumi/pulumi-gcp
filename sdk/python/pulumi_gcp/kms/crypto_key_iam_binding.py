@@ -225,6 +225,9 @@ class _CryptoKeyIAMBindingState:
 
 
 class CryptoKeyIAMBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

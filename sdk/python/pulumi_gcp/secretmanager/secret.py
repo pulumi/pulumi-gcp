@@ -563,6 +563,9 @@ class _SecretState:
 
 
 class Secret(pulumi.CustomResource):
+
+    pulumi_type = "gcp:secretmanager/secret:Secret"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

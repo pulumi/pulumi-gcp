@@ -367,6 +367,9 @@ class _NoteState:
 
 
 class Note(pulumi.CustomResource):
+
+    pulumi_type = "gcp:containeranalysis/note:Note"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

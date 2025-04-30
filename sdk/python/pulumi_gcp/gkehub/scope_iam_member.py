@@ -245,6 +245,9 @@ class _ScopeIamMemberState:
 
 
 class ScopeIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkehub/scopeIamMember:ScopeIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

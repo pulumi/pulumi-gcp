@@ -152,6 +152,9 @@ class _SchemaIamPolicyState:
 
 
 class SchemaIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:pubsub/schemaIamPolicy:SchemaIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

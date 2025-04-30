@@ -392,6 +392,9 @@ class _HttpRouteState:
 
 
 class HttpRoute(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/httpRoute:HttpRoute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

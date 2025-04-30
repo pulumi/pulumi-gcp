@@ -228,6 +228,9 @@ class _TransferAgentPoolState:
 
 
 class TransferAgentPool(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/transferAgentPool:TransferAgentPool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -128,6 +128,9 @@ class _KeyRingIAMPolicyState:
 
 
 class KeyRingIAMPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

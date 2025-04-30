@@ -117,6 +117,9 @@ class _AutokeyConfigState:
 
 
 class AutokeyConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/autokeyConfig:AutokeyConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

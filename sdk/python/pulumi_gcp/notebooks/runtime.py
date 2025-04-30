@@ -409,6 +409,9 @@ class _RuntimeState:
 
 
 class Runtime(pulumi.CustomResource):
+
+    pulumi_type = "gcp:notebooks/runtime:Runtime"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

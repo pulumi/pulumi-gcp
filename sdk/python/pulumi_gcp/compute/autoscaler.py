@@ -286,6 +286,9 @@ class _AutoscalerState:
 
 
 class Autoscaler(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/autoscaler:Autoscaler"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

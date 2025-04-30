@@ -458,6 +458,9 @@ class _OsPolicyAssignmentState:
 
 
 class OsPolicyAssignment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:osconfig/osPolicyAssignment:OsPolicyAssignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

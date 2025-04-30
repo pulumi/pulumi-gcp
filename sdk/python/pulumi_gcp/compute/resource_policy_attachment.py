@@ -181,6 +181,9 @@ class _ResourcePolicyAttachmentState:
 
 
 class ResourcePolicyAttachment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

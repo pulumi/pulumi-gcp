@@ -362,6 +362,9 @@ class _RestoreChannelState:
 
 
 class RestoreChannel(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkebackup/restoreChannel:RestoreChannel"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

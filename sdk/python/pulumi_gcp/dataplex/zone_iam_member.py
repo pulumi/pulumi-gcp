@@ -300,6 +300,9 @@ class _ZoneIamMemberState:
 
 
 class ZoneIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/zoneIamMember:ZoneIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -204,6 +204,9 @@ class _KeyHandleState:
 
 
 class KeyHandle(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/keyHandle:KeyHandle"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

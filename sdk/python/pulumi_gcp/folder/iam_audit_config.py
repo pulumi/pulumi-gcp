@@ -145,6 +145,9 @@ class _IamAuditConfigState:
 
 
 class IamAuditConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:folder/iamAuditConfig:IamAuditConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

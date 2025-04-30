@@ -412,6 +412,9 @@ class _PipelineJobState:
 
 
 class PipelineJob(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/pipelineJob:PipelineJob"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -152,6 +152,9 @@ class _DatasetIamPolicyState:
 
 
 class DatasetIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/datasetIamPolicy:DatasetIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

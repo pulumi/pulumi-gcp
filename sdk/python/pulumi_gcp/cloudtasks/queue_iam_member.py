@@ -294,6 +294,9 @@ class _QueueIamMemberState:
 
 
 class QueueIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudtasks/queueIamMember:QueueIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

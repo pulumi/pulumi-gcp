@@ -435,6 +435,9 @@ class _EntitlementState:
 
 
 class Entitlement(pulumi.CustomResource):
+
+    pulumi_type = "gcp:privilegedaccessmanager/entitlement:entitlement"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

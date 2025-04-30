@@ -256,6 +256,9 @@ class _SslCertState:
 
 
 class SslCert(pulumi.CustomResource):
+
+    pulumi_type = "gcp:sql/sslCert:SslCert"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

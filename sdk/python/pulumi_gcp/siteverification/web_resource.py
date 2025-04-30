@@ -144,6 +144,9 @@ class _WebResourceState:
 
 
 class WebResource(pulumi.CustomResource):
+
+    pulumi_type = "gcp:siteverification/webResource:WebResource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

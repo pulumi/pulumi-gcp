@@ -152,6 +152,9 @@ class _TopicIAMPolicyState:
 
 
 class TopicIAMPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

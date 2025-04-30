@@ -191,6 +191,9 @@ class _NetworkEndpointListState:
 
 
 class NetworkEndpointList(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/networkEndpointList:NetworkEndpointList"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

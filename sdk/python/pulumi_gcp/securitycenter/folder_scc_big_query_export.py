@@ -377,6 +377,9 @@ class _FolderSccBigQueryExportState:
 
 
 class FolderSccBigQueryExport(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -253,6 +253,9 @@ class _AttestorIamMemberState:
 
 
 class AttestorIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:binaryauthorization/attestorIamMember:AttestorIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

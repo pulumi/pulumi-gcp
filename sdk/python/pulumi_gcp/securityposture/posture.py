@@ -331,6 +331,9 @@ class _PostureState:
 
 
 class Posture(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securityposture/posture:Posture"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

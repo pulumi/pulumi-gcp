@@ -224,6 +224,9 @@ class _RegionNetworkFirewallPolicyAssociationState:
 
 
 class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

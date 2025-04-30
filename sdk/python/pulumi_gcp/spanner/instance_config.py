@@ -292,6 +292,9 @@ class _InstanceConfigState:
 
 
 class InstanceConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:spanner/instanceConfig:InstanceConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

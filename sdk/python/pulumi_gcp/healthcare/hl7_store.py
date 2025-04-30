@@ -409,6 +409,9 @@ class _Hl7StoreState:
 
 
 class Hl7Store(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/hl7Store:Hl7Store"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

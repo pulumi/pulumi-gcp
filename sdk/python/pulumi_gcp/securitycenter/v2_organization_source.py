@@ -178,6 +178,9 @@ class _V2OrganizationSourceState:
 
 
 class V2OrganizationSource(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

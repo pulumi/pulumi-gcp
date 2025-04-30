@@ -382,6 +382,9 @@ class _OrganizationSccBigQueryExportState:
 
 
 class OrganizationSccBigQueryExport(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

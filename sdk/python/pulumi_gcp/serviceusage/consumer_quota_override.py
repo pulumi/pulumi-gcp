@@ -298,6 +298,9 @@ class _ConsumerQuotaOverrideState:
 
 
 class ConsumerQuotaOverride(pulumi.CustomResource):
+
+    pulumi_type = "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

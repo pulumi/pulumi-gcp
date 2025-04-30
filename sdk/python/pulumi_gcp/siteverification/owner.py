@@ -108,6 +108,9 @@ class _OwnerState:
 
 
 class Owner(pulumi.CustomResource):
+
+    pulumi_type = "gcp:siteverification/owner:Owner"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

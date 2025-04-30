@@ -477,6 +477,9 @@ class _ApiConfigState:
 
 
 class ApiConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigateway/apiConfig:ApiConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

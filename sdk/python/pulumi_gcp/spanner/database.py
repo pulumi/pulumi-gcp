@@ -375,6 +375,9 @@ class _DatabaseState:
 
 
 class Database(pulumi.CustomResource):
+
+    pulumi_type = "gcp:spanner/database:Database"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

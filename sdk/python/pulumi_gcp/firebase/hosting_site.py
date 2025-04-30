@@ -190,6 +190,9 @@ class _HostingSiteState:
 
 
 class HostingSite(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/hostingSite:HostingSite"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

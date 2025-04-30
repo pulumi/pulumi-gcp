@@ -314,6 +314,9 @@ class _RegionBackendServiceIamMemberState:
 
 
 class RegionBackendServiceIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

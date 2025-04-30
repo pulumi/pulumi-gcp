@@ -490,6 +490,9 @@ class _SubnetState:
 
 
 class Subnet(pulumi.CustomResource):
+
+    pulumi_type = "gcp:edgenetwork/subnet:Subnet"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

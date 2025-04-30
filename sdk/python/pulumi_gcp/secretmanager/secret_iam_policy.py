@@ -144,6 +144,9 @@ class _SecretIamPolicyState:
 
 
 class SecretIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:secretmanager/secretIamPolicy:SecretIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

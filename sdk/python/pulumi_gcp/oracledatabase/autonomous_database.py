@@ -488,6 +488,9 @@ class _AutonomousDatabaseState:
 
 
 class AutonomousDatabase(pulumi.CustomResource):
+
+    pulumi_type = "gcp:oracledatabase/autonomousDatabase:AutonomousDatabase"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

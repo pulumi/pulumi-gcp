@@ -254,6 +254,9 @@ class _AiMetadataStoreState:
 
 
 class AiMetadataStore(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiMetadataStore:AiMetadataStore"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

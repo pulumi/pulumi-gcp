@@ -388,6 +388,9 @@ class _MembershipBindingState:
 
 
 class MembershipBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkehub/membershipBinding:MembershipBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

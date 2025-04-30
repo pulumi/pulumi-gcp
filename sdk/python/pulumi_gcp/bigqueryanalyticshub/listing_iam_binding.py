@@ -328,6 +328,9 @@ class _ListingIamBindingState:
 
 
 class ListingIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -204,6 +204,9 @@ class _BillingAccountExclusionState:
 
 
 class BillingAccountExclusion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/billingAccountExclusion:BillingAccountExclusion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

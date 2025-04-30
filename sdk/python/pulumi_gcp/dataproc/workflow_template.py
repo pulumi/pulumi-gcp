@@ -469,6 +469,9 @@ class _WorkflowTemplateState:
 
 
 class WorkflowTemplate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/workflowTemplate:WorkflowTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

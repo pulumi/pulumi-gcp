@@ -469,6 +469,9 @@ class _RegionalEndpointState:
 
 
 class RegionalEndpoint(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

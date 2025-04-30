@@ -196,6 +196,9 @@ class _SubnetworkIAMPolicyState:
 
 
 class SubnetworkIAMPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

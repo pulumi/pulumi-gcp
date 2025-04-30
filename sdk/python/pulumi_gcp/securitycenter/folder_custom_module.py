@@ -258,6 +258,9 @@ class _FolderCustomModuleState:
 
 
 class FolderCustomModule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/folderCustomModule:FolderCustomModule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -335,6 +335,9 @@ class _WorkstationIamBindingState:
 
 
 class WorkstationIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:workstations/workstationIamBinding:WorkstationIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

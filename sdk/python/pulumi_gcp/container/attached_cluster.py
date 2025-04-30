@@ -779,6 +779,9 @@ class _AttachedClusterState:
 
 
 class AttachedCluster(pulumi.CustomResource):
+
+    pulumi_type = "gcp:container/attachedCluster:AttachedCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

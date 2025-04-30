@@ -353,6 +353,9 @@ class _SecurityGatewayState:
 
 
 class SecurityGateway(pulumi.CustomResource):
+
+    pulumi_type = "gcp:beyondcorp/securityGateway:SecurityGateway"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

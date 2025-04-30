@@ -109,6 +109,9 @@ class _ProjectMetadataState:
 
 
 class ProjectMetadata(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/projectMetadata:ProjectMetadata"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

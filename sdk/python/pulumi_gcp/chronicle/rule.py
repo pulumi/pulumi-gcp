@@ -674,6 +674,9 @@ class _RuleState:
 
 
 class Rule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:chronicle/rule:Rule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

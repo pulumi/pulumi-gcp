@@ -359,6 +359,9 @@ class _MuteConfigState:
 
 
 class MuteConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/muteConfig:MuteConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -284,6 +284,9 @@ class _EkmConnectionState:
 
 
 class EkmConnection(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/ekmConnection:EkmConnection"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

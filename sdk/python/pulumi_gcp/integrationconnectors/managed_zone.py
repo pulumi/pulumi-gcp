@@ -349,6 +349,9 @@ class _ManagedZoneState:
 
 
 class ManagedZone(pulumi.CustomResource):
+
+    pulumi_type = "gcp:integrationconnectors/managedZone:ManagedZone"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
