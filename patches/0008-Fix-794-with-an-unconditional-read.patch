@@ -5,10 +5,10 @@ Subject: [PATCH] Fix #794 with an unconditional read.
 
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index 3d5fd5bdb..89f40de17 100644
+index dbc4defc3..144264242 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
-@@ -2078,10 +2078,11 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
+@@ -2102,10 +2102,11 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
  		if err != nil {
  			return err
  		}

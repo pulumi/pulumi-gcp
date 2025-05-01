@@ -26,18 +26,18 @@ replace (
 
 require (
 	bitbucket.org/creachadair/stringset v0.0.8 // indirect
-	cel.dev/expr v0.19.1 // indirect
-	cloud.google.com/go v0.116.0 // indirect
+	cel.dev/expr v0.19.2 // indirect
+	cloud.google.com/go v0.120.0 // indirect
 	cloud.google.com/go/auth v0.16.0 // indirect
 	cloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect
-	cloud.google.com/go/bigtable v1.33.0 // indirect
+	cloud.google.com/go/bigtable v1.37.0 // indirect
 	cloud.google.com/go/compute/metadata v0.6.0 // indirect
-	cloud.google.com/go/iam v1.2.2 // indirect
-	cloud.google.com/go/kms v1.20.1 // indirect
-	cloud.google.com/go/logging v1.12.0 // indirect
-	cloud.google.com/go/longrunning v0.6.2 // indirect
-	cloud.google.com/go/monitoring v1.21.2 // indirect
-	cloud.google.com/go/storage v1.43.0 // indirect
+	cloud.google.com/go/iam v1.5.0 // indirect
+	cloud.google.com/go/kms v1.21.0 // indirect
+	cloud.google.com/go/logging v1.13.0 // indirect
+	cloud.google.com/go/longrunning v0.6.6 // indirect
+	cloud.google.com/go/monitoring v1.24.1 // indirect
+	cloud.google.com/go/storage v1.50.0 // indirect
 	dario.cat/mergo v1.0.0 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.11.1 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.7.0 // indirect
@@ -47,6 +47,9 @@ require (
 	github.com/AzureAD/microsoft-authentication-library-for-go v1.2.2 // indirect
 	github.com/BurntSushi/toml v1.2.1 // indirect
 	github.com/GoogleCloudPlatform/declarative-resource-client-library v1.79.0 // indirect
+	github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.25.0 // indirect
+	github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric v0.50.0 // indirect
+	github.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping v0.50.0 // indirect
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
@@ -86,7 +89,7 @@ require (
 	github.com/charmbracelet/lipgloss v0.7.1 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
 	github.com/cloudflare/circl v1.3.7 // indirect
-	github.com/cncf/xds/go v0.0.0-20241223141626-cff3c89139a3 // indirect
+	github.com/cncf/xds/go v0.0.0-20250121191232-2f005788dc42 // indirect
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/cyphar/filepath-securejoin v0.3.6 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -242,6 +245,7 @@ require (
 	github.com/zclconf/go-cty v1.16.2 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
+	go.opentelemetry.io/contrib/detectors/gcp v1.34.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.60.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.60.0 // indirect
 	go.opentelemetry.io/otel v1.35.0 // indirect
@@ -266,8 +270,8 @@ require (
 	golang.org/x/tools v0.23.0 // indirect
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
-	google.golang.org/genproto v0.0.0-20241104194629-dd2ea8efbc28 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20250106144421-5f5ef82da422 // indirect
+	google.golang.org/genproto v0.0.0-20250303144028-a0af3efb3deb // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20250414145226-207652e42e2e // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250414145226-207652e42e2e // indirect
 	google.golang.org/grpc v1.71.1 // indirect
 	google.golang.org/protobuf v1.36.6 // indirect
