@@ -41,6 +41,10 @@ import (
 //				Issuer:       pulumi.String("issuer"),
 //				Enabled:      pulumi.Bool(true),
 //				ClientSecret: pulumi.String("secret"),
+//				ResponseType: &identityplatform.OauthIdpConfigResponseTypeArgs{
+//					IdToken: pulumi.Bool(true),
+//					Code:    pulumi.Bool(false),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -94,6 +98,11 @@ type OauthIdpConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType OauthIdpConfigResponseTypePtrOutput `pulumi:"responseType"`
 }
 
 // NewOauthIdpConfig registers a new resource with the given unique name, arguments, and options.
@@ -149,6 +158,11 @@ type oauthIdpConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType *OauthIdpConfigResponseType `pulumi:"responseType"`
 }
 
 type OauthIdpConfigState struct {
@@ -169,6 +183,11 @@ type OauthIdpConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType OauthIdpConfigResponseTypePtrInput
 }
 
 func (OauthIdpConfigState) ElementType() reflect.Type {
@@ -193,6 +212,11 @@ type oauthIdpConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType *OauthIdpConfigResponseType `pulumi:"responseType"`
 }
 
 // The set of arguments for constructing a OauthIdpConfig resource.
@@ -214,6 +238,11 @@ type OauthIdpConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The response type to request for in the OAuth authorization flow.
+	// You can set either idToken or code to true, but not both.
+	// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+	// Structure is documented below.
+	ResponseType OauthIdpConfigResponseTypePtrInput
 }
 
 func (OauthIdpConfigArgs) ElementType() reflect.Type {
@@ -339,6 +368,14 @@ func (o OauthIdpConfigOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o OauthIdpConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *OauthIdpConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The response type to request for in the OAuth authorization flow.
+// You can set either idToken or code to true, but not both.
+// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+// Structure is documented below.
+func (o OauthIdpConfigOutput) ResponseType() OauthIdpConfigResponseTypePtrOutput {
+	return o.ApplyT(func(v *OauthIdpConfig) OauthIdpConfigResponseTypePtrOutput { return v.ResponseType }).(OauthIdpConfigResponseTypePtrOutput)
 }
 
 type OauthIdpConfigArrayOutput struct{ *pulumi.OutputState }

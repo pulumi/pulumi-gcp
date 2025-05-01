@@ -285,6 +285,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly dnsName!: pulumi.Output<string>;
     /**
+     * The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+     */
+    public /*out*/ readonly dnsNames!: pulumi.Output<outputs.sql.DatabaseInstanceDnsName[]>;
+    /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -405,6 +409,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["dnsName"] = state ? state.dnsName : undefined;
+            resourceInputs["dnsNames"] = state ? state.dnsNames : undefined;
             resourceInputs["encryptionKeyName"] = state ? state.encryptionKeyName : undefined;
             resourceInputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
@@ -450,6 +455,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["connectionName"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
+            resourceInputs["dnsNames"] = undefined /*out*/;
             resourceInputs["firstIpAddress"] = undefined /*out*/;
             resourceInputs["ipAddresses"] = undefined /*out*/;
             resourceInputs["privateIpAddress"] = undefined /*out*/;
@@ -506,6 +512,10 @@ export interface DatabaseInstanceState {
      * The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
      */
     dnsName?: pulumi.Input<string>;
+    /**
+     * The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+     */
+    dnsNames?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceDnsName>[]>;
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.

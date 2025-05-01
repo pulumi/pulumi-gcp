@@ -51,6 +51,7 @@ export interface GetRegionDiskResult {
     readonly creationTimestamp: string;
     readonly description: string;
     readonly diskEncryptionKeys: outputs.compute.GetRegionDiskDiskEncryptionKey[];
+    readonly diskId: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly guestOsFeatures: outputs.compute.GetRegionDiskGuestOsFeature[];
     /**

@@ -2455,16 +2455,19 @@ if not MYPY:
         """
         client_ttl: NotRequired[pulumi.Input[builtins.int]]
         """
-        Specifies the maximum allowed TTL for cached content served by this origin.
+        Specifies the maximum allowed TTL for cached content served by this origin. When the
+        `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         """
         default_ttl: NotRequired[pulumi.Input[builtins.int]]
         """
         Specifies the default TTL for cached content served by this origin for responses
-        that do not have an existing valid TTL (max-age or s-max-age).
+        that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+        is set to "USE_ORIGIN_HEADERS", you must omit this field.
         """
         max_ttl: NotRequired[pulumi.Input[builtins.int]]
         """
-        Specifies the maximum allowed TTL for cached content served by this origin.
+        Specifies the maximum allowed TTL for cached content served by this origin. When the
+        `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         """
         negative_caching: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -2520,10 +2523,13 @@ class BackendBucketCdnPolicyArgs:
         :param pulumi.Input[builtins.str] cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
                Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
-        :param pulumi.Input[builtins.int] client_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+        :param pulumi.Input[builtins.int] client_ttl: Specifies the maximum allowed TTL for cached content served by this origin. When the
+               `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         :param pulumi.Input[builtins.int] default_ttl: Specifies the default TTL for cached content served by this origin for responses
-               that do not have an existing valid TTL (max-age or s-max-age).
-        :param pulumi.Input[builtins.int] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+               that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+               is set to "USE_ORIGIN_HEADERS", you must omit this field.
+        :param pulumi.Input[builtins.int] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin. When the
+               `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         :param pulumi.Input[builtins.bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
         :param pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
@@ -2606,7 +2612,8 @@ class BackendBucketCdnPolicyArgs:
     @pulumi.getter(name="clientTtl")
     def client_ttl(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Specifies the maximum allowed TTL for cached content served by this origin.
+        Specifies the maximum allowed TTL for cached content served by this origin. When the
+        `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         """
         return pulumi.get(self, "client_ttl")
 
@@ -2619,7 +2626,8 @@ class BackendBucketCdnPolicyArgs:
     def default_ttl(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Specifies the default TTL for cached content served by this origin for responses
-        that do not have an existing valid TTL (max-age or s-max-age).
+        that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+        is set to "USE_ORIGIN_HEADERS", you must omit this field.
         """
         return pulumi.get(self, "default_ttl")
 
@@ -2631,7 +2639,8 @@ class BackendBucketCdnPolicyArgs:
     @pulumi.getter(name="maxTtl")
     def max_ttl(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Specifies the maximum allowed TTL for cached content served by this origin.
+        Specifies the maximum allowed TTL for cached content served by this origin. When the
+        `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         """
         return pulumi.get(self, "max_ttl")
 
@@ -22653,9 +22662,15 @@ class InstanceTemplateDiskArgs:
 
 if not MYPY:
     class InstanceTemplateDiskDiskEncryptionKeyArgsDict(TypedDict):
-        kms_key_self_link: pulumi.Input[builtins.str]
+        kms_key_self_link: NotRequired[pulumi.Input[builtins.str]]
         """
         The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
         """
 elif False:
     InstanceTemplateDiskDiskEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
@@ -22663,37 +22678,73 @@ elif False:
 @pulumi.input_type
 class InstanceTemplateDiskDiskEncryptionKeyArgs:
     def __init__(__self__, *,
-                 kms_key_self_link: pulumi.Input[builtins.str]):
+                 kms_key_self_link: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        :param pulumi.Input[builtins.str] kms_key_service_account: The service account being used for the
+               encryption request for the given KMS key. If absent, the Compute Engine
+               default service account is used.
         """
-        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
-    def kms_key_self_link(self) -> pulumi.Input[builtins.str]:
+    def kms_key_self_link(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The self link of the encryption key that is stored in Google Cloud KMS
         """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
-    def kms_key_self_link(self, value: pulumi.Input[builtins.str]):
+    def kms_key_self_link(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_self_link", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @kms_key_service_account.setter
+    def kms_key_service_account(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_service_account", value)
 
 
 if not MYPY:
     class InstanceTemplateDiskSourceImageEncryptionKeyArgsDict(TypedDict):
-        kms_key_self_link: pulumi.Input[builtins.str]
+        kms_key_self_link: NotRequired[pulumi.Input[builtins.str]]
         """
         The self link of the encryption key that is
-        stored in Google Cloud KMS.
+        stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
         kms_key_service_account: NotRequired[pulumi.Input[builtins.str]]
         """
         The service account being used for the
         encryption request for the given KMS key. If absent, the Compute Engine
         default service account is used.
+        """
+        raw_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        rsa_encrypted_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
 elif False:
     InstanceTemplateDiskSourceImageEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
@@ -22701,30 +22752,47 @@ elif False:
 @pulumi.input_type
 class InstanceTemplateDiskSourceImageEncryptionKeyArgs:
     def __init__(__self__, *,
-                 kms_key_self_link: pulumi.Input[builtins.str],
-                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None):
+                 kms_key_self_link: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None,
+                 raw_key: Optional[pulumi.Input[builtins.str]] = None,
+                 rsa_encrypted_key: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] kms_key_self_link: The self link of the encryption key that is
-               stored in Google Cloud KMS.
+               stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
         :param pulumi.Input[builtins.str] kms_key_service_account: The service account being used for the
                encryption request for the given KMS key. If absent, the Compute Engine
                default service account is used.
+        :param pulumi.Input[builtins.str] raw_key: A 256-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+               to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
+        :param pulumi.Input[builtins.str] rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
         """
-        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
-    def kms_key_self_link(self) -> pulumi.Input[builtins.str]:
+    def kms_key_self_link(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The self link of the encryption key that is
-        stored in Google Cloud KMS.
+        stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
-    def kms_key_self_link(self, value: pulumi.Input[builtins.str]):
+    def kms_key_self_link(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_self_link", value)
 
     @property
@@ -22741,13 +22809,44 @@ class InstanceTemplateDiskSourceImageEncryptionKeyArgs:
     def kms_key_service_account(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_service_account", value)
 
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @raw_key.setter
+    def raw_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "raw_key", value)
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @rsa_encrypted_key.setter
+    def rsa_encrypted_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "rsa_encrypted_key", value)
+
 
 if not MYPY:
     class InstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict(TypedDict):
-        kms_key_self_link: pulumi.Input[builtins.str]
+        kms_key_self_link: NotRequired[pulumi.Input[builtins.str]]
         """
         The self link of the encryption key that is
-        stored in Google Cloud KMS.
+        stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
         kms_key_service_account: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -22755,36 +22854,67 @@ if not MYPY:
         encryption request for the given KMS key. If absent, the Compute Engine
         default service account is used.
         """
+        raw_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        rsa_encrypted_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
 elif False:
     InstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
     def __init__(__self__, *,
-                 kms_key_self_link: pulumi.Input[builtins.str],
-                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None):
+                 kms_key_self_link: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None,
+                 raw_key: Optional[pulumi.Input[builtins.str]] = None,
+                 rsa_encrypted_key: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] kms_key_self_link: The self link of the encryption key that is
-               stored in Google Cloud KMS.
+               stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
         :param pulumi.Input[builtins.str] kms_key_service_account: The service account being used for the
                encryption request for the given KMS key. If absent, the Compute Engine
                default service account is used.
+        :param pulumi.Input[builtins.str] raw_key: A 256-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+               to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
+        :param pulumi.Input[builtins.str] rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
         """
-        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
-    def kms_key_self_link(self) -> pulumi.Input[builtins.str]:
+    def kms_key_self_link(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The self link of the encryption key that is
-        stored in Google Cloud KMS.
+        stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
-    def kms_key_self_link(self, value: pulumi.Input[builtins.str]):
+    def kms_key_self_link(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_self_link", value)
 
     @property
@@ -22800,6 +22930,36 @@ class InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
     @kms_key_service_account.setter
     def kms_key_service_account(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_service_account", value)
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @raw_key.setter
+    def raw_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "raw_key", value)
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @rsa_encrypted_key.setter
+    def rsa_encrypted_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "rsa_encrypted_key", value)
 
 
 if not MYPY:
@@ -37312,9 +37472,15 @@ class RegionInstanceTemplateDiskArgs:
 
 if not MYPY:
     class RegionInstanceTemplateDiskDiskEncryptionKeyArgsDict(TypedDict):
-        kms_key_self_link: pulumi.Input[builtins.str]
+        kms_key_self_link: NotRequired[pulumi.Input[builtins.str]]
         """
         The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        kms_key_service_account: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
         """
 elif False:
     RegionInstanceTemplateDiskDiskEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
@@ -37322,37 +37488,73 @@ elif False:
 @pulumi.input_type
 class RegionInstanceTemplateDiskDiskEncryptionKeyArgs:
     def __init__(__self__, *,
-                 kms_key_self_link: pulumi.Input[builtins.str]):
+                 kms_key_self_link: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        :param pulumi.Input[builtins.str] kms_key_service_account: The service account being used for the
+               encryption request for the given KMS key. If absent, the Compute Engine
+               default service account is used.
         """
-        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
-    def kms_key_self_link(self) -> pulumi.Input[builtins.str]:
+    def kms_key_self_link(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The self link of the encryption key that is stored in Google Cloud KMS
         """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
-    def kms_key_self_link(self, value: pulumi.Input[builtins.str]):
+    def kms_key_self_link(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_self_link", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @kms_key_service_account.setter
+    def kms_key_service_account(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_service_account", value)
 
 
 if not MYPY:
     class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgsDict(TypedDict):
-        kms_key_self_link: pulumi.Input[builtins.str]
+        kms_key_self_link: NotRequired[pulumi.Input[builtins.str]]
         """
         The self link of the encryption key that is
-        stored in Google Cloud KMS.
+        stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
         kms_key_service_account: NotRequired[pulumi.Input[builtins.str]]
         """
         The service account being used for the
         encryption request for the given KMS key. If absent, the Compute Engine
         default service account is used.
+        """
+        raw_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        rsa_encrypted_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
 elif False:
     RegionInstanceTemplateDiskSourceImageEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
@@ -37360,30 +37562,47 @@ elif False:
 @pulumi.input_type
 class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs:
     def __init__(__self__, *,
-                 kms_key_self_link: pulumi.Input[builtins.str],
-                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None):
+                 kms_key_self_link: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None,
+                 raw_key: Optional[pulumi.Input[builtins.str]] = None,
+                 rsa_encrypted_key: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] kms_key_self_link: The self link of the encryption key that is
-               stored in Google Cloud KMS.
+               stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
         :param pulumi.Input[builtins.str] kms_key_service_account: The service account being used for the
                encryption request for the given KMS key. If absent, the Compute Engine
                default service account is used.
+        :param pulumi.Input[builtins.str] raw_key: A 256-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+               to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
+        :param pulumi.Input[builtins.str] rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
         """
-        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
-    def kms_key_self_link(self) -> pulumi.Input[builtins.str]:
+    def kms_key_self_link(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The self link of the encryption key that is
-        stored in Google Cloud KMS.
+        stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
-    def kms_key_self_link(self, value: pulumi.Input[builtins.str]):
+    def kms_key_self_link(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_self_link", value)
 
     @property
@@ -37400,13 +37619,44 @@ class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs:
     def kms_key_service_account(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_service_account", value)
 
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @raw_key.setter
+    def raw_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "raw_key", value)
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @rsa_encrypted_key.setter
+    def rsa_encrypted_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "rsa_encrypted_key", value)
+
 
 if not MYPY:
     class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict(TypedDict):
-        kms_key_self_link: pulumi.Input[builtins.str]
+        kms_key_self_link: NotRequired[pulumi.Input[builtins.str]]
         """
         The self link of the encryption key that is
-        stored in Google Cloud KMS.
+        stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
         kms_key_service_account: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -37414,36 +37664,67 @@ if not MYPY:
         encryption request for the given KMS key. If absent, the Compute Engine
         default service account is used.
         """
+        raw_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        rsa_encrypted_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
 elif False:
     RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
     def __init__(__self__, *,
-                 kms_key_self_link: pulumi.Input[builtins.str],
-                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None):
+                 kms_key_self_link: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_service_account: Optional[pulumi.Input[builtins.str]] = None,
+                 raw_key: Optional[pulumi.Input[builtins.str]] = None,
+                 rsa_encrypted_key: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] kms_key_self_link: The self link of the encryption key that is
-               stored in Google Cloud KMS.
+               stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
         :param pulumi.Input[builtins.str] kms_key_service_account: The service account being used for the
                encryption request for the given KMS key. If absent, the Compute Engine
                default service account is used.
+        :param pulumi.Input[builtins.str] raw_key: A 256-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+               to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
+        :param pulumi.Input[builtins.str] rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+               may be set.
         """
-        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if kms_key_service_account is not None:
             pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
-    def kms_key_self_link(self) -> pulumi.Input[builtins.str]:
+    def kms_key_self_link(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The self link of the encryption key that is
-        stored in Google Cloud KMS.
+        stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
         """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
-    def kms_key_self_link(self, value: pulumi.Input[builtins.str]):
+    def kms_key_self_link(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_self_link", value)
 
     @property
@@ -37459,6 +37740,36 @@ class RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs:
     @kms_key_service_account.setter
     def kms_key_service_account(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "kms_key_service_account", value)
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A 256-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+        to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @raw_key.setter
+    def raw_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "raw_key", value)
+
+    @property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+        may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+    @rsa_encrypted_key.setter
+    def rsa_encrypted_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "rsa_encrypted_key", value)
 
 
 if not MYPY:

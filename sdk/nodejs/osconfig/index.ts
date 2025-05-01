@@ -25,6 +25,11 @@ export type V2PolicyOrchestrator = import("./v2policyOrchestrator").V2PolicyOrch
 export const V2PolicyOrchestrator: typeof import("./v2policyOrchestrator").V2PolicyOrchestrator = null as any;
 utilities.lazyLoad(exports, ["V2PolicyOrchestrator"], () => require("./v2policyOrchestrator"));
 
+export { V2PolicyOrchestratorForFolderArgs, V2PolicyOrchestratorForFolderState } from "./v2policyOrchestratorForFolder";
+export type V2PolicyOrchestratorForFolder = import("./v2policyOrchestratorForFolder").V2PolicyOrchestratorForFolder;
+export const V2PolicyOrchestratorForFolder: typeof import("./v2policyOrchestratorForFolder").V2PolicyOrchestratorForFolder = null as any;
+utilities.lazyLoad(exports, ["V2PolicyOrchestratorForFolder"], () => require("./v2policyOrchestratorForFolder"));
+
 export { V2PolicyOrchestratorForOrganizationArgs, V2PolicyOrchestratorForOrganizationState } from "./v2policyOrchestratorForOrganization";
 export type V2PolicyOrchestratorForOrganization = import("./v2policyOrchestratorForOrganization").V2PolicyOrchestratorForOrganization;
 export const V2PolicyOrchestratorForOrganization: typeof import("./v2policyOrchestratorForOrganization").V2PolicyOrchestratorForOrganization = null as any;
@@ -43,6 +48,8 @@ const _module = {
                 return new PatchDeployment(name, <any>undefined, { urn })
             case "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator":
                 return new V2PolicyOrchestrator(name, <any>undefined, { urn })
+            case "gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder":
+                return new V2PolicyOrchestratorForFolder(name, <any>undefined, { urn })
             case "gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization":
                 return new V2PolicyOrchestratorForOrganization(name, <any>undefined, { urn })
             default:
@@ -54,4 +61,5 @@ pulumi.runtime.registerResourceModule("gcp", "osconfig/guestPolicies", _module)
 pulumi.runtime.registerResourceModule("gcp", "osconfig/osPolicyAssignment", _module)
 pulumi.runtime.registerResourceModule("gcp", "osconfig/patchDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "osconfig/v2PolicyOrchestrator", _module)
+pulumi.runtime.registerResourceModule("gcp", "osconfig/v2PolicyOrchestratorForFolder", _module)
 pulumi.runtime.registerResourceModule("gcp", "osconfig/v2PolicyOrchestratorForOrganization", _module)

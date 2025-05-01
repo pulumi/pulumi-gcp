@@ -1435,7 +1435,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
                  source_format: Optional[builtins.str] = None,
                  stop_syncing: Optional[builtins.bool] = None):
         """
-        :param Sequence['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs'] deployment_overrides: The override configurations for the Config Sync Deployments. Structure is documented below.
+        :param Sequence['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs'] deployment_overrides: The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
         :param builtins.bool enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: (Optional) Structure is documented below.
         :param builtins.str metrics_gcp_service_account_email: Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
@@ -1467,7 +1467,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
     @pulumi.getter(name="deploymentOverrides")
     def deployment_overrides(self) -> Optional[Sequence['outputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverride']]:
         """
-        The override configurations for the Config Sync Deployments. Structure is documented below.
+        The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
         """
         return pulumi.get(self, "deployment_overrides")
 

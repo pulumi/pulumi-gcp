@@ -27,6 +27,8 @@ namespace Pulumi.Gcp.DeveloperConnect.Outputs
         /// GOOGLE
         /// SENTRY
         /// ROVO
+        /// NEW_RELIC
+        /// DATASTAX
         /// </summary>
         public readonly string? SystemProviderId;
 

@@ -233,6 +233,89 @@ import (
 //
 // ```
 //
+// ### Config Management With Deployment Override
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("my-membership"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("configmanagement"),
+//				Location: pulumi.String("global"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
+//				Location:   pulumi.String("global"),
+//				Feature:    feature.Name,
+//				Membership: membership.MembershipId,
+//				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
+//					Version: pulumi.String("1.20.1"),
+//					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
+//						Enabled: pulumi.Bool(true),
+//						DeploymentOverrides: gkehub.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArray{
+//							&gkehub.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs{
+//								DeploymentName:      pulumi.String("reconciler-manager"),
+//								DeploymentNamespace: pulumi.String("config-management-system"),
+//								Containers: gkehub.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArray{
+//									&gkehub.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs{
+//										ContainerName: pulumi.String("reconciler-manager"),
+//										CpuRequest:    pulumi.String("100m"),
+//										MemoryRequest: pulumi.String("64Mi"),
+//										CpuLimit:      pulumi.String("250m"),
+//										MemoryLimit:   pulumi.String("128Mi"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Config Management With Regional Membership
 //
 // ```go

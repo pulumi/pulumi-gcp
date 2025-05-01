@@ -21,6 +21,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A rule for the RegionSecurityPolicy.
+ * 
+ * To get more information about RegionSecurityPolicyRule, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionSecurityPolicies/addRule)
+ * * How-to Guides
+ *     * [Creating region security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
+ * 
  * ## Example Usage
  * 
  * ### Region Security Policy Rule Basic

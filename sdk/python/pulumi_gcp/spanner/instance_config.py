@@ -39,8 +39,8 @@ class InstanceConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
                to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the
-               form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the form
+               projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "replicas", replicas)
@@ -110,8 +110,8 @@ class InstanceConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A unique identifier for the instance configuration. Values are of the
-        form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        A unique identifier for the instance configuration. Values are of the form
+        projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         """
         return pulumi.get(self, "name")
 
@@ -152,8 +152,8 @@ class _InstanceConfigState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
                to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the
-               form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the form
+               projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigReplicaArgs']]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
@@ -246,8 +246,8 @@ class _InstanceConfigState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A unique identifier for the instance configuration. Values are of the
-        form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        A unique identifier for the instance configuration. Values are of the form
+        projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         """
         return pulumi.get(self, "name")
 
@@ -348,8 +348,8 @@ class InstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
                to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the
-               form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the form
+               projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
                Structure is documented below.
         """
@@ -475,8 +475,8 @@ class InstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
                to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the
-               form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the form
+               projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
@@ -545,8 +545,8 @@ class InstanceConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        A unique identifier for the instance configuration. Values are of the
-        form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        A unique identifier for the instance configuration. Values are of the form
+        projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         """
         return pulumi.get(self, "name")
 

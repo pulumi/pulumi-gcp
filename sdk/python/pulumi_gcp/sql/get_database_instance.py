@@ -28,7 +28,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, dns_name=None, encryption_key_name=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, available_maintenance_versions=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -47,6 +47,9 @@ class GetDatabaseInstanceResult:
         if dns_name and not isinstance(dns_name, str):
             raise TypeError("Expected argument 'dns_name' to be a str")
         pulumi.set(__self__, "dns_name", dns_name)
+        if dns_names and not isinstance(dns_names, list):
+            raise TypeError("Expected argument 'dns_names' to be a list")
+        pulumi.set(__self__, "dns_names", dns_names)
         if encryption_key_name and not isinstance(encryption_key_name, str):
             raise TypeError("Expected argument 'encryption_key_name' to be a str")
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
@@ -143,6 +146,11 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> builtins.str:
         return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="dnsNames")
+    def dns_names(self) -> Sequence['outputs.GetDatabaseInstanceDnsNameResult']:
+        return pulumi.get(self, "dns_names")
 
     @property
     @pulumi.getter(name="encryptionKeyName")
@@ -270,6 +278,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             database_version=self.database_version,
             deletion_protection=self.deletion_protection,
             dns_name=self.dns_name,
+            dns_names=self.dns_names,
             encryption_key_name=self.encryption_key_name,
             first_ip_address=self.first_ip_address,
             id=self.id,
@@ -326,6 +335,7 @@ def get_database_instance(name: Optional[builtins.str] = None,
         database_version=pulumi.get(__ret__, 'database_version'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         dns_name=pulumi.get(__ret__, 'dns_name'),
+        dns_names=pulumi.get(__ret__, 'dns_names'),
         encryption_key_name=pulumi.get(__ret__, 'encryption_key_name'),
         first_ip_address=pulumi.get(__ret__, 'first_ip_address'),
         id=pulumi.get(__ret__, 'id'),
@@ -379,6 +389,7 @@ def get_database_instance_output(name: Optional[pulumi.Input[builtins.str]] = No
         database_version=pulumi.get(__response__, 'database_version'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         dns_name=pulumi.get(__response__, 'dns_name'),
+        dns_names=pulumi.get(__response__, 'dns_names'),
         encryption_key_name=pulumi.get(__response__, 'encryption_key_name'),
         first_ip_address=pulumi.get(__response__, 'first_ip_address'),
         id=pulumi.get(__response__, 'id'),

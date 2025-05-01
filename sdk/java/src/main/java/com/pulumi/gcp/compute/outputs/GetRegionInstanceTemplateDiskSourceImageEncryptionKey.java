@@ -22,6 +22,16 @@ public final class GetRegionInstanceTemplateDiskSourceImageEncryptionKey {
      * 
      */
     private String kmsKeyServiceAccount;
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.  Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * 
+     */
+    private String rawKey;
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource.  Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * 
+     */
+    private String rsaEncryptedKey;
 
     private GetRegionInstanceTemplateDiskSourceImageEncryptionKey() {}
     /**
@@ -40,6 +50,20 @@ public final class GetRegionInstanceTemplateDiskSourceImageEncryptionKey {
     public String kmsKeyServiceAccount() {
         return this.kmsKeyServiceAccount;
     }
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.  Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * 
+     */
+    public String rawKey() {
+        return this.rawKey;
+    }
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource.  Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+     * 
+     */
+    public String rsaEncryptedKey() {
+        return this.rsaEncryptedKey;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -52,11 +76,15 @@ public final class GetRegionInstanceTemplateDiskSourceImageEncryptionKey {
     public static final class Builder {
         private String kmsKeySelfLink;
         private String kmsKeyServiceAccount;
+        private String rawKey;
+        private String rsaEncryptedKey;
         public Builder() {}
         public Builder(GetRegionInstanceTemplateDiskSourceImageEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
+    	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
         }
 
         @CustomType.Setter
@@ -75,10 +103,28 @@ public final class GetRegionInstanceTemplateDiskSourceImageEncryptionKey {
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
+        @CustomType.Setter
+        public Builder rawKey(String rawKey) {
+            if (rawKey == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDiskSourceImageEncryptionKey", "rawKey");
+            }
+            this.rawKey = rawKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rsaEncryptedKey(String rsaEncryptedKey) {
+            if (rsaEncryptedKey == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDiskSourceImageEncryptionKey", "rsaEncryptedKey");
+            }
+            this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
         public GetRegionInstanceTemplateDiskSourceImageEncryptionKey build() {
             final var _resultValue = new GetRegionInstanceTemplateDiskSourceImageEncryptionKey();
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            _resultValue.rawKey = rawKey;
+            _resultValue.rsaEncryptedKey = rsaEncryptedKey;
             return _resultValue;
         }
     }

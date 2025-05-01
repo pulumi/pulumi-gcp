@@ -455,6 +455,7 @@ class _RegionDiskState:
                  creation_timestamp: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
+                 disk_id: Optional[pulumi.Input[builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
                  interface: Optional[pulumi.Input[builtins.str]] = None,
@@ -499,6 +500,7 @@ class _RegionDiskState:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] disk_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
@@ -588,6 +590,8 @@ class _RegionDiskState:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if guest_os_features is not None:
@@ -722,6 +726,18 @@ class _RegionDiskState:
     @disk_encryption_key.setter
     def disk_encryption_key(self, value: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "disk_id", value)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -1512,6 +1528,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["type"] = type
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["disk_id"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["last_attach_timestamp"] = None
@@ -1539,6 +1556,7 @@ class RegionDisk(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             disk_encryption_key: Optional[pulumi.Input[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
+            disk_id: Optional[pulumi.Input[builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
             interface: Optional[pulumi.Input[builtins.str]] = None,
@@ -1588,6 +1606,7 @@ class RegionDisk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] disk_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
@@ -1675,6 +1694,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+        __props__.__dict__["disk_id"] = disk_id
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["guest_os_features"] = guest_os_features
         __props__.__dict__["interface"] = interface
@@ -1760,6 +1780,14 @@ class RegionDisk(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "disk_id")
 
     @property
     @pulumi.getter(name="effectiveLabels")

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipConfigmanagementConfigSync {
     /**
-     * @return The override configurations for the Config Sync Deployments. Structure is documented below.
+     * @return The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
      * 
      */
     private @Nullable List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> deploymentOverrides;
@@ -61,7 +61,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
 
     private FeatureMembershipConfigmanagementConfigSync() {}
     /**
-     * @return The override configurations for the Config Sync Deployments. Structure is documented below.
+     * @return The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
      * 
      */
     public List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> deploymentOverrides() {

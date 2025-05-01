@@ -48,6 +48,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationSelectorArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleArgs;
  * import com.pulumi.gcp.clouddeploy.inputs.AutomationRulePromoteReleaseRuleArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleAdvanceRolloutRuleArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleRepairRolloutRuleArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.AutomationRuleTimedPromoteReleaseRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -83,12 +86,39 @@ import javax.annotation.Nullable;
  *                     .id("*")
  *                     .build())
  *                 .build())
- *             .suspended(false)
- *             .rules(AutomationRuleArgs.builder()
- *                 .promoteReleaseRule(AutomationRulePromoteReleaseRuleArgs.builder()
- *                     .id("promote-release")
+ *             .rules(            
+ *                 AutomationRuleArgs.builder()
+ *                     .promoteReleaseRule(AutomationRulePromoteReleaseRuleArgs.builder()
+ *                         .id("promote-release")
+ *                         .build())
+ *                     .build(),
+ *                 AutomationRuleArgs.builder()
+ *                     .advanceRolloutRule(AutomationRuleAdvanceRolloutRuleArgs.builder()
+ *                         .id("advance-rollout")
+ *                         .build())
+ *                     .build(),
+ *                 AutomationRuleArgs.builder()
+ *                     .repairRolloutRule(AutomationRuleRepairRolloutRuleArgs.builder()
+ *                         .id("repair-rollout")
+ *                         .repairPhases(                        
+ *                             AutomationRuleRepairRolloutRuleRepairPhaseArgs.builder()
+ *                                 .retry(AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs.builder()
+ *                                     .attempts("1")
+ *                                     .build())
+ *                                 .build(),
+ *                             AutomationRuleRepairRolloutRuleRepairPhaseArgs.builder()
+ *                                 .rollback(AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs.builder()
+ *                                     .build())
+ *                                 .build())
+ *                         .build())
+ *                     .build(),
+ *                 AutomationRuleArgs.builder()
+ *                     .timedPromoteReleaseRule(AutomationRuleTimedPromoteReleaseRuleArgs.builder()
+ *                         .id("timed-promote-release")
+ *                         .schedule("0 9 * * 1")
+ *                         .timeZone("America/New_York")
+ *                         .build())
  *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }}{@code

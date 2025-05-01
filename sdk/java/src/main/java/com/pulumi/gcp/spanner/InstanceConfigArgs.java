@@ -73,16 +73,16 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A unique identifier for the instance configuration. Values are of the
-     * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the form
+     * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A unique identifier for the instance configuration. Values are of the
-     * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+     * @return A unique identifier for the instance configuration. Values are of the form
+     * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
      * 
      */
     public Optional<Output<String>> name() {
@@ -214,8 +214,8 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name A unique identifier for the instance configuration. Values are of the
-         * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+         * @param name A unique identifier for the instance configuration. Values are of the form
+         * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
          * 
          * @return builder
          * 
@@ -226,8 +226,8 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name A unique identifier for the instance configuration. Values are of the
-         * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+         * @param name A unique identifier for the instance configuration. Values are of the form
+         * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
          * 
          * @return builder
          * 

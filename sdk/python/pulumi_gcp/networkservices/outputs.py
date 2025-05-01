@@ -4839,6 +4839,7 @@ class LbTrafficExtensionExtensionChain(dict):
         :param Sequence['LbTrafficExtensionExtensionChainExtensionArgs'] extensions: A set of extensions to execute for the matching request.
                At least one extension is required. Up to 3 extensions can be defined for each extension chain for
                LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+               Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
                Structure is documented below.
         :param 'LbTrafficExtensionExtensionChainMatchConditionArgs' match_condition: Conditions under which this chain is invoked for a request.
                Structure is documented below.
@@ -4858,6 +4859,7 @@ class LbTrafficExtensionExtensionChain(dict):
         A set of extensions to execute for the matching request.
         At least one extension is required. Up to 3 extensions can be defined for each extension chain for
         LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+        Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
         Structure is documented below.
         """
         return pulumi.get(self, "extensions")
@@ -4912,6 +4914,7 @@ class LbTrafficExtensionExtensionChainExtension(dict):
                  authority: Optional[builtins.str] = None,
                  fail_open: Optional[builtins.bool] = None,
                  forward_headers: Optional[Sequence[builtins.str]] = None,
+                 metadata: Optional[Mapping[str, builtins.str]] = None,
                  supported_events: Optional[Sequence[builtins.str]] = None,
                  timeout: Optional[builtins.str] = None):
         """
@@ -4929,12 +4932,15 @@ class LbTrafficExtensionExtensionChainExtension(dict):
                configuring a custom error response in the load balancer.
         :param Sequence[builtins.str] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
                If omitted, all headers are sent. Each element is a string indicating the header name.
+        :param Mapping[str, builtins.str] metadata: Metadata associated with the extension. This field is used to pass metadata to the extension service.
+               You can set up key value pairs for metadata as you like and need.
+               f.e. {"key": "value", "key2": "value2"}.
+               
+               - - -
         :param Sequence[builtins.str] supported_events: A set of events during request or response processing for which this extension is called.
                This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
                resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
                `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-               
-               - - -
         :param builtins.str timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
@@ -4946,6 +4952,8 @@ class LbTrafficExtensionExtensionChainExtension(dict):
             pulumi.set(__self__, "fail_open", fail_open)
         if forward_headers is not None:
             pulumi.set(__self__, "forward_headers", forward_headers)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if supported_events is not None:
             pulumi.set(__self__, "supported_events", supported_events)
         if timeout is not None:
@@ -5001,6 +5009,18 @@ class LbTrafficExtensionExtensionChainExtension(dict):
         return pulumi.get(self, "forward_headers")
 
     @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        Metadata associated with the extension. This field is used to pass metadata to the extension service.
+        You can set up key value pairs for metadata as you like and need.
+        f.e. {"key": "value", "key2": "value2"}.
+
+        - - -
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
     @pulumi.getter(name="supportedEvents")
     def supported_events(self) -> Optional[Sequence[builtins.str]]:
         """
@@ -5008,8 +5028,6 @@ class LbTrafficExtensionExtensionChainExtension(dict):
         This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
         resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
         `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-
-        - - -
         """
         return pulumi.get(self, "supported_events")
 

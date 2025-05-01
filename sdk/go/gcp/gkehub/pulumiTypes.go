@@ -3880,7 +3880,7 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Enabled() pulumi.Boo
 }
 
 type FeatureMembershipConfigmanagementConfigSync struct {
-	// The override configurations for the Config Sync Deployments. Structure is documented below.
+	// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
 	DeploymentOverrides []FeatureMembershipConfigmanagementConfigSyncDeploymentOverride `pulumi:"deploymentOverrides"`
 	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
 	Enabled *bool `pulumi:"enabled"`
@@ -3912,7 +3912,7 @@ type FeatureMembershipConfigmanagementConfigSyncInput interface {
 }
 
 type FeatureMembershipConfigmanagementConfigSyncArgs struct {
-	// The override configurations for the Config Sync Deployments. Structure is documented below.
+	// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
 	DeploymentOverrides FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayInput `pulumi:"deploymentOverrides"`
 	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -4009,7 +4009,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipCo
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
-// The override configurations for the Config Sync Deployments. Structure is documented below.
+// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) DeploymentOverrides() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) []FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
 		return v.DeploymentOverrides
@@ -4081,7 +4081,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMemb
 	}).(FeatureMembershipConfigmanagementConfigSyncOutput)
 }
 
-// The override configurations for the Config Sync Deployments. Structure is documented below.
+// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) DeploymentOverrides() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) []FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
 		if v == nil {

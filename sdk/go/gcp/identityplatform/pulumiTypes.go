@@ -3873,6 +3873,162 @@ func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.IntInp
 	}).(InboundSamlConfigSpConfigSpCertificateOutput)
 }
 
+type OauthIdpConfigResponseType struct {
+	// If true, authorization code is returned from IdP's authorization endpoint.
+	Code *bool `pulumi:"code"`
+	// If true, ID token is returned from IdP's authorization endpoint.
+	IdToken *bool `pulumi:"idToken"`
+}
+
+// OauthIdpConfigResponseTypeInput is an input type that accepts OauthIdpConfigResponseTypeArgs and OauthIdpConfigResponseTypeOutput values.
+// You can construct a concrete instance of `OauthIdpConfigResponseTypeInput` via:
+//
+//	OauthIdpConfigResponseTypeArgs{...}
+type OauthIdpConfigResponseTypeInput interface {
+	pulumi.Input
+
+	ToOauthIdpConfigResponseTypeOutput() OauthIdpConfigResponseTypeOutput
+	ToOauthIdpConfigResponseTypeOutputWithContext(context.Context) OauthIdpConfigResponseTypeOutput
+}
+
+type OauthIdpConfigResponseTypeArgs struct {
+	// If true, authorization code is returned from IdP's authorization endpoint.
+	Code pulumi.BoolPtrInput `pulumi:"code"`
+	// If true, ID token is returned from IdP's authorization endpoint.
+	IdToken pulumi.BoolPtrInput `pulumi:"idToken"`
+}
+
+func (OauthIdpConfigResponseTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OauthIdpConfigResponseType)(nil)).Elem()
+}
+
+func (i OauthIdpConfigResponseTypeArgs) ToOauthIdpConfigResponseTypeOutput() OauthIdpConfigResponseTypeOutput {
+	return i.ToOauthIdpConfigResponseTypeOutputWithContext(context.Background())
+}
+
+func (i OauthIdpConfigResponseTypeArgs) ToOauthIdpConfigResponseTypeOutputWithContext(ctx context.Context) OauthIdpConfigResponseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigResponseTypeOutput)
+}
+
+func (i OauthIdpConfigResponseTypeArgs) ToOauthIdpConfigResponseTypePtrOutput() OauthIdpConfigResponseTypePtrOutput {
+	return i.ToOauthIdpConfigResponseTypePtrOutputWithContext(context.Background())
+}
+
+func (i OauthIdpConfigResponseTypeArgs) ToOauthIdpConfigResponseTypePtrOutputWithContext(ctx context.Context) OauthIdpConfigResponseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigResponseTypeOutput).ToOauthIdpConfigResponseTypePtrOutputWithContext(ctx)
+}
+
+// OauthIdpConfigResponseTypePtrInput is an input type that accepts OauthIdpConfigResponseTypeArgs, OauthIdpConfigResponseTypePtr and OauthIdpConfigResponseTypePtrOutput values.
+// You can construct a concrete instance of `OauthIdpConfigResponseTypePtrInput` via:
+//
+//	        OauthIdpConfigResponseTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type OauthIdpConfigResponseTypePtrInput interface {
+	pulumi.Input
+
+	ToOauthIdpConfigResponseTypePtrOutput() OauthIdpConfigResponseTypePtrOutput
+	ToOauthIdpConfigResponseTypePtrOutputWithContext(context.Context) OauthIdpConfigResponseTypePtrOutput
+}
+
+type oauthIdpConfigResponseTypePtrType OauthIdpConfigResponseTypeArgs
+
+func OauthIdpConfigResponseTypePtr(v *OauthIdpConfigResponseTypeArgs) OauthIdpConfigResponseTypePtrInput {
+	return (*oauthIdpConfigResponseTypePtrType)(v)
+}
+
+func (*oauthIdpConfigResponseTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OauthIdpConfigResponseType)(nil)).Elem()
+}
+
+func (i *oauthIdpConfigResponseTypePtrType) ToOauthIdpConfigResponseTypePtrOutput() OauthIdpConfigResponseTypePtrOutput {
+	return i.ToOauthIdpConfigResponseTypePtrOutputWithContext(context.Background())
+}
+
+func (i *oauthIdpConfigResponseTypePtrType) ToOauthIdpConfigResponseTypePtrOutputWithContext(ctx context.Context) OauthIdpConfigResponseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigResponseTypePtrOutput)
+}
+
+type OauthIdpConfigResponseTypeOutput struct{ *pulumi.OutputState }
+
+func (OauthIdpConfigResponseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OauthIdpConfigResponseType)(nil)).Elem()
+}
+
+func (o OauthIdpConfigResponseTypeOutput) ToOauthIdpConfigResponseTypeOutput() OauthIdpConfigResponseTypeOutput {
+	return o
+}
+
+func (o OauthIdpConfigResponseTypeOutput) ToOauthIdpConfigResponseTypeOutputWithContext(ctx context.Context) OauthIdpConfigResponseTypeOutput {
+	return o
+}
+
+func (o OauthIdpConfigResponseTypeOutput) ToOauthIdpConfigResponseTypePtrOutput() OauthIdpConfigResponseTypePtrOutput {
+	return o.ToOauthIdpConfigResponseTypePtrOutputWithContext(context.Background())
+}
+
+func (o OauthIdpConfigResponseTypeOutput) ToOauthIdpConfigResponseTypePtrOutputWithContext(ctx context.Context) OauthIdpConfigResponseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OauthIdpConfigResponseType) *OauthIdpConfigResponseType {
+		return &v
+	}).(OauthIdpConfigResponseTypePtrOutput)
+}
+
+// If true, authorization code is returned from IdP's authorization endpoint.
+func (o OauthIdpConfigResponseTypeOutput) Code() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OauthIdpConfigResponseType) *bool { return v.Code }).(pulumi.BoolPtrOutput)
+}
+
+// If true, ID token is returned from IdP's authorization endpoint.
+func (o OauthIdpConfigResponseTypeOutput) IdToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OauthIdpConfigResponseType) *bool { return v.IdToken }).(pulumi.BoolPtrOutput)
+}
+
+type OauthIdpConfigResponseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OauthIdpConfigResponseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OauthIdpConfigResponseType)(nil)).Elem()
+}
+
+func (o OauthIdpConfigResponseTypePtrOutput) ToOauthIdpConfigResponseTypePtrOutput() OauthIdpConfigResponseTypePtrOutput {
+	return o
+}
+
+func (o OauthIdpConfigResponseTypePtrOutput) ToOauthIdpConfigResponseTypePtrOutputWithContext(ctx context.Context) OauthIdpConfigResponseTypePtrOutput {
+	return o
+}
+
+func (o OauthIdpConfigResponseTypePtrOutput) Elem() OauthIdpConfigResponseTypeOutput {
+	return o.ApplyT(func(v *OauthIdpConfigResponseType) OauthIdpConfigResponseType {
+		if v != nil {
+			return *v
+		}
+		var ret OauthIdpConfigResponseType
+		return ret
+	}).(OauthIdpConfigResponseTypeOutput)
+}
+
+// If true, authorization code is returned from IdP's authorization endpoint.
+func (o OauthIdpConfigResponseTypePtrOutput) Code() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OauthIdpConfigResponseType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, ID token is returned from IdP's authorization endpoint.
+func (o OauthIdpConfigResponseTypePtrOutput) IdToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OauthIdpConfigResponseType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IdToken
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TenantClient struct {
 	// Configuration related to restricting a user's ability to affect their account.
 	// Structure is documented below.
@@ -4808,6 +4964,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigPtrInput)(nil)).Elem(), InboundSamlConfigSpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateArrayInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OauthIdpConfigResponseTypeInput)(nil)).Elem(), OauthIdpConfigResponseTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OauthIdpConfigResponseTypePtrInput)(nil)).Elem(), OauthIdpConfigResponseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantClientInput)(nil)).Elem(), TenantClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantClientPtrInput)(nil)).Elem(), TenantClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantClientPermissionsInput)(nil)).Elem(), TenantClientPermissionsArgs{})
@@ -4870,6 +5028,8 @@ func init() {
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigPtrOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigSpCertificateOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigSpCertificateArrayOutput{})
+	pulumi.RegisterOutputType(OauthIdpConfigResponseTypeOutput{})
+	pulumi.RegisterOutputType(OauthIdpConfigResponseTypePtrOutput{})
 	pulumi.RegisterOutputType(TenantClientOutput{})
 	pulumi.RegisterOutputType(TenantClientPtrOutput{})
 	pulumi.RegisterOutputType(TenantClientPermissionsOutput{})

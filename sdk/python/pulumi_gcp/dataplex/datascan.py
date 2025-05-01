@@ -659,6 +659,16 @@ class Datascan(pulumi.CustomResource):
             data_quality_spec={
                 "sampling_percent": 5,
                 "row_filter": "station_id > 1000",
+                "post_scan_actions": {
+                    "notification_report": {
+                        "recipients": {
+                            "emails": ["jane.doe@example.com"],
+                        },
+                        "score_threshold_trigger": {
+                            "score_threshold": 86,
+                        },
+                    },
+                },
                 "rules": [
                     {
                         "column": "address",
@@ -925,6 +935,16 @@ class Datascan(pulumi.CustomResource):
             data_quality_spec={
                 "sampling_percent": 5,
                 "row_filter": "station_id > 1000",
+                "post_scan_actions": {
+                    "notification_report": {
+                        "recipients": {
+                            "emails": ["jane.doe@example.com"],
+                        },
+                        "score_threshold_trigger": {
+                            "score_threshold": 86,
+                        },
+                    },
+                },
                 "rules": [
                     {
                         "column": "address",

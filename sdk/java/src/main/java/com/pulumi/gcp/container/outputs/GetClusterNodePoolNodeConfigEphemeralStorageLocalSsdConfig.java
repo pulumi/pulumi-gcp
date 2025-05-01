@@ -11,12 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
     /**
+     * @return Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+     * 
+     */
+    private Integer dataCacheCount;
+    /**
      * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
      * 
      */
     private Integer localSsdCount;
 
     private GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig() {}
+    /**
+     * @return Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+     * 
+     */
+    public Integer dataCacheCount() {
+        return this.dataCacheCount;
+    }
     /**
      * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
      * 
@@ -34,13 +46,23 @@ public final class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer dataCacheCount;
         private Integer localSsdCount;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dataCacheCount = defaults.dataCacheCount;
     	      this.localSsdCount = defaults.localSsdCount;
         }
 
+        @CustomType.Setter
+        public Builder dataCacheCount(Integer dataCacheCount) {
+            if (dataCacheCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig", "dataCacheCount");
+            }
+            this.dataCacheCount = dataCacheCount;
+            return this;
+        }
         @CustomType.Setter
         public Builder localSsdCount(Integer localSsdCount) {
             if (localSsdCount == null) {
@@ -51,6 +73,7 @@ public final class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
         }
         public GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig build() {
             final var _resultValue = new GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig();
+            _resultValue.dataCacheCount = dataCacheCount;
             _resultValue.localSsdCount = localSsdCount;
             return _resultValue;
         }

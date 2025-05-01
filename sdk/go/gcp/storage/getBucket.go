@@ -87,7 +87,9 @@ type LookupBucketResult struct {
 	SelfLink                 string                      `pulumi:"selfLink"`
 	SoftDeletePolicies       []GetBucketSoftDeletePolicy `pulumi:"softDeletePolicies"`
 	StorageClass             string                      `pulumi:"storageClass"`
+	TimeCreated              string                      `pulumi:"timeCreated"`
 	UniformBucketLevelAccess bool                        `pulumi:"uniformBucketLevelAccess"`
+	Updated                  string                      `pulumi:"updated"`
 	Url                      string                      `pulumi:"url"`
 	Versionings              []GetBucketVersioning       `pulumi:"versionings"`
 	Websites                 []GetBucketWebsite          `pulumi:"websites"`
@@ -230,8 +232,16 @@ func (o LookupBucketResultOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.StorageClass }).(pulumi.StringOutput)
 }
 
+func (o LookupBucketResultOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
 func (o LookupBucketResultOutput) UniformBucketLevelAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBucketResult) bool { return v.UniformBucketLevelAccess }).(pulumi.BoolOutput)
+}
+
+func (o LookupBucketResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.Updated }).(pulumi.StringOutput)
 }
 
 func (o LookupBucketResultOutput) Url() pulumi.StringOutput {

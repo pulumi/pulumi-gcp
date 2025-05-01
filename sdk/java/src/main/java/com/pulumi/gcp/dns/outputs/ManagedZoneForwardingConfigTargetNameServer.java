@@ -4,7 +4,6 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,6 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedZoneForwardingConfigTargetNameServer {
+    /**
+     * @return Fully qualified domain name for the forwarding target.
+     * 
+     */
+    private @Nullable String domainName;
     /**
      * @return Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
      * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
@@ -24,9 +28,16 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
      * @return IPv4 address of a target name server.
      * 
      */
-    private String ipv4Address;
+    private @Nullable String ipv4Address;
 
     private ManagedZoneForwardingConfigTargetNameServer() {}
+    /**
+     * @return Fully qualified domain name for the forwarding target.
+     * 
+     */
+    public Optional<String> domainName() {
+        return Optional.ofNullable(this.domainName);
+    }
     /**
      * @return Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
      * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
@@ -41,8 +52,8 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
      * @return IPv4 address of a target name server.
      * 
      */
-    public String ipv4Address() {
-        return this.ipv4Address;
+    public Optional<String> ipv4Address() {
+        return Optional.ofNullable(this.ipv4Address);
     }
 
     public static Builder builder() {
@@ -54,15 +65,23 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String domainName;
         private @Nullable String forwardingPath;
-        private String ipv4Address;
+        private @Nullable String ipv4Address;
         public Builder() {}
         public Builder(ManagedZoneForwardingConfigTargetNameServer defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.domainName = defaults.domainName;
     	      this.forwardingPath = defaults.forwardingPath;
     	      this.ipv4Address = defaults.ipv4Address;
         }
 
+        @CustomType.Setter
+        public Builder domainName(@Nullable String domainName) {
+
+            this.domainName = domainName;
+            return this;
+        }
         @CustomType.Setter
         public Builder forwardingPath(@Nullable String forwardingPath) {
 
@@ -70,15 +89,14 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
             return this;
         }
         @CustomType.Setter
-        public Builder ipv4Address(String ipv4Address) {
-            if (ipv4Address == null) {
-              throw new MissingRequiredPropertyException("ManagedZoneForwardingConfigTargetNameServer", "ipv4Address");
-            }
+        public Builder ipv4Address(@Nullable String ipv4Address) {
+
             this.ipv4Address = ipv4Address;
             return this;
         }
         public ManagedZoneForwardingConfigTargetNameServer build() {
             final var _resultValue = new ManagedZoneForwardingConfigTargetNameServer();
+            _resultValue.domainName = domainName;
             _resultValue.forwardingPath = forwardingPath;
             _resultValue.ipv4Address = ipv4Address;
             return _resultValue;

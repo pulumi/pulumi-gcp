@@ -309,13 +309,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     region: "us-central1",
- *     bigtable: {
- *         autoScaling: {
- *             minNodeCount: 1,
- *             maxNodeCount: 2,
- *             cpuUtilizationTarget: 80,
- *         },
- *     },
+ *     optimized: {},
  *     embeddingManagement: {
  *         enabled: true,
  *     },

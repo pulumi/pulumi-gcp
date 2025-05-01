@@ -83,8 +83,8 @@ namespace Pulumi.Gcp.Spanner
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// A unique identifier for the instance configuration. Values are of the
-        /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+        /// A unique identifier for the instance configuration. Values are of the form
+        /// projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -186,8 +186,8 @@ namespace Pulumi.Gcp.Spanner
         }
 
         /// <summary>
-        /// A unique identifier for the instance configuration. Values are of the
-        /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+        /// A unique identifier for the instance configuration. Values are of the form
+        /// projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -267,8 +267,8 @@ namespace Pulumi.Gcp.Spanner
         }
 
         /// <summary>
-        /// A unique identifier for the instance configuration. Values are of the
-        /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+        /// A unique identifier for the instance configuration. Values are of the form
+        /// projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

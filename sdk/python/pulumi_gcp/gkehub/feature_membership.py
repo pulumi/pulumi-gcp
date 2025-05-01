@@ -425,6 +425,52 @@ class FeatureMembership(pulumi.CustomResource):
             })
         ```
 
+        ### Config Management With Deployment Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint={
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
+        feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
+            location="global",
+            labels={
+                "foo": "bar",
+            })
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            configmanagement={
+                "version": "1.20.1",
+                "config_sync": {
+                    "enabled": True,
+                    "deployment_overrides": [{
+                        "deployment_name": "reconciler-manager",
+                        "deployment_namespace": "config-management-system",
+                        "containers": [{
+                            "container_name": "reconciler-manager",
+                            "cpu_request": "100m",
+                            "memory_request": "64Mi",
+                            "cpu_limit": "250m",
+                            "memory_limit": "128Mi",
+                        }],
+                    }],
+                },
+            })
+        ```
+
         ### Config Management With Regional Membership
 
         ```python
@@ -741,6 +787,52 @@ class FeatureMembership(pulumi.CustomResource):
                         "secret_type": "gcpserviceaccount",
                         "gcp_service_account_email": "sa@project-id.iam.gserviceaccount.com",
                     },
+                },
+            })
+        ```
+
+        ### Config Management With Deployment Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint={
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
+        feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
+            location="global",
+            labels={
+                "foo": "bar",
+            })
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            configmanagement={
+                "version": "1.20.1",
+                "config_sync": {
+                    "enabled": True,
+                    "deployment_overrides": [{
+                        "deployment_name": "reconciler-manager",
+                        "deployment_namespace": "config-management-system",
+                        "containers": [{
+                            "container_name": "reconciler-manager",
+                            "cpu_request": "100m",
+                            "memory_request": "64Mi",
+                            "cpu_limit": "250m",
+                            "memory_limit": "128Mi",
+                        }],
+                    }],
                 },
             })
         ```

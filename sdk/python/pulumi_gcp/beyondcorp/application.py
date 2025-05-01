@@ -26,7 +26,8 @@ class ApplicationArgs:
                  endpoint_matchers: pulumi.Input[Sequence[pulumi.Input['ApplicationEndpointMatcherArgs']]],
                  security_gateways_id: pulumi.Input[builtins.str],
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
-                 project: Optional[pulumi.Input[builtins.str]] = None):
+                 project: Optional[pulumi.Input[builtins.str]] = None,
+                 upstreams: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUpstreamArgs']]]] = None):
         """
         The set of arguments for constructing a Application resource.
         :param pulumi.Input[builtins.str] application_id: Optional. User-settable Application resource ID.
@@ -47,6 +48,7 @@ class ApplicationArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] security_gateways_id: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationUpstreamArgs']]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "endpoint_matchers", endpoint_matchers)
@@ -55,6 +57,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "display_name", display_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if upstreams is not None:
+            pulumi.set(__self__, "upstreams", upstreams)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -127,6 +131,18 @@ class ApplicationArgs:
     def project(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def upstreams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUpstreamArgs']]]]:
+        """
+        Optional. List of which upstream resource(s) to forward traffic to.
+        """
+        return pulumi.get(self, "upstreams")
+
+    @upstreams.setter
+    def upstreams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUpstreamArgs']]]]):
+        pulumi.set(self, "upstreams", value)
+
 
 @pulumi.input_type
 class _ApplicationState:
@@ -138,7 +154,8 @@ class _ApplicationState:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  security_gateways_id: Optional[pulumi.Input[builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[builtins.str]] = None):
+                 update_time: Optional[pulumi.Input[builtins.str]] = None,
+                 upstreams: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUpstreamArgs']]]] = None):
         """
         Input properties used for looking up and filtering Application resources.
         :param pulumi.Input[builtins.str] application_id: Optional. User-settable Application resource ID.
@@ -162,6 +179,7 @@ class _ApplicationState:
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
         :param pulumi.Input[builtins.str] security_gateways_id: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] update_time: Output only. Timestamp when the resource was last modified.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationUpstreamArgs']]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
@@ -179,6 +197,8 @@ class _ApplicationState:
             pulumi.set(__self__, "security_gateways_id", security_gateways_id)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if upstreams is not None:
+            pulumi.set(__self__, "upstreams", upstreams)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -287,6 +307,18 @@ class _ApplicationState:
     def update_time(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "update_time", value)
 
+    @property
+    @pulumi.getter
+    def upstreams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUpstreamArgs']]]]:
+        """
+        Optional. List of which upstream resource(s) to forward traffic to.
+        """
+        return pulumi.get(self, "upstreams")
+
+    @upstreams.setter
+    def upstreams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationUpstreamArgs']]]]):
+        pulumi.set(self, "upstreams", value)
+
 
 class Application(pulumi.CustomResource):
     @overload
@@ -298,6 +330,7 @@ class Application(pulumi.CustomResource):
                  endpoint_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationEndpointMatcherArgs', 'ApplicationEndpointMatcherArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  security_gateways_id: Optional[pulumi.Input[builtins.str]] = None,
+                 upstreams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUpstreamArgs', 'ApplicationUpstreamArgsDict']]]]] = None,
                  __props__=None):
         """
         Specifies application endpoint(s) to protect behind a Security Gateway.
@@ -321,6 +354,34 @@ class Application(pulumi.CustomResource):
             application_id="google",
             endpoint_matchers=[{
                 "hostname": "google.com",
+            }])
+        ```
+        ### Beyondcorp Security Gateway Application Vpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.beyondcorp.SecurityGateway("default",
+            security_gateway_id="default",
+            display_name="My Security Gateway resource",
+            hubs=[{
+                "region": "us-central1",
+            }])
+        example = gcp.beyondcorp.Application("example",
+            security_gateways_id=default.security_gateway_id,
+            application_id="my-vm-service",
+            endpoint_matchers=[{
+                "hostname": "my-vm-service.com",
+            }],
+            upstreams=[{
+                "egress_policy": {
+                    "regions": ["us-central1"],
+                },
+                "network": {
+                    "name": f"projects/{project.project_id}/global/networks/default",
+                },
             }])
         ```
 
@@ -368,6 +429,7 @@ class Application(pulumi.CustomResource):
                Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
                Structure is documented below.
         :param pulumi.Input[builtins.str] security_gateways_id: Part of `parent`. See documentation of `projectsId`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUpstreamArgs', 'ApplicationUpstreamArgsDict']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
         """
         ...
     @overload
@@ -397,6 +459,34 @@ class Application(pulumi.CustomResource):
             application_id="google",
             endpoint_matchers=[{
                 "hostname": "google.com",
+            }])
+        ```
+        ### Beyondcorp Security Gateway Application Vpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.beyondcorp.SecurityGateway("default",
+            security_gateway_id="default",
+            display_name="My Security Gateway resource",
+            hubs=[{
+                "region": "us-central1",
+            }])
+        example = gcp.beyondcorp.Application("example",
+            security_gateways_id=default.security_gateway_id,
+            application_id="my-vm-service",
+            endpoint_matchers=[{
+                "hostname": "my-vm-service.com",
+            }],
+            upstreams=[{
+                "egress_policy": {
+                    "regions": ["us-central1"],
+                },
+                "network": {
+                    "name": f"projects/{project.project_id}/global/networks/default",
+                },
             }])
         ```
 
@@ -444,6 +534,7 @@ class Application(pulumi.CustomResource):
                  endpoint_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationEndpointMatcherArgs', 'ApplicationEndpointMatcherArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  security_gateways_id: Optional[pulumi.Input[builtins.str]] = None,
+                 upstreams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUpstreamArgs', 'ApplicationUpstreamArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -464,6 +555,7 @@ class Application(pulumi.CustomResource):
             if security_gateways_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_gateways_id'")
             __props__.__dict__["security_gateways_id"] = security_gateways_id
+            __props__.__dict__["upstreams"] = upstreams
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
@@ -484,7 +576,8 @@ class Application(pulumi.CustomResource):
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             security_gateways_id: Optional[pulumi.Input[builtins.str]] = None,
-            update_time: Optional[pulumi.Input[builtins.str]] = None) -> 'Application':
+            update_time: Optional[pulumi.Input[builtins.str]] = None,
+            upstreams: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUpstreamArgs', 'ApplicationUpstreamArgsDict']]]]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -513,6 +606,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
         :param pulumi.Input[builtins.str] security_gateways_id: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] update_time: Output only. Timestamp when the resource was last modified.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationUpstreamArgs', 'ApplicationUpstreamArgsDict']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -526,6 +620,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["security_gateways_id"] = security_gateways_id
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["upstreams"] = upstreams
         return Application(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -602,4 +697,12 @@ class Application(pulumi.CustomResource):
         Output only. Timestamp when the resource was last modified.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def upstreams(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationUpstream']]]:
+        """
+        Optional. List of which upstream resource(s) to forward traffic to.
+        """
+        return pulumi.get(self, "upstreams")
 

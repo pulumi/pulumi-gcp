@@ -658,6 +658,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.storageClass);
     }
     /**
+     * The creation time of the bucket in RFC 3339 format.
+     * 
+     */
+    @Export(name="timeCreated", refs={String.class}, tree="[0]")
+    private Output<String> timeCreated;
+
+    /**
+     * @return The creation time of the bucket in RFC 3339 format.
+     * 
+     */
+    public Output<String> timeCreated() {
+        return this.timeCreated;
+    }
+    /**
      * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
      * 
      */
@@ -670,6 +684,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> uniformBucketLevelAccess() {
         return this.uniformBucketLevelAccess;
+    }
+    /**
+     * The time at which the bucket&#39;s metadata or IAM policy was last updated, in RFC 3339 format.
+     * 
+     */
+    @Export(name="updated", refs={String.class}, tree="[0]")
+    private Output<String> updated;
+
+    /**
+     * @return The time at which the bucket&#39;s metadata or IAM policy was last updated, in RFC 3339 format.
+     * 
+     */
+    public Output<String> updated() {
+        return this.updated;
     }
     /**
      * The base URL of the bucket, in the format `gs://&lt;bucket-name&gt;`.

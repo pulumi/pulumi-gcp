@@ -497,6 +497,14 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
+        A rule for the RegionSecurityPolicy.
+
+        To get more information about RegionSecurityPolicyRule, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionSecurityPolicies/addRule)
+        * How-to Guides
+            * [Creating region security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
+
         ## Example Usage
 
         ### Region Security Policy Rule Basic
@@ -784,6 +792,14 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  args: RegionSecurityPolicyRuleInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A rule for the RegionSecurityPolicy.
+
+        To get more information about RegionSecurityPolicyRule, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionSecurityPolicies/addRule)
+        * How-to Guides
+            * [Creating region security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
+
         ## Example Usage
 
         ### Region Security Policy Rule Basic

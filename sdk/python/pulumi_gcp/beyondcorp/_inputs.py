@@ -32,6 +32,12 @@ __all__ = [
     'ApplicationIamBindingConditionArgsDict',
     'ApplicationIamMemberConditionArgs',
     'ApplicationIamMemberConditionArgsDict',
+    'ApplicationUpstreamArgs',
+    'ApplicationUpstreamArgsDict',
+    'ApplicationUpstreamEgressPolicyArgs',
+    'ApplicationUpstreamEgressPolicyArgsDict',
+    'ApplicationUpstreamNetworkArgs',
+    'ApplicationUpstreamNetworkArgsDict',
     'SecurityGatewayHubArgs',
     'SecurityGatewayHubArgsDict',
     'SecurityGatewayHubInternetGatewayArgs',
@@ -507,6 +513,129 @@ class ApplicationIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class ApplicationUpstreamArgsDict(TypedDict):
+        egress_policy: NotRequired[pulumi.Input['ApplicationUpstreamEgressPolicyArgsDict']]
+        """
+        Optional. Routing policy information.
+        Structure is documented below.
+        """
+        network: NotRequired[pulumi.Input['ApplicationUpstreamNetworkArgsDict']]
+        """
+        Network to forward traffic to.
+        Structure is documented below.
+        """
+elif False:
+    ApplicationUpstreamArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApplicationUpstreamArgs:
+    def __init__(__self__, *,
+                 egress_policy: Optional[pulumi.Input['ApplicationUpstreamEgressPolicyArgs']] = None,
+                 network: Optional[pulumi.Input['ApplicationUpstreamNetworkArgs']] = None):
+        """
+        :param pulumi.Input['ApplicationUpstreamEgressPolicyArgs'] egress_policy: Optional. Routing policy information.
+               Structure is documented below.
+        :param pulumi.Input['ApplicationUpstreamNetworkArgs'] network: Network to forward traffic to.
+               Structure is documented below.
+        """
+        if egress_policy is not None:
+            pulumi.set(__self__, "egress_policy", egress_policy)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter(name="egressPolicy")
+    def egress_policy(self) -> Optional[pulumi.Input['ApplicationUpstreamEgressPolicyArgs']]:
+        """
+        Optional. Routing policy information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "egress_policy")
+
+    @egress_policy.setter
+    def egress_policy(self, value: Optional[pulumi.Input['ApplicationUpstreamEgressPolicyArgs']]):
+        pulumi.set(self, "egress_policy", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['ApplicationUpstreamNetworkArgs']]:
+        """
+        Network to forward traffic to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['ApplicationUpstreamNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+
+if not MYPY:
+    class ApplicationUpstreamEgressPolicyArgsDict(TypedDict):
+        regions: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        """
+        Required. List of regions where the application sends traffic to.
+        """
+elif False:
+    ApplicationUpstreamEgressPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApplicationUpstreamEgressPolicyArgs:
+    def __init__(__self__, *,
+                 regions: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] regions: Required. List of regions where the application sends traffic to.
+        """
+        pulumi.set(__self__, "regions", regions)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+        """
+        Required. List of regions where the application sends traffic to.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        pulumi.set(self, "regions", value)
+
+
+if not MYPY:
+    class ApplicationUpstreamNetworkArgsDict(TypedDict):
+        name: pulumi.Input[builtins.str]
+        """
+        Required. Network name is of the format:
+        `projects/{project}/global/networks/{network}`
+        """
+elif False:
+    ApplicationUpstreamNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApplicationUpstreamNetworkArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] name: Required. Network name is of the format:
+               `projects/{project}/global/networks/{network}`
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        """
+        Required. Network name is of the format:
+        `projects/{project}/global/networks/{network}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:

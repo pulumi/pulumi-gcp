@@ -1728,6 +1728,9 @@ class BackendService(pulumi.CustomResource):
 
         Currently self-managed internal load balancing is only available in beta.
 
+        > **Note:** Recreating a `compute.BackendService` that references other dependent resources like `compute.URLMap` will give a `resourceInUseByAnotherResource` error, when modifying the number of other dependent resources.
+        Use `lifecycle.create_before_destroy` on the dependent resources to avoid this type of error as shown in the Dynamic Backends example.
+
         To get more information about BackendService, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
@@ -2102,7 +2105,6 @@ class BackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
-
         ## Import
 
         BackendService can be imported using any of these accepted formats:
@@ -2308,6 +2310,9 @@ class BackendService(pulumi.CustomResource):
 
         Currently self-managed internal load balancing is only available in beta.
 
+        > **Note:** Recreating a `compute.BackendService` that references other dependent resources like `compute.URLMap` will give a `resourceInUseByAnotherResource` error, when modifying the number of other dependent resources.
+        Use `lifecycle.create_before_destroy` on the dependent resources to avoid this type of error as shown in the Dynamic Backends example.
+
         To get more information about BackendService, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
@@ -2682,7 +2687,6 @@ class BackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
-
         ## Import
 
         BackendService can be imported using any of these accepted formats:

@@ -25,6 +25,8 @@ type AccountConnectorProviderOauthConfig struct {
 	// GOOGLE
 	// SENTRY
 	// ROVO
+	// NEW_RELIC
+	// DATASTAX
 	SystemProviderId *string `pulumi:"systemProviderId"`
 }
 
@@ -51,6 +53,8 @@ type AccountConnectorProviderOauthConfigArgs struct {
 	// GOOGLE
 	// SENTRY
 	// ROVO
+	// NEW_RELIC
+	// DATASTAX
 	SystemProviderId pulumi.StringPtrInput `pulumi:"systemProviderId"`
 }
 
@@ -145,6 +149,8 @@ func (o AccountConnectorProviderOauthConfigOutput) Scopes() pulumi.StringArrayOu
 // GOOGLE
 // SENTRY
 // ROVO
+// NEW_RELIC
+// DATASTAX
 func (o AccountConnectorProviderOauthConfigOutput) SystemProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountConnectorProviderOauthConfig) *string { return v.SystemProviderId }).(pulumi.StringPtrOutput)
 }
@@ -192,6 +198,8 @@ func (o AccountConnectorProviderOauthConfigPtrOutput) Scopes() pulumi.StringArra
 // GOOGLE
 // SENTRY
 // ROVO
+// NEW_RELIC
+// DATASTAX
 func (o AccountConnectorProviderOauthConfigPtrOutput) SystemProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountConnectorProviderOauthConfig) *string {
 		if v == nil {

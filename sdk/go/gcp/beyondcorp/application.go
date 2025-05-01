@@ -59,6 +59,68 @@ import (
 //	}
 //
 // ```
+// ### Beyondcorp Security Gateway Application Vpc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := beyondcorp.NewSecurityGateway(ctx, "default", &beyondcorp.SecurityGatewayArgs{
+//				SecurityGatewayId: pulumi.String("default"),
+//				DisplayName:       pulumi.String("My Security Gateway resource"),
+//				Hubs: beyondcorp.SecurityGatewayHubArray{
+//					&beyondcorp.SecurityGatewayHubArgs{
+//						Region: pulumi.String("us-central1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = beyondcorp.NewApplication(ctx, "example", &beyondcorp.ApplicationArgs{
+//				SecurityGatewaysId: _default.SecurityGatewayId,
+//				ApplicationId:      pulumi.String("my-vm-service"),
+//				EndpointMatchers: beyondcorp.ApplicationEndpointMatcherArray{
+//					&beyondcorp.ApplicationEndpointMatcherArgs{
+//						Hostname: pulumi.String("my-vm-service.com"),
+//					},
+//				},
+//				Upstreams: beyondcorp.ApplicationUpstreamArray{
+//					&beyondcorp.ApplicationUpstreamArgs{
+//						EgressPolicy: &beyondcorp.ApplicationUpstreamEgressPolicyArgs{
+//							Regions: pulumi.StringArray{
+//								pulumi.String("us-central1"),
+//							},
+//						},
+//						Network: &beyondcorp.ApplicationUpstreamNetworkArgs{
+//							Name: pulumi.Sprintf("projects/%v/global/networks/default", project.ProjectId),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -115,6 +177,8 @@ type Application struct {
 	SecurityGatewaysId pulumi.StringOutput `pulumi:"securityGatewaysId"`
 	// Output only. Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. List of which upstream resource(s) to forward traffic to.
+	Upstreams ApplicationUpstreamArrayOutput `pulumi:"upstreams"`
 }
 
 // NewApplication registers a new resource with the given unique name, arguments, and options.
@@ -185,6 +249,8 @@ type applicationState struct {
 	SecurityGatewaysId *string `pulumi:"securityGatewaysId"`
 	// Output only. Timestamp when the resource was last modified.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Optional. List of which upstream resource(s) to forward traffic to.
+	Upstreams []ApplicationUpstream `pulumi:"upstreams"`
 }
 
 type ApplicationState struct {
@@ -217,6 +283,8 @@ type ApplicationState struct {
 	SecurityGatewaysId pulumi.StringPtrInput
 	// Output only. Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringPtrInput
+	// Optional. List of which upstream resource(s) to forward traffic to.
+	Upstreams ApplicationUpstreamArrayInput
 }
 
 func (ApplicationState) ElementType() reflect.Type {
@@ -247,6 +315,8 @@ type applicationArgs struct {
 	Project          *string                      `pulumi:"project"`
 	// Part of `parent`. See documentation of `projectsId`.
 	SecurityGatewaysId string `pulumi:"securityGatewaysId"`
+	// Optional. List of which upstream resource(s) to forward traffic to.
+	Upstreams []ApplicationUpstream `pulumi:"upstreams"`
 }
 
 // The set of arguments for constructing a Application resource.
@@ -274,6 +344,8 @@ type ApplicationArgs struct {
 	Project          pulumi.StringPtrInput
 	// Part of `parent`. See documentation of `projectsId`.
 	SecurityGatewaysId pulumi.StringInput
+	// Optional. List of which upstream resource(s) to forward traffic to.
+	Upstreams ApplicationUpstreamArrayInput
 }
 
 func (ApplicationArgs) ElementType() reflect.Type {
@@ -414,6 +486,11 @@ func (o ApplicationOutput) SecurityGatewaysId() pulumi.StringOutput {
 // Output only. Timestamp when the resource was last modified.
 func (o ApplicationOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. List of which upstream resource(s) to forward traffic to.
+func (o ApplicationOutput) Upstreams() ApplicationUpstreamArrayOutput {
+	return o.ApplyT(func(v *Application) ApplicationUpstreamArrayOutput { return v.Upstreams }).(ApplicationUpstreamArrayOutput)
 }
 
 type ApplicationArrayOutput struct{ *pulumi.OutputState }

@@ -25,6 +25,9 @@ __all__ = [
     'ApplicationEndpointMatcher',
     'ApplicationIamBindingCondition',
     'ApplicationIamMemberCondition',
+    'ApplicationUpstream',
+    'ApplicationUpstreamEgressPolicy',
+    'ApplicationUpstreamNetwork',
     'SecurityGatewayHub',
     'SecurityGatewayHubInternetGateway',
     'SecurityGatewayIamBindingCondition',
@@ -365,6 +368,96 @@ class ApplicationIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ApplicationUpstream(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressPolicy":
+            suggest = "egress_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationUpstream. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationUpstream.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationUpstream.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 egress_policy: Optional['outputs.ApplicationUpstreamEgressPolicy'] = None,
+                 network: Optional['outputs.ApplicationUpstreamNetwork'] = None):
+        """
+        :param 'ApplicationUpstreamEgressPolicyArgs' egress_policy: Optional. Routing policy information.
+               Structure is documented below.
+        :param 'ApplicationUpstreamNetworkArgs' network: Network to forward traffic to.
+               Structure is documented below.
+        """
+        if egress_policy is not None:
+            pulumi.set(__self__, "egress_policy", egress_policy)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter(name="egressPolicy")
+    def egress_policy(self) -> Optional['outputs.ApplicationUpstreamEgressPolicy']:
+        """
+        Optional. Routing policy information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "egress_policy")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.ApplicationUpstreamNetwork']:
+        """
+        Network to forward traffic to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class ApplicationUpstreamEgressPolicy(dict):
+    def __init__(__self__, *,
+                 regions: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] regions: Required. List of regions where the application sends traffic to.
+        """
+        pulumi.set(__self__, "regions", regions)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Sequence[builtins.str]:
+        """
+        Required. List of regions where the application sends traffic to.
+        """
+        return pulumi.get(self, "regions")
+
+
+@pulumi.output_type
+class ApplicationUpstreamNetwork(dict):
+    def __init__(__self__, *,
+                 name: builtins.str):
+        """
+        :param builtins.str name: Required. Network name is of the format:
+               `projects/{project}/global/networks/{network}`
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        Required. Network name is of the format:
+        `projects/{project}/global/networks/{network}`
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

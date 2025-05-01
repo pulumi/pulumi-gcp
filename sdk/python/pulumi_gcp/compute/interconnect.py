@@ -24,12 +24,12 @@ class InterconnectArgs:
     def __init__(__self__, *,
                  interconnect_type: pulumi.Input[builtins.str],
                  link_type: pulumi.Input[builtins.str],
+                 location: pulumi.Input[builtins.str],
                  requested_link_count: pulumi.Input[builtins.int],
                  admin_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  customer_name: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[builtins.str]] = None,
                  macsec: Optional[pulumi.Input['InterconnectMacsecArgs']] = None,
                  macsec_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -53,6 +53,8 @@ class InterconnectArgs:
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
+        :param pulumi.Input[builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+               Specifies the location inside Google's Networks.
         :param pulumi.Input[builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[builtins.bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
                functional and can carry traffic. When set to false, no packets can be carried over the
@@ -66,8 +68,6 @@ class InterconnectArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-               Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -96,6 +96,7 @@ class InterconnectArgs:
         """
         pulumi.set(__self__, "interconnect_type", interconnect_type)
         pulumi.set(__self__, "link_type", link_type)
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "requested_link_count", requested_link_count)
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -105,8 +106,6 @@ class InterconnectArgs:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
         if macsec is not None:
             pulumi.set(__self__, "macsec", macsec)
         if macsec_enabled is not None:
@@ -157,6 +156,19 @@ class InterconnectArgs:
     @link_type.setter
     def link_type(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "link_type", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[builtins.str]:
+        """
+        URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        Specifies the location inside Google's Networks.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="requestedLinkCount")
@@ -225,19 +237,6 @@ class InterconnectArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -424,7 +423,7 @@ class _InterconnectState:
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-               Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+               Specifies the location inside Google's Networks.
         :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -751,7 +750,7 @@ class _InterconnectState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+        Specifies the location inside Google's Networks.
         """
         return pulumi.get(self, "location")
 
@@ -1064,7 +1063,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-               Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+               Specifies the location inside Google's Networks.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -1199,6 +1198,8 @@ class Interconnect(pulumi.CustomResource):
             if link_type is None and not opts.urn:
                 raise TypeError("Missing required property 'link_type'")
             __props__.__dict__["link_type"] = link_type
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["macsec"] = macsec
             __props__.__dict__["macsec_enabled"] = macsec_enabled
@@ -1321,7 +1322,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
         :param pulumi.Input[builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-               Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+               Specifies the location inside Google's Networks.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -1560,10 +1561,10 @@ class Interconnect(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[Optional[builtins.str]]:
+    def location(self) -> pulumi.Output[builtins.str]:
         """
         URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+        Specifies the location inside Google's Networks.
         """
         return pulumi.get(self, "location")
 

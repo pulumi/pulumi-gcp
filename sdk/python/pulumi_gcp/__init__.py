@@ -1592,6 +1592,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigtable/logicalView",
+  "fqn": "pulumi_gcp.bigtable",
+  "classes": {
+   "gcp:bigtable/logicalView:LogicalView": "LogicalView"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigtable/materializedView",
+  "fqn": "pulumi_gcp.bigtable",
+  "classes": {
+   "gcp:bigtable/materializedView:MaterializedView": "MaterializedView"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigtable/table",
   "fqn": "pulumi_gcp.bigtable",
   "classes": {
@@ -7660,6 +7676,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.osconfig",
   "classes": {
    "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator": "V2PolicyOrchestrator"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "osconfig/v2PolicyOrchestratorForFolder",
+  "fqn": "pulumi_gcp.osconfig",
+  "classes": {
+   "gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder": "V2PolicyOrchestratorForFolder"
   }
  },
  {

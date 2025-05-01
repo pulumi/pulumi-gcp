@@ -436,6 +436,14 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
         """
+        Represents a Region Cloud Armor Security Policy resource.
+
+        To get more information about RegionSecurityPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/armor/docs/security-policy-concepts)
+
         ## Example Usage
 
         ### Region Security Policy Basic
@@ -588,6 +596,14 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  args: Optional[RegionSecurityPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a Region Cloud Armor Security Policy resource.
+
+        To get more information about RegionSecurityPolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/armor/docs/security-policy-concepts)
+
         ## Example Usage
 
         ### Region Security Policy Basic

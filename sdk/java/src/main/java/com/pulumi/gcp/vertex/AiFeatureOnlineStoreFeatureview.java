@@ -478,8 +478,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.vertex.AiFeatureOnlineStore;
  * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreOptimizedArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreEmbeddingManagementArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
@@ -510,12 +509,7 @@ import javax.annotation.Nullable;
  *             .name("example_feature_view_vector_search")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
- *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
- *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
- *                     .minNodeCount(1)
- *                     .maxNodeCount(2)
- *                     .cpuUtilizationTarget(80)
- *                     .build())
+ *             .optimized(AiFeatureOnlineStoreOptimizedArgs.builder()
  *                 .build())
  *             .embeddingManagement(AiFeatureOnlineStoreEmbeddingManagementArgs.builder()
  *                 .enabled(true)

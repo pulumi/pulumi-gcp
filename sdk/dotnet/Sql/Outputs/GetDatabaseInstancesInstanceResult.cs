@@ -31,9 +31,13 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string DatabaseVersion;
         public readonly bool DeletionProtection;
         /// <summary>
-        /// The dns name of the instance.
+        /// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
         /// </summary>
         public readonly string DnsName;
+        /// <summary>
+        /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceDnsNameResult> DnsNames;
         public readonly string EncryptionKeyName;
         public readonly string FirstIpAddress;
         /// <summary>
@@ -109,6 +113,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string dnsName,
 
+            ImmutableArray<Outputs.GetDatabaseInstancesInstanceDnsNameResult> dnsNames,
+
             string encryptionKeyName,
 
             string firstIpAddress,
@@ -157,6 +163,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DatabaseVersion = databaseVersion;
             DeletionProtection = deletionProtection;
             DnsName = dnsName;
+            DnsNames = dnsNames;
             EncryptionKeyName = encryptionKeyName;
             FirstIpAddress = firstIpAddress;
             InstanceType = instanceType;

@@ -15,6 +15,11 @@ public final class GetInstanceTemplateDiskDiskEncryptionKey {
      * 
      */
     private String kmsKeySelfLink;
+    /**
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+     * 
+     */
+    private String kmsKeyServiceAccount;
 
     private GetInstanceTemplateDiskDiskEncryptionKey() {}
     /**
@@ -23,6 +28,13 @@ public final class GetInstanceTemplateDiskDiskEncryptionKey {
      */
     public String kmsKeySelfLink() {
         return this.kmsKeySelfLink;
+    }
+    /**
+     * @return The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+     * 
+     */
+    public String kmsKeyServiceAccount() {
+        return this.kmsKeyServiceAccount;
     }
 
     public static Builder builder() {
@@ -35,10 +47,12 @@ public final class GetInstanceTemplateDiskDiskEncryptionKey {
     @CustomType.Builder
     public static final class Builder {
         private String kmsKeySelfLink;
+        private String kmsKeyServiceAccount;
         public Builder() {}
         public Builder(GetInstanceTemplateDiskDiskEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
+    	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
         }
 
         @CustomType.Setter
@@ -49,9 +63,18 @@ public final class GetInstanceTemplateDiskDiskEncryptionKey {
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
+        @CustomType.Setter
+        public Builder kmsKeyServiceAccount(String kmsKeyServiceAccount) {
+            if (kmsKeyServiceAccount == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDiskDiskEncryptionKey", "kmsKeyServiceAccount");
+            }
+            this.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            return this;
+        }
         public GetInstanceTemplateDiskDiskEncryptionKey build() {
             final var _resultValue = new GetInstanceTemplateDiskDiskEncryptionKey();
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return _resultValue;
         }
     }

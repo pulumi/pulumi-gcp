@@ -215,6 +215,18 @@ import (
 //				DataQualitySpec: &dataplex.DatascanDataQualitySpecArgs{
 //					SamplingPercent: pulumi.Float64(5),
 //					RowFilter:       pulumi.String("station_id > 1000"),
+//					PostScanActions: &dataplex.DatascanDataQualitySpecPostScanActionsArgs{
+//						NotificationReport: &dataplex.DatascanDataQualitySpecPostScanActionsNotificationReportArgs{
+//							Recipients: &dataplex.DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs{
+//								Emails: pulumi.StringArray{
+//									pulumi.String("jane.doe@example.com"),
+//								},
+//							},
+//							ScoreThresholdTrigger: &dataplex.DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs{
+//								ScoreThreshold: pulumi.Float64(86),
+//							},
+//						},
+//					},
 //					Rules: dataplex.DatascanDataQualitySpecRuleArray{
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
 //							Column:             pulumi.String("address"),

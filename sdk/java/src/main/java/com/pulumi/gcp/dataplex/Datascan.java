@@ -247,6 +247,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerScheduleArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsNotificationReportArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -254,12 +258,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var fullQuality = new Datascan("fullQuality", DatascanArgs.builder()
  *             .location("us-central1")
  *             .displayName("Full Datascan Quality")
@@ -280,6 +284,16 @@ import javax.annotation.Nullable;
  *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
  *                 .samplingPercent(5.0)
  *                 .rowFilter("station_id > 1000")
+ *                 .postScanActions(DatascanDataQualitySpecPostScanActionsArgs.builder()
+ *                     .notificationReport(DatascanDataQualitySpecPostScanActionsNotificationReportArgs.builder()
+ *                         .recipients(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs.builder()
+ *                             .emails("jane.doe}{@literal @}{@code example.com")
+ *                             .build())
+ *                         .scoreThresholdTrigger(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs.builder()
+ *                             .scoreThreshold(86.0)
+ *                             .build())
+ *                         .build())
+ *                     .build())
  *                 .rules(                
  *                     DatascanDataQualitySpecRuleArgs.builder()
  *                         .column("address")
@@ -358,8 +372,8 @@ import javax.annotation.Nullable;
  *             .project("my-project-name")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;

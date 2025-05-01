@@ -64,11 +64,37 @@ import (
 //						},
 //					},
 //				},
-//				Suspended: pulumi.Bool(false),
 //				Rules: clouddeploy.AutomationRuleArray{
 //					&clouddeploy.AutomationRuleArgs{
 //						PromoteReleaseRule: &clouddeploy.AutomationRulePromoteReleaseRuleArgs{
 //							Id: pulumi.String("promote-release"),
+//						},
+//					},
+//					&clouddeploy.AutomationRuleArgs{
+//						AdvanceRolloutRule: &clouddeploy.AutomationRuleAdvanceRolloutRuleArgs{
+//							Id: pulumi.String("advance-rollout"),
+//						},
+//					},
+//					&clouddeploy.AutomationRuleArgs{
+//						RepairRolloutRule: &clouddeploy.AutomationRuleRepairRolloutRuleArgs{
+//							Id: pulumi.String("repair-rollout"),
+//							RepairPhases: clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseArray{
+//								&clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseArgs{
+//									Retry: &clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs{
+//										Attempts: pulumi.String("1"),
+//									},
+//								},
+//								&clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseArgs{
+//									Rollback: &clouddeploy.AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs{},
+//								},
+//							},
+//						},
+//					},
+//					&clouddeploy.AutomationRuleArgs{
+//						TimedPromoteReleaseRule: &clouddeploy.AutomationRuleTimedPromoteReleaseRuleArgs{
+//							Id:       pulumi.String("timed-promote-release"),
+//							Schedule: pulumi.String("0 9 * * 1"),
+//							TimeZone: pulumi.String("America/New_York"),
 //						},
 //					},
 //				},

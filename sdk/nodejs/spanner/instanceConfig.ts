@@ -95,8 +95,8 @@ export class InstanceConfig extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * A unique identifier for the instance configuration. Values are of the
-     * form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the form
+     * projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -187,8 +187,8 @@ export interface InstanceConfigState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A unique identifier for the instance configuration. Values are of the
-     * form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the form
+     * projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
@@ -225,8 +225,8 @@ export interface InstanceConfigArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A unique identifier for the instance configuration. Values are of the
-     * form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the form
+     * projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +37,15 @@ public final class LbTrafficExtensionExtensionChainExtension {
      */
     private @Nullable List<String> forwardHeaders;
     /**
+     * @return Metadata associated with the extension. This field is used to pass metadata to the extension service.
+     * You can set up key value pairs for metadata as you like and need.
+     * f.e. {&#34;key&#34;: &#34;value&#34;, &#34;key2&#34;: &#34;value2&#34;}.
+     * 
+     * ***
+     * 
+     */
+    private @Nullable Map<String,String> metadata;
+    /**
      * @return The name for this extension. The name is logged as part of the HTTP request logs.
      * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
      * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -53,8 +63,6 @@ public final class LbTrafficExtensionExtensionChainExtension {
      * This field is required for the LbTrafficExtension resource. It&#39;s not relevant for the LbRouteExtension
      * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
      * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-     * 
-     * ***
      * 
      */
     private @Nullable List<String> supportedEvents;
@@ -94,6 +102,17 @@ public final class LbTrafficExtensionExtensionChainExtension {
         return this.forwardHeaders == null ? List.of() : this.forwardHeaders;
     }
     /**
+     * @return Metadata associated with the extension. This field is used to pass metadata to the extension service.
+     * You can set up key value pairs for metadata as you like and need.
+     * f.e. {&#34;key&#34;: &#34;value&#34;, &#34;key2&#34;: &#34;value2&#34;}.
+     * 
+     * ***
+     * 
+     */
+    public Map<String,String> metadata() {
+        return this.metadata == null ? Map.of() : this.metadata;
+    }
+    /**
      * @return The name for this extension. The name is logged as part of the HTTP request logs.
      * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
      * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -115,8 +134,6 @@ public final class LbTrafficExtensionExtensionChainExtension {
      * This field is required for the LbTrafficExtension resource. It&#39;s not relevant for the LbRouteExtension
      * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
      * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-     * 
-     * ***
      * 
      */
     public List<String> supportedEvents() {
@@ -143,6 +160,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
         private @Nullable String authority;
         private @Nullable Boolean failOpen;
         private @Nullable List<String> forwardHeaders;
+        private @Nullable Map<String,String> metadata;
         private String name;
         private String service;
         private @Nullable List<String> supportedEvents;
@@ -153,6 +171,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
     	      this.authority = defaults.authority;
     	      this.failOpen = defaults.failOpen;
     	      this.forwardHeaders = defaults.forwardHeaders;
+    	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
     	      this.service = defaults.service;
     	      this.supportedEvents = defaults.supportedEvents;
@@ -179,6 +198,12 @@ public final class LbTrafficExtensionExtensionChainExtension {
         }
         public Builder forwardHeaders(String... forwardHeaders) {
             return forwardHeaders(List.of(forwardHeaders));
+        }
+        @CustomType.Setter
+        public Builder metadata(@Nullable Map<String,String> metadata) {
+
+            this.metadata = metadata;
+            return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
@@ -216,6 +241,7 @@ public final class LbTrafficExtensionExtensionChainExtension {
             _resultValue.authority = authority;
             _resultValue.failOpen = failOpen;
             _resultValue.forwardHeaders = forwardHeaders;
+            _resultValue.metadata = metadata;
             _resultValue.name = name;
             _resultValue.service = service;
             _resultValue.supportedEvents = supportedEvents;

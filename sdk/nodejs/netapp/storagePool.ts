@@ -117,6 +117,10 @@ export class StoragePool extends pulumi.CustomResource {
      */
     public readonly capacityGib!: pulumi.Output<string>;
     /**
+     * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+     */
+    public readonly customPerformanceEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -181,6 +185,14 @@ export class StoragePool extends pulumi.CustomResource {
      */
     public readonly serviceLevel!: pulumi.Output<string>;
     /**
+     * Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+     */
+    public readonly totalIops!: pulumi.Output<string | undefined>;
+    /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     */
+    public readonly totalThroughputMibps!: pulumi.Output<string | undefined>;
+    /**
      * Size allocated to volumes in the storage pool (in GiB).
      */
     public /*out*/ readonly volumeCapacityGib!: pulumi.Output<string>;
@@ -211,6 +223,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
             resourceInputs["allowAutoTiering"] = state ? state.allowAutoTiering : undefined;
             resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
+            resourceInputs["customPerformanceEnabled"] = state ? state.customPerformanceEnabled : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
@@ -224,6 +237,8 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["replicaZone"] = state ? state.replicaZone : undefined;
             resourceInputs["serviceLevel"] = state ? state.serviceLevel : undefined;
+            resourceInputs["totalIops"] = state ? state.totalIops : undefined;
+            resourceInputs["totalThroughputMibps"] = state ? state.totalThroughputMibps : undefined;
             resourceInputs["volumeCapacityGib"] = state ? state.volumeCapacityGib : undefined;
             resourceInputs["volumeCount"] = state ? state.volumeCount : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -244,6 +259,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["activeDirectory"] = args ? args.activeDirectory : undefined;
             resourceInputs["allowAutoTiering"] = args ? args.allowAutoTiering : undefined;
             resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
+            resourceInputs["customPerformanceEnabled"] = args ? args.customPerformanceEnabled : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["kmsConfig"] = args ? args.kmsConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -254,6 +270,8 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["replicaZone"] = args ? args.replicaZone : undefined;
             resourceInputs["serviceLevel"] = args ? args.serviceLevel : undefined;
+            resourceInputs["totalIops"] = args ? args.totalIops : undefined;
+            resourceInputs["totalThroughputMibps"] = args ? args.totalThroughputMibps : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionType"] = undefined /*out*/;
@@ -286,6 +304,10 @@ export interface StoragePoolState {
      * Capacity of the storage pool (in GiB).
      */
     capacityGib?: pulumi.Input<string>;
+    /**
+     * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+     */
+    customPerformanceEnabled?: pulumi.Input<boolean>;
     /**
      * An optional description of this resource.
      */
@@ -351,6 +373,14 @@ export interface StoragePoolState {
      */
     serviceLevel?: pulumi.Input<string>;
     /**
+     * Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+     */
+    totalIops?: pulumi.Input<string>;
+    /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     */
+    totalThroughputMibps?: pulumi.Input<string>;
+    /**
      * Size allocated to volumes in the storage pool (in GiB).
      */
     volumeCapacityGib?: pulumi.Input<string>;
@@ -384,6 +414,10 @@ export interface StoragePoolArgs {
      * Capacity of the storage pool (in GiB).
      */
     capacityGib: pulumi.Input<string>;
+    /**
+     * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+     */
+    customPerformanceEnabled?: pulumi.Input<boolean>;
     /**
      * An optional description of this resource.
      */
@@ -435,6 +469,14 @@ export interface StoragePoolArgs {
      * Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
      */
     serviceLevel: pulumi.Input<string>;
+    /**
+     * Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+     */
+    totalIops?: pulumi.Input<string>;
+    /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     */
+    totalThroughputMibps?: pulumi.Input<string>;
     /**
      * Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).

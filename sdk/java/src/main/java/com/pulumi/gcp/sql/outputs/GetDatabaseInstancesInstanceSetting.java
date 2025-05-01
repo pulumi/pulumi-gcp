@@ -92,7 +92,7 @@ public final class GetDatabaseInstancesInstanceSetting {
      */
     private Integer diskSize;
     /**
-     * @return The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+     * @return The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
      * 
      */
     private String diskType;
@@ -255,7 +255,7 @@ public final class GetDatabaseInstancesInstanceSetting {
         return this.diskSize;
     }
     /**
-     * @return The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+     * @return The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
      * 
      */
     public String diskType() {

@@ -8,11 +8,28 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs Empty = new NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs();
+
+    /**
+     * Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+     * 
+     */
+    @Import(name="dataCacheCount")
+    private @Nullable Output<Integer> dataCacheCount;
+
+    /**
+     * @return Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+     * 
+     */
+    public Optional<Output<Integer>> dataCacheCount() {
+        return Optional.ofNullable(this.dataCacheCount);
+    }
 
     /**
      * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
@@ -32,6 +49,7 @@ public final class NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs extends 
     private NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs() {}
 
     private NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs(NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs $) {
+        this.dataCacheCount = $.dataCacheCount;
         this.localSsdCount = $.localSsdCount;
     }
 
@@ -51,6 +69,27 @@ public final class NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs extends 
 
         public Builder(NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs defaults) {
             $ = new NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dataCacheCount Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataCacheCount(@Nullable Output<Integer> dataCacheCount) {
+            $.dataCacheCount = dataCacheCount;
+            return this;
+        }
+
+        /**
+         * @param dataCacheCount Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataCacheCount(Integer dataCacheCount) {
+            return dataCacheCount(Output.of(dataCacheCount));
         }
 
         /**

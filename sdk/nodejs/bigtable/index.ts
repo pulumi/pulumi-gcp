@@ -45,6 +45,16 @@ export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
+export { LogicalViewArgs, LogicalViewState } from "./logicalView";
+export type LogicalView = import("./logicalView").LogicalView;
+export const LogicalView: typeof import("./logicalView").LogicalView = null as any;
+utilities.lazyLoad(exports, ["LogicalView"], () => require("./logicalView"));
+
+export { MaterializedViewArgs, MaterializedViewState } from "./materializedView";
+export type MaterializedView = import("./materializedView").MaterializedView;
+export const MaterializedView: typeof import("./materializedView").MaterializedView = null as any;
+utilities.lazyLoad(exports, ["MaterializedView"], () => require("./materializedView"));
+
 export { TableArgs, TableState } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
@@ -82,6 +92,10 @@ const _module = {
                 return new InstanceIamMember(name, <any>undefined, { urn })
             case "gcp:bigtable/instanceIamPolicy:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:bigtable/logicalView:LogicalView":
+                return new LogicalView(name, <any>undefined, { urn })
+            case "gcp:bigtable/materializedView:MaterializedView":
+                return new MaterializedView(name, <any>undefined, { urn })
             case "gcp:bigtable/table:Table":
                 return new Table(name, <any>undefined, { urn })
             case "gcp:bigtable/tableIamBinding:TableIamBinding":
@@ -101,6 +115,8 @@ pulumi.runtime.registerResourceModule("gcp", "bigtable/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/instanceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigtable/logicalView", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigtable/materializedView", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/table", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/tableIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/tableIamMember", _module)

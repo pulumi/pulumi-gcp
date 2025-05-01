@@ -53,7 +53,7 @@ import (
 //				},
 //				Disks: compute.RegionInstanceTemplateDiskArray{
 //					&compute.RegionInstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String("cos-cloud/cos-105-lts"),
+//						SourceImage: pulumi.String("cos-cloud/cos-121-lts"),
 //						AutoDelete:  pulumi.Bool(true),
 //						Boot:        pulumi.Bool(true),
 //						DiskType:    pulumi.String("pd-ssd"),

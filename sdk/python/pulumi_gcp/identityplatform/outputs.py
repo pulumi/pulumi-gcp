@@ -42,6 +42,7 @@ __all__ = [
     'InboundSamlConfigIdpConfigIdpCertificate',
     'InboundSamlConfigSpConfig',
     'InboundSamlConfigSpConfigSpCertificate',
+    'OauthIdpConfigResponseType',
     'TenantClient',
     'TenantClientPermissions',
     'TenantInboundSamlConfigIdpConfig',
@@ -1371,6 +1372,54 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
         The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")
+
+
+@pulumi.output_type
+class OauthIdpConfigResponseType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idToken":
+            suggest = "id_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OauthIdpConfigResponseType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OauthIdpConfigResponseType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OauthIdpConfigResponseType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: Optional[builtins.bool] = None,
+                 id_token: Optional[builtins.bool] = None):
+        """
+        :param builtins.bool code: If true, authorization code is returned from IdP's authorization endpoint.
+        :param builtins.bool id_token: If true, ID token is returned from IdP's authorization endpoint.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if id_token is not None:
+            pulumi.set(__self__, "id_token", id_token)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[builtins.bool]:
+        """
+        If true, authorization code is returned from IdP's authorization endpoint.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="idToken")
+    def id_token(self) -> Optional[builtins.bool]:
+        """
+        If true, ID token is returned from IdP's authorization endpoint.
+        """
+        return pulumi.get(self, "id_token")
 
 
 @pulumi.output_type

@@ -361,6 +361,12 @@ class CaPool(pulumi.CustomResource):
         issuance policies for one or more CertificateAuthority resources and to rotate CA certificates in and out of the
         trust anchor.
 
+        To get more information about CaPool, see:
+
+        * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest/v1/projects.locations.caPools)
+        * How-to Guides
+            * [Certificate Authority Service Overview](https://cloud.google.com/certificate-authority-service/docs/overview)
+
         ## Example Usage
 
         ### Privateca Capool Basic
@@ -573,6 +579,12 @@ class CaPool(pulumi.CustomResource):
         A CaPool represents a group of CertificateAuthorities that form a trust anchor. A CaPool can be used to manage
         issuance policies for one or more CertificateAuthority resources and to rotate CA certificates in and out of the
         trust anchor.
+
+        To get more information about CaPool, see:
+
+        * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest/v1/projects.locations.caPools)
+        * How-to Guides
+            * [Certificate Authority Service Overview](https://cloud.google.com/certificate-authority-service/docs/overview)
 
         ## Example Usage
 

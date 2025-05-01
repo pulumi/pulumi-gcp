@@ -18278,6 +18278,10920 @@ func (o PatchDeploymentRolloutDisruptionBudgetPtrOutput) Percentage() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+type V2PolicyOrchestratorForFolderOrchestratedResource struct {
+	// ID of the resource to be used while generating set of affected resources.
+	// For UPSERT action the value is auto-generated during PolicyOrchestrator
+	// creation when not set. When the value is set it should following next
+	// restrictions:
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the project.
+	//   For DELETE action, ID must be specified explicitly during
+	//   PolicyOrchestrator creation.
+	//
+	// <a name="nestedOrchestratedResourceOsPolicyAssignmentV1Payload"></a>The `osPolicyAssignmentV1Payload` block supports:
+	Id *string `pulumi:"id"`
+	// OS policy assignment is an API resource that is used to
+	// apply a set of OS policies to a dynamically targeted group of Compute Engine
+	// VM instances.
+	// An OS policy is used to define the desired state configuration for a
+	// Compute Engine VM instance through a set of configuration resources that
+	// provide capabilities such as installing or removing software packages, or
+	// executing a script.
+	// For more information about the OS policy resource definitions and examples,
+	// see
+	// [OS policy and OS policy
+	// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
+	// Structure is documented below.
+	OsPolicyAssignmentV1Payload *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload `pulumi:"osPolicyAssignmentV1Payload"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceArgs struct {
+	// ID of the resource to be used while generating set of affected resources.
+	// For UPSERT action the value is auto-generated during PolicyOrchestrator
+	// creation when not set. When the value is set it should following next
+	// restrictions:
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the project.
+	//   For DELETE action, ID must be specified explicitly during
+	//   PolicyOrchestrator creation.
+	//
+	// <a name="nestedOrchestratedResourceOsPolicyAssignmentV1Payload"></a>The `osPolicyAssignmentV1Payload` block supports:
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// OS policy assignment is an API resource that is used to
+	// apply a set of OS policies to a dynamically targeted group of Compute Engine
+	// VM instances.
+	// An OS policy is used to define the desired state configuration for a
+	// Compute Engine VM instance through a set of configuration resources that
+	// provide capabilities such as installing or removing software packages, or
+	// executing a script.
+	// For more information about the OS policy resource definitions and examples,
+	// see
+	// [OS policy and OS policy
+	// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
+	// Structure is documented below.
+	OsPolicyAssignmentV1Payload V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrInput `pulumi:"osPolicyAssignmentV1Payload"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResource)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourcePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceArgs, V2PolicyOrchestratorForFolderOrchestratedResourcePtr and V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourcePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourcePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourcePtrType V2PolicyOrchestratorForFolderOrchestratedResourceArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourcePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceArgs) V2PolicyOrchestratorForFolderOrchestratedResourcePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourcePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResource)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResource) *V2PolicyOrchestratorForFolderOrchestratedResource {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput)
+}
+
+// ID of the resource to be used while generating set of affected resources.
+// For UPSERT action the value is auto-generated during PolicyOrchestrator
+// creation when not set. When the value is set it should following next
+// restrictions:
+//   - Must contain only lowercase letters, numbers, and hyphens.
+//   - Must start with a letter.
+//   - Must be between 1-63 characters.
+//   - Must end with a number or a letter.
+//   - Must be unique within the project.
+//     For DELETE action, ID must be specified explicitly during
+//     PolicyOrchestrator creation.
+//
+// <a name="nestedOrchestratedResourceOsPolicyAssignmentV1Payload"></a>The `osPolicyAssignmentV1Payload` block supports:
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResource) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// OS policy assignment is an API resource that is used to
+// apply a set of OS policies to a dynamically targeted group of Compute Engine
+// VM instances.
+// An OS policy is used to define the desired state configuration for a
+// Compute Engine VM instance through a set of configuration resources that
+// provide capabilities such as installing or removing software packages, or
+// executing a script.
+// For more information about the OS policy resource definitions and examples,
+// see
+// [OS policy and OS policy
+// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOutput) OsPolicyAssignmentV1Payload() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload {
+		return v.OsPolicyAssignmentV1Payload
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResource) V2PolicyOrchestratorForFolderOrchestratedResource {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResource
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOutput)
+}
+
+// ID of the resource to be used while generating set of affected resources.
+// For UPSERT action the value is auto-generated during PolicyOrchestrator
+// creation when not set. When the value is set it should following next
+// restrictions:
+//   - Must contain only lowercase letters, numbers, and hyphens.
+//   - Must start with a letter.
+//   - Must be between 1-63 characters.
+//   - Must end with a number or a letter.
+//   - Must be unique within the project.
+//     For DELETE action, ID must be specified explicitly during
+//     PolicyOrchestrator creation.
+//
+// <a name="nestedOrchestratedResourceOsPolicyAssignmentV1Payload"></a>The `osPolicyAssignmentV1Payload` block supports:
+func (o V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// OS policy assignment is an API resource that is used to
+// apply a set of OS policies to a dynamically targeted group of Compute Engine
+// VM instances.
+// An OS policy is used to define the desired state configuration for a
+// Compute Engine VM instance through a set of configuration resources that
+// provide capabilities such as installing or removing software packages, or
+// executing a script.
+// For more information about the OS policy resource definitions and examples,
+// see
+// [OS policy and OS policy
+// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput) OsPolicyAssignmentV1Payload() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload {
+		if v == nil {
+			return nil
+		}
+		return v.OsPolicyAssignmentV1Payload
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload struct {
+	// Indicates that this revision has been successfully rolled out in this zone
+	// and new VMs will be assigned OS policies from this revision.
+	//
+	// For a given OS policy assignment, there is only one revision with a value
+	// of 'true' for this field.
+	Baseline *bool `pulumi:"baseline"`
+	// Indicates that this revision deletes the OS policy assignment.
+	Deleted *bool `pulumi:"deleted"`
+	// OS policy assignment description.
+	// Length of the description is limited to 1024 characters.
+	Description *string `pulumi:"description"`
+	// This checksum is computed by the server based on the value of other
+	// fields, and may be sent on update and delete requests to ensure the
+	// client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
+	// Filters to select target VMs for an assignment.
+	//
+	// If more than one filter criteria is specified below, a VM will be selected
+	// if and only if it satisfies all of them.
+	InstanceFilter V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter `pulumi:"instanceFilter"`
+	// Identifier. In form of
+	// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+	// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+	// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
+	Name *string `pulumi:"name"`
+	// List of OS policies to be applied to the VMs.
+	OsPolicies []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy `pulumi:"osPolicies"`
+	// Set to true, if the there are ongoing changes being applied by the
+	// orchestrator.
+	Reconciling *bool `pulumi:"reconciling"`
+	// The timestamp that the revision was created.
+	RevisionCreateTime *string `pulumi:"revisionCreateTime"`
+	// The assignment revision ID
+	// A new revision is committed whenever a rollout is triggered for a OS policy
+	// assignment
+	RevisionId *string `pulumi:"revisionId"`
+	// Message to configure the rollout at the zonal level for the OS policy
+	// assignment.
+	Rollout V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout `pulumi:"rollout"`
+	// OS policy assignment rollout state
+	// Possible values:
+	// IN_PROGRESS
+	// CANCELLING
+	// CANCELLED
+	// SUCCEEDED
+	RolloutState *string `pulumi:"rolloutState"`
+	// Server generated unique id for the OS policy assignment resource.
+	Uid *string `pulumi:"uid"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs struct {
+	// Indicates that this revision has been successfully rolled out in this zone
+	// and new VMs will be assigned OS policies from this revision.
+	//
+	// For a given OS policy assignment, there is only one revision with a value
+	// of 'true' for this field.
+	Baseline pulumi.BoolPtrInput `pulumi:"baseline"`
+	// Indicates that this revision deletes the OS policy assignment.
+	Deleted pulumi.BoolPtrInput `pulumi:"deleted"`
+	// OS policy assignment description.
+	// Length of the description is limited to 1024 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// This checksum is computed by the server based on the value of other
+	// fields, and may be sent on update and delete requests to ensure the
+	// client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// Filters to select target VMs for an assignment.
+	//
+	// If more than one filter criteria is specified below, a VM will be selected
+	// if and only if it satisfies all of them.
+	InstanceFilter V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInput `pulumi:"instanceFilter"`
+	// Identifier. In form of
+	// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+	// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+	// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// List of OS policies to be applied to the VMs.
+	OsPolicies V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayInput `pulumi:"osPolicies"`
+	// Set to true, if the there are ongoing changes being applied by the
+	// orchestrator.
+	Reconciling pulumi.BoolPtrInput `pulumi:"reconciling"`
+	// The timestamp that the revision was created.
+	RevisionCreateTime pulumi.StringPtrInput `pulumi:"revisionCreateTime"`
+	// The assignment revision ID
+	// A new revision is committed whenever a rollout is triggered for a OS policy
+	// assignment
+	RevisionId pulumi.StringPtrInput `pulumi:"revisionId"`
+	// Message to configure the rollout at the zonal level for the OS policy
+	// assignment.
+	Rollout V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutInput `pulumi:"rollout"`
+	// OS policy assignment rollout state
+	// Possible values:
+	// IN_PROGRESS
+	// CANCELLING
+	// CANCELLED
+	// SUCCEEDED
+	RolloutState pulumi.StringPtrInput `pulumi:"rolloutState"`
+	// Server generated unique id for the OS policy assignment resource.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput)
+}
+
+// Indicates that this revision has been successfully rolled out in this zone
+// and new VMs will be assigned OS policies from this revision.
+//
+// For a given OS policy assignment, there is only one revision with a value
+// of 'true' for this field.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Baseline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *bool {
+		return v.Baseline
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates that this revision deletes the OS policy assignment.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Deleted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *bool {
+		return v.Deleted
+	}).(pulumi.BoolPtrOutput)
+}
+
+// OS policy assignment description.
+// Length of the description is limited to 1024 characters.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// This checksum is computed by the server based on the value of other
+// fields, and may be sent on update and delete requests to ensure the
+// client has an up-to-date value before proceeding.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		return v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filters to select target VMs for an assignment.
+//
+// If more than one filter criteria is specified below, a VM will be selected
+// if and only if it satisfies all of them.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) InstanceFilter() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter {
+		return v.InstanceFilter
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput)
+}
+
+// Identifier. In form of
+// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of OS policies to be applied to the VMs.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) OsPolicies() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy {
+		return v.OsPolicies
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput)
+}
+
+// Set to true, if the there are ongoing changes being applied by the
+// orchestrator.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Reconciling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *bool {
+		return v.Reconciling
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The timestamp that the revision was created.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) RevisionCreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		return v.RevisionCreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The assignment revision ID
+// A new revision is committed whenever a rollout is triggered for a OS policy
+// assignment
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) RevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		return v.RevisionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message to configure the rollout at the zonal level for the OS policy
+// assignment.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Rollout() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout {
+		return v.Rollout
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput)
+}
+
+// OS policy assignment rollout state
+// Possible values:
+// IN_PROGRESS
+// CANCELLING
+// CANCELLED
+// SUCCEEDED
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) RolloutState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		return v.RolloutState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server generated unique id for the OS policy assignment resource.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		return v.Uid
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput)
+}
+
+// Indicates that this revision has been successfully rolled out in this zone
+// and new VMs will be assigned OS policies from this revision.
+//
+// For a given OS policy assignment, there is only one revision with a value
+// of 'true' for this field.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Baseline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Baseline
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates that this revision deletes the OS policy assignment.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Deleted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Deleted
+	}).(pulumi.BoolPtrOutput)
+}
+
+// OS policy assignment description.
+// Length of the description is limited to 1024 characters.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// This checksum is computed by the server based on the value of other
+// fields, and may be sent on update and delete requests to ensure the
+// client has an up-to-date value before proceeding.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filters to select target VMs for an assignment.
+//
+// If more than one filter criteria is specified below, a VM will be selected
+// if and only if it satisfies all of them.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) InstanceFilter() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceFilter
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput)
+}
+
+// Identifier. In form of
+// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
+// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of OS policies to be applied to the VMs.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) OsPolicies() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.OsPolicies
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput)
+}
+
+// Set to true, if the there are ongoing changes being applied by the
+// orchestrator.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Reconciling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Reconciling
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The timestamp that the revision was created.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) RevisionCreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RevisionCreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The assignment revision ID
+// A new revision is committed whenever a rollout is triggered for a OS policy
+// assignment
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) RevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RevisionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message to configure the rollout at the zonal level for the OS policy
+// assignment.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Rollout() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout {
+		if v == nil {
+			return nil
+		}
+		return &v.Rollout
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput)
+}
+
+// OS policy assignment rollout state
+// Possible values:
+// IN_PROGRESS
+// CANCELLING
+// CANCELLED
+// SUCCEEDED
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) RolloutState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolloutState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server generated unique id for the OS policy assignment resource.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter struct {
+	// Target all VMs in the project. If true, no other criteria is
+	// permitted.
+	All *bool `pulumi:"all"`
+	// List of label sets used for VM exclusion.
+	// If the list has more than one label set, the VM is excluded if any
+	// of the label sets are applicable for the VM.
+	// Structure is documented below.
+	ExclusionLabels []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel `pulumi:"exclusionLabels"`
+	// List of label sets used for VM inclusion.
+	// If the list has more than one `LabelSet`, the VM is included if any
+	// of the label sets are applicable for the VM.
+	// Structure is documented below.
+	InclusionLabels []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel `pulumi:"inclusionLabels"`
+	// List of inventories to select VMs.
+	// A VM is selected if its inventory data matches at least one of the
+	// following inventories.
+	// Structure is documented below.
+	Inventories []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory `pulumi:"inventories"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs struct {
+	// Target all VMs in the project. If true, no other criteria is
+	// permitted.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// List of label sets used for VM exclusion.
+	// If the list has more than one label set, the VM is excluded if any
+	// of the label sets are applicable for the VM.
+	// Structure is documented below.
+	ExclusionLabels V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayInput `pulumi:"exclusionLabels"`
+	// List of label sets used for VM inclusion.
+	// If the list has more than one `LabelSet`, the VM is included if any
+	// of the label sets are applicable for the VM.
+	// Structure is documented below.
+	InclusionLabels V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayInput `pulumi:"inclusionLabels"`
+	// List of inventories to select VMs.
+	// A VM is selected if its inventory data matches at least one of the
+	// following inventories.
+	// Structure is documented below.
+	Inventories V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayInput `pulumi:"inventories"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput)
+}
+
+// Target all VMs in the project. If true, no other criteria is
+// permitted.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) *bool {
+		return v.All
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of label sets used for VM exclusion.
+// If the list has more than one label set, the VM is excluded if any
+// of the label sets are applicable for the VM.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput) ExclusionLabels() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel {
+		return v.ExclusionLabels
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput)
+}
+
+// List of label sets used for VM inclusion.
+// If the list has more than one `LabelSet`, the VM is included if any
+// of the label sets are applicable for the VM.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput) InclusionLabels() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel {
+		return v.InclusionLabels
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput)
+}
+
+// List of inventories to select VMs.
+// A VM is selected if its inventory data matches at least one of the
+// following inventories.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput) Inventories() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory {
+		return v.Inventories
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput)
+}
+
+// Target all VMs in the project. If true, no other criteria is
+// permitted.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.All
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of label sets used for VM exclusion.
+// If the list has more than one label set, the VM is excluded if any
+// of the label sets are applicable for the VM.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput) ExclusionLabels() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusionLabels
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput)
+}
+
+// List of label sets used for VM inclusion.
+// If the list has more than one `LabelSet`, the VM is included if any
+// of the label sets are applicable for the VM.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput) InclusionLabels() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel {
+		if v == nil {
+			return nil
+		}
+		return v.InclusionLabels
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput)
+}
+
+// List of inventories to select VMs.
+// A VM is selected if its inventory data matches at least one of the
+// following inventories.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput) Inventories() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory {
+		if v == nil {
+			return nil
+		}
+		return v.Inventories
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel struct {
+	// Labels are identified by key/value pairs in this map.
+	// A VM should contain all the key/value pairs specified in this
+	// map to be selected.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs struct {
+	// Labels are identified by key/value pairs in this map.
+	// A VM should contain all the key/value pairs specified in this
+	// map to be selected.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArray and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArray{ V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArray []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelInput
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput {
+	return o
+}
+
+// Labels are identified by key/value pairs in this map.
+// A VM should contain all the key/value pairs specified in this
+// map to be selected.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel struct {
+	// Labels are identified by key/value pairs in this map.
+	// A VM should contain all the key/value pairs specified in this
+	// map to be selected.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs struct {
+	// Labels are identified by key/value pairs in this map.
+	// A VM should contain all the key/value pairs specified in this
+	// map to be selected.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArray and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArray{ V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArray []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelInput
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput {
+	return o
+}
+
+// Labels are identified by key/value pairs in this map.
+// A VM should contain all the key/value pairs specified in this
+// map to be selected.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory struct {
+	// The OS short name
+	OsShortName string `pulumi:"osShortName"`
+	// The OS version
+	// Prefix matches are supported if asterisk(*) is provided as the
+	// last character. For example, to match all versions with a major
+	// version of `7`, specify the following value for this field `7.*`
+	// An empty string matches all OS versions.
+	OsVersion *string `pulumi:"osVersion"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs struct {
+	// The OS short name
+	OsShortName pulumi.StringInput `pulumi:"osShortName"`
+	// The OS version
+	// Prefix matches are supported if asterisk(*) is provided as the
+	// last character. For example, to match all versions with a major
+	// version of `7`, specify the following value for this field `7.*`
+	// An empty string matches all OS versions.
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArray and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArray{ V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArray []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryInput
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput {
+	return o
+}
+
+// The OS short name
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput) OsShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory) string {
+		return v.OsShortName
+	}).(pulumi.StringOutput)
+}
+
+// The OS version
+// Prefix matches are supported if asterisk(*) is provided as the
+// last character. For example, to match all versions with a major
+// version of `7`, specify the following value for this field `7.*`
+// An empty string matches all OS versions.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory) *string {
+		return v.OsVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy struct {
+	// This flag determines the OS policy compliance status when none of the
+	// resource groups within the policy are applicable for a VM. Set this value
+	// to `true` if the policy needs to be reported as compliant even if the
+	// policy has nothing to validate or enforce.
+	AllowNoResourceGroupMatch *bool `pulumi:"allowNoResourceGroupMatch"`
+	// Policy description.
+	// Length of the description is limited to 1024 characters.
+	Description *string `pulumi:"description"`
+	// The id of the OS policy with the following restrictions:
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the assignment.
+	Id string `pulumi:"id"`
+	// Policy mode
+	// Possible values are: `VALIDATION`, `ENFORCEMENT`.
+	Mode string `pulumi:"mode"`
+	// List of resource groups for the policy.
+	// For a particular VM, resource groups are evaluated in the order specified
+	// and the first resource group that is applicable is selected and the rest
+	// are ignored.
+	// If none of the resource groups are applicable for a VM, the VM is
+	// considered to be non-compliant w.r.t this policy. This behavior can be
+	// toggled by the flag `allowNoResourceGroupMatch`
+	// Structure is documented below.
+	ResourceGroups []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup `pulumi:"resourceGroups"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs struct {
+	// This flag determines the OS policy compliance status when none of the
+	// resource groups within the policy are applicable for a VM. Set this value
+	// to `true` if the policy needs to be reported as compliant even if the
+	// policy has nothing to validate or enforce.
+	AllowNoResourceGroupMatch pulumi.BoolPtrInput `pulumi:"allowNoResourceGroupMatch"`
+	// Policy description.
+	// Length of the description is limited to 1024 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The id of the OS policy with the following restrictions:
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the assignment.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Policy mode
+	// Possible values are: `VALIDATION`, `ENFORCEMENT`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// List of resource groups for the policy.
+	// For a particular VM, resource groups are evaluated in the order specified
+	// and the first resource group that is applicable is selected and the rest
+	// are ignored.
+	// If none of the resource groups are applicable for a VM, the VM is
+	// considered to be non-compliant w.r.t this policy. This behavior can be
+	// toggled by the flag `allowNoResourceGroupMatch`
+	// Structure is documented below.
+	ResourceGroups V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayInput `pulumi:"resourceGroups"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArray and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArray{ V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArray []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyInput
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput {
+	return o
+}
+
+// This flag determines the OS policy compliance status when none of the
+// resource groups within the policy are applicable for a VM. Set this value
+// to `true` if the policy needs to be reported as compliant even if the
+// policy has nothing to validate or enforce.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput) AllowNoResourceGroupMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy) *bool {
+		return v.AllowNoResourceGroupMatch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Policy description.
+// Length of the description is limited to 1024 characters.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy) *string {
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The id of the OS policy with the following restrictions:
+// * Must contain only lowercase letters, numbers, and hyphens.
+// * Must start with a letter.
+// * Must be between 1-63 characters.
+// * Must end with a number or a letter.
+// * Must be unique within the assignment.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+// Policy mode
+// Possible values are: `VALIDATION`, `ENFORCEMENT`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy) string {
+		return v.Mode
+	}).(pulumi.StringOutput)
+}
+
+// List of resource groups for the policy.
+// For a particular VM, resource groups are evaluated in the order specified
+// and the first resource group that is applicable is selected and the rest
+// are ignored.
+// If none of the resource groups are applicable for a VM, the VM is
+// considered to be non-compliant w.r.t this policy. This behavior can be
+// toggled by the flag `allowNoResourceGroupMatch`
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput) ResourceGroups() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup {
+		return v.ResourceGroups
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup struct {
+	// List of inventory filters for the resource group.
+	// The resources in this resource group are applied to the target VM if it
+	// satisfies at least one of the following inventory filters.
+	// For example, to apply this resource group to VMs running either `RHEL` or
+	// `CentOS` operating systems, specify 2 items for the list with following
+	// values:
+	// inventory_filters[0].os_short_name='rhel' and
+	// inventory_filters[1].os_short_name='centos'
+	// If the list is empty, this resource group will be applied to the target
+	// VM unconditionally.
+	// Structure is documented below.
+	InventoryFilters []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter `pulumi:"inventoryFilters"`
+	// List of resources configured for this resource group.
+	// The resources are executed in the exact order specified here.
+	// Structure is documented below.
+	Resources []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource `pulumi:"resources"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs struct {
+	// List of inventory filters for the resource group.
+	// The resources in this resource group are applied to the target VM if it
+	// satisfies at least one of the following inventory filters.
+	// For example, to apply this resource group to VMs running either `RHEL` or
+	// `CentOS` operating systems, specify 2 items for the list with following
+	// values:
+	// inventory_filters[0].os_short_name='rhel' and
+	// inventory_filters[1].os_short_name='centos'
+	// If the list is empty, this resource group will be applied to the target
+	// VM unconditionally.
+	// Structure is documented below.
+	InventoryFilters V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayInput `pulumi:"inventoryFilters"`
+	// List of resources configured for this resource group.
+	// The resources are executed in the exact order specified here.
+	// Structure is documented below.
+	Resources V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayInput `pulumi:"resources"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArray and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArray{ V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArray []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInput
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput {
+	return o
+}
+
+// List of inventory filters for the resource group.
+// The resources in this resource group are applied to the target VM if it
+// satisfies at least one of the following inventory filters.
+// For example, to apply this resource group to VMs running either `RHEL` or
+// `CentOS` operating systems, specify 2 items for the list with following
+// values:
+// inventory_filters[0].os_short_name='rhel' and
+// inventory_filters[1].os_short_name='centos'
+// If the list is empty, this resource group will be applied to the target
+// VM unconditionally.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput) InventoryFilters() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter {
+		return v.InventoryFilters
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput)
+}
+
+// List of resources configured for this resource group.
+// The resources are executed in the exact order specified here.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput) Resources() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup) []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource {
+		return v.Resources
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter struct {
+	// The OS short name
+	OsShortName string `pulumi:"osShortName"`
+	// The OS version
+	// Prefix matches are supported if asterisk(*) is provided as the
+	// last character. For example, to match all versions with a major
+	// version of `7`, specify the following value for this field `7.*`
+	// An empty string matches all OS versions.
+	OsVersion *string `pulumi:"osVersion"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs struct {
+	// The OS short name
+	OsShortName pulumi.StringInput `pulumi:"osShortName"`
+	// The OS version
+	// Prefix matches are supported if asterisk(*) is provided as the
+	// last character. For example, to match all versions with a major
+	// version of `7`, specify the following value for this field `7.*`
+	// An empty string matches all OS versions.
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArray and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArray{ V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArray []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterInput
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput {
+	return o
+}
+
+// The OS short name
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput) OsShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter) string {
+		return v.OsShortName
+	}).(pulumi.StringOutput)
+}
+
+// The OS version
+// Prefix matches are supported if asterisk(*) is provided as the
+// last character. For example, to match all versions with a major
+// version of `7`, specify the following value for this field `7.*`
+// An empty string matches all OS versions.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter) *string {
+		return v.OsVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource struct {
+	// A resource that allows executing scripts on the VM.
+	// The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
+	// accept a script as an argument to execute.
+	// When the `ExecResource` is applied by the agent, it first executes the
+	// script in the `validate` stage. The `validate` stage can signal that the
+	// `ExecResource` is already in the desired state by returning an exit code
+	// of `100`. If the `ExecResource` is not in the desired state, it should
+	// return an exit code of `101`. Any other exit code returned by this stage
+	// is considered an error.
+	// If the `ExecResource` is not in the desired state based on the exit code
+	// from the `validate` stage, the agent proceeds to execute the script from
+	// the `enforce` stage. If the `ExecResource` is already in the desired
+	// state, the `enforce` stage will not be run.
+	// Similar to `validate` stage, the `enforce` stage should return an exit
+	// code of `100` to indicate that the resource in now in its desired state.
+	// Any other exit code is considered an error.
+	// NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to
+	// have an explicit indicator of `in desired state`, `not in desired state`
+	// and errors. Because, for example, Powershell will always return an exit
+	// code of `0` unless an `exit` statement is provided in the script. So, for
+	// reasons of consistency and being explicit, exit codes `100` and `101`
+	// were chosen.
+	// Structure is documented below.
+	Exec *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec `pulumi:"exec"`
+	// A resource that manages the state of a file.
+	// Structure is documented below.
+	File *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile `pulumi:"file"`
+	// The id of the resource with the following restrictions:
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the OS policy.
+	Id string `pulumi:"id"`
+	// A resource that manages a system package.
+	// Structure is documented below.
+	Pkg *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg `pulumi:"pkg"`
+	// A resource that manages a package repository.
+	// Structure is documented below.
+	Repository *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository `pulumi:"repository"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs struct {
+	// A resource that allows executing scripts on the VM.
+	// The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
+	// accept a script as an argument to execute.
+	// When the `ExecResource` is applied by the agent, it first executes the
+	// script in the `validate` stage. The `validate` stage can signal that the
+	// `ExecResource` is already in the desired state by returning an exit code
+	// of `100`. If the `ExecResource` is not in the desired state, it should
+	// return an exit code of `101`. Any other exit code returned by this stage
+	// is considered an error.
+	// If the `ExecResource` is not in the desired state based on the exit code
+	// from the `validate` stage, the agent proceeds to execute the script from
+	// the `enforce` stage. If the `ExecResource` is already in the desired
+	// state, the `enforce` stage will not be run.
+	// Similar to `validate` stage, the `enforce` stage should return an exit
+	// code of `100` to indicate that the resource in now in its desired state.
+	// Any other exit code is considered an error.
+	// NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to
+	// have an explicit indicator of `in desired state`, `not in desired state`
+	// and errors. Because, for example, Powershell will always return an exit
+	// code of `0` unless an `exit` statement is provided in the script. So, for
+	// reasons of consistency and being explicit, exit codes `100` and `101`
+	// were chosen.
+	// Structure is documented below.
+	Exec V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrInput `pulumi:"exec"`
+	// A resource that manages the state of a file.
+	// Structure is documented below.
+	File V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrInput `pulumi:"file"`
+	// The id of the resource with the following restrictions:
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the OS policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A resource that manages a system package.
+	// Structure is documented below.
+	Pkg V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrInput `pulumi:"pkg"`
+	// A resource that manages a package repository.
+	// Structure is documented below.
+	Repository V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrInput `pulumi:"repository"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArray and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArray{ V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArray []V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceInput
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArray) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput {
+	return o
+}
+
+// A resource that allows executing scripts on the VM.
+// The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
+// accept a script as an argument to execute.
+// When the `ExecResource` is applied by the agent, it first executes the
+// script in the `validate` stage. The `validate` stage can signal that the
+// `ExecResource` is already in the desired state by returning an exit code
+// of `100`. If the `ExecResource` is not in the desired state, it should
+// return an exit code of `101`. Any other exit code returned by this stage
+// is considered an error.
+// If the `ExecResource` is not in the desired state based on the exit code
+// from the `validate` stage, the agent proceeds to execute the script from
+// the `enforce` stage. If the `ExecResource` is already in the desired
+// state, the `enforce` stage will not be run.
+// Similar to `validate` stage, the `enforce` stage should return an exit
+// code of `100` to indicate that the resource in now in its desired state.
+// Any other exit code is considered an error.
+// NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to
+// have an explicit indicator of `in desired state`, `not in desired state`
+// and errors. Because, for example, Powershell will always return an exit
+// code of `0` unless an `exit` statement is provided in the script. So, for
+// reasons of consistency and being explicit, exit codes `100` and `101`
+// were chosen.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput) Exec() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec {
+		return v.Exec
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput)
+}
+
+// A resource that manages the state of a file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput) File() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile {
+		return v.File
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput)
+}
+
+// The id of the resource with the following restrictions:
+// * Must contain only lowercase letters, numbers, and hyphens.
+// * Must start with a letter.
+// * Must be between 1-63 characters.
+// * Must end with a number or a letter.
+// * Must be unique within the OS policy.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+// A resource that manages a system package.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput) Pkg() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg {
+		return v.Pkg
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput)
+}
+
+// A resource that manages a package repository.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput) Repository() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository {
+		return v.Repository
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec struct {
+	// A file or script to execute.
+	// Structure is documented below.
+	Enforce *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce `pulumi:"enforce"`
+	// A file or script to execute.
+	// Structure is documented below.
+	Validate V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate `pulumi:"validate"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs struct {
+	// A file or script to execute.
+	// Structure is documented below.
+	Enforce V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrInput `pulumi:"enforce"`
+	// A file or script to execute.
+	// Structure is documented below.
+	Validate V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateInput `pulumi:"validate"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput)
+}
+
+// A file or script to execute.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput) Enforce() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce {
+		return v.Enforce
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput)
+}
+
+// A file or script to execute.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput) Validate() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate {
+		return v.Validate
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput)
+}
+
+// A file or script to execute.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput) Enforce() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce {
+		if v == nil {
+			return nil
+		}
+		return v.Enforce
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput)
+}
+
+// A file or script to execute.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput) Validate() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate {
+		if v == nil {
+			return nil
+		}
+		return &v.Validate
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce struct {
+	// Optional arguments to pass to the source during execution.
+	Args []string `pulumi:"args"`
+	// A remote or local file.
+	// Structure is documented below.
+	File *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile `pulumi:"file"`
+	// The script interpreter to use.
+	// Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
+	Interpreter string `pulumi:"interpreter"`
+	// Only recorded for enforce Exec.
+	// Path to an output file (that is created by this Exec) whose
+	// content will be recorded in OSPolicyResourceCompliance after a
+	// successful run. Absence or failure to read this file will result in
+	// this ExecResource being non-compliant. Output file size is limited to
+	// 500K bytes.
+	OutputFilePath *string `pulumi:"outputFilePath"`
+	// An inline script.
+	// The size of the script is limited to 32KiB.
+	Script *string `pulumi:"script"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs struct {
+	// Optional arguments to pass to the source during execution.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// A remote or local file.
+	// Structure is documented below.
+	File V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrInput `pulumi:"file"`
+	// The script interpreter to use.
+	// Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
+	Interpreter pulumi.StringInput `pulumi:"interpreter"`
+	// Only recorded for enforce Exec.
+	// Path to an output file (that is created by this Exec) whose
+	// content will be recorded in OSPolicyResourceCompliance after a
+	// successful run. Absence or failure to read this file will result in
+	// this ExecResource being non-compliant. Output file size is limited to
+	// 500K bytes.
+	OutputFilePath pulumi.StringPtrInput `pulumi:"outputFilePath"`
+	// An inline script.
+	// The size of the script is limited to 32KiB.
+	Script pulumi.StringPtrInput `pulumi:"script"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput)
+}
+
+// Optional arguments to pass to the source during execution.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) File() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile {
+		return v.File
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
+}
+
+// The script interpreter to use.
+// Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) Interpreter() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) string {
+		return v.Interpreter
+	}).(pulumi.StringOutput)
+}
+
+// Only recorded for enforce Exec.
+// Path to an output file (that is created by this Exec) whose
+// content will be recorded in OSPolicyResourceCompliance after a
+// successful run. Absence or failure to read this file will result in
+// this ExecResource being non-compliant. Output file size is limited to
+// 500K bytes.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) OutputFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) *string {
+		return v.OutputFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// An inline script.
+// The size of the script is limited to 32KiB.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) *string {
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput)
+}
+
+// Optional arguments to pass to the source during execution.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput) File() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
+}
+
+// The script interpreter to use.
+// Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput) Interpreter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Interpreter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only recorded for enforce Exec.
+// Path to an output file (that is created by this Exec) whose
+// content will be recorded in OSPolicyResourceCompliance after a
+// successful run. Absence or failure to read this file will result in
+// this ExecResource being non-compliant. Output file size is limited to
+// 500K bytes.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput) OutputFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// An inline script.
+// The size of the script is limited to 32KiB.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote `pulumi:"remote"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput `pulumi:"remote"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) *bool {
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs {
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) *string {
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote {
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *string `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs) *string {
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs) string {
+		return v.Object
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate struct {
+	// Optional arguments to pass to the source during execution.
+	Args []string `pulumi:"args"`
+	// A remote or local file.
+	// Structure is documented below.
+	File *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile `pulumi:"file"`
+	// The script interpreter to use.
+	// Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
+	Interpreter string `pulumi:"interpreter"`
+	// Only recorded for enforce Exec.
+	// Path to an output file (that is created by this Exec) whose
+	// content will be recorded in OSPolicyResourceCompliance after a
+	// successful run. Absence or failure to read this file will result in
+	// this ExecResource being non-compliant. Output file size is limited to
+	// 500K bytes.
+	OutputFilePath *string `pulumi:"outputFilePath"`
+	// An inline script.
+	// The size of the script is limited to 32KiB.
+	Script *string `pulumi:"script"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs struct {
+	// Optional arguments to pass to the source during execution.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// A remote or local file.
+	// Structure is documented below.
+	File V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrInput `pulumi:"file"`
+	// The script interpreter to use.
+	// Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
+	Interpreter pulumi.StringInput `pulumi:"interpreter"`
+	// Only recorded for enforce Exec.
+	// Path to an output file (that is created by this Exec) whose
+	// content will be recorded in OSPolicyResourceCompliance after a
+	// successful run. Absence or failure to read this file will result in
+	// this ExecResource being non-compliant. Output file size is limited to
+	// 500K bytes.
+	OutputFilePath pulumi.StringPtrInput `pulumi:"outputFilePath"`
+	// An inline script.
+	// The size of the script is limited to 32KiB.
+	Script pulumi.StringPtrInput `pulumi:"script"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput)
+}
+
+// Optional arguments to pass to the source during execution.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) []string {
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) File() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile {
+		return v.File
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
+}
+
+// The script interpreter to use.
+// Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) Interpreter() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) string {
+		return v.Interpreter
+	}).(pulumi.StringOutput)
+}
+
+// Only recorded for enforce Exec.
+// Path to an output file (that is created by this Exec) whose
+// content will be recorded in OSPolicyResourceCompliance after a
+// successful run. Absence or failure to read this file will result in
+// this ExecResource being non-compliant. Output file size is limited to
+// 500K bytes.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) OutputFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) *string {
+		return v.OutputFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// An inline script.
+// The size of the script is limited to 32KiB.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) *string {
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput)
+}
+
+// Optional arguments to pass to the source during execution.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput) File() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
+}
+
+// The script interpreter to use.
+// Possible values are: `NONE`, `SHELL`, `POWERSHELL`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput) Interpreter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Interpreter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only recorded for enforce Exec.
+// Path to an output file (that is created by this Exec) whose
+// content will be recorded in OSPolicyResourceCompliance after a
+// successful run. Absence or failure to read this file will result in
+// this ExecResource being non-compliant. Output file size is limited to
+// 500K bytes.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput) OutputFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// An inline script.
+// The size of the script is limited to 32KiB.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote `pulumi:"remote"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput `pulumi:"remote"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) *bool {
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs {
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) *string {
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote {
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *string `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs) *string {
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs) string {
+		return v.Object
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile struct {
+	// A a file with this content.
+	// The size of the content is limited to 32KiB.
+	Content *string `pulumi:"content"`
+	// A remote or local file.
+	// Structure is documented below.
+	File *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile `pulumi:"file"`
+	// The absolute path of the file within the VM.
+	Path string `pulumi:"path"`
+	// Consists of three octal digits which represent, in
+	// order, the permissions of the owner, group, and other users for the
+	// file (similarly to the numeric mode used in the linux chmod
+	// utility). Each digit represents a three bit number with the 4 bit
+	// corresponding to the read permissions, the 2 bit corresponds to the
+	// write bit, and the one bit corresponds to the execute permission.
+	// Default behavior is 755.
+	// Below are some examples of permissions and their associated values:
+	// read, write, and execute: 7
+	// read and execute: 5
+	// read and write: 6
+	// read only: 4
+	Permissions *string `pulumi:"permissions"`
+	// Desired state of the file.
+	// Possible values are: `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
+	State string `pulumi:"state"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs struct {
+	// A a file with this content.
+	// The size of the content is limited to 32KiB.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// A remote or local file.
+	// Structure is documented below.
+	File V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrInput `pulumi:"file"`
+	// The absolute path of the file within the VM.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Consists of three octal digits which represent, in
+	// order, the permissions of the owner, group, and other users for the
+	// file (similarly to the numeric mode used in the linux chmod
+	// utility). Each digit represents a three bit number with the 4 bit
+	// corresponding to the read permissions, the 2 bit corresponds to the
+	// write bit, and the one bit corresponds to the execute permission.
+	// Default behavior is 755.
+	// Below are some examples of permissions and their associated values:
+	// read, write, and execute: 7
+	// read and execute: 5
+	// read and write: 6
+	// read only: 4
+	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
+	// Desired state of the file.
+	// Possible values are: `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput)
+}
+
+// A a file with this content.
+// The size of the content is limited to 32KiB.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) *string {
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) File() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile {
+		return v.File
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput)
+}
+
+// The absolute path of the file within the VM.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) string {
+		return v.Path
+	}).(pulumi.StringOutput)
+}
+
+// Consists of three octal digits which represent, in
+// order, the permissions of the owner, group, and other users for the
+// file (similarly to the numeric mode used in the linux chmod
+// utility). Each digit represents a three bit number with the 4 bit
+// corresponding to the read permissions, the 2 bit corresponds to the
+// write bit, and the one bit corresponds to the execute permission.
+// Default behavior is 755.
+// Below are some examples of permissions and their associated values:
+// read, write, and execute: 7
+// read and execute: 5
+// read and write: 6
+// read only: 4
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) *string {
+		return v.Permissions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Desired state of the file.
+// Possible values are: `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) string {
+		return v.State
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput)
+}
+
+// A a file with this content.
+// The size of the content is limited to 32KiB.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput) File() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput)
+}
+
+// The absolute path of the file within the VM.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Consists of three octal digits which represent, in
+// order, the permissions of the owner, group, and other users for the
+// file (similarly to the numeric mode used in the linux chmod
+// utility). Each digit represents a three bit number with the 4 bit
+// corresponding to the read permissions, the 2 bit corresponds to the
+// write bit, and the one bit corresponds to the execute permission.
+// Default behavior is 755.
+// Below are some examples of permissions and their associated values:
+// read, write, and execute: 7
+// read and execute: 5
+// read and write: 6
+// read only: 4
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Permissions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Desired state of the file.
+// Possible values are: `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote `pulumi:"remote"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrInput `pulumi:"remote"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) *bool {
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs {
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) *string {
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote {
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *string `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs) *string {
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs) string {
+		return v.Object
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg struct {
+	// A package managed by APT.
+	// - install: `apt-get update && apt-get -y install [name]`
+	// - remove: `apt-get -y remove [name]`
+	//   Structure is documented below.
+	Apt *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt `pulumi:"apt"`
+	// A deb package file. dpkg packages only support INSTALLED state.
+	// Structure is documented below.
+	Deb *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb `pulumi:"deb"`
+	// The desired state the agent should maintain for this package.
+	// Possible values are: `INSTALLED`, `REMOVED`.
+	DesiredState string `pulumi:"desiredState"`
+	// A package managed by GooGet.
+	// - install: `googet -noconfirm install package`
+	// - remove: `googet -noconfirm remove package`
+	//   Structure is documented below.
+	Googet *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget `pulumi:"googet"`
+	// An MSI package. MSI packages only support INSTALLED state.
+	// Structure is documented below.
+	Msi *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi `pulumi:"msi"`
+	// An RPM package file. RPM packages only support INSTALLED state.
+	// Structure is documented below.
+	Rpm *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm `pulumi:"rpm"`
+	// A package managed by YUM.
+	// - install: `yum -y install package`
+	// - remove: `yum -y remove package`
+	//   Structure is documented below.
+	Yum *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum `pulumi:"yum"`
+	// A package managed by Zypper.
+	// - install: `zypper -y install package`
+	// - remove: `zypper -y rm package`
+	//   Structure is documented below.
+	Zypper *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper `pulumi:"zypper"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs struct {
+	// A package managed by APT.
+	// - install: `apt-get update && apt-get -y install [name]`
+	// - remove: `apt-get -y remove [name]`
+	//   Structure is documented below.
+	Apt V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrInput `pulumi:"apt"`
+	// A deb package file. dpkg packages only support INSTALLED state.
+	// Structure is documented below.
+	Deb V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrInput `pulumi:"deb"`
+	// The desired state the agent should maintain for this package.
+	// Possible values are: `INSTALLED`, `REMOVED`.
+	DesiredState pulumi.StringInput `pulumi:"desiredState"`
+	// A package managed by GooGet.
+	// - install: `googet -noconfirm install package`
+	// - remove: `googet -noconfirm remove package`
+	//   Structure is documented below.
+	Googet V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrInput `pulumi:"googet"`
+	// An MSI package. MSI packages only support INSTALLED state.
+	// Structure is documented below.
+	Msi V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrInput `pulumi:"msi"`
+	// An RPM package file. RPM packages only support INSTALLED state.
+	// Structure is documented below.
+	Rpm V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrInput `pulumi:"rpm"`
+	// A package managed by YUM.
+	// - install: `yum -y install package`
+	// - remove: `yum -y remove package`
+	//   Structure is documented below.
+	Yum V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrInput `pulumi:"yum"`
+	// A package managed by Zypper.
+	// - install: `zypper -y install package`
+	// - remove: `zypper -y rm package`
+	//   Structure is documented below.
+	Zypper V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrInput `pulumi:"zypper"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput)
+}
+
+// A package managed by APT.
+//   - install: `apt-get update && apt-get -y install [name]`
+//   - remove: `apt-get -y remove [name]`
+//     Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) Apt() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt {
+		return v.Apt
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput)
+}
+
+// A deb package file. dpkg packages only support INSTALLED state.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) Deb() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb {
+		return v.Deb
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput)
+}
+
+// The desired state the agent should maintain for this package.
+// Possible values are: `INSTALLED`, `REMOVED`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) DesiredState() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) string {
+		return v.DesiredState
+	}).(pulumi.StringOutput)
+}
+
+// A package managed by GooGet.
+//   - install: `googet -noconfirm install package`
+//   - remove: `googet -noconfirm remove package`
+//     Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) Googet() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget {
+		return v.Googet
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
+}
+
+// An MSI package. MSI packages only support INSTALLED state.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) Msi() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi {
+		return v.Msi
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput)
+}
+
+// An RPM package file. RPM packages only support INSTALLED state.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) Rpm() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm {
+		return v.Rpm
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput)
+}
+
+// A package managed by YUM.
+//   - install: `yum -y install package`
+//   - remove: `yum -y remove package`
+//     Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) Yum() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum {
+		return v.Yum
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput)
+}
+
+// A package managed by Zypper.
+//   - install: `zypper -y install package`
+//   - remove: `zypper -y rm package`
+//     Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput) Zypper() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper {
+		return v.Zypper
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput)
+}
+
+// A package managed by APT.
+//   - install: `apt-get update && apt-get -y install [name]`
+//   - remove: `apt-get -y remove [name]`
+//     Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) Apt() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt {
+		if v == nil {
+			return nil
+		}
+		return v.Apt
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput)
+}
+
+// A deb package file. dpkg packages only support INSTALLED state.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) Deb() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb {
+		if v == nil {
+			return nil
+		}
+		return v.Deb
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput)
+}
+
+// The desired state the agent should maintain for this package.
+// Possible values are: `INSTALLED`, `REMOVED`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DesiredState
+	}).(pulumi.StringPtrOutput)
+}
+
+// A package managed by GooGet.
+//   - install: `googet -noconfirm install package`
+//   - remove: `googet -noconfirm remove package`
+//     Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) Googet() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget {
+		if v == nil {
+			return nil
+		}
+		return v.Googet
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
+}
+
+// An MSI package. MSI packages only support INSTALLED state.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) Msi() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi {
+		if v == nil {
+			return nil
+		}
+		return v.Msi
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput)
+}
+
+// An RPM package file. RPM packages only support INSTALLED state.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) Rpm() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm {
+		if v == nil {
+			return nil
+		}
+		return v.Rpm
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput)
+}
+
+// A package managed by YUM.
+//   - install: `yum -y install package`
+//   - remove: `yum -y remove package`
+//     Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) Yum() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum {
+		if v == nil {
+			return nil
+		}
+		return v.Yum
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput)
+}
+
+// A package managed by Zypper.
+//   - install: `zypper -y install package`
+//   - remove: `zypper -y rm package`
+//     Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput) Zypper() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper {
+		if v == nil {
+			return nil
+		}
+		return v.Zypper
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt struct {
+	// Package name.
+	Name string `pulumi:"name"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs struct {
+	// Package name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput)
+}
+
+// Package name.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput)
+}
+
+// Package name.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb struct {
+	// Whether dependencies should also be installed.
+	// - install when false: `dpkg -i package`
+	// - install when true: `apt-get update && apt-get -y install
+	//   package.deb`
+	PullDeps *bool `pulumi:"pullDeps"`
+	// A remote or local file.
+	// Structure is documented below.
+	Source V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource `pulumi:"source"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs struct {
+	// Whether dependencies should also be installed.
+	// - install when false: `dpkg -i package`
+	// - install when true: `apt-get update && apt-get -y install
+	//   package.deb`
+	PullDeps pulumi.BoolPtrInput `pulumi:"pullDeps"`
+	// A remote or local file.
+	// Structure is documented below.
+	Source V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceInput `pulumi:"source"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput)
+}
+
+// Whether dependencies should also be installed.
+//   - install when false: `dpkg -i package`
+//   - install when true: `apt-get update && apt-get -y install
+//     package.deb`
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput) PullDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb) *bool {
+		return v.PullDeps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput) Source() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource {
+		return v.Source
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput)
+}
+
+// Whether dependencies should also be installed.
+//   - install when false: `dpkg -i package`
+//   - install when true: `apt-get update && apt-get -y install
+//     package.deb`
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput) PullDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PullDeps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput) Source() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDeb) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote `pulumi:"remote"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput `pulumi:"remote"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) *bool {
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs {
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) *string {
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote {
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *string `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs) *string {
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs) string {
+		return v.Object
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget struct {
+	// Package name.
+	Name string `pulumi:"name"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs struct {
+	// Package name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
+}
+
+// Package name.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput)
+}
+
+// Package name.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGooget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi struct {
+	// Additional properties to use during installation.
+	// This should be in the format of Property=Setting.
+	// Appended to the defaults of `ACTION=INSTALL
+	// REBOOT=ReallySuppress`.
+	Properties []string `pulumi:"properties"`
+	// A remote or local file.
+	// Structure is documented below.
+	Source V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource `pulumi:"source"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs struct {
+	// Additional properties to use during installation.
+	// This should be in the format of Property=Setting.
+	// Appended to the defaults of `ACTION=INSTALL
+	// REBOOT=ReallySuppress`.
+	Properties pulumi.StringArrayInput `pulumi:"properties"`
+	// A remote or local file.
+	// Structure is documented below.
+	Source V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceInput `pulumi:"source"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput)
+}
+
+// Additional properties to use during installation.
+// This should be in the format of Property=Setting.
+// Appended to the defaults of `ACTION=INSTALL
+// REBOOT=ReallySuppress`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput) Properties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi) []string {
+		return v.Properties
+	}).(pulumi.StringArrayOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput) Source() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource {
+		return v.Source
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput)
+}
+
+// Additional properties to use during installation.
+// This should be in the format of Property=Setting.
+// Appended to the defaults of `ACTION=INSTALL
+// REBOOT=ReallySuppress`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput) Properties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringArrayOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput) Source() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote `pulumi:"remote"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput `pulumi:"remote"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) *bool {
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) *string {
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *string `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs) *string {
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs) string {
+		return v.Object
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm struct {
+	// Whether dependencies should also be installed.
+	// - install when false: `rpm --upgrade --replacepkgs package.rpm`
+	// - install when true: `yum -y install package.rpm` or
+	//   `zypper -y install package.rpm`
+	PullDeps *bool `pulumi:"pullDeps"`
+	// A remote or local file.
+	// Structure is documented below.
+	Source V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource `pulumi:"source"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs struct {
+	// Whether dependencies should also be installed.
+	// - install when false: `rpm --upgrade --replacepkgs package.rpm`
+	// - install when true: `yum -y install package.rpm` or
+	//   `zypper -y install package.rpm`
+	PullDeps pulumi.BoolPtrInput `pulumi:"pullDeps"`
+	// A remote or local file.
+	// Structure is documented below.
+	Source V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceInput `pulumi:"source"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput)
+}
+
+// Whether dependencies should also be installed.
+//   - install when false: `rpm --upgrade --replacepkgs package.rpm`
+//   - install when true: `yum -y install package.rpm` or
+//     `zypper -y install package.rpm`
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput) PullDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm) *bool {
+		return v.PullDeps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput) Source() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource {
+		return v.Source
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput)
+}
+
+// Whether dependencies should also be installed.
+//   - install when false: `rpm --upgrade --replacepkgs package.rpm`
+//   - install when true: `yum -y install package.rpm` or
+//     `zypper -y install package.rpm`
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput) PullDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PullDeps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A remote or local file.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput) Source() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpm) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath *string `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote `pulumi:"remote"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs struct {
+	// Defaults to false. When false, files are subject to validations
+	// based on the file type:
+	// Remote: A checksum must be specified.
+	// Cloud Storage: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// Specifies a file available as a Cloud Storage Object.
+	// Structure is documented below.
+	Gcs V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput `pulumi:"gcs"`
+	// A local path within the VM to use.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+	// Specifies a file available via some URI.
+	// Structure is documented below.
+	Remote V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput `pulumi:"remote"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) *bool {
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) *string {
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput)
+}
+
+// Defaults to false. When false, files are subject to validations
+// based on the file type:
+// Remote: A checksum must be specified.
+// Cloud Storage: An object generation number must be specified.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowInsecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a file available as a Cloud Storage Object.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Gcs() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+		if v == nil {
+			return nil
+		}
+		return v.Gcs
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
+}
+
+// A local path within the VM to use.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a file available via some URI.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Remote() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSource) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+		if v == nil {
+			return nil
+		}
+		return v.Remote
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation *string `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs struct {
+	// Bucket of the Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Cloud Storage object.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Name of the Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs) *string {
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs) string {
+		return v.Object
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput)
+}
+
+// Bucket of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Generation number of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Storage object.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum *string `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri string `pulumi:"uri"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs struct {
+	// SHA256 checksum of the remote file.
+	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
+	// URI from which to fetch the object. It should contain both the
+	// protocol and path following the format `{protocol}://{location}`.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote) *string {
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput)
+}
+
+// SHA256 checksum of the remote file.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Sha256Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the
+// protocol and path following the format `{protocol}://{location}`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum struct {
+	// Package name.
+	Name string `pulumi:"name"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs struct {
+	// Package name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput)
+}
+
+// Package name.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput)
+}
+
+// Package name.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper struct {
+	// Package name.
+	Name string `pulumi:"name"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs struct {
+	// Package name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput)
+}
+
+// Package name.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput)
+}
+
+// Package name.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository struct {
+	// Represents a single apt package repository. These will be added to
+	// a repo file that will be managed at
+	// `/etc/apt/sources.list.d/google_osconfig.list`.
+	// Structure is documented below.
+	Apt *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt `pulumi:"apt"`
+	// Represents a Goo package repository. These are added to a repo file
+	// that is managed at
+	// `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
+	// Structure is documented below.
+	Goo *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo `pulumi:"goo"`
+	// Represents a single yum package repository. These are added to a
+	// repo file that is managed at
+	// `/etc/yum.repos.d/google_osconfig.repo`.
+	// Structure is documented below.
+	Yum *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum `pulumi:"yum"`
+	// Represents a single zypper package repository. These are added to a
+	// repo file that is managed at
+	// `/etc/zypp/repos.d/google_osconfig.repo`.
+	// Structure is documented below.
+	Zypper *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper `pulumi:"zypper"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs struct {
+	// Represents a single apt package repository. These will be added to
+	// a repo file that will be managed at
+	// `/etc/apt/sources.list.d/google_osconfig.list`.
+	// Structure is documented below.
+	Apt V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrInput `pulumi:"apt"`
+	// Represents a Goo package repository. These are added to a repo file
+	// that is managed at
+	// `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
+	// Structure is documented below.
+	Goo V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrInput `pulumi:"goo"`
+	// Represents a single yum package repository. These are added to a
+	// repo file that is managed at
+	// `/etc/yum.repos.d/google_osconfig.repo`.
+	// Structure is documented below.
+	Yum V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrInput `pulumi:"yum"`
+	// Represents a single zypper package repository. These are added to a
+	// repo file that is managed at
+	// `/etc/zypp/repos.d/google_osconfig.repo`.
+	// Structure is documented below.
+	Zypper V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrInput `pulumi:"zypper"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput)
+}
+
+// Represents a single apt package repository. These will be added to
+// a repo file that will be managed at
+// `/etc/apt/sources.list.d/google_osconfig.list`.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput) Apt() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt {
+		return v.Apt
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
+}
+
+// Represents a Goo package repository. These are added to a repo file
+// that is managed at
+// `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput) Goo() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo {
+		return v.Goo
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
+}
+
+// Represents a single yum package repository. These are added to a
+// repo file that is managed at
+// `/etc/yum.repos.d/google_osconfig.repo`.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput) Yum() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum {
+		return v.Yum
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
+}
+
+// Represents a single zypper package repository. These are added to a
+// repo file that is managed at
+// `/etc/zypp/repos.d/google_osconfig.repo`.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput) Zypper() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper {
+		return v.Zypper
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput)
+}
+
+// Represents a single apt package repository. These will be added to
+// a repo file that will be managed at
+// `/etc/apt/sources.list.d/google_osconfig.list`.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput) Apt() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt {
+		if v == nil {
+			return nil
+		}
+		return v.Apt
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
+}
+
+// Represents a Goo package repository. These are added to a repo file
+// that is managed at
+// `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput) Goo() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo {
+		if v == nil {
+			return nil
+		}
+		return v.Goo
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
+}
+
+// Represents a single yum package repository. These are added to a
+// repo file that is managed at
+// `/etc/yum.repos.d/google_osconfig.repo`.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput) Yum() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum {
+		if v == nil {
+			return nil
+		}
+		return v.Yum
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
+}
+
+// Represents a single zypper package repository. These are added to a
+// repo file that is managed at
+// `/etc/zypp/repos.d/google_osconfig.repo`.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput) Zypper() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper {
+		if v == nil {
+			return nil
+		}
+		return v.Zypper
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt struct {
+	// Type of archive files in this repository.
+	// Possible values are: `DEB`, `DEB_SRC`.
+	ArchiveType string `pulumi:"archiveType"`
+	// List of components for this repository. Must contain at least one
+	// item.
+	Components []string `pulumi:"components"`
+	// Distribution of this repository.
+	Distribution string `pulumi:"distribution"`
+	// URI of the key file for this repository. The agent maintains a
+	// keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+	GpgKey *string `pulumi:"gpgKey"`
+	// URI for this repository.
+	Uri string `pulumi:"uri"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs struct {
+	// Type of archive files in this repository.
+	// Possible values are: `DEB`, `DEB_SRC`.
+	ArchiveType pulumi.StringInput `pulumi:"archiveType"`
+	// List of components for this repository. Must contain at least one
+	// item.
+	Components pulumi.StringArrayInput `pulumi:"components"`
+	// Distribution of this repository.
+	Distribution pulumi.StringInput `pulumi:"distribution"`
+	// URI of the key file for this repository. The agent maintains a
+	// keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+	GpgKey pulumi.StringPtrInput `pulumi:"gpgKey"`
+	// URI for this repository.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
+}
+
+// Type of archive files in this repository.
+// Possible values are: `DEB`, `DEB_SRC`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) ArchiveType() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) string {
+		return v.ArchiveType
+	}).(pulumi.StringOutput)
+}
+
+// List of components for this repository. Must contain at least one
+// item.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) Components() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) []string {
+		return v.Components
+	}).(pulumi.StringArrayOutput)
+}
+
+// Distribution of this repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) Distribution() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) string {
+		return v.Distribution
+	}).(pulumi.StringOutput)
+}
+
+// URI of the key file for this repository. The agent maintains a
+// keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) GpgKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) *string {
+		return v.GpgKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI for this repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput)
+}
+
+// Type of archive files in this repository.
+// Possible values are: `DEB`, `DEB_SRC`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ArchiveType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArchiveType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of components for this repository. Must contain at least one
+// item.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Components() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Components
+	}).(pulumi.StringArrayOutput)
+}
+
+// Distribution of this repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Distribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Distribution
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of the key file for this repository. The agent maintains a
+// keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput) GpgKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GpgKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI for this repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo struct {
+	// The name of the repository.
+	Name string `pulumi:"name"`
+	// The url of the repository.
+	Url string `pulumi:"url"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs struct {
+	// The name of the repository.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The url of the repository.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
+}
+
+// The name of the repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// The url of the repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo) string {
+		return v.Url
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput)
+}
+
+// The name of the repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The url of the repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum struct {
+	// The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName *string `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys []string `pulumi:"gpgKeys"`
+	// A one word, unique name for this repository. This is  the `repo
+	// id` in the yum config file and also the `displayName` if
+	// `displayName` is omitted. This id is also used as the unique
+	// identifier when checking for resource conflicts.
+	Id string `pulumi:"id"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs struct {
+	// The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
+	// A one word, unique name for this repository. This is  the `repo
+	// id` in the yum config file and also the `displayName` if
+	// `displayName` is omitted. This id is also used as the unique
+	// identifier when checking for resource conflicts.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
+}
+
+// The location of the repository directory.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) string {
+		return v.BaseUrl
+	}).(pulumi.StringOutput)
+}
+
+// The display name of the repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) []string {
+		return v.GpgKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// A one word, unique name for this repository. This is  the `repo
+// id` in the yum config file and also the `displayName` if
+// `displayName` is omitted. This id is also used as the unique
+// identifier when checking for resource conflicts.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput)
+}
+
+// The location of the repository directory.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GpgKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// A one word, unique name for this repository. This is  the `repo
+// id` in the yum config file and also the `displayName` if
+// `displayName` is omitted. This id is also used as the unique
+// identifier when checking for resource conflicts.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper struct {
+	// The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName *string `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys []string `pulumi:"gpgKeys"`
+	// A one word, unique name for this repository. This is the `repo
+	// id` in the zypper config file and also the `displayName` if
+	// `displayName` is omitted. This id is also used as the unique
+	// identifier when checking for GuestPolicy conflicts.
+	Id string `pulumi:"id"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs struct {
+	// The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
+	// A one word, unique name for this repository. This is the `repo
+	// id` in the zypper config file and also the `displayName` if
+	// `displayName` is omitted. This id is also used as the unique
+	// identifier when checking for GuestPolicy conflicts.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
+}
+
+// The location of the repository directory.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) string {
+		return v.BaseUrl
+	}).(pulumi.StringOutput)
+}
+
+// The display name of the repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) []string {
+		return v.GpgKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// A one word, unique name for this repository. This is the `repo
+// id` in the zypper config file and also the `displayName` if
+// `displayName` is omitted. This id is also used as the unique
+// identifier when checking for GuestPolicy conflicts.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput)
+}
+
+// The location of the repository directory.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the repository.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GpgKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// A one word, unique name for this repository. This is the `repo
+// id` in the zypper config file and also the `displayName` if
+// `displayName` is omitted. This id is also used as the unique
+// identifier when checking for GuestPolicy conflicts.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout struct {
+	// Message encapsulating a value that can be either absolute ("fixed") or
+	// relative ("percent") to a value.
+	// Structure is documented below.
+	DisruptionBudget V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget `pulumi:"disruptionBudget"`
+	// This determines the minimum duration of time to wait after the
+	// configuration changes are applied through the current rollout. A
+	// VM continues to count towards the `disruptionBudget` at least
+	// until this duration of time has passed after configuration changes are
+	// applied.
+	MinWaitDuration string `pulumi:"minWaitDuration"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs struct {
+	// Message encapsulating a value that can be either absolute ("fixed") or
+	// relative ("percent") to a value.
+	// Structure is documented below.
+	DisruptionBudget V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetInput `pulumi:"disruptionBudget"`
+	// This determines the minimum duration of time to wait after the
+	// configuration changes are applied through the current rollout. A
+	// VM continues to count towards the `disruptionBudget` at least
+	// until this duration of time has passed after configuration changes are
+	// applied.
+	MinWaitDuration pulumi.StringInput `pulumi:"minWaitDuration"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput)
+}
+
+// Message encapsulating a value that can be either absolute ("fixed") or
+// relative ("percent") to a value.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput) DisruptionBudget() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget {
+		return v.DisruptionBudget
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput)
+}
+
+// This determines the minimum duration of time to wait after the
+// configuration changes are applied through the current rollout. A
+// VM continues to count towards the `disruptionBudget` at least
+// until this duration of time has passed after configuration changes are
+// applied.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput) MinWaitDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout) string {
+		return v.MinWaitDuration
+	}).(pulumi.StringOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput)
+}
+
+// Message encapsulating a value that can be either absolute ("fixed") or
+// relative ("percent") to a value.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput) DisruptionBudget() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget {
+		if v == nil {
+			return nil
+		}
+		return &v.DisruptionBudget
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput)
+}
+
+// This determines the minimum duration of time to wait after the
+// configuration changes are applied through the current rollout. A
+// VM continues to count towards the `disruptionBudget` at least
+// until this duration of time has passed after configuration changes are
+// applied.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput) MinWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MinWaitDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget struct {
+	// Specifies a fixed value.
+	Fixed *int `pulumi:"fixed"`
+	// Specifies the relative value defined as a percentage, which will be
+	// multiplied by a reference value.
+	//
+	// ***
+	Percent *int `pulumi:"percent"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs{...}
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs struct {
+	// Specifies a fixed value.
+	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
+	// Specifies the relative value defined as a percentage, which will be
+	// multiplied by a reference value.
+	//
+	// ***
+	Percent pulumi.IntPtrInput `pulumi:"percent"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput).ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs, V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtr and V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrType V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs
+
+func V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtr(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrType) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput)
+}
+
+// Specifies a fixed value.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
+		return v.Fixed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the relative value defined as a percentage, which will be
+// multiplied by a reference value.
+//
+// ***
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
+		return v.Percent
+	}).(pulumi.IntPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput) ToV2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput)
+}
+
+// Specifies a fixed value.
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput) Fixed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Fixed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the relative value defined as a percentage, which will be
+// multiplied by a reference value.
+//
+// ***
+func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percent
+	}).(pulumi.IntPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScope struct {
+	// Selectors of the orchestration scope. There is a logical AND between each
+	// selector defined.
+	// When there is no explicit `ResourceHierarchySelector` selector specified,
+	// the scope is by default bounded to the parent of the policy orchestrator
+	// resource.
+	// Structure is documented below.
+	Selectors []V2PolicyOrchestratorForFolderOrchestrationScopeSelector `pulumi:"selectors"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationScopeInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationScopeArgs and V2PolicyOrchestratorForFolderOrchestrationScopeOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationScopeInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationScopeArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationScopeInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeOutput() V2PolicyOrchestratorForFolderOrchestrationScopeOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeArgs struct {
+	// Selectors of the orchestration scope. There is a logical AND between each
+	// selector defined.
+	// When there is no explicit `ResourceHierarchySelector` selector specified,
+	// the scope is by default bounded to the parent of the policy orchestrator
+	// resource.
+	// Structure is documented below.
+	Selectors V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayInput `pulumi:"selectors"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScope)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeOutput() V2PolicyOrchestratorForFolderOrchestrationScopeOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopeOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeOutput).ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationScopePtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationScopeArgs, V2PolicyOrchestratorForFolderOrchestrationScopePtr and V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationScopePtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestrationScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestrationScopePtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestrationScopePtrType V2PolicyOrchestratorForFolderOrchestrationScopeArgs
+
+func V2PolicyOrchestratorForFolderOrchestrationScopePtr(v *V2PolicyOrchestratorForFolderOrchestrationScopeArgs) V2PolicyOrchestratorForFolderOrchestrationScopePtrInput {
+	return (*v2policyOrchestratorForFolderOrchestrationScopePtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestrationScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestrationScope)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestrationScopePtrType) ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestrationScopePtrType) ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScope)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeOutput() V2PolicyOrchestratorForFolderOrchestrationScopeOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestrationScope) *V2PolicyOrchestratorForFolderOrchestrationScope {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput)
+}
+
+// Selectors of the orchestration scope. There is a logical AND between each
+// selector defined.
+// When there is no explicit `ResourceHierarchySelector` selector specified,
+// the scope is by default bounded to the parent of the policy orchestrator
+// resource.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeOutput) Selectors() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationScope) []V2PolicyOrchestratorForFolderOrchestrationScopeSelector {
+		return v.Selectors
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestrationScope)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopePtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestrationScopeOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestrationScope) V2PolicyOrchestratorForFolderOrchestrationScope {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestrationScope
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeOutput)
+}
+
+// Selectors of the orchestration scope. There is a logical AND between each
+// selector defined.
+// When there is no explicit `ResourceHierarchySelector` selector specified,
+// the scope is by default bounded to the parent of the policy orchestrator
+// resource.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput) Selectors() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestrationScope) []V2PolicyOrchestratorForFolderOrchestrationScopeSelector {
+		if v == nil {
+			return nil
+		}
+		return v.Selectors
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelector struct {
+	// Selector containing locations in scope.
+	// Structure is documented below.
+	LocationSelector *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector `pulumi:"locationSelector"`
+	// Selector containing Cloud Resource Manager resource hierarchy nodes.
+	// Structure is documented below.
+	ResourceHierarchySelector *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector `pulumi:"resourceHierarchySelector"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationScopeSelectorInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs and V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationScopeSelectorInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs struct {
+	// Selector containing locations in scope.
+	// Structure is documented below.
+	LocationSelector V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrInput `pulumi:"locationSelector"`
+	// Selector containing Cloud Resource Manager resource hierarchy nodes.
+	// Structure is documented below.
+	ResourceHierarchySelector V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrInput `pulumi:"resourceHierarchySelector"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelector)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArray and V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArray{ V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArray []V2PolicyOrchestratorForFolderOrchestrationScopeSelectorInput
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationScopeSelector)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArray) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArray) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelector)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput {
+	return o
+}
+
+// Selector containing locations in scope.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput) LocationSelector() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationScopeSelector) *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector {
+		return v.LocationSelector
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput)
+}
+
+// Selector containing Cloud Resource Manager resource hierarchy nodes.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput) ResourceHierarchySelector() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationScopeSelector) *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector {
+		return v.ResourceHierarchySelector
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationScopeSelector)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestrationScopeSelector {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestrationScopeSelector)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector struct {
+	// Names of the locations in scope.
+	// Format: `us-central1-a`
+	IncludedLocations []string `pulumi:"includedLocations"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs and V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs struct {
+	// Names of the locations in scope.
+	// Format: `us-central1-a`
+	IncludedLocations pulumi.StringArrayInput `pulumi:"includedLocations"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput).ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs, V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtr and V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrType V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs
+
+func V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtr(v *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrType) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrType) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector) *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput)
+}
+
+// Names of the locations in scope.
+// Format: `us-central1-a`
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput) IncludedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector) []string {
+		return v.IncludedLocations
+	}).(pulumi.StringArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput)
+}
+
+// Names of the locations in scope.
+// Format: `us-central1-a`
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput) IncludedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedLocations
+	}).(pulumi.StringArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector struct {
+	// Names of the folders in scope.
+	// Format: `folders/{folder_id}`
+	IncludedFolders []string `pulumi:"includedFolders"`
+	// Names of the projects in scope.
+	// Format: `projects/{project_number}`
+	IncludedProjects []string `pulumi:"includedProjects"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs and V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs struct {
+	// Names of the folders in scope.
+	// Format: `folders/{folder_id}`
+	IncludedFolders pulumi.StringArrayInput `pulumi:"includedFolders"`
+	// Names of the projects in scope.
+	// Format: `projects/{project_number}`
+	IncludedProjects pulumi.StringArrayInput `pulumi:"includedProjects"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput)
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput).ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutputWithContext(ctx)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs, V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtr and V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrInput` via:
+//
+//	        V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput
+}
+
+type v2policyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrType V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs
+
+func V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtr(v *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrInput {
+	return (*v2policyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrType)(v)
+}
+
+func (*v2policyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector)(nil)).Elem()
+}
+
+func (i *v2policyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrType) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *v2policyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrType) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput {
+	return o.ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutputWithContext(context.Background())
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector) *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector {
+		return &v
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput)
+}
+
+// Names of the folders in scope.
+// Format: `folders/{folder_id}`
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput) IncludedFolders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector) []string {
+		return v.IncludedFolders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Names of the projects in scope.
+// Format: `projects/{project_number}`
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput) IncludedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector) []string {
+		return v.IncludedProjects
+	}).(pulumi.StringArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput) ToV2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput) Elem() V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector) V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector {
+		if v != nil {
+			return *v
+		}
+		var ret V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector
+		return ret
+	}).(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput)
+}
+
+// Names of the folders in scope.
+// Format: `folders/{folder_id}`
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput) IncludedFolders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedFolders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Names of the projects in scope.
+// Format: `projects/{project_number}`
+func (o V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput) IncludedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedProjects
+	}).(pulumi.StringArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationState struct {
+	// (Output)
+	// Describes the state of a single iteration of the orchestrator.
+	// Structure is documented below.
+	CurrentIterationStates []V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState `pulumi:"currentIterationStates"`
+	// (Output)
+	// Describes the state of a single iteration of the orchestrator.
+	// Structure is documented below.
+	PreviousIterationStates []V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState `pulumi:"previousIterationStates"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStateInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStateArgs and V2PolicyOrchestratorForFolderOrchestrationStateOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStateInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStateArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationStateInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStateOutput() V2PolicyOrchestratorForFolderOrchestrationStateOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStateOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStateOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateArgs struct {
+	// (Output)
+	// Describes the state of a single iteration of the orchestrator.
+	// Structure is documented below.
+	CurrentIterationStates V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayInput `pulumi:"currentIterationStates"`
+	// (Output)
+	// Describes the state of a single iteration of the orchestrator.
+	// Structure is documented below.
+	PreviousIterationStates V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayInput `pulumi:"previousIterationStates"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationState)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateArgs) ToV2PolicyOrchestratorForFolderOrchestrationStateOutput() V2PolicyOrchestratorForFolderOrchestrationStateOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStateOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateArgs) ToV2PolicyOrchestratorForFolderOrchestrationStateOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStateOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStateArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStateArray and V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStateArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStateArray{ V2PolicyOrchestratorForFolderOrchestrationStateArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestrationStateArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStateArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStateArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateArray []V2PolicyOrchestratorForFolderOrchestrationStateInput
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationState)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateArray) ToV2PolicyOrchestratorForFolderOrchestrationStateArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStateArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateArray) ToV2PolicyOrchestratorForFolderOrchestrationStateArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationState)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateOutput() V2PolicyOrchestratorForFolderOrchestrationStateOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateOutput {
+	return o
+}
+
+// (Output)
+// Describes the state of a single iteration of the orchestrator.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateOutput) CurrentIterationStates() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationState) []V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState {
+		return v.CurrentIterationStates
+	}).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput)
+}
+
+// (Output)
+// Describes the state of a single iteration of the orchestrator.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateOutput) PreviousIterationStates() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationState) []V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState {
+		return v.PreviousIterationStates
+	}).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationState)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestrationStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestrationState {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestrationState)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestrationStateOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors []V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError `pulumi:"errors"`
+	// (Output)
+	// Number of orchestration actions which failed so far. For more details,
+	// query the Cloud Logs.
+	FailedActions *string `pulumi:"failedActions"`
+	// (Output)
+	// Finish time of the wave iteration.
+	FinishTime *string `pulumi:"finishTime"`
+	// (Output)
+	// Overall number of actions done by the orchestrator so far.
+	PerformedActions *string `pulumi:"performedActions"`
+	// (Output)
+	// An estimated percentage of the progress. Number between 0 and 100.
+	Progress *float64 `pulumi:"progress"`
+	// (Output)
+	// Handle to the Progressive Rollouts API rollout resource, which contains
+	// detailed information about a particular orchestration iteration.
+	RolloutResource *string `pulumi:"rolloutResource"`
+	// (Output)
+	// Start time of the wave iteration.
+	StartTime *string `pulumi:"startTime"`
+	// (Output)
+	// State of the iteration.
+	// Possible values:
+	// PROCESSING
+	// COMPLETED
+	// FAILED
+	// CANCELLED
+	// UNKNOWN
+	State *string `pulumi:"state"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs and V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// Number of orchestration actions which failed so far. For more details,
+	// query the Cloud Logs.
+	FailedActions pulumi.StringPtrInput `pulumi:"failedActions"`
+	// (Output)
+	// Finish time of the wave iteration.
+	FinishTime pulumi.StringPtrInput `pulumi:"finishTime"`
+	// (Output)
+	// Overall number of actions done by the orchestrator so far.
+	PerformedActions pulumi.StringPtrInput `pulumi:"performedActions"`
+	// (Output)
+	// An estimated percentage of the progress. Number between 0 and 100.
+	Progress pulumi.Float64PtrInput `pulumi:"progress"`
+	// (Output)
+	// Handle to the Progressive Rollouts API rollout resource, which contains
+	// detailed information about a particular orchestration iteration.
+	RolloutResource pulumi.StringPtrInput `pulumi:"rolloutResource"`
+	// (Output)
+	// Start time of the wave iteration.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// (Output)
+	// State of the iteration.
+	// Possible values:
+	// PROCESSING
+	// COMPLETED
+	// FAILED
+	// CANCELLED
+	// UNKNOWN
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArray and V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArray{ V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArray []V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateInput
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArray) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArray) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput {
+	return o
+}
+
+// (Output)
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details.
+// You can find out more about this error model and how to work with it in the
+// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) Errors() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState) []V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError {
+		return v.Errors
+	}).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput)
+}
+
+// (Output)
+// Number of orchestration actions which failed so far. For more details,
+// query the Cloud Logs.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) FailedActions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState) *string {
+		return v.FailedActions
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Finish time of the wave iteration.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) FinishTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState) *string {
+		return v.FinishTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Overall number of actions done by the orchestrator so far.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) PerformedActions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState) *string {
+		return v.PerformedActions
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An estimated percentage of the progress. Number between 0 and 100.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) Progress() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState) *float64 {
+		return v.Progress
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (Output)
+// Handle to the Progressive Rollouts API rollout resource, which contains
+// detailed information about a particular orchestration iteration.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) RolloutResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState) *string {
+		return v.RolloutResource
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Start time of the wave iteration.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState) *string {
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the iteration.
+// Possible values:
+// PROCESSING
+// COMPLETED
+// FAILED
+// CANCELLED
+// UNKNOWN
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	// Structure is documented below.
+	Details []V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs and V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	// Structure is documented below.
+	Details V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArray and V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArray{ V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArray []V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorInput
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArray) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArray) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.  There is a common set of
+// message types for APIs to use.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput) Details() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError) []V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail {
+		return v.Details
+	}).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError) *string {
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateError)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail struct {
+	// (Output)
+	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
+	TypeUrl *string `pulumi:"typeUrl"`
+	// (Output)
+	Value *string `pulumi:"value"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs and V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs struct {
+	// (Output)
+	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
+	TypeUrl pulumi.StringPtrInput `pulumi:"typeUrl"`
+	// (Output)
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArray and V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArray{ V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArray []V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailInput
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArray) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArray) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput {
+	return o
+}
+
+// (Output)
+// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput) TypeUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail) *string {
+		return v.TypeUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors []V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError `pulumi:"errors"`
+	// (Output)
+	// Number of orchestration actions which failed so far. For more details,
+	// query the Cloud Logs.
+	FailedActions *string `pulumi:"failedActions"`
+	// (Output)
+	// Finish time of the wave iteration.
+	FinishTime *string `pulumi:"finishTime"`
+	// (Output)
+	// Overall number of actions done by the orchestrator so far.
+	PerformedActions *string `pulumi:"performedActions"`
+	// (Output)
+	// An estimated percentage of the progress. Number between 0 and 100.
+	Progress *float64 `pulumi:"progress"`
+	// (Output)
+	// Handle to the Progressive Rollouts API rollout resource, which contains
+	// detailed information about a particular orchestration iteration.
+	RolloutResource *string `pulumi:"rolloutResource"`
+	// (Output)
+	// Start time of the wave iteration.
+	StartTime *string `pulumi:"startTime"`
+	// (Output)
+	// State of the iteration.
+	// Possible values:
+	// PROCESSING
+	// COMPLETED
+	// FAILED
+	// CANCELLED
+	// UNKNOWN
+	State *string `pulumi:"state"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs and V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs struct {
+	// (Output)
+	// The `Status` type defines a logical error model that is suitable for
+	// different programming environments, including REST APIs and RPC APIs. It is
+	// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+	// three pieces of data: error code, error message, and error details.
+	// You can find out more about this error model and how to work with it in the
+	// [API Design Guide](https://cloud.google.com/apis/design/errors).
+	// Structure is documented below.
+	Errors V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayInput `pulumi:"errors"`
+	// (Output)
+	// Number of orchestration actions which failed so far. For more details,
+	// query the Cloud Logs.
+	FailedActions pulumi.StringPtrInput `pulumi:"failedActions"`
+	// (Output)
+	// Finish time of the wave iteration.
+	FinishTime pulumi.StringPtrInput `pulumi:"finishTime"`
+	// (Output)
+	// Overall number of actions done by the orchestrator so far.
+	PerformedActions pulumi.StringPtrInput `pulumi:"performedActions"`
+	// (Output)
+	// An estimated percentage of the progress. Number between 0 and 100.
+	Progress pulumi.Float64PtrInput `pulumi:"progress"`
+	// (Output)
+	// Handle to the Progressive Rollouts API rollout resource, which contains
+	// detailed information about a particular orchestration iteration.
+	RolloutResource pulumi.StringPtrInput `pulumi:"rolloutResource"`
+	// (Output)
+	// Start time of the wave iteration.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// (Output)
+	// State of the iteration.
+	// Possible values:
+	// PROCESSING
+	// COMPLETED
+	// FAILED
+	// CANCELLED
+	// UNKNOWN
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArray and V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArray{ V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArray []V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateInput
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArray) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArray) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput {
+	return o
+}
+
+// (Output)
+// The `Status` type defines a logical error model that is suitable for
+// different programming environments, including REST APIs and RPC APIs. It is
+// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+// three pieces of data: error code, error message, and error details.
+// You can find out more about this error model and how to work with it in the
+// [API Design Guide](https://cloud.google.com/apis/design/errors).
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) Errors() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState) []V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError {
+		return v.Errors
+	}).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput)
+}
+
+// (Output)
+// Number of orchestration actions which failed so far. For more details,
+// query the Cloud Logs.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) FailedActions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState) *string {
+		return v.FailedActions
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Finish time of the wave iteration.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) FinishTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState) *string {
+		return v.FinishTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Overall number of actions done by the orchestrator so far.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) PerformedActions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState) *string {
+		return v.PerformedActions
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An estimated percentage of the progress. Number between 0 and 100.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) Progress() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState) *float64 {
+		return v.Progress
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (Output)
+// Handle to the Progressive Rollouts API rollout resource, which contains
+// detailed information about a particular orchestration iteration.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) RolloutResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState) *string {
+		return v.RolloutResource
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Start time of the wave iteration.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState) *string {
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the iteration.
+// Possible values:
+// PROCESSING
+// COMPLETED
+// FAILED
+// CANCELLED
+// UNKNOWN
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	// Structure is documented below.
+	Details []V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs and V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	// Structure is documented below.
+	Details V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArray and V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArray{ V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArray []V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorInput
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArray) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArray) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.  There is a common set of
+// message types for APIs to use.
+// Structure is documented below.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput) Details() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError) []V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail {
+		return v.Details
+	}).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError) *string {
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail struct {
+	// (Output)
+	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
+	TypeUrl *string `pulumi:"typeUrl"`
+	// (Output)
+	Value *string `pulumi:"value"`
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs and V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs{...}
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs struct {
+	// (Output)
+	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
+	TypeUrl pulumi.StringPtrInput `pulumi:"typeUrl"`
+	// (Output)
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput)
+}
+
+// V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayInput is an input type that accepts V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArray and V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput values.
+// You can construct a concrete instance of `V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayInput` via:
+//
+//	V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArray{ V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs{...} }
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayInput interface {
+	pulumi.Input
+
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput
+	ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutputWithContext(context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArray []V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailInput
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail)(nil)).Elem()
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArray) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput {
+	return i.ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutputWithContext(context.Background())
+}
+
+func (i V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArray) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput {
+	return o
+}
+
+// (Output)
+// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput) TypeUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail) *string {
+		return v.TypeUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail)(nil)).Elem()
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput() V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput) ToV2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutputWithContext(ctx context.Context) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput {
+	return o
+}
+
+func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput) Index(i pulumi.IntInput) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail {
+		return vs[0].([]V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail)[vs[1].(int)]
+	}).(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput)
+}
+
 type V2PolicyOrchestratorForOrganizationOrchestratedResource struct {
 	// Optional. ID of the resource to be used while generating set of affected resources.
 	// For UPSERT action the value is auto-generated during PolicyOrchestrator
@@ -40888,6 +51802,122 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentRolloutPtrInput)(nil)).Elem(), PatchDeploymentRolloutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentRolloutDisruptionBudgetInput)(nil)).Elem(), PatchDeploymentRolloutDisruptionBudgetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentRolloutDisruptionBudgetPtrInput)(nil)).Elem(), PatchDeploymentRolloutDisruptionBudgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourcePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopePtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayInput)(nil)).Elem(), V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForOrganizationOrchestratedResourceInput)(nil)).Elem(), V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForOrganizationOrchestratedResourcePtrInput)(nil)).Elem(), V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInput)(nil)).Elem(), V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs{})
@@ -41322,6 +52352,122 @@ func init() {
 	pulumi.RegisterOutputType(PatchDeploymentRolloutPtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentRolloutDisruptionBudgetOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentRolloutDisruptionBudgetPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourcePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforcePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFilePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidatePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFilePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFilePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFilePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemotePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourcePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationScopeOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorPtrOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStateOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStateArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArrayOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailOutput{})
+	pulumi.RegisterOutputType(V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArrayOutput{})
 	pulumi.RegisterOutputType(V2PolicyOrchestratorForOrganizationOrchestratedResourceOutput{})
 	pulumi.RegisterOutputType(V2PolicyOrchestratorForOrganizationOrchestratedResourcePtrOutput{})
 	pulumi.RegisterOutputType(V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOutput{})
