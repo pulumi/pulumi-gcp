@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string BucketName;
         /// <summary>
+        /// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+        /// </summary>
+        public readonly bool? ManagedPrivateNetwork;
+        /// <summary>
         /// S3 Bucket path in bucket to transfer.
         /// </summary>
         public readonly string? Path;
@@ -36,12 +40,15 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             string bucketName,
 
+            bool? managedPrivateNetwork,
+
             string? path,
 
             string? roleArn)
         {
             AwsAccessKey = awsAccessKey;
             BucketName = bucketName;
+            ManagedPrivateNetwork = managedPrivateNetwork;
             Path = path;
             RoleArn = roleArn;
         }

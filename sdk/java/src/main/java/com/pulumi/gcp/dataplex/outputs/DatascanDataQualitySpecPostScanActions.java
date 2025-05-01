@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecPostScanActionsBigqueryExport;
+import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecPostScanActionsNotificationReport;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,12 @@ public final class DatascanDataQualitySpecPostScanActions {
      * 
      */
     private @Nullable DatascanDataQualitySpecPostScanActionsBigqueryExport bigqueryExport;
+    /**
+     * @return The configuration of notification report post scan action.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DatascanDataQualitySpecPostScanActionsNotificationReport notificationReport;
 
     private DatascanDataQualitySpecPostScanActions() {}
     /**
@@ -26,6 +33,14 @@ public final class DatascanDataQualitySpecPostScanActions {
      */
     public Optional<DatascanDataQualitySpecPostScanActionsBigqueryExport> bigqueryExport() {
         return Optional.ofNullable(this.bigqueryExport);
+    }
+    /**
+     * @return The configuration of notification report post scan action.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DatascanDataQualitySpecPostScanActionsNotificationReport> notificationReport() {
+        return Optional.ofNullable(this.notificationReport);
     }
 
     public static Builder builder() {
@@ -38,10 +53,12 @@ public final class DatascanDataQualitySpecPostScanActions {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable DatascanDataQualitySpecPostScanActionsBigqueryExport bigqueryExport;
+        private @Nullable DatascanDataQualitySpecPostScanActionsNotificationReport notificationReport;
         public Builder() {}
         public Builder(DatascanDataQualitySpecPostScanActions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bigqueryExport = defaults.bigqueryExport;
+    	      this.notificationReport = defaults.notificationReport;
         }
 
         @CustomType.Setter
@@ -50,9 +67,16 @@ public final class DatascanDataQualitySpecPostScanActions {
             this.bigqueryExport = bigqueryExport;
             return this;
         }
+        @CustomType.Setter
+        public Builder notificationReport(@Nullable DatascanDataQualitySpecPostScanActionsNotificationReport notificationReport) {
+
+            this.notificationReport = notificationReport;
+            return this;
+        }
         public DatascanDataQualitySpecPostScanActions build() {
             final var _resultValue = new DatascanDataQualitySpecPostScanActions();
             _resultValue.bigqueryExport = bigqueryExport;
+            _resultValue.notificationReport = notificationReport;
             return _resultValue;
         }
     }

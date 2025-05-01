@@ -6,6 +6,7 @@ package com.pulumi.gcp.storage.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,6 +24,11 @@ public final class TransferJobTransferSpecAwsS3DataSource {
      * 
      */
     private String bucketName;
+    /**
+     * @return Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+     * 
+     */
+    private @Nullable Boolean managedPrivateNetwork;
     /**
      * @return S3 Bucket path in bucket to transfer.
      * 
@@ -50,6 +56,13 @@ public final class TransferJobTransferSpecAwsS3DataSource {
         return this.bucketName;
     }
     /**
+     * @return Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+     * 
+     */
+    public Optional<Boolean> managedPrivateNetwork() {
+        return Optional.ofNullable(this.managedPrivateNetwork);
+    }
+    /**
      * @return S3 Bucket path in bucket to transfer.
      * 
      */
@@ -75,6 +88,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
     public static final class Builder {
         private @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey;
         private String bucketName;
+        private @Nullable Boolean managedPrivateNetwork;
         private @Nullable String path;
         private @Nullable String roleArn;
         public Builder() {}
@@ -82,6 +96,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccessKey = defaults.awsAccessKey;
     	      this.bucketName = defaults.bucketName;
+    	      this.managedPrivateNetwork = defaults.managedPrivateNetwork;
     	      this.path = defaults.path;
     	      this.roleArn = defaults.roleArn;
         }
@@ -101,6 +116,12 @@ public final class TransferJobTransferSpecAwsS3DataSource {
             return this;
         }
         @CustomType.Setter
+        public Builder managedPrivateNetwork(@Nullable Boolean managedPrivateNetwork) {
+
+            this.managedPrivateNetwork = managedPrivateNetwork;
+            return this;
+        }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
 
             this.path = path;
@@ -116,6 +137,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
             final var _resultValue = new TransferJobTransferSpecAwsS3DataSource();
             _resultValue.awsAccessKey = awsAccessKey;
             _resultValue.bucketName = bucketName;
+            _resultValue.managedPrivateNetwork = managedPrivateNetwork;
             _resultValue.path = path;
             _resultValue.roleArn = roleArn;
             return _resultValue;

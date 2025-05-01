@@ -64,7 +64,6 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 },
     ///             },
     ///         },
-    ///         Suspended = false,
     ///         Rules = new[]
     ///         {
     ///             new Gcp.CloudDeploy.Inputs.AutomationRuleArgs
@@ -72,6 +71,43 @@ namespace Pulumi.Gcp.CloudDeploy
     ///                 PromoteReleaseRule = new Gcp.CloudDeploy.Inputs.AutomationRulePromoteReleaseRuleArgs
     ///                 {
     ///                     Id = "promote-release",
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudDeploy.Inputs.AutomationRuleArgs
+    ///             {
+    ///                 AdvanceRolloutRule = new Gcp.CloudDeploy.Inputs.AutomationRuleAdvanceRolloutRuleArgs
+    ///                 {
+    ///                     Id = "advance-rollout",
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudDeploy.Inputs.AutomationRuleArgs
+    ///             {
+    ///                 RepairRolloutRule = new Gcp.CloudDeploy.Inputs.AutomationRuleRepairRolloutRuleArgs
+    ///                 {
+    ///                     Id = "repair-rollout",
+    ///                     RepairPhases = new[]
+    ///                     {
+    ///                         new Gcp.CloudDeploy.Inputs.AutomationRuleRepairRolloutRuleRepairPhaseArgs
+    ///                         {
+    ///                             Retry = new Gcp.CloudDeploy.Inputs.AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs
+    ///                             {
+    ///                                 Attempts = "1",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.CloudDeploy.Inputs.AutomationRuleRepairRolloutRuleRepairPhaseArgs
+    ///                         {
+    ///                             Rollback = null,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.CloudDeploy.Inputs.AutomationRuleArgs
+    ///             {
+    ///                 TimedPromoteReleaseRule = new Gcp.CloudDeploy.Inputs.AutomationRuleTimedPromoteReleaseRuleArgs
+    ///                 {
+    ///                     Id = "timed-promote-release",
+    ///                     Schedule = "0 9 * * 1",
+    ///                     TimeZone = "America/New_York",
     ///                 },
     ///             },
     ///         },

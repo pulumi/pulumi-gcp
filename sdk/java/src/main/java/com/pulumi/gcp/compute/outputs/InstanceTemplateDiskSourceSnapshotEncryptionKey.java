@@ -4,7 +4,6 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,10 +13,11 @@ import javax.annotation.Nullable;
 public final class InstanceTemplateDiskSourceSnapshotEncryptionKey {
     /**
      * @return The self link of the encryption key that is
-     * stored in Google Cloud KMS.
+     * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
      * 
      */
-    private String kmsKeySelfLink;
+    private @Nullable String kmsKeySelfLink;
     /**
      * @return The service account being used for the
      * encryption request for the given KMS key. If absent, the Compute Engine
@@ -25,15 +25,32 @@ public final class InstanceTemplateDiskSourceSnapshotEncryptionKey {
      * 
      */
     private @Nullable String kmsKeyServiceAccount;
+    /**
+     * @return A 256-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+     * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+     * to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
+     * 
+     */
+    private @Nullable String rawKey;
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
+     * 
+     */
+    private @Nullable String rsaEncryptedKey;
 
     private InstanceTemplateDiskSourceSnapshotEncryptionKey() {}
     /**
      * @return The self link of the encryption key that is
-     * stored in Google Cloud KMS.
+     * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
      * 
      */
-    public String kmsKeySelfLink() {
-        return this.kmsKeySelfLink;
+    public Optional<String> kmsKeySelfLink() {
+        return Optional.ofNullable(this.kmsKeySelfLink);
     }
     /**
      * @return The service account being used for the
@@ -43,6 +60,26 @@ public final class InstanceTemplateDiskSourceSnapshotEncryptionKey {
      */
     public Optional<String> kmsKeyServiceAccount() {
         return Optional.ofNullable(this.kmsKeyServiceAccount);
+    }
+    /**
+     * @return A 256-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+     * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+     * to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
+     * 
+     */
+    public Optional<String> rawKey() {
+        return Optional.ofNullable(this.rawKey);
+    }
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt this snapshot. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
+     * 
+     */
+    public Optional<String> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
     }
 
     public static Builder builder() {
@@ -54,20 +91,22 @@ public final class InstanceTemplateDiskSourceSnapshotEncryptionKey {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String kmsKeySelfLink;
+        private @Nullable String kmsKeySelfLink;
         private @Nullable String kmsKeyServiceAccount;
+        private @Nullable String rawKey;
+        private @Nullable String rsaEncryptedKey;
         public Builder() {}
         public Builder(InstanceTemplateDiskSourceSnapshotEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
+    	      this.rawKey = defaults.rawKey;
+    	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
         }
 
         @CustomType.Setter
-        public Builder kmsKeySelfLink(String kmsKeySelfLink) {
-            if (kmsKeySelfLink == null) {
-              throw new MissingRequiredPropertyException("InstanceTemplateDiskSourceSnapshotEncryptionKey", "kmsKeySelfLink");
-            }
+        public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
+
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
@@ -77,10 +116,24 @@ public final class InstanceTemplateDiskSourceSnapshotEncryptionKey {
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
+        @CustomType.Setter
+        public Builder rawKey(@Nullable String rawKey) {
+
+            this.rawKey = rawKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rsaEncryptedKey(@Nullable String rsaEncryptedKey) {
+
+            this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
         public InstanceTemplateDiskSourceSnapshotEncryptionKey build() {
             final var _resultValue = new InstanceTemplateDiskSourceSnapshotEncryptionKey();
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            _resultValue.rawKey = rawKey;
+            _resultValue.rsaEncryptedKey = rsaEncryptedKey;
             return _resultValue;
         }
     }

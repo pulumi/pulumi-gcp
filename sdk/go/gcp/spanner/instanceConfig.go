@@ -63,8 +63,8 @@ type InstanceConfig struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
 	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// A unique identifier for the instance configuration. Values are of the
-	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	// A unique identifier for the instance configuration. Values are of the form
+	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
@@ -130,8 +130,8 @@ type instanceConfigState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
 	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A unique identifier for the instance configuration. Values are of the
-	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	// A unique identifier for the instance configuration. Values are of the form
+	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
@@ -157,8 +157,8 @@ type InstanceConfigState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
 	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A unique identifier for the instance configuration. Values are of the
-	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	// A unique identifier for the instance configuration. Values are of the form
+	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
@@ -184,8 +184,8 @@ type instanceConfigArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
 	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A unique identifier for the instance configuration. Values are of the
-	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	// A unique identifier for the instance configuration. Values are of the form
+	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The geographic placement of nodes in this instance configuration and their replication properties.
@@ -205,8 +205,8 @@ type InstanceConfigArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
 	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A unique identifier for the instance configuration. Values are of the
-	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	// A unique identifier for the instance configuration. Values are of the form
+	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The geographic placement of nodes in this instance configuration and their replication properties.
@@ -330,8 +330,8 @@ func (o InstanceConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// A unique identifier for the instance configuration. Values are of the
-// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+// A unique identifier for the instance configuration. Values are of the form
+// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
 func (o InstanceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

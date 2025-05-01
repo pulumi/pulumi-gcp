@@ -222,6 +222,86 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Account Connector New Relic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.AccountConnector;
+ * import com.pulumi.gcp.developerconnect.AccountConnectorArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.AccountConnectorProviderOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_account_connector = new AccountConnector("my-account-connector", AccountConnectorArgs.builder()
+ *             .location("us-central1")
+ *             .accountConnectorId("tf-test-ac")
+ *             .providerOauthConfig(AccountConnectorProviderOauthConfigArgs.builder()
+ *                 .systemProviderId("NEW_RELIC")
+ *                 .scopes()
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Account Connector Datastax
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.AccountConnector;
+ * import com.pulumi.gcp.developerconnect.AccountConnectorArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.AccountConnectorProviderOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_account_connector = new AccountConnector("my-account-connector", AccountConnectorArgs.builder()
+ *             .location("us-central1")
+ *             .accountConnectorId("tf-test-ac")
+ *             .providerOauthConfig(AccountConnectorProviderOauthConfigArgs.builder()
+ *                 .systemProviderId("DATASTAX")
+ *                 .scopes()
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

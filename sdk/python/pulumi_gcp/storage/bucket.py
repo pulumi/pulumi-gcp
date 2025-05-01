@@ -433,7 +433,9 @@ class _BucketState:
                  self_link: Optional[pulumi.Input[builtins.str]] = None,
                  soft_delete_policy: Optional[pulumi.Input['BucketSoftDeletePolicyArgs']] = None,
                  storage_class: Optional[pulumi.Input[builtins.str]] = None,
+                 time_created: Optional[pulumi.Input[builtins.str]] = None,
                  uniform_bucket_level_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 updated: Optional[pulumi.Input[builtins.str]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
@@ -468,7 +470,9 @@ class _BucketState:
         :param pulumi.Input['BucketSoftDeletePolicyArgs'] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
                be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
         :param pulumi.Input[builtins.str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[builtins.str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[builtins.bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+        :param pulumi.Input[builtins.str] updated: The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
         :param pulumi.Input[builtins.str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         :param pulumi.Input['BucketWebsiteArgs'] website: Configuration if the bucket acts as a website. Structure is documented below.
@@ -521,8 +525,12 @@ class _BucketState:
             pulumi.set(__self__, "soft_delete_policy", soft_delete_policy)
         if storage_class is not None:
             pulumi.set(__self__, "storage_class", storage_class)
+        if time_created is not None:
+            pulumi.set(__self__, "time_created", time_created)
         if uniform_bucket_level_access is not None:
             pulumi.set(__self__, "uniform_bucket_level_access", uniform_bucket_level_access)
+        if updated is not None:
+            pulumi.set(__self__, "updated", updated)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if versioning is not None:
@@ -822,6 +830,18 @@ class _BucketState:
         pulumi.set(self, "storage_class", value)
 
     @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The creation time of the bucket in RFC 3339 format.
+        """
+        return pulumi.get(self, "time_created")
+
+    @time_created.setter
+    def time_created(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "time_created", value)
+
+    @property
     @pulumi.getter(name="uniformBucketLevelAccess")
     def uniform_bucket_level_access(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -832,6 +852,18 @@ class _BucketState:
     @uniform_bucket_level_access.setter
     def uniform_bucket_level_access(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "uniform_bucket_level_access", value)
+
+    @property
+    @pulumi.getter
+    def updated(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+        """
+        return pulumi.get(self, "updated")
+
+    @updated.setter
+    def updated(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "updated", value)
 
     @property
     @pulumi.getter
@@ -1322,6 +1354,8 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["project_number"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["time_created"] = None
+            __props__.__dict__["updated"] = None
             __props__.__dict__["url"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1359,7 +1393,9 @@ class Bucket(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[builtins.str]] = None,
             soft_delete_policy: Optional[pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']]] = None,
             storage_class: Optional[pulumi.Input[builtins.str]] = None,
+            time_created: Optional[pulumi.Input[builtins.str]] = None,
             uniform_bucket_level_access: Optional[pulumi.Input[builtins.bool]] = None,
+            updated: Optional[pulumi.Input[builtins.str]] = None,
             url: Optional[pulumi.Input[builtins.str]] = None,
             versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
             website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None) -> 'Bucket':
@@ -1399,7 +1435,9 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Union['BucketSoftDeletePolicyArgs', 'BucketSoftDeletePolicyArgsDict']] soft_delete_policy: The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot
                be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
         :param pulumi.Input[builtins.str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[builtins.str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[builtins.bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
+        :param pulumi.Input[builtins.str] updated: The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
         :param pulumi.Input[builtins.str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         :param pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']] website: Configuration if the bucket acts as a website. Structure is documented below.
@@ -1432,7 +1470,9 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["soft_delete_policy"] = soft_delete_policy
         __props__.__dict__["storage_class"] = storage_class
+        __props__.__dict__["time_created"] = time_created
         __props__.__dict__["uniform_bucket_level_access"] = uniform_bucket_level_access
+        __props__.__dict__["updated"] = updated
         __props__.__dict__["url"] = url
         __props__.__dict__["versioning"] = versioning
         __props__.__dict__["website"] = website
@@ -1634,12 +1674,28 @@ class Bucket(pulumi.CustomResource):
         return pulumi.get(self, "storage_class")
 
     @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> pulumi.Output[builtins.str]:
+        """
+        The creation time of the bucket in RFC 3339 format.
+        """
+        return pulumi.get(self, "time_created")
+
+    @property
     @pulumi.getter(name="uniformBucketLevelAccess")
     def uniform_bucket_level_access(self) -> pulumi.Output[builtins.bool]:
         """
         Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         """
         return pulumi.get(self, "uniform_bucket_level_access")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> pulumi.Output[builtins.str]:
+        """
+        The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+        """
+        return pulumi.get(self, "updated")
 
     @property
     @pulumi.getter

@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
+        /// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+        /// </summary>
+        [Input("managedPrivateNetwork")]
+        public Input<bool>? ManagedPrivateNetwork { get; set; }
+
+        /// <summary>
         /// S3 Bucket path in bucket to transfer.
         /// </summary>
         [Input("path")]

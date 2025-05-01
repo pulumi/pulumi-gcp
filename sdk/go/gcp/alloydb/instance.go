@@ -274,7 +274,7 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Instance level network configuration.
 	// Structure is documented below.
-	NetworkConfig InstanceNetworkConfigPtrOutput `pulumi:"networkConfig"`
+	NetworkConfig InstanceNetworkConfigOutput `pulumi:"networkConfig"`
 	// Configuration for enhanced query insights.
 	// Structure is documented below.
 	ObservabilityConfig InstanceObservabilityConfigOutput `pulumi:"observabilityConfig"`
@@ -810,8 +810,8 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 
 // Instance level network configuration.
 // Structure is documented below.
-func (o InstanceOutput) NetworkConfig() InstanceNetworkConfigPtrOutput {
-	return o.ApplyT(func(v *Instance) InstanceNetworkConfigPtrOutput { return v.NetworkConfig }).(InstanceNetworkConfigPtrOutput)
+func (o InstanceOutput) NetworkConfig() InstanceNetworkConfigOutput {
+	return o.ApplyT(func(v *Instance) InstanceNetworkConfigOutput { return v.NetworkConfig }).(InstanceNetworkConfigOutput)
 }
 
 // Configuration for enhanced query insights.

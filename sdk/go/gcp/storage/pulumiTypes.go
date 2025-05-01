@@ -11716,6 +11716,8 @@ type TransferJobTransferSpecAwsS3DataSource struct {
 	AwsAccessKey *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
 	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
+	// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+	ManagedPrivateNetwork *bool `pulumi:"managedPrivateNetwork"`
 	// S3 Bucket path in bucket to transfer.
 	Path *string `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
@@ -11738,6 +11740,8 @@ type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+	ManagedPrivateNetwork pulumi.BoolPtrInput `pulumi:"managedPrivateNetwork"`
 	// S3 Bucket path in bucket to transfer.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
@@ -11833,6 +11837,11 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.String
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+func (o TransferJobTransferSpecAwsS3DataSourceOutput) ManagedPrivateNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *bool { return v.ManagedPrivateNetwork }).(pulumi.BoolPtrOutput)
+}
+
 // S3 Bucket path in bucket to transfer.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *string { return v.Path }).(pulumi.StringPtrOutput)
@@ -11885,6 +11894,16 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.Str
 		}
 		return &v.BucketName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) ManagedPrivateNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedPrivateNetwork
+	}).(pulumi.BoolPtrOutput)
 }
 
 // S3 Bucket path in bucket to transfer.

@@ -5,9 +5,10 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InstanceTemplateDiskDiskEncryptionKeyArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,21 +19,41 @@ public final class InstanceTemplateDiskDiskEncryptionKeyArgs extends com.pulumi.
      * The self link of the encryption key that is stored in Google Cloud KMS
      * 
      */
-    @Import(name="kmsKeySelfLink", required=true)
-    private Output<String> kmsKeySelfLink;
+    @Import(name="kmsKeySelfLink")
+    private @Nullable Output<String> kmsKeySelfLink;
 
     /**
      * @return The self link of the encryption key that is stored in Google Cloud KMS
      * 
      */
-    public Output<String> kmsKeySelfLink() {
-        return this.kmsKeySelfLink;
+    public Optional<Output<String>> kmsKeySelfLink() {
+        return Optional.ofNullable(this.kmsKeySelfLink);
+    }
+
+    /**
+     * The service account being used for the
+     * encryption request for the given KMS key. If absent, the Compute Engine
+     * default service account is used.
+     * 
+     */
+    @Import(name="kmsKeyServiceAccount")
+    private @Nullable Output<String> kmsKeyServiceAccount;
+
+    /**
+     * @return The service account being used for the
+     * encryption request for the given KMS key. If absent, the Compute Engine
+     * default service account is used.
+     * 
+     */
+    public Optional<Output<String>> kmsKeyServiceAccount() {
+        return Optional.ofNullable(this.kmsKeyServiceAccount);
     }
 
     private InstanceTemplateDiskDiskEncryptionKeyArgs() {}
 
     private InstanceTemplateDiskDiskEncryptionKeyArgs(InstanceTemplateDiskDiskEncryptionKeyArgs $) {
         this.kmsKeySelfLink = $.kmsKeySelfLink;
+        this.kmsKeyServiceAccount = $.kmsKeyServiceAccount;
     }
 
     public static Builder builder() {
@@ -59,7 +80,7 @@ public final class InstanceTemplateDiskDiskEncryptionKeyArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder kmsKeySelfLink(Output<String> kmsKeySelfLink) {
+        public Builder kmsKeySelfLink(@Nullable Output<String> kmsKeySelfLink) {
             $.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
@@ -74,10 +95,32 @@ public final class InstanceTemplateDiskDiskEncryptionKeyArgs extends com.pulumi.
             return kmsKeySelfLink(Output.of(kmsKeySelfLink));
         }
 
+        /**
+         * @param kmsKeyServiceAccount The service account being used for the
+         * encryption request for the given KMS key. If absent, the Compute Engine
+         * default service account is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyServiceAccount(@Nullable Output<String> kmsKeyServiceAccount) {
+            $.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyServiceAccount The service account being used for the
+         * encryption request for the given KMS key. If absent, the Compute Engine
+         * default service account is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyServiceAccount(String kmsKeyServiceAccount) {
+            return kmsKeyServiceAccount(Output.of(kmsKeyServiceAccount));
+        }
+
         public InstanceTemplateDiskDiskEncryptionKeyArgs build() {
-            if ($.kmsKeySelfLink == null) {
-                throw new MissingRequiredPropertyException("InstanceTemplateDiskDiskEncryptionKeyArgs", "kmsKeySelfLink");
-            }
             return $;
         }
     }

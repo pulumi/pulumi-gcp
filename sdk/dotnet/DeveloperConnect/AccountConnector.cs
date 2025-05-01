@@ -144,6 +144,52 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// ### Developer Connect Account Connector New Relic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_account_connector = new Gcp.DeveloperConnect.AccountConnector("my-account-connector", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         AccountConnectorId = "tf-test-ac",
+    ///         ProviderOauthConfig = new Gcp.DeveloperConnect.Inputs.AccountConnectorProviderOauthConfigArgs
+    ///         {
+    ///             SystemProviderId = "NEW_RELIC",
+    ///             Scopes = new() { },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Account Connector Datastax
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_account_connector = new Gcp.DeveloperConnect.AccountConnector("my-account-connector", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         AccountConnectorId = "tf-test-ac",
+    ///         ProviderOauthConfig = new Gcp.DeveloperConnect.Inputs.AccountConnectorProviderOauthConfigArgs
+    ///         {
+    ///             SystemProviderId = "DATASTAX",
+    ///             Scopes = new() { },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

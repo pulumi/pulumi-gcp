@@ -605,12 +605,40 @@ class Automation(pulumi.CustomResource):
                     "id": "*",
                 }],
             },
-            suspended=False,
-            rules=[{
-                "promote_release_rule": {
-                    "id": "promote-release",
+            rules=[
+                {
+                    "promote_release_rule": {
+                        "id": "promote-release",
+                    },
                 },
-            }])
+                {
+                    "advance_rollout_rule": {
+                        "id": "advance-rollout",
+                    },
+                },
+                {
+                    "repair_rollout_rule": {
+                        "id": "repair-rollout",
+                        "repair_phases": [
+                            {
+                                "retry": {
+                                    "attempts": "1",
+                                },
+                            },
+                            {
+                                "rollback": {},
+                            },
+                        ],
+                    },
+                },
+                {
+                    "timed_promote_release_rule": {
+                        "id": "timed-promote-release",
+                        "schedule": "0 9 * * 1",
+                        "time_zone": "America/New_York",
+                    },
+                },
+            ])
         ```
         ### Clouddeploy Automation Full
 
@@ -796,12 +824,40 @@ class Automation(pulumi.CustomResource):
                     "id": "*",
                 }],
             },
-            suspended=False,
-            rules=[{
-                "promote_release_rule": {
-                    "id": "promote-release",
+            rules=[
+                {
+                    "promote_release_rule": {
+                        "id": "promote-release",
+                    },
                 },
-            }])
+                {
+                    "advance_rollout_rule": {
+                        "id": "advance-rollout",
+                    },
+                },
+                {
+                    "repair_rollout_rule": {
+                        "id": "repair-rollout",
+                        "repair_phases": [
+                            {
+                                "retry": {
+                                    "attempts": "1",
+                                },
+                            },
+                            {
+                                "rollback": {},
+                            },
+                        ],
+                    },
+                },
+                {
+                    "timed_promote_release_rule": {
+                        "id": "timed-promote-release",
+                        "schedule": "0 9 * * 1",
+                        "time_zone": "America/New_York",
+                    },
+                },
+            ])
         ```
         ### Clouddeploy Automation Full
 

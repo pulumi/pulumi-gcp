@@ -124,6 +124,8 @@ type StoragePool struct {
 	AllowAutoTiering pulumi.BoolPtrOutput `pulumi:"allowAutoTiering"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
+	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+	CustomPerformanceEnabled pulumi.BoolPtrOutput `pulumi:"customPerformanceEnabled"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -161,6 +163,10 @@ type StoragePool struct {
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringOutput `pulumi:"serviceLevel"`
+	// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+	TotalIops pulumi.StringPtrOutput `pulumi:"totalIops"`
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	TotalThroughputMibps pulumi.StringPtrOutput `pulumi:"totalThroughputMibps"`
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib pulumi.StringOutput `pulumi:"volumeCapacityGib"`
 	// Number of volume in the storage pool.
@@ -226,6 +232,8 @@ type storagePoolState struct {
 	AllowAutoTiering *bool `pulumi:"allowAutoTiering"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
+	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+	CustomPerformanceEnabled *bool `pulumi:"customPerformanceEnabled"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -263,6 +271,10 @@ type storagePoolState struct {
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel *string `pulumi:"serviceLevel"`
+	// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+	TotalIops *string `pulumi:"totalIops"`
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	TotalThroughputMibps *string `pulumi:"totalThroughputMibps"`
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib *string `pulumi:"volumeCapacityGib"`
 	// Number of volume in the storage pool.
@@ -282,6 +294,8 @@ type StoragePoolState struct {
 	AllowAutoTiering pulumi.BoolPtrInput
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringPtrInput
+	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+	CustomPerformanceEnabled pulumi.BoolPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -319,6 +333,10 @@ type StoragePoolState struct {
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringPtrInput
+	// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+	TotalIops pulumi.StringPtrInput
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	TotalThroughputMibps pulumi.StringPtrInput
 	// Size allocated to volumes in the storage pool (in GiB).
 	VolumeCapacityGib pulumi.StringPtrInput
 	// Number of volume in the storage pool.
@@ -342,6 +360,8 @@ type storagePoolArgs struct {
 	AllowAutoTiering *bool `pulumi:"allowAutoTiering"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib string `pulumi:"capacityGib"`
+	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+	CustomPerformanceEnabled *bool `pulumi:"customPerformanceEnabled"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
@@ -372,6 +392,10 @@ type storagePoolArgs struct {
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel string `pulumi:"serviceLevel"`
+	// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+	TotalIops *string `pulumi:"totalIops"`
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	TotalThroughputMibps *string `pulumi:"totalThroughputMibps"`
 	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -388,6 +412,8 @@ type StoragePoolArgs struct {
 	AllowAutoTiering pulumi.BoolPtrInput
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringInput
+	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+	CustomPerformanceEnabled pulumi.BoolPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
@@ -418,6 +444,10 @@ type StoragePoolArgs struct {
 	// Service level of the storage pool.
 	// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 	ServiceLevel pulumi.StringInput
+	// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+	TotalIops pulumi.StringPtrInput
+	// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+	TotalThroughputMibps pulumi.StringPtrInput
 	// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -528,6 +558,11 @@ func (o StoragePoolOutput) CapacityGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.CapacityGib }).(pulumi.StringOutput)
 }
 
+// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+func (o StoragePoolOutput) CustomPerformanceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.BoolPtrOutput { return v.CustomPerformanceEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // An optional description of this resource.
 func (o StoragePoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -602,6 +637,16 @@ func (o StoragePoolOutput) ReplicaZone() pulumi.StringPtrOutput {
 // Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
 func (o StoragePoolOutput) ServiceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ServiceLevel }).(pulumi.StringOutput)
+}
+
+// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+func (o StoragePoolOutput) TotalIops() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.TotalIops }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+func (o StoragePoolOutput) TotalThroughputMibps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.TotalThroughputMibps }).(pulumi.StringPtrOutput)
 }
 
 // Size allocated to volumes in the storage pool (in GiB).

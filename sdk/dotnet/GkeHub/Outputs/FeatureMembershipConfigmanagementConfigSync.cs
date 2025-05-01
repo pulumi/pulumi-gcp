@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagementConfigSync
     {
         /// <summary>
-        /// The override configurations for the Config Sync Deployments. Structure is documented below.
+        /// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
         /// </summary>
         public readonly ImmutableArray<Outputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> DeploymentOverrides;
         /// <summary>

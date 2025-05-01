@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A rule for the RegionSecurityPolicy.
+ *
+ * To get more information about RegionSecurityPolicyRule, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionSecurityPolicies/addRule)
+ * * How-to Guides
+ *     * [Creating region security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
+ *
  * ## Example Usage
  *
  * ### Region Security Policy Rule Basic

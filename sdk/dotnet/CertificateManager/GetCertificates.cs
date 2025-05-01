@@ -26,6 +26,13 @@ namespace Pulumi.Gcp.CertificateManager
         /// {
         ///     var @default = Gcp.CertificateManager.GetCertificates.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
+        ///         {
+        ///             return cert.Name;
+        ///         }).ToList()),
+        ///     };
         /// });
         /// ```
         /// 
@@ -44,6 +51,39 @@ namespace Pulumi.Gcp.CertificateManager
         ///         Filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
+        ///         {
+        ///             return cert.Name;
+        ///         }).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Regional Certificates With A Filter
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificates.Invoke(new()
+        ///     {
+        ///         Region = "REGION",
+        ///         Filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
+        ///         {
+        ///             return cert.Name;
+        ///         }).ToList()),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -65,6 +105,13 @@ namespace Pulumi.Gcp.CertificateManager
         /// {
         ///     var @default = Gcp.CertificateManager.GetCertificates.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
+        ///         {
+        ///             return cert.Name;
+        ///         }).ToList()),
+        ///     };
         /// });
         /// ```
         /// 
@@ -83,6 +130,39 @@ namespace Pulumi.Gcp.CertificateManager
         ///         Filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
+        ///         {
+        ///             return cert.Name;
+        ///         }).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Regional Certificates With A Filter
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificates.Invoke(new()
+        ///     {
+        ///         Region = "REGION",
+        ///         Filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
+        ///         {
+        ///             return cert.Name;
+        ///         }).ToList()),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -104,6 +184,13 @@ namespace Pulumi.Gcp.CertificateManager
         /// {
         ///     var @default = Gcp.CertificateManager.GetCertificates.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
+        ///         {
+        ///             return cert.Name;
+        ///         }).ToList()),
+        ///     };
         /// });
         /// ```
         /// 
@@ -122,6 +209,39 @@ namespace Pulumi.Gcp.CertificateManager
         ///         Filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
         ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
+        ///         {
+        ///             return cert.Name;
+        ///         }).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Regional Certificates With A Filter
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificates.Invoke(new()
+        ///     {
+        ///         Region = "REGION",
+        ///         Filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificatesNames"] = @default.Apply(@default =&gt; .Select(cert =&gt; 
+        ///         {
+        ///             return cert.Name;
+        ///         }).ToList()),
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -174,6 +294,9 @@ namespace Pulumi.Gcp.CertificateManager
     [OutputType]
     public sealed class GetCertificatesResult
     {
+        /// <summary>
+        /// A list of all retrieved certificates. See gcp.certificatemanager.Certificate resource for details of the available attributes.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCertificatesCertificateResult> Certificates;
         public readonly string? Filter;
         /// <summary>

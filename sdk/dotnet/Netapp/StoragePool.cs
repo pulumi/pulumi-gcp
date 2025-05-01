@@ -123,6 +123,12 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> CapacityGib { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        /// </summary>
+        [Output("customPerformanceEnabled")]
+        public Output<bool?> CustomPerformanceEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Output("description")]
@@ -211,6 +217,18 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("serviceLevel")]
         public Output<string> ServiceLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        /// </summary>
+        [Output("totalIops")]
+        public Output<string?> TotalIops { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        /// </summary>
+        [Output("totalThroughputMibps")]
+        public Output<string?> TotalThroughputMibps { get; private set; } = null!;
 
         /// <summary>
         /// Size allocated to volumes in the storage pool (in GiB).
@@ -304,6 +322,12 @@ namespace Pulumi.Gcp.Netapp
         public Input<string> CapacityGib { get; set; } = null!;
 
         /// <summary>
+        /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        /// </summary>
+        [Input("customPerformanceEnabled")]
+        public Input<bool>? CustomPerformanceEnabled { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
@@ -381,6 +405,18 @@ namespace Pulumi.Gcp.Netapp
         public Input<string> ServiceLevel { get; set; } = null!;
 
         /// <summary>
+        /// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        /// </summary>
+        [Input("totalIops")]
+        public Input<string>? TotalIops { get; set; }
+
+        /// <summary>
+        /// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        /// </summary>
+        [Input("totalThroughputMibps")]
+        public Input<string>? TotalThroughputMibps { get; set; }
+
+        /// <summary>
         /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
         /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -415,6 +451,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("capacityGib")]
         public Input<string>? CapacityGib { get; set; }
+
+        /// <summary>
+        /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        /// </summary>
+        [Input("customPerformanceEnabled")]
+        public Input<bool>? CustomPerformanceEnabled { get; set; }
 
         /// <summary>
         /// An optional description of this resource.
@@ -531,6 +573,18 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("serviceLevel")]
         public Input<string>? ServiceLevel { get; set; }
+
+        /// <summary>
+        /// Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        /// </summary>
+        [Input("totalIops")]
+        public Input<string>? TotalIops { get; set; }
+
+        /// <summary>
+        /// Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        /// </summary>
+        [Input("totalThroughputMibps")]
+        public Input<string>? TotalThroughputMibps { get; set; }
 
         /// <summary>
         /// Size allocated to volumes in the storage pool (in GiB).

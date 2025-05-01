@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         private InputList<Inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideGetArgs>? _deploymentOverrides;
 
         /// <summary>
-        /// The override configurations for the Config Sync Deployments. Structure is documented below.
+        /// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
         /// </summary>
         public InputList<Inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideGetArgs> DeploymentOverrides
         {

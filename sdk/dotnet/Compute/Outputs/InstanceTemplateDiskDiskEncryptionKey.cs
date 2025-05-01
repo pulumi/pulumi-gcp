@@ -16,12 +16,22 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The self link of the encryption key that is stored in Google Cloud KMS
         /// </summary>
-        public readonly string KmsKeySelfLink;
+        public readonly string? KmsKeySelfLink;
+        /// <summary>
+        /// The service account being used for the
+        /// encryption request for the given KMS key. If absent, the Compute Engine
+        /// default service account is used.
+        /// </summary>
+        public readonly string? KmsKeyServiceAccount;
 
         [OutputConstructor]
-        private InstanceTemplateDiskDiskEncryptionKey(string kmsKeySelfLink)
+        private InstanceTemplateDiskDiskEncryptionKey(
+            string? kmsKeySelfLink,
+
+            string? kmsKeyServiceAccount)
         {
             KmsKeySelfLink = kmsKeySelfLink;
+            KmsKeyServiceAccount = kmsKeyServiceAccount;
         }
     }
 }

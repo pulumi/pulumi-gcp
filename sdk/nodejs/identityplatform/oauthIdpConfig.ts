@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,6 +28,10 @@ import * as utilities from "../utilities";
  *     issuer: "issuer",
  *     enabled: true,
  *     clientSecret: "secret",
+ *     responseType: {
+ *         idToken: true,
+ *         code: false,
+ *     },
  * });
  * ```
  *
@@ -113,6 +119,13 @@ export class OauthIdpConfig extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     */
+    public readonly responseType!: pulumi.Output<outputs.identityplatform.OauthIdpConfigResponseType | undefined>;
 
     /**
      * Create a OauthIdpConfig resource with the given unique name, arguments, and options.
@@ -134,6 +147,7 @@ export class OauthIdpConfig extends pulumi.CustomResource {
             resourceInputs["issuer"] = state ? state.issuer : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["responseType"] = state ? state.responseType : undefined;
         } else {
             const args = argsOrState as OauthIdpConfigArgs | undefined;
             if ((!args || args.clientId === undefined) && !opts.urn) {
@@ -149,6 +163,7 @@ export class OauthIdpConfig extends pulumi.CustomResource {
             resourceInputs["issuer"] = args ? args.issuer : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["responseType"] = args ? args.responseType : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OauthIdpConfig.__pulumiType, name, resourceInputs, opts);
@@ -191,6 +206,13 @@ export interface OauthIdpConfigState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     */
+    responseType?: pulumi.Input<inputs.identityplatform.OauthIdpConfigResponseType>;
 }
 
 /**
@@ -229,4 +251,11 @@ export interface OauthIdpConfigArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     */
+    responseType?: pulumi.Input<inputs.identityplatform.OauthIdpConfigResponseType>;
 }

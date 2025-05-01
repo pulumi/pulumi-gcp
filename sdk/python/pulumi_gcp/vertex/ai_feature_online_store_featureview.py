@@ -743,13 +743,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable={
-                "auto_scaling": {
-                    "min_node_count": 1,
-                    "max_node_count": 2,
-                    "cpu_utilization_target": 80,
-                },
-            },
+            optimized={},
             embedding_management={
                 "enabled": True,
             })
@@ -1188,13 +1182,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 "foo": "bar",
             },
             region="us-central1",
-            bigtable={
-                "auto_scaling": {
-                    "min_node_count": 1,
-                    "max_node_count": 2,
-                    "cpu_utilization_target": 80,
-                },
-            },
+            optimized={},
             embedding_management={
                 "enabled": True,
             })

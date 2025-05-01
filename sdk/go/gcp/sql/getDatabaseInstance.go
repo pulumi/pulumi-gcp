@@ -58,14 +58,15 @@ type LookupDatabaseInstanceArgs struct {
 
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
-	AvailableMaintenanceVersions []string                   `pulumi:"availableMaintenanceVersions"`
-	Clones                       []GetDatabaseInstanceClone `pulumi:"clones"`
-	ConnectionName               string                     `pulumi:"connectionName"`
-	DatabaseVersion              string                     `pulumi:"databaseVersion"`
-	DeletionProtection           bool                       `pulumi:"deletionProtection"`
-	DnsName                      string                     `pulumi:"dnsName"`
-	EncryptionKeyName            string                     `pulumi:"encryptionKeyName"`
-	FirstIpAddress               string                     `pulumi:"firstIpAddress"`
+	AvailableMaintenanceVersions []string                     `pulumi:"availableMaintenanceVersions"`
+	Clones                       []GetDatabaseInstanceClone   `pulumi:"clones"`
+	ConnectionName               string                       `pulumi:"connectionName"`
+	DatabaseVersion              string                       `pulumi:"databaseVersion"`
+	DeletionProtection           bool                         `pulumi:"deletionProtection"`
+	DnsName                      string                       `pulumi:"dnsName"`
+	DnsNames                     []GetDatabaseInstanceDnsName `pulumi:"dnsNames"`
+	EncryptionKeyName            string                       `pulumi:"encryptionKeyName"`
+	FirstIpAddress               string                       `pulumi:"firstIpAddress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                         string                                    `pulumi:"id"`
 	InstanceType               string                                    `pulumi:"instanceType"`
@@ -147,6 +148,10 @@ func (o LookupDatabaseInstanceResultOutput) DeletionProtection() pulumi.BoolOutp
 
 func (o LookupDatabaseInstanceResultOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) DnsNames() GetDatabaseInstanceDnsNameArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceDnsName { return v.DnsNames }).(GetDatabaseInstanceDnsNameArrayOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) EncryptionKeyName() pulumi.StringOutput {

@@ -148,8 +148,8 @@ type Interconnect struct {
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType pulumi.StringOutput `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// Specifies the location inside Google's Networks.
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
 	// Interconnect connection between Google and your on-premises router.
 	// Structure is documented below.
@@ -226,6 +226,9 @@ func NewInterconnect(ctx *pulumi.Context,
 	}
 	if args.LinkType == nil {
 		return nil, errors.New("invalid value for required argument 'LinkType'")
+	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.RequestedLinkCount == nil {
 		return nil, errors.New("invalid value for required argument 'RequestedLinkCount'")
@@ -319,7 +322,7 @@ type interconnectState struct {
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType *string `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+	// Specifies the location inside Google's Networks.
 	Location *string `pulumi:"location"`
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
 	// Interconnect connection between Google and your on-premises router.
@@ -447,7 +450,7 @@ type InterconnectState struct {
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType pulumi.StringPtrInput
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+	// Specifies the location inside Google's Networks.
 	Location pulumi.StringPtrInput
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
 	// Interconnect connection between Google and your on-premises router.
@@ -550,8 +553,8 @@ type interconnectArgs struct {
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType string `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
-	Location *string `pulumi:"location"`
+	// Specifies the location inside Google's Networks.
+	Location string `pulumi:"location"`
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
 	// Interconnect connection between Google and your on-premises router.
 	// Structure is documented below.
@@ -622,8 +625,8 @@ type InterconnectArgs struct {
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType pulumi.StringInput
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-	// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
-	Location pulumi.StringPtrInput
+	// Specifies the location inside Google's Networks.
+	Location pulumi.StringInput
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
 	// Interconnect connection between Google and your on-premises router.
 	// Structure is documented below.
@@ -853,9 +856,9 @@ func (o InterconnectOutput) LinkType() pulumi.StringOutput {
 }
 
 // URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
-func (o InterconnectOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Interconnect) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+// Specifies the location inside Google's Networks.
+func (o InterconnectOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Configuration that enables Media Access Control security (MACsec) on the Cloud

@@ -141,6 +141,56 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Config Management With Deployment Override
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cluster = new gcp.container.Cluster("cluster", {
+ *     name: "my-cluster",
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "my-membership",
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
+ *         },
+ *     },
+ * });
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     name: "configmanagement",
+ *     location: "global",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const featureMember = new gcp.gkehub.FeatureMembership("feature_member", {
+ *     location: "global",
+ *     feature: feature.name,
+ *     membership: membership.membershipId,
+ *     configmanagement: {
+ *         version: "1.20.1",
+ *         configSync: {
+ *             enabled: true,
+ *             deploymentOverrides: [{
+ *                 deploymentName: "reconciler-manager",
+ *                 deploymentNamespace: "config-management-system",
+ *                 containers: [{
+ *                     containerName: "reconciler-manager",
+ *                     cpuRequest: "100m",
+ *                     memoryRequest: "64Mi",
+ *                     cpuLimit: "250m",
+ *                     memoryLimit: "128Mi",
+ *                 }],
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ### Config Management With Regional Membership
  *
  * ```typescript

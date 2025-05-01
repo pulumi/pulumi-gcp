@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = gcp.certificatemanager.getCertificates({});
+ * export const certificatesNames = _default.then(_default => .map(cert => (cert.name)));
  * ```
  *
  * ### With A Filter
@@ -27,6 +28,20 @@ import * as utilities from "../utilities";
  * const _default = gcp.certificatemanager.getCertificates({
  *     filter: "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
  * });
+ * export const certificatesNames = _default.then(_default => .map(cert => (cert.name)));
+ * ```
+ *
+ * ### Regional Certificates With A Filter
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = gcp.certificatemanager.getCertificates({
+ *     region: "REGION",
+ *     filter: "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
+ * });
+ * export const certificatesNames = _default.then(_default => .map(cert => (cert.name)));
  * ```
  */
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
@@ -56,6 +71,9 @@ export interface GetCertificatesArgs {
  * A collection of values returned by getCertificates.
  */
 export interface GetCertificatesResult {
+    /**
+     * A list of all retrieved certificates. See gcp.certificatemanager.Certificate resource for details of the available attributes.
+     */
     readonly certificates: outputs.certificatemanager.GetCertificatesCertificate[];
     readonly filter?: string;
     /**
@@ -74,6 +92,7 @@ export interface GetCertificatesResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = gcp.certificatemanager.getCertificates({});
+ * export const certificatesNames = _default.then(_default => .map(cert => (cert.name)));
  * ```
  *
  * ### With A Filter
@@ -85,6 +104,20 @@ export interface GetCertificatesResult {
  * const _default = gcp.certificatemanager.getCertificates({
  *     filter: "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
  * });
+ * export const certificatesNames = _default.then(_default => .map(cert => (cert.name)));
+ * ```
+ *
+ * ### Regional Certificates With A Filter
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = gcp.certificatemanager.getCertificates({
+ *     region: "REGION",
+ *     filter: "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
+ * });
+ * export const certificatesNames = _default.then(_default => .map(cert => (cert.name)));
  * ```
  */
 export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificatesResult> {

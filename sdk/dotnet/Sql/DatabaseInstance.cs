@@ -358,6 +358,12 @@ namespace Pulumi.Gcp.Sql
         public Output<string> DnsName { get; private set; } = null!;
 
         /// <summary>
+        /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        /// </summary>
+        [Output("dnsNames")]
+        public Output<ImmutableArray<Outputs.DatabaseInstanceDnsName>> DnsNames { get; private set; } = null!;
+
+        /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
         /// up disk encryption currently requires manual steps outside of this provider.
         /// The provided key must be in the same region as the SQL instance.  In order
@@ -768,6 +774,18 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("dnsName")]
         public Input<string>? DnsName { get; set; }
+
+        [Input("dnsNames")]
+        private InputList<Inputs.DatabaseInstanceDnsNameGetArgs>? _dnsNames;
+
+        /// <summary>
+        /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        /// </summary>
+        public InputList<Inputs.DatabaseInstanceDnsNameGetArgs> DnsNames
+        {
+            get => _dnsNames ?? (_dnsNames = new InputList<Inputs.DatabaseInstanceDnsNameGetArgs>());
+            set => _dnsNames = value;
+        }
 
         /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting

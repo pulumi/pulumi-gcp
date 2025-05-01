@@ -500,15 +500,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="networkConfig", refs={InstanceNetworkConfig.class}, tree="[0]")
-    private Output</* @Nullable */ InstanceNetworkConfig> networkConfig;
+    private Output<InstanceNetworkConfig> networkConfig;
 
     /**
      * @return Instance level network configuration.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<InstanceNetworkConfig>> networkConfig() {
-        return Codegen.optional(this.networkConfig);
+    public Output<InstanceNetworkConfig> networkConfig() {
+        return this.networkConfig;
     }
     /**
      * Configuration for enhanced query insights.

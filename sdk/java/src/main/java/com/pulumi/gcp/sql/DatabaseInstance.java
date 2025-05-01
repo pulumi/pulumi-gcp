@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceState;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceClone;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceDnsName;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceIpAddress;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceReplicaConfiguration;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceReplicationCluster;
@@ -494,6 +495,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dnsName() {
         return this.dnsName;
+    }
+    /**
+     * The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+     * 
+     */
+    @Export(name="dnsNames", refs={List.class,DatabaseInstanceDnsName.class}, tree="[0,1]")
+    private Output<List<DatabaseInstanceDnsName>> dnsNames;
+
+    /**
+     * @return The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+     * 
+     */
+    public Output<List<DatabaseInstanceDnsName>> dnsNames() {
+        return this.dnsNames;
     }
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting

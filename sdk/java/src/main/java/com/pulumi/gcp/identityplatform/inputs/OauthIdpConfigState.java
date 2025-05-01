@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.identityplatform.inputs.OauthIdpConfigResponseTypeArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -127,6 +128,27 @@ public final class OauthIdpConfigState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="responseType")
+    private @Nullable Output<OauthIdpConfigResponseTypeArgs> responseType;
+
+    /**
+     * @return The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<OauthIdpConfigResponseTypeArgs>> responseType() {
+        return Optional.ofNullable(this.responseType);
+    }
+
     private OauthIdpConfigState() {}
 
     private OauthIdpConfigState(OauthIdpConfigState $) {
@@ -137,6 +159,7 @@ public final class OauthIdpConfigState extends com.pulumi.resources.ResourceArgs
         this.issuer = $.issuer;
         this.name = $.name;
         this.project = $.project;
+        this.responseType = $.responseType;
     }
 
     public static Builder builder() {
@@ -308,6 +331,33 @@ public final class OauthIdpConfigState extends com.pulumi.resources.ResourceArgs
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param responseType The response type to request for in the OAuth authorization flow.
+         * You can set either idToken or code to true, but not both.
+         * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseType(@Nullable Output<OauthIdpConfigResponseTypeArgs> responseType) {
+            $.responseType = responseType;
+            return this;
+        }
+
+        /**
+         * @param responseType The response type to request for in the OAuth authorization flow.
+         * You can set either idToken or code to true, but not both.
+         * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseType(OauthIdpConfigResponseTypeArgs responseType) {
+            return responseType(Output.of(responseType));
         }
 
         public OauthIdpConfigState build() {

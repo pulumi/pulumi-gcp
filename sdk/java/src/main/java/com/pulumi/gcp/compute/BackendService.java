@@ -38,6 +38,9 @@ import javax.annotation.Nullable;
  * 
  * Currently self-managed internal load balancing is only available in beta.
  * 
+ * &gt; **Note:** Recreating a `gcp.compute.BackendService` that references other dependent resources like `gcp.compute.URLMap` will give a `resourceInUseByAnotherResource` error, when modifying the number of other dependent resources.
+ * Use `lifecycle.create_before_destroy` on the dependent resources to avoid this type of error as shown in the Dynamic Backends example.
+ * 
  * To get more information about BackendService, see:
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
@@ -869,7 +872,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * BackendService can be imported using any of these accepted formats:

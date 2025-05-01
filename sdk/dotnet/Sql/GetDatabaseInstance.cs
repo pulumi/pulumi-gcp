@@ -135,6 +135,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string DatabaseVersion;
         public readonly bool DeletionProtection;
         public readonly string DnsName;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> DnsNames;
         public readonly string EncryptionKeyName;
         public readonly string FirstIpAddress;
         /// <summary>
@@ -174,6 +175,8 @@ namespace Pulumi.Gcp.Sql
             bool deletionProtection,
 
             string dnsName,
+
+            ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> dnsNames,
 
             string encryptionKeyName,
 
@@ -225,6 +228,7 @@ namespace Pulumi.Gcp.Sql
             DatabaseVersion = databaseVersion;
             DeletionProtection = deletionProtection;
             DnsName = dnsName;
+            DnsNames = dnsNames;
             EncryptionKeyName = encryptionKeyName;
             FirstIpAddress = firstIpAddress;
             Id = id;

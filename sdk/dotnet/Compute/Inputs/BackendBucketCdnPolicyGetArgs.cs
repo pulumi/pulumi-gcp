@@ -41,20 +41,23 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? CacheMode { get; set; }
 
         /// <summary>
-        /// Specifies the maximum allowed TTL for cached content served by this origin.
+        /// Specifies the maximum allowed TTL for cached content served by this origin. When the
+        /// `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         /// </summary>
         [Input("clientTtl")]
         public Input<int>? ClientTtl { get; set; }
 
         /// <summary>
         /// Specifies the default TTL for cached content served by this origin for responses
-        /// that do not have an existing valid TTL (max-age or s-max-age).
+        /// that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+        /// is set to "USE_ORIGIN_HEADERS", you must omit this field.
         /// </summary>
         [Input("defaultTtl")]
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// Specifies the maximum allowed TTL for cached content served by this origin.
+        /// Specifies the maximum allowed TTL for cached content served by this origin. When the
+        /// `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
         /// </summary>
         [Input("maxTtl")]
         public Input<int>? MaxTtl { get; set; }

@@ -21,14 +21,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     public static final FeatureMembershipConfigmanagementConfigSyncArgs Empty = new FeatureMembershipConfigmanagementConfigSyncArgs();
 
     /**
-     * The override configurations for the Config Sync Deployments. Structure is documented below.
+     * The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
      * 
      */
     @Import(name="deploymentOverrides")
     private @Nullable Output<List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs>> deploymentOverrides;
 
     /**
-     * @return The override configurations for the Config Sync Deployments. Structure is documented below.
+     * @return The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
      * 
      */
     public Optional<Output<List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs>>> deploymentOverrides() {
@@ -176,7 +176,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param deploymentOverrides The override configurations for the Config Sync Deployments. Structure is documented below.
+         * @param deploymentOverrides The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param deploymentOverrides The override configurations for the Config Sync Deployments. Structure is documented below.
+         * @param deploymentOverrides The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param deploymentOverrides The override configurations for the Config Sync Deployments. Structure is documented below.
+         * @param deploymentOverrides The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
          * 
          * @return builder
          * 

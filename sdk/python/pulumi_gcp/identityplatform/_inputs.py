@@ -66,6 +66,8 @@ __all__ = [
     'InboundSamlConfigSpConfigArgsDict',
     'InboundSamlConfigSpConfigSpCertificateArgs',
     'InboundSamlConfigSpConfigSpCertificateArgsDict',
+    'OauthIdpConfigResponseTypeArgs',
+    'OauthIdpConfigResponseTypeArgsDict',
     'TenantClientArgs',
     'TenantClientArgsDict',
     'TenantClientPermissionsArgs',
@@ -1573,6 +1575,58 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
     @x509_certificate.setter
     def x509_certificate(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "x509_certificate", value)
+
+
+if not MYPY:
+    class OauthIdpConfigResponseTypeArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, authorization code is returned from IdP's authorization endpoint.
+        """
+        id_token: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, ID token is returned from IdP's authorization endpoint.
+        """
+elif False:
+    OauthIdpConfigResponseTypeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OauthIdpConfigResponseTypeArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[builtins.bool]] = None,
+                 id_token: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] code: If true, authorization code is returned from IdP's authorization endpoint.
+        :param pulumi.Input[builtins.bool] id_token: If true, ID token is returned from IdP's authorization endpoint.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if id_token is not None:
+            pulumi.set(__self__, "id_token", id_token)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, authorization code is returned from IdP's authorization endpoint.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter(name="idToken")
+    def id_token(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, ID token is returned from IdP's authorization endpoint.
+        """
+        return pulumi.get(self, "id_token")
+
+    @id_token.setter
+    def id_token(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "id_token", value)
 
 
 if not MYPY:

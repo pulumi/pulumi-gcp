@@ -307,8 +307,12 @@ type Bucket struct {
 	SoftDeletePolicy BucketSoftDeletePolicyOutput `pulumi:"softDeletePolicy"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
+	// The creation time of the bucket in RFC 3339 format.
+	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess pulumi.BoolOutput `pulumi:"uniformBucketLevelAccess"`
+	// The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+	Updated pulumi.StringOutput `pulumi:"updated"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -408,8 +412,12 @@ type bucketState struct {
 	SoftDeletePolicy *BucketSoftDeletePolicy `pulumi:"softDeletePolicy"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
+	// The creation time of the bucket in RFC 3339 format.
+	TimeCreated *string `pulumi:"timeCreated"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess *bool `pulumi:"uniformBucketLevelAccess"`
+	// The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+	Updated *string `pulumi:"updated"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url *string `pulumi:"url"`
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -472,8 +480,12 @@ type BucketState struct {
 	SoftDeletePolicy BucketSoftDeletePolicyPtrInput
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
+	// The creation time of the bucket in RFC 3339 format.
+	TimeCreated pulumi.StringPtrInput
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess pulumi.BoolPtrInput
+	// The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+	Updated pulumi.StringPtrInput
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringPtrInput
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -809,9 +821,19 @@ func (o BucketOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
 
+// The creation time of the bucket in RFC 3339 format.
+func (o BucketOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
 // Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 func (o BucketOutput) UniformBucketLevelAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.BoolOutput { return v.UniformBucketLevelAccess }).(pulumi.BoolOutput)
+}
+
+// The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+func (o BucketOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
 // The base URL of the bucket, in the format `gs://<bucket-name>`.

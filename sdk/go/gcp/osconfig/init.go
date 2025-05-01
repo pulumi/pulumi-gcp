@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PatchDeployment{}
 	case "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator":
 		r = &V2PolicyOrchestrator{}
+	case "gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder":
+		r = &V2PolicyOrchestratorForFolder{}
 	case "gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization":
 		r = &V2PolicyOrchestratorForOrganization{}
 	default:
@@ -62,6 +64,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"osconfig/v2PolicyOrchestrator",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"osconfig/v2PolicyOrchestratorForFolder",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

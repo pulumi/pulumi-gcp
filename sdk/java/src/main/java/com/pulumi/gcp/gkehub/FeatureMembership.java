@@ -259,6 +259,91 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Config Management With Deployment Override
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.FeatureMembership;
+ * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
+ *             .initialNodeCount(1)
+ *             .build());
+ * 
+ *         var membership = new Membership("membership", MembershipArgs.builder()
+ *             .membershipId("my-membership")
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(cluster.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var feature = new Feature("feature", FeatureArgs.builder()
+ *             .name("configmanagement")
+ *             .location("global")
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()
+ *             .location("global")
+ *             .feature(feature.name())
+ *             .membership(membership.membershipId())
+ *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
+ *                 .version("1.20.1")
+ *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
+ *                     .enabled(true)
+ *                     .deploymentOverrides(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs.builder()
+ *                         .deploymentName("reconciler-manager")
+ *                         .deploymentNamespace("config-management-system")
+ *                         .containers(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs.builder()
+ *                             .containerName("reconciler-manager")
+ *                             .cpuRequest("100m")
+ *                             .memoryRequest("64Mi")
+ *                             .cpuLimit("250m")
+ *                             .memoryLimit("128Mi")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Config Management With Regional Membership
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.beyondcorp.ApplicationArgs;
 import com.pulumi.gcp.beyondcorp.inputs.ApplicationState;
 import com.pulumi.gcp.beyondcorp.outputs.ApplicationEndpointMatcher;
+import com.pulumi.gcp.beyondcorp.outputs.ApplicationUpstream;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -63,6 +64,72 @@ import javax.annotation.Nullable;
  *             .applicationId("google")
  *             .endpointMatchers(ApplicationEndpointMatcherArgs.builder()
  *                 .hostname("google.com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Beyondcorp Security Gateway Application Vpc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.beyondcorp.SecurityGateway;
+ * import com.pulumi.gcp.beyondcorp.SecurityGatewayArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayHubArgs;
+ * import com.pulumi.gcp.beyondcorp.Application;
+ * import com.pulumi.gcp.beyondcorp.ApplicationArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.ApplicationEndpointMatcherArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.ApplicationUpstreamArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.ApplicationUpstreamEgressPolicyArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.ApplicationUpstreamNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var default_ = new SecurityGateway("default", SecurityGatewayArgs.builder()
+ *             .securityGatewayId("default")
+ *             .displayName("My Security Gateway resource")
+ *             .hubs(SecurityGatewayHubArgs.builder()
+ *                 .region("us-central1")
+ *                 .build())
+ *             .build());
+ * 
+ *         var example = new Application("example", ApplicationArgs.builder()
+ *             .securityGatewaysId(default_.securityGatewayId())
+ *             .applicationId("my-vm-service")
+ *             .endpointMatchers(ApplicationEndpointMatcherArgs.builder()
+ *                 .hostname("my-vm-service.com")
+ *                 .build())
+ *             .upstreams(ApplicationUpstreamArgs.builder()
+ *                 .egressPolicy(ApplicationUpstreamEgressPolicyArgs.builder()
+ *                     .regions("us-central1")
+ *                     .build())
+ *                 .network(ApplicationUpstreamNetworkArgs.builder()
+ *                     .name(String.format("projects/%s/global/networks/default", project.projectId()))
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -230,6 +297,20 @@ public class Application extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Optional. List of which upstream resource(s) to forward traffic to.
+     * 
+     */
+    @Export(name="upstreams", refs={List.class,ApplicationUpstream.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ApplicationUpstream>> upstreams;
+
+    /**
+     * @return Optional. List of which upstream resource(s) to forward traffic to.
+     * 
+     */
+    public Output<Optional<List<ApplicationUpstream>>> upstreams() {
+        return Codegen.optional(this.upstreams);
     }
 
     /**

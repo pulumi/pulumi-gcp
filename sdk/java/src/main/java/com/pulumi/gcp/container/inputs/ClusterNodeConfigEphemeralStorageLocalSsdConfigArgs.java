@@ -8,11 +8,28 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs Empty = new ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs();
+
+    /**
+     * Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+     * 
+     */
+    @Import(name="dataCacheCount")
+    private @Nullable Output<Integer> dataCacheCount;
+
+    /**
+     * @return Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+     * 
+     */
+    public Optional<Output<Integer>> dataCacheCount() {
+        return Optional.ofNullable(this.dataCacheCount);
+    }
 
     /**
      * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
@@ -32,6 +49,7 @@ public final class ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs extends c
     private ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs() {}
 
     private ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs(ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs $) {
+        this.dataCacheCount = $.dataCacheCount;
         this.localSsdCount = $.localSsdCount;
     }
 
@@ -51,6 +69,27 @@ public final class ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs extends c
 
         public Builder(ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs defaults) {
             $ = new ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dataCacheCount Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataCacheCount(@Nullable Output<Integer> dataCacheCount) {
+            $.dataCacheCount = dataCacheCount;
+            return this;
+        }
+
+        /**
+         * @param dataCacheCount Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataCacheCount(Integer dataCacheCount) {
+            return dataCacheCount(Output.of(dataCacheCount));
         }
 
         /**

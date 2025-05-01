@@ -507,7 +507,6 @@ import javax.annotation.Nullable;
  *             .name("gce-policy")
  *             .region("europe-west9")
  *             .groupPlacementPolicy(ResourcePolicyGroupPlacementPolicyArgs.builder()
- *                 .vmCount(2)
  *                 .collocation("COLLOCATED")
  *                 .gpuTopology("1x72")
  *                 .build())

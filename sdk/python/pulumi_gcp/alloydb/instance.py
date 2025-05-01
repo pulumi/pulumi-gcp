@@ -1476,7 +1476,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> pulumi.Output[Optional['outputs.InstanceNetworkConfig']]:
+    def network_config(self) -> pulumi.Output['outputs.InstanceNetworkConfig']:
         """
         Instance level network configuration.
         Structure is documented below.

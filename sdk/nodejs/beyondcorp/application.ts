@@ -32,6 +32,36 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Beyondcorp Security Gateway Application Vpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const _default = new gcp.beyondcorp.SecurityGateway("default", {
+ *     securityGatewayId: "default",
+ *     displayName: "My Security Gateway resource",
+ *     hubs: [{
+ *         region: "us-central1",
+ *     }],
+ * });
+ * const example = new gcp.beyondcorp.Application("example", {
+ *     securityGatewaysId: _default.securityGatewayId,
+ *     applicationId: "my-vm-service",
+ *     endpointMatchers: [{
+ *         hostname: "my-vm-service.com",
+ *     }],
+ *     upstreams: [{
+ *         egressPolicy: {
+ *             regions: ["us-central1"],
+ *         },
+ *         network: {
+ *             name: project.then(project => `projects/${project.projectId}/global/networks/default`),
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -128,6 +158,10 @@ export class Application extends pulumi.CustomResource {
      * Output only. Timestamp when the resource was last modified.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. List of which upstream resource(s) to forward traffic to.
+     */
+    public readonly upstreams!: pulumi.Output<outputs.beyondcorp.ApplicationUpstream[] | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -150,6 +184,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["securityGatewaysId"] = state ? state.securityGatewaysId : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["upstreams"] = state ? state.upstreams : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
             if ((!args || args.applicationId === undefined) && !opts.urn) {
@@ -166,6 +201,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["endpointMatchers"] = args ? args.endpointMatchers : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["securityGatewaysId"] = args ? args.securityGatewaysId : undefined;
+            resourceInputs["upstreams"] = args ? args.upstreams : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -222,6 +258,10 @@ export interface ApplicationState {
      * Output only. Timestamp when the resource was last modified.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Optional. List of which upstream resource(s) to forward traffic to.
+     */
+    upstreams?: pulumi.Input<pulumi.Input<inputs.beyondcorp.ApplicationUpstream>[]>;
 }
 
 /**
@@ -259,4 +299,8 @@ export interface ApplicationArgs {
      * Part of `parent`. See documentation of `projectsId`.
      */
     securityGatewaysId: pulumi.Input<string>;
+    /**
+     * Optional. List of which upstream resource(s) to forward traffic to.
+     */
+    upstreams?: pulumi.Input<pulumi.Input<inputs.beyondcorp.ApplicationUpstream>[]>;
 }

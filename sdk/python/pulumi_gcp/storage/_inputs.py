@@ -4955,6 +4955,10 @@ if not MYPY:
         """
         AWS credentials block.
         """
+        managed_private_network: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+        """
         path: NotRequired[pulumi.Input[builtins.str]]
         """
         S3 Bucket path in bucket to transfer.
@@ -4971,17 +4975,21 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[builtins.str],
                  aws_access_key: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']] = None,
+                 managed_private_network: Optional[pulumi.Input[builtins.bool]] = None,
                  path: Optional[pulumi.Input[builtins.str]] = None,
                  role_arn: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] bucket_name: S3 Bucket name.
         :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs'] aws_access_key: AWS credentials block.
+        :param pulumi.Input[builtins.bool] managed_private_network: Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
         :param pulumi.Input[builtins.str] path: S3 Bucket path in bucket to transfer.
         :param pulumi.Input[builtins.str] role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         if aws_access_key is not None:
             pulumi.set(__self__, "aws_access_key", aws_access_key)
+        if managed_private_network is not None:
+            pulumi.set(__self__, "managed_private_network", managed_private_network)
         if path is not None:
             pulumi.set(__self__, "path", path)
         if role_arn is not None:
@@ -5010,6 +5018,18 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
     @aws_access_key.setter
     def aws_access_key(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]):
         pulumi.set(self, "aws_access_key", value)
+
+    @property
+    @pulumi.getter(name="managedPrivateNetwork")
+    def managed_private_network(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+        """
+        return pulumi.get(self, "managed_private_network")
+
+    @managed_private_network.setter
+    def managed_private_network(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "managed_private_network", value)
 
     @property
     @pulumi.getter

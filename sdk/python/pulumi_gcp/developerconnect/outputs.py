@@ -73,6 +73,8 @@ class AccountConnectorProviderOauthConfig(dict):
                GOOGLE
                SENTRY
                ROVO
+               NEW_RELIC
+               DATASTAX
         """
         pulumi.set(__self__, "scopes", scopes)
         if system_provider_id is not None:
@@ -99,6 +101,8 @@ class AccountConnectorProviderOauthConfig(dict):
         GOOGLE
         SENTRY
         ROVO
+        NEW_RELIC
+        DATASTAX
         """
         return pulumi.get(self, "system_provider_id")
 

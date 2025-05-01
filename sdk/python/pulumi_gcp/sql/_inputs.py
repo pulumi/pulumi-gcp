@@ -18,6 +18,8 @@ from .. import _utilities
 __all__ = [
     'DatabaseInstanceCloneArgs',
     'DatabaseInstanceCloneArgsDict',
+    'DatabaseInstanceDnsNameArgs',
+    'DatabaseInstanceDnsNameArgsDict',
     'DatabaseInstanceIpAddressArgs',
     'DatabaseInstanceIpAddressArgsDict',
     'DatabaseInstanceReplicaConfigurationArgs',
@@ -187,6 +189,87 @@ class DatabaseInstanceCloneArgs:
     @preferred_zone.setter
     def preferred_zone(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "preferred_zone", value)
+
+
+if not MYPY:
+    class DatabaseInstanceDnsNameArgsDict(TypedDict):
+        connection_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+        """
+        dns_scope: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The scope that the DNS name applies to.
+        """
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the instance. If the name is left
+        blank, the provider will randomly generate one when the instance is first
+        created. This is done because after a name is used, it cannot be reused for
+        up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        """
+elif False:
+    DatabaseInstanceDnsNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseInstanceDnsNameArgs:
+    def __init__(__self__, *,
+                 connection_type: Optional[pulumi.Input[builtins.str]] = None,
+                 dns_scope: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] connection_type: The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+        :param pulumi.Input[builtins.str] dns_scope: The scope that the DNS name applies to.
+        :param pulumi.Input[builtins.str] name: The name of the instance. If the name is left
+               blank, the provider will randomly generate one when the instance is first
+               created. This is done because after a name is used, it cannot be reused for
+               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        """
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if dns_scope is not None:
+            pulumi.set(__self__, "dns_scope", dns_scope)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "connection_type", value)
+
+    @property
+    @pulumi.getter(name="dnsScope")
+    def dns_scope(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The scope that the DNS name applies to.
+        """
+        return pulumi.get(self, "dns_scope")
+
+    @dns_scope.setter
+    def dns_scope(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "dns_scope", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the instance. If the name is left
+        blank, the provider will randomly generate one when the instance is first
+        created. This is done because after a name is used, it cannot be reused for
+        up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:

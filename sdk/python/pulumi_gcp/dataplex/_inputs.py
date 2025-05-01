@@ -58,6 +58,16 @@ __all__ = [
     'DatascanDataQualitySpecPostScanActionsArgsDict',
     'DatascanDataQualitySpecPostScanActionsBigqueryExportArgs',
     'DatascanDataQualitySpecPostScanActionsBigqueryExportArgsDict',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportArgs',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportArgsDict',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgsDict',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgsDict',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgsDict',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgsDict',
     'DatascanDataQualitySpecRuleArgs',
     'DatascanDataQualitySpecRuleArgsDict',
     'DatascanDataQualitySpecRuleNonNullExpectationArgs',
@@ -1515,19 +1525,29 @@ if not MYPY:
         If set, results will be exported to the provided BigQuery table.
         Structure is documented below.
         """
+        notification_report: NotRequired[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportArgsDict']]
+        """
+        The configuration of notification report post scan action.
+        Structure is documented below.
+        """
 elif False:
     DatascanDataQualitySpecPostScanActionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DatascanDataQualitySpecPostScanActionsArgs:
     def __init__(__self__, *,
-                 bigquery_export: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']] = None):
+                 bigquery_export: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']] = None,
+                 notification_report: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportArgs']] = None):
         """
         :param pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs'] bigquery_export: If set, results will be exported to the provided BigQuery table.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportArgs'] notification_report: The configuration of notification report post scan action.
                Structure is documented below.
         """
         if bigquery_export is not None:
             pulumi.set(__self__, "bigquery_export", bigquery_export)
+        if notification_report is not None:
+            pulumi.set(__self__, "notification_report", notification_report)
 
     @property
     @pulumi.getter(name="bigqueryExport")
@@ -1541,6 +1561,19 @@ class DatascanDataQualitySpecPostScanActionsArgs:
     @bigquery_export.setter
     def bigquery_export(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']]):
         pulumi.set(self, "bigquery_export", value)
+
+    @property
+    @pulumi.getter(name="notificationReport")
+    def notification_report(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportArgs']]:
+        """
+        The configuration of notification report post scan action.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notification_report")
+
+    @notification_report.setter
+    def notification_report(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportArgs']]):
+        pulumi.set(self, "notification_report", value)
 
 
 if not MYPY:
@@ -1576,6 +1609,191 @@ class DatascanDataQualitySpecPostScanActionsBigqueryExportArgs:
     @results_table.setter
     def results_table(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "results_table", value)
+
+
+if not MYPY:
+    class DatascanDataQualitySpecPostScanActionsNotificationReportArgsDict(TypedDict):
+        recipients: pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgsDict']
+        """
+        The individuals or groups who are designated to receive notifications upon triggers.
+        Structure is documented below.
+        """
+        job_end_trigger: NotRequired[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgsDict']]
+        """
+        This trigger is triggered whenever a scan job run ends, regardless of the result.
+        """
+        job_failure_trigger: NotRequired[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgsDict']]
+        """
+        This trigger is triggered when the scan job itself fails, regardless of the result.
+        """
+        score_threshold_trigger: NotRequired[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgsDict']]
+        """
+        This trigger is triggered when the DQ score in the job result is less than a specified input score.
+        Structure is documented below.
+        """
+elif False:
+    DatascanDataQualitySpecPostScanActionsNotificationReportArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatascanDataQualitySpecPostScanActionsNotificationReportArgs:
+    def __init__(__self__, *,
+                 recipients: pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs'],
+                 job_end_trigger: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs']] = None,
+                 job_failure_trigger: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs']] = None,
+                 score_threshold_trigger: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs']] = None):
+        """
+        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs'] recipients: The individuals or groups who are designated to receive notifications upon triggers.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs'] job_end_trigger: This trigger is triggered whenever a scan job run ends, regardless of the result.
+        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs'] job_failure_trigger: This trigger is triggered when the scan job itself fails, regardless of the result.
+        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs'] score_threshold_trigger: This trigger is triggered when the DQ score in the job result is less than a specified input score.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "recipients", recipients)
+        if job_end_trigger is not None:
+            pulumi.set(__self__, "job_end_trigger", job_end_trigger)
+        if job_failure_trigger is not None:
+            pulumi.set(__self__, "job_failure_trigger", job_failure_trigger)
+        if score_threshold_trigger is not None:
+            pulumi.set(__self__, "score_threshold_trigger", score_threshold_trigger)
+
+    @property
+    @pulumi.getter
+    def recipients(self) -> pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs']:
+        """
+        The individuals or groups who are designated to receive notifications upon triggers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "recipients")
+
+    @recipients.setter
+    def recipients(self, value: pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs']):
+        pulumi.set(self, "recipients", value)
+
+    @property
+    @pulumi.getter(name="jobEndTrigger")
+    def job_end_trigger(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs']]:
+        """
+        This trigger is triggered whenever a scan job run ends, regardless of the result.
+        """
+        return pulumi.get(self, "job_end_trigger")
+
+    @job_end_trigger.setter
+    def job_end_trigger(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs']]):
+        pulumi.set(self, "job_end_trigger", value)
+
+    @property
+    @pulumi.getter(name="jobFailureTrigger")
+    def job_failure_trigger(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs']]:
+        """
+        This trigger is triggered when the scan job itself fails, regardless of the result.
+        """
+        return pulumi.get(self, "job_failure_trigger")
+
+    @job_failure_trigger.setter
+    def job_failure_trigger(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs']]):
+        pulumi.set(self, "job_failure_trigger", value)
+
+    @property
+    @pulumi.getter(name="scoreThresholdTrigger")
+    def score_threshold_trigger(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs']]:
+        """
+        This trigger is triggered when the DQ score in the job result is less than a specified input score.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "score_threshold_trigger")
+
+    @score_threshold_trigger.setter
+    def score_threshold_trigger(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs']]):
+        pulumi.set(self, "score_threshold_trigger", value)
+
+
+if not MYPY:
+    class DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgsDict(TypedDict):
+        pass
+elif False:
+    DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgsDict(TypedDict):
+        pass
+elif False:
+    DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        The email recipients who will receive the DataQualityScan results report.
+        """
+elif False:
+    DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs:
+    def __init__(__self__, *,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] emails: The email recipients who will receive the DataQualityScan results report.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The email recipients who will receive the DataQualityScan results report.
+        """
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "emails", value)
+
+
+if not MYPY:
+    class DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgsDict(TypedDict):
+        score_threshold: NotRequired[pulumi.Input[builtins.float]]
+        """
+        The score range is in [0,100].
+        """
+elif False:
+    DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs:
+    def __init__(__self__, *,
+                 score_threshold: Optional[pulumi.Input[builtins.float]] = None):
+        """
+        :param pulumi.Input[builtins.float] score_threshold: The score range is in [0,100].
+        """
+        if score_threshold is not None:
+            pulumi.set(__self__, "score_threshold", score_threshold)
+
+    @property
+    @pulumi.getter(name="scoreThreshold")
+    def score_threshold(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The score range is in [0,100].
+        """
+        return pulumi.get(self, "score_threshold")
+
+    @score_threshold.setter
+    def score_threshold(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "score_threshold", value)
 
 
 if not MYPY:
