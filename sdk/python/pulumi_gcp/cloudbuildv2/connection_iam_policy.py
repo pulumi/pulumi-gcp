@@ -193,6 +193,9 @@ class _ConnectionIAMPolicyState:
 
 
 class ConnectionIAMPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

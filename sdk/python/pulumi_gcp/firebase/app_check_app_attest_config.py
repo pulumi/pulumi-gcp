@@ -173,6 +173,9 @@ class _AppCheckAppAttestConfigState:
 
 
 class AppCheckAppAttestConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

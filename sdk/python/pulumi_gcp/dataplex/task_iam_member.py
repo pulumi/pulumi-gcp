@@ -324,6 +324,9 @@ class _TaskIamMemberState:
 
 
 class TaskIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/taskIamMember:TaskIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

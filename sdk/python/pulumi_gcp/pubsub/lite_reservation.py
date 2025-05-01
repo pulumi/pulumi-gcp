@@ -185,6 +185,9 @@ class _LiteReservationState:
 
 
 class LiteReservation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:pubsub/liteReservation:LiteReservation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

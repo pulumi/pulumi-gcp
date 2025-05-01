@@ -503,6 +503,9 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
 
 
 class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

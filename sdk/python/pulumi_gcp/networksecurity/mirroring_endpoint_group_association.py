@@ -459,6 +459,9 @@ class _MirroringEndpointGroupAssociationState:
 
 
 class MirroringEndpointGroupAssociation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

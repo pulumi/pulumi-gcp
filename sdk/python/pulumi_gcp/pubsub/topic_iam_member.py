@@ -253,6 +253,9 @@ class _TopicIAMMemberState:
 
 
 class TopicIAMMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:pubsub/topicIAMMember:TopicIAMMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

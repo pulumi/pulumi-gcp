@@ -527,6 +527,9 @@ class _ListingState:
 
 
 class Listing(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigqueryanalyticshub/listing:Listing"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

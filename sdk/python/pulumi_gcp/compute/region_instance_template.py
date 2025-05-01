@@ -1170,6 +1170,9 @@ class _RegionInstanceTemplateState:
 
 
 class RegionInstanceTemplate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

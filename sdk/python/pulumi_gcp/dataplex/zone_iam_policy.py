@@ -199,6 +199,9 @@ class _ZoneIamPolicyState:
 
 
 class ZoneIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/zoneIamPolicy:ZoneIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

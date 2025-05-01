@@ -465,6 +465,9 @@ class _CxPageState:
 
 
 class CxPage(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/cxPage:CxPage"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

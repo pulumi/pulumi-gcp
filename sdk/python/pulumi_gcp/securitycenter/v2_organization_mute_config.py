@@ -334,6 +334,9 @@ class _V2OrganizationMuteConfigState:
 
 
 class V2OrganizationMuteConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

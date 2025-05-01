@@ -296,6 +296,9 @@ class _AppEngineServiceIamMemberState:
 
 
 class AppEngineServiceIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

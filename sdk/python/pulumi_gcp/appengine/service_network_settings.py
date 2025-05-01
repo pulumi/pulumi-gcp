@@ -126,6 +126,9 @@ class _ServiceNetworkSettingsState:
 
 
 class ServiceNetworkSettings(pulumi.CustomResource):
+
+    pulumi_type = "gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1498,6 +1498,9 @@ class _RegionBackendServiceState:
 
 
 class RegionBackendService(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionBackendService:RegionBackendService"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

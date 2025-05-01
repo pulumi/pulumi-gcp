@@ -202,6 +202,9 @@ class _CxEnvironmentState:
 
 
 class CxEnvironment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/cxEnvironment:CxEnvironment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

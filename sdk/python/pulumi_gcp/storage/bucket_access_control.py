@@ -232,6 +232,9 @@ class _BucketAccessControlState:
 
 
 class BucketAccessControl(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/bucketAccessControl:BucketAccessControl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

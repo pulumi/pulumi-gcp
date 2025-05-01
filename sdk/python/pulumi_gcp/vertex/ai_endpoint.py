@@ -640,6 +640,9 @@ class _AiEndpointState:
 
 
 class AiEndpoint(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiEndpoint:AiEndpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

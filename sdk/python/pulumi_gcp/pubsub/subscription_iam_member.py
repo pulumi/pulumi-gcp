@@ -241,6 +241,9 @@ class _SubscriptionIAMMemberState:
 
 
 class SubscriptionIAMMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

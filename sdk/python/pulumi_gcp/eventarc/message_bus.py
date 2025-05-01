@@ -480,6 +480,9 @@ class _MessageBusState:
 
 
 class MessageBus(pulumi.CustomResource):
+
+    pulumi_type = "gcp:eventarc/messageBus:MessageBus"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

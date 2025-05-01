@@ -266,6 +266,9 @@ class _PreventionDeidentifyTemplateState:
 
 
 class PreventionDeidentifyTemplate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

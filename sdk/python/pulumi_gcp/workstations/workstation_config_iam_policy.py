@@ -211,6 +211,9 @@ class _WorkstationConfigIamPolicyState:
 
 
 class WorkstationConfigIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

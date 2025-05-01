@@ -289,6 +289,9 @@ class _AspectTypeIamMemberState:
 
 
 class AspectTypeIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/aspectTypeIamMember:AspectTypeIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

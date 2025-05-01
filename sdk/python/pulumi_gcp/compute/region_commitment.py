@@ -597,6 +597,9 @@ class _RegionCommitmentState:
 
 
 class RegionCommitment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionCommitment:RegionCommitment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

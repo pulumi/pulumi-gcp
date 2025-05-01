@@ -228,6 +228,9 @@ class _ApiState:
 
 
 class Api(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/api:Api"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -307,6 +307,9 @@ class _InsightsReportConfigState:
 
 
 class InsightsReportConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/insightsReportConfig:InsightsReportConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

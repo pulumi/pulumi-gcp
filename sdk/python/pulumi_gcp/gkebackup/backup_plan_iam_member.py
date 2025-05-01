@@ -298,6 +298,9 @@ class _BackupPlanIamMemberState:
 
 
 class BackupPlanIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

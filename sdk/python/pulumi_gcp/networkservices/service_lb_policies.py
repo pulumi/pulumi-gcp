@@ -393,6 +393,9 @@ class _ServiceLbPoliciesState:
 
 
 class ServiceLbPolicies(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/serviceLbPolicies:ServiceLbPolicies"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

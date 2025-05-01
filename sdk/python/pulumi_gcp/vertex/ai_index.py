@@ -445,6 +445,9 @@ class _AiIndexState:
 
 
 class AiIndex(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiIndex:AiIndex"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

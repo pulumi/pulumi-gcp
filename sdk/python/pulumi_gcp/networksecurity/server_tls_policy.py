@@ -406,6 +406,9 @@ class _ServerTlsPolicyState:
 
 
 class ServerTlsPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

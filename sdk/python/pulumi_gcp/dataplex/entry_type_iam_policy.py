@@ -188,6 +188,9 @@ class _EntryTypeIamPolicyState:
 
 
 class EntryTypeIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/entryTypeIamPolicy:EntryTypeIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

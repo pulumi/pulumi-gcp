@@ -229,6 +229,9 @@ class _KeyRingIAMMemberState:
 
 
 class KeyRingIAMMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/keyRingIAMMember:KeyRingIAMMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

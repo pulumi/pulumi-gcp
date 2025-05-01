@@ -426,6 +426,9 @@ class _TargetPoolState:
 
 
 class TargetPool(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/targetPool:TargetPool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

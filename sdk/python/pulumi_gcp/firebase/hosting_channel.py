@@ -316,6 +316,9 @@ class _HostingChannelState:
 
 
 class HostingChannel(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/hostingChannel:HostingChannel"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

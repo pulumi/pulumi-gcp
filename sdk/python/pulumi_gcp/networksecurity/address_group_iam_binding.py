@@ -298,6 +298,9 @@ class _AddressGroupIamBindingState:
 
 
 class AddressGroupIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/addressGroupIamBinding:AddressGroupIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

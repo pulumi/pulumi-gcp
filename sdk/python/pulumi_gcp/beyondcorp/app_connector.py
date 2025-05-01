@@ -281,6 +281,9 @@ class _AppConnectorState:
 
 
 class AppConnector(pulumi.CustomResource):
+
+    pulumi_type = "gcp:beyondcorp/appConnector:AppConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

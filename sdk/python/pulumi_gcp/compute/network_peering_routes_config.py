@@ -286,6 +286,9 @@ class _NetworkPeeringRoutesConfigState:
 
 
 class NetworkPeeringRoutesConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

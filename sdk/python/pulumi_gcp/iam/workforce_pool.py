@@ -389,6 +389,9 @@ class _WorkforcePoolState:
 
 
 class WorkforcePool(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iam/workforcePool:WorkforcePool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -446,6 +446,9 @@ class _InterceptDeploymentState:
 
 
 class InterceptDeployment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/interceptDeployment:InterceptDeployment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

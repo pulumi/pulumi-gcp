@@ -516,6 +516,9 @@ class _WorkstationState:
 
 
 class Workstation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:workstations/workstation:Workstation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

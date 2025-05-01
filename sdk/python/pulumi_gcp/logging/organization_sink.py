@@ -420,6 +420,9 @@ class _OrganizationSinkState:
 
 
 class OrganizationSink(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/organizationSink:OrganizationSink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

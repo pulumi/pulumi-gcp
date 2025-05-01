@@ -189,6 +189,9 @@ class _InstanceIamMemberState:
 
 
 class InstanceIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securesourcemanager/instanceIamMember:InstanceIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

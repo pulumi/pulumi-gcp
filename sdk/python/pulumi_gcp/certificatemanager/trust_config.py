@@ -373,6 +373,9 @@ class _TrustConfigState:
 
 
 class TrustConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:certificatemanager/trustConfig:TrustConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

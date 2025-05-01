@@ -323,6 +323,9 @@ class _MetastoreTableIamMemberState:
 
 
 class MetastoreTableIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/metastoreTableIamMember:MetastoreTableIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

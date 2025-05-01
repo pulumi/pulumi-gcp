@@ -395,6 +395,9 @@ class _PerInstanceConfigState:
 
 
 class PerInstanceConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/perInstanceConfig:PerInstanceConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

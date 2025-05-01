@@ -330,6 +330,9 @@ class _GroupState:
 
 
 class Group(pulumi.CustomResource):
+
+    pulumi_type = "gcp:migrationcenter/group:Group"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

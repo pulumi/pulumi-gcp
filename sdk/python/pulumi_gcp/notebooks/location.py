@@ -118,6 +118,9 @@ class _LocationState:
 
 
 class Location(pulumi.CustomResource):
+
+    pulumi_type = "gcp:notebooks/location:Location"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

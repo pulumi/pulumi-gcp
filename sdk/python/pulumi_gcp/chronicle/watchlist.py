@@ -398,6 +398,9 @@ class _WatchlistState:
 
 
 class Watchlist(pulumi.CustomResource):
+
+    pulumi_type = "gcp:chronicle/watchlist:Watchlist"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

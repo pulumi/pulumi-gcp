@@ -1217,6 +1217,9 @@ class _RouterPeerState:
 
 
 class RouterPeer(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/routerPeer:RouterPeer"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

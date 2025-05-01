@@ -209,6 +209,9 @@ class _ServiceIamMemberState:
 
 
 class ServiceIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:endpoints/serviceIamMember:ServiceIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -383,6 +383,9 @@ class _ProjectSccBigQueryExportState:
 
 
 class ProjectSccBigQueryExport(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

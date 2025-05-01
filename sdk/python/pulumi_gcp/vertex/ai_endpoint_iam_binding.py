@@ -189,6 +189,9 @@ class _AiEndpointIamBindingState:
 
 
 class AiEndpointIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

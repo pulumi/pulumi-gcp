@@ -243,6 +243,9 @@ class _CryptoKeyVersionState:
 
 
 class CryptoKeyVersion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/cryptoKeyVersion:CryptoKeyVersion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

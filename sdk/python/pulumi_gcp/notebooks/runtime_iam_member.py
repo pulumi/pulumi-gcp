@@ -293,6 +293,9 @@ class _RuntimeIamMemberState:
 
 
 class RuntimeIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:notebooks/runtimeIamMember:RuntimeIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

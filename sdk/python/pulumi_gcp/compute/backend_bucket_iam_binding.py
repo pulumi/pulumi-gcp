@@ -254,6 +254,9 @@ class _BackendBucketIamBindingState:
 
 
 class BackendBucketIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/backendBucketIamBinding:BackendBucketIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

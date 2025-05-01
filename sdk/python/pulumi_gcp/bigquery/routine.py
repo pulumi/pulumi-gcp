@@ -644,6 +644,9 @@ class _RoutineState:
 
 
 class Routine(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/routine:Routine"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

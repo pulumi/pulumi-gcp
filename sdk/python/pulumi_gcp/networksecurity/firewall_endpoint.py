@@ -355,6 +355,9 @@ class _FirewallEndpointState:
 
 
 class FirewallEndpoint(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/firewallEndpoint:FirewallEndpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -464,6 +464,9 @@ class _GatewaySecurityPolicyRuleState:
 
 
 class GatewaySecurityPolicyRule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

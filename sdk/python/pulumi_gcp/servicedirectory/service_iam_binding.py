@@ -218,6 +218,9 @@ class _ServiceIamBindingState:
 
 
 class ServiceIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:servicedirectory/serviceIamBinding:ServiceIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

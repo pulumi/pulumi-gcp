@@ -395,6 +395,9 @@ class _RegionPerInstanceConfigState:
 
 
 class RegionPerInstanceConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

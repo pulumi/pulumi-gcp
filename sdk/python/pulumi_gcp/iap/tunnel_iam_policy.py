@@ -121,6 +121,9 @@ class _TunnelIamPolicyState:
 
 
 class TunnelIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/tunnelIamPolicy:TunnelIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

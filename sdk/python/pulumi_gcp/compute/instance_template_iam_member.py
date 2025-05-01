@@ -266,6 +266,9 @@ class _InstanceTemplateIamMemberState:
 
 
 class InstanceTemplateIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -222,6 +222,9 @@ class _FlowhookState:
 
 
 class Flowhook(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/flowhook:Flowhook"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

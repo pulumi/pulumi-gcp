@@ -783,6 +783,9 @@ class _AuthorityState:
 
 
 class Authority(pulumi.CustomResource):
+
+    pulumi_type = "gcp:certificateauthority/authority:Authority"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

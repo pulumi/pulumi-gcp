@@ -247,6 +247,9 @@ class _RouterNatAddressState:
 
 
 class RouterNatAddress(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/routerNatAddress:RouterNatAddress"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -346,6 +346,9 @@ class _ProjectFeedState:
 
 
 class ProjectFeed(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudasset/projectFeed:ProjectFeed"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

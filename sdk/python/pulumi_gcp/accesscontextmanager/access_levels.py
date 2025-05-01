@@ -119,6 +119,9 @@ class _AccessLevelsState:
 
 
 class AccessLevels(pulumi.CustomResource):
+
+    pulumi_type = "gcp:accesscontextmanager/accessLevels:AccessLevels"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

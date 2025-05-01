@@ -240,6 +240,9 @@ class _NotificationConfigState:
 
 
 class NotificationConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/notificationConfig:NotificationConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

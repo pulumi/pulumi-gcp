@@ -512,6 +512,9 @@ class _EntryState:
 
 
 class Entry(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datacatalog/entry:Entry"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

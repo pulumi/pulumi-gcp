@@ -379,6 +379,9 @@ class _PublicDelegatedPrefixState:
 
 
 class PublicDelegatedPrefix(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

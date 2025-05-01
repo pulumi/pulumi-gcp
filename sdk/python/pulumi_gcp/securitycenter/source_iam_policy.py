@@ -139,6 +139,9 @@ class _SourceIamPolicyState:
 
 
 class SourceIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -190,6 +190,9 @@ class _DeliveryPipelineIamBindingState:
 
 
 class DeliveryPipelineIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

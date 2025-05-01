@@ -389,6 +389,9 @@ class _InstantSnapshotState:
 
 
 class InstantSnapshot(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instantSnapshot:InstantSnapshot"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

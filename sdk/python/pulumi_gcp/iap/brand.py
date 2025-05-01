@@ -198,6 +198,9 @@ class _BrandState:
 
 
 class Brand(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/brand:Brand"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

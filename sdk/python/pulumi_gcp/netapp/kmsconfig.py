@@ -320,6 +320,9 @@ class _KmsconfigState:
 
 
 class Kmsconfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:netapp/kmsconfig:Kmsconfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

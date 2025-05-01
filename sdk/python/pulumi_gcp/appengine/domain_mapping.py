@@ -231,6 +231,9 @@ class _DomainMappingState:
 
 
 class DomainMapping(pulumi.CustomResource):
+
+    pulumi_type = "gcp:appengine/domainMapping:DomainMapping"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

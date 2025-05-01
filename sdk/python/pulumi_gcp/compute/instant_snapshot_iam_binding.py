@@ -306,6 +306,9 @@ class _InstantSnapshotIamBindingState:
 
 
 class InstantSnapshotIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instantSnapshotIamBinding:InstantSnapshotIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -508,6 +508,9 @@ class _DatascanState:
 
 
 class Datascan(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/datascan:Datascan"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

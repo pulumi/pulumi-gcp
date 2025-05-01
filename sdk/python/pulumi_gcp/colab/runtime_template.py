@@ -604,6 +604,9 @@ class _RuntimeTemplateState:
 
 
 class RuntimeTemplate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:colab/runtimeTemplate:RuntimeTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

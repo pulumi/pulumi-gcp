@@ -328,6 +328,9 @@ class _ManagedSslCertificateState:
 
 
 class ManagedSslCertificate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/managedSslCertificate:ManagedSslCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

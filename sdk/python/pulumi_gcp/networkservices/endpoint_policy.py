@@ -440,6 +440,9 @@ class _EndpointPolicyState:
 
 
 class EndpointPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/endpointPolicy:EndpointPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -329,6 +329,9 @@ class _RepositoryWorkflowConfigState:
 
 
 class RepositoryWorkflowConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

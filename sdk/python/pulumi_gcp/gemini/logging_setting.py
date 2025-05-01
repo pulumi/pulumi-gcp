@@ -332,6 +332,9 @@ class _LoggingSettingState:
 
 
 class LoggingSetting(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gemini/loggingSetting:LoggingSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

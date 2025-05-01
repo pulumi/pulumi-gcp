@@ -459,6 +459,9 @@ class _InterceptEndpointGroupAssociationState:
 
 
 class InterceptEndpointGroupAssociation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1111,6 +1111,9 @@ class _SubnetworkState:
 
 
 class Subnetwork(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/subnetwork:Subnetwork"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

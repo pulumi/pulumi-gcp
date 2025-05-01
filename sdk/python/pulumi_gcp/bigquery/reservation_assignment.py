@@ -241,6 +241,9 @@ class _ReservationAssignmentState:
 
 
 class ReservationAssignment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/reservationAssignment:ReservationAssignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

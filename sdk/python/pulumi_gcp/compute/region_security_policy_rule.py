@@ -480,6 +480,9 @@ class _RegionSecurityPolicyRuleState:
 
 
 class RegionSecurityPolicyRule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

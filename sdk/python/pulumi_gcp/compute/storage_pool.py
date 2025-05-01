@@ -535,6 +535,9 @@ class _StoragePoolState:
 
 
 class StoragePool(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/storagePool:StoragePool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

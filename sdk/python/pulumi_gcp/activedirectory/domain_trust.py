@@ -316,6 +316,9 @@ class _DomainTrustState:
 
 
 class DomainTrust(pulumi.CustomResource):
+
+    pulumi_type = "gcp:activedirectory/domainTrust:DomainTrust"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -207,6 +207,9 @@ class _EnvReferencesState:
 
 
 class EnvReferences(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/envReferences:EnvReferences"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

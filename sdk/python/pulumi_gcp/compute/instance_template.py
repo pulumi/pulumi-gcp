@@ -1204,6 +1204,9 @@ class _InstanceTemplateState:
 
 
 class InstanceTemplate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceTemplate:InstanceTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

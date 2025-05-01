@@ -213,6 +213,9 @@ class _AccountIamMemberState:
 
 
 class AccountIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:billing/accountIamMember:AccountIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

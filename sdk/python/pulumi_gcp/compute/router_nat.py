@@ -998,6 +998,9 @@ class _RouterNatState:
 
 
 class RouterNat(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/routerNat:RouterNat"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

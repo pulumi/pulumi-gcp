@@ -217,6 +217,9 @@ class _Hl7StoreIamMemberState:
 
 
 class Hl7StoreIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

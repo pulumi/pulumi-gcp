@@ -217,6 +217,9 @@ class _FhirStoreIamMemberState:
 
 
 class FhirStoreIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -383,6 +383,9 @@ class _EnterpriseKeyState:
 
 
 class EnterpriseKey(pulumi.CustomResource):
+
+    pulumi_type = "gcp:recaptcha/enterpriseKey:EnterpriseKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

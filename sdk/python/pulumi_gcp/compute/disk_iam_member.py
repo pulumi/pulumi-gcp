@@ -294,6 +294,9 @@ class _DiskIamMemberState:
 
 
 class DiskIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/diskIamMember:DiskIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

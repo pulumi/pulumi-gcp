@@ -365,6 +365,9 @@ class _TcpRouteState:
 
 
 class TcpRoute(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/tcpRoute:TcpRoute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

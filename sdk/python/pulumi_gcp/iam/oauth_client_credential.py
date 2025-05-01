@@ -303,6 +303,9 @@ class _OauthClientCredentialState:
 
 
 class OauthClientCredential(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iam/oauthClientCredential:OauthClientCredential"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

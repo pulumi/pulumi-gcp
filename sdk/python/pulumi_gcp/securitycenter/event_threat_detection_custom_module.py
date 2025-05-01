@@ -264,6 +264,9 @@ class _EventThreatDetectionCustomModuleState:
 
 
 class EventThreatDetectionCustomModule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

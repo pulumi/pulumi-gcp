@@ -217,6 +217,9 @@ class _Hl7StoreIamBindingState:
 
 
 class Hl7StoreIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

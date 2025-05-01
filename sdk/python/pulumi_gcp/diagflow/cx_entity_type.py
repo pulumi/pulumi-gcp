@@ -387,6 +387,9 @@ class _CxEntityTypeState:
 
 
 class CxEntityType(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/cxEntityType:CxEntityType"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

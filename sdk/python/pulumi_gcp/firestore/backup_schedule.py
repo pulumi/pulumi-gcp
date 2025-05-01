@@ -241,6 +241,9 @@ class _BackupScheduleState:
 
 
 class BackupSchedule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firestore/backupSchedule:BackupSchedule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

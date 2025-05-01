@@ -234,6 +234,9 @@ class _TunnelIamMemberState:
 
 
 class TunnelIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/tunnelIamMember:TunnelIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

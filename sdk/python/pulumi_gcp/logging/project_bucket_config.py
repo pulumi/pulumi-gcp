@@ -353,6 +353,9 @@ class _ProjectBucketConfigState:
 
 
 class ProjectBucketConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/projectBucketConfig:ProjectBucketConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

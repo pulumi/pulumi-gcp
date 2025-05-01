@@ -294,6 +294,9 @@ class _QueueIamBindingState:
 
 
 class QueueIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudtasks/queueIamBinding:QueueIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

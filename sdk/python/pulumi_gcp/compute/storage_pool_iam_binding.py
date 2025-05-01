@@ -306,6 +306,9 @@ class _StoragePoolIamBindingState:
 
 
 class StoragePoolIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/storagePoolIamBinding:StoragePoolIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

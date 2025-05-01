@@ -147,6 +147,9 @@ class _AiFeatureStoreEntityTypeIamPolicyState:
 
 
 class AiFeatureStoreEntityTypeIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiFeatureStoreEntityTypeIamPolicy:AiFeatureStoreEntityTypeIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

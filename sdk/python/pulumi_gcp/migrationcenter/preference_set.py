@@ -294,6 +294,9 @@ class _PreferenceSetState:
 
 
 class PreferenceSet(pulumi.CustomResource):
+
+    pulumi_type = "gcp:migrationcenter/preferenceSet:PreferenceSet"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

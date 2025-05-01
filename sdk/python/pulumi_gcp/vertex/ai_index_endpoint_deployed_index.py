@@ -485,6 +485,9 @@ class _AiIndexEndpointDeployedIndexState:
 
 
 class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

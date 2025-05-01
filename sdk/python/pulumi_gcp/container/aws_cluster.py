@@ -574,6 +574,9 @@ class _AwsClusterState:
 
 
 class AwsCluster(pulumi.CustomResource):
+
+    pulumi_type = "gcp:container/awsCluster:AwsCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

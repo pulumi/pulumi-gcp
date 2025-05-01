@@ -200,6 +200,9 @@ class _CaPoolIamPolicyState:
 
 
 class CaPoolIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

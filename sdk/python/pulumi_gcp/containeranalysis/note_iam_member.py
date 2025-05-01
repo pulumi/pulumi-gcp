@@ -253,6 +253,9 @@ class _NoteIamMemberState:
 
 
 class NoteIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:containeranalysis/noteIamMember:NoteIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

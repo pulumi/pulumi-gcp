@@ -315,6 +315,9 @@ class _BackupPlanState:
 
 
 class BackupPlan(pulumi.CustomResource):
+
+    pulumi_type = "gcp:backupdisasterrecovery/backupPlan:BackupPlan"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

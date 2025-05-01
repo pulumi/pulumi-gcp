@@ -192,6 +192,9 @@ class _InstanceIAMPolicyState:
 
 
 class InstanceIAMPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

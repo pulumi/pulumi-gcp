@@ -327,6 +327,9 @@ class _SecretVersionState:
 
 
 class SecretVersion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:secretmanager/secretVersion:SecretVersion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -412,6 +412,9 @@ class _RegionSslCertificateState:
 
 
 class RegionSslCertificate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionSslCertificate:RegionSslCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

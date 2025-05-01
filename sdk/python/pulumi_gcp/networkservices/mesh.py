@@ -348,6 +348,9 @@ class _MeshState:
 
 
 class Mesh(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/mesh:Mesh"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

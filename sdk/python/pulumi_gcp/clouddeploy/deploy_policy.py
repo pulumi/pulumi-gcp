@@ -487,6 +487,9 @@ class _DeployPolicyState:
 
 
 class DeployPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:clouddeploy/deployPolicy:DeployPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

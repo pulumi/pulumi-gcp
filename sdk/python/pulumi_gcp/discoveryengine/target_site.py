@@ -411,6 +411,9 @@ class _TargetSiteState:
 
 
 class TargetSite(pulumi.CustomResource):
+
+    pulumi_type = "gcp:discoveryengine/targetSite:TargetSite"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

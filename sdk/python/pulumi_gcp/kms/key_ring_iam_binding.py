@@ -229,6 +229,9 @@ class _KeyRingIAMBindingState:
 
 
 class KeyRingIAMBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

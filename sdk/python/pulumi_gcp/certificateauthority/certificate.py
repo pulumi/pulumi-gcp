@@ -582,6 +582,9 @@ class _CertificateState:
 
 
 class Certificate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:certificateauthority/certificate:Certificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

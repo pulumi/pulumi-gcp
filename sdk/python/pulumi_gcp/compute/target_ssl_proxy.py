@@ -413,6 +413,9 @@ class _TargetSSLProxyState:
 
 
 class TargetSSLProxy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/targetSSLProxy:TargetSSLProxy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

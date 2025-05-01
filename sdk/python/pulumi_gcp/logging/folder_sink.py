@@ -424,6 +424,9 @@ class _FolderSinkState:
 
 
 class FolderSink(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/folderSink:FolderSink"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -483,6 +483,9 @@ class _NodeGroupState:
 
 
 class NodeGroup(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/nodeGroup:NodeGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

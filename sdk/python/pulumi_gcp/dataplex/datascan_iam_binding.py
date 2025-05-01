@@ -289,6 +289,9 @@ class _DatascanIamBindingState:
 
 
 class DatascanIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/datascanIamBinding:DatascanIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -422,6 +422,9 @@ class _V2FolderSccBigQueryExportState:
 
 
 class V2FolderSccBigQueryExport(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -218,6 +218,9 @@ class _NamespaceIamMemberState:
 
 
 class NamespaceIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:servicedirectory/namespaceIamMember:NamespaceIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -217,6 +217,9 @@ class _FhirStoreIamBindingState:
 
 
 class FhirStoreIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

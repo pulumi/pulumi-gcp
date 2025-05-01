@@ -314,6 +314,9 @@ class _EkmConnectionIamMemberState:
 
 
 class EkmConnectionIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

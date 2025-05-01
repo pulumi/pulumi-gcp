@@ -298,6 +298,9 @@ class _RestorePlanIamBindingState:
 
 
 class RestorePlanIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
