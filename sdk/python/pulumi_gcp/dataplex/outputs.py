@@ -38,6 +38,11 @@ __all__ = [
     'DatascanDataQualitySpec',
     'DatascanDataQualitySpecPostScanActions',
     'DatascanDataQualitySpecPostScanActionsBigqueryExport',
+    'DatascanDataQualitySpecPostScanActionsNotificationReport',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportRecipients',
+    'DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger',
     'DatascanDataQualitySpecRule',
     'DatascanDataQualitySpecRuleNonNullExpectation',
     'DatascanDataQualitySpecRuleRangeExpectation',
@@ -1164,6 +1169,8 @@ class DatascanDataQualitySpecPostScanActions(dict):
         suggest = None
         if key == "bigqueryExport":
             suggest = "bigquery_export"
+        elif key == "notificationReport":
+            suggest = "notification_report"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatascanDataQualitySpecPostScanActions. Access the value via the '{suggest}' property getter instead.")
@@ -1177,13 +1184,18 @@ class DatascanDataQualitySpecPostScanActions(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 bigquery_export: Optional['outputs.DatascanDataQualitySpecPostScanActionsBigqueryExport'] = None):
+                 bigquery_export: Optional['outputs.DatascanDataQualitySpecPostScanActionsBigqueryExport'] = None,
+                 notification_report: Optional['outputs.DatascanDataQualitySpecPostScanActionsNotificationReport'] = None):
         """
         :param 'DatascanDataQualitySpecPostScanActionsBigqueryExportArgs' bigquery_export: If set, results will be exported to the provided BigQuery table.
+               Structure is documented below.
+        :param 'DatascanDataQualitySpecPostScanActionsNotificationReportArgs' notification_report: The configuration of notification report post scan action.
                Structure is documented below.
         """
         if bigquery_export is not None:
             pulumi.set(__self__, "bigquery_export", bigquery_export)
+        if notification_report is not None:
+            pulumi.set(__self__, "notification_report", notification_report)
 
     @property
     @pulumi.getter(name="bigqueryExport")
@@ -1193,6 +1205,15 @@ class DatascanDataQualitySpecPostScanActions(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "bigquery_export")
+
+    @property
+    @pulumi.getter(name="notificationReport")
+    def notification_report(self) -> Optional['outputs.DatascanDataQualitySpecPostScanActionsNotificationReport']:
+        """
+        The configuration of notification report post scan action.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notification_report")
 
 
 @pulumi.output_type
@@ -1231,6 +1252,152 @@ class DatascanDataQualitySpecPostScanActionsBigqueryExport(dict):
         Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         """
         return pulumi.get(self, "results_table")
+
+
+@pulumi.output_type
+class DatascanDataQualitySpecPostScanActionsNotificationReport(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobEndTrigger":
+            suggest = "job_end_trigger"
+        elif key == "jobFailureTrigger":
+            suggest = "job_failure_trigger"
+        elif key == "scoreThresholdTrigger":
+            suggest = "score_threshold_trigger"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataQualitySpecPostScanActionsNotificationReport. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataQualitySpecPostScanActionsNotificationReport.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataQualitySpecPostScanActionsNotificationReport.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 recipients: 'outputs.DatascanDataQualitySpecPostScanActionsNotificationReportRecipients',
+                 job_end_trigger: Optional['outputs.DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger'] = None,
+                 job_failure_trigger: Optional['outputs.DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger'] = None,
+                 score_threshold_trigger: Optional['outputs.DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger'] = None):
+        """
+        :param 'DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs' recipients: The individuals or groups who are designated to receive notifications upon triggers.
+               Structure is documented below.
+        :param 'DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs' job_end_trigger: This trigger is triggered whenever a scan job run ends, regardless of the result.
+        :param 'DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs' job_failure_trigger: This trigger is triggered when the scan job itself fails, regardless of the result.
+        :param 'DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs' score_threshold_trigger: This trigger is triggered when the DQ score in the job result is less than a specified input score.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "recipients", recipients)
+        if job_end_trigger is not None:
+            pulumi.set(__self__, "job_end_trigger", job_end_trigger)
+        if job_failure_trigger is not None:
+            pulumi.set(__self__, "job_failure_trigger", job_failure_trigger)
+        if score_threshold_trigger is not None:
+            pulumi.set(__self__, "score_threshold_trigger", score_threshold_trigger)
+
+    @property
+    @pulumi.getter
+    def recipients(self) -> 'outputs.DatascanDataQualitySpecPostScanActionsNotificationReportRecipients':
+        """
+        The individuals or groups who are designated to receive notifications upon triggers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "recipients")
+
+    @property
+    @pulumi.getter(name="jobEndTrigger")
+    def job_end_trigger(self) -> Optional['outputs.DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger']:
+        """
+        This trigger is triggered whenever a scan job run ends, regardless of the result.
+        """
+        return pulumi.get(self, "job_end_trigger")
+
+    @property
+    @pulumi.getter(name="jobFailureTrigger")
+    def job_failure_trigger(self) -> Optional['outputs.DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger']:
+        """
+        This trigger is triggered when the scan job itself fails, regardless of the result.
+        """
+        return pulumi.get(self, "job_failure_trigger")
+
+    @property
+    @pulumi.getter(name="scoreThresholdTrigger")
+    def score_threshold_trigger(self) -> Optional['outputs.DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger']:
+        """
+        This trigger is triggered when the DQ score in the job result is less than a specified input score.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "score_threshold_trigger")
+
+
+@pulumi.output_type
+class DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class DatascanDataQualitySpecPostScanActionsNotificationReportRecipients(dict):
+    def __init__(__self__, *,
+                 emails: Optional[Sequence[builtins.str]] = None):
+        """
+        :param Sequence[builtins.str] emails: The email recipients who will receive the DataQualityScan results report.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence[builtins.str]]:
+        """
+        The email recipients who will receive the DataQualityScan results report.
+        """
+        return pulumi.get(self, "emails")
+
+
+@pulumi.output_type
+class DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scoreThreshold":
+            suggest = "score_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 score_threshold: Optional[builtins.float] = None):
+        """
+        :param builtins.float score_threshold: The score range is in [0,100].
+        """
+        if score_threshold is not None:
+            pulumi.set(__self__, "score_threshold", score_threshold)
+
+    @property
+    @pulumi.getter(name="scoreThreshold")
+    def score_threshold(self) -> Optional[builtins.float]:
+        """
+        The score range is in [0,100].
+        """
+        return pulumi.get(self, "score_threshold")
 
 
 @pulumi.output_type

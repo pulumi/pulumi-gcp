@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.Apigee
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
     /// * How-to Guides
     ///     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+    ///     * Setting a custom endpoint (required for data residency)
     /// 
     /// ## Example Usage
     /// 
@@ -87,6 +88,27 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         Description = "Terraform-provisioned basic Apigee Org without VPC Peering.",
     ///         AnalyticsRegion = "us-central1",
+    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         DisableVpcPeering = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Apigee Organization Cloud Basic Data Residency
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
+    /// 
+    ///     var org = new Gcp.Apigee.Organization("org", new()
+    ///     {
+    ///         Description = "Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.",
     ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
     ///         DisableVpcPeering = true,
     ///     });

@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataplex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsBigqueryExportArgs;
+import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsNotificationReportArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +33,28 @@ public final class DatascanDataQualitySpecPostScanActionsArgs extends com.pulumi
         return Optional.ofNullable(this.bigqueryExport);
     }
 
+    /**
+     * The configuration of notification report post scan action.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="notificationReport")
+    private @Nullable Output<DatascanDataQualitySpecPostScanActionsNotificationReportArgs> notificationReport;
+
+    /**
+     * @return The configuration of notification report post scan action.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatascanDataQualitySpecPostScanActionsNotificationReportArgs>> notificationReport() {
+        return Optional.ofNullable(this.notificationReport);
+    }
+
     private DatascanDataQualitySpecPostScanActionsArgs() {}
 
     private DatascanDataQualitySpecPostScanActionsArgs(DatascanDataQualitySpecPostScanActionsArgs $) {
         this.bigqueryExport = $.bigqueryExport;
+        this.notificationReport = $.notificationReport;
     }
 
     public static Builder builder() {
@@ -77,6 +96,29 @@ public final class DatascanDataQualitySpecPostScanActionsArgs extends com.pulumi
          */
         public Builder bigqueryExport(DatascanDataQualitySpecPostScanActionsBigqueryExportArgs bigqueryExport) {
             return bigqueryExport(Output.of(bigqueryExport));
+        }
+
+        /**
+         * @param notificationReport The configuration of notification report post scan action.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationReport(@Nullable Output<DatascanDataQualitySpecPostScanActionsNotificationReportArgs> notificationReport) {
+            $.notificationReport = notificationReport;
+            return this;
+        }
+
+        /**
+         * @param notificationReport The configuration of notification report post scan action.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationReport(DatascanDataQualitySpecPostScanActionsNotificationReportArgs notificationReport) {
+            return notificationReport(Output.of(notificationReport));
         }
 
         public DatascanDataQualitySpecPostScanActionsArgs build() {

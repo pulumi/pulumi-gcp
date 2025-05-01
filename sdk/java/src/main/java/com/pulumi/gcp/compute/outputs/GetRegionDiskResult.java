@@ -26,6 +26,7 @@ public final class GetRegionDiskResult {
     private String creationTimestamp;
     private String description;
     private List<GetRegionDiskDiskEncryptionKey> diskEncryptionKeys;
+    private String diskId;
     private Map<String,String> effectiveLabels;
     private List<GetRegionDiskGuestOsFeature> guestOsFeatures;
     /**
@@ -73,6 +74,9 @@ public final class GetRegionDiskResult {
     }
     public List<GetRegionDiskDiskEncryptionKey> diskEncryptionKeys() {
         return this.diskEncryptionKeys;
+    }
+    public String diskId() {
+        return this.diskId;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -166,6 +170,7 @@ public final class GetRegionDiskResult {
         private String creationTimestamp;
         private String description;
         private List<GetRegionDiskDiskEncryptionKey> diskEncryptionKeys;
+        private String diskId;
         private Map<String,String> effectiveLabels;
         private List<GetRegionDiskGuestOsFeature> guestOsFeatures;
         private String id;
@@ -199,6 +204,7 @@ public final class GetRegionDiskResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
+    	      this.diskId = defaults.diskId;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.id = defaults.id;
@@ -278,6 +284,14 @@ public final class GetRegionDiskResult {
         }
         public Builder diskEncryptionKeys(GetRegionDiskDiskEncryptionKey... diskEncryptionKeys) {
             return diskEncryptionKeys(List.of(diskEncryptionKeys));
+        }
+        @CustomType.Setter
+        public Builder diskId(String diskId) {
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "diskId");
+            }
+            this.diskId = diskId;
+            return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
@@ -490,6 +504,7 @@ public final class GetRegionDiskResult {
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
             _resultValue.diskEncryptionKeys = diskEncryptionKeys;
+            _resultValue.diskId = diskId;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.id = id;

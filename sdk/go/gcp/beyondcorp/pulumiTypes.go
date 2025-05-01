@@ -1233,6 +1233,396 @@ func (o ApplicationIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ApplicationUpstream struct {
+	// Optional. Routing policy information.
+	// Structure is documented below.
+	EgressPolicy *ApplicationUpstreamEgressPolicy `pulumi:"egressPolicy"`
+	// Network to forward traffic to.
+	// Structure is documented below.
+	Network *ApplicationUpstreamNetwork `pulumi:"network"`
+}
+
+// ApplicationUpstreamInput is an input type that accepts ApplicationUpstreamArgs and ApplicationUpstreamOutput values.
+// You can construct a concrete instance of `ApplicationUpstreamInput` via:
+//
+//	ApplicationUpstreamArgs{...}
+type ApplicationUpstreamInput interface {
+	pulumi.Input
+
+	ToApplicationUpstreamOutput() ApplicationUpstreamOutput
+	ToApplicationUpstreamOutputWithContext(context.Context) ApplicationUpstreamOutput
+}
+
+type ApplicationUpstreamArgs struct {
+	// Optional. Routing policy information.
+	// Structure is documented below.
+	EgressPolicy ApplicationUpstreamEgressPolicyPtrInput `pulumi:"egressPolicy"`
+	// Network to forward traffic to.
+	// Structure is documented below.
+	Network ApplicationUpstreamNetworkPtrInput `pulumi:"network"`
+}
+
+func (ApplicationUpstreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpstream)(nil)).Elem()
+}
+
+func (i ApplicationUpstreamArgs) ToApplicationUpstreamOutput() ApplicationUpstreamOutput {
+	return i.ToApplicationUpstreamOutputWithContext(context.Background())
+}
+
+func (i ApplicationUpstreamArgs) ToApplicationUpstreamOutputWithContext(ctx context.Context) ApplicationUpstreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpstreamOutput)
+}
+
+// ApplicationUpstreamArrayInput is an input type that accepts ApplicationUpstreamArray and ApplicationUpstreamArrayOutput values.
+// You can construct a concrete instance of `ApplicationUpstreamArrayInput` via:
+//
+//	ApplicationUpstreamArray{ ApplicationUpstreamArgs{...} }
+type ApplicationUpstreamArrayInput interface {
+	pulumi.Input
+
+	ToApplicationUpstreamArrayOutput() ApplicationUpstreamArrayOutput
+	ToApplicationUpstreamArrayOutputWithContext(context.Context) ApplicationUpstreamArrayOutput
+}
+
+type ApplicationUpstreamArray []ApplicationUpstreamInput
+
+func (ApplicationUpstreamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationUpstream)(nil)).Elem()
+}
+
+func (i ApplicationUpstreamArray) ToApplicationUpstreamArrayOutput() ApplicationUpstreamArrayOutput {
+	return i.ToApplicationUpstreamArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationUpstreamArray) ToApplicationUpstreamArrayOutputWithContext(ctx context.Context) ApplicationUpstreamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpstreamArrayOutput)
+}
+
+type ApplicationUpstreamOutput struct{ *pulumi.OutputState }
+
+func (ApplicationUpstreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpstream)(nil)).Elem()
+}
+
+func (o ApplicationUpstreamOutput) ToApplicationUpstreamOutput() ApplicationUpstreamOutput {
+	return o
+}
+
+func (o ApplicationUpstreamOutput) ToApplicationUpstreamOutputWithContext(ctx context.Context) ApplicationUpstreamOutput {
+	return o
+}
+
+// Optional. Routing policy information.
+// Structure is documented below.
+func (o ApplicationUpstreamOutput) EgressPolicy() ApplicationUpstreamEgressPolicyPtrOutput {
+	return o.ApplyT(func(v ApplicationUpstream) *ApplicationUpstreamEgressPolicy { return v.EgressPolicy }).(ApplicationUpstreamEgressPolicyPtrOutput)
+}
+
+// Network to forward traffic to.
+// Structure is documented below.
+func (o ApplicationUpstreamOutput) Network() ApplicationUpstreamNetworkPtrOutput {
+	return o.ApplyT(func(v ApplicationUpstream) *ApplicationUpstreamNetwork { return v.Network }).(ApplicationUpstreamNetworkPtrOutput)
+}
+
+type ApplicationUpstreamArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationUpstreamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationUpstream)(nil)).Elem()
+}
+
+func (o ApplicationUpstreamArrayOutput) ToApplicationUpstreamArrayOutput() ApplicationUpstreamArrayOutput {
+	return o
+}
+
+func (o ApplicationUpstreamArrayOutput) ToApplicationUpstreamArrayOutputWithContext(ctx context.Context) ApplicationUpstreamArrayOutput {
+	return o
+}
+
+func (o ApplicationUpstreamArrayOutput) Index(i pulumi.IntInput) ApplicationUpstreamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationUpstream {
+		return vs[0].([]ApplicationUpstream)[vs[1].(int)]
+	}).(ApplicationUpstreamOutput)
+}
+
+type ApplicationUpstreamEgressPolicy struct {
+	// Required. List of regions where the application sends traffic to.
+	Regions []string `pulumi:"regions"`
+}
+
+// ApplicationUpstreamEgressPolicyInput is an input type that accepts ApplicationUpstreamEgressPolicyArgs and ApplicationUpstreamEgressPolicyOutput values.
+// You can construct a concrete instance of `ApplicationUpstreamEgressPolicyInput` via:
+//
+//	ApplicationUpstreamEgressPolicyArgs{...}
+type ApplicationUpstreamEgressPolicyInput interface {
+	pulumi.Input
+
+	ToApplicationUpstreamEgressPolicyOutput() ApplicationUpstreamEgressPolicyOutput
+	ToApplicationUpstreamEgressPolicyOutputWithContext(context.Context) ApplicationUpstreamEgressPolicyOutput
+}
+
+type ApplicationUpstreamEgressPolicyArgs struct {
+	// Required. List of regions where the application sends traffic to.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+}
+
+func (ApplicationUpstreamEgressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpstreamEgressPolicy)(nil)).Elem()
+}
+
+func (i ApplicationUpstreamEgressPolicyArgs) ToApplicationUpstreamEgressPolicyOutput() ApplicationUpstreamEgressPolicyOutput {
+	return i.ToApplicationUpstreamEgressPolicyOutputWithContext(context.Background())
+}
+
+func (i ApplicationUpstreamEgressPolicyArgs) ToApplicationUpstreamEgressPolicyOutputWithContext(ctx context.Context) ApplicationUpstreamEgressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpstreamEgressPolicyOutput)
+}
+
+func (i ApplicationUpstreamEgressPolicyArgs) ToApplicationUpstreamEgressPolicyPtrOutput() ApplicationUpstreamEgressPolicyPtrOutput {
+	return i.ToApplicationUpstreamEgressPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationUpstreamEgressPolicyArgs) ToApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx context.Context) ApplicationUpstreamEgressPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpstreamEgressPolicyOutput).ToApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx)
+}
+
+// ApplicationUpstreamEgressPolicyPtrInput is an input type that accepts ApplicationUpstreamEgressPolicyArgs, ApplicationUpstreamEgressPolicyPtr and ApplicationUpstreamEgressPolicyPtrOutput values.
+// You can construct a concrete instance of `ApplicationUpstreamEgressPolicyPtrInput` via:
+//
+//	        ApplicationUpstreamEgressPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationUpstreamEgressPolicyPtrInput interface {
+	pulumi.Input
+
+	ToApplicationUpstreamEgressPolicyPtrOutput() ApplicationUpstreamEgressPolicyPtrOutput
+	ToApplicationUpstreamEgressPolicyPtrOutputWithContext(context.Context) ApplicationUpstreamEgressPolicyPtrOutput
+}
+
+type applicationUpstreamEgressPolicyPtrType ApplicationUpstreamEgressPolicyArgs
+
+func ApplicationUpstreamEgressPolicyPtr(v *ApplicationUpstreamEgressPolicyArgs) ApplicationUpstreamEgressPolicyPtrInput {
+	return (*applicationUpstreamEgressPolicyPtrType)(v)
+}
+
+func (*applicationUpstreamEgressPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationUpstreamEgressPolicy)(nil)).Elem()
+}
+
+func (i *applicationUpstreamEgressPolicyPtrType) ToApplicationUpstreamEgressPolicyPtrOutput() ApplicationUpstreamEgressPolicyPtrOutput {
+	return i.ToApplicationUpstreamEgressPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationUpstreamEgressPolicyPtrType) ToApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx context.Context) ApplicationUpstreamEgressPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpstreamEgressPolicyPtrOutput)
+}
+
+type ApplicationUpstreamEgressPolicyOutput struct{ *pulumi.OutputState }
+
+func (ApplicationUpstreamEgressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpstreamEgressPolicy)(nil)).Elem()
+}
+
+func (o ApplicationUpstreamEgressPolicyOutput) ToApplicationUpstreamEgressPolicyOutput() ApplicationUpstreamEgressPolicyOutput {
+	return o
+}
+
+func (o ApplicationUpstreamEgressPolicyOutput) ToApplicationUpstreamEgressPolicyOutputWithContext(ctx context.Context) ApplicationUpstreamEgressPolicyOutput {
+	return o
+}
+
+func (o ApplicationUpstreamEgressPolicyOutput) ToApplicationUpstreamEgressPolicyPtrOutput() ApplicationUpstreamEgressPolicyPtrOutput {
+	return o.ToApplicationUpstreamEgressPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationUpstreamEgressPolicyOutput) ToApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx context.Context) ApplicationUpstreamEgressPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationUpstreamEgressPolicy) *ApplicationUpstreamEgressPolicy {
+		return &v
+	}).(ApplicationUpstreamEgressPolicyPtrOutput)
+}
+
+// Required. List of regions where the application sends traffic to.
+func (o ApplicationUpstreamEgressPolicyOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationUpstreamEgressPolicy) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationUpstreamEgressPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationUpstreamEgressPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationUpstreamEgressPolicy)(nil)).Elem()
+}
+
+func (o ApplicationUpstreamEgressPolicyPtrOutput) ToApplicationUpstreamEgressPolicyPtrOutput() ApplicationUpstreamEgressPolicyPtrOutput {
+	return o
+}
+
+func (o ApplicationUpstreamEgressPolicyPtrOutput) ToApplicationUpstreamEgressPolicyPtrOutputWithContext(ctx context.Context) ApplicationUpstreamEgressPolicyPtrOutput {
+	return o
+}
+
+func (o ApplicationUpstreamEgressPolicyPtrOutput) Elem() ApplicationUpstreamEgressPolicyOutput {
+	return o.ApplyT(func(v *ApplicationUpstreamEgressPolicy) ApplicationUpstreamEgressPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationUpstreamEgressPolicy
+		return ret
+	}).(ApplicationUpstreamEgressPolicyOutput)
+}
+
+// Required. List of regions where the application sends traffic to.
+func (o ApplicationUpstreamEgressPolicyPtrOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationUpstreamEgressPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Regions
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApplicationUpstreamNetwork struct {
+	// Required. Network name is of the format:
+	// `projects/{project}/global/networks/{network}`
+	Name string `pulumi:"name"`
+}
+
+// ApplicationUpstreamNetworkInput is an input type that accepts ApplicationUpstreamNetworkArgs and ApplicationUpstreamNetworkOutput values.
+// You can construct a concrete instance of `ApplicationUpstreamNetworkInput` via:
+//
+//	ApplicationUpstreamNetworkArgs{...}
+type ApplicationUpstreamNetworkInput interface {
+	pulumi.Input
+
+	ToApplicationUpstreamNetworkOutput() ApplicationUpstreamNetworkOutput
+	ToApplicationUpstreamNetworkOutputWithContext(context.Context) ApplicationUpstreamNetworkOutput
+}
+
+type ApplicationUpstreamNetworkArgs struct {
+	// Required. Network name is of the format:
+	// `projects/{project}/global/networks/{network}`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ApplicationUpstreamNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpstreamNetwork)(nil)).Elem()
+}
+
+func (i ApplicationUpstreamNetworkArgs) ToApplicationUpstreamNetworkOutput() ApplicationUpstreamNetworkOutput {
+	return i.ToApplicationUpstreamNetworkOutputWithContext(context.Background())
+}
+
+func (i ApplicationUpstreamNetworkArgs) ToApplicationUpstreamNetworkOutputWithContext(ctx context.Context) ApplicationUpstreamNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpstreamNetworkOutput)
+}
+
+func (i ApplicationUpstreamNetworkArgs) ToApplicationUpstreamNetworkPtrOutput() ApplicationUpstreamNetworkPtrOutput {
+	return i.ToApplicationUpstreamNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationUpstreamNetworkArgs) ToApplicationUpstreamNetworkPtrOutputWithContext(ctx context.Context) ApplicationUpstreamNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpstreamNetworkOutput).ToApplicationUpstreamNetworkPtrOutputWithContext(ctx)
+}
+
+// ApplicationUpstreamNetworkPtrInput is an input type that accepts ApplicationUpstreamNetworkArgs, ApplicationUpstreamNetworkPtr and ApplicationUpstreamNetworkPtrOutput values.
+// You can construct a concrete instance of `ApplicationUpstreamNetworkPtrInput` via:
+//
+//	        ApplicationUpstreamNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationUpstreamNetworkPtrInput interface {
+	pulumi.Input
+
+	ToApplicationUpstreamNetworkPtrOutput() ApplicationUpstreamNetworkPtrOutput
+	ToApplicationUpstreamNetworkPtrOutputWithContext(context.Context) ApplicationUpstreamNetworkPtrOutput
+}
+
+type applicationUpstreamNetworkPtrType ApplicationUpstreamNetworkArgs
+
+func ApplicationUpstreamNetworkPtr(v *ApplicationUpstreamNetworkArgs) ApplicationUpstreamNetworkPtrInput {
+	return (*applicationUpstreamNetworkPtrType)(v)
+}
+
+func (*applicationUpstreamNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationUpstreamNetwork)(nil)).Elem()
+}
+
+func (i *applicationUpstreamNetworkPtrType) ToApplicationUpstreamNetworkPtrOutput() ApplicationUpstreamNetworkPtrOutput {
+	return i.ToApplicationUpstreamNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationUpstreamNetworkPtrType) ToApplicationUpstreamNetworkPtrOutputWithContext(ctx context.Context) ApplicationUpstreamNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUpstreamNetworkPtrOutput)
+}
+
+type ApplicationUpstreamNetworkOutput struct{ *pulumi.OutputState }
+
+func (ApplicationUpstreamNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUpstreamNetwork)(nil)).Elem()
+}
+
+func (o ApplicationUpstreamNetworkOutput) ToApplicationUpstreamNetworkOutput() ApplicationUpstreamNetworkOutput {
+	return o
+}
+
+func (o ApplicationUpstreamNetworkOutput) ToApplicationUpstreamNetworkOutputWithContext(ctx context.Context) ApplicationUpstreamNetworkOutput {
+	return o
+}
+
+func (o ApplicationUpstreamNetworkOutput) ToApplicationUpstreamNetworkPtrOutput() ApplicationUpstreamNetworkPtrOutput {
+	return o.ToApplicationUpstreamNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationUpstreamNetworkOutput) ToApplicationUpstreamNetworkPtrOutputWithContext(ctx context.Context) ApplicationUpstreamNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationUpstreamNetwork) *ApplicationUpstreamNetwork {
+		return &v
+	}).(ApplicationUpstreamNetworkPtrOutput)
+}
+
+// Required. Network name is of the format:
+// `projects/{project}/global/networks/{network}`
+func (o ApplicationUpstreamNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationUpstreamNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ApplicationUpstreamNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationUpstreamNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationUpstreamNetwork)(nil)).Elem()
+}
+
+func (o ApplicationUpstreamNetworkPtrOutput) ToApplicationUpstreamNetworkPtrOutput() ApplicationUpstreamNetworkPtrOutput {
+	return o
+}
+
+func (o ApplicationUpstreamNetworkPtrOutput) ToApplicationUpstreamNetworkPtrOutputWithContext(ctx context.Context) ApplicationUpstreamNetworkPtrOutput {
+	return o
+}
+
+func (o ApplicationUpstreamNetworkPtrOutput) Elem() ApplicationUpstreamNetworkOutput {
+	return o.ApplyT(func(v *ApplicationUpstreamNetwork) ApplicationUpstreamNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationUpstreamNetwork
+		return ret
+	}).(ApplicationUpstreamNetworkOutput)
+}
+
+// Required. Network name is of the format:
+// `projects/{project}/global/networks/{network}`
+func (o ApplicationUpstreamNetworkPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationUpstreamNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityGatewayHub struct {
 	// Internet Gateway configuration.
 	// Structure is documented below.
@@ -2380,6 +2770,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIamBindingConditionPtrInput)(nil)).Elem(), ApplicationIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIamMemberConditionInput)(nil)).Elem(), ApplicationIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationIamMemberConditionPtrInput)(nil)).Elem(), ApplicationIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpstreamInput)(nil)).Elem(), ApplicationUpstreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpstreamArrayInput)(nil)).Elem(), ApplicationUpstreamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpstreamEgressPolicyInput)(nil)).Elem(), ApplicationUpstreamEgressPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpstreamEgressPolicyPtrInput)(nil)).Elem(), ApplicationUpstreamEgressPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpstreamNetworkInput)(nil)).Elem(), ApplicationUpstreamNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationUpstreamNetworkPtrInput)(nil)).Elem(), ApplicationUpstreamNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInput)(nil)).Elem(), SecurityGatewayHubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubArrayInput)(nil)).Elem(), SecurityGatewayHubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGatewayHubInternetGatewayInput)(nil)).Elem(), SecurityGatewayHubInternetGatewayArgs{})
@@ -2414,6 +2810,12 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(ApplicationIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationUpstreamOutput{})
+	pulumi.RegisterOutputType(ApplicationUpstreamArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationUpstreamEgressPolicyOutput{})
+	pulumi.RegisterOutputType(ApplicationUpstreamEgressPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationUpstreamNetworkOutput{})
+	pulumi.RegisterOutputType(ApplicationUpstreamNetworkPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGatewayHubInternetGatewayOutput{})

@@ -361,6 +361,8 @@ type DatabaseInstance struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
+	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+	DnsNames DatabaseInstanceDnsNameArrayOutput `pulumi:"dnsNames"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -495,6 +497,8 @@ type databaseInstanceState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName *string `pulumi:"dnsName"`
+	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+	DnsNames []DatabaseInstanceDnsName `pulumi:"dnsNames"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -585,6 +589,8 @@ type DatabaseInstanceState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName pulumi.StringPtrInput
+	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+	DnsNames DatabaseInstanceDnsNameArrayInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -918,6 +924,11 @@ func (o DatabaseInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 // The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 func (o DatabaseInstanceOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+func (o DatabaseInstanceOutput) DnsNames() DatabaseInstanceDnsNameArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceDnsNameArrayOutput { return v.DnsNames }).(DatabaseInstanceDnsNameArrayOutput)
 }
 
 // The full path to the encryption key used for the CMEK disk encryption.  Setting

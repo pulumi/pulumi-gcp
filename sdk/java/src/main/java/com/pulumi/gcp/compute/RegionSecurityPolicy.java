@@ -19,6 +19,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Represents a Region Cloud Armor Security Policy resource.
+ * 
+ * To get more information about RegionSecurityPolicy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/armor/docs/security-policy-concepts)
+ * 
  * ## Example Usage
  * 
  * ### Region Security Policy Basic

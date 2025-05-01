@@ -52,6 +52,7 @@ export interface GetDatabaseInstanceResult {
     readonly databaseVersion: string;
     readonly deletionProtection: boolean;
     readonly dnsName: string;
+    readonly dnsNames: outputs.sql.GetDatabaseInstanceDnsName[];
     readonly encryptionKeyName: string;
     readonly firstIpAddress: string;
     /**

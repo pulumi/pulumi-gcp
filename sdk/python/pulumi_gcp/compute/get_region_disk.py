@@ -28,7 +28,7 @@ class GetRegionDiskResult:
     """
     A collection of values returned by getRegionDisk.
     """
-    def __init__(__self__, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, effective_labels=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
+    def __init__(__self__, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
@@ -47,6 +47,9 @@ class GetRegionDiskResult:
         if disk_encryption_keys and not isinstance(disk_encryption_keys, list):
             raise TypeError("Expected argument 'disk_encryption_keys' to be a list")
         pulumi.set(__self__, "disk_encryption_keys", disk_encryption_keys)
+        if disk_id and not isinstance(disk_id, str):
+            raise TypeError("Expected argument 'disk_id' to be a str")
+        pulumi.set(__self__, "disk_id", disk_id)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -149,6 +152,11 @@ class GetRegionDiskResult:
     @pulumi.getter(name="diskEncryptionKeys")
     def disk_encryption_keys(self) -> Sequence['outputs.GetRegionDiskDiskEncryptionKeyResult']:
         return pulumi.get(self, "disk_encryption_keys")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> builtins.str:
+        return pulumi.get(self, "disk_id")
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -286,6 +294,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_keys=self.disk_encryption_keys,
+            disk_id=self.disk_id,
             effective_labels=self.effective_labels,
             guest_os_features=self.guest_os_features,
             id=self.id,
@@ -343,6 +352,7 @@ def get_region_disk(name: Optional[builtins.str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         disk_encryption_keys=pulumi.get(__ret__, 'disk_encryption_keys'),
+        disk_id=pulumi.get(__ret__, 'disk_id'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
         id=pulumi.get(__ret__, 'id'),
@@ -397,6 +407,7 @@ def get_region_disk_output(name: Optional[pulumi.Input[builtins.str]] = None,
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         description=pulumi.get(__response__, 'description'),
         disk_encryption_keys=pulumi.get(__response__, 'disk_encryption_keys'),
+        disk_id=pulumi.get(__response__, 'disk_id'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         guest_os_features=pulumi.get(__response__, 'guest_os_features'),
         id=pulumi.get(__response__, 'id'),

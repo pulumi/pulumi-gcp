@@ -24,6 +24,7 @@ import javax.annotation.Nullable;
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
  * * How-to Guides
  *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+ *     * Setting a custom endpoint (required for data residency)
  * 
  * ## Example Usage
  * 
@@ -124,6 +125,45 @@ import javax.annotation.Nullable;
  *         var org = new Organization("org", OrganizationArgs.builder()
  *             .description("Terraform-provisioned basic Apigee Org without VPC Peering.")
  *             .analyticsRegion("us-central1")
+ *             .projectId(current.project())
+ *             .disableVpcPeering(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Apigee Organization Cloud Basic Data Residency
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = OrganizationsFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var org = new Organization("org", OrganizationArgs.builder()
+ *             .description("Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.")
  *             .projectId(current.project())
  *             .disableVpcPeering(true)
  *             .build());

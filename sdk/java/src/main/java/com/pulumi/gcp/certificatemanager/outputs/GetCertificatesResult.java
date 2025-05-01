@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCertificatesResult {
+    /**
+     * @return A list of all retrieved certificates. See gcp.certificatemanager.Certificate resource for details of the available attributes.
+     * 
+     */
     private List<GetCertificatesCertificate> certificates;
     private @Nullable String filter;
     /**
@@ -24,6 +28,10 @@ public final class GetCertificatesResult {
     private @Nullable String region;
 
     private GetCertificatesResult() {}
+    /**
+     * @return A list of all retrieved certificates. See gcp.certificatemanager.Certificate resource for details of the available attributes.
+     * 
+     */
     public List<GetCertificatesCertificate> certificates() {
         return this.certificates;
     }

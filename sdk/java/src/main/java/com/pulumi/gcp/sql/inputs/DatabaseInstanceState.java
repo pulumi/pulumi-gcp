@@ -6,6 +6,7 @@ package com.pulumi.gcp.sql.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceCloneArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceDnsNameArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceIpAddressArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceReplicaConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceReplicationClusterArgs;
@@ -136,6 +137,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> dnsName() {
         return Optional.ofNullable(this.dnsName);
+    }
+
+    /**
+     * The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+     * 
+     */
+    @Import(name="dnsNames")
+    private @Nullable Output<List<DatabaseInstanceDnsNameArgs>> dnsNames;
+
+    /**
+     * @return The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+     * 
+     */
+    public Optional<Output<List<DatabaseInstanceDnsNameArgs>>> dnsNames() {
+        return Optional.ofNullable(this.dnsNames);
     }
 
     /**
@@ -492,6 +508,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.databaseVersion = $.databaseVersion;
         this.deletionProtection = $.deletionProtection;
         this.dnsName = $.dnsName;
+        this.dnsNames = $.dnsNames;
         this.encryptionKeyName = $.encryptionKeyName;
         this.firstIpAddress = $.firstIpAddress;
         this.instanceType = $.instanceType;
@@ -691,6 +708,37 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder dnsName(String dnsName) {
             return dnsName(Output.of(dnsName));
+        }
+
+        /**
+         * @param dnsNames The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsNames(@Nullable Output<List<DatabaseInstanceDnsNameArgs>> dnsNames) {
+            $.dnsNames = dnsNames;
+            return this;
+        }
+
+        /**
+         * @param dnsNames The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsNames(List<DatabaseInstanceDnsNameArgs> dnsNames) {
+            return dnsNames(Output.of(dnsNames));
+        }
+
+        /**
+         * @param dnsNames The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsNames(DatabaseInstanceDnsNameArgs... dnsNames) {
+            return dnsNames(List.of(dnsNames));
         }
 
         /**

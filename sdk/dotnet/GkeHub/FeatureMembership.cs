@@ -200,6 +200,82 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
+    /// ### Config Management With Deployment Override
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
+    ///     {
+    ///         Name = "my-cluster",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Name = "configmanagement",
+    ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
+    ///     {
+    ///         Location = "global",
+    ///         Feature = feature.Name,
+    ///         Membership = membership.MembershipId,
+    ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
+    ///         {
+    ///             Version = "1.20.1",
+    ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 DeploymentOverrides = new[]
+    ///                 {
+    ///                     new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs
+    ///                     {
+    ///                         DeploymentName = "reconciler-manager",
+    ///                         DeploymentNamespace = "config-management-system",
+    ///                         Containers = new[]
+    ///                         {
+    ///                             new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs
+    ///                             {
+    ///                                 ContainerName = "reconciler-manager",
+    ///                                 CpuRequest = "100m",
+    ///                                 MemoryRequest = "64Mi",
+    ///                                 CpuLimit = "250m",
+    ///                                 MemoryLimit = "128Mi",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Config Management With Regional Membership
     /// 
     /// ```csharp

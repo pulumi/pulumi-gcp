@@ -467,15 +467,7 @@ namespace Pulumi.Gcp.Vertex
     ///             { "foo", "bar" },
     ///         },
     ///         Region = "us-central1",
-    ///         Bigtable = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableArgs
-    ///         {
-    ///             AutoScaling = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs
-    ///             {
-    ///                 MinNodeCount = 1,
-    ///                 MaxNodeCount = 2,
-    ///                 CpuUtilizationTarget = 80,
-    ///             },
-    ///         },
+    ///         Optimized = null,
     ///         EmbeddingManagement = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreEmbeddingManagementArgs
     ///         {
     ///             Enabled = true,

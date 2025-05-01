@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// A set of extensions to execute for the matching request.
         /// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
         /// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+        /// Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.LbTrafficExtensionExtensionChainExtensionArgs> Extensions

@@ -68,6 +68,21 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+     * 
+     */
+    @Import(name="customPerformanceEnabled")
+    private @Nullable Output<Boolean> customPerformanceEnabled;
+
+    /**
+     * @return Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+     * 
+     */
+    public Optional<Output<Boolean>> customPerformanceEnabled() {
+        return Optional.ofNullable(this.customPerformanceEnabled);
+    }
+
+    /**
      * An optional description of this resource.
      * 
      */
@@ -285,6 +300,36 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+     * 
+     */
+    @Import(name="totalIops")
+    private @Nullable Output<String> totalIops;
+
+    /**
+     * @return Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+     * 
+     */
+    public Optional<Output<String>> totalIops() {
+        return Optional.ofNullable(this.totalIops);
+    }
+
+    /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     * 
+     */
+    @Import(name="totalThroughputMibps")
+    private @Nullable Output<String> totalThroughputMibps;
+
+    /**
+     * @return Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     * 
+     */
+    public Optional<Output<String>> totalThroughputMibps() {
+        return Optional.ofNullable(this.totalThroughputMibps);
+    }
+
+    /**
      * Size allocated to volumes in the storage pool (in GiB).
      * 
      */
@@ -339,6 +384,7 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.activeDirectory = $.activeDirectory;
         this.allowAutoTiering = $.allowAutoTiering;
         this.capacityGib = $.capacityGib;
+        this.customPerformanceEnabled = $.customPerformanceEnabled;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.encryptionType = $.encryptionType;
@@ -352,6 +398,8 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         this.pulumiLabels = $.pulumiLabels;
         this.replicaZone = $.replicaZone;
         this.serviceLevel = $.serviceLevel;
+        this.totalIops = $.totalIops;
+        this.totalThroughputMibps = $.totalThroughputMibps;
         this.volumeCapacityGib = $.volumeCapacityGib;
         this.volumeCount = $.volumeCount;
         this.zone = $.zone;
@@ -440,6 +488,27 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder capacityGib(String capacityGib) {
             return capacityGib(Output.of(capacityGib));
+        }
+
+        /**
+         * @param customPerformanceEnabled Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPerformanceEnabled(@Nullable Output<Boolean> customPerformanceEnabled) {
+            $.customPerformanceEnabled = customPerformanceEnabled;
+            return this;
+        }
+
+        /**
+         * @param customPerformanceEnabled Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPerformanceEnabled(Boolean customPerformanceEnabled) {
+            return customPerformanceEnabled(Output.of(customPerformanceEnabled));
         }
 
         /**
@@ -735,6 +804,48 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceLevel(String serviceLevel) {
             return serviceLevel(Output.of(serviceLevel));
+        }
+
+        /**
+         * @param totalIops Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalIops(@Nullable Output<String> totalIops) {
+            $.totalIops = totalIops;
+            return this;
+        }
+
+        /**
+         * @param totalIops Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalIops(String totalIops) {
+            return totalIops(Output.of(totalIops));
+        }
+
+        /**
+         * @param totalThroughputMibps Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalThroughputMibps(@Nullable Output<String> totalThroughputMibps) {
+            $.totalThroughputMibps = totalThroughputMibps;
+            return this;
+        }
+
+        /**
+         * @param totalThroughputMibps Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalThroughputMibps(String totalThroughputMibps) {
+            return totalThroughputMibps(Output.of(totalThroughputMibps));
         }
 
         /**

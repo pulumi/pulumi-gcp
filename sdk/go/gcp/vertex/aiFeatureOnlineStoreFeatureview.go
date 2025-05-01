@@ -481,14 +481,8 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Region: pulumi.String("us-central1"),
-//				Bigtable: &vertex.AiFeatureOnlineStoreBigtableArgs{
-//					AutoScaling: &vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs{
-//						MinNodeCount:         pulumi.Int(1),
-//						MaxNodeCount:         pulumi.Int(2),
-//						CpuUtilizationTarget: pulumi.Int(80),
-//					},
-//				},
+//				Region:    pulumi.String("us-central1"),
+//				Optimized: &vertex.AiFeatureOnlineStoreOptimizedArgs{},
 //				EmbeddingManagement: &vertex.AiFeatureOnlineStoreEmbeddingManagementArgs{
 //					Enabled: pulumi.Bool(true),
 //				},

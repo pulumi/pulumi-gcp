@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.RegionInstanceTemplateDiskArgs
     ///             {
-    ///                 SourceImage = "cos-cloud/cos-105-lts",
+    ///                 SourceImage = "cos-cloud/cos-121-lts",
     ///                 AutoDelete = true,
     ///                 Boot = true,
     ///                 DiskType = "pd-ssd",

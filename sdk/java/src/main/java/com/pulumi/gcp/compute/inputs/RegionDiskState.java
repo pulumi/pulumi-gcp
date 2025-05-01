@@ -140,6 +140,21 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="diskId")
+    private @Nullable Output<String> diskId;
+
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<String>> diskId() {
+        return Optional.ofNullable(this.diskId);
+    }
+
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -605,6 +620,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
+        this.diskId = $.diskId;
         this.effectiveLabels = $.effectiveLabels;
         this.guestOsFeatures = $.guestOsFeatures;
         this.interface_ = $.interface_;
@@ -798,6 +814,27 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskEncryptionKey(RegionDiskDiskEncryptionKeyArgs diskEncryptionKey) {
             return diskEncryptionKey(Output.of(diskEncryptionKey));
+        }
+
+        /**
+         * @param diskId The unique identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskId(@Nullable Output<String> diskId) {
+            $.diskId = diskId;
+            return this;
+        }
+
+        /**
+         * @param diskId The unique identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskId(String diskId) {
+            return diskId(Output.of(diskId));
         }
 
         /**

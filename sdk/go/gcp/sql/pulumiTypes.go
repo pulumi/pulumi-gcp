@@ -234,6 +234,130 @@ func (o DatabaseInstanceClonePtrOutput) SourceInstanceName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type DatabaseInstanceDnsName struct {
+	// The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+	ConnectionType *string `pulumi:"connectionType"`
+	// The scope that the DNS name applies to.
+	DnsScope *string `pulumi:"dnsScope"`
+	// The name of the instance. If the name is left
+	// blank, the provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	Name *string `pulumi:"name"`
+}
+
+// DatabaseInstanceDnsNameInput is an input type that accepts DatabaseInstanceDnsNameArgs and DatabaseInstanceDnsNameOutput values.
+// You can construct a concrete instance of `DatabaseInstanceDnsNameInput` via:
+//
+//	DatabaseInstanceDnsNameArgs{...}
+type DatabaseInstanceDnsNameInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceDnsNameOutput() DatabaseInstanceDnsNameOutput
+	ToDatabaseInstanceDnsNameOutputWithContext(context.Context) DatabaseInstanceDnsNameOutput
+}
+
+type DatabaseInstanceDnsNameArgs struct {
+	// The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// The scope that the DNS name applies to.
+	DnsScope pulumi.StringPtrInput `pulumi:"dnsScope"`
+	// The name of the instance. If the name is left
+	// blank, the provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DatabaseInstanceDnsNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (i DatabaseInstanceDnsNameArgs) ToDatabaseInstanceDnsNameOutput() DatabaseInstanceDnsNameOutput {
+	return i.ToDatabaseInstanceDnsNameOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceDnsNameArgs) ToDatabaseInstanceDnsNameOutputWithContext(ctx context.Context) DatabaseInstanceDnsNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceDnsNameOutput)
+}
+
+// DatabaseInstanceDnsNameArrayInput is an input type that accepts DatabaseInstanceDnsNameArray and DatabaseInstanceDnsNameArrayOutput values.
+// You can construct a concrete instance of `DatabaseInstanceDnsNameArrayInput` via:
+//
+//	DatabaseInstanceDnsNameArray{ DatabaseInstanceDnsNameArgs{...} }
+type DatabaseInstanceDnsNameArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceDnsNameArrayOutput() DatabaseInstanceDnsNameArrayOutput
+	ToDatabaseInstanceDnsNameArrayOutputWithContext(context.Context) DatabaseInstanceDnsNameArrayOutput
+}
+
+type DatabaseInstanceDnsNameArray []DatabaseInstanceDnsNameInput
+
+func (DatabaseInstanceDnsNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (i DatabaseInstanceDnsNameArray) ToDatabaseInstanceDnsNameArrayOutput() DatabaseInstanceDnsNameArrayOutput {
+	return i.ToDatabaseInstanceDnsNameArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceDnsNameArray) ToDatabaseInstanceDnsNameArrayOutputWithContext(ctx context.Context) DatabaseInstanceDnsNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceDnsNameArrayOutput)
+}
+
+type DatabaseInstanceDnsNameOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceDnsNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (o DatabaseInstanceDnsNameOutput) ToDatabaseInstanceDnsNameOutput() DatabaseInstanceDnsNameOutput {
+	return o
+}
+
+func (o DatabaseInstanceDnsNameOutput) ToDatabaseInstanceDnsNameOutputWithContext(ctx context.Context) DatabaseInstanceDnsNameOutput {
+	return o
+}
+
+// The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+func (o DatabaseInstanceDnsNameOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceDnsName) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// The scope that the DNS name applies to.
+func (o DatabaseInstanceDnsNameOutput) DnsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceDnsName) *string { return v.DnsScope }).(pulumi.StringPtrOutput)
+}
+
+// The name of the instance. If the name is left
+// blank, the provider will randomly generate one when the instance is first
+// created. This is done because after a name is used, it cannot be reused for
+// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+func (o DatabaseInstanceDnsNameOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceDnsName) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceDnsNameArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceDnsNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (o DatabaseInstanceDnsNameArrayOutput) ToDatabaseInstanceDnsNameArrayOutput() DatabaseInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceDnsNameArrayOutput) ToDatabaseInstanceDnsNameArrayOutputWithContext(ctx context.Context) DatabaseInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceDnsNameArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceDnsNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceDnsName {
+		return vs[0].([]DatabaseInstanceDnsName)[vs[1].(int)]
+	}).(DatabaseInstanceDnsNameOutput)
+}
+
 type DatabaseInstanceIpAddress struct {
 	// The IPv4 address assigned.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -5435,6 +5559,115 @@ func (o GetDatabaseInstanceCloneArrayOutput) Index(i pulumi.IntInput) GetDatabas
 	}).(GetDatabaseInstanceCloneOutput)
 }
 
+type GetDatabaseInstanceDnsName struct {
+	ConnectionType string `pulumi:"connectionType"`
+	DnsScope       string `pulumi:"dnsScope"`
+	// The name of the instance.
+	Name string `pulumi:"name"`
+}
+
+// GetDatabaseInstanceDnsNameInput is an input type that accepts GetDatabaseInstanceDnsNameArgs and GetDatabaseInstanceDnsNameOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceDnsNameInput` via:
+//
+//	GetDatabaseInstanceDnsNameArgs{...}
+type GetDatabaseInstanceDnsNameInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceDnsNameOutput() GetDatabaseInstanceDnsNameOutput
+	ToGetDatabaseInstanceDnsNameOutputWithContext(context.Context) GetDatabaseInstanceDnsNameOutput
+}
+
+type GetDatabaseInstanceDnsNameArgs struct {
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	DnsScope       pulumi.StringInput `pulumi:"dnsScope"`
+	// The name of the instance.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetDatabaseInstanceDnsNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceDnsNameArgs) ToGetDatabaseInstanceDnsNameOutput() GetDatabaseInstanceDnsNameOutput {
+	return i.ToGetDatabaseInstanceDnsNameOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceDnsNameArgs) ToGetDatabaseInstanceDnsNameOutputWithContext(ctx context.Context) GetDatabaseInstanceDnsNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceDnsNameOutput)
+}
+
+// GetDatabaseInstanceDnsNameArrayInput is an input type that accepts GetDatabaseInstanceDnsNameArray and GetDatabaseInstanceDnsNameArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceDnsNameArrayInput` via:
+//
+//	GetDatabaseInstanceDnsNameArray{ GetDatabaseInstanceDnsNameArgs{...} }
+type GetDatabaseInstanceDnsNameArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceDnsNameArrayOutput() GetDatabaseInstanceDnsNameArrayOutput
+	ToGetDatabaseInstanceDnsNameArrayOutputWithContext(context.Context) GetDatabaseInstanceDnsNameArrayOutput
+}
+
+type GetDatabaseInstanceDnsNameArray []GetDatabaseInstanceDnsNameInput
+
+func (GetDatabaseInstanceDnsNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceDnsNameArray) ToGetDatabaseInstanceDnsNameArrayOutput() GetDatabaseInstanceDnsNameArrayOutput {
+	return i.ToGetDatabaseInstanceDnsNameArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceDnsNameArray) ToGetDatabaseInstanceDnsNameArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceDnsNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceDnsNameArrayOutput)
+}
+
+type GetDatabaseInstanceDnsNameOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceDnsNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceDnsNameOutput) ToGetDatabaseInstanceDnsNameOutput() GetDatabaseInstanceDnsNameOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceDnsNameOutput) ToGetDatabaseInstanceDnsNameOutputWithContext(ctx context.Context) GetDatabaseInstanceDnsNameOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceDnsNameOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceDnsName) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceDnsNameOutput) DnsScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceDnsName) string { return v.DnsScope }).(pulumi.StringOutput)
+}
+
+// The name of the instance.
+func (o GetDatabaseInstanceDnsNameOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceDnsName) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceDnsNameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceDnsNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceDnsNameArrayOutput) ToGetDatabaseInstanceDnsNameArrayOutput() GetDatabaseInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceDnsNameArrayOutput) ToGetDatabaseInstanceDnsNameArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceDnsNameArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceDnsNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceDnsName {
+		return vs[0].([]GetDatabaseInstanceDnsName)[vs[1].(int)]
+	}).(GetDatabaseInstanceDnsNameOutput)
+}
+
 type GetDatabaseInstanceIpAddress struct {
 	IpAddress    string `pulumi:"ipAddress"`
 	TimeToRetire string `pulumi:"timeToRetire"`
@@ -6124,7 +6357,7 @@ type GetDatabaseInstanceSetting struct {
 	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize int `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
@@ -6198,7 +6431,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
@@ -6369,7 +6602,7 @@ func (o GetDatabaseInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 func (o GetDatabaseInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
 }
@@ -8396,10 +8629,12 @@ type GetDatabaseInstancesInstance struct {
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion    string `pulumi:"databaseVersion"`
 	DeletionProtection bool   `pulumi:"deletionProtection"`
-	// The dns name of the instance.
-	DnsName           string `pulumi:"dnsName"`
-	EncryptionKeyName string `pulumi:"encryptionKeyName"`
-	FirstIpAddress    string `pulumi:"firstIpAddress"`
+	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
+	DnsName string `pulumi:"dnsName"`
+	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+	DnsNames          []GetDatabaseInstancesInstanceDnsName `pulumi:"dnsNames"`
+	EncryptionKeyName string                                `pulumi:"encryptionKeyName"`
+	FirstIpAddress    string                                `pulumi:"firstIpAddress"`
 	// The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
 	InstanceType string                                  `pulumi:"instanceType"`
 	IpAddresses  []GetDatabaseInstancesInstanceIpAddress `pulumi:"ipAddresses"`
@@ -8455,10 +8690,12 @@ type GetDatabaseInstancesInstanceArgs struct {
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion    pulumi.StringInput `pulumi:"databaseVersion"`
 	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
-	// The dns name of the instance.
-	DnsName           pulumi.StringInput `pulumi:"dnsName"`
-	EncryptionKeyName pulumi.StringInput `pulumi:"encryptionKeyName"`
-	FirstIpAddress    pulumi.StringInput `pulumi:"firstIpAddress"`
+	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
+	DnsName pulumi.StringInput `pulumi:"dnsName"`
+	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+	DnsNames          GetDatabaseInstancesInstanceDnsNameArrayInput `pulumi:"dnsNames"`
+	EncryptionKeyName pulumi.StringInput                            `pulumi:"encryptionKeyName"`
+	FirstIpAddress    pulumi.StringInput                            `pulumi:"firstIpAddress"`
 	// The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
 	InstanceType pulumi.StringInput                              `pulumi:"instanceType"`
 	IpAddresses  GetDatabaseInstancesInstanceIpAddressArrayInput `pulumi:"ipAddresses"`
@@ -8568,9 +8805,14 @@ func (o GetDatabaseInstancesInstanceOutput) DeletionProtection() pulumi.BoolOutp
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
-// The dns name of the instance.
+// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
 func (o GetDatabaseInstancesInstanceOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+func (o GetDatabaseInstancesInstanceOutput) DnsNames() GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceDnsName { return v.DnsNames }).(GetDatabaseInstancesInstanceDnsNameArrayOutput)
 }
 
 func (o GetDatabaseInstancesInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
@@ -8829,6 +9071,112 @@ func (o GetDatabaseInstancesInstanceCloneArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceClone {
 		return vs[0].([]GetDatabaseInstancesInstanceClone)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceCloneOutput)
+}
+
+type GetDatabaseInstancesInstanceDnsName struct {
+	ConnectionType string `pulumi:"connectionType"`
+	DnsScope       string `pulumi:"dnsScope"`
+	Name           string `pulumi:"name"`
+}
+
+// GetDatabaseInstancesInstanceDnsNameInput is an input type that accepts GetDatabaseInstancesInstanceDnsNameArgs and GetDatabaseInstancesInstanceDnsNameOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceDnsNameInput` via:
+//
+//	GetDatabaseInstancesInstanceDnsNameArgs{...}
+type GetDatabaseInstancesInstanceDnsNameInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceDnsNameOutput() GetDatabaseInstancesInstanceDnsNameOutput
+	ToGetDatabaseInstancesInstanceDnsNameOutputWithContext(context.Context) GetDatabaseInstancesInstanceDnsNameOutput
+}
+
+type GetDatabaseInstancesInstanceDnsNameArgs struct {
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	DnsScope       pulumi.StringInput `pulumi:"dnsScope"`
+	Name           pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetDatabaseInstancesInstanceDnsNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceDnsName)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceDnsNameArgs) ToGetDatabaseInstancesInstanceDnsNameOutput() GetDatabaseInstancesInstanceDnsNameOutput {
+	return i.ToGetDatabaseInstancesInstanceDnsNameOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceDnsNameArgs) ToGetDatabaseInstancesInstanceDnsNameOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceDnsNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceDnsNameOutput)
+}
+
+// GetDatabaseInstancesInstanceDnsNameArrayInput is an input type that accepts GetDatabaseInstancesInstanceDnsNameArray and GetDatabaseInstancesInstanceDnsNameArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceDnsNameArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceDnsNameArray{ GetDatabaseInstancesInstanceDnsNameArgs{...} }
+type GetDatabaseInstancesInstanceDnsNameArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceDnsNameArrayOutput() GetDatabaseInstancesInstanceDnsNameArrayOutput
+	ToGetDatabaseInstancesInstanceDnsNameArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceDnsNameArrayOutput
+}
+
+type GetDatabaseInstancesInstanceDnsNameArray []GetDatabaseInstancesInstanceDnsNameInput
+
+func (GetDatabaseInstancesInstanceDnsNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceDnsName)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceDnsNameArray) ToGetDatabaseInstancesInstanceDnsNameArrayOutput() GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceDnsNameArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceDnsNameArray) ToGetDatabaseInstancesInstanceDnsNameArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceDnsNameArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceDnsNameOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceDnsNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceDnsName)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) ToGetDatabaseInstancesInstanceDnsNameOutput() GetDatabaseInstancesInstanceDnsNameOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) ToGetDatabaseInstancesInstanceDnsNameOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceDnsNameOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceDnsName) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) DnsScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceDnsName) string { return v.DnsScope }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceDnsName) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceDnsNameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceDnsNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceDnsName)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameArrayOutput) ToGetDatabaseInstancesInstanceDnsNameArrayOutput() GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameArrayOutput) ToGetDatabaseInstancesInstanceDnsNameArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceDnsNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceDnsName {
+		return vs[0].([]GetDatabaseInstancesInstanceDnsName)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceDnsNameOutput)
 }
 
 type GetDatabaseInstancesInstanceIpAddress struct {
@@ -9520,7 +9868,7 @@ type GetDatabaseInstancesInstanceSetting struct {
 	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize int `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
@@ -9594,7 +9942,7 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
@@ -9767,7 +10115,7 @@ func (o GetDatabaseInstancesInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 func (o GetDatabaseInstancesInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
 }
@@ -12114,6 +12462,8 @@ func (o GetTiersTierArrayOutput) Index(i pulumi.IntInput) GetTiersTierOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceCloneInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceClonePtrInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceDnsNameInput)(nil)).Elem(), DatabaseInstanceDnsNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceDnsNameArrayInput)(nil)).Elem(), DatabaseInstanceDnsNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceIpAddressInput)(nil)).Elem(), DatabaseInstanceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceIpAddressArrayInput)(nil)).Elem(), DatabaseInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceReplicaConfigurationInput)(nil)).Elem(), DatabaseInstanceReplicaConfigurationArgs{})
@@ -12168,6 +12518,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertsCertArrayInput)(nil)).Elem(), GetCaCertsCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceCloneInput)(nil)).Elem(), GetDatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceCloneArrayInput)(nil)).Elem(), GetDatabaseInstanceCloneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceDnsNameInput)(nil)).Elem(), GetDatabaseInstanceDnsNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceDnsNameArrayInput)(nil)).Elem(), GetDatabaseInstanceDnsNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceIpAddressInput)(nil)).Elem(), GetDatabaseInstanceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceReplicaConfigurationInput)(nil)).Elem(), GetDatabaseInstanceReplicaConfigurationArgs{})
@@ -12216,6 +12568,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceCloneInput)(nil)).Elem(), GetDatabaseInstancesInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceCloneArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceCloneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceDnsNameInput)(nil)).Elem(), GetDatabaseInstancesInstanceDnsNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceDnsNameArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceDnsNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddressInput)(nil)).Elem(), GetDatabaseInstancesInstanceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfigurationInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicaConfigurationArgs{})
@@ -12266,6 +12620,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTiersTierArrayInput)(nil)).Elem(), GetTiersTierArray{})
 	pulumi.RegisterOutputType(DatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceClonePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceDnsNameOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceDnsNameArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationOutput{})
@@ -12320,6 +12676,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCaCertsCertArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceCloneArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceDnsNameOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceDnsNameArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicaConfigurationOutput{})
@@ -12368,6 +12726,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceCloneOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceCloneArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceDnsNameOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceDnsNameArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicaConfigurationOutput{})

@@ -18,6 +18,7 @@ from . import outputs
 
 __all__ = [
     'DatabaseInstanceClone',
+    'DatabaseInstanceDnsName',
     'DatabaseInstanceIpAddress',
     'DatabaseInstanceReplicaConfiguration',
     'DatabaseInstanceReplicationCluster',
@@ -45,6 +46,7 @@ __all__ = [
     'UserSqlServerUserDetail',
     'GetCaCertsCertResult',
     'GetDatabaseInstanceCloneResult',
+    'GetDatabaseInstanceDnsNameResult',
     'GetDatabaseInstanceIpAddressResult',
     'GetDatabaseInstanceReplicaConfigurationResult',
     'GetDatabaseInstanceReplicationClusterResult',
@@ -69,6 +71,7 @@ __all__ = [
     'GetDatabaseInstanceSettingSqlServerAuditConfigResult',
     'GetDatabaseInstancesInstanceResult',
     'GetDatabaseInstancesInstanceCloneResult',
+    'GetDatabaseInstancesInstanceDnsNameResult',
     'GetDatabaseInstancesInstanceIpAddressResult',
     'GetDatabaseInstancesInstanceReplicaConfigurationResult',
     'GetDatabaseInstancesInstanceReplicationClusterResult',
@@ -188,6 +191,74 @@ class DatabaseInstanceClone(dict):
         (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
         """
         return pulumi.get(self, "preferred_zone")
+
+
+@pulumi.output_type
+class DatabaseInstanceDnsName(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionType":
+            suggest = "connection_type"
+        elif key == "dnsScope":
+            suggest = "dns_scope"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceDnsName. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceDnsName.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceDnsName.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_type: Optional[builtins.str] = None,
+                 dns_scope: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None):
+        """
+        :param builtins.str connection_type: The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+        :param builtins.str dns_scope: The scope that the DNS name applies to.
+        :param builtins.str name: The name of the instance. If the name is left
+               blank, the provider will randomly generate one when the instance is first
+               created. This is done because after a name is used, it cannot be reused for
+               up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        """
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if dns_scope is not None:
+            pulumi.set(__self__, "dns_scope", dns_scope)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[builtins.str]:
+        """
+        The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="dnsScope")
+    def dns_scope(self) -> Optional[builtins.str]:
+        """
+        The scope that the DNS name applies to.
+        """
+        return pulumi.get(self, "dns_scope")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        The name of the instance. If the name is left
+        blank, the provider will randomly generate one when the instance is first
+        created. This is done because after a name is used, it cannot be reused for
+        up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -2503,6 +2574,38 @@ class GetDatabaseInstanceCloneResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseInstanceDnsNameResult(dict):
+    def __init__(__self__, *,
+                 connection_type: builtins.str,
+                 dns_scope: builtins.str,
+                 name: builtins.str):
+        """
+        :param builtins.str name: The name of the instance.
+        """
+        pulumi.set(__self__, "connection_type", connection_type)
+        pulumi.set(__self__, "dns_scope", dns_scope)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> builtins.str:
+        return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="dnsScope")
+    def dns_scope(self) -> builtins.str:
+        return pulumi.get(self, "dns_scope")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the instance.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetDatabaseInstanceIpAddressResult(dict):
     def __init__(__self__, *,
                  ip_address: builtins.str,
@@ -2850,7 +2953,7 @@ class GetDatabaseInstanceSettingResult(dict):
         :param builtins.bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
         :param builtins.int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
-        :param builtins.str disk_type: The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+        :param builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
         :param builtins.str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         :param builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
@@ -3018,7 +3121,7 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> builtins.str:
         """
-        The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+        The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
         """
         return pulumi.get(self, "disk_type")
 
@@ -3841,6 +3944,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  database_version: builtins.str,
                  deletion_protection: builtins.bool,
                  dns_name: builtins.str,
+                 dns_names: Sequence['outputs.GetDatabaseInstancesInstanceDnsNameResult'],
                  encryption_key_name: builtins.str,
                  first_ip_address: builtins.str,
                  instance_type: builtins.str,
@@ -3867,7 +3971,8 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param Sequence['GetDatabaseInstancesInstanceCloneArgs'] clones: Configuration for creating a new instance as a clone of another instance.
         :param builtins.str connection_name: The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
         :param builtins.str database_version: To filter out the Cloud SQL instances which are of the specified database version.
-        :param builtins.str dns_name: The dns name of the instance.
+        :param builtins.str dns_name: The instance-level dns name of the instance for PSC instances or public IP CAS instances.
+        :param Sequence['GetDatabaseInstancesInstanceDnsNameArgs'] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         :param builtins.str instance_type: The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
         :param builtins.str maintenance_version: Maintenance version.
         :param builtins.str master_instance_name: The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
@@ -3888,6 +3993,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "database_version", database_version)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "dns_name", dns_name)
+        pulumi.set(__self__, "dns_names", dns_names)
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
         pulumi.set(__self__, "first_ip_address", first_ip_address)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -3951,9 +4057,17 @@ class GetDatabaseInstancesInstanceResult(dict):
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> builtins.str:
         """
-        The dns name of the instance.
+        The instance-level dns name of the instance for PSC instances or public IP CAS instances.
         """
         return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="dnsNames")
+    def dns_names(self) -> Sequence['outputs.GetDatabaseInstancesInstanceDnsNameResult']:
+        """
+        The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        """
+        return pulumi.get(self, "dns_names")
 
     @property
     @pulumi.getter(name="encryptionKeyName")
@@ -4160,6 +4274,32 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
         The name of the instance from which the point in time should be restored.
         """
         return pulumi.get(self, "source_instance_name")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceDnsNameResult(dict):
+    def __init__(__self__, *,
+                 connection_type: builtins.str,
+                 dns_scope: builtins.str,
+                 name: builtins.str):
+        pulumi.set(__self__, "connection_type", connection_type)
+        pulumi.set(__self__, "dns_scope", dns_scope)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> builtins.str:
+        return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="dnsScope")
+    def dns_scope(self) -> builtins.str:
+        return pulumi.get(self, "dns_scope")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -4510,7 +4650,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         :param builtins.bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
         :param builtins.int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
-        :param builtins.str disk_type: The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+        :param builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
         :param builtins.str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         :param builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
@@ -4678,7 +4818,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> builtins.str:
         """
-        The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+        The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
         """
         return pulumi.get(self, "disk_type")
 

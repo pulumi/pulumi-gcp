@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         [Input("bigqueryExport")]
         public Input<Inputs.DatascanDataQualitySpecPostScanActionsBigqueryExportGetArgs>? BigqueryExport { get; set; }
 
+        /// <summary>
+        /// The configuration of notification report post scan action.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("notificationReport")]
+        public Input<Inputs.DatascanDataQualitySpecPostScanActionsNotificationReportGetArgs>? NotificationReport { get; set; }
+
         public DatascanDataQualitySpecPostScanActionsGetArgs()
         {
         }

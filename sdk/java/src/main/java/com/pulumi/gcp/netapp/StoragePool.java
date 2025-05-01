@@ -176,6 +176,20 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return this.capacityGib;
     }
     /**
+     * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+     * 
+     */
+    @Export(name="customPerformanceEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> customPerformanceEnabled;
+
+    /**
+     * @return Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+     * 
+     */
+    public Output<Optional<Boolean>> customPerformanceEnabled() {
+        return Codegen.optional(this.customPerformanceEnabled);
+    }
+    /**
      * An optional description of this resource.
      * 
      */
@@ -378,6 +392,34 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> serviceLevel() {
         return this.serviceLevel;
+    }
+    /**
+     * Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+     * 
+     */
+    @Export(name="totalIops", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> totalIops;
+
+    /**
+     * @return Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+     * 
+     */
+    public Output<Optional<String>> totalIops() {
+        return Codegen.optional(this.totalIops);
+    }
+    /**
+     * Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     * 
+     */
+    @Export(name="totalThroughputMibps", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> totalThroughputMibps;
+
+    /**
+     * @return Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+     * 
+     */
+    public Output<Optional<String>> totalThroughputMibps() {
+        return Codegen.optional(this.totalThroughputMibps);
     }
     /**
      * Size allocated to volumes in the storage pool (in GiB).

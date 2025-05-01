@@ -8045,6 +8045,8 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
         suggest = None
         if key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "dataCacheCount":
+            suggest = "data_cache_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigEphemeralStorageLocalSsdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -8058,11 +8060,15 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 local_ssd_count: builtins.int):
+                 local_ssd_count: builtins.int,
+                 data_cache_count: Optional[builtins.int] = None):
         """
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        :param builtins.int data_cache_count: Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
         """
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if data_cache_count is not None:
+            pulumi.set(__self__, "data_cache_count", data_cache_count)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -8071,6 +8077,14 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> Optional[builtins.int]:
+        """
+        Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+        """
+        return pulumi.get(self, "data_cache_count")
 
 
 @pulumi.output_type
@@ -8219,7 +8233,7 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
         """
         :param builtins.str gpu_driver_version: Mode for how the GPU driver is installed.
                Accepted values are:
-               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
                * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
                * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
                * `"LATEST"`: "Latest" GPU driver in COS.
@@ -8232,7 +8246,7 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
         """
         Mode for how the GPU driver is installed.
         Accepted values are:
-        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
         * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
         * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
         * `"LATEST"`: "Latest" GPU driver in COS.
@@ -11372,6 +11386,8 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         suggest = None
         if key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "dataCacheCount":
+            suggest = "data_cache_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -11385,11 +11401,15 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 local_ssd_count: builtins.int):
+                 local_ssd_count: builtins.int,
+                 data_cache_count: Optional[builtins.int] = None):
         """
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        :param builtins.int data_cache_count: Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
         """
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if data_cache_count is not None:
+            pulumi.set(__self__, "data_cache_count", data_cache_count)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -11398,6 +11418,14 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> Optional[builtins.int]:
+        """
+        Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+        """
+        return pulumi.get(self, "data_cache_count")
 
 
 @pulumi.output_type
@@ -11546,7 +11574,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict)
         """
         :param builtins.str gpu_driver_version: Mode for how the GPU driver is installed.
                Accepted values are:
-               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
                * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
                * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
                * `"LATEST"`: "Latest" GPU driver in COS.
@@ -11559,7 +11587,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict)
         """
         Mode for how the GPU driver is installed.
         Accepted values are:
-        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
         * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
         * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
         * `"LATEST"`: "Latest" GPU driver in COS.
@@ -15047,6 +15075,8 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         suggest = None
         if key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "dataCacheCount":
+            suggest = "data_cache_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigEphemeralStorageLocalSsdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -15060,11 +15090,15 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 local_ssd_count: builtins.int):
+                 local_ssd_count: builtins.int,
+                 data_cache_count: Optional[builtins.int] = None):
         """
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+        :param builtins.int data_cache_count: Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
         """
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if data_cache_count is not None:
+            pulumi.set(__self__, "data_cache_count", data_cache_count)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -15073,6 +15107,14 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> Optional[builtins.int]:
+        """
+        Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+        """
+        return pulumi.get(self, "data_cache_count")
 
 
 @pulumi.output_type
@@ -18887,11 +18929,22 @@ class GetClusterNodeConfigEphemeralStorageConfigResult(dict):
 @pulumi.output_type
 class GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     def __init__(__self__, *,
+                 data_cache_count: builtins.int,
                  local_ssd_count: builtins.int):
         """
+        :param builtins.int data_cache_count: Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
         """
+        pulumi.set(__self__, "data_cache_count", data_cache_count)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> builtins.int:
+        """
+        Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+        """
+        return pulumi.get(self, "data_cache_count")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -21013,11 +21066,22 @@ class GetClusterNodePoolNodeConfigEphemeralStorageConfigResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     def __init__(__self__, *,
+                 data_cache_count: builtins.int,
                  local_ssd_count: builtins.int):
         """
+        :param builtins.int data_cache_count: Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
         """
+        pulumi.set(__self__, "data_cache_count", data_cache_count)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> builtins.int:
+        """
+        Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+        """
+        return pulumi.get(self, "data_cache_count")
 
     @property
     @pulumi.getter(name="localSsdCount")

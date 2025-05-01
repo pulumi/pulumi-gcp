@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *                 .onHostMaintenance("TERMINATE")
  *                 .build())
  *             .disks(RegionInstanceTemplateDiskArgs.builder()
- *                 .sourceImage("cos-cloud/cos-105-lts")
+ *                 .sourceImage("cos-cloud/cos-121-lts")
  *                 .autoDelete(true)
  *                 .boot(true)
  *                 .diskType("pd-ssd")

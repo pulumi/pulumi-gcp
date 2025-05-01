@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int DiskSize;
         /// <summary>
-        /// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.
+        /// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
         /// </summary>
         public readonly string DiskType;
         /// <summary>

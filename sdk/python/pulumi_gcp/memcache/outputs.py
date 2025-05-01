@@ -24,6 +24,13 @@ __all__ = [
     'InstanceMemcacheNode',
     'InstanceMemcacheParameters',
     'InstanceNodeConfig',
+    'GetInstanceMaintenancePolicyResult',
+    'GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult',
+    'GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult',
+    'GetInstanceMaintenanceScheduleResult',
+    'GetInstanceMemcacheNodeResult',
+    'GetInstanceMemcacheParameterResult',
+    'GetInstanceNodeConfigResult',
 ]
 
 @pulumi.output_type
@@ -522,6 +529,362 @@ class InstanceNodeConfig(dict):
         Memory size in Mebibytes for each memcache node.
 
         - - -
+        """
+        return pulumi.get(self, "memory_size_mb")
+
+
+@pulumi.output_type
+class GetInstanceMaintenancePolicyResult(dict):
+    def __init__(__self__, *,
+                 create_time: builtins.str,
+                 description: builtins.str,
+                 update_time: builtins.str,
+                 weekly_maintenance_windows: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult']):
+        """
+        :param builtins.str create_time: Output only. The time when the policy was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits
+        :param builtins.str description: Optional. Description of what this policy is for.
+               Create/Update methods return INVALID_ARGUMENT if the
+               length is greater than 512.
+        :param builtins.str update_time: Output only. The time when the policy was updated.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param Sequence['GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs'] weekly_maintenance_windows: Required. Maintenance window that is applied to resources covered by this policy.
+               Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+               is expected to be one.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> builtins.str:
+        """
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        """
+        Optional. Description of what this policy is for.
+        Create/Update methods return INVALID_ARGUMENT if the
+        length is greater than 512.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> builtins.str:
+        """
+        Output only. The time when the policy was updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="weeklyMaintenanceWindows")
+    def weekly_maintenance_windows(self) -> Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult']:
+        """
+        Required. Maintenance window that is applied to resources covered by this policy.
+        Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+        is expected to be one.
+        """
+        return pulumi.get(self, "weekly_maintenance_windows")
+
+
+@pulumi.output_type
+class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 day: builtins.str,
+                 duration: builtins.str,
+                 start_times: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult']):
+        """
+        :param builtins.str day: Required. The day of week that maintenance updates occur.
+               - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+               - MONDAY: Monday
+               - TUESDAY: Tuesday
+               - WEDNESDAY: Wednesday
+               - THURSDAY: Thursday
+               - FRIDAY: Friday
+               - SATURDAY: Saturday
+               - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        :param builtins.str duration: Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
+               A duration in seconds with up to nine fractional digits,
+               terminated by 's'. Example: "3.5s".
+        :param Sequence['GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_times: Required. Start time of the window in UTC time.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_times", start_times)
+
+    @property
+    @pulumi.getter
+    def day(self) -> builtins.str:
+        """
+        Required. The day of week that maintenance updates occur.
+        - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+        - MONDAY: Monday
+        - TUESDAY: Tuesday
+        - WEDNESDAY: Wednesday
+        - THURSDAY: Thursday
+        - FRIDAY: Friday
+        - SATURDAY: Saturday
+        - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> builtins.str:
+        """
+        Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
+        A duration in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="startTimes")
+    def start_times(self) -> Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult']:
+        """
+        Required. Start time of the window in UTC time.
+        """
+        return pulumi.get(self, "start_times")
+
+
+@pulumi.output_type
+class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: builtins.int,
+                 minutes: builtins.int,
+                 nanos: builtins.int,
+                 seconds: builtins.int):
+        """
+        :param builtins.int hours: Hours of day in 24 hour format. Should be from 0 to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param builtins.int minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param builtins.int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param builtins.int seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
+               An API may allow the value 60 if it allows leap-seconds.
+        """
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> builtins.int:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> builtins.int:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> builtins.int:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> builtins.int:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetInstanceMaintenanceScheduleResult(dict):
+    def __init__(__self__, *,
+                 end_time: builtins.str,
+                 schedule_deadline_time: builtins.str,
+                 start_time: builtins.str):
+        """
+        :param builtins.str end_time: Output only. The end time of any upcoming scheduled maintenance for this instance.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param builtins.str schedule_deadline_time: Output only. The deadline that the maintenance schedule start time
+               can not go beyond, including reschedule.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param builtins.str start_time: Output only. The start time of any upcoming scheduled maintenance for this instance.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> builtins.str:
+        """
+        Output only. The end time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="scheduleDeadlineTime")
+    def schedule_deadline_time(self) -> builtins.str:
+        """
+        Output only. The deadline that the maintenance schedule start time
+        can not go beyond, including reschedule.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "schedule_deadline_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> builtins.str:
+        """
+        Output only. The start time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetInstanceMemcacheNodeResult(dict):
+    def __init__(__self__, *,
+                 host: builtins.str,
+                 node_id: builtins.str,
+                 port: builtins.int,
+                 state: builtins.str,
+                 zone: builtins.str):
+        """
+        :param builtins.str host: Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+        :param builtins.str node_id: Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+        :param builtins.int port: The port number of the Memcached server on this node.
+        :param builtins.str state: Current state of the Memcached node.
+        :param builtins.str zone: Location (GCP Zone) for the Memcached node.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "node_id", node_id)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def host(self) -> builtins.str:
+        """
+        Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> builtins.str:
+        """
+        Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+        """
+        return pulumi.get(self, "node_id")
+
+    @property
+    @pulumi.getter
+    def port(self) -> builtins.int:
+        """
+        The port number of the Memcached server on this node.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def state(self) -> builtins.str:
+        """
+        Current state of the Memcached node.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> builtins.str:
+        """
+        Location (GCP Zone) for the Memcached node.
+        """
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class GetInstanceMemcacheParameterResult(dict):
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 params: Mapping[str, builtins.str]):
+        """
+        :param builtins.str id: This is a unique ID associated with this set of parameters.
+        :param Mapping[str, builtins.str] params: User-defined set of parameters to use in the memcache process.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "params", params)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        This is a unique ID associated with this set of parameters.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def params(self) -> Mapping[str, builtins.str]:
+        """
+        User-defined set of parameters to use in the memcache process.
+        """
+        return pulumi.get(self, "params")
+
+
+@pulumi.output_type
+class GetInstanceNodeConfigResult(dict):
+    def __init__(__self__, *,
+                 cpu_count: builtins.int,
+                 memory_size_mb: builtins.int):
+        """
+        :param builtins.int cpu_count: Number of CPUs per node.
+        :param builtins.int memory_size_mb: Memory size in Mebibytes for each memcache node.
+        """
+        pulumi.set(__self__, "cpu_count", cpu_count)
+        pulumi.set(__self__, "memory_size_mb", memory_size_mb)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> builtins.int:
+        """
+        Number of CPUs per node.
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @property
+    @pulumi.getter(name="memorySizeMb")
+    def memory_size_mb(self) -> builtins.int:
+        """
+        Memory size in Mebibytes for each memcache node.
         """
         return pulumi.get(self, "memory_size_mb")
 

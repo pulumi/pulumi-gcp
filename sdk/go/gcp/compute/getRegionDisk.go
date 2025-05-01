@@ -45,6 +45,7 @@ type LookupRegionDiskResult struct {
 	CreationTimestamp                 string                           `pulumi:"creationTimestamp"`
 	Description                       string                           `pulumi:"description"`
 	DiskEncryptionKeys                []GetRegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
+	DiskId                            string                           `pulumi:"diskId"`
 	EffectiveLabels                   map[string]string                `pulumi:"effectiveLabels"`
 	GuestOsFeatures                   []GetRegionDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
 	// The provider-assigned unique ID for this managed resource.
@@ -135,6 +136,10 @@ func (o LookupRegionDiskResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupRegionDiskResultOutput) DiskEncryptionKeys() GetRegionDiskDiskEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) []GetRegionDiskDiskEncryptionKey { return v.DiskEncryptionKeys }).(GetRegionDiskDiskEncryptionKeyArrayOutput)
+}
+
+func (o LookupRegionDiskResultOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.DiskId }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionDiskResultOutput) EffectiveLabels() pulumi.StringMapOutput {

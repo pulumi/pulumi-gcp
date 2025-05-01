@@ -176,6 +176,66 @@ import (
 //	}
 //
 // ```
+// ### Developer Connect Account Connector New Relic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := developerconnect.NewAccountConnector(ctx, "my-account-connector", &developerconnect.AccountConnectorArgs{
+//				Location:           pulumi.String("us-central1"),
+//				AccountConnectorId: pulumi.String("tf-test-ac"),
+//				ProviderOauthConfig: &developerconnect.AccountConnectorProviderOauthConfigArgs{
+//					SystemProviderId: pulumi.String("NEW_RELIC"),
+//					Scopes:           pulumi.StringArray{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Developer Connect Account Connector Datastax
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := developerconnect.NewAccountConnector(ctx, "my-account-connector", &developerconnect.AccountConnectorArgs{
+//				Location:           pulumi.String("us-central1"),
+//				AccountConnectorId: pulumi.String("tf-test-ac"),
+//				ProviderOauthConfig: &developerconnect.AccountConnectorProviderOauthConfigArgs{
+//					SystemProviderId: pulumi.String("DATASTAX"),
+//					Scopes:           pulumi.StringArray{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

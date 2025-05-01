@@ -13,7 +13,7 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallatio
     /**
      * @return Mode for how the GPU driver is installed.
      * Accepted values are:
-     * * `&#34;GPU_DRIVER_VERSION_UNSPECIFIED&#34;`: Default value is to not install any GPU driver.
+     * * `&#34;GPU_DRIVER_VERSION_UNSPECIFIED&#34;`: Default value is to install the &#34;Default&#34; GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
      * * `&#34;INSTALLATION_DISABLED&#34;`: Disable GPU driver auto installation and needs manual installation.
      * * `&#34;DEFAULT&#34;`: &#34;Default&#34; GPU driver in COS and Ubuntu.
      * * `&#34;LATEST&#34;`: &#34;Latest&#34; GPU driver in COS.
@@ -25,7 +25,7 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallatio
     /**
      * @return Mode for how the GPU driver is installed.
      * Accepted values are:
-     * * `&#34;GPU_DRIVER_VERSION_UNSPECIFIED&#34;`: Default value is to not install any GPU driver.
+     * * `&#34;GPU_DRIVER_VERSION_UNSPECIFIED&#34;`: Default value is to install the &#34;Default&#34; GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
      * * `&#34;INSTALLATION_DISABLED&#34;`: Disable GPU driver auto installation and needs manual installation.
      * * `&#34;DEFAULT&#34;`: &#34;Default&#34; GPU driver in COS and Ubuntu.
      * * `&#34;LATEST&#34;`: &#34;Latest&#34; GPU driver in COS.

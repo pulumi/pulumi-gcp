@@ -44,12 +44,40 @@ import * as utilities from "../utilities";
  *             id: "*",
  *         }],
  *     },
- *     suspended: false,
- *     rules: [{
- *         promoteReleaseRule: {
- *             id: "promote-release",
+ *     rules: [
+ *         {
+ *             promoteReleaseRule: {
+ *                 id: "promote-release",
+ *             },
  *         },
- *     }],
+ *         {
+ *             advanceRolloutRule: {
+ *                 id: "advance-rollout",
+ *             },
+ *         },
+ *         {
+ *             repairRolloutRule: {
+ *                 id: "repair-rollout",
+ *                 repairPhases: [
+ *                     {
+ *                         retry: {
+ *                             attempts: "1",
+ *                         },
+ *                     },
+ *                     {
+ *                         rollback: {},
+ *                     },
+ *                 ],
+ *             },
+ *         },
+ *         {
+ *             timedPromoteReleaseRule: {
+ *                 id: "timed-promote-release",
+ *                 schedule: "0 9 * * 1",
+ *                 timeZone: "America/New_York",
+ *             },
+ *         },
+ *     ],
  * });
  * ```
  * ### Clouddeploy Automation Full

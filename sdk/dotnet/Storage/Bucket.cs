@@ -379,10 +379,22 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> StorageClass { get; private set; } = null!;
 
         /// <summary>
+        /// The creation time of the bucket in RFC 3339 format.
+        /// </summary>
+        [Output("timeCreated")]
+        public Output<string> TimeCreated { get; private set; } = null!;
+
+        /// <summary>
         /// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         /// </summary>
         [Output("uniformBucketLevelAccess")]
         public Output<bool> UniformBucketLevelAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+        /// </summary>
+        [Output("updated")]
+        public Output<string> Updated { get; private set; } = null!;
 
         /// <summary>
         /// The base URL of the bucket, in the format `gs://&lt;bucket-name&gt;`.
@@ -808,10 +820,22 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? StorageClass { get; set; }
 
         /// <summary>
+        /// The creation time of the bucket in RFC 3339 format.
+        /// </summary>
+        [Input("timeCreated")]
+        public Input<string>? TimeCreated { get; set; }
+
+        /// <summary>
         /// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         /// </summary>
         [Input("uniformBucketLevelAccess")]
         public Input<bool>? UniformBucketLevelAccess { get; set; }
+
+        /// <summary>
+        /// The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+        /// </summary>
+        [Input("updated")]
+        public Input<string>? Updated { get; set; }
 
         /// <summary>
         /// The base URL of the bucket, in the format `gs://&lt;bucket-name&gt;`.

@@ -135,16 +135,16 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * A unique identifier for the instance configuration. Values are of the
-     * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the form
+     * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A unique identifier for the instance configuration. Values are of the
-     * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+     * @return A unique identifier for the instance configuration. Values are of the form
+     * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
      * 
      */
     public Output<String> name() {

@@ -42,6 +42,22 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
             set => _forwardHeaders = value;
         }
 
+        [Input("metadata")]
+        private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// Metadata associated with the extension. This field is used to pass metadata to the extension service.
+        /// You can set up key value pairs for metadata as you like and need.
+        /// f.e. {"key": "value", "key2": "value2"}.
+        /// 
+        /// - - -
+        /// </summary>
+        public InputMap<string> Metadata
+        {
+            get => _metadata ?? (_metadata = new InputMap<string>());
+            set => _metadata = value;
+        }
+
         /// <summary>
         /// The name for this extension. The name is logged as part of the HTTP request logs.
         /// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
@@ -65,8 +81,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
         /// resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
         /// `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> SupportedEvents
         {

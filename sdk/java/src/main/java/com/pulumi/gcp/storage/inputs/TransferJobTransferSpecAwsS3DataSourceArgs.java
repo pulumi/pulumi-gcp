@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,6 +49,21 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
     }
 
     /**
+     * Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+     * 
+     */
+    @Import(name="managedPrivateNetwork")
+    private @Nullable Output<Boolean> managedPrivateNetwork;
+
+    /**
+     * @return Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+     * 
+     */
+    public Optional<Output<Boolean>> managedPrivateNetwork() {
+        return Optional.ofNullable(this.managedPrivateNetwork);
+    }
+
+    /**
      * S3 Bucket path in bucket to transfer.
      * 
      */
@@ -82,6 +98,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
     private TransferJobTransferSpecAwsS3DataSourceArgs(TransferJobTransferSpecAwsS3DataSourceArgs $) {
         this.awsAccessKey = $.awsAccessKey;
         this.bucketName = $.bucketName;
+        this.managedPrivateNetwork = $.managedPrivateNetwork;
         this.path = $.path;
         this.roleArn = $.roleArn;
     }
@@ -144,6 +161,27 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
          */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
+        }
+
+        /**
+         * @param managedPrivateNetwork Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedPrivateNetwork(@Nullable Output<Boolean> managedPrivateNetwork) {
+            $.managedPrivateNetwork = managedPrivateNetwork;
+            return this;
+        }
+
+        /**
+         * @param managedPrivateNetwork Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedPrivateNetwork(Boolean managedPrivateNetwork) {
+            return managedPrivateNetwork(Output.of(managedPrivateNetwork));
         }
 
         /**

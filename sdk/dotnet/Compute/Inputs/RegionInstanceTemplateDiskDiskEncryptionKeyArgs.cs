@@ -15,8 +15,16 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The self link of the encryption key that is stored in Google Cloud KMS
         /// </summary>
-        [Input("kmsKeySelfLink", required: true)]
-        public Input<string> KmsKeySelfLink { get; set; } = null!;
+        [Input("kmsKeySelfLink")]
+        public Input<string>? KmsKeySelfLink { get; set; }
+
+        /// <summary>
+        /// The service account being used for the
+        /// encryption request for the given KMS key. If absent, the Compute Engine
+        /// default service account is used.
+        /// </summary>
+        [Input("kmsKeyServiceAccount")]
+        public Input<string>? KmsKeyServiceAccount { get; set; }
 
         public RegionInstanceTemplateDiskDiskEncryptionKeyArgs()
         {

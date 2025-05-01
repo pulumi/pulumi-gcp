@@ -56,6 +56,7 @@ type LbTrafficExtension struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains LbTrafficExtensionExtensionChainArrayOutput `pulumi:"extensionChains"`
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -133,6 +134,7 @@ type lbTrafficExtensionState struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains []LbTrafficExtensionExtensionChain `pulumi:"extensionChains"`
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -167,6 +169,7 @@ type LbTrafficExtensionState struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains LbTrafficExtensionExtensionChainArrayInput
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -203,6 +206,7 @@ type lbTrafficExtensionArgs struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains []LbTrafficExtensionExtensionChain `pulumi:"extensionChains"`
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -233,6 +237,7 @@ type LbTrafficExtensionArgs struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains LbTrafficExtensionExtensionChainArrayInput
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -356,6 +361,7 @@ func (o LbTrafficExtensionOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Match conditions for each extension chain are evaluated in sequence for a given request.
 // The first extension chain that has a condition that matches the request is executed.
 // Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 // Structure is documented below.
 func (o LbTrafficExtensionOutput) ExtensionChains() LbTrafficExtensionExtensionChainArrayOutput {
 	return o.ApplyT(func(v *LbTrafficExtension) LbTrafficExtensionExtensionChainArrayOutput { return v.ExtensionChains }).(LbTrafficExtensionExtensionChainArrayOutput)

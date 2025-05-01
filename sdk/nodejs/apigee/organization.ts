@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
  * * How-to Guides
  *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+ *     * Setting a custom endpoint (required for data residency)
  *
  * ## Example Usage
  *
@@ -55,6 +56,19 @@ import * as utilities from "../utilities";
  * const org = new gcp.apigee.Organization("org", {
  *     description: "Terraform-provisioned basic Apigee Org without VPC Peering.",
  *     analyticsRegion: "us-central1",
+ *     projectId: current.then(current => current.project),
+ *     disableVpcPeering: true,
+ * });
+ * ```
+ * ### Apigee Organization Cloud Basic Data Residency
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const org = new gcp.apigee.Organization("org", {
+ *     description: "Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.",
  *     projectId: current.then(current => current.project),
  *     disableVpcPeering: true,
  * });

@@ -196,10 +196,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        /// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+        /// Specifies the location inside Google's Networks.
         /// </summary>
         [Output("location")]
-        public Output<string?> Location { get; private set; } = null!;
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -434,10 +434,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        /// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+        /// Specifies the location inside Google's Networks.
         /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -682,7 +682,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        /// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+        /// Specifies the location inside Google's Networks.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

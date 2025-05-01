@@ -28,7 +28,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, hierarchical_namespaces=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, project_number=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, hierarchical_namespaces=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, project_number=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, time_created=None, uniform_bucket_level_access=None, updated=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -104,9 +104,15 @@ class GetBucketResult:
         if storage_class and not isinstance(storage_class, str):
             raise TypeError("Expected argument 'storage_class' to be a str")
         pulumi.set(__self__, "storage_class", storage_class)
+        if time_created and not isinstance(time_created, str):
+            raise TypeError("Expected argument 'time_created' to be a str")
+        pulumi.set(__self__, "time_created", time_created)
         if uniform_bucket_level_access and not isinstance(uniform_bucket_level_access, bool):
             raise TypeError("Expected argument 'uniform_bucket_level_access' to be a bool")
         pulumi.set(__self__, "uniform_bucket_level_access", uniform_bucket_level_access)
+        if updated and not isinstance(updated, str):
+            raise TypeError("Expected argument 'updated' to be a str")
+        pulumi.set(__self__, "updated", updated)
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         pulumi.set(__self__, "url", url)
@@ -246,9 +252,19 @@ class GetBucketResult:
         return pulumi.get(self, "storage_class")
 
     @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> builtins.str:
+        return pulumi.get(self, "time_created")
+
+    @property
     @pulumi.getter(name="uniformBucketLevelAccess")
     def uniform_bucket_level_access(self) -> builtins.bool:
         return pulumi.get(self, "uniform_bucket_level_access")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> builtins.str:
+        return pulumi.get(self, "updated")
 
     @property
     @pulumi.getter
@@ -297,7 +313,9 @@ class AwaitableGetBucketResult(GetBucketResult):
             self_link=self.self_link,
             soft_delete_policies=self.soft_delete_policies,
             storage_class=self.storage_class,
+            time_created=self.time_created,
             uniform_bucket_level_access=self.uniform_bucket_level_access,
+            updated=self.updated,
             url=self.url,
             versionings=self.versionings,
             websites=self.websites)
@@ -357,7 +375,9 @@ def get_bucket(name: Optional[builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         soft_delete_policies=pulumi.get(__ret__, 'soft_delete_policies'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
+        time_created=pulumi.get(__ret__, 'time_created'),
         uniform_bucket_level_access=pulumi.get(__ret__, 'uniform_bucket_level_access'),
+        updated=pulumi.get(__ret__, 'updated'),
         url=pulumi.get(__ret__, 'url'),
         versionings=pulumi.get(__ret__, 'versionings'),
         websites=pulumi.get(__ret__, 'websites'))
@@ -414,7 +434,9 @@ def get_bucket_output(name: Optional[pulumi.Input[builtins.str]] = None,
         self_link=pulumi.get(__response__, 'self_link'),
         soft_delete_policies=pulumi.get(__response__, 'soft_delete_policies'),
         storage_class=pulumi.get(__response__, 'storage_class'),
+        time_created=pulumi.get(__response__, 'time_created'),
         uniform_bucket_level_access=pulumi.get(__response__, 'uniform_bucket_level_access'),
+        updated=pulumi.get(__response__, 'updated'),
         url=pulumi.get(__response__, 'url'),
         versionings=pulumi.get(__response__, 'versionings'),
         websites=pulumi.get(__response__, 'websites')))

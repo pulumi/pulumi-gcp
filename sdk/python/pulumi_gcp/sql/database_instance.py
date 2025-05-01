@@ -357,6 +357,7 @@ class _DatabaseInstanceState:
                  database_version: Optional[pulumi.Input[builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  dns_name: Optional[pulumi.Input[builtins.str]] = None,
+                 dns_names: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]]] = None,
                  encryption_key_name: Optional[pulumi.Input[builtins.str]] = None,
                  first_ip_address: Optional[pulumi.Input[builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -398,6 +399,7 @@ class _DatabaseInstanceState:
         :param pulumi.Input[builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         :param pulumi.Input[builtins.str] dns_name: The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         :param pulumi.Input[builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -453,6 +455,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if dns_name is not None:
             pulumi.set(__self__, "dns_name", dns_name)
+        if dns_names is not None:
+            pulumi.set(__self__, "dns_names", dns_names)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
         if first_ip_address is not None:
@@ -579,6 +583,18 @@ class _DatabaseInstanceState:
     @dns_name.setter
     def dns_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "dns_name", value)
+
+    @property
+    @pulumi.getter(name="dnsNames")
+    def dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]]]:
+        """
+        The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        """
+        return pulumi.get(self, "dns_names")
+
+    @dns_names.setter
+    def dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]]]):
+        pulumi.set(self, "dns_names", value)
 
     @property
     @pulumi.getter(name="encryptionKeyName")
@@ -1406,6 +1422,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["connection_name"] = None
             __props__.__dict__["dns_name"] = None
+            __props__.__dict__["dns_names"] = None
             __props__.__dict__["first_ip_address"] = None
             __props__.__dict__["ip_addresses"] = None
             __props__.__dict__["private_ip_address"] = None
@@ -1432,6 +1449,7 @@ class DatabaseInstance(pulumi.CustomResource):
             database_version: Optional[pulumi.Input[builtins.str]] = None,
             deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
             dns_name: Optional[pulumi.Input[builtins.str]] = None,
+            dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict']]]]] = None,
             encryption_key_name: Optional[pulumi.Input[builtins.str]] = None,
             first_ip_address: Optional[pulumi.Input[builtins.str]] = None,
             instance_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -1478,6 +1496,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         :param pulumi.Input[builtins.str] dns_name: The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict']]]] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         :param pulumi.Input[builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -1531,6 +1550,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["database_version"] = database_version
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["dns_name"] = dns_name
+        __props__.__dict__["dns_names"] = dns_names
         __props__.__dict__["encryption_key_name"] = encryption_key_name
         __props__.__dict__["first_ip_address"] = first_ip_address
         __props__.__dict__["instance_type"] = instance_type
@@ -1613,6 +1633,14 @@ class DatabaseInstance(pulumi.CustomResource):
         The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         """
         return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="dnsNames")
+    def dns_names(self) -> pulumi.Output[Sequence['outputs.DatabaseInstanceDnsName']]:
+        """
+        The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        """
+        return pulumi.get(self, "dns_names")
 
     @property
     @pulumi.getter(name="encryptionKeyName")

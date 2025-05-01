@@ -4,9 +4,10 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RegionInstanceTemplateDiskDiskEncryptionKey {
@@ -14,15 +15,31 @@ public final class RegionInstanceTemplateDiskDiskEncryptionKey {
      * @return The self link of the encryption key that is stored in Google Cloud KMS
      * 
      */
-    private String kmsKeySelfLink;
+    private @Nullable String kmsKeySelfLink;
+    /**
+     * @return The service account being used for the
+     * encryption request for the given KMS key. If absent, the Compute Engine
+     * default service account is used.
+     * 
+     */
+    private @Nullable String kmsKeyServiceAccount;
 
     private RegionInstanceTemplateDiskDiskEncryptionKey() {}
     /**
      * @return The self link of the encryption key that is stored in Google Cloud KMS
      * 
      */
-    public String kmsKeySelfLink() {
-        return this.kmsKeySelfLink;
+    public Optional<String> kmsKeySelfLink() {
+        return Optional.ofNullable(this.kmsKeySelfLink);
+    }
+    /**
+     * @return The service account being used for the
+     * encryption request for the given KMS key. If absent, the Compute Engine
+     * default service account is used.
+     * 
+     */
+    public Optional<String> kmsKeyServiceAccount() {
+        return Optional.ofNullable(this.kmsKeyServiceAccount);
     }
 
     public static Builder builder() {
@@ -34,24 +51,31 @@ public final class RegionInstanceTemplateDiskDiskEncryptionKey {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String kmsKeySelfLink;
+        private @Nullable String kmsKeySelfLink;
+        private @Nullable String kmsKeyServiceAccount;
         public Builder() {}
         public Builder(RegionInstanceTemplateDiskDiskEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
+    	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
         }
 
         @CustomType.Setter
-        public Builder kmsKeySelfLink(String kmsKeySelfLink) {
-            if (kmsKeySelfLink == null) {
-              throw new MissingRequiredPropertyException("RegionInstanceTemplateDiskDiskEncryptionKey", "kmsKeySelfLink");
-            }
+        public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
+
             this.kmsKeySelfLink = kmsKeySelfLink;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
+
+            this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
         public RegionInstanceTemplateDiskDiskEncryptionKey build() {
             final var _resultValue = new RegionInstanceTemplateDiskDiskEncryptionKey();
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return _resultValue;
         }
     }

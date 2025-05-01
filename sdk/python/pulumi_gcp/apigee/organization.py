@@ -673,6 +673,7 @@ class Organization(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
         * How-to Guides
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+            * Setting a custom endpoint (required for data residency)
 
         ## Example Usage
 
@@ -710,6 +711,18 @@ class Organization(pulumi.CustomResource):
         org = gcp.apigee.Organization("org",
             description="Terraform-provisioned basic Apigee Org without VPC Peering.",
             analytics_region="us-central1",
+            project_id=current.project,
+            disable_vpc_peering=True)
+        ```
+        ### Apigee Organization Cloud Basic Data Residency
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        org = gcp.apigee.Organization("org",
+            description="Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.",
             project_id=current.project,
             disable_vpc_peering=True)
         ```
@@ -858,6 +871,7 @@ class Organization(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
         * How-to Guides
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+            * Setting a custom endpoint (required for data residency)
 
         ## Example Usage
 
@@ -895,6 +909,18 @@ class Organization(pulumi.CustomResource):
         org = gcp.apigee.Organization("org",
             description="Terraform-provisioned basic Apigee Org without VPC Peering.",
             analytics_region="us-central1",
+            project_id=current.project,
+            disable_vpc_peering=True)
+        ```
+        ### Apigee Organization Cloud Basic Data Residency
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        org = gcp.apigee.Organization("org",
+            description="Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction.",
             project_id=current.project,
             disable_vpc_peering=True)
         ```
