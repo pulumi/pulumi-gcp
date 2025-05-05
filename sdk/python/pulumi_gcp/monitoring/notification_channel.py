@@ -435,6 +435,9 @@ class _NotificationChannelState:
 
 
 class NotificationChannel(pulumi.CustomResource):
+
+    pulumi_type = "gcp:monitoring/notificationChannel:NotificationChannel"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

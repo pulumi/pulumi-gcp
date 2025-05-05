@@ -313,6 +313,9 @@ class _CaPoolIamMemberState:
 
 
 class CaPoolIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:certificateauthority/caPoolIamMember:CaPoolIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -59,6 +59,16 @@ public final class GetDatabaseInstanceSetting {
      * 
      */
     private List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs;
+    /**
+     * @return Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+     * 
+     */
+    private Integer dataDiskProvisionedIops;
+    /**
+     * @return Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+     * 
+     */
+    private Integer dataDiskProvisionedThroughput;
     private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
     /**
      * @return Configuration to protect against accidental instance deletion.
@@ -77,12 +87,12 @@ public final class GetDatabaseInstanceSetting {
      */
     private Integer diskAutoresizeLimit;
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
      * 
      */
     private Integer diskSize;
     /**
-     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+     * @return The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
      * 
      */
     private String diskType;
@@ -119,6 +129,11 @@ public final class GetDatabaseInstanceSetting {
      * 
      */
     private String pricingPlan;
+    /**
+     * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
+     * 
+     */
+    private Boolean retainBackupsOnDelete;
     private List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
     /**
      * @return The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
@@ -191,6 +206,20 @@ public final class GetDatabaseInstanceSetting {
     public List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs() {
         return this.dataCacheConfigs;
     }
+    /**
+     * @return Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+     * 
+     */
+    public Integer dataDiskProvisionedIops() {
+        return this.dataDiskProvisionedIops;
+    }
+    /**
+     * @return Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+     * 
+     */
+    public Integer dataDiskProvisionedThroughput() {
+        return this.dataDiskProvisionedThroughput;
+    }
     public List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags() {
         return this.databaseFlags;
     }
@@ -219,14 +248,14 @@ public final class GetDatabaseInstanceSetting {
         return this.diskAutoresizeLimit;
     }
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
      * 
      */
     public Integer diskSize() {
         return this.diskSize;
     }
     /**
-     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+     * @return The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
      * 
      */
     public String diskType() {
@@ -283,6 +312,13 @@ public final class GetDatabaseInstanceSetting {
     public String pricingPlan() {
         return this.pricingPlan;
     }
+    /**
+     * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
+     * 
+     */
+    public Boolean retainBackupsOnDelete() {
+        return this.retainBackupsOnDelete;
+    }
     public List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs() {
         return this.sqlServerAuditConfigs;
     }
@@ -332,6 +368,8 @@ public final class GetDatabaseInstanceSetting {
         private String collation;
         private String connectorEnforcement;
         private List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs;
+        private Integer dataDiskProvisionedIops;
+        private Integer dataDiskProvisionedThroughput;
         private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
         private Boolean deletionProtectionEnabled;
         private List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods;
@@ -348,6 +386,7 @@ public final class GetDatabaseInstanceSetting {
         private List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
         private List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
         private String pricingPlan;
+        private Boolean retainBackupsOnDelete;
         private List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
         private String tier;
         private String timeZone;
@@ -364,6 +403,8 @@ public final class GetDatabaseInstanceSetting {
     	      this.collation = defaults.collation;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
     	      this.dataCacheConfigs = defaults.dataCacheConfigs;
+    	      this.dataDiskProvisionedIops = defaults.dataDiskProvisionedIops;
+    	      this.dataDiskProvisionedThroughput = defaults.dataDiskProvisionedThroughput;
     	      this.databaseFlags = defaults.databaseFlags;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.denyMaintenancePeriods = defaults.denyMaintenancePeriods;
@@ -380,6 +421,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.maintenanceWindows = defaults.maintenanceWindows;
     	      this.passwordValidationPolicies = defaults.passwordValidationPolicies;
     	      this.pricingPlan = defaults.pricingPlan;
+    	      this.retainBackupsOnDelete = defaults.retainBackupsOnDelete;
     	      this.sqlServerAuditConfigs = defaults.sqlServerAuditConfigs;
     	      this.tier = defaults.tier;
     	      this.timeZone = defaults.timeZone;
@@ -462,6 +504,22 @@ public final class GetDatabaseInstanceSetting {
         }
         public Builder dataCacheConfigs(GetDatabaseInstanceSettingDataCacheConfig... dataCacheConfigs) {
             return dataCacheConfigs(List.of(dataCacheConfigs));
+        }
+        @CustomType.Setter
+        public Builder dataDiskProvisionedIops(Integer dataDiskProvisionedIops) {
+            if (dataDiskProvisionedIops == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "dataDiskProvisionedIops");
+            }
+            this.dataDiskProvisionedIops = dataDiskProvisionedIops;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataDiskProvisionedThroughput(Integer dataDiskProvisionedThroughput) {
+            if (dataDiskProvisionedThroughput == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "dataDiskProvisionedThroughput");
+            }
+            this.dataDiskProvisionedThroughput = dataDiskProvisionedThroughput;
+            return this;
         }
         @CustomType.Setter
         public Builder databaseFlags(List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags) {
@@ -613,6 +671,14 @@ public final class GetDatabaseInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder retainBackupsOnDelete(Boolean retainBackupsOnDelete) {
+            if (retainBackupsOnDelete == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "retainBackupsOnDelete");
+            }
+            this.retainBackupsOnDelete = retainBackupsOnDelete;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sqlServerAuditConfigs(List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs) {
             if (sqlServerAuditConfigs == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "sqlServerAuditConfigs");
@@ -665,6 +731,8 @@ public final class GetDatabaseInstanceSetting {
             _resultValue.collation = collation;
             _resultValue.connectorEnforcement = connectorEnforcement;
             _resultValue.dataCacheConfigs = dataCacheConfigs;
+            _resultValue.dataDiskProvisionedIops = dataDiskProvisionedIops;
+            _resultValue.dataDiskProvisionedThroughput = dataDiskProvisionedThroughput;
             _resultValue.databaseFlags = databaseFlags;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.denyMaintenancePeriods = denyMaintenancePeriods;
@@ -681,6 +749,7 @@ public final class GetDatabaseInstanceSetting {
             _resultValue.maintenanceWindows = maintenanceWindows;
             _resultValue.passwordValidationPolicies = passwordValidationPolicies;
             _resultValue.pricingPlan = pricingPlan;
+            _resultValue.retainBackupsOnDelete = retainBackupsOnDelete;
             _resultValue.sqlServerAuditConfigs = sqlServerAuditConfigs;
             _resultValue.tier = tier;
             _resultValue.timeZone = timeZone;

@@ -70,14 +70,14 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Number of retries allowed per Task, before marking this Task failed.
+     * Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
      * 
      */
     @Import(name="maxRetries")
     private @Nullable Output<Integer> maxRetries;
 
     /**
-     * @return Number of retries allowed per Task, before marking this Task failed.
+     * @return Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
      * 
      */
     public Optional<Output<Integer>> maxRetries() {
@@ -260,7 +260,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxRetries Number of retries allowed per Task, before marking this Task failed.
+         * @param maxRetries Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxRetries Number of retries allowed per Task, before marking this Task failed.
+         * @param maxRetries Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
          * 
          * @return builder
          * 

@@ -112,6 +112,9 @@ class _DocumentAiProcessorDefaultVersionState:
 
 
 class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
+
+    pulumi_type = "gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

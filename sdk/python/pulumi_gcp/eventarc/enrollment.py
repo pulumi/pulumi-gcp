@@ -503,6 +503,9 @@ class _EnrollmentState:
 
 
 class Enrollment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:eventarc/enrollment:Enrollment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

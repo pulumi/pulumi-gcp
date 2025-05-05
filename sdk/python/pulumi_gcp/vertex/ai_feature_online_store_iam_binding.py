@@ -293,6 +293,9 @@ class _AiFeatureOnlineStoreIamBindingState:
 
 
 class AiFeatureOnlineStoreIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiFeatureOnlineStoreIamBinding:AiFeatureOnlineStoreIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

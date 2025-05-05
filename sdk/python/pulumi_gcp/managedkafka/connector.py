@@ -277,6 +277,9 @@ class _ConnectorState:
 
 
 class Connector(pulumi.CustomResource):
+
+    pulumi_type = "gcp:managedkafka/connector:Connector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -313,14 +316,16 @@ class Connector(pulumi.CustomResource):
         managedkafka = gcp.projects.Service("managedkafka",
             project=project.project_id,
             service="managedkafka.googleapis.com",
-            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
         mkc_secondary_subnet = gcp.compute.Subnetwork("mkc_secondary_subnet",
             project=project.project_id,
             name="my-secondary-subnetwork-00",
             ip_cidr_range="10.5.0.0/16",
             region="us-central1",
             network="default",
-            opts = pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         cps_topic = gcp.pubsub.Topic("cps_topic",
             project=project.project_id,
             name="my-cps-topic",
@@ -470,14 +475,16 @@ class Connector(pulumi.CustomResource):
         managedkafka = gcp.projects.Service("managedkafka",
             project=project.project_id,
             service="managedkafka.googleapis.com",
-            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+            opts = pulumi.ResourceOptions(depends_on=[compute]))
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[managedkafka]))
         mkc_secondary_subnet = gcp.compute.Subnetwork("mkc_secondary_subnet",
             project=project.project_id,
             name="my-secondary-subnetwork-00",
             ip_cidr_range="10.5.0.0/16",
             region="us-central1",
             network="default",
-            opts = pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         cps_topic = gcp.pubsub.Topic("cps_topic",
             project=project.project_id,
             name="my-cps-topic",

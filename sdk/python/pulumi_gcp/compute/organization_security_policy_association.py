@@ -156,6 +156,9 @@ class _OrganizationSecurityPolicyAssociationState:
 
 
 class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

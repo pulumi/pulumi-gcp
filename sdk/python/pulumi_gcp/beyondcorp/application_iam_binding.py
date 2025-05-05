@@ -280,6 +280,9 @@ class _ApplicationIamBindingState:
 
 
 class ApplicationIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:beyondcorp/applicationIamBinding:ApplicationIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

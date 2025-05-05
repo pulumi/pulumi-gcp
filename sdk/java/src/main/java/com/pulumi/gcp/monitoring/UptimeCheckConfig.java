@@ -16,6 +16,7 @@ import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigMonitoredResource;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigResourceGroup;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigSyntheticMonitor;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigTcpCheck;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -66,6 +67,7 @@ import javax.annotation.Nullable;
  *         var http = new UptimeCheckConfig("http", UptimeCheckConfigArgs.builder()
  *             .displayName("http-uptime-check")
  *             .timeout("60s")
+ *             .logCheckFailures(true)
  *             .userLabels(Map.of("example-key", "example-value"))
  *             .httpCheck(UptimeCheckConfigHttpCheckArgs.builder()
  *                 .path("some-path")
@@ -474,6 +476,20 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<UptimeCheckConfigHttpCheck>> httpCheck() {
         return Codegen.optional(this.httpCheck);
+    }
+    /**
+     * Specifies whether to log the results of failed probes to Cloud Logging.
+     * 
+     */
+    @Export(name="logCheckFailures", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> logCheckFailures;
+
+    /**
+     * @return Specifies whether to log the results of failed probes to Cloud Logging.
+     * 
+     */
+    public Output<Optional<Boolean>> logCheckFailures() {
+        return Codegen.optional(this.logCheckFailures);
     }
     /**
      * The [monitored resource]

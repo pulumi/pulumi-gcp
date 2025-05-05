@@ -510,6 +510,9 @@ class _RegistrationState:
 
 
 class Registration(pulumi.CustomResource):
+
+    pulumi_type = "gcp:clouddomains/registration:Registration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

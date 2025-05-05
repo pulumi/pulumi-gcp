@@ -195,6 +195,9 @@ class _TableIamPolicyState:
 
 
 class TableIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigtable/tableIamPolicy:TableIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

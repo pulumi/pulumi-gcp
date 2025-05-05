@@ -619,6 +619,9 @@ class _PipelineState:
 
 
 class Pipeline(pulumi.CustomResource):
+
+    pulumi_type = "gcp:eventarc/pipeline:Pipeline"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

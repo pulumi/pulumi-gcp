@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagementConfigSync
     {
         /// <summary>
+        /// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> DeploymentOverrides;
+        /// <summary>
         /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         /// </summary>
         public readonly bool? Enabled;
@@ -46,6 +50,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
         [OutputConstructor]
         private FeatureMembershipConfigmanagementConfigSync(
+            ImmutableArray<Outputs.FeatureMembershipConfigmanagementConfigSyncDeploymentOverride> deploymentOverrides,
+
             bool? enabled,
 
             Outputs.FeatureMembershipConfigmanagementConfigSyncGit? git,
@@ -60,6 +66,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             bool? stopSyncing)
         {
+            DeploymentOverrides = deploymentOverrides;
             Enabled = enabled;
             Git = git;
             MetricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;

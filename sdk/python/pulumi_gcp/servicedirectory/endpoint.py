@@ -274,6 +274,9 @@ class _EndpointState:
 
 
 class Endpoint(pulumi.CustomResource):
+
+    pulumi_type = "gcp:servicedirectory/endpoint:Endpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

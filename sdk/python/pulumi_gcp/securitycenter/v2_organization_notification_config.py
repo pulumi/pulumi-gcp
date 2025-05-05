@@ -272,6 +272,9 @@ class _V2OrganizationNotificationConfigState:
 
 
 class V2OrganizationNotificationConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

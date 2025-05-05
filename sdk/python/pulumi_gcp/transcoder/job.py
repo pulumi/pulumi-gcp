@@ -345,6 +345,9 @@ class _JobState:
 
 
 class Job(pulumi.CustomResource):
+
+    pulumi_type = "gcp:transcoder/job:Job"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

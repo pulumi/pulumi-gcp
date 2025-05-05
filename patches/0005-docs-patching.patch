@@ -117,10 +117,10 @@ index 7b5f42f63..fa9192dd1 100644
    org_id                   = google_apigee_organization.apigee_org.id
    disk_encryption_key_name = google_kms_crypto_key.apigee_key.id
 diff --git a/website/docs/r/apigee_organization.html.markdown b/website/docs/r/apigee_organization.html.markdown
-index ae21ca183..66fc2fe68 100644
+index 7ddc9057c..bd47de7c7 100644
 --- a/website/docs/r/apigee_organization.html.markdown
 +++ b/website/docs/r/apigee_organization.html.markdown
-@@ -128,7 +128,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
+@@ -145,7 +145,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
  resource "google_apigee_organization" "org" {
    analytics_region                     = "us-central1"
    display_name                         = "apigee-org"
@@ -378,14 +378,14 @@ diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/clo
 index 6f22c1c72..ce6e5b9fb 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
-@@ -33,9 +33,64 @@ To get more information about Service, see:
+@@ -33,8 +33,63 @@ To get more information about Service, see:
  ~> **Warning:** We recommend using the `google_cloud_run_v2_service` resource which offers a better
  developer experience and broader support of Cloud Run features.
  
 -## Example Usage - Cloud Run Service Basic
 +## Example Usage - Cloud Run Service Pubsub
- 
- 
++
++
 +```hcl
 +resource "google_cloud_run_service" "default" {
 +    name     = "cloud_run_service_name"
@@ -438,12 +438,11 @@ index 6f22c1c72..ce6e5b9fb 100644
 +  }
 +}
 +```
-+
+ 
 +## Example Usage - Cloud Run Service Basic
-+
+ 
  ```hcl
  resource "google_cloud_run_service" "default" {
-   name     = "cloudrun-srv"
 @@ -118,7 +173,7 @@ resource "google_cloud_run_service" "default" {
        annotations = {
          "autoscaling.knative.dev/maxScale"      = "1000"
@@ -578,10 +577,10 @@ index eea0057a2..726c86dd3 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 7128df467..c858d5d8b 100644
+index 405e1a411..6fb8aad5e 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
-@@ -38,7 +38,6 @@ To get more information about BackendService, see:
+@@ -41,7 +41,6 @@ To get more information about BackendService, see:
  
  ~> **Warning:** All arguments including the following potentially sensitive
  values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
@@ -826,7 +825,7 @@ index 3abfdbb98..c6fade74b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index ec227ad15..e6356b4d5 100644
+index ddb65e42f..61e6e9004 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -890,7 +889,7 @@ index ec227ad15..e6356b4d5 100644
  
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`. Max length is 54 characters.
-@@ -556,7 +556,7 @@ The following arguments are supported:
+@@ -582,7 +582,7 @@ The following arguments are supported:
  * `access_config` - (Optional) Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -1091,7 +1090,7 @@ index ff0556f26..42a358a8a 100644
  
  ## Example Usage
 diff --git a/website/docs/r/compute_region_disk.html.markdown b/website/docs/r/compute_region_disk.html.markdown
-index ed146ae48..303017f5c 100644
+index bed481434..8350f9894 100644
 --- a/website/docs/r/compute_region_disk.html.markdown
 +++ b/website/docs/r/compute_region_disk.html.markdown
 @@ -47,7 +47,6 @@ To get more information about RegionDisk, see:
@@ -1893,7 +1892,7 @@ index 85fd0b322..177058967 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index b957e46e7..4695b3baa 100644
+index 557b8f789..935d1b66c 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1995,7 +1994,7 @@ index b957e46e7..4695b3baa 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -941,7 +955,7 @@ gvnic {
+@@ -943,7 +957,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -2004,7 +2003,7 @@ index b957e46e7..4695b3baa 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -966,10 +980,7 @@ gvnic {
+@@ -968,10 +982,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -2016,7 +2015,7 @@ index b957e46e7..4695b3baa 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -983,13 +994,14 @@ gvnic {
+@@ -985,13 +996,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -2038,7 +2037,7 @@ index b957e46e7..4695b3baa 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1057,6 +1069,20 @@ sole_tenant_config {
+@@ -1059,6 +1071,20 @@ sole_tenant_config {
  
  * `enable_nested_virtualization`- (Optional) Defines whether the instance should have nested virtualization enabled. Defaults to false.
  
@@ -2059,7 +2058,7 @@ index b957e46e7..4695b3baa 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1251,7 +1277,7 @@ for more details. This field only applies to private clusters, when
+@@ -1255,7 +1281,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -2068,7 +2067,7 @@ index b957e46e7..4695b3baa 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1353,9 +1379,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1357,9 +1383,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2397,7 +2396,7 @@ index 2e45d69a2..4441e1055 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/dns_managed_zone.html.markdown b/website/docs/r/dns_managed_zone.html.markdown
-index 81035e73d..6598f731b 100644
+index 16263d664..39b825f3b 100644
 --- a/website/docs/r/dns_managed_zone.html.markdown
 +++ b/website/docs/r/dns_managed_zone.html.markdown
 @@ -44,16 +44,12 @@ To get more information about ManagedZone, see:
@@ -3382,7 +3381,7 @@ index 7ee5f0ee1..78cafa741 100644
  
  
 diff --git a/website/docs/r/kms_key_ring_import_job.html.markdown b/website/docs/r/kms_key_ring_import_job.html.markdown
-index d03dabb8c..91fcd6564 100644
+index 8e112cdf2..977e18dfd 100644
 --- a/website/docs/r/kms_key_ring_import_job.html.markdown
 +++ b/website/docs/r/kms_key_ring_import_job.html.markdown
 @@ -29,7 +29,7 @@ was wrapped with the `KeyRingImportJob`'s public key.
@@ -3619,7 +3618,7 @@ index e126a5e06..a5fc3aab7 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index 3b3b747de..27b3edfa3 100644
+index 213a71916..3a5528004 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
 @@ -30,12 +30,8 @@ To get more information about UptimeCheckConfig, see:
@@ -3678,7 +3677,7 @@ index fe9f8b04a..f1ca040b9 100644
  
  ~> **Note:** Once created, this resource cannot be updated or destroyed. These
 diff --git a/website/docs/r/redis_instance.html.markdown b/website/docs/r/redis_instance.html.markdown
-index 8d5c24c10..d3420764c 100644
+index c3824919e..b9cecd791 100644
 --- a/website/docs/r/redis_instance.html.markdown
 +++ b/website/docs/r/redis_instance.html.markdown
 @@ -68,7 +68,7 @@ resource "google_redis_instance" "cache" {
@@ -3879,7 +3878,7 @@ index e590db9bd..f9acce5ee 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 07c4fb700..78075d386 100644
+index 9cbb8c5d9..1bf552dd5 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3941,7 +3940,7 @@ index 07c4fb700..78075d386 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -547,7 +543,7 @@ The optional `clone` block supports:
+@@ -555,7 +551,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3950,7 +3949,7 @@ index 07c4fb700..78075d386 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -591,21 +587,13 @@ instance.
+@@ -609,21 +605,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
@@ -4003,7 +4002,7 @@ index 5e973aba8..17ff1efcb 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index b56f333fa..f6bf5552b 100644
+index 9ee3665c7..4beeec53d 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -129,7 +129,7 @@ The following arguments are supported:
@@ -4015,7 +4014,7 @@ index b56f333fa..f6bf5552b 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
      is not provided, the provider project is used.
-@@ -271,9 +271,9 @@ The following arguments are supported:
+@@ -275,9 +275,9 @@ The following arguments are supported:
    until a relevant action has occurred which triggers its creation.
    You should use the [`google_storage_project_service_account`](/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
    address for the service account when configuring IAM policy on the Cloud KMS key.

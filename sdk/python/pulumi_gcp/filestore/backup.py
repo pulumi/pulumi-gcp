@@ -497,6 +497,9 @@ class _BackupState:
 
 
 class Backup(pulumi.CustomResource):
+
+    pulumi_type = "gcp:filestore/backup:Backup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

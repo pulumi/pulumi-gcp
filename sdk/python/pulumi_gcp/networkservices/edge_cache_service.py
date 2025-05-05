@@ -533,6 +533,9 @@ class _EdgeCacheServiceState:
 
 
 class EdgeCacheService(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/edgeCacheService:EdgeCacheService"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

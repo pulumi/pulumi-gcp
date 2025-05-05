@@ -1196,6 +1196,9 @@ class _TableState:
 
 
 class Table(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/table:Table"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

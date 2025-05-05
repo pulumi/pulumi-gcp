@@ -415,6 +415,9 @@ class _TransferJobState:
 
 
 class TransferJob(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/transferJob:TransferJob"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

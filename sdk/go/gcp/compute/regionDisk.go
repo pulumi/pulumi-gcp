@@ -242,6 +242,8 @@ type RegionDisk struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	DiskId pulumi.StringOutput `pulumi:"diskId"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A list of features to enable on the guest operating system.
@@ -407,6 +409,8 @@ type regionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	DiskId *string `pulumi:"diskId"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A list of features to enable on the guest operating system.
@@ -535,6 +539,8 @@ type RegionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
+	// The unique identifier for the resource. This identifier is defined by the server.
+	DiskId pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// A list of features to enable on the guest operating system.
@@ -966,6 +972,11 @@ func (o RegionDiskOutput) Description() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o RegionDiskOutput) DiskEncryptionKey() RegionDiskDiskEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *RegionDisk) RegionDiskDiskEncryptionKeyPtrOutput { return v.DiskEncryptionKey }).(RegionDiskDiskEncryptionKeyPtrOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionDiskOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

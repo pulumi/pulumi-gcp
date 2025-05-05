@@ -192,6 +192,9 @@ class _RuntimeTemplateIamPolicyState:
 
 
 class RuntimeTemplateIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:colab/runtimeTemplateIamPolicy:RuntimeTemplateIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

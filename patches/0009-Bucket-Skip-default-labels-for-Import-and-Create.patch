@@ -5,10 +5,10 @@ Subject: [PATCH] Bucket: Skip default labels for Import and Create
 
 
 diff --git a/google-beta/services/storage/resource_storage_bucket.go b/google-beta/services/storage/resource_storage_bucket.go
-index d4d581751..99dd011ce 100644
+index caf1608ce..f37f56004 100644
 --- a/google-beta/services/storage/resource_storage_bucket.go
 +++ b/google-beta/services/storage/resource_storage_bucket.go
-@@ -2006,10 +2006,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
+@@ -2034,10 +2034,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res
  	if err := d.Set("lifecycle_rule", flattenBucketLifecycle(d, res.Lifecycle)); err != nil {
  		return fmt.Errorf("Error setting lifecycle_rule: %s", err)
  	}

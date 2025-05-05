@@ -541,6 +541,9 @@ class _AzureNodePoolState:
 
 
 class AzureNodePool(pulumi.CustomResource):
+
+    pulumi_type = "gcp:container/azureNodePool:AzureNodePool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

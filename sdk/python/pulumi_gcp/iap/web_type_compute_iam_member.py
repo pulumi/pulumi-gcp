@@ -234,6 +234,9 @@ class _WebTypeComputeIamMemberState:
 
 
 class WebTypeComputeIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/webTypeComputeIamMember:WebTypeComputeIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

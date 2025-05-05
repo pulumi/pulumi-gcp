@@ -269,6 +269,9 @@ class _LogViewState:
 
 
 class LogView(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/logView:LogView"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

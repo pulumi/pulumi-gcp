@@ -955,6 +955,9 @@ class _BareMetalClusterState:
 
 
 class BareMetalCluster(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkeonprem/bareMetalCluster:BareMetalCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

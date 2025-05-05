@@ -26,6 +26,7 @@ class InternalRangeArgs:
                  peering: pulumi.Input[builtins.str],
                  usage: pulumi.Input[builtins.str],
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ip_cidr_range: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  migration: Optional[pulumi.Input['InternalRangeMigrationArgs']] = None,
@@ -45,7 +46,11 @@ class InternalRangeArgs:
         :param pulumi.Input[builtins.str] usage: The type of usage set for this InternalRange.
                Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+               Only IPv4 CIDR ranges are supported.
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP range that this internal range defines.
+               NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+               NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -57,6 +62,8 @@ class InternalRangeArgs:
                Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
         :param pulumi.Input[builtins.int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+               NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+               a redundant parameter.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_cidr_ranges: Optional. Can be set to narrow down or pick a different address space while searching for a free range.
@@ -67,6 +74,8 @@ class InternalRangeArgs:
         pulumi.set(__self__, "usage", usage)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if exclude_cidr_ranges is not None:
+            pulumi.set(__self__, "exclude_cidr_ranges", exclude_cidr_ranges)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if labels is not None:
@@ -138,10 +147,25 @@ class InternalRangeArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="excludeCidrRanges")
+    def exclude_cidr_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+        Only IPv4 CIDR ranges are supported.
+        """
+        return pulumi.get(self, "exclude_cidr_ranges")
+
+    @exclude_cidr_ranges.setter
+    def exclude_cidr_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "exclude_cidr_ranges", value)
+
+    @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The IP range that this internal range defines.
+        NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+        NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -208,6 +232,8 @@ class InternalRangeArgs:
         """
         An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
         If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+        NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+        a redundant parameter.
         """
         return pulumi.get(self, "prefix_length")
 
@@ -247,6 +273,7 @@ class _InternalRangeState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ip_cidr_range: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  migration: Optional[pulumi.Input['InternalRangeMigrationArgs']] = None,
@@ -264,7 +291,11 @@ class _InternalRangeState:
         Input properties used for looking up and filtering InternalRange resources.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+               Only IPv4 CIDR ranges are supported.
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP range that this internal range defines.
+               NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+               NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -282,6 +313,8 @@ class _InternalRangeState:
                - - -
         :param pulumi.Input[builtins.int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+               NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+               a redundant parameter.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -298,6 +331,8 @@ class _InternalRangeState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if exclude_cidr_ranges is not None:
+            pulumi.set(__self__, "exclude_cidr_ranges", exclude_cidr_ranges)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if labels is not None:
@@ -350,10 +385,25 @@ class _InternalRangeState:
         pulumi.set(self, "effective_labels", value)
 
     @property
+    @pulumi.getter(name="excludeCidrRanges")
+    def exclude_cidr_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+        Only IPv4 CIDR ranges are supported.
+        """
+        return pulumi.get(self, "exclude_cidr_ranges")
+
+    @exclude_cidr_ranges.setter
+    def exclude_cidr_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "exclude_cidr_ranges", value)
+
+    @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The IP range that this internal range defines.
+        NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+        NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -448,6 +498,8 @@ class _InternalRangeState:
         """
         An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
         If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+        NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+        a redundant parameter.
         """
         return pulumi.get(self, "prefix_length")
 
@@ -523,11 +575,15 @@ class _InternalRangeState:
 
 
 class InternalRange(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkconnectivity/internalRange:InternalRange"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ip_cidr_range: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  migration: Optional[pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
@@ -686,7 +742,11 @@ class InternalRange(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+               Only IPv4 CIDR ranges are supported.
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP range that this internal range defines.
+               NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+               NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -704,6 +764,8 @@ class InternalRange(pulumi.CustomResource):
                - - -
         :param pulumi.Input[builtins.int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+               NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+               a redundant parameter.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_cidr_ranges: Optional. Can be set to narrow down or pick a different address space while searching for a free range.
@@ -876,6 +938,7 @@ class InternalRange(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  ip_cidr_range: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  migration: Optional[pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
@@ -897,6 +960,7 @@ class InternalRange(pulumi.CustomResource):
             __props__ = InternalRangeArgs.__new__(InternalRangeArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["exclude_cidr_ranges"] = exclude_cidr_ranges
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["labels"] = labels
             __props__.__dict__["migration"] = migration
@@ -931,6 +995,7 @@ class InternalRange(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            exclude_cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             ip_cidr_range: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             migration: Optional[pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
@@ -953,7 +1018,11 @@ class InternalRange(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] exclude_cidr_ranges: Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+               Only IPv4 CIDR ranges are supported.
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP range that this internal range defines.
+               NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+               NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -971,6 +1040,8 @@ class InternalRange(pulumi.CustomResource):
                - - -
         :param pulumi.Input[builtins.int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+               NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+               a redundant parameter.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -989,6 +1060,7 @@ class InternalRange(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["exclude_cidr_ranges"] = exclude_cidr_ranges
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
         __props__.__dict__["labels"] = labels
         __props__.__dict__["migration"] = migration
@@ -1021,10 +1093,21 @@ class InternalRange(pulumi.CustomResource):
         return pulumi.get(self, "effective_labels")
 
     @property
+    @pulumi.getter(name="excludeCidrRanges")
+    def exclude_cidr_ranges(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        """
+        Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
+        Only IPv4 CIDR ranges are supported.
+        """
+        return pulumi.get(self, "exclude_cidr_ranges")
+
+    @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Output[builtins.str]:
         """
         The IP range that this internal range defines.
+        NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
+        NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -1091,6 +1174,8 @@ class InternalRange(pulumi.CustomResource):
         """
         An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
         If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
+        NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+        a redundant parameter.
         """
         return pulumi.get(self, "prefix_length")
 

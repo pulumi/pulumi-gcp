@@ -481,9 +481,9 @@ class ManagedZoneForwardingConfigArgs:
 
 if not MYPY:
     class ManagedZoneForwardingConfigTargetNameServerArgsDict(TypedDict):
-        ipv4_address: pulumi.Input[builtins.str]
+        domain_name: NotRequired[pulumi.Input[builtins.str]]
         """
-        IPv4 address of a target name server.
+        Fully qualified domain name for the forwarding target.
         """
         forwarding_path: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -492,36 +492,45 @@ if not MYPY:
         to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
         Possible values are: `default`, `private`.
         """
+        ipv4_address: NotRequired[pulumi.Input[builtins.str]]
+        """
+        IPv4 address of a target name server.
+        """
 elif False:
     ManagedZoneForwardingConfigTargetNameServerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManagedZoneForwardingConfigTargetNameServerArgs:
     def __init__(__self__, *,
-                 ipv4_address: pulumi.Input[builtins.str],
-                 forwarding_path: Optional[pulumi.Input[builtins.str]] = None):
+                 domain_name: Optional[pulumi.Input[builtins.str]] = None,
+                 forwarding_path: Optional[pulumi.Input[builtins.str]] = None,
+                 ipv4_address: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] ipv4_address: IPv4 address of a target name server.
+        :param pulumi.Input[builtins.str] domain_name: Fully qualified domain name for the forwarding target.
         :param pulumi.Input[builtins.str] forwarding_path: Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
                decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
                to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
                Possible values are: `default`, `private`.
+        :param pulumi.Input[builtins.str] ipv4_address: IPv4 address of a target name server.
         """
-        pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
         if forwarding_path is not None:
             pulumi.set(__self__, "forwarding_path", forwarding_path)
+        if ipv4_address is not None:
+            pulumi.set(__self__, "ipv4_address", ipv4_address)
 
     @property
-    @pulumi.getter(name="ipv4Address")
-    def ipv4_address(self) -> pulumi.Input[builtins.str]:
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        IPv4 address of a target name server.
+        Fully qualified domain name for the forwarding target.
         """
-        return pulumi.get(self, "ipv4_address")
+        return pulumi.get(self, "domain_name")
 
-    @ipv4_address.setter
-    def ipv4_address(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "ipv4_address", value)
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "domain_name", value)
 
     @property
     @pulumi.getter(name="forwardingPath")
@@ -537,6 +546,18 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
     @forwarding_path.setter
     def forwarding_path(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "forwarding_path", value)
+
+    @property
+    @pulumi.getter(name="ipv4Address")
+    def ipv4_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        IPv4 address of a target name server.
+        """
+        return pulumi.get(self, "ipv4_address")
+
+    @ipv4_address.setter
+    def ipv4_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ipv4_address", value)
 
 
 if not MYPY:

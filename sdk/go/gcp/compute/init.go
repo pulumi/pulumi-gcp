@@ -271,6 +271,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ResizeRequest{}
 	case "gcp:compute/resourcePolicy:ResourcePolicy":
 		r = &ResourcePolicy{}
+	case "gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment":
+		r = &ResourcePolicyAttachment{}
 	case "gcp:compute/route:Route":
 		r = &Route{}
 	case "gcp:compute/router:Router":
@@ -309,6 +311,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SnapshotIamMember{}
 	case "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy":
 		r = &SnapshotIamPolicy{}
+	case "gcp:compute/storagePool:StoragePool":
+		r = &StoragePool{}
+	case "gcp:compute/storagePoolIamBinding:StoragePoolIamBinding":
+		r = &StoragePoolIamBinding{}
+	case "gcp:compute/storagePoolIamMember:StoragePoolIamMember":
+		r = &StoragePoolIamMember{}
+	case "gcp:compute/storagePoolIamPolicy:StoragePoolIamPolicy":
+		r = &StoragePoolIamPolicy{}
 	case "gcp:compute/subnetwork:Subnetwork":
 		r = &Subnetwork{}
 	case "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding":
@@ -977,6 +987,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/resourcePolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/route",
 		&module{version},
 	)
@@ -1068,6 +1083,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/snapshotIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/storagePool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/storagePoolIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/storagePoolIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/storagePoolIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

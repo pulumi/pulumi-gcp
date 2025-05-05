@@ -653,6 +653,9 @@ class _AppHostingBackendState:
 
 
 class AppHostingBackend(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/appHostingBackend:AppHostingBackend"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

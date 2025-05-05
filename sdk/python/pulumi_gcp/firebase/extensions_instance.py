@@ -304,6 +304,9 @@ class _ExtensionsInstanceState:
 
 
 class ExtensionsInstance(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/extensionsInstance:ExtensionsInstance"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

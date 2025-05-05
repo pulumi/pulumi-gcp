@@ -177,6 +177,9 @@ class _NatAddressState:
 
 
 class NatAddress(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/natAddress:NatAddress"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

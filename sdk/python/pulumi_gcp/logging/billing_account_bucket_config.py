@@ -297,6 +297,9 @@ class _BillingAccountBucketConfigState:
 
 
 class BillingAccountBucketConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

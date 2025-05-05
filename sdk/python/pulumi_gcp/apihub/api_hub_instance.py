@@ -376,6 +376,9 @@ class _ApiHubInstanceState:
 
 
 class ApiHubInstance(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apihub/apiHubInstance:ApiHubInstance"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -257,6 +257,9 @@ class _AppCheckDeviceCheckConfigState:
 
 
 class AppCheckDeviceCheckConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

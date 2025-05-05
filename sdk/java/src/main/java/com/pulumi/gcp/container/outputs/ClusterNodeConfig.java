@@ -99,6 +99,11 @@ public final class ClusterNodeConfig {
      */
     private @Nullable ClusterNodeConfigFastSocket fastSocket;
     /**
+     * @return Enables Flex Start provisioning model for the node pool.
+     * 
+     */
+    private @Nullable Boolean flexStart;
+    /**
      * @return Parameters for the Google Container Filesystem (GCFS).
      * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
      * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -393,6 +398,13 @@ public final class ClusterNodeConfig {
      */
     public Optional<ClusterNodeConfigFastSocket> fastSocket() {
         return Optional.ofNullable(this.fastSocket);
+    }
+    /**
+     * @return Enables Flex Start provisioning model for the node pool.
+     * 
+     */
+    public Optional<Boolean> flexStart() {
+        return Optional.ofNullable(this.flexStart);
     }
     /**
      * @return Parameters for the Google Container Filesystem (GCFS).
@@ -692,6 +704,7 @@ public final class ClusterNodeConfig {
         private @Nullable ClusterNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
         private @Nullable ClusterNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
         private @Nullable ClusterNodeConfigFastSocket fastSocket;
+        private @Nullable Boolean flexStart;
         private @Nullable ClusterNodeConfigGcfsConfig gcfsConfig;
         private @Nullable List<ClusterNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable ClusterNodeConfigGvnic gvnic;
@@ -739,6 +752,7 @@ public final class ClusterNodeConfig {
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
     	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
     	      this.fastSocket = defaults.fastSocket;
+    	      this.flexStart = defaults.flexStart;
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
@@ -841,6 +855,12 @@ public final class ClusterNodeConfig {
         public Builder fastSocket(@Nullable ClusterNodeConfigFastSocket fastSocket) {
 
             this.fastSocket = fastSocket;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder flexStart(@Nullable Boolean flexStart) {
+
+            this.flexStart = flexStart;
             return this;
         }
         @CustomType.Setter
@@ -1072,6 +1092,7 @@ public final class ClusterNodeConfig {
             _resultValue.ephemeralStorageConfig = ephemeralStorageConfig;
             _resultValue.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             _resultValue.fastSocket = fastSocket;
+            _resultValue.flexStart = flexStart;
             _resultValue.gcfsConfig = gcfsConfig;
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.gvnic = gvnic;

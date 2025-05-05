@@ -620,6 +620,9 @@ class _CxAgentState:
 
 
 class CxAgent(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/cxAgent:CxAgent"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

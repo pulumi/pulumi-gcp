@@ -180,9 +180,9 @@ export class Interconnect extends pulumi.CustomResource {
     public readonly linkType!: pulumi.Output<string>;
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-     * Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+     * Specifies the location inside Google's Networks.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
@@ -325,6 +325,9 @@ export class Interconnect extends pulumi.CustomResource {
             if ((!args || args.linkType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'linkType'");
             }
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
+            }
             if ((!args || args.requestedLinkCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'requestedLinkCount'");
             }
@@ -463,7 +466,7 @@ export interface InterconnectState {
     linkType?: pulumi.Input<string>;
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-     * Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+     * Specifies the location inside Google's Networks.
      */
     location?: pulumi.Input<string>;
     /**
@@ -608,9 +611,9 @@ export interface InterconnectArgs {
     linkType: pulumi.Input<string>;
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-     * Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+     * Specifies the location inside Google's Networks.
      */
-    location?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.

@@ -1592,6 +1592,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigtable/logicalView",
+  "fqn": "pulumi_gcp.bigtable",
+  "classes": {
+   "gcp:bigtable/logicalView:LogicalView": "LogicalView"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigtable/materializedView",
+  "fqn": "pulumi_gcp.bigtable",
+  "classes": {
+   "gcp:bigtable/materializedView:MaterializedView": "MaterializedView"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigtable/table",
   "fqn": "pulumi_gcp.bigtable",
   "classes": {
@@ -3440,6 +3456,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/resourcePolicyAttachment",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment": "ResourcePolicyAttachment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/route",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3588,6 +3612,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy": "SnapshotIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/storagePool",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/storagePool:StoragePool": "StoragePool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/storagePoolIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/storagePoolIamBinding:StoragePoolIamBinding": "StoragePoolIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/storagePoolIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/storagePoolIamMember:StoragePoolIamMember": "StoragePoolIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/storagePoolIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/storagePoolIamPolicy:StoragePoolIamPolicy": "StoragePoolIamPolicy"
   }
  },
  {
@@ -5520,6 +5576,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "gkebackup/backupChannel",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/backupChannel:BackupChannel": "BackupChannel"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "gkebackup/backupPlan",
   "fqn": "pulumi_gcp.gkebackup",
   "classes": {
@@ -5548,6 +5612,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.gkebackup",
   "classes": {
    "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy": "BackupPlanIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkebackup/restoreChannel",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/restoreChannel:RestoreChannel": "RestoreChannel"
   }
  },
  {
@@ -6220,6 +6292,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.iap",
   "classes": {
    "gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy": "WebBackendServiceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webCloudRunServiceIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webCloudRunServiceIamBinding:WebCloudRunServiceIamBinding": "WebCloudRunServiceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webCloudRunServiceIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webCloudRunServiceIamMember:WebCloudRunServiceIamMember": "WebCloudRunServiceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webCloudRunServiceIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webCloudRunServiceIamPolicy:WebCloudRunServiceIamPolicy": "WebCloudRunServiceIamPolicy"
   }
  },
  {
@@ -7584,6 +7680,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "osconfig/v2PolicyOrchestratorForFolder",
+  "fqn": "pulumi_gcp.osconfig",
+  "classes": {
+   "gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder": "V2PolicyOrchestratorForFolder"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "osconfig/v2PolicyOrchestratorForOrganization",
   "fqn": "pulumi_gcp.osconfig",
   "classes": {
@@ -8732,6 +8836,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.storage",
   "classes": {
    "gcp:storage/anywhereCache:AnywhereCache": "AnywhereCache"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/batchOperationsJob",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/batchOperationsJob:BatchOperationsJob": "BatchOperationsJob"
   }
  },
  {

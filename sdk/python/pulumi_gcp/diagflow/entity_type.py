@@ -252,6 +252,9 @@ class _EntityTypeState:
 
 
 class EntityType(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/entityType:EntityType"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

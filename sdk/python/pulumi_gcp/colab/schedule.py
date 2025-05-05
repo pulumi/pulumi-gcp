@@ -439,6 +439,9 @@ class _ScheduleState:
 
 
 class Schedule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:colab/schedule:Schedule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

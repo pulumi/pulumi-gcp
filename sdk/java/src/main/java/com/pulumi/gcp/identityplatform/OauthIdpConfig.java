@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.identityplatform.OauthIdpConfigArgs;
 import com.pulumi.gcp.identityplatform.inputs.OauthIdpConfigState;
+import com.pulumi.gcp.identityplatform.outputs.OauthIdpConfigResponseType;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -36,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.identityplatform.OauthIdpConfig;
  * import com.pulumi.gcp.identityplatform.OauthIdpConfigArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.OauthIdpConfigResponseTypeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,6 +58,10 @@ import javax.annotation.Nullable;
  *             .issuer("issuer")
  *             .enabled(true)
  *             .clientSecret("secret")
+ *             .responseType(OauthIdpConfigResponseTypeArgs.builder()
+ *                 .idToken(true)
+ *                 .code(false)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -194,6 +200,26 @@ public class OauthIdpConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="responseType", refs={OauthIdpConfigResponseType.class}, tree="[0]")
+    private Output</* @Nullable */ OauthIdpConfigResponseType> responseType;
+
+    /**
+     * @return The response type to request for in the OAuth authorization flow.
+     * You can set either idToken or code to true, but not both.
+     * Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<OauthIdpConfigResponseType>> responseType() {
+        return Codegen.optional(this.responseType);
     }
 
     /**

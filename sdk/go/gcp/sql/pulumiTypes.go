@@ -234,6 +234,130 @@ func (o DatabaseInstanceClonePtrOutput) SourceInstanceName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type DatabaseInstanceDnsName struct {
+	// The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+	ConnectionType *string `pulumi:"connectionType"`
+	// The scope that the DNS name applies to.
+	DnsScope *string `pulumi:"dnsScope"`
+	// The name of the instance. If the name is left
+	// blank, the provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	Name *string `pulumi:"name"`
+}
+
+// DatabaseInstanceDnsNameInput is an input type that accepts DatabaseInstanceDnsNameArgs and DatabaseInstanceDnsNameOutput values.
+// You can construct a concrete instance of `DatabaseInstanceDnsNameInput` via:
+//
+//	DatabaseInstanceDnsNameArgs{...}
+type DatabaseInstanceDnsNameInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceDnsNameOutput() DatabaseInstanceDnsNameOutput
+	ToDatabaseInstanceDnsNameOutputWithContext(context.Context) DatabaseInstanceDnsNameOutput
+}
+
+type DatabaseInstanceDnsNameArgs struct {
+	// The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// The scope that the DNS name applies to.
+	DnsScope pulumi.StringPtrInput `pulumi:"dnsScope"`
+	// The name of the instance. If the name is left
+	// blank, the provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DatabaseInstanceDnsNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (i DatabaseInstanceDnsNameArgs) ToDatabaseInstanceDnsNameOutput() DatabaseInstanceDnsNameOutput {
+	return i.ToDatabaseInstanceDnsNameOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceDnsNameArgs) ToDatabaseInstanceDnsNameOutputWithContext(ctx context.Context) DatabaseInstanceDnsNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceDnsNameOutput)
+}
+
+// DatabaseInstanceDnsNameArrayInput is an input type that accepts DatabaseInstanceDnsNameArray and DatabaseInstanceDnsNameArrayOutput values.
+// You can construct a concrete instance of `DatabaseInstanceDnsNameArrayInput` via:
+//
+//	DatabaseInstanceDnsNameArray{ DatabaseInstanceDnsNameArgs{...} }
+type DatabaseInstanceDnsNameArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceDnsNameArrayOutput() DatabaseInstanceDnsNameArrayOutput
+	ToDatabaseInstanceDnsNameArrayOutputWithContext(context.Context) DatabaseInstanceDnsNameArrayOutput
+}
+
+type DatabaseInstanceDnsNameArray []DatabaseInstanceDnsNameInput
+
+func (DatabaseInstanceDnsNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (i DatabaseInstanceDnsNameArray) ToDatabaseInstanceDnsNameArrayOutput() DatabaseInstanceDnsNameArrayOutput {
+	return i.ToDatabaseInstanceDnsNameArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceDnsNameArray) ToDatabaseInstanceDnsNameArrayOutputWithContext(ctx context.Context) DatabaseInstanceDnsNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceDnsNameArrayOutput)
+}
+
+type DatabaseInstanceDnsNameOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceDnsNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (o DatabaseInstanceDnsNameOutput) ToDatabaseInstanceDnsNameOutput() DatabaseInstanceDnsNameOutput {
+	return o
+}
+
+func (o DatabaseInstanceDnsNameOutput) ToDatabaseInstanceDnsNameOutputWithContext(ctx context.Context) DatabaseInstanceDnsNameOutput {
+	return o
+}
+
+// The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
+func (o DatabaseInstanceDnsNameOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceDnsName) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// The scope that the DNS name applies to.
+func (o DatabaseInstanceDnsNameOutput) DnsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceDnsName) *string { return v.DnsScope }).(pulumi.StringPtrOutput)
+}
+
+// The name of the instance. If the name is left
+// blank, the provider will randomly generate one when the instance is first
+// created. This is done because after a name is used, it cannot be reused for
+// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
+func (o DatabaseInstanceDnsNameOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceDnsName) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceDnsNameArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceDnsNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (o DatabaseInstanceDnsNameArrayOutput) ToDatabaseInstanceDnsNameArrayOutput() DatabaseInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceDnsNameArrayOutput) ToDatabaseInstanceDnsNameArrayOutputWithContext(ctx context.Context) DatabaseInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceDnsNameArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceDnsNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceDnsName {
+		return vs[0].([]DatabaseInstanceDnsName)[vs[1].(int)]
+	}).(DatabaseInstanceDnsNameOutput)
+}
+
 type DatabaseInstanceIpAddress struct {
 	// The IPv4 address assigned.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -1242,7 +1366,11 @@ type DatabaseInstanceSettings struct {
 	ConnectorEnforcement *string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfig *DatabaseInstanceSettingsDataCacheConfig `pulumi:"dataCacheConfig"`
-	DatabaseFlags   []DatabaseInstanceSettingsDatabaseFlag   `pulumi:"databaseFlags"`
+	// Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+	DataDiskProvisionedIops *int `pulumi:"dataDiskProvisionedIops"`
+	// Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+	DataDiskProvisionedThroughput *int                                   `pulumi:"dataDiskProvisionedThroughput"`
+	DatabaseFlags                 []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
 	// Configuration to protect against accidental instance deletion.
 	DeletionProtectionEnabled *bool                                          `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriod     *DatabaseInstanceSettingsDenyMaintenancePeriod `pulumi:"denyMaintenancePeriod"`
@@ -1250,9 +1378,9 @@ type DatabaseInstanceSettings struct {
 	DiskAutoresize *bool `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit *int `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 	DiskSize *int `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+	// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
 	DiskType *string `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition *string `pulumi:"edition"`
@@ -1268,8 +1396,10 @@ type DatabaseInstanceSettings struct {
 	MaintenanceWindow        *DatabaseInstanceSettingsMaintenanceWindow        `pulumi:"maintenanceWindow"`
 	PasswordValidationPolicy *DatabaseInstanceSettingsPasswordValidationPolicy `pulumi:"passwordValidationPolicy"`
 	// Pricing plan for this instance, can only be `PER_USE`.
-	PricingPlan          *string                                       `pulumi:"pricingPlan"`
-	SqlServerAuditConfig *DatabaseInstanceSettingsSqlServerAuditConfig `pulumi:"sqlServerAuditConfig"`
+	PricingPlan *string `pulumi:"pricingPlan"`
+	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+	RetainBackupsOnDelete *bool                                         `pulumi:"retainBackupsOnDelete"`
+	SqlServerAuditConfig  *DatabaseInstanceSettingsSqlServerAuditConfig `pulumi:"sqlServerAuditConfig"`
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
@@ -1314,7 +1444,11 @@ type DatabaseInstanceSettingsArgs struct {
 	ConnectorEnforcement pulumi.StringPtrInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfig DatabaseInstanceSettingsDataCacheConfigPtrInput `pulumi:"dataCacheConfig"`
-	DatabaseFlags   DatabaseInstanceSettingsDatabaseFlagArrayInput  `pulumi:"databaseFlags"`
+	// Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+	DataDiskProvisionedIops pulumi.IntPtrInput `pulumi:"dataDiskProvisionedIops"`
+	// Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+	DataDiskProvisionedThroughput pulumi.IntPtrInput                             `pulumi:"dataDiskProvisionedThroughput"`
+	DatabaseFlags                 DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
 	// Configuration to protect against accidental instance deletion.
 	DeletionProtectionEnabled pulumi.BoolPtrInput                                   `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriod     DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput `pulumi:"denyMaintenancePeriod"`
@@ -1322,9 +1456,9 @@ type DatabaseInstanceSettingsArgs struct {
 	DiskAutoresize pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit pulumi.IntPtrInput `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+	// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
@@ -1340,8 +1474,10 @@ type DatabaseInstanceSettingsArgs struct {
 	MaintenanceWindow        DatabaseInstanceSettingsMaintenanceWindowPtrInput        `pulumi:"maintenanceWindow"`
 	PasswordValidationPolicy DatabaseInstanceSettingsPasswordValidationPolicyPtrInput `pulumi:"passwordValidationPolicy"`
 	// Pricing plan for this instance, can only be `PER_USE`.
-	PricingPlan          pulumi.StringPtrInput                                `pulumi:"pricingPlan"`
-	SqlServerAuditConfig DatabaseInstanceSettingsSqlServerAuditConfigPtrInput `pulumi:"sqlServerAuditConfig"`
+	PricingPlan pulumi.StringPtrInput `pulumi:"pricingPlan"`
+	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+	RetainBackupsOnDelete pulumi.BoolPtrInput                                  `pulumi:"retainBackupsOnDelete"`
+	SqlServerAuditConfig  DatabaseInstanceSettingsSqlServerAuditConfigPtrInput `pulumi:"sqlServerAuditConfig"`
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
@@ -1481,6 +1617,16 @@ func (o DatabaseInstanceSettingsOutput) DataCacheConfig() DatabaseInstanceSettin
 	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsDataCacheConfig { return v.DataCacheConfig }).(DatabaseInstanceSettingsDataCacheConfigPtrOutput)
 }
 
+// Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+func (o DatabaseInstanceSettingsOutput) DataDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DataDiskProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+func (o DatabaseInstanceSettingsOutput) DataDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DataDiskProvisionedThroughput }).(pulumi.IntPtrOutput)
+}
+
 func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
@@ -1506,12 +1652,12 @@ func (o DatabaseInstanceSettingsOutput) DiskAutoresizeLimit() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskAutoresizeLimit }).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 func (o DatabaseInstanceSettingsOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
 func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -1562,6 +1708,11 @@ func (o DatabaseInstanceSettingsOutput) PasswordValidationPolicy() DatabaseInsta
 // Pricing plan for this instance, can only be `PER_USE`.
 func (o DatabaseInstanceSettingsOutput) PricingPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
+}
+
+// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+func (o DatabaseInstanceSettingsOutput) RetainBackupsOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.RetainBackupsOnDelete }).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) SqlServerAuditConfig() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
@@ -1700,6 +1851,26 @@ func (o DatabaseInstanceSettingsPtrOutput) DataCacheConfig() DatabaseInstanceSet
 	}).(DatabaseInstanceSettingsDataCacheConfigPtrOutput)
 }
 
+// Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+func (o DatabaseInstanceSettingsPtrOutput) DataDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+func (o DatabaseInstanceSettingsPtrOutput) DataDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag {
 		if v == nil {
@@ -1748,7 +1919,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresizeLimit() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `diskAutoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
 func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
 		if v == nil {
@@ -1758,7 +1929,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
 func (o DatabaseInstanceSettingsPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {
@@ -1853,6 +2024,16 @@ func (o DatabaseInstanceSettingsPtrOutput) PricingPlan() pulumi.StringPtrOutput 
 		}
 		return v.PricingPlan
 	}).(pulumi.StringPtrOutput)
+}
+
+// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+func (o DatabaseInstanceSettingsPtrOutput) RetainBackupsOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RetainBackupsOnDelete
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) SqlServerAuditConfig() DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput {
@@ -3245,6 +3426,8 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   *string                                                    `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
+	// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+	CustomSubjectAlternativeNames []string `pulumi:"customSubjectAlternativeNames"`
 	// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
 	EnablePrivatePathForGoogleCloudServices *bool `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether this Cloud SQL instance should be assigned
@@ -3282,6 +3465,8 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   pulumi.StringPtrInput                                              `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
+	// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+	CustomSubjectAlternativeNames pulumi.StringArrayInput `pulumi:"customSubjectAlternativeNames"`
 	// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
 	EnablePrivatePathForGoogleCloudServices pulumi.BoolPtrInput `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether this Cloud SQL instance should be assigned
@@ -3392,6 +3577,11 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) AuthorizedNetworks() Data
 	}).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
 }
 
+// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+func (o DatabaseInstanceSettingsIpConfigurationOutput) CustomSubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) []string { return v.CustomSubjectAlternativeNames }).(pulumi.StringArrayOutput)
+}
+
 // Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) EnablePrivatePathForGoogleCloudServices() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool {
@@ -3478,6 +3668,16 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AuthorizedNetworks() D
 		}
 		return v.AuthorizedNetworks
 	}).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput)
+}
+
+// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) CustomSubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSubjectAlternativeNames
+	}).(pulumi.StringArrayOutput)
 }
 
 // Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
@@ -5359,6 +5559,115 @@ func (o GetDatabaseInstanceCloneArrayOutput) Index(i pulumi.IntInput) GetDatabas
 	}).(GetDatabaseInstanceCloneOutput)
 }
 
+type GetDatabaseInstanceDnsName struct {
+	ConnectionType string `pulumi:"connectionType"`
+	DnsScope       string `pulumi:"dnsScope"`
+	// The name of the instance.
+	Name string `pulumi:"name"`
+}
+
+// GetDatabaseInstanceDnsNameInput is an input type that accepts GetDatabaseInstanceDnsNameArgs and GetDatabaseInstanceDnsNameOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceDnsNameInput` via:
+//
+//	GetDatabaseInstanceDnsNameArgs{...}
+type GetDatabaseInstanceDnsNameInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceDnsNameOutput() GetDatabaseInstanceDnsNameOutput
+	ToGetDatabaseInstanceDnsNameOutputWithContext(context.Context) GetDatabaseInstanceDnsNameOutput
+}
+
+type GetDatabaseInstanceDnsNameArgs struct {
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	DnsScope       pulumi.StringInput `pulumi:"dnsScope"`
+	// The name of the instance.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetDatabaseInstanceDnsNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceDnsNameArgs) ToGetDatabaseInstanceDnsNameOutput() GetDatabaseInstanceDnsNameOutput {
+	return i.ToGetDatabaseInstanceDnsNameOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceDnsNameArgs) ToGetDatabaseInstanceDnsNameOutputWithContext(ctx context.Context) GetDatabaseInstanceDnsNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceDnsNameOutput)
+}
+
+// GetDatabaseInstanceDnsNameArrayInput is an input type that accepts GetDatabaseInstanceDnsNameArray and GetDatabaseInstanceDnsNameArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceDnsNameArrayInput` via:
+//
+//	GetDatabaseInstanceDnsNameArray{ GetDatabaseInstanceDnsNameArgs{...} }
+type GetDatabaseInstanceDnsNameArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceDnsNameArrayOutput() GetDatabaseInstanceDnsNameArrayOutput
+	ToGetDatabaseInstanceDnsNameArrayOutputWithContext(context.Context) GetDatabaseInstanceDnsNameArrayOutput
+}
+
+type GetDatabaseInstanceDnsNameArray []GetDatabaseInstanceDnsNameInput
+
+func (GetDatabaseInstanceDnsNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceDnsNameArray) ToGetDatabaseInstanceDnsNameArrayOutput() GetDatabaseInstanceDnsNameArrayOutput {
+	return i.ToGetDatabaseInstanceDnsNameArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceDnsNameArray) ToGetDatabaseInstanceDnsNameArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceDnsNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceDnsNameArrayOutput)
+}
+
+type GetDatabaseInstanceDnsNameOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceDnsNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceDnsNameOutput) ToGetDatabaseInstanceDnsNameOutput() GetDatabaseInstanceDnsNameOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceDnsNameOutput) ToGetDatabaseInstanceDnsNameOutputWithContext(ctx context.Context) GetDatabaseInstanceDnsNameOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceDnsNameOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceDnsName) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceDnsNameOutput) DnsScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceDnsName) string { return v.DnsScope }).(pulumi.StringOutput)
+}
+
+// The name of the instance.
+func (o GetDatabaseInstanceDnsNameOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceDnsName) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceDnsNameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceDnsNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceDnsName)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceDnsNameArrayOutput) ToGetDatabaseInstanceDnsNameArrayOutput() GetDatabaseInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceDnsNameArrayOutput) ToGetDatabaseInstanceDnsNameArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceDnsNameArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceDnsNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceDnsName {
+		return vs[0].([]GetDatabaseInstanceDnsName)[vs[1].(int)]
+	}).(GetDatabaseInstanceDnsNameOutput)
+}
+
 type GetDatabaseInstanceIpAddress struct {
 	IpAddress    string `pulumi:"ipAddress"`
 	TimeToRetire string `pulumi:"timeToRetire"`
@@ -6034,7 +6343,11 @@ type GetDatabaseInstanceSetting struct {
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs []GetDatabaseInstanceSettingDataCacheConfig `pulumi:"dataCacheConfigs"`
-	DatabaseFlags    []GetDatabaseInstanceSettingDatabaseFlag    `pulumi:"databaseFlags"`
+	// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+	DataDiskProvisionedIops int `pulumi:"dataDiskProvisionedIops"`
+	// Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+	DataDiskProvisionedThroughput int                                      `pulumi:"dataDiskProvisionedThroughput"`
+	DatabaseFlags                 []GetDatabaseInstanceSettingDatabaseFlag `pulumi:"databaseFlags"`
 	// Configuration to protect against accidental instance deletion.
 	DeletionProtectionEnabled bool                                              `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods    []GetDatabaseInstanceSettingDenyMaintenancePeriod `pulumi:"denyMaintenancePeriods"`
@@ -6042,9 +6355,9 @@ type GetDatabaseInstanceSetting struct {
 	DiskAutoresize bool `pulumi:"diskAutoresize"`
 	// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize int `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
@@ -6060,7 +6373,9 @@ type GetDatabaseInstanceSetting struct {
 	MaintenanceWindows         []GetDatabaseInstanceSettingMaintenanceWindow        `pulumi:"maintenanceWindows"`
 	PasswordValidationPolicies []GetDatabaseInstanceSettingPasswordValidationPolicy `pulumi:"passwordValidationPolicies"`
 	// Pricing plan for this instance, can only be PER_USE.
-	PricingPlan           string                                           `pulumi:"pricingPlan"`
+	PricingPlan string `pulumi:"pricingPlan"`
+	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
+	RetainBackupsOnDelete bool                                             `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs []GetDatabaseInstanceSettingSqlServerAuditConfig `pulumi:"sqlServerAuditConfigs"`
 	// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
 	Tier string `pulumi:"tier"`
@@ -6102,7 +6417,11 @@ type GetDatabaseInstanceSettingArgs struct {
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs GetDatabaseInstanceSettingDataCacheConfigArrayInput `pulumi:"dataCacheConfigs"`
-	DatabaseFlags    GetDatabaseInstanceSettingDatabaseFlagArrayInput    `pulumi:"databaseFlags"`
+	// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+	DataDiskProvisionedIops pulumi.IntInput `pulumi:"dataDiskProvisionedIops"`
+	// Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+	DataDiskProvisionedThroughput pulumi.IntInput                                  `pulumi:"dataDiskProvisionedThroughput"`
+	DatabaseFlags                 GetDatabaseInstanceSettingDatabaseFlagArrayInput `pulumi:"databaseFlags"`
 	// Configuration to protect against accidental instance deletion.
 	DeletionProtectionEnabled pulumi.BoolInput                                          `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods    GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput `pulumi:"denyMaintenancePeriods"`
@@ -6110,9 +6429,9 @@ type GetDatabaseInstanceSettingArgs struct {
 	DiskAutoresize pulumi.BoolInput `pulumi:"diskAutoresize"`
 	// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
@@ -6128,7 +6447,9 @@ type GetDatabaseInstanceSettingArgs struct {
 	MaintenanceWindows         GetDatabaseInstanceSettingMaintenanceWindowArrayInput        `pulumi:"maintenanceWindows"`
 	PasswordValidationPolicies GetDatabaseInstanceSettingPasswordValidationPolicyArrayInput `pulumi:"passwordValidationPolicies"`
 	// Pricing plan for this instance, can only be PER_USE.
-	PricingPlan           pulumi.StringInput                                       `pulumi:"pricingPlan"`
+	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
+	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
+	RetainBackupsOnDelete pulumi.BoolInput                                         `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput `pulumi:"sqlServerAuditConfigs"`
 	// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
 	Tier pulumi.StringInput `pulumi:"tier"`
@@ -6241,6 +6562,16 @@ func (o GetDatabaseInstanceSettingOutput) DataCacheConfigs() GetDatabaseInstance
 	}).(GetDatabaseInstanceSettingDataCacheConfigArrayOutput)
 }
 
+// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+func (o GetDatabaseInstanceSettingOutput) DataDiskProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DataDiskProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+func (o GetDatabaseInstanceSettingOutput) DataDiskProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DataDiskProvisionedThroughput }).(pulumi.IntOutput)
+}
+
 func (o GetDatabaseInstanceSettingOutput) DatabaseFlags() GetDatabaseInstanceSettingDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingDatabaseFlag { return v.DatabaseFlags }).(GetDatabaseInstanceSettingDatabaseFlagArrayOutput)
 }
@@ -6266,12 +6597,12 @@ func (o GetDatabaseInstanceSettingOutput) DiskAutoresizeLimit() pulumi.IntOutput
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DiskAutoresizeLimit }).(pulumi.IntOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 func (o GetDatabaseInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 func (o GetDatabaseInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
 }
@@ -6326,6 +6657,11 @@ func (o GetDatabaseInstanceSettingOutput) PasswordValidationPolicies() GetDataba
 // Pricing plan for this instance, can only be PER_USE.
 func (o GetDatabaseInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
+}
+
+// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
+func (o GetDatabaseInstanceSettingOutput) RetainBackupsOnDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) bool { return v.RetainBackupsOnDelete }).(pulumi.BoolOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) SqlServerAuditConfigs() GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput {
@@ -7283,6 +7619,8 @@ type GetDatabaseInstanceSettingIpConfiguration struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   string                                                       `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks []GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
+	// The custom subject alternative names for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+	CustomSubjectAlternativeNames []string `pulumi:"customSubjectAlternativeNames"`
 	// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
 	EnablePrivatePathForGoogleCloudServices bool `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4Enabled must be enabled or a privateNetwork must be configured.
@@ -7314,6 +7652,8 @@ type GetDatabaseInstanceSettingIpConfigurationArgs struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   pulumi.StringInput                                                   `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
+	// The custom subject alternative names for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+	CustomSubjectAlternativeNames pulumi.StringArrayInput `pulumi:"customSubjectAlternativeNames"`
 	// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
 	EnablePrivatePathForGoogleCloudServices pulumi.BoolInput `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4Enabled must be enabled or a privateNetwork must be configured.
@@ -7390,6 +7730,11 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) AuthorizedNetworks() Ge
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) []GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
 		return v.AuthorizedNetworks
 	}).(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput)
+}
+
+// The custom subject alternative names for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+func (o GetDatabaseInstanceSettingIpConfigurationOutput) CustomSubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) []string { return v.CustomSubjectAlternativeNames }).(pulumi.StringArrayOutput)
 }
 
 // Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
@@ -8284,10 +8629,12 @@ type GetDatabaseInstancesInstance struct {
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion    string `pulumi:"databaseVersion"`
 	DeletionProtection bool   `pulumi:"deletionProtection"`
-	// The dns name of the instance.
-	DnsName           string `pulumi:"dnsName"`
-	EncryptionKeyName string `pulumi:"encryptionKeyName"`
-	FirstIpAddress    string `pulumi:"firstIpAddress"`
+	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
+	DnsName string `pulumi:"dnsName"`
+	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+	DnsNames          []GetDatabaseInstancesInstanceDnsName `pulumi:"dnsNames"`
+	EncryptionKeyName string                                `pulumi:"encryptionKeyName"`
+	FirstIpAddress    string                                `pulumi:"firstIpAddress"`
 	// The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
 	InstanceType string                                  `pulumi:"instanceType"`
 	IpAddresses  []GetDatabaseInstancesInstanceIpAddress `pulumi:"ipAddresses"`
@@ -8343,10 +8690,12 @@ type GetDatabaseInstancesInstanceArgs struct {
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion    pulumi.StringInput `pulumi:"databaseVersion"`
 	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
-	// The dns name of the instance.
-	DnsName           pulumi.StringInput `pulumi:"dnsName"`
-	EncryptionKeyName pulumi.StringInput `pulumi:"encryptionKeyName"`
-	FirstIpAddress    pulumi.StringInput `pulumi:"firstIpAddress"`
+	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
+	DnsName pulumi.StringInput `pulumi:"dnsName"`
+	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+	DnsNames          GetDatabaseInstancesInstanceDnsNameArrayInput `pulumi:"dnsNames"`
+	EncryptionKeyName pulumi.StringInput                            `pulumi:"encryptionKeyName"`
+	FirstIpAddress    pulumi.StringInput                            `pulumi:"firstIpAddress"`
 	// The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
 	InstanceType pulumi.StringInput                              `pulumi:"instanceType"`
 	IpAddresses  GetDatabaseInstancesInstanceIpAddressArrayInput `pulumi:"ipAddresses"`
@@ -8456,9 +8805,14 @@ func (o GetDatabaseInstancesInstanceOutput) DeletionProtection() pulumi.BoolOutp
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
-// The dns name of the instance.
+// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
 func (o GetDatabaseInstancesInstanceOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+func (o GetDatabaseInstancesInstanceOutput) DnsNames() GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceDnsName { return v.DnsNames }).(GetDatabaseInstancesInstanceDnsNameArrayOutput)
 }
 
 func (o GetDatabaseInstancesInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
@@ -8717,6 +9071,112 @@ func (o GetDatabaseInstancesInstanceCloneArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceClone {
 		return vs[0].([]GetDatabaseInstancesInstanceClone)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceCloneOutput)
+}
+
+type GetDatabaseInstancesInstanceDnsName struct {
+	ConnectionType string `pulumi:"connectionType"`
+	DnsScope       string `pulumi:"dnsScope"`
+	Name           string `pulumi:"name"`
+}
+
+// GetDatabaseInstancesInstanceDnsNameInput is an input type that accepts GetDatabaseInstancesInstanceDnsNameArgs and GetDatabaseInstancesInstanceDnsNameOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceDnsNameInput` via:
+//
+//	GetDatabaseInstancesInstanceDnsNameArgs{...}
+type GetDatabaseInstancesInstanceDnsNameInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceDnsNameOutput() GetDatabaseInstancesInstanceDnsNameOutput
+	ToGetDatabaseInstancesInstanceDnsNameOutputWithContext(context.Context) GetDatabaseInstancesInstanceDnsNameOutput
+}
+
+type GetDatabaseInstancesInstanceDnsNameArgs struct {
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	DnsScope       pulumi.StringInput `pulumi:"dnsScope"`
+	Name           pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetDatabaseInstancesInstanceDnsNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceDnsName)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceDnsNameArgs) ToGetDatabaseInstancesInstanceDnsNameOutput() GetDatabaseInstancesInstanceDnsNameOutput {
+	return i.ToGetDatabaseInstancesInstanceDnsNameOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceDnsNameArgs) ToGetDatabaseInstancesInstanceDnsNameOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceDnsNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceDnsNameOutput)
+}
+
+// GetDatabaseInstancesInstanceDnsNameArrayInput is an input type that accepts GetDatabaseInstancesInstanceDnsNameArray and GetDatabaseInstancesInstanceDnsNameArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceDnsNameArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceDnsNameArray{ GetDatabaseInstancesInstanceDnsNameArgs{...} }
+type GetDatabaseInstancesInstanceDnsNameArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceDnsNameArrayOutput() GetDatabaseInstancesInstanceDnsNameArrayOutput
+	ToGetDatabaseInstancesInstanceDnsNameArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceDnsNameArrayOutput
+}
+
+type GetDatabaseInstancesInstanceDnsNameArray []GetDatabaseInstancesInstanceDnsNameInput
+
+func (GetDatabaseInstancesInstanceDnsNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceDnsName)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceDnsNameArray) ToGetDatabaseInstancesInstanceDnsNameArrayOutput() GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceDnsNameArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceDnsNameArray) ToGetDatabaseInstancesInstanceDnsNameArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceDnsNameArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceDnsNameOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceDnsNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceDnsName)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) ToGetDatabaseInstancesInstanceDnsNameOutput() GetDatabaseInstancesInstanceDnsNameOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) ToGetDatabaseInstancesInstanceDnsNameOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceDnsNameOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceDnsName) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) DnsScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceDnsName) string { return v.DnsScope }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceDnsName) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceDnsNameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceDnsNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceDnsName)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameArrayOutput) ToGetDatabaseInstancesInstanceDnsNameArrayOutput() GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameArrayOutput) ToGetDatabaseInstancesInstanceDnsNameArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceDnsNameArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceDnsNameArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceDnsNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceDnsName {
+		return vs[0].([]GetDatabaseInstancesInstanceDnsName)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceDnsNameOutput)
 }
 
 type GetDatabaseInstancesInstanceIpAddress struct {
@@ -9394,7 +9854,11 @@ type GetDatabaseInstancesInstanceSetting struct {
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs []GetDatabaseInstancesInstanceSettingDataCacheConfig `pulumi:"dataCacheConfigs"`
-	DatabaseFlags    []GetDatabaseInstancesInstanceSettingDatabaseFlag    `pulumi:"databaseFlags"`
+	// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+	DataDiskProvisionedIops int `pulumi:"dataDiskProvisionedIops"`
+	// Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+	DataDiskProvisionedThroughput int                                               `pulumi:"dataDiskProvisionedThroughput"`
+	DatabaseFlags                 []GetDatabaseInstancesInstanceSettingDatabaseFlag `pulumi:"databaseFlags"`
 	// Configuration to protect against accidental instance deletion.
 	DeletionProtectionEnabled bool                                                       `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods    []GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod `pulumi:"denyMaintenancePeriods"`
@@ -9402,9 +9866,9 @@ type GetDatabaseInstancesInstanceSetting struct {
 	DiskAutoresize bool `pulumi:"diskAutoresize"`
 	// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize int `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
@@ -9420,7 +9884,9 @@ type GetDatabaseInstancesInstanceSetting struct {
 	MaintenanceWindows         []GetDatabaseInstancesInstanceSettingMaintenanceWindow        `pulumi:"maintenanceWindows"`
 	PasswordValidationPolicies []GetDatabaseInstancesInstanceSettingPasswordValidationPolicy `pulumi:"passwordValidationPolicies"`
 	// Pricing plan for this instance, can only be PER_USE.
-	PricingPlan           string                                                    `pulumi:"pricingPlan"`
+	PricingPlan string `pulumi:"pricingPlan"`
+	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
+	RetainBackupsOnDelete bool                                                      `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs []GetDatabaseInstancesInstanceSettingSqlServerAuditConfig `pulumi:"sqlServerAuditConfigs"`
 	// To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
 	Tier string `pulumi:"tier"`
@@ -9462,7 +9928,11 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
 	DataCacheConfigs GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput `pulumi:"dataCacheConfigs"`
-	DatabaseFlags    GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput    `pulumi:"databaseFlags"`
+	// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+	DataDiskProvisionedIops pulumi.IntInput `pulumi:"dataDiskProvisionedIops"`
+	// Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+	DataDiskProvisionedThroughput pulumi.IntInput                                           `pulumi:"dataDiskProvisionedThroughput"`
+	DatabaseFlags                 GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput `pulumi:"databaseFlags"`
 	// Configuration to protect against accidental instance deletion.
 	DeletionProtectionEnabled pulumi.BoolInput                                                   `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods    GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput `pulumi:"denyMaintenancePeriods"`
@@ -9470,9 +9940,9 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	DiskAutoresize pulumi.BoolInput `pulumi:"diskAutoresize"`
 	// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
@@ -9488,7 +9958,9 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	MaintenanceWindows         GetDatabaseInstancesInstanceSettingMaintenanceWindowArrayInput        `pulumi:"maintenanceWindows"`
 	PasswordValidationPolicies GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayInput `pulumi:"passwordValidationPolicies"`
 	// Pricing plan for this instance, can only be PER_USE.
-	PricingPlan           pulumi.StringInput                                                `pulumi:"pricingPlan"`
+	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
+	// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
+	RetainBackupsOnDelete pulumi.BoolInput                                                  `pulumi:"retainBackupsOnDelete"`
 	SqlServerAuditConfigs GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput `pulumi:"sqlServerAuditConfigs"`
 	// To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
 	Tier pulumi.StringInput `pulumi:"tier"`
@@ -9601,6 +10073,16 @@ func (o GetDatabaseInstancesInstanceSettingOutput) DataCacheConfigs() GetDatabas
 	}).(GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput)
 }
 
+// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+func (o GetDatabaseInstancesInstanceSettingOutput) DataDiskProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DataDiskProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+func (o GetDatabaseInstancesInstanceSettingOutput) DataDiskProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DataDiskProvisionedThroughput }).(pulumi.IntOutput)
+}
+
 func (o GetDatabaseInstancesInstanceSettingOutput) DatabaseFlags() GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingDatabaseFlag {
 		return v.DatabaseFlags
@@ -9628,12 +10110,12 @@ func (o GetDatabaseInstancesInstanceSettingOutput) DiskAutoresizeLimit() pulumi.
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DiskAutoresizeLimit }).(pulumi.IntOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 func (o GetDatabaseInstancesInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
 func (o GetDatabaseInstancesInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
 }
@@ -9688,6 +10170,11 @@ func (o GetDatabaseInstancesInstanceSettingOutput) PasswordValidationPolicies() 
 // Pricing plan for this instance, can only be PER_USE.
 func (o GetDatabaseInstancesInstanceSettingOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.PricingPlan }).(pulumi.StringOutput)
+}
+
+// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
+func (o GetDatabaseInstancesInstanceSettingOutput) RetainBackupsOnDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) bool { return v.RetainBackupsOnDelete }).(pulumi.BoolOutput)
 }
 
 func (o GetDatabaseInstancesInstanceSettingOutput) SqlServerAuditConfigs() GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput {
@@ -10649,6 +11136,8 @@ type GetDatabaseInstancesInstanceSettingIpConfiguration struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   string                                                                `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks []GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
+	// The custom subject alternative names for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+	CustomSubjectAlternativeNames []string `pulumi:"customSubjectAlternativeNames"`
 	// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
 	EnablePrivatePathForGoogleCloudServices bool `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4Enabled must be enabled or a privateNetwork must be configured.
@@ -10680,6 +11169,8 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationArgs struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   pulumi.StringInput                                                            `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
+	// The custom subject alternative names for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+	CustomSubjectAlternativeNames pulumi.StringArrayInput `pulumi:"customSubjectAlternativeNames"`
 	// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
 	EnablePrivatePathForGoogleCloudServices pulumi.BoolInput `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4Enabled must be enabled or a privateNetwork must be configured.
@@ -10756,6 +11247,13 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) AuthorizedNetw
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) []GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
 		return v.AuthorizedNetworks
 	}).(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput)
+}
+
+// The custom subject alternative names for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) CustomSubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) []string {
+		return v.CustomSubjectAlternativeNames
+	}).(pulumi.StringArrayOutput)
 }
 
 // Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
@@ -11964,6 +12462,8 @@ func (o GetTiersTierArrayOutput) Index(i pulumi.IntInput) GetTiersTierOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceCloneInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceClonePtrInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceDnsNameInput)(nil)).Elem(), DatabaseInstanceDnsNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceDnsNameArrayInput)(nil)).Elem(), DatabaseInstanceDnsNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceIpAddressInput)(nil)).Elem(), DatabaseInstanceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceIpAddressArrayInput)(nil)).Elem(), DatabaseInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceReplicaConfigurationInput)(nil)).Elem(), DatabaseInstanceReplicaConfigurationArgs{})
@@ -12018,6 +12518,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertsCertArrayInput)(nil)).Elem(), GetCaCertsCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceCloneInput)(nil)).Elem(), GetDatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceCloneArrayInput)(nil)).Elem(), GetDatabaseInstanceCloneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceDnsNameInput)(nil)).Elem(), GetDatabaseInstanceDnsNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceDnsNameArrayInput)(nil)).Elem(), GetDatabaseInstanceDnsNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceIpAddressInput)(nil)).Elem(), GetDatabaseInstanceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceReplicaConfigurationInput)(nil)).Elem(), GetDatabaseInstanceReplicaConfigurationArgs{})
@@ -12066,6 +12568,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceCloneInput)(nil)).Elem(), GetDatabaseInstancesInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceCloneArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceCloneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceDnsNameInput)(nil)).Elem(), GetDatabaseInstancesInstanceDnsNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceDnsNameArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceDnsNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddressInput)(nil)).Elem(), GetDatabaseInstancesInstanceIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfigurationInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicaConfigurationArgs{})
@@ -12116,6 +12620,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTiersTierArrayInput)(nil)).Elem(), GetTiersTierArray{})
 	pulumi.RegisterOutputType(DatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceClonePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceDnsNameOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceDnsNameArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationOutput{})
@@ -12170,6 +12676,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCaCertsCertArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceCloneArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceDnsNameOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceDnsNameArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicaConfigurationOutput{})
@@ -12218,6 +12726,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceCloneOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceCloneArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceDnsNameOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceDnsNameArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicaConfigurationOutput{})

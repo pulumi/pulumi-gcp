@@ -234,6 +234,9 @@ class _WebIamBindingState:
 
 
 class WebIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/webIamBinding:WebIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

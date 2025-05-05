@@ -400,6 +400,9 @@ class _ResourcePolicyState:
 
 
 class ResourcePolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/resourcePolicy:ResourcePolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -614,7 +617,6 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="europe-west9",
             group_placement_policy={
-                "vm_count": 2,
                 "collocation": "COLLOCATED",
                 "gpu_topology": "1x72",
             })
@@ -898,7 +900,6 @@ class ResourcePolicy(pulumi.CustomResource):
             name="gce-policy",
             region="europe-west9",
             group_placement_policy={
-                "vm_count": 2,
                 "collocation": "COLLOCATED",
                 "gpu_topology": "1x72",
             })

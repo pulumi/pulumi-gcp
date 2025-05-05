@@ -260,6 +260,9 @@ class _ManagedFolderIamBindingState:
 
 
 class ManagedFolderIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -292,9 +292,17 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly storageClass!: pulumi.Output<string | undefined>;
     /**
+     * The creation time of the bucket in RFC 3339 format.
+     */
+    public /*out*/ readonly timeCreated!: pulumi.Output<string>;
+    /**
      * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
      */
     public readonly uniformBucketLevelAccess!: pulumi.Output<boolean>;
+    /**
+     * The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+     */
+    public /*out*/ readonly updated!: pulumi.Output<string>;
     /**
      * The base URL of the bucket, in the format `gs://<bucket-name>`.
      */
@@ -345,7 +353,9 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["softDeletePolicy"] = state ? state.softDeletePolicy : undefined;
             resourceInputs["storageClass"] = state ? state.storageClass : undefined;
+            resourceInputs["timeCreated"] = state ? state.timeCreated : undefined;
             resourceInputs["uniformBucketLevelAccess"] = state ? state.uniformBucketLevelAccess : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["versioning"] = state ? state.versioning : undefined;
             resourceInputs["website"] = state ? state.website : undefined;
@@ -381,6 +391,8 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["projectNumber"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["timeCreated"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -494,9 +506,17 @@ export interface BucketState {
      */
     storageClass?: pulumi.Input<string>;
     /**
+     * The creation time of the bucket in RFC 3339 format.
+     */
+    timeCreated?: pulumi.Input<string>;
+    /**
      * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
      */
     uniformBucketLevelAccess?: pulumi.Input<boolean>;
+    /**
+     * The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.
+     */
+    updated?: pulumi.Input<string>;
     /**
      * The base URL of the bucket, in the format `gs://<bucket-name>`.
      */

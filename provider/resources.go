@@ -1108,6 +1108,14 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_router_nat": {
 				Tok:    gcpResource(gcpCompute, "RouterNat"),
 				Fields: nameField(lowercaseAutoName()),
+				TransformFromState: func(_ context.Context, pMap resource.PropertyMap) (resource.PropertyMap, error) {
+					if _, ok := pMap["endpointTypes"]; !ok {
+						pMap["endpointTypes"] = resource.NewArrayProperty([]resource.PropertyValue{
+							resource.NewStringProperty("ENDPOINT_TYPE_VM"),
+						})
+					}
+					return pMap, nil
+				},
 			},
 			"google_compute_router_peer": {
 				Tok: gcpResource(gcpCompute, "RouterPeer"),
@@ -2341,8 +2349,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_router_nat":    {Tok: gcpDataSource(gcpCompute, "getRouterNat")},
 			"google_compute_router_status": {Tok: gcpDataSource(gcpCompute, "RouterStatus")}, // fixed via alias
-			"google_compute_disk":          {Tok: gcpDataSource(gcpCompute, "getDisk")},
-			"google_compute_snapshot":      {Tok: gcpDataSource(gcpCompute, "getSnapshot")},
+			"google_compute_storage_pool_types": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"google_compute_disk":     {Tok: gcpDataSource(gcpCompute, "getDisk")},
+			"google_compute_snapshot": {Tok: gcpDataSource(gcpCompute, "getSnapshot")},
 
 			"google_composer_image_versions": {
 				Tok: gcpDataSource(gcpComposer, "getImageVersions"),

@@ -216,7 +216,6 @@ import * as utilities from "../utilities";
  *     name: "gce-policy",
  *     region: "europe-west9",
  *     groupPlacementPolicy: {
- *         vmCount: 2,
  *         collocation: "COLLOCATED",
  *         gpuTopology: "1x72",
  *     },

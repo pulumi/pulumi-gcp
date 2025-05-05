@@ -305,6 +305,9 @@ class _InstanceIAMBindingState:
 
 
 class InstanceIAMBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceIAMBinding:InstanceIAMBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

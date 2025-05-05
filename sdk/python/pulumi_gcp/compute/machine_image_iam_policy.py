@@ -152,6 +152,9 @@ class _MachineImageIamPolicyState:
 
 
 class MachineImageIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/machineImageIamPolicy:MachineImageIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

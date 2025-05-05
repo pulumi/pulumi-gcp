@@ -78,8 +78,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
  * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
  * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
  * import com.pulumi.gcp.applicationintegration.Client;
  * import com.pulumi.gcp.applicationintegration.ClientArgs;
  * import com.pulumi.gcp.applicationintegration.inputs.ClientCloudKmsConfigArgs;
@@ -115,15 +113,9 @@ import javax.annotation.Nullable;
  *             .cryptoKey(cryptokey.id())
  *             .build());
  * 
- *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
- *             .accountId("service-acc")
- *             .displayName("Service Account")
- *             .build());
- * 
  *         var example = new Client("example", ClientArgs.builder()
  *             .location("us-east1")
  *             .createSampleIntegrations(true)
- *             .runAsServiceAccount(serviceAccount.email())
  *             .cloudKmsConfig(ClientCloudKmsConfigArgs.builder()
  *                 .kmsLocation("us-east1")
  *                 .kmsRing(StdFunctions.basename(BasenameArgs.builder()
@@ -237,14 +229,24 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * (Optional, Deprecated)
      * User input run-as service account, if empty, will bring up a new default service account.
      * 
+     * &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `run_as_service_account` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `run_as_service_account` is deprecated and will be removed in a future major release. */
     @Export(name="runAsServiceAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> runAsServiceAccount;
 
     /**
-     * @return User input run-as service account, if empty, will bring up a new default service account.
+     * @return (Optional, Deprecated)
+     * User input run-as service account, if empty, will bring up a new default service account.
+     * 
+     * &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
      * 
      */
     public Output<Optional<String>> runAsServiceAccount() {

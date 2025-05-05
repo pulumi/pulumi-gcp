@@ -448,6 +448,9 @@ class _ExternalAccessRuleState:
 
 
 class ExternalAccessRule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vmwareengine/externalAccessRule:ExternalAccessRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

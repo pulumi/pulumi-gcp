@@ -62,6 +62,16 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig;
+    /**
+     * @return Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+     * 
+     */
+    private @Nullable Integer dataDiskProvisionedIops;
+    /**
+     * @return Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+     * 
+     */
+    private @Nullable Integer dataDiskProvisionedThroughput;
     private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
     /**
      * @return Configuration to protect against accidental instance deletion.
@@ -80,12 +90,12 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable Integer diskAutoresizeLimit;
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     private @Nullable Integer diskSize;
     /**
-     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+     * @return The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
      * 
      */
     private @Nullable String diskType;
@@ -122,6 +132,11 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String pricingPlan;
+    /**
+     * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+     * 
+     */
+    private @Nullable Boolean retainBackupsOnDelete;
     private @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
     /**
      * @return The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
@@ -198,6 +213,20 @@ public final class DatabaseInstanceSettings {
     public Optional<DatabaseInstanceSettingsDataCacheConfig> dataCacheConfig() {
         return Optional.ofNullable(this.dataCacheConfig);
     }
+    /**
+     * @return Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+     * 
+     */
+    public Optional<Integer> dataDiskProvisionedIops() {
+        return Optional.ofNullable(this.dataDiskProvisionedIops);
+    }
+    /**
+     * @return Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+     * 
+     */
+    public Optional<Integer> dataDiskProvisionedThroughput() {
+        return Optional.ofNullable(this.dataDiskProvisionedThroughput);
+    }
     public List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags() {
         return this.databaseFlags == null ? List.of() : this.databaseFlags;
     }
@@ -226,14 +255,14 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.diskAutoresizeLimit);
     }
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     public Optional<Integer> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
     /**
-     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+     * @return The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
      * 
      */
     public Optional<String> diskType() {
@@ -290,6 +319,13 @@ public final class DatabaseInstanceSettings {
     public Optional<String> pricingPlan() {
         return Optional.ofNullable(this.pricingPlan);
     }
+    /**
+     * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+     * 
+     */
+    public Optional<Boolean> retainBackupsOnDelete() {
+        return Optional.ofNullable(this.retainBackupsOnDelete);
+    }
     public Optional<DatabaseInstanceSettingsSqlServerAuditConfig> sqlServerAuditConfig() {
         return Optional.ofNullable(this.sqlServerAuditConfig);
     }
@@ -342,6 +378,8 @@ public final class DatabaseInstanceSettings {
         private @Nullable String collation;
         private @Nullable String connectorEnforcement;
         private @Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig;
+        private @Nullable Integer dataDiskProvisionedIops;
+        private @Nullable Integer dataDiskProvisionedThroughput;
         private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
         private @Nullable Boolean deletionProtectionEnabled;
         private @Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod;
@@ -358,6 +396,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
         private @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy;
         private @Nullable String pricingPlan;
+        private @Nullable Boolean retainBackupsOnDelete;
         private @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
         private String tier;
         private @Nullable String timeZone;
@@ -374,6 +413,8 @@ public final class DatabaseInstanceSettings {
     	      this.collation = defaults.collation;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
     	      this.dataCacheConfig = defaults.dataCacheConfig;
+    	      this.dataDiskProvisionedIops = defaults.dataDiskProvisionedIops;
+    	      this.dataDiskProvisionedThroughput = defaults.dataDiskProvisionedThroughput;
     	      this.databaseFlags = defaults.databaseFlags;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.denyMaintenancePeriod = defaults.denyMaintenancePeriod;
@@ -390,6 +431,7 @@ public final class DatabaseInstanceSettings {
     	      this.maintenanceWindow = defaults.maintenanceWindow;
     	      this.passwordValidationPolicy = defaults.passwordValidationPolicy;
     	      this.pricingPlan = defaults.pricingPlan;
+    	      this.retainBackupsOnDelete = defaults.retainBackupsOnDelete;
     	      this.sqlServerAuditConfig = defaults.sqlServerAuditConfig;
     	      this.tier = defaults.tier;
     	      this.timeZone = defaults.timeZone;
@@ -443,6 +485,18 @@ public final class DatabaseInstanceSettings {
         public Builder dataCacheConfig(@Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig) {
 
             this.dataCacheConfig = dataCacheConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataDiskProvisionedIops(@Nullable Integer dataDiskProvisionedIops) {
+
+            this.dataDiskProvisionedIops = dataDiskProvisionedIops;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataDiskProvisionedThroughput(@Nullable Integer dataDiskProvisionedThroughput) {
+
+            this.dataDiskProvisionedThroughput = dataDiskProvisionedThroughput;
             return this;
         }
         @CustomType.Setter
@@ -545,6 +599,12 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder retainBackupsOnDelete(@Nullable Boolean retainBackupsOnDelete) {
+
+            this.retainBackupsOnDelete = retainBackupsOnDelete;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sqlServerAuditConfig(@Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig) {
 
             this.sqlServerAuditConfig = sqlServerAuditConfig;
@@ -586,6 +646,8 @@ public final class DatabaseInstanceSettings {
             _resultValue.collation = collation;
             _resultValue.connectorEnforcement = connectorEnforcement;
             _resultValue.dataCacheConfig = dataCacheConfig;
+            _resultValue.dataDiskProvisionedIops = dataDiskProvisionedIops;
+            _resultValue.dataDiskProvisionedThroughput = dataDiskProvisionedThroughput;
             _resultValue.databaseFlags = databaseFlags;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.denyMaintenancePeriod = denyMaintenancePeriod;
@@ -602,6 +664,7 @@ public final class DatabaseInstanceSettings {
             _resultValue.maintenanceWindow = maintenanceWindow;
             _resultValue.passwordValidationPolicy = passwordValidationPolicy;
             _resultValue.pricingPlan = pricingPlan;
+            _resultValue.retainBackupsOnDelete = retainBackupsOnDelete;
             _resultValue.sqlServerAuditConfig = sqlServerAuditConfig;
             _resultValue.tier = tier;
             _resultValue.timeZone = timeZone;

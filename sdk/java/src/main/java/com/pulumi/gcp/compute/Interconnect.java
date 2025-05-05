@@ -377,19 +377,19 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
     }
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
+     * Specifies the location inside Google&#39;s Networks.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> location;
+    private Output<String> location;
 
     /**
      * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
+     * Specifies the location inside Google&#39;s Networks.
      * 
      */
-    public Output<Optional<String>> location() {
-        return Codegen.optional(this.location);
+    public Output<String> location() {
+        return this.location;
     }
     /**
      * Configuration that enables Media Access Control security (MACsec) on the Cloud

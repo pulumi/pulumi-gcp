@@ -2134,6 +2134,14 @@ if not MYPY:
         Otherwise, any key may be used.
         Structure is documented below.
         """
+        backdate_duration: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The duration to backdate all certificates issued from this CaPool. If not set, the
+        certificates will be issued with a not_before_time of the issuance time (i.e. the current
+        time). If set, the certificates will be issued with a not_before_time of the issuance
+        time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+        requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+        """
         baseline_values: NotRequired[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArgsDict']]
         """
         A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
@@ -2161,6 +2169,7 @@ class CaPoolIssuancePolicyArgs:
     def __init__(__self__, *,
                  allowed_issuance_modes: Optional[pulumi.Input['CaPoolIssuancePolicyAllowedIssuanceModesArgs']] = None,
                  allowed_key_types: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]]] = None,
+                 backdate_duration: Optional[pulumi.Input[builtins.str]] = None,
                  baseline_values: Optional[pulumi.Input['CaPoolIssuancePolicyBaselineValuesArgs']] = None,
                  identity_constraints: Optional[pulumi.Input['CaPoolIssuancePolicyIdentityConstraintsArgs']] = None,
                  maximum_lifetime: Optional[pulumi.Input[builtins.str]] = None):
@@ -2170,6 +2179,11 @@ class CaPoolIssuancePolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]] allowed_key_types: If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
                Otherwise, any key may be used.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] backdate_duration: The duration to backdate all certificates issued from this CaPool. If not set, the
+               certificates will be issued with a not_before_time of the issuance time (i.e. the current
+               time). If set, the certificates will be issued with a not_before_time of the issuance
+               time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+               requested lifetime. The backdate_duration must be less than or equal to 48 hours.
         :param pulumi.Input['CaPoolIssuancePolicyBaselineValuesArgs'] baseline_values: A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
                includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
                request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
@@ -2185,6 +2199,8 @@ class CaPoolIssuancePolicyArgs:
             pulumi.set(__self__, "allowed_issuance_modes", allowed_issuance_modes)
         if allowed_key_types is not None:
             pulumi.set(__self__, "allowed_key_types", allowed_key_types)
+        if backdate_duration is not None:
+            pulumi.set(__self__, "backdate_duration", backdate_duration)
         if baseline_values is not None:
             pulumi.set(__self__, "baseline_values", baseline_values)
         if identity_constraints is not None:
@@ -2218,6 +2234,22 @@ class CaPoolIssuancePolicyArgs:
     @allowed_key_types.setter
     def allowed_key_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]]]):
         pulumi.set(self, "allowed_key_types", value)
+
+    @property
+    @pulumi.getter(name="backdateDuration")
+    def backdate_duration(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The duration to backdate all certificates issued from this CaPool. If not set, the
+        certificates will be issued with a not_before_time of the issuance time (i.e. the current
+        time). If set, the certificates will be issued with a not_before_time of the issuance
+        time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+        requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+        """
+        return pulumi.get(self, "backdate_duration")
+
+    @backdate_duration.setter
+    def backdate_duration(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "backdate_duration", value)
 
     @property
     @pulumi.getter(name="baselineValues")

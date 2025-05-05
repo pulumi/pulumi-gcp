@@ -86,6 +86,36 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Developer Connect Account Connector New Relic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_account_connector = new gcp.developerconnect.AccountConnector("my-account-connector", {
+ *     location: "us-central1",
+ *     accountConnectorId: "tf-test-ac",
+ *     providerOauthConfig: {
+ *         systemProviderId: "NEW_RELIC",
+ *         scopes: [],
+ *     },
+ * });
+ * ```
+ * ### Developer Connect Account Connector Datastax
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_account_connector = new gcp.developerconnect.AccountConnector("my-account-connector", {
+ *     location: "us-central1",
+ *     accountConnectorId: "tf-test-ac",
+ *     providerOauthConfig: {
+ *         systemProviderId: "DATASTAX",
+ *         scopes: [],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

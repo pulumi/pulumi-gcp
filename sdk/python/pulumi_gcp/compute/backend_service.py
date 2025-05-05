@@ -42,6 +42,7 @@ class BackendServiceArgs:
                  locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[builtins.str]] = None,
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
+                 max_stream_duration: Optional[pulumi.Input['BackendServiceMaxStreamDurationArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
                  port_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -169,6 +170,13 @@ class BackendServiceArgs:
         :param pulumi.Input['BackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
+        :param pulumi.Input['BackendServiceMaxStreamDurationArgs'] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+               beginning of the stream until the response has been completely processed, including all retries. A stream that
+               does not complete in this duration is closed.
+               If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+               This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+               This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -254,6 +262,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if outlier_detection is not None:
@@ -613,6 +623,24 @@ class BackendServiceArgs:
         pulumi.set(self, "log_config", value)
 
     @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional[pulumi.Input['BackendServiceMaxStreamDurationArgs']]:
+        """
+        Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+        beginning of the stream until the response has been completely processed, including all retries. A stream that
+        does not complete in this duration is closed.
+        If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+        This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+        This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
+
+    @max_stream_duration.setter
+    def max_stream_duration(self, value: Optional[pulumi.Input['BackendServiceMaxStreamDurationArgs']]):
+        pulumi.set(self, "max_stream_duration", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -815,6 +843,7 @@ class _BackendServiceState:
                  locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[builtins.str]] = None,
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
+                 max_stream_duration: Optional[pulumi.Input['BackendServiceMaxStreamDurationArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
                  port_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -947,6 +976,13 @@ class _BackendServiceState:
         :param pulumi.Input['BackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
+        :param pulumi.Input['BackendServiceMaxStreamDurationArgs'] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+               beginning of the stream until the response has been completely processed, including all retries. A stream that
+               does not complete in this duration is closed.
+               If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+               This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+               This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1039,6 +1075,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
+        if max_stream_duration is not None:
+            pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if outlier_detection is not None:
@@ -1437,6 +1475,24 @@ class _BackendServiceState:
         pulumi.set(self, "log_config", value)
 
     @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> Optional[pulumi.Input['BackendServiceMaxStreamDurationArgs']]:
+        """
+        Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+        beginning of the stream until the response has been completely processed, including all retries. A stream that
+        does not complete in this duration is closed.
+        If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+        This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+        This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
+
+    @max_stream_duration.setter
+    def max_stream_duration(self, value: Optional[pulumi.Input['BackendServiceMaxStreamDurationArgs']]):
+        pulumi.set(self, "max_stream_duration", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -1626,6 +1682,9 @@ class _BackendServiceState:
 
 
 class BackendService(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/backendService:BackendService"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1650,6 +1709,7 @@ class BackendService(pulumi.CustomResource):
                  locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[builtins.str]] = None,
                  log_config: Optional[pulumi.Input[Union['BackendServiceLogConfigArgs', 'BackendServiceLogConfigArgsDict']]] = None,
+                 max_stream_duration: Optional[pulumi.Input[Union['BackendServiceMaxStreamDurationArgs', 'BackendServiceMaxStreamDurationArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  outlier_detection: Optional[pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -1670,6 +1730,9 @@ class BackendService(pulumi.CustomResource):
         For managed internal load balancing, use a regional backend service instead.
 
         Currently self-managed internal load balancing is only available in beta.
+
+        > **Note:** Recreating a `compute.BackendService` that references other dependent resources like `compute.URLMap` will give a `resourceInUseByAnotherResource` error, when modifying the number of other dependent resources.
+        Use `lifecycle.create_before_destroy` on the dependent resources to avoid this type of error as shown in the Dynamic Backends example.
 
         To get more information about BackendService, see:
 
@@ -2045,7 +2108,6 @@ class BackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
-
         ## Import
 
         BackendService can be imported using any of these accepted formats:
@@ -2185,6 +2247,13 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[Union['BackendServiceLogConfigArgs', 'BackendServiceLogConfigArgsDict']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
+        :param pulumi.Input[Union['BackendServiceMaxStreamDurationArgs', 'BackendServiceMaxStreamDurationArgsDict']] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+               beginning of the stream until the response has been completely processed, including all retries. A stream that
+               does not complete in this duration is closed.
+               If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+               This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+               This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -2243,6 +2312,9 @@ class BackendService(pulumi.CustomResource):
         For managed internal load balancing, use a regional backend service instead.
 
         Currently self-managed internal load balancing is only available in beta.
+
+        > **Note:** Recreating a `compute.BackendService` that references other dependent resources like `compute.URLMap` will give a `resourceInUseByAnotherResource` error, when modifying the number of other dependent resources.
+        Use `lifecycle.create_before_destroy` on the dependent resources to avoid this type of error as shown in the Dynamic Backends example.
 
         To get more information about BackendService, see:
 
@@ -2618,7 +2690,6 @@ class BackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
-
         ## Import
 
         BackendService can be imported using any of these accepted formats:
@@ -2678,6 +2749,7 @@ class BackendService(pulumi.CustomResource):
                  locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[builtins.str]] = None,
                  log_config: Optional[pulumi.Input[Union['BackendServiceLogConfigArgs', 'BackendServiceLogConfigArgsDict']]] = None,
+                 max_stream_duration: Optional[pulumi.Input[Union['BackendServiceMaxStreamDurationArgs', 'BackendServiceMaxStreamDurationArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  outlier_detection: Optional[pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']]] = None,
                  port_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -2719,6 +2791,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["locality_lb_policies"] = locality_lb_policies
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
             __props__.__dict__["log_config"] = log_config
+            __props__.__dict__["max_stream_duration"] = max_stream_duration
             __props__.__dict__["name"] = name
             __props__.__dict__["outlier_detection"] = outlier_detection
             __props__.__dict__["port_name"] = port_name
@@ -2768,6 +2841,7 @@ class BackendService(pulumi.CustomResource):
             locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict']]]]] = None,
             locality_lb_policy: Optional[pulumi.Input[builtins.str]] = None,
             log_config: Optional[pulumi.Input[Union['BackendServiceLogConfigArgs', 'BackendServiceLogConfigArgsDict']]] = None,
+            max_stream_duration: Optional[pulumi.Input[Union['BackendServiceMaxStreamDurationArgs', 'BackendServiceMaxStreamDurationArgsDict']]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             outlier_detection: Optional[pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']]] = None,
             port_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -2905,6 +2979,13 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[Union['BackendServiceLogConfigArgs', 'BackendServiceLogConfigArgsDict']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
+        :param pulumi.Input[Union['BackendServiceMaxStreamDurationArgs', 'BackendServiceMaxStreamDurationArgsDict']] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+               beginning of the stream until the response has been completely processed, including all retries. A stream that
+               does not complete in this duration is closed.
+               If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+               This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+               This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -2978,6 +3059,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["locality_lb_policies"] = locality_lb_policies
         __props__.__dict__["locality_lb_policy"] = locality_lb_policy
         __props__.__dict__["log_config"] = log_config
+        __props__.__dict__["max_stream_duration"] = max_stream_duration
         __props__.__dict__["name"] = name
         __props__.__dict__["outlier_detection"] = outlier_detection
         __props__.__dict__["port_name"] = port_name
@@ -3270,6 +3352,20 @@ class BackendService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "log_config")
+
+    @property
+    @pulumi.getter(name="maxStreamDuration")
+    def max_stream_duration(self) -> pulumi.Output[Optional['outputs.BackendServiceMaxStreamDuration']]:
+        """
+        Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+        beginning of the stream until the response has been completely processed, including all retries. A stream that
+        does not complete in this duration is closed.
+        If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+        This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+        This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_stream_duration")
 
     @property
     @pulumi.getter

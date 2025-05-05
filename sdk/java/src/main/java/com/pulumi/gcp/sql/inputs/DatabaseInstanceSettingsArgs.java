@@ -140,6 +140,36 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.dataCacheConfig);
     }
 
+    /**
+     * Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+     * 
+     */
+    @Import(name="dataDiskProvisionedIops")
+    private @Nullable Output<Integer> dataDiskProvisionedIops;
+
+    /**
+     * @return Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+     * 
+     */
+    public Optional<Output<Integer>> dataDiskProvisionedIops() {
+        return Optional.ofNullable(this.dataDiskProvisionedIops);
+    }
+
+    /**
+     * Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+     * 
+     */
+    @Import(name="dataDiskProvisionedThroughput")
+    private @Nullable Output<Integer> dataDiskProvisionedThroughput;
+
+    /**
+     * @return Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+     * 
+     */
+    public Optional<Output<Integer>> dataDiskProvisionedThroughput() {
+        return Optional.ofNullable(this.dataDiskProvisionedThroughput);
+    }
+
     @Import(name="databaseFlags")
     private @Nullable Output<List<DatabaseInstanceSettingsDatabaseFlagArgs>> databaseFlags;
 
@@ -200,14 +230,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+     * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<Integer> diskSize;
 
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
      * 
      */
     public Optional<Output<Integer>> diskSize() {
@@ -215,14 +245,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+     * The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+     * @return The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -340,6 +370,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.pricingPlan);
     }
 
+    /**
+     * When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+     * 
+     */
+    @Import(name="retainBackupsOnDelete")
+    private @Nullable Output<Boolean> retainBackupsOnDelete;
+
+    /**
+     * @return When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+     * 
+     */
+    public Optional<Output<Boolean>> retainBackupsOnDelete() {
+        return Optional.ofNullable(this.retainBackupsOnDelete);
+    }
+
     @Import(name="sqlServerAuditConfig")
     private @Nullable Output<DatabaseInstanceSettingsSqlServerAuditConfigArgs> sqlServerAuditConfig;
 
@@ -424,6 +469,8 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.collation = $.collation;
         this.connectorEnforcement = $.connectorEnforcement;
         this.dataCacheConfig = $.dataCacheConfig;
+        this.dataDiskProvisionedIops = $.dataDiskProvisionedIops;
+        this.dataDiskProvisionedThroughput = $.dataDiskProvisionedThroughput;
         this.databaseFlags = $.databaseFlags;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.denyMaintenancePeriod = $.denyMaintenancePeriod;
@@ -440,6 +487,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.maintenanceWindow = $.maintenanceWindow;
         this.passwordValidationPolicy = $.passwordValidationPolicy;
         this.pricingPlan = $.pricingPlan;
+        this.retainBackupsOnDelete = $.retainBackupsOnDelete;
         this.sqlServerAuditConfig = $.sqlServerAuditConfig;
         this.tier = $.tier;
         this.timeZone = $.timeZone;
@@ -609,6 +657,48 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
             return dataCacheConfig(Output.of(dataCacheConfig));
         }
 
+        /**
+         * @param dataDiskProvisionedIops Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiskProvisionedIops(@Nullable Output<Integer> dataDiskProvisionedIops) {
+            $.dataDiskProvisionedIops = dataDiskProvisionedIops;
+            return this;
+        }
+
+        /**
+         * @param dataDiskProvisionedIops Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiskProvisionedIops(Integer dataDiskProvisionedIops) {
+            return dataDiskProvisionedIops(Output.of(dataDiskProvisionedIops));
+        }
+
+        /**
+         * @param dataDiskProvisionedThroughput Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiskProvisionedThroughput(@Nullable Output<Integer> dataDiskProvisionedThroughput) {
+            $.dataDiskProvisionedThroughput = dataDiskProvisionedThroughput;
+            return this;
+        }
+
+        /**
+         * @param dataDiskProvisionedThroughput Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiskProvisionedThroughput(Integer dataDiskProvisionedThroughput) {
+            return dataDiskProvisionedThroughput(Output.of(dataDiskProvisionedThroughput));
+        }
+
         public Builder databaseFlags(@Nullable Output<List<DatabaseInstanceSettingsDatabaseFlagArgs>> databaseFlags) {
             $.databaseFlags = databaseFlags;
             return this;
@@ -695,7 +785,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
          * 
          * @return builder
          * 
@@ -706,7 +796,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
          * 
          * @return builder
          * 
@@ -716,7 +806,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskType The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+         * @param diskType The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
          * 
          * @return builder
          * 
@@ -727,7 +817,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskType The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+         * @param diskType The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
          * 
          * @return builder
          * 
@@ -887,6 +977,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder pricingPlan(String pricingPlan) {
             return pricingPlan(Output.of(pricingPlan));
+        }
+
+        /**
+         * @param retainBackupsOnDelete When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retainBackupsOnDelete(@Nullable Output<Boolean> retainBackupsOnDelete) {
+            $.retainBackupsOnDelete = retainBackupsOnDelete;
+            return this;
+        }
+
+        /**
+         * @param retainBackupsOnDelete When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retainBackupsOnDelete(Boolean retainBackupsOnDelete) {
+            return retainBackupsOnDelete(Output.of(retainBackupsOnDelete));
         }
 
         public Builder sqlServerAuditConfig(@Nullable Output<DatabaseInstanceSettingsSqlServerAuditConfigArgs> sqlServerAuditConfig) {

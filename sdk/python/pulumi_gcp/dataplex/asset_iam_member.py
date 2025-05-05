@@ -323,6 +323,9 @@ class _AssetIamMemberState:
 
 
 class AssetIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/assetIamMember:AssetIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

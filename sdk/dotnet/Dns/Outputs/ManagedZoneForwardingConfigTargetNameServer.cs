@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class ManagedZoneForwardingConfigTargetNameServer
     {
         /// <summary>
+        /// Fully qualified domain name for the forwarding target.
+        /// </summary>
+        public readonly string? DomainName;
+        /// <summary>
         /// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
         /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
         /// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
@@ -23,14 +27,17 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// <summary>
         /// IPv4 address of a target name server.
         /// </summary>
-        public readonly string Ipv4Address;
+        public readonly string? Ipv4Address;
 
         [OutputConstructor]
         private ManagedZoneForwardingConfigTargetNameServer(
+            string? domainName,
+
             string? forwardingPath,
 
-            string ipv4Address)
+            string? ipv4Address)
         {
+            DomainName = domainName;
             ForwardingPath = forwardingPath;
             Ipv4Address = ipv4Address;
         }

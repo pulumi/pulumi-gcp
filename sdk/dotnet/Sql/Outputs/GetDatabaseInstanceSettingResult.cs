@@ -41,6 +41,14 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Data cache configurations.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDataCacheConfigResult> DataCacheConfigs;
+        /// <summary>
+        /// Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+        /// </summary>
+        public readonly int DataDiskProvisionedIops;
+        /// <summary>
+        /// Provisioned throughput measured in MiB per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
+        /// </summary>
+        public readonly int DataDiskProvisionedThroughput;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> DatabaseFlags;
         /// <summary>
         /// Configuration to protect against accidental instance deletion.
@@ -56,11 +64,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int DiskAutoresizeLimit;
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
         /// </summary>
         public readonly int DiskSize;
         /// <summary>
-        /// The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+        /// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
         /// </summary>
         public readonly string DiskType;
         /// <summary>
@@ -90,6 +98,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Pricing plan for this instance, can only be PER_USE.
         /// </summary>
         public readonly string PricingPlan;
+        /// <summary>
+        /// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.
+        /// </summary>
+        public readonly bool RetainBackupsOnDelete;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult> SqlServerAuditConfigs;
         /// <summary>
         /// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
@@ -126,6 +138,10 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDataCacheConfigResult> dataCacheConfigs,
 
+            int dataDiskProvisionedIops,
+
+            int dataDiskProvisionedThroughput,
+
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> databaseFlags,
 
             bool deletionProtectionEnabled,
@@ -158,6 +174,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string pricingPlan,
 
+            bool retainBackupsOnDelete,
+
             ImmutableArray<Outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult> sqlServerAuditConfigs,
 
             string tier,
@@ -176,6 +194,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             Collation = collation;
             ConnectorEnforcement = connectorEnforcement;
             DataCacheConfigs = dataCacheConfigs;
+            DataDiskProvisionedIops = dataDiskProvisionedIops;
+            DataDiskProvisionedThroughput = dataDiskProvisionedThroughput;
             DatabaseFlags = databaseFlags;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DenyMaintenancePeriods = denyMaintenancePeriods;
@@ -192,6 +212,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             MaintenanceWindows = maintenanceWindows;
             PasswordValidationPolicies = passwordValidationPolicies;
             PricingPlan = pricingPlan;
+            RetainBackupsOnDelete = retainBackupsOnDelete;
             SqlServerAuditConfigs = sqlServerAuditConfigs;
             Tier = tier;
             TimeZone = timeZone;

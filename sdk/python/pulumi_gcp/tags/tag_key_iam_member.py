@@ -217,6 +217,9 @@ class _TagKeyIamMemberState:
 
 
 class TagKeyIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:tags/tagKeyIamMember:TagKeyIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

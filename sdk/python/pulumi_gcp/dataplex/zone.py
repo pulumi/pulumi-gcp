@@ -471,6 +471,9 @@ class _ZoneState:
 
 
 class Zone(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/zone:Zone"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

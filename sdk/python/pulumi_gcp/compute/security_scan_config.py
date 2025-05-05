@@ -428,6 +428,9 @@ class _SecurityScanConfigState:
 
 
 class SecurityScanConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/securityScanConfig:SecurityScanConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

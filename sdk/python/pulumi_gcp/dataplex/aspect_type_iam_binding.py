@@ -289,6 +289,9 @@ class _AspectTypeIamBindingState:
 
 
 class AspectTypeIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/aspectTypeIamBinding:AspectTypeIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

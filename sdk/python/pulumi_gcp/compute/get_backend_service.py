@@ -28,7 +28,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_metrics=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, max_stream_durations=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None, tls_settings=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -101,6 +101,9 @@ class GetBackendServiceResult:
         if log_configs and not isinstance(log_configs, list):
             raise TypeError("Expected argument 'log_configs' to be a list")
         pulumi.set(__self__, "log_configs", log_configs)
+        if max_stream_durations and not isinstance(max_stream_durations, list):
+            raise TypeError("Expected argument 'max_stream_durations' to be a list")
+        pulumi.set(__self__, "max_stream_durations", max_stream_durations)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -286,6 +289,11 @@ class GetBackendServiceResult:
         return pulumi.get(self, "log_configs")
 
     @property
+    @pulumi.getter(name="maxStreamDurations")
+    def max_stream_durations(self) -> Sequence['outputs.GetBackendServiceMaxStreamDurationResult']:
+        return pulumi.get(self, "max_stream_durations")
+
+    @property
     @pulumi.getter
     def name(self) -> builtins.str:
         return pulumi.get(self, "name")
@@ -396,6 +404,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             locality_lb_policies=self.locality_lb_policies,
             locality_lb_policy=self.locality_lb_policy,
             log_configs=self.log_configs,
+            max_stream_durations=self.max_stream_durations,
             name=self.name,
             outlier_detections=self.outlier_detections,
             port_name=self.port_name,
@@ -468,6 +477,7 @@ def get_backend_service(name: Optional[builtins.str] = None,
         locality_lb_policies=pulumi.get(__ret__, 'locality_lb_policies'),
         locality_lb_policy=pulumi.get(__ret__, 'locality_lb_policy'),
         log_configs=pulumi.get(__ret__, 'log_configs'),
+        max_stream_durations=pulumi.get(__ret__, 'max_stream_durations'),
         name=pulumi.get(__ret__, 'name'),
         outlier_detections=pulumi.get(__ret__, 'outlier_detections'),
         port_name=pulumi.get(__ret__, 'port_name'),
@@ -537,6 +547,7 @@ def get_backend_service_output(name: Optional[pulumi.Input[builtins.str]] = None
         locality_lb_policies=pulumi.get(__response__, 'locality_lb_policies'),
         locality_lb_policy=pulumi.get(__response__, 'locality_lb_policy'),
         log_configs=pulumi.get(__response__, 'log_configs'),
+        max_stream_durations=pulumi.get(__response__, 'max_stream_durations'),
         name=pulumi.get(__response__, 'name'),
         outlier_detections=pulumi.get(__response__, 'outlier_detections'),
         port_name=pulumi.get(__response__, 'port_name'),

@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.Colab
         /// Structure is documented below.
         /// </summary>
         [Output("eucConfig")]
-        public Output<Outputs.RuntimeTemplateEucConfig?> EucConfig { get; private set; } = null!;
+        public Output<Outputs.RuntimeTemplateEucConfig> EucConfig { get; private set; } = null!;
 
         /// <summary>
         /// Notebook Idle Shutdown configuration for the runtime.
@@ -248,7 +248,7 @@ namespace Pulumi.Gcp.Colab
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.Colab
         /// Structure is documented below.
         /// </summary>
         [Output("shieldedVmConfig")]
-        public Output<Outputs.RuntimeTemplateShieldedVmConfig?> ShieldedVmConfig { get; private set; } = null!;
+        public Output<Outputs.RuntimeTemplateShieldedVmConfig> ShieldedVmConfig { get; private set; } = null!;
 
         /// <summary>
         /// The notebook software configuration of the notebook runtime.

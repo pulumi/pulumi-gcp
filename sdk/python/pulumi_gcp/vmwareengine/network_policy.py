@@ -415,6 +415,9 @@ class _NetworkPolicyState:
 
 
 class NetworkPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vmwareengine/networkPolicy:NetworkPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

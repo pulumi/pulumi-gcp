@@ -354,6 +354,9 @@ class _LbRouteExtensionState:
 
 
 class LbRouteExtension(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/lbRouteExtension:LbRouteExtension"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

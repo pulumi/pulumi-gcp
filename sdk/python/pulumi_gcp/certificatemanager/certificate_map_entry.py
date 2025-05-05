@@ -438,6 +438,9 @@ class _CertificateMapEntryState:
 
 
 class CertificateMapEntry(pulumi.CustomResource):
+
+    pulumi_type = "gcp:certificatemanager/certificateMapEntry:CertificateMapEntry"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -237,6 +237,9 @@ class _LogScopeState:
 
 
 class LogScope(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/logScope:LogScope"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

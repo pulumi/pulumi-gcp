@@ -193,6 +193,9 @@ class _FeatureIamPolicyState:
 
 
 class FeatureIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkehub/featureIamPolicy:FeatureIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

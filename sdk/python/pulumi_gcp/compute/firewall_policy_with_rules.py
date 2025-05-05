@@ -287,6 +287,9 @@ class _FirewallPolicyWithRulesState:
 
 
 class FirewallPolicyWithRules(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -338,7 +341,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": True,
                     "action": "allow",
                     "direction": "EGRESS",
-                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.name}/global/networks/default"],
+                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.project_id}/global/networks/default"],
                     "match": {
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [
@@ -519,7 +522,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": True,
                     "action": "allow",
                     "direction": "EGRESS",
-                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.name}/global/networks/default"],
+                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.project_id}/global/networks/default"],
                     "match": {
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [

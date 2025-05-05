@@ -131,6 +131,9 @@ class _ConsumersIamPolicyState:
 
 
 class ConsumersIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

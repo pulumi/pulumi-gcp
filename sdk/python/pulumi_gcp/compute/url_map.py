@@ -590,6 +590,9 @@ class _URLMapState:
 
 
 class URLMap(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/uRLMap:URLMap"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

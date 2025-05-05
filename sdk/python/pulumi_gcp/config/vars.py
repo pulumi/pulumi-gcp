@@ -723,6 +723,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('sqlCustomEndpoint')
 
     @property
+    def storage_batch_operations_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('storageBatchOperationsCustomEndpoint')
+
+    @property
     def storage_control_custom_endpoint(self) -> Optional[str]:
         return __config__.get('storageControlCustomEndpoint')
 

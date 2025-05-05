@@ -30,6 +30,10 @@ class ApiKeyArgs:
         The set of arguments for constructing a ApiKey resource.
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+               
+               
+               
+               - - -
         :param pulumi.Input[builtins.str] project: The project for the resource
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
         """
@@ -59,6 +63,10 @@ class ApiKeyArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -105,6 +113,10 @@ class _ApiKeyState:
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[builtins.str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+               
+               
+               
+               - - -
         :param pulumi.Input[builtins.str] project: The project for the resource
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
         :param pulumi.Input[builtins.str] uid: Output only. Unique id in UUID4 format.
@@ -151,6 +163,10 @@ class _ApiKeyState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -196,6 +212,9 @@ class _ApiKeyState:
 
 
 class ApiKey(pulumi.CustomResource):
+
+    pulumi_type = "gcp:projects/apiKey:ApiKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -328,6 +347,10 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+               
+               
+               
+               - - -
         :param pulumi.Input[builtins.str] project: The project for the resource
         :param pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']] restrictions: Key restrictions.
         """
@@ -518,6 +541,10 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[builtins.str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+               
+               
+               
+               - - -
         :param pulumi.Input[builtins.str] project: The project for the resource
         :param pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']] restrictions: Key restrictions.
         :param pulumi.Input[builtins.str] uid: Output only. Unique id in UUID4 format.
@@ -555,6 +582,10 @@ class ApiKey(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

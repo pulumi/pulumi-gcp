@@ -328,7 +328,7 @@ namespace Pulumi.Gcp.Alloydb
         /// Structure is documented below.
         /// </summary>
         [Output("networkConfig")]
-        public Output<Outputs.InstanceNetworkConfig?> NetworkConfig { get; private set; } = null!;
+        public Output<Outputs.InstanceNetworkConfig> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for enhanced query insights.

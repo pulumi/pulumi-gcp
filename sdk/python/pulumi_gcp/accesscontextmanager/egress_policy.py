@@ -124,6 +124,9 @@ class _EgressPolicyState:
 
 
 class EgressPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:accesscontextmanager/egressPolicy:EgressPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -141,6 +141,9 @@ class _TargetIamPolicyState:
 
 
 class TargetIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:clouddeploy/targetIamPolicy:TargetIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

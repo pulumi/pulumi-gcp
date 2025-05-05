@@ -280,6 +280,9 @@ class _ApiConfigIamMemberState:
 
 
 class ApiConfigIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigateway/apiConfigIamMember:ApiConfigIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

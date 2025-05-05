@@ -22,6 +22,11 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     private @Nullable String allocatedIpRange;
     private @Nullable List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> authorizedNetworks;
     /**
+     * @return The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * 
+     */
+    private @Nullable List<String> customSubjectAlternativeNames;
+    /**
      * @return Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
      * 
      */
@@ -73,6 +78,13 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     }
     public List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> authorizedNetworks() {
         return this.authorizedNetworks == null ? List.of() : this.authorizedNetworks;
+    }
+    /**
+     * @return The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * 
+     */
+    public List<String> customSubjectAlternativeNames() {
+        return this.customSubjectAlternativeNames == null ? List.of() : this.customSubjectAlternativeNames;
     }
     /**
      * @return Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
@@ -141,6 +153,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     public static final class Builder {
         private @Nullable String allocatedIpRange;
         private @Nullable List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> authorizedNetworks;
+        private @Nullable List<String> customSubjectAlternativeNames;
         private @Nullable Boolean enablePrivatePathForGoogleCloudServices;
         private @Nullable Boolean ipv4Enabled;
         private @Nullable String privateNetwork;
@@ -153,6 +166,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedIpRange = defaults.allocatedIpRange;
     	      this.authorizedNetworks = defaults.authorizedNetworks;
+    	      this.customSubjectAlternativeNames = defaults.customSubjectAlternativeNames;
     	      this.enablePrivatePathForGoogleCloudServices = defaults.enablePrivatePathForGoogleCloudServices;
     	      this.ipv4Enabled = defaults.ipv4Enabled;
     	      this.privateNetwork = defaults.privateNetwork;
@@ -176,6 +190,15 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         }
         public Builder authorizedNetworks(DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork... authorizedNetworks) {
             return authorizedNetworks(List.of(authorizedNetworks));
+        }
+        @CustomType.Setter
+        public Builder customSubjectAlternativeNames(@Nullable List<String> customSubjectAlternativeNames) {
+
+            this.customSubjectAlternativeNames = customSubjectAlternativeNames;
+            return this;
+        }
+        public Builder customSubjectAlternativeNames(String... customSubjectAlternativeNames) {
+            return customSubjectAlternativeNames(List.of(customSubjectAlternativeNames));
         }
         @CustomType.Setter
         public Builder enablePrivatePathForGoogleCloudServices(@Nullable Boolean enablePrivatePathForGoogleCloudServices) {
@@ -226,6 +249,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
             final var _resultValue = new DatabaseInstanceSettingsIpConfiguration();
             _resultValue.allocatedIpRange = allocatedIpRange;
             _resultValue.authorizedNetworks = authorizedNetworks;
+            _resultValue.customSubjectAlternativeNames = customSubjectAlternativeNames;
             _resultValue.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             _resultValue.ipv4Enabled = ipv4Enabled;
             _resultValue.privateNetwork = privateNetwork;

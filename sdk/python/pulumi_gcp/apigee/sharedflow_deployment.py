@@ -202,6 +202,9 @@ class _SharedflowDeploymentState:
 
 
 class SharedflowDeployment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/sharedflowDeployment:SharedflowDeployment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

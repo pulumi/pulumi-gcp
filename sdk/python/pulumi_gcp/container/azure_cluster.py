@@ -649,6 +649,9 @@ class _AzureClusterState:
 
 
 class AzureCluster(pulumi.CustomResource):
+
+    pulumi_type = "gcp:container/azureCluster:AzureCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

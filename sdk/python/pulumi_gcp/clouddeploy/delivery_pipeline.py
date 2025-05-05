@@ -33,19 +33,20 @@ class DeliveryPipelineArgs:
         """
         The set of arguments for constructing a DeliveryPipeline resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
-               https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
-               following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-               dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-               lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-               are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
+               
+               
+               
+               - - -
         :param pulumi.Input[builtins.str] project: The project for the resource
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[builtins.bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -82,10 +83,10 @@ class DeliveryPipelineArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
-        https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        `effective_annotations` for all of the annotations present on the resource.
+        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -109,13 +110,10 @@ class DeliveryPipelineArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
-        following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-        dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-        lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-        are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        resource.
+        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -128,6 +126,10 @@ class DeliveryPipelineArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the `DeliveryPipeline`. Format is `a-z?`.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -193,24 +195,25 @@ class _DeliveryPipelineState:
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeliveryPipeline resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
-               https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[builtins.str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[builtins.str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
-               following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-               dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-               lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-               are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
+               
+               
+               
+               - - -
         :param pulumi.Input[builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -255,10 +258,10 @@ class _DeliveryPipelineState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
-        https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        `effective_annotations` for all of the annotations present on the resource.
+        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -339,13 +342,10 @@ class _DeliveryPipelineState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
-        following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-        dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-        lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-        are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        resource.
+        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -370,6 +370,10 @@ class _DeliveryPipelineState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the `DeliveryPipeline`. Format is `a-z?`.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -451,6 +455,9 @@ class _DeliveryPipelineState:
 
 
 class DeliveryPipeline(pulumi.CustomResource):
+
+    pulumi_type = "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -701,20 +708,21 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
-               https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
-               following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-               dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-               lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-               are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
+               
+               
+               
+               - - -
         :param pulumi.Input[builtins.str] project: The project for the resource
         :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[builtins.bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -1045,24 +1053,25 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
-               https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeliveryPipelineConditionArgs', 'DeliveryPipelineConditionArgsDict']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[builtins.str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[builtins.str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
-               following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-               dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-               lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-               are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
+               
+               
+               
+               - - -
         :param pulumi.Input[builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -1096,10 +1105,10 @@ class DeliveryPipeline(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
-        https://google.aip.dev/128#annotations for more details such as format and size limitations. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        `effective_annotations` for all of the annotations present on the resource.
+        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1152,13 +1161,10 @@ class DeliveryPipeline(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the
-        following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-        dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-        lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-        are additionally constrained to be <= 128 bytes. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the
-        resource.
+        Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1175,6 +1181,10 @@ class DeliveryPipeline(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Name of the `DeliveryPipeline`. Format is `a-z?`.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

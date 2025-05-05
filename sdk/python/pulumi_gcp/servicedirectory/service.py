@@ -174,6 +174,9 @@ class _ServiceState:
 
 
 class Service(pulumi.CustomResource):
+
+    pulumi_type = "gcp:servicedirectory/service:Service"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

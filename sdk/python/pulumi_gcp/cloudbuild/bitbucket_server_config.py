@@ -406,6 +406,9 @@ class _BitbucketServerConfigState:
 
 
 class BitbucketServerConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -513,7 +516,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
             },
             username="test",
             api_key="<api-key>",
-            peered_network=vpc_network.id.apply(lambda id: std.replace_output(text=id,
+            peered_network=vpc_network.id.apply(lambda id: std.replace(text=id,
                 search=project.name,
                 replace=project.number)).apply(lambda invoke: invoke.result),
             ssl_ca=\"\"\"-----BEGIN CERTIFICATE-----
@@ -666,7 +669,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
             },
             username="test",
             api_key="<api-key>",
-            peered_network=vpc_network.id.apply(lambda id: std.replace_output(text=id,
+            peered_network=vpc_network.id.apply(lambda id: std.replace(text=id,
                 search=project.name,
                 replace=project.number)).apply(lambda invoke: invoke.result),
             ssl_ca=\"\"\"-----BEGIN CERTIFICATE-----

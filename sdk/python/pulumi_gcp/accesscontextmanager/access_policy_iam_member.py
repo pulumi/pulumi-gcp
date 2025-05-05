@@ -218,6 +218,9 @@ class _AccessPolicyIamMemberState:
 
 
 class AccessPolicyIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

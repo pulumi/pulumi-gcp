@@ -516,6 +516,9 @@ namespace Pulumi.Gcp
         [Output("sqlCustomEndpoint")]
         public Output<string?> SqlCustomEndpoint { get; private set; } = null!;
 
+        [Output("storageBatchOperationsCustomEndpoint")]
+        public Output<string?> StorageBatchOperationsCustomEndpoint { get; private set; } = null!;
+
         [Output("storageControlCustomEndpoint")]
         public Output<string?> StorageControlCustomEndpoint { get; private set; } = null!;
 
@@ -1141,6 +1144,9 @@ namespace Pulumi.Gcp
 
         [Input("sqlCustomEndpoint")]
         public Input<string>? SqlCustomEndpoint { get; set; }
+
+        [Input("storageBatchOperationsCustomEndpoint")]
+        public Input<string>? StorageBatchOperationsCustomEndpoint { get; set; }
 
         [Input("storageControlCustomEndpoint")]
         public Input<string>? StorageControlCustomEndpoint { get; set; }

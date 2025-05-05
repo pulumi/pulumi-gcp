@@ -169,6 +169,9 @@ class _InstanceSettingsState:
 
 
 class InstanceSettings(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceSettings:InstanceSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

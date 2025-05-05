@@ -169,6 +169,9 @@ class _AppCheckServiceConfigState:
 
 
 class AppCheckServiceConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

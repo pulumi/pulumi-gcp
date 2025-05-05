@@ -57,6 +57,18 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("dataCacheConfig")]
         public Input<Inputs.DatabaseInstanceSettingsDataCacheConfigGetArgs>? DataCacheConfig { get; set; }
 
+        /// <summary>
+        /// Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+        /// </summary>
+        [Input("dataDiskProvisionedIops")]
+        public Input<int>? DataDiskProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
+        /// </summary>
+        [Input("dataDiskProvisionedThroughput")]
+        public Input<int>? DataDiskProvisionedThroughput { get; set; }
+
         [Input("databaseFlags")]
         private InputList<Inputs.DatabaseInstanceSettingsDatabaseFlagGetArgs>? _databaseFlags;
         public InputList<Inputs.DatabaseInstanceSettingsDatabaseFlagGetArgs> DatabaseFlags
@@ -87,13 +99,13 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<int>? DiskAutoresizeLimit { get; set; }
 
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+        /// The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to `PD_SSD`. HYPERDISK_BALANCED is preview.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -142,6 +154,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// </summary>
         [Input("pricingPlan")]
         public Input<string>? PricingPlan { get; set; }
+
+        /// <summary>
+        /// When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
+        /// </summary>
+        [Input("retainBackupsOnDelete")]
+        public Input<bool>? RetainBackupsOnDelete { get; set; }
 
         [Input("sqlServerAuditConfig")]
         public Input<Inputs.DatabaseInstanceSettingsSqlServerAuditConfigGetArgs>? SqlServerAuditConfig { get; set; }

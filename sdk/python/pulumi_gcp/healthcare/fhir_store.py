@@ -749,6 +749,9 @@ class _FhirStoreState:
 
 
 class FhirStore(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/fhirStore:FhirStore"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

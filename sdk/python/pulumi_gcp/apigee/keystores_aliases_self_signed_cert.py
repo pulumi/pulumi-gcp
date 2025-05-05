@@ -364,6 +364,9 @@ class _KeystoresAliasesSelfSignedCertState:
 
 
 class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -394,6 +397,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="my-project",
@@ -412,10 +416,12 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             project=project.project_id,
             service="compute.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[compute]))
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
             project=project.project_id,
-            opts = pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",
@@ -516,6 +522,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_time as time
 
         project = gcp.organizations.Project("project",
             project_id="my-project",
@@ -534,10 +541,12 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
             project=project.project_id,
             service="compute.googleapis.com",
             opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
+        wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
+        opts = pulumi.ResourceOptions(depends_on=[compute]))
         apigee_network = gcp.compute.Network("apigee_network",
             name="apigee-network",
             project=project.project_id,
-            opts = pulumi.ResourceOptions(depends_on=[compute]))
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         apigee_range = gcp.compute.GlobalAddress("apigee_range",
             name="apigee-range",
             purpose="VPC_PEERING",

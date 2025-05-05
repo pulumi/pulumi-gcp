@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Apigee
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -69,6 +70,17 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
+    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             compute,
+    ///         },
+    ///     });
+    /// 
     ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
     ///     {
     ///         Name = "apigee-network",
@@ -77,7 +89,7 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         DependsOn =
     ///         {
-    ///             compute,
+    ///             wait120Seconds,
     ///         },
     ///     });
     /// 

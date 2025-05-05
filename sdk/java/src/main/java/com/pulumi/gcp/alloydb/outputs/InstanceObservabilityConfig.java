@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceObservabilityConfig {
     /**
+     * @return Whether assistive experiences are enabled for this AlloyDB instance.
+     * 
+     */
+    private @Nullable Boolean assistiveExperiencesEnabled;
+    /**
      * @return Observability feature status for an instance.
      * 
      */
@@ -54,6 +59,13 @@ public final class InstanceObservabilityConfig {
     private @Nullable Boolean trackWaitEvents;
 
     private InstanceObservabilityConfig() {}
+    /**
+     * @return Whether assistive experiences are enabled for this AlloyDB instance.
+     * 
+     */
+    public Optional<Boolean> assistiveExperiencesEnabled() {
+        return Optional.ofNullable(this.assistiveExperiencesEnabled);
+    }
     /**
      * @return Observability feature status for an instance.
      * 
@@ -120,6 +132,7 @@ public final class InstanceObservabilityConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean assistiveExperiencesEnabled;
         private @Nullable Boolean enabled;
         private @Nullable Integer maxQueryStringLength;
         private @Nullable Boolean preserveComments;
@@ -131,6 +144,7 @@ public final class InstanceObservabilityConfig {
         public Builder() {}
         public Builder(InstanceObservabilityConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.assistiveExperiencesEnabled = defaults.assistiveExperiencesEnabled;
     	      this.enabled = defaults.enabled;
     	      this.maxQueryStringLength = defaults.maxQueryStringLength;
     	      this.preserveComments = defaults.preserveComments;
@@ -141,6 +155,12 @@ public final class InstanceObservabilityConfig {
     	      this.trackWaitEvents = defaults.trackWaitEvents;
         }
 
+        @CustomType.Setter
+        public Builder assistiveExperiencesEnabled(@Nullable Boolean assistiveExperiencesEnabled) {
+
+            this.assistiveExperiencesEnabled = assistiveExperiencesEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
@@ -191,6 +211,7 @@ public final class InstanceObservabilityConfig {
         }
         public InstanceObservabilityConfig build() {
             final var _resultValue = new InstanceObservabilityConfig();
+            _resultValue.assistiveExperiencesEnabled = assistiveExperiencesEnabled;
             _resultValue.enabled = enabled;
             _resultValue.maxQueryStringLength = maxQueryStringLength;
             _resultValue.preserveComments = preserveComments;

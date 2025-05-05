@@ -293,6 +293,9 @@ class _RuntimeTemplateIamMemberState:
 
 
 class RuntimeTemplateIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:colab/runtimeTemplateIamMember:RuntimeTemplateIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

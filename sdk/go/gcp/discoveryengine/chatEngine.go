@@ -107,7 +107,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testDataStore, err := discoveryengine.NewDataStore(ctx, "test_data_store", &discoveryengine.DataStoreArgs{
-//				Location:         pulumi.String("global"),
+//				Location:         pulumi.String("eu"),
 //				DataStoreId:      pulumi.String("data-store"),
 //				DisplayName:      pulumi.String("Structured datastore"),
 //				IndustryVertical: pulumi.String("GENERIC"),
@@ -121,7 +121,7 @@ import (
 //			}
 //			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
 //				DisplayName:         pulumi.String("dialogflowcx-agent"),
-//				Location:            pulumi.String("global"),
+//				Location:            pulumi.String("europe-west3"),
 //				DefaultLanguageCode: pulumi.String("en"),
 //				TimeZone:            pulumi.String("America/Los_Angeles"),
 //			})
@@ -142,6 +142,7 @@ import (
 //				},
 //				ChatEngineConfig: &discoveryengine.ChatEngineChatEngineConfigArgs{
 //					DialogflowAgentToLink: agent.ID(),
+//					AllowCrossRegion:      pulumi.Bool(true),
 //				},
 //			})
 //			if err != nil {

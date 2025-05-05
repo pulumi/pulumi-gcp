@@ -89,7 +89,13 @@ import javax.annotation.Nullable;
  *             .project(project.projectId())
  *             .service("managedkafka.googleapis.com")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(wait60Seconds)
+ *                 .dependsOn(compute)
+ *                 .build());
+ * 
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(List.of(managedkafka))
  *                 .build());
  * 
  *         var mkcSecondarySubnet = new Subnetwork("mkcSecondarySubnet", SubnetworkArgs.builder()
@@ -99,7 +105,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .network("default")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(compute)
+ *                 .dependsOn(wait120Seconds)
  *                 .build());
  * 
  *         var cpsTopic = new com.pulumi.gcp.pubsub.Topic("cpsTopic", com.pulumi.gcp.pubsub.TopicArgs.builder()

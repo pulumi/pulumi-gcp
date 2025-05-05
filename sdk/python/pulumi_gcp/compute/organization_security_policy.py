@@ -226,6 +226,9 @@ class _OrganizationSecurityPolicyState:
 
 
 class OrganizationSecurityPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -226,6 +226,9 @@ class _FolderState:
 
 
 class Folder(pulumi.CustomResource):
+
+    pulumi_type = "gcp:organizations/folder:Folder"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

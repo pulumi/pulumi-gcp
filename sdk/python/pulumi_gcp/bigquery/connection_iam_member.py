@@ -321,6 +321,9 @@ class _ConnectionIamMemberState:
 
 
 class ConnectionIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigquery/connectionIamMember:ConnectionIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

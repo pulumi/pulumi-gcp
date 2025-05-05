@@ -18,6 +18,9 @@ import (
 //
 // Currently self-managed internal load balancing is only available in beta.
 //
+// > **Note:** Recreating a `compute.BackendService` that references other dependent resources like `compute.URLMap` will give a `resourceInUseByAnotherResource` error, when modifying the number of other dependent resources.
+// Use `lifecycle.create_before_destroy` on the dependent resources to avoid this type of error as shown in the Dynamic Backends example.
+//
 // To get more information about BackendService, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
@@ -714,7 +717,6 @@ import (
 //	}
 //
 // ```
-//
 // ## Import
 //
 // BackendService can be imported using any of these accepted formats:
@@ -881,6 +883,14 @@ type BackendService struct {
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig BackendServiceLogConfigOutput `pulumi:"logConfig"`
+	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+	// beginning of the stream until the response has been completely processed, including all retries. A stream that
+	// does not complete in this duration is closed.
+	// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+	// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+	// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
+	MaxStreamDuration BackendServiceMaxStreamDurationPtrOutput `pulumi:"maxStreamDuration"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1110,6 +1120,14 @@ type backendServiceState struct {
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig *BackendServiceLogConfig `pulumi:"logConfig"`
+	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+	// beginning of the stream until the response has been completely processed, including all retries. A stream that
+	// does not complete in this duration is closed.
+	// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+	// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+	// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
+	MaxStreamDuration *BackendServiceMaxStreamDuration `pulumi:"maxStreamDuration"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1310,6 +1328,14 @@ type BackendServiceState struct {
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig BackendServiceLogConfigPtrInput
+	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+	// beginning of the stream until the response has been completely processed, including all retries. A stream that
+	// does not complete in this duration is closed.
+	// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+	// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+	// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
+	MaxStreamDuration BackendServiceMaxStreamDurationPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1507,6 +1533,14 @@ type backendServiceArgs struct {
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig *BackendServiceLogConfig `pulumi:"logConfig"`
+	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+	// beginning of the stream until the response has been completely processed, including all retries. A stream that
+	// does not complete in this duration is closed.
+	// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+	// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+	// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
+	MaxStreamDuration *BackendServiceMaxStreamDuration `pulumi:"maxStreamDuration"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1699,6 +1733,14 @@ type BackendServiceArgs struct {
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig BackendServiceLogConfigPtrInput
+	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+	// beginning of the stream until the response has been completely processed, including all retries. A stream that
+	// does not complete in this duration is closed.
+	// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+	// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+	// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+	// Structure is documented below.
+	MaxStreamDuration BackendServiceMaxStreamDurationPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -2050,6 +2092,17 @@ func (o BackendServiceOutput) LocalityLbPolicy() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o BackendServiceOutput) LogConfig() BackendServiceLogConfigOutput {
 	return o.ApplyT(func(v *BackendService) BackendServiceLogConfigOutput { return v.LogConfig }).(BackendServiceLogConfigOutput)
+}
+
+// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
+// beginning of the stream until the response has been completely processed, including all retries. A stream that
+// does not complete in this duration is closed.
+// If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
+// This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.
+// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+// Structure is documented below.
+func (o BackendServiceOutput) MaxStreamDuration() BackendServiceMaxStreamDurationPtrOutput {
+	return o.ApplyT(func(v *BackendService) BackendServiceMaxStreamDurationPtrOutput { return v.MaxStreamDuration }).(BackendServiceMaxStreamDurationPtrOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is

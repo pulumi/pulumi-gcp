@@ -1720,7 +1720,7 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dic
                  repository_base: builtins.str,
                  repository_path: builtins.str):
         """
-        :param builtins.str repository_base: A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
+        :param builtins.str repository_base: A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
         :param builtins.str repository_path: Specific repository from the base.
         """
         pulumi.set(__self__, "repository_base", repository_base)
@@ -1730,7 +1730,7 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dic
     @pulumi.getter(name="repositoryBase")
     def repository_base(self) -> builtins.str:
         """
-        A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
+        A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
         """
         return pulumi.get(self, "repository_base")
 

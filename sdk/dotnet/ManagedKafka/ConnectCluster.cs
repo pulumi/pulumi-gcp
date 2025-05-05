@@ -63,7 +63,18 @@ namespace Pulumi.Gcp.ManagedKafka
     ///     {
     ///         DependsOn =
     ///         {
-    ///             wait60Seconds,
+    ///             compute,
+    ///         },
+    ///     });
+    /// 
+    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             managedkafka,
     ///         },
     ///     });
     /// 
@@ -78,7 +89,7 @@ namespace Pulumi.Gcp.ManagedKafka
     ///     {
     ///         DependsOn =
     ///         {
-    ///             compute,
+    ///             wait120Seconds,
     ///         },
     ///     });
     /// 

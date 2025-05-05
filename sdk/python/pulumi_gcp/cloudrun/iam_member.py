@@ -293,6 +293,9 @@ class _IamMemberState:
 
 
 class IamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudrun/iamMember:IamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

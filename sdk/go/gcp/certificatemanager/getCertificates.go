@@ -12,56 +12,6 @@ import (
 )
 
 // List all certificates within Google Certificate Manager for a given project, region or filter.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificatemanager.GetCertificates(ctx, &certificatemanager.GetCertificatesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### With A Filter
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificatemanager.GetCertificates(ctx, &certificatemanager.GetCertificatesArgs{
-//				Filter: pulumi.StringRef("name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCertificatesResult
@@ -82,6 +32,7 @@ type GetCertificatesArgs struct {
 
 // A collection of values returned by getCertificates.
 type GetCertificatesResult struct {
+	// A list of all retrieved certificates. See certificatemanager.Certificate resource for details of the available attributes.
 	Certificates []GetCertificatesCertificate `pulumi:"certificates"`
 	Filter       *string                      `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
@@ -125,6 +76,7 @@ func (o GetCertificatesResultOutput) ToGetCertificatesResultOutputWithContext(ct
 	return o
 }
 
+// A list of all retrieved certificates. See certificatemanager.Certificate resource for details of the available attributes.
 func (o GetCertificatesResultOutput) Certificates() GetCertificatesCertificateArrayOutput {
 	return o.ApplyT(func(v GetCertificatesResult) []GetCertificatesCertificate { return v.Certificates }).(GetCertificatesCertificateArrayOutput)
 }

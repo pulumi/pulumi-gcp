@@ -297,6 +297,9 @@ class _DataExchangeIamBindingState:
 
 
 class DataExchangeIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

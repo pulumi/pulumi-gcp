@@ -287,6 +287,9 @@ class _ServiceBindingState:
 
 
 class ServiceBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkservices/serviceBinding:ServiceBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

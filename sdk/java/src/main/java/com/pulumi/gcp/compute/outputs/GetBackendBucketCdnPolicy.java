@@ -33,18 +33,21 @@ public final class GetBackendBucketCdnPolicy {
      */
     private String cacheMode;
     /**
-     * @return Specifies the maximum allowed TTL for cached content served by this origin.
+     * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
+     * &#39;cache_mode&#39; is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     private Integer clientTtl;
     /**
      * @return Specifies the default TTL for cached content served by this origin for responses
-     * that do not have an existing valid TTL (max-age or s-max-age).
+     * that do not have an existing valid TTL (max-age or s-max-age). When the &#39;cache_mode&#39;
+     * is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     private Integer defaultTtl;
     /**
-     * @return Specifies the maximum allowed TTL for cached content served by this origin.
+     * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
+     * &#39;cache_mode&#39; is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     private Integer maxTtl;
@@ -106,7 +109,8 @@ public final class GetBackendBucketCdnPolicy {
         return this.cacheMode;
     }
     /**
-     * @return Specifies the maximum allowed TTL for cached content served by this origin.
+     * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
+     * &#39;cache_mode&#39; is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     public Integer clientTtl() {
@@ -114,14 +118,16 @@ public final class GetBackendBucketCdnPolicy {
     }
     /**
      * @return Specifies the default TTL for cached content served by this origin for responses
-     * that do not have an existing valid TTL (max-age or s-max-age).
+     * that do not have an existing valid TTL (max-age or s-max-age). When the &#39;cache_mode&#39;
+     * is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     public Integer defaultTtl() {
         return this.defaultTtl;
     }
     /**
-     * @return Specifies the maximum allowed TTL for cached content served by this origin.
+     * @return Specifies the maximum allowed TTL for cached content served by this origin. When the
+     * &#39;cache_mode&#39; is set to &#34;USE_ORIGIN_HEADERS&#34;, you must omit this field.
      * 
      */
     public Integer maxTtl() {

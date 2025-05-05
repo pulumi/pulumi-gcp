@@ -317,6 +317,9 @@ class _PeeringState:
 
 
 class Peering(pulumi.CustomResource):
+
+    pulumi_type = "gcp:activedirectory/peering:Peering"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

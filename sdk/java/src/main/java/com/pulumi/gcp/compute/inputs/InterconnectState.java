@@ -309,7 +309,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
+     * Specifies the location inside Google&#39;s Networks.
      * 
      */
     @Import(name="location")
@@ -317,7 +317,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
+     * Specifies the location inside Google&#39;s Networks.
      * 
      */
     public Optional<Output<String>> location() {
@@ -1077,7 +1077,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-         * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
+         * Specifies the location inside Google&#39;s Networks.
          * 
          * @return builder
          * 
@@ -1089,7 +1089,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-         * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
+         * Specifies the location inside Google&#39;s Networks.
          * 
          * @return builder
          * 

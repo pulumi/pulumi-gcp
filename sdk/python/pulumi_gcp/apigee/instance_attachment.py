@@ -128,6 +128,9 @@ class _InstanceAttachmentState:
 
 
 class InstanceAttachment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/instanceAttachment:InstanceAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

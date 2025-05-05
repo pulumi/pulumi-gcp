@@ -91,6 +91,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodeConfigFastSocketArgs>? FastSocket { get; set; }
 
         /// <summary>
+        /// Enables Flex Start provisioning model for the node pool.
+        /// </summary>
+        [Input("flexStart")]
+        public Input<bool>? FlexStart { get; set; }
+
+        /// <summary>
         /// Parameters for the Google Container Filesystem (GCFS).
         /// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
         /// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.

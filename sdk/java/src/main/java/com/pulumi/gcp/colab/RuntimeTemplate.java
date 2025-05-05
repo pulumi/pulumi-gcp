@@ -335,15 +335,15 @@ public class RuntimeTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="eucConfig", refs={RuntimeTemplateEucConfig.class}, tree="[0]")
-    private Output</* @Nullable */ RuntimeTemplateEucConfig> eucConfig;
+    private Output<RuntimeTemplateEucConfig> eucConfig;
 
     /**
      * @return EUC configuration of the NotebookRuntimeTemplate.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<RuntimeTemplateEucConfig>> eucConfig() {
-        return Codegen.optional(this.eucConfig);
+    public Output<RuntimeTemplateEucConfig> eucConfig() {
+        return this.eucConfig;
     }
     /**
      * Notebook Idle Shutdown configuration for the runtime.
@@ -368,7 +368,7 @@ public class RuntimeTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> labels;
+    private Output<Map<String,String>> labels;
 
     /**
      * @return Labels to identify and group the runtime template.
@@ -376,8 +376,8 @@ public class RuntimeTemplate extends com.pulumi.resources.CustomResource {
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
-    public Output<Optional<Map<String,String>>> labels() {
-        return Codegen.optional(this.labels);
+    public Output<Map<String,String>> labels() {
+        return this.labels;
     }
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
@@ -495,15 +495,15 @@ public class RuntimeTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="shieldedVmConfig", refs={RuntimeTemplateShieldedVmConfig.class}, tree="[0]")
-    private Output</* @Nullable */ RuntimeTemplateShieldedVmConfig> shieldedVmConfig;
+    private Output<RuntimeTemplateShieldedVmConfig> shieldedVmConfig;
 
     /**
      * @return Runtime Shielded VM spec.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<RuntimeTemplateShieldedVmConfig>> shieldedVmConfig() {
-        return Codegen.optional(this.shieldedVmConfig);
+    public Output<RuntimeTemplateShieldedVmConfig> shieldedVmConfig() {
+        return this.shieldedVmConfig;
     }
     /**
      * The notebook software configuration of the notebook runtime.

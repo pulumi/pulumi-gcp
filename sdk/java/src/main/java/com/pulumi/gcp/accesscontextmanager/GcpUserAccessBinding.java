@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBindingArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingState;
+import com.pulumi.gcp.accesscontextmanager.outputs.GcpUserAccessBindingScopedAccessSetting;
 import com.pulumi.gcp.accesscontextmanager.outputs.GcpUserAccessBindingSessionSettings;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -179,6 +181,22 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
      */
     public Output<String> organizationId() {
         return this.organizationId;
+    }
+    /**
+     * Optional. A list of scoped access settings that set this binding&#39;s restrictions on a subset of applications.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="scopedAccessSettings", refs={List.class,GcpUserAccessBindingScopedAccessSetting.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<GcpUserAccessBindingScopedAccessSetting>> scopedAccessSettings;
+
+    /**
+     * @return Optional. A list of scoped access settings that set this binding&#39;s restrictions on a subset of applications.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<GcpUserAccessBindingScopedAccessSetting>>> scopedAccessSettings() {
+        return Codegen.optional(this.scopedAccessSettings);
     }
     /**
      * Optional. The Google Cloud session length (GCSL) policy for the group key.

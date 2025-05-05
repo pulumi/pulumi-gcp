@@ -316,6 +316,10 @@ runtime:
 	testUpgrade(t, testDir, optproviderupgrade.NewSourcePath(secondTestDir))
 }
 
+func TestRouterNatUpgrade(t *testing.T) {
+	testUpgrade(t, "test-programs/router-nat")
+}
+
 // This used to panic in the Diff on unexpected bool label (expecting string), see
 // pulumi/pulumi-gcp#1377 for more details.
 //

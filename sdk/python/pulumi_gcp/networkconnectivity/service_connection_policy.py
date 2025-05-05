@@ -441,6 +441,9 @@ class _ServiceConnectionPolicyState:
 
 
 class ServiceConnectionPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

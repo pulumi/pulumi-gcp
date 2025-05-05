@@ -176,6 +176,9 @@ class _WebRegionBackendServiceIamPolicyState:
 
 
 class WebRegionBackendServiceIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -56,7 +56,7 @@ type KeyRingImportJob struct {
 	// ***
 	ImportJobId pulumi.StringOutput `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
-	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
 	ImportMethod pulumi.StringOutput `pulumi:"importMethod"`
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -129,7 +129,7 @@ type keyRingImportJobState struct {
 	// ***
 	ImportJobId *string `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
-	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
 	ImportMethod *string `pulumi:"importMethod"`
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -161,7 +161,7 @@ type KeyRingImportJobState struct {
 	// ***
 	ImportJobId pulumi.StringPtrInput
 	// The wrapping method to be used for incoming key material.
-	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
 	ImportMethod pulumi.StringPtrInput
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -189,7 +189,7 @@ type keyRingImportJobArgs struct {
 	// ***
 	ImportJobId string `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
-	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
 	ImportMethod string `pulumi:"importMethod"`
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -207,7 +207,7 @@ type KeyRingImportJobArgs struct {
 	// ***
 	ImportJobId pulumi.StringInput
 	// The wrapping method to be used for incoming key material.
-	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
 	ImportMethod pulumi.StringInput
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -327,7 +327,7 @@ func (o KeyRingImportJobOutput) ImportJobId() pulumi.StringOutput {
 }
 
 // The wrapping method to be used for incoming key material.
-// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
 func (o KeyRingImportJobOutput) ImportMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRingImportJob) pulumi.StringOutput { return v.ImportMethod }).(pulumi.StringOutput)
 }

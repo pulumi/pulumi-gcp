@@ -19,6 +19,7 @@ import (
 // * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
 // * How-to Guides
 //   - [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+//   - Setting a custom endpoint (required for data residency)
 //
 // ## Example Usage
 //
@@ -106,6 +107,38 @@ import (
 //			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
 //				Description:       pulumi.String("Terraform-provisioned basic Apigee Org without VPC Peering."),
 //				AnalyticsRegion:   pulumi.String("us-central1"),
+//				ProjectId:         pulumi.String(current.Project),
+//				DisableVpcPeering: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apigee Organization Cloud Basic Data Residency
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
+//				Description:       pulumi.String("Terraform-provisioned basic Apigee Org under European Union hosting jurisdiction."),
 //				ProjectId:         pulumi.String(current.Project),
 //				DisableVpcPeering: pulumi.Bool(true),
 //			})

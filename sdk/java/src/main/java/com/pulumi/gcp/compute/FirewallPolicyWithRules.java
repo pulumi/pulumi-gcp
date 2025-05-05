@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *                     .enableLogging(true)
  *                     .action("allow")
  *                     .direction("EGRESS")
- *                     .targetResources(String.format("https://www.googleapis.com/compute/beta/projects/%s/global/networks/default", project.name()))
+ *                     .targetResources(String.format("https://www.googleapis.com/compute/beta/projects/%s/global/networks/default", project.projectId()))
  *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
  *                         .destIpRanges("11.100.0.1/32")
  *                         .destFqdns(                        

@@ -3880,6 +3880,8 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Enabled() pulumi.Boo
 }
 
 type FeatureMembershipConfigmanagementConfigSync struct {
+	// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
+	DeploymentOverrides []FeatureMembershipConfigmanagementConfigSyncDeploymentOverride `pulumi:"deploymentOverrides"`
 	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
 	Enabled *bool `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
@@ -3910,6 +3912,8 @@ type FeatureMembershipConfigmanagementConfigSyncInput interface {
 }
 
 type FeatureMembershipConfigmanagementConfigSyncArgs struct {
+	// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
+	DeploymentOverrides FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayInput `pulumi:"deploymentOverrides"`
 	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
@@ -4005,6 +4009,13 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipCo
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
+// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) DeploymentOverrides() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) []FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
+		return v.DeploymentOverrides
+	}).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput)
+}
+
 // Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -4068,6 +4079,16 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMemb
 		var ret FeatureMembershipConfigmanagementConfigSync
 		return ret
 	}).(FeatureMembershipConfigmanagementConfigSyncOutput)
+}
+
+// The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) DeploymentOverrides() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) []FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentOverrides
+	}).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput)
 }
 
 // Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
@@ -4140,6 +4161,268 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) StopSyncing() pulu
 		}
 		return v.StopSyncing
 	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverride struct {
+	// The override configurations for the containers in the Deployment. Structure is documented below.
+	Containers []FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer `pulumi:"containers"`
+	// The name of the Deployment.
+	DeploymentName *string `pulumi:"deploymentName"`
+	// The namespace of the Deployment.
+	DeploymentNamespace *string `pulumi:"deploymentNamespace"`
+}
+
+// FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs and FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideInput` via:
+//
+//	FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs{...}
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput
+	ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs struct {
+	// The override configurations for the containers in the Deployment. Structure is documented below.
+	Containers FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayInput `pulumi:"containers"`
+	// The name of the Deployment.
+	DeploymentName pulumi.StringPtrInput `pulumi:"deploymentName"`
+	// The namespace of the Deployment.
+	DeploymentNamespace pulumi.StringPtrInput `pulumi:"deploymentNamespace"`
+}
+
+func (FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncDeploymentOverride)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput)
+}
+
+// FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArray and FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayInput` via:
+//
+//	FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArray{ FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs{...} }
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput
+	ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArray []FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideInput
+
+func (FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureMembershipConfigmanagementConfigSyncDeploymentOverride)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArray) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArray) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncDeploymentOverride)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput {
+	return o
+}
+
+// The override configurations for the containers in the Deployment. Structure is documented below.
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput) Containers() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncDeploymentOverride) []FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer {
+		return v.Containers
+	}).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput)
+}
+
+// The name of the Deployment.
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput) DeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncDeploymentOverride) *string { return v.DeploymentName }).(pulumi.StringPtrOutput)
+}
+
+// The namespace of the Deployment.
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput) DeploymentNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncDeploymentOverride) *string {
+		return v.DeploymentNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureMembershipConfigmanagementConfigSyncDeploymentOverride)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput) Index(i pulumi.IntInput) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
+		return vs[0].([]FeatureMembershipConfigmanagementConfigSyncDeploymentOverride)[vs[1].(int)]
+	}).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer struct {
+	// The name of the container.
+	ContainerName *string `pulumi:"containerName"`
+	// The CPU limit of the container.
+	CpuLimit *string `pulumi:"cpuLimit"`
+	// The CPU request of the container.
+	CpuRequest *string `pulumi:"cpuRequest"`
+	// The memory limit of the container.
+	MemoryLimit *string `pulumi:"memoryLimit"`
+	// The memory request of the container.
+	MemoryRequest *string `pulumi:"memoryRequest"`
+}
+
+// FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs and FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerInput` via:
+//
+//	FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs{...}
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput
+	ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs struct {
+	// The name of the container.
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	// The CPU limit of the container.
+	CpuLimit pulumi.StringPtrInput `pulumi:"cpuLimit"`
+	// The CPU request of the container.
+	CpuRequest pulumi.StringPtrInput `pulumi:"cpuRequest"`
+	// The memory limit of the container.
+	MemoryLimit pulumi.StringPtrInput `pulumi:"memoryLimit"`
+	// The memory request of the container.
+	MemoryRequest pulumi.StringPtrInput `pulumi:"memoryRequest"`
+}
+
+func (FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput)
+}
+
+// FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArray and FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput values.
+// You can construct a concrete instance of `FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayInput` via:
+//
+//	FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArray{ FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs{...} }
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput
+	ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutputWithContext(context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArray []FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerInput
+
+func (FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer)(nil)).Elem()
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArray) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput {
+	return i.ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArray) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput {
+	return o
+}
+
+// The name of the container.
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer) *string {
+		return v.ContainerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU limit of the container.
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput) CpuLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer) *string {
+		return v.CpuLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU request of the container.
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput) CpuRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer) *string {
+		return v.CpuRequest
+	}).(pulumi.StringPtrOutput)
+}
+
+// The memory limit of the container.
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput) MemoryLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer) *string {
+		return v.MemoryLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The memory request of the container.
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput) MemoryRequest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer) *string {
+		return v.MemoryRequest
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer)(nil)).Elem()
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput() FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput) ToFeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput {
+	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput) Index(i pulumi.IntInput) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer {
+		return vs[0].([]FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer)[vs[1].(int)]
+	}).(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput)
 }
 
 type FeatureMembershipConfigmanagementConfigSyncGit struct {
@@ -15238,6 +15521,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementBinauthzPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementBinauthzArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncGitInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncGitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncGitPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncGitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementConfigSyncOciInput)(nil)).Elem(), FeatureMembershipConfigmanagementConfigSyncOciArgs{})
@@ -15444,6 +15731,10 @@ func init() {
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementBinauthzPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArrayOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArrayOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncGitOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementConfigSyncOciOutput{})

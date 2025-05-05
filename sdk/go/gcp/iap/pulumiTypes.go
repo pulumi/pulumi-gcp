@@ -4528,6 +4528,348 @@ func (o WebBackendServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type WebCloudRunServiceIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// WebCloudRunServiceIamBindingConditionInput is an input type that accepts WebCloudRunServiceIamBindingConditionArgs and WebCloudRunServiceIamBindingConditionOutput values.
+// You can construct a concrete instance of `WebCloudRunServiceIamBindingConditionInput` via:
+//
+//	WebCloudRunServiceIamBindingConditionArgs{...}
+type WebCloudRunServiceIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToWebCloudRunServiceIamBindingConditionOutput() WebCloudRunServiceIamBindingConditionOutput
+	ToWebCloudRunServiceIamBindingConditionOutputWithContext(context.Context) WebCloudRunServiceIamBindingConditionOutput
+}
+
+type WebCloudRunServiceIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (WebCloudRunServiceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebCloudRunServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i WebCloudRunServiceIamBindingConditionArgs) ToWebCloudRunServiceIamBindingConditionOutput() WebCloudRunServiceIamBindingConditionOutput {
+	return i.ToWebCloudRunServiceIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i WebCloudRunServiceIamBindingConditionArgs) ToWebCloudRunServiceIamBindingConditionOutputWithContext(ctx context.Context) WebCloudRunServiceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebCloudRunServiceIamBindingConditionOutput)
+}
+
+func (i WebCloudRunServiceIamBindingConditionArgs) ToWebCloudRunServiceIamBindingConditionPtrOutput() WebCloudRunServiceIamBindingConditionPtrOutput {
+	return i.ToWebCloudRunServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WebCloudRunServiceIamBindingConditionArgs) ToWebCloudRunServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebCloudRunServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebCloudRunServiceIamBindingConditionOutput).ToWebCloudRunServiceIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// WebCloudRunServiceIamBindingConditionPtrInput is an input type that accepts WebCloudRunServiceIamBindingConditionArgs, WebCloudRunServiceIamBindingConditionPtr and WebCloudRunServiceIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `WebCloudRunServiceIamBindingConditionPtrInput` via:
+//
+//	        WebCloudRunServiceIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebCloudRunServiceIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToWebCloudRunServiceIamBindingConditionPtrOutput() WebCloudRunServiceIamBindingConditionPtrOutput
+	ToWebCloudRunServiceIamBindingConditionPtrOutputWithContext(context.Context) WebCloudRunServiceIamBindingConditionPtrOutput
+}
+
+type webCloudRunServiceIamBindingConditionPtrType WebCloudRunServiceIamBindingConditionArgs
+
+func WebCloudRunServiceIamBindingConditionPtr(v *WebCloudRunServiceIamBindingConditionArgs) WebCloudRunServiceIamBindingConditionPtrInput {
+	return (*webCloudRunServiceIamBindingConditionPtrType)(v)
+}
+
+func (*webCloudRunServiceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebCloudRunServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i *webCloudRunServiceIamBindingConditionPtrType) ToWebCloudRunServiceIamBindingConditionPtrOutput() WebCloudRunServiceIamBindingConditionPtrOutput {
+	return i.ToWebCloudRunServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *webCloudRunServiceIamBindingConditionPtrType) ToWebCloudRunServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebCloudRunServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebCloudRunServiceIamBindingConditionPtrOutput)
+}
+
+type WebCloudRunServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (WebCloudRunServiceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebCloudRunServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o WebCloudRunServiceIamBindingConditionOutput) ToWebCloudRunServiceIamBindingConditionOutput() WebCloudRunServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o WebCloudRunServiceIamBindingConditionOutput) ToWebCloudRunServiceIamBindingConditionOutputWithContext(ctx context.Context) WebCloudRunServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o WebCloudRunServiceIamBindingConditionOutput) ToWebCloudRunServiceIamBindingConditionPtrOutput() WebCloudRunServiceIamBindingConditionPtrOutput {
+	return o.ToWebCloudRunServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WebCloudRunServiceIamBindingConditionOutput) ToWebCloudRunServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebCloudRunServiceIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebCloudRunServiceIamBindingCondition) *WebCloudRunServiceIamBindingCondition {
+		return &v
+	}).(WebCloudRunServiceIamBindingConditionPtrOutput)
+}
+
+func (o WebCloudRunServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebCloudRunServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebCloudRunServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WebCloudRunServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebCloudRunServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WebCloudRunServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WebCloudRunServiceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebCloudRunServiceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebCloudRunServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o WebCloudRunServiceIamBindingConditionPtrOutput) ToWebCloudRunServiceIamBindingConditionPtrOutput() WebCloudRunServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WebCloudRunServiceIamBindingConditionPtrOutput) ToWebCloudRunServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebCloudRunServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WebCloudRunServiceIamBindingConditionPtrOutput) Elem() WebCloudRunServiceIamBindingConditionOutput {
+	return o.ApplyT(func(v *WebCloudRunServiceIamBindingCondition) WebCloudRunServiceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebCloudRunServiceIamBindingCondition
+		return ret
+	}).(WebCloudRunServiceIamBindingConditionOutput)
+}
+
+func (o WebCloudRunServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebCloudRunServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebCloudRunServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebCloudRunServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebCloudRunServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebCloudRunServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WebCloudRunServiceIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// WebCloudRunServiceIamMemberConditionInput is an input type that accepts WebCloudRunServiceIamMemberConditionArgs and WebCloudRunServiceIamMemberConditionOutput values.
+// You can construct a concrete instance of `WebCloudRunServiceIamMemberConditionInput` via:
+//
+//	WebCloudRunServiceIamMemberConditionArgs{...}
+type WebCloudRunServiceIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToWebCloudRunServiceIamMemberConditionOutput() WebCloudRunServiceIamMemberConditionOutput
+	ToWebCloudRunServiceIamMemberConditionOutputWithContext(context.Context) WebCloudRunServiceIamMemberConditionOutput
+}
+
+type WebCloudRunServiceIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (WebCloudRunServiceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebCloudRunServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i WebCloudRunServiceIamMemberConditionArgs) ToWebCloudRunServiceIamMemberConditionOutput() WebCloudRunServiceIamMemberConditionOutput {
+	return i.ToWebCloudRunServiceIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i WebCloudRunServiceIamMemberConditionArgs) ToWebCloudRunServiceIamMemberConditionOutputWithContext(ctx context.Context) WebCloudRunServiceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebCloudRunServiceIamMemberConditionOutput)
+}
+
+func (i WebCloudRunServiceIamMemberConditionArgs) ToWebCloudRunServiceIamMemberConditionPtrOutput() WebCloudRunServiceIamMemberConditionPtrOutput {
+	return i.ToWebCloudRunServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WebCloudRunServiceIamMemberConditionArgs) ToWebCloudRunServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebCloudRunServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebCloudRunServiceIamMemberConditionOutput).ToWebCloudRunServiceIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// WebCloudRunServiceIamMemberConditionPtrInput is an input type that accepts WebCloudRunServiceIamMemberConditionArgs, WebCloudRunServiceIamMemberConditionPtr and WebCloudRunServiceIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `WebCloudRunServiceIamMemberConditionPtrInput` via:
+//
+//	        WebCloudRunServiceIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebCloudRunServiceIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToWebCloudRunServiceIamMemberConditionPtrOutput() WebCloudRunServiceIamMemberConditionPtrOutput
+	ToWebCloudRunServiceIamMemberConditionPtrOutputWithContext(context.Context) WebCloudRunServiceIamMemberConditionPtrOutput
+}
+
+type webCloudRunServiceIamMemberConditionPtrType WebCloudRunServiceIamMemberConditionArgs
+
+func WebCloudRunServiceIamMemberConditionPtr(v *WebCloudRunServiceIamMemberConditionArgs) WebCloudRunServiceIamMemberConditionPtrInput {
+	return (*webCloudRunServiceIamMemberConditionPtrType)(v)
+}
+
+func (*webCloudRunServiceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebCloudRunServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i *webCloudRunServiceIamMemberConditionPtrType) ToWebCloudRunServiceIamMemberConditionPtrOutput() WebCloudRunServiceIamMemberConditionPtrOutput {
+	return i.ToWebCloudRunServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *webCloudRunServiceIamMemberConditionPtrType) ToWebCloudRunServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebCloudRunServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebCloudRunServiceIamMemberConditionPtrOutput)
+}
+
+type WebCloudRunServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (WebCloudRunServiceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebCloudRunServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o WebCloudRunServiceIamMemberConditionOutput) ToWebCloudRunServiceIamMemberConditionOutput() WebCloudRunServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o WebCloudRunServiceIamMemberConditionOutput) ToWebCloudRunServiceIamMemberConditionOutputWithContext(ctx context.Context) WebCloudRunServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o WebCloudRunServiceIamMemberConditionOutput) ToWebCloudRunServiceIamMemberConditionPtrOutput() WebCloudRunServiceIamMemberConditionPtrOutput {
+	return o.ToWebCloudRunServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WebCloudRunServiceIamMemberConditionOutput) ToWebCloudRunServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebCloudRunServiceIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebCloudRunServiceIamMemberCondition) *WebCloudRunServiceIamMemberCondition {
+		return &v
+	}).(WebCloudRunServiceIamMemberConditionPtrOutput)
+}
+
+func (o WebCloudRunServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebCloudRunServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebCloudRunServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WebCloudRunServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebCloudRunServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WebCloudRunServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WebCloudRunServiceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebCloudRunServiceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebCloudRunServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o WebCloudRunServiceIamMemberConditionPtrOutput) ToWebCloudRunServiceIamMemberConditionPtrOutput() WebCloudRunServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WebCloudRunServiceIamMemberConditionPtrOutput) ToWebCloudRunServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebCloudRunServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WebCloudRunServiceIamMemberConditionPtrOutput) Elem() WebCloudRunServiceIamMemberConditionOutput {
+	return o.ApplyT(func(v *WebCloudRunServiceIamMemberCondition) WebCloudRunServiceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebCloudRunServiceIamMemberCondition
+		return ret
+	}).(WebCloudRunServiceIamMemberConditionOutput)
+}
+
+func (o WebCloudRunServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebCloudRunServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o WebCloudRunServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebCloudRunServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o WebCloudRunServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebCloudRunServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WebIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
@@ -6065,6 +6407,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamBindingConditionPtrInput)(nil)).Elem(), WebBackendServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamMemberConditionInput)(nil)).Elem(), WebBackendServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamMemberConditionPtrInput)(nil)).Elem(), WebBackendServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebCloudRunServiceIamBindingConditionInput)(nil)).Elem(), WebCloudRunServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebCloudRunServiceIamBindingConditionPtrInput)(nil)).Elem(), WebCloudRunServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebCloudRunServiceIamMemberConditionInput)(nil)).Elem(), WebCloudRunServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebCloudRunServiceIamMemberConditionPtrInput)(nil)).Elem(), WebCloudRunServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebIamBindingConditionInput)(nil)).Elem(), WebIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebIamBindingConditionPtrInput)(nil)).Elem(), WebIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebIamMemberConditionInput)(nil)).Elem(), WebIamMemberConditionArgs{})
@@ -6129,6 +6475,10 @@ func init() {
 	pulumi.RegisterOutputType(WebBackendServiceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebBackendServiceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(WebBackendServiceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(WebCloudRunServiceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(WebCloudRunServiceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(WebCloudRunServiceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(WebCloudRunServiceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(WebIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebIamMemberConditionOutput{})

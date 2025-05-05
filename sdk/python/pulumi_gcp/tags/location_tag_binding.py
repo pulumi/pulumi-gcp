@@ -152,6 +152,9 @@ class _LocationTagBindingState:
 
 
 class LocationTagBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:tags/locationTagBinding:LocationTagBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

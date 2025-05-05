@@ -339,6 +339,9 @@ class _EnvironmentState:
 
 
 class Environment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:notebooks/environment:Environment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

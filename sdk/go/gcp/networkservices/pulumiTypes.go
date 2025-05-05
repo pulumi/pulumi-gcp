@@ -11396,6 +11396,7 @@ type LbTrafficExtensionExtensionChain struct {
 	// A set of extensions to execute for the matching request.
 	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+	// Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 	// Structure is documented below.
 	Extensions []LbTrafficExtensionExtensionChainExtension `pulumi:"extensions"`
 	// Conditions under which this chain is invoked for a request.
@@ -11423,6 +11424,7 @@ type LbTrafficExtensionExtensionChainArgs struct {
 	// A set of extensions to execute for the matching request.
 	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+	// Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 	// Structure is documented below.
 	Extensions LbTrafficExtensionExtensionChainExtensionArrayInput `pulumi:"extensions"`
 	// Conditions under which this chain is invoked for a request.
@@ -11489,6 +11491,7 @@ func (o LbTrafficExtensionExtensionChainOutput) ToLbTrafficExtensionExtensionCha
 // A set of extensions to execute for the matching request.
 // At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 // LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+// Further documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 // Structure is documented below.
 func (o LbTrafficExtensionExtensionChainOutput) Extensions() LbTrafficExtensionExtensionChainExtensionArrayOutput {
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChain) []LbTrafficExtensionExtensionChainExtension {
@@ -11545,6 +11548,12 @@ type LbTrafficExtensionExtensionChainExtension struct {
 	// List of the HTTP headers to forward to the extension (from the client or backend).
 	// If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders []string `pulumi:"forwardHeaders"`
+	// Metadata associated with the extension. This field is used to pass metadata to the extension service.
+	// You can set up key value pairs for metadata as you like and need.
+	// f.e. {"key": "value", "key2": "value2"}.
+	//
+	// ***
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name for this extension. The name is logged as part of the HTTP request logs.
 	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -11556,8 +11565,6 @@ type LbTrafficExtensionExtensionChainExtension struct {
 	// This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
 	// resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
 	// `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-	//
-	// ***
 	SupportedEvents []string `pulumi:"supportedEvents"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -11588,6 +11595,12 @@ type LbTrafficExtensionExtensionChainExtensionArgs struct {
 	// List of the HTTP headers to forward to the extension (from the client or backend).
 	// If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders pulumi.StringArrayInput `pulumi:"forwardHeaders"`
+	// Metadata associated with the extension. This field is used to pass metadata to the extension service.
+	// You can set up key value pairs for metadata as you like and need.
+	// f.e. {"key": "value", "key2": "value2"}.
+	//
+	// ***
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// The name for this extension. The name is logged as part of the HTTP request logs.
 	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -11599,8 +11612,6 @@ type LbTrafficExtensionExtensionChainExtensionArgs struct {
 	// This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
 	// resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
 	// `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-	//
-	// ***
 	SupportedEvents pulumi.StringArrayInput `pulumi:"supportedEvents"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -11679,6 +11690,15 @@ func (o LbTrafficExtensionExtensionChainExtensionOutput) ForwardHeaders() pulumi
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) []string { return v.ForwardHeaders }).(pulumi.StringArrayOutput)
 }
 
+// Metadata associated with the extension. This field is used to pass metadata to the extension service.
+// You can set up key value pairs for metadata as you like and need.
+// f.e. {"key": "value", "key2": "value2"}.
+//
+// ***
+func (o LbTrafficExtensionExtensionChainExtensionOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
 // The name for this extension. The name is logged as part of the HTTP request logs.
 // The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 // and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -11696,8 +11716,6 @@ func (o LbTrafficExtensionExtensionChainExtensionOutput) Service() pulumi.String
 // This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
 // resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
 // `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-//
-// ***
 func (o LbTrafficExtensionExtensionChainExtensionOutput) SupportedEvents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChainExtension) []string { return v.SupportedEvents }).(pulumi.StringArrayOutput)
 }

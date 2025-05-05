@@ -26,6 +26,8 @@ namespace Pulumi.Gcp.Firebaserules.Inputs
 
         /// <summary>
         /// `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
+        /// 
+        /// - - -
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }

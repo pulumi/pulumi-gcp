@@ -6,6 +6,7 @@ package com.pulumi.gcp.sql.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceClone;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceDnsName;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceIpAddress;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceReplicaConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceReplicationCluster;
@@ -27,6 +28,7 @@ public final class GetDatabaseInstanceResult {
     private String databaseVersion;
     private Boolean deletionProtection;
     private String dnsName;
+    private List<GetDatabaseInstanceDnsName> dnsNames;
     private String encryptionKeyName;
     private String firstIpAddress;
     /**
@@ -72,6 +74,9 @@ public final class GetDatabaseInstanceResult {
     }
     public String dnsName() {
         return this.dnsName;
+    }
+    public List<GetDatabaseInstanceDnsName> dnsNames() {
+        return this.dnsNames;
     }
     public String encryptionKeyName() {
         return this.encryptionKeyName;
@@ -159,6 +164,7 @@ public final class GetDatabaseInstanceResult {
         private String databaseVersion;
         private Boolean deletionProtection;
         private String dnsName;
+        private List<GetDatabaseInstanceDnsName> dnsNames;
         private String encryptionKeyName;
         private String firstIpAddress;
         private String id;
@@ -190,6 +196,7 @@ public final class GetDatabaseInstanceResult {
     	      this.databaseVersion = defaults.databaseVersion;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.dnsName = defaults.dnsName;
+    	      this.dnsNames = defaults.dnsNames;
     	      this.encryptionKeyName = defaults.encryptionKeyName;
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.id = defaults.id;
@@ -267,6 +274,17 @@ public final class GetDatabaseInstanceResult {
             }
             this.dnsName = dnsName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dnsNames(List<GetDatabaseInstanceDnsName> dnsNames) {
+            if (dnsNames == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "dnsNames");
+            }
+            this.dnsNames = dnsNames;
+            return this;
+        }
+        public Builder dnsNames(GetDatabaseInstanceDnsName... dnsNames) {
+            return dnsNames(List.of(dnsNames));
         }
         @CustomType.Setter
         public Builder encryptionKeyName(String encryptionKeyName) {
@@ -471,6 +489,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.databaseVersion = databaseVersion;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.dnsName = dnsName;
+            _resultValue.dnsNames = dnsNames;
             _resultValue.encryptionKeyName = encryptionKeyName;
             _resultValue.firstIpAddress = firstIpAddress;
             _resultValue.id = id;

@@ -5,6 +5,7 @@ package com.pulumi.gcp.discoveryengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.discoveryengine.outputs.ChatEngineChatEngineConfigAgentCreationConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +20,17 @@ public final class ChatEngineChatEngineConfig {
      * 
      */
     private @Nullable ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig;
+    /**
+     * @return If the flag set to true, we allow the agent and engine are in
+     * different locations, otherwise the agent and engine are required to be
+     * in the same location. The flag is set to false by default.
+     * Note that the `allow_cross_region` are one-time consumed by and passed
+     * to EngineService.CreateEngine. It means they cannot be retrieved using
+     * EngineService.GetEngine or EngineService.ListEngines API after engine
+     * creation.
+     * 
+     */
+    private @Nullable Boolean allowCrossRegion;
     /**
      * @return The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
      * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
@@ -35,6 +47,19 @@ public final class ChatEngineChatEngineConfig {
      */
     public Optional<ChatEngineChatEngineConfigAgentCreationConfig> agentCreationConfig() {
         return Optional.ofNullable(this.agentCreationConfig);
+    }
+    /**
+     * @return If the flag set to true, we allow the agent and engine are in
+     * different locations, otherwise the agent and engine are required to be
+     * in the same location. The flag is set to false by default.
+     * Note that the `allow_cross_region` are one-time consumed by and passed
+     * to EngineService.CreateEngine. It means they cannot be retrieved using
+     * EngineService.GetEngine or EngineService.ListEngines API after engine
+     * creation.
+     * 
+     */
+    public Optional<Boolean> allowCrossRegion() {
+        return Optional.ofNullable(this.allowCrossRegion);
     }
     /**
      * @return The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
@@ -55,11 +80,13 @@ public final class ChatEngineChatEngineConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig;
+        private @Nullable Boolean allowCrossRegion;
         private @Nullable String dialogflowAgentToLink;
         public Builder() {}
         public Builder(ChatEngineChatEngineConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentCreationConfig = defaults.agentCreationConfig;
+    	      this.allowCrossRegion = defaults.allowCrossRegion;
     	      this.dialogflowAgentToLink = defaults.dialogflowAgentToLink;
         }
 
@@ -67,6 +94,12 @@ public final class ChatEngineChatEngineConfig {
         public Builder agentCreationConfig(@Nullable ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig) {
 
             this.agentCreationConfig = agentCreationConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowCrossRegion(@Nullable Boolean allowCrossRegion) {
+
+            this.allowCrossRegion = allowCrossRegion;
             return this;
         }
         @CustomType.Setter
@@ -78,6 +111,7 @@ public final class ChatEngineChatEngineConfig {
         public ChatEngineChatEngineConfig build() {
             final var _resultValue = new ChatEngineChatEngineConfig();
             _resultValue.agentCreationConfig = agentCreationConfig;
+            _resultValue.allowCrossRegion = allowCrossRegion;
             _resultValue.dialogflowAgentToLink = dialogflowAgentToLink;
             return _resultValue;
         }

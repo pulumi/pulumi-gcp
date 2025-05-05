@@ -217,6 +217,9 @@ class _DnsZoneState:
 
 
 class DnsZone(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/dnsZone:DnsZone"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

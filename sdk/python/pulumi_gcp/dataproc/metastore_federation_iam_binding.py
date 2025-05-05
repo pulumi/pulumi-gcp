@@ -289,6 +289,9 @@ class _MetastoreFederationIamBindingState:
 
 
 class MetastoreFederationIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

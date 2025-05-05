@@ -52,6 +52,63 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
+    /// ### Beyondcorp Security Gateway Application Vpc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var @default = new Gcp.Beyondcorp.SecurityGateway("default", new()
+    ///     {
+    ///         SecurityGatewayId = "default",
+    ///         DisplayName = "My Security Gateway resource",
+    ///         Hubs = new[]
+    ///         {
+    ///             new Gcp.Beyondcorp.Inputs.SecurityGatewayHubArgs
+    ///             {
+    ///                 Region = "us-central1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new Gcp.Beyondcorp.Application("example", new()
+    ///     {
+    ///         SecurityGatewaysId = @default.SecurityGatewayId,
+    ///         ApplicationId = "my-vm-service",
+    ///         EndpointMatchers = new[]
+    ///         {
+    ///             new Gcp.Beyondcorp.Inputs.ApplicationEndpointMatcherArgs
+    ///             {
+    ///                 Hostname = "my-vm-service.com",
+    ///             },
+    ///         },
+    ///         Upstreams = new[]
+    ///         {
+    ///             new Gcp.Beyondcorp.Inputs.ApplicationUpstreamArgs
+    ///             {
+    ///                 EgressPolicy = new Gcp.Beyondcorp.Inputs.ApplicationUpstreamEgressPolicyArgs
+    ///                 {
+    ///                     Regions = new[]
+    ///                     {
+    ///                         "us-central1",
+    ///                     },
+    ///                 },
+    ///                 Network = new Gcp.Beyondcorp.Inputs.ApplicationUpstreamNetworkArgs
+    ///                 {
+    ///                     Name = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/global/networks/default",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -138,6 +195,12 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. List of which upstream resource(s) to forward traffic to.
+        /// </summary>
+        [Output("upstreams")]
+        public Output<ImmutableArray<Outputs.ApplicationUpstream>> Upstreams { get; private set; } = null!;
 
 
         /// <summary>
@@ -232,6 +295,18 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("securityGatewaysId", required: true)]
         public Input<string> SecurityGatewaysId { get; set; } = null!;
 
+        [Input("upstreams")]
+        private InputList<Inputs.ApplicationUpstreamArgs>? _upstreams;
+
+        /// <summary>
+        /// Optional. List of which upstream resource(s) to forward traffic to.
+        /// </summary>
+        public InputList<Inputs.ApplicationUpstreamArgs> Upstreams
+        {
+            get => _upstreams ?? (_upstreams = new InputList<Inputs.ApplicationUpstreamArgs>());
+            set => _upstreams = value;
+        }
+
         public ApplicationArgs()
         {
         }
@@ -304,6 +379,18 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        [Input("upstreams")]
+        private InputList<Inputs.ApplicationUpstreamGetArgs>? _upstreams;
+
+        /// <summary>
+        /// Optional. List of which upstream resource(s) to forward traffic to.
+        /// </summary>
+        public InputList<Inputs.ApplicationUpstreamGetArgs> Upstreams
+        {
+            get => _upstreams ?? (_upstreams = new InputList<Inputs.ApplicationUpstreamGetArgs>());
+            set => _upstreams = value;
+        }
 
         public ApplicationState()
         {

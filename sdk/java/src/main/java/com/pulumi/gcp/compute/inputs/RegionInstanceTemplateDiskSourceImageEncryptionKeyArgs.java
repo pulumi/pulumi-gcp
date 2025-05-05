@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,19 +17,21 @@ public final class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs extend
 
     /**
      * The self link of the encryption key that is
-     * stored in Google Cloud KMS.
+     * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
      * 
      */
-    @Import(name="kmsKeySelfLink", required=true)
-    private Output<String> kmsKeySelfLink;
+    @Import(name="kmsKeySelfLink")
+    private @Nullable Output<String> kmsKeySelfLink;
 
     /**
      * @return The self link of the encryption key that is
-     * stored in Google Cloud KMS.
+     * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
      * 
      */
-    public Output<String> kmsKeySelfLink() {
-        return this.kmsKeySelfLink;
+    public Optional<Output<String>> kmsKeySelfLink() {
+        return Optional.ofNullable(this.kmsKeySelfLink);
     }
 
     /**
@@ -52,11 +53,55 @@ public final class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs extend
         return Optional.ofNullable(this.kmsKeyServiceAccount);
     }
 
+    /**
+     * A 256-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+     * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+     * to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
+     * 
+     */
+    @Import(name="rawKey")
+    private @Nullable Output<String> rawKey;
+
+    /**
+     * @return A 256-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+     * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+     * to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
+     * 
+     */
+    public Optional<Output<String>> rawKey() {
+        return Optional.ofNullable(this.rawKey);
+    }
+
+    /**
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
+     * 
+     */
+    @Import(name="rsaEncryptedKey")
+    private @Nullable Output<String> rsaEncryptedKey;
+
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+     * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+     * may be set.
+     * 
+     */
+    public Optional<Output<String>> rsaEncryptedKey() {
+        return Optional.ofNullable(this.rsaEncryptedKey);
+    }
+
     private RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs() {}
 
     private RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs(RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs $) {
         this.kmsKeySelfLink = $.kmsKeySelfLink;
         this.kmsKeyServiceAccount = $.kmsKeyServiceAccount;
+        this.rawKey = $.rawKey;
+        this.rsaEncryptedKey = $.rsaEncryptedKey;
     }
 
     public static Builder builder() {
@@ -79,19 +124,21 @@ public final class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs extend
 
         /**
          * @param kmsKeySelfLink The self link of the encryption key that is
-         * stored in Google Cloud KMS.
+         * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * may be set.
          * 
          * @return builder
          * 
          */
-        public Builder kmsKeySelfLink(Output<String> kmsKeySelfLink) {
+        public Builder kmsKeySelfLink(@Nullable Output<String> kmsKeySelfLink) {
             $.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
 
         /**
          * @param kmsKeySelfLink The self link of the encryption key that is
-         * stored in Google Cloud KMS.
+         * stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * may be set.
          * 
          * @return builder
          * 
@@ -125,10 +172,61 @@ public final class RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs extend
             return kmsKeyServiceAccount(Output.of(kmsKeyServiceAccount));
         }
 
+        /**
+         * @param rawKey A 256-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+         * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rawKey(@Nullable Output<String> rawKey) {
+            $.rawKey = rawKey;
+            return this;
+        }
+
+        /**
+         * @param rawKey A 256-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+         * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
+         * to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rawKey(String rawKey) {
+            return rawKey(Output.of(rawKey));
+        }
+
+        /**
+         * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKey(@Nullable Output<String> rsaEncryptedKey) {
+            $.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+
+        /**
+         * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+         * may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKey(String rsaEncryptedKey) {
+            return rsaEncryptedKey(Output.of(rsaEncryptedKey));
+        }
+
         public RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs build() {
-            if ($.kmsKeySelfLink == null) {
-                throw new MissingRequiredPropertyException("RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs", "kmsKeySelfLink");
-            }
             return $;
         }
     }

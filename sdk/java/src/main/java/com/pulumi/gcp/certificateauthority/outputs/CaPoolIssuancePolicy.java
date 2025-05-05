@@ -30,6 +30,15 @@ public final class CaPoolIssuancePolicy {
      */
     private @Nullable List<CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes;
     /**
+     * @return The duration to backdate all certificates issued from this CaPool. If not set, the
+     * certificates will be issued with a not_before_time of the issuance time (i.e. the current
+     * time). If set, the certificates will be issued with a not_before_time of the issuance
+     * time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+     * requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+     * 
+     */
+    private @Nullable String backdateDuration;
+    /**
      * @return A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
      * includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
      * request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
@@ -71,6 +80,17 @@ public final class CaPoolIssuancePolicy {
         return this.allowedKeyTypes == null ? List.of() : this.allowedKeyTypes;
     }
     /**
+     * @return The duration to backdate all certificates issued from this CaPool. If not set, the
+     * certificates will be issued with a not_before_time of the issuance time (i.e. the current
+     * time). If set, the certificates will be issued with a not_before_time of the issuance
+     * time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+     * requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+     * 
+     */
+    public Optional<String> backdateDuration() {
+        return Optional.ofNullable(this.backdateDuration);
+    }
+    /**
      * @return A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
      * includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
      * request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
@@ -110,6 +130,7 @@ public final class CaPoolIssuancePolicy {
     public static final class Builder {
         private @Nullable CaPoolIssuancePolicyAllowedIssuanceModes allowedIssuanceModes;
         private @Nullable List<CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes;
+        private @Nullable String backdateDuration;
         private @Nullable CaPoolIssuancePolicyBaselineValues baselineValues;
         private @Nullable CaPoolIssuancePolicyIdentityConstraints identityConstraints;
         private @Nullable String maximumLifetime;
@@ -118,6 +139,7 @@ public final class CaPoolIssuancePolicy {
     	      Objects.requireNonNull(defaults);
     	      this.allowedIssuanceModes = defaults.allowedIssuanceModes;
     	      this.allowedKeyTypes = defaults.allowedKeyTypes;
+    	      this.backdateDuration = defaults.backdateDuration;
     	      this.baselineValues = defaults.baselineValues;
     	      this.identityConstraints = defaults.identityConstraints;
     	      this.maximumLifetime = defaults.maximumLifetime;
@@ -137,6 +159,12 @@ public final class CaPoolIssuancePolicy {
         }
         public Builder allowedKeyTypes(CaPoolIssuancePolicyAllowedKeyType... allowedKeyTypes) {
             return allowedKeyTypes(List.of(allowedKeyTypes));
+        }
+        @CustomType.Setter
+        public Builder backdateDuration(@Nullable String backdateDuration) {
+
+            this.backdateDuration = backdateDuration;
+            return this;
         }
         @CustomType.Setter
         public Builder baselineValues(@Nullable CaPoolIssuancePolicyBaselineValues baselineValues) {
@@ -160,6 +188,7 @@ public final class CaPoolIssuancePolicy {
             final var _resultValue = new CaPoolIssuancePolicy();
             _resultValue.allowedIssuanceModes = allowedIssuanceModes;
             _resultValue.allowedKeyTypes = allowedKeyTypes;
+            _resultValue.backdateDuration = backdateDuration;
             _resultValue.baselineValues = baselineValues;
             _resultValue.identityConstraints = identityConstraints;
             _resultValue.maximumLifetime = maximumLifetime;

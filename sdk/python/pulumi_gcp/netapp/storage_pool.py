@@ -26,6 +26,7 @@ class StoragePoolArgs:
                  service_level: pulumi.Input[builtins.str],
                  active_directory: Optional[pulumi.Input[builtins.str]] = None,
                  allow_auto_tiering: Optional[pulumi.Input[builtins.bool]] = None,
+                 custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  kms_config: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -33,6 +34,8 @@ class StoragePoolArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[builtins.str]] = None,
+                 total_iops: Optional[pulumi.Input[builtins.str]] = None,
+                 total_throughput_mibps: Optional[pulumi.Input[builtins.str]] = None,
                  zone: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a StoragePool resource.
@@ -45,6 +48,7 @@ class StoragePoolArgs:
                The policy needs to be in the same location as the storage pool.
         :param pulumi.Input[builtins.bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
                Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+        :param pulumi.Input[builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
                The policy needs to be in the same location as the storage pool.
@@ -62,6 +66,8 @@ class StoragePoolArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
+        :param pulumi.Input[builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        :param pulumi.Input[builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input[builtins.str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
                If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -74,6 +80,8 @@ class StoragePoolArgs:
             pulumi.set(__self__, "active_directory", active_directory)
         if allow_auto_tiering is not None:
             pulumi.set(__self__, "allow_auto_tiering", allow_auto_tiering)
+        if custom_performance_enabled is not None:
+            pulumi.set(__self__, "custom_performance_enabled", custom_performance_enabled)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if kms_config is not None:
@@ -88,6 +96,10 @@ class StoragePoolArgs:
             pulumi.set(__self__, "project", project)
         if replica_zone is not None:
             pulumi.set(__self__, "replica_zone", replica_zone)
+        if total_iops is not None:
+            pulumi.set(__self__, "total_iops", total_iops)
+        if total_throughput_mibps is not None:
+            pulumi.set(__self__, "total_throughput_mibps", total_throughput_mibps)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -165,6 +177,18 @@ class StoragePoolArgs:
     @allow_auto_tiering.setter
     def allow_auto_tiering(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "allow_auto_tiering", value)
+
+    @property
+    @pulumi.getter(name="customPerformanceEnabled")
+    def custom_performance_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        """
+        return pulumi.get(self, "custom_performance_enabled")
+
+    @custom_performance_enabled.setter
+    def custom_performance_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "custom_performance_enabled", value)
 
     @property
     @pulumi.getter
@@ -261,6 +285,30 @@ class StoragePoolArgs:
         pulumi.set(self, "replica_zone", value)
 
     @property
+    @pulumi.getter(name="totalIops")
+    def total_iops(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        """
+        return pulumi.get(self, "total_iops")
+
+    @total_iops.setter
+    def total_iops(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_iops", value)
+
+    @property
+    @pulumi.getter(name="totalThroughputMibps")
+    def total_throughput_mibps(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        """
+        return pulumi.get(self, "total_throughput_mibps")
+
+    @total_throughput_mibps.setter
+    def total_throughput_mibps(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_throughput_mibps", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -281,6 +329,7 @@ class _StoragePoolState:
                  active_directory: Optional[pulumi.Input[builtins.str]] = None,
                  allow_auto_tiering: Optional[pulumi.Input[builtins.bool]] = None,
                  capacity_gib: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  encryption_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -294,6 +343,8 @@ class _StoragePoolState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  replica_zone: Optional[pulumi.Input[builtins.str]] = None,
                  service_level: Optional[pulumi.Input[builtins.str]] = None,
+                 total_iops: Optional[pulumi.Input[builtins.str]] = None,
+                 total_throughput_mibps: Optional[pulumi.Input[builtins.str]] = None,
                  volume_capacity_gib: Optional[pulumi.Input[builtins.str]] = None,
                  volume_count: Optional[pulumi.Input[builtins.int]] = None,
                  zone: Optional[pulumi.Input[builtins.str]] = None):
@@ -304,6 +355,7 @@ class _StoragePoolState:
         :param pulumi.Input[builtins.bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
                Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
+        :param pulumi.Input[builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] encryption_type: Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
@@ -329,6 +381,8 @@ class _StoragePoolState:
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         :param pulumi.Input[builtins.str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
+        :param pulumi.Input[builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        :param pulumi.Input[builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input[builtins.str] volume_capacity_gib: Size allocated to volumes in the storage pool (in GiB).
         :param pulumi.Input[builtins.int] volume_count: Number of volume in the storage pool.
         :param pulumi.Input[builtins.str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
@@ -341,6 +395,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "allow_auto_tiering", allow_auto_tiering)
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
+        if custom_performance_enabled is not None:
+            pulumi.set(__self__, "custom_performance_enabled", custom_performance_enabled)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -367,6 +423,10 @@ class _StoragePoolState:
             pulumi.set(__self__, "replica_zone", replica_zone)
         if service_level is not None:
             pulumi.set(__self__, "service_level", service_level)
+        if total_iops is not None:
+            pulumi.set(__self__, "total_iops", total_iops)
+        if total_throughput_mibps is not None:
+            pulumi.set(__self__, "total_throughput_mibps", total_throughput_mibps)
         if volume_capacity_gib is not None:
             pulumi.set(__self__, "volume_capacity_gib", volume_capacity_gib)
         if volume_count is not None:
@@ -411,6 +471,18 @@ class _StoragePoolState:
     @capacity_gib.setter
     def capacity_gib(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "capacity_gib", value)
+
+    @property
+    @pulumi.getter(name="customPerformanceEnabled")
+    def custom_performance_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        """
+        return pulumi.get(self, "custom_performance_enabled")
+
+    @custom_performance_enabled.setter
+    def custom_performance_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "custom_performance_enabled", value)
 
     @property
     @pulumi.getter
@@ -581,6 +653,30 @@ class _StoragePoolState:
         pulumi.set(self, "service_level", value)
 
     @property
+    @pulumi.getter(name="totalIops")
+    def total_iops(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        """
+        return pulumi.get(self, "total_iops")
+
+    @total_iops.setter
+    def total_iops(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_iops", value)
+
+    @property
+    @pulumi.getter(name="totalThroughputMibps")
+    def total_throughput_mibps(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        """
+        return pulumi.get(self, "total_throughput_mibps")
+
+    @total_throughput_mibps.setter
+    def total_throughput_mibps(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "total_throughput_mibps", value)
+
+    @property
     @pulumi.getter(name="volumeCapacityGib")
     def volume_capacity_gib(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -620,6 +716,9 @@ class _StoragePoolState:
 
 
 class StoragePool(pulumi.CustomResource):
+
+    pulumi_type = "gcp:netapp/storagePool:StoragePool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -627,6 +726,7 @@ class StoragePool(pulumi.CustomResource):
                  active_directory: Optional[pulumi.Input[builtins.str]] = None,
                  allow_auto_tiering: Optional[pulumi.Input[builtins.bool]] = None,
                  capacity_gib: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  kms_config: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -637,6 +737,8 @@ class StoragePool(pulumi.CustomResource):
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[builtins.str]] = None,
                  service_level: Optional[pulumi.Input[builtins.str]] = None,
+                 total_iops: Optional[pulumi.Input[builtins.str]] = None,
+                 total_throughput_mibps: Optional[pulumi.Input[builtins.str]] = None,
                  zone: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -712,6 +814,7 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
                Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
+        :param pulumi.Input[builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
                The policy needs to be in the same location as the storage pool.
@@ -733,6 +836,8 @@ class StoragePool(pulumi.CustomResource):
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         :param pulumi.Input[builtins.str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
+        :param pulumi.Input[builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        :param pulumi.Input[builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input[builtins.str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
                If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
@@ -827,6 +932,7 @@ class StoragePool(pulumi.CustomResource):
                  active_directory: Optional[pulumi.Input[builtins.str]] = None,
                  allow_auto_tiering: Optional[pulumi.Input[builtins.bool]] = None,
                  capacity_gib: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  kms_config: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -837,6 +943,8 @@ class StoragePool(pulumi.CustomResource):
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  replica_zone: Optional[pulumi.Input[builtins.str]] = None,
                  service_level: Optional[pulumi.Input[builtins.str]] = None,
+                 total_iops: Optional[pulumi.Input[builtins.str]] = None,
+                 total_throughput_mibps: Optional[pulumi.Input[builtins.str]] = None,
                  zone: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -852,6 +960,7 @@ class StoragePool(pulumi.CustomResource):
             if capacity_gib is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
+            __props__.__dict__["custom_performance_enabled"] = custom_performance_enabled
             __props__.__dict__["description"] = description
             __props__.__dict__["kms_config"] = kms_config
             __props__.__dict__["labels"] = labels
@@ -868,6 +977,8 @@ class StoragePool(pulumi.CustomResource):
             if service_level is None and not opts.urn:
                 raise TypeError("Missing required property 'service_level'")
             __props__.__dict__["service_level"] = service_level
+            __props__.__dict__["total_iops"] = total_iops
+            __props__.__dict__["total_throughput_mibps"] = total_throughput_mibps
             __props__.__dict__["zone"] = zone
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["encryption_type"] = None
@@ -889,6 +1000,7 @@ class StoragePool(pulumi.CustomResource):
             active_directory: Optional[pulumi.Input[builtins.str]] = None,
             allow_auto_tiering: Optional[pulumi.Input[builtins.bool]] = None,
             capacity_gib: Optional[pulumi.Input[builtins.str]] = None,
+            custom_performance_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             encryption_type: Optional[pulumi.Input[builtins.str]] = None,
@@ -902,6 +1014,8 @@ class StoragePool(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             replica_zone: Optional[pulumi.Input[builtins.str]] = None,
             service_level: Optional[pulumi.Input[builtins.str]] = None,
+            total_iops: Optional[pulumi.Input[builtins.str]] = None,
+            total_throughput_mibps: Optional[pulumi.Input[builtins.str]] = None,
             volume_capacity_gib: Optional[pulumi.Input[builtins.str]] = None,
             volume_count: Optional[pulumi.Input[builtins.int]] = None,
             zone: Optional[pulumi.Input[builtins.str]] = None) -> 'StoragePool':
@@ -917,6 +1031,7 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
                Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[builtins.str] capacity_gib: Capacity of the storage pool (in GiB).
+        :param pulumi.Input[builtins.bool] custom_performance_enabled: Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] encryption_type: Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
@@ -942,6 +1057,8 @@ class StoragePool(pulumi.CustomResource):
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         :param pulumi.Input[builtins.str] service_level: Service level of the storage pool.
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
+        :param pulumi.Input[builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        :param pulumi.Input[builtins.str] total_throughput_mibps: Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         :param pulumi.Input[builtins.str] volume_capacity_gib: Size allocated to volumes in the storage pool (in GiB).
         :param pulumi.Input[builtins.int] volume_count: Number of volume in the storage pool.
         :param pulumi.Input[builtins.str] zone: Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
@@ -955,6 +1072,7 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["active_directory"] = active_directory
         __props__.__dict__["allow_auto_tiering"] = allow_auto_tiering
         __props__.__dict__["capacity_gib"] = capacity_gib
+        __props__.__dict__["custom_performance_enabled"] = custom_performance_enabled
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_type"] = encryption_type
@@ -968,6 +1086,8 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["replica_zone"] = replica_zone
         __props__.__dict__["service_level"] = service_level
+        __props__.__dict__["total_iops"] = total_iops
+        __props__.__dict__["total_throughput_mibps"] = total_throughput_mibps
         __props__.__dict__["volume_capacity_gib"] = volume_capacity_gib
         __props__.__dict__["volume_count"] = volume_count
         __props__.__dict__["zone"] = zone
@@ -998,6 +1118,14 @@ class StoragePool(pulumi.CustomResource):
         Capacity of the storage pool (in GiB).
         """
         return pulumi.get(self, "capacity_gib")
+
+    @property
+    @pulumi.getter(name="customPerformanceEnabled")
+    def custom_performance_enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
+        """
+        return pulumi.get(self, "custom_performance_enabled")
 
     @property
     @pulumi.getter
@@ -1114,6 +1242,22 @@ class StoragePool(pulumi.CustomResource):
         Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         """
         return pulumi.get(self, "service_level")
+
+    @property
+    @pulumi.getter(name="totalIops")
+    def total_iops(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
+        """
+        return pulumi.get(self, "total_iops")
+
+    @property
+    @pulumi.getter(name="totalThroughputMibps")
+    def total_throughput_mibps(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Optional. Custom Performance Total Throughput of the pool (in MiB/s).
+        """
+        return pulumi.get(self, "total_throughput_mibps")
 
     @property
     @pulumi.getter(name="volumeCapacityGib")

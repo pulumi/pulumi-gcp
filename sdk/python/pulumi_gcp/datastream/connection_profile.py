@@ -619,6 +619,9 @@ class _ConnectionProfileState:
 
 
 class ConnectionProfile(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datastream/connectionProfile:ConnectionProfile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -902,6 +905,26 @@ class ConnectionProfile(pulumi.CustomResource):
                 "username": user.name,
                 "password": user.password,
                 "database": db.name,
+            })
+        ```
+        ### Datastream Connection Profile Salesforce
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Salesforce Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            create_without_validation=True,
+            salesforce_profile={
+                "domain": "fake-domain.my.salesforce.com",
+                "user_credentials": {
+                    "username": "fake-username",
+                    "secret_manager_stored_password": "fake-password",
+                    "secret_manager_stored_security_token": "fake-token",
+                },
             })
         ```
         ### Datastream Connection Profile Postgres Secret Manager
@@ -1249,6 +1272,26 @@ class ConnectionProfile(pulumi.CustomResource):
                 "username": user.name,
                 "password": user.password,
                 "database": db.name,
+            })
+        ```
+        ### Datastream Connection Profile Salesforce
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Salesforce Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            create_without_validation=True,
+            salesforce_profile={
+                "domain": "fake-domain.my.salesforce.com",
+                "user_credentials": {
+                    "username": "fake-username",
+                    "secret_manager_stored_password": "fake-password",
+                    "secret_manager_stored_security_token": "fake-token",
+                },
             })
         ```
         ### Datastream Connection Profile Postgres Secret Manager

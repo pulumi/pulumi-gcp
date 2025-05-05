@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolNodeConfigEphemeralStorageLocalSsdConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+        /// </summary>
+        [Input("dataCacheCount")]
+        public Input<int>? DataCacheCount { get; set; }
+
+        /// <summary>
         /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
         /// </summary>
         [Input("localSsdCount", required: true)]

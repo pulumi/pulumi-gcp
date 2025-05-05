@@ -301,6 +301,9 @@ class _DataSharingWithGoogleSettingState:
 
 
 class DataSharingWithGoogleSetting(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

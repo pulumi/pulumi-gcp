@@ -3115,6 +3115,9 @@ type DatascanDataQualitySpecPostScanActions struct {
 	// If set, results will be exported to the provided BigQuery table.
 	// Structure is documented below.
 	BigqueryExport *DatascanDataQualitySpecPostScanActionsBigqueryExport `pulumi:"bigqueryExport"`
+	// The configuration of notification report post scan action.
+	// Structure is documented below.
+	NotificationReport *DatascanDataQualitySpecPostScanActionsNotificationReport `pulumi:"notificationReport"`
 }
 
 // DatascanDataQualitySpecPostScanActionsInput is an input type that accepts DatascanDataQualitySpecPostScanActionsArgs and DatascanDataQualitySpecPostScanActionsOutput values.
@@ -3132,6 +3135,9 @@ type DatascanDataQualitySpecPostScanActionsArgs struct {
 	// If set, results will be exported to the provided BigQuery table.
 	// Structure is documented below.
 	BigqueryExport DatascanDataQualitySpecPostScanActionsBigqueryExportPtrInput `pulumi:"bigqueryExport"`
+	// The configuration of notification report post scan action.
+	// Structure is documented below.
+	NotificationReport DatascanDataQualitySpecPostScanActionsNotificationReportPtrInput `pulumi:"notificationReport"`
 }
 
 func (DatascanDataQualitySpecPostScanActionsArgs) ElementType() reflect.Type {
@@ -3219,6 +3225,14 @@ func (o DatascanDataQualitySpecPostScanActionsOutput) BigqueryExport() DatascanD
 	}).(DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput)
 }
 
+// The configuration of notification report post scan action.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPostScanActionsOutput) NotificationReport() DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecPostScanActions) *DatascanDataQualitySpecPostScanActionsNotificationReport {
+		return v.NotificationReport
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput)
+}
+
 type DatascanDataQualitySpecPostScanActionsPtrOutput struct{ *pulumi.OutputState }
 
 func (DatascanDataQualitySpecPostScanActionsPtrOutput) ElementType() reflect.Type {
@@ -3252,6 +3266,17 @@ func (o DatascanDataQualitySpecPostScanActionsPtrOutput) BigqueryExport() Datasc
 		}
 		return v.BigqueryExport
 	}).(DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput)
+}
+
+// The configuration of notification report post scan action.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPostScanActionsPtrOutput) NotificationReport() DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActions) *DatascanDataQualitySpecPostScanActionsNotificationReport {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationReport
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput)
 }
 
 type DatascanDataQualitySpecPostScanActionsBigqueryExport struct {
@@ -3393,6 +3418,728 @@ func (o DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput) ResultsTa
 		}
 		return v.ResultsTable
 	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReport struct {
+	// This trigger is triggered whenever a scan job run ends, regardless of the result.
+	JobEndTrigger *DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger `pulumi:"jobEndTrigger"`
+	// This trigger is triggered when the scan job itself fails, regardless of the result.
+	JobFailureTrigger *DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger `pulumi:"jobFailureTrigger"`
+	// The individuals or groups who are designated to receive notifications upon triggers.
+	// Structure is documented below.
+	Recipients DatascanDataQualitySpecPostScanActionsNotificationReportRecipients `pulumi:"recipients"`
+	// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+	// Structure is documented below.
+	ScoreThresholdTrigger *DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger `pulumi:"scoreThresholdTrigger"`
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportArgs and DatascanDataQualitySpecPostScanActionsNotificationReportOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportInput` via:
+//
+//	DatascanDataQualitySpecPostScanActionsNotificationReportArgs{...}
+type DatascanDataQualitySpecPostScanActionsNotificationReportInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportOutput() DatascanDataQualitySpecPostScanActionsNotificationReportOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportOutput
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportArgs struct {
+	// This trigger is triggered whenever a scan job run ends, regardless of the result.
+	JobEndTrigger DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrInput `pulumi:"jobEndTrigger"`
+	// This trigger is triggered when the scan job itself fails, regardless of the result.
+	JobFailureTrigger DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrInput `pulumi:"jobFailureTrigger"`
+	// The individuals or groups who are designated to receive notifications upon triggers.
+	// Structure is documented below.
+	Recipients DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsInput `pulumi:"recipients"`
+	// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+	// Structure is documented below.
+	ScoreThresholdTrigger DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrInput `pulumi:"scoreThresholdTrigger"`
+}
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReport)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportOutput() DatascanDataQualitySpecPostScanActionsNotificationReportOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportOutput)
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportOutput).ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportPtrInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportArgs, DatascanDataQualitySpecPostScanActionsNotificationReportPtr and DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportPtrInput` via:
+//
+//	        DatascanDataQualitySpecPostScanActionsNotificationReportArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecPostScanActionsNotificationReportPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput
+}
+
+type datascanDataQualitySpecPostScanActionsNotificationReportPtrType DatascanDataQualitySpecPostScanActionsNotificationReportArgs
+
+func DatascanDataQualitySpecPostScanActionsNotificationReportPtr(v *DatascanDataQualitySpecPostScanActionsNotificationReportArgs) DatascanDataQualitySpecPostScanActionsNotificationReportPtrInput {
+	return (*datascanDataQualitySpecPostScanActionsNotificationReportPtrType)(v)
+}
+
+func (*datascanDataQualitySpecPostScanActionsNotificationReportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReport)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReport)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportOutput() DatascanDataQualitySpecPostScanActionsNotificationReportOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o.ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecPostScanActionsNotificationReport) *DatascanDataQualitySpecPostScanActionsNotificationReport {
+		return &v
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput)
+}
+
+// This trigger is triggered whenever a scan job run ends, regardless of the result.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportOutput) JobEndTrigger() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecPostScanActionsNotificationReport) *DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger {
+		return v.JobEndTrigger
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput)
+}
+
+// This trigger is triggered when the scan job itself fails, regardless of the result.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportOutput) JobFailureTrigger() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecPostScanActionsNotificationReport) *DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger {
+		return v.JobFailureTrigger
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput)
+}
+
+// The individuals or groups who are designated to receive notifications upon triggers.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportOutput) Recipients() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecPostScanActionsNotificationReport) DatascanDataQualitySpecPostScanActionsNotificationReportRecipients {
+		return v.Recipients
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput)
+}
+
+// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportOutput) ScoreThresholdTrigger() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecPostScanActionsNotificationReport) *DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger {
+		return v.ScoreThresholdTrigger
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReport)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput) Elem() DatascanDataQualitySpecPostScanActionsNotificationReportOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReport) DatascanDataQualitySpecPostScanActionsNotificationReport {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecPostScanActionsNotificationReport
+		return ret
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportOutput)
+}
+
+// This trigger is triggered whenever a scan job run ends, regardless of the result.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput) JobEndTrigger() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReport) *DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.JobEndTrigger
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput)
+}
+
+// This trigger is triggered when the scan job itself fails, regardless of the result.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput) JobFailureTrigger() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReport) *DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.JobFailureTrigger
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput)
+}
+
+// The individuals or groups who are designated to receive notifications upon triggers.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput) Recipients() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReport) *DatascanDataQualitySpecPostScanActionsNotificationReportRecipients {
+		if v == nil {
+			return nil
+		}
+		return &v.Recipients
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput)
+}
+
+// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput) ScoreThresholdTrigger() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReport) *DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.ScoreThresholdTrigger
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger struct {
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs and DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerInput` via:
+//
+//	DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs{...}
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs struct {
+}
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput)
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput).ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs, DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtr and DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrInput` via:
+//
+//	        DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput
+}
+
+type datascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrType DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs
+
+func DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtr(v *DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrInput {
+	return (*datascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrType)(v)
+}
+
+func (*datascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return o.ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger) *DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger {
+		return &v
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput) Elem() DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger) DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTrigger
+		return ret
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger struct {
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs and DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerInput` via:
+//
+//	DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs{...}
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs struct {
+}
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput)
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput).ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs, DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtr and DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrInput` via:
+//
+//	        DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput
+}
+
+type datascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrType DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs
+
+func DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtr(v *DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrInput {
+	return (*datascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrType)(v)
+}
+
+func (*datascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return o.ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger) *DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger {
+		return &v
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput) Elem() DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger) DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTrigger
+		return ret
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportRecipients struct {
+	// The email recipients who will receive the DataQualityScan results report.
+	Emails []string `pulumi:"emails"`
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs and DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsInput` via:
+//
+//	DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs{...}
+type DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs struct {
+	// The email recipients who will receive the DataQualityScan results report.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+}
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportRecipients)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput)
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput).ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs, DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtr and DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrInput` via:
+//
+//	        DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput
+}
+
+type datascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrType DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs
+
+func DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtr(v *DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs) DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrInput {
+	return (*datascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrType)(v)
+}
+
+func (*datascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReportRecipients)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportRecipients)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput {
+	return o.ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecPostScanActionsNotificationReportRecipients) *DatascanDataQualitySpecPostScanActionsNotificationReportRecipients {
+		return &v
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput)
+}
+
+// The email recipients who will receive the DataQualityScan results report.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecPostScanActionsNotificationReportRecipients) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReportRecipients)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput) Elem() DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReportRecipients) DatascanDataQualitySpecPostScanActionsNotificationReportRecipients {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecPostScanActionsNotificationReportRecipients
+		return ret
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput)
+}
+
+// The email recipients who will receive the DataQualityScan results report.
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReportRecipients) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger struct {
+	// The score range is in [0,100].
+	ScoreThreshold *float64 `pulumi:"scoreThreshold"`
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs and DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerInput` via:
+//
+//	DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs{...}
+type DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs struct {
+	// The score range is in [0,100].
+	ScoreThreshold pulumi.Float64PtrInput `pulumi:"scoreThreshold"`
+}
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput)
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput).ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrInput is an input type that accepts DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs, DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtr and DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrInput` via:
+//
+//	        DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput
+	ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput
+}
+
+type datascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrType DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs
+
+func DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtr(v *DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrInput {
+	return (*datascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrType)(v)
+}
+
+func (*datascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrType) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return o.ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger) *DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger {
+		return &v
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput)
+}
+
+// The score range is in [0,100].
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput) ScoreThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger) *float64 {
+		return v.ScoreThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput) ToDatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput) Elem() DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger) DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger
+		return ret
+	}).(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput)
+}
+
+// The score range is in [0,100].
+func (o DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput) ScoreThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScoreThreshold
+	}).(pulumi.Float64PtrOutput)
 }
 
 type DatascanDataQualitySpecRule struct {
@@ -11688,6 +12435,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsBigqueryExportInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsBigqueryExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsBigqueryExportPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsBigqueryExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleInput)(nil)).Elem(), DatascanDataQualitySpecRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleArrayInput)(nil)).Elem(), DatascanDataQualitySpecRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleNonNullExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleNonNullExpectationArgs{})
@@ -11830,6 +12587,16 @@ func init() {
 	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsBigqueryExportOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleArrayOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleNonNullExpectationOutput{})

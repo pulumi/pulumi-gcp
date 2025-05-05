@@ -513,6 +513,9 @@ class _DataStoreState:
 
 
 class DataStore(pulumi.CustomResource):
+
+    pulumi_type = "gcp:discoveryengine/dataStore:DataStore"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

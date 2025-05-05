@@ -329,6 +329,9 @@ class _MembershipRbacRoleBindingState:
 
 
 class MembershipRbacRoleBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

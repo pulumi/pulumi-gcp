@@ -36,7 +36,10 @@ import * as utilities from "../utilities";
  *     project: project.projectId,
  *     service: "managedkafka.googleapis.com",
  * }, {
- *     dependsOn: [wait60Seconds],
+ *     dependsOn: [compute],
+ * });
+ * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [managedkafka],
  * });
  * const mkcSecondarySubnet = new gcp.compute.Subnetwork("mkc_secondary_subnet", {
  *     project: project.projectId,
@@ -45,7 +48,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     network: "default",
  * }, {
- *     dependsOn: [compute],
+ *     dependsOn: [wait120Seconds],
  * });
  * const gmkCluster = new gcp.managedkafka.Cluster("gmk_cluster", {
  *     project: project.projectId,

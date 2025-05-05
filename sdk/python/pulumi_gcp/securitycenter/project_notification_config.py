@@ -229,6 +229,9 @@ class _ProjectNotificationConfigState:
 
 
 class ProjectNotificationConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

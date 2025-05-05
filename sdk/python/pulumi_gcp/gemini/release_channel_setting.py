@@ -312,6 +312,9 @@ class _ReleaseChannelSettingState:
 
 
 class ReleaseChannelSetting(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gemini/releaseChannelSetting:ReleaseChannelSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

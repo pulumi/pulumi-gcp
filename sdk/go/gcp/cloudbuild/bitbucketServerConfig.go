@@ -160,6 +160,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
+//				Text:    id,
+//				Search:  project.Name,
+//				Replace: project.Number,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-peered-network", &cloudbuild.BitbucketServerConfigArgs{
 //				ConfigId: pulumi.String("bbs-config"),
 //				Location: pulumi.String("us-central1"),
@@ -172,11 +180,7 @@ import (
 //				Username: pulumi.String("test"),
 //				ApiKey:   pulumi.String("<api-key>"),
 //				PeeredNetwork: pulumi.String(vpcNetwork.ID().ApplyT(func(id string) (std.ReplaceResult, error) {
-//					return std.ReplaceResult(interface{}(std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
-//						Text:    id,
-//						Search:  project.Name,
-//						Replace: project.Number,
-//					}, nil))), nil
+//					return std.ReplaceResult(invokeReplace), nil
 //				}).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
 //					return invoke.Result, nil
 //				}).(pulumi.StringPtrOutput)),

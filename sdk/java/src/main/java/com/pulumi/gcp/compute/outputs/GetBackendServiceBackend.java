@@ -132,6 +132,16 @@ public final class GetBackendServiceBackend {
      * 
      */
     private Double maxUtilization;
+    /**
+     * @return This field indicates whether this backend should be fully utilized before sending traffic to backends
+     * with default preference. This field cannot be set when loadBalancingScheme is set to &#39;EXTERNAL&#39;. The possible values are:
+     *   - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+     *     based on RTT.
+     *   - DEFAULT: If preferred backends don&#39;t have enough capacity, backends in this layer would be used and
+     *     traffic would be assigned based on the load balancing algorithm you use. This is the default Possible values: [&#34;PREFERRED&#34;, &#34;DEFAULT&#34;]
+     * 
+     */
+    private String preference;
 
     private GetBackendServiceBackend() {}
     /**
@@ -276,6 +286,18 @@ public final class GetBackendServiceBackend {
     public Double maxUtilization() {
         return this.maxUtilization;
     }
+    /**
+     * @return This field indicates whether this backend should be fully utilized before sending traffic to backends
+     * with default preference. This field cannot be set when loadBalancingScheme is set to &#39;EXTERNAL&#39;. The possible values are:
+     *   - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+     *     based on RTT.
+     *   - DEFAULT: If preferred backends don&#39;t have enough capacity, backends in this layer would be used and
+     *     traffic would be assigned based on the load balancing algorithm you use. This is the default Possible values: [&#34;PREFERRED&#34;, &#34;DEFAULT&#34;]
+     * 
+     */
+    public String preference() {
+        return this.preference;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -298,6 +320,7 @@ public final class GetBackendServiceBackend {
         private Double maxRatePerEndpoint;
         private Double maxRatePerInstance;
         private Double maxUtilization;
+        private String preference;
         public Builder() {}
         public Builder(GetBackendServiceBackend defaults) {
     	      Objects.requireNonNull(defaults);
@@ -313,6 +336,7 @@ public final class GetBackendServiceBackend {
     	      this.maxRatePerEndpoint = defaults.maxRatePerEndpoint;
     	      this.maxRatePerInstance = defaults.maxRatePerInstance;
     	      this.maxUtilization = defaults.maxUtilization;
+    	      this.preference = defaults.preference;
         }
 
         @CustomType.Setter
@@ -414,6 +438,14 @@ public final class GetBackendServiceBackend {
             this.maxUtilization = maxUtilization;
             return this;
         }
+        @CustomType.Setter
+        public Builder preference(String preference) {
+            if (preference == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "preference");
+            }
+            this.preference = preference;
+            return this;
+        }
         public GetBackendServiceBackend build() {
             final var _resultValue = new GetBackendServiceBackend();
             _resultValue.balancingMode = balancingMode;
@@ -428,6 +460,7 @@ public final class GetBackendServiceBackend {
             _resultValue.maxRatePerEndpoint = maxRatePerEndpoint;
             _resultValue.maxRatePerInstance = maxRatePerInstance;
             _resultValue.maxUtilization = maxUtilization;
+            _resultValue.preference = preference;
             return _resultValue;
         }
     }

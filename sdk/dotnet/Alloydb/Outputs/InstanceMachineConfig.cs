@@ -17,11 +17,21 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// The number of CPU's in the VM instance.
         /// </summary>
         public readonly int? CpuCount;
+        /// <summary>
+        /// Machine type of the VM instance.
+        /// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
+        /// `cpu_count` must match the number of vCPUs in the machine type.
+        /// </summary>
+        public readonly string? MachineType;
 
         [OutputConstructor]
-        private InstanceMachineConfig(int? cpuCount)
+        private InstanceMachineConfig(
+            int? cpuCount,
+
+            string? machineType)
         {
             CpuCount = cpuCount;
+            MachineType = machineType;
         }
     }
 }

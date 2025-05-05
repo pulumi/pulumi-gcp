@@ -538,6 +538,9 @@ class _RegionUrlMapState:
 
 
 class RegionUrlMap(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionUrlMap:RegionUrlMap"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

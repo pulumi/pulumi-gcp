@@ -380,6 +380,9 @@ class _OrganizationSecurityPolicyRuleState:
 
 
 class OrganizationSecurityPolicyRule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

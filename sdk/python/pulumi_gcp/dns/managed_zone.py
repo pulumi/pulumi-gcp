@@ -661,6 +661,9 @@ class _ManagedZoneState:
 
 
 class ManagedZone(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dns/managedZone:ManagedZone"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

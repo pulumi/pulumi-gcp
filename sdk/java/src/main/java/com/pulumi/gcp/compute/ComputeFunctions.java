@@ -121,6 +121,10 @@ import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetStoragePoolTypesArgs;
+import com.pulumi.gcp.compute.inputs.GetStoragePoolTypesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyPlainArgs;
@@ -190,6 +194,8 @@ import com.pulumi.gcp.compute.outputs.GetSSLPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSecurityPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotResult;
+import com.pulumi.gcp.compute.outputs.GetStoragePoolIamPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetStoragePoolTypesResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworksResult;
@@ -15968,6 +15974,241 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetSnapshotIamPolicyResult> getSnapshotIamPolicyPlain(GetSnapshotIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", TypeShape.of(GetSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for storagepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
+     *             .project(test_storage_pool_basic.project())
+     *             .zone(test_storage_pool_basic.zone())
+     *             .name(test_storage_pool_basic.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs args) {
+        return getStoragePoolIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for storagepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
+     *             .project(test_storage_pool_basic.project())
+     *             .zone(test_storage_pool_basic.zone())
+     *             .name(test_storage_pool_basic.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicyPlain(GetStoragePoolIamPolicyPlainArgs args) {
+        return getStoragePoolIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for storagepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
+     *             .project(test_storage_pool_basic.project())
+     *             .zone(test_storage_pool_basic.zone())
+     *             .name(test_storage_pool_basic.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getStoragePoolIamPolicy:getStoragePoolIamPolicy", TypeShape.of(GetStoragePoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for storagepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
+     *             .project(test_storage_pool_basic.project())
+     *             .zone(test_storage_pool_basic.zone())
+     *             .name(test_storage_pool_basic.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getStoragePoolIamPolicy:getStoragePoolIamPolicy", TypeShape.of(GetStoragePoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for storagepool
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
+     *             .project(test_storage_pool_basic.project())
+     *             .zone(test_storage_pool_basic.zone())
+     *             .name(test_storage_pool_basic.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicyPlain(GetStoragePoolIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getStoragePoolIamPolicy:getStoragePoolIamPolicy", TypeShape.of(GetStoragePoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetStoragePoolTypesResult> getStoragePoolTypes(GetStoragePoolTypesArgs args) {
+        return getStoragePoolTypes(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetStoragePoolTypesResult> getStoragePoolTypesPlain(GetStoragePoolTypesPlainArgs args) {
+        return getStoragePoolTypesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetStoragePoolTypesResult> getStoragePoolTypes(GetStoragePoolTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", TypeShape.of(GetStoragePoolTypesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetStoragePoolTypesResult> getStoragePoolTypes(GetStoragePoolTypesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", TypeShape.of(GetStoragePoolTypesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetStoragePoolTypesResult> getStoragePoolTypesPlain(GetStoragePoolTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getStoragePoolTypes:getStoragePoolTypes", TypeShape.of(GetStoragePoolTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a subnetwork within GCE from its name and region.

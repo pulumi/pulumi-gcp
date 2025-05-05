@@ -34,7 +34,7 @@ public final class JobTemplateTemplate {
      */
     private @Nullable String executionEnvironment;
     /**
-     * @return Number of retries allowed per Task, before marking this Task failed.
+     * @return Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
      * 
      */
     private @Nullable Integer maxRetries;
@@ -87,7 +87,7 @@ public final class JobTemplateTemplate {
         return Optional.ofNullable(this.executionEnvironment);
     }
     /**
-     * @return Number of retries allowed per Task, before marking this Task failed.
+     * @return Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
      * 
      */
     public Optional<Integer> maxRetries() {

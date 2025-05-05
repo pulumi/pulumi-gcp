@@ -257,6 +257,9 @@ class _ManagementServerState:
 
 
 class ManagementServer(pulumi.CustomResource):
+
+    pulumi_type = "gcp:backupdisasterrecovery/managementServer:ManagementServer"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

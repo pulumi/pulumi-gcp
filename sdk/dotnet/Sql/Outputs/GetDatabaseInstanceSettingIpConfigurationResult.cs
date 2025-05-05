@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string AllocatedIpRange;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult> AuthorizedNetworks;
         /// <summary>
+        /// The custom subject alternative names for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
+        /// </summary>
+        public readonly ImmutableArray<string> CustomSubjectAlternativeNames;
+        /// <summary>
         /// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
         /// </summary>
         public readonly bool EnablePrivatePathForGoogleCloudServices;
@@ -53,6 +57,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult> authorizedNetworks,
 
+            ImmutableArray<string> customSubjectAlternativeNames,
+
             bool enablePrivatePathForGoogleCloudServices,
 
             bool ipv4Enabled,
@@ -69,6 +75,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         {
             AllocatedIpRange = allocatedIpRange;
             AuthorizedNetworks = authorizedNetworks;
+            CustomSubjectAlternativeNames = customSubjectAlternativeNames;
             EnablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             Ipv4Enabled = ipv4Enabled;
             PrivateNetwork = privateNetwork;

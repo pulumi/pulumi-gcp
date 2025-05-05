@@ -386,6 +386,9 @@ class _AccountConnectorState:
 
 
 class AccountConnector(pulumi.CustomResource):
+
+    pulumi_type = "gcp:developerconnect/accountConnector:AccountConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -470,6 +473,34 @@ class AccountConnector(pulumi.CustomResource):
             provider_oauth_config={
                 "system_provider_id": "ROVO",
                 "scopes": ["rovo"],
+            })
+        ```
+        ### Developer Connect Account Connector New Relic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_account_connector = gcp.developerconnect.AccountConnector("my-account-connector",
+            location="us-central1",
+            account_connector_id="tf-test-ac",
+            provider_oauth_config={
+                "system_provider_id": "NEW_RELIC",
+                "scopes": [],
+            })
+        ```
+        ### Developer Connect Account Connector Datastax
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_account_connector = gcp.developerconnect.AccountConnector("my-account-connector",
+            location="us-central1",
+            account_connector_id="tf-test-ac",
+            provider_oauth_config={
+                "system_provider_id": "DATASTAX",
+                "scopes": [],
             })
         ```
 
@@ -597,6 +628,34 @@ class AccountConnector(pulumi.CustomResource):
             provider_oauth_config={
                 "system_provider_id": "ROVO",
                 "scopes": ["rovo"],
+            })
+        ```
+        ### Developer Connect Account Connector New Relic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_account_connector = gcp.developerconnect.AccountConnector("my-account-connector",
+            location="us-central1",
+            account_connector_id="tf-test-ac",
+            provider_oauth_config={
+                "system_provider_id": "NEW_RELIC",
+                "scopes": [],
+            })
+        ```
+        ### Developer Connect Account Connector Datastax
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_account_connector = gcp.developerconnect.AccountConnector("my-account-connector",
+            location="us-central1",
+            account_connector_id="tf-test-ac",
+            provider_oauth_config={
+                "system_provider_id": "DATASTAX",
+                "scopes": [],
             })
         ```
 

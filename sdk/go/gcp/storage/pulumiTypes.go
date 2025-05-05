@@ -13,6 +13,1289 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BatchOperationsJobBucketList struct {
+	// List of buckets and their objects to be transformed.
+	// Structure is documented below.
+	Buckets BatchOperationsJobBucketListBuckets `pulumi:"buckets"`
+}
+
+// BatchOperationsJobBucketListInput is an input type that accepts BatchOperationsJobBucketListArgs and BatchOperationsJobBucketListOutput values.
+// You can construct a concrete instance of `BatchOperationsJobBucketListInput` via:
+//
+//	BatchOperationsJobBucketListArgs{...}
+type BatchOperationsJobBucketListInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobBucketListOutput() BatchOperationsJobBucketListOutput
+	ToBatchOperationsJobBucketListOutputWithContext(context.Context) BatchOperationsJobBucketListOutput
+}
+
+type BatchOperationsJobBucketListArgs struct {
+	// List of buckets and their objects to be transformed.
+	// Structure is documented below.
+	Buckets BatchOperationsJobBucketListBucketsInput `pulumi:"buckets"`
+}
+
+func (BatchOperationsJobBucketListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobBucketList)(nil)).Elem()
+}
+
+func (i BatchOperationsJobBucketListArgs) ToBatchOperationsJobBucketListOutput() BatchOperationsJobBucketListOutput {
+	return i.ToBatchOperationsJobBucketListOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobBucketListArgs) ToBatchOperationsJobBucketListOutputWithContext(ctx context.Context) BatchOperationsJobBucketListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListOutput)
+}
+
+func (i BatchOperationsJobBucketListArgs) ToBatchOperationsJobBucketListPtrOutput() BatchOperationsJobBucketListPtrOutput {
+	return i.ToBatchOperationsJobBucketListPtrOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobBucketListArgs) ToBatchOperationsJobBucketListPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListOutput).ToBatchOperationsJobBucketListPtrOutputWithContext(ctx)
+}
+
+// BatchOperationsJobBucketListPtrInput is an input type that accepts BatchOperationsJobBucketListArgs, BatchOperationsJobBucketListPtr and BatchOperationsJobBucketListPtrOutput values.
+// You can construct a concrete instance of `BatchOperationsJobBucketListPtrInput` via:
+//
+//	        BatchOperationsJobBucketListArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchOperationsJobBucketListPtrInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobBucketListPtrOutput() BatchOperationsJobBucketListPtrOutput
+	ToBatchOperationsJobBucketListPtrOutputWithContext(context.Context) BatchOperationsJobBucketListPtrOutput
+}
+
+type batchOperationsJobBucketListPtrType BatchOperationsJobBucketListArgs
+
+func BatchOperationsJobBucketListPtr(v *BatchOperationsJobBucketListArgs) BatchOperationsJobBucketListPtrInput {
+	return (*batchOperationsJobBucketListPtrType)(v)
+}
+
+func (*batchOperationsJobBucketListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobBucketList)(nil)).Elem()
+}
+
+func (i *batchOperationsJobBucketListPtrType) ToBatchOperationsJobBucketListPtrOutput() BatchOperationsJobBucketListPtrOutput {
+	return i.ToBatchOperationsJobBucketListPtrOutputWithContext(context.Background())
+}
+
+func (i *batchOperationsJobBucketListPtrType) ToBatchOperationsJobBucketListPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListPtrOutput)
+}
+
+type BatchOperationsJobBucketListOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobBucketListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobBucketList)(nil)).Elem()
+}
+
+func (o BatchOperationsJobBucketListOutput) ToBatchOperationsJobBucketListOutput() BatchOperationsJobBucketListOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListOutput) ToBatchOperationsJobBucketListOutputWithContext(ctx context.Context) BatchOperationsJobBucketListOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListOutput) ToBatchOperationsJobBucketListPtrOutput() BatchOperationsJobBucketListPtrOutput {
+	return o.ToBatchOperationsJobBucketListPtrOutputWithContext(context.Background())
+}
+
+func (o BatchOperationsJobBucketListOutput) ToBatchOperationsJobBucketListPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchOperationsJobBucketList) *BatchOperationsJobBucketList {
+		return &v
+	}).(BatchOperationsJobBucketListPtrOutput)
+}
+
+// List of buckets and their objects to be transformed.
+// Structure is documented below.
+func (o BatchOperationsJobBucketListOutput) Buckets() BatchOperationsJobBucketListBucketsOutput {
+	return o.ApplyT(func(v BatchOperationsJobBucketList) BatchOperationsJobBucketListBuckets { return v.Buckets }).(BatchOperationsJobBucketListBucketsOutput)
+}
+
+type BatchOperationsJobBucketListPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobBucketListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobBucketList)(nil)).Elem()
+}
+
+func (o BatchOperationsJobBucketListPtrOutput) ToBatchOperationsJobBucketListPtrOutput() BatchOperationsJobBucketListPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListPtrOutput) ToBatchOperationsJobBucketListPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListPtrOutput) Elem() BatchOperationsJobBucketListOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketList) BatchOperationsJobBucketList {
+		if v != nil {
+			return *v
+		}
+		var ret BatchOperationsJobBucketList
+		return ret
+	}).(BatchOperationsJobBucketListOutput)
+}
+
+// List of buckets and their objects to be transformed.
+// Structure is documented below.
+func (o BatchOperationsJobBucketListPtrOutput) Buckets() BatchOperationsJobBucketListBucketsPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketList) *BatchOperationsJobBucketListBuckets {
+		if v == nil {
+			return nil
+		}
+		return &v.Buckets
+	}).(BatchOperationsJobBucketListBucketsPtrOutput)
+}
+
+type BatchOperationsJobBucketListBuckets struct {
+	// Bucket name for the objects to be transformed.
+	Bucket string `pulumi:"bucket"`
+	// contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+	// Structure is documented below.
+	Manifest *BatchOperationsJobBucketListBucketsManifest `pulumi:"manifest"`
+	// Specifies objects matching a prefix set.
+	// Structure is documented below.
+	PrefixList *BatchOperationsJobBucketListBucketsPrefixList `pulumi:"prefixList"`
+}
+
+// BatchOperationsJobBucketListBucketsInput is an input type that accepts BatchOperationsJobBucketListBucketsArgs and BatchOperationsJobBucketListBucketsOutput values.
+// You can construct a concrete instance of `BatchOperationsJobBucketListBucketsInput` via:
+//
+//	BatchOperationsJobBucketListBucketsArgs{...}
+type BatchOperationsJobBucketListBucketsInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobBucketListBucketsOutput() BatchOperationsJobBucketListBucketsOutput
+	ToBatchOperationsJobBucketListBucketsOutputWithContext(context.Context) BatchOperationsJobBucketListBucketsOutput
+}
+
+type BatchOperationsJobBucketListBucketsArgs struct {
+	// Bucket name for the objects to be transformed.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+	// Structure is documented below.
+	Manifest BatchOperationsJobBucketListBucketsManifestPtrInput `pulumi:"manifest"`
+	// Specifies objects matching a prefix set.
+	// Structure is documented below.
+	PrefixList BatchOperationsJobBucketListBucketsPrefixListPtrInput `pulumi:"prefixList"`
+}
+
+func (BatchOperationsJobBucketListBucketsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobBucketListBuckets)(nil)).Elem()
+}
+
+func (i BatchOperationsJobBucketListBucketsArgs) ToBatchOperationsJobBucketListBucketsOutput() BatchOperationsJobBucketListBucketsOutput {
+	return i.ToBatchOperationsJobBucketListBucketsOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobBucketListBucketsArgs) ToBatchOperationsJobBucketListBucketsOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListBucketsOutput)
+}
+
+func (i BatchOperationsJobBucketListBucketsArgs) ToBatchOperationsJobBucketListBucketsPtrOutput() BatchOperationsJobBucketListBucketsPtrOutput {
+	return i.ToBatchOperationsJobBucketListBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobBucketListBucketsArgs) ToBatchOperationsJobBucketListBucketsPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListBucketsOutput).ToBatchOperationsJobBucketListBucketsPtrOutputWithContext(ctx)
+}
+
+// BatchOperationsJobBucketListBucketsPtrInput is an input type that accepts BatchOperationsJobBucketListBucketsArgs, BatchOperationsJobBucketListBucketsPtr and BatchOperationsJobBucketListBucketsPtrOutput values.
+// You can construct a concrete instance of `BatchOperationsJobBucketListBucketsPtrInput` via:
+//
+//	        BatchOperationsJobBucketListBucketsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchOperationsJobBucketListBucketsPtrInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobBucketListBucketsPtrOutput() BatchOperationsJobBucketListBucketsPtrOutput
+	ToBatchOperationsJobBucketListBucketsPtrOutputWithContext(context.Context) BatchOperationsJobBucketListBucketsPtrOutput
+}
+
+type batchOperationsJobBucketListBucketsPtrType BatchOperationsJobBucketListBucketsArgs
+
+func BatchOperationsJobBucketListBucketsPtr(v *BatchOperationsJobBucketListBucketsArgs) BatchOperationsJobBucketListBucketsPtrInput {
+	return (*batchOperationsJobBucketListBucketsPtrType)(v)
+}
+
+func (*batchOperationsJobBucketListBucketsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobBucketListBuckets)(nil)).Elem()
+}
+
+func (i *batchOperationsJobBucketListBucketsPtrType) ToBatchOperationsJobBucketListBucketsPtrOutput() BatchOperationsJobBucketListBucketsPtrOutput {
+	return i.ToBatchOperationsJobBucketListBucketsPtrOutputWithContext(context.Background())
+}
+
+func (i *batchOperationsJobBucketListBucketsPtrType) ToBatchOperationsJobBucketListBucketsPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListBucketsPtrOutput)
+}
+
+type BatchOperationsJobBucketListBucketsOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobBucketListBucketsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobBucketListBuckets)(nil)).Elem()
+}
+
+func (o BatchOperationsJobBucketListBucketsOutput) ToBatchOperationsJobBucketListBucketsOutput() BatchOperationsJobBucketListBucketsOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsOutput) ToBatchOperationsJobBucketListBucketsOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsOutput) ToBatchOperationsJobBucketListBucketsPtrOutput() BatchOperationsJobBucketListBucketsPtrOutput {
+	return o.ToBatchOperationsJobBucketListBucketsPtrOutputWithContext(context.Background())
+}
+
+func (o BatchOperationsJobBucketListBucketsOutput) ToBatchOperationsJobBucketListBucketsPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchOperationsJobBucketListBuckets) *BatchOperationsJobBucketListBuckets {
+		return &v
+	}).(BatchOperationsJobBucketListBucketsPtrOutput)
+}
+
+// Bucket name for the objects to be transformed.
+func (o BatchOperationsJobBucketListBucketsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v BatchOperationsJobBucketListBuckets) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+// Structure is documented below.
+func (o BatchOperationsJobBucketListBucketsOutput) Manifest() BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobBucketListBuckets) *BatchOperationsJobBucketListBucketsManifest {
+		return v.Manifest
+	}).(BatchOperationsJobBucketListBucketsManifestPtrOutput)
+}
+
+// Specifies objects matching a prefix set.
+// Structure is documented below.
+func (o BatchOperationsJobBucketListBucketsOutput) PrefixList() BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobBucketListBuckets) *BatchOperationsJobBucketListBucketsPrefixList {
+		return v.PrefixList
+	}).(BatchOperationsJobBucketListBucketsPrefixListPtrOutput)
+}
+
+type BatchOperationsJobBucketListBucketsPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobBucketListBucketsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobBucketListBuckets)(nil)).Elem()
+}
+
+func (o BatchOperationsJobBucketListBucketsPtrOutput) ToBatchOperationsJobBucketListBucketsPtrOutput() BatchOperationsJobBucketListBucketsPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsPtrOutput) ToBatchOperationsJobBucketListBucketsPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsPtrOutput) Elem() BatchOperationsJobBucketListBucketsOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketListBuckets) BatchOperationsJobBucketListBuckets {
+		if v != nil {
+			return *v
+		}
+		var ret BatchOperationsJobBucketListBuckets
+		return ret
+	}).(BatchOperationsJobBucketListBucketsOutput)
+}
+
+// Bucket name for the objects to be transformed.
+func (o BatchOperationsJobBucketListBucketsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketListBuckets) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+// Structure is documented below.
+func (o BatchOperationsJobBucketListBucketsPtrOutput) Manifest() BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketListBuckets) *BatchOperationsJobBucketListBucketsManifest {
+		if v == nil {
+			return nil
+		}
+		return v.Manifest
+	}).(BatchOperationsJobBucketListBucketsManifestPtrOutput)
+}
+
+// Specifies objects matching a prefix set.
+// Structure is documented below.
+func (o BatchOperationsJobBucketListBucketsPtrOutput) PrefixList() BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketListBuckets) *BatchOperationsJobBucketListBucketsPrefixList {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixList
+	}).(BatchOperationsJobBucketListBucketsPrefixListPtrOutput)
+}
+
+type BatchOperationsJobBucketListBucketsManifest struct {
+	// Specifies objects in a manifest file.
+	ManifestLocation *string `pulumi:"manifestLocation"`
+}
+
+// BatchOperationsJobBucketListBucketsManifestInput is an input type that accepts BatchOperationsJobBucketListBucketsManifestArgs and BatchOperationsJobBucketListBucketsManifestOutput values.
+// You can construct a concrete instance of `BatchOperationsJobBucketListBucketsManifestInput` via:
+//
+//	BatchOperationsJobBucketListBucketsManifestArgs{...}
+type BatchOperationsJobBucketListBucketsManifestInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobBucketListBucketsManifestOutput() BatchOperationsJobBucketListBucketsManifestOutput
+	ToBatchOperationsJobBucketListBucketsManifestOutputWithContext(context.Context) BatchOperationsJobBucketListBucketsManifestOutput
+}
+
+type BatchOperationsJobBucketListBucketsManifestArgs struct {
+	// Specifies objects in a manifest file.
+	ManifestLocation pulumi.StringPtrInput `pulumi:"manifestLocation"`
+}
+
+func (BatchOperationsJobBucketListBucketsManifestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobBucketListBucketsManifest)(nil)).Elem()
+}
+
+func (i BatchOperationsJobBucketListBucketsManifestArgs) ToBatchOperationsJobBucketListBucketsManifestOutput() BatchOperationsJobBucketListBucketsManifestOutput {
+	return i.ToBatchOperationsJobBucketListBucketsManifestOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobBucketListBucketsManifestArgs) ToBatchOperationsJobBucketListBucketsManifestOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsManifestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListBucketsManifestOutput)
+}
+
+func (i BatchOperationsJobBucketListBucketsManifestArgs) ToBatchOperationsJobBucketListBucketsManifestPtrOutput() BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return i.ToBatchOperationsJobBucketListBucketsManifestPtrOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobBucketListBucketsManifestArgs) ToBatchOperationsJobBucketListBucketsManifestPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListBucketsManifestOutput).ToBatchOperationsJobBucketListBucketsManifestPtrOutputWithContext(ctx)
+}
+
+// BatchOperationsJobBucketListBucketsManifestPtrInput is an input type that accepts BatchOperationsJobBucketListBucketsManifestArgs, BatchOperationsJobBucketListBucketsManifestPtr and BatchOperationsJobBucketListBucketsManifestPtrOutput values.
+// You can construct a concrete instance of `BatchOperationsJobBucketListBucketsManifestPtrInput` via:
+//
+//	        BatchOperationsJobBucketListBucketsManifestArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchOperationsJobBucketListBucketsManifestPtrInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobBucketListBucketsManifestPtrOutput() BatchOperationsJobBucketListBucketsManifestPtrOutput
+	ToBatchOperationsJobBucketListBucketsManifestPtrOutputWithContext(context.Context) BatchOperationsJobBucketListBucketsManifestPtrOutput
+}
+
+type batchOperationsJobBucketListBucketsManifestPtrType BatchOperationsJobBucketListBucketsManifestArgs
+
+func BatchOperationsJobBucketListBucketsManifestPtr(v *BatchOperationsJobBucketListBucketsManifestArgs) BatchOperationsJobBucketListBucketsManifestPtrInput {
+	return (*batchOperationsJobBucketListBucketsManifestPtrType)(v)
+}
+
+func (*batchOperationsJobBucketListBucketsManifestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobBucketListBucketsManifest)(nil)).Elem()
+}
+
+func (i *batchOperationsJobBucketListBucketsManifestPtrType) ToBatchOperationsJobBucketListBucketsManifestPtrOutput() BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return i.ToBatchOperationsJobBucketListBucketsManifestPtrOutputWithContext(context.Background())
+}
+
+func (i *batchOperationsJobBucketListBucketsManifestPtrType) ToBatchOperationsJobBucketListBucketsManifestPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListBucketsManifestPtrOutput)
+}
+
+type BatchOperationsJobBucketListBucketsManifestOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobBucketListBucketsManifestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobBucketListBucketsManifest)(nil)).Elem()
+}
+
+func (o BatchOperationsJobBucketListBucketsManifestOutput) ToBatchOperationsJobBucketListBucketsManifestOutput() BatchOperationsJobBucketListBucketsManifestOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsManifestOutput) ToBatchOperationsJobBucketListBucketsManifestOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsManifestOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsManifestOutput) ToBatchOperationsJobBucketListBucketsManifestPtrOutput() BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return o.ToBatchOperationsJobBucketListBucketsManifestPtrOutputWithContext(context.Background())
+}
+
+func (o BatchOperationsJobBucketListBucketsManifestOutput) ToBatchOperationsJobBucketListBucketsManifestPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchOperationsJobBucketListBucketsManifest) *BatchOperationsJobBucketListBucketsManifest {
+		return &v
+	}).(BatchOperationsJobBucketListBucketsManifestPtrOutput)
+}
+
+// Specifies objects in a manifest file.
+func (o BatchOperationsJobBucketListBucketsManifestOutput) ManifestLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobBucketListBucketsManifest) *string { return v.ManifestLocation }).(pulumi.StringPtrOutput)
+}
+
+type BatchOperationsJobBucketListBucketsManifestPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobBucketListBucketsManifestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobBucketListBucketsManifest)(nil)).Elem()
+}
+
+func (o BatchOperationsJobBucketListBucketsManifestPtrOutput) ToBatchOperationsJobBucketListBucketsManifestPtrOutput() BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsManifestPtrOutput) ToBatchOperationsJobBucketListBucketsManifestPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsManifestPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsManifestPtrOutput) Elem() BatchOperationsJobBucketListBucketsManifestOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketListBucketsManifest) BatchOperationsJobBucketListBucketsManifest {
+		if v != nil {
+			return *v
+		}
+		var ret BatchOperationsJobBucketListBucketsManifest
+		return ret
+	}).(BatchOperationsJobBucketListBucketsManifestOutput)
+}
+
+// Specifies objects in a manifest file.
+func (o BatchOperationsJobBucketListBucketsManifestPtrOutput) ManifestLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketListBucketsManifest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManifestLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+type BatchOperationsJobBucketListBucketsPrefixList struct {
+	// (Optional)
+	IncludedObjectPrefixes []string `pulumi:"includedObjectPrefixes"`
+}
+
+// BatchOperationsJobBucketListBucketsPrefixListInput is an input type that accepts BatchOperationsJobBucketListBucketsPrefixListArgs and BatchOperationsJobBucketListBucketsPrefixListOutput values.
+// You can construct a concrete instance of `BatchOperationsJobBucketListBucketsPrefixListInput` via:
+//
+//	BatchOperationsJobBucketListBucketsPrefixListArgs{...}
+type BatchOperationsJobBucketListBucketsPrefixListInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobBucketListBucketsPrefixListOutput() BatchOperationsJobBucketListBucketsPrefixListOutput
+	ToBatchOperationsJobBucketListBucketsPrefixListOutputWithContext(context.Context) BatchOperationsJobBucketListBucketsPrefixListOutput
+}
+
+type BatchOperationsJobBucketListBucketsPrefixListArgs struct {
+	// (Optional)
+	IncludedObjectPrefixes pulumi.StringArrayInput `pulumi:"includedObjectPrefixes"`
+}
+
+func (BatchOperationsJobBucketListBucketsPrefixListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobBucketListBucketsPrefixList)(nil)).Elem()
+}
+
+func (i BatchOperationsJobBucketListBucketsPrefixListArgs) ToBatchOperationsJobBucketListBucketsPrefixListOutput() BatchOperationsJobBucketListBucketsPrefixListOutput {
+	return i.ToBatchOperationsJobBucketListBucketsPrefixListOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobBucketListBucketsPrefixListArgs) ToBatchOperationsJobBucketListBucketsPrefixListOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPrefixListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListBucketsPrefixListOutput)
+}
+
+func (i BatchOperationsJobBucketListBucketsPrefixListArgs) ToBatchOperationsJobBucketListBucketsPrefixListPtrOutput() BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return i.ToBatchOperationsJobBucketListBucketsPrefixListPtrOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobBucketListBucketsPrefixListArgs) ToBatchOperationsJobBucketListBucketsPrefixListPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListBucketsPrefixListOutput).ToBatchOperationsJobBucketListBucketsPrefixListPtrOutputWithContext(ctx)
+}
+
+// BatchOperationsJobBucketListBucketsPrefixListPtrInput is an input type that accepts BatchOperationsJobBucketListBucketsPrefixListArgs, BatchOperationsJobBucketListBucketsPrefixListPtr and BatchOperationsJobBucketListBucketsPrefixListPtrOutput values.
+// You can construct a concrete instance of `BatchOperationsJobBucketListBucketsPrefixListPtrInput` via:
+//
+//	        BatchOperationsJobBucketListBucketsPrefixListArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchOperationsJobBucketListBucketsPrefixListPtrInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobBucketListBucketsPrefixListPtrOutput() BatchOperationsJobBucketListBucketsPrefixListPtrOutput
+	ToBatchOperationsJobBucketListBucketsPrefixListPtrOutputWithContext(context.Context) BatchOperationsJobBucketListBucketsPrefixListPtrOutput
+}
+
+type batchOperationsJobBucketListBucketsPrefixListPtrType BatchOperationsJobBucketListBucketsPrefixListArgs
+
+func BatchOperationsJobBucketListBucketsPrefixListPtr(v *BatchOperationsJobBucketListBucketsPrefixListArgs) BatchOperationsJobBucketListBucketsPrefixListPtrInput {
+	return (*batchOperationsJobBucketListBucketsPrefixListPtrType)(v)
+}
+
+func (*batchOperationsJobBucketListBucketsPrefixListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobBucketListBucketsPrefixList)(nil)).Elem()
+}
+
+func (i *batchOperationsJobBucketListBucketsPrefixListPtrType) ToBatchOperationsJobBucketListBucketsPrefixListPtrOutput() BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return i.ToBatchOperationsJobBucketListBucketsPrefixListPtrOutputWithContext(context.Background())
+}
+
+func (i *batchOperationsJobBucketListBucketsPrefixListPtrType) ToBatchOperationsJobBucketListBucketsPrefixListPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobBucketListBucketsPrefixListPtrOutput)
+}
+
+type BatchOperationsJobBucketListBucketsPrefixListOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobBucketListBucketsPrefixListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobBucketListBucketsPrefixList)(nil)).Elem()
+}
+
+func (o BatchOperationsJobBucketListBucketsPrefixListOutput) ToBatchOperationsJobBucketListBucketsPrefixListOutput() BatchOperationsJobBucketListBucketsPrefixListOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsPrefixListOutput) ToBatchOperationsJobBucketListBucketsPrefixListOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPrefixListOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsPrefixListOutput) ToBatchOperationsJobBucketListBucketsPrefixListPtrOutput() BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return o.ToBatchOperationsJobBucketListBucketsPrefixListPtrOutputWithContext(context.Background())
+}
+
+func (o BatchOperationsJobBucketListBucketsPrefixListOutput) ToBatchOperationsJobBucketListBucketsPrefixListPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchOperationsJobBucketListBucketsPrefixList) *BatchOperationsJobBucketListBucketsPrefixList {
+		return &v
+	}).(BatchOperationsJobBucketListBucketsPrefixListPtrOutput)
+}
+
+// (Optional)
+func (o BatchOperationsJobBucketListBucketsPrefixListOutput) IncludedObjectPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BatchOperationsJobBucketListBucketsPrefixList) []string { return v.IncludedObjectPrefixes }).(pulumi.StringArrayOutput)
+}
+
+type BatchOperationsJobBucketListBucketsPrefixListPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobBucketListBucketsPrefixListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobBucketListBucketsPrefixList)(nil)).Elem()
+}
+
+func (o BatchOperationsJobBucketListBucketsPrefixListPtrOutput) ToBatchOperationsJobBucketListBucketsPrefixListPtrOutput() BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsPrefixListPtrOutput) ToBatchOperationsJobBucketListBucketsPrefixListPtrOutputWithContext(ctx context.Context) BatchOperationsJobBucketListBucketsPrefixListPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobBucketListBucketsPrefixListPtrOutput) Elem() BatchOperationsJobBucketListBucketsPrefixListOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketListBucketsPrefixList) BatchOperationsJobBucketListBucketsPrefixList {
+		if v != nil {
+			return *v
+		}
+		var ret BatchOperationsJobBucketListBucketsPrefixList
+		return ret
+	}).(BatchOperationsJobBucketListBucketsPrefixListOutput)
+}
+
+// (Optional)
+func (o BatchOperationsJobBucketListBucketsPrefixListPtrOutput) IncludedObjectPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BatchOperationsJobBucketListBucketsPrefixList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedObjectPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+type BatchOperationsJobDeleteObject struct {
+	// enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+	PermanentObjectDeletionEnabled bool `pulumi:"permanentObjectDeletionEnabled"`
+}
+
+// BatchOperationsJobDeleteObjectInput is an input type that accepts BatchOperationsJobDeleteObjectArgs and BatchOperationsJobDeleteObjectOutput values.
+// You can construct a concrete instance of `BatchOperationsJobDeleteObjectInput` via:
+//
+//	BatchOperationsJobDeleteObjectArgs{...}
+type BatchOperationsJobDeleteObjectInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobDeleteObjectOutput() BatchOperationsJobDeleteObjectOutput
+	ToBatchOperationsJobDeleteObjectOutputWithContext(context.Context) BatchOperationsJobDeleteObjectOutput
+}
+
+type BatchOperationsJobDeleteObjectArgs struct {
+	// enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+	PermanentObjectDeletionEnabled pulumi.BoolInput `pulumi:"permanentObjectDeletionEnabled"`
+}
+
+func (BatchOperationsJobDeleteObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobDeleteObject)(nil)).Elem()
+}
+
+func (i BatchOperationsJobDeleteObjectArgs) ToBatchOperationsJobDeleteObjectOutput() BatchOperationsJobDeleteObjectOutput {
+	return i.ToBatchOperationsJobDeleteObjectOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobDeleteObjectArgs) ToBatchOperationsJobDeleteObjectOutputWithContext(ctx context.Context) BatchOperationsJobDeleteObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobDeleteObjectOutput)
+}
+
+func (i BatchOperationsJobDeleteObjectArgs) ToBatchOperationsJobDeleteObjectPtrOutput() BatchOperationsJobDeleteObjectPtrOutput {
+	return i.ToBatchOperationsJobDeleteObjectPtrOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobDeleteObjectArgs) ToBatchOperationsJobDeleteObjectPtrOutputWithContext(ctx context.Context) BatchOperationsJobDeleteObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobDeleteObjectOutput).ToBatchOperationsJobDeleteObjectPtrOutputWithContext(ctx)
+}
+
+// BatchOperationsJobDeleteObjectPtrInput is an input type that accepts BatchOperationsJobDeleteObjectArgs, BatchOperationsJobDeleteObjectPtr and BatchOperationsJobDeleteObjectPtrOutput values.
+// You can construct a concrete instance of `BatchOperationsJobDeleteObjectPtrInput` via:
+//
+//	        BatchOperationsJobDeleteObjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchOperationsJobDeleteObjectPtrInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobDeleteObjectPtrOutput() BatchOperationsJobDeleteObjectPtrOutput
+	ToBatchOperationsJobDeleteObjectPtrOutputWithContext(context.Context) BatchOperationsJobDeleteObjectPtrOutput
+}
+
+type batchOperationsJobDeleteObjectPtrType BatchOperationsJobDeleteObjectArgs
+
+func BatchOperationsJobDeleteObjectPtr(v *BatchOperationsJobDeleteObjectArgs) BatchOperationsJobDeleteObjectPtrInput {
+	return (*batchOperationsJobDeleteObjectPtrType)(v)
+}
+
+func (*batchOperationsJobDeleteObjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobDeleteObject)(nil)).Elem()
+}
+
+func (i *batchOperationsJobDeleteObjectPtrType) ToBatchOperationsJobDeleteObjectPtrOutput() BatchOperationsJobDeleteObjectPtrOutput {
+	return i.ToBatchOperationsJobDeleteObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *batchOperationsJobDeleteObjectPtrType) ToBatchOperationsJobDeleteObjectPtrOutputWithContext(ctx context.Context) BatchOperationsJobDeleteObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobDeleteObjectPtrOutput)
+}
+
+type BatchOperationsJobDeleteObjectOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobDeleteObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobDeleteObject)(nil)).Elem()
+}
+
+func (o BatchOperationsJobDeleteObjectOutput) ToBatchOperationsJobDeleteObjectOutput() BatchOperationsJobDeleteObjectOutput {
+	return o
+}
+
+func (o BatchOperationsJobDeleteObjectOutput) ToBatchOperationsJobDeleteObjectOutputWithContext(ctx context.Context) BatchOperationsJobDeleteObjectOutput {
+	return o
+}
+
+func (o BatchOperationsJobDeleteObjectOutput) ToBatchOperationsJobDeleteObjectPtrOutput() BatchOperationsJobDeleteObjectPtrOutput {
+	return o.ToBatchOperationsJobDeleteObjectPtrOutputWithContext(context.Background())
+}
+
+func (o BatchOperationsJobDeleteObjectOutput) ToBatchOperationsJobDeleteObjectPtrOutputWithContext(ctx context.Context) BatchOperationsJobDeleteObjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchOperationsJobDeleteObject) *BatchOperationsJobDeleteObject {
+		return &v
+	}).(BatchOperationsJobDeleteObjectPtrOutput)
+}
+
+// enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+func (o BatchOperationsJobDeleteObjectOutput) PermanentObjectDeletionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BatchOperationsJobDeleteObject) bool { return v.PermanentObjectDeletionEnabled }).(pulumi.BoolOutput)
+}
+
+type BatchOperationsJobDeleteObjectPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobDeleteObjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobDeleteObject)(nil)).Elem()
+}
+
+func (o BatchOperationsJobDeleteObjectPtrOutput) ToBatchOperationsJobDeleteObjectPtrOutput() BatchOperationsJobDeleteObjectPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobDeleteObjectPtrOutput) ToBatchOperationsJobDeleteObjectPtrOutputWithContext(ctx context.Context) BatchOperationsJobDeleteObjectPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobDeleteObjectPtrOutput) Elem() BatchOperationsJobDeleteObjectOutput {
+	return o.ApplyT(func(v *BatchOperationsJobDeleteObject) BatchOperationsJobDeleteObject {
+		if v != nil {
+			return *v
+		}
+		var ret BatchOperationsJobDeleteObject
+		return ret
+	}).(BatchOperationsJobDeleteObjectOutput)
+}
+
+// enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+func (o BatchOperationsJobDeleteObjectPtrOutput) PermanentObjectDeletionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobDeleteObject) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.PermanentObjectDeletionEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type BatchOperationsJobPutMetadata struct {
+	// Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+	CacheControl *string `pulumi:"cacheControl"`
+	// Content-Disposition of the object data.
+	ContentDisposition *string `pulumi:"contentDisposition"`
+	// Content Encoding of the object data.
+	ContentEncoding *string `pulumi:"contentEncoding"`
+	// Content-Language of the object data.
+	ContentLanguage *string `pulumi:"contentLanguage"`
+	// Content-Type of the object data.
+	ContentType *string `pulumi:"contentType"`
+	// User-provided metadata, in key/value pairs.
+	CustomMetadata map[string]string `pulumi:"customMetadata"`
+	// Updates the objects fixed custom time metadata.
+	CustomTime *string `pulumi:"customTime"`
+}
+
+// BatchOperationsJobPutMetadataInput is an input type that accepts BatchOperationsJobPutMetadataArgs and BatchOperationsJobPutMetadataOutput values.
+// You can construct a concrete instance of `BatchOperationsJobPutMetadataInput` via:
+//
+//	BatchOperationsJobPutMetadataArgs{...}
+type BatchOperationsJobPutMetadataInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobPutMetadataOutput() BatchOperationsJobPutMetadataOutput
+	ToBatchOperationsJobPutMetadataOutputWithContext(context.Context) BatchOperationsJobPutMetadataOutput
+}
+
+type BatchOperationsJobPutMetadataArgs struct {
+	// Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+	CacheControl pulumi.StringPtrInput `pulumi:"cacheControl"`
+	// Content-Disposition of the object data.
+	ContentDisposition pulumi.StringPtrInput `pulumi:"contentDisposition"`
+	// Content Encoding of the object data.
+	ContentEncoding pulumi.StringPtrInput `pulumi:"contentEncoding"`
+	// Content-Language of the object data.
+	ContentLanguage pulumi.StringPtrInput `pulumi:"contentLanguage"`
+	// Content-Type of the object data.
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	// User-provided metadata, in key/value pairs.
+	CustomMetadata pulumi.StringMapInput `pulumi:"customMetadata"`
+	// Updates the objects fixed custom time metadata.
+	CustomTime pulumi.StringPtrInput `pulumi:"customTime"`
+}
+
+func (BatchOperationsJobPutMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobPutMetadata)(nil)).Elem()
+}
+
+func (i BatchOperationsJobPutMetadataArgs) ToBatchOperationsJobPutMetadataOutput() BatchOperationsJobPutMetadataOutput {
+	return i.ToBatchOperationsJobPutMetadataOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobPutMetadataArgs) ToBatchOperationsJobPutMetadataOutputWithContext(ctx context.Context) BatchOperationsJobPutMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobPutMetadataOutput)
+}
+
+func (i BatchOperationsJobPutMetadataArgs) ToBatchOperationsJobPutMetadataPtrOutput() BatchOperationsJobPutMetadataPtrOutput {
+	return i.ToBatchOperationsJobPutMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobPutMetadataArgs) ToBatchOperationsJobPutMetadataPtrOutputWithContext(ctx context.Context) BatchOperationsJobPutMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobPutMetadataOutput).ToBatchOperationsJobPutMetadataPtrOutputWithContext(ctx)
+}
+
+// BatchOperationsJobPutMetadataPtrInput is an input type that accepts BatchOperationsJobPutMetadataArgs, BatchOperationsJobPutMetadataPtr and BatchOperationsJobPutMetadataPtrOutput values.
+// You can construct a concrete instance of `BatchOperationsJobPutMetadataPtrInput` via:
+//
+//	        BatchOperationsJobPutMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchOperationsJobPutMetadataPtrInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobPutMetadataPtrOutput() BatchOperationsJobPutMetadataPtrOutput
+	ToBatchOperationsJobPutMetadataPtrOutputWithContext(context.Context) BatchOperationsJobPutMetadataPtrOutput
+}
+
+type batchOperationsJobPutMetadataPtrType BatchOperationsJobPutMetadataArgs
+
+func BatchOperationsJobPutMetadataPtr(v *BatchOperationsJobPutMetadataArgs) BatchOperationsJobPutMetadataPtrInput {
+	return (*batchOperationsJobPutMetadataPtrType)(v)
+}
+
+func (*batchOperationsJobPutMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobPutMetadata)(nil)).Elem()
+}
+
+func (i *batchOperationsJobPutMetadataPtrType) ToBatchOperationsJobPutMetadataPtrOutput() BatchOperationsJobPutMetadataPtrOutput {
+	return i.ToBatchOperationsJobPutMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *batchOperationsJobPutMetadataPtrType) ToBatchOperationsJobPutMetadataPtrOutputWithContext(ctx context.Context) BatchOperationsJobPutMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobPutMetadataPtrOutput)
+}
+
+type BatchOperationsJobPutMetadataOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobPutMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobPutMetadata)(nil)).Elem()
+}
+
+func (o BatchOperationsJobPutMetadataOutput) ToBatchOperationsJobPutMetadataOutput() BatchOperationsJobPutMetadataOutput {
+	return o
+}
+
+func (o BatchOperationsJobPutMetadataOutput) ToBatchOperationsJobPutMetadataOutputWithContext(ctx context.Context) BatchOperationsJobPutMetadataOutput {
+	return o
+}
+
+func (o BatchOperationsJobPutMetadataOutput) ToBatchOperationsJobPutMetadataPtrOutput() BatchOperationsJobPutMetadataPtrOutput {
+	return o.ToBatchOperationsJobPutMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o BatchOperationsJobPutMetadataOutput) ToBatchOperationsJobPutMetadataPtrOutputWithContext(ctx context.Context) BatchOperationsJobPutMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchOperationsJobPutMetadata) *BatchOperationsJobPutMetadata {
+		return &v
+	}).(BatchOperationsJobPutMetadataPtrOutput)
+}
+
+// Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+func (o BatchOperationsJobPutMetadataOutput) CacheControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobPutMetadata) *string { return v.CacheControl }).(pulumi.StringPtrOutput)
+}
+
+// Content-Disposition of the object data.
+func (o BatchOperationsJobPutMetadataOutput) ContentDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobPutMetadata) *string { return v.ContentDisposition }).(pulumi.StringPtrOutput)
+}
+
+// Content Encoding of the object data.
+func (o BatchOperationsJobPutMetadataOutput) ContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobPutMetadata) *string { return v.ContentEncoding }).(pulumi.StringPtrOutput)
+}
+
+// Content-Language of the object data.
+func (o BatchOperationsJobPutMetadataOutput) ContentLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobPutMetadata) *string { return v.ContentLanguage }).(pulumi.StringPtrOutput)
+}
+
+// Content-Type of the object data.
+func (o BatchOperationsJobPutMetadataOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobPutMetadata) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// User-provided metadata, in key/value pairs.
+func (o BatchOperationsJobPutMetadataOutput) CustomMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BatchOperationsJobPutMetadata) map[string]string { return v.CustomMetadata }).(pulumi.StringMapOutput)
+}
+
+// Updates the objects fixed custom time metadata.
+func (o BatchOperationsJobPutMetadataOutput) CustomTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobPutMetadata) *string { return v.CustomTime }).(pulumi.StringPtrOutput)
+}
+
+type BatchOperationsJobPutMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobPutMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobPutMetadata)(nil)).Elem()
+}
+
+func (o BatchOperationsJobPutMetadataPtrOutput) ToBatchOperationsJobPutMetadataPtrOutput() BatchOperationsJobPutMetadataPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobPutMetadataPtrOutput) ToBatchOperationsJobPutMetadataPtrOutputWithContext(ctx context.Context) BatchOperationsJobPutMetadataPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobPutMetadataPtrOutput) Elem() BatchOperationsJobPutMetadataOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutMetadata) BatchOperationsJobPutMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret BatchOperationsJobPutMetadata
+		return ret
+	}).(BatchOperationsJobPutMetadataOutput)
+}
+
+// Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+func (o BatchOperationsJobPutMetadataPtrOutput) CacheControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheControl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Content-Disposition of the object data.
+func (o BatchOperationsJobPutMetadataPtrOutput) ContentDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentDisposition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Content Encoding of the object data.
+func (o BatchOperationsJobPutMetadataPtrOutput) ContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentEncoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Content-Language of the object data.
+func (o BatchOperationsJobPutMetadataPtrOutput) ContentLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentLanguage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Content-Type of the object data.
+func (o BatchOperationsJobPutMetadataPtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided metadata, in key/value pairs.
+func (o BatchOperationsJobPutMetadataPtrOutput) CustomMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomMetadata
+	}).(pulumi.StringMapOutput)
+}
+
+// Updates the objects fixed custom time metadata.
+func (o BatchOperationsJobPutMetadataPtrOutput) CustomTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type BatchOperationsJobPutObjectHold struct {
+	// set/unset to update event based hold for objects.
+	EventBasedHold *string `pulumi:"eventBasedHold"`
+	// set/unset to update temporary based hold for objects.
+	TemporaryHold *string `pulumi:"temporaryHold"`
+}
+
+// BatchOperationsJobPutObjectHoldInput is an input type that accepts BatchOperationsJobPutObjectHoldArgs and BatchOperationsJobPutObjectHoldOutput values.
+// You can construct a concrete instance of `BatchOperationsJobPutObjectHoldInput` via:
+//
+//	BatchOperationsJobPutObjectHoldArgs{...}
+type BatchOperationsJobPutObjectHoldInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobPutObjectHoldOutput() BatchOperationsJobPutObjectHoldOutput
+	ToBatchOperationsJobPutObjectHoldOutputWithContext(context.Context) BatchOperationsJobPutObjectHoldOutput
+}
+
+type BatchOperationsJobPutObjectHoldArgs struct {
+	// set/unset to update event based hold for objects.
+	EventBasedHold pulumi.StringPtrInput `pulumi:"eventBasedHold"`
+	// set/unset to update temporary based hold for objects.
+	TemporaryHold pulumi.StringPtrInput `pulumi:"temporaryHold"`
+}
+
+func (BatchOperationsJobPutObjectHoldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobPutObjectHold)(nil)).Elem()
+}
+
+func (i BatchOperationsJobPutObjectHoldArgs) ToBatchOperationsJobPutObjectHoldOutput() BatchOperationsJobPutObjectHoldOutput {
+	return i.ToBatchOperationsJobPutObjectHoldOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobPutObjectHoldArgs) ToBatchOperationsJobPutObjectHoldOutputWithContext(ctx context.Context) BatchOperationsJobPutObjectHoldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobPutObjectHoldOutput)
+}
+
+func (i BatchOperationsJobPutObjectHoldArgs) ToBatchOperationsJobPutObjectHoldPtrOutput() BatchOperationsJobPutObjectHoldPtrOutput {
+	return i.ToBatchOperationsJobPutObjectHoldPtrOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobPutObjectHoldArgs) ToBatchOperationsJobPutObjectHoldPtrOutputWithContext(ctx context.Context) BatchOperationsJobPutObjectHoldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobPutObjectHoldOutput).ToBatchOperationsJobPutObjectHoldPtrOutputWithContext(ctx)
+}
+
+// BatchOperationsJobPutObjectHoldPtrInput is an input type that accepts BatchOperationsJobPutObjectHoldArgs, BatchOperationsJobPutObjectHoldPtr and BatchOperationsJobPutObjectHoldPtrOutput values.
+// You can construct a concrete instance of `BatchOperationsJobPutObjectHoldPtrInput` via:
+//
+//	        BatchOperationsJobPutObjectHoldArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchOperationsJobPutObjectHoldPtrInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobPutObjectHoldPtrOutput() BatchOperationsJobPutObjectHoldPtrOutput
+	ToBatchOperationsJobPutObjectHoldPtrOutputWithContext(context.Context) BatchOperationsJobPutObjectHoldPtrOutput
+}
+
+type batchOperationsJobPutObjectHoldPtrType BatchOperationsJobPutObjectHoldArgs
+
+func BatchOperationsJobPutObjectHoldPtr(v *BatchOperationsJobPutObjectHoldArgs) BatchOperationsJobPutObjectHoldPtrInput {
+	return (*batchOperationsJobPutObjectHoldPtrType)(v)
+}
+
+func (*batchOperationsJobPutObjectHoldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobPutObjectHold)(nil)).Elem()
+}
+
+func (i *batchOperationsJobPutObjectHoldPtrType) ToBatchOperationsJobPutObjectHoldPtrOutput() BatchOperationsJobPutObjectHoldPtrOutput {
+	return i.ToBatchOperationsJobPutObjectHoldPtrOutputWithContext(context.Background())
+}
+
+func (i *batchOperationsJobPutObjectHoldPtrType) ToBatchOperationsJobPutObjectHoldPtrOutputWithContext(ctx context.Context) BatchOperationsJobPutObjectHoldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobPutObjectHoldPtrOutput)
+}
+
+type BatchOperationsJobPutObjectHoldOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobPutObjectHoldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobPutObjectHold)(nil)).Elem()
+}
+
+func (o BatchOperationsJobPutObjectHoldOutput) ToBatchOperationsJobPutObjectHoldOutput() BatchOperationsJobPutObjectHoldOutput {
+	return o
+}
+
+func (o BatchOperationsJobPutObjectHoldOutput) ToBatchOperationsJobPutObjectHoldOutputWithContext(ctx context.Context) BatchOperationsJobPutObjectHoldOutput {
+	return o
+}
+
+func (o BatchOperationsJobPutObjectHoldOutput) ToBatchOperationsJobPutObjectHoldPtrOutput() BatchOperationsJobPutObjectHoldPtrOutput {
+	return o.ToBatchOperationsJobPutObjectHoldPtrOutputWithContext(context.Background())
+}
+
+func (o BatchOperationsJobPutObjectHoldOutput) ToBatchOperationsJobPutObjectHoldPtrOutputWithContext(ctx context.Context) BatchOperationsJobPutObjectHoldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchOperationsJobPutObjectHold) *BatchOperationsJobPutObjectHold {
+		return &v
+	}).(BatchOperationsJobPutObjectHoldPtrOutput)
+}
+
+// set/unset to update event based hold for objects.
+func (o BatchOperationsJobPutObjectHoldOutput) EventBasedHold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobPutObjectHold) *string { return v.EventBasedHold }).(pulumi.StringPtrOutput)
+}
+
+// set/unset to update temporary based hold for objects.
+func (o BatchOperationsJobPutObjectHoldOutput) TemporaryHold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchOperationsJobPutObjectHold) *string { return v.TemporaryHold }).(pulumi.StringPtrOutput)
+}
+
+type BatchOperationsJobPutObjectHoldPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobPutObjectHoldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobPutObjectHold)(nil)).Elem()
+}
+
+func (o BatchOperationsJobPutObjectHoldPtrOutput) ToBatchOperationsJobPutObjectHoldPtrOutput() BatchOperationsJobPutObjectHoldPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobPutObjectHoldPtrOutput) ToBatchOperationsJobPutObjectHoldPtrOutputWithContext(ctx context.Context) BatchOperationsJobPutObjectHoldPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobPutObjectHoldPtrOutput) Elem() BatchOperationsJobPutObjectHoldOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutObjectHold) BatchOperationsJobPutObjectHold {
+		if v != nil {
+			return *v
+		}
+		var ret BatchOperationsJobPutObjectHold
+		return ret
+	}).(BatchOperationsJobPutObjectHoldOutput)
+}
+
+// set/unset to update event based hold for objects.
+func (o BatchOperationsJobPutObjectHoldPtrOutput) EventBasedHold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutObjectHold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventBasedHold
+	}).(pulumi.StringPtrOutput)
+}
+
+// set/unset to update temporary based hold for objects.
+func (o BatchOperationsJobPutObjectHoldPtrOutput) TemporaryHold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobPutObjectHold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemporaryHold
+	}).(pulumi.StringPtrOutput)
+}
+
+type BatchOperationsJobRewriteObject struct {
+	// valid kms key
+	KmsKey string `pulumi:"kmsKey"`
+}
+
+// BatchOperationsJobRewriteObjectInput is an input type that accepts BatchOperationsJobRewriteObjectArgs and BatchOperationsJobRewriteObjectOutput values.
+// You can construct a concrete instance of `BatchOperationsJobRewriteObjectInput` via:
+//
+//	BatchOperationsJobRewriteObjectArgs{...}
+type BatchOperationsJobRewriteObjectInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobRewriteObjectOutput() BatchOperationsJobRewriteObjectOutput
+	ToBatchOperationsJobRewriteObjectOutputWithContext(context.Context) BatchOperationsJobRewriteObjectOutput
+}
+
+type BatchOperationsJobRewriteObjectArgs struct {
+	// valid kms key
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+}
+
+func (BatchOperationsJobRewriteObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobRewriteObject)(nil)).Elem()
+}
+
+func (i BatchOperationsJobRewriteObjectArgs) ToBatchOperationsJobRewriteObjectOutput() BatchOperationsJobRewriteObjectOutput {
+	return i.ToBatchOperationsJobRewriteObjectOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobRewriteObjectArgs) ToBatchOperationsJobRewriteObjectOutputWithContext(ctx context.Context) BatchOperationsJobRewriteObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobRewriteObjectOutput)
+}
+
+func (i BatchOperationsJobRewriteObjectArgs) ToBatchOperationsJobRewriteObjectPtrOutput() BatchOperationsJobRewriteObjectPtrOutput {
+	return i.ToBatchOperationsJobRewriteObjectPtrOutputWithContext(context.Background())
+}
+
+func (i BatchOperationsJobRewriteObjectArgs) ToBatchOperationsJobRewriteObjectPtrOutputWithContext(ctx context.Context) BatchOperationsJobRewriteObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobRewriteObjectOutput).ToBatchOperationsJobRewriteObjectPtrOutputWithContext(ctx)
+}
+
+// BatchOperationsJobRewriteObjectPtrInput is an input type that accepts BatchOperationsJobRewriteObjectArgs, BatchOperationsJobRewriteObjectPtr and BatchOperationsJobRewriteObjectPtrOutput values.
+// You can construct a concrete instance of `BatchOperationsJobRewriteObjectPtrInput` via:
+//
+//	        BatchOperationsJobRewriteObjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchOperationsJobRewriteObjectPtrInput interface {
+	pulumi.Input
+
+	ToBatchOperationsJobRewriteObjectPtrOutput() BatchOperationsJobRewriteObjectPtrOutput
+	ToBatchOperationsJobRewriteObjectPtrOutputWithContext(context.Context) BatchOperationsJobRewriteObjectPtrOutput
+}
+
+type batchOperationsJobRewriteObjectPtrType BatchOperationsJobRewriteObjectArgs
+
+func BatchOperationsJobRewriteObjectPtr(v *BatchOperationsJobRewriteObjectArgs) BatchOperationsJobRewriteObjectPtrInput {
+	return (*batchOperationsJobRewriteObjectPtrType)(v)
+}
+
+func (*batchOperationsJobRewriteObjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobRewriteObject)(nil)).Elem()
+}
+
+func (i *batchOperationsJobRewriteObjectPtrType) ToBatchOperationsJobRewriteObjectPtrOutput() BatchOperationsJobRewriteObjectPtrOutput {
+	return i.ToBatchOperationsJobRewriteObjectPtrOutputWithContext(context.Background())
+}
+
+func (i *batchOperationsJobRewriteObjectPtrType) ToBatchOperationsJobRewriteObjectPtrOutputWithContext(ctx context.Context) BatchOperationsJobRewriteObjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchOperationsJobRewriteObjectPtrOutput)
+}
+
+type BatchOperationsJobRewriteObjectOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobRewriteObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchOperationsJobRewriteObject)(nil)).Elem()
+}
+
+func (o BatchOperationsJobRewriteObjectOutput) ToBatchOperationsJobRewriteObjectOutput() BatchOperationsJobRewriteObjectOutput {
+	return o
+}
+
+func (o BatchOperationsJobRewriteObjectOutput) ToBatchOperationsJobRewriteObjectOutputWithContext(ctx context.Context) BatchOperationsJobRewriteObjectOutput {
+	return o
+}
+
+func (o BatchOperationsJobRewriteObjectOutput) ToBatchOperationsJobRewriteObjectPtrOutput() BatchOperationsJobRewriteObjectPtrOutput {
+	return o.ToBatchOperationsJobRewriteObjectPtrOutputWithContext(context.Background())
+}
+
+func (o BatchOperationsJobRewriteObjectOutput) ToBatchOperationsJobRewriteObjectPtrOutputWithContext(ctx context.Context) BatchOperationsJobRewriteObjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchOperationsJobRewriteObject) *BatchOperationsJobRewriteObject {
+		return &v
+	}).(BatchOperationsJobRewriteObjectPtrOutput)
+}
+
+// valid kms key
+func (o BatchOperationsJobRewriteObjectOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v BatchOperationsJobRewriteObject) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+type BatchOperationsJobRewriteObjectPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchOperationsJobRewriteObjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchOperationsJobRewriteObject)(nil)).Elem()
+}
+
+func (o BatchOperationsJobRewriteObjectPtrOutput) ToBatchOperationsJobRewriteObjectPtrOutput() BatchOperationsJobRewriteObjectPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobRewriteObjectPtrOutput) ToBatchOperationsJobRewriteObjectPtrOutputWithContext(ctx context.Context) BatchOperationsJobRewriteObjectPtrOutput {
+	return o
+}
+
+func (o BatchOperationsJobRewriteObjectPtrOutput) Elem() BatchOperationsJobRewriteObjectOutput {
+	return o.ApplyT(func(v *BatchOperationsJobRewriteObject) BatchOperationsJobRewriteObject {
+		if v != nil {
+			return *v
+		}
+		var ret BatchOperationsJobRewriteObject
+		return ret
+	}).(BatchOperationsJobRewriteObjectOutput)
+}
+
+// valid kms key
+func (o BatchOperationsJobRewriteObjectPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJobRewriteObject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type BucketAutoclass struct {
 	// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
 	Enabled bool `pulumi:"enabled"`
@@ -10433,6 +11716,8 @@ type TransferJobTransferSpecAwsS3DataSource struct {
 	AwsAccessKey *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
 	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
+	// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+	ManagedPrivateNetwork *bool `pulumi:"managedPrivateNetwork"`
 	// S3 Bucket path in bucket to transfer.
 	Path *string `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
@@ -10455,6 +11740,8 @@ type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+	ManagedPrivateNetwork pulumi.BoolPtrInput `pulumi:"managedPrivateNetwork"`
 	// S3 Bucket path in bucket to transfer.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
@@ -10550,6 +11837,11 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.String
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+func (o TransferJobTransferSpecAwsS3DataSourceOutput) ManagedPrivateNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *bool { return v.ManagedPrivateNetwork }).(pulumi.BoolPtrOutput)
+}
+
 // S3 Bucket path in bucket to transfer.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *string { return v.Path }).(pulumi.StringPtrOutput)
@@ -10602,6 +11894,16 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.Str
 		}
 		return &v.BucketName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) ManagedPrivateNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedPrivateNetwork
+	}).(pulumi.BoolPtrOutput)
 }
 
 // S3 Bucket path in bucket to transfer.
@@ -17117,6 +18419,22 @@ func (o GetControlProjectIntelligenceConfigTrialConfigArrayOutput) Index(i pulum
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListInput)(nil)).Elem(), BatchOperationsJobBucketListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListPtrInput)(nil)).Elem(), BatchOperationsJobBucketListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListBucketsInput)(nil)).Elem(), BatchOperationsJobBucketListBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListBucketsPtrInput)(nil)).Elem(), BatchOperationsJobBucketListBucketsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListBucketsManifestInput)(nil)).Elem(), BatchOperationsJobBucketListBucketsManifestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListBucketsManifestPtrInput)(nil)).Elem(), BatchOperationsJobBucketListBucketsManifestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListBucketsPrefixListInput)(nil)).Elem(), BatchOperationsJobBucketListBucketsPrefixListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobBucketListBucketsPrefixListPtrInput)(nil)).Elem(), BatchOperationsJobBucketListBucketsPrefixListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobDeleteObjectInput)(nil)).Elem(), BatchOperationsJobDeleteObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobDeleteObjectPtrInput)(nil)).Elem(), BatchOperationsJobDeleteObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobPutMetadataInput)(nil)).Elem(), BatchOperationsJobPutMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobPutMetadataPtrInput)(nil)).Elem(), BatchOperationsJobPutMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobPutObjectHoldInput)(nil)).Elem(), BatchOperationsJobPutObjectHoldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobPutObjectHoldPtrInput)(nil)).Elem(), BatchOperationsJobPutObjectHoldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobRewriteObjectInput)(nil)).Elem(), BatchOperationsJobRewriteObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchOperationsJobRewriteObjectPtrInput)(nil)).Elem(), BatchOperationsJobRewriteObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassInput)(nil)).Elem(), BucketAutoclassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassPtrInput)(nil)).Elem(), BucketAutoclassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorInput)(nil)).Elem(), BucketCorArgs{})
@@ -17351,6 +18669,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigTrialConfigInput)(nil)).Elem(), GetControlProjectIntelligenceConfigTrialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlProjectIntelligenceConfigTrialConfigArrayInput)(nil)).Elem(), GetControlProjectIntelligenceConfigTrialConfigArray{})
+	pulumi.RegisterOutputType(BatchOperationsJobBucketListOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobBucketListPtrOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobBucketListBucketsOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobBucketListBucketsPtrOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobBucketListBucketsManifestOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobBucketListBucketsManifestPtrOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobBucketListBucketsPrefixListOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobBucketListBucketsPrefixListPtrOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobDeleteObjectOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobDeleteObjectPtrOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobPutMetadataOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobPutMetadataPtrOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobPutObjectHoldOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobPutObjectHoldPtrOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobRewriteObjectOutput{})
+	pulumi.RegisterOutputType(BatchOperationsJobRewriteObjectPtrOutput{})
 	pulumi.RegisterOutputType(BucketAutoclassOutput{})
 	pulumi.RegisterOutputType(BucketAutoclassPtrOutput{})
 	pulumi.RegisterOutputType(BucketCorOutput{})

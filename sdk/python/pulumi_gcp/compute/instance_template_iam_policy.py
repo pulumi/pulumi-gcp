@@ -153,6 +153,9 @@ class _InstanceTemplateIamPolicyState:
 
 
 class InstanceTemplateIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceTemplateIamPolicy:InstanceTemplateIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

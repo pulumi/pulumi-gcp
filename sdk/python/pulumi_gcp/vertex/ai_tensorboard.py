@@ -373,6 +373,9 @@ class _AiTensorboardState:
 
 
 class AiTensorboard(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiTensorboard:AiTensorboard"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

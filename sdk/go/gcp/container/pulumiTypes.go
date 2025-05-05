@@ -21043,6 +21043,8 @@ type ClusterNodeConfig struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket *ClusterNodeConfigFastSocket `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool.
+	FlexStart *bool `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -21197,6 +21199,8 @@ type ClusterNodeConfigArgs struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket ClusterNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool.
+	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -21449,6 +21453,11 @@ func (o ClusterNodeConfigOutput) EphemeralStorageLocalSsdConfig() ClusterNodeCon
 // Structure is documented below.
 func (o ClusterNodeConfigOutput) FastSocket() ClusterNodeConfigFastSocketPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigFastSocket { return v.FastSocket }).(ClusterNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool.
+func (o ClusterNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -21800,6 +21809,16 @@ func (o ClusterNodeConfigPtrOutput) FastSocket() ClusterNodeConfigFastSocketPtrO
 		}
 		return v.FastSocket
 	}).(ClusterNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool.
+func (o ClusterNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FlexStart
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -23189,6 +23208,8 @@ func (o ClusterNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount() pulumi
 }
 
 type ClusterNodeConfigEphemeralStorageLocalSsdConfig struct {
+	// Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+	DataCacheCount *int `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 	LocalSsdCount int `pulumi:"localSsdCount"`
 }
@@ -23205,6 +23226,8 @@ type ClusterNodeConfigEphemeralStorageLocalSsdConfigInput interface {
 }
 
 type ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs struct {
+	// Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+	DataCacheCount pulumi.IntPtrInput `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
 }
@@ -23286,6 +23309,11 @@ func (o ClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) ToClusterNodeConf
 	}).(ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput)
 }
 
+// Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+func (o ClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) DataCacheCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigEphemeralStorageLocalSsdConfig) *int { return v.DataCacheCount }).(pulumi.IntPtrOutput)
+}
+
 // Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 func (o ClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) LocalSsdCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeConfigEphemeralStorageLocalSsdConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
@@ -23313,6 +23341,16 @@ func (o ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) Elem() Cluster
 		var ret ClusterNodeConfigEphemeralStorageLocalSsdConfig
 		return ret
 	}).(ClusterNodeConfigEphemeralStorageLocalSsdConfigOutput)
+}
+
+// Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+func (o ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) DataCacheCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigEphemeralStorageLocalSsdConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataCacheCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
@@ -23739,7 +23777,7 @@ func (o ClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) C
 type ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
 	// Mode for how the GPU driver is installed.
 	// Accepted values are:
-	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
 	// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
 	// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
 	// * `"LATEST"`: "Latest" GPU driver in COS.
@@ -23760,7 +23798,7 @@ type ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput interface
 type ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs struct {
 	// Mode for how the GPU driver is installed.
 	// Accepted values are:
-	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
 	// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
 	// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
 	// * `"LATEST"`: "Latest" GPU driver in COS.
@@ -23846,7 +23884,7 @@ func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToCl
 
 // Mode for how the GPU driver is installed.
 // Accepted values are:
-// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
 // * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
 // * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
 // * `"LATEST"`: "Latest" GPU driver in COS.
@@ -23880,7 +23918,7 @@ func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) E
 
 // Mode for how the GPU driver is installed.
 // Accepted values are:
-// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
 // * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
 // * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
 // * `"LATEST"`: "Latest" GPU driver in COS.
@@ -29579,6 +29617,8 @@ type ClusterNodePoolNodeConfig struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket *ClusterNodePoolNodeConfigFastSocket `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool.
+	FlexStart *bool `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -29733,6 +29773,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket ClusterNodePoolNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool.
+	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -29993,6 +30035,11 @@ func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfig() Cluste
 // Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) FastSocket() ClusterNodePoolNodeConfigFastSocketPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigFastSocket { return v.FastSocket }).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool.
+func (o ClusterNodePoolNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -30362,6 +30409,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) FastSocket() ClusterNodePoolNodeConf
 		}
 		return v.FastSocket
 	}).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool.
+func (o ClusterNodePoolNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FlexStart
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -31751,6 +31808,8 @@ func (o ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount(
 }
 
 type ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig struct {
+	// Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+	DataCacheCount *int `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 	LocalSsdCount int `pulumi:"localSsdCount"`
 }
@@ -31767,6 +31826,8 @@ type ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs struct {
+	// Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+	DataCacheCount pulumi.IntPtrInput `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
 }
@@ -31848,6 +31909,11 @@ func (o ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput) ToCluster
 	}).(ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput)
 }
 
+// Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+func (o ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput) DataCacheCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig) *int { return v.DataCacheCount }).(pulumi.IntPtrOutput)
+}
+
 // Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 func (o ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput) LocalSsdCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
@@ -31875,6 +31941,16 @@ func (o ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) Elem()
 		var ret ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig
 		return ret
 	}).(ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput)
+}
+
+// Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+func (o ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) DataCacheCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataCacheCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
@@ -32301,7 +32377,7 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.Int
 type ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
 	// Mode for how the GPU driver is installed.
 	// Accepted values are:
-	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
 	// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
 	// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
 	// * `"LATEST"`: "Latest" GPU driver in COS.
@@ -32322,7 +32398,7 @@ type ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput i
 type ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs struct {
 	// Mode for how the GPU driver is installed.
 	// Accepted values are:
-	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
 	// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
 	// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
 	// * `"LATEST"`: "Latest" GPU driver in COS.
@@ -32408,7 +32484,7 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutp
 
 // Mode for how the GPU driver is installed.
 // Accepted values are:
-// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
 // * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
 // * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
 // * `"LATEST"`: "Latest" GPU driver in COS.
@@ -32444,7 +32520,7 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrO
 
 // Mode for how the GPU driver is installed.
 // Accepted values are:
-// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
 // * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
 // * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
 // * `"LATEST"`: "Latest" GPU driver in COS.
@@ -40436,7 +40512,7 @@ type NodePoolNodeConfig struct {
 	AdvancedMachineFeatures *NodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes *NodePoolNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfig *NodePoolNodeConfigContainerdConfig `pulumi:"containerdConfig"`
@@ -40454,6 +40530,8 @@ type NodePoolNodeConfig struct {
 	EphemeralStorageLocalSsdConfig *NodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSocket *NodePoolNodeConfigFastSocket `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart *bool `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfig *NodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -40541,7 +40619,7 @@ type NodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures NodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes NodePoolNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfig NodePoolNodeConfigContainerdConfigPtrInput `pulumi:"containerdConfig"`
@@ -40559,6 +40637,8 @@ type NodePoolNodeConfigArgs struct {
 	EphemeralStorageLocalSsdConfig NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSocket NodePoolNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfig NodePoolNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -40719,7 +40799,7 @@ func (o NodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 func (o NodePoolNodeConfigOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes { return v.ConfidentialNodes }).(NodePoolNodeConfigConfidentialNodesPtrOutput)
 }
@@ -40764,6 +40844,11 @@ func (o NodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfig() NodePoolNodeC
 // Enable or disable NCCL Fast Socket in the node pool.
 func (o NodePoolNodeConfigOutput) FastSocket() NodePoolNodeConfigFastSocketPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigFastSocket { return v.FastSocket }).(NodePoolNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool
+func (o NodePoolNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
 
 // GCFS configuration for this node.
@@ -40980,7 +41065,7 @@ func (o NodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 func (o NodePoolNodeConfigPtrOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes {
 		if v == nil {
@@ -41068,6 +41153,16 @@ func (o NodePoolNodeConfigPtrOutput) FastSocket() NodePoolNodeConfigFastSocketPt
 		}
 		return v.FastSocket
 	}).(NodePoolNodeConfigFastSocketPtrOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool
+func (o NodePoolNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FlexStart
+	}).(pulumi.BoolPtrOutput)
 }
 
 // GCFS configuration for this node.
@@ -42410,6 +42505,8 @@ func (o NodePoolNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount() pulum
 }
 
 type NodePoolNodeConfigEphemeralStorageLocalSsdConfig struct {
+	// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+	DataCacheCount *int `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
 	LocalSsdCount int `pulumi:"localSsdCount"`
 }
@@ -42426,6 +42523,8 @@ type NodePoolNodeConfigEphemeralStorageLocalSsdConfigInput interface {
 }
 
 type NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs struct {
+	// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+	DataCacheCount pulumi.IntPtrInput `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
 	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
 }
@@ -42507,6 +42606,11 @@ func (o NodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput) ToNodePoolNodeCo
 	}).(NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput)
 }
 
+// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+func (o NodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput) DataCacheCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigEphemeralStorageLocalSsdConfig) *int { return v.DataCacheCount }).(pulumi.IntPtrOutput)
+}
+
 // Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
 func (o NodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput) LocalSsdCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigEphemeralStorageLocalSsdConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
@@ -42534,6 +42638,16 @@ func (o NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) Elem() NodePo
 		var ret NodePoolNodeConfigEphemeralStorageLocalSsdConfig
 		return ret
 	}).(NodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput)
+}
+
+// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+func (o NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) DataCacheCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigEphemeralStorageLocalSsdConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DataCacheCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
@@ -53228,7 +53342,7 @@ type GetClusterNodeConfig struct {
 	AdvancedMachineFeatures []GetClusterNodeConfigAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes []GetClusterNodeConfigConfidentialNode `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfigs []GetClusterNodeConfigContainerdConfig `pulumi:"containerdConfigs"`
@@ -53246,6 +53360,8 @@ type GetClusterNodeConfig struct {
 	EphemeralStorageLocalSsdConfigs []GetClusterNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSockets []GetClusterNodeConfigFastSocket `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart bool `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfigs []GetClusterNodeConfigGcfsConfig `pulumi:"gcfsConfigs"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -53330,7 +53446,7 @@ type GetClusterNodeConfigArgs struct {
 	AdvancedMachineFeatures GetClusterNodeConfigAdvancedMachineFeatureArrayInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes GetClusterNodeConfigConfidentialNodeArrayInput `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfigs GetClusterNodeConfigContainerdConfigArrayInput `pulumi:"containerdConfigs"`
@@ -53348,6 +53464,8 @@ type GetClusterNodeConfigArgs struct {
 	EphemeralStorageLocalSsdConfigs GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSockets GetClusterNodeConfigFastSocketArrayInput `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart pulumi.BoolInput `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfigs GetClusterNodeConfigGcfsConfigArrayInput `pulumi:"gcfsConfigs"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -53479,7 +53597,7 @@ func (o GetClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
 
-// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 func (o GetClusterNodeConfigOutput) ConfidentialNodes() GetClusterNodeConfigConfidentialNodeArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigConfidentialNode { return v.ConfidentialNodes }).(GetClusterNodeConfigConfidentialNodeArrayOutput)
 }
@@ -53526,6 +53644,11 @@ func (o GetClusterNodeConfigOutput) EphemeralStorageLocalSsdConfigs() GetCluster
 // Enable or disable NCCL Fast Socket in the node pool.
 func (o GetClusterNodeConfigOutput) FastSockets() GetClusterNodeConfigFastSocketArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigFastSocket { return v.FastSockets }).(GetClusterNodeConfigFastSocketArrayOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool
+func (o GetClusterNodeConfigOutput) FlexStart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) bool { return v.FlexStart }).(pulumi.BoolOutput)
 }
 
 // GCFS configuration for this node.
@@ -54553,6 +54676,8 @@ func (o GetClusterNodeConfigEphemeralStorageConfigArrayOutput) Index(i pulumi.In
 }
 
 type GetClusterNodeConfigEphemeralStorageLocalSsdConfig struct {
+	// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+	DataCacheCount int `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
 	LocalSsdCount int `pulumi:"localSsdCount"`
 }
@@ -54569,6 +54694,8 @@ type GetClusterNodeConfigEphemeralStorageLocalSsdConfigInput interface {
 }
 
 type GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs struct {
+	// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+	DataCacheCount pulumi.IntInput `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
 	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
 }
@@ -54622,6 +54749,11 @@ func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) ToGetClusterNo
 
 func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) ToGetClusterNodeConfigEphemeralStorageLocalSsdConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput {
 	return o
+}
+
+// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput) DataCacheCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigEphemeralStorageLocalSsdConfig) int { return v.DataCacheCount }).(pulumi.IntOutput)
 }
 
 // Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
@@ -59060,7 +59192,7 @@ type GetClusterNodePoolNodeConfig struct {
 	AdvancedMachineFeatures []GetClusterNodePoolNodeConfigAdvancedMachineFeature `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes []GetClusterNodePoolNodeConfigConfidentialNode `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfigs []GetClusterNodePoolNodeConfigContainerdConfig `pulumi:"containerdConfigs"`
@@ -59078,6 +59210,8 @@ type GetClusterNodePoolNodeConfig struct {
 	EphemeralStorageLocalSsdConfigs []GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSockets []GetClusterNodePoolNodeConfigFastSocket `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart bool `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfigs []GetClusterNodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfigs"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -59162,7 +59296,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
 	BootDiskKmsKey pulumi.StringInput `pulumi:"bootDiskKmsKey"`
-	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+	// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 	ConfidentialNodes GetClusterNodePoolNodeConfigConfidentialNodeArrayInput `pulumi:"confidentialNodes"`
 	// Parameters for containerd configuration.
 	ContainerdConfigs GetClusterNodePoolNodeConfigContainerdConfigArrayInput `pulumi:"containerdConfigs"`
@@ -59180,6 +59314,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	EphemeralStorageLocalSsdConfigs GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayInput `pulumi:"ephemeralStorageLocalSsdConfigs"`
 	// Enable or disable NCCL Fast Socket in the node pool.
 	FastSockets GetClusterNodePoolNodeConfigFastSocketArrayInput `pulumi:"fastSockets"`
+	// Enables Flex Start provisioning model for the node pool
+	FlexStart pulumi.BoolInput `pulumi:"flexStart"`
 	// GCFS configuration for this node.
 	GcfsConfigs GetClusterNodePoolNodeConfigGcfsConfigArrayInput `pulumi:"gcfsConfigs"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -59311,7 +59447,7 @@ func (o GetClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
 
-// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 func (o GetClusterNodePoolNodeConfigOutput) ConfidentialNodes() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigConfidentialNode {
 		return v.ConfidentialNodes
@@ -59364,6 +59500,11 @@ func (o GetClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfigs() Ge
 // Enable or disable NCCL Fast Socket in the node pool.
 func (o GetClusterNodePoolNodeConfigOutput) FastSockets() GetClusterNodePoolNodeConfigFastSocketArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigFastSocket { return v.FastSockets }).(GetClusterNodePoolNodeConfigFastSocketArrayOutput)
+}
+
+// Enables Flex Start provisioning model for the node pool
+func (o GetClusterNodePoolNodeConfigOutput) FlexStart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.FlexStart }).(pulumi.BoolOutput)
 }
 
 // GCFS configuration for this node.
@@ -60407,6 +60548,8 @@ func (o GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput) Index(i p
 }
 
 type GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig struct {
+	// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+	DataCacheCount int `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
 	LocalSsdCount int `pulumi:"localSsdCount"`
 }
@@ -60423,6 +60566,8 @@ type GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs struct {
+	// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+	DataCacheCount pulumi.IntInput `pulumi:"dataCacheCount"`
 	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
 	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
 }
@@ -60476,6 +60621,11 @@ func (o GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput) ToGetC
 
 func (o GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput) ToGetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput {
 	return o
+}
+
+// Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+func (o GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput) DataCacheCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig) int { return v.DataCacheCount }).(pulumi.IntOutput)
 }
 
 // Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.

@@ -43,6 +43,7 @@ class InstanceArgs:
                  replica_count: Optional[pulumi.Input[builtins.int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[builtins.str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  tier: Optional[pulumi.Input[builtins.str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -110,6 +111,9 @@ class InstanceArgs:
                an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
                "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
                range associated with the private service access connection, or "auto".
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
         :param pulumi.Input[builtins.str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -161,6 +165,8 @@ class InstanceArgs:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
         if secondary_ip_range is not None:
             pulumi.set(__self__, "secondary_ip_range", secondary_ip_range)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
         if transit_encryption_mode is not None:
@@ -462,6 +468,20 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The service tier of the instance. Must be one of these values:
@@ -529,6 +549,7 @@ class _InstanceState:
                  reserved_ip_range: Optional[pulumi.Input[builtins.str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[builtins.str]] = None,
                  server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  tier: Optional[pulumi.Input[builtins.str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -625,6 +646,9 @@ class _InstanceState:
                range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]] server_ca_certs: List of server CA certificates for the instance.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
         :param pulumi.Input[builtins.str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -703,6 +727,8 @@ class _InstanceState:
             pulumi.set(__self__, "secondary_ip_range", secondary_ip_range)
         if server_ca_certs is not None:
             pulumi.set(__self__, "server_ca_certs", server_ca_certs)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
         if transit_encryption_mode is not None:
@@ -1176,6 +1202,20 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The service tier of the instance. Must be one of these values:
@@ -1207,6 +1247,9 @@ class _InstanceState:
 
 
 class Instance(pulumi.CustomResource):
+
+    pulumi_type = "gcp:redis/instance:Instance"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1232,6 +1275,7 @@ class Instance(pulumi.CustomResource):
                  replica_count: Optional[pulumi.Input[builtins.int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[builtins.str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  tier: Optional[pulumi.Input[builtins.str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -1516,6 +1560,9 @@ class Instance(pulumi.CustomResource):
                an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
                "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
                range associated with the private service access connection, or "auto".
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
         :param pulumi.Input[builtins.str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -1784,6 +1831,7 @@ class Instance(pulumi.CustomResource):
                  replica_count: Optional[pulumi.Input[builtins.int]] = None,
                  reserved_ip_range: Optional[pulumi.Input[builtins.str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  tier: Optional[pulumi.Input[builtins.str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -1818,6 +1866,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["replica_count"] = replica_count
             __props__.__dict__["reserved_ip_range"] = reserved_ip_range
             __props__.__dict__["secondary_ip_range"] = secondary_ip_range
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tier"] = tier
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
             __props__.__dict__["auth_string"] = None
@@ -1879,6 +1928,7 @@ class Instance(pulumi.CustomResource):
             reserved_ip_range: Optional[pulumi.Input[builtins.str]] = None,
             secondary_ip_range: Optional[pulumi.Input[builtins.str]] = None,
             server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerCaCertArgs', 'InstanceServerCaCertArgsDict']]]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             tier: Optional[pulumi.Input[builtins.str]] = None,
             transit_encryption_mode: Optional[pulumi.Input[builtins.str]] = None) -> 'Instance':
         """
@@ -1980,6 +2030,9 @@ class Instance(pulumi.CustomResource):
                range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerCaCertArgs', 'InstanceServerCaCertArgsDict']]]] server_ca_certs: List of server CA certificates for the instance.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
         :param pulumi.Input[builtins.str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -2028,6 +2081,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["reserved_ip_range"] = reserved_ip_range
         __props__.__dict__["secondary_ip_range"] = secondary_ip_range
         __props__.__dict__["server_ca_certs"] = server_ca_certs
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tier"] = tier
         __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -2361,6 +2415,16 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "server_ca_certs")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

@@ -319,7 +319,6 @@ namespace Pulumi.Gcp.Compute
     ///         Region = "europe-west9",
     ///         GroupPlacementPolicy = new Gcp.Compute.Inputs.ResourcePolicyGroupPlacementPolicyArgs
     ///         {
-    ///             VmCount = 2,
     ///             Collocation = "COLLOCATED",
     ///             GpuTopology = "1x72",
     ///         },

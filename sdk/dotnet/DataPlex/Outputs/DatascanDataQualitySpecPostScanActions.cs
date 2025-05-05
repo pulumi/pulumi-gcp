@@ -18,11 +18,20 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DatascanDataQualitySpecPostScanActionsBigqueryExport? BigqueryExport;
+        /// <summary>
+        /// The configuration of notification report post scan action.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DatascanDataQualitySpecPostScanActionsNotificationReport? NotificationReport;
 
         [OutputConstructor]
-        private DatascanDataQualitySpecPostScanActions(Outputs.DatascanDataQualitySpecPostScanActionsBigqueryExport? bigqueryExport)
+        private DatascanDataQualitySpecPostScanActions(
+            Outputs.DatascanDataQualitySpecPostScanActionsBigqueryExport? bigqueryExport,
+
+            Outputs.DatascanDataQualitySpecPostScanActionsNotificationReport? notificationReport)
         {
             BigqueryExport = bigqueryExport;
+            NotificationReport = notificationReport;
         }
     }
 }

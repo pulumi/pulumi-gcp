@@ -293,6 +293,9 @@ class _AiFeatureStoreIamMemberState:
 
 
 class AiFeatureStoreIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

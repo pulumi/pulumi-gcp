@@ -6994,6 +6994,8 @@ class ClusterNodeConfig(dict):
             suggest = "ephemeral_storage_local_ssd_config"
         elif key == "fastSocket":
             suggest = "fast_socket"
+        elif key == "flexStart":
+            suggest = "flex_start"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
@@ -7070,6 +7072,7 @@ class ClusterNodeConfig(dict):
                  ephemeral_storage_config: Optional['outputs.ClusterNodeConfigEphemeralStorageConfig'] = None,
                  ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodeConfigEphemeralStorageLocalSsdConfig'] = None,
                  fast_socket: Optional['outputs.ClusterNodeConfigFastSocket'] = None,
+                 flex_start: Optional[builtins.bool] = None,
                  gcfs_config: Optional['outputs.ClusterNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.ClusterNodeConfigGvnic'] = None,
@@ -7121,6 +7124,7 @@ class ClusterNodeConfig(dict):
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
+        :param builtins.bool flex_start: Enables Flex Start provisioning model for the node pool.
         :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -7232,6 +7236,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
         if fast_socket is not None:
             pulumi.set(__self__, "fast_socket", fast_socket)
+        if flex_start is not None:
+            pulumi.set(__self__, "flex_start", flex_start)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
@@ -7392,6 +7398,14 @@ class ClusterNodeConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "fast_socket")
+
+    @property
+    @pulumi.getter(name="flexStart")
+    def flex_start(self) -> Optional[builtins.bool]:
+        """
+        Enables Flex Start provisioning model for the node pool.
+        """
+        return pulumi.get(self, "flex_start")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -8031,6 +8045,8 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
         suggest = None
         if key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "dataCacheCount":
+            suggest = "data_cache_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigEphemeralStorageLocalSsdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -8044,11 +8060,15 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 local_ssd_count: builtins.int):
+                 local_ssd_count: builtins.int,
+                 data_cache_count: Optional[builtins.int] = None):
         """
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        :param builtins.int data_cache_count: Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
         """
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if data_cache_count is not None:
+            pulumi.set(__self__, "data_cache_count", data_cache_count)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -8057,6 +8077,14 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> Optional[builtins.int]:
+        """
+        Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+        """
+        return pulumi.get(self, "data_cache_count")
 
 
 @pulumi.output_type
@@ -8205,7 +8233,7 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
         """
         :param builtins.str gpu_driver_version: Mode for how the GPU driver is installed.
                Accepted values are:
-               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
                * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
                * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
                * `"LATEST"`: "Latest" GPU driver in COS.
@@ -8218,7 +8246,7 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict):
         """
         Mode for how the GPU driver is installed.
         Accepted values are:
-        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
         * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
         * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
         * `"LATEST"`: "Latest" GPU driver in COS.
@@ -10307,6 +10335,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "ephemeral_storage_local_ssd_config"
         elif key == "fastSocket":
             suggest = "fast_socket"
+        elif key == "flexStart":
+            suggest = "flex_start"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
@@ -10383,6 +10413,7 @@ class ClusterNodePoolNodeConfig(dict):
                  ephemeral_storage_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig'] = None,
                  ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
                  fast_socket: Optional['outputs.ClusterNodePoolNodeConfigFastSocket'] = None,
+                 flex_start: Optional[builtins.bool] = None,
                  gcfs_config: Optional['outputs.ClusterNodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodePoolNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.ClusterNodePoolNodeConfigGvnic'] = None,
@@ -10434,6 +10465,7 @@ class ClusterNodePoolNodeConfig(dict):
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
+        :param builtins.bool flex_start: Enables Flex Start provisioning model for the node pool.
         :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -10545,6 +10577,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
         if fast_socket is not None:
             pulumi.set(__self__, "fast_socket", fast_socket)
+        if flex_start is not None:
+            pulumi.set(__self__, "flex_start", flex_start)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
@@ -10705,6 +10739,14 @@ class ClusterNodePoolNodeConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "fast_socket")
+
+    @property
+    @pulumi.getter(name="flexStart")
+    def flex_start(self) -> Optional[builtins.bool]:
+        """
+        Enables Flex Start provisioning model for the node pool.
+        """
+        return pulumi.get(self, "flex_start")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -11344,6 +11386,8 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         suggest = None
         if key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "dataCacheCount":
+            suggest = "data_cache_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -11357,11 +11401,15 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 local_ssd_count: builtins.int):
+                 local_ssd_count: builtins.int,
+                 data_cache_count: Optional[builtins.int] = None):
         """
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        :param builtins.int data_cache_count: Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
         """
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if data_cache_count is not None:
+            pulumi.set(__self__, "data_cache_count", data_cache_count)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -11370,6 +11418,14 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> Optional[builtins.int]:
+        """
+        Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+        """
+        return pulumi.get(self, "data_cache_count")
 
 
 @pulumi.output_type
@@ -11518,7 +11574,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict)
         """
         :param builtins.str gpu_driver_version: Mode for how the GPU driver is installed.
                Accepted values are:
-               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
                * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
                * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
                * `"LATEST"`: "Latest" GPU driver in COS.
@@ -11531,7 +11587,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig(dict)
         """
         Mode for how the GPU driver is installed.
         Accepted values are:
-        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to install the "Default" GPU driver. Before GKE `1.30.1-gke.1156000`, the default value is to not install any GPU driver.
         * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
         * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
         * `"LATEST"`: "Latest" GPU driver in COS.
@@ -14086,6 +14142,8 @@ class NodePoolNodeConfig(dict):
             suggest = "ephemeral_storage_local_ssd_config"
         elif key == "fastSocket":
             suggest = "fast_socket"
+        elif key == "flexStart":
+            suggest = "flex_start"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
@@ -14162,6 +14220,7 @@ class NodePoolNodeConfig(dict):
                  ephemeral_storage_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageConfig'] = None,
                  ephemeral_storage_local_ssd_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
                  fast_socket: Optional['outputs.NodePoolNodeConfigFastSocket'] = None,
+                 flex_start: Optional[builtins.bool] = None,
                  gcfs_config: Optional['outputs.NodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.NodePoolNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.NodePoolNodeConfigGvnic'] = None,
@@ -14198,7 +14257,7 @@ class NodePoolNodeConfig(dict):
         """
         :param 'NodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling advanced machine features.
         :param builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
-        :param 'NodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        :param 'NodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         :param 'NodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters for containerd configuration.
         :param builtins.int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         :param builtins.str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -14207,6 +14266,7 @@ class NodePoolNodeConfig(dict):
         :param 'NodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         :param 'NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         :param 'NodePoolNodeConfigFastSocketArgs' fast_socket: Enable or disable NCCL Fast Socket in the node pool.
+        :param builtins.bool flex_start: Enables Flex Start provisioning model for the node pool
         :param 'NodePoolNodeConfigGcfsConfigArgs' gcfs_config: GCFS configuration for this node.
         :param Sequence['NodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param 'NodePoolNodeConfigGvnicArgs' gvnic: Enable or disable gvnic in the node pool.
@@ -14266,6 +14326,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
         if fast_socket is not None:
             pulumi.set(__self__, "fast_socket", fast_socket)
+        if flex_start is not None:
+            pulumi.set(__self__, "flex_start", flex_start)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
@@ -14353,7 +14415,7 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Optional['outputs.NodePoolNodeConfigConfidentialNodes']:
         """
-        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -14420,6 +14482,14 @@ class NodePoolNodeConfig(dict):
         Enable or disable NCCL Fast Socket in the node pool.
         """
         return pulumi.get(self, "fast_socket")
+
+    @property
+    @pulumi.getter(name="flexStart")
+    def flex_start(self) -> Optional[builtins.bool]:
+        """
+        Enables Flex Start provisioning model for the node pool
+        """
+        return pulumi.get(self, "flex_start")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -15005,6 +15075,8 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         suggest = None
         if key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "dataCacheCount":
+            suggest = "data_cache_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigEphemeralStorageLocalSsdConfig. Access the value via the '{suggest}' property getter instead.")
@@ -15018,11 +15090,15 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 local_ssd_count: builtins.int):
+                 local_ssd_count: builtins.int,
+                 data_cache_count: Optional[builtins.int] = None):
         """
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+        :param builtins.int data_cache_count: Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
         """
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if data_cache_count is not None:
+            pulumi.set(__self__, "data_cache_count", data_cache_count)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -15031,6 +15107,14 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> Optional[builtins.int]:
+        """
+        Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+        """
+        return pulumi.get(self, "data_cache_count")
 
 
 @pulumi.output_type
@@ -18155,6 +18239,7 @@ class GetClusterNodeConfigResult(dict):
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageConfigResult'],
                  ephemeral_storage_local_ssd_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult'],
                  fast_sockets: Sequence['outputs.GetClusterNodeConfigFastSocketResult'],
+                 flex_start: builtins.bool,
                  gcfs_configs: Sequence['outputs.GetClusterNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodeConfigGuestAcceleratorResult'],
                  gvnics: Sequence['outputs.GetClusterNodeConfigGvnicResult'],
@@ -18191,7 +18276,7 @@ class GetClusterNodeConfigResult(dict):
         """
         :param Sequence['GetClusterNodeConfigAdvancedMachineFeatureArgs'] advanced_machine_features: Specifies options for controlling advanced machine features.
         :param builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
-        :param Sequence['GetClusterNodeConfigConfidentialNodeArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        :param Sequence['GetClusterNodeConfigConfidentialNodeArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         :param Sequence['GetClusterNodeConfigContainerdConfigArgs'] containerd_configs: Parameters for containerd configuration.
         :param builtins.int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         :param builtins.str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -18200,6 +18285,7 @@ class GetClusterNodeConfigResult(dict):
         :param Sequence['GetClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_configs: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         :param Sequence['GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_configs: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         :param Sequence['GetClusterNodeConfigFastSocketArgs'] fast_sockets: Enable or disable NCCL Fast Socket in the node pool.
+        :param builtins.bool flex_start: Enables Flex Start provisioning model for the node pool
         :param Sequence['GetClusterNodeConfigGcfsConfigArgs'] gcfs_configs: GCFS configuration for this node.
         :param Sequence['GetClusterNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param Sequence['GetClusterNodeConfigGvnicArgs'] gvnics: Enable or disable gvnic in the node pool.
@@ -18245,6 +18331,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
         pulumi.set(__self__, "ephemeral_storage_local_ssd_configs", ephemeral_storage_local_ssd_configs)
         pulumi.set(__self__, "fast_sockets", fast_sockets)
+        pulumi.set(__self__, "flex_start", flex_start)
         pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "gvnics", gvnics)
@@ -18299,7 +18386,7 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Sequence['outputs.GetClusterNodeConfigConfidentialNodeResult']:
         """
-        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -18366,6 +18453,14 @@ class GetClusterNodeConfigResult(dict):
         Enable or disable NCCL Fast Socket in the node pool.
         """
         return pulumi.get(self, "fast_sockets")
+
+    @property
+    @pulumi.getter(name="flexStart")
+    def flex_start(self) -> builtins.bool:
+        """
+        Enables Flex Start provisioning model for the node pool
+        """
+        return pulumi.get(self, "flex_start")
 
     @property
     @pulumi.getter(name="gcfsConfigs")
@@ -18834,11 +18929,22 @@ class GetClusterNodeConfigEphemeralStorageConfigResult(dict):
 @pulumi.output_type
 class GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     def __init__(__self__, *,
+                 data_cache_count: builtins.int,
                  local_ssd_count: builtins.int):
         """
+        :param builtins.int data_cache_count: Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
         """
+        pulumi.set(__self__, "data_cache_count", data_cache_count)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> builtins.int:
+        """
+        Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+        """
+        return pulumi.get(self, "data_cache_count")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -20270,6 +20376,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult'],
                  ephemeral_storage_local_ssd_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult'],
                  fast_sockets: Sequence['outputs.GetClusterNodePoolNodeConfigFastSocketResult'],
+                 flex_start: builtins.bool,
                  gcfs_configs: Sequence['outputs.GetClusterNodePoolNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodePoolNodeConfigGuestAcceleratorResult'],
                  gvnics: Sequence['outputs.GetClusterNodePoolNodeConfigGvnicResult'],
@@ -20306,7 +20413,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         """
         :param Sequence['GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs'] advanced_machine_features: Specifies options for controlling advanced machine features.
         :param builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
-        :param Sequence['GetClusterNodePoolNodeConfigConfidentialNodeArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        :param Sequence['GetClusterNodePoolNodeConfigConfidentialNodeArgs'] confidential_nodes: Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigArgs'] containerd_configs: Parameters for containerd configuration.
         :param builtins.int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         :param builtins.str disk_type: Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
@@ -20315,6 +20422,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param Sequence['GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_configs: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         :param Sequence['GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_configs: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         :param Sequence['GetClusterNodePoolNodeConfigFastSocketArgs'] fast_sockets: Enable or disable NCCL Fast Socket in the node pool.
+        :param builtins.bool flex_start: Enables Flex Start provisioning model for the node pool
         :param Sequence['GetClusterNodePoolNodeConfigGcfsConfigArgs'] gcfs_configs: GCFS configuration for this node.
         :param Sequence['GetClusterNodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param Sequence['GetClusterNodePoolNodeConfigGvnicArgs'] gvnics: Enable or disable gvnic in the node pool.
@@ -20360,6 +20468,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
         pulumi.set(__self__, "ephemeral_storage_local_ssd_configs", ephemeral_storage_local_ssd_configs)
         pulumi.set(__self__, "fast_sockets", fast_sockets)
+        pulumi.set(__self__, "flex_start", flex_start)
         pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "gvnics", gvnics)
@@ -20414,7 +20523,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult']:
         """
-        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+        Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
         """
         return pulumi.get(self, "confidential_nodes")
 
@@ -20481,6 +20590,14 @@ class GetClusterNodePoolNodeConfigResult(dict):
         Enable or disable NCCL Fast Socket in the node pool.
         """
         return pulumi.get(self, "fast_sockets")
+
+    @property
+    @pulumi.getter(name="flexStart")
+    def flex_start(self) -> builtins.bool:
+        """
+        Enables Flex Start provisioning model for the node pool
+        """
+        return pulumi.get(self, "flex_start")
 
     @property
     @pulumi.getter(name="gcfsConfigs")
@@ -20949,11 +21066,22 @@ class GetClusterNodePoolNodeConfigEphemeralStorageConfigResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     def __init__(__self__, *,
+                 data_cache_count: builtins.int,
                  local_ssd_count: builtins.int):
         """
+        :param builtins.int data_cache_count: Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
         :param builtins.int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
         """
+        pulumi.set(__self__, "data_cache_count", data_cache_count)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="dataCacheCount")
+    def data_cache_count(self) -> builtins.int:
+        """
+        Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
+        """
+        return pulumi.get(self, "data_cache_count")
 
     @property
     @pulumi.getter(name="localSsdCount")

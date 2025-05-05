@@ -28,6 +28,8 @@ public final class AccountConnectorProviderOauthConfig {
      * GOOGLE
      * SENTRY
      * ROVO
+     * NEW_RELIC
+     * DATASTAX
      * 
      */
     private @Nullable String systemProviderId;
@@ -50,6 +52,8 @@ public final class AccountConnectorProviderOauthConfig {
      * GOOGLE
      * SENTRY
      * ROVO
+     * NEW_RELIC
+     * DATASTAX
      * 
      */
     public Optional<String> systemProviderId() {

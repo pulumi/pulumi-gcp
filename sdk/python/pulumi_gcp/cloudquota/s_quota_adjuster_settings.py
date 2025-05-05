@@ -149,6 +149,9 @@ class _SQuotaAdjusterSettingsState:
 
 
 class SQuotaAdjusterSettings(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

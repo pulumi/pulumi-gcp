@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -76,6 +77,29 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
     }
 
     /**
+     * Metadata associated with the extension. This field is used to pass metadata to the extension service.
+     * You can set up key value pairs for metadata as you like and need.
+     * f.e. {&#34;key&#34;: &#34;value&#34;, &#34;key2&#34;: &#34;value2&#34;}.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Output<Map<String,String>> metadata;
+
+    /**
+     * @return Metadata associated with the extension. This field is used to pass metadata to the extension service.
+     * You can set up key value pairs for metadata as you like and need.
+     * f.e. {&#34;key&#34;: &#34;value&#34;, &#34;key2&#34;: &#34;value2&#34;}.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<Map<String,String>>> metadata() {
+        return Optional.ofNullable(this.metadata);
+    }
+
+    /**
      * The name for this extension. The name is logged as part of the HTTP request logs.
      * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
      * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -117,8 +141,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
      * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
      * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
      * 
-     * ***
-     * 
      */
     @Import(name="supportedEvents")
     private @Nullable Output<List<String>> supportedEvents;
@@ -128,8 +150,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
      * This field is required for the LbTrafficExtension resource. It&#39;s not relevant for the LbRouteExtension
      * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
      * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> supportedEvents() {
@@ -159,6 +179,7 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
         this.authority = $.authority;
         this.failOpen = $.failOpen;
         this.forwardHeaders = $.forwardHeaders;
+        this.metadata = $.metadata;
         this.name = $.name;
         this.service = $.service;
         this.supportedEvents = $.supportedEvents;
@@ -270,6 +291,35 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
         }
 
         /**
+         * @param metadata Metadata associated with the extension. This field is used to pass metadata to the extension service.
+         * You can set up key value pairs for metadata as you like and need.
+         * f.e. {&#34;key&#34;: &#34;value&#34;, &#34;key2&#34;: &#34;value2&#34;}.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
+            $.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * @param metadata Metadata associated with the extension. This field is used to pass metadata to the extension service.
+         * You can set up key value pairs for metadata as you like and need.
+         * f.e. {&#34;key&#34;: &#34;value&#34;, &#34;key2&#34;: &#34;value2&#34;}.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(Map<String,String> metadata) {
+            return metadata(Output.of(metadata));
+        }
+
+        /**
          * @param name The name for this extension. The name is logged as part of the HTTP request logs.
          * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
          * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -323,8 +373,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
          * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -339,8 +387,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
          * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -353,8 +399,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          * This field is required for the LbTrafficExtension resource. It&#39;s not relevant for the LbRouteExtension
          * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
          * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-         * 
-         * ***
          * 
          * @return builder
          * 

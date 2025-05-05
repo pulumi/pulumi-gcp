@@ -147,6 +147,16 @@ import * as utilities from "../utilities";
  *     dataQualitySpec: {
  *         samplingPercent: 5,
  *         rowFilter: "station_id > 1000",
+ *         postScanActions: {
+ *             notificationReport: {
+ *                 recipients: {
+ *                     emails: ["jane.doe@example.com"],
+ *                 },
+ *                 scoreThresholdTrigger: {
+ *                     scoreThreshold: 86,
+ *                 },
+ *             },
+ *         },
  *         rules: [
  *             {
  *                 column: "address",

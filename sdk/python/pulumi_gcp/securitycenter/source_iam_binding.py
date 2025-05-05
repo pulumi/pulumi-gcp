@@ -188,6 +188,9 @@ class _SourceIamBindingState:
 
 
 class SourceIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securitycenter/sourceIamBinding:SourceIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

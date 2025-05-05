@@ -45,14 +45,9 @@ import * as utilities from "../utilities";
  * const testKey = cryptokey.then(cryptokey => gcp.kms.getKMSCryptoKeyVersion({
  *     cryptoKey: cryptokey.id,
  * }));
- * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
- *     accountId: "service-acc",
- *     displayName: "Service Account",
- * });
  * const example = new gcp.applicationintegration.Client("example", {
  *     location: "us-east1",
  *     createSampleIntegrations: true,
- *     runAsServiceAccount: serviceAccount.email,
  *     cloudKmsConfig: {
  *         kmsLocation: "us-east1",
  *         kmsRing: keyring.then(keyring => std.basename({
@@ -143,7 +138,12 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * User input run-as service account, if empty, will bring up a new default service account.
+     *
+     * > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `runAsServiceAccount` is deprecated and will be removed in a future major release.
      */
     public readonly runAsServiceAccount!: pulumi.Output<string | undefined>;
 
@@ -207,7 +207,12 @@ export interface ClientState {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * User input run-as service account, if empty, will bring up a new default service account.
+     *
+     * > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `runAsServiceAccount` is deprecated and will be removed in a future major release.
      */
     runAsServiceAccount?: pulumi.Input<string>;
 }
@@ -238,7 +243,12 @@ export interface ClientArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * User input run-as service account, if empty, will bring up a new default service account.
+     *
+     * > **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `runAsServiceAccount` is deprecated and will be removed in a future major release.
      */
     runAsServiceAccount?: pulumi.Input<string>;
 }

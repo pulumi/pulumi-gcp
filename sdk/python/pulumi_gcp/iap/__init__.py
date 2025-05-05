@@ -21,6 +21,7 @@ from .get_tunnel_dest_group_iam_policy import *
 from .get_tunnel_iam_policy import *
 from .get_tunnel_instance_iam_policy import *
 from .get_web_backend_service_iam_policy import *
+from .get_web_cloud_run_service_iam_policy import *
 from .get_web_iam_policy import *
 from .get_web_region_backend_service_iam_policy import *
 from .get_web_type_app_engine_iam_policy import *
@@ -39,6 +40,9 @@ from .tunnel_instance_iam_policy import *
 from .web_backend_service_iam_binding import *
 from .web_backend_service_iam_member import *
 from .web_backend_service_iam_policy import *
+from .web_cloud_run_service_iam_binding import *
+from .web_cloud_run_service_iam_member import *
+from .web_cloud_run_service_iam_policy import *
 from .web_iam_binding import *
 from .web_iam_member import *
 from .web_iam_policy import *

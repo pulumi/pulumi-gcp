@@ -113,6 +113,9 @@ class _EnvironmentAddonsConfigState:
 
 
 class EnvironmentAddonsConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

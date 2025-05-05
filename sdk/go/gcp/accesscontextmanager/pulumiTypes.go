@@ -3929,6 +3929,1087 @@ func (o AccessPolicyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type GcpUserAccessBindingScopedAccessSetting struct {
+	// Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+	// Structure is documented below.
+	ActiveSettings *GcpUserAccessBindingScopedAccessSettingActiveSettings `pulumi:"activeSettings"`
+	// Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+	// Structure is documented below.
+	DryRunSettings *GcpUserAccessBindingScopedAccessSettingDryRunSettings `pulumi:"dryRunSettings"`
+	// Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
+	// Structure is documented below.
+	Scope *GcpUserAccessBindingScopedAccessSettingScope `pulumi:"scope"`
+}
+
+// GcpUserAccessBindingScopedAccessSettingInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingArgs and GcpUserAccessBindingScopedAccessSettingOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingInput` via:
+//
+//	GcpUserAccessBindingScopedAccessSettingArgs{...}
+type GcpUserAccessBindingScopedAccessSettingInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingOutput() GcpUserAccessBindingScopedAccessSettingOutput
+	ToGcpUserAccessBindingScopedAccessSettingOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingOutput
+}
+
+type GcpUserAccessBindingScopedAccessSettingArgs struct {
+	// Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+	// Structure is documented below.
+	ActiveSettings GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrInput `pulumi:"activeSettings"`
+	// Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+	// Structure is documented below.
+	DryRunSettings GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrInput `pulumi:"dryRunSettings"`
+	// Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
+	// Structure is documented below.
+	Scope GcpUserAccessBindingScopedAccessSettingScopePtrInput `pulumi:"scope"`
+}
+
+func (GcpUserAccessBindingScopedAccessSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSetting)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingArgs) ToGcpUserAccessBindingScopedAccessSettingOutput() GcpUserAccessBindingScopedAccessSettingOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingArgs) ToGcpUserAccessBindingScopedAccessSettingOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingOutput)
+}
+
+// GcpUserAccessBindingScopedAccessSettingArrayInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingArray and GcpUserAccessBindingScopedAccessSettingArrayOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingArrayInput` via:
+//
+//	GcpUserAccessBindingScopedAccessSettingArray{ GcpUserAccessBindingScopedAccessSettingArgs{...} }
+type GcpUserAccessBindingScopedAccessSettingArrayInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingArrayOutput() GcpUserAccessBindingScopedAccessSettingArrayOutput
+	ToGcpUserAccessBindingScopedAccessSettingArrayOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingArrayOutput
+}
+
+type GcpUserAccessBindingScopedAccessSettingArray []GcpUserAccessBindingScopedAccessSettingInput
+
+func (GcpUserAccessBindingScopedAccessSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpUserAccessBindingScopedAccessSetting)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingArray) ToGcpUserAccessBindingScopedAccessSettingArrayOutput() GcpUserAccessBindingScopedAccessSettingArrayOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingArray) ToGcpUserAccessBindingScopedAccessSettingArrayOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingArrayOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSetting)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingOutput) ToGcpUserAccessBindingScopedAccessSettingOutput() GcpUserAccessBindingScopedAccessSettingOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingOutput) ToGcpUserAccessBindingScopedAccessSettingOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingOutput {
+	return o
+}
+
+// Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingOutput) ActiveSettings() GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSetting) *GcpUserAccessBindingScopedAccessSettingActiveSettings {
+		return v.ActiveSettings
+	}).(GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput)
+}
+
+// Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingOutput) DryRunSettings() GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSetting) *GcpUserAccessBindingScopedAccessSettingDryRunSettings {
+		return v.DryRunSettings
+	}).(GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput)
+}
+
+// Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingOutput) Scope() GcpUserAccessBindingScopedAccessSettingScopePtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSetting) *GcpUserAccessBindingScopedAccessSettingScope {
+		return v.Scope
+	}).(GcpUserAccessBindingScopedAccessSettingScopePtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpUserAccessBindingScopedAccessSetting)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingArrayOutput) ToGcpUserAccessBindingScopedAccessSettingArrayOutput() GcpUserAccessBindingScopedAccessSettingArrayOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingArrayOutput) ToGcpUserAccessBindingScopedAccessSettingArrayOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingArrayOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingArrayOutput) Index(i pulumi.IntInput) GcpUserAccessBindingScopedAccessSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpUserAccessBindingScopedAccessSetting {
+		return vs[0].([]GcpUserAccessBindingScopedAccessSetting)[vs[1].(int)]
+	}).(GcpUserAccessBindingScopedAccessSettingOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingActiveSettings struct {
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	AccessLevels []string `pulumi:"accessLevels"`
+	// Optional. Session settings applied to user access on a given AccessScope.
+	// Structure is documented below.
+	SessionSettings *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings `pulumi:"sessionSettings"`
+}
+
+// GcpUserAccessBindingScopedAccessSettingActiveSettingsInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs and GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingActiveSettingsInput` via:
+//
+//	GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs{...}
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingActiveSettingsOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput
+	ToGcpUserAccessBindingScopedAccessSettingActiveSettingsOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput
+}
+
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs struct {
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
+	// Optional. Session settings applied to user access on a given AccessScope.
+	// Structure is documented below.
+	SessionSettings GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrInput `pulumi:"sessionSettings"`
+}
+
+func (GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingActiveSettings)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingActiveSettingsOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput)
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput).ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutputWithContext(ctx)
+}
+
+// GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs, GcpUserAccessBindingScopedAccessSettingActiveSettingsPtr and GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrInput` via:
+//
+//	        GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput
+	ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput
+}
+
+type gcpUserAccessBindingScopedAccessSettingActiveSettingsPtrType GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs
+
+func GcpUserAccessBindingScopedAccessSettingActiveSettingsPtr(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs) GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrInput {
+	return (*gcpUserAccessBindingScopedAccessSettingActiveSettingsPtrType)(v)
+}
+
+func (*gcpUserAccessBindingScopedAccessSettingActiveSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingActiveSettings)(nil)).Elem()
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingActiveSettingsPtrType) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingActiveSettingsPtrType) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingActiveSettings)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
+	return o.ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBindingScopedAccessSettingActiveSettings) *GcpUserAccessBindingScopedAccessSettingActiveSettings {
+		return &v
+	}).(GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput)
+}
+
+// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput) AccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingActiveSettings) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Session settings applied to user access on a given AccessScope.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput) SessionSettings() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingActiveSettings) *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings {
+		return v.SessionSettings
+	}).(GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingActiveSettings)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput) Elem() GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettings) GcpUserAccessBindingScopedAccessSettingActiveSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GcpUserAccessBindingScopedAccessSettingActiveSettings
+		return ret
+	}).(GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput)
+}
+
+// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput) AccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevels
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Session settings applied to user access on a given AccessScope.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput) SessionSettings() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettings) *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SessionSettings
+	}).(GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings struct {
+	// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+	MaxInactivity *string `pulumi:"maxInactivity"`
+	// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+	SessionLength *string `pulumi:"sessionLength"`
+	// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+	SessionLengthEnabled *bool `pulumi:"sessionLengthEnabled"`
+	// Optional. The session challenges proposed to users when the Google Cloud session length is up.
+	// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+	SessionReauthMethod *string `pulumi:"sessionReauthMethod"`
+	// Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+	UseOidcMaxAge *bool `pulumi:"useOidcMaxAge"`
+}
+
+// GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs and GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsInput` via:
+//
+//	GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs{...}
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput
+	ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput
+}
+
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs struct {
+	// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+	MaxInactivity pulumi.StringPtrInput `pulumi:"maxInactivity"`
+	// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+	SessionLength pulumi.StringPtrInput `pulumi:"sessionLength"`
+	// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+	SessionLengthEnabled pulumi.BoolPtrInput `pulumi:"sessionLengthEnabled"`
+	// Optional. The session challenges proposed to users when the Google Cloud session length is up.
+	// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+	SessionReauthMethod pulumi.StringPtrInput `pulumi:"sessionReauthMethod"`
+	// Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+	UseOidcMaxAge pulumi.BoolPtrInput `pulumi:"useOidcMaxAge"`
+}
+
+func (GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput)
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput).ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutputWithContext(ctx)
+}
+
+// GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs, GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtr and GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrInput` via:
+//
+//	        GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput
+	ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput
+}
+
+type gcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrType GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs
+
+func GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtr(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrInput {
+	return (*gcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrType)(v)
+}
+
+func (*gcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings)(nil)).Elem()
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrType) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrType) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return o.ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings {
+		return &v
+	}).(GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput)
+}
+
+// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) MaxInactivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *string {
+		return v.MaxInactivity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) SessionLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *string {
+		return v.SessionLength
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) SessionLengthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *bool {
+		return v.SessionLengthEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The session challenges proposed to users when the Google Cloud session length is up.
+// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) SessionReauthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *string {
+		return v.SessionReauthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) UseOidcMaxAge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *bool {
+		return v.UseOidcMaxAge
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) ToGcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) Elem() GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings
+		return ret
+	}).(GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput)
+}
+
+// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) MaxInactivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInactivity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) SessionLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionLength
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) SessionLengthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SessionLengthEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The session challenges proposed to users when the Google Cloud session length is up.
+// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) SessionReauthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionReauthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Only useful for OIDC apps. When false, the OIDC maxAge param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the maxAge OIDC param.
+func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) UseOidcMaxAge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseOidcMaxAge
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingDryRunSettings struct {
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	AccessLevels *string `pulumi:"accessLevels"`
+}
+
+// GcpUserAccessBindingScopedAccessSettingDryRunSettingsInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs and GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingDryRunSettingsInput` via:
+//
+//	GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs{...}
+type GcpUserAccessBindingScopedAccessSettingDryRunSettingsInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput() GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput
+	ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput
+}
+
+type GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs struct {
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	AccessLevels pulumi.StringPtrInput `pulumi:"accessLevels"`
+}
+
+func (GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingDryRunSettings)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput() GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput)
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput).ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutputWithContext(ctx)
+}
+
+// GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs, GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtr and GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrInput` via:
+//
+//	        GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput
+	ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput
+}
+
+type gcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrType GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs
+
+func GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtr(v *GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs) GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrInput {
+	return (*gcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrType)(v)
+}
+
+func (*gcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingDryRunSettings)(nil)).Elem()
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrType) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrType) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingDryRunSettings)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput() GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
+	return o.ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBindingScopedAccessSettingDryRunSettings) *GcpUserAccessBindingScopedAccessSettingDryRunSettings {
+		return &v
+	}).(GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput)
+}
+
+// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+func (o GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput) AccessLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingDryRunSettings) *string { return v.AccessLevels }).(pulumi.StringPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingDryRunSettings)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput() GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput) ToGcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput) Elem() GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingDryRunSettings) GcpUserAccessBindingScopedAccessSettingDryRunSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GcpUserAccessBindingScopedAccessSettingDryRunSettings
+		return ret
+	}).(GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput)
+}
+
+// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+func (o GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput) AccessLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingDryRunSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevels
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScope struct {
+	// Optional. Client scope for this access scope.
+	// Structure is documented below.
+	ClientScope *GcpUserAccessBindingScopedAccessSettingScopeClientScope `pulumi:"clientScope"`
+}
+
+// GcpUserAccessBindingScopedAccessSettingScopeInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeArgs and GcpUserAccessBindingScopedAccessSettingScopeOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingScopeInput` via:
+//
+//	GcpUserAccessBindingScopedAccessSettingScopeArgs{...}
+type GcpUserAccessBindingScopedAccessSettingScopeInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingScopeOutput() GcpUserAccessBindingScopedAccessSettingScopeOutput
+	ToGcpUserAccessBindingScopedAccessSettingScopeOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingScopeOutput
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeArgs struct {
+	// Optional. Client scope for this access scope.
+	// Structure is documented below.
+	ClientScope GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrInput `pulumi:"clientScope"`
+}
+
+func (GcpUserAccessBindingScopedAccessSettingScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScope)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeArgs) ToGcpUserAccessBindingScopedAccessSettingScopeOutput() GcpUserAccessBindingScopedAccessSettingScopeOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeArgs) ToGcpUserAccessBindingScopedAccessSettingScopeOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeOutput)
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeArgs) ToGcpUserAccessBindingScopedAccessSettingScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopePtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopePtrOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeArgs) ToGcpUserAccessBindingScopedAccessSettingScopePtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeOutput).ToGcpUserAccessBindingScopedAccessSettingScopePtrOutputWithContext(ctx)
+}
+
+// GcpUserAccessBindingScopedAccessSettingScopePtrInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeArgs, GcpUserAccessBindingScopedAccessSettingScopePtr and GcpUserAccessBindingScopedAccessSettingScopePtrOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingScopePtrInput` via:
+//
+//	        GcpUserAccessBindingScopedAccessSettingScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpUserAccessBindingScopedAccessSettingScopePtrInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopePtrOutput
+	ToGcpUserAccessBindingScopedAccessSettingScopePtrOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingScopePtrOutput
+}
+
+type gcpUserAccessBindingScopedAccessSettingScopePtrType GcpUserAccessBindingScopedAccessSettingScopeArgs
+
+func GcpUserAccessBindingScopedAccessSettingScopePtr(v *GcpUserAccessBindingScopedAccessSettingScopeArgs) GcpUserAccessBindingScopedAccessSettingScopePtrInput {
+	return (*gcpUserAccessBindingScopedAccessSettingScopePtrType)(v)
+}
+
+func (*gcpUserAccessBindingScopedAccessSettingScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingScope)(nil)).Elem()
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingScopePtrType) ToGcpUserAccessBindingScopedAccessSettingScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopePtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopePtrOutputWithContext(context.Background())
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingScopePtrType) ToGcpUserAccessBindingScopedAccessSettingScopePtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopePtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScope)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeOutput) ToGcpUserAccessBindingScopedAccessSettingScopeOutput() GcpUserAccessBindingScopedAccessSettingScopeOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeOutput) ToGcpUserAccessBindingScopedAccessSettingScopeOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeOutput) ToGcpUserAccessBindingScopedAccessSettingScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopePtrOutput {
+	return o.ToGcpUserAccessBindingScopedAccessSettingScopePtrOutputWithContext(context.Background())
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeOutput) ToGcpUserAccessBindingScopedAccessSettingScopePtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBindingScopedAccessSettingScope) *GcpUserAccessBindingScopedAccessSettingScope {
+		return &v
+	}).(GcpUserAccessBindingScopedAccessSettingScopePtrOutput)
+}
+
+// Optional. Client scope for this access scope.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingScopeOutput) ClientScope() GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingScope) *GcpUserAccessBindingScopedAccessSettingScopeClientScope {
+		return v.ClientScope
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopePtrOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingScope)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopePtrOutput) ToGcpUserAccessBindingScopedAccessSettingScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopePtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopePtrOutput) ToGcpUserAccessBindingScopedAccessSettingScopePtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopePtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopePtrOutput) Elem() GcpUserAccessBindingScopedAccessSettingScopeOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScope) GcpUserAccessBindingScopedAccessSettingScope {
+		if v != nil {
+			return *v
+		}
+		var ret GcpUserAccessBindingScopedAccessSettingScope
+		return ret
+	}).(GcpUserAccessBindingScopedAccessSettingScopeOutput)
+}
+
+// Optional. Client scope for this access scope.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingScopePtrOutput) ClientScope() GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScope) *GcpUserAccessBindingScopedAccessSettingScopeClientScope {
+		if v == nil {
+			return nil
+		}
+		return v.ClientScope
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScope struct {
+	// Optional. The application that is subject to this binding's scope.
+	// Structure is documented below.
+	RestrictedClientApplication *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication `pulumi:"restrictedClientApplication"`
+}
+
+// GcpUserAccessBindingScopedAccessSettingScopeClientScopeInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs and GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingScopeClientScopeInput` via:
+//
+//	GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs{...}
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs struct {
+	// Optional. The application that is subject to this binding's scope.
+	// Structure is documented below.
+	RestrictedClientApplication GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrInput `pulumi:"restrictedClientApplication"`
+}
+
+func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScope)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput)
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput).ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutputWithContext(ctx)
+}
+
+// GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs, GcpUserAccessBindingScopedAccessSettingScopeClientScopePtr and GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrInput` via:
+//
+//	        GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput
+}
+
+type gcpUserAccessBindingScopedAccessSettingScopeClientScopePtrType GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs
+
+func GcpUserAccessBindingScopedAccessSettingScopeClientScopePtr(v *GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs) GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrInput {
+	return (*gcpUserAccessBindingScopedAccessSettingScopeClientScopePtrType)(v)
+}
+
+func (*gcpUserAccessBindingScopedAccessSettingScopeClientScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingScopeClientScope)(nil)).Elem()
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingScopeClientScopePtrType) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutputWithContext(context.Background())
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingScopeClientScopePtrType) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScope)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return o.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutputWithContext(context.Background())
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBindingScopedAccessSettingScopeClientScope) *GcpUserAccessBindingScopedAccessSettingScopeClientScope {
+		return &v
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput)
+}
+
+// Optional. The application that is subject to this binding's scope.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput) RestrictedClientApplication() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingScopeClientScope) *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
+		return v.RestrictedClientApplication
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingScopeClientScope)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) Elem() GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScopeClientScope) GcpUserAccessBindingScopedAccessSettingScopeClientScope {
+		if v != nil {
+			return *v
+		}
+		var ret GcpUserAccessBindingScopedAccessSettingScopeClientScope
+		return ret
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput)
+}
+
+// Optional. The application that is subject to this binding's scope.
+// Structure is documented below.
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput) RestrictedClientApplication() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScopeClientScope) *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictedClientApplication
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication struct {
+	// The OAuth client ID of the application.
+	ClientId *string `pulumi:"clientId"`
+}
+
+// GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs and GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationInput` via:
+//
+//	GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs{...}
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs struct {
+	// The OAuth client ID of the application.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+}
+
+func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput)
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput).ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutputWithContext(ctx)
+}
+
+// GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrInput is an input type that accepts GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs, GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtr and GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrInput` via:
+//
+//	        GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput
+	ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutputWithContext(context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput
+}
+
+type gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrType GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs
+
+func GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtr(v *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrInput {
+	return (*gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrType)(v)
+}
+
+func (*gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication)(nil)).Elem()
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrType) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return i.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrType) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return o.ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutputWithContext(context.Background())
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication) *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
+		return &v
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput)
+}
+
+// The OAuth client ID of the application.
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication) *string {
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput) ToGcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput) Elem() GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication) GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication {
+		if v != nil {
+			return *v
+		}
+		var ret GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication
+		return ret
+	}).(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput)
+}
+
+// The OAuth client ID of the application.
+func (o GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GcpUserAccessBindingSessionSettings struct {
 	// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
 	MaxInactivity *string `pulumi:"maxInactivity"`
@@ -17266,6 +18347,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamBindingConditionPtrInput)(nil)).Elem(), AccessPolicyIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamMemberConditionInput)(nil)).Elem(), AccessPolicyIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamMemberConditionPtrInput)(nil)).Elem(), AccessPolicyIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingArrayInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingActiveSettingsInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingDryRunSettingsInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopePtrInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingSessionSettingsInput)(nil)).Elem(), GcpUserAccessBindingSessionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingSessionSettingsPtrInput)(nil)).Elem(), GcpUserAccessBindingSessionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromArgs{})
@@ -17468,6 +18563,20 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingArrayOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingDryRunSettingsOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopePtrOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeClientScopeOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeClientScopePtrOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationPtrOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingSessionSettingsOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingSessionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromOutput{})

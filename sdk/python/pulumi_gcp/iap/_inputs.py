@@ -64,6 +64,10 @@ __all__ = [
     'WebBackendServiceIamBindingConditionArgsDict',
     'WebBackendServiceIamMemberConditionArgs',
     'WebBackendServiceIamMemberConditionArgsDict',
+    'WebCloudRunServiceIamBindingConditionArgs',
+    'WebCloudRunServiceIamBindingConditionArgsDict',
+    'WebCloudRunServiceIamMemberConditionArgs',
+    'WebCloudRunServiceIamMemberConditionArgsDict',
     'WebIamBindingConditionArgs',
     'WebIamBindingConditionArgsDict',
     'WebIamMemberConditionArgs',
@@ -1983,6 +1987,132 @@ class WebBackendServiceIamMemberConditionArgs:
         identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
         consider it to be an entirely different resource and will treat it as such.
         """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class WebCloudRunServiceIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    WebCloudRunServiceIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WebCloudRunServiceIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class WebCloudRunServiceIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[builtins.str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[builtins.str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    WebCloudRunServiceIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WebCloudRunServiceIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[builtins.str],
+                 title: pulumi.Input[builtins.str],
+                 description: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter

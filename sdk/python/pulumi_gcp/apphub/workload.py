@@ -424,6 +424,9 @@ class _WorkloadState:
 
 
 class Workload(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apphub/workload:Workload"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

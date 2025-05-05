@@ -819,6 +819,9 @@ class _InstanceState:
 
 
 class Instance(pulumi.CustomResource):
+
+    pulumi_type = "gcp:alloydb/instance:Instance"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1473,7 +1476,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> pulumi.Output[Optional['outputs.InstanceNetworkConfig']]:
+    def network_config(self) -> pulumi.Output['outputs.InstanceNetworkConfig']:
         """
         Instance level network configuration.
         Structure is documented below.

@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testDataStore = new DataStore("testDataStore", DataStoreArgs.builder()
- *             .location("global")
+ *             .location("eu")
  *             .dataStoreId("data-store")
  *             .displayName("Structured datastore")
  *             .industryVertical("GENERIC")
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  * 
  *         var agent = new CxAgent("agent", CxAgentArgs.builder()
  *             .displayName("dialogflowcx-agent")
- *             .location("global")
+ *             .location("europe-west3")
  *             .defaultLanguageCode("en")
  *             .timeZone("America/Los_Angeles")
  *             .build());
@@ -162,6 +162,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .chatEngineConfig(ChatEngineChatEngineConfigArgs.builder()
  *                 .dialogflowAgentToLink(agent.id())
+ *                 .allowCrossRegion(true)
  *                 .build())
  *             .build());
  * 

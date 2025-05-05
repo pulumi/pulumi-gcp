@@ -328,6 +328,9 @@ class _RetrohuntState:
 
 
 class Retrohunt(pulumi.CustomResource):
+
+    pulumi_type = "gcp:chronicle/retrohunt:Retrohunt"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

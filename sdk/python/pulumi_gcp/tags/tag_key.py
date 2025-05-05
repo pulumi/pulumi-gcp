@@ -288,6 +288,9 @@ class _TagKeyState:
 
 
 class TagKey(pulumi.CustomResource):
+
+    pulumi_type = "gcp:tags/tagKey:TagKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

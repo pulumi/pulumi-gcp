@@ -995,13 +995,15 @@ func (o ManagedZoneForwardingConfigPtrOutput) TargetNameServers() ManagedZoneFor
 }
 
 type ManagedZoneForwardingConfigTargetNameServer struct {
+	// Fully qualified domain name for the forwarding target.
+	DomainName *string `pulumi:"domainName"`
 	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
 	// Possible values are: `default`, `private`.
 	ForwardingPath *string `pulumi:"forwardingPath"`
 	// IPv4 address of a target name server.
-	Ipv4Address string `pulumi:"ipv4Address"`
+	Ipv4Address *string `pulumi:"ipv4Address"`
 }
 
 // ManagedZoneForwardingConfigTargetNameServerInput is an input type that accepts ManagedZoneForwardingConfigTargetNameServerArgs and ManagedZoneForwardingConfigTargetNameServerOutput values.
@@ -1016,13 +1018,15 @@ type ManagedZoneForwardingConfigTargetNameServerInput interface {
 }
 
 type ManagedZoneForwardingConfigTargetNameServerArgs struct {
+	// Fully qualified domain name for the forwarding target.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
 	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
 	// Possible values are: `default`, `private`.
 	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
 	// IPv4 address of a target name server.
-	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
+	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
 }
 
 func (ManagedZoneForwardingConfigTargetNameServerArgs) ElementType() reflect.Type {
@@ -1076,6 +1080,11 @@ func (o ManagedZoneForwardingConfigTargetNameServerOutput) ToManagedZoneForwardi
 	return o
 }
 
+// Fully qualified domain name for the forwarding target.
+func (o ManagedZoneForwardingConfigTargetNameServerOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigTargetNameServer) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
 // Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 // decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 // to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
@@ -1085,8 +1094,8 @@ func (o ManagedZoneForwardingConfigTargetNameServerOutput) ForwardingPath() pulu
 }
 
 // IPv4 address of a target name server.
-func (o ManagedZoneForwardingConfigTargetNameServerOutput) Ipv4Address() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedZoneForwardingConfigTargetNameServer) string { return v.Ipv4Address }).(pulumi.StringOutput)
+func (o ManagedZoneForwardingConfigTargetNameServerOutput) Ipv4Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigTargetNameServer) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
 }
 
 type ManagedZoneForwardingConfigTargetNameServerArrayOutput struct{ *pulumi.OutputState }

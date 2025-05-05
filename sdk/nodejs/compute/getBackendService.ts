@@ -102,6 +102,7 @@ export interface GetBackendServiceResult {
     readonly localityLbPolicies: outputs.compute.GetBackendServiceLocalityLbPolicy[];
     readonly localityLbPolicy: string;
     readonly logConfigs: outputs.compute.GetBackendServiceLogConfig[];
+    readonly maxStreamDurations: outputs.compute.GetBackendServiceMaxStreamDuration[];
     readonly name: string;
     readonly outlierDetections: outputs.compute.GetBackendServiceOutlierDetection[];
     /**

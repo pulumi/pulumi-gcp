@@ -230,6 +230,9 @@ class _AuthorizedViewState:
 
 
 class AuthorizedView(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigtable/authorizedView:AuthorizedView"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

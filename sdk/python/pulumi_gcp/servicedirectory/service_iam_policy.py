@@ -117,6 +117,9 @@ class _ServiceIamPolicyState:
 
 
 class ServiceIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:servicedirectory/serviceIamPolicy:ServiceIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

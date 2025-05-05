@@ -45,6 +45,9 @@ class GetCertificatesResult:
     @property
     @pulumi.getter
     def certificates(self) -> Sequence['outputs.GetCertificatesCertificateResult']:
+        """
+        A list of all retrieved certificates. See certificatemanager.Certificate resource for details of the available attributes.
+        """
         return pulumi.get(self, "certificates")
 
     @property
@@ -91,6 +94,7 @@ def get_certificates(filter: Optional[builtins.str] = None,
     import pulumi_gcp as gcp
 
     default = gcp.certificatemanager.get_certificates()
+    pulumi.export("certificatesNames", [cert.name for cert in default.certificates])
     ```
 
     ### With A Filter
@@ -100,6 +104,18 @@ def get_certificates(filter: Optional[builtins.str] = None,
     import pulumi_gcp as gcp
 
     default = gcp.certificatemanager.get_certificates(filter="name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+    pulumi.export("certificatesNames", [cert.name for cert in default.certificates])
+    ```
+
+    ### Regional Certificates With A Filter
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.certificatemanager.get_certificates(region="REGION",
+        filter="name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+    pulumi.export("certificatesNames", [cert.name for cert in default.certificates])
     ```
 
 
@@ -130,6 +146,7 @@ def get_certificates_output(filter: Optional[pulumi.Input[Optional[builtins.str]
     import pulumi_gcp as gcp
 
     default = gcp.certificatemanager.get_certificates()
+    pulumi.export("certificatesNames", [cert.name for cert in default.certificates])
     ```
 
     ### With A Filter
@@ -139,6 +156,18 @@ def get_certificates_output(filter: Optional[pulumi.Input[Optional[builtins.str]
     import pulumi_gcp as gcp
 
     default = gcp.certificatemanager.get_certificates(filter="name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+    pulumi.export("certificatesNames", [cert.name for cert in default.certificates])
+    ```
+
+    ### Regional Certificates With A Filter
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.certificatemanager.get_certificates(region="REGION",
+        filter="name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+    pulumi.export("certificatesNames", [cert.name for cert in default.certificates])
     ```
 
 

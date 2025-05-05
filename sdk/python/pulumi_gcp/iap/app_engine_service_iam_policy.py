@@ -183,6 +183,9 @@ class _AppEngineServiceIamPolicyState:
 
 
 class AppEngineServiceIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

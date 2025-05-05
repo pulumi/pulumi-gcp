@@ -216,6 +216,23 @@ namespace Pulumi.Gcp.DataPlex
     ///         {
     ///             SamplingPercent = 5,
     ///             RowFilter = "station_id &gt; 1000",
+    ///             PostScanActions = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecPostScanActionsArgs
+    ///             {
+    ///                 NotificationReport = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecPostScanActionsNotificationReportArgs
+    ///                 {
+    ///                     Recipients = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecPostScanActionsNotificationReportRecipientsArgs
+    ///                     {
+    ///                         Emails = new[]
+    ///                         {
+    ///                             "jane.doe@example.com",
+    ///                         },
+    ///                     },
+    ///                     ScoreThresholdTrigger = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs
+    ///                     {
+    ///                         ScoreThreshold = 86,
+    ///                     },
+    ///                 },
+    ///             },
     ///             Rules = new[]
     ///             {
     ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs

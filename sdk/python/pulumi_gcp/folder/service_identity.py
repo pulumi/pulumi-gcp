@@ -136,6 +136,9 @@ class _ServiceIdentityState:
 
 
 class ServiceIdentity(pulumi.CustomResource):
+
+    pulumi_type = "gcp:folder/serviceIdentity:ServiceIdentity"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

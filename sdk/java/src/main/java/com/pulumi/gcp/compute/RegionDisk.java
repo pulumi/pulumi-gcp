@@ -360,6 +360,20 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.diskEncryptionKey);
     }
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="diskId", refs={String.class}, tree="[0]")
+    private Output<String> diskId;
+
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<String> diskId() {
+        return this.diskId;
+    }
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */

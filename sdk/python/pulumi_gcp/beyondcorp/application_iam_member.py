@@ -280,6 +280,9 @@ class _ApplicationIamMemberState:
 
 
 class ApplicationIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:beyondcorp/applicationIamMember:ApplicationIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

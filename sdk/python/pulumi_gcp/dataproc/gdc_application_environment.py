@@ -468,6 +468,9 @@ class _GdcApplicationEnvironmentState:
 
 
 class GdcApplicationEnvironment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

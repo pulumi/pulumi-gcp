@@ -189,6 +189,9 @@ class _RepositoryIamBindingState:
 
 
 class RepositoryIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataform/repositoryIamBinding:RepositoryIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -268,6 +268,9 @@ class _TenantInboundSamlConfigState:
 
 
 class TenantInboundSamlConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

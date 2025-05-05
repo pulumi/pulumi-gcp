@@ -36,6 +36,11 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///         Issuer = "issuer",
     ///         Enabled = true,
     ///         ClientSecret = "secret",
+    ///         ResponseType = new Gcp.IdentityPlatform.Inputs.OauthIdpConfigResponseTypeArgs
+    ///         {
+    ///             IdToken = true,
+    ///             Code = false,
+    ///         },
     ///     });
     /// 
     /// });
@@ -113,6 +118,15 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The response type to request for in the OAuth authorization flow.
+        /// You can set either idToken or code to true, but not both.
+        /// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("responseType")]
+        public Output<Outputs.OauthIdpConfigResponseType?> ResponseType { get; private set; } = null!;
 
 
         /// <summary>
@@ -206,6 +220,15 @@ namespace Pulumi.Gcp.IdentityPlatform
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The response type to request for in the OAuth authorization flow.
+        /// You can set either idToken or code to true, but not both.
+        /// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("responseType")]
+        public Input<Inputs.OauthIdpConfigResponseTypeArgs>? ResponseType { get; set; }
+
         public OauthIdpConfigArgs()
         {
         }
@@ -259,6 +282,15 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The response type to request for in the OAuth authorization flow.
+        /// You can set either idToken or code to true, but not both.
+        /// Setting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("responseType")]
+        public Input<Inputs.OauthIdpConfigResponseTypeGetArgs>? ResponseType { get; set; }
 
         public OauthIdpConfigState()
         {

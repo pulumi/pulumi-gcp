@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Monitoring
     ///     {
     ///         DisplayName = "http-uptime-check",
     ///         Timeout = "60s",
+    ///         LogCheckFailures = true,
     ///         UserLabels = 
     ///         {
     ///             { "example-key", "example-value" },
@@ -354,6 +355,12 @@ namespace Pulumi.Gcp.Monitoring
         public Output<Outputs.UptimeCheckConfigHttpCheck?> HttpCheck { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to log the results of failed probes to Cloud Logging.
+        /// </summary>
+        [Output("logCheckFailures")]
+        public Output<bool?> LogCheckFailures { get; private set; } = null!;
+
+        /// <summary>
         /// The [monitored resource]
         /// (https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are supported for
@@ -509,6 +516,12 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigHttpCheckArgs>? HttpCheck { get; set; }
 
         /// <summary>
+        /// Specifies whether to log the results of failed probes to Cloud Logging.
+        /// </summary>
+        [Input("logCheckFailures")]
+        public Input<bool>? LogCheckFailures { get; set; }
+
+        /// <summary>
         /// The [monitored resource]
         /// (https://cloud.google.com/monitoring/api/resources) associated with the
         /// configuration. The following monitored resource types are supported for
@@ -624,6 +637,12 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("httpCheck")]
         public Input<Inputs.UptimeCheckConfigHttpCheckGetArgs>? HttpCheck { get; set; }
+
+        /// <summary>
+        /// Specifies whether to log the results of failed probes to Cloud Logging.
+        /// </summary>
+        [Input("logCheckFailures")]
+        public Input<bool>? LogCheckFailures { get; set; }
 
         /// <summary>
         /// The [monitored resource]

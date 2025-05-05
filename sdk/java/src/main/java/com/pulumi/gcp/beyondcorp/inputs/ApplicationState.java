@@ -6,6 +6,7 @@ package com.pulumi.gcp.beyondcorp.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.beyondcorp.inputs.ApplicationEndpointMatcherArgs;
+import com.pulumi.gcp.beyondcorp.inputs.ApplicationUpstreamArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,6 +158,21 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * Optional. List of which upstream resource(s) to forward traffic to.
+     * 
+     */
+    @Import(name="upstreams")
+    private @Nullable Output<List<ApplicationUpstreamArgs>> upstreams;
+
+    /**
+     * @return Optional. List of which upstream resource(s) to forward traffic to.
+     * 
+     */
+    public Optional<Output<List<ApplicationUpstreamArgs>>> upstreams() {
+        return Optional.ofNullable(this.upstreams);
+    }
+
     private ApplicationState() {}
 
     private ApplicationState(ApplicationState $) {
@@ -168,6 +184,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.securityGatewaysId = $.securityGatewaysId;
         this.updateTime = $.updateTime;
+        this.upstreams = $.upstreams;
     }
 
     public static Builder builder() {
@@ -391,6 +408,37 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param upstreams Optional. List of which upstream resource(s) to forward traffic to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreams(@Nullable Output<List<ApplicationUpstreamArgs>> upstreams) {
+            $.upstreams = upstreams;
+            return this;
+        }
+
+        /**
+         * @param upstreams Optional. List of which upstream resource(s) to forward traffic to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreams(List<ApplicationUpstreamArgs> upstreams) {
+            return upstreams(Output.of(upstreams));
+        }
+
+        /**
+         * @param upstreams Optional. List of which upstream resource(s) to forward traffic to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreams(ApplicationUpstreamArgs... upstreams) {
+            return upstreams(List.of(upstreams));
         }
 
         public ApplicationState build() {

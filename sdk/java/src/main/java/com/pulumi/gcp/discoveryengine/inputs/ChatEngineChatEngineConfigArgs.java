@@ -6,6 +6,7 @@ package com.pulumi.gcp.discoveryengine.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.discoveryengine.inputs.ChatEngineChatEngineConfigAgentCreationConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,6 +37,33 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
     }
 
     /**
+     * If the flag set to true, we allow the agent and engine are in
+     * different locations, otherwise the agent and engine are required to be
+     * in the same location. The flag is set to false by default.
+     * Note that the `allow_cross_region` are one-time consumed by and passed
+     * to EngineService.CreateEngine. It means they cannot be retrieved using
+     * EngineService.GetEngine or EngineService.ListEngines API after engine
+     * creation.
+     * 
+     */
+    @Import(name="allowCrossRegion")
+    private @Nullable Output<Boolean> allowCrossRegion;
+
+    /**
+     * @return If the flag set to true, we allow the agent and engine are in
+     * different locations, otherwise the agent and engine are required to be
+     * in the same location. The flag is set to false by default.
+     * Note that the `allow_cross_region` are one-time consumed by and passed
+     * to EngineService.CreateEngine. It means they cannot be retrieved using
+     * EngineService.GetEngine or EngineService.ListEngines API after engine
+     * creation.
+     * 
+     */
+    public Optional<Output<Boolean>> allowCrossRegion() {
+        return Optional.ofNullable(this.allowCrossRegion);
+    }
+
+    /**
      * The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
      * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
      * 
@@ -56,6 +84,7 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
 
     private ChatEngineChatEngineConfigArgs(ChatEngineChatEngineConfigArgs $) {
         this.agentCreationConfig = $.agentCreationConfig;
+        this.allowCrossRegion = $.allowCrossRegion;
         this.dialogflowAgentToLink = $.dialogflowAgentToLink;
     }
 
@@ -100,6 +129,39 @@ public final class ChatEngineChatEngineConfigArgs extends com.pulumi.resources.R
          */
         public Builder agentCreationConfig(ChatEngineChatEngineConfigAgentCreationConfigArgs agentCreationConfig) {
             return agentCreationConfig(Output.of(agentCreationConfig));
+        }
+
+        /**
+         * @param allowCrossRegion If the flag set to true, we allow the agent and engine are in
+         * different locations, otherwise the agent and engine are required to be
+         * in the same location. The flag is set to false by default.
+         * Note that the `allow_cross_region` are one-time consumed by and passed
+         * to EngineService.CreateEngine. It means they cannot be retrieved using
+         * EngineService.GetEngine or EngineService.ListEngines API after engine
+         * creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowCrossRegion(@Nullable Output<Boolean> allowCrossRegion) {
+            $.allowCrossRegion = allowCrossRegion;
+            return this;
+        }
+
+        /**
+         * @param allowCrossRegion If the flag set to true, we allow the agent and engine are in
+         * different locations, otherwise the agent and engine are required to be
+         * in the same location. The flag is set to false by default.
+         * Note that the `allow_cross_region` are one-time consumed by and passed
+         * to EngineService.CreateEngine. It means they cannot be retrieved using
+         * EngineService.GetEngine or EngineService.ListEngines API after engine
+         * creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowCrossRegion(Boolean allowCrossRegion) {
+            return allowCrossRegion(Output.of(allowCrossRegion));
         }
 
         /**

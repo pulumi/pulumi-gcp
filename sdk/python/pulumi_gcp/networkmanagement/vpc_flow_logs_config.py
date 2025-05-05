@@ -602,6 +602,9 @@ class _VpcFlowLogsConfigState:
 
 
 class VpcFlowLogsConfig(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -319,6 +319,9 @@ class _KeystoresAliasesKeyCertFileState:
 
 
 class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
+
+    pulumi_type = "gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

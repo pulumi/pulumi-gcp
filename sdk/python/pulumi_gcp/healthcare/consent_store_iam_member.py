@@ -256,6 +256,9 @@ class _ConsentStoreIamMemberState:
 
 
 class ConsentStoreIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/consentStoreIamMember:ConsentStoreIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

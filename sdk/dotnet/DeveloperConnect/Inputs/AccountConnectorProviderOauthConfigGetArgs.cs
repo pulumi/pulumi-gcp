@@ -34,6 +34,8 @@ namespace Pulumi.Gcp.DeveloperConnect.Inputs
         /// GOOGLE
         /// SENTRY
         /// ROVO
+        /// NEW_RELIC
+        /// DATASTAX
         /// </summary>
         [Input("systemProviderId")]
         public Input<string>? SystemProviderId { get; set; }

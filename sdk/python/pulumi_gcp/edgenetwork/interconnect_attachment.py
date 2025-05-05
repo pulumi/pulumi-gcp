@@ -472,6 +472,9 @@ class _InterconnectAttachmentState:
 
 
 class InterconnectAttachment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:edgenetwork/interconnectAttachment:InterconnectAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

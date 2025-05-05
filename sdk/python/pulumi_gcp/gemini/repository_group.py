@@ -306,6 +306,9 @@ class _RepositoryGroupState:
 
 
 class RepositoryGroup(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gemini/repositoryGroup:RepositoryGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

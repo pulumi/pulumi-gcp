@@ -193,6 +193,9 @@ class _QueueIamPolicyState:
 
 
 class QueueIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudtasks/queueIamPolicy:QueueIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

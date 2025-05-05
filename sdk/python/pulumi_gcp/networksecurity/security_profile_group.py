@@ -408,6 +408,9 @@ class _SecurityProfileGroupState:
 
 
 class SecurityProfileGroup(pulumi.CustomResource):
+
+    pulumi_type = "gcp:networksecurity/securityProfileGroup:SecurityProfileGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

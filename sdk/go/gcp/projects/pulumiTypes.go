@@ -517,8 +517,6 @@ type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication struct {
 	// The package name of the application.
 	PackageName string `pulumi:"packageName"`
 	// The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
-	//
-	// ***
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
 }
 
@@ -537,8 +535,6 @@ type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs struct {
 	// The package name of the application.
 	PackageName pulumi.StringInput `pulumi:"packageName"`
 	// The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
-	//
-	// ***
 	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
 }
 
@@ -599,8 +595,6 @@ func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput) Packag
 }
 
 // The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
-//
-// ***
 func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput) Sha1Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
 }

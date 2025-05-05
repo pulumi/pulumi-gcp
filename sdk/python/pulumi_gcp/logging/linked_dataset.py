@@ -304,6 +304,9 @@ class _LinkedDatasetState:
 
 
 class LinkedDataset(pulumi.CustomResource):
+
+    pulumi_type = "gcp:logging/linkedDataset:LinkedDataset"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

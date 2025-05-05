@@ -378,7 +378,6 @@ import (
 //				Name:   pulumi.String("gce-policy"),
 //				Region: pulumi.String("europe-west9"),
 //				GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
-//					VmCount:     pulumi.Int(2),
 //					Collocation: pulumi.String("COLLOCATED"),
 //					GpuTopology: pulumi.String("1x72"),
 //				},

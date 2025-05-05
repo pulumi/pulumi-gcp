@@ -56,7 +56,9 @@ public final class GetBucketResult {
     private String selfLink;
     private List<GetBucketSoftDeletePolicy> softDeletePolicies;
     private String storageClass;
+    private String timeCreated;
     private Boolean uniformBucketLevelAccess;
+    private String updated;
     private String url;
     private List<GetBucketVersioning> versionings;
     private List<GetBucketWebsite> websites;
@@ -141,8 +143,14 @@ public final class GetBucketResult {
     public String storageClass() {
         return this.storageClass;
     }
+    public String timeCreated() {
+        return this.timeCreated;
+    }
     public Boolean uniformBucketLevelAccess() {
         return this.uniformBucketLevelAccess;
+    }
+    public String updated() {
+        return this.updated;
     }
     public String url() {
         return this.url;
@@ -188,7 +196,9 @@ public final class GetBucketResult {
         private String selfLink;
         private List<GetBucketSoftDeletePolicy> softDeletePolicies;
         private String storageClass;
+        private String timeCreated;
         private Boolean uniformBucketLevelAccess;
+        private String updated;
         private String url;
         private List<GetBucketVersioning> versionings;
         private List<GetBucketWebsite> websites;
@@ -220,7 +230,9 @@ public final class GetBucketResult {
     	      this.selfLink = defaults.selfLink;
     	      this.softDeletePolicies = defaults.softDeletePolicies;
     	      this.storageClass = defaults.storageClass;
+    	      this.timeCreated = defaults.timeCreated;
     	      this.uniformBucketLevelAccess = defaults.uniformBucketLevelAccess;
+    	      this.updated = defaults.updated;
     	      this.url = defaults.url;
     	      this.versionings = defaults.versionings;
     	      this.websites = defaults.websites;
@@ -452,11 +464,27 @@ public final class GetBucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeCreated(String timeCreated) {
+            if (timeCreated == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "timeCreated");
+            }
+            this.timeCreated = timeCreated;
+            return this;
+        }
+        @CustomType.Setter
         public Builder uniformBucketLevelAccess(Boolean uniformBucketLevelAccess) {
             if (uniformBucketLevelAccess == null) {
               throw new MissingRequiredPropertyException("GetBucketResult", "uniformBucketLevelAccess");
             }
             this.uniformBucketLevelAccess = uniformBucketLevelAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder updated(String updated) {
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         @CustomType.Setter
@@ -516,7 +544,9 @@ public final class GetBucketResult {
             _resultValue.selfLink = selfLink;
             _resultValue.softDeletePolicies = softDeletePolicies;
             _resultValue.storageClass = storageClass;
+            _resultValue.timeCreated = timeCreated;
             _resultValue.uniformBucketLevelAccess = uniformBucketLevelAccess;
+            _resultValue.updated = updated;
             _resultValue.url = url;
             _resultValue.versionings = versionings;
             _resultValue.websites = websites;

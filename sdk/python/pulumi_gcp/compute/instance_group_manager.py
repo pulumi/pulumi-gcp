@@ -1014,6 +1014,9 @@ class _InstanceGroupManagerState:
 
 
 class InstanceGroupManager(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceGroupManager:InstanceGroupManager"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

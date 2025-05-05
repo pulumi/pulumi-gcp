@@ -327,6 +327,9 @@ class _AppEngineVersionIamBindingState:
 
 
 class AppEngineVersionIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

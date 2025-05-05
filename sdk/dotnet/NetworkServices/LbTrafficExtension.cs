@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Match conditions for each extension chain are evaluated in sequence for a given request.
         /// The first extension chain that has a condition that matches the request is executed.
         /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        /// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
         /// Structure is documented below.
         /// </summary>
         [Output("extensionChains")]
@@ -181,6 +182,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Match conditions for each extension chain are evaluated in sequence for a given request.
         /// The first extension chain that has a condition that matches the request is executed.
         /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        /// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.LbTrafficExtensionExtensionChainArgs> ExtensionChains
@@ -279,6 +281,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Match conditions for each extension chain are evaluated in sequence for a given request.
         /// The first extension chain that has a condition that matches the request is executed.
         /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        /// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.LbTrafficExtensionExtensionChainGetArgs> ExtensionChains

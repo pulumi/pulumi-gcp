@@ -604,6 +604,9 @@ class _RuntimeTemplateState:
 
 
 class RuntimeTemplate(pulumi.CustomResource):
+
+    pulumi_type = "gcp:colab/runtimeTemplate:RuntimeTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1128,7 +1131,7 @@ class RuntimeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eucConfig")
-    def euc_config(self) -> pulumi.Output[Optional['outputs.RuntimeTemplateEucConfig']]:
+    def euc_config(self) -> pulumi.Output['outputs.RuntimeTemplateEucConfig']:
         """
         EUC configuration of the NotebookRuntimeTemplate.
         Structure is documented below.
@@ -1146,7 +1149,7 @@ class RuntimeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
+    def labels(self) -> pulumi.Output[Mapping[str, builtins.str]]:
         """
         Labels to identify and group the runtime template.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1219,7 +1222,7 @@ class RuntimeTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shieldedVmConfig")
-    def shielded_vm_config(self) -> pulumi.Output[Optional['outputs.RuntimeTemplateShieldedVmConfig']]:
+    def shielded_vm_config(self) -> pulumi.Output['outputs.RuntimeTemplateShieldedVmConfig']:
         """
         Runtime Shielded VM spec.
         Structure is documented below.

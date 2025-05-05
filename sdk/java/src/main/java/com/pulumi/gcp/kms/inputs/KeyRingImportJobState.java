@@ -77,7 +77,7 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
 
     /**
      * The wrapping method to be used for incoming key material.
-     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
      * 
      */
     @Import(name="importMethod")
@@ -85,7 +85,7 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The wrapping method to be used for incoming key material.
-     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
      * 
      */
     public Optional<Output<String>> importMethod() {
@@ -297,7 +297,7 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param importMethod The wrapping method to be used for incoming key material.
-         * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+         * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param importMethod The wrapping method to be used for incoming key material.
-         * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
+         * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
          * 
          * @return builder
          * 

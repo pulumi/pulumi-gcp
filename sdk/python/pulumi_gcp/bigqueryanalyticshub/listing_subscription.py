@@ -370,6 +370,9 @@ class _ListingSubscriptionState:
 
 
 class ListingSubscription(pulumi.CustomResource):
+
+    pulumi_type = "gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

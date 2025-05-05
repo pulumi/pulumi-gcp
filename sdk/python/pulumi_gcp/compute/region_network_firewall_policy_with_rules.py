@@ -329,6 +329,9 @@ class _RegionNetworkFirewallPolicyWithRulesState:
 
 
 class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

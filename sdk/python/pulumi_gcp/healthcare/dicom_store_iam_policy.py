@@ -128,6 +128,9 @@ class _DicomStoreIamPolicyState:
 
 
 class DicomStoreIamPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

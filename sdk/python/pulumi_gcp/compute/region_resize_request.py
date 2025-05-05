@@ -328,6 +328,9 @@ class _RegionResizeRequestState:
 
 
 class RegionResizeRequest(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/regionResizeRequest:RegionResizeRequest"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -361,7 +364,7 @@ class RegionResizeRequest(pulumi.CustomResource):
                 "on_host_maintenance": "TERMINATE",
             },
             disks=[{
-                "source_image": "cos-cloud/cos-105-lts",
+                "source_image": "cos-cloud/cos-121-lts",
                 "auto_delete": True,
                 "boot": True,
                 "disk_type": "pd-ssd",
@@ -491,7 +494,7 @@ class RegionResizeRequest(pulumi.CustomResource):
                 "on_host_maintenance": "TERMINATE",
             },
             disks=[{
-                "source_image": "cos-cloud/cos-105-lts",
+                "source_image": "cos-cloud/cos-121-lts",
                 "auto_delete": True,
                 "boot": True,
                 "disk_type": "pd-ssd",

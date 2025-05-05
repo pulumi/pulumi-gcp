@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodeConfigEphemeralStorageLocalSsdConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
+        /// </summary>
+        [Input("dataCacheCount")]
+        public Input<int>? DataCacheCount { get; set; }
+
+        /// <summary>
         /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         /// </summary>
         [Input("localSsdCount", required: true)]

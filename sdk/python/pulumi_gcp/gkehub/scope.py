@@ -339,6 +339,9 @@ class _ScopeState:
 
 
 class Scope(pulumi.CustomResource):
+
+    pulumi_type = "gcp:gkehub/scope:Scope"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

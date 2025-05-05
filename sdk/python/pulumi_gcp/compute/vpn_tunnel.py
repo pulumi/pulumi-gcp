@@ -821,6 +821,9 @@ class _VPNTunnelState:
 
 
 class VPNTunnel(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/vPNTunnel:VPNTunnel"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

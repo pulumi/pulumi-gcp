@@ -497,6 +497,10 @@ type Instance struct {
 	// List of server CA certificates for the instance.
 	// Structure is documented below.
 	ServerCaCerts InstanceServerCaCertArrayOutput `pulumi:"serverCaCerts"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
@@ -674,6 +678,10 @@ type instanceState struct {
 	// List of server CA certificates for the instance.
 	// Structure is documented below.
 	ServerCaCerts []InstanceServerCaCert `pulumi:"serverCaCerts"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
+	Tags map[string]string `pulumi:"tags"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
@@ -813,6 +821,10 @@ type InstanceState struct {
 	// List of server CA certificates for the instance.
 	// Structure is documented below.
 	ServerCaCerts InstanceServerCaCertArrayInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
+	Tags pulumi.StringMapInput
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
@@ -914,6 +926,10 @@ type instanceArgs struct {
 	// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
 	// range associated with the private service access connection, or "auto".
 	SecondaryIpRange *string `pulumi:"secondaryIpRange"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
+	Tags map[string]string `pulumi:"tags"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
@@ -1012,6 +1028,10 @@ type InstanceArgs struct {
 	// "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
 	// range associated with the private service access connection, or "auto".
 	SecondaryIpRange pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
+	Tags pulumi.StringMapInput
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
@@ -1337,6 +1357,13 @@ func (o InstanceOutput) SecondaryIpRange() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceOutput) ServerCaCerts() InstanceServerCaCertArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceServerCaCertArrayOutput { return v.ServerCaCerts }).(InstanceServerCaCertArrayOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The service tier of the instance. Must be one of these values:

@@ -289,6 +289,9 @@ class _EntryGroupIamBindingState:
 
 
 class EntryGroupIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/entryGroupIamBinding:EntryGroupIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

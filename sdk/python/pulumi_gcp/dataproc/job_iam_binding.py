@@ -277,6 +277,9 @@ class _JobIAMBindingState:
 
 
 class JobIAMBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/jobIAMBinding:JobIAMBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

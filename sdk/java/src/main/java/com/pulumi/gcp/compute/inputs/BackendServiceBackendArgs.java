@@ -304,6 +304,33 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.maxUtilization);
     }
 
+    /**
+     * This field indicates whether this backend should be fully utilized before sending traffic to backends
+     * with default preference. This field cannot be set when loadBalancingScheme is set to &#39;EXTERNAL&#39;. The possible values are:
+     * - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+     *   based on RTT.
+     * - DEFAULT: If preferred backends don&#39;t have enough capacity, backends in this layer would be used and
+     *   traffic would be assigned based on the load balancing algorithm you use. This is the default
+     *   Possible values are: `PREFERRED`, `DEFAULT`.
+     * 
+     */
+    @Import(name="preference")
+    private @Nullable Output<String> preference;
+
+    /**
+     * @return This field indicates whether this backend should be fully utilized before sending traffic to backends
+     * with default preference. This field cannot be set when loadBalancingScheme is set to &#39;EXTERNAL&#39;. The possible values are:
+     * - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+     *   based on RTT.
+     * - DEFAULT: If preferred backends don&#39;t have enough capacity, backends in this layer would be used and
+     *   traffic would be assigned based on the load balancing algorithm you use. This is the default
+     *   Possible values are: `PREFERRED`, `DEFAULT`.
+     * 
+     */
+    public Optional<Output<String>> preference() {
+        return Optional.ofNullable(this.preference);
+    }
+
     private BackendServiceBackendArgs() {}
 
     private BackendServiceBackendArgs(BackendServiceBackendArgs $) {
@@ -319,6 +346,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         this.maxRatePerEndpoint = $.maxRatePerEndpoint;
         this.maxRatePerInstance = $.maxRatePerInstance;
         this.maxUtilization = $.maxUtilization;
+        this.preference = $.preference;
     }
 
     public static Builder builder() {
@@ -704,6 +732,39 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
          */
         public Builder maxUtilization(Double maxUtilization) {
             return maxUtilization(Output.of(maxUtilization));
+        }
+
+        /**
+         * @param preference This field indicates whether this backend should be fully utilized before sending traffic to backends
+         * with default preference. This field cannot be set when loadBalancingScheme is set to &#39;EXTERNAL&#39;. The possible values are:
+         * - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+         *   based on RTT.
+         * - DEFAULT: If preferred backends don&#39;t have enough capacity, backends in this layer would be used and
+         *   traffic would be assigned based on the load balancing algorithm you use. This is the default
+         *   Possible values are: `PREFERRED`, `DEFAULT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preference(@Nullable Output<String> preference) {
+            $.preference = preference;
+            return this;
+        }
+
+        /**
+         * @param preference This field indicates whether this backend should be fully utilized before sending traffic to backends
+         * with default preference. This field cannot be set when loadBalancingScheme is set to &#39;EXTERNAL&#39;. The possible values are:
+         * - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,
+         *   based on RTT.
+         * - DEFAULT: If preferred backends don&#39;t have enough capacity, backends in this layer would be used and
+         *   traffic would be assigned based on the load balancing algorithm you use. This is the default
+         *   Possible values are: `PREFERRED`, `DEFAULT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preference(String preference) {
+            return preference(Output.of(preference));
         }
 
         public BackendServiceBackendArgs build() {

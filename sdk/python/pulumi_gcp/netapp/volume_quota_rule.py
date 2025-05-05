@@ -457,6 +457,9 @@ class _VolumeQuotaRuleState:
 
 
 class VolumeQuotaRule(pulumi.CustomResource):
+
+    pulumi_type = "gcp:netapp/volumeQuotaRule:VolumeQuotaRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

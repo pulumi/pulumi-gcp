@@ -366,6 +366,8 @@ spannerCustomEndpoint: Optional[str]
 
 sqlCustomEndpoint: Optional[str]
 
+storageBatchOperationsCustomEndpoint: Optional[str]
+
 storageControlCustomEndpoint: Optional[str]
 
 storageCustomEndpoint: Optional[str]

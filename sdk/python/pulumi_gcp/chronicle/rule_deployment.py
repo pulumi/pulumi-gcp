@@ -473,6 +473,9 @@ class _RuleDeploymentState:
 
 
 class RuleDeployment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:chronicle/ruleDeployment:RuleDeployment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

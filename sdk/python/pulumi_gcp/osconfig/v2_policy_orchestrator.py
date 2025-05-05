@@ -485,6 +485,9 @@ class _V2PolicyOrchestratorState:
 
 
 class V2PolicyOrchestrator(pulumi.CustomResource):
+
+    pulumi_type = "gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

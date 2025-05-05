@@ -557,6 +557,9 @@ class _IntentState:
 
 
 class Intent(pulumi.CustomResource):
+
+    pulumi_type = "gcp:diagflow/intent:Intent"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -431,6 +431,9 @@ class _LakeState:
 
 
 class Lake(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataplex/lake:Lake"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

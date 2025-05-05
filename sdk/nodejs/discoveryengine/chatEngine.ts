@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const testDataStore = new gcp.discoveryengine.DataStore("test_data_store", {
- *     location: "global",
+ *     location: "eu",
  *     dataStoreId: "data-store",
  *     displayName: "Structured datastore",
  *     industryVertical: "GENERIC",
@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  * });
  * const agent = new gcp.diagflow.CxAgent("agent", {
  *     displayName: "dialogflowcx-agent",
- *     location: "global",
+ *     location: "europe-west3",
  *     defaultLanguageCode: "en",
  *     timeZone: "America/Los_Angeles",
  * });
@@ -93,6 +93,7 @@ import * as utilities from "../utilities";
  *     },
  *     chatEngineConfig: {
  *         dialogflowAgentToLink: agent.id,
+ *         allowCrossRegion: true,
  *     },
  * });
  * ```

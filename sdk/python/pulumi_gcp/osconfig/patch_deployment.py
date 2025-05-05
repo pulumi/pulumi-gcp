@@ -414,6 +414,9 @@ class _PatchDeploymentState:
 
 
 class PatchDeployment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:osconfig/patchDeployment:PatchDeployment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -21,6 +21,11 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     private String allocatedIpRange;
     private List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks;
     /**
+     * @return The custom subject alternative names for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;server_ca_mode&#34;.
+     * 
+     */
+    private List<String> customSubjectAlternativeNames;
+    /**
      * @return Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
      * 
      */
@@ -66,6 +71,13 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     }
     public List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks() {
         return this.authorizedNetworks;
+    }
+    /**
+     * @return The custom subject alternative names for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;server_ca_mode&#34;.
+     * 
+     */
+    public List<String> customSubjectAlternativeNames() {
+        return this.customSubjectAlternativeNames;
     }
     /**
      * @return Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
@@ -128,6 +140,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     public static final class Builder {
         private String allocatedIpRange;
         private List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks;
+        private List<String> customSubjectAlternativeNames;
         private Boolean enablePrivatePathForGoogleCloudServices;
         private Boolean ipv4Enabled;
         private String privateNetwork;
@@ -140,6 +153,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedIpRange = defaults.allocatedIpRange;
     	      this.authorizedNetworks = defaults.authorizedNetworks;
+    	      this.customSubjectAlternativeNames = defaults.customSubjectAlternativeNames;
     	      this.enablePrivatePathForGoogleCloudServices = defaults.enablePrivatePathForGoogleCloudServices;
     	      this.ipv4Enabled = defaults.ipv4Enabled;
     	      this.privateNetwork = defaults.privateNetwork;
@@ -167,6 +181,17 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
         }
         public Builder authorizedNetworks(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork... authorizedNetworks) {
             return authorizedNetworks(List.of(authorizedNetworks));
+        }
+        @CustomType.Setter
+        public Builder customSubjectAlternativeNames(List<String> customSubjectAlternativeNames) {
+            if (customSubjectAlternativeNames == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfiguration", "customSubjectAlternativeNames");
+            }
+            this.customSubjectAlternativeNames = customSubjectAlternativeNames;
+            return this;
+        }
+        public Builder customSubjectAlternativeNames(String... customSubjectAlternativeNames) {
+            return customSubjectAlternativeNames(List.of(customSubjectAlternativeNames));
         }
         @CustomType.Setter
         public Builder enablePrivatePathForGoogleCloudServices(Boolean enablePrivatePathForGoogleCloudServices) {
@@ -231,6 +256,7 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
             final var _resultValue = new GetDatabaseInstanceSettingIpConfiguration();
             _resultValue.allocatedIpRange = allocatedIpRange;
             _resultValue.authorizedNetworks = authorizedNetworks;
+            _resultValue.customSubjectAlternativeNames = customSubjectAlternativeNames;
             _resultValue.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             _resultValue.ipv4Enabled = ipv4Enabled;
             _resultValue.privateNetwork = privateNetwork;

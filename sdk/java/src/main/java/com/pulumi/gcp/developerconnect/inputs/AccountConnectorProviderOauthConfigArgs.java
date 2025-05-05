@@ -44,6 +44,8 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
      * GOOGLE
      * SENTRY
      * ROVO
+     * NEW_RELIC
+     * DATASTAX
      * 
      */
     @Import(name="systemProviderId")
@@ -57,6 +59,8 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
      * GOOGLE
      * SENTRY
      * ROVO
+     * NEW_RELIC
+     * DATASTAX
      * 
      */
     public Optional<Output<String>> systemProviderId() {
@@ -133,6 +137,8 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
          * GOOGLE
          * SENTRY
          * ROVO
+         * NEW_RELIC
+         * DATASTAX
          * 
          * @return builder
          * 
@@ -150,6 +156,8 @@ public final class AccountConnectorProviderOauthConfigArgs extends com.pulumi.re
          * GOOGLE
          * SENTRY
          * ROVO
+         * NEW_RELIC
+         * DATASTAX
          * 
          * @return builder
          * 

@@ -483,6 +483,9 @@ class _OrganizationsPolicyBindingState:
 
 
 class OrganizationsPolicyBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

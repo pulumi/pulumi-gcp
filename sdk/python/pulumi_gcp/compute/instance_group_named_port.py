@@ -212,6 +212,9 @@ class _InstanceGroupNamedPortState:
 
 
 class InstanceGroupNamedPort(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

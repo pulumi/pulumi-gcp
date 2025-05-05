@@ -253,6 +253,9 @@ class _DnsManagedZoneIamMemberState:
 
 
 class DnsManagedZoneIamMember(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

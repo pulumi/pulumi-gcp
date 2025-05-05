@@ -16,6 +16,22 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'BatchOperationsJobBucketListArgs',
+    'BatchOperationsJobBucketListArgsDict',
+    'BatchOperationsJobBucketListBucketsArgs',
+    'BatchOperationsJobBucketListBucketsArgsDict',
+    'BatchOperationsJobBucketListBucketsManifestArgs',
+    'BatchOperationsJobBucketListBucketsManifestArgsDict',
+    'BatchOperationsJobBucketListBucketsPrefixListArgs',
+    'BatchOperationsJobBucketListBucketsPrefixListArgsDict',
+    'BatchOperationsJobDeleteObjectArgs',
+    'BatchOperationsJobDeleteObjectArgsDict',
+    'BatchOperationsJobPutMetadataArgs',
+    'BatchOperationsJobPutMetadataArgsDict',
+    'BatchOperationsJobPutObjectHoldArgs',
+    'BatchOperationsJobPutObjectHoldArgsDict',
+    'BatchOperationsJobRewriteObjectArgs',
+    'BatchOperationsJobRewriteObjectArgsDict',
     'BucketAutoclassArgs',
     'BucketAutoclassArgsDict',
     'BucketCorArgs',
@@ -175,6 +191,447 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class BatchOperationsJobBucketListArgsDict(TypedDict):
+        buckets: pulumi.Input['BatchOperationsJobBucketListBucketsArgsDict']
+        """
+        List of buckets and their objects to be transformed.
+        Structure is documented below.
+        """
+elif False:
+    BatchOperationsJobBucketListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchOperationsJobBucketListArgs:
+    def __init__(__self__, *,
+                 buckets: pulumi.Input['BatchOperationsJobBucketListBucketsArgs']):
+        """
+        :param pulumi.Input['BatchOperationsJobBucketListBucketsArgs'] buckets: List of buckets and their objects to be transformed.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "buckets", buckets)
+
+    @property
+    @pulumi.getter
+    def buckets(self) -> pulumi.Input['BatchOperationsJobBucketListBucketsArgs']:
+        """
+        List of buckets and their objects to be transformed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "buckets")
+
+    @buckets.setter
+    def buckets(self, value: pulumi.Input['BatchOperationsJobBucketListBucketsArgs']):
+        pulumi.set(self, "buckets", value)
+
+
+if not MYPY:
+    class BatchOperationsJobBucketListBucketsArgsDict(TypedDict):
+        bucket: pulumi.Input[builtins.str]
+        """
+        Bucket name for the objects to be transformed.
+        """
+        manifest: NotRequired[pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgsDict']]
+        """
+        contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+        Structure is documented below.
+        """
+        prefix_list: NotRequired[pulumi.Input['BatchOperationsJobBucketListBucketsPrefixListArgsDict']]
+        """
+        Specifies objects matching a prefix set.
+        Structure is documented below.
+        """
+elif False:
+    BatchOperationsJobBucketListBucketsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchOperationsJobBucketListBucketsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[builtins.str],
+                 manifest: Optional[pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgs']] = None,
+                 prefix_list: Optional[pulumi.Input['BatchOperationsJobBucketListBucketsPrefixListArgs']] = None):
+        """
+        :param pulumi.Input[builtins.str] bucket: Bucket name for the objects to be transformed.
+        :param pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgs'] manifest: contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+               Structure is documented below.
+        :param pulumi.Input['BatchOperationsJobBucketListBucketsPrefixListArgs'] prefix_list: Specifies objects matching a prefix set.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if manifest is not None:
+            pulumi.set(__self__, "manifest", manifest)
+        if prefix_list is not None:
+            pulumi.set(__self__, "prefix_list", prefix_list)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[builtins.str]:
+        """
+        Bucket name for the objects to be transformed.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def manifest(self) -> Optional[pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgs']]:
+        """
+        contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "manifest")
+
+    @manifest.setter
+    def manifest(self, value: Optional[pulumi.Input['BatchOperationsJobBucketListBucketsManifestArgs']]):
+        pulumi.set(self, "manifest", value)
+
+    @property
+    @pulumi.getter(name="prefixList")
+    def prefix_list(self) -> Optional[pulumi.Input['BatchOperationsJobBucketListBucketsPrefixListArgs']]:
+        """
+        Specifies objects matching a prefix set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "prefix_list")
+
+    @prefix_list.setter
+    def prefix_list(self, value: Optional[pulumi.Input['BatchOperationsJobBucketListBucketsPrefixListArgs']]):
+        pulumi.set(self, "prefix_list", value)
+
+
+if not MYPY:
+    class BatchOperationsJobBucketListBucketsManifestArgsDict(TypedDict):
+        manifest_location: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies objects in a manifest file.
+        """
+elif False:
+    BatchOperationsJobBucketListBucketsManifestArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchOperationsJobBucketListBucketsManifestArgs:
+    def __init__(__self__, *,
+                 manifest_location: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] manifest_location: Specifies objects in a manifest file.
+        """
+        if manifest_location is not None:
+            pulumi.set(__self__, "manifest_location", manifest_location)
+
+    @property
+    @pulumi.getter(name="manifestLocation")
+    def manifest_location(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies objects in a manifest file.
+        """
+        return pulumi.get(self, "manifest_location")
+
+    @manifest_location.setter
+    def manifest_location(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "manifest_location", value)
+
+
+if not MYPY:
+    class BatchOperationsJobBucketListBucketsPrefixListArgsDict(TypedDict):
+        included_object_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Optional)
+        """
+elif False:
+    BatchOperationsJobBucketListBucketsPrefixListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchOperationsJobBucketListBucketsPrefixListArgs:
+    def __init__(__self__, *,
+                 included_object_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] included_object_prefixes: (Optional)
+        """
+        if included_object_prefixes is not None:
+            pulumi.set(__self__, "included_object_prefixes", included_object_prefixes)
+
+    @property
+    @pulumi.getter(name="includedObjectPrefixes")
+    def included_object_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Optional)
+        """
+        return pulumi.get(self, "included_object_prefixes")
+
+    @included_object_prefixes.setter
+    def included_object_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "included_object_prefixes", value)
+
+
+if not MYPY:
+    class BatchOperationsJobDeleteObjectArgsDict(TypedDict):
+        permanent_object_deletion_enabled: pulumi.Input[builtins.bool]
+        """
+        enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+        """
+elif False:
+    BatchOperationsJobDeleteObjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchOperationsJobDeleteObjectArgs:
+    def __init__(__self__, *,
+                 permanent_object_deletion_enabled: pulumi.Input[builtins.bool]):
+        """
+        :param pulumi.Input[builtins.bool] permanent_object_deletion_enabled: enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+        """
+        pulumi.set(__self__, "permanent_object_deletion_enabled", permanent_object_deletion_enabled)
+
+    @property
+    @pulumi.getter(name="permanentObjectDeletionEnabled")
+    def permanent_object_deletion_enabled(self) -> pulumi.Input[builtins.bool]:
+        """
+        enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
+        """
+        return pulumi.get(self, "permanent_object_deletion_enabled")
+
+    @permanent_object_deletion_enabled.setter
+    def permanent_object_deletion_enabled(self, value: pulumi.Input[builtins.bool]):
+        pulumi.set(self, "permanent_object_deletion_enabled", value)
+
+
+if not MYPY:
+    class BatchOperationsJobPutMetadataArgsDict(TypedDict):
+        cache_control: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+        """
+        content_disposition: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Content-Disposition of the object data.
+        """
+        content_encoding: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Content Encoding of the object data.
+        """
+        content_language: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Content-Language of the object data.
+        """
+        content_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Content-Type of the object data.
+        """
+        custom_metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        User-provided metadata, in key/value pairs.
+        """
+        custom_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Updates the objects fixed custom time metadata.
+        """
+elif False:
+    BatchOperationsJobPutMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchOperationsJobPutMetadataArgs:
+    def __init__(__self__, *,
+                 cache_control: Optional[pulumi.Input[builtins.str]] = None,
+                 content_disposition: Optional[pulumi.Input[builtins.str]] = None,
+                 content_encoding: Optional[pulumi.Input[builtins.str]] = None,
+                 content_language: Optional[pulumi.Input[builtins.str]] = None,
+                 content_type: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 custom_time: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] cache_control: Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+        :param pulumi.Input[builtins.str] content_disposition: Content-Disposition of the object data.
+        :param pulumi.Input[builtins.str] content_encoding: Content Encoding of the object data.
+        :param pulumi.Input[builtins.str] content_language: Content-Language of the object data.
+        :param pulumi.Input[builtins.str] content_type: Content-Type of the object data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_metadata: User-provided metadata, in key/value pairs.
+        :param pulumi.Input[builtins.str] custom_time: Updates the objects fixed custom time metadata.
+        """
+        if cache_control is not None:
+            pulumi.set(__self__, "cache_control", cache_control)
+        if content_disposition is not None:
+            pulumi.set(__self__, "content_disposition", content_disposition)
+        if content_encoding is not None:
+            pulumi.set(__self__, "content_encoding", content_encoding)
+        if content_language is not None:
+            pulumi.set(__self__, "content_language", content_language)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if custom_metadata is not None:
+            pulumi.set(__self__, "custom_metadata", custom_metadata)
+        if custom_time is not None:
+            pulumi.set(__self__, "custom_time", custom_time)
+
+    @property
+    @pulumi.getter(name="cacheControl")
+    def cache_control(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Cache-Control directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
+        """
+        return pulumi.get(self, "cache_control")
+
+    @cache_control.setter
+    def cache_control(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cache_control", value)
+
+    @property
+    @pulumi.getter(name="contentDisposition")
+    def content_disposition(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Content-Disposition of the object data.
+        """
+        return pulumi.get(self, "content_disposition")
+
+    @content_disposition.setter
+    def content_disposition(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "content_disposition", value)
+
+    @property
+    @pulumi.getter(name="contentEncoding")
+    def content_encoding(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Content Encoding of the object data.
+        """
+        return pulumi.get(self, "content_encoding")
+
+    @content_encoding.setter
+    def content_encoding(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "content_encoding", value)
+
+    @property
+    @pulumi.getter(name="contentLanguage")
+    def content_language(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Content-Language of the object data.
+        """
+        return pulumi.get(self, "content_language")
+
+    @content_language.setter
+    def content_language(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "content_language", value)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Content-Type of the object data.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter(name="customMetadata")
+    def custom_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        User-provided metadata, in key/value pairs.
+        """
+        return pulumi.get(self, "custom_metadata")
+
+    @custom_metadata.setter
+    def custom_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "custom_metadata", value)
+
+    @property
+    @pulumi.getter(name="customTime")
+    def custom_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Updates the objects fixed custom time metadata.
+        """
+        return pulumi.get(self, "custom_time")
+
+    @custom_time.setter
+    def custom_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "custom_time", value)
+
+
+if not MYPY:
+    class BatchOperationsJobPutObjectHoldArgsDict(TypedDict):
+        event_based_hold: NotRequired[pulumi.Input[builtins.str]]
+        """
+        set/unset to update event based hold for objects.
+        """
+        temporary_hold: NotRequired[pulumi.Input[builtins.str]]
+        """
+        set/unset to update temporary based hold for objects.
+        """
+elif False:
+    BatchOperationsJobPutObjectHoldArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchOperationsJobPutObjectHoldArgs:
+    def __init__(__self__, *,
+                 event_based_hold: Optional[pulumi.Input[builtins.str]] = None,
+                 temporary_hold: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] event_based_hold: set/unset to update event based hold for objects.
+        :param pulumi.Input[builtins.str] temporary_hold: set/unset to update temporary based hold for objects.
+        """
+        if event_based_hold is not None:
+            pulumi.set(__self__, "event_based_hold", event_based_hold)
+        if temporary_hold is not None:
+            pulumi.set(__self__, "temporary_hold", temporary_hold)
+
+    @property
+    @pulumi.getter(name="eventBasedHold")
+    def event_based_hold(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        set/unset to update event based hold for objects.
+        """
+        return pulumi.get(self, "event_based_hold")
+
+    @event_based_hold.setter
+    def event_based_hold(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "event_based_hold", value)
+
+    @property
+    @pulumi.getter(name="temporaryHold")
+    def temporary_hold(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        set/unset to update temporary based hold for objects.
+        """
+        return pulumi.get(self, "temporary_hold")
+
+    @temporary_hold.setter
+    def temporary_hold(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "temporary_hold", value)
+
+
+if not MYPY:
+    class BatchOperationsJobRewriteObjectArgsDict(TypedDict):
+        kms_key: pulumi.Input[builtins.str]
+        """
+        valid kms key
+        """
+elif False:
+    BatchOperationsJobRewriteObjectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchOperationsJobRewriteObjectArgs:
+    def __init__(__self__, *,
+                 kms_key: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] kms_key: valid kms key
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Input[builtins.str]:
+        """
+        valid kms key
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "kms_key", value)
+
 
 if not MYPY:
     class BucketAutoclassArgsDict(TypedDict):
@@ -4498,6 +4955,10 @@ if not MYPY:
         """
         AWS credentials block.
         """
+        managed_private_network: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+        """
         path: NotRequired[pulumi.Input[builtins.str]]
         """
         S3 Bucket path in bucket to transfer.
@@ -4514,17 +4975,21 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[builtins.str],
                  aws_access_key: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']] = None,
+                 managed_private_network: Optional[pulumi.Input[builtins.bool]] = None,
                  path: Optional[pulumi.Input[builtins.str]] = None,
                  role_arn: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] bucket_name: S3 Bucket name.
         :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs'] aws_access_key: AWS credentials block.
+        :param pulumi.Input[builtins.bool] managed_private_network: Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
         :param pulumi.Input[builtins.str] path: S3 Bucket path in bucket to transfer.
         :param pulumi.Input[builtins.str] role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         if aws_access_key is not None:
             pulumi.set(__self__, "aws_access_key", aws_access_key)
+        if managed_private_network is not None:
+            pulumi.set(__self__, "managed_private_network", managed_private_network)
         if path is not None:
             pulumi.set(__self__, "path", path)
         if role_arn is not None:
@@ -4553,6 +5018,18 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
     @aws_access_key.setter
     def aws_access_key(self, value: Optional[pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]):
         pulumi.set(self, "aws_access_key", value)
+
+    @property
+    @pulumi.getter(name="managedPrivateNetwork")
+    def managed_private_network(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
+        """
+        return pulumi.get(self, "managed_private_network")
+
+    @managed_private_network.setter
+    def managed_private_network(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "managed_private_network", value)
 
     @property
     @pulumi.getter

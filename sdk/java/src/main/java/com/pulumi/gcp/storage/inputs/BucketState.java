@@ -395,6 +395,21 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The creation time of the bucket in RFC 3339 format.
+     * 
+     */
+    @Import(name="timeCreated")
+    private @Nullable Output<String> timeCreated;
+
+    /**
+     * @return The creation time of the bucket in RFC 3339 format.
+     * 
+     */
+    public Optional<Output<String>> timeCreated() {
+        return Optional.ofNullable(this.timeCreated);
+    }
+
+    /**
      * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
      * 
      */
@@ -407,6 +422,21 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> uniformBucketLevelAccess() {
         return Optional.ofNullable(this.uniformBucketLevelAccess);
+    }
+
+    /**
+     * The time at which the bucket&#39;s metadata or IAM policy was last updated, in RFC 3339 format.
+     * 
+     */
+    @Import(name="updated")
+    private @Nullable Output<String> updated;
+
+    /**
+     * @return The time at which the bucket&#39;s metadata or IAM policy was last updated, in RFC 3339 format.
+     * 
+     */
+    public Optional<Output<String>> updated() {
+        return Optional.ofNullable(this.updated);
     }
 
     /**
@@ -481,7 +511,9 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.softDeletePolicy = $.softDeletePolicy;
         this.storageClass = $.storageClass;
+        this.timeCreated = $.timeCreated;
         this.uniformBucketLevelAccess = $.uniformBucketLevelAccess;
+        this.updated = $.updated;
         this.url = $.url;
         this.versioning = $.versioning;
         this.website = $.website;
@@ -1030,6 +1062,27 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param timeCreated The creation time of the bucket in RFC 3339 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeCreated(@Nullable Output<String> timeCreated) {
+            $.timeCreated = timeCreated;
+            return this;
+        }
+
+        /**
+         * @param timeCreated The creation time of the bucket in RFC 3339 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeCreated(String timeCreated) {
+            return timeCreated(Output.of(timeCreated));
+        }
+
+        /**
          * @param uniformBucketLevelAccess Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
          * 
          * @return builder
@@ -1048,6 +1101,27 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uniformBucketLevelAccess(Boolean uniformBucketLevelAccess) {
             return uniformBucketLevelAccess(Output.of(uniformBucketLevelAccess));
+        }
+
+        /**
+         * @param updated The time at which the bucket&#39;s metadata or IAM policy was last updated, in RFC 3339 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updated(@Nullable Output<String> updated) {
+            $.updated = updated;
+            return this;
+        }
+
+        /**
+         * @param updated The time at which the bucket&#39;s metadata or IAM policy was last updated, in RFC 3339 format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updated(String updated) {
+            return updated(Output.of(updated));
         }
 
         /**

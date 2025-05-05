@@ -440,6 +440,9 @@ class _PostureDeploymentState:
 
 
 class PostureDeployment(pulumi.CustomResource):
+
+    pulumi_type = "gcp:securityposture/postureDeployment:PostureDeployment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

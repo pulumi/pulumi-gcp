@@ -5,7 +5,6 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +14,21 @@ import javax.annotation.Nullable;
 public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ManagedZoneForwardingConfigTargetNameServerArgs Empty = new ManagedZoneForwardingConfigTargetNameServerArgs();
+
+    /**
+     * Fully qualified domain name for the forwarding target.
+     * 
+     */
+    @Import(name="domainName")
+    private @Nullable Output<String> domainName;
+
+    /**
+     * @return Fully qualified domain name for the forwarding target.
+     * 
+     */
+    public Optional<Output<String>> domainName() {
+        return Optional.ofNullable(this.domainName);
+    }
 
     /**
      * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
@@ -41,20 +55,21 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
      * IPv4 address of a target name server.
      * 
      */
-    @Import(name="ipv4Address", required=true)
-    private Output<String> ipv4Address;
+    @Import(name="ipv4Address")
+    private @Nullable Output<String> ipv4Address;
 
     /**
      * @return IPv4 address of a target name server.
      * 
      */
-    public Output<String> ipv4Address() {
-        return this.ipv4Address;
+    public Optional<Output<String>> ipv4Address() {
+        return Optional.ofNullable(this.ipv4Address);
     }
 
     private ManagedZoneForwardingConfigTargetNameServerArgs() {}
 
     private ManagedZoneForwardingConfigTargetNameServerArgs(ManagedZoneForwardingConfigTargetNameServerArgs $) {
+        this.domainName = $.domainName;
         this.forwardingPath = $.forwardingPath;
         this.ipv4Address = $.ipv4Address;
     }
@@ -75,6 +90,27 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
 
         public Builder(ManagedZoneForwardingConfigTargetNameServerArgs defaults) {
             $ = new ManagedZoneForwardingConfigTargetNameServerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param domainName Fully qualified domain name for the forwarding target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainName(@Nullable Output<String> domainName) {
+            $.domainName = domainName;
+            return this;
+        }
+
+        /**
+         * @param domainName Fully qualified domain name for the forwarding target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainName(String domainName) {
+            return domainName(Output.of(domainName));
         }
 
         /**
@@ -110,7 +146,7 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
          * @return builder
          * 
          */
-        public Builder ipv4Address(Output<String> ipv4Address) {
+        public Builder ipv4Address(@Nullable Output<String> ipv4Address) {
             $.ipv4Address = ipv4Address;
             return this;
         }
@@ -126,9 +162,6 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
         }
 
         public ManagedZoneForwardingConfigTargetNameServerArgs build() {
-            if ($.ipv4Address == null) {
-                throw new MissingRequiredPropertyException("ManagedZoneForwardingConfigTargetNameServerArgs", "ipv4Address");
-            }
             return $;
         }
     }

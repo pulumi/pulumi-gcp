@@ -403,6 +403,9 @@ class _WorkerPoolState:
 
 
 class WorkerPool(pulumi.CustomResource):
+
+    pulumi_type = "gcp:cloudbuild/workerPool:WorkerPool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

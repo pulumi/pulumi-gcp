@@ -344,6 +344,9 @@ class _PrivateConnectionState:
 
 
 class PrivateConnection(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datastream/privateConnection:PrivateConnection"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

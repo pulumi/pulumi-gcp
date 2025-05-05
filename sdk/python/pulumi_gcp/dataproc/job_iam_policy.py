@@ -184,6 +184,9 @@ class _JobIAMPolicyState:
 
 
 class JobIAMPolicy(pulumi.CustomResource):
+
+    pulumi_type = "gcp:dataproc/jobIAMPolicy:JobIAMPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

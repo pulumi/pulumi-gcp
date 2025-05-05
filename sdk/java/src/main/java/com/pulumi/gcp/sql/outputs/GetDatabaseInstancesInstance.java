@@ -6,6 +6,7 @@ package com.pulumi.gcp.sql.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceClone;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceDnsName;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceIpAddress;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceReplicaConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceReplicationCluster;
@@ -41,10 +42,15 @@ public final class GetDatabaseInstancesInstance {
     private String databaseVersion;
     private Boolean deletionProtection;
     /**
-     * @return The dns name of the instance.
+     * @return The instance-level dns name of the instance for PSC instances or public IP CAS instances.
      * 
      */
     private String dnsName;
+    /**
+     * @return The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+     * 
+     */
+    private List<GetDatabaseInstancesInstanceDnsName> dnsNames;
     private String encryptionKeyName;
     private String firstIpAddress;
     /**
@@ -152,11 +158,18 @@ public final class GetDatabaseInstancesInstance {
         return this.deletionProtection;
     }
     /**
-     * @return The dns name of the instance.
+     * @return The instance-level dns name of the instance for PSC instances or public IP CAS instances.
      * 
      */
     public String dnsName() {
         return this.dnsName;
+    }
+    /**
+     * @return The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+     * 
+     */
+    public List<GetDatabaseInstancesInstanceDnsName> dnsNames() {
+        return this.dnsNames;
     }
     public String encryptionKeyName() {
         return this.encryptionKeyName;
@@ -289,6 +302,7 @@ public final class GetDatabaseInstancesInstance {
         private String databaseVersion;
         private Boolean deletionProtection;
         private String dnsName;
+        private List<GetDatabaseInstancesInstanceDnsName> dnsNames;
         private String encryptionKeyName;
         private String firstIpAddress;
         private String instanceType;
@@ -319,6 +333,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.databaseVersion = defaults.databaseVersion;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.dnsName = defaults.dnsName;
+    	      this.dnsNames = defaults.dnsNames;
     	      this.encryptionKeyName = defaults.encryptionKeyName;
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.instanceType = defaults.instanceType;
@@ -395,6 +410,17 @@ public final class GetDatabaseInstancesInstance {
             }
             this.dnsName = dnsName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dnsNames(List<GetDatabaseInstancesInstanceDnsName> dnsNames) {
+            if (dnsNames == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "dnsNames");
+            }
+            this.dnsNames = dnsNames;
+            return this;
+        }
+        public Builder dnsNames(GetDatabaseInstancesInstanceDnsName... dnsNames) {
+            return dnsNames(List.of(dnsNames));
         }
         @CustomType.Setter
         public Builder encryptionKeyName(String encryptionKeyName) {
@@ -593,6 +619,7 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.databaseVersion = databaseVersion;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.dnsName = dnsName;
+            _resultValue.dnsNames = dnsNames;
             _resultValue.encryptionKeyName = encryptionKeyName;
             _resultValue.firstIpAddress = firstIpAddress;
             _resultValue.instanceType = instanceType;

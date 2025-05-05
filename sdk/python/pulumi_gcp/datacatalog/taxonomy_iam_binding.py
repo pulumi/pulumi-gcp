@@ -277,6 +277,9 @@ class _TaxonomyIamBindingState:
 
 
 class TaxonomyIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

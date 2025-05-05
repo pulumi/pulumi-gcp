@@ -140,6 +140,9 @@ class _ProjectMetadataItemState:
 
 
 class ProjectMetadataItem(pulumi.CustomResource):
+
+    pulumi_type = "gcp:compute/projectMetadataItem:ProjectMetadataItem"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

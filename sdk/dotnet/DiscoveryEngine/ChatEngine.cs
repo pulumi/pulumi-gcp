@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// {
     ///     var testDataStore = new Gcp.DiscoveryEngine.DataStore("test_data_store", new()
     ///     {
-    ///         Location = "global",
+    ///         Location = "eu",
     ///         DataStoreId = "data-store",
     ///         DisplayName = "Structured datastore",
     ///         IndustryVertical = "GENERIC",
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
     ///     {
     ///         DisplayName = "dialogflowcx-agent",
-    ///         Location = "global",
+    ///         Location = "europe-west3",
     ///         DefaultLanguageCode = "en",
     ///         TimeZone = "America/Los_Angeles",
     ///     });
@@ -134,6 +134,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         ChatEngineConfig = new Gcp.DiscoveryEngine.Inputs.ChatEngineChatEngineConfigArgs
     ///         {
     ///             DialogflowAgentToLink = agent.Id,
+    ///             AllowCrossRegion = true,
     ///         },
     ///     });
     /// 

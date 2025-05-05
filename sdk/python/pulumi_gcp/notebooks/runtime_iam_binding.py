@@ -293,6 +293,9 @@ class _RuntimeIamBindingState:
 
 
 class RuntimeIamBinding(pulumi.CustomResource):
+
+    pulumi_type = "gcp:notebooks/runtimeIamBinding:RuntimeIamBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

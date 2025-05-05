@@ -10,6 +10,11 @@ export type AnywhereCache = import("./anywhereCache").AnywhereCache;
 export const AnywhereCache: typeof import("./anywhereCache").AnywhereCache = null as any;
 utilities.lazyLoad(exports, ["AnywhereCache"], () => require("./anywhereCache"));
 
+export { BatchOperationsJobArgs, BatchOperationsJobState } from "./batchOperationsJob";
+export type BatchOperationsJob = import("./batchOperationsJob").BatchOperationsJob;
+export const BatchOperationsJob: typeof import("./batchOperationsJob").BatchOperationsJob = null as any;
+utilities.lazyLoad(exports, ["BatchOperationsJob"], () => require("./batchOperationsJob"));
+
 export { BucketArgs, BucketState } from "./bucket";
 export type Bucket = import("./bucket").Bucket;
 export const Bucket: typeof import("./bucket").Bucket = null as any;
@@ -208,6 +213,8 @@ const _module = {
         switch (type) {
             case "gcp:storage/anywhereCache:AnywhereCache":
                 return new AnywhereCache(name, <any>undefined, { urn })
+            case "gcp:storage/batchOperationsJob:BatchOperationsJob":
+                return new BatchOperationsJob(name, <any>undefined, { urn })
             case "gcp:storage/bucket:Bucket":
                 return new Bucket(name, <any>undefined, { urn })
             case "gcp:storage/bucketACL:BucketACL":
@@ -262,6 +269,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "storage/anywhereCache", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/batchOperationsJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketAccessControl", _module)
