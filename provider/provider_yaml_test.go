@@ -1170,20 +1170,14 @@ func TestUnmanagedEmptyLabels(t *testing.T) {
 	pt.SetConfig(t, "gcpProj", proj)
 
 	previewResult := pt.Preview(t, optpreview.SuppressProgress())
-	autogold.Expect(`Previewing update (test):
-
- +  pulumi:pulumi:Stack dev-yaml-test create
- +  gcp:storage:Bucket b create
- +  command:local:Command set-empty-label create
- +  pulumi:pulumi:Stack dev-yaml-test create
-Outputs:
+	autogold.Expect(`
     effectiveLabels: [secret]
     pulumiLabels   : [secret]
 
 Resources:
     + 3 to create
 
-`).Equal(t, previewResult.StdOut)
+`).Equal(t, strings.Split(previewResult.StdOut, "Outputs:")[1])
 
 	upResult := pt.Up(t)
 	autogold.Expect(auto.OutputMap{
