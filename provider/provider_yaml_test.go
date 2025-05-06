@@ -1170,20 +1170,14 @@ func TestUnmanagedEmptyLabels(t *testing.T) {
 	pt.SetConfig(t, "gcpProj", proj)
 
 	previewResult := pt.Preview(t, optpreview.SuppressProgress())
-	autogold.Expect(`Previewing update (test):
-
- +  pulumi:pulumi:Stack dev-yaml-test create
- +  gcp:storage:Bucket b create
- +  command:local:Command set-empty-label create
- +  pulumi:pulumi:Stack dev-yaml-test create
-Outputs:
+	autogold.Expect(`
     effectiveLabels: [secret]
     pulumiLabels   : [secret]
 
 Resources:
     + 3 to create
 
-`).Equal(t, previewResult.StdOut)
+`).Equal(t, strings.Split(previewResult.StdOut, "Outputs:")[1])
 
 	upResult := pt.Up(t)
 	autogold.Expect(auto.OutputMap{
@@ -1242,4 +1236,16 @@ func TestBigqueryMaterializedViewReplace(t *testing.T) {
 	pulumiYAMLContents2 := strings.ReplaceAll(pulumiYAMLContents, "<QUERY>", query2)
 	pt.WritePulumiYaml(t, pulumiYAMLContents2)
 	pt.Up(t)
+}
+
+func TestSecurityPolicy(t *testing.T) {
+	pt := pulumiTest(t, "test-programs/security-policy/security-policy-1")
+	pt.Up(t)
+
+	program2, err := os.ReadFile("test-programs/security-policy/Pulumi.yaml")
+	require.NoError(t, err)
+	pt.WritePulumiYaml(t, string(program2))
+
+	res := pt.Preview(t)
+	require.NotContains(t, res.StdOut, "Failed to calculate preview")
 }

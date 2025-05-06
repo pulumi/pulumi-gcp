@@ -5,7 +5,6 @@ package gcp
 import (
 	"context"
 	"os"
-	"path/filepath"
 	"testing"
 
 	_ "embed"
@@ -64,11 +63,9 @@ func pulumiTest(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.Pu
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
 
-	cwd, err := os.Getwd()
-	require.NoError(t, err)
-
+	rpFactory := providers.ResourceProviderFactory(providerFactory)
 	options := []opttest.Option{
-		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.AttachProvider(providerName, rpFactory),
 	}
 	options = append(options, opts...)
 
