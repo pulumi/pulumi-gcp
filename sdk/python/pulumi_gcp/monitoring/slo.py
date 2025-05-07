@@ -535,10 +535,8 @@ class _SloState:
         pulumi.set(self, "windows_based_sli", value)
 
 
+@pulumi.type_token("gcp:monitoring/slo:Slo")
 class Slo(pulumi.CustomResource):
-
-    pulumi_type = "gcp:monitoring/slo:Slo"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

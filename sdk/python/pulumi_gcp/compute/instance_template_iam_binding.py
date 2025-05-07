@@ -265,10 +265,8 @@ class _InstanceTemplateIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:compute/instanceTemplateIamBinding:InstanceTemplateIamBinding")
 class InstanceTemplateIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceTemplateIamBinding:InstanceTemplateIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

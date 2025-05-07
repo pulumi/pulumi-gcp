@@ -223,10 +223,8 @@ class _MaterializedViewState:
         pulumi.set(self, "query", value)
 
 
+@pulumi.type_token("gcp:bigtable/materializedView:MaterializedView")
 class MaterializedView(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigtable/materializedView:MaterializedView"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

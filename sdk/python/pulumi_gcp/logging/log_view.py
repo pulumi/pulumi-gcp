@@ -268,10 +268,8 @@ class _LogViewState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:logging/logView:LogView")
 class LogView(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/logView:LogView"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

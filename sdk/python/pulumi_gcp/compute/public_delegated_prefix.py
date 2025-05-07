@@ -378,10 +378,8 @@ class _PublicDelegatedPrefixState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix")
 class PublicDelegatedPrefix(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

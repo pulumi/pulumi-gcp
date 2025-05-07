@@ -745,10 +745,8 @@ class _RepositoryState:
         pulumi.set(self, "vulnerability_scanning_config", value)
 
 
+@pulumi.type_token("gcp:artifactregistry/repository:Repository")
 class Repository(pulumi.CustomResource):
-
-    pulumi_type = "gcp:artifactregistry/repository:Repository"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

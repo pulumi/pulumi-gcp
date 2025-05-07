@@ -674,10 +674,8 @@ class _BackupState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:alloydb/backup:Backup")
 class Backup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:alloydb/backup:Backup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

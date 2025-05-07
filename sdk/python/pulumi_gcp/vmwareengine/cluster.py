@@ -244,10 +244,8 @@ class _ClusterState:
         pulumi.set(self, "uid", value)
 
 
+@pulumi.type_token("gcp:vmwareengine/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vmwareengine/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

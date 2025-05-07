@@ -252,10 +252,8 @@ class _ConfigIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:runtimeconfig/configIamMember:ConfigIamMember")
 class ConfigIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:runtimeconfig/configIamMember:ConfigIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

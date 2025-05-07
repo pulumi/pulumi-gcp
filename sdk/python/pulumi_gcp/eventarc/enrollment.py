@@ -502,10 +502,8 @@ class _EnrollmentState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:eventarc/enrollment:Enrollment")
 class Enrollment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:eventarc/enrollment:Enrollment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -351,10 +351,8 @@ class _CodeRepositoryIndexState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex")
 class CodeRepositoryIndex(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

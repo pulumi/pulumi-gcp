@@ -470,10 +470,8 @@ class _ZoneState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataplex/zone:Zone")
 class Zone(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/zone:Zone"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

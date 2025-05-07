@@ -192,10 +192,8 @@ class _StoragePoolIamPolicyState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/storagePoolIamPolicy:StoragePoolIamPolicy")
 class StoragePoolIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/storagePoolIamPolicy:StoragePoolIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

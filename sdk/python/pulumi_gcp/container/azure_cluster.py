@@ -648,10 +648,8 @@ class _AzureClusterState:
         pulumi.set(self, "workload_identity_configs", value)
 
 
+@pulumi.type_token("gcp:container/azureCluster:AzureCluster")
 class AzureCluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:container/azureCluster:AzureCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

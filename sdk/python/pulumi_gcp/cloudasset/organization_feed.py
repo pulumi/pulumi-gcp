@@ -355,10 +355,8 @@ class _OrganizationFeedState:
         pulumi.set(self, "org_id", value)
 
 
+@pulumi.type_token("gcp:cloudasset/organizationFeed:OrganizationFeed")
 class OrganizationFeed(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudasset/organizationFeed:OrganizationFeed"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

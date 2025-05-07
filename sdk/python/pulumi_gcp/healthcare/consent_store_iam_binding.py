@@ -255,10 +255,8 @@ class _ConsentStoreIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:healthcare/consentStoreIamBinding:ConsentStoreIamBinding")
 class ConsentStoreIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/consentStoreIamBinding:ConsentStoreIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

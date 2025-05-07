@@ -395,10 +395,8 @@ class _BatchOperationsJobState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:storage/batchOperationsJob:BatchOperationsJob")
 class BatchOperationsJob(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/batchOperationsJob:BatchOperationsJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -375,10 +375,8 @@ class _SearchEngineState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:discoveryengine/searchEngine:SearchEngine")
 class SearchEngine(pulumi.CustomResource):
-
-    pulumi_type = "gcp:discoveryengine/searchEngine:SearchEngine"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

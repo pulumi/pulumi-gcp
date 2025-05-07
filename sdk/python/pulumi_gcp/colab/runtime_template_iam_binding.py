@@ -292,10 +292,8 @@ class _RuntimeTemplateIamBindingState:
         pulumi.set(self, "runtime_template", value)
 
 
+@pulumi.type_token("gcp:colab/runtimeTemplateIamBinding:RuntimeTemplateIamBinding")
 class RuntimeTemplateIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:colab/runtimeTemplateIamBinding:RuntimeTemplateIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

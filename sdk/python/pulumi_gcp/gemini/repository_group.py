@@ -305,10 +305,8 @@ class _RepositoryGroupState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gemini/repositoryGroup:RepositoryGroup")
 class RepositoryGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gemini/repositoryGroup:RepositoryGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

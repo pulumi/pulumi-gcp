@@ -748,10 +748,8 @@ class _FhirStoreState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("gcp:healthcare/fhirStore:FhirStore")
 class FhirStore(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/fhirStore:FhirStore"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

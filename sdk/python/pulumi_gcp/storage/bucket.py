@@ -902,10 +902,8 @@ class _BucketState:
         pulumi.set(self, "website", value)
 
 
+@pulumi.type_token("gcp:storage/bucket:Bucket")
 class Bucket(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/bucket:Bucket"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

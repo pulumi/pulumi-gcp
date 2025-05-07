@@ -429,10 +429,8 @@ class _InstanceState:
         pulumi.set(self, "workforce_identity_federation_config", value)
 
 
+@pulumi.type_token("gcp:securesourcemanager/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securesourcemanager/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

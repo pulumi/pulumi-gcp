@@ -684,10 +684,8 @@ class _EdgeCacheOriginState:
         pulumi.set(self, "timeout", value)
 
 
+@pulumi.type_token("gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin")
 class EdgeCacheOrigin(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -265,10 +265,8 @@ class _BackendServiceIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:compute/backendServiceIamBinding:BackendServiceIamBinding")
 class BackendServiceIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/backendServiceIamBinding:BackendServiceIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

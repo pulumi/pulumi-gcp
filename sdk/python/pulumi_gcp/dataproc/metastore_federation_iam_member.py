@@ -288,10 +288,8 @@ class _MetastoreFederationIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember")
 class MetastoreFederationIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

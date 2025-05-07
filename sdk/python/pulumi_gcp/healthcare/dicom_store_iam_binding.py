@@ -216,10 +216,8 @@ class _DicomStoreIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding")
 class DicomStoreIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

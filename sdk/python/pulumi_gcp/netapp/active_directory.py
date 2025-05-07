@@ -821,10 +821,8 @@ class _ActiveDirectoryState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("gcp:netapp/activeDirectory:ActiveDirectory")
 class ActiveDirectory(pulumi.CustomResource):
-
-    pulumi_type = "gcp:netapp/activeDirectory:ActiveDirectory"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

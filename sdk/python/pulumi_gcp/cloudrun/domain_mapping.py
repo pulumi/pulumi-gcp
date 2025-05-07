@@ -207,10 +207,8 @@ class _DomainMappingState:
         pulumi.set(self, "statuses", value)
 
 
+@pulumi.type_token("gcp:cloudrun/domainMapping:DomainMapping")
 class DomainMapping(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudrun/domainMapping:DomainMapping"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

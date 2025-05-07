@@ -361,10 +361,8 @@ class _BackupChannelState:
         pulumi.set(self, "uid", value)
 
 
+@pulumi.type_token("gcp:gkebackup/backupChannel:BackupChannel")
 class BackupChannel(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkebackup/backupChannel:BackupChannel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

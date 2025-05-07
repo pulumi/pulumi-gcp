@@ -484,10 +484,8 @@ class _DataAccessScopeState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:chronicle/dataAccessScope:DataAccessScope")
 class DataAccessScope(pulumi.CustomResource):
-
-    pulumi_type = "gcp:chronicle/dataAccessScope:DataAccessScope"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

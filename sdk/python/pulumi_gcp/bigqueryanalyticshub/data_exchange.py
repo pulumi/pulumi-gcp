@@ -378,10 +378,8 @@ class _DataExchangeState:
         pulumi.set(self, "sharing_environment_config", value)
 
 
+@pulumi.type_token("gcp:bigqueryanalyticshub/dataExchange:DataExchange")
 class DataExchange(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigqueryanalyticshub/dataExchange:DataExchange"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

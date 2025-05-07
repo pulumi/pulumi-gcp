@@ -239,10 +239,8 @@ class _EnvironmentIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:apigee/environmentIamMember:EnvironmentIamMember")
 class EnvironmentIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/environmentIamMember:EnvironmentIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

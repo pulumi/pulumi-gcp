@@ -127,10 +127,8 @@ class _CryptoKeyIAMPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
+@pulumi.type_token("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy")
 class CryptoKeyIAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

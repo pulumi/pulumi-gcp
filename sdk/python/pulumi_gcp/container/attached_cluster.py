@@ -778,10 +778,8 @@ class _AttachedClusterState:
         pulumi.set(self, "workload_identity_configs", value)
 
 
+@pulumi.type_token("gcp:container/attachedCluster:AttachedCluster")
 class AttachedCluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:container/attachedCluster:AttachedCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -183,10 +183,8 @@ class _SecurityGatewayIamPolicyState:
         pulumi.set(self, "security_gateway_id", value)
 
 
+@pulumi.type_token("gcp:beyondcorp/securityGatewayIamPolicy:SecurityGatewayIamPolicy")
 class SecurityGatewayIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:beyondcorp/securityGatewayIamPolicy:SecurityGatewayIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

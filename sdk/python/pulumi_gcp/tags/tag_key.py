@@ -287,10 +287,8 @@ class _TagKeyState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:tags/tagKey:TagKey")
 class TagKey(pulumi.CustomResource):
-
-    pulumi_type = "gcp:tags/tagKey:TagKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

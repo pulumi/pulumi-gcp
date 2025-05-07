@@ -264,10 +264,8 @@ class _WebBackendServiceIamBindingState:
         pulumi.set(self, "web_backend_service", value)
 
 
+@pulumi.type_token("gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding")
 class WebBackendServiceIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

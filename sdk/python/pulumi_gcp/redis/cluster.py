@@ -942,10 +942,8 @@ class _ClusterState:
         pulumi.set(self, "zone_distribution_config", value)
 
 
+@pulumi.type_token("gcp:redis/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:redis/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

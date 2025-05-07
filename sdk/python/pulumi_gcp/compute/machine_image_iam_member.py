@@ -264,10 +264,8 @@ class _MachineImageIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:compute/machineImageIamMember:MachineImageIamMember")
 class MachineImageIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/machineImageIamMember:MachineImageIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

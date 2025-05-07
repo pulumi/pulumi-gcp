@@ -675,10 +675,8 @@ class _RegionHealthCheckState:
         pulumi.set(self, "unhealthy_threshold", value)
 
 
+@pulumi.type_token("gcp:compute/regionHealthCheck:RegionHealthCheck")
 class RegionHealthCheck(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionHealthCheck:RegionHealthCheck"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

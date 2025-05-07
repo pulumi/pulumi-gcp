@@ -365,10 +365,8 @@ class _EndpointAttachmentState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:integrationconnectors/endpointAttachment:EndpointAttachment")
 class EndpointAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:integrationconnectors/endpointAttachment:EndpointAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

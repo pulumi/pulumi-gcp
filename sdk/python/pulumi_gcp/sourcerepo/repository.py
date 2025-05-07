@@ -223,10 +223,8 @@ class _RepositoryState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("gcp:sourcerepo/repository:Repository")
 class Repository(pulumi.CustomResource):
-
-    pulumi_type = "gcp:sourcerepo/repository:Repository"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

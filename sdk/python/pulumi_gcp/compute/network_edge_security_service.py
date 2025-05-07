@@ -291,10 +291,8 @@ class _NetworkEdgeSecurityServiceState:
         pulumi.set(self, "service_id", value)
 
 
+@pulumi.type_token("gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService")
 class NetworkEdgeSecurityService(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

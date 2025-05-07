@@ -213,10 +213,8 @@ class _AppEngineVersionIamPolicyState:
         pulumi.set(self, "version_id", value)
 
 
+@pulumi.type_token("gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy")
 class AppEngineVersionIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

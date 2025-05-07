@@ -304,10 +304,8 @@ class _ManagementFolderSecurityHealthAnalyticsCustomModuleState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule")
 class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -386,10 +386,8 @@ class _CxEntityTypeState:
         pulumi.set(self, "redact", value)
 
 
+@pulumi.type_token("gcp:diagflow/cxEntityType:CxEntityType")
 class CxEntityType(pulumi.CustomResource):
-
-    pulumi_type = "gcp:diagflow/cxEntityType:CxEntityType"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

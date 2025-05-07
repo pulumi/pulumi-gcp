@@ -430,10 +430,8 @@ class _LakeState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataplex/lake:Lake")
 class Lake(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/lake:Lake"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

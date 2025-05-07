@@ -1195,10 +1195,8 @@ class _TableState:
         pulumi.set(self, "view", value)
 
 
+@pulumi.type_token("gcp:bigquery/table:Table")
 class Table(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquery/table:Table"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

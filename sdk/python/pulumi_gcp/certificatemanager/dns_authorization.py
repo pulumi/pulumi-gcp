@@ -378,10 +378,8 @@ class _DnsAuthorizationState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:certificatemanager/dnsAuthorization:DnsAuthorization")
 class DnsAuthorization(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificatemanager/dnsAuthorization:DnsAuthorization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

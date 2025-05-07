@@ -471,10 +471,8 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:edgenetwork/interconnectAttachment:InterconnectAttachment")
 class InterconnectAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:edgenetwork/interconnectAttachment:InterconnectAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

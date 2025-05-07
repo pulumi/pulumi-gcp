@@ -265,10 +265,8 @@ class _InstanceTemplateIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember")
 class InstanceTemplateIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

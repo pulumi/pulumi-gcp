@@ -139,10 +139,8 @@ class _IAMPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
+@pulumi.type_token("gcp:folder/iAMPolicy:IAMPolicy")
 class IAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:folder/iAMPolicy:IAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

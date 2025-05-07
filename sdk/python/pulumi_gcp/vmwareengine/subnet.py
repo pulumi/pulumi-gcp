@@ -325,10 +325,8 @@ class _SubnetState:
         pulumi.set(self, "vlan_id", value)
 
 
+@pulumi.type_token("gcp:vmwareengine/subnet:Subnet")
 class Subnet(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vmwareengine/subnet:Subnet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

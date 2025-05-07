@@ -366,10 +366,8 @@ class _DataSharingWithGoogleSettingBindingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding")
 class DataSharingWithGoogleSettingBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

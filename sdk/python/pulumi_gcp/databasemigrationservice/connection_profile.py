@@ -518,10 +518,8 @@ class _ConnectionProfileState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("gcp:databasemigrationservice/connectionProfile:ConnectionProfile")
 class ConnectionProfile(pulumi.CustomResource):
-
-    pulumi_type = "gcp:databasemigrationservice/connectionProfile:ConnectionProfile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

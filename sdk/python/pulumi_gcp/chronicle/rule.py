@@ -673,10 +673,8 @@ class _RuleState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:chronicle/rule:Rule")
 class Rule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:chronicle/rule:Rule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

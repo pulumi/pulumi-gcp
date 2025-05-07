@@ -619,10 +619,8 @@ class _CxAgentState:
         pulumi.set(self, "time_zone", value)
 
 
+@pulumi.type_token("gcp:diagflow/cxAgent:CxAgent")
 class CxAgent(pulumi.CustomResource):
-
-    pulumi_type = "gcp:diagflow/cxAgent:CxAgent"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

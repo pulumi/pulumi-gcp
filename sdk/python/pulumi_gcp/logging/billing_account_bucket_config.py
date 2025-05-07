@@ -296,10 +296,8 @@ class _BillingAccountBucketConfigState:
         pulumi.set(self, "retention_days", value)
 
 
+@pulumi.type_token("gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig")
 class BillingAccountBucketConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

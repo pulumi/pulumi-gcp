@@ -430,10 +430,8 @@ class _EnvironmentState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:apigee/environment:Environment")
 class Environment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/environment:Environment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -286,10 +286,8 @@ class _ServiceBindingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkservices/serviceBinding:ServiceBinding")
 class ServiceBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/serviceBinding:ServiceBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

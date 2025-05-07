@@ -196,10 +196,8 @@ class _UserWorkloadsSecretState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:composer/userWorkloadsSecret:UserWorkloadsSecret")
 class UserWorkloadsSecret(pulumi.CustomResource):
-
-    pulumi_type = "gcp:composer/userWorkloadsSecret:UserWorkloadsSecret"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

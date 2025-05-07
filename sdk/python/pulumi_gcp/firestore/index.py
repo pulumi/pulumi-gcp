@@ -343,10 +343,8 @@ class _IndexState:
         pulumi.set(self, "query_scope", value)
 
 
+@pulumi.type_token("gcp:firestore/index:Index")
 class Index(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firestore/index:Index"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

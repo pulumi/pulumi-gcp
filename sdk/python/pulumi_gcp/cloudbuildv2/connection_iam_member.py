@@ -293,10 +293,8 @@ class _ConnectionIAMMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember")
 class ConnectionIAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

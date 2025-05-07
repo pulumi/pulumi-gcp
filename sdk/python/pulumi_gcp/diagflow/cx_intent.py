@@ -530,10 +530,8 @@ class _CxIntentState:
         pulumi.set(self, "training_phrases", value)
 
 
+@pulumi.type_token("gcp:diagflow/cxIntent:CxIntent")
 class CxIntent(pulumi.CustomResource):
-
-    pulumi_type = "gcp:diagflow/cxIntent:CxIntent"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -252,10 +252,8 @@ class _DnsManagedZoneIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding")
 class DnsManagedZoneIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

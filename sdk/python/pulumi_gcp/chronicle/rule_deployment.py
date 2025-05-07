@@ -472,10 +472,8 @@ class _RuleDeploymentState:
         pulumi.set(self, "run_frequency", value)
 
 
+@pulumi.type_token("gcp:chronicle/ruleDeployment:RuleDeployment")
 class RuleDeployment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:chronicle/ruleDeployment:RuleDeployment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

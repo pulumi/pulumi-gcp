@@ -387,10 +387,8 @@ class _InstanceState:
         pulumi.set(self, "pulumi_labels", value)
 
 
+@pulumi.type_token("gcp:bigtable/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigtable/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

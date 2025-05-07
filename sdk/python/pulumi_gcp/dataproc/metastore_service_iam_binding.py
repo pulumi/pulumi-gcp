@@ -292,10 +292,8 @@ class _MetastoreServiceIamBindingState:
         pulumi.set(self, "service_id", value)
 
 
+@pulumi.type_token("gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding")
 class MetastoreServiceIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/metastoreServiceIamBinding:MetastoreServiceIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

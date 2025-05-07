@@ -183,10 +183,8 @@ class _BackendServiceSignedUrlKeyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey")
 class BackendServiceSignedUrlKey(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

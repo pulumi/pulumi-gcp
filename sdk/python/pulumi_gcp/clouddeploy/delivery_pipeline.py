@@ -454,10 +454,8 @@ class _DeliveryPipelineState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:clouddeploy/deliveryPipeline:DeliveryPipeline")
 class DeliveryPipeline(pulumi.CustomResource):
-
-    pulumi_type = "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

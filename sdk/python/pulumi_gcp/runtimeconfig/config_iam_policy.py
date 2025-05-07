@@ -151,10 +151,8 @@ class _ConfigIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy")
 class ConfigIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

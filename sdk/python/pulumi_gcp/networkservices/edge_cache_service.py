@@ -532,10 +532,8 @@ class _EdgeCacheServiceState:
         pulumi.set(self, "ssl_policy", value)
 
 
+@pulumi.type_token("gcp:networkservices/edgeCacheService:EdgeCacheService")
 class EdgeCacheService(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/edgeCacheService:EdgeCacheService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

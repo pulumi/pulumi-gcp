@@ -155,10 +155,8 @@ class _OrganizationSecurityPolicyAssociationState:
         pulumi.set(self, "policy_id", value)
 
 
+@pulumi.type_token("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation")
 class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

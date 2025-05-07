@@ -380,10 +380,8 @@ class _FeatureState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gkehub/feature:Feature")
 class Feature(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkehub/feature:Feature"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

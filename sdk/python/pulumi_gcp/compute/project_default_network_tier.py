@@ -112,10 +112,8 @@ class _ProjectDefaultNetworkTierState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier")
 class ProjectDefaultNetworkTier(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

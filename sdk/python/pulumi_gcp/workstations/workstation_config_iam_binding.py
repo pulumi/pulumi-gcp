@@ -311,10 +311,8 @@ class _WorkstationConfigIamBindingState:
         pulumi.set(self, "workstation_config_id", value)
 
 
+@pulumi.type_token("gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding")
 class WorkstationConfigIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

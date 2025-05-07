@@ -348,10 +348,8 @@ class _ManagedZoneState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:integrationconnectors/managedZone:ManagedZone")
 class ManagedZone(pulumi.CustomResource):
-
-    pulumi_type = "gcp:integrationconnectors/managedZone:ManagedZone"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

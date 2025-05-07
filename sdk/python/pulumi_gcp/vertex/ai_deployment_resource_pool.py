@@ -199,10 +199,8 @@ class _AiDeploymentResourcePoolState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool")
 class AiDeploymentResourcePool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

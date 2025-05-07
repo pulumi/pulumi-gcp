@@ -303,10 +303,8 @@ class _AccessApprovalSettingsState:
         pulumi.set(self, "project_id", value)
 
 
+@pulumi.type_token("gcp:projects/accessApprovalSettings:AccessApprovalSettings")
 class AccessApprovalSettings(pulumi.CustomResource):
-
-    pulumi_type = "gcp:projects/accessApprovalSettings:AccessApprovalSettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

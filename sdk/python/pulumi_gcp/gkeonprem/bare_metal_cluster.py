@@ -954,10 +954,8 @@ class _BareMetalClusterState:
         pulumi.set(self, "validation_checks", value)
 
 
+@pulumi.type_token("gcp:gkeonprem/bareMetalCluster:BareMetalCluster")
 class BareMetalCluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkeonprem/bareMetalCluster:BareMetalCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

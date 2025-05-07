@@ -292,10 +292,8 @@ class _AiFeatureStoreIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding")
 class AiFeatureStoreIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -258,10 +258,8 @@ class _TaxonomyState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:datacatalog/taxonomy:Taxonomy")
 class Taxonomy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/taxonomy:Taxonomy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

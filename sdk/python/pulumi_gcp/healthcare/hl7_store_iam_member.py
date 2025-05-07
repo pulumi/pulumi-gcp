@@ -216,10 +216,8 @@ class _Hl7StoreIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember")
 class Hl7StoreIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

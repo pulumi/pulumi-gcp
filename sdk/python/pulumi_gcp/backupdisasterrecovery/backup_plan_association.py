@@ -336,10 +336,8 @@ class _BackupPlanAssociationState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation")
 class BackupPlanAssociation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

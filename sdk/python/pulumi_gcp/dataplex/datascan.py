@@ -507,10 +507,8 @@ class _DatascanState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataplex/datascan:Datascan")
 class Datascan(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/datascan:Datascan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

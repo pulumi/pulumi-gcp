@@ -167,10 +167,8 @@ class _SecretCiphertextState:
         pulumi.set(self, "plaintext", value)
 
 
+@pulumi.type_token("gcp:kms/secretCiphertext:SecretCiphertext")
 class SecretCiphertext(pulumi.CustomResource):
-
-    pulumi_type = "gcp:kms/secretCiphertext:SecretCiphertext"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

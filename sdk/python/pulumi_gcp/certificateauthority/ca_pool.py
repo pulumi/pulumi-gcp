@@ -343,10 +343,8 @@ class _CaPoolState:
         pulumi.set(self, "tier", value)
 
 
+@pulumi.type_token("gcp:certificateauthority/caPool:CaPool")
 class CaPool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificateauthority/caPool:CaPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -218,10 +218,8 @@ class _ResponsePolicyState:
         pulumi.set(self, "response_policy_name", value)
 
 
+@pulumi.type_token("gcp:dns/responsePolicy:ResponsePolicy")
 class ResponsePolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dns/responsePolicy:ResponsePolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

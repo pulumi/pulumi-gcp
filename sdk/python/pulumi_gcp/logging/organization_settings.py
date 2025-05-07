@@ -220,10 +220,8 @@ class _OrganizationSettingsState:
         pulumi.set(self, "storage_location", value)
 
 
+@pulumi.type_token("gcp:logging/organizationSettings:OrganizationSettings")
 class OrganizationSettings(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/organizationSettings:OrganizationSettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

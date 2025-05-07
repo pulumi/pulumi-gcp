@@ -715,10 +715,8 @@ class _StoragePoolState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:netapp/storagePool:StoragePool")
 class StoragePool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:netapp/storagePool:StoragePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

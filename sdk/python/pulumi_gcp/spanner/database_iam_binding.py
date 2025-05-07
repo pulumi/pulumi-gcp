@@ -283,10 +283,8 @@ class _DatabaseIAMBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding")
 class DatabaseIAMBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

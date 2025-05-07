@@ -1003,10 +1003,8 @@ class _TriggerState:
         pulumi.set(self, "webhook_config", value)
 
 
+@pulumi.type_token("gcp:cloudbuild/trigger:Trigger")
 class Trigger(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudbuild/trigger:Trigger"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -357,10 +357,8 @@ class _EntryGroupState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataplex/entryGroup:EntryGroup")
 class EntryGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/entryGroup:EntryGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -394,10 +394,8 @@ class _RegionPerInstanceConfigState:
         pulumi.set(self, "remove_instance_state_on_destroy", value)
 
 
+@pulumi.type_token("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig")
 class RegionPerInstanceConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

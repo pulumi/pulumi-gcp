@@ -296,10 +296,8 @@ class _OrganizationBucketConfigState:
         pulumi.set(self, "retention_days", value)
 
 
+@pulumi.type_token("gcp:logging/organizationBucketConfig:OrganizationBucketConfig")
 class OrganizationBucketConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/organizationBucketConfig:OrganizationBucketConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

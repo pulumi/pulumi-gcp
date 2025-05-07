@@ -151,10 +151,8 @@ class _NoteIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:containeranalysis/noteIamPolicy:NoteIamPolicy")
 class NoteIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:containeranalysis/noteIamPolicy:NoteIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

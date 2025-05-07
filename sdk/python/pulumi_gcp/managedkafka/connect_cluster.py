@@ -364,10 +364,8 @@ class _ConnectClusterState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:managedkafka/connectCluster:ConnectCluster")
 class ConnectCluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:managedkafka/connectCluster:ConnectCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

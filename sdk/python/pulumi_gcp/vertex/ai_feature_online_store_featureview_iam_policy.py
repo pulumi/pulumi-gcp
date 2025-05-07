@@ -214,10 +214,8 @@ class _AiFeatureOnlineStoreFeatureviewIamPolicyState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy")
 class AiFeatureOnlineStoreFeatureviewIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

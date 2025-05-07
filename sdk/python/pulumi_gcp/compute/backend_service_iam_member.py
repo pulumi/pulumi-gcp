@@ -265,10 +265,8 @@ class _BackendServiceIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:compute/backendServiceIamMember:BackendServiceIamMember")
 class BackendServiceIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/backendServiceIamMember:BackendServiceIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

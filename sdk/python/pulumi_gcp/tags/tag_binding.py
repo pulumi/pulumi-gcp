@@ -123,10 +123,8 @@ class _TagBindingState:
         pulumi.set(self, "tag_value", value)
 
 
+@pulumi.type_token("gcp:tags/tagBinding:TagBinding")
 class TagBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:tags/tagBinding:TagBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

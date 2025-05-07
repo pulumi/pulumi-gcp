@@ -476,10 +476,8 @@ class _HaVpnGatewayState:
         pulumi.set(self, "vpn_interfaces", value)
 
 
+@pulumi.type_token("gcp:compute/haVpnGateway:HaVpnGateway")
 class HaVpnGateway(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/haVpnGateway:HaVpnGateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

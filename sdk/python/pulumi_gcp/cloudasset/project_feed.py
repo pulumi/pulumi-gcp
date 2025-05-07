@@ -345,10 +345,8 @@ class _ProjectFeedState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:cloudasset/projectFeed:ProjectFeed")
 class ProjectFeed(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudasset/projectFeed:ProjectFeed"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

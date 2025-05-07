@@ -372,10 +372,8 @@ class _MembershipState:
         pulumi.set(self, "pulumi_labels", value)
 
 
+@pulumi.type_token("gcp:gkehub/membership:Membership")
 class Membership(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkehub/membership:Membership"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

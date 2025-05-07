@@ -349,10 +349,8 @@ class _DataAccessLabelState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:chronicle/dataAccessLabel:DataAccessLabel")
 class DataAccessLabel(pulumi.CustomResource):
-
-    pulumi_type = "gcp:chronicle/dataAccessLabel:DataAccessLabel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

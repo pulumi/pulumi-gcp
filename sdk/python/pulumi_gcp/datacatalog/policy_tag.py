@@ -233,10 +233,8 @@ class _PolicyTagState:
         pulumi.set(self, "taxonomy", value)
 
 
+@pulumi.type_token("gcp:datacatalog/policyTag:PolicyTag")
 class PolicyTag(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/policyTag:PolicyTag"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

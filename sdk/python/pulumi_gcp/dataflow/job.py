@@ -775,10 +775,8 @@ class _JobState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:dataflow/job:Job")
 class Job(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataflow/job:Job"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -279,10 +279,8 @@ class _ApiConfigIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:apigateway/apiConfigIamBinding:ApiConfigIamBinding")
 class ApiConfigIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigateway/apiConfigIamBinding:ApiConfigIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

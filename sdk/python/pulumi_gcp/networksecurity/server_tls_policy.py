@@ -405,10 +405,8 @@ class _ServerTlsPolicyState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy")
 class ServerTlsPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

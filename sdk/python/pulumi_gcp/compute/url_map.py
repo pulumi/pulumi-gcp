@@ -589,10 +589,8 @@ class _URLMapState:
         pulumi.set(self, "tests", value)
 
 
+@pulumi.type_token("gcp:compute/uRLMap:URLMap")
 class URLMap(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/uRLMap:URLMap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

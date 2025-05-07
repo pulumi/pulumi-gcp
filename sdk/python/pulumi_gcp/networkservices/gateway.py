@@ -805,10 +805,8 @@ class _GatewayState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkservices/gateway:Gateway")
 class Gateway(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/gateway:Gateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

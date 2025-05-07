@@ -117,10 +117,8 @@ class _LocationState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:notebooks/location:Location")
 class Location(pulumi.CustomResource):
-
-    pulumi_type = "gcp:notebooks/location:Location"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

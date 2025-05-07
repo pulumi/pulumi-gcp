@@ -328,10 +328,8 @@ class _TargetTCPProxyState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:compute/targetTCPProxy:TargetTCPProxy")
 class TargetTCPProxy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/targetTCPProxy:TargetTCPProxy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

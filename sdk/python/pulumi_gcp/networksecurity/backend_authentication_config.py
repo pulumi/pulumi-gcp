@@ -403,10 +403,8 @@ class _BackendAuthenticationConfigState:
         pulumi.set(self, "well_known_roots", value)
 
 
+@pulumi.type_token("gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig")
 class BackendAuthenticationConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

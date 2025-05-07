@@ -264,10 +264,8 @@ class _WebTypeAppEngingIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember")
 class WebTypeAppEngingIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

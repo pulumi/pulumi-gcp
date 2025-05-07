@@ -207,10 +207,8 @@ class _PeeredDnsDomainState:
         pulumi.set(self, "service", value)
 
 
+@pulumi.type_token("gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain")
 class PeeredDnsDomain(pulumi.CustomResource):
-
-    pulumi_type = "gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

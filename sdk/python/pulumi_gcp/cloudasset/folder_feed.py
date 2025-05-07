@@ -373,10 +373,8 @@ class _FolderFeedState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gcp:cloudasset/folderFeed:FolderFeed")
 class FolderFeed(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudasset/folderFeed:FolderFeed"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

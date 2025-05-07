@@ -230,10 +230,8 @@ class _DomainMappingState:
         pulumi.set(self, "ssl_settings", value)
 
 
+@pulumi.type_token("gcp:appengine/domainMapping:DomainMapping")
 class DomainMapping(pulumi.CustomResource):
-
-    pulumi_type = "gcp:appengine/domainMapping:DomainMapping"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -548,10 +548,8 @@ class _AutomationState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:clouddeploy/automation:Automation")
 class Automation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:clouddeploy/automation:Automation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

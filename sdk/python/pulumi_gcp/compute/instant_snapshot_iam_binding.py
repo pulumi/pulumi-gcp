@@ -305,10 +305,8 @@ class _InstantSnapshotIamBindingState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/instantSnapshotIamBinding:InstantSnapshotIamBinding")
 class InstantSnapshotIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instantSnapshotIamBinding:InstantSnapshotIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

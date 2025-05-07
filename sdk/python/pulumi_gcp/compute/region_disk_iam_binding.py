@@ -293,10 +293,8 @@ class _RegionDiskIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:compute/regionDiskIamBinding:RegionDiskIamBinding")
 class RegionDiskIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionDiskIamBinding:RegionDiskIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

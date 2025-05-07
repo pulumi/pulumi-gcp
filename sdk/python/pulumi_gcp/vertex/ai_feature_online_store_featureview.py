@@ -432,10 +432,8 @@ class _AiFeatureOnlineStoreFeatureviewState:
         pulumi.set(self, "vector_search_config", value)
 
 
+@pulumi.type_token("gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview")
 class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

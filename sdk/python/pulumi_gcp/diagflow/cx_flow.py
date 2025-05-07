@@ -488,10 +488,8 @@ class _CxFlowState:
         pulumi.set(self, "transition_routes", value)
 
 
+@pulumi.type_token("gcp:diagflow/cxFlow:CxFlow")
 class CxFlow(pulumi.CustomResource):
-
-    pulumi_type = "gcp:diagflow/cxFlow:CxFlow"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

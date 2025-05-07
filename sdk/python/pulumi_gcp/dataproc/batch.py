@@ -601,10 +601,8 @@ class _BatchState:
         pulumi.set(self, "uuid", value)
 
 
+@pulumi.type_token("gcp:dataproc/batch:Batch")
 class Batch(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/batch:Batch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

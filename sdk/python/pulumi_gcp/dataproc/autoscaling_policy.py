@@ -282,10 +282,8 @@ class _AutoscalingPolicyState:
         pulumi.set(self, "worker_config", value)
 
 
+@pulumi.type_token("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy")
 class AutoscalingPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/autoscalingPolicy:AutoscalingPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

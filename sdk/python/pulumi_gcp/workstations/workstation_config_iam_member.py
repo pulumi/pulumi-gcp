@@ -311,10 +311,8 @@ class _WorkstationConfigIamMemberState:
         pulumi.set(self, "workstation_config_id", value)
 
 
+@pulumi.type_token("gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember")
 class WorkstationConfigIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

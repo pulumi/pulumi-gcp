@@ -189,10 +189,8 @@ class _CustomTargetTypeIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember")
 class CustomTargetTypeIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:clouddeploy/customTargetTypeIamMember:CustomTargetTypeIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

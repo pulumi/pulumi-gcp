@@ -233,10 +233,8 @@ class _SitemapState:
         pulumi.set(self, "uri", value)
 
 
+@pulumi.type_token("gcp:discoveryengine/sitemap:Sitemap")
 class Sitemap(pulumi.CustomResource):
-
-    pulumi_type = "gcp:discoveryengine/sitemap:Sitemap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

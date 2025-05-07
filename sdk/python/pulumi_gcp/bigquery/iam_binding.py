@@ -267,10 +267,8 @@ class _IamBindingState:
         pulumi.set(self, "table_id", value)
 
 
+@pulumi.type_token("gcp:bigquery/iamBinding:IamBinding")
 class IamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquery/iamBinding:IamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

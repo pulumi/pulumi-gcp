@@ -410,10 +410,8 @@ class _TargetSiteState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:discoveryengine/targetSite:TargetSite")
 class TargetSite(pulumi.CustomResource):
-
-    pulumi_type = "gcp:discoveryengine/targetSite:TargetSite"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

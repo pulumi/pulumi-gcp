@@ -286,10 +286,8 @@ class _BackupVaultState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("gcp:netapp/backupVault:BackupVault")
 class BackupVault(pulumi.CustomResource):
-
-    pulumi_type = "gcp:netapp/backupVault:BackupVault"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -321,10 +321,8 @@ class _AccountState:
         pulumi.set(self, "unique_id", value)
 
 
+@pulumi.type_token("gcp:serviceaccount/account:Account")
 class Account(pulumi.CustomResource):
-
-    pulumi_type = "gcp:serviceaccount/account:Account"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

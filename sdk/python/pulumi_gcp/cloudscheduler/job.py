@@ -535,10 +535,8 @@ class _JobState:
         pulumi.set(self, "time_zone", value)
 
 
+@pulumi.type_token("gcp:cloudscheduler/job:Job")
 class Job(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudscheduler/job:Job"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

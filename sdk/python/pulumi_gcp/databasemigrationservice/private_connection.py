@@ -312,10 +312,8 @@ class _PrivateConnectionState:
         pulumi.set(self, "vpc_peering_config", value)
 
 
+@pulumi.type_token("gcp:databasemigrationservice/privateConnection:PrivateConnection")
 class PrivateConnection(pulumi.CustomResource):
-
-    pulumi_type = "gcp:databasemigrationservice/privateConnection:PrivateConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

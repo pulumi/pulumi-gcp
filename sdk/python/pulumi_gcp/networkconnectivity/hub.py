@@ -407,10 +407,8 @@ class _HubState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkconnectivity/hub:Hub")
 class Hub(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkconnectivity/hub:Hub"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

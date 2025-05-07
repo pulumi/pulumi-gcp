@@ -313,10 +313,8 @@ class _RegionBackendServiceIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember")
 class RegionBackendServiceIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionBackendServiceIamMember:RegionBackendServiceIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

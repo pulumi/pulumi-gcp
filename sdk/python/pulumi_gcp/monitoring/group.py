@@ -249,10 +249,8 @@ class _GroupState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:monitoring/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "gcp:monitoring/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

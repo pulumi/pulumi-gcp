@@ -287,10 +287,8 @@ class _CertificateMapState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:certificatemanager/certificateMap:CertificateMap")
 class CertificateMap(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificatemanager/certificateMap:CertificateMap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

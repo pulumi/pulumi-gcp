@@ -143,10 +143,8 @@ class _WebResourceState:
         pulumi.set(self, "web_resource_id", value)
 
 
+@pulumi.type_token("gcp:siteverification/webResource:WebResource")
 class WebResource(pulumi.CustomResource):
-
-    pulumi_type = "gcp:siteverification/webResource:WebResource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

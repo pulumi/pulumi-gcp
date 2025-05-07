@@ -259,10 +259,8 @@ class _ManagedFolderIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:storage/managedFolderIamMember:ManagedFolderIamMember")
 class ManagedFolderIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/managedFolderIamMember:ManagedFolderIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

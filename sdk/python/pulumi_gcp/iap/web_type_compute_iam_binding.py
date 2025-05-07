@@ -233,10 +233,8 @@ class _WebTypeComputeIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:iap/webTypeComputeIamBinding:WebTypeComputeIamBinding")
 class WebTypeComputeIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/webTypeComputeIamBinding:WebTypeComputeIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -172,10 +172,8 @@ class _AppCheckAppAttestConfigState:
         pulumi.set(self, "token_ttl", value)
 
 
+@pulumi.type_token("gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig")
 class AppCheckAppAttestConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

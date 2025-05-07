@@ -331,10 +331,8 @@ class _LogViewIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:logging/logViewIamMember:LogViewIamMember")
 class LogViewIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/logViewIamMember:LogViewIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

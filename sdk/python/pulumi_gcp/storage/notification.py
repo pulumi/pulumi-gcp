@@ -274,10 +274,8 @@ class _NotificationState:
         pulumi.set(self, "topic", value)
 
 
+@pulumi.type_token("gcp:storage/notification:Notification")
 class Notification(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/notification:Notification"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

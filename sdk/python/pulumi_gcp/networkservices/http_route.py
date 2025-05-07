@@ -391,10 +391,8 @@ class _HttpRouteState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkservices/httpRoute:HttpRoute")
 class HttpRoute(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/httpRoute:HttpRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

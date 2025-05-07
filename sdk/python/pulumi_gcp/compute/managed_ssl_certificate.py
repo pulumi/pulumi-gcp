@@ -327,10 +327,8 @@ class _ManagedSslCertificateState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:compute/managedSslCertificate:ManagedSslCertificate")
 class ManagedSslCertificate(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/managedSslCertificate:ManagedSslCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

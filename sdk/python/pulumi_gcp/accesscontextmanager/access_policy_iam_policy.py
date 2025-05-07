@@ -116,10 +116,8 @@ class _AccessPolicyIamPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
+@pulumi.type_token("gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy")
 class AccessPolicyIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:accesscontextmanager/accessPolicyIamPolicy:AccessPolicyIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

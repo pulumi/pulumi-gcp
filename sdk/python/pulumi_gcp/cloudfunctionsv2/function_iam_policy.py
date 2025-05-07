@@ -191,10 +191,8 @@ class _FunctionIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy")
 class FunctionIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudfunctionsv2/functionIamPolicy:FunctionIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

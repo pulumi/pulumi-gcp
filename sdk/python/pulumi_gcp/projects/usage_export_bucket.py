@@ -136,10 +136,8 @@ class _UsageExportBucketState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:projects/usageExportBucket:UsageExportBucket")
 class UsageExportBucket(pulumi.CustomResource):
-
-    pulumi_type = "gcp:projects/usageExportBucket:UsageExportBucket"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

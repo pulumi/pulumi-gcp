@@ -217,10 +217,8 @@ class _ServiceIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:servicedirectory/serviceIamMember:ServiceIamMember")
 class ServiceIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:servicedirectory/serviceIamMember:ServiceIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

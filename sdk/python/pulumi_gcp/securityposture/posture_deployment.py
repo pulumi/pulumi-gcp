@@ -439,10 +439,8 @@ class _PostureDeploymentState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securityposture/postureDeployment:PostureDeployment")
 class PostureDeployment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securityposture/postureDeployment:PostureDeployment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -187,10 +187,8 @@ class _DatascanIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:dataplex/datascanIamPolicy:DatascanIamPolicy")
 class DatascanIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

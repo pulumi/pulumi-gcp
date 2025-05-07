@@ -412,10 +412,8 @@ class _TargetSSLProxyState:
         pulumi.set(self, "ssl_policy", value)
 
 
+@pulumi.type_token("gcp:compute/targetSSLProxy:TargetSSLProxy")
 class TargetSSLProxy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/targetSSLProxy:TargetSSLProxy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

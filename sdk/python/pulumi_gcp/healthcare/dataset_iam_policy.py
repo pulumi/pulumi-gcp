@@ -127,10 +127,8 @@ class _DatasetIamPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
+@pulumi.type_token("gcp:healthcare/datasetIamPolicy:DatasetIamPolicy")
 class DatasetIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/datasetIamPolicy:DatasetIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

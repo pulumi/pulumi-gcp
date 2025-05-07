@@ -424,10 +424,8 @@ class _CertificateTemplateState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:certificateauthority/certificateTemplate:CertificateTemplate")
 class CertificateTemplate(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificateauthority/certificateTemplate:CertificateTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

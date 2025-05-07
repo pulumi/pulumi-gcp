@@ -263,10 +263,8 @@ class _EventThreatDetectionCustomModuleState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule")
 class EventThreatDetectionCustomModule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

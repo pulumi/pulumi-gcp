@@ -216,10 +216,8 @@ class _DatasetIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:healthcare/datasetIamMember:DatasetIamMember")
 class DatasetIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/datasetIamMember:DatasetIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

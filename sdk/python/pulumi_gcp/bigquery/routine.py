@@ -643,10 +643,8 @@ class _RoutineState:
         pulumi.set(self, "spark_options", value)
 
 
+@pulumi.type_token("gcp:bigquery/routine:Routine")
 class Routine(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquery/routine:Routine"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

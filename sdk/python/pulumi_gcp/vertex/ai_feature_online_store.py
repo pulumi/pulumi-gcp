@@ -473,10 +473,8 @@ class _AiFeatureOnlineStoreState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore")
 class AiFeatureOnlineStore(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

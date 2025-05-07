@@ -313,10 +313,8 @@ class _EkmConnectionIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding")
 class EkmConnectionIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

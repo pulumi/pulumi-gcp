@@ -390,10 +390,8 @@ class _DomainState:
         pulumi.set(self, "reserved_ip_range", value)
 
 
+@pulumi.type_token("gcp:activedirectory/domain:Domain")
 class Domain(pulumi.CustomResource):
-
-    pulumi_type = "gcp:activedirectory/domain:Domain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

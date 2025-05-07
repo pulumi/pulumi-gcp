@@ -380,10 +380,8 @@ class _CxWebhookState:
         pulumi.set(self, "timeout", value)
 
 
+@pulumi.type_token("gcp:diagflow/cxWebhook:CxWebhook")
 class CxWebhook(pulumi.CustomResource):
-
-    pulumi_type = "gcp:diagflow/cxWebhook:CxWebhook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

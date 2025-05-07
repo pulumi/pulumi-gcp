@@ -230,10 +230,8 @@ class _CatalogState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:biglake/catalog:Catalog")
 class Catalog(pulumi.CustomResource):
-
-    pulumi_type = "gcp:biglake/catalog:Catalog"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

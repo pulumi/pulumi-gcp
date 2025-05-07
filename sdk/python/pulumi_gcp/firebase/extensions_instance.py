@@ -303,10 +303,8 @@ class _ExtensionsInstanceState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:firebase/extensionsInstance:ExtensionsInstance")
 class ExtensionsInstance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/extensionsInstance:ExtensionsInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

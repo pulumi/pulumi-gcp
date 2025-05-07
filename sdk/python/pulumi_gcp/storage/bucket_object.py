@@ -720,10 +720,8 @@ class _BucketObjectState:
         pulumi.set(self, "temporary_hold", value)
 
 
+@pulumi.type_token("gcp:storage/bucketObject:BucketObject")
 class BucketObject(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/bucketObject:BucketObject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

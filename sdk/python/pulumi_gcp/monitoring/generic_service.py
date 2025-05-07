@@ -282,10 +282,8 @@ class _GenericServiceState:
         pulumi.set(self, "user_labels", value)
 
 
+@pulumi.type_token("gcp:monitoring/genericService:GenericService")
 class GenericService(pulumi.CustomResource):
-
-    pulumi_type = "gcp:monitoring/genericService:GenericService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

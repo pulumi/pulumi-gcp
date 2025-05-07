@@ -304,10 +304,8 @@ class _CertificateTemplateIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember")
 class CertificateTemplateIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificateauthority/certificateTemplateIamMember:CertificateTemplateIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

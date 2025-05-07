@@ -252,10 +252,8 @@ class _TopicIAMBindingState:
         pulumi.set(self, "topic", value)
 
 
+@pulumi.type_token("gcp:pubsub/topicIAMBinding:TopicIAMBinding")
 class TopicIAMBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:pubsub/topicIAMBinding:TopicIAMBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

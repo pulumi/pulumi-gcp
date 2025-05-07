@@ -308,10 +308,8 @@ class _DatabaseState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:sql/database:Database")
 class Database(pulumi.CustomResource):
-
-    pulumi_type = "gcp:sql/database:Database"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

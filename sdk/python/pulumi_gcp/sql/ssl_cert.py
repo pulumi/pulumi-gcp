@@ -255,10 +255,8 @@ class _SslCertState:
         pulumi.set(self, "sha1_fingerprint", value)
 
 
+@pulumi.type_token("gcp:sql/sslCert:SslCert")
 class SslCert(pulumi.CustomResource):
-
-    pulumi_type = "gcp:sql/sslCert:SslCert"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

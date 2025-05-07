@@ -297,10 +297,8 @@ class _TableState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:biglake/table:Table")
 class Table(pulumi.CustomResource):
-
-    pulumi_type = "gcp:biglake/table:Table"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

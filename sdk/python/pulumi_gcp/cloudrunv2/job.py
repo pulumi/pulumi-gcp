@@ -819,10 +819,8 @@ class _JobState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:cloudrunv2/job:Job")
 class Job(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudrunv2/job:Job"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -375,10 +375,8 @@ class _SecurityPolicyState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:compute/securityPolicy:SecurityPolicy")
 class SecurityPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/securityPolicy:SecurityPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

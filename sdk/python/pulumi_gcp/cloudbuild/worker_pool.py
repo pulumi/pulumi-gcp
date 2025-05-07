@@ -402,10 +402,8 @@ class _WorkerPoolState:
         pulumi.set(self, "worker_config", value)
 
 
+@pulumi.type_token("gcp:cloudbuild/workerPool:WorkerPool")
 class WorkerPool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudbuild/workerPool:WorkerPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

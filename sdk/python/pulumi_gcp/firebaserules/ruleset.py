@@ -146,10 +146,8 @@ class _RulesetState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("gcp:firebaserules/ruleset:Ruleset")
 class Ruleset(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebaserules/ruleset:Ruleset"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

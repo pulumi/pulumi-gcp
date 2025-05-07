@@ -316,10 +316,8 @@ class _PeeringState:
         pulumi.set(self, "status_message", value)
 
 
+@pulumi.type_token("gcp:activedirectory/peering:Peering")
 class Peering(pulumi.CustomResource):
-
-    pulumi_type = "gcp:activedirectory/peering:Peering"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

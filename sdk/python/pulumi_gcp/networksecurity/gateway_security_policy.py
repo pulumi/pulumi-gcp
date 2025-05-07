@@ -273,10 +273,8 @@ class _GatewaySecurityPolicyState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy")
 class GatewaySecurityPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -208,10 +208,8 @@ class _FolderState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:storage/folder:Folder")
 class Folder(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/folder:Folder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -293,10 +293,8 @@ class _FeatureIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:gkehub/featureIamMember:FeatureIamMember")
 class FeatureIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkehub/featureIamMember:FeatureIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

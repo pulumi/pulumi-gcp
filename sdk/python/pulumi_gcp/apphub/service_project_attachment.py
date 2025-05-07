@@ -216,10 +216,8 @@ class _ServiceProjectAttachmentState:
         pulumi.set(self, "uid", value)
 
 
+@pulumi.type_token("gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment")
 class ServiceProjectAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -572,10 +572,8 @@ class _AwsNodePoolState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("gcp:container/awsNodePool:AwsNodePool")
 class AwsNodePool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:container/awsNodePool:AwsNodePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -492,10 +492,8 @@ class _NetworkPeeringState:
         pulumi.set(self, "vmware_engine_network_canonical", value)
 
 
+@pulumi.type_token("gcp:vmwareengine/networkPeering:NetworkPeering")
 class NetworkPeering(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vmwareengine/networkPeering:NetworkPeering"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

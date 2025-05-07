@@ -406,10 +406,8 @@ class _MetastoreFederationState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("gcp:dataproc/metastoreFederation:MetastoreFederation")
 class MetastoreFederation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/metastoreFederation:MetastoreFederation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

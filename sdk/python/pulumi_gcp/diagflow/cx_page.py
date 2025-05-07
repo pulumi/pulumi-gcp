@@ -464,10 +464,8 @@ class _CxPageState:
         pulumi.set(self, "transition_routes", value)
 
 
+@pulumi.type_token("gcp:diagflow/cxPage:CxPage")
 class CxPage(pulumi.CustomResource):
-
-    pulumi_type = "gcp:diagflow/cxPage:CxPage"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -267,10 +267,8 @@ class _ExternalAddressState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:vmwareengine/externalAddress:ExternalAddress")
 class ExternalAddress(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vmwareengine/externalAddress:ExternalAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

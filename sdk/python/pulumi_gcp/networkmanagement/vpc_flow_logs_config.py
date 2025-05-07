@@ -601,10 +601,8 @@ class _VpcFlowLogsConfigState:
         pulumi.set(self, "vpn_tunnel", value)
 
 
+@pulumi.type_token("gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig")
 class VpcFlowLogsConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

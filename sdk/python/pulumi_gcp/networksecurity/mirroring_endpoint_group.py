@@ -442,10 +442,8 @@ class _MirroringEndpointGroupState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup")
 class MirroringEndpointGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

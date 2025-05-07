@@ -420,10 +420,8 @@ class _PrivateCloudState:
         pulumi.set(self, "vcenters", value)
 
 
+@pulumi.type_token("gcp:vmwareengine/privateCloud:PrivateCloud")
 class PrivateCloud(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vmwareengine/privateCloud:PrivateCloud"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -187,10 +187,8 @@ class _AspectTypeIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:dataplex/aspectTypeIamPolicy:AspectTypeIamPolicy")
 class AspectTypeIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/aspectTypeIamPolicy:AspectTypeIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -573,10 +573,8 @@ class _AwsClusterState:
         pulumi.set(self, "workload_identity_configs", value)
 
 
+@pulumi.type_token("gcp:container/awsCluster:AwsCluster")
 class AwsCluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:container/awsCluster:AwsCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

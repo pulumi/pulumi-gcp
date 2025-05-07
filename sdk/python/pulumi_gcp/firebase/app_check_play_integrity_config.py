@@ -172,10 +172,8 @@ class _AppCheckPlayIntegrityConfigState:
         pulumi.set(self, "token_ttl", value)
 
 
+@pulumi.type_token("gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig")
 class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

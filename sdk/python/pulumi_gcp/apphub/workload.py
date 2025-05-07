@@ -423,10 +423,8 @@ class _WorkloadState:
         pulumi.set(self, "workload_references", value)
 
 
+@pulumi.type_token("gcp:apphub/workload:Workload")
 class Workload(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apphub/workload:Workload"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

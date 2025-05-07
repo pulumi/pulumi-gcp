@@ -339,10 +339,8 @@ class _InstanceGroupState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/instanceGroup:InstanceGroup")
 class InstanceGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceGroup:InstanceGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

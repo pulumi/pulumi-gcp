@@ -182,10 +182,8 @@ class _ClusterUserCreatedConnectionsState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections")
 class ClusterUserCreatedConnections(pulumi.CustomResource):
-
-    pulumi_type = "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

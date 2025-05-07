@@ -104,10 +104,8 @@ class _DefaultObjectACLState:
         pulumi.set(self, "role_entities", value)
 
 
+@pulumi.type_token("gcp:storage/defaultObjectACL:DefaultObjectACL")
 class DefaultObjectACL(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/defaultObjectACL:DefaultObjectACL"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

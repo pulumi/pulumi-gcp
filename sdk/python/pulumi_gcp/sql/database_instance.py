@@ -866,10 +866,8 @@ class _DatabaseInstanceState:
         pulumi.set(self, "settings", value)
 
 
+@pulumi.type_token("gcp:sql/databaseInstance:DatabaseInstance")
 class DatabaseInstance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:sql/databaseInstance:DatabaseInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -820,10 +820,8 @@ class _VPNTunnelState:
         pulumi.set(self, "vpn_gateway_interface", value)
 
 
+@pulumi.type_token("gcp:compute/vPNTunnel:VPNTunnel")
 class VPNTunnel(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/vPNTunnel:VPNTunnel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

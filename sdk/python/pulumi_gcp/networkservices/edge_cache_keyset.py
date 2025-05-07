@@ -333,10 +333,8 @@ class _EdgeCacheKeysetState:
         pulumi.set(self, "validation_shared_keys", value)
 
 
+@pulumi.type_token("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset")
 class EdgeCacheKeyset(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

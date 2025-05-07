@@ -334,10 +334,8 @@ class _V2ProjectMuteConfigState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig")
 class V2ProjectMuteConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/v2ProjectMuteConfig:V2ProjectMuteConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

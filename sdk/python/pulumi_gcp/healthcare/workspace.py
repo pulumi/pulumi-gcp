@@ -211,10 +211,8 @@ class _WorkspaceState:
         pulumi.set(self, "settings", value)
 
 
+@pulumi.type_token("gcp:healthcare/workspace:Workspace")
 class Workspace(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/workspace:Workspace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

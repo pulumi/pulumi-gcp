@@ -364,10 +364,8 @@ class _AuthorizationPolicyState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/authorizationPolicy:AuthorizationPolicy")
 class AuthorizationPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

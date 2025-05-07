@@ -364,10 +364,8 @@ class _AuthorizedOrgsDescState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc")
 class AuthorizedOrgsDesc(pulumi.CustomResource):
-
-    pulumi_type = "gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

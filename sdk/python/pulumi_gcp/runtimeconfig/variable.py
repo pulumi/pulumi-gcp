@@ -236,10 +236,8 @@ class _VariableState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("gcp:runtimeconfig/variable:Variable")
 class Variable(pulumi.CustomResource):
-
-    pulumi_type = "gcp:runtimeconfig/variable:Variable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

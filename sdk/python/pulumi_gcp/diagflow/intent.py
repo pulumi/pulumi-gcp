@@ -556,10 +556,8 @@ class _IntentState:
         pulumi.set(self, "webhook_state", value)
 
 
+@pulumi.type_token("gcp:diagflow/intent:Intent")
 class Intent(pulumi.CustomResource):
-
-    pulumi_type = "gcp:diagflow/intent:Intent"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

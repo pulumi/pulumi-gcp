@@ -211,10 +211,8 @@ class _InstanceGroupNamedPortState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort")
 class InstanceGroupNamedPort(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

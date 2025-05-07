@@ -440,10 +440,8 @@ class _ServiceConnectionPolicyState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy")
 class ServiceConnectionPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

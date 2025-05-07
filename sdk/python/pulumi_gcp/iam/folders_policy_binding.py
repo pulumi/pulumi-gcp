@@ -482,10 +482,8 @@ class _FoldersPolicyBindingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:iam/foldersPolicyBinding:FoldersPolicyBinding")
 class FoldersPolicyBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

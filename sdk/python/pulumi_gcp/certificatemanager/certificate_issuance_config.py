@@ -425,10 +425,8 @@ class _CertificateIssuanceConfigState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig")
 class CertificateIssuanceConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

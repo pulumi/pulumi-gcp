@@ -221,10 +221,8 @@ class _FlowhookState:
         pulumi.set(self, "sharedflow", value)
 
 
+@pulumi.type_token("gcp:apigee/flowhook:Flowhook")
 class Flowhook(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/flowhook:Flowhook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -326,10 +326,8 @@ class _AppEngineVersionIamMemberState:
         pulumi.set(self, "version_id", value)
 
 
+@pulumi.type_token("gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember")
 class AppEngineVersionIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

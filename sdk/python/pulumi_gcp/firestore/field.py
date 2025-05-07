@@ -279,10 +279,8 @@ class _FieldState:
         pulumi.set(self, "ttl_config", value)
 
 
+@pulumi.type_token("gcp:firestore/field:Field")
 class Field(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firestore/field:Field"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

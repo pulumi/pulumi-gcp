@@ -252,10 +252,8 @@ class _ConfigIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:runtimeconfig/configIamBinding:ConfigIamBinding")
 class ConfigIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:runtimeconfig/configIamBinding:ConfigIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -143,10 +143,8 @@ class _EnvironmentKeyvaluemapsEntriesState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries")
 class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1216,10 +1216,8 @@ class _RouterPeerState:
         pulumi.set(self, "zero_custom_learned_route_priority", value)
 
 
+@pulumi.type_token("gcp:compute/routerPeer:RouterPeer")
 class RouterPeer(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/routerPeer:RouterPeer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

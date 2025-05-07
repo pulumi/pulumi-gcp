@@ -191,10 +191,8 @@ class _LogicalViewState:
         pulumi.set(self, "query", value)
 
 
+@pulumi.type_token("gcp:bigtable/logicalView:LogicalView")
 class LogicalView(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigtable/logicalView:LogicalView"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

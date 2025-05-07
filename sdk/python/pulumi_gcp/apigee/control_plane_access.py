@@ -161,10 +161,8 @@ class _ControlPlaneAccessState:
         pulumi.set(self, "synchronizer_identities", value)
 
 
+@pulumi.type_token("gcp:apigee/controlPlaneAccess:ControlPlaneAccess")
 class ControlPlaneAccess(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/controlPlaneAccess:ControlPlaneAccess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

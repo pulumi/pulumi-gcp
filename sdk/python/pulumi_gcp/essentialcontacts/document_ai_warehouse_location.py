@@ -261,10 +261,8 @@ class _DocumentAiWarehouseLocationState:
         pulumi.set(self, "project_number", value)
 
 
+@pulumi.type_token("gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation")
 class DocumentAiWarehouseLocation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -262,10 +262,8 @@ class _DefaultSupportedIdpConfigState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig")
 class DefaultSupportedIdpConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
