@@ -583,10 +583,8 @@ class _InstanceState:
         pulumi.set(self, "zones", value)
 
 
+@pulumi.type_token("gcp:memcache/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:memcache/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -283,10 +283,8 @@ class _DatabaseIAMMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:spanner/databaseIAMMember:DatabaseIAMMember")
 class DatabaseIAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:spanner/databaseIAMMember:DatabaseIAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

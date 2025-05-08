@@ -469,10 +469,8 @@ class _ServicePerimeterState:
         pulumi.set(self, "use_explicit_dry_run_spec", value)
 
 
+@pulumi.type_token("gcp:accesscontextmanager/servicePerimeter:ServicePerimeter")
 class ServicePerimeter(pulumi.CustomResource):
-
-    pulumi_type = "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

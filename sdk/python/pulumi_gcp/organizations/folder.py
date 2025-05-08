@@ -225,10 +225,8 @@ class _FolderState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("gcp:organizations/folder:Folder")
 class Folder(pulumi.CustomResource):
-
-    pulumi_type = "gcp:organizations/folder:Folder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

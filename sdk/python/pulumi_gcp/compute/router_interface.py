@@ -448,10 +448,8 @@ class _RouterInterfaceState:
         pulumi.set(self, "vpn_tunnel", value)
 
 
+@pulumi.type_token("gcp:compute/routerInterface:RouterInterface")
 class RouterInterface(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/routerInterface:RouterInterface"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -101,10 +101,8 @@ class _ProjectState:
         pulumi.set(self, "project_number", value)
 
 
+@pulumi.type_token("gcp:firebase/project:Project")
 class Project(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/project:Project"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

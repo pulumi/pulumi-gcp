@@ -509,10 +509,8 @@ class _ConnectionState:
         pulumi.set(self, "spark", value)
 
 
+@pulumi.type_token("gcp:bigquery/connection:Connection")
 class Connection(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquery/connection:Connection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

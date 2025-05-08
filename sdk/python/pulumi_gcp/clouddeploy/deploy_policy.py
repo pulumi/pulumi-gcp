@@ -486,10 +486,8 @@ class _DeployPolicyState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:clouddeploy/deployPolicy:DeployPolicy")
 class DeployPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:clouddeploy/deployPolicy:DeployPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -444,10 +444,8 @@ class _NotebookExecutionState:
         pulumi.set(self, "service_account", value)
 
 
+@pulumi.type_token("gcp:colab/notebookExecution:NotebookExecution")
 class NotebookExecution(pulumi.CustomResource):
-
-    pulumi_type = "gcp:colab/notebookExecution:NotebookExecution"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

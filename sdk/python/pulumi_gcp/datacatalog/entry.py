@@ -511,10 +511,8 @@ class _EntryState:
         pulumi.set(self, "user_specified_type", value)
 
 
+@pulumi.type_token("gcp:datacatalog/entry:Entry")
 class Entry(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/entry:Entry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

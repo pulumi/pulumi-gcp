@@ -328,10 +328,8 @@ class _RepositoryWorkflowConfigState:
         pulumi.set(self, "time_zone", value)
 
 
+@pulumi.type_token("gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig")
 class RepositoryWorkflowConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

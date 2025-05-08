@@ -594,10 +594,8 @@ class _JobState:
         pulumi.set(self, "statuses", value)
 
 
+@pulumi.type_token("gcp:dataproc/job:Job")
 class Job(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/job:Job"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

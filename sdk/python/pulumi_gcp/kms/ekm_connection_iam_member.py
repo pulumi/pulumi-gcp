@@ -313,10 +313,8 @@ class _EkmConnectionIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember")
 class EkmConnectionIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

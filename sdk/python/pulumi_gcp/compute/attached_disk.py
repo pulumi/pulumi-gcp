@@ -375,10 +375,8 @@ class _AttachedDiskState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/attachedDisk:AttachedDisk")
 class AttachedDisk(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/attachedDisk:AttachedDisk"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

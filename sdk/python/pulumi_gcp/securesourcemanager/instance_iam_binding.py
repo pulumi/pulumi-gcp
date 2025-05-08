@@ -188,10 +188,8 @@ class _InstanceIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding")
 class InstanceIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

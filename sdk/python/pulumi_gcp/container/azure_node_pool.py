@@ -540,10 +540,8 @@ class _AzureNodePoolState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("gcp:container/azureNodePool:AzureNodePool")
 class AzureNodePool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:container/azureNodePool:AzureNodePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

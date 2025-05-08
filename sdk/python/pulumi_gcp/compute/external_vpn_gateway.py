@@ -351,10 +351,8 @@ class _ExternalVpnGatewayState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:compute/externalVpnGateway:ExternalVpnGateway")
 class ExternalVpnGateway(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/externalVpnGateway:ExternalVpnGateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

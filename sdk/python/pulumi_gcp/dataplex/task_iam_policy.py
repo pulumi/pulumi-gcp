@@ -222,10 +222,8 @@ class _TaskIamPolicyState:
         pulumi.set(self, "task_id", value)
 
 
+@pulumi.type_token("gcp:dataplex/taskIamPolicy:TaskIamPolicy")
 class TaskIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/taskIamPolicy:TaskIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -541,10 +541,8 @@ class _AuthConfigState:
         pulumi.set(self, "visibility", value)
 
 
+@pulumi.type_token("gcp:applicationintegration/authConfig:AuthConfig")
 class AuthConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:applicationintegration/authConfig:AuthConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -365,10 +365,8 @@ class _ClusterState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:managedkafka/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:managedkafka/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

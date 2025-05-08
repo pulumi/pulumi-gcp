@@ -458,10 +458,8 @@ class _MetricState:
         pulumi.set(self, "value_extractor", value)
 
 
+@pulumi.type_token("gcp:logging/metric:Metric")
 class Metric(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/metric:Metric"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -523,10 +523,8 @@ class _InstanceState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("gcp:spanner/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:spanner/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

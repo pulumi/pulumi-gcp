@@ -251,10 +251,8 @@ class _UrlListState:
         pulumi.set(self, "values", value)
 
 
+@pulumi.type_token("gcp:networksecurity/urlList:UrlList")
 class UrlList(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/urlList:UrlList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

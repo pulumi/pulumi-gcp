@@ -107,10 +107,8 @@ class _OwnerState:
         pulumi.set(self, "web_resource_id", value)
 
 
+@pulumi.type_token("gcp:siteverification/owner:Owner")
 class Owner(pulumi.CustomResource):
-
-    pulumi_type = "gcp:siteverification/owner:Owner"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

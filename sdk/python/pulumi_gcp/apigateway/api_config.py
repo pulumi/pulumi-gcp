@@ -476,10 +476,8 @@ class _ApiConfigState:
         pulumi.set(self, "service_config_id", value)
 
 
+@pulumi.type_token("gcp:apigateway/apiConfig:ApiConfig")
 class ApiConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigateway/apiConfig:ApiConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

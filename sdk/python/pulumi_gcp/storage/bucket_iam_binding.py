@@ -228,10 +228,8 @@ class _BucketIAMBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:storage/bucketIAMBinding:BucketIAMBinding")
 class BucketIAMBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/bucketIAMBinding:BucketIAMBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

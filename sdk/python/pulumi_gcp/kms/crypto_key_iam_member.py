@@ -224,10 +224,8 @@ class _CryptoKeyIAMMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember")
 class CryptoKeyIAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

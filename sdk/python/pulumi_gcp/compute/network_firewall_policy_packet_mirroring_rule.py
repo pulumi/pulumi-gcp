@@ -502,10 +502,8 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
         pulumi.set(self, "tls_inspect", value)
 
 
+@pulumi.type_token("gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule")
 class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

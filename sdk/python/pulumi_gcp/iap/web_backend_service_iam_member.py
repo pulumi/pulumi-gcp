@@ -264,10 +264,8 @@ class _WebBackendServiceIamMemberState:
         pulumi.set(self, "web_backend_service", value)
 
 
+@pulumi.type_token("gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember")
 class WebBackendServiceIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

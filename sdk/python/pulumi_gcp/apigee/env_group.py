@@ -144,10 +144,8 @@ class _EnvGroupState:
         pulumi.set(self, "org_id", value)
 
 
+@pulumi.type_token("gcp:apigee/envGroup:EnvGroup")
 class EnvGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/envGroup:EnvGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

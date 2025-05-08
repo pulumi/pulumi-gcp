@@ -325,10 +325,8 @@ class _GatewayState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:apigateway/gateway:Gateway")
 class Gateway(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigateway/gateway:Gateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

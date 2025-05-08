@@ -148,10 +148,8 @@ class _KeyRingState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:kms/keyRing:KeyRing")
 class KeyRing(pulumi.CustomResource):
-
-    pulumi_type = "gcp:kms/keyRing:KeyRing"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

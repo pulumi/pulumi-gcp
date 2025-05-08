@@ -1013,10 +1013,8 @@ class _InstanceGroupManagerState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/instanceGroupManager:InstanceGroupManager")
 class InstanceGroupManager(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceGroupManager:InstanceGroupManager"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

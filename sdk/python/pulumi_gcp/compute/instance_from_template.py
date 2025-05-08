@@ -1346,10 +1346,8 @@ class _InstanceFromTemplateState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/instanceFromTemplate:InstanceFromTemplate")
 class InstanceFromTemplate(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceFromTemplate:InstanceFromTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

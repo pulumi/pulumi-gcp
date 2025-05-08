@@ -366,10 +366,8 @@ class _ReleaseChannelSettingBindingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding")
 class ReleaseChannelSettingBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gemini/releaseChannelSettingBinding:ReleaseChannelSettingBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

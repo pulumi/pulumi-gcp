@@ -385,10 +385,8 @@ class _AccountConnectorState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:developerconnect/accountConnector:AccountConnector")
 class AccountConnector(pulumi.CustomResource):
-
-    pulumi_type = "gcp:developerconnect/accountConnector:AccountConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -188,10 +188,8 @@ class _RepositoryIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dataform/repositoryIamMember:RepositoryIamMember")
 class RepositoryIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataform/repositoryIamMember:RepositoryIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

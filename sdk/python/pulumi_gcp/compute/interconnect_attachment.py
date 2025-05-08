@@ -1162,10 +1162,8 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "vlan_tag8021q", value)
 
 
+@pulumi.type_token("gcp:compute/interconnectAttachment:InterconnectAttachment")
 class InterconnectAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/interconnectAttachment:InterconnectAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

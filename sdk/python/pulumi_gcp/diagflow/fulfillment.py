@@ -236,10 +236,8 @@ class _FulfillmentState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:diagflow/fulfillment:Fulfillment")
 class Fulfillment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:diagflow/fulfillment:Fulfillment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -199,10 +199,8 @@ class _ControlProjectIntelligenceConfigState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig")
 class ControlProjectIntelligenceConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/controlProjectIntelligenceConfig:ControlProjectIntelligenceConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -114,10 +114,8 @@ class _AddonsConfigState:
         pulumi.set(self, "org", value)
 
 
+@pulumi.type_token("gcp:apigee/addonsConfig:AddonsConfig")
 class AddonsConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/addonsConfig:AddonsConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

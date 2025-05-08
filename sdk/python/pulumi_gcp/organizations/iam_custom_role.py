@@ -262,10 +262,8 @@ class _IAMCustomRoleState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("gcp:organizations/iAMCustomRole:IAMCustomRole")
 class IAMCustomRole(pulumi.CustomResource):
-
-    pulumi_type = "gcp:organizations/iAMCustomRole:IAMCustomRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -642,10 +642,8 @@ class _OrganizationState:
         pulumi.set(self, "subscription_type", value)
 
 
+@pulumi.type_token("gcp:apigee/organization:Organization")
 class Organization(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/organization:Organization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -292,10 +292,8 @@ class _MetastoreServiceIamMemberState:
         pulumi.set(self, "service_id", value)
 
 
+@pulumi.type_token("gcp:dataproc/metastoreServiceIamMember:MetastoreServiceIamMember")
 class MetastoreServiceIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/metastoreServiceIamMember:MetastoreServiceIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

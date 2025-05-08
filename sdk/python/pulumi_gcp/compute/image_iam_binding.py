@@ -264,10 +264,8 @@ class _ImageIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:compute/imageIamBinding:ImageIamBinding")
 class ImageIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/imageIamBinding:ImageIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

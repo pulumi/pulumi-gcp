@@ -961,10 +961,8 @@ class _InterconnectState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("gcp:compute/interconnect:Interconnect")
 class Interconnect(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/interconnect:Interconnect"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

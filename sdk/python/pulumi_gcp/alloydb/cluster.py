@@ -1063,10 +1063,8 @@ class _ClusterState:
         pulumi.set(self, "uid", value)
 
 
+@pulumi.type_token("gcp:alloydb/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:alloydb/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

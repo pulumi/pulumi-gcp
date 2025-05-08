@@ -253,10 +253,8 @@ class _SnapshotIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:compute/snapshotIamBinding:SnapshotIamBinding")
 class SnapshotIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/snapshotIamBinding:SnapshotIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

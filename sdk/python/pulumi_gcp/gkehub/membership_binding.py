@@ -387,10 +387,8 @@ class _MembershipBindingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gkehub/membershipBinding:MembershipBinding")
 class MembershipBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkehub/membershipBinding:MembershipBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

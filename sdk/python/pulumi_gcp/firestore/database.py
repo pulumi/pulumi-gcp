@@ -601,10 +601,8 @@ class _DatabaseState:
         pulumi.set(self, "version_retention_period", value)
 
 
+@pulumi.type_token("gcp:firestore/database:Database")
 class Database(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firestore/database:Database"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

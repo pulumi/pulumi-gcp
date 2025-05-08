@@ -288,10 +288,8 @@ class _GatewayIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:apigateway/gatewayIamBinding:GatewayIamBinding")
 class GatewayIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigateway/gatewayIamBinding:GatewayIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

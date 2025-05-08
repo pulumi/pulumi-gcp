@@ -192,10 +192,8 @@ class _JobIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:cloudrunv2/jobIamPolicy:JobIamPolicy")
 class JobIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudrunv2/jobIamPolicy:JobIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -288,10 +288,8 @@ class _WebRegionBackendServiceIamBindingState:
         pulumi.set(self, "web_region_backend_service", value)
 
 
+@pulumi.type_token("gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding")
 class WebRegionBackendServiceIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -456,10 +456,8 @@ class _AlertPolicyState:
         pulumi.set(self, "user_labels", value)
 
 
+@pulumi.type_token("gcp:monitoring/alertPolicy:AlertPolicy")
 class AlertPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:monitoring/alertPolicy:AlertPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -374,10 +374,8 @@ class _NetworkState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:edgenetwork/network:Network")
 class Network(pulumi.CustomResource):
-
-    pulumi_type = "gcp:edgenetwork/network:Network"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -206,10 +206,8 @@ class _EnvReferencesState:
         pulumi.set(self, "resource_type", value)
 
 
+@pulumi.type_token("gcp:apigee/envReferences:EnvReferences")
 class EnvReferences(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/envReferences:EnvReferences"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

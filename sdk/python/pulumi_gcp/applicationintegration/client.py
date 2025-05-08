@@ -234,10 +234,8 @@ class _ClientState:
         pulumi.set(self, "run_as_service_account", value)
 
 
+@pulumi.type_token("gcp:applicationintegration/client:Client")
 class Client(pulumi.CustomResource):
-
-    pulumi_type = "gcp:applicationintegration/client:Client"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

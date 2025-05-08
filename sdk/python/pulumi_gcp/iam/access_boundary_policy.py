@@ -181,10 +181,8 @@ class _AccessBoundaryPolicyState:
         pulumi.set(self, "rules", value)
 
 
+@pulumi.type_token("gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy")
 class AccessBoundaryPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

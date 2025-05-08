@@ -214,10 +214,8 @@ class _ConnectionState:
         pulumi.set(self, "update_on_creation_fail", value)
 
 
+@pulumi.type_token("gcp:servicenetworking/connection:Connection")
 class Connection(pulumi.CustomResource):
-
-    pulumi_type = "gcp:servicenetworking/connection:Connection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

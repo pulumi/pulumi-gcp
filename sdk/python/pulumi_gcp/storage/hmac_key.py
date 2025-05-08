@@ -218,10 +218,8 @@ class _HmacKeyState:
         pulumi.set(self, "updated", value)
 
 
+@pulumi.type_token("gcp:storage/hmacKey:HmacKey")
 class HmacKey(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/hmacKey:HmacKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -660,10 +660,8 @@ class _ManagedZoneState:
         pulumi.set(self, "visibility", value)
 
 
+@pulumi.type_token("gcp:dns/managedZone:ManagedZone")
 class ManagedZone(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dns/managedZone:ManagedZone"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

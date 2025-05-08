@@ -388,10 +388,8 @@ class _WorkforcePoolState:
         pulumi.set(self, "workforce_pool_id", value)
 
 
+@pulumi.type_token("gcp:iam/workforcePool:WorkforcePool")
 class WorkforcePool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iam/workforcePool:WorkforcePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

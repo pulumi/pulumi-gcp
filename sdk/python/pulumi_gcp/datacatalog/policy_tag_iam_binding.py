@@ -216,10 +216,8 @@ class _PolicyTagIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:datacatalog/policyTagIamBinding:PolicyTagIamBinding")
 class PolicyTagIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/policyTagIamBinding:PolicyTagIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

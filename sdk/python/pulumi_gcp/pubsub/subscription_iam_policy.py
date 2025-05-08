@@ -159,10 +159,8 @@ class _SubscriptionIAMPolicyState:
         pulumi.set(self, "subscription", value)
 
 
+@pulumi.type_token("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy")
 class SubscriptionIAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

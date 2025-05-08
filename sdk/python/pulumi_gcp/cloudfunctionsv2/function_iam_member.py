@@ -292,10 +292,8 @@ class _FunctionIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:cloudfunctionsv2/functionIamMember:FunctionIamMember")
 class FunctionIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudfunctionsv2/functionIamMember:FunctionIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

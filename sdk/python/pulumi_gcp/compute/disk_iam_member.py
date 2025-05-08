@@ -293,10 +293,8 @@ class _DiskIamMemberState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/diskIamMember:DiskIamMember")
 class DiskIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/diskIamMember:DiskIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

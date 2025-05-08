@@ -217,10 +217,8 @@ class _AccessPolicyIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding")
 class AccessPolicyIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:accesscontextmanager/accessPolicyIamBinding:AccessPolicyIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

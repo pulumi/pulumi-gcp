@@ -218,10 +218,8 @@ class _LogViewIamPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
+@pulumi.type_token("gcp:logging/logViewIamPolicy:LogViewIamPolicy")
 class LogViewIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/logViewIamPolicy:LogViewIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

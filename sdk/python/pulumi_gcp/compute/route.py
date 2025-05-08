@@ -823,10 +823,8 @@ class _RouteState:
         pulumi.set(self, "warnings", value)
 
 
+@pulumi.type_token("gcp:compute/route:Route")
 class Route(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/route:Route"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

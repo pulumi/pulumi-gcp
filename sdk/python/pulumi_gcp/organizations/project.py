@@ -429,10 +429,8 @@ class _ProjectState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("gcp:organizations/project:Project")
 class Project(pulumi.CustomResource):
-
-    pulumi_type = "gcp:organizations/project:Project"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

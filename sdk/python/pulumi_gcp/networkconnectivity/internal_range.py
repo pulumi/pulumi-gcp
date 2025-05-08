@@ -574,10 +574,8 @@ class _InternalRangeState:
         pulumi.set(self, "users", value)
 
 
+@pulumi.type_token("gcp:networkconnectivity/internalRange:InternalRange")
 class InternalRange(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkconnectivity/internalRange:InternalRange"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

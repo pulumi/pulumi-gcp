@@ -975,10 +975,8 @@ class _VMwareClusterState:
         pulumi.set(self, "vm_tracking_enabled", value)
 
 
+@pulumi.type_token("gcp:gkeonprem/vMwareCluster:VMwareCluster")
 class VMwareCluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkeonprem/vMwareCluster:VMwareCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

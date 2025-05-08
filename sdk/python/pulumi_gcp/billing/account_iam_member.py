@@ -212,10 +212,8 @@ class _AccountIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:billing/accountIamMember:AccountIamMember")
 class AccountIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:billing/accountIamMember:AccountIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

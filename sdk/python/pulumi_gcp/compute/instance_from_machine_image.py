@@ -1334,10 +1334,8 @@ class _InstanceFromMachineImageState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/instanceFromMachineImage:InstanceFromMachineImage")
 class InstanceFromMachineImage(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceFromMachineImage:InstanceFromMachineImage"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

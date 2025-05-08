@@ -374,10 +374,8 @@ class _DatabaseState:
         pulumi.set(self, "version_retention_period", value)
 
 
+@pulumi.type_token("gcp:spanner/database:Database")
 class Database(pulumi.CustomResource):
-
-    pulumi_type = "gcp:spanner/database:Database"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

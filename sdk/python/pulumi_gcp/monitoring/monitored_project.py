@@ -124,10 +124,8 @@ class _MonitoredProjectState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gcp:monitoring/monitoredProject:MonitoredProject")
 class MonitoredProject(pulumi.CustomResource):
-
-    pulumi_type = "gcp:monitoring/monitoredProject:MonitoredProject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

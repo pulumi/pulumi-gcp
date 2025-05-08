@@ -506,10 +506,8 @@ class _FirewallPolicyRuleState:
         pulumi.set(self, "tls_inspect", value)
 
 
+@pulumi.type_token("gcp:compute/firewallPolicyRule:FirewallPolicyRule")
 class FirewallPolicyRule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/firewallPolicyRule:FirewallPolicyRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

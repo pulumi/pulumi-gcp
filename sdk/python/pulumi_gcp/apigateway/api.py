@@ -290,10 +290,8 @@ class _ApiState:
         pulumi.set(self, "pulumi_labels", value)
 
 
+@pulumi.type_token("gcp:apigateway/api:Api")
 class Api(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigateway/api:Api"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

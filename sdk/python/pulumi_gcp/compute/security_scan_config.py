@@ -427,10 +427,8 @@ class _SecurityScanConfigState:
         pulumi.set(self, "user_agent", value)
 
 
+@pulumi.type_token("gcp:compute/securityScanConfig:SecurityScanConfig")
 class SecurityScanConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/securityScanConfig:SecurityScanConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

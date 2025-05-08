@@ -1110,10 +1110,8 @@ class _SubnetworkState:
         pulumi.set(self, "subnetwork_id", value)
 
 
+@pulumi.type_token("gcp:compute/subnetwork:Subnetwork")
 class Subnetwork(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/subnetwork:Subnetwork"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

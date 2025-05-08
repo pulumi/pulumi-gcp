@@ -352,10 +352,8 @@ class _SecurityGatewayState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:beyondcorp/securityGateway:SecurityGateway")
 class SecurityGateway(pulumi.CustomResource):
-
-    pulumi_type = "gcp:beyondcorp/securityGateway:SecurityGateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

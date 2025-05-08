@@ -227,10 +227,8 @@ class _ApiState:
         pulumi.set(self, "revisions", value)
 
 
+@pulumi.type_token("gcp:apigee/api:Api")
 class Api(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/api:Api"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

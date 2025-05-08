@@ -439,10 +439,8 @@ class _ConnectivityTestState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("gcp:networkmanagement/connectivityTest:ConnectivityTest")
 class ConnectivityTest(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkmanagement/connectivityTest:ConnectivityTest"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

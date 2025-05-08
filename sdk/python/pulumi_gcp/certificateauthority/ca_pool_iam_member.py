@@ -312,10 +312,8 @@ class _CaPoolIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:certificateauthority/caPoolIamMember:CaPoolIamMember")
 class CaPoolIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificateauthority/caPoolIamMember:CaPoolIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

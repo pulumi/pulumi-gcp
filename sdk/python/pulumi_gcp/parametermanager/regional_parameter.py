@@ -395,10 +395,8 @@ class _RegionalParameterState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:parametermanager/regionalParameter:RegionalParameter")
 class RegionalParameter(pulumi.CustomResource):
-
-    pulumi_type = "gcp:parametermanager/regionalParameter:RegionalParameter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

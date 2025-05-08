@@ -152,10 +152,8 @@ class _BackendBucketIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy")
 class BackendBucketIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/backendBucketIamPolicy:BackendBucketIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

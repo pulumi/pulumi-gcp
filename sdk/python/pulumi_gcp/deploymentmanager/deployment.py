@@ -356,10 +356,8 @@ class _DeploymentState:
         pulumi.set(self, "target", value)
 
 
+@pulumi.type_token("gcp:deploymentmanager/deployment:Deployment")
 class Deployment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:deploymentmanager/deployment:Deployment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

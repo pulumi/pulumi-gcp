@@ -197,10 +197,8 @@ class _BrandState:
         pulumi.set(self, "support_email", value)
 
 
+@pulumi.type_token("gcp:iap/brand:Brand")
 class Brand(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/brand:Brand"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

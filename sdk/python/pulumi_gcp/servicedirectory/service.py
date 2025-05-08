@@ -173,10 +173,8 @@ class _ServiceState:
         pulumi.set(self, "service_id", value)
 
 
+@pulumi.type_token("gcp:servicedirectory/service:Service")
 class Service(pulumi.CustomResource):
-
-    pulumi_type = "gcp:servicedirectory/service:Service"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

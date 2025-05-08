@@ -228,10 +228,8 @@ class _EntryGroupState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:datacatalog/entryGroup:EntryGroup")
 class EntryGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/entryGroup:EntryGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

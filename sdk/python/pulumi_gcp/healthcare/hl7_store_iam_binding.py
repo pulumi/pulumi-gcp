@@ -216,10 +216,8 @@ class _Hl7StoreIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding")
 class Hl7StoreIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -509,10 +509,8 @@ class _RegistrationState:
         pulumi.set(self, "yearly_price", value)
 
 
+@pulumi.type_token("gcp:clouddomains/registration:Registration")
 class Registration(pulumi.CustomResource):
-
-    pulumi_type = "gcp:clouddomains/registration:Registration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

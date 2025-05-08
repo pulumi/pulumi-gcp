@@ -220,10 +220,8 @@ class _FolderSettingsState:
         pulumi.set(self, "storage_location", value)
 
 
+@pulumi.type_token("gcp:logging/folderSettings:FolderSettings")
 class FolderSettings(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/folderSettings:FolderSettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

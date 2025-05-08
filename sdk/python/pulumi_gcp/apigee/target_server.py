@@ -312,10 +312,8 @@ class _TargetServerState:
         pulumi.set(self, "s_sl_info", value)
 
 
+@pulumi.type_token("gcp:apigee/targetServer:TargetServer")
 class TargetServer(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/targetServer:TargetServer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

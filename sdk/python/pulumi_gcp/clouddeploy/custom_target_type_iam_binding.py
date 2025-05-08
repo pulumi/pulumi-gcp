@@ -189,10 +189,8 @@ class _CustomTargetTypeIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:clouddeploy/customTargetTypeIamBinding:CustomTargetTypeIamBinding")
 class CustomTargetTypeIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:clouddeploy/customTargetTypeIamBinding:CustomTargetTypeIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

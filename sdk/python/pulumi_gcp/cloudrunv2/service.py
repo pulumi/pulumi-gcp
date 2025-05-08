@@ -1105,10 +1105,8 @@ class _ServiceState:
         pulumi.set(self, "urls", value)
 
 
+@pulumi.type_token("gcp:cloudrunv2/service:Service")
 class Service(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudrunv2/service:Service"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

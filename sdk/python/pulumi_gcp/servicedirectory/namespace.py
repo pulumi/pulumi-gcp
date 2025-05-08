@@ -259,10 +259,8 @@ class _NamespaceState:
         pulumi.set(self, "pulumi_labels", value)
 
 
+@pulumi.type_token("gcp:servicedirectory/namespace:Namespace")
 class Namespace(pulumi.CustomResource):
-
-    pulumi_type = "gcp:servicedirectory/namespace:Namespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -243,10 +243,8 @@ class _RouterRoutePolicyState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:compute/routerRoutePolicy:RouterRoutePolicy")
 class RouterRoutePolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/routerRoutePolicy:RouterRoutePolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -190,10 +190,8 @@ class _NetworkEndpointListState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/networkEndpointList:NetworkEndpointList")
 class NetworkEndpointList(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/networkEndpointList:NetworkEndpointList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

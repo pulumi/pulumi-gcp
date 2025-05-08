@@ -469,10 +469,8 @@ class _VpnConnectionState:
         pulumi.set(self, "vpc_project", value)
 
 
+@pulumi.type_token("gcp:edgecontainer/vpnConnection:VpnConnection")
 class VpnConnection(pulumi.CustomResource):
-
-    pulumi_type = "gcp:edgecontainer/vpnConnection:VpnConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

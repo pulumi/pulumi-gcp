@@ -411,10 +411,8 @@ class _GrpcRouteState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkservices/grpcRoute:GrpcRoute")
 class GrpcRoute(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/grpcRoute:GrpcRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -187,10 +187,8 @@ class _TunnelDestGroupIamPolicyState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy")
 class TunnelDestGroupIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/tunnelDestGroupIamPolicy:TunnelDestGroupIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

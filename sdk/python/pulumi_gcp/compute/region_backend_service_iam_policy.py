@@ -200,10 +200,8 @@ class _RegionBackendServiceIamPolicyState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:compute/regionBackendServiceIamPolicy:RegionBackendServiceIamPolicy")
 class RegionBackendServiceIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionBackendServiceIamPolicy:RegionBackendServiceIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

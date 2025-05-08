@@ -380,10 +380,8 @@ class _GCPolicyState:
         pulumi.set(self, "table", value)
 
 
+@pulumi.type_token("gcp:bigtable/gCPolicy:GCPolicy")
 class GCPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigtable/gCPolicy:GCPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

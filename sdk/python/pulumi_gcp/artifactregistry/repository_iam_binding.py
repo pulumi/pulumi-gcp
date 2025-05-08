@@ -312,10 +312,8 @@ class _RepositoryIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding")
 class RepositoryIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

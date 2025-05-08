@@ -297,10 +297,8 @@ class _AddressGroupIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember")
 class AddressGroupIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

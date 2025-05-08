@@ -413,10 +413,8 @@ class _PatchDeploymentState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:osconfig/patchDeployment:PatchDeployment")
 class PatchDeployment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:osconfig/patchDeployment:PatchDeployment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

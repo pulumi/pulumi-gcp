@@ -516,10 +516,8 @@ class _OauthClientState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("gcp:iam/oauthClient:OauthClient")
 class OauthClient(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iam/oauthClient:OauthClient"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

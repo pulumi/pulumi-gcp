@@ -246,10 +246,8 @@ class _LiteSubscriptionState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:pubsub/liteSubscription:LiteSubscription")
 class LiteSubscription(pulumi.CustomResource):
-
-    pulumi_type = "gcp:pubsub/liteSubscription:LiteSubscription"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

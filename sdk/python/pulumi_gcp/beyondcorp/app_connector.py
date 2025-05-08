@@ -280,10 +280,8 @@ class _AppConnectorState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("gcp:beyondcorp/appConnector:AppConnector")
 class AppConnector(pulumi.CustomResource):
-
-    pulumi_type = "gcp:beyondcorp/appConnector:AppConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

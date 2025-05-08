@@ -155,10 +155,8 @@ class _DefaultServiceAccountsState:
         pulumi.set(self, "service_accounts", value)
 
 
+@pulumi.type_token("gcp:projects/defaultServiceAccounts:DefaultServiceAccounts")
 class DefaultServiceAccounts(pulumi.CustomResource):
-
-    pulumi_type = "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

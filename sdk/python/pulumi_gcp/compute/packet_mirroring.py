@@ -348,10 +348,8 @@ class _PacketMirroringState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:compute/packetMirroring:PacketMirroring")
 class PacketMirroring(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/packetMirroring:PacketMirroring"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

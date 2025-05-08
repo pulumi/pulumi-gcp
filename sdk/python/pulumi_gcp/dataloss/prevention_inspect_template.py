@@ -250,10 +250,8 @@ class _PreventionInspectTemplateState:
         pulumi.set(self, "template_id", value)
 
 
+@pulumi.type_token("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate")
 class PreventionInspectTemplate(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

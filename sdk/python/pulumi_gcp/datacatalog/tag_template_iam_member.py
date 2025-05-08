@@ -276,10 +276,8 @@ class _TagTemplateIamMemberState:
         pulumi.set(self, "tag_template", value)
 
 
+@pulumi.type_token("gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember")
 class TagTemplateIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

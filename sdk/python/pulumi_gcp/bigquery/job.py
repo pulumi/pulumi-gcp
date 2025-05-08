@@ -412,10 +412,8 @@ class _JobState:
         pulumi.set(self, "user_email", value)
 
 
+@pulumi.type_token("gcp:bigquery/job:Job")
 class Job(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquery/job:Job"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

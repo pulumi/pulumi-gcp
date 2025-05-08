@@ -276,10 +276,8 @@ class _JobIAMMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dataproc/jobIAMMember:JobIAMMember")
 class JobIAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/jobIAMMember:JobIAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -414,10 +414,8 @@ class _TransferJobState:
         pulumi.set(self, "transfer_spec", value)
 
 
+@pulumi.type_token("gcp:storage/transferJob:TransferJob")
 class TransferJob(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/transferJob:TransferJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

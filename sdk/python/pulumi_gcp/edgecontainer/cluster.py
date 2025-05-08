@@ -745,10 +745,8 @@ class _ClusterState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:edgecontainer/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:edgecontainer/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

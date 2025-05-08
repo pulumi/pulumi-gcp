@@ -257,10 +257,8 @@ class _FolderCustomModuleState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securitycenter/folderCustomModule:FolderCustomModule")
 class FolderCustomModule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/folderCustomModule:FolderCustomModule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

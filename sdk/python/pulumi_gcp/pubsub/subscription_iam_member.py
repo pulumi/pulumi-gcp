@@ -240,10 +240,8 @@ class _SubscriptionIAMMemberState:
         pulumi.set(self, "subscription", value)
 
 
+@pulumi.type_token("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember")
 class SubscriptionIAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

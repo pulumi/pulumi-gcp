@@ -216,10 +216,8 @@ class _IAMMemberState:
         pulumi.set(self, "service_account_id", value)
 
 
+@pulumi.type_token("gcp:serviceaccount/iAMMember:IAMMember")
 class IAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:serviceaccount/iAMMember:IAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -338,10 +338,8 @@ class _EnvironmentState:
         pulumi.set(self, "vm_image", value)
 
 
+@pulumi.type_token("gcp:notebooks/environment:Environment")
 class Environment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:notebooks/environment:Environment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

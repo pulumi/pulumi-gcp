@@ -443,10 +443,8 @@ class _SourceRepresentationInstanceState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance")
 class SourceRepresentationInstance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

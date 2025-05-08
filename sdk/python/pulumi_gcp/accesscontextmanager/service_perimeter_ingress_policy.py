@@ -222,10 +222,8 @@ class _ServicePerimeterIngressPolicyState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy")
 class ServicePerimeterIngressPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

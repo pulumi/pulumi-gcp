@@ -471,10 +471,8 @@ class _DataConnectServiceState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:firebase/dataConnectService:DataConnectService")
 class DataConnectService(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/dataConnectService:DataConnectService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

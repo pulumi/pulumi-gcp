@@ -296,10 +296,8 @@ class _DataExchangeIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding")
 class DataExchangeIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

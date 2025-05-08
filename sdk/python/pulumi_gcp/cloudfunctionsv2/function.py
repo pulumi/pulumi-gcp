@@ -476,10 +476,8 @@ class _FunctionState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("gcp:cloudfunctionsv2/function:Function")
 class Function(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudfunctionsv2/function:Function"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

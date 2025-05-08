@@ -198,10 +198,8 @@ class _PolicyState:
         pulumi.set(self, "spec", value)
 
 
+@pulumi.type_token("gcp:orgpolicy/policy:Policy")
 class Policy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:orgpolicy/policy:Policy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

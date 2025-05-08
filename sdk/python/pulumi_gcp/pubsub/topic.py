@@ -417,10 +417,8 @@ class _TopicState:
         pulumi.set(self, "schema_settings", value)
 
 
+@pulumi.type_token("gcp:pubsub/topic:Topic")
 class Topic(pulumi.CustomResource):
-
-    pulumi_type = "gcp:pubsub/topic:Topic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -183,10 +183,8 @@ class _V2QueuedResourceState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:tpu/v2QueuedResource:V2QueuedResource")
 class V2QueuedResource(pulumi.CustomResource):
-
-    pulumi_type = "gcp:tpu/v2QueuedResource:V2QueuedResource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

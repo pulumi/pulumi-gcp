@@ -151,10 +151,8 @@ class _DnsManagedZoneIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy")
 class DnsManagedZoneIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

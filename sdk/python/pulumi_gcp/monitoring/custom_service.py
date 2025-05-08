@@ -245,10 +245,8 @@ class _CustomServiceState:
         pulumi.set(self, "user_labels", value)
 
 
+@pulumi.type_token("gcp:monitoring/customService:CustomService")
 class CustomService(pulumi.CustomResource):
-
-    pulumi_type = "gcp:monitoring/customService:CustomService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

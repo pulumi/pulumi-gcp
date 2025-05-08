@@ -798,10 +798,8 @@ class _GdcSparkApplicationState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("gcp:dataproc/gdcSparkApplication:GdcSparkApplication")
 class GdcSparkApplication(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/gdcSparkApplication:GdcSparkApplication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

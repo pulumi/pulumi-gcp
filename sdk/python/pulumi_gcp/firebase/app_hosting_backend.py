@@ -652,10 +652,8 @@ class _AppHostingBackendState:
         pulumi.set(self, "uri", value)
 
 
+@pulumi.type_token("gcp:firebase/appHostingBackend:AppHostingBackend")
 class AppHostingBackend(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/appHostingBackend:AppHostingBackend"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

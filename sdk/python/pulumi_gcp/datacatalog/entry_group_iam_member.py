@@ -276,10 +276,8 @@ class _EntryGroupIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:datacatalog/entryGroupIamMember:EntryGroupIamMember")
 class EntryGroupIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/entryGroupIamMember:EntryGroupIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

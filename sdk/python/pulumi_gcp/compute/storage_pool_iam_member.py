@@ -305,10 +305,8 @@ class _StoragePoolIamMemberState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/storagePoolIamMember:StoragePoolIamMember")
 class StoragePoolIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/storagePoolIamMember:StoragePoolIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

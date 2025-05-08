@@ -407,10 +407,8 @@ class _CloudExadataInfrastructureState:
         pulumi.set(self, "pulumi_labels", value)
 
 
+@pulumi.type_token("gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure")
 class CloudExadataInfrastructure(pulumi.CustomResource):
-
-    pulumi_type = "gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

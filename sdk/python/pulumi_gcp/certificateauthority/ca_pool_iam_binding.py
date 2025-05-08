@@ -312,10 +312,8 @@ class _CaPoolIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding")
 class CaPoolIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

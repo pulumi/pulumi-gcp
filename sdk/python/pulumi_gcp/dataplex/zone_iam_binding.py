@@ -299,10 +299,8 @@ class _ZoneIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dataplex/zoneIamBinding:ZoneIamBinding")
 class ZoneIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/zoneIamBinding:ZoneIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

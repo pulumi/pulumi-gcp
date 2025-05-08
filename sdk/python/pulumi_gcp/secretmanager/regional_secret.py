@@ -681,10 +681,8 @@ class _RegionalSecretState:
         pulumi.set(self, "version_destroy_ttl", value)
 
 
+@pulumi.type_token("gcp:secretmanager/regionalSecret:RegionalSecret")
 class RegionalSecret(pulumi.CustomResource):
-
-    pulumi_type = "gcp:secretmanager/regionalSecret:RegionalSecret"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -392,10 +392,8 @@ class _TargetInstanceState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/targetInstance:TargetInstance")
 class TargetInstance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/targetInstance:TargetInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

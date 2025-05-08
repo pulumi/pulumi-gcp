@@ -475,10 +475,8 @@ class _ProjectsPolicyBindingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding")
 class ProjectsPolicyBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

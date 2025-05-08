@@ -445,10 +445,8 @@ class _MirroringDeploymentState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/mirroringDeployment:MirroringDeployment")
 class MirroringDeployment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/mirroringDeployment:MirroringDeployment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

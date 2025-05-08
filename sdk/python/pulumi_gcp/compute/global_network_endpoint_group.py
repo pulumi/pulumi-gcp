@@ -260,10 +260,8 @@ class _GlobalNetworkEndpointGroupState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup")
 class GlobalNetworkEndpointGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

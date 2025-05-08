@@ -217,10 +217,8 @@ class _NamespaceIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding")
 class NamespaceIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

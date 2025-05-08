@@ -228,10 +228,8 @@ class _WebAppState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:firebase/webApp:WebApp")
 class WebApp(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/webApp:WebApp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

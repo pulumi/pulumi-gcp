@@ -562,10 +562,8 @@ class _SecretState:
         pulumi.set(self, "version_destroy_ttl", value)
 
 
+@pulumi.type_token("gcp:secretmanager/secret:Secret")
 class Secret(pulumi.CustomResource):
-
-    pulumi_type = "gcp:secretmanager/secret:Secret"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

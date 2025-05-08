@@ -231,10 +231,8 @@ class _BucketAccessControlState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:storage/bucketAccessControl:BucketAccessControl")
 class BucketAccessControl(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/bucketAccessControl:BucketAccessControl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

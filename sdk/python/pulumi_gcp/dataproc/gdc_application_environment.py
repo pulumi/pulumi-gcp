@@ -467,10 +467,8 @@ class _GdcApplicationEnvironmentState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment")
 class GdcApplicationEnvironment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -813,10 +813,8 @@ class _VmwareAdminClusterState:
         pulumi.set(self, "vcenter", value)
 
 
+@pulumi.type_token("gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster")
 class VmwareAdminCluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -143,10 +143,8 @@ class _ScopeIamPolicyState:
         pulumi.set(self, "scope_id", value)
 
 
+@pulumi.type_token("gcp:gkehub/scopeIamPolicy:ScopeIamPolicy")
 class ScopeIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkehub/scopeIamPolicy:ScopeIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

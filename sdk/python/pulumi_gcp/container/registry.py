@@ -113,10 +113,8 @@ class _RegistryState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:container/registry:Registry")
 class Registry(pulumi.CustomResource):
-
-    pulumi_type = "gcp:container/registry:Registry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

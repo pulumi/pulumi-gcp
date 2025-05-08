@@ -177,10 +177,8 @@ class _V2OrganizationSourceState:
         pulumi.set(self, "organization", value)
 
 
+@pulumi.type_token("gcp:securitycenter/v2OrganizationSource:V2OrganizationSource")
 class V2OrganizationSource(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

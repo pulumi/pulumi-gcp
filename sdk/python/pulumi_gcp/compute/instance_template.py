@@ -1203,10 +1203,8 @@ class _InstanceTemplateState:
         pulumi.set(self, "tags_fingerprint", value)
 
 
+@pulumi.type_token("gcp:compute/instanceTemplate:InstanceTemplate")
 class InstanceTemplate(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceTemplate:InstanceTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

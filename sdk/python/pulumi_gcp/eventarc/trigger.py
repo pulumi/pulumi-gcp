@@ -514,10 +514,8 @@ class _TriggerState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:eventarc/trigger:Trigger")
 class Trigger(pulumi.CustomResource):
-
-    pulumi_type = "gcp:eventarc/trigger:Trigger"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -151,10 +151,8 @@ class _LocationTagBindingState:
         pulumi.set(self, "tag_value", value)
 
 
+@pulumi.type_token("gcp:tags/locationTagBinding:LocationTagBinding")
 class LocationTagBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:tags/locationTagBinding:LocationTagBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

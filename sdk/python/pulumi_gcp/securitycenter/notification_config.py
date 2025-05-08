@@ -239,10 +239,8 @@ class _NotificationConfigState:
         pulumi.set(self, "streaming_config", value)
 
 
+@pulumi.type_token("gcp:securitycenter/notificationConfig:NotificationConfig")
 class NotificationConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/notificationConfig:NotificationConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

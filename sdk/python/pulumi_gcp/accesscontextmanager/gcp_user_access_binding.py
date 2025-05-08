@@ -229,10 +229,8 @@ class _GcpUserAccessBindingState:
         pulumi.set(self, "session_settings", value)
 
 
+@pulumi.type_token("gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding")
 class GcpUserAccessBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

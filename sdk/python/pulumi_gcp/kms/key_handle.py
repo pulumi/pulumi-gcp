@@ -203,10 +203,8 @@ class _KeyHandleState:
         pulumi.set(self, "resource_type_selector", value)
 
 
+@pulumi.type_token("gcp:kms/keyHandle:KeyHandle")
 class KeyHandle(pulumi.CustomResource):
-
-    pulumi_type = "gcp:kms/keyHandle:KeyHandle"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

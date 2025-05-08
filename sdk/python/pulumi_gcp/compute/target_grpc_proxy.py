@@ -353,10 +353,8 @@ class _TargetGrpcProxyState:
         pulumi.set(self, "validate_for_proxyless", value)
 
 
+@pulumi.type_token("gcp:compute/targetGrpcProxy:TargetGrpcProxy")
 class TargetGrpcProxy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/targetGrpcProxy:TargetGrpcProxy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

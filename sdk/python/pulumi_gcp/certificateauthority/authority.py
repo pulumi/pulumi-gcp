@@ -782,10 +782,8 @@ class _AuthorityState:
         pulumi.set(self, "user_defined_access_urls", value)
 
 
+@pulumi.type_token("gcp:certificateauthority/authority:Authority")
 class Authority(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificateauthority/authority:Authority"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

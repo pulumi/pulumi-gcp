@@ -920,10 +920,8 @@ class _FlexTemplateJobState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:dataflow/flexTemplateJob:FlexTemplateJob")
 class FlexTemplateJob(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataflow/flexTemplateJob:FlexTemplateJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -372,10 +372,8 @@ class _GroupState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkconnectivity/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkconnectivity/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

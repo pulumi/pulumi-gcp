@@ -298,10 +298,8 @@ class _ManagementOrganizationEventThreatDetectionCustomModuleState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule")
 class ManagementOrganizationEventThreatDetectionCustomModule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/managementOrganizationEventThreatDetectionCustomModule:ManagementOrganizationEventThreatDetectionCustomModule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

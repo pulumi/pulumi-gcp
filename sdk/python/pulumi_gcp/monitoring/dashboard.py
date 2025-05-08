@@ -104,10 +104,8 @@ class _DashboardState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:monitoring/dashboard:Dashboard")
 class Dashboard(pulumi.CustomResource):
-
-    pulumi_type = "gcp:monitoring/dashboard:Dashboard"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

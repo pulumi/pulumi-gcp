@@ -1112,10 +1112,8 @@ class _InstanceState:
         pulumi.set(self, "zone_distribution_config", value)
 
 
+@pulumi.type_token("gcp:memorystore/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:memorystore/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

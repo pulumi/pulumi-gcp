@@ -1047,10 +1047,8 @@ class _FlexibleAppVersionState:
         pulumi.set(self, "vpc_access_connector", value)
 
 
+@pulumi.type_token("gcp:appengine/flexibleAppVersion:FlexibleAppVersion")
 class FlexibleAppVersion(pulumi.CustomResource):
-
-    pulumi_type = "gcp:appengine/flexibleAppVersion:FlexibleAppVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

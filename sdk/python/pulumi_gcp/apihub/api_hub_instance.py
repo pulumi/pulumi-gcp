@@ -375,10 +375,8 @@ class _ApiHubInstanceState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:apihub/apiHubInstance:ApiHubInstance")
 class ApiHubInstance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apihub/apiHubInstance:ApiHubInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

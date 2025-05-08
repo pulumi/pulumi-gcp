@@ -560,10 +560,8 @@ class _DatasetAccessState:
         pulumi.set(self, "view", value)
 
 
+@pulumi.type_token("gcp:bigquery/datasetAccess:DatasetAccess")
 class DatasetAccess(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquery/datasetAccess:DatasetAccess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -300,10 +300,8 @@ class _RegionalSecretIamBindingState:
         pulumi.set(self, "secret_id", value)
 
 
+@pulumi.type_token("gcp:secretmanager/regionalSecretIamBinding:RegionalSecretIamBinding")
 class RegionalSecretIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:secretmanager/regionalSecretIamBinding:RegionalSecretIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

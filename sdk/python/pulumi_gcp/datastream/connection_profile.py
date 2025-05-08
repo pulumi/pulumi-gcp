@@ -618,10 +618,8 @@ class _ConnectionProfileState:
         pulumi.set(self, "sql_server_profile", value)
 
 
+@pulumi.type_token("gcp:datastream/connectionProfile:ConnectionProfile")
 class ConnectionProfile(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datastream/connectionProfile:ConnectionProfile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

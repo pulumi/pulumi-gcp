@@ -678,10 +678,8 @@ class _TargetState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:clouddeploy/target:Target")
 class Target(pulumi.CustomResource):
-
-    pulumi_type = "gcp:clouddeploy/target:Target"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -581,10 +581,8 @@ class _HostingCustomDomainState:
         pulumi.set(self, "wait_dns_verification", value)
 
 
+@pulumi.type_token("gcp:firebase/hostingCustomDomain:HostingCustomDomain")
 class HostingCustomDomain(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/hostingCustomDomain:HostingCustomDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

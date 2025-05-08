@@ -353,10 +353,8 @@ class _LbRouteExtensionState:
         pulumi.set(self, "pulumi_labels", value)
 
 
+@pulumi.type_token("gcp:networkservices/lbRouteExtension:LbRouteExtension")
 class LbRouteExtension(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/lbRouteExtension:LbRouteExtension"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

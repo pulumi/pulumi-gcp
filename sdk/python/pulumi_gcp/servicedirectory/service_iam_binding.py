@@ -217,10 +217,8 @@ class _ServiceIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:servicedirectory/serviceIamBinding:ServiceIamBinding")
 class ServiceIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:servicedirectory/serviceIamBinding:ServiceIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -128,10 +128,8 @@ class _EnvKeystoreState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gcp:apigee/envKeystore:EnvKeystore")
 class EnvKeystore(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/envKeystore:EnvKeystore"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

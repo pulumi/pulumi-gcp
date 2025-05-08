@@ -216,10 +216,8 @@ class _DicomStoreIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember")
 class DicomStoreIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

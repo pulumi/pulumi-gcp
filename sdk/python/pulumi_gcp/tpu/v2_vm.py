@@ -834,10 +834,8 @@ class _V2VmState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:tpu/v2Vm:V2Vm")
 class V2Vm(pulumi.CustomResource):
-
-    pulumi_type = "gcp:tpu/v2Vm:V2Vm"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

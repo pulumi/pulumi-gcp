@@ -370,10 +370,8 @@ class _RouterState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:compute/router:Router")
 class Router(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/router:Router"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

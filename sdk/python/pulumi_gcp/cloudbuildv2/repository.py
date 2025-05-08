@@ -307,10 +307,8 @@ class _RepositoryState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:cloudbuildv2/repository:Repository")
 class Repository(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudbuildv2/repository:Repository"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

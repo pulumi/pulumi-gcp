@@ -232,10 +232,8 @@ class _SchemaState:
         pulumi.set(self, "schema_id", value)
 
 
+@pulumi.type_token("gcp:discoveryengine/schema:Schema")
 class Schema(pulumi.CustomResource):
-
-    pulumi_type = "gcp:discoveryengine/schema:Schema"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -336,10 +336,8 @@ class _RegionTargetHttpProxyState:
         pulumi.set(self, "url_map", value)
 
 
+@pulumi.type_token("gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy")
 class RegionTargetHttpProxy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

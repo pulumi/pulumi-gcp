@@ -279,10 +279,8 @@ class _EnvironmentState:
         pulumi.set(self, "storage_config", value)
 
 
+@pulumi.type_token("gcp:composer/environment:Environment")
 class Environment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:composer/environment:Environment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

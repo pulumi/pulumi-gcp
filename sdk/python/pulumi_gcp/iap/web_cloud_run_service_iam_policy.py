@@ -191,10 +191,8 @@ class _WebCloudRunServiceIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:iap/webCloudRunServiceIamPolicy:WebCloudRunServiceIamPolicy")
 class WebCloudRunServiceIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/webCloudRunServiceIamPolicy:WebCloudRunServiceIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

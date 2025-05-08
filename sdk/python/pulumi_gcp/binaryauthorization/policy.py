@@ -246,10 +246,8 @@ class _PolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:binaryauthorization/policy:Policy")
 class Policy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:binaryauthorization/policy:Policy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

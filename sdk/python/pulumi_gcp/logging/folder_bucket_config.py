@@ -296,10 +296,8 @@ class _FolderBucketConfigState:
         pulumi.set(self, "retention_days", value)
 
 
+@pulumi.type_token("gcp:logging/folderBucketConfig:FolderBucketConfig")
 class FolderBucketConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/folderBucketConfig:FolderBucketConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

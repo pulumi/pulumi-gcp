@@ -376,10 +376,8 @@ class _FolderSccBigQueryExportState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport")
 class FolderSccBigQueryExport(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

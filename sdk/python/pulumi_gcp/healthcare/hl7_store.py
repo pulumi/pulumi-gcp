@@ -408,10 +408,8 @@ class _Hl7StoreState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:healthcare/hl7Store:Hl7Store")
 class Hl7Store(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/hl7Store:Hl7Store"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

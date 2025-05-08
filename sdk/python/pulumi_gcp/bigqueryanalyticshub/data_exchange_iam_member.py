@@ -296,10 +296,8 @@ class _DataExchangeIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:bigqueryanalyticshub/dataExchangeIamMember:DataExchangeIamMember")
 class DataExchangeIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigqueryanalyticshub/dataExchangeIamMember:DataExchangeIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

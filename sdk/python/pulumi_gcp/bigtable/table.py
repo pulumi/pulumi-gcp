@@ -310,10 +310,8 @@ class _TableState:
         pulumi.set(self, "split_keys", value)
 
 
+@pulumi.type_token("gcp:bigtable/table:Table")
 class Table(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigtable/table:Table"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

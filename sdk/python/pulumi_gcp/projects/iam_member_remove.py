@@ -146,10 +146,8 @@ class _IamMemberRemoveState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:projects/iamMemberRemove:IamMemberRemove")
 class IamMemberRemove(pulumi.CustomResource):
-
-    pulumi_type = "gcp:projects/iamMemberRemove:IamMemberRemove"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

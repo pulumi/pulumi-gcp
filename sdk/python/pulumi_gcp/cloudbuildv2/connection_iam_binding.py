@@ -293,10 +293,8 @@ class _ConnectionIAMBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding")
 class ConnectionIAMBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

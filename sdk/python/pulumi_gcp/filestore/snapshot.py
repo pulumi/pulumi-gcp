@@ -357,10 +357,8 @@ class _SnapshotState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("gcp:filestore/snapshot:Snapshot")
 class Snapshot(pulumi.CustomResource):
-
-    pulumi_type = "gcp:filestore/snapshot:Snapshot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

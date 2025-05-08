@@ -610,10 +610,8 @@ class _RegionNetworkFirewallPolicyRuleState:
         pulumi.set(self, "tls_inspect", value)
 
 
+@pulumi.type_token("gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule")
 class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

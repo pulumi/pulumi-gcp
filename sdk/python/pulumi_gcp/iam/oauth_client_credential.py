@@ -302,10 +302,8 @@ class _OauthClientCredentialState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:iam/oauthClientCredential:OauthClientCredential")
 class OauthClientCredential(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iam/oauthClientCredential:OauthClientCredential"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

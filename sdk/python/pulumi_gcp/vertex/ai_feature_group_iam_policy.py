@@ -191,10 +191,8 @@ class _AiFeatureGroupIamPolicyState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:vertex/aiFeatureGroupIamPolicy:AiFeatureGroupIamPolicy")
 class AiFeatureGroupIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiFeatureGroupIamPolicy:AiFeatureGroupIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

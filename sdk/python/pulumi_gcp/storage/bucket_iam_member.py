@@ -228,10 +228,8 @@ class _BucketIAMMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:storage/bucketIAMMember:BucketIAMMember")
 class BucketIAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/bucketIAMMember:BucketIAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

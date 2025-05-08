@@ -897,10 +897,8 @@ class _ImageState:
         pulumi.set(self, "storage_locations", value)
 
 
+@pulumi.type_token("gcp:compute/image:Image")
 class Image(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/image:Image"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

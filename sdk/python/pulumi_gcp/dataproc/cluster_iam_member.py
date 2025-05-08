@@ -292,10 +292,8 @@ class _ClusterIAMMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dataproc/clusterIAMMember:ClusterIAMMember")
 class ClusterIAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/clusterIAMMember:ClusterIAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

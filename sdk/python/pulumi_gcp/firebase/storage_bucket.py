@@ -117,10 +117,8 @@ class _StorageBucketState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:firebase/storageBucket:StorageBucket")
 class StorageBucket(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/storageBucket:StorageBucket"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

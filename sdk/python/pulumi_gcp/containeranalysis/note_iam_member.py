@@ -252,10 +252,8 @@ class _NoteIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:containeranalysis/noteIamMember:NoteIamMember")
 class NoteIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:containeranalysis/noteIamMember:NoteIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

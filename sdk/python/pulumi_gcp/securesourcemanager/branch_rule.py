@@ -493,10 +493,8 @@ class _BranchRuleState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securesourcemanager/branchRule:BranchRule")
 class BranchRule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securesourcemanager/branchRule:BranchRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

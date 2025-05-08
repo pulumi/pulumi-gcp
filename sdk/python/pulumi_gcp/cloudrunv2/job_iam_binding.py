@@ -293,10 +293,8 @@ class _JobIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:cloudrunv2/jobIamBinding:JobIamBinding")
 class JobIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudrunv2/jobIamBinding:JobIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

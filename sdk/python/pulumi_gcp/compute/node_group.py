@@ -482,10 +482,8 @@ class _NodeGroupState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/nodeGroup:NodeGroup")
 class NodeGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/nodeGroup:NodeGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -767,10 +767,8 @@ class _StandardAppVersionState:
         pulumi.set(self, "vpc_access_connector", value)
 
 
+@pulumi.type_token("gcp:appengine/standardAppVersion:StandardAppVersion")
 class StandardAppVersion(pulumi.CustomResource):
-
-    pulumi_type = "gcp:appengine/standardAppVersion:StandardAppVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -316,10 +316,8 @@ class _CustomConstraintState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:orgpolicy/customConstraint:CustomConstraint")
 class CustomConstraint(pulumi.CustomResource):
-
-    pulumi_type = "gcp:orgpolicy/customConstraint:CustomConstraint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

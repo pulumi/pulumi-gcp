@@ -447,10 +447,8 @@ class _ExternalAccessRuleState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:vmwareengine/externalAccessRule:ExternalAccessRule")
 class ExternalAccessRule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vmwareengine/externalAccessRule:ExternalAccessRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

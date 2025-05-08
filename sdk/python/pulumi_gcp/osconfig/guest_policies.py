@@ -389,10 +389,8 @@ class _GuestPoliciesState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:osconfig/guestPolicies:GuestPolicies")
 class GuestPolicies(pulumi.CustomResource):
-
-    pulumi_type = "gcp:osconfig/guestPolicies:GuestPolicies"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

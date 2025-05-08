@@ -196,10 +196,8 @@ class _RestorePlanIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy")
 class RestorePlanIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

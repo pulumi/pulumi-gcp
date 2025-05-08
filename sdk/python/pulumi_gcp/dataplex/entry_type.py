@@ -473,10 +473,8 @@ class _EntryTypeState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataplex/entryType:EntryType")
 class EntryType(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/entryType:EntryType"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

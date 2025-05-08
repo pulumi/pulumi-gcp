@@ -431,10 +431,8 @@ class _InstanceState:
         pulumi.set(self, "service_attachment", value)
 
 
+@pulumi.type_token("gcp:apigee/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

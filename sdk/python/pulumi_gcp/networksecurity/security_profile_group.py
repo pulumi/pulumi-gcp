@@ -407,10 +407,8 @@ class _SecurityProfileGroupState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/securityProfileGroup:SecurityProfileGroup")
 class SecurityProfileGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/securityProfileGroup:SecurityProfileGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

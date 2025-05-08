@@ -484,10 +484,8 @@ class _AiIndexEndpointDeployedIndexState:
         pulumi.set(self, "reserved_ip_ranges", value)
 
 
+@pulumi.type_token("gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex")
 class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -288,10 +288,8 @@ class _DatascanIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dataplex/datascanIamMember:DatascanIamMember")
 class DatascanIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/datascanIamMember:DatascanIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -997,10 +997,8 @@ class _RouterNatState:
         pulumi.set(self, "udp_idle_timeout_sec", value)
 
 
+@pulumi.type_token("gcp:compute/routerNat:RouterNat")
 class RouterNat(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/routerNat:RouterNat"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -120,10 +120,8 @@ class _ProjectInfoState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:billing/projectInfo:ProjectInfo")
 class ProjectInfo(pulumi.CustomResource):
-
-    pulumi_type = "gcp:billing/projectInfo:ProjectInfo"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

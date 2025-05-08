@@ -1093,10 +1093,8 @@ class _RegionInstanceGroupManagerState:
         pulumi.set(self, "wait_for_instances_status", value)
 
 
+@pulumi.type_token("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager")
 class RegionInstanceGroupManager(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

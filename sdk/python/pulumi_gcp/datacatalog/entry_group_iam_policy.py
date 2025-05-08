@@ -175,10 +175,8 @@ class _EntryGroupIamPolicyState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:datacatalog/entryGroupIamPolicy:EntryGroupIamPolicy")
 class EntryGroupIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/entryGroupIamPolicy:EntryGroupIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

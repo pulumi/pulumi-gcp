@@ -138,10 +138,8 @@ class _SyncAuthorizationState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gcp:apigee/syncAuthorization:SyncAuthorization")
 class SyncAuthorization(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/syncAuthorization:SyncAuthorization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

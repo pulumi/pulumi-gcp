@@ -427,10 +427,8 @@ class _ServiceState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:apphub/service:Service")
 class Service(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apphub/service:Service"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

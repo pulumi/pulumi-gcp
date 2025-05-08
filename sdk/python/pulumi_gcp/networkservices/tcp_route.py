@@ -364,10 +364,8 @@ class _TcpRouteState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkservices/tcpRoute:TcpRoute")
 class TcpRoute(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/tcpRoute:TcpRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

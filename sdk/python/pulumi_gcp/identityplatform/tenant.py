@@ -270,10 +270,8 @@ class _TenantState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:identityplatform/tenant:Tenant")
 class Tenant(pulumi.CustomResource):
-
-    pulumi_type = "gcp:identityplatform/tenant:Tenant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
