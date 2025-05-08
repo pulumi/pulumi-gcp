@@ -290,10 +290,8 @@ class _DefaultObjectAccessControlState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl")
 class DefaultObjectAccessControl(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -148,10 +148,8 @@ class _SQuotaAdjusterSettingsState:
         pulumi.set(self, "parent", value)
 
 
+@pulumi.type_token("gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings")
 class SQuotaAdjusterSettings(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

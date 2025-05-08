@@ -389,10 +389,8 @@ class _ChatEngineState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:discoveryengine/chatEngine:ChatEngine")
 class ChatEngine(pulumi.CustomResource):
-
-    pulumi_type = "gcp:discoveryengine/chatEngine:ChatEngine"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

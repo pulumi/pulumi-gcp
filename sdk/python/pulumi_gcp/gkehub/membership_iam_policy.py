@@ -191,10 +191,8 @@ class _MembershipIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:gkehub/membershipIamPolicy:MembershipIamPolicy")
 class MembershipIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkehub/membershipIamPolicy:MembershipIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

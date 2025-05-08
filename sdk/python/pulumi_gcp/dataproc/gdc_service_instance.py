@@ -531,10 +531,8 @@ class _GdcServiceInstanceState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataproc/gdcServiceInstance:GdcServiceInstance")
 class GdcServiceInstance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/gdcServiceInstance:GdcServiceInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

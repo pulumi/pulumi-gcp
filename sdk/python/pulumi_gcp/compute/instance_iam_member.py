@@ -304,10 +304,8 @@ class _InstanceIAMMemberState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/instanceIAMMember:InstanceIAMMember")
 class InstanceIAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceIAMMember:InstanceIAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

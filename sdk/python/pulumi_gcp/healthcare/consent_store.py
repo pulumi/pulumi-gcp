@@ -290,10 +290,8 @@ class _ConsentStoreState:
         pulumi.set(self, "pulumi_labels", value)
 
 
+@pulumi.type_token("gcp:healthcare/consentStore:ConsentStore")
 class ConsentStore(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/consentStore:ConsentStore"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

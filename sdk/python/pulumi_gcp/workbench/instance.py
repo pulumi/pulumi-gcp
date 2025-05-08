@@ -584,10 +584,8 @@ class _InstanceState:
         pulumi.set(self, "upgrade_histories", value)
 
 
+@pulumi.type_token("gcp:workbench/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:workbench/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

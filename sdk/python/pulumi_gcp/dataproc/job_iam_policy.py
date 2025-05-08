@@ -183,10 +183,8 @@ class _JobIAMPolicyState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:dataproc/jobIAMPolicy:JobIAMPolicy")
 class JobIAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/jobIAMPolicy:JobIAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

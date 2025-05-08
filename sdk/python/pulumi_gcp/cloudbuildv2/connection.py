@@ -492,10 +492,8 @@ class _ConnectionState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:cloudbuildv2/connection:Connection")
 class Connection(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudbuildv2/connection:Connection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -375,10 +375,8 @@ class _SSLCertificateState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:compute/sSLCertificate:SSLCertificate")
 class SSLCertificate(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/sSLCertificate:SSLCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -1497,10 +1497,8 @@ class _RegionBackendServiceState:
         pulumi.set(self, "timeout_sec", value)
 
 
+@pulumi.type_token("gcp:compute/regionBackendService:RegionBackendService")
 class RegionBackendService(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionBackendService:RegionBackendService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

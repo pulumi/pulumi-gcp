@@ -323,10 +323,8 @@ class _TaskIamBindingState:
         pulumi.set(self, "task_id", value)
 
 
+@pulumi.type_token("gcp:dataplex/taskIamBinding:TaskIamBinding")
 class TaskIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/taskIamBinding:TaskIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

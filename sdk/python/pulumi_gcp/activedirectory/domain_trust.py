@@ -315,10 +315,8 @@ class _DomainTrustState:
         pulumi.set(self, "trust_type", value)
 
 
+@pulumi.type_token("gcp:activedirectory/domainTrust:DomainTrust")
 class DomainTrust(pulumi.CustomResource):
-
-    pulumi_type = "gcp:activedirectory/domainTrust:DomainTrust"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

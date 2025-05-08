@@ -826,10 +826,8 @@ class _InstanceState:
         pulumi.set(self, "user_metadata", value)
 
 
+@pulumi.type_token("gcp:looker/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "gcp:looker/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -254,10 +254,8 @@ class _AzureClientState:
         pulumi.set(self, "uid", value)
 
 
+@pulumi.type_token("gcp:container/azureClient:AzureClient")
 class AzureClient(pulumi.CustomResource):
-
-    pulumi_type = "gcp:container/azureClient:AzureClient"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -424,10 +424,8 @@ class _BareMetalNodePoolState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool")
 class BareMetalNodePool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

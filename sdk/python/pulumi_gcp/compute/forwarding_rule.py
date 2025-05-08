@@ -1737,10 +1737,8 @@ class _ForwardingRuleState:
         pulumi.set(self, "target", value)
 
 
+@pulumi.type_token("gcp:compute/forwardingRule:ForwardingRule")
 class ForwardingRule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/forwardingRule:ForwardingRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -171,10 +171,8 @@ class _FirewallPolicyAssociationState:
         pulumi.set(self, "short_name", value)
 
 
+@pulumi.type_token("gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation")
 class FirewallPolicyAssociation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

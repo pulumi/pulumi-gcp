@@ -543,10 +543,8 @@ class _NodeState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:tpu/node:Node")
 class Node(pulumi.CustomResource):
-
-    pulumi_type = "gcp:tpu/node:Node"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

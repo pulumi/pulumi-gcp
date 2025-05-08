@@ -301,10 +301,8 @@ class _VolumeSnapshotState:
         pulumi.set(self, "volume_name", value)
 
 
+@pulumi.type_token("gcp:netapp/volumeSnapshot:VolumeSnapshot")
 class VolumeSnapshot(pulumi.CustomResource):
-
-    pulumi_type = "gcp:netapp/volumeSnapshot:VolumeSnapshot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

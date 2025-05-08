@@ -483,10 +483,8 @@ class _NodeTemplateState:
         pulumi.set(self, "server_binding", value)
 
 
+@pulumi.type_token("gcp:compute/nodeTemplate:NodeTemplate")
 class NodeTemplate(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/nodeTemplate:NodeTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

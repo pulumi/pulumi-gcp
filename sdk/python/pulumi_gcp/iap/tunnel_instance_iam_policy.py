@@ -175,10 +175,8 @@ class _TunnelInstanceIAMPolicyState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy")
 class TunnelInstanceIAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

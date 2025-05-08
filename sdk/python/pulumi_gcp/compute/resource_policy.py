@@ -399,10 +399,8 @@ class _ResourcePolicyState:
         pulumi.set(self, "workload_policy", value)
 
 
+@pulumi.type_token("gcp:compute/resourcePolicy:ResourcePolicy")
 class ResourcePolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/resourcePolicy:ResourcePolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

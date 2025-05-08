@@ -326,10 +326,8 @@ class _AppEngineVersionIamBindingState:
         pulumi.set(self, "version_id", value)
 
 
+@pulumi.type_token("gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding")
 class AppEngineVersionIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

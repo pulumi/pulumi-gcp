@@ -240,10 +240,8 @@ class _BackupScheduleState:
         pulumi.set(self, "weekly_recurrence", value)
 
 
+@pulumi.type_token("gcp:firestore/backupSchedule:BackupSchedule")
 class BackupSchedule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firestore/backupSchedule:BackupSchedule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

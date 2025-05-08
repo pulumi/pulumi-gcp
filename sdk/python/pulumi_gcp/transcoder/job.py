@@ -344,10 +344,8 @@ class _JobState:
         pulumi.set(self, "template_id", value)
 
 
+@pulumi.type_token("gcp:transcoder/job:Job")
 class Job(pulumi.CustomResource):
-
-    pulumi_type = "gcp:transcoder/job:Job"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

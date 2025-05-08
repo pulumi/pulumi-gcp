@@ -469,10 +469,8 @@ class _PipelineState:
         pulumi.set(self, "workload", value)
 
 
+@pulumi.type_token("gcp:dataflow/pipeline:Pipeline")
 class Pipeline(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataflow/pipeline:Pipeline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

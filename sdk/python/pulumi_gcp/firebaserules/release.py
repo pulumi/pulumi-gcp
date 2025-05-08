@@ -192,10 +192,8 @@ class _ReleaseState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:firebaserules/release:Release")
 class Release(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebaserules/release:Release"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

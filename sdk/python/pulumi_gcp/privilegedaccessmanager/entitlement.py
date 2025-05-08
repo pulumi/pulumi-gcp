@@ -434,10 +434,8 @@ class _EntitlementState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:privilegedaccessmanager/entitlement:entitlement")
 class Entitlement(pulumi.CustomResource):
-
-    pulumi_type = "gcp:privilegedaccessmanager/entitlement:entitlement"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

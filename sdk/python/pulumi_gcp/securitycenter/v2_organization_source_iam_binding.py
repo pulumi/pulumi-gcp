@@ -239,10 +239,8 @@ class _V2OrganizationSourceIamBindingState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding")
 class V2OrganizationSourceIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -149,10 +149,8 @@ class _ClientState:
         pulumi.set(self, "secret", value)
 
 
+@pulumi.type_token("gcp:iap/client:Client")
 class Client(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/client:Client"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

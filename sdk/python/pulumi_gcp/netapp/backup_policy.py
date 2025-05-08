@@ -431,10 +431,8 @@ class _BackupPolicyState:
         pulumi.set(self, "weekly_backup_limit", value)
 
 
+@pulumi.type_token("gcp:netapp/backupPolicy:BackupPolicy")
 class BackupPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:netapp/backupPolicy:BackupPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

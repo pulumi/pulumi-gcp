@@ -407,10 +407,8 @@ class _PreventionDiscoveryConfigState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig")
 class PreventionDiscoveryConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

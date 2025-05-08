@@ -195,10 +195,8 @@ class _SettingsState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gcp:iap/settings:Settings")
 class Settings(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/settings:Settings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

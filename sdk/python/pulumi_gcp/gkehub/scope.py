@@ -338,10 +338,8 @@ class _ScopeState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gkehub/scope:Scope")
 class Scope(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkehub/scope:Scope"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

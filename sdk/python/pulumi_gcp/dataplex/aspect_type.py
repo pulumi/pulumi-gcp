@@ -389,10 +389,8 @@ class _AspectTypeState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataplex/aspectType:AspectType")
 class AspectType(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/aspectType:AspectType"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

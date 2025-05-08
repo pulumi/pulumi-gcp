@@ -276,10 +276,8 @@ class _TaxonomyIamBindingState:
         pulumi.set(self, "taxonomy", value)
 
 
+@pulumi.type_token("gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding")
 class TaxonomyIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

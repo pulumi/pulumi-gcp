@@ -236,10 +236,8 @@ class _LogScopeState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:logging/logScope:LogScope")
 class LogScope(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/logScope:LogScope"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

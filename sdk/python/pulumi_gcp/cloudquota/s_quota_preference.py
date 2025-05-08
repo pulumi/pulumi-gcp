@@ -434,10 +434,8 @@ class _SQuotaPreferenceState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:cloudquota/sQuotaPreference:SQuotaPreference")
 class SQuotaPreference(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudquota/sQuotaPreference:SQuotaPreference"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

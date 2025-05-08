@@ -496,10 +496,8 @@ class _BackupState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("gcp:filestore/backup:Backup")
 class Backup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:filestore/backup:Backup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

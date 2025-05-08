@@ -227,10 +227,8 @@ class _FirewallRuleState:
         pulumi.set(self, "source_range", value)
 
 
+@pulumi.type_token("gcp:appengine/firewallRule:FirewallRule")
 class FirewallRule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:appengine/firewallRule:FirewallRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

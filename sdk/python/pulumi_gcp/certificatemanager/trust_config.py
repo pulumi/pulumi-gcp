@@ -372,10 +372,8 @@ class _TrustConfigState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:certificatemanager/trustConfig:TrustConfig")
 class TrustConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificatemanager/trustConfig:TrustConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

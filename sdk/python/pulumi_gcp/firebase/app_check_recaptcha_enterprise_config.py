@@ -207,10 +207,8 @@ class _AppCheckRecaptchaEnterpriseConfigState:
         pulumi.set(self, "token_ttl", value)
 
 
+@pulumi.type_token("gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig")
 class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

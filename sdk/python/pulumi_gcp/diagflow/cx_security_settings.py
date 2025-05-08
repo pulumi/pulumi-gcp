@@ -527,10 +527,8 @@ class _CxSecuritySettingsState:
         pulumi.set(self, "retention_window_days", value)
 
 
+@pulumi.type_token("gcp:diagflow/cxSecuritySettings:CxSecuritySettings")
 class CxSecuritySettings(pulumi.CustomResource):
-
-    pulumi_type = "gcp:diagflow/cxSecuritySettings:CxSecuritySettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

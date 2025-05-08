@@ -788,10 +788,8 @@ class _BackupVaultState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:backupdisasterrecovery/backupVault:BackupVault")
 class BackupVault(pulumi.CustomResource):
-
-    pulumi_type = "gcp:backupdisasterrecovery/backupVault:BackupVault"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

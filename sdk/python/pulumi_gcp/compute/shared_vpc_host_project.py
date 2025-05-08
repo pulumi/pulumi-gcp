@@ -64,10 +64,8 @@ class _SharedVPCHostProjectState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:compute/sharedVPCHostProject:SharedVPCHostProject")
 class SharedVPCHostProject(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/sharedVPCHostProject:SharedVPCHostProject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -327,10 +327,8 @@ class _RegionResizeRequestState:
         pulumi.set(self, "statuses", value)
 
 
+@pulumi.type_token("gcp:compute/regionResizeRequest:RegionResizeRequest")
 class RegionResizeRequest(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionResizeRequest:RegionResizeRequest"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

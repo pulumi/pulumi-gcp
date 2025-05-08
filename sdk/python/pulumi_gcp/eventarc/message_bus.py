@@ -479,10 +479,8 @@ class _MessageBusState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:eventarc/messageBus:MessageBus")
 class MessageBus(pulumi.CustomResource):
-
-    pulumi_type = "gcp:eventarc/messageBus:MessageBus"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

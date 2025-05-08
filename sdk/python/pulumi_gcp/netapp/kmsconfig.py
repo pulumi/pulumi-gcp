@@ -319,10 +319,8 @@ class _KmsconfigState:
         pulumi.set(self, "service_account", value)
 
 
+@pulumi.type_token("gcp:netapp/kmsconfig:Kmsconfig")
 class Kmsconfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:netapp/kmsconfig:Kmsconfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

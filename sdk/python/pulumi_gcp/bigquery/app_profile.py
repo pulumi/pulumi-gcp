@@ -458,10 +458,8 @@ class _AppProfileState:
         pulumi.set(self, "standard_isolation", value)
 
 
+@pulumi.type_token("gcp:bigquery/appProfile:AppProfile")
 class AppProfile(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquery/appProfile:AppProfile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

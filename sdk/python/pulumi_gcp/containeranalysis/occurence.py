@@ -300,10 +300,8 @@ class _OccurenceState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:containeranalysis/occurence:Occurence")
 class Occurence(pulumi.CustomResource):
-
-    pulumi_type = "gcp:containeranalysis/occurence:Occurence"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

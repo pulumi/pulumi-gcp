@@ -917,10 +917,8 @@ class _MetastoreServiceState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataproc/metastoreService:MetastoreService")
 class MetastoreService(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/metastoreService:MetastoreService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

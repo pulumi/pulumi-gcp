@@ -233,10 +233,8 @@ class _WebIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:iap/webIamMember:WebIamMember")
 class WebIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/webIamMember:WebIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

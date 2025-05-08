@@ -168,10 +168,8 @@ class _BucketACLState:
         pulumi.set(self, "role_entities", value)
 
 
+@pulumi.type_token("gcp:storage/bucketACL:BucketACL")
 class BucketACL(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/bucketACL:BucketACL"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

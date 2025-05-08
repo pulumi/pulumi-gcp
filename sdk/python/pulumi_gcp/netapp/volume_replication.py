@@ -654,10 +654,8 @@ class _VolumeReplicationState:
         pulumi.set(self, "wait_for_mirror", value)
 
 
+@pulumi.type_token("gcp:netapp/volumeReplication:VolumeReplication")
 class VolumeReplication(pulumi.CustomResource):
-
-    pulumi_type = "gcp:netapp/volumeReplication:VolumeReplication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

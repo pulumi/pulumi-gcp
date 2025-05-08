@@ -288,10 +288,8 @@ class _EntryTypeIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding")
 class EntryTypeIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/entryTypeIamBinding:EntryTypeIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

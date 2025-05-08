@@ -288,10 +288,8 @@ class _AspectTypeIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dataplex/aspectTypeIamMember:AspectTypeIamMember")
 class AspectTypeIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/aspectTypeIamMember:AspectTypeIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

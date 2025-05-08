@@ -218,10 +218,8 @@ class _ServicePerimeterDryRunEgressPolicyState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy")
 class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

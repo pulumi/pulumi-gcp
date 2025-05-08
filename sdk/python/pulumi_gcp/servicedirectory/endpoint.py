@@ -273,10 +273,8 @@ class _EndpointState:
         pulumi.set(self, "service", value)
 
 
+@pulumi.type_token("gcp:servicedirectory/endpoint:Endpoint")
 class Endpoint(pulumi.CustomResource):
-
-    pulumi_type = "gcp:servicedirectory/endpoint:Endpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

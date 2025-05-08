@@ -224,10 +224,8 @@ class _CryptoKeyIAMBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding")
 class CryptoKeyIAMBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

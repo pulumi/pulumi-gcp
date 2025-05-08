@@ -362,10 +362,8 @@ class _UserState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:sql/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "gcp:sql/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

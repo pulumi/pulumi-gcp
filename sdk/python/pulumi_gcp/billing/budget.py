@@ -293,10 +293,8 @@ class _BudgetState:
         pulumi.set(self, "threshold_rules", value)
 
 
+@pulumi.type_token("gcp:billing/budget:Budget")
 class Budget(pulumi.CustomResource):
-
-    pulumi_type = "gcp:billing/budget:Budget"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

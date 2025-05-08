@@ -198,10 +198,8 @@ class _MetastoreDatabaseIamPolicyState:
         pulumi.set(self, "service_id", value)
 
 
+@pulumi.type_token("gcp:dataproc/metastoreDatabaseIamPolicy:MetastoreDatabaseIamPolicy")
 class MetastoreDatabaseIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/metastoreDatabaseIamPolicy:MetastoreDatabaseIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -433,10 +433,8 @@ class _V2OrganizationSccBigQueryExportsState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports")
 class V2OrganizationSccBigQueryExports(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

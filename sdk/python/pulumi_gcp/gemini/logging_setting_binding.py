@@ -366,10 +366,8 @@ class _LoggingSettingBindingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gemini/loggingSettingBinding:LoggingSettingBinding")
 class LoggingSettingBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gemini/loggingSettingBinding:LoggingSettingBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

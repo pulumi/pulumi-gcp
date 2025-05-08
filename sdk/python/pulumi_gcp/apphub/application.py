@@ -344,10 +344,8 @@ class _ApplicationState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:apphub/application:Application")
 class Application(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apphub/application:Application"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

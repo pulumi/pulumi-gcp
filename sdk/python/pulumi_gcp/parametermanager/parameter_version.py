@@ -242,10 +242,8 @@ class _ParameterVersionState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:parametermanager/parameterVersion:ParameterVersion")
 class ParameterVersion(pulumi.CustomResource):
-
-    pulumi_type = "gcp:parametermanager/parameterVersion:ParameterVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

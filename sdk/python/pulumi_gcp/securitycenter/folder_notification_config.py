@@ -235,10 +235,8 @@ class _FolderNotificationConfigState:
         pulumi.set(self, "streaming_config", value)
 
 
+@pulumi.type_token("gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig")
 class FolderNotificationConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

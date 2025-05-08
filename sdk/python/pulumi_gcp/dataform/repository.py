@@ -465,10 +465,8 @@ class _RepositoryState:
         pulumi.set(self, "workspace_compilation_overrides", value)
 
 
+@pulumi.type_token("gcp:dataform/repository:Repository")
 class Repository(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataform/repository:Repository"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

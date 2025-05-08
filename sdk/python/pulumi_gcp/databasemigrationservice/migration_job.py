@@ -703,10 +703,8 @@ class _MigrationJobState:
         pulumi.set(self, "vpc_peering_connectivity", value)
 
 
+@pulumi.type_token("gcp:databasemigrationservice/migrationJob:MigrationJob")
 class MigrationJob(pulumi.CustomResource):
-
-    pulumi_type = "gcp:databasemigrationservice/migrationJob:MigrationJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

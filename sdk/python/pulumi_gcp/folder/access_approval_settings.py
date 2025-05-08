@@ -263,10 +263,8 @@ class _AccessApprovalSettingsState:
         pulumi.set(self, "notification_emails", value)
 
 
+@pulumi.type_token("gcp:folder/accessApprovalSettings:AccessApprovalSettings")
 class AccessApprovalSettings(pulumi.CustomResource):
-
-    pulumi_type = "gcp:folder/accessApprovalSettings:AccessApprovalSettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

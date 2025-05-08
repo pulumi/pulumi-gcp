@@ -148,10 +148,8 @@ class _IAMAuditConfigState:
         pulumi.set(self, "service", value)
 
 
+@pulumi.type_token("gcp:projects/iAMAuditConfig:IAMAuditConfig")
 class IAMAuditConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:projects/iAMAuditConfig:IAMAuditConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

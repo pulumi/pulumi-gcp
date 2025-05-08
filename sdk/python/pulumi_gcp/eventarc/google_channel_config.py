@@ -192,10 +192,8 @@ class _GoogleChannelConfigState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:eventarc/googleChannelConfig:GoogleChannelConfig")
 class GoogleChannelConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:eventarc/googleChannelConfig:GoogleChannelConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

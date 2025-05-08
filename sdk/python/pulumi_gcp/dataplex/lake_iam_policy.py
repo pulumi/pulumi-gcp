@@ -175,10 +175,8 @@ class _LakeIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:dataplex/lakeIamPolicy:LakeIamPolicy")
 class LakeIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataplex/lakeIamPolicy:LakeIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

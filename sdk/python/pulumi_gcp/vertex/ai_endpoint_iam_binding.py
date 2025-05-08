@@ -188,10 +188,8 @@ class _AiEndpointIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding")
 class AiEndpointIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

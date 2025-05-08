@@ -340,10 +340,8 @@ class _KeyState:
         pulumi.set(self, "valid_before", value)
 
 
+@pulumi.type_token("gcp:serviceaccount/key:Key")
 class Key(pulumi.CustomResource):
-
-    pulumi_type = "gcp:serviceaccount/key:Key"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

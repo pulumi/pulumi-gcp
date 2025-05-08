@@ -439,10 +439,8 @@ class _ConfigState:
         pulumi.set(self, "sms_region_config", value)
 
 
+@pulumi.type_token("gcp:identityplatform/config:Config")
 class Config(pulumi.CustomResource):
-
-    pulumi_type = "gcp:identityplatform/config:Config"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

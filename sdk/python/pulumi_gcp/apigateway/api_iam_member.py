@@ -244,10 +244,8 @@ class _ApiIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:apigateway/apiIamMember:ApiIamMember")
 class ApiIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigateway/apiIamMember:ApiIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

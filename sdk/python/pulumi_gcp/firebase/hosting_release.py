@@ -276,10 +276,8 @@ class _HostingReleaseState:
         pulumi.set(self, "version_name", value)
 
 
+@pulumi.type_token("gcp:firebase/hostingRelease:HostingRelease")
 class HostingRelease(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/hostingRelease:HostingRelease"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

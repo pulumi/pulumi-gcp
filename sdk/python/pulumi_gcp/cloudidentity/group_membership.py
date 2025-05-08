@@ -233,10 +233,8 @@ class _GroupMembershipState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:cloudidentity/groupMembership:GroupMembership")
 class GroupMembership(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudidentity/groupMembership:GroupMembership"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

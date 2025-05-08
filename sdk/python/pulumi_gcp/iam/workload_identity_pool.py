@@ -274,10 +274,8 @@ class _WorkloadIdentityPoolState:
         pulumi.set(self, "workload_identity_pool_id", value)
 
 
+@pulumi.type_token("gcp:iam/workloadIdentityPool:WorkloadIdentityPool")
 class WorkloadIdentityPool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iam/workloadIdentityPool:WorkloadIdentityPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

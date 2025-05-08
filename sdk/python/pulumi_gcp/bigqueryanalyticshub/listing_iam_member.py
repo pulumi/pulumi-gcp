@@ -327,10 +327,8 @@ class _ListingIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:bigqueryanalyticshub/listingIamMember:ListingIamMember")
 class ListingIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigqueryanalyticshub/listingIamMember:ListingIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

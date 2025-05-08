@@ -518,10 +518,8 @@ class _GoogleApiSourceState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:eventarc/googleApiSource:GoogleApiSource")
 class GoogleApiSource(pulumi.CustomResource):
-
-    pulumi_type = "gcp:eventarc/googleApiSource:GoogleApiSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

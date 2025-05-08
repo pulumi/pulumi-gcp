@@ -188,10 +188,8 @@ class _AiEndpointIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:vertex/aiEndpointIamMember:AiEndpointIamMember")
 class AiEndpointIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

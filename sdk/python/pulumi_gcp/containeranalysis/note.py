@@ -366,10 +366,8 @@ class _NoteState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:containeranalysis/note:Note")
 class Note(pulumi.CustomResource):
-
-    pulumi_type = "gcp:containeranalysis/note:Note"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

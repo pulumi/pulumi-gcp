@@ -387,10 +387,8 @@ class _AppGatewayState:
         pulumi.set(self, "uri", value)
 
 
+@pulumi.type_token("gcp:beyondcorp/appGateway:AppGateway")
 class AppGateway(pulumi.CustomResource):
-
-    pulumi_type = "gcp:beyondcorp/appGateway:AppGateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

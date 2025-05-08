@@ -127,10 +127,8 @@ class _EnvGroupAttachmentState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gcp:apigee/envGroupAttachment:EnvGroupAttachment")
 class EnvGroupAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/envGroupAttachment:EnvGroupAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

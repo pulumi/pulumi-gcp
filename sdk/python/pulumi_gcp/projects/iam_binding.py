@@ -212,10 +212,8 @@ class _IAMBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:projects/iAMBinding:IAMBinding")
 class IAMBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:projects/iAMBinding:IAMBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

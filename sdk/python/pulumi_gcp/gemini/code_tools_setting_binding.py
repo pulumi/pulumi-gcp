@@ -366,10 +366,8 @@ class _CodeToolsSettingBindingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding")
 class CodeToolsSettingBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

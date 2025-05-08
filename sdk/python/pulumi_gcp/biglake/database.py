@@ -252,10 +252,8 @@ class _DatabaseState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:biglake/database:Database")
 class Database(pulumi.CustomResource):
-
-    pulumi_type = "gcp:biglake/database:Database"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

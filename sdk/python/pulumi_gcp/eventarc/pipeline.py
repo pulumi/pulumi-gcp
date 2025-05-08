@@ -618,10 +618,8 @@ class _PipelineState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:eventarc/pipeline:Pipeline")
 class Pipeline(pulumi.CustomResource):
-
-    pulumi_type = "gcp:eventarc/pipeline:Pipeline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

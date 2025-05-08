@@ -216,10 +216,8 @@ class _DnsZoneState:
         pulumi.set(self, "peering_config", value)
 
 
+@pulumi.type_token("gcp:apigee/dnsZone:DnsZone")
 class DnsZone(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/dnsZone:DnsZone"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

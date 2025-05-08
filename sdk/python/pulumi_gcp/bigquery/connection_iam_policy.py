@@ -219,10 +219,8 @@ class _ConnectionIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy")
 class ConnectionIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

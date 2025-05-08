@@ -307,10 +307,8 @@ class _AppleAppState:
         pulumi.set(self, "team_id", value)
 
 
+@pulumi.type_token("gcp:firebase/appleApp:AppleApp")
 class AppleApp(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/appleApp:AppleApp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

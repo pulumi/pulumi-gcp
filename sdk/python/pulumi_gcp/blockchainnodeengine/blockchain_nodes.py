@@ -361,10 +361,8 @@ class _BlockchainNodesState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes")
 class BlockchainNodes(pulumi.CustomResource):
-
-    pulumi_type = "gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

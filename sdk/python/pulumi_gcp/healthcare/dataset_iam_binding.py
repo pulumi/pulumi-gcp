@@ -216,10 +216,8 @@ class _DatasetIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:healthcare/datasetIamBinding:DatasetIamBinding")
 class DatasetIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/datasetIamBinding:DatasetIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

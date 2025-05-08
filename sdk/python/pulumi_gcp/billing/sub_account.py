@@ -187,10 +187,8 @@ class _SubAccountState:
         pulumi.set(self, "open", value)
 
 
+@pulumi.type_token("gcp:billing/subAccount:SubAccount")
 class SubAccount(pulumi.CustomResource):
-
-    pulumi_type = "gcp:billing/subAccount:SubAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

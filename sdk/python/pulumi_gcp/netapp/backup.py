@@ -439,10 +439,8 @@ class _BackupState:
         pulumi.set(self, "volume_usage_bytes", value)
 
 
+@pulumi.type_token("gcp:netapp/backup:Backup")
 class Backup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:netapp/backup:Backup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

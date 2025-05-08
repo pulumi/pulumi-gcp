@@ -151,10 +151,8 @@ class _RepositoryIamPolicyState:
         pulumi.set(self, "repository", value)
 
 
+@pulumi.type_token("gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy")
 class RepositoryIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

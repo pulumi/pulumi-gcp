@@ -256,10 +256,8 @@ class _AppCheckDeviceCheckConfigState:
         pulumi.set(self, "token_ttl", value)
 
 
+@pulumi.type_token("gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig")
 class AppCheckDeviceCheckConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

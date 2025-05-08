@@ -207,10 +207,8 @@ class _FolderExclusionState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("gcp:logging/folderExclusion:FolderExclusion")
 class FolderExclusion(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/folderExclusion:FolderExclusion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

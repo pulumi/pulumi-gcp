@@ -427,10 +427,8 @@ class _NetworkAttachmentState:
         pulumi.set(self, "subnetworks", value)
 
 
+@pulumi.type_token("gcp:compute/networkAttachment:NetworkAttachment")
 class NetworkAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/networkAttachment:NetworkAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

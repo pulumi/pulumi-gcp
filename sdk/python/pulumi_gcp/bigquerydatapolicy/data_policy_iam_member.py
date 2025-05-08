@@ -288,10 +288,8 @@ class _DataPolicyIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:bigquerydatapolicy/dataPolicyIamMember:DataPolicyIamMember")
 class DataPolicyIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquerydatapolicy/dataPolicyIamMember:DataPolicyIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

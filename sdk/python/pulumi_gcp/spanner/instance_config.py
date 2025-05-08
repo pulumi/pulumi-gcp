@@ -291,10 +291,8 @@ class _InstanceConfigState:
         pulumi.set(self, "replicas", value)
 
 
+@pulumi.type_token("gcp:spanner/instanceConfig:InstanceConfig")
 class InstanceConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:spanner/instanceConfig:InstanceConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

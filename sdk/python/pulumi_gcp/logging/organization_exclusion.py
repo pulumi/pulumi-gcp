@@ -203,10 +203,8 @@ class _OrganizationExclusionState:
         pulumi.set(self, "org_id", value)
 
 
+@pulumi.type_token("gcp:logging/organizationExclusion:OrganizationExclusion")
 class OrganizationExclusion(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/organizationExclusion:OrganizationExclusion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

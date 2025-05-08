@@ -444,10 +444,8 @@ class _AiIndexState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:vertex/aiIndex:AiIndex")
 class AiIndex(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiIndex:AiIndex"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

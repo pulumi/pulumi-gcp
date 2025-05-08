@@ -632,10 +632,8 @@ class _SnapshotState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/snapshot:Snapshot")
 class Snapshot(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/snapshot:Snapshot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

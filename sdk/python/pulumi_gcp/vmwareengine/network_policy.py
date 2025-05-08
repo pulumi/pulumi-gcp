@@ -414,10 +414,8 @@ class _NetworkPolicyState:
         pulumi.set(self, "vmware_engine_network_canonical", value)
 
 
+@pulumi.type_token("gcp:vmwareengine/networkPolicy:NetworkPolicy")
 class NetworkPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vmwareengine/networkPolicy:NetworkPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

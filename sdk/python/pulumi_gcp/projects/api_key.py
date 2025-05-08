@@ -211,10 +211,8 @@ class _ApiKeyState:
         pulumi.set(self, "uid", value)
 
 
+@pulumi.type_token("gcp:projects/apiKey:ApiKey")
 class ApiKey(pulumi.CustomResource):
-
-    pulumi_type = "gcp:projects/apiKey:ApiKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -333,10 +333,8 @@ class _PreventionJobTriggerState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger")
 class PreventionJobTrigger(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataloss/preventionJobTrigger:PreventionJobTrigger"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

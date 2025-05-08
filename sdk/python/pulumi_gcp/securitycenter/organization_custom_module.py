@@ -257,10 +257,8 @@ class _OrganizationCustomModuleState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:securitycenter/organizationCustomModule:OrganizationCustomModule")
 class OrganizationCustomModule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

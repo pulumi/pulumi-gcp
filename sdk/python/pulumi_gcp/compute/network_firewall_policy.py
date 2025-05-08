@@ -241,10 +241,8 @@ class _NetworkFirewallPolicyState:
         pulumi.set(self, "self_link_with_id", value)
 
 
+@pulumi.type_token("gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy")
 class NetworkFirewallPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

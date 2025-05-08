@@ -138,10 +138,8 @@ class _EnvironmentIamPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
+@pulumi.type_token("gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy")
 class EnvironmentIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

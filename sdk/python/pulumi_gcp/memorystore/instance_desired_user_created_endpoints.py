@@ -182,10 +182,8 @@ class _InstanceDesiredUserCreatedEndpointsState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints")
 class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
-
-    pulumi_type = "gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

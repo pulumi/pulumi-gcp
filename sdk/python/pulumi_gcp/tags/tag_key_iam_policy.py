@@ -115,10 +115,8 @@ class _TagKeyIamPolicyState:
         pulumi.set(self, "tag_key", value)
 
 
+@pulumi.type_token("gcp:tags/tagKeyIamPolicy:TagKeyIamPolicy")
 class TagKeyIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:tags/tagKeyIamPolicy:TagKeyIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

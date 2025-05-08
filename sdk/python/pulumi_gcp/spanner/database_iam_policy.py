@@ -182,10 +182,8 @@ class _DatabaseIAMPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy")
 class DatabaseIAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -354,10 +354,8 @@ class _FirewallEndpointState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/firewallEndpoint:FirewallEndpoint")
 class FirewallEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/firewallEndpoint:FirewallEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

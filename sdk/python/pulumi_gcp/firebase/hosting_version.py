@@ -148,10 +148,8 @@ class _HostingVersionState:
         pulumi.set(self, "version_id", value)
 
 
+@pulumi.type_token("gcp:firebase/hostingVersion:HostingVersion")
 class HostingVersion(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/hostingVersion:HostingVersion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

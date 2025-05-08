@@ -306,10 +306,8 @@ class _InsightsReportConfigState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:storage/insightsReportConfig:InsightsReportConfig")
 class InsightsReportConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/insightsReportConfig:InsightsReportConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

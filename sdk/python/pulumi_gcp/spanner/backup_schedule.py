@@ -356,10 +356,8 @@ class _BackupScheduleState:
         pulumi.set(self, "spec", value)
 
 
+@pulumi.type_token("gcp:spanner/backupSchedule:BackupSchedule")
 class BackupSchedule(pulumi.CustomResource):
-
-    pulumi_type = "gcp:spanner/backupSchedule:BackupSchedule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

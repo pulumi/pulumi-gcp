@@ -184,10 +184,8 @@ class _LiteReservationState:
         pulumi.set(self, "throughput_capacity", value)
 
 
+@pulumi.type_token("gcp:pubsub/liteReservation:LiteReservation")
 class LiteReservation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:pubsub/liteReservation:LiteReservation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

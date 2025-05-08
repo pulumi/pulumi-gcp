@@ -559,10 +559,8 @@ class _SpokeState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkconnectivity/spoke:Spoke")
 class Spoke(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkconnectivity/spoke:Spoke"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

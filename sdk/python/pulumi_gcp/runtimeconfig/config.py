@@ -145,10 +145,8 @@ class _ConfigState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:runtimeconfig/config:Config")
 class Config(pulumi.CustomResource):
-
-    pulumi_type = "gcp:runtimeconfig/config:Config"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

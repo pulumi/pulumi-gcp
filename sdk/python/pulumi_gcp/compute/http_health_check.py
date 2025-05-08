@@ -465,10 +465,8 @@ class _HttpHealthCheckState:
         pulumi.set(self, "unhealthy_threshold", value)
 
 
+@pulumi.type_token("gcp:compute/httpHealthCheck:HttpHealthCheck")
 class HttpHealthCheck(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/httpHealthCheck:HttpHealthCheck"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -222,10 +222,8 @@ class _DocumentAiProcessorState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor")
 class DocumentAiProcessor(pulumi.CustomResource):
-
-    pulumi_type = "gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

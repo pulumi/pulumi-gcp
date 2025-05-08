@@ -276,10 +276,8 @@ class _JobIAMBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:dataproc/jobIAMBinding:JobIAMBinding")
 class JobIAMBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/jobIAMBinding:JobIAMBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

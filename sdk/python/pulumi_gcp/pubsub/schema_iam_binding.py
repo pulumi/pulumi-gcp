@@ -252,10 +252,8 @@ class _SchemaIamBindingState:
         pulumi.set(self, "schema", value)
 
 
+@pulumi.type_token("gcp:pubsub/schemaIamBinding:SchemaIamBinding")
 class SchemaIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:pubsub/schemaIamBinding:SchemaIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

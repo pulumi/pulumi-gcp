@@ -1136,10 +1136,8 @@ class _FunctionState:
         pulumi.set(self, "vpc_connector_egress_settings", value)
 
 
+@pulumi.type_token("gcp:cloudfunctions/function:Function")
 class Function(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudfunctions/function:Function"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

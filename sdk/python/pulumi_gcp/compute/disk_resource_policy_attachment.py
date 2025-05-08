@@ -180,10 +180,8 @@ class _DiskResourcePolicyAttachmentState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment")
 class DiskResourcePolicyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

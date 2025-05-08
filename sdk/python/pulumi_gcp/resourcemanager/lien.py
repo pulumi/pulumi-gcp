@@ -241,10 +241,8 @@ class _LienState:
         pulumi.set(self, "restrictions", value)
 
 
+@pulumi.type_token("gcp:resourcemanager/lien:Lien")
 class Lien(pulumi.CustomResource):
-
-    pulumi_type = "gcp:resourcemanager/lien:Lien"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

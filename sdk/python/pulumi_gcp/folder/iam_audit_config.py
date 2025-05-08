@@ -144,10 +144,8 @@ class _IamAuditConfigState:
         pulumi.set(self, "service", value)
 
 
+@pulumi.type_token("gcp:folder/iamAuditConfig:IamAuditConfig")
 class IamAuditConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:folder/iamAuditConfig:IamAuditConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

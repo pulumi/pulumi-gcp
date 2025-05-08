@@ -185,10 +185,8 @@ class _ContactState:
         pulumi.set(self, "parent", value)
 
 
+@pulumi.type_token("gcp:essentialcontacts/contact:Contact")
 class Contact(pulumi.CustomResource):
-
-    pulumi_type = "gcp:essentialcontacts/contact:Contact"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

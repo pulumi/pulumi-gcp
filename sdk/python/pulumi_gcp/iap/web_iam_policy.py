@@ -120,10 +120,8 @@ class _WebIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:iap/webIamPolicy:WebIamPolicy")
 class WebIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/webIamPolicy:WebIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

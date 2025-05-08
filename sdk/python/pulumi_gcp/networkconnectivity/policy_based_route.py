@@ -493,10 +493,8 @@ class _PolicyBasedRouteState:
         pulumi.set(self, "warnings", value)
 
 
+@pulumi.type_token("gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute")
 class PolicyBasedRoute(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

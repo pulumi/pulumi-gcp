@@ -286,10 +286,8 @@ class _TlsRouteState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkservices/tlsRoute:TlsRoute")
 class TlsRoute(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/tlsRoute:TlsRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -405,10 +405,8 @@ class _BitbucketServerConfigState:
         pulumi.set(self, "webhook_key", value)
 
 
+@pulumi.type_token("gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig")
 class BitbucketServerConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

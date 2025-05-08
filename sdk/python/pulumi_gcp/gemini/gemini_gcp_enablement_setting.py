@@ -299,10 +299,8 @@ class _GeminiGcpEnablementSettingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting")
 class GeminiGcpEnablementSetting(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -347,10 +347,8 @@ class _ReservationState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/reservation:Reservation")
 class Reservation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/reservation:Reservation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

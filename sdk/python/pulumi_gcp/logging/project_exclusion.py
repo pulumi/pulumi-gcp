@@ -208,10 +208,8 @@ class _ProjectExclusionState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:logging/projectExclusion:ProjectExclusion")
 class ProjectExclusion(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/projectExclusion:ProjectExclusion"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

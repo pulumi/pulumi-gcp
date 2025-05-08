@@ -325,10 +325,8 @@ class _AiFeatureGroupState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:vertex/aiFeatureGroup:AiFeatureGroup")
 class AiFeatureGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiFeatureGroup:AiFeatureGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

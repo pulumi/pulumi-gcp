@@ -127,10 +127,8 @@ class _FhirStoreIamPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
+@pulumi.type_token("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy")
 class FhirStoreIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

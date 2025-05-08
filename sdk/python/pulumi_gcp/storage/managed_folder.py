@@ -220,10 +220,8 @@ class _ManagedFolderState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:storage/managedFolder:ManagedFolder")
 class ManagedFolder(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/managedFolder:ManagedFolder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -200,10 +200,8 @@ class _EkmConnectionIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy")
 class EkmConnectionIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

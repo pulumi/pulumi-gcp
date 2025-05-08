@@ -749,10 +749,8 @@ class _AddressState:
         pulumi.set(self, "users", value)
 
 
+@pulumi.type_token("gcp:compute/address:Address")
 class Address(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/address:Address"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

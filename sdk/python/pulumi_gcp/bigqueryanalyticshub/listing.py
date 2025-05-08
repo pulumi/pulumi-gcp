@@ -526,10 +526,8 @@ class _ListingState:
         pulumi.set(self, "restricted_export_config", value)
 
 
+@pulumi.type_token("gcp:bigqueryanalyticshub/listing:Listing")
 class Listing(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigqueryanalyticshub/listing:Listing"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

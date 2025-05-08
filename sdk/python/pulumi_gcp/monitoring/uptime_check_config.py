@@ -565,10 +565,8 @@ class _UptimeCheckConfigState:
         pulumi.set(self, "user_labels", value)
 
 
+@pulumi.type_token("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig")
 class UptimeCheckConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

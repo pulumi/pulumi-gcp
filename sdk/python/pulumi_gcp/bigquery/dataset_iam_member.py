@@ -256,10 +256,8 @@ class _DatasetIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:bigquery/datasetIamMember:DatasetIamMember")
 class DatasetIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigquery/datasetIamMember:DatasetIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

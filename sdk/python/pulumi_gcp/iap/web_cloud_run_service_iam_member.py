@@ -304,10 +304,8 @@ class _WebCloudRunServiceIamMemberState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:iap/webCloudRunServiceIamMember:WebCloudRunServiceIamMember")
 class WebCloudRunServiceIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/webCloudRunServiceIamMember:WebCloudRunServiceIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

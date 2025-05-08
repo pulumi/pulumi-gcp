@@ -482,10 +482,8 @@ class _MetricDescriptorState:
         pulumi.set(self, "value_type", value)
 
 
+@pulumi.type_token("gcp:monitoring/metricDescriptor:MetricDescriptor")
 class MetricDescriptor(pulumi.CustomResource):
-
-    pulumi_type = "gcp:monitoring/metricDescriptor:MetricDescriptor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

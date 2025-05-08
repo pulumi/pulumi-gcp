@@ -400,10 +400,8 @@ class _ScopeRbacRoleBindingState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding")
 class ScopeRbacRoleBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

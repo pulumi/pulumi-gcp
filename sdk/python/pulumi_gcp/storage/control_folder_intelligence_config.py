@@ -199,10 +199,8 @@ class _ControlFolderIntelligenceConfigState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig")
 class ControlFolderIntelligenceConfig(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/controlFolderIntelligenceConfig:ControlFolderIntelligenceConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

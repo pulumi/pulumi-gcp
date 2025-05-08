@@ -265,10 +265,8 @@ class _NetworkState:
         pulumi.set(self, "vpc_networks", value)
 
 
+@pulumi.type_token("gcp:vmwareengine/network:Network")
 class Network(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vmwareengine/network:Network"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -115,10 +115,8 @@ class _BucketIAMPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
+@pulumi.type_token("gcp:storage/bucketIAMPolicy:BucketIAMPolicy")
 class BucketIAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:storage/bucketIAMPolicy:BucketIAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

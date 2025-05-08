@@ -182,10 +182,8 @@ class _VpcServiceControlsState:
         pulumi.set(self, "service", value)
 
 
+@pulumi.type_token("gcp:servicenetworking/vpcServiceControls:VpcServiceControls")
 class VpcServiceControls(pulumi.CustomResource):
-
-    pulumi_type = "gcp:servicenetworking/vpcServiceControls:VpcServiceControls"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -304,10 +304,8 @@ class _CertificateTemplateIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:certificateauthority/certificateTemplateIamBinding:CertificateTemplateIamBinding")
 class CertificateTemplateIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificateauthority/certificateTemplateIamBinding:CertificateTemplateIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

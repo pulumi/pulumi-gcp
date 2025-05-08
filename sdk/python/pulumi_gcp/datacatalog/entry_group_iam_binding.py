@@ -276,10 +276,8 @@ class _EntryGroupIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:datacatalog/entryGroupIamBinding:EntryGroupIamBinding")
 class EntryGroupIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/entryGroupIamBinding:EntryGroupIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

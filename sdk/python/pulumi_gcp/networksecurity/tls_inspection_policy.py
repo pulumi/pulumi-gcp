@@ -416,10 +416,8 @@ class _TlsInspectionPolicyState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy")
 class TlsInspectionPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

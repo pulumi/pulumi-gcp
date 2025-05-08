@@ -240,10 +240,8 @@ class _SubscriptionIAMBindingState:
         pulumi.set(self, "subscription", value)
 
 
+@pulumi.type_token("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding")
 class SubscriptionIAMBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

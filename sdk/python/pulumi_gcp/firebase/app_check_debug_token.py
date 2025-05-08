@@ -226,10 +226,8 @@ class _AppCheckDebugTokenState:
         pulumi.set(self, "token", value)
 
 
+@pulumi.type_token("gcp:firebase/appCheckDebugToken:AppCheckDebugToken")
 class AppCheckDebugToken(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/appCheckDebugToken:AppCheckDebugToken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -199,10 +199,8 @@ class _CaPoolIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy")
 class CaPoolIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

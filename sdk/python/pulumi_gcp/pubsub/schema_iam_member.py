@@ -252,10 +252,8 @@ class _SchemaIamMemberState:
         pulumi.set(self, "schema", value)
 
 
+@pulumi.type_token("gcp:pubsub/schemaIamMember:SchemaIamMember")
 class SchemaIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:pubsub/schemaIamMember:SchemaIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

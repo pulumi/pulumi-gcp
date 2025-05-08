@@ -276,10 +276,8 @@ class _TagTemplateIamBindingState:
         pulumi.set(self, "tag_template", value)
 
 
+@pulumi.type_token("gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding")
 class TagTemplateIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

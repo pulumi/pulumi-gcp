@@ -473,10 +473,8 @@ class _NodePoolState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:edgecontainer/nodePool:NodePool")
 class NodePool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:edgecontainer/nodePool:NodePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -330,11 +330,9 @@ class _MangedSslCertificateState:
 warnings.warn("""gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""", DeprecationWarning)
 
 
+@pulumi.type_token("gcp:compute/mangedSslCertificate:MangedSslCertificate")
 class MangedSslCertificate(pulumi.CustomResource):
     warnings.warn("""gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""", DeprecationWarning)
-
-
-    pulumi_type = "gcp:compute/mangedSslCertificate:MangedSslCertificate"
 
     @overload
     def __init__(__self__,

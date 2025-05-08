@@ -346,10 +346,8 @@ class _AppGroupState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("gcp:apigee/appGroup:AppGroup")
 class AppGroup(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/appGroup:AppGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -402,10 +402,8 @@ class _ApplicationState:
         pulumi.set(self, "url_dispatch_rules", value)
 
 
+@pulumi.type_token("gcp:appengine/application:Application")
 class Application(pulumi.CustomResource):
-
-    pulumi_type = "gcp:appengine/application:Application"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

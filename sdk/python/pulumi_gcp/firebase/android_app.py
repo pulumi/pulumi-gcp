@@ -329,10 +329,8 @@ class _AndroidAppState:
         pulumi.set(self, "sha256_hashes", value)
 
 
+@pulumi.type_token("gcp:firebase/androidApp:AndroidApp")
 class AndroidApp(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/androidApp:AndroidApp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

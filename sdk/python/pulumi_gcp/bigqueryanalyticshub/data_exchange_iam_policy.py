@@ -195,10 +195,8 @@ class _DataExchangeIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy")
 class DataExchangeIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

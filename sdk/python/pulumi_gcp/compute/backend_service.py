@@ -1681,10 +1681,8 @@ class _BackendServiceState:
         pulumi.set(self, "tls_settings", value)
 
 
+@pulumi.type_token("gcp:compute/backendService:BackendService")
 class BackendService(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/backendService:BackendService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

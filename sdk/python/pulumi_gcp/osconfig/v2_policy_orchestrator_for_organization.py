@@ -523,10 +523,8 @@ class _V2PolicyOrchestratorForOrganizationState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization")
 class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
-
-    pulumi_type = "gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

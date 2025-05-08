@@ -507,10 +507,8 @@ class _V2PolicyOrchestratorForFolderState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder")
 class V2PolicyOrchestratorForFolder(pulumi.CustomResource):
-
-    pulumi_type = "gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

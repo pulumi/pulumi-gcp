@@ -253,10 +253,8 @@ class _AiMetadataStoreState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:vertex/aiMetadataStore:AiMetadataStore")
 class AiMetadataStore(pulumi.CustomResource):
-
-    pulumi_type = "gcp:vertex/aiMetadataStore:AiMetadataStore"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

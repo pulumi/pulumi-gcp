@@ -403,10 +403,8 @@ class _ReferenceListState:
         pulumi.set(self, "syntax_type", value)
 
 
+@pulumi.type_token("gcp:chronicle/referenceList:ReferenceList")
 class ReferenceList(pulumi.CustomResource):
-
-    pulumi_type = "gcp:chronicle/referenceList:ReferenceList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

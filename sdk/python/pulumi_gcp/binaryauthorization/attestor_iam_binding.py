@@ -252,10 +252,8 @@ class _AttestorIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding")
 class AttestorIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

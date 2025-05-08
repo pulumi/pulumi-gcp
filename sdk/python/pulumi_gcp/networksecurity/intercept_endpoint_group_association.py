@@ -458,10 +458,8 @@ class _InterceptEndpointGroupAssociationState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation")
 class InterceptEndpointGroupAssociation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

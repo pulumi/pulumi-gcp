@@ -354,10 +354,8 @@ class _QueueState:
         pulumi.set(self, "stackdriver_logging_config", value)
 
 
+@pulumi.type_token("gcp:cloudtasks/queue:Queue")
 class Queue(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudtasks/queue:Queue"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -331,10 +331,8 @@ class _LoggingSettingState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:gemini/loggingSetting:LoggingSetting")
 class LoggingSetting(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gemini/loggingSetting:LoggingSetting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

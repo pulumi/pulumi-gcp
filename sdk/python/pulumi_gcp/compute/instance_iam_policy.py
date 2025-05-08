@@ -191,10 +191,8 @@ class _InstanceIAMPolicyState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/instanceIAMPolicy:InstanceIAMPolicy")
 class InstanceIAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

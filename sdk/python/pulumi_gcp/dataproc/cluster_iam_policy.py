@@ -199,10 +199,8 @@ class _ClusterIAMPolicyState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy")
 class ClusterIAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

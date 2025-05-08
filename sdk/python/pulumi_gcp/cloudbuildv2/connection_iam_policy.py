@@ -192,10 +192,8 @@ class _ConnectionIAMPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy")
 class ConnectionIAMPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

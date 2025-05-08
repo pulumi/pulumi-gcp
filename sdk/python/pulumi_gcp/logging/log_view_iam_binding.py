@@ -331,10 +331,8 @@ class _LogViewIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:logging/logViewIamBinding:LogViewIamBinding")
 class LogViewIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:logging/logViewIamBinding:LogViewIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

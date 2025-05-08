@@ -308,10 +308,8 @@ class _SubnetworkIAMBindingState:
         pulumi.set(self, "subnetwork", value)
 
 
+@pulumi.type_token("gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding")
 class SubnetworkIAMBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

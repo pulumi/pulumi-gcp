@@ -256,10 +256,8 @@ class _ManagementServerState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("gcp:backupdisasterrecovery/managementServer:ManagementServer")
 class ManagementServer(pulumi.CustomResource):
-
-    pulumi_type = "gcp:backupdisasterrecovery/managementServer:ManagementServer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

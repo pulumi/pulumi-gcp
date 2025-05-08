@@ -288,10 +288,8 @@ class _TunnelInstanceIAMMemberState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember")
 class TunnelInstanceIAMMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

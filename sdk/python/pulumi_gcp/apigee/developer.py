@@ -306,10 +306,8 @@ class _DeveloperState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("gcp:apigee/developer:Developer")
 class Developer(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/developer:Developer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

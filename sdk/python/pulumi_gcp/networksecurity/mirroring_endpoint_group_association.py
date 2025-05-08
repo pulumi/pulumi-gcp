@@ -458,10 +458,8 @@ class _MirroringEndpointGroupAssociationState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation")
 class MirroringEndpointGroupAssociation(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

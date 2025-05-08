@@ -320,10 +320,8 @@ class _InstancePartitionState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("gcp:spanner/instancePartition:InstancePartition")
 class InstancePartition(pulumi.CustomResource):
-
-    pulumi_type = "gcp:spanner/instancePartition:InstancePartition"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

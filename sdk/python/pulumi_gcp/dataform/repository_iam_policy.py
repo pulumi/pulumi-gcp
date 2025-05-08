@@ -139,10 +139,8 @@ class _RepositoryIamPolicyState:
         pulumi.set(self, "repository", value)
 
 
+@pulumi.type_token("gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy")
 class RepositoryIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

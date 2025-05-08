@@ -406,10 +406,8 @@ class _BackendBucketState:
         pulumi.set(self, "self_link", value)
 
 
+@pulumi.type_token("gcp:compute/backendBucket:BackendBucket")
 class BackendBucket(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/backendBucket:BackendBucket"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

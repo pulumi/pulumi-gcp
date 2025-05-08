@@ -307,10 +307,8 @@ class _RepositoryGroupIamBindingState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding")
 class RepositoryGroupIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

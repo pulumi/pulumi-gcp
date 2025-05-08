@@ -320,10 +320,8 @@ class _ApplicationState:
         pulumi.set(self, "upstreams", value)
 
 
+@pulumi.type_token("gcp:beyondcorp/application:Application")
 class Application(pulumi.CustomResource):
-
-    pulumi_type = "gcp:beyondcorp/application:Application"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -293,10 +293,8 @@ class _PreferenceSetState:
         pulumi.set(self, "virtual_machine_preferences", value)
 
 
+@pulumi.type_token("gcp:migrationcenter/preferenceSet:PreferenceSet")
 class PreferenceSet(pulumi.CustomResource):
-
-    pulumi_type = "gcp:migrationcenter/preferenceSet:PreferenceSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -426,10 +426,8 @@ class _AccessLevelConditionState:
         pulumi.set(self, "vpc_network_sources", value)
 
 
+@pulumi.type_token("gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition")
 class AccessLevelCondition(pulumi.CustomResource):
-
-    pulumi_type = "gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

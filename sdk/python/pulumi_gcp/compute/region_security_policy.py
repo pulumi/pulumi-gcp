@@ -421,10 +421,8 @@ class _RegionSecurityPolicyState:
         pulumi.set(self, "user_defined_fields", value)
 
 
+@pulumi.type_token("gcp:compute/regionSecurityPolicy:RegionSecurityPolicy")
 class RegionSecurityPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

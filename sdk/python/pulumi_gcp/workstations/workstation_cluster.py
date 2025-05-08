@@ -610,10 +610,8 @@ class _WorkstationClusterState:
         pulumi.set(self, "workstation_cluster_id", value)
 
 
+@pulumi.type_token("gcp:workstations/workstationCluster:WorkstationCluster")
 class WorkstationCluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:workstations/workstationCluster:WorkstationCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

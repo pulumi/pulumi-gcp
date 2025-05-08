@@ -212,10 +212,8 @@ class _UserWorkloadsConfigMapState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap")
 class UserWorkloadsConfigMap(pulumi.CustomResource):
-
-    pulumi_type = "gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

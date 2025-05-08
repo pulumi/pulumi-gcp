@@ -392,10 +392,8 @@ class _ServiceLbPoliciesState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkservices/serviceLbPolicies:ServiceLbPolicies")
 class ServiceLbPolicies(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/serviceLbPolicies:ServiceLbPolicies"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

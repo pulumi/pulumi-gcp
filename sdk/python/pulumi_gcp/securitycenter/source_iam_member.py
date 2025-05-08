@@ -187,10 +187,8 @@ class _SourceIamMemberState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("gcp:securitycenter/sourceIamMember:SourceIamMember")
 class SourceIamMember(pulumi.CustomResource):
-
-    pulumi_type = "gcp:securitycenter/sourceIamMember:SourceIamMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

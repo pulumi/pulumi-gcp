@@ -123,10 +123,8 @@ class _IngressPolicyState:
         pulumi.set(self, "resource", value)
 
 
+@pulumi.type_token("gcp:accesscontextmanager/ingressPolicy:IngressPolicy")
 class IngressPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:accesscontextmanager/ingressPolicy:IngressPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

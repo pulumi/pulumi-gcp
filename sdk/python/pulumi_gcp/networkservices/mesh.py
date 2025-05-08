@@ -347,10 +347,8 @@ class _MeshState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:networkservices/mesh:Mesh")
 class Mesh(pulumi.CustomResource):
-
-    pulumi_type = "gcp:networkservices/mesh:Mesh"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -180,10 +180,8 @@ class _ResourcePolicyAttachmentState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment")
 class ResourcePolicyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/resourcePolicyAttachment:ResourcePolicyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

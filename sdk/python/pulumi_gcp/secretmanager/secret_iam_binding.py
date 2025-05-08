@@ -256,10 +256,8 @@ class _SecretIamBindingState:
         pulumi.set(self, "secret_id", value)
 
 
+@pulumi.type_token("gcp:secretmanager/secretIamBinding:SecretIamBinding")
 class SecretIamBinding(pulumi.CustomResource):
-
-    pulumi_type = "gcp:secretmanager/secretIamBinding:SecretIamBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

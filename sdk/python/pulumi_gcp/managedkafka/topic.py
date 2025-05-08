@@ -285,10 +285,8 @@ class _TopicState:
         pulumi.set(self, "topic_id", value)
 
 
+@pulumi.type_token("gcp:managedkafka/topic:Topic")
 class Topic(pulumi.CustomResource):
-
-    pulumi_type = "gcp:managedkafka/topic:Topic"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

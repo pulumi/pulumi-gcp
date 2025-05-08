@@ -181,10 +181,8 @@ class _CaExternalAccountKeyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:compute/caExternalAccountKey:CaExternalAccountKey")
 class CaExternalAccountKey(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/caExternalAccountKey:CaExternalAccountKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

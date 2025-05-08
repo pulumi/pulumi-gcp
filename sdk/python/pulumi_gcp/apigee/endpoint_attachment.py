@@ -223,10 +223,8 @@ class _EndpointAttachmentState:
         pulumi.set(self, "service_attachment", value)
 
 
+@pulumi.type_token("gcp:apigee/endpointAttachment:EndpointAttachment")
 class EndpointAttachment(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/endpointAttachment:EndpointAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

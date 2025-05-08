@@ -151,10 +151,8 @@ class _ImageIamPolicyState:
         pulumi.set(self, "project", value)
 
 
+@pulumi.type_token("gcp:compute/imageIamPolicy:ImageIamPolicy")
 class ImageIamPolicy(pulumi.CustomResource):
-
-    pulumi_type = "gcp:compute/imageIamPolicy:ImageIamPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

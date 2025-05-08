@@ -227,10 +227,8 @@ class _SharedflowState:
         pulumi.set(self, "revisions", value)
 
 
+@pulumi.type_token("gcp:apigee/sharedflow:Sharedflow")
 class Sharedflow(pulumi.CustomResource):
-
-    pulumi_type = "gcp:apigee/sharedflow:Sharedflow"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -511,10 +511,8 @@ class _CloudVmClusterState:
         pulumi.set(self, "pulumi_labels", value)
 
 
+@pulumi.type_token("gcp:oracledatabase/cloudVmCluster:CloudVmCluster")
 class CloudVmCluster(pulumi.CustomResource):
-
-    pulumi_type = "gcp:oracledatabase/cloudVmCluster:CloudVmCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

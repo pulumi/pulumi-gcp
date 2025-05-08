@@ -276,10 +276,8 @@ class _ConnectorState:
         pulumi.set(self, "task_restart_policy", value)
 
 
+@pulumi.type_token("gcp:managedkafka/connector:Connector")
 class Connector(pulumi.CustomResource):
-
-    pulumi_type = "gcp:managedkafka/connector:Connector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -338,10 +338,8 @@ class _EndpointState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:cloudids/endpoint:Endpoint")
 class Endpoint(pulumi.CustomResource):
-
-    pulumi_type = "gcp:cloudids/endpoint:Endpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

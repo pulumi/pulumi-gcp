@@ -187,10 +187,8 @@ class _SshPublicKeyState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("gcp:oslogin/sshPublicKey:SshPublicKey")
 class SshPublicKey(pulumi.CustomResource):
-
-    pulumi_type = "gcp:oslogin/sshPublicKey:SshPublicKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

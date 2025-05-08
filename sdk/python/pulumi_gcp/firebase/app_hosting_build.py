@@ -575,10 +575,8 @@ class _AppHostingBuildState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("gcp:firebase/appHostingBuild:AppHostingBuild")
 class AppHostingBuild(pulumi.CustomResource):
-
-    pulumi_type = "gcp:firebase/appHostingBuild:AppHostingBuild"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -472,10 +472,8 @@ class _VMwareNodePoolState:
         pulumi.set(self, "vmware_cluster", value)
 
 
+@pulumi.type_token("gcp:gkeonprem/vMwareNodePool:VMwareNodePool")
 class VMwareNodePool(pulumi.CustomResource):
-
-    pulumi_type = "gcp:gkeonprem/vMwareNodePool:VMwareNodePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
