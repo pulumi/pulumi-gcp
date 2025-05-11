@@ -33,6 +33,7 @@ from .keystores_aliases_pkcs12 import *
 from .keystores_aliases_self_signed_cert import *
 from .nat_address import *
 from .organization import *
+from .security_profile_v2 import *
 from .sharedflow import *
 from .sharedflow_deployment import *
 from .sync_authorization import *

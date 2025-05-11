@@ -794,6 +794,9 @@ type Spoke struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The reasons for the current state in the lifecycle
+	// Structure is documented below.
+	Reasons SpokeReasonArrayOutput `pulumi:"reasons"`
 	// Output only. The current lifecycle state of this spoke.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
@@ -884,6 +887,9 @@ type spokeState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The reasons for the current state in the lifecycle
+	// Structure is documented below.
+	Reasons []SpokeReason `pulumi:"reasons"`
 	// Output only. The current lifecycle state of this spoke.
 	State *string `pulumi:"state"`
 	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
@@ -934,6 +940,9 @@ type SpokeState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// The reasons for the current state in the lifecycle
+	// Structure is documented below.
+	Reasons SpokeReasonArrayInput
 	// Output only. The current lifecycle state of this spoke.
 	State pulumi.StringPtrInput
 	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
@@ -1192,6 +1201,12 @@ func (o SpokeOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o SpokeOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The reasons for the current state in the lifecycle
+// Structure is documented below.
+func (o SpokeOutput) Reasons() SpokeReasonArrayOutput {
+	return o.ApplyT(func(v *Spoke) SpokeReasonArrayOutput { return v.Reasons }).(SpokeReasonArrayOutput)
 }
 
 // Output only. The current lifecycle state of this spoke.

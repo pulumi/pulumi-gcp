@@ -14,14 +14,30 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class ServiceScaling
     {
         /// <summary>
+        /// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+        /// </summary>
+        public readonly int? ManualInstanceCount;
+        /// <summary>
         /// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         /// </summary>
         public readonly int? MinInstanceCount;
+        /// <summary>
+        /// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+        /// Possible values are: `AUTOMATIC`, `MANUAL`.
+        /// </summary>
+        public readonly string? ScalingMode;
 
         [OutputConstructor]
-        private ServiceScaling(int? minInstanceCount)
+        private ServiceScaling(
+            int? manualInstanceCount,
+
+            int? minInstanceCount,
+
+            string? scalingMode)
         {
+            ManualInstanceCount = manualInstanceCount;
             MinInstanceCount = minInstanceCount;
+            ScalingMode = scalingMode;
         }
     }
 }

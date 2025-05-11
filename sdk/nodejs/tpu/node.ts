@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.tpu.Node` is deprecated and will be removed in a future major release. Use `gcp.tpu.V2Vm` instead. For moving from TPU Node to TPU VM architecture, see https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+ *
  * A Cloud TPU instance.
  *
  * To get more information about Node, see:

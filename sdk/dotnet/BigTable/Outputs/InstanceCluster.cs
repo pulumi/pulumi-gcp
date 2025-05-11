@@ -23,6 +23,10 @@ namespace Pulumi.Gcp.BigTable.Outputs
         public readonly string ClusterId;
         /// <summary>
         /// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+        /// </summary>
+        public readonly string? KmsKeyName;
+        /// <summary>
+        /// The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
         /// 
         /// &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
         /// 
@@ -33,7 +37,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// `gcp.bigtable.Instance` resource. If these values are changing, use a new
         /// `cluster_id`.
         /// </summary>
-        public readonly string? KmsKeyName;
+        public readonly string? NodeScalingFactor;
         /// <summary>
         /// The number of nodes in the cluster.
         /// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -63,6 +67,8 @@ namespace Pulumi.Gcp.BigTable.Outputs
 
             string? kmsKeyName,
 
+            string? nodeScalingFactor,
+
             int? numNodes,
 
             string? state,
@@ -74,6 +80,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
             AutoscalingConfig = autoscalingConfig;
             ClusterId = clusterId;
             KmsKeyName = kmsKeyName;
+            NodeScalingFactor = nodeScalingFactor;
             NumNodes = numNodes;
             State = state;
             StorageType = storageType;

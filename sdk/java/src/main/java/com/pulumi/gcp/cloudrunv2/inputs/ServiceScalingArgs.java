@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class ServiceScalingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceScalingArgs Empty = new ServiceScalingArgs();
+
+    /**
+     * Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+     * 
+     */
+    @Import(name="manualInstanceCount")
+    private @Nullable Output<Integer> manualInstanceCount;
+
+    /**
+     * @return Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+     * 
+     */
+    public Optional<Output<Integer>> manualInstanceCount() {
+        return Optional.ofNullable(this.manualInstanceCount);
+    }
 
     /**
      * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
@@ -30,10 +46,29 @@ public final class ServiceScalingArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.minInstanceCount);
     }
 
+    /**
+     * The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+     * Possible values are: `AUTOMATIC`, `MANUAL`.
+     * 
+     */
+    @Import(name="scalingMode")
+    private @Nullable Output<String> scalingMode;
+
+    /**
+     * @return The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+     * Possible values are: `AUTOMATIC`, `MANUAL`.
+     * 
+     */
+    public Optional<Output<String>> scalingMode() {
+        return Optional.ofNullable(this.scalingMode);
+    }
+
     private ServiceScalingArgs() {}
 
     private ServiceScalingArgs(ServiceScalingArgs $) {
+        this.manualInstanceCount = $.manualInstanceCount;
         this.minInstanceCount = $.minInstanceCount;
+        this.scalingMode = $.scalingMode;
     }
 
     public static Builder builder() {
@@ -55,6 +90,27 @@ public final class ServiceScalingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param manualInstanceCount Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder manualInstanceCount(@Nullable Output<Integer> manualInstanceCount) {
+            $.manualInstanceCount = manualInstanceCount;
+            return this;
+        }
+
+        /**
+         * @param manualInstanceCount Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder manualInstanceCount(Integer manualInstanceCount) {
+            return manualInstanceCount(Output.of(manualInstanceCount));
+        }
+
+        /**
          * @param minInstanceCount Minimum number of instances for the service, to be divided among all revisions receiving traffic.
          * 
          * @return builder
@@ -73,6 +129,29 @@ public final class ServiceScalingArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder minInstanceCount(Integer minInstanceCount) {
             return minInstanceCount(Output.of(minInstanceCount));
+        }
+
+        /**
+         * @param scalingMode The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+         * Possible values are: `AUTOMATIC`, `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingMode(@Nullable Output<String> scalingMode) {
+            $.scalingMode = scalingMode;
+            return this;
+        }
+
+        /**
+         * @param scalingMode The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+         * Possible values are: `AUTOMATIC`, `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingMode(String scalingMode) {
+            return scalingMode(Output.of(scalingMode));
         }
 
         public ServiceScalingArgs build() {

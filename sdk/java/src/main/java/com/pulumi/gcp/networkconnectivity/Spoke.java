@@ -15,6 +15,7 @@ import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedProducerVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedRouterApplianceInstances;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpnTunnels;
+import com.pulumi.gcp.networkconnectivity.outputs.SpokeReason;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -1000,6 +1001,22 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * The reasons for the current state in the lifecycle
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="reasons", refs={List.class,SpokeReason.class}, tree="[0,1]")
+    private Output<List<SpokeReason>> reasons;
+
+    /**
+     * @return The reasons for the current state in the lifecycle
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<SpokeReason>> reasons() {
+        return this.reasons;
     }
     /**
      * Output only. The current lifecycle state of this spoke.

@@ -3919,6 +3919,121 @@ func (o OrganizationPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) Orga
 	}).(OrganizationPropertiesPropertyOutput)
 }
 
+type SecurityProfileV2ProfileAssessmentConfig struct {
+	// The identifier for this object. Format specified above.
+	Assessment string `pulumi:"assessment"`
+	// The weight of the assessment.
+	// Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+	//
+	// ***
+	Weight string `pulumi:"weight"`
+}
+
+// SecurityProfileV2ProfileAssessmentConfigInput is an input type that accepts SecurityProfileV2ProfileAssessmentConfigArgs and SecurityProfileV2ProfileAssessmentConfigOutput values.
+// You can construct a concrete instance of `SecurityProfileV2ProfileAssessmentConfigInput` via:
+//
+//	SecurityProfileV2ProfileAssessmentConfigArgs{...}
+type SecurityProfileV2ProfileAssessmentConfigInput interface {
+	pulumi.Input
+
+	ToSecurityProfileV2ProfileAssessmentConfigOutput() SecurityProfileV2ProfileAssessmentConfigOutput
+	ToSecurityProfileV2ProfileAssessmentConfigOutputWithContext(context.Context) SecurityProfileV2ProfileAssessmentConfigOutput
+}
+
+type SecurityProfileV2ProfileAssessmentConfigArgs struct {
+	// The identifier for this object. Format specified above.
+	Assessment pulumi.StringInput `pulumi:"assessment"`
+	// The weight of the assessment.
+	// Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+	//
+	// ***
+	Weight pulumi.StringInput `pulumi:"weight"`
+}
+
+func (SecurityProfileV2ProfileAssessmentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileV2ProfileAssessmentConfig)(nil)).Elem()
+}
+
+func (i SecurityProfileV2ProfileAssessmentConfigArgs) ToSecurityProfileV2ProfileAssessmentConfigOutput() SecurityProfileV2ProfileAssessmentConfigOutput {
+	return i.ToSecurityProfileV2ProfileAssessmentConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileV2ProfileAssessmentConfigArgs) ToSecurityProfileV2ProfileAssessmentConfigOutputWithContext(ctx context.Context) SecurityProfileV2ProfileAssessmentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileV2ProfileAssessmentConfigOutput)
+}
+
+// SecurityProfileV2ProfileAssessmentConfigArrayInput is an input type that accepts SecurityProfileV2ProfileAssessmentConfigArray and SecurityProfileV2ProfileAssessmentConfigArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileV2ProfileAssessmentConfigArrayInput` via:
+//
+//	SecurityProfileV2ProfileAssessmentConfigArray{ SecurityProfileV2ProfileAssessmentConfigArgs{...} }
+type SecurityProfileV2ProfileAssessmentConfigArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileV2ProfileAssessmentConfigArrayOutput() SecurityProfileV2ProfileAssessmentConfigArrayOutput
+	ToSecurityProfileV2ProfileAssessmentConfigArrayOutputWithContext(context.Context) SecurityProfileV2ProfileAssessmentConfigArrayOutput
+}
+
+type SecurityProfileV2ProfileAssessmentConfigArray []SecurityProfileV2ProfileAssessmentConfigInput
+
+func (SecurityProfileV2ProfileAssessmentConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileV2ProfileAssessmentConfig)(nil)).Elem()
+}
+
+func (i SecurityProfileV2ProfileAssessmentConfigArray) ToSecurityProfileV2ProfileAssessmentConfigArrayOutput() SecurityProfileV2ProfileAssessmentConfigArrayOutput {
+	return i.ToSecurityProfileV2ProfileAssessmentConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileV2ProfileAssessmentConfigArray) ToSecurityProfileV2ProfileAssessmentConfigArrayOutputWithContext(ctx context.Context) SecurityProfileV2ProfileAssessmentConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileV2ProfileAssessmentConfigArrayOutput)
+}
+
+type SecurityProfileV2ProfileAssessmentConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileV2ProfileAssessmentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileV2ProfileAssessmentConfig)(nil)).Elem()
+}
+
+func (o SecurityProfileV2ProfileAssessmentConfigOutput) ToSecurityProfileV2ProfileAssessmentConfigOutput() SecurityProfileV2ProfileAssessmentConfigOutput {
+	return o
+}
+
+func (o SecurityProfileV2ProfileAssessmentConfigOutput) ToSecurityProfileV2ProfileAssessmentConfigOutputWithContext(ctx context.Context) SecurityProfileV2ProfileAssessmentConfigOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o SecurityProfileV2ProfileAssessmentConfigOutput) Assessment() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileV2ProfileAssessmentConfig) string { return v.Assessment }).(pulumi.StringOutput)
+}
+
+// The weight of the assessment.
+// Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+//
+// ***
+func (o SecurityProfileV2ProfileAssessmentConfigOutput) Weight() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileV2ProfileAssessmentConfig) string { return v.Weight }).(pulumi.StringOutput)
+}
+
+type SecurityProfileV2ProfileAssessmentConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileV2ProfileAssessmentConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileV2ProfileAssessmentConfig)(nil)).Elem()
+}
+
+func (o SecurityProfileV2ProfileAssessmentConfigArrayOutput) ToSecurityProfileV2ProfileAssessmentConfigArrayOutput() SecurityProfileV2ProfileAssessmentConfigArrayOutput {
+	return o
+}
+
+func (o SecurityProfileV2ProfileAssessmentConfigArrayOutput) ToSecurityProfileV2ProfileAssessmentConfigArrayOutputWithContext(ctx context.Context) SecurityProfileV2ProfileAssessmentConfigArrayOutput {
+	return o
+}
+
+func (o SecurityProfileV2ProfileAssessmentConfigArrayOutput) Index(i pulumi.IntInput) SecurityProfileV2ProfileAssessmentConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileV2ProfileAssessmentConfig {
+		return vs[0].([]SecurityProfileV2ProfileAssessmentConfig)[vs[1].(int)]
+	}).(SecurityProfileV2ProfileAssessmentConfigOutput)
+}
+
 type SharedflowMetaData struct {
 	// Time at which the API proxy was created, in milliseconds since epoch.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -4534,6 +4649,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPtrInput)(nil)).Elem(), OrganizationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyInput)(nil)).Elem(), OrganizationPropertiesPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyArrayInput)(nil)).Elem(), OrganizationPropertiesPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileV2ProfileAssessmentConfigInput)(nil)).Elem(), SecurityProfileV2ProfileAssessmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileV2ProfileAssessmentConfigArrayInput)(nil)).Elem(), SecurityProfileV2ProfileAssessmentConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SharedflowMetaDataInput)(nil)).Elem(), SharedflowMetaDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SharedflowMetaDataArrayInput)(nil)).Elem(), SharedflowMetaDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerSSlInfoInput)(nil)).Elem(), TargetServerSSlInfoArgs{})
@@ -4590,6 +4707,8 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileV2ProfileAssessmentConfigOutput{})
+	pulumi.RegisterOutputType(SecurityProfileV2ProfileAssessmentConfigArrayOutput{})
 	pulumi.RegisterOutputType(SharedflowMetaDataOutput{})
 	pulumi.RegisterOutputType(SharedflowMetaDataArrayOutput{})
 	pulumi.RegisterOutputType(TargetServerSSlInfoOutput{})

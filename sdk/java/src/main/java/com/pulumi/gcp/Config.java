@@ -475,6 +475,9 @@ public final class Config {
     public Optional<String> requestTimeout() {
         return Codegen.stringProp("requestTimeout").config(config).get();
     }
+    public Optional<String> resourceManager3CustomEndpoint() {
+        return Codegen.stringProp("resourceManager3CustomEndpoint").config(config).get();
+    }
     public Optional<String> resourceManagerCustomEndpoint() {
         return Codegen.stringProp("resourceManagerCustomEndpoint").config(config).get();
     }

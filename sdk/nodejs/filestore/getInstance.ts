@@ -63,6 +63,7 @@ export interface GetInstanceResult {
     readonly deletionProtectionEnabled: boolean;
     readonly deletionProtectionReason: string;
     readonly description: string;
+    readonly directoryServices: outputs.filestore.GetInstanceDirectoryService[];
     readonly effectiveLabels: {[key: string]: string};
     readonly effectiveReplications: outputs.filestore.GetInstanceEffectiveReplication[];
     readonly etag: string;

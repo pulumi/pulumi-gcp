@@ -173,6 +173,7 @@ class ProviderArgs:
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  request_reason: Optional[pulumi.Input[builtins.str]] = None,
                  request_timeout: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_manager3_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  resource_manager_v3_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
@@ -524,6 +525,8 @@ class ProviderArgs:
             pulumi.set(__self__, "request_reason", request_reason)
         if request_timeout is not None:
             pulumi.set(__self__, "request_timeout", request_timeout)
+        if resource_manager3_custom_endpoint is not None:
+            pulumi.set(__self__, "resource_manager3_custom_endpoint", resource_manager3_custom_endpoint)
         if resource_manager_custom_endpoint is not None:
             pulumi.set(__self__, "resource_manager_custom_endpoint", resource_manager_custom_endpoint)
         if resource_manager_v3_custom_endpoint is not None:
@@ -1976,6 +1979,15 @@ class ProviderArgs:
         pulumi.set(self, "request_timeout", value)
 
     @property
+    @pulumi.getter(name="resourceManager3CustomEndpoint")
+    def resource_manager3_custom_endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "resource_manager3_custom_endpoint")
+
+    @resource_manager3_custom_endpoint.setter
+    def resource_manager3_custom_endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "resource_manager3_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="resourceManagerCustomEndpoint")
     def resource_manager_custom_endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "resource_manager_custom_endpoint")
@@ -2494,6 +2506,7 @@ class Provider(pulumi.ProviderResource):
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  request_reason: Optional[pulumi.Input[builtins.str]] = None,
                  request_timeout: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_manager3_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  resource_manager_v3_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
@@ -2723,6 +2736,7 @@ class Provider(pulumi.ProviderResource):
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  request_reason: Optional[pulumi.Input[builtins.str]] = None,
                  request_timeout: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_manager3_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  resource_manager_v3_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[builtins.str]] = None,
@@ -2928,6 +2942,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["request_reason"] = request_reason
             __props__.__dict__["request_timeout"] = request_timeout
+            __props__.__dict__["resource_manager3_custom_endpoint"] = resource_manager3_custom_endpoint
             __props__.__dict__["resource_manager_custom_endpoint"] = resource_manager_custom_endpoint
             __props__.__dict__["resource_manager_v3_custom_endpoint"] = resource_manager_v3_custom_endpoint
             __props__.__dict__["runtime_config_custom_endpoint"] = runtime_config_custom_endpoint
@@ -3707,6 +3722,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "request_timeout")
+
+    @property
+    @pulumi.getter(name="resourceManager3CustomEndpoint")
+    def resource_manager3_custom_endpoint(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "resource_manager3_custom_endpoint")
 
     @property
     @pulumi.getter(name="resourceManagerCustomEndpoint")

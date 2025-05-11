@@ -16,6 +16,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'InstanceDirectoryServicesArgs',
+    'InstanceDirectoryServicesArgsDict',
+    'InstanceDirectoryServicesLdapArgs',
+    'InstanceDirectoryServicesLdapArgsDict',
     'InstanceEffectiveReplicationArgs',
     'InstanceEffectiveReplicationArgsDict',
     'InstanceEffectiveReplicationReplicaArgs',
@@ -39,6 +43,158 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class InstanceDirectoryServicesArgsDict(TypedDict):
+        ldap: NotRequired[pulumi.Input['InstanceDirectoryServicesLdapArgsDict']]
+        """
+        Configuration for LDAP servers.
+        Structure is documented below.
+        """
+elif False:
+    InstanceDirectoryServicesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceDirectoryServicesArgs:
+    def __init__(__self__, *,
+                 ldap: Optional[pulumi.Input['InstanceDirectoryServicesLdapArgs']] = None):
+        """
+        :param pulumi.Input['InstanceDirectoryServicesLdapArgs'] ldap: Configuration for LDAP servers.
+               Structure is documented below.
+        """
+        if ldap is not None:
+            pulumi.set(__self__, "ldap", ldap)
+
+    @property
+    @pulumi.getter
+    def ldap(self) -> Optional[pulumi.Input['InstanceDirectoryServicesLdapArgs']]:
+        """
+        Configuration for LDAP servers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ldap")
+
+    @ldap.setter
+    def ldap(self, value: Optional[pulumi.Input['InstanceDirectoryServicesLdapArgs']]):
+        pulumi.set(self, "ldap", value)
+
+
+if not MYPY:
+    class InstanceDirectoryServicesLdapArgsDict(TypedDict):
+        domain: pulumi.Input[builtins.str]
+        """
+        The LDAP domain name in the format of `my-domain.com`.
+        """
+        servers: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        """
+        The servers names are used for specifying the LDAP servers names.
+        The LDAP servers names can come with two formats:
+        1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
+        2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
+        All servers names must be in the same format: either all DNS names or all
+        IP addresses.
+        """
+        groups_ou: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The groups Organizational Unit (OU) is optional. This parameter is a hint
+        to allow faster lookup in the LDAP namespace. In case that this parameter
+        is not provided, Filestore instance will query the whole LDAP namespace.
+        """
+        users_ou: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The users Organizational Unit (OU) is optional. This parameter is a hint
+        to allow faster lookup in the LDAP namespace. In case that this parameter
+        is not provided, Filestore instance will query the whole LDAP namespace.
+        """
+elif False:
+    InstanceDirectoryServicesLdapArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceDirectoryServicesLdapArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[builtins.str],
+                 servers: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
+                 groups_ou: Optional[pulumi.Input[builtins.str]] = None,
+                 users_ou: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] domain: The LDAP domain name in the format of `my-domain.com`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] servers: The servers names are used for specifying the LDAP servers names.
+               The LDAP servers names can come with two formats:
+               1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
+               2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
+               All servers names must be in the same format: either all DNS names or all
+               IP addresses.
+        :param pulumi.Input[builtins.str] groups_ou: The groups Organizational Unit (OU) is optional. This parameter is a hint
+               to allow faster lookup in the LDAP namespace. In case that this parameter
+               is not provided, Filestore instance will query the whole LDAP namespace.
+        :param pulumi.Input[builtins.str] users_ou: The users Organizational Unit (OU) is optional. This parameter is a hint
+               to allow faster lookup in the LDAP namespace. In case that this parameter
+               is not provided, Filestore instance will query the whole LDAP namespace.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "servers", servers)
+        if groups_ou is not None:
+            pulumi.set(__self__, "groups_ou", groups_ou)
+        if users_ou is not None:
+            pulumi.set(__self__, "users_ou", users_ou)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[builtins.str]:
+        """
+        The LDAP domain name in the format of `my-domain.com`.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def servers(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+        """
+        The servers names are used for specifying the LDAP servers names.
+        The LDAP servers names can come with two formats:
+        1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
+        2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
+        All servers names must be in the same format: either all DNS names or all
+        IP addresses.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        pulumi.set(self, "servers", value)
+
+    @property
+    @pulumi.getter(name="groupsOu")
+    def groups_ou(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The groups Organizational Unit (OU) is optional. This parameter is a hint
+        to allow faster lookup in the LDAP namespace. In case that this parameter
+        is not provided, Filestore instance will query the whole LDAP namespace.
+        """
+        return pulumi.get(self, "groups_ou")
+
+    @groups_ou.setter
+    def groups_ou(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "groups_ou", value)
+
+    @property
+    @pulumi.getter(name="usersOu")
+    def users_ou(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The users Organizational Unit (OU) is optional. This parameter is a hint
+        to allow faster lookup in the LDAP namespace. In case that this parameter
+        is not provided, Filestore instance will query the whole LDAP namespace.
+        """
+        return pulumi.get(self, "users_ou")
+
+    @users_ou.setter
+    def users_ou(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "users_ou", value)
+
 
 if not MYPY:
     class InstanceEffectiveReplicationArgsDict(TypedDict):

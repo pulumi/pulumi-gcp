@@ -1384,6 +1384,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the forwarding rule type.
+        /// Note that an empty string value (`""`) is also supported for some use
+        /// cases, for example PSC (private service connection) regional forwarding
+        /// rules.
         /// For more information about forwarding rules, refer to
         /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         /// Default value is `EXTERNAL`.
@@ -1804,6 +1807,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the forwarding rule type.
+        /// Note that an empty string value (`""`) is also supported for some use
+        /// cases, for example PSC (private service connection) regional forwarding
+        /// rules.
         /// For more information about forwarding rules, refer to
         /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         /// Default value is `EXTERNAL`.
@@ -2202,6 +2208,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Specifies the forwarding rule type.
+        /// Note that an empty string value (`""`) is also supported for some use
+        /// cases, for example PSC (private service connection) regional forwarding
+        /// rules.
         /// For more information about forwarding rules, refer to
         /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         /// Default value is `EXTERNAL`.

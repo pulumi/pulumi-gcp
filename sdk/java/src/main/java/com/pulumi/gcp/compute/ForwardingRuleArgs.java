@@ -350,6 +350,9 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Specifies the forwarding rule type.
+     * Note that an empty string value (`&#34;&#34;`) is also supported for some use
+     * cases, for example PSC (private service connection) regional forwarding
+     * rules.
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL`.
@@ -361,6 +364,9 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Specifies the forwarding rule type.
+     * Note that an empty string value (`&#34;&#34;`) is also supported for some use
+     * cases, for example PSC (private service connection) regional forwarding
+     * rules.
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL`.
@@ -1201,6 +1207,9 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param loadBalancingScheme Specifies the forwarding rule type.
+         * Note that an empty string value (`&#34;&#34;`) is also supported for some use
+         * cases, for example PSC (private service connection) regional forwarding
+         * rules.
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
          * Default value is `EXTERNAL`.
@@ -1216,6 +1225,9 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param loadBalancingScheme Specifies the forwarding rule type.
+         * Note that an empty string value (`&#34;&#34;`) is also supported for some use
+         * cases, for example PSC (private service connection) regional forwarding
+         * rules.
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
          * Default value is `EXTERNAL`.

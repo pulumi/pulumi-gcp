@@ -45,6 +45,18 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("collation")]
         public Input<string>? Collation { get; set; }
 
+        [Input("connectionPoolConfigs")]
+        private InputList<Inputs.DatabaseInstanceSettingsConnectionPoolConfigGetArgs>? _connectionPoolConfigs;
+
+        /// <summary>
+        /// The managed connection pool setting for a Cloud SQL instance.
+        /// </summary>
+        public InputList<Inputs.DatabaseInstanceSettingsConnectionPoolConfigGetArgs> ConnectionPoolConfigs
+        {
+            get => _connectionPoolConfigs ?? (_connectionPoolConfigs = new InputList<Inputs.DatabaseInstanceSettingsConnectionPoolConfigGetArgs>());
+            set => _connectionPoolConfigs = value;
+        }
+
         /// <summary>
         /// Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
         /// </summary>

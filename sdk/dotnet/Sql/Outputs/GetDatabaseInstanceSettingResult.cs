@@ -34,6 +34,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string Collation;
         /// <summary>
+        /// The managed connection pool setting for a Cloud SQL instance.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingConnectionPoolConfigResult> ConnectionPoolConfigs;
+        /// <summary>
         /// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         /// </summary>
         public readonly string ConnectorEnforcement;
@@ -68,7 +72,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int DiskSize;
         /// <summary>
-        /// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+        /// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
         /// </summary>
         public readonly string DiskType;
         /// <summary>
@@ -134,6 +138,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string collation,
 
+            ImmutableArray<Outputs.GetDatabaseInstanceSettingConnectionPoolConfigResult> connectionPoolConfigs,
+
             string connectorEnforcement,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDataCacheConfigResult> dataCacheConfigs,
@@ -192,6 +198,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             AvailabilityType = availabilityType;
             BackupConfigurations = backupConfigurations;
             Collation = collation;
+            ConnectionPoolConfigs = connectionPoolConfigs;
             ConnectorEnforcement = connectorEnforcement;
             DataCacheConfigs = dataCacheConfigs;
             DataDiskProvisionedIops = dataDiskProvisionedIops;

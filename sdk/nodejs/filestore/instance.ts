@@ -194,6 +194,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+     */
+    public readonly directoryServices!: pulumi.Output<outputs.filestore.InstanceDirectoryServices | undefined>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
@@ -295,6 +299,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
             resourceInputs["deletionProtectionReason"] = state ? state.deletionProtectionReason : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["directoryServices"] = state ? state.directoryServices : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["effectiveReplications"] = state ? state.effectiveReplications : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -326,6 +331,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
             resourceInputs["deletionProtectionReason"] = args ? args.deletionProtectionReason : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["directoryServices"] = args ? args.directoryServices : undefined;
             resourceInputs["fileShares"] = args ? args.fileShares : undefined;
             resourceInputs["initialReplication"] = args ? args.initialReplication : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -372,6 +378,10 @@ export interface InstanceState {
      * A description of the instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+     */
+    directoryServices?: pulumi.Input<inputs.filestore.InstanceDirectoryServices>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -474,6 +484,10 @@ export interface InstanceArgs {
      * A description of the instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+     */
+    directoryServices?: pulumi.Input<inputs.filestore.InstanceDirectoryServices>;
     /**
      * File system shares on the instance. For this version, only a
      * single file share is supported.

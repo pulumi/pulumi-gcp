@@ -6,6 +6,7 @@ package com.pulumi.gcp.filestore;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.filestore.inputs.InstanceDirectoryServicesArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceInitialReplicationArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
@@ -66,6 +67,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * 
+     */
+    @Import(name="directoryServices")
+    private @Nullable Output<InstanceDirectoryServicesArgs> directoryServices;
+
+    /**
+     * @return Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * 
+     */
+    public Optional<Output<InstanceDirectoryServicesArgs>> directoryServices() {
+        return Optional.ofNullable(this.directoryServices);
     }
 
     /**
@@ -297,6 +313,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.deletionProtectionReason = $.deletionProtectionReason;
         this.description = $.description;
+        this.directoryServices = $.directoryServices;
         this.fileShares = $.fileShares;
         this.initialReplication = $.initialReplication;
         this.kmsKeyName = $.kmsKeyName;
@@ -391,6 +408,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param directoryServices Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryServices(@Nullable Output<InstanceDirectoryServicesArgs> directoryServices) {
+            $.directoryServices = directoryServices;
+            return this;
+        }
+
+        /**
+         * @param directoryServices Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directoryServices(InstanceDirectoryServicesArgs directoryServices) {
+            return directoryServices(Output.of(directoryServices));
         }
 
         /**

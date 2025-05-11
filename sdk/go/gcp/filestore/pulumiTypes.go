@@ -13,6 +13,377 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceDirectoryServices struct {
+	// Configuration for LDAP servers.
+	// Structure is documented below.
+	Ldap *InstanceDirectoryServicesLdap `pulumi:"ldap"`
+}
+
+// InstanceDirectoryServicesInput is an input type that accepts InstanceDirectoryServicesArgs and InstanceDirectoryServicesOutput values.
+// You can construct a concrete instance of `InstanceDirectoryServicesInput` via:
+//
+//	InstanceDirectoryServicesArgs{...}
+type InstanceDirectoryServicesInput interface {
+	pulumi.Input
+
+	ToInstanceDirectoryServicesOutput() InstanceDirectoryServicesOutput
+	ToInstanceDirectoryServicesOutputWithContext(context.Context) InstanceDirectoryServicesOutput
+}
+
+type InstanceDirectoryServicesArgs struct {
+	// Configuration for LDAP servers.
+	// Structure is documented below.
+	Ldap InstanceDirectoryServicesLdapPtrInput `pulumi:"ldap"`
+}
+
+func (InstanceDirectoryServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDirectoryServices)(nil)).Elem()
+}
+
+func (i InstanceDirectoryServicesArgs) ToInstanceDirectoryServicesOutput() InstanceDirectoryServicesOutput {
+	return i.ToInstanceDirectoryServicesOutputWithContext(context.Background())
+}
+
+func (i InstanceDirectoryServicesArgs) ToInstanceDirectoryServicesOutputWithContext(ctx context.Context) InstanceDirectoryServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDirectoryServicesOutput)
+}
+
+func (i InstanceDirectoryServicesArgs) ToInstanceDirectoryServicesPtrOutput() InstanceDirectoryServicesPtrOutput {
+	return i.ToInstanceDirectoryServicesPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceDirectoryServicesArgs) ToInstanceDirectoryServicesPtrOutputWithContext(ctx context.Context) InstanceDirectoryServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDirectoryServicesOutput).ToInstanceDirectoryServicesPtrOutputWithContext(ctx)
+}
+
+// InstanceDirectoryServicesPtrInput is an input type that accepts InstanceDirectoryServicesArgs, InstanceDirectoryServicesPtr and InstanceDirectoryServicesPtrOutput values.
+// You can construct a concrete instance of `InstanceDirectoryServicesPtrInput` via:
+//
+//	        InstanceDirectoryServicesArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceDirectoryServicesPtrInput interface {
+	pulumi.Input
+
+	ToInstanceDirectoryServicesPtrOutput() InstanceDirectoryServicesPtrOutput
+	ToInstanceDirectoryServicesPtrOutputWithContext(context.Context) InstanceDirectoryServicesPtrOutput
+}
+
+type instanceDirectoryServicesPtrType InstanceDirectoryServicesArgs
+
+func InstanceDirectoryServicesPtr(v *InstanceDirectoryServicesArgs) InstanceDirectoryServicesPtrInput {
+	return (*instanceDirectoryServicesPtrType)(v)
+}
+
+func (*instanceDirectoryServicesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDirectoryServices)(nil)).Elem()
+}
+
+func (i *instanceDirectoryServicesPtrType) ToInstanceDirectoryServicesPtrOutput() InstanceDirectoryServicesPtrOutput {
+	return i.ToInstanceDirectoryServicesPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceDirectoryServicesPtrType) ToInstanceDirectoryServicesPtrOutputWithContext(ctx context.Context) InstanceDirectoryServicesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDirectoryServicesPtrOutput)
+}
+
+type InstanceDirectoryServicesOutput struct{ *pulumi.OutputState }
+
+func (InstanceDirectoryServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDirectoryServices)(nil)).Elem()
+}
+
+func (o InstanceDirectoryServicesOutput) ToInstanceDirectoryServicesOutput() InstanceDirectoryServicesOutput {
+	return o
+}
+
+func (o InstanceDirectoryServicesOutput) ToInstanceDirectoryServicesOutputWithContext(ctx context.Context) InstanceDirectoryServicesOutput {
+	return o
+}
+
+func (o InstanceDirectoryServicesOutput) ToInstanceDirectoryServicesPtrOutput() InstanceDirectoryServicesPtrOutput {
+	return o.ToInstanceDirectoryServicesPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceDirectoryServicesOutput) ToInstanceDirectoryServicesPtrOutputWithContext(ctx context.Context) InstanceDirectoryServicesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDirectoryServices) *InstanceDirectoryServices {
+		return &v
+	}).(InstanceDirectoryServicesPtrOutput)
+}
+
+// Configuration for LDAP servers.
+// Structure is documented below.
+func (o InstanceDirectoryServicesOutput) Ldap() InstanceDirectoryServicesLdapPtrOutput {
+	return o.ApplyT(func(v InstanceDirectoryServices) *InstanceDirectoryServicesLdap { return v.Ldap }).(InstanceDirectoryServicesLdapPtrOutput)
+}
+
+type InstanceDirectoryServicesPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceDirectoryServicesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDirectoryServices)(nil)).Elem()
+}
+
+func (o InstanceDirectoryServicesPtrOutput) ToInstanceDirectoryServicesPtrOutput() InstanceDirectoryServicesPtrOutput {
+	return o
+}
+
+func (o InstanceDirectoryServicesPtrOutput) ToInstanceDirectoryServicesPtrOutputWithContext(ctx context.Context) InstanceDirectoryServicesPtrOutput {
+	return o
+}
+
+func (o InstanceDirectoryServicesPtrOutput) Elem() InstanceDirectoryServicesOutput {
+	return o.ApplyT(func(v *InstanceDirectoryServices) InstanceDirectoryServices {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDirectoryServices
+		return ret
+	}).(InstanceDirectoryServicesOutput)
+}
+
+// Configuration for LDAP servers.
+// Structure is documented below.
+func (o InstanceDirectoryServicesPtrOutput) Ldap() InstanceDirectoryServicesLdapPtrOutput {
+	return o.ApplyT(func(v *InstanceDirectoryServices) *InstanceDirectoryServicesLdap {
+		if v == nil {
+			return nil
+		}
+		return v.Ldap
+	}).(InstanceDirectoryServicesLdapPtrOutput)
+}
+
+type InstanceDirectoryServicesLdap struct {
+	// The LDAP domain name in the format of `my-domain.com`.
+	Domain string `pulumi:"domain"`
+	// The groups Organizational Unit (OU) is optional. This parameter is a hint
+	// to allow faster lookup in the LDAP namespace. In case that this parameter
+	// is not provided, Filestore instance will query the whole LDAP namespace.
+	GroupsOu *string `pulumi:"groupsOu"`
+	// The servers names are used for specifying the LDAP servers names.
+	// The LDAP servers names can come with two formats:
+	// 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
+	// 2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
+	//    All servers names must be in the same format: either all DNS names or all
+	//    IP addresses.
+	Servers []string `pulumi:"servers"`
+	// The users Organizational Unit (OU) is optional. This parameter is a hint
+	// to allow faster lookup in the LDAP namespace. In case that this parameter
+	// is not provided, Filestore instance will query the whole LDAP namespace.
+	UsersOu *string `pulumi:"usersOu"`
+}
+
+// InstanceDirectoryServicesLdapInput is an input type that accepts InstanceDirectoryServicesLdapArgs and InstanceDirectoryServicesLdapOutput values.
+// You can construct a concrete instance of `InstanceDirectoryServicesLdapInput` via:
+//
+//	InstanceDirectoryServicesLdapArgs{...}
+type InstanceDirectoryServicesLdapInput interface {
+	pulumi.Input
+
+	ToInstanceDirectoryServicesLdapOutput() InstanceDirectoryServicesLdapOutput
+	ToInstanceDirectoryServicesLdapOutputWithContext(context.Context) InstanceDirectoryServicesLdapOutput
+}
+
+type InstanceDirectoryServicesLdapArgs struct {
+	// The LDAP domain name in the format of `my-domain.com`.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The groups Organizational Unit (OU) is optional. This parameter is a hint
+	// to allow faster lookup in the LDAP namespace. In case that this parameter
+	// is not provided, Filestore instance will query the whole LDAP namespace.
+	GroupsOu pulumi.StringPtrInput `pulumi:"groupsOu"`
+	// The servers names are used for specifying the LDAP servers names.
+	// The LDAP servers names can come with two formats:
+	// 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
+	// 2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
+	//    All servers names must be in the same format: either all DNS names or all
+	//    IP addresses.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+	// The users Organizational Unit (OU) is optional. This parameter is a hint
+	// to allow faster lookup in the LDAP namespace. In case that this parameter
+	// is not provided, Filestore instance will query the whole LDAP namespace.
+	UsersOu pulumi.StringPtrInput `pulumi:"usersOu"`
+}
+
+func (InstanceDirectoryServicesLdapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDirectoryServicesLdap)(nil)).Elem()
+}
+
+func (i InstanceDirectoryServicesLdapArgs) ToInstanceDirectoryServicesLdapOutput() InstanceDirectoryServicesLdapOutput {
+	return i.ToInstanceDirectoryServicesLdapOutputWithContext(context.Background())
+}
+
+func (i InstanceDirectoryServicesLdapArgs) ToInstanceDirectoryServicesLdapOutputWithContext(ctx context.Context) InstanceDirectoryServicesLdapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDirectoryServicesLdapOutput)
+}
+
+func (i InstanceDirectoryServicesLdapArgs) ToInstanceDirectoryServicesLdapPtrOutput() InstanceDirectoryServicesLdapPtrOutput {
+	return i.ToInstanceDirectoryServicesLdapPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceDirectoryServicesLdapArgs) ToInstanceDirectoryServicesLdapPtrOutputWithContext(ctx context.Context) InstanceDirectoryServicesLdapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDirectoryServicesLdapOutput).ToInstanceDirectoryServicesLdapPtrOutputWithContext(ctx)
+}
+
+// InstanceDirectoryServicesLdapPtrInput is an input type that accepts InstanceDirectoryServicesLdapArgs, InstanceDirectoryServicesLdapPtr and InstanceDirectoryServicesLdapPtrOutput values.
+// You can construct a concrete instance of `InstanceDirectoryServicesLdapPtrInput` via:
+//
+//	        InstanceDirectoryServicesLdapArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceDirectoryServicesLdapPtrInput interface {
+	pulumi.Input
+
+	ToInstanceDirectoryServicesLdapPtrOutput() InstanceDirectoryServicesLdapPtrOutput
+	ToInstanceDirectoryServicesLdapPtrOutputWithContext(context.Context) InstanceDirectoryServicesLdapPtrOutput
+}
+
+type instanceDirectoryServicesLdapPtrType InstanceDirectoryServicesLdapArgs
+
+func InstanceDirectoryServicesLdapPtr(v *InstanceDirectoryServicesLdapArgs) InstanceDirectoryServicesLdapPtrInput {
+	return (*instanceDirectoryServicesLdapPtrType)(v)
+}
+
+func (*instanceDirectoryServicesLdapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDirectoryServicesLdap)(nil)).Elem()
+}
+
+func (i *instanceDirectoryServicesLdapPtrType) ToInstanceDirectoryServicesLdapPtrOutput() InstanceDirectoryServicesLdapPtrOutput {
+	return i.ToInstanceDirectoryServicesLdapPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceDirectoryServicesLdapPtrType) ToInstanceDirectoryServicesLdapPtrOutputWithContext(ctx context.Context) InstanceDirectoryServicesLdapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDirectoryServicesLdapPtrOutput)
+}
+
+type InstanceDirectoryServicesLdapOutput struct{ *pulumi.OutputState }
+
+func (InstanceDirectoryServicesLdapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDirectoryServicesLdap)(nil)).Elem()
+}
+
+func (o InstanceDirectoryServicesLdapOutput) ToInstanceDirectoryServicesLdapOutput() InstanceDirectoryServicesLdapOutput {
+	return o
+}
+
+func (o InstanceDirectoryServicesLdapOutput) ToInstanceDirectoryServicesLdapOutputWithContext(ctx context.Context) InstanceDirectoryServicesLdapOutput {
+	return o
+}
+
+func (o InstanceDirectoryServicesLdapOutput) ToInstanceDirectoryServicesLdapPtrOutput() InstanceDirectoryServicesLdapPtrOutput {
+	return o.ToInstanceDirectoryServicesLdapPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceDirectoryServicesLdapOutput) ToInstanceDirectoryServicesLdapPtrOutputWithContext(ctx context.Context) InstanceDirectoryServicesLdapPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDirectoryServicesLdap) *InstanceDirectoryServicesLdap {
+		return &v
+	}).(InstanceDirectoryServicesLdapPtrOutput)
+}
+
+// The LDAP domain name in the format of `my-domain.com`.
+func (o InstanceDirectoryServicesLdapOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDirectoryServicesLdap) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The groups Organizational Unit (OU) is optional. This parameter is a hint
+// to allow faster lookup in the LDAP namespace. In case that this parameter
+// is not provided, Filestore instance will query the whole LDAP namespace.
+func (o InstanceDirectoryServicesLdapOutput) GroupsOu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDirectoryServicesLdap) *string { return v.GroupsOu }).(pulumi.StringPtrOutput)
+}
+
+// The servers names are used for specifying the LDAP servers names.
+// The LDAP servers names can come with two formats:
+//  1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
+//  2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
+//     All servers names must be in the same format: either all DNS names or all
+//     IP addresses.
+func (o InstanceDirectoryServicesLdapOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceDirectoryServicesLdap) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+// The users Organizational Unit (OU) is optional. This parameter is a hint
+// to allow faster lookup in the LDAP namespace. In case that this parameter
+// is not provided, Filestore instance will query the whole LDAP namespace.
+func (o InstanceDirectoryServicesLdapOutput) UsersOu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDirectoryServicesLdap) *string { return v.UsersOu }).(pulumi.StringPtrOutput)
+}
+
+type InstanceDirectoryServicesLdapPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceDirectoryServicesLdapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDirectoryServicesLdap)(nil)).Elem()
+}
+
+func (o InstanceDirectoryServicesLdapPtrOutput) ToInstanceDirectoryServicesLdapPtrOutput() InstanceDirectoryServicesLdapPtrOutput {
+	return o
+}
+
+func (o InstanceDirectoryServicesLdapPtrOutput) ToInstanceDirectoryServicesLdapPtrOutputWithContext(ctx context.Context) InstanceDirectoryServicesLdapPtrOutput {
+	return o
+}
+
+func (o InstanceDirectoryServicesLdapPtrOutput) Elem() InstanceDirectoryServicesLdapOutput {
+	return o.ApplyT(func(v *InstanceDirectoryServicesLdap) InstanceDirectoryServicesLdap {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDirectoryServicesLdap
+		return ret
+	}).(InstanceDirectoryServicesLdapOutput)
+}
+
+// The LDAP domain name in the format of `my-domain.com`.
+func (o InstanceDirectoryServicesLdapPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDirectoryServicesLdap) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The groups Organizational Unit (OU) is optional. This parameter is a hint
+// to allow faster lookup in the LDAP namespace. In case that this parameter
+// is not provided, Filestore instance will query the whole LDAP namespace.
+func (o InstanceDirectoryServicesLdapPtrOutput) GroupsOu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDirectoryServicesLdap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupsOu
+	}).(pulumi.StringPtrOutput)
+}
+
+// The servers names are used for specifying the LDAP servers names.
+// The LDAP servers names can come with two formats:
+//  1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
+//  2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
+//     All servers names must be in the same format: either all DNS names or all
+//     IP addresses.
+func (o InstanceDirectoryServicesLdapPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceDirectoryServicesLdap) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The users Organizational Unit (OU) is optional. This parameter is a hint
+// to allow faster lookup in the LDAP namespace. In case that this parameter
+// is not provided, Filestore instance will query the whole LDAP namespace.
+func (o InstanceDirectoryServicesLdapPtrOutput) UsersOu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDirectoryServicesLdap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsersOu
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceEffectiveReplication struct {
 	// The replication role.
 	// Structure is documented below.
@@ -1523,6 +1894,254 @@ func (o InstancePerformanceConfigIopsPerTbPtrOutput) MaxIopsPerTb() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetInstanceDirectoryService struct {
+	// Configuration for LDAP servers.
+	Ldaps []GetInstanceDirectoryServiceLdap `pulumi:"ldaps"`
+}
+
+// GetInstanceDirectoryServiceInput is an input type that accepts GetInstanceDirectoryServiceArgs and GetInstanceDirectoryServiceOutput values.
+// You can construct a concrete instance of `GetInstanceDirectoryServiceInput` via:
+//
+//	GetInstanceDirectoryServiceArgs{...}
+type GetInstanceDirectoryServiceInput interface {
+	pulumi.Input
+
+	ToGetInstanceDirectoryServiceOutput() GetInstanceDirectoryServiceOutput
+	ToGetInstanceDirectoryServiceOutputWithContext(context.Context) GetInstanceDirectoryServiceOutput
+}
+
+type GetInstanceDirectoryServiceArgs struct {
+	// Configuration for LDAP servers.
+	Ldaps GetInstanceDirectoryServiceLdapArrayInput `pulumi:"ldaps"`
+}
+
+func (GetInstanceDirectoryServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDirectoryService)(nil)).Elem()
+}
+
+func (i GetInstanceDirectoryServiceArgs) ToGetInstanceDirectoryServiceOutput() GetInstanceDirectoryServiceOutput {
+	return i.ToGetInstanceDirectoryServiceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDirectoryServiceArgs) ToGetInstanceDirectoryServiceOutputWithContext(ctx context.Context) GetInstanceDirectoryServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDirectoryServiceOutput)
+}
+
+// GetInstanceDirectoryServiceArrayInput is an input type that accepts GetInstanceDirectoryServiceArray and GetInstanceDirectoryServiceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceDirectoryServiceArrayInput` via:
+//
+//	GetInstanceDirectoryServiceArray{ GetInstanceDirectoryServiceArgs{...} }
+type GetInstanceDirectoryServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceDirectoryServiceArrayOutput() GetInstanceDirectoryServiceArrayOutput
+	ToGetInstanceDirectoryServiceArrayOutputWithContext(context.Context) GetInstanceDirectoryServiceArrayOutput
+}
+
+type GetInstanceDirectoryServiceArray []GetInstanceDirectoryServiceInput
+
+func (GetInstanceDirectoryServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDirectoryService)(nil)).Elem()
+}
+
+func (i GetInstanceDirectoryServiceArray) ToGetInstanceDirectoryServiceArrayOutput() GetInstanceDirectoryServiceArrayOutput {
+	return i.ToGetInstanceDirectoryServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDirectoryServiceArray) ToGetInstanceDirectoryServiceArrayOutputWithContext(ctx context.Context) GetInstanceDirectoryServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDirectoryServiceArrayOutput)
+}
+
+type GetInstanceDirectoryServiceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDirectoryServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDirectoryService)(nil)).Elem()
+}
+
+func (o GetInstanceDirectoryServiceOutput) ToGetInstanceDirectoryServiceOutput() GetInstanceDirectoryServiceOutput {
+	return o
+}
+
+func (o GetInstanceDirectoryServiceOutput) ToGetInstanceDirectoryServiceOutputWithContext(ctx context.Context) GetInstanceDirectoryServiceOutput {
+	return o
+}
+
+// Configuration for LDAP servers.
+func (o GetInstanceDirectoryServiceOutput) Ldaps() GetInstanceDirectoryServiceLdapArrayOutput {
+	return o.ApplyT(func(v GetInstanceDirectoryService) []GetInstanceDirectoryServiceLdap { return v.Ldaps }).(GetInstanceDirectoryServiceLdapArrayOutput)
+}
+
+type GetInstanceDirectoryServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDirectoryServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDirectoryService)(nil)).Elem()
+}
+
+func (o GetInstanceDirectoryServiceArrayOutput) ToGetInstanceDirectoryServiceArrayOutput() GetInstanceDirectoryServiceArrayOutput {
+	return o
+}
+
+func (o GetInstanceDirectoryServiceArrayOutput) ToGetInstanceDirectoryServiceArrayOutputWithContext(ctx context.Context) GetInstanceDirectoryServiceArrayOutput {
+	return o
+}
+
+func (o GetInstanceDirectoryServiceArrayOutput) Index(i pulumi.IntInput) GetInstanceDirectoryServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceDirectoryService {
+		return vs[0].([]GetInstanceDirectoryService)[vs[1].(int)]
+	}).(GetInstanceDirectoryServiceOutput)
+}
+
+type GetInstanceDirectoryServiceLdap struct {
+	// The LDAP domain name in the format of 'my-domain.com'.
+	Domain string `pulumi:"domain"`
+	// The groups Organizational Unit (OU) is optional. This parameter is a hint
+	// to allow faster lookup in the LDAP namespace. In case that this parameter
+	// is not provided, Filestore instance will query the whole LDAP namespace.
+	GroupsOu string `pulumi:"groupsOu"`
+	// The servers names are used for specifying the LDAP servers names.
+	// The LDAP servers names can come with two formats:
+	// 1. DNS name, for example: 'ldap.example1.com', 'ldap.example2.com'.
+	// 2. IP address, for example: '10.0.0.1', '10.0.0.2', '10.0.0.3'.
+	//    All servers names must be in the same format: either all DNS names or all
+	//    IP addresses.
+	Servers []string `pulumi:"servers"`
+	// The users Organizational Unit (OU) is optional. This parameter is a hint
+	// to allow faster lookup in the LDAP namespace. In case that this parameter
+	// is not provided, Filestore instance will query the whole LDAP namespace.
+	UsersOu string `pulumi:"usersOu"`
+}
+
+// GetInstanceDirectoryServiceLdapInput is an input type that accepts GetInstanceDirectoryServiceLdapArgs and GetInstanceDirectoryServiceLdapOutput values.
+// You can construct a concrete instance of `GetInstanceDirectoryServiceLdapInput` via:
+//
+//	GetInstanceDirectoryServiceLdapArgs{...}
+type GetInstanceDirectoryServiceLdapInput interface {
+	pulumi.Input
+
+	ToGetInstanceDirectoryServiceLdapOutput() GetInstanceDirectoryServiceLdapOutput
+	ToGetInstanceDirectoryServiceLdapOutputWithContext(context.Context) GetInstanceDirectoryServiceLdapOutput
+}
+
+type GetInstanceDirectoryServiceLdapArgs struct {
+	// The LDAP domain name in the format of 'my-domain.com'.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The groups Organizational Unit (OU) is optional. This parameter is a hint
+	// to allow faster lookup in the LDAP namespace. In case that this parameter
+	// is not provided, Filestore instance will query the whole LDAP namespace.
+	GroupsOu pulumi.StringInput `pulumi:"groupsOu"`
+	// The servers names are used for specifying the LDAP servers names.
+	// The LDAP servers names can come with two formats:
+	// 1. DNS name, for example: 'ldap.example1.com', 'ldap.example2.com'.
+	// 2. IP address, for example: '10.0.0.1', '10.0.0.2', '10.0.0.3'.
+	//    All servers names must be in the same format: either all DNS names or all
+	//    IP addresses.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+	// The users Organizational Unit (OU) is optional. This parameter is a hint
+	// to allow faster lookup in the LDAP namespace. In case that this parameter
+	// is not provided, Filestore instance will query the whole LDAP namespace.
+	UsersOu pulumi.StringInput `pulumi:"usersOu"`
+}
+
+func (GetInstanceDirectoryServiceLdapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDirectoryServiceLdap)(nil)).Elem()
+}
+
+func (i GetInstanceDirectoryServiceLdapArgs) ToGetInstanceDirectoryServiceLdapOutput() GetInstanceDirectoryServiceLdapOutput {
+	return i.ToGetInstanceDirectoryServiceLdapOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDirectoryServiceLdapArgs) ToGetInstanceDirectoryServiceLdapOutputWithContext(ctx context.Context) GetInstanceDirectoryServiceLdapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDirectoryServiceLdapOutput)
+}
+
+// GetInstanceDirectoryServiceLdapArrayInput is an input type that accepts GetInstanceDirectoryServiceLdapArray and GetInstanceDirectoryServiceLdapArrayOutput values.
+// You can construct a concrete instance of `GetInstanceDirectoryServiceLdapArrayInput` via:
+//
+//	GetInstanceDirectoryServiceLdapArray{ GetInstanceDirectoryServiceLdapArgs{...} }
+type GetInstanceDirectoryServiceLdapArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceDirectoryServiceLdapArrayOutput() GetInstanceDirectoryServiceLdapArrayOutput
+	ToGetInstanceDirectoryServiceLdapArrayOutputWithContext(context.Context) GetInstanceDirectoryServiceLdapArrayOutput
+}
+
+type GetInstanceDirectoryServiceLdapArray []GetInstanceDirectoryServiceLdapInput
+
+func (GetInstanceDirectoryServiceLdapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDirectoryServiceLdap)(nil)).Elem()
+}
+
+func (i GetInstanceDirectoryServiceLdapArray) ToGetInstanceDirectoryServiceLdapArrayOutput() GetInstanceDirectoryServiceLdapArrayOutput {
+	return i.ToGetInstanceDirectoryServiceLdapArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceDirectoryServiceLdapArray) ToGetInstanceDirectoryServiceLdapArrayOutputWithContext(ctx context.Context) GetInstanceDirectoryServiceLdapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceDirectoryServiceLdapArrayOutput)
+}
+
+type GetInstanceDirectoryServiceLdapOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDirectoryServiceLdapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceDirectoryServiceLdap)(nil)).Elem()
+}
+
+func (o GetInstanceDirectoryServiceLdapOutput) ToGetInstanceDirectoryServiceLdapOutput() GetInstanceDirectoryServiceLdapOutput {
+	return o
+}
+
+func (o GetInstanceDirectoryServiceLdapOutput) ToGetInstanceDirectoryServiceLdapOutputWithContext(ctx context.Context) GetInstanceDirectoryServiceLdapOutput {
+	return o
+}
+
+// The LDAP domain name in the format of 'my-domain.com'.
+func (o GetInstanceDirectoryServiceLdapOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDirectoryServiceLdap) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The groups Organizational Unit (OU) is optional. This parameter is a hint
+// to allow faster lookup in the LDAP namespace. In case that this parameter
+// is not provided, Filestore instance will query the whole LDAP namespace.
+func (o GetInstanceDirectoryServiceLdapOutput) GroupsOu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDirectoryServiceLdap) string { return v.GroupsOu }).(pulumi.StringOutput)
+}
+
+// The servers names are used for specifying the LDAP servers names.
+// The LDAP servers names can come with two formats:
+//  1. DNS name, for example: 'ldap.example1.com', 'ldap.example2.com'.
+//  2. IP address, for example: '10.0.0.1', '10.0.0.2', '10.0.0.3'.
+//     All servers names must be in the same format: either all DNS names or all
+//     IP addresses.
+func (o GetInstanceDirectoryServiceLdapOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceDirectoryServiceLdap) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+// The users Organizational Unit (OU) is optional. This parameter is a hint
+// to allow faster lookup in the LDAP namespace. In case that this parameter
+// is not provided, Filestore instance will query the whole LDAP namespace.
+func (o GetInstanceDirectoryServiceLdapOutput) UsersOu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceDirectoryServiceLdap) string { return v.UsersOu }).(pulumi.StringOutput)
+}
+
+type GetInstanceDirectoryServiceLdapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceDirectoryServiceLdapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceDirectoryServiceLdap)(nil)).Elem()
+}
+
+func (o GetInstanceDirectoryServiceLdapArrayOutput) ToGetInstanceDirectoryServiceLdapArrayOutput() GetInstanceDirectoryServiceLdapArrayOutput {
+	return o
+}
+
+func (o GetInstanceDirectoryServiceLdapArrayOutput) ToGetInstanceDirectoryServiceLdapArrayOutputWithContext(ctx context.Context) GetInstanceDirectoryServiceLdapArrayOutput {
+	return o
+}
+
+func (o GetInstanceDirectoryServiceLdapArrayOutput) Index(i pulumi.IntInput) GetInstanceDirectoryServiceLdapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceDirectoryServiceLdap {
+		return vs[0].([]GetInstanceDirectoryServiceLdap)[vs[1].(int)]
+	}).(GetInstanceDirectoryServiceLdapOutput)
+}
+
 type GetInstanceEffectiveReplication struct {
 	// The replication role.
 	Replicas []GetInstanceEffectiveReplicationReplica `pulumi:"replicas"`
@@ -2713,6 +3332,10 @@ func (o GetInstancePerformanceConfigIopsPerTbArrayOutput) Index(i pulumi.IntInpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDirectoryServicesInput)(nil)).Elem(), InstanceDirectoryServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDirectoryServicesPtrInput)(nil)).Elem(), InstanceDirectoryServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDirectoryServicesLdapInput)(nil)).Elem(), InstanceDirectoryServicesLdapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDirectoryServicesLdapPtrInput)(nil)).Elem(), InstanceDirectoryServicesLdapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEffectiveReplicationInput)(nil)).Elem(), InstanceEffectiveReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEffectiveReplicationArrayInput)(nil)).Elem(), InstanceEffectiveReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEffectiveReplicationReplicaInput)(nil)).Elem(), InstanceEffectiveReplicationReplicaArgs{})
@@ -2733,6 +3356,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigFixedIopsPtrInput)(nil)).Elem(), InstancePerformanceConfigFixedIopsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigIopsPerTbInput)(nil)).Elem(), InstancePerformanceConfigIopsPerTbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigIopsPerTbPtrInput)(nil)).Elem(), InstancePerformanceConfigIopsPerTbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDirectoryServiceInput)(nil)).Elem(), GetInstanceDirectoryServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDirectoryServiceArrayInput)(nil)).Elem(), GetInstanceDirectoryServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDirectoryServiceLdapInput)(nil)).Elem(), GetInstanceDirectoryServiceLdapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceDirectoryServiceLdapArrayInput)(nil)).Elem(), GetInstanceDirectoryServiceLdapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEffectiveReplicationInput)(nil)).Elem(), GetInstanceEffectiveReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEffectiveReplicationArrayInput)(nil)).Elem(), GetInstanceEffectiveReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceEffectiveReplicationReplicaInput)(nil)).Elem(), GetInstanceEffectiveReplicationReplicaArgs{})
@@ -2753,6 +3380,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigFixedIopArrayInput)(nil)).Elem(), GetInstancePerformanceConfigFixedIopArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigIopsPerTbInput)(nil)).Elem(), GetInstancePerformanceConfigIopsPerTbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigIopsPerTbArrayInput)(nil)).Elem(), GetInstancePerformanceConfigIopsPerTbArray{})
+	pulumi.RegisterOutputType(InstanceDirectoryServicesOutput{})
+	pulumi.RegisterOutputType(InstanceDirectoryServicesPtrOutput{})
+	pulumi.RegisterOutputType(InstanceDirectoryServicesLdapOutput{})
+	pulumi.RegisterOutputType(InstanceDirectoryServicesLdapPtrOutput{})
 	pulumi.RegisterOutputType(InstanceEffectiveReplicationOutput{})
 	pulumi.RegisterOutputType(InstanceEffectiveReplicationArrayOutput{})
 	pulumi.RegisterOutputType(InstanceEffectiveReplicationReplicaOutput{})
@@ -2773,6 +3404,10 @@ func init() {
 	pulumi.RegisterOutputType(InstancePerformanceConfigFixedIopsPtrOutput{})
 	pulumi.RegisterOutputType(InstancePerformanceConfigIopsPerTbOutput{})
 	pulumi.RegisterOutputType(InstancePerformanceConfigIopsPerTbPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceDirectoryServiceOutput{})
+	pulumi.RegisterOutputType(GetInstanceDirectoryServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceDirectoryServiceLdapOutput{})
+	pulumi.RegisterOutputType(GetInstanceDirectoryServiceLdapArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceEffectiveReplicationOutput{})
 	pulumi.RegisterOutputType(GetInstanceEffectiveReplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceEffectiveReplicationReplicaOutput{})

@@ -920,6 +920,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/securityProfileV2",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/securityProfileV2:SecurityProfileV2": "SecurityProfileV2"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/sharedflow",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -8004,6 +8012,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.redis",
   "classes": {
    "gcp:redis/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "resourcemanager/capability",
+  "fqn": "pulumi_gcp.resourcemanager",
+  "classes": {
+   "gcp:resourcemanager/capability:Capability": "Capability"
   }
  },
  {
