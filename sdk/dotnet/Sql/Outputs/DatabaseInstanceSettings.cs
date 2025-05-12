@@ -35,6 +35,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? Collation;
         /// <summary>
+        /// The managed connection pool setting for a Cloud SQL instance.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsConnectionPoolConfig> ConnectionPoolConfigs;
+        /// <summary>
         /// Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
         /// </summary>
         public readonly string? ConnectorEnforcement;
@@ -138,6 +142,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? collation,
 
+            ImmutableArray<Outputs.DatabaseInstanceSettingsConnectionPoolConfig> connectionPoolConfigs,
+
             string? connectorEnforcement,
 
             Outputs.DatabaseInstanceSettingsDataCacheConfig? dataCacheConfig,
@@ -196,6 +202,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             AvailabilityType = availabilityType;
             BackupConfiguration = backupConfiguration;
             Collation = collation;
+            ConnectionPoolConfigs = connectionPoolConfigs;
             ConnectorEnforcement = connectorEnforcement;
             DataCacheConfig = dataCacheConfig;
             DataDiskProvisionedIops = dataDiskProvisionedIops;

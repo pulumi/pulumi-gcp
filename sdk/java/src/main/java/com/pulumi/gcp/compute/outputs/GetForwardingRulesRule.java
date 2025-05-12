@@ -191,6 +191,10 @@ public final class GetForwardingRulesRule {
     /**
      * @return Specifies the forwarding rule type.
      * 
+     * Note that an empty string value (&#39;&#34;&#34;&#39;) is also supported for some use
+     * cases, for example PSC (private service connection) regional forwarding
+     * rules.
+     * 
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: &#34;EXTERNAL&#34; Possible values: [&#34;EXTERNAL&#34;, &#34;EXTERNAL_MANAGED&#34;, &#34;INTERNAL&#34;, &#34;INTERNAL_MANAGED&#34;]
      * 
@@ -606,6 +610,10 @@ public final class GetForwardingRulesRule {
     }
     /**
      * @return Specifies the forwarding rule type.
+     * 
+     * Note that an empty string value (&#39;&#34;&#34;&#39;) is also supported for some use
+     * cases, for example PSC (private service connection) regional forwarding
+     * rules.
      * 
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: &#34;EXTERNAL&#34; Possible values: [&#34;EXTERNAL&#34;, &#34;EXTERNAL_MANAGED&#34;, &#34;INTERNAL&#34;, &#34;INTERNAL_MANAGED&#34;]

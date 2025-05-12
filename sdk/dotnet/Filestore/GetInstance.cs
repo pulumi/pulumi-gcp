@@ -173,6 +173,7 @@ namespace Pulumi.Gcp.Filestore
         public readonly bool DeletionProtectionEnabled;
         public readonly string DeletionProtectionReason;
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetInstanceDirectoryServiceResult> DirectoryServices;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetInstanceEffectiveReplicationResult> EffectiveReplications;
         public readonly string Etag;
@@ -204,6 +205,8 @@ namespace Pulumi.Gcp.Filestore
             string deletionProtectionReason,
 
             string description,
+
+            ImmutableArray<Outputs.GetInstanceDirectoryServiceResult> directoryServices,
 
             ImmutableDictionary<string, string> effectiveLabels,
 
@@ -245,6 +248,7 @@ namespace Pulumi.Gcp.Filestore
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DeletionProtectionReason = deletionProtectionReason;
             Description = description;
+            DirectoryServices = directoryServices;
             EffectiveLabels = effectiveLabels;
             EffectiveReplications = effectiveReplications;
             Etag = etag;

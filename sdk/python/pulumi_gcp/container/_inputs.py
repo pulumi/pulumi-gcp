@@ -8528,7 +8528,7 @@ if not MYPY:
         """
         flex_start: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Enables Flex Start provisioning model for the node pool.
+        ) Enables Flex Start provisioning model for the node pool.
         """
         gcfs_config: NotRequired[pulumi.Input['ClusterNodeConfigGcfsConfigArgsDict']]
         """
@@ -8786,7 +8786,7 @@ class ClusterNodeConfigArgs:
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] flex_start: Enables Flex Start provisioning model for the node pool.
+        :param pulumi.Input[builtins.bool] flex_start: ) Enables Flex Start provisioning model for the node pool.
         :param pulumi.Input['ClusterNodeConfigGcfsConfigArgs'] gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -9109,7 +9109,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="flexStart")
     def flex_start(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Enables Flex Start provisioning model for the node pool.
+        ) Enables Flex Start provisioning model for the node pool.
         """
         return pulumi.get(self, "flex_start")
 
@@ -12782,7 +12782,7 @@ if not MYPY:
         """
         flex_start: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Enables Flex Start provisioning model for the node pool.
+        ) Enables Flex Start provisioning model for the node pool.
         """
         gcfs_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArgsDict']]
         """
@@ -13040,7 +13040,7 @@ class ClusterNodePoolNodeConfigArgs:
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] flex_start: Enables Flex Start provisioning model for the node pool.
+        :param pulumi.Input[builtins.bool] flex_start: ) Enables Flex Start provisioning model for the node pool.
         :param pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArgs'] gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -13363,7 +13363,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="flexStart")
     def flex_start(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Enables Flex Start provisioning model for the node pool.
+        ) Enables Flex Start provisioning model for the node pool.
         """
         return pulumi.get(self, "flex_start")
 

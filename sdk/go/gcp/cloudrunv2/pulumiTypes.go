@@ -4910,8 +4910,13 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type ServiceScaling struct {
+	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+	ManualInstanceCount *int `pulumi:"manualInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
+	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+	// Possible values are: `AUTOMATIC`, `MANUAL`.
+	ScalingMode *string `pulumi:"scalingMode"`
 }
 
 // ServiceScalingInput is an input type that accepts ServiceScalingArgs and ServiceScalingOutput values.
@@ -4926,8 +4931,13 @@ type ServiceScalingInput interface {
 }
 
 type ServiceScalingArgs struct {
+	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+	ManualInstanceCount pulumi.IntPtrInput `pulumi:"manualInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
+	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+	// Possible values are: `AUTOMATIC`, `MANUAL`.
+	ScalingMode pulumi.StringPtrInput `pulumi:"scalingMode"`
 }
 
 func (ServiceScalingArgs) ElementType() reflect.Type {
@@ -5007,9 +5017,20 @@ func (o ServiceScalingOutput) ToServiceScalingPtrOutputWithContext(ctx context.C
 	}).(ServiceScalingPtrOutput)
 }
 
+// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+func (o ServiceScalingOutput) ManualInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceScaling) *int { return v.ManualInstanceCount }).(pulumi.IntPtrOutput)
+}
+
 // Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 func (o ServiceScalingOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceScaling) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+// Possible values are: `AUTOMATIC`, `MANUAL`.
+func (o ServiceScalingOutput) ScalingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceScaling) *string { return v.ScalingMode }).(pulumi.StringPtrOutput)
 }
 
 type ServiceScalingPtrOutput struct{ *pulumi.OutputState }
@@ -5036,6 +5057,16 @@ func (o ServiceScalingPtrOutput) Elem() ServiceScalingOutput {
 	}).(ServiceScalingOutput)
 }
 
+// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+func (o ServiceScalingPtrOutput) ManualInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ManualInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 func (o ServiceScalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceScaling) *int {
@@ -5044,6 +5075,17 @@ func (o ServiceScalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
 		}
 		return v.MinInstanceCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+// Possible values are: `AUTOMATIC`, `MANUAL`.
+func (o ServiceScalingPtrOutput) ScalingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceScaling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplate struct {
@@ -14023,8 +14065,12 @@ func (o GetServiceConditionArrayOutput) Index(i pulumi.IntInput) GetServiceCondi
 }
 
 type GetServiceScaling struct {
+	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+	ManualInstanceCount int `pulumi:"manualInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount int `pulumi:"minInstanceCount"`
+	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
+	ScalingMode string `pulumi:"scalingMode"`
 }
 
 // GetServiceScalingInput is an input type that accepts GetServiceScalingArgs and GetServiceScalingOutput values.
@@ -14039,8 +14085,12 @@ type GetServiceScalingInput interface {
 }
 
 type GetServiceScalingArgs struct {
+	// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+	ManualInstanceCount pulumi.IntInput `pulumi:"manualInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
+	// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
+	ScalingMode pulumi.StringInput `pulumi:"scalingMode"`
 }
 
 func (GetServiceScalingArgs) ElementType() reflect.Type {
@@ -14094,9 +14144,19 @@ func (o GetServiceScalingOutput) ToGetServiceScalingOutputWithContext(ctx contex
 	return o
 }
 
+// Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+func (o GetServiceScalingOutput) ManualInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceScaling) int { return v.ManualInstanceCount }).(pulumi.IntOutput)
+}
+
 // Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 func (o GetServiceScalingOutput) MinInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceScaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+// The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
+func (o GetServiceScalingOutput) ScalingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceScaling) string { return v.ScalingMode }).(pulumi.StringOutput)
 }
 
 type GetServiceScalingArrayOutput struct{ *pulumi.OutputState }

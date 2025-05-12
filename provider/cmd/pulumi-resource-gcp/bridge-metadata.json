@@ -1614,6 +1614,15 @@
                     }
                 }
             },
+            "google_apigee_security_profile_v2": {
+                "current": "gcp:apigee/securityProfileV2:SecurityProfileV2",
+                "majorVersion": 8,
+                "fields": {
+                    "profile_assessment_configs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_apigee_sharedflow": {
                 "current": "gcp:apigee/sharedflow:Sharedflow",
                 "majorVersion": 8,
@@ -19492,6 +19501,23 @@
                 "current": "gcp:filestore/instance:Instance",
                 "majorVersion": 8,
                 "fields": {
+                    "directory_services": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ldap": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "servers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "effective_replication": {
                         "maxItemsOne": false,
                         "elem": {
@@ -24674,6 +24700,9 @@
                                 }
                             }
                         }
+                    },
+                    "reasons": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -29495,6 +29524,10 @@
                     }
                 }
             },
+            "google_resource_manager_capability": {
+                "current": "gcp:resourcemanager/capability:Capability",
+                "majorVersion": 8
+            },
             "google_resource_manager_lien": {
                 "current": "gcp:resourcemanager/lien:Lien",
                 "majorVersion": 8,
@@ -30761,6 +30794,16 @@
                                         "fields": {
                                             "backup_retention_settings": {
                                                 "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "connection_pool_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "flags": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -37881,6 +37924,23 @@
                 "current": "gcp:filestore/getInstance:getInstance",
                 "majorVersion": 8,
                 "fields": {
+                    "directory_services": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ldap": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "servers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "effective_replication": {
                         "maxItemsOne": false,
                         "elem": {
@@ -40218,6 +40278,16 @@
                                         }
                                     }
                                 },
+                                "connection_pool_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "flags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "data_cache_config": {
                                     "maxItemsOne": false
                                 },
@@ -40334,6 +40404,16 @@
                                                 "elem": {
                                                     "fields": {
                                                         "backup_retention_settings": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "connection_pool_config": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "flags": {
                                                             "maxItemsOne": false
                                                         }
                                                     }
@@ -42392,6 +42472,7 @@
             "gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert": 0,
             "gcp:apigee/natAddress:NatAddress": 0,
             "gcp:apigee/organization:Organization": 0,
+            "gcp:apigee/securityProfileV2:SecurityProfileV2": 0,
             "gcp:apigee/sharedflow:Sharedflow": 0,
             "gcp:apigee/sharedflowDeployment:SharedflowDeployment": 0,
             "gcp:apigee/syncAuthorization:SyncAuthorization": 0,
@@ -43278,6 +43359,7 @@
             "gcp:redis/cluster:Cluster": 0,
             "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections": 0,
             "gcp:redis/instance:Instance": 0,
+            "gcp:resourcemanager/capability:Capability": 0,
             "gcp:resourcemanager/lien:Lien": 0,
             "gcp:runtimeconfig/config:Config": 0,
             "gcp:runtimeconfig/configIamBinding:ConfigIamBinding": 0,

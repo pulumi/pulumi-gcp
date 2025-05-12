@@ -5,10 +5,10 @@ Subject: [PATCH] Remove duplicative resource token
 
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index dbfbe568a..1fafe67c5 100644
+index 081f56515..1027c80aa 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
-@@ -1002,6 +1002,15 @@ func Provider() *schema.Provider {
+@@ -1007,6 +1007,15 @@ func Provider() *schema.Provider {
  
  func DatasourceMap() map[string]*schema.Resource {
  	datasourceMap, _ := DatasourceMapWithErrors()

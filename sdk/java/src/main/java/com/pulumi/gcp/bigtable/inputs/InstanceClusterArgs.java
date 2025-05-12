@@ -51,15 +51,6 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
      * 
-     * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-     * 
-     * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-     * 
-     * !&gt; **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-     * `cluster_id`) will cause the provider to delete/recreate the entire
-     * `gcp.bigtable.Instance` resource. If these values are changing, use a new
-     * `cluster_id`.
-     * 
      */
     @Import(name="kmsKeyName")
     private @Nullable Output<String> kmsKeyName;
@@ -67,6 +58,14 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
      * 
+     */
+    public Optional<Output<String>> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
+    }
+
+    /**
+     * The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
+     * 
      * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
      * 
      * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
@@ -77,8 +76,24 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
      * `cluster_id`.
      * 
      */
-    public Optional<Output<String>> kmsKeyName() {
-        return Optional.ofNullable(this.kmsKeyName);
+    @Import(name="nodeScalingFactor")
+    private @Nullable Output<String> nodeScalingFactor;
+
+    /**
+     * @return The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
+     * 
+     * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
+     * 
+     * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
+     * 
+     * !&gt; **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
+     * `cluster_id`) will cause the provider to delete/recreate the entire
+     * `gcp.bigtable.Instance` resource. If these values are changing, use a new
+     * `cluster_id`.
+     * 
+     */
+    public Optional<Output<String>> nodeScalingFactor() {
+        return Optional.ofNullable(this.nodeScalingFactor);
     }
 
     /**
@@ -155,6 +170,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         this.autoscalingConfig = $.autoscalingConfig;
         this.clusterId = $.clusterId;
         this.kmsKeyName = $.kmsKeyName;
+        this.nodeScalingFactor = $.nodeScalingFactor;
         this.numNodes = $.numNodes;
         this.state = $.state;
         this.storageType = $.storageType;
@@ -224,15 +240,6 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param kmsKeyName Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
          * 
-         * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
-         * 
-         * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
-         * 
-         * !&gt; **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
-         * `cluster_id`) will cause the provider to delete/recreate the entire
-         * `gcp.bigtable.Instance` resource. If these values are changing, use a new
-         * `cluster_id`.
-         * 
          * @return builder
          * 
          */
@@ -244,6 +251,16 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param kmsKeyName Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
          * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(String kmsKeyName) {
+            return kmsKeyName(Output.of(kmsKeyName));
+        }
+
+        /**
+         * @param nodeScalingFactor The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
+         * 
          * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
          * 
          * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
@@ -256,8 +273,28 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder kmsKeyName(String kmsKeyName) {
-            return kmsKeyName(Output.of(kmsKeyName));
+        public Builder nodeScalingFactor(@Nullable Output<String> nodeScalingFactor) {
+            $.nodeScalingFactor = nodeScalingFactor;
+            return this;
+        }
+
+        /**
+         * @param nodeScalingFactor The node scaling factor for this cluster. One of `&#34;NodeScalingFactor1X&#34;` or `&#34;NodeScalingFactor2X&#34;`. Defaults to `&#34;NodeScalingFactor1X&#34;`. If `&#34;NodeScalingFactor2X&#34;` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
+         * 
+         * &gt; **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
+         * 
+         * !&gt; **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
+         * 
+         * !&gt; **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
+         * `cluster_id`) will cause the provider to delete/recreate the entire
+         * `gcp.bigtable.Instance` resource. If these values are changing, use a new
+         * `cluster_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeScalingFactor(String nodeScalingFactor) {
+            return nodeScalingFactor(Output.of(nodeScalingFactor));
         }
 
         /**

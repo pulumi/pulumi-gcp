@@ -251,6 +251,8 @@ type Instance struct {
 	DeletionProtectionReason pulumi.StringPtrOutput `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	DirectoryServices InstanceDirectoryServicesPtrOutput `pulumi:"directoryServices"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Output only fields for replication configuration.
@@ -357,6 +359,8 @@ type instanceState struct {
 	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
+	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	DirectoryServices *InstanceDirectoryServices `pulumi:"directoryServices"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Output only fields for replication configuration.
@@ -420,6 +424,8 @@ type InstanceState struct {
 	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
+	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	DirectoryServices InstanceDirectoryServicesPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Output only fields for replication configuration.
@@ -485,6 +491,8 @@ type instanceArgs struct {
 	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
+	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	DirectoryServices *InstanceDirectoryServices `pulumi:"directoryServices"`
 	// File system shares on the instance. For this version, only a
 	// single file share is supported.
 	// Structure is documented below.
@@ -536,6 +544,8 @@ type InstanceArgs struct {
 	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
+	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	DirectoryServices InstanceDirectoryServicesPtrInput
 	// File system shares on the instance. For this version, only a
 	// single file share is supported.
 	// Structure is documented below.
@@ -684,6 +694,11 @@ func (o InstanceOutput) DeletionProtectionReason() pulumi.StringPtrOutput {
 // A description of the instance.
 func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+func (o InstanceOutput) DirectoryServices() InstanceDirectoryServicesPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceDirectoryServicesPtrOutput { return v.DirectoryServices }).(InstanceDirectoryServicesPtrOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

@@ -494,6 +494,9 @@ func GetRequestReason(ctx *pulumi.Context) string {
 func GetRequestTimeout(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:requestTimeout")
 }
+func GetResourceManager3CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:resourceManager3CustomEndpoint")
+}
 func GetResourceManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:resourceManagerCustomEndpoint")
 }

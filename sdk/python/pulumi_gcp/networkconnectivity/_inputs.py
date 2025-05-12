@@ -50,6 +50,8 @@ __all__ = [
     'SpokeLinkedVpcNetworkArgsDict',
     'SpokeLinkedVpnTunnelsArgs',
     'SpokeLinkedVpnTunnelsArgsDict',
+    'SpokeReasonArgs',
+    'SpokeReasonArgsDict',
 ]
 
 MYPY = False
@@ -1287,5 +1289,77 @@ class SpokeLinkedVpnTunnelsArgs:
     @include_import_ranges.setter
     def include_import_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "include_import_ranges", value)
+
+
+if not MYPY:
+    class SpokeReasonArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The code associated with this reason.
+        """
+        message: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Human-readable details about this reason.
+        """
+        user_details: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Additional information provided by the user in the RejectSpoke call.
+        """
+elif False:
+    SpokeReasonArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SpokeReasonArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None,
+                 user_details: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] code: The code associated with this reason.
+        :param pulumi.Input[builtins.str] message: Human-readable details about this reason.
+        :param pulumi.Input[builtins.str] user_details: Additional information provided by the user in the RejectSpoke call.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if user_details is not None:
+            pulumi.set(__self__, "user_details", user_details)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The code associated with this reason.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Human-readable details about this reason.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter(name="userDetails")
+    def user_details(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Additional information provided by the user in the RejectSpoke call.
+        """
+        return pulumi.get(self, "user_details")
+
+    @user_details.setter
+    def user_details(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "user_details", value)
 
 

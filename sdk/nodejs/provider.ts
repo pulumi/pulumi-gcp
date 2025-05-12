@@ -173,6 +173,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly region!: pulumi.Output<string | undefined>;
     public readonly requestReason!: pulumi.Output<string | undefined>;
     public readonly requestTimeout!: pulumi.Output<string | undefined>;
+    public readonly resourceManager3CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly resourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly resourceManagerV3CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly runtimeConfigCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -375,6 +376,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
             resourceInputs["requestReason"] = args ? args.requestReason : undefined;
             resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
+            resourceInputs["resourceManager3CustomEndpoint"] = args ? args.resourceManager3CustomEndpoint : undefined;
             resourceInputs["resourceManagerCustomEndpoint"] = args ? args.resourceManagerCustomEndpoint : undefined;
             resourceInputs["resourceManagerV3CustomEndpoint"] = args ? args.resourceManagerV3CustomEndpoint : undefined;
             resourceInputs["runtimeConfigCustomEndpoint"] = args ? args.runtimeConfigCustomEndpoint : undefined;
@@ -588,6 +590,7 @@ export interface ProviderArgs {
     region?: pulumi.Input<string>;
     requestReason?: pulumi.Input<string>;
     requestTimeout?: pulumi.Input<string>;
+    resourceManager3CustomEndpoint?: pulumi.Input<string>;
     resourceManagerCustomEndpoint?: pulumi.Input<string>;
     resourceManagerV3CustomEndpoint?: pulumi.Input<string>;
     runtimeConfigCustomEndpoint?: pulumi.Input<string>;

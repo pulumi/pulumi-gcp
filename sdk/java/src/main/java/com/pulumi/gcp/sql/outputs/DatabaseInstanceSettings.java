@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsActiveDirectoryConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsAdvancedMachineFeatures;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsBackupConfiguration;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsConnectionPoolConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDataCacheConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDatabaseFlag;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDenyMaintenancePeriod;
@@ -52,6 +53,11 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String collation;
+    /**
+     * @return The managed connection pool setting for a Cloud SQL instance.
+     * 
+     */
+    private @Nullable List<DatabaseInstanceSettingsConnectionPoolConfig> connectionPoolConfigs;
     /**
      * @return Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
      * 
@@ -198,6 +204,13 @@ public final class DatabaseInstanceSettings {
      */
     public Optional<String> collation() {
         return Optional.ofNullable(this.collation);
+    }
+    /**
+     * @return The managed connection pool setting for a Cloud SQL instance.
+     * 
+     */
+    public List<DatabaseInstanceSettingsConnectionPoolConfig> connectionPoolConfigs() {
+        return this.connectionPoolConfigs == null ? List.of() : this.connectionPoolConfigs;
     }
     /**
      * @return Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
@@ -376,6 +389,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable String availabilityType;
         private @Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration;
         private @Nullable String collation;
+        private @Nullable List<DatabaseInstanceSettingsConnectionPoolConfig> connectionPoolConfigs;
         private @Nullable String connectorEnforcement;
         private @Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig;
         private @Nullable Integer dataDiskProvisionedIops;
@@ -411,6 +425,7 @@ public final class DatabaseInstanceSettings {
     	      this.availabilityType = defaults.availabilityType;
     	      this.backupConfiguration = defaults.backupConfiguration;
     	      this.collation = defaults.collation;
+    	      this.connectionPoolConfigs = defaults.connectionPoolConfigs;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
     	      this.dataCacheConfig = defaults.dataCacheConfig;
     	      this.dataDiskProvisionedIops = defaults.dataDiskProvisionedIops;
@@ -474,6 +489,15 @@ public final class DatabaseInstanceSettings {
 
             this.collation = collation;
             return this;
+        }
+        @CustomType.Setter
+        public Builder connectionPoolConfigs(@Nullable List<DatabaseInstanceSettingsConnectionPoolConfig> connectionPoolConfigs) {
+
+            this.connectionPoolConfigs = connectionPoolConfigs;
+            return this;
+        }
+        public Builder connectionPoolConfigs(DatabaseInstanceSettingsConnectionPoolConfig... connectionPoolConfigs) {
+            return connectionPoolConfigs(List.of(connectionPoolConfigs));
         }
         @CustomType.Setter
         public Builder connectorEnforcement(@Nullable String connectorEnforcement) {
@@ -644,6 +668,7 @@ public final class DatabaseInstanceSettings {
             _resultValue.availabilityType = availabilityType;
             _resultValue.backupConfiguration = backupConfiguration;
             _resultValue.collation = collation;
+            _resultValue.connectionPoolConfigs = connectionPoolConfigs;
             _resultValue.connectorEnforcement = connectorEnforcement;
             _resultValue.dataCacheConfig = dataCacheConfig;
             _resultValue.dataDiskProvisionedIops = dataDiskProvisionedIops;

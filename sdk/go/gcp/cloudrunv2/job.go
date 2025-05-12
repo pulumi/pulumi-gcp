@@ -518,6 +518,47 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Job Multicontainer
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Name:               pulumi.String("cloudrun-job"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Template: &cloudrunv2.JobTemplateArgs{
+//					Template: &cloudrunv2.JobTemplateTemplateArgs{
+//						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
+//							&cloudrunv2.JobTemplateTemplateContainerArgs{
+//								Name:  pulumi.String("job-1"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
+//							},
+//							&cloudrunv2.JobTemplateTemplateContainerArgs{
+//								Name:  pulumi.String("job-2"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

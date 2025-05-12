@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.filestore.InstanceArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceState;
+import com.pulumi.gcp.filestore.outputs.InstanceDirectoryServices;
 import com.pulumi.gcp.filestore.outputs.InstanceEffectiveReplication;
 import com.pulumi.gcp.filestore.outputs.InstanceFileShares;
 import com.pulumi.gcp.filestore.outputs.InstanceInitialReplication;
@@ -332,6 +333,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * 
+     */
+    @Export(name="directoryServices", refs={InstanceDirectoryServices.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceDirectoryServices> directoryServices;
+
+    /**
+     * @return Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * 
+     */
+    public Output<Optional<InstanceDirectoryServices>> directoryServices() {
+        return Codegen.optional(this.directoryServices);
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

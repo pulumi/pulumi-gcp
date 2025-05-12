@@ -140,6 +140,11 @@ export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
 
+export { SecurityProfileV2Args, SecurityProfileV2State } from "./securityProfileV2";
+export type SecurityProfileV2 = import("./securityProfileV2").SecurityProfileV2;
+export const SecurityProfileV2: typeof import("./securityProfileV2").SecurityProfileV2 = null as any;
+utilities.lazyLoad(exports, ["SecurityProfileV2"], () => require("./securityProfileV2"));
+
 export { SharedflowArgs, SharedflowState } from "./sharedflow";
 export type Sharedflow = import("./sharedflow").Sharedflow;
 export const Sharedflow: typeof import("./sharedflow").Sharedflow = null as any;
@@ -217,6 +222,8 @@ const _module = {
                 return new NatAddress(name, <any>undefined, { urn })
             case "gcp:apigee/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "gcp:apigee/securityProfileV2:SecurityProfileV2":
+                return new SecurityProfileV2(name, <any>undefined, { urn })
             case "gcp:apigee/sharedflow:Sharedflow":
                 return new Sharedflow(name, <any>undefined, { urn })
             case "gcp:apigee/sharedflowDeployment:SharedflowDeployment":
@@ -256,6 +263,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/keystoresAliasesPkcs12", _m
 pulumi.runtime.registerResourceModule("gcp", "apigee/keystoresAliasesSelfSignedCert", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/natAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/securityProfileV2", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflow", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflowDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/syncAuthorization", _module)

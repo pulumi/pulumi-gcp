@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:resourcemanager/capability:Capability":
+		r = &Capability{}
 	case "gcp:resourcemanager/lien:Lien":
 		r = &Lien{}
 	default:
@@ -36,6 +38,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"resourcemanager/capability",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"resourcemanager/lien",

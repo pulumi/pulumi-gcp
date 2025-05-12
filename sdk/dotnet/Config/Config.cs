@@ -1103,6 +1103,13 @@ namespace Pulumi.Gcp
             set => _requestTimeout.Set(value);
         }
 
+        private static readonly __Value<string?> _resourceManager3CustomEndpoint = new __Value<string?>(() => __config.Get("resourceManager3CustomEndpoint"));
+        public static string? ResourceManager3CustomEndpoint
+        {
+            get => _resourceManager3CustomEndpoint.Get();
+            set => _resourceManager3CustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _resourceManagerCustomEndpoint = new __Value<string?>(() => __config.Get("resourceManagerCustomEndpoint"));
         public static string? ResourceManagerCustomEndpoint
         {

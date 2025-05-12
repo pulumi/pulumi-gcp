@@ -3340,6 +3340,20 @@ export namespace apigee {
         value?: pulumi.Input<string>;
     }
 
+    export interface SecurityProfileV2ProfileAssessmentConfig {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        assessment: pulumi.Input<string>;
+        /**
+         * The weight of the assessment.
+         * Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+         *
+         * - - -
+         */
+        weight: pulumi.Input<string>;
+    }
+
     export interface SharedflowMetaData {
         /**
          * Time at which the API proxy was created, in milliseconds since epoch.
@@ -7784,6 +7798,10 @@ export namespace bigtable {
         clusterId: pulumi.Input<string>;
         /**
          * Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+        /**
+         * The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `numNodes`, `minNodes`, and `maxNodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
          *
          * > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
          *
@@ -7794,7 +7812,7 @@ export namespace bigtable {
          * `gcp.bigtable.Instance` resource. If these values are changing, use a new
          * `clusterId`.
          */
-        kmsKeyName?: pulumi.Input<string>;
+        nodeScalingFactor?: pulumi.Input<string>;
         /**
          * The number of nodes in the cluster.
          * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -14141,6 +14159,9 @@ export namespace cloudrun {
          * for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
          * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
          * when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+         * - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+         * - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
+         * - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          */
@@ -14333,6 +14354,9 @@ export namespace cloudrun {
          * for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
          * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
          * when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+         * - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
+         * - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
+         * - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
          */
@@ -15558,9 +15582,18 @@ export namespace cloudrunv2 {
 
     export interface ServiceScaling {
         /**
+         * Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+         */
+        manualInstanceCount?: pulumi.Input<number>;
+        /**
          * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
          */
         minInstanceCount?: pulumi.Input<number>;
+        /**
+         * The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+         * Possible values are: `AUTOMATIC`, `MANUAL`.
+         */
+        scalingMode?: pulumi.Input<string>;
     }
 
     export interface ServiceTemplate {
@@ -34985,7 +35018,7 @@ export namespace container {
          */
         fastSocket?: pulumi.Input<inputs.container.ClusterNodeConfigFastSocket>;
         /**
-         * Enables Flex Start provisioning model for the node pool.
+         * ) Enables Flex Start provisioning model for the node pool.
          */
         flexStart?: pulumi.Input<boolean>;
         /**
@@ -35928,7 +35961,7 @@ export namespace container {
          */
         fastSocket?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigFastSocket>;
         /**
-         * Enables Flex Start provisioning model for the node pool.
+         * ) Enables Flex Start provisioning model for the node pool.
          */
         flexStart?: pulumi.Input<boolean>;
         /**
@@ -55331,6 +55364,42 @@ export namespace eventarc {
 }
 
 export namespace filestore {
+    export interface InstanceDirectoryServices {
+        /**
+         * Configuration for LDAP servers.
+         * Structure is documented below.
+         */
+        ldap?: pulumi.Input<inputs.filestore.InstanceDirectoryServicesLdap>;
+    }
+
+    export interface InstanceDirectoryServicesLdap {
+        /**
+         * The LDAP domain name in the format of `my-domain.com`.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * The groups Organizational Unit (OU) is optional. This parameter is a hint
+         * to allow faster lookup in the LDAP namespace. In case that this parameter
+         * is not provided, Filestore instance will query the whole LDAP namespace.
+         */
+        groupsOu?: pulumi.Input<string>;
+        /**
+         * The servers names are used for specifying the LDAP servers names.
+         * The LDAP servers names can come with two formats:
+         * 1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
+         * 2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
+         * All servers names must be in the same format: either all DNS names or all
+         * IP addresses.
+         */
+        servers: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The users Organizational Unit (OU) is optional. This parameter is a hint
+         * to allow faster lookup in the LDAP namespace. In case that this parameter
+         * is not provided, Filestore instance will query the whole LDAP namespace.
+         */
+        usersOu?: pulumi.Input<string>;
+    }
+
     export interface InstanceEffectiveReplication {
         /**
          * The replication role.
@@ -67345,6 +67414,21 @@ export namespace networkconnectivity {
          * The URIs of linked VPN tunnel resources.
          */
         uris: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SpokeReason {
+        /**
+         * The code associated with this reason.
+         */
+        code?: pulumi.Input<string>;
+        /**
+         * Human-readable details about this reason.
+         */
+        message?: pulumi.Input<string>;
+        /**
+         * Additional information provided by the user in the RejectSpoke call.
+         */
+        userDetails?: pulumi.Input<string>;
     }
 }
 
@@ -81520,6 +81604,10 @@ export namespace sql {
          */
         collation?: pulumi.Input<string>;
         /**
+         * The managed connection pool setting for a Cloud SQL instance.
+         */
+        connectionPoolConfigs?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsConnectionPoolConfig>[]>;
+        /**
          * Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
          */
         connectorEnforcement?: pulumi.Input<string>;
@@ -81668,6 +81756,28 @@ export namespace sql {
          * The unit that 'retained_backups' represents. Defaults to `COUNT`.
          */
         retentionUnit?: pulumi.Input<string>;
+    }
+
+    export interface DatabaseInstanceSettingsConnectionPoolConfig {
+        /**
+         * True if the manager connection pooling configuration is enabled.
+         */
+        connectionPoolingEnabled?: pulumi.Input<boolean>;
+        /**
+         * List of connection pool configuration flags
+         */
+        flags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsConnectionPoolConfigFlag>[]>;
+    }
+
+    export interface DatabaseInstanceSettingsConnectionPoolConfigFlag {
+        /**
+         * Name of the flag.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Value of the flag.
+         */
+        value: pulumi.Input<string>;
     }
 
     export interface DatabaseInstanceSettingsDataCacheConfig {

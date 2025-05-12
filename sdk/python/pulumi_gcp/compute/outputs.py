@@ -56275,6 +56275,10 @@ class GetForwardingRulesRuleResult(dict):
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param builtins.str load_balancing_scheme: Specifies the forwarding rule type.
                
+               Note that an empty string value ('""') is also supported for some use
+               cases, for example PSC (private service connection) regional forwarding
+               rules.
+               
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
         :param builtins.str name: Name of the resource; provided by the client when the resource is created.
@@ -56671,6 +56675,10 @@ class GetForwardingRulesRuleResult(dict):
     def load_balancing_scheme(self) -> builtins.str:
         """
         Specifies the forwarding rule type.
+
+        Note that an empty string value ('""') is also supported for some use
+        cases, for example PSC (private service connection) regional forwarding
+        rules.
 
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]

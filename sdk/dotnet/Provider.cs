@@ -456,6 +456,9 @@ namespace Pulumi.Gcp
         [Output("requestTimeout")]
         public Output<string?> RequestTimeout { get; private set; } = null!;
 
+        [Output("resourceManager3CustomEndpoint")]
+        public Output<string?> ResourceManager3CustomEndpoint { get; private set; } = null!;
+
         [Output("resourceManagerCustomEndpoint")]
         public Output<string?> ResourceManagerCustomEndpoint { get; private set; } = null!;
 
@@ -1082,6 +1085,9 @@ namespace Pulumi.Gcp
 
         [Input("requestTimeout")]
         public Input<string>? RequestTimeout { get; set; }
+
+        [Input("resourceManager3CustomEndpoint")]
+        public Input<string>? ResourceManager3CustomEndpoint { get; set; }
 
         [Input("resourceManagerCustomEndpoint")]
         public Input<string>? ResourceManagerCustomEndpoint { get; set; }

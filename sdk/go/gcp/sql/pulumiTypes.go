@@ -1362,6 +1362,8 @@ type DatabaseInstanceSettings struct {
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation *string `pulumi:"collation"`
+	// The managed connection pool setting for a Cloud SQL instance.
+	ConnectionPoolConfigs []DatabaseInstanceSettingsConnectionPoolConfig `pulumi:"connectionPoolConfigs"`
 	// Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement *string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
@@ -1440,6 +1442,8 @@ type DatabaseInstanceSettingsArgs struct {
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// The managed connection pool setting for a Cloud SQL instance.
+	ConnectionPoolConfigs DatabaseInstanceSettingsConnectionPoolConfigArrayInput `pulumi:"connectionPoolConfigs"`
 	// Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringPtrInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
@@ -1605,6 +1609,13 @@ func (o DatabaseInstanceSettingsOutput) BackupConfiguration() DatabaseInstanceSe
 // The name of server instance collation.
 func (o DatabaseInstanceSettingsOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Collation }).(pulumi.StringPtrOutput)
+}
+
+// The managed connection pool setting for a Cloud SQL instance.
+func (o DatabaseInstanceSettingsOutput) ConnectionPoolConfigs() DatabaseInstanceSettingsConnectionPoolConfigArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsConnectionPoolConfig {
+		return v.ConnectionPoolConfigs
+	}).(DatabaseInstanceSettingsConnectionPoolConfigArrayOutput)
 }
 
 // Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
@@ -1829,6 +1840,16 @@ func (o DatabaseInstanceSettingsPtrOutput) Collation() pulumi.StringPtrOutput {
 		}
 		return v.Collation
 	}).(pulumi.StringPtrOutput)
+}
+
+// The managed connection pool setting for a Cloud SQL instance.
+func (o DatabaseInstanceSettingsPtrOutput) ConnectionPoolConfigs() DatabaseInstanceSettingsConnectionPoolConfigArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) []DatabaseInstanceSettingsConnectionPoolConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionPoolConfigs
+	}).(DatabaseInstanceSettingsConnectionPoolConfigArrayOutput)
 }
 
 // Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
@@ -2789,6 +2810,220 @@ func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOut
 		}
 		return v.RetentionUnit
 	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfig struct {
+	// True if the manager connection pooling configuration is enabled.
+	ConnectionPoolingEnabled *bool `pulumi:"connectionPoolingEnabled"`
+	// List of connection pool configuration flags
+	Flags []DatabaseInstanceSettingsConnectionPoolConfigFlag `pulumi:"flags"`
+}
+
+// DatabaseInstanceSettingsConnectionPoolConfigInput is an input type that accepts DatabaseInstanceSettingsConnectionPoolConfigArgs and DatabaseInstanceSettingsConnectionPoolConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsConnectionPoolConfigInput` via:
+//
+//	DatabaseInstanceSettingsConnectionPoolConfigArgs{...}
+type DatabaseInstanceSettingsConnectionPoolConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsConnectionPoolConfigOutput() DatabaseInstanceSettingsConnectionPoolConfigOutput
+	ToDatabaseInstanceSettingsConnectionPoolConfigOutputWithContext(context.Context) DatabaseInstanceSettingsConnectionPoolConfigOutput
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfigArgs struct {
+	// True if the manager connection pooling configuration is enabled.
+	ConnectionPoolingEnabled pulumi.BoolPtrInput `pulumi:"connectionPoolingEnabled"`
+	// List of connection pool configuration flags
+	Flags DatabaseInstanceSettingsConnectionPoolConfigFlagArrayInput `pulumi:"flags"`
+}
+
+func (DatabaseInstanceSettingsConnectionPoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsConnectionPoolConfigArgs) ToDatabaseInstanceSettingsConnectionPoolConfigOutput() DatabaseInstanceSettingsConnectionPoolConfigOutput {
+	return i.ToDatabaseInstanceSettingsConnectionPoolConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsConnectionPoolConfigArgs) ToDatabaseInstanceSettingsConnectionPoolConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsConnectionPoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsConnectionPoolConfigOutput)
+}
+
+// DatabaseInstanceSettingsConnectionPoolConfigArrayInput is an input type that accepts DatabaseInstanceSettingsConnectionPoolConfigArray and DatabaseInstanceSettingsConnectionPoolConfigArrayOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsConnectionPoolConfigArrayInput` via:
+//
+//	DatabaseInstanceSettingsConnectionPoolConfigArray{ DatabaseInstanceSettingsConnectionPoolConfigArgs{...} }
+type DatabaseInstanceSettingsConnectionPoolConfigArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsConnectionPoolConfigArrayOutput() DatabaseInstanceSettingsConnectionPoolConfigArrayOutput
+	ToDatabaseInstanceSettingsConnectionPoolConfigArrayOutputWithContext(context.Context) DatabaseInstanceSettingsConnectionPoolConfigArrayOutput
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfigArray []DatabaseInstanceSettingsConnectionPoolConfigInput
+
+func (DatabaseInstanceSettingsConnectionPoolConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsConnectionPoolConfigArray) ToDatabaseInstanceSettingsConnectionPoolConfigArrayOutput() DatabaseInstanceSettingsConnectionPoolConfigArrayOutput {
+	return i.ToDatabaseInstanceSettingsConnectionPoolConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsConnectionPoolConfigArray) ToDatabaseInstanceSettingsConnectionPoolConfigArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsConnectionPoolConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsConnectionPoolConfigArrayOutput)
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsConnectionPoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigOutput) ToDatabaseInstanceSettingsConnectionPoolConfigOutput() DatabaseInstanceSettingsConnectionPoolConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigOutput) ToDatabaseInstanceSettingsConnectionPoolConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsConnectionPoolConfigOutput {
+	return o
+}
+
+// True if the manager connection pooling configuration is enabled.
+func (o DatabaseInstanceSettingsConnectionPoolConfigOutput) ConnectionPoolingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsConnectionPoolConfig) *bool { return v.ConnectionPoolingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// List of connection pool configuration flags
+func (o DatabaseInstanceSettingsConnectionPoolConfigOutput) Flags() DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsConnectionPoolConfig) []DatabaseInstanceSettingsConnectionPoolConfigFlag {
+		return v.Flags
+	}).(DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput)
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsConnectionPoolConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigArrayOutput) ToDatabaseInstanceSettingsConnectionPoolConfigArrayOutput() DatabaseInstanceSettingsConnectionPoolConfigArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigArrayOutput) ToDatabaseInstanceSettingsConnectionPoolConfigArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsConnectionPoolConfigArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsConnectionPoolConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsConnectionPoolConfig {
+		return vs[0].([]DatabaseInstanceSettingsConnectionPoolConfig)[vs[1].(int)]
+	}).(DatabaseInstanceSettingsConnectionPoolConfigOutput)
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfigFlag struct {
+	// Name of the flag.
+	Name string `pulumi:"name"`
+	// Value of the flag.
+	Value string `pulumi:"value"`
+}
+
+// DatabaseInstanceSettingsConnectionPoolConfigFlagInput is an input type that accepts DatabaseInstanceSettingsConnectionPoolConfigFlagArgs and DatabaseInstanceSettingsConnectionPoolConfigFlagOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsConnectionPoolConfigFlagInput` via:
+//
+//	DatabaseInstanceSettingsConnectionPoolConfigFlagArgs{...}
+type DatabaseInstanceSettingsConnectionPoolConfigFlagInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsConnectionPoolConfigFlagOutput() DatabaseInstanceSettingsConnectionPoolConfigFlagOutput
+	ToDatabaseInstanceSettingsConnectionPoolConfigFlagOutputWithContext(context.Context) DatabaseInstanceSettingsConnectionPoolConfigFlagOutput
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfigFlagArgs struct {
+	// Name of the flag.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the flag.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (DatabaseInstanceSettingsConnectionPoolConfigFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsConnectionPoolConfigFlagArgs) ToDatabaseInstanceSettingsConnectionPoolConfigFlagOutput() DatabaseInstanceSettingsConnectionPoolConfigFlagOutput {
+	return i.ToDatabaseInstanceSettingsConnectionPoolConfigFlagOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsConnectionPoolConfigFlagArgs) ToDatabaseInstanceSettingsConnectionPoolConfigFlagOutputWithContext(ctx context.Context) DatabaseInstanceSettingsConnectionPoolConfigFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsConnectionPoolConfigFlagOutput)
+}
+
+// DatabaseInstanceSettingsConnectionPoolConfigFlagArrayInput is an input type that accepts DatabaseInstanceSettingsConnectionPoolConfigFlagArray and DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsConnectionPoolConfigFlagArrayInput` via:
+//
+//	DatabaseInstanceSettingsConnectionPoolConfigFlagArray{ DatabaseInstanceSettingsConnectionPoolConfigFlagArgs{...} }
+type DatabaseInstanceSettingsConnectionPoolConfigFlagArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput() DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput
+	ToDatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutputWithContext(context.Context) DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfigFlagArray []DatabaseInstanceSettingsConnectionPoolConfigFlagInput
+
+func (DatabaseInstanceSettingsConnectionPoolConfigFlagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsConnectionPoolConfigFlagArray) ToDatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput() DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput {
+	return i.ToDatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsConnectionPoolConfigFlagArray) ToDatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput)
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfigFlagOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsConnectionPoolConfigFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigFlagOutput) ToDatabaseInstanceSettingsConnectionPoolConfigFlagOutput() DatabaseInstanceSettingsConnectionPoolConfigFlagOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigFlagOutput) ToDatabaseInstanceSettingsConnectionPoolConfigFlagOutputWithContext(ctx context.Context) DatabaseInstanceSettingsConnectionPoolConfigFlagOutput {
+	return o
+}
+
+// Name of the flag.
+func (o DatabaseInstanceSettingsConnectionPoolConfigFlagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsConnectionPoolConfigFlag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the flag.
+func (o DatabaseInstanceSettingsConnectionPoolConfigFlagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsConnectionPoolConfigFlag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput) ToDatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput() DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput) ToDatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsConnectionPoolConfigFlagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsConnectionPoolConfigFlag {
+		return vs[0].([]DatabaseInstanceSettingsConnectionPoolConfigFlag)[vs[1].(int)]
+	}).(DatabaseInstanceSettingsConnectionPoolConfigFlagOutput)
 }
 
 type DatabaseInstanceSettingsDataCacheConfig struct {
@@ -6339,6 +6574,8 @@ type GetDatabaseInstanceSetting struct {
 	BackupConfigurations []GetDatabaseInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation string `pulumi:"collation"`
+	// The managed connection pool setting for a Cloud SQL instance.
+	ConnectionPoolConfigs []GetDatabaseInstanceSettingConnectionPoolConfig `pulumi:"connectionPoolConfigs"`
 	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
@@ -6357,7 +6594,7 @@ type GetDatabaseInstanceSetting struct {
 	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize int `pulumi:"diskSize"`
-	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
@@ -6413,6 +6650,8 @@ type GetDatabaseInstanceSettingArgs struct {
 	BackupConfigurations GetDatabaseInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation pulumi.StringInput `pulumi:"collation"`
+	// The managed connection pool setting for a Cloud SQL instance.
+	ConnectionPoolConfigs GetDatabaseInstanceSettingConnectionPoolConfigArrayInput `pulumi:"connectionPoolConfigs"`
 	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
@@ -6431,7 +6670,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
-	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
@@ -6550,6 +6789,13 @@ func (o GetDatabaseInstanceSettingOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
 }
 
+// The managed connection pool setting for a Cloud SQL instance.
+func (o GetDatabaseInstanceSettingOutput) ConnectionPoolConfigs() GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingConnectionPoolConfig {
+		return v.ConnectionPoolConfigs
+	}).(GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput)
+}
+
 // Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o GetDatabaseInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
@@ -6602,7 +6848,7 @@ func (o GetDatabaseInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 func (o GetDatabaseInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
 }
@@ -7162,6 +7408,220 @@ func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
 		return vs[0].([]GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfig struct {
+	// Whether Managed Connection Pool is enabled for this instance.
+	ConnectionPoolingEnabled bool `pulumi:"connectionPoolingEnabled"`
+	// List of connection pool configuration flags
+	Flags []GetDatabaseInstanceSettingConnectionPoolConfigFlag `pulumi:"flags"`
+}
+
+// GetDatabaseInstanceSettingConnectionPoolConfigInput is an input type that accepts GetDatabaseInstanceSettingConnectionPoolConfigArgs and GetDatabaseInstanceSettingConnectionPoolConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingConnectionPoolConfigInput` via:
+//
+//	GetDatabaseInstanceSettingConnectionPoolConfigArgs{...}
+type GetDatabaseInstanceSettingConnectionPoolConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingConnectionPoolConfigOutput() GetDatabaseInstanceSettingConnectionPoolConfigOutput
+	ToGetDatabaseInstanceSettingConnectionPoolConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingConnectionPoolConfigOutput
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfigArgs struct {
+	// Whether Managed Connection Pool is enabled for this instance.
+	ConnectionPoolingEnabled pulumi.BoolInput `pulumi:"connectionPoolingEnabled"`
+	// List of connection pool configuration flags
+	Flags GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayInput `pulumi:"flags"`
+}
+
+func (GetDatabaseInstanceSettingConnectionPoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingConnectionPoolConfigArgs) ToGetDatabaseInstanceSettingConnectionPoolConfigOutput() GetDatabaseInstanceSettingConnectionPoolConfigOutput {
+	return i.ToGetDatabaseInstanceSettingConnectionPoolConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingConnectionPoolConfigArgs) ToGetDatabaseInstanceSettingConnectionPoolConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingConnectionPoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingConnectionPoolConfigOutput)
+}
+
+// GetDatabaseInstanceSettingConnectionPoolConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingConnectionPoolConfigArray and GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingConnectionPoolConfigArrayInput` via:
+//
+//	GetDatabaseInstanceSettingConnectionPoolConfigArray{ GetDatabaseInstanceSettingConnectionPoolConfigArgs{...} }
+type GetDatabaseInstanceSettingConnectionPoolConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingConnectionPoolConfigArrayOutput() GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput
+	ToGetDatabaseInstanceSettingConnectionPoolConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfigArray []GetDatabaseInstanceSettingConnectionPoolConfigInput
+
+func (GetDatabaseInstanceSettingConnectionPoolConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingConnectionPoolConfigArray) ToGetDatabaseInstanceSettingConnectionPoolConfigArrayOutput() GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingConnectionPoolConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingConnectionPoolConfigArray) ToGetDatabaseInstanceSettingConnectionPoolConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingConnectionPoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigOutput) ToGetDatabaseInstanceSettingConnectionPoolConfigOutput() GetDatabaseInstanceSettingConnectionPoolConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigOutput) ToGetDatabaseInstanceSettingConnectionPoolConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingConnectionPoolConfigOutput {
+	return o
+}
+
+// Whether Managed Connection Pool is enabled for this instance.
+func (o GetDatabaseInstanceSettingConnectionPoolConfigOutput) ConnectionPoolingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingConnectionPoolConfig) bool { return v.ConnectionPoolingEnabled }).(pulumi.BoolOutput)
+}
+
+// List of connection pool configuration flags
+func (o GetDatabaseInstanceSettingConnectionPoolConfigOutput) Flags() GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingConnectionPoolConfig) []GetDatabaseInstanceSettingConnectionPoolConfigFlag {
+		return v.Flags
+	}).(GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput)
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput) ToGetDatabaseInstanceSettingConnectionPoolConfigArrayOutput() GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput) ToGetDatabaseInstanceSettingConnectionPoolConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingConnectionPoolConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingConnectionPoolConfig {
+		return vs[0].([]GetDatabaseInstanceSettingConnectionPoolConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingConnectionPoolConfigOutput)
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfigFlag struct {
+	// The name of the instance.
+	Name string `pulumi:"name"`
+	// Value of the flag.
+	Value string `pulumi:"value"`
+}
+
+// GetDatabaseInstanceSettingConnectionPoolConfigFlagInput is an input type that accepts GetDatabaseInstanceSettingConnectionPoolConfigFlagArgs and GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingConnectionPoolConfigFlagInput` via:
+//
+//	GetDatabaseInstanceSettingConnectionPoolConfigFlagArgs{...}
+type GetDatabaseInstanceSettingConnectionPoolConfigFlagInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingConnectionPoolConfigFlagOutput() GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput
+	ToGetDatabaseInstanceSettingConnectionPoolConfigFlagOutputWithContext(context.Context) GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfigFlagArgs struct {
+	// The name of the instance.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the flag.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDatabaseInstanceSettingConnectionPoolConfigFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingConnectionPoolConfigFlagArgs) ToGetDatabaseInstanceSettingConnectionPoolConfigFlagOutput() GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput {
+	return i.ToGetDatabaseInstanceSettingConnectionPoolConfigFlagOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingConnectionPoolConfigFlagArgs) ToGetDatabaseInstanceSettingConnectionPoolConfigFlagOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput)
+}
+
+// GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayInput is an input type that accepts GetDatabaseInstanceSettingConnectionPoolConfigFlagArray and GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayInput` via:
+//
+//	GetDatabaseInstanceSettingConnectionPoolConfigFlagArray{ GetDatabaseInstanceSettingConnectionPoolConfigFlagArgs{...} }
+type GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput() GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput
+	ToGetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfigFlagArray []GetDatabaseInstanceSettingConnectionPoolConfigFlagInput
+
+func (GetDatabaseInstanceSettingConnectionPoolConfigFlagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingConnectionPoolConfigFlagArray) ToGetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput() GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return i.ToGetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingConnectionPoolConfigFlagArray) ToGetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput)
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput) ToGetDatabaseInstanceSettingConnectionPoolConfigFlagOutput() GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput) ToGetDatabaseInstanceSettingConnectionPoolConfigFlagOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput {
+	return o
+}
+
+// The name of the instance.
+func (o GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingConnectionPoolConfigFlag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the flag.
+func (o GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingConnectionPoolConfigFlag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput) ToGetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput() GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput) ToGetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingConnectionPoolConfigFlag {
+		return vs[0].([]GetDatabaseInstanceSettingConnectionPoolConfigFlag)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput)
 }
 
 type GetDatabaseInstanceSettingDataCacheConfig struct {
@@ -9850,6 +10310,8 @@ type GetDatabaseInstancesInstanceSetting struct {
 	BackupConfigurations []GetDatabaseInstancesInstanceSettingBackupConfiguration `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation string `pulumi:"collation"`
+	// The managed connection pool setting for a Cloud SQL instance.
+	ConnectionPoolConfigs []GetDatabaseInstancesInstanceSettingConnectionPoolConfig `pulumi:"connectionPoolConfigs"`
 	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
@@ -9868,7 +10330,7 @@ type GetDatabaseInstancesInstanceSetting struct {
 	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize int `pulumi:"diskSize"`
-	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 	DiskType string `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition string `pulumi:"edition"`
@@ -9924,6 +10386,8 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	BackupConfigurations GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput `pulumi:"backupConfigurations"`
 	// The name of server instance collation.
 	Collation pulumi.StringInput `pulumi:"collation"`
+	// The managed connection pool setting for a Cloud SQL instance.
+	ConnectionPoolConfigs GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayInput `pulumi:"connectionPoolConfigs"`
 	// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 	ConnectorEnforcement pulumi.StringInput `pulumi:"connectorEnforcement"`
 	// Data cache configurations.
@@ -9942,7 +10406,7 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
-	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
 	Edition pulumi.StringInput `pulumi:"edition"`
@@ -10061,6 +10525,13 @@ func (o GetDatabaseInstancesInstanceSettingOutput) Collation() pulumi.StringOutp
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
 }
 
+// The managed connection pool setting for a Cloud SQL instance.
+func (o GetDatabaseInstancesInstanceSettingOutput) ConnectionPoolConfigs() GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingConnectionPoolConfig {
+		return v.ConnectionPoolConfigs
+	}).(GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput)
+}
+
 // Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
 func (o GetDatabaseInstancesInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
@@ -10115,7 +10586,7 @@ func (o GetDatabaseInstancesInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
-// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 func (o GetDatabaseInstancesInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
 }
@@ -10679,6 +11150,222 @@ func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSet
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting {
 		return vs[0].([]GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfig struct {
+	// Whether Managed Connection Pool is enabled for this instance.
+	ConnectionPoolingEnabled bool `pulumi:"connectionPoolingEnabled"`
+	// List of connection pool configuration flags
+	Flags []GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag `pulumi:"flags"`
+}
+
+// GetDatabaseInstancesInstanceSettingConnectionPoolConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs and GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingConnectionPoolConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput
+	ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs struct {
+	// Whether Managed Connection Pool is enabled for this instance.
+	ConnectionPoolingEnabled pulumi.BoolInput `pulumi:"connectionPoolingEnabled"`
+	// List of connection pool configuration flags
+	Flags GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayInput `pulumi:"flags"`
+}
+
+func (GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingConnectionPoolConfigArray and GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingConnectionPoolConfigArray{ GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigArray []GetDatabaseInstancesInstanceSettingConnectionPoolConfigInput
+
+func (GetDatabaseInstancesInstanceSettingConnectionPoolConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingConnectionPoolConfigArray) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingConnectionPoolConfigArray) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput {
+	return o
+}
+
+// Whether Managed Connection Pool is enabled for this instance.
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput) ConnectionPoolingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingConnectionPoolConfig) bool {
+		return v.ConnectionPoolingEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// List of connection pool configuration flags
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput) Flags() GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingConnectionPoolConfig) []GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag {
+		return v.Flags
+	}).(GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingConnectionPoolConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingConnectionPoolConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag struct {
+	// Name of the flag.
+	Name string `pulumi:"name"`
+	// Value of the flag.
+	Value string `pulumi:"value"`
+}
+
+// GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagInput is an input type that accepts GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArgs and GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArgs{...}
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput
+	ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArgs struct {
+	// Name of the flag.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the flag.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArgs) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArgs) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArray and GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArray{ GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArgs{...} }
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput
+	ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArray []GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagInput
+
+func (GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArray) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArray) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput {
+	return o
+}
+
+// Name of the flag.
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the flag.
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput() GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput) ToGetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlag)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput)
 }
 
 type GetDatabaseInstancesInstanceSettingDataCacheConfig struct {
@@ -12484,6 +13171,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationPtrInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsConnectionPoolConfigInput)(nil)).Elem(), DatabaseInstanceSettingsConnectionPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsConnectionPoolConfigArrayInput)(nil)).Elem(), DatabaseInstanceSettingsConnectionPoolConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsConnectionPoolConfigFlagInput)(nil)).Elem(), DatabaseInstanceSettingsConnectionPoolConfigFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsConnectionPoolConfigFlagArrayInput)(nil)).Elem(), DatabaseInstanceSettingsConnectionPoolConfigFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDataCacheConfigInput)(nil)).Elem(), DatabaseInstanceSettingsDataCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDataCacheConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsDataCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDatabaseFlagInput)(nil)).Elem(), DatabaseInstanceSettingsDatabaseFlagArgs{})
@@ -12540,6 +13231,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingConnectionPoolConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingConnectionPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingConnectionPoolConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingConnectionPoolConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingConnectionPoolConfigFlagInput)(nil)).Elem(), GetDatabaseInstanceSettingConnectionPoolConfigFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingConnectionPoolConfigFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDataCacheConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingDataCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDataCacheConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingDataCacheConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDatabaseFlagInput)(nil)).Elem(), GetDatabaseInstanceSettingDatabaseFlagArgs{})
@@ -12590,6 +13285,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingConnectionPoolConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingConnectionPoolConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDataCacheConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDataCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDataCacheConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDatabaseFlagInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDatabaseFlagArgs{})
@@ -12642,6 +13341,10 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsConnectionPoolConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsConnectionPoolConfigArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsConnectionPoolConfigFlagOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsConnectionPoolConfigFlagArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDataCacheConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDataCacheConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagOutput{})
@@ -12698,6 +13401,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingConnectionPoolConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingConnectionPoolConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingConnectionPoolConfigFlagOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingConnectionPoolConfigFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDataCacheConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDataCacheConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagOutput{})
@@ -12748,6 +13455,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingConnectionPoolConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingConnectionPoolConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDataCacheConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDatabaseFlagOutput{})

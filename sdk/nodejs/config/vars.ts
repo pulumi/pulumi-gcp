@@ -1233,6 +1233,14 @@ Object.defineProperty(exports, "requestTimeout", {
     enumerable: true,
 });
 
+export declare const resourceManager3CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "resourceManager3CustomEndpoint", {
+    get() {
+        return __config.get("resourceManager3CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const resourceManagerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "resourceManagerCustomEndpoint", {
     get() {

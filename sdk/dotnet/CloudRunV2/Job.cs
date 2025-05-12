@@ -505,6 +505,44 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Job Multicontainer
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Name = "cloudrun-job",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Name = "job-1",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
+    ///                     },
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Name = "job-2",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
