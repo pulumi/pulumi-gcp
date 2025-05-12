@@ -322,6 +322,8 @@ requestReason: Optional[str]
 
 requestTimeout: Optional[str]
 
+resourceManager3CustomEndpoint: Optional[str]
+
 resourceManagerCustomEndpoint: Optional[str]
 
 resourceManagerV3CustomEndpoint: Optional[str]

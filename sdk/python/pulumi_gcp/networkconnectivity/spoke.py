@@ -257,6 +257,7 @@ class _SpokeState:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 reasons: Optional[pulumi.Input[Sequence[pulumi.Input['SpokeReasonArgs']]]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  unique_id: Optional[pulumi.Input[builtins.str]] = None,
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
@@ -289,6 +290,8 @@ class _SpokeState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input['SpokeReasonArgs']]] reasons: The reasons for the current state in the lifecycle
+               Structure is documented below.
         :param pulumi.Input[builtins.str] state: Output only. The current lifecycle state of this spoke.
         :param pulumi.Input[builtins.str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         :param pulumi.Input[builtins.str] update_time: Output only. The time the spoke was last updated.
@@ -323,6 +326,8 @@ class _SpokeState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if reasons is not None:
+            pulumi.set(__self__, "reasons", reasons)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if unique_id is not None:
@@ -521,6 +526,19 @@ class _SpokeState:
     @pulumi_labels.setter
     def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
+
+    @property
+    @pulumi.getter
+    def reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SpokeReasonArgs']]]]:
+        """
+        The reasons for the current state in the lifecycle
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reasons")
+
+    @reasons.setter
+    def reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SpokeReasonArgs']]]]):
+        pulumi.set(self, "reasons", value)
 
     @property
     @pulumi.getter
@@ -1523,6 +1541,7 @@ class Spoke(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
+            __props__.__dict__["reasons"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["unique_id"] = None
             __props__.__dict__["update_time"] = None
@@ -1553,6 +1572,7 @@ class Spoke(pulumi.CustomResource):
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            reasons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict']]]]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
             unique_id: Optional[pulumi.Input[builtins.str]] = None,
             update_time: Optional[pulumi.Input[builtins.str]] = None) -> 'Spoke':
@@ -1590,6 +1610,8 @@ class Spoke(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpokeReasonArgs', 'SpokeReasonArgsDict']]]] reasons: The reasons for the current state in the lifecycle
+               Structure is documented below.
         :param pulumi.Input[builtins.str] state: Output only. The current lifecycle state of this spoke.
         :param pulumi.Input[builtins.str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         :param pulumi.Input[builtins.str] update_time: Output only. The time the spoke was last updated.
@@ -1613,6 +1635,7 @@ class Spoke(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["reasons"] = reasons
         __props__.__dict__["state"] = state
         __props__.__dict__["unique_id"] = unique_id
         __props__.__dict__["update_time"] = update_time
@@ -1749,6 +1772,15 @@ class Spoke(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter
+    def reasons(self) -> pulumi.Output[Sequence['outputs.SpokeReason']]:
+        """
+        The reasons for the current state in the lifecycle
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reasons")
 
     @property
     @pulumi.getter

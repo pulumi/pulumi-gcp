@@ -6,4 +6,5 @@ import builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .capability import *
 from .lien import *

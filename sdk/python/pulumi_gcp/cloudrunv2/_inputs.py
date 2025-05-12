@@ -2872,9 +2872,18 @@ class ServiceIamMemberConditionArgs:
 
 if not MYPY:
     class ServiceScalingArgsDict(TypedDict):
+        manual_instance_count: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+        """
         min_instance_count: NotRequired[pulumi.Input[builtins.int]]
         """
         Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        """
+        scaling_mode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+        Possible values are: `AUTOMATIC`, `MANUAL`.
         """
 elif False:
     ServiceScalingArgsDict: TypeAlias = Mapping[str, Any]
@@ -2882,12 +2891,33 @@ elif False:
 @pulumi.input_type
 class ServiceScalingArgs:
     def __init__(__self__, *,
-                 min_instance_count: Optional[pulumi.Input[builtins.int]] = None):
+                 manual_instance_count: Optional[pulumi.Input[builtins.int]] = None,
+                 min_instance_count: Optional[pulumi.Input[builtins.int]] = None,
+                 scaling_mode: Optional[pulumi.Input[builtins.str]] = None):
         """
+        :param pulumi.Input[builtins.int] manual_instance_count: Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
         :param pulumi.Input[builtins.int] min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
+        :param pulumi.Input[builtins.str] scaling_mode: The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+               Possible values are: `AUTOMATIC`, `MANUAL`.
         """
+        if manual_instance_count is not None:
+            pulumi.set(__self__, "manual_instance_count", manual_instance_count)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
+        if scaling_mode is not None:
+            pulumi.set(__self__, "scaling_mode", scaling_mode)
+
+    @property
+    @pulumi.getter(name="manualInstanceCount")
+    def manual_instance_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
+        """
+        return pulumi.get(self, "manual_instance_count")
+
+    @manual_instance_count.setter
+    def manual_instance_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "manual_instance_count", value)
 
     @property
     @pulumi.getter(name="minInstanceCount")
@@ -2900,6 +2930,19 @@ class ServiceScalingArgs:
     @min_instance_count.setter
     def min_instance_count(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "min_instance_count", value)
+
+    @property
+    @pulumi.getter(name="scalingMode")
+    def scaling_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service.
+        Possible values are: `AUTOMATIC`, `MANUAL`.
+        """
+        return pulumi.get(self, "scaling_mode")
+
+    @scaling_mode.setter
+    def scaling_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "scaling_mode", value)
 
 
 if not MYPY:

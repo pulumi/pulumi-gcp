@@ -253,6 +253,12 @@ namespace Pulumi.Gcp.Filestore
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        /// </summary>
+        [Output("directoryServices")]
+        public Output<Outputs.InstanceDirectoryServices?> DirectoryServices { get; private set; } = null!;
+
+        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
@@ -438,6 +444,12 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        /// </summary>
+        [Input("directoryServices")]
+        public Input<Inputs.InstanceDirectoryServicesArgs>? DirectoryServices { get; set; }
+
+        /// <summary>
         /// File system shares on the instance. For this version, only a
         /// single file share is supported.
         /// Structure is documented below.
@@ -575,6 +587,12 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        /// </summary>
+        [Input("directoryServices")]
+        public Input<Inputs.InstanceDirectoryServicesGetArgs>? DirectoryServices { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

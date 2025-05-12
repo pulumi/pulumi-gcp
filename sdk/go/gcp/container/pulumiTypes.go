@@ -21043,7 +21043,7 @@ type ClusterNodeConfig struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket *ClusterNodeConfigFastSocket `pulumi:"fastSocket"`
-	// Enables Flex Start provisioning model for the node pool.
+	// ) Enables Flex Start provisioning model for the node pool.
 	FlexStart *bool `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -21199,7 +21199,7 @@ type ClusterNodeConfigArgs struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket ClusterNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
-	// Enables Flex Start provisioning model for the node pool.
+	// ) Enables Flex Start provisioning model for the node pool.
 	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -21455,7 +21455,7 @@ func (o ClusterNodeConfigOutput) FastSocket() ClusterNodeConfigFastSocketPtrOutp
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigFastSocket { return v.FastSocket }).(ClusterNodeConfigFastSocketPtrOutput)
 }
 
-// Enables Flex Start provisioning model for the node pool.
+// ) Enables Flex Start provisioning model for the node pool.
 func (o ClusterNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
@@ -21811,7 +21811,7 @@ func (o ClusterNodeConfigPtrOutput) FastSocket() ClusterNodeConfigFastSocketPtrO
 	}).(ClusterNodeConfigFastSocketPtrOutput)
 }
 
-// Enables Flex Start provisioning model for the node pool.
+// ) Enables Flex Start provisioning model for the node pool.
 func (o ClusterNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *bool {
 		if v == nil {
@@ -29617,7 +29617,7 @@ type ClusterNodePoolNodeConfig struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket *ClusterNodePoolNodeConfigFastSocket `pulumi:"fastSocket"`
-	// Enables Flex Start provisioning model for the node pool.
+	// ) Enables Flex Start provisioning model for the node pool.
 	FlexStart *bool `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -29773,7 +29773,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// GKE version 1.25.2-gke.1700 or later.
 	// Structure is documented below.
 	FastSocket ClusterNodePoolNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
-	// Enables Flex Start provisioning model for the node pool.
+	// ) Enables Flex Start provisioning model for the node pool.
 	FlexStart pulumi.BoolPtrInput `pulumi:"flexStart"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -30037,7 +30037,7 @@ func (o ClusterNodePoolNodeConfigOutput) FastSocket() ClusterNodePoolNodeConfigF
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigFastSocket { return v.FastSocket }).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
 }
 
-// Enables Flex Start provisioning model for the node pool.
+// ) Enables Flex Start provisioning model for the node pool.
 func (o ClusterNodePoolNodeConfigOutput) FlexStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.FlexStart }).(pulumi.BoolPtrOutput)
 }
@@ -30411,7 +30411,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) FastSocket() ClusterNodePoolNodeConf
 	}).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
 }
 
-// Enables Flex Start provisioning model for the node pool.
+// ) Enables Flex Start provisioning model for the node pool.
 func (o ClusterNodePoolNodeConfigPtrOutput) FlexStart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *bool {
 		if v == nil {

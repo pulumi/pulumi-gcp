@@ -635,6 +635,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('requestTimeout')
 
     @property
+    def resource_manager3_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('resourceManager3CustomEndpoint')
+
+    @property
     def resource_manager_custom_endpoint(self) -> Optional[str]:
         return __config__.get('resourceManagerCustomEndpoint')
 

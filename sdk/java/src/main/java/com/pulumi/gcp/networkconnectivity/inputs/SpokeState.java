@@ -10,7 +10,9 @@ import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedProducerVpcNetworkAr
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpnTunnelsArgs;
+import com.pulumi.gcp.networkconnectivity.inputs.SpokeReasonArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -269,6 +271,23 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The reasons for the current state in the lifecycle
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="reasons")
+    private @Nullable Output<List<SpokeReasonArgs>> reasons;
+
+    /**
+     * @return The reasons for the current state in the lifecycle
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<SpokeReasonArgs>>> reasons() {
+        return Optional.ofNullable(this.reasons);
+    }
+
+    /**
      * Output only. The current lifecycle state of this spoke.
      * 
      */
@@ -331,6 +350,7 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.reasons = $.reasons;
         this.state = $.state;
         this.uniqueId = $.uniqueId;
         this.updateTime = $.updateTime;
@@ -689,6 +709,40 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param reasons The reasons for the current state in the lifecycle
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reasons(@Nullable Output<List<SpokeReasonArgs>> reasons) {
+            $.reasons = reasons;
+            return this;
+        }
+
+        /**
+         * @param reasons The reasons for the current state in the lifecycle
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reasons(List<SpokeReasonArgs> reasons) {
+            return reasons(Output.of(reasons));
+        }
+
+        /**
+         * @param reasons The reasons for the current state in the lifecycle
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reasons(SpokeReasonArgs... reasons) {
+            return reasons(List.of(reasons));
         }
 
         /**

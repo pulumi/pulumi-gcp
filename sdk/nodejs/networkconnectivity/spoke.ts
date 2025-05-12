@@ -580,6 +580,11 @@ export class Spoke extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The reasons for the current state in the lifecycle
+     * Structure is documented below.
+     */
+    public /*out*/ readonly reasons!: pulumi.Output<outputs.networkconnectivity.SpokeReason[]>;
+    /**
      * Output only. The current lifecycle state of this spoke.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -620,6 +625,7 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["reasons"] = state ? state.reasons : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["uniqueId"] = state ? state.uniqueId : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -646,6 +652,7 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["reasons"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -733,6 +740,11 @@ export interface SpokeState {
      * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The reasons for the current state in the lifecycle
+     * Structure is documented below.
+     */
+    reasons?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.SpokeReason>[]>;
     /**
      * Output only. The current lifecycle state of this spoke.
      */

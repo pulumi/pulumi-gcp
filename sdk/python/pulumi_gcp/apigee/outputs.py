@@ -42,6 +42,7 @@ __all__ = [
     'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames',
     'OrganizationProperties',
     'OrganizationPropertiesProperty',
+    'SecurityProfileV2ProfileAssessmentConfig',
     'SharedflowMetaData',
     'TargetServerSSlInfo',
     'TargetServerSSlInfoCommonName',
@@ -1570,6 +1571,41 @@ class OrganizationPropertiesProperty(dict):
         Value of the property.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SecurityProfileV2ProfileAssessmentConfig(dict):
+    def __init__(__self__, *,
+                 assessment: builtins.str,
+                 weight: builtins.str):
+        """
+        :param builtins.str assessment: The identifier for this object. Format specified above.
+        :param builtins.str weight: The weight of the assessment.
+               Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+               
+               - - -
+        """
+        pulumi.set(__self__, "assessment", assessment)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def assessment(self) -> builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "assessment")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> builtins.str:
+        """
+        The weight of the assessment.
+        Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+
+        - - -
+        """
+        return pulumi.get(self, "weight")
 
 
 @pulumi.output_type

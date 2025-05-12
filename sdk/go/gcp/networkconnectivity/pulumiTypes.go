@@ -2770,6 +2770,121 @@ func (o SpokeLinkedVpnTunnelsPtrOutput) Uris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type SpokeReason struct {
+	// The code associated with this reason.
+	Code *string `pulumi:"code"`
+	// Human-readable details about this reason.
+	Message *string `pulumi:"message"`
+	// Additional information provided by the user in the RejectSpoke call.
+	UserDetails *string `pulumi:"userDetails"`
+}
+
+// SpokeReasonInput is an input type that accepts SpokeReasonArgs and SpokeReasonOutput values.
+// You can construct a concrete instance of `SpokeReasonInput` via:
+//
+//	SpokeReasonArgs{...}
+type SpokeReasonInput interface {
+	pulumi.Input
+
+	ToSpokeReasonOutput() SpokeReasonOutput
+	ToSpokeReasonOutputWithContext(context.Context) SpokeReasonOutput
+}
+
+type SpokeReasonArgs struct {
+	// The code associated with this reason.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// Human-readable details about this reason.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Additional information provided by the user in the RejectSpoke call.
+	UserDetails pulumi.StringPtrInput `pulumi:"userDetails"`
+}
+
+func (SpokeReasonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeReason)(nil)).Elem()
+}
+
+func (i SpokeReasonArgs) ToSpokeReasonOutput() SpokeReasonOutput {
+	return i.ToSpokeReasonOutputWithContext(context.Background())
+}
+
+func (i SpokeReasonArgs) ToSpokeReasonOutputWithContext(ctx context.Context) SpokeReasonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeReasonOutput)
+}
+
+// SpokeReasonArrayInput is an input type that accepts SpokeReasonArray and SpokeReasonArrayOutput values.
+// You can construct a concrete instance of `SpokeReasonArrayInput` via:
+//
+//	SpokeReasonArray{ SpokeReasonArgs{...} }
+type SpokeReasonArrayInput interface {
+	pulumi.Input
+
+	ToSpokeReasonArrayOutput() SpokeReasonArrayOutput
+	ToSpokeReasonArrayOutputWithContext(context.Context) SpokeReasonArrayOutput
+}
+
+type SpokeReasonArray []SpokeReasonInput
+
+func (SpokeReasonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpokeReason)(nil)).Elem()
+}
+
+func (i SpokeReasonArray) ToSpokeReasonArrayOutput() SpokeReasonArrayOutput {
+	return i.ToSpokeReasonArrayOutputWithContext(context.Background())
+}
+
+func (i SpokeReasonArray) ToSpokeReasonArrayOutputWithContext(ctx context.Context) SpokeReasonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeReasonArrayOutput)
+}
+
+type SpokeReasonOutput struct{ *pulumi.OutputState }
+
+func (SpokeReasonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeReason)(nil)).Elem()
+}
+
+func (o SpokeReasonOutput) ToSpokeReasonOutput() SpokeReasonOutput {
+	return o
+}
+
+func (o SpokeReasonOutput) ToSpokeReasonOutputWithContext(ctx context.Context) SpokeReasonOutput {
+	return o
+}
+
+// The code associated with this reason.
+func (o SpokeReasonOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpokeReason) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable details about this reason.
+func (o SpokeReasonOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpokeReason) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Additional information provided by the user in the RejectSpoke call.
+func (o SpokeReasonOutput) UserDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpokeReason) *string { return v.UserDetails }).(pulumi.StringPtrOutput)
+}
+
+type SpokeReasonArrayOutput struct{ *pulumi.OutputState }
+
+func (SpokeReasonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpokeReason)(nil)).Elem()
+}
+
+func (o SpokeReasonArrayOutput) ToSpokeReasonArrayOutput() SpokeReasonArrayOutput {
+	return o
+}
+
+func (o SpokeReasonArrayOutput) ToSpokeReasonArrayOutputWithContext(ctx context.Context) SpokeReasonArrayOutput {
+	return o
+}
+
+func (o SpokeReasonArrayOutput) Index(i pulumi.IntInput) SpokeReasonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpokeReason {
+		return vs[0].([]SpokeReason)[vs[1].(int)]
+	}).(SpokeReasonOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptInput)(nil)).Elem(), GroupAutoAcceptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptPtrInput)(nil)).Elem(), GroupAutoAcceptArgs{})
@@ -2805,6 +2920,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpcNetworkPtrInput)(nil)).Elem(), SpokeLinkedVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsPtrInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeReasonInput)(nil)).Elem(), SpokeReasonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeReasonArrayInput)(nil)).Elem(), SpokeReasonArray{})
 	pulumi.RegisterOutputType(GroupAutoAcceptOutput{})
 	pulumi.RegisterOutputType(GroupAutoAcceptPtrOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
@@ -2839,4 +2956,6 @@ func init() {
 	pulumi.RegisterOutputType(SpokeLinkedVpcNetworkPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedVpnTunnelsOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedVpnTunnelsPtrOutput{})
+	pulumi.RegisterOutputType(SpokeReasonOutput{})
+	pulumi.RegisterOutputType(SpokeReasonArrayOutput{})
 }

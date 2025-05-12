@@ -799,6 +799,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// The reasons for the current state in the lifecycle
+        /// Structure is documented below.
+        /// </summary>
+        [Output("reasons")]
+        public Output<ImmutableArray<Outputs.SpokeReason>> Reasons { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. The current lifecycle state of this spoke.
         /// </summary>
         [Output("state")]
@@ -1090,6 +1097,19 @@ namespace Pulumi.Gcp.NetworkConnectivity
                 var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
+        }
+
+        [Input("reasons")]
+        private InputList<Inputs.SpokeReasonGetArgs>? _reasons;
+
+        /// <summary>
+        /// The reasons for the current state in the lifecycle
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.SpokeReasonGetArgs> Reasons
+        {
+            get => _reasons ?? (_reasons = new InputList<Inputs.SpokeReasonGetArgs>());
+            set => _reasons = value;
         }
 
         /// <summary>

@@ -99,7 +99,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable ClusterNodeConfigFastSocket fastSocket;
     /**
-     * @return Enables Flex Start provisioning model for the node pool.
+     * @return ) Enables Flex Start provisioning model for the node pool.
      * 
      */
     private @Nullable Boolean flexStart;
@@ -400,7 +400,7 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.fastSocket);
     }
     /**
-     * @return Enables Flex Start provisioning model for the node pool.
+     * @return ) Enables Flex Start provisioning model for the node pool.
      * 
      */
     public Optional<Boolean> flexStart() {

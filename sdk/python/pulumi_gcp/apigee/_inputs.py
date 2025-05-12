@@ -66,6 +66,8 @@ __all__ = [
     'OrganizationPropertiesArgsDict',
     'OrganizationPropertiesPropertyArgs',
     'OrganizationPropertiesPropertyArgsDict',
+    'SecurityProfileV2ProfileAssessmentConfigArgs',
+    'SecurityProfileV2ProfileAssessmentConfigArgsDict',
     'SharedflowMetaDataArgs',
     'SharedflowMetaDataArgsDict',
     'TargetServerSSlInfoArgs',
@@ -2105,6 +2107,65 @@ class OrganizationPropertiesPropertyArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class SecurityProfileV2ProfileAssessmentConfigArgsDict(TypedDict):
+        assessment: pulumi.Input[builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        weight: pulumi.Input[builtins.str]
+        """
+        The weight of the assessment.
+        Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+
+        - - -
+        """
+elif False:
+    SecurityProfileV2ProfileAssessmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityProfileV2ProfileAssessmentConfigArgs:
+    def __init__(__self__, *,
+                 assessment: pulumi.Input[builtins.str],
+                 weight: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] assessment: The identifier for this object. Format specified above.
+        :param pulumi.Input[builtins.str] weight: The weight of the assessment.
+               Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+               
+               - - -
+        """
+        pulumi.set(__self__, "assessment", assessment)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def assessment(self) -> pulumi.Input[builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "assessment")
+
+    @assessment.setter
+    def assessment(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "assessment", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[builtins.str]:
+        """
+        The weight of the assessment.
+        Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
+
+        - - -
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "weight", value)
 
 
 if not MYPY:

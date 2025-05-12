@@ -219,6 +219,8 @@ class InstanceCluster(dict):
             suggest = "autoscaling_config"
         elif key == "kmsKeyName":
             suggest = "kms_key_name"
+        elif key == "nodeScalingFactor":
+            suggest = "node_scaling_factor"
         elif key == "numNodes":
             suggest = "num_nodes"
         elif key == "storageType":
@@ -239,6 +241,7 @@ class InstanceCluster(dict):
                  cluster_id: builtins.str,
                  autoscaling_config: Optional['outputs.InstanceClusterAutoscalingConfig'] = None,
                  kms_key_name: Optional[builtins.str] = None,
+                 node_scaling_factor: Optional[builtins.str] = None,
                  num_nodes: Optional[builtins.int] = None,
                  state: Optional[builtins.str] = None,
                  storage_type: Optional[builtins.str] = None,
@@ -247,6 +250,7 @@ class InstanceCluster(dict):
         :param builtins.str cluster_id: The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
         :param 'InstanceClusterAutoscalingConfigArgs' autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         :param builtins.str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+        :param builtins.str node_scaling_factor: The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
                
                > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
                
@@ -270,6 +274,8 @@ class InstanceCluster(dict):
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if node_scaling_factor is not None:
+            pulumi.set(__self__, "node_scaling_factor", node_scaling_factor)
         if num_nodes is not None:
             pulumi.set(__self__, "num_nodes", num_nodes)
         if state is not None:
@@ -300,6 +306,14 @@ class InstanceCluster(dict):
     def kms_key_name(self) -> Optional[builtins.str]:
         """
         Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="nodeScalingFactor")
+    def node_scaling_factor(self) -> Optional[builtins.str]:
+        """
+        The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
 
         > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
 
@@ -310,7 +324,7 @@ class InstanceCluster(dict):
         `bigtable.Instance` resource. If these values are changing, use a new
         `cluster_id`.
         """
-        return pulumi.get(self, "kms_key_name")
+        return pulumi.get(self, "node_scaling_factor")
 
     @property
     @pulumi.getter(name="numNodes")

@@ -579,6 +579,8 @@ type InstanceCluster struct {
 	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId string `pulumi:"clusterId"`
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `numNodes`, `minNodes`, and `maxNodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
 	//
 	// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
 	//
@@ -588,7 +590,7 @@ type InstanceCluster struct {
 	// `clusterId`) will cause the provider to delete/recreate the entire
 	// `bigtable.Instance` resource. If these values are changing, use a new
 	// `clusterId`.
-	KmsKeyName *string `pulumi:"kmsKeyName"`
+	NodeScalingFactor *string `pulumi:"nodeScalingFactor"`
 	// The number of nodes in the cluster.
 	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 	NumNodes *int `pulumi:"numNodes"`
@@ -620,6 +622,8 @@ type InstanceClusterArgs struct {
 	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+	// The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `numNodes`, `minNodes`, and `maxNodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
 	//
 	// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
 	//
@@ -629,7 +633,7 @@ type InstanceClusterArgs struct {
 	// `clusterId`) will cause the provider to delete/recreate the entire
 	// `bigtable.Instance` resource. If these values are changing, use a new
 	// `clusterId`.
-	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+	NodeScalingFactor pulumi.StringPtrInput `pulumi:"nodeScalingFactor"`
 	// The number of nodes in the cluster.
 	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 	NumNodes pulumi.IntPtrInput `pulumi:"numNodes"`
@@ -706,6 +710,11 @@ func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
 }
 
 // Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCluster) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+// The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `numNodes`, `minNodes`, and `maxNodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
 //
 // > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
 //
@@ -715,8 +724,8 @@ func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
 // `clusterId`) will cause the provider to delete/recreate the entire
 // `bigtable.Instance` resource. If these values are changing, use a new
 // `clusterId`.
-func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceCluster) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+func (o InstanceClusterOutput) NodeScalingFactor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCluster) *string { return v.NodeScalingFactor }).(pulumi.StringPtrOutput)
 }
 
 // The number of nodes in the cluster.

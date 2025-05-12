@@ -164,6 +164,7 @@ type Provider struct {
 	Region                                 pulumi.StringPtrOutput `pulumi:"region"`
 	RequestReason                          pulumi.StringPtrOutput `pulumi:"requestReason"`
 	RequestTimeout                         pulumi.StringPtrOutput `pulumi:"requestTimeout"`
+	ResourceManager3CustomEndpoint         pulumi.StringPtrOutput `pulumi:"resourceManager3CustomEndpoint"`
 	ResourceManagerCustomEndpoint          pulumi.StringPtrOutput `pulumi:"resourceManagerCustomEndpoint"`
 	ResourceManagerV3CustomEndpoint        pulumi.StringPtrOutput `pulumi:"resourceManagerV3CustomEndpoint"`
 	RuntimeConfigCustomEndpoint            pulumi.StringPtrOutput `pulumi:"runtimeConfigCustomEndpoint"`
@@ -395,6 +396,7 @@ type providerArgs struct {
 	Region                                 *string                      `pulumi:"region"`
 	RequestReason                          *string                      `pulumi:"requestReason"`
 	RequestTimeout                         *string                      `pulumi:"requestTimeout"`
+	ResourceManager3CustomEndpoint         *string                      `pulumi:"resourceManager3CustomEndpoint"`
 	ResourceManagerCustomEndpoint          *string                      `pulumi:"resourceManagerCustomEndpoint"`
 	ResourceManagerV3CustomEndpoint        *string                      `pulumi:"resourceManagerV3CustomEndpoint"`
 	RuntimeConfigCustomEndpoint            *string                      `pulumi:"runtimeConfigCustomEndpoint"`
@@ -591,6 +593,7 @@ type ProviderArgs struct {
 	Region                                 pulumi.StringPtrInput
 	RequestReason                          pulumi.StringPtrInput
 	RequestTimeout                         pulumi.StringPtrInput
+	ResourceManager3CustomEndpoint         pulumi.StringPtrInput
 	ResourceManagerCustomEndpoint          pulumi.StringPtrInput
 	ResourceManagerV3CustomEndpoint        pulumi.StringPtrInput
 	RuntimeConfigCustomEndpoint            pulumi.StringPtrInput
@@ -1275,6 +1278,10 @@ func (o ProviderOutput) RequestReason() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) RequestTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.RequestTimeout }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ResourceManager3CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ResourceManager3CustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ResourceManagerCustomEndpoint() pulumi.StringPtrOutput {

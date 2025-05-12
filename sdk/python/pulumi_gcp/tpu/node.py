@@ -562,6 +562,8 @@ class Node(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** `tpu.Node` is deprecated and will be removed in a future major release. Use `tpu.V2Vm` instead. For moving from TPU Node to TPU VM architecture, see https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+
         A Cloud TPU instance.
 
         To get more information about Node, see:
@@ -691,6 +693,8 @@ class Node(pulumi.CustomResource):
                  args: NodeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `tpu.Node` is deprecated and will be removed in a future major release. Use `tpu.V2Vm` instead. For moving from TPU Node to TPU VM architecture, see https://cloud.google.com/tpu/docs/system-architecture-tpu-vm#from-tpu-node-to-tpu-vm.
+
         A Cloud TPU instance.
 
         To get more information about Node, see:

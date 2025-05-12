@@ -29,6 +29,8 @@ __all__ = [
     'DatabaseInstanceSettingsAdvancedMachineFeatures',
     'DatabaseInstanceSettingsBackupConfiguration',
     'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings',
+    'DatabaseInstanceSettingsConnectionPoolConfig',
+    'DatabaseInstanceSettingsConnectionPoolConfigFlag',
     'DatabaseInstanceSettingsDataCacheConfig',
     'DatabaseInstanceSettingsDatabaseFlag',
     'DatabaseInstanceSettingsDenyMaintenancePeriod',
@@ -57,6 +59,8 @@ __all__ = [
     'GetDatabaseInstanceSettingAdvancedMachineFeatureResult',
     'GetDatabaseInstanceSettingBackupConfigurationResult',
     'GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult',
+    'GetDatabaseInstanceSettingConnectionPoolConfigResult',
+    'GetDatabaseInstanceSettingConnectionPoolConfigFlagResult',
     'GetDatabaseInstanceSettingDataCacheConfigResult',
     'GetDatabaseInstanceSettingDatabaseFlagResult',
     'GetDatabaseInstanceSettingDenyMaintenancePeriodResult',
@@ -82,6 +86,8 @@ __all__ = [
     'GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult',
     'GetDatabaseInstancesInstanceSettingBackupConfigurationResult',
     'GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult',
+    'GetDatabaseInstancesInstanceSettingConnectionPoolConfigResult',
+    'GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagResult',
     'GetDatabaseInstancesInstanceSettingDataCacheConfigResult',
     'GetDatabaseInstancesInstanceSettingDatabaseFlagResult',
     'GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult',
@@ -757,6 +763,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "availability_type"
         elif key == "backupConfiguration":
             suggest = "backup_configuration"
+        elif key == "connectionPoolConfigs":
+            suggest = "connection_pool_configs"
         elif key == "connectorEnforcement":
             suggest = "connector_enforcement"
         elif key == "dataCacheConfig":
@@ -823,6 +831,7 @@ class DatabaseInstanceSettings(dict):
                  availability_type: Optional[builtins.str] = None,
                  backup_configuration: Optional['outputs.DatabaseInstanceSettingsBackupConfiguration'] = None,
                  collation: Optional[builtins.str] = None,
+                 connection_pool_configs: Optional[Sequence['outputs.DatabaseInstanceSettingsConnectionPoolConfig']] = None,
                  connector_enforcement: Optional[builtins.str] = None,
                  data_cache_config: Optional['outputs.DatabaseInstanceSettingsDataCacheConfig'] = None,
                  data_disk_provisioned_iops: Optional[builtins.int] = None,
@@ -861,6 +870,7 @@ class DatabaseInstanceSettings(dict):
                For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`. Defaults to `ZONAL`.
         :param builtins.str collation: The name of server instance collation.
+        :param Sequence['DatabaseInstanceSettingsConnectionPoolConfigArgs'] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param builtins.str connector_enforcement: Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
         :param 'DatabaseInstanceSettingsDataCacheConfigArgs' data_cache_config: Data cache configurations.
         :param builtins.int data_disk_provisioned_iops: Provisioned number of I/O operations per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
@@ -895,6 +905,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "backup_configuration", backup_configuration)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
+        if connection_pool_configs is not None:
+            pulumi.set(__self__, "connection_pool_configs", connection_pool_configs)
         if connector_enforcement is not None:
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         if data_cache_config is not None:
@@ -1000,6 +1012,14 @@ class DatabaseInstanceSettings(dict):
         The name of server instance collation.
         """
         return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter(name="connectionPoolConfigs")
+    def connection_pool_configs(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsConnectionPoolConfig']]:
+        """
+        The managed connection pool setting for a Cloud SQL instance.
+        """
+        return pulumi.get(self, "connection_pool_configs")
 
     @property
     @pulumi.getter(name="connectorEnforcement")
@@ -1410,6 +1430,83 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(dict):
         The unit that 'retained_backups' represents. Defaults to `COUNT`.
         """
         return pulumi.get(self, "retention_unit")
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsConnectionPoolConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionPoolingEnabled":
+            suggest = "connection_pooling_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsConnectionPoolConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsConnectionPoolConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsConnectionPoolConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_pooling_enabled: Optional[builtins.bool] = None,
+                 flags: Optional[Sequence['outputs.DatabaseInstanceSettingsConnectionPoolConfigFlag']] = None):
+        """
+        :param builtins.bool connection_pooling_enabled: True if the manager connection pooling configuration is enabled.
+        :param Sequence['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs'] flags: List of connection pool configuration flags
+        """
+        if connection_pooling_enabled is not None:
+            pulumi.set(__self__, "connection_pooling_enabled", connection_pooling_enabled)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+
+    @property
+    @pulumi.getter(name="connectionPoolingEnabled")
+    def connection_pooling_enabled(self) -> Optional[builtins.bool]:
+        """
+        True if the manager connection pooling configuration is enabled.
+        """
+        return pulumi.get(self, "connection_pooling_enabled")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsConnectionPoolConfigFlag']]:
+        """
+        List of connection pool configuration flags
+        """
+        return pulumi.get(self, "flags")
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsConnectionPoolConfigFlag(dict):
+    def __init__(__self__, *,
+                 name: builtins.str,
+                 value: builtins.str):
+        """
+        :param builtins.str name: Name of the flag.
+        :param builtins.str value: Value of the flag.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        Name of the flag.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.str:
+        """
+        Value of the flag.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -2910,6 +3007,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  availability_type: builtins.str,
                  backup_configurations: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
                  collation: builtins.str,
+                 connection_pool_configs: Sequence['outputs.GetDatabaseInstanceSettingConnectionPoolConfigResult'],
                  connector_enforcement: builtins.str,
                  data_cache_configs: Sequence['outputs.GetDatabaseInstanceSettingDataCacheConfigResult'],
                  data_disk_provisioned_iops: builtins.int,
@@ -2945,6 +3043,7 @@ class GetDatabaseInstanceSettingResult(dict):
                For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
                is set to true. Defaults to ZONAL.
         :param builtins.str collation: The name of server instance collation.
+        :param Sequence['GetDatabaseInstanceSettingConnectionPoolConfigArgs'] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param builtins.str connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         :param Sequence['GetDatabaseInstanceSettingDataCacheConfigArgs'] data_cache_configs: Data cache configurations.
         :param builtins.int data_disk_provisioned_iops: Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
@@ -2953,7 +3052,7 @@ class GetDatabaseInstanceSettingResult(dict):
         :param builtins.bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
         :param builtins.int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
-        :param builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+        :param builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
         :param builtins.str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         :param builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
@@ -2972,6 +3071,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
+        pulumi.set(__self__, "connection_pool_configs", connection_pool_configs)
         pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         pulumi.set(__self__, "data_cache_configs", data_cache_configs)
         pulumi.set(__self__, "data_disk_provisioned_iops", data_disk_provisioned_iops)
@@ -3042,6 +3142,14 @@ class GetDatabaseInstanceSettingResult(dict):
         The name of server instance collation.
         """
         return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter(name="connectionPoolConfigs")
+    def connection_pool_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingConnectionPoolConfigResult']:
+        """
+        The managed connection pool setting for a Cloud SQL instance.
+        """
+        return pulumi.get(self, "connection_pool_configs")
 
     @property
     @pulumi.getter(name="connectorEnforcement")
@@ -3121,7 +3229,7 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> builtins.str:
         """
-        The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+        The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
         """
         return pulumi.get(self, "disk_type")
 
@@ -3377,6 +3485,64 @@ class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult(
         The unit that 'retainedBackups' represents. Defaults to COUNT
         """
         return pulumi.get(self, "retention_unit")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingConnectionPoolConfigResult(dict):
+    def __init__(__self__, *,
+                 connection_pooling_enabled: builtins.bool,
+                 flags: Sequence['outputs.GetDatabaseInstanceSettingConnectionPoolConfigFlagResult']):
+        """
+        :param builtins.bool connection_pooling_enabled: Whether Managed Connection Pool is enabled for this instance.
+        :param Sequence['GetDatabaseInstanceSettingConnectionPoolConfigFlagArgs'] flags: List of connection pool configuration flags
+        """
+        pulumi.set(__self__, "connection_pooling_enabled", connection_pooling_enabled)
+        pulumi.set(__self__, "flags", flags)
+
+    @property
+    @pulumi.getter(name="connectionPoolingEnabled")
+    def connection_pooling_enabled(self) -> builtins.bool:
+        """
+        Whether Managed Connection Pool is enabled for this instance.
+        """
+        return pulumi.get(self, "connection_pooling_enabled")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Sequence['outputs.GetDatabaseInstanceSettingConnectionPoolConfigFlagResult']:
+        """
+        List of connection pool configuration flags
+        """
+        return pulumi.get(self, "flags")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingConnectionPoolConfigFlagResult(dict):
+    def __init__(__self__, *,
+                 name: builtins.str,
+                 value: builtins.str):
+        """
+        :param builtins.str name: The name of the instance.
+        :param builtins.str value: Value of the flag.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the instance.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.str:
+        """
+        Value of the flag.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -4607,6 +4773,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  availability_type: builtins.str,
                  backup_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult'],
                  collation: builtins.str,
+                 connection_pool_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingConnectionPoolConfigResult'],
                  connector_enforcement: builtins.str,
                  data_cache_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingDataCacheConfigResult'],
                  data_disk_provisioned_iops: builtins.int,
@@ -4642,6 +4809,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
                is set to true. Defaults to ZONAL.
         :param builtins.str collation: The name of server instance collation.
+        :param Sequence['GetDatabaseInstancesInstanceSettingConnectionPoolConfigArgs'] connection_pool_configs: The managed connection pool setting for a Cloud SQL instance.
         :param builtins.str connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         :param Sequence['GetDatabaseInstancesInstanceSettingDataCacheConfigArgs'] data_cache_configs: Data cache configurations.
         :param builtins.int data_disk_provisioned_iops: Provisioned number of I/O operations per second for the data disk. This field is only used for HYPERDISK_BALANCED disk types.
@@ -4650,7 +4818,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         :param builtins.bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
         :param builtins.int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
-        :param builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+        :param builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
         :param builtins.str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         :param builtins.bool enable_dataplex_integration: Enables Dataplex Integration.
         :param builtins.bool enable_google_ml_integration: Enables Vertex AI Integration.
@@ -4669,6 +4837,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
+        pulumi.set(__self__, "connection_pool_configs", connection_pool_configs)
         pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         pulumi.set(__self__, "data_cache_configs", data_cache_configs)
         pulumi.set(__self__, "data_disk_provisioned_iops", data_disk_provisioned_iops)
@@ -4739,6 +4908,14 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         The name of server instance collation.
         """
         return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter(name="connectionPoolConfigs")
+    def connection_pool_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingConnectionPoolConfigResult']:
+        """
+        The managed connection pool setting for a Cloud SQL instance.
+        """
+        return pulumi.get(self, "connection_pool_configs")
 
     @property
     @pulumi.getter(name="connectorEnforcement")
@@ -4818,7 +4995,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> builtins.str:
         """
-        The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+        The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
         """
         return pulumi.get(self, "disk_type")
 
@@ -5074,6 +5251,64 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetti
         The unit that 'retainedBackups' represents. Defaults to COUNT
         """
         return pulumi.get(self, "retention_unit")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingConnectionPoolConfigResult(dict):
+    def __init__(__self__, *,
+                 connection_pooling_enabled: builtins.bool,
+                 flags: Sequence['outputs.GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagResult']):
+        """
+        :param builtins.bool connection_pooling_enabled: Whether Managed Connection Pool is enabled for this instance.
+        :param Sequence['GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagArgs'] flags: List of connection pool configuration flags
+        """
+        pulumi.set(__self__, "connection_pooling_enabled", connection_pooling_enabled)
+        pulumi.set(__self__, "flags", flags)
+
+    @property
+    @pulumi.getter(name="connectionPoolingEnabled")
+    def connection_pooling_enabled(self) -> builtins.bool:
+        """
+        Whether Managed Connection Pool is enabled for this instance.
+        """
+        return pulumi.get(self, "connection_pooling_enabled")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagResult']:
+        """
+        List of connection pool configuration flags
+        """
+        return pulumi.get(self, "flags")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingConnectionPoolConfigFlagResult(dict):
+    def __init__(__self__, *,
+                 name: builtins.str,
+                 value: builtins.str):
+        """
+        :param builtins.str name: Name of the flag.
+        :param builtins.str value: Value of the flag.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        Name of the flag.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.str:
+        """
+        Value of the flag.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

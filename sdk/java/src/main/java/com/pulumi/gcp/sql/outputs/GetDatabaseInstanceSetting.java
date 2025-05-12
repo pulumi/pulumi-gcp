@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingActiveDirectoryConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingAdvancedMachineFeature;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingBackupConfiguration;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingConnectionPoolConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDataCacheConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDatabaseFlag;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDenyMaintenancePeriod;
@@ -49,6 +50,11 @@ public final class GetDatabaseInstanceSetting {
      * 
      */
     private String collation;
+    /**
+     * @return The managed connection pool setting for a Cloud SQL instance.
+     * 
+     */
+    private List<GetDatabaseInstanceSettingConnectionPoolConfig> connectionPoolConfigs;
     /**
      * @return Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
@@ -92,7 +98,7 @@ public final class GetDatabaseInstanceSetting {
      */
     private Integer diskSize;
     /**
-     * @return The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+     * @return The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
      * 
      */
     private String diskType;
@@ -193,6 +199,13 @@ public final class GetDatabaseInstanceSetting {
         return this.collation;
     }
     /**
+     * @return The managed connection pool setting for a Cloud SQL instance.
+     * 
+     */
+    public List<GetDatabaseInstanceSettingConnectionPoolConfig> connectionPoolConfigs() {
+        return this.connectionPoolConfigs;
+    }
+    /**
      * @return Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
      */
@@ -255,7 +268,7 @@ public final class GetDatabaseInstanceSetting {
         return this.diskSize;
     }
     /**
-     * @return The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced
+     * @return The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
      * 
      */
     public String diskType() {
@@ -366,6 +379,7 @@ public final class GetDatabaseInstanceSetting {
         private String availabilityType;
         private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
         private String collation;
+        private List<GetDatabaseInstanceSettingConnectionPoolConfig> connectionPoolConfigs;
         private String connectorEnforcement;
         private List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs;
         private Integer dataDiskProvisionedIops;
@@ -401,6 +415,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.availabilityType = defaults.availabilityType;
     	      this.backupConfigurations = defaults.backupConfigurations;
     	      this.collation = defaults.collation;
+    	      this.connectionPoolConfigs = defaults.connectionPoolConfigs;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
     	      this.dataCacheConfigs = defaults.dataCacheConfigs;
     	      this.dataDiskProvisionedIops = defaults.dataDiskProvisionedIops;
@@ -485,6 +500,17 @@ public final class GetDatabaseInstanceSetting {
             }
             this.collation = collation;
             return this;
+        }
+        @CustomType.Setter
+        public Builder connectionPoolConfigs(List<GetDatabaseInstanceSettingConnectionPoolConfig> connectionPoolConfigs) {
+            if (connectionPoolConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "connectionPoolConfigs");
+            }
+            this.connectionPoolConfigs = connectionPoolConfigs;
+            return this;
+        }
+        public Builder connectionPoolConfigs(GetDatabaseInstanceSettingConnectionPoolConfig... connectionPoolConfigs) {
+            return connectionPoolConfigs(List.of(connectionPoolConfigs));
         }
         @CustomType.Setter
         public Builder connectorEnforcement(String connectorEnforcement) {
@@ -729,6 +755,7 @@ public final class GetDatabaseInstanceSetting {
             _resultValue.availabilityType = availabilityType;
             _resultValue.backupConfigurations = backupConfigurations;
             _resultValue.collation = collation;
+            _resultValue.connectionPoolConfigs = connectionPoolConfigs;
             _resultValue.connectorEnforcement = connectorEnforcement;
             _resultValue.dataCacheConfigs = dataCacheConfigs;
             _resultValue.dataDiskProvisionedIops = dataDiskProvisionedIops;

@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsActiveDirectoryConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsConnectionPoolConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDataCacheConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDenyMaintenancePeriodArgs;
@@ -108,6 +109,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> collation() {
         return Optional.ofNullable(this.collation);
+    }
+
+    /**
+     * The managed connection pool setting for a Cloud SQL instance.
+     * 
+     */
+    @Import(name="connectionPoolConfigs")
+    private @Nullable Output<List<DatabaseInstanceSettingsConnectionPoolConfigArgs>> connectionPoolConfigs;
+
+    /**
+     * @return The managed connection pool setting for a Cloud SQL instance.
+     * 
+     */
+    public Optional<Output<List<DatabaseInstanceSettingsConnectionPoolConfigArgs>>> connectionPoolConfigs() {
+        return Optional.ofNullable(this.connectionPoolConfigs);
     }
 
     /**
@@ -467,6 +483,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.availabilityType = $.availabilityType;
         this.backupConfiguration = $.backupConfiguration;
         this.collation = $.collation;
+        this.connectionPoolConfigs = $.connectionPoolConfigs;
         this.connectorEnforcement = $.connectorEnforcement;
         this.dataCacheConfig = $.dataCacheConfig;
         this.dataDiskProvisionedIops = $.dataDiskProvisionedIops;
@@ -613,6 +630,37 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder collation(String collation) {
             return collation(Output.of(collation));
+        }
+
+        /**
+         * @param connectionPoolConfigs The managed connection pool setting for a Cloud SQL instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionPoolConfigs(@Nullable Output<List<DatabaseInstanceSettingsConnectionPoolConfigArgs>> connectionPoolConfigs) {
+            $.connectionPoolConfigs = connectionPoolConfigs;
+            return this;
+        }
+
+        /**
+         * @param connectionPoolConfigs The managed connection pool setting for a Cloud SQL instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionPoolConfigs(List<DatabaseInstanceSettingsConnectionPoolConfigArgs> connectionPoolConfigs) {
+            return connectionPoolConfigs(Output.of(connectionPoolConfigs));
+        }
+
+        /**
+         * @param connectionPoolConfigs The managed connection pool setting for a Cloud SQL instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionPoolConfigs(DatabaseInstanceSettingsConnectionPoolConfigArgs... connectionPoolConfigs) {
+            return connectionPoolConfigs(List.of(connectionPoolConfigs));
         }
 
         /**
