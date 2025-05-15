@@ -267,7 +267,7 @@ index fbe537ba6..07a5de2e5 100644
  `cluster_id`.
  
 diff --git a/website/docs/r/bigtable_table.html.markdown b/website/docs/r/bigtable_table.html.markdown
-index ccd76783e..a8eabee0e 100644
+index ef0f71085..53eb102ab 100644
 --- a/website/docs/r/bigtable_table.html.markdown
 +++ b/website/docs/r/bigtable_table.html.markdown
 @@ -10,12 +10,6 @@ Creates a Google Cloud Bigtable table inside an instance. For more information s
@@ -825,7 +825,7 @@ index 3abfdbb98..c6fade74b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index ddb65e42f..61e6e9004 100644
+index ff7833af0..146e548d0 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -889,7 +889,7 @@ index ddb65e42f..61e6e9004 100644
  
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`. Max length is 54 characters.
-@@ -582,7 +582,7 @@ The following arguments are supported:
+@@ -586,7 +586,7 @@ The following arguments are supported:
  * `access_config` - (Optional) Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -1892,7 +1892,7 @@ index 85fd0b322..177058967 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 997ec0cfd..9d0452609 100644
+index 75272bf3e..266c2f807 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -3677,7 +3677,7 @@ index fe9f8b04a..f1ca040b9 100644
  
  ~> **Note:** Once created, this resource cannot be updated or destroyed. These
 diff --git a/website/docs/r/redis_instance.html.markdown b/website/docs/r/redis_instance.html.markdown
-index c3824919e..b9cecd791 100644
+index 8d5c24c10..d3420764c 100644
 --- a/website/docs/r/redis_instance.html.markdown
 +++ b/website/docs/r/redis_instance.html.markdown
 @@ -68,7 +68,7 @@ resource "google_redis_instance" "cache" {
@@ -3844,7 +3844,7 @@ index c68771544..54e4c1ffc 100644
  * How-to Guides
      * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota )
 diff --git a/website/docs/r/spanner_database.html.markdown b/website/docs/r/spanner_database.html.markdown
-index e590db9bd..f9acce5ee 100644
+index bf8c6382c..66bd07e71 100644
 --- a/website/docs/r/spanner_database.html.markdown
 +++ b/website/docs/r/spanner_database.html.markdown
 @@ -31,12 +31,10 @@ To get more information about Database, see:
@@ -3862,7 +3862,7 @@ index e590db9bd..f9acce5ee 100644
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=spanner_database_basic&open_in_editor=main.tf" target="_blank">
-@@ -126,12 +124,8 @@ The following arguments are supported:
+@@ -127,12 +125,8 @@ The following arguments are supported:
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
  
@@ -3875,8 +3875,8 @@ index e590db9bd..f9acce5ee 100644
 +* `deletion_protection` - (Optional) Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 +in state, a `destroy` or `update` that would delete the instance will fail.
  
- 
- <a name="nested_encryption_config"></a>The `encryption_config` block supports:
+ * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
+ from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
 index 22fac0853..cb6f636cd 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
@@ -4002,7 +4002,7 @@ index 5e973aba8..17ff1efcb 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index 9ee3665c7..4beeec53d 100644
+index e5035cd8d..75559c44d 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -129,7 +129,7 @@ The following arguments are supported:
