@@ -28,7 +28,7 @@ class GetBucketObjectContentResult:
     """
     A collection of values returned by getBucketObjectContent.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_base64=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, generation=None, id=None, kms_key_name=None, md5hash=None, md5hexhash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_base64=None, content_base64sha512=None, content_disposition=None, content_encoding=None, content_hexsha512=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, detect_md5hash=None, event_based_hold=None, generation=None, id=None, kms_key_name=None, md5hash=None, md5hexhash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -41,12 +41,18 @@ class GetBucketObjectContentResult:
         if content_base64 and not isinstance(content_base64, str):
             raise TypeError("Expected argument 'content_base64' to be a str")
         pulumi.set(__self__, "content_base64", content_base64)
+        if content_base64sha512 and not isinstance(content_base64sha512, str):
+            raise TypeError("Expected argument 'content_base64sha512' to be a str")
+        pulumi.set(__self__, "content_base64sha512", content_base64sha512)
         if content_disposition and not isinstance(content_disposition, str):
             raise TypeError("Expected argument 'content_disposition' to be a str")
         pulumi.set(__self__, "content_disposition", content_disposition)
         if content_encoding and not isinstance(content_encoding, str):
             raise TypeError("Expected argument 'content_encoding' to be a str")
         pulumi.set(__self__, "content_encoding", content_encoding)
+        if content_hexsha512 and not isinstance(content_hexsha512, str):
+            raise TypeError("Expected argument 'content_hexsha512' to be a str")
+        pulumi.set(__self__, "content_hexsha512", content_hexsha512)
         if content_language and not isinstance(content_language, str):
             raise TypeError("Expected argument 'content_language' to be a str")
         pulumi.set(__self__, "content_language", content_language)
@@ -136,6 +142,14 @@ class GetBucketObjectContentResult:
         return pulumi.get(self, "content_base64")
 
     @property
+    @pulumi.getter(name="contentBase64sha512")
+    def content_base64sha512(self) -> builtins.str:
+        """
+        (Computed) Base64 encoded SHA512 checksum of file content.
+        """
+        return pulumi.get(self, "content_base64sha512")
+
+    @property
     @pulumi.getter(name="contentDisposition")
     def content_disposition(self) -> builtins.str:
         return pulumi.get(self, "content_disposition")
@@ -144,6 +158,14 @@ class GetBucketObjectContentResult:
     @pulumi.getter(name="contentEncoding")
     def content_encoding(self) -> builtins.str:
         return pulumi.get(self, "content_encoding")
+
+    @property
+    @pulumi.getter(name="contentHexsha512")
+    def content_hexsha512(self) -> builtins.str:
+        """
+        (Computed) Hex encoded SHA512 checksum of file content.
+        """
+        return pulumi.get(self, "content_hexsha512")
 
     @property
     @pulumi.getter(name="contentLanguage")
@@ -259,8 +281,10 @@ class AwaitableGetBucketObjectContentResult(GetBucketObjectContentResult):
             cache_control=self.cache_control,
             content=self.content,
             content_base64=self.content_base64,
+            content_base64sha512=self.content_base64sha512,
             content_disposition=self.content_disposition,
             content_encoding=self.content_encoding,
+            content_hexsha512=self.content_hexsha512,
             content_language=self.content_language,
             content_type=self.content_type,
             crc32c=self.crc32c,
@@ -325,8 +349,10 @@ def get_bucket_object_content(bucket: Optional[builtins.str] = None,
         cache_control=pulumi.get(__ret__, 'cache_control'),
         content=pulumi.get(__ret__, 'content'),
         content_base64=pulumi.get(__ret__, 'content_base64'),
+        content_base64sha512=pulumi.get(__ret__, 'content_base64sha512'),
         content_disposition=pulumi.get(__ret__, 'content_disposition'),
         content_encoding=pulumi.get(__ret__, 'content_encoding'),
+        content_hexsha512=pulumi.get(__ret__, 'content_hexsha512'),
         content_language=pulumi.get(__ret__, 'content_language'),
         content_type=pulumi.get(__ret__, 'content_type'),
         crc32c=pulumi.get(__ret__, 'crc32c'),
@@ -388,8 +414,10 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[builtins.str]
         cache_control=pulumi.get(__response__, 'cache_control'),
         content=pulumi.get(__response__, 'content'),
         content_base64=pulumi.get(__response__, 'content_base64'),
+        content_base64sha512=pulumi.get(__response__, 'content_base64sha512'),
         content_disposition=pulumi.get(__response__, 'content_disposition'),
         content_encoding=pulumi.get(__response__, 'content_encoding'),
+        content_hexsha512=pulumi.get(__response__, 'content_hexsha512'),
         content_language=pulumi.get(__response__, 'content_language'),
         content_type=pulumi.get(__response__, 'content_type'),
         crc32c=pulumi.get(__response__, 'crc32c'),

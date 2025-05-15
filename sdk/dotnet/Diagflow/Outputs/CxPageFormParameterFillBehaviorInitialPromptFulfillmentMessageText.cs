@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly bool? AllowPlaybackInterruption;
         /// <summary>
-        /// A collection of text responses.
+        /// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        /// required: true
         /// </summary>
         public readonly ImmutableArray<string> Texts;
 

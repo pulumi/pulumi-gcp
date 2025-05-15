@@ -27,6 +27,7 @@ class CxPageArgs:
                  entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['CxPageFormArgs']] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input['CxPageKnowledgeConnectorSettingsArgs']] = None,
                  language_code: Optional[pulumi.Input[builtins.str]] = None,
                  parent: Optional[pulumi.Input[builtins.str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -45,6 +46,8 @@ class CxPageArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
         :param pulumi.Input['CxPageFormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
+               Structure is documented below.
+        :param pulumi.Input['CxPageKnowledgeConnectorSettingsArgs'] knowledge_connector_settings: Knowledge connector configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -83,6 +86,8 @@ class CxPageArgs:
             pulumi.set(__self__, "event_handlers", event_handlers)
         if form is not None:
             pulumi.set(__self__, "form", form)
+        if knowledge_connector_settings is not None:
+            pulumi.set(__self__, "knowledge_connector_settings", knowledge_connector_settings)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if parent is not None:
@@ -159,6 +164,19 @@ class CxPageArgs:
     @form.setter
     def form(self, value: Optional[pulumi.Input['CxPageFormArgs']]):
         pulumi.set(self, "form", value)
+
+    @property
+    @pulumi.getter(name="knowledgeConnectorSettings")
+    def knowledge_connector_settings(self) -> Optional[pulumi.Input['CxPageKnowledgeConnectorSettingsArgs']]:
+        """
+        Knowledge connector configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "knowledge_connector_settings")
+
+    @knowledge_connector_settings.setter
+    def knowledge_connector_settings(self, value: Optional[pulumi.Input['CxPageKnowledgeConnectorSettingsArgs']]):
+        pulumi.set(self, "knowledge_connector_settings", value)
 
     @property
     @pulumi.getter(name="languageCode")
@@ -240,6 +258,7 @@ class _CxPageState:
                  entry_fulfillment: Optional[pulumi.Input['CxPageEntryFulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['CxPageFormArgs']] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input['CxPageKnowledgeConnectorSettingsArgs']] = None,
                  language_code: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  parent: Optional[pulumi.Input[builtins.str]] = None,
@@ -259,6 +278,8 @@ class _CxPageState:
         :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
         :param pulumi.Input['CxPageFormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
+               Structure is documented below.
+        :param pulumi.Input['CxPageKnowledgeConnectorSettingsArgs'] knowledge_connector_settings: Knowledge connector configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -300,6 +321,8 @@ class _CxPageState:
             pulumi.set(__self__, "event_handlers", event_handlers)
         if form is not None:
             pulumi.set(__self__, "form", form)
+        if knowledge_connector_settings is not None:
+            pulumi.set(__self__, "knowledge_connector_settings", knowledge_connector_settings)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if name is not None:
@@ -378,6 +401,19 @@ class _CxPageState:
     @form.setter
     def form(self, value: Optional[pulumi.Input['CxPageFormArgs']]):
         pulumi.set(self, "form", value)
+
+    @property
+    @pulumi.getter(name="knowledgeConnectorSettings")
+    def knowledge_connector_settings(self) -> Optional[pulumi.Input['CxPageKnowledgeConnectorSettingsArgs']]:
+        """
+        Knowledge connector configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "knowledge_connector_settings")
+
+    @knowledge_connector_settings.setter
+    def knowledge_connector_settings(self, value: Optional[pulumi.Input['CxPageKnowledgeConnectorSettingsArgs']]):
+        pulumi.set(self, "knowledge_connector_settings", value)
 
     @property
     @pulumi.getter(name="languageCode")
@@ -475,6 +511,7 @@ class CxPage(pulumi.CustomResource):
                  entry_fulfillment: Optional[pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]]] = None,
                  form: Optional[pulumi.Input[Union['CxPageFormArgs', 'CxPageFormArgsDict']]] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']]] = None,
                  language_code: Optional[pulumi.Input[builtins.str]] = None,
                  parent: Optional[pulumi.Input[builtins.str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -524,6 +561,7 @@ class CxPage(pulumi.CustomResource):
             generic_web_service={
                 "uri": "https://example.com",
             })
+        project = gcp.organizations.get_project()
         basic_page = gcp.diagflow.CxPage("basic_page",
             parent=agent.start_flow,
             display_name="MyPage",
@@ -1055,7 +1093,124 @@ class CxPage(pulumi.CustomResource):
                     "max_digits": 1,
                     "finish_digit": "#",
                 },
+            },
+            knowledge_connector_settings={
+                "enabled": True,
+                "trigger_fulfillment": {
+                    "messages": [
+                        {
+                            "channel": "some-channel",
+                            "knowledge_info_card": {},
+                        },
+                        {
+                            "channel": "some-channel",
+                            "text": {
+                                "texts": ["information completed, navigating to page 2"],
+                            },
+                        },
+                        {
+                            "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                        },
+                        {
+                            "conversation_success": {
+                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            },
+                        },
+                        {
+                            "output_audio_text": {
+                                "text": "some output text",
+                            },
+                        },
+                        {
+                            "output_audio_text": {
+                                "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                            },
+                        },
+                        {
+                            "live_agent_handoff": {
+                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            },
+                        },
+                        {
+                            "play_audio": {
+                                "audio_uri": "http://example.com/some-audio-file.mp3",
+                            },
+                        },
+                        {
+                            "telephony_transfer_call": {
+                                "phone_number": "1-234-567-8902",
+                            },
+                        },
+                    ],
+                    "webhook": my_webhook.id,
+                    "return_partial_responses": True,
+                    "tag": "some-tag",
+                    "set_parameter_actions": [{
+                        "parameter": "some-param",
+                        "value": "123.45",
+                    }],
+                    "conditional_cases": [{
+                        "cases": json.dumps([
+                            {
+                                "condition": "$sys.func.RAND() < 0.5",
+                                "caseContent": [{
+                                    "message": {
+                                        "text": {
+                                            "text": ["First case"],
+                                        },
+                                    },
+                                }],
+                            },
+                            {
+                                "caseContent": [{
+                                    "message": {
+                                        "text": {
+                                            "text": ["Final case"],
+                                        },
+                                    },
+                                }],
+                            },
+                        ]),
+                    }],
+                    "advanced_settings": {
+                        "speech_settings": {
+                            "endpointer_sensitivity": 30,
+                            "no_speech_timeout": "3.500s",
+                            "use_timeout_based_endpointing": True,
+                            "models": {
+                                "name": "wrench",
+                                "mass": "1.3kg",
+                                "count": "3",
+                            },
+                        },
+                        "dtmf_settings": {
+                            "enabled": True,
+                            "max_digits": 1,
+                            "finish_digit": "#",
+                            "interdigit_timeout_duration": "3.500s",
+                            "endpointing_timeout_duration": "3.500s",
+                        },
+                        "logging_settings": {
+                            "enable_stackdriver_logging": True,
+                            "enable_interaction_logging": True,
+                            "enable_consent_based_redaction": True,
+                        },
+                    },
+                    "enable_generative_fallback": True,
+                },
+                "data_store_connections": [{
+                    "data_store_type": "PUBLIC_WEB",
+                    "data_store": agent.location.apply(lambda location: f"projects/{project.number}/locations/{location}/collections/default_collection/dataStores/datastore-page-full"),
+                    "document_processing_mode": "CHUNKS",
+                }],
+                "target_page": my_page2.id,
             })
+        my_datastore = gcp.discoveryengine.DataStore("my_datastore",
+            location="global",
+            data_store_id="datastore-page-full",
+            display_name="datastore-page-full",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT")
         ```
 
         ## Import
@@ -1090,6 +1245,8 @@ class CxPage(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
         :param pulumi.Input[Union['CxPageFormArgs', 'CxPageFormArgsDict']] form: The form associated with the page, used for collecting parameters relevant to the page.
+               Structure is documented below.
+        :param pulumi.Input[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Knowledge connector configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -1169,6 +1326,7 @@ class CxPage(pulumi.CustomResource):
             generic_web_service={
                 "uri": "https://example.com",
             })
+        project = gcp.organizations.get_project()
         basic_page = gcp.diagflow.CxPage("basic_page",
             parent=agent.start_flow,
             display_name="MyPage",
@@ -1700,7 +1858,124 @@ class CxPage(pulumi.CustomResource):
                     "max_digits": 1,
                     "finish_digit": "#",
                 },
+            },
+            knowledge_connector_settings={
+                "enabled": True,
+                "trigger_fulfillment": {
+                    "messages": [
+                        {
+                            "channel": "some-channel",
+                            "knowledge_info_card": {},
+                        },
+                        {
+                            "channel": "some-channel",
+                            "text": {
+                                "texts": ["information completed, navigating to page 2"],
+                            },
+                        },
+                        {
+                            "payload": "          {\\"some-key\\": \\"some-value\\", \\"other-key\\": [\\"other-value\\"]}\\n",
+                        },
+                        {
+                            "conversation_success": {
+                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            },
+                        },
+                        {
+                            "output_audio_text": {
+                                "text": "some output text",
+                            },
+                        },
+                        {
+                            "output_audio_text": {
+                                "ssml": "            <speak>Some example <say-as interpret-as=\\"characters\\">SSML XML</say-as></speak>\\n",
+                            },
+                        },
+                        {
+                            "live_agent_handoff": {
+                                "metadata": "            {\\"some-metadata-key\\": \\"some-value\\", \\"other-metadata-key\\": 1234}\\n",
+                            },
+                        },
+                        {
+                            "play_audio": {
+                                "audio_uri": "http://example.com/some-audio-file.mp3",
+                            },
+                        },
+                        {
+                            "telephony_transfer_call": {
+                                "phone_number": "1-234-567-8902",
+                            },
+                        },
+                    ],
+                    "webhook": my_webhook.id,
+                    "return_partial_responses": True,
+                    "tag": "some-tag",
+                    "set_parameter_actions": [{
+                        "parameter": "some-param",
+                        "value": "123.45",
+                    }],
+                    "conditional_cases": [{
+                        "cases": json.dumps([
+                            {
+                                "condition": "$sys.func.RAND() < 0.5",
+                                "caseContent": [{
+                                    "message": {
+                                        "text": {
+                                            "text": ["First case"],
+                                        },
+                                    },
+                                }],
+                            },
+                            {
+                                "caseContent": [{
+                                    "message": {
+                                        "text": {
+                                            "text": ["Final case"],
+                                        },
+                                    },
+                                }],
+                            },
+                        ]),
+                    }],
+                    "advanced_settings": {
+                        "speech_settings": {
+                            "endpointer_sensitivity": 30,
+                            "no_speech_timeout": "3.500s",
+                            "use_timeout_based_endpointing": True,
+                            "models": {
+                                "name": "wrench",
+                                "mass": "1.3kg",
+                                "count": "3",
+                            },
+                        },
+                        "dtmf_settings": {
+                            "enabled": True,
+                            "max_digits": 1,
+                            "finish_digit": "#",
+                            "interdigit_timeout_duration": "3.500s",
+                            "endpointing_timeout_duration": "3.500s",
+                        },
+                        "logging_settings": {
+                            "enable_stackdriver_logging": True,
+                            "enable_interaction_logging": True,
+                            "enable_consent_based_redaction": True,
+                        },
+                    },
+                    "enable_generative_fallback": True,
+                },
+                "data_store_connections": [{
+                    "data_store_type": "PUBLIC_WEB",
+                    "data_store": agent.location.apply(lambda location: f"projects/{project.number}/locations/{location}/collections/default_collection/dataStores/datastore-page-full"),
+                    "document_processing_mode": "CHUNKS",
+                }],
+                "target_page": my_page2.id,
             })
+        my_datastore = gcp.discoveryengine.DataStore("my_datastore",
+            location="global",
+            data_store_id="datastore-page-full",
+            display_name="datastore-page-full",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT")
         ```
 
         ## Import
@@ -1741,6 +2016,7 @@ class CxPage(pulumi.CustomResource):
                  entry_fulfillment: Optional[pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]]] = None,
                  form: Optional[pulumi.Input[Union['CxPageFormArgs', 'CxPageFormArgsDict']]] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']]] = None,
                  language_code: Optional[pulumi.Input[builtins.str]] = None,
                  parent: Optional[pulumi.Input[builtins.str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1761,6 +2037,7 @@ class CxPage(pulumi.CustomResource):
             __props__.__dict__["entry_fulfillment"] = entry_fulfillment
             __props__.__dict__["event_handlers"] = event_handlers
             __props__.__dict__["form"] = form
+            __props__.__dict__["knowledge_connector_settings"] = knowledge_connector_settings
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["parent"] = parent
             __props__.__dict__["transition_route_groups"] = transition_route_groups
@@ -1781,6 +2058,7 @@ class CxPage(pulumi.CustomResource):
             entry_fulfillment: Optional[pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']]] = None,
             event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]]] = None,
             form: Optional[pulumi.Input[Union['CxPageFormArgs', 'CxPageFormArgsDict']]] = None,
+            knowledge_connector_settings: Optional[pulumi.Input[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']]] = None,
             language_code: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             parent: Optional[pulumi.Input[builtins.str]] = None,
@@ -1805,6 +2083,8 @@ class CxPage(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
                Structure is documented below.
         :param pulumi.Input[Union['CxPageFormArgs', 'CxPageFormArgsDict']] form: The form associated with the page, used for collecting parameters relevant to the page.
+               Structure is documented below.
+        :param pulumi.Input[Union['CxPageKnowledgeConnectorSettingsArgs', 'CxPageKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Knowledge connector configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] language_code: The language of the following fields in page:
                Page.entry_fulfillment.messages
@@ -1845,6 +2125,7 @@ class CxPage(pulumi.CustomResource):
         __props__.__dict__["entry_fulfillment"] = entry_fulfillment
         __props__.__dict__["event_handlers"] = event_handlers
         __props__.__dict__["form"] = form
+        __props__.__dict__["knowledge_connector_settings"] = knowledge_connector_settings
         __props__.__dict__["language_code"] = language_code
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
@@ -1899,6 +2180,15 @@ class CxPage(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "form")
+
+    @property
+    @pulumi.getter(name="knowledgeConnectorSettings")
+    def knowledge_connector_settings(self) -> pulumi.Output[Optional['outputs.CxPageKnowledgeConnectorSettings']]:
+        """
+        Knowledge connector configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "knowledge_connector_settings")
 
     @property
     @pulumi.getter(name="languageCode")

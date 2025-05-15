@@ -81,6 +81,59 @@ import (
 //	}
 //
 // ```
+// ### Privateca Certificate Authority Basic No Org
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//				Pool:                   pulumi.String("ca-pool"),
+//				CertificateAuthorityId: pulumi.String("my-certificate-authority"),
+//				Location:               pulumi.String("us-central1"),
+//				DeletionProtection:     pulumi.Bool(true),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							CommonName: pulumi.String("my-certificate-authority"),
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{},
+//						},
+//					},
+//				},
+//				Lifetime: pulumi.Sprintf("%vs", 10*365*24*3600),
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Privateca Certificate Authority Subordinate
 //
 // ```go

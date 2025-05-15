@@ -20,6 +20,7 @@ __all__ = [
     'EdgeCacheKeysetPublicKey',
     'EdgeCacheKeysetValidationSharedKey',
     'EdgeCacheOriginAwsV4Authentication',
+    'EdgeCacheOriginFlexShielding',
     'EdgeCacheOriginOriginOverrideAction',
     'EdgeCacheOriginOriginOverrideActionHeaderAction',
     'EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd',
@@ -256,6 +257,48 @@ class EdgeCacheOriginAwsV4Authentication(dict):
         This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
         """
         return pulumi.get(self, "secret_access_key_version")
+
+
+@pulumi.output_type
+class EdgeCacheOriginFlexShielding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "flexShieldingRegions":
+            suggest = "flex_shielding_regions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeCacheOriginFlexShielding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeCacheOriginFlexShielding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeCacheOriginFlexShielding.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 flex_shielding_regions: Optional[builtins.str] = None):
+        """
+        :param builtins.str flex_shielding_regions: Whenever possible, content will be fetched from origin and cached in or
+               near the specified origin. Best effort.
+               You must specify exactly one FlexShieldingRegion.
+               Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+        """
+        if flex_shielding_regions is not None:
+            pulumi.set(__self__, "flex_shielding_regions", flex_shielding_regions)
+
+    @property
+    @pulumi.getter(name="flexShieldingRegions")
+    def flex_shielding_regions(self) -> Optional[builtins.str]:
+        """
+        Whenever possible, content will be fetched from origin and cached in or
+        near the specified origin. Best effort.
+        You must specify exactly one FlexShieldingRegion.
+        Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+        """
+        return pulumi.get(self, "flex_shielding_regions")
 
 
 @pulumi.output_type

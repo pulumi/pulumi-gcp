@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     instance: main.name,
  *     name: "my-database",
  *     versionRetentionPeriod: "3d",
+ *     defaultTimeZone: "UTC",
  *     ddls: [
  *         "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
  *         "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
@@ -112,6 +113,11 @@ export class Database extends pulumi.CustomResource {
     public readonly databaseDialect!: pulumi.Output<string>;
     public readonly ddls!: pulumi.Output<string[] | undefined>;
     /**
+     * The default time zone for the database. The default time zone must be a valid name
+     * from the tz database. Default value is "America/Los_angeles".
+     */
+    public readonly defaultTimeZone!: pulumi.Output<string | undefined>;
+    /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
@@ -167,6 +173,7 @@ export class Database extends pulumi.CustomResource {
             const state = argsOrState as DatabaseState | undefined;
             resourceInputs["databaseDialect"] = state ? state.databaseDialect : undefined;
             resourceInputs["ddls"] = state ? state.ddls : undefined;
+            resourceInputs["defaultTimeZone"] = state ? state.defaultTimeZone : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["enableDropProtection"] = state ? state.enableDropProtection : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
@@ -182,6 +189,7 @@ export class Database extends pulumi.CustomResource {
             }
             resourceInputs["databaseDialect"] = args ? args.databaseDialect : undefined;
             resourceInputs["ddls"] = args ? args.ddls : undefined;
+            resourceInputs["defaultTimeZone"] = args ? args.defaultTimeZone : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["enableDropProtection"] = args ? args.enableDropProtection : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
@@ -207,6 +215,11 @@ export interface DatabaseState {
      */
     databaseDialect?: pulumi.Input<string>;
     ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The default time zone for the database. The default time zone must be a valid name
+     * from the tz database. Default value is "America/Los_angeles".
+     */
+    defaultTimeZone?: pulumi.Input<string>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
@@ -260,6 +273,11 @@ export interface DatabaseArgs {
      */
     databaseDialect?: pulumi.Input<string>;
     ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The default time zone for the database. The default time zone must be a valid name
+     * from the tz database. Default value is "America/Los_angeles".
+     */
+    defaultTimeZone?: pulumi.Input<string>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.

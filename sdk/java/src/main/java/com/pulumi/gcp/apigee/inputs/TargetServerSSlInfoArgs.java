@@ -82,6 +82,21 @@ public final class TargetServerSSlInfoArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * If true, TLS is strictly enforced.
+     * 
+     */
+    @Import(name="enforce")
+    private @Nullable Output<Boolean> enforce;
+
+    /**
+     * @return If true, TLS is strictly enforced.
+     * 
+     */
+    public Optional<Output<Boolean>> enforce() {
+        return Optional.ofNullable(this.enforce);
+    }
+
+    /**
      * If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
      * 
      */
@@ -163,6 +178,7 @@ public final class TargetServerSSlInfoArgs extends com.pulumi.resources.Resource
         this.clientAuthEnabled = $.clientAuthEnabled;
         this.commonName = $.commonName;
         this.enabled = $.enabled;
+        this.enforce = $.enforce;
         this.ignoreValidationErrors = $.ignoreValidationErrors;
         this.keyAlias = $.keyAlias;
         this.keyStore = $.keyStore;
@@ -282,6 +298,27 @@ public final class TargetServerSSlInfoArgs extends com.pulumi.resources.Resource
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param enforce If true, TLS is strictly enforced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforce(@Nullable Output<Boolean> enforce) {
+            $.enforce = enforce;
+            return this;
+        }
+
+        /**
+         * @param enforce If true, TLS is strictly enforced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforce(Boolean enforce) {
+            return enforce(Output.of(enforce));
         }
 
         /**

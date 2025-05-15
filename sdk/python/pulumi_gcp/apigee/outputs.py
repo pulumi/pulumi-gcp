@@ -1706,6 +1706,7 @@ class TargetServerSSlInfo(dict):
                  ciphers: Optional[Sequence[builtins.str]] = None,
                  client_auth_enabled: Optional[builtins.bool] = None,
                  common_name: Optional['outputs.TargetServerSSlInfoCommonName'] = None,
+                 enforce: Optional[builtins.bool] = None,
                  ignore_validation_errors: Optional[builtins.bool] = None,
                  key_alias: Optional[builtins.str] = None,
                  key_store: Optional[builtins.str] = None,
@@ -1717,6 +1718,7 @@ class TargetServerSSlInfo(dict):
         :param builtins.bool client_auth_enabled: Enables two-way TLS.
         :param 'TargetServerSSlInfoCommonNameArgs' common_name: The TLS Common Name of the certificate.
                Structure is documented below.
+        :param builtins.bool enforce: If true, TLS is strictly enforced.
         :param builtins.bool ignore_validation_errors: If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
         :param builtins.str key_alias: Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
         :param builtins.str key_store: Required if clientAuthEnabled is true. The resource ID of the keystore.
@@ -1730,6 +1732,8 @@ class TargetServerSSlInfo(dict):
             pulumi.set(__self__, "client_auth_enabled", client_auth_enabled)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
         if ignore_validation_errors is not None:
             pulumi.set(__self__, "ignore_validation_errors", ignore_validation_errors)
         if key_alias is not None:
@@ -1773,6 +1777,14 @@ class TargetServerSSlInfo(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[builtins.bool]:
+        """
+        If true, TLS is strictly enforced.
+        """
+        return pulumi.get(self, "enforce")
 
     @property
     @pulumi.getter(name="ignoreValidationErrors")

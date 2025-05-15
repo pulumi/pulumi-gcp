@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetRegionInstanceTemplateDiskResult
     {
         /// <summary>
+        /// The architecture of the image. Allowed values are ARM64 or X86_64.
+        /// </summary>
+        public readonly string Architecture;
+        /// <summary>
         /// Whether or not the disk should be auto-deleted.
         /// This defaults to true.
         /// </summary>
@@ -48,6 +52,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// `"pd-balanced"` or `"pd-standard"`.
         /// </summary>
         public readonly string DiskType;
+        /// <summary>
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// </summary>
+        public readonly ImmutableArray<string> GuestOsFeatures;
         /// <summary>
         /// Specifies the disk interface to use for attaching this disk,
         /// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
@@ -130,6 +138,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private GetRegionInstanceTemplateDiskResult(
+            string architecture,
+
             bool autoDelete,
 
             bool boot,
@@ -143,6 +153,8 @@ namespace Pulumi.Gcp.Compute.Outputs
             int diskSizeGb,
 
             string diskType,
+
+            ImmutableArray<string> guestOsFeatures,
 
             string @interface,
 
@@ -170,6 +182,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string type)
         {
+            Architecture = architecture;
             AutoDelete = autoDelete;
             Boot = boot;
             DeviceName = deviceName;
@@ -177,6 +190,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             DiskName = diskName;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            GuestOsFeatures = guestOsFeatures;
             Interface = @interface;
             Labels = labels;
             Mode = mode;

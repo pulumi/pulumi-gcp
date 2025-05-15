@@ -71,8 +71,16 @@ export interface GetBucketObjectContentResult {
      * Use this when dealing with binary data.
      */
     readonly contentBase64: string;
+    /**
+     * (Computed) Base64 encoded SHA512 checksum of file content.
+     */
+    readonly contentBase64sha512: string;
     readonly contentDisposition: string;
     readonly contentEncoding: string;
+    /**
+     * (Computed) Hex encoded SHA512 checksum of file content.
+     */
+    readonly contentHexsha512: string;
     readonly contentLanguage: string;
     readonly contentType: string;
     readonly crc32c: string;

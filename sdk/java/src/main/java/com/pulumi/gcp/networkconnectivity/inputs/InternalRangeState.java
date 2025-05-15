@@ -6,6 +6,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeMigrationArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -64,6 +65,21 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<List<String>>> excludeCidrRanges() {
         return Optional.ofNullable(this.excludeCidrRanges);
+    }
+
+    /**
+     * Immutable ranges cannot have their fields modified, except for labels and description.
+     * 
+     */
+    @Import(name="immutable")
+    private @Nullable Output<Boolean> immutable;
+
+    /**
+     * @return Immutable ranges cannot have their fields modified, except for labels and description.
+     * 
+     */
+    public Optional<Output<Boolean>> immutable() {
+        return Optional.ofNullable(this.immutable);
     }
 
     /**
@@ -305,6 +321,7 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.excludeCidrRanges = $.excludeCidrRanges;
+        this.immutable = $.immutable;
         this.ipCidrRange = $.ipCidrRange;
         this.labels = $.labels;
         this.migration = $.migration;
@@ -412,6 +429,27 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder excludeCidrRanges(String... excludeCidrRanges) {
             return excludeCidrRanges(List.of(excludeCidrRanges));
+        }
+
+        /**
+         * @param immutable Immutable ranges cannot have their fields modified, except for labels and description.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder immutable(@Nullable Output<Boolean> immutable) {
+            $.immutable = immutable;
+            return this;
+        }
+
+        /**
+         * @param immutable Immutable ranges cannot have their fields modified, except for labels and description.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder immutable(Boolean immutable) {
+            return immutable(Output.of(immutable));
         }
 
         /**

@@ -406,6 +406,7 @@
         "compute/backendServiceIamPolicy.ts",
         "compute/backendServiceSignedUrlKey.ts",
         "compute/caExternalAccountKey.ts",
+        "compute/crossSiteNetwork.ts",
         "compute/disk.ts",
         "compute/diskAsyncReplication.ts",
         "compute/diskIamBinding.ts",

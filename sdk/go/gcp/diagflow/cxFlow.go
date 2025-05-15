@@ -132,6 +132,8 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -165,6 +167,33 @@ import (
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			myDatastore, err := discoveryengine.NewDataStore(ctx, "my_datastore", &discoveryengine.DataStoreArgs{
+//				Location:         pulumi.String("global"),
+//				DataStoreId:      pulumi.String("datastore-flow-full"),
+//				DisplayName:      pulumi.String("datastore-flow-full"),
+//				IndustryVertical: pulumi.String("GENERIC"),
+//				ContentConfig:    pulumi.String("NO_CONTENT"),
+//				SolutionTypes: pulumi.StringArray{
+//					pulumi.String("SOLUTION_TYPE_CHAT"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myWebhook, err := diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("MyWebhook"),
+//				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
+//					Uri: pulumi.String("https://example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -298,6 +327,39 @@ import (
 //				return err
 //			}
 //			json5 := string(tmpJSON5)
+//			tmpJSON6, err := json.Marshal([]interface{}{
+//				map[string]interface{}{
+//					"condition": "$sys.func.RAND() < 0.5",
+//					"caseContent": []map[string]interface{}{
+//						map[string]interface{}{
+//							"message": map[string]interface{}{
+//								"text": map[string]interface{}{
+//									"text": []string{
+//										"First case",
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				map[string]interface{}{
+//					"caseContent": []map[string]interface{}{
+//						map[string]interface{}{
+//							"message": map[string]interface{}{
+//								"text": map[string]interface{}{
+//									"text": []string{
+//										"Final case",
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json6 := string(tmpJSON6)
 //			_, err = diagflow.NewCxFlow(ctx, "basic_flow", &diagflow.CxFlowArgs{
 //				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyFlow"),
@@ -519,6 +581,105 @@ import (
 //						EnableConsentBasedRedaction: pulumi.Bool(true),
 //					},
 //				},
+//				KnowledgeConnectorSettings: &diagflow.CxFlowKnowledgeConnectorSettingsArgs{
+//					Enabled: pulumi.Bool(true),
+//					TriggerFulfillment: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs{
+//						Messages: diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArray{
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								Channel: pulumi.String("some-channel"),
+//								Text: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{
+//									Texts: pulumi.StringArray{
+//										pulumi.String("information completed, navigating to page 2"),
+//									},
+//								},
+//							},
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								Payload: pulumi.String("          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n"),
+//							},
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								ConversationSuccess: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{
+//									Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//								},
+//							},
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								OutputAudioText: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{
+//									Text: pulumi.String("some output text"),
+//								},
+//							},
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								OutputAudioText: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{
+//									Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n"),
+//								},
+//							},
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								LiveAgentHandoff: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{
+//									Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//								},
+//							},
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								PlayAudio: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{
+//									AudioUri: pulumi.String("http://example.com/some-audio-file.mp3"),
+//								},
+//							},
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								TelephonyTransferCall: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{
+//									PhoneNumber: pulumi.String("1-234-567-8902"),
+//								},
+//							},
+//						},
+//						Webhook:                myWebhook.ID(),
+//						ReturnPartialResponses: pulumi.Bool(true),
+//						Tag:                    pulumi.String("some-tag"),
+//						SetParameterActions: diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs{
+//								Parameter: pulumi.String("some-param"),
+//								Value:     pulumi.String("123.45"),
+//							},
+//						},
+//						ConditionalCases: diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray{
+//							&diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{
+//								Cases: pulumi.String(json6),
+//							},
+//						},
+//						AdvancedSettings: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{
+//							SpeechSettings: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{
+//								EndpointerSensitivity:      pulumi.Int(30),
+//								NoSpeechTimeout:            pulumi.String("3.500s"),
+//								UseTimeoutBasedEndpointing: pulumi.Bool(true),
+//								Models: pulumi.StringMap{
+//									"name":  pulumi.String("wrench"),
+//									"mass":  pulumi.String("1.3kg"),
+//									"count": pulumi.String("3"),
+//								},
+//							},
+//							DtmfSettings: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{
+//								Enabled:                    pulumi.Bool(true),
+//								MaxDigits:                  pulumi.Int(1),
+//								FinishDigit:                pulumi.String("#"),
+//								InterdigitTimeoutDuration:  pulumi.String("3.500s"),
+//								EndpointingTimeoutDuration: pulumi.String("3.500s"),
+//							},
+//							LoggingSettings: &diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{
+//								EnableStackdriverLogging:    pulumi.Bool(true),
+//								EnableInteractionLogging:    pulumi.Bool(true),
+//								EnableConsentBasedRedaction: pulumi.Bool(true),
+//							},
+//						},
+//						EnableGenerativeFallback: pulumi.Bool(true),
+//					},
+//					DataStoreConnections: diagflow.CxFlowKnowledgeConnectorSettingsDataStoreConnectionArray{
+//						&diagflow.CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs{
+//							DataStoreType: pulumi.String("UNSTRUCTURED"),
+//							DataStore: pulumi.All(agent.Location, myDatastore.DataStoreId).ApplyT(func(_args []interface{}) (string, error) {
+//								location := _args[0].(string)
+//								dataStoreId := _args[1].(string)
+//								return fmt.Sprintf("projects/%v/locations/%v/collections/default_collection/dataStores/%v", project.Number, location, dataStoreId), nil
+//							}).(pulumi.StringOutput),
+//							DocumentProcessingMode: pulumi.String("DOCUMENTS"),
+//						},
+//					},
+//					TargetFlow: agent.StartFlow,
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -570,6 +731,9 @@ type CxFlow struct {
 	//
 	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
 	IsDefaultStartFlow pulumi.BoolPtrOutput `pulumi:"isDefaultStartFlow"`
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings CxFlowKnowledgeConnectorSettingsPtrOutput `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -656,6 +820,9 @@ type cxFlowState struct {
 	//
 	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
 	IsDefaultStartFlow *bool `pulumi:"isDefaultStartFlow"`
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings *CxFlowKnowledgeConnectorSettings `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -710,6 +877,9 @@ type CxFlowState struct {
 	//
 	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
 	IsDefaultStartFlow pulumi.BoolPtrInput
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings CxFlowKnowledgeConnectorSettingsPtrInput
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -768,6 +938,9 @@ type cxFlowArgs struct {
 	//
 	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
 	IsDefaultStartFlow *bool `pulumi:"isDefaultStartFlow"`
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings *CxFlowKnowledgeConnectorSettings `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -820,6 +993,9 @@ type CxFlowArgs struct {
 	//
 	// > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
 	IsDefaultStartFlow pulumi.BoolPtrInput
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings CxFlowKnowledgeConnectorSettingsPtrInput
 	// The language of the following fields in flow:
 	// Flow.event_handlers.trigger_fulfillment.messages
 	// Flow.event_handlers.trigger_fulfillment.conditional_cases
@@ -970,6 +1146,12 @@ func (o CxFlowOutput) EventHandlers() CxFlowEventHandlerArrayOutput {
 // > Avoid having multiple `diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
 func (o CxFlowOutput) IsDefaultStartFlow() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxFlow) pulumi.BoolPtrOutput { return v.IsDefaultStartFlow }).(pulumi.BoolPtrOutput)
+}
+
+// Knowledge connector configuration.
+// Structure is documented below.
+func (o CxFlowOutput) KnowledgeConnectorSettings() CxFlowKnowledgeConnectorSettingsPtrOutput {
+	return o.ApplyT(func(v *CxFlow) CxFlowKnowledgeConnectorSettingsPtrOutput { return v.KnowledgeConnectorSettings }).(CxFlowKnowledgeConnectorSettingsPtrOutput)
 }
 
 // The language of the following fields in flow:

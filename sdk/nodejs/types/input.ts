@@ -2724,6 +2724,11 @@ export namespace alloydb {
          */
         allowedConsumerProjects?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Configurations for setting up PSC service automation.
+         * Structure is documented below.
+         */
+        pscAutoConnections?: pulumi.Input<pulumi.Input<inputs.alloydb.InstancePscInstanceConfigPscAutoConnection>[]>;
+        /**
          * (Output)
          * The DNS name of the instance for PSC connectivity.
          * Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
@@ -2742,6 +2747,38 @@ export namespace alloydb {
          * `projects/<alloydb-tenant-project-number>/regions/<region-name>/serviceAttachments/<service-attachment-name>`
          */
         serviceAttachmentLink?: pulumi.Input<string>;
+    }
+
+    export interface InstancePscInstanceConfigPscAutoConnection {
+        /**
+         * The consumer network for the PSC service automation, example:
+         * "projects/vpc-host-project/global/networks/default".
+         * The consumer network might be hosted a different project than the
+         * consumer project. The API expects the consumer project specified to be
+         * the project ID (and not the project number)
+         */
+        consumerNetwork?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The status of the service connection policy.
+         */
+        consumerNetworkStatus?: pulumi.Input<string>;
+        /**
+         * The consumer project to which the PSC service automation endpoint will
+         * be created. The API expects the consumer project to be the project ID(
+         * and not the project number).
+         */
+        consumerProject?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The IP address of the PSC service automation endpoint.
+         */
+        ipAddress?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The status of the PSC service automation connection.
+         */
+        status?: pulumi.Input<string>;
     }
 
     export interface InstancePscInstanceConfigPscInterfaceConfig {
@@ -3387,6 +3424,10 @@ export namespace apigee {
          * Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
          */
         enabled: pulumi.Input<boolean>;
+        /**
+         * If true, TLS is strictly enforced.
+         */
+        enforce?: pulumi.Input<boolean>;
         /**
          * If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
          */
@@ -8488,7 +8529,7 @@ export namespace certificateauthority {
         /**
          * The organization of the subject.
          */
-        organization: pulumi.Input<string>;
+        organization?: pulumi.Input<string>;
         /**
          * The organizational unit of the subject.
          */
@@ -19290,6 +19331,35 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
     }
 
+    export interface HealthCheckGrpcTlsHealthCheck {
+        /**
+         * The gRPC service name for the health check.
+         * The value of grpcServiceName has the following meanings by convention:
+         * - Empty serviceName means the overall status of all services at the backend.
+         * - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+         * The grpcServiceName can only be ASCII.
+         */
+        grpcServiceName?: pulumi.Input<string>;
+        /**
+         * The port number for the health check request.
+         * Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: Not supported for GRPC with TLS health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, gRPC with TLS health check follows behavior specified in the `port` field.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+         */
+        portSpecification?: pulumi.Input<string>;
+    }
+
     export interface HealthCheckHttp2HealthCheck {
         /**
          * The value of the host header in the HTTP2 health check request.
@@ -22060,6 +22130,10 @@ export namespace compute {
 
     export interface InstanceTemplateDisk {
         /**
+         * The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
+         */
+        architecture?: pulumi.Input<string>;
+        /**
          * Whether or not the disk should be auto-deleted.
          * This defaults to true.
          */
@@ -22102,6 +22176,10 @@ export namespace compute {
          * `"pd-balanced"` or `"pd-standard"`, `"hyperdisk-balanced"`, `"hyperdisk-throughput"` or `"hyperdisk-extreme"`.
          */
         diskType?: pulumi.Input<string>;
+        /**
+         * A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         */
+        guestOsFeatures?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Specifies the disk interface to use for attaching this disk,
          * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
@@ -24921,6 +24999,35 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
     }
 
+    export interface RegionHealthCheckGrpcTlsHealthCheck {
+        /**
+         * The gRPC service name for the health check.
+         * The value of grpcServiceName has the following meanings by convention:
+         * * Empty serviceName means the overall status of all services at the backend.
+         * * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+         * The grpcServiceName can only be ASCII.
+         */
+        grpcServiceName?: pulumi.Input<string>;
+        /**
+         * The port number for the health check request.
+         * Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: Not supported for GRPC with TLS health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, gRPC health check follows behavior specified in the `port` field.
+         * Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+         */
+        portSpecification?: pulumi.Input<string>;
+    }
+
     export interface RegionHealthCheckHttp2HealthCheck {
         /**
          * The value of the host header in the HTTP2 health check request.
@@ -25479,6 +25586,10 @@ export namespace compute {
 
     export interface RegionInstanceTemplateDisk {
         /**
+         * The architecture of the attached disk. Valid values are `ARM64` or `x8664`.
+         */
+        architecture?: pulumi.Input<string>;
+        /**
          * Whether or not the disk should be auto-deleted.
          * This defaults to true.
          */
@@ -25521,6 +25632,10 @@ export namespace compute {
          * `"pd-balanced"` or `"pd-standard"`.
          */
         diskType?: pulumi.Input<string>;
+        /**
+         * A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         */
+        guestOsFeatures?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Specifies the disk interface to use for attaching this disk,
          * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
@@ -35200,7 +35315,7 @@ export namespace container {
          */
         taints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigTaint>[]>;
         /**
-         * Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+         * Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
          */
         windowsNodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfigWindowsNodeConfig>;
         /**
@@ -36143,7 +36258,7 @@ export namespace container {
          */
         taints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigTaint>[]>;
         /**
-         * Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+         * Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
          */
         windowsNodeConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigWindowsNodeConfig>;
         /**
@@ -51283,7 +51398,7 @@ export namespace diagflow {
 
     export interface CxFlowAdvancedSettingsDtmfSettings {
         /**
-         * If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+         * If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
          */
         enabled?: pulumi.Input<boolean>;
         /**
@@ -51323,7 +51438,7 @@ export namespace diagflow {
         models?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Timeout before detecting no speech.
-         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
          */
         noSpeechTimeout?: pulumi.Input<string>;
         /**
@@ -51408,6 +51523,7 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
          * * In a webhook response when you determine that you handled the customer issue.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         conversationSuccess?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess>;
@@ -51417,30 +51533,36 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
          * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff>;
         /**
          * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         outputAudioText?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText>;
         /**
-         * A custom, platform-specific payload.
+         * Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          */
         payload?: pulumi.Input<string>;
         /**
          * Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         playAudio?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio>;
         /**
          * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageText>;
@@ -51468,10 +51590,12 @@ export namespace diagflow {
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
          * The SSML text to be synthesized. For more information, see SSML.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         ssml?: pulumi.Input<string>;
         /**
          * The raw text to be synthesized.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         text?: pulumi.Input<string>;
     }
@@ -51480,6 +51604,8 @@ export namespace diagflow {
         /**
          * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         *
+         * <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
@@ -51502,12 +51628,387 @@ export namespace diagflow {
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
-         * A collection of text responses.
+         * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface CxFlowEventHandlerTriggerFulfillmentSetParameterAction {
+        /**
+         * Display name of the parameter.
+         */
+        parameter?: pulumi.Input<string>;
+        /**
+         * The new JSON-encoded value of the parameter. A null value clears the parameter.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettings {
+        /**
+         * Optional. List of related data store connections.
+         * Structure is documented below.
+         */
+        dataStoreConnections?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsDataStoreConnection>[]>;
+        /**
+         * Whether Knowledge Connector is enabled or not.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+         * This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+         */
+        targetFlow?: pulumi.Input<string>;
+        /**
+         * The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+         * The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+         * This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+         */
+        targetPage?: pulumi.Input<string>;
+        /**
+         * The fulfillment to be triggered.
+         * When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+         * Structure is documented below.
+         */
+        triggerFulfillment?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillment>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsDataStoreConnection {
+        /**
+         * The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+         */
+        dataStore?: pulumi.Input<string>;
+        /**
+         * The type of the connected data store.
+         * * PUBLIC_WEB: A data store that contains public web content.
+         * * UNSTRUCTURED: A data store that contains unstructured private data.
+         * * STRUCTURED: A data store that contains structured data (for example FAQ).
+         * Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+         */
+        dataStoreType?: pulumi.Input<string>;
+        /**
+         * The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+         * * DOCUMENTS: Documents are processed as documents.
+         * * CHUNKS: Documents are converted to chunks.
+         * Possible values are: `DOCUMENTS`, `CHUNKS`.
+         */
+        documentProcessingMode?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
+        /**
+         * Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+         * DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+         * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+         * Structure is documented below.
+         */
+        advancedSettings?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings>;
+        /**
+         * Conditional cases for this fulfillment.
+         * Structure is documented below.
+         */
+        conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase>[]>;
+        /**
+         * If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+         */
+        enableGenerativeFallback?: pulumi.Input<boolean>;
+        /**
+         * The list of rich message responses to present to the user.
+         * Structure is documented below.
+         */
+        messages?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage>[]>;
+        /**
+         * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+         */
+        returnPartialResponses?: pulumi.Input<boolean>;
+        /**
+         * Set parameter values before executing the webhook.
+         * Structure is documented below.
+         */
+        setParameterActions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction>[]>;
+        /**
+         * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+         */
+        tag?: pulumi.Input<string>;
+        /**
+         * The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+         */
+        webhook?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+        /**
+         * Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        dtmfSettings?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings>;
+        /**
+         * Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+         * * Agent level
+         * Structure is documented below.
+         */
+        loggingSettings?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings>;
+        /**
+         * Settings for speech to text detection. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        speechSettings?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+        /**
+         * If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Endpoint timeout setting for matching dtmf input to regex.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+         */
+        endpointingTimeoutDuration?: pulumi.Input<string>;
+        /**
+         * The digit that terminates a DTMF digit sequence.
+         */
+        finishDigit?: pulumi.Input<string>;
+        /**
+         * Interdigit timeout setting for matching dtmf input to regex.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+         */
+        interdigitTimeoutDuration?: pulumi.Input<string>;
+        /**
+         * Max length of DTMF digits.
+         */
+        maxDigits?: pulumi.Input<number>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+        /**
+         * Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+         */
+        enableConsentBasedRedaction?: pulumi.Input<boolean>;
+        /**
+         * Enables DF Interaction logging.
+         */
+        enableInteractionLogging?: pulumi.Input<boolean>;
+        /**
+         * Enables Google Cloud Logging.
+         */
+        enableStackdriverLogging?: pulumi.Input<boolean>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+        /**
+         * Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+         */
+        endpointerSensitivity?: pulumi.Input<number>;
+        /**
+         * Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+         * An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+         */
+        models?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Timeout before detecting no speech.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+         */
+        noSpeechTimeout?: pulumi.Input<string>;
+        /**
+         * Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+         */
+        useTimeoutBasedEndpointing?: pulumi.Input<boolean>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
+        /**
+         * A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+         * See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+         */
+        cases?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage {
+        /**
+         * The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+         * Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+         * * In a webhook response when you determine that you handled the customer issue.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        conversationSuccess?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess>;
+        /**
+         * (Output)
+         * This type has no fields.
+         * Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         */
+        endInteractions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction>[]>;
+        /**
+         * This type has no fields.
+         * Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+         * Otherwise, the info card response is skipped.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         */
+        knowledgeInfoCard?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard>;
+        /**
+         * Indicates that the conversation should be handed off to a live agent.
+         * Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+         * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff>;
+        /**
+         * (Output)
+         * Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        mixedAudios?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio>[]>;
+        /**
+         * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        outputAudioText?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText>;
+        /**
+         * Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         */
+        payload?: pulumi.Input<string>;
+        /**
+         * Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        playAudio?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio>;
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall>;
+        /**
+         * The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        text?: pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction {
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard {
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
+        /**
+         * Segments this audio response is composed of.
+         */
+        segments?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>[]>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment {
+        /**
+         * (Output)
+         * Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+         * A base64-encoded string.
+         * This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+         */
+        audio?: pulumi.Input<string>;
+        /**
+         * Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+         * This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * The SSML text to be synthesized. For more information, see SSML.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+         */
+        ssml?: pulumi.Input<string>;
+        /**
+         * The raw text to be synthesized.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+         */
+        text?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         *
+         * <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+         */
+        audioUri: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall {
+        /**
+         * Transfer the call to a phone number in E.164 format.
+         */
+        phoneNumber: pulumi.Input<string>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
+         */
+        texts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction {
         /**
          * Display name of the parameter.
          */
@@ -51622,6 +52123,7 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
          * * In a webhook response when you determine that you handled the customer issue.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         conversationSuccess?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess>;
@@ -51631,30 +52133,36 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
          * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff>;
         /**
          * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         outputAudioText?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText>;
         /**
-         * A custom, platform-specific payload.
+         * Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          */
         payload?: pulumi.Input<string>;
         /**
          * Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         playAudio?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio>;
         /**
          * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageText>;
@@ -51682,10 +52190,12 @@ export namespace diagflow {
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
          * The SSML text to be synthesized. For more information, see SSML.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         ssml?: pulumi.Input<string>;
         /**
          * The raw text to be synthesized.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         text?: pulumi.Input<string>;
     }
@@ -51694,6 +52204,8 @@ export namespace diagflow {
         /**
          * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         *
+         * <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
@@ -51716,7 +52228,8 @@ export namespace diagflow {
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
-         * A collection of text responses.
+         * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -51801,7 +52314,7 @@ export namespace diagflow {
 
     export interface CxPageAdvancedSettingsDtmfSettings {
         /**
-         * If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+         * If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
          */
         enabled?: pulumi.Input<boolean>;
         /**
@@ -51863,6 +52376,7 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
          * * In a webhook response when you determine that you handled the customer issue.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageConversationSuccess>;
@@ -51872,30 +52386,36 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
          * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageLiveAgentHandoff>;
         /**
          * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         outputAudioText?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageOutputAudioText>;
         /**
-         * A custom, platform-specific payload.
+         * Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          */
         payload?: pulumi.Input<string>;
         /**
          * Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         playAudio?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessagePlayAudio>;
         /**
          * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageText>;
@@ -51923,10 +52443,12 @@ export namespace diagflow {
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
          * The SSML text to be synthesized. For more information, see SSML.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         ssml?: pulumi.Input<string>;
         /**
          * The raw text to be synthesized.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         text?: pulumi.Input<string>;
     }
@@ -51935,6 +52457,8 @@ export namespace diagflow {
         /**
          * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         *
+         * <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
@@ -51957,7 +52481,8 @@ export namespace diagflow {
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
-         * A collection of text responses.
+         * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -52049,6 +52574,7 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
          * * In a webhook response when you determine that you handled the customer issue.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess>;
@@ -52058,30 +52584,36 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
          * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff>;
         /**
          * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         outputAudioText?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText>;
         /**
-         * A custom, platform-specific payload.
+         * Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          */
         payload?: pulumi.Input<string>;
         /**
          * Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         playAudio?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessagePlayAudio>;
         /**
          * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageText>;
@@ -52109,10 +52641,12 @@ export namespace diagflow {
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
          * The SSML text to be synthesized. For more information, see SSML.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         ssml?: pulumi.Input<string>;
         /**
          * The raw text to be synthesized.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         text?: pulumi.Input<string>;
     }
@@ -52121,6 +52655,8 @@ export namespace diagflow {
         /**
          * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         *
+         * <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
@@ -52143,7 +52679,8 @@ export namespace diagflow {
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
-         * A collection of text responses.
+         * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -52222,7 +52759,7 @@ export namespace diagflow {
 
     export interface CxPageFormParameterAdvancedSettingsDtmfSettings {
         /**
-         * If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+         * If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
          */
         enabled?: pulumi.Input<boolean>;
         /**
@@ -52307,6 +52844,7 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
          * * In a webhook response when you determine that you handled the customer issue.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess>;
@@ -52316,30 +52854,36 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
          * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff>;
         /**
          * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         outputAudioText?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText>;
         /**
-         * A custom, platform-specific payload.
+         * Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          */
         payload?: pulumi.Input<string>;
         /**
          * Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         playAudio?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio>;
         /**
          * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText>;
@@ -52367,10 +52911,12 @@ export namespace diagflow {
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
          * The SSML text to be synthesized. For more information, see SSML.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         ssml?: pulumi.Input<string>;
         /**
          * The raw text to be synthesized.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         text?: pulumi.Input<string>;
     }
@@ -52379,6 +52925,8 @@ export namespace diagflow {
         /**
          * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         *
+         * <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
@@ -52401,7 +52949,8 @@ export namespace diagflow {
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
-         * A collection of text responses.
+         * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -52493,6 +53042,7 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
          * * In a webhook response when you determine that you handled the customer issue.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess>;
@@ -52502,30 +53052,36 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
          * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff>;
         /**
          * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         outputAudioText?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText>;
         /**
-         * A custom, platform-specific payload.
+         * Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          */
         payload?: pulumi.Input<string>;
         /**
          * Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         playAudio?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio>;
         /**
          * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText>;
@@ -52553,10 +53109,12 @@ export namespace diagflow {
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
          * The SSML text to be synthesized. For more information, see SSML.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         ssml?: pulumi.Input<string>;
         /**
          * The raw text to be synthesized.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         text?: pulumi.Input<string>;
     }
@@ -52565,6 +53123,8 @@ export namespace diagflow {
         /**
          * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         *
+         * <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
@@ -52587,12 +53147,387 @@ export namespace diagflow {
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
-         * A collection of text responses.
+         * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction {
+        /**
+         * Display name of the parameter.
+         */
+        parameter?: pulumi.Input<string>;
+        /**
+         * The new JSON-encoded value of the parameter. A null value clears the parameter.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettings {
+        /**
+         * Optional. List of related data store connections.
+         * Structure is documented below.
+         */
+        dataStoreConnections?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsDataStoreConnection>[]>;
+        /**
+         * Whether Knowledge Connector is enabled or not.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+         * This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+         */
+        targetFlow?: pulumi.Input<string>;
+        /**
+         * The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+         * The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+         * This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+         */
+        targetPage?: pulumi.Input<string>;
+        /**
+         * The fulfillment to be triggered.
+         * When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+         * Structure is documented below.
+         */
+        triggerFulfillment?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillment>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsDataStoreConnection {
+        /**
+         * The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+         */
+        dataStore?: pulumi.Input<string>;
+        /**
+         * The type of the connected data store.
+         * * PUBLIC_WEB: A data store that contains public web content.
+         * * UNSTRUCTURED: A data store that contains unstructured private data.
+         * * STRUCTURED: A data store that contains structured data (for example FAQ).
+         * Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+         */
+        dataStoreType?: pulumi.Input<string>;
+        /**
+         * The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+         * * DOCUMENTS: Documents are processed as documents.
+         * * CHUNKS: Documents are converted to chunks.
+         * Possible values are: `DOCUMENTS`, `CHUNKS`.
+         */
+        documentProcessingMode?: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillment {
+        /**
+         * Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+         * DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+         * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+         * Structure is documented below.
+         */
+        advancedSettings?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings>;
+        /**
+         * Conditional cases for this fulfillment.
+         * Structure is documented below.
+         */
+        conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase>[]>;
+        /**
+         * If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+         */
+        enableGenerativeFallback?: pulumi.Input<boolean>;
+        /**
+         * The list of rich message responses to present to the user.
+         * Structure is documented below.
+         */
+        messages?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage>[]>;
+        /**
+         * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+         */
+        returnPartialResponses?: pulumi.Input<boolean>;
+        /**
+         * Set parameter values before executing the webhook.
+         * Structure is documented below.
+         */
+        setParameterActions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction>[]>;
+        /**
+         * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+         */
+        tag?: pulumi.Input<string>;
+        /**
+         * The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+         */
+        webhook?: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+        /**
+         * Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        dtmfSettings?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings>;
+        /**
+         * Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+         * * Agent level
+         * Structure is documented below.
+         */
+        loggingSettings?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings>;
+        /**
+         * Settings for speech to text detection. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        speechSettings?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+        /**
+         * If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Endpoint timeout setting for matching dtmf input to regex.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+         */
+        endpointingTimeoutDuration?: pulumi.Input<string>;
+        /**
+         * The digit that terminates a DTMF digit sequence.
+         */
+        finishDigit?: pulumi.Input<string>;
+        /**
+         * Interdigit timeout setting for matching dtmf input to regex.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+         */
+        interdigitTimeoutDuration?: pulumi.Input<string>;
+        /**
+         * Max length of DTMF digits.
+         */
+        maxDigits?: pulumi.Input<number>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+        /**
+         * Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+         */
+        enableConsentBasedRedaction?: pulumi.Input<boolean>;
+        /**
+         * Enables DF Interaction logging.
+         */
+        enableInteractionLogging?: pulumi.Input<boolean>;
+        /**
+         * Enables Google Cloud Logging.
+         */
+        enableStackdriverLogging?: pulumi.Input<boolean>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+        /**
+         * Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+         */
+        endpointerSensitivity?: pulumi.Input<number>;
+        /**
+         * Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+         * An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+         */
+        models?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Timeout before detecting no speech.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+         */
+        noSpeechTimeout?: pulumi.Input<string>;
+        /**
+         * Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+         */
+        useTimeoutBasedEndpointing?: pulumi.Input<boolean>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
+        /**
+         * A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+         * See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+         */
+        cases?: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage {
+        /**
+         * The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+         * Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+         * * In a webhook response when you determine that you handled the customer issue.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess>;
+        /**
+         * (Output)
+         * This type has no fields.
+         * Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         */
+        endInteractions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction>[]>;
+        /**
+         * This type has no fields.
+         * Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+         * Otherwise, the info card response is skipped.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         */
+        knowledgeInfoCard?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard>;
+        /**
+         * Indicates that the conversation should be handed off to a live agent.
+         * Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+         * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff>;
+        /**
+         * (Output)
+         * Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        mixedAudios?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio>[]>;
+        /**
+         * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        outputAudioText?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText>;
+        /**
+         * Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         */
+        payload?: pulumi.Input<string>;
+        /**
+         * Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        playAudio?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio>;
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall>;
+        /**
+         * The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+         * Structure is documented below.
+         */
+        text?: pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction {
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard {
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
+        /**
+         * Segments this audio response is composed of.
+         */
+        segments?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>[]>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment {
+        /**
+         * (Output)
+         * Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+         * A base64-encoded string.
+         * This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+         */
+        audio?: pulumi.Input<string>;
+        /**
+         * Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+         * This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * The SSML text to be synthesized. For more information, see SSML.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+         */
+        ssml?: pulumi.Input<string>;
+        /**
+         * The raw text to be synthesized.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+         */
+        text?: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         *
+         * <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+         */
+        audioUri: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall {
+        /**
+         * Transfer the call to a phone number in E.164 format.
+         */
+        phoneNumber: pulumi.Input<string>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
+         */
+        texts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction {
         /**
          * Display name of the parameter.
          */
@@ -52685,6 +53620,7 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
          * * In a webhook response when you determine that you handled the customer issue.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess>;
@@ -52694,30 +53630,36 @@ export namespace diagflow {
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
          * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff>;
         /**
          * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         outputAudioText?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText>;
         /**
-         * A custom, platform-specific payload.
+         * Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          */
         payload?: pulumi.Input<string>;
         /**
          * Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         playAudio?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio>;
         /**
          * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageText>;
@@ -52745,10 +53687,12 @@ export namespace diagflow {
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
          * The SSML text to be synthesized. For more information, see SSML.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         ssml?: pulumi.Input<string>;
         /**
          * The raw text to be synthesized.
+         * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
          */
         text?: pulumi.Input<string>;
     }
@@ -52757,6 +53701,8 @@ export namespace diagflow {
         /**
          * (Output)
          * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         *
+         * <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
@@ -52779,7 +53725,8 @@ export namespace diagflow {
          */
         allowPlaybackInterruption?: pulumi.Input<boolean>;
         /**
-         * A collection of text responses.
+         * A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+         * required: true
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -68708,6 +69655,16 @@ export namespace networkservices {
          * This is the resource name of the secret version in the format 'projects/*&#47;secrets/*&#47;versions/*' where the '*' values are replaced by the project, secret, and version you require.
          */
         secretAccessKeyVersion: pulumi.Input<string>;
+    }
+
+    export interface EdgeCacheOriginFlexShielding {
+        /**
+         * Whenever possible, content will be fetched from origin and cached in or
+         * near the specified origin. Best effort.
+         * You must specify exactly one FlexShieldingRegion.
+         * Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+         */
+        flexShieldingRegions?: pulumi.Input<string>;
     }
 
     export interface EdgeCacheOriginOriginOverrideAction {

@@ -20,11 +20,13 @@ public final class CxPageEntryFulfillmentMessageOutputAudioText {
     private @Nullable Boolean allowPlaybackInterruption;
     /**
      * @return The SSML text to be synthesized. For more information, see SSML.
+     * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
      * 
      */
     private @Nullable String ssml;
     /**
      * @return The raw text to be synthesized.
+     * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
      * 
      */
     private @Nullable String text;
@@ -40,6 +42,7 @@ public final class CxPageEntryFulfillmentMessageOutputAudioText {
     }
     /**
      * @return The SSML text to be synthesized. For more information, see SSML.
+     * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
      * 
      */
     public Optional<String> ssml() {
@@ -47,6 +50,7 @@ public final class CxPageEntryFulfillmentMessageOutputAudioText {
     }
     /**
      * @return The raw text to be synthesized.
+     * This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
      * 
      */
     public Optional<String> text() {

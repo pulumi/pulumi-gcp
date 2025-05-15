@@ -65,15 +65,15 @@ public final class AuthorityConfigSubjectConfigSubjectArgs extends com.pulumi.re
      * The organization of the subject.
      * 
      */
-    @Import(name="organization", required=true)
-    private Output<String> organization;
+    @Import(name="organization")
+    private @Nullable Output<String> organization;
 
     /**
      * @return The organization of the subject.
      * 
      */
-    public Output<String> organization() {
-        return this.organization;
+    public Optional<Output<String>> organization() {
+        return Optional.ofNullable(this.organization);
     }
 
     /**
@@ -236,7 +236,7 @@ public final class AuthorityConfigSubjectConfigSubjectArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder organization(Output<String> organization) {
+        public Builder organization(@Nullable Output<String> organization) {
             $.organization = organization;
             return this;
         }
@@ -338,9 +338,6 @@ public final class AuthorityConfigSubjectConfigSubjectArgs extends com.pulumi.re
         public AuthorityConfigSubjectConfigSubjectArgs build() {
             if ($.commonName == null) {
                 throw new MissingRequiredPropertyException("AuthorityConfigSubjectConfigSubjectArgs", "commonName");
-            }
-            if ($.organization == null) {
-                throw new MissingRequiredPropertyException("AuthorityConfigSubjectConfigSubjectArgs", "organization");
             }
             return $;
         }

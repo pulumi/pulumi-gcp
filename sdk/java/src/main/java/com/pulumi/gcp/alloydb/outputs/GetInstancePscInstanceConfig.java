@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.alloydb.outputs.GetInstancePscInstanceConfigPscAutoConnection;
 import com.pulumi.gcp.alloydb.outputs.GetInstancePscInstanceConfigPscInterfaceConfig;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,11 @@ public final class GetInstancePscInstanceConfig {
      * 
      */
     private List<String> allowedConsumerProjects;
+    /**
+     * @return Configurations for setting up PSC service automation.
+     * 
+     */
+    private List<GetInstancePscInstanceConfigPscAutoConnection> pscAutoConnections;
     /**
      * @return The DNS name of the instance for PSC connectivity.
      * Name convention: &lt;uid&gt;.&lt;uid&gt;.&lt;region&gt;.alloydb-psc.goog
@@ -46,6 +52,13 @@ public final class GetInstancePscInstanceConfig {
      */
     public List<String> allowedConsumerProjects() {
         return this.allowedConsumerProjects;
+    }
+    /**
+     * @return Configurations for setting up PSC service automation.
+     * 
+     */
+    public List<GetInstancePscInstanceConfigPscAutoConnection> pscAutoConnections() {
+        return this.pscAutoConnections;
     }
     /**
      * @return The DNS name of the instance for PSC connectivity.
@@ -83,6 +96,7 @@ public final class GetInstancePscInstanceConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<String> allowedConsumerProjects;
+        private List<GetInstancePscInstanceConfigPscAutoConnection> pscAutoConnections;
         private String pscDnsName;
         private List<GetInstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs;
         private String serviceAttachmentLink;
@@ -90,6 +104,7 @@ public final class GetInstancePscInstanceConfig {
         public Builder(GetInstancePscInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
+    	      this.pscAutoConnections = defaults.pscAutoConnections;
     	      this.pscDnsName = defaults.pscDnsName;
     	      this.pscInterfaceConfigs = defaults.pscInterfaceConfigs;
     	      this.serviceAttachmentLink = defaults.serviceAttachmentLink;
@@ -105,6 +120,17 @@ public final class GetInstancePscInstanceConfig {
         }
         public Builder allowedConsumerProjects(String... allowedConsumerProjects) {
             return allowedConsumerProjects(List.of(allowedConsumerProjects));
+        }
+        @CustomType.Setter
+        public Builder pscAutoConnections(List<GetInstancePscInstanceConfigPscAutoConnection> pscAutoConnections) {
+            if (pscAutoConnections == null) {
+              throw new MissingRequiredPropertyException("GetInstancePscInstanceConfig", "pscAutoConnections");
+            }
+            this.pscAutoConnections = pscAutoConnections;
+            return this;
+        }
+        public Builder pscAutoConnections(GetInstancePscInstanceConfigPscAutoConnection... pscAutoConnections) {
+            return pscAutoConnections(List.of(pscAutoConnections));
         }
         @CustomType.Setter
         public Builder pscDnsName(String pscDnsName) {
@@ -136,6 +162,7 @@ public final class GetInstancePscInstanceConfig {
         public GetInstancePscInstanceConfig build() {
             final var _resultValue = new GetInstancePscInstanceConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
+            _resultValue.pscAutoConnections = pscAutoConnections;
             _resultValue.pscDnsName = pscDnsName;
             _resultValue.pscInterfaceConfigs = pscInterfaceConfigs;
             _resultValue.serviceAttachmentLink = serviceAttachmentLink;

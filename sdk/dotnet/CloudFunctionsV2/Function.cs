@@ -1038,7 +1038,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
-    /// ### Cloudfunctions2 Abiu
+    /// ### Cloudfunctions2 Automatic Base Image Update
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -1125,7 +1125,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
-    /// ### Cloudfunctions2 Abiu On Deploy
+    /// ### Cloudfunctions2 On Deploy Base Image Update
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

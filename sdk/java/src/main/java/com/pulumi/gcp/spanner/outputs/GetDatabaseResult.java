@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class GetDatabaseResult {
     private String databaseDialect;
     private List<String> ddls;
+    private String defaultTimeZone;
     private Boolean deletionProtection;
     private Boolean enableDropProtection;
     private List<GetDatabaseEncryptionConfig> encryptionConfigs;
@@ -37,6 +38,9 @@ public final class GetDatabaseResult {
     }
     public List<String> ddls() {
         return this.ddls;
+    }
+    public String defaultTimeZone() {
+        return this.defaultTimeZone;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -81,6 +85,7 @@ public final class GetDatabaseResult {
     public static final class Builder {
         private String databaseDialect;
         private List<String> ddls;
+        private String defaultTimeZone;
         private Boolean deletionProtection;
         private Boolean enableDropProtection;
         private List<GetDatabaseEncryptionConfig> encryptionConfigs;
@@ -95,6 +100,7 @@ public final class GetDatabaseResult {
     	      Objects.requireNonNull(defaults);
     	      this.databaseDialect = defaults.databaseDialect;
     	      this.ddls = defaults.ddls;
+    	      this.defaultTimeZone = defaults.defaultTimeZone;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.enableDropProtection = defaults.enableDropProtection;
     	      this.encryptionConfigs = defaults.encryptionConfigs;
@@ -124,6 +130,14 @@ public final class GetDatabaseResult {
         }
         public Builder ddls(String... ddls) {
             return ddls(List.of(ddls));
+        }
+        @CustomType.Setter
+        public Builder defaultTimeZone(String defaultTimeZone) {
+            if (defaultTimeZone == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "defaultTimeZone");
+            }
+            this.defaultTimeZone = defaultTimeZone;
+            return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
@@ -202,6 +216,7 @@ public final class GetDatabaseResult {
             final var _resultValue = new GetDatabaseResult();
             _resultValue.databaseDialect = databaseDialect;
             _resultValue.ddls = ddls;
+            _resultValue.defaultTimeZone = defaultTimeZone;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.enableDropProtection = enableDropProtection;
             _resultValue.encryptionConfigs = encryptionConfigs;

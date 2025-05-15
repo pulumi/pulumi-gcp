@@ -858,6 +858,41 @@ class Authority(pulumi.CustomResource):
                 "algorithm": "RSA_PKCS1_4096_SHA256",
             })
         ```
+        ### Privateca Certificate Authority Basic No Org
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            deletion_protection=True,
+            config={
+                "subject_config": {
+                    "subject": {
+                        "common_name": "my-certificate-authority",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {},
+                    },
+                },
+            },
+            lifetime=f"{10 * 365 * 24 * 3600}s",
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            })
+        ```
         ### Privateca Certificate Authority Subordinate
 
         ```python
@@ -1172,6 +1207,41 @@ class Authority(pulumi.CustomResource):
                 "subject_config": {
                     "subject": {
                         "organization": "ACME",
+                        "common_name": "my-certificate-authority",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {},
+                    },
+                },
+            },
+            lifetime=f"{10 * 365 * 24 * 3600}s",
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            })
+        ```
+        ### Privateca Certificate Authority Basic No Org
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            pool="ca-pool",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            deletion_protection=True,
+            config={
+                "subject_config": {
+                    "subject": {
                         "common_name": "my-certificate-authority",
                     },
                 },

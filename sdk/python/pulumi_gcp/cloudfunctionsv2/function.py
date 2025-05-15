@@ -1125,7 +1125,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
-        ### Cloudfunctions2 Abiu
+        ### Cloudfunctions2 Automatic Base Image Update
 
         ```python
         import pulumi
@@ -1183,7 +1183,7 @@ class Function(pulumi.CustomResource):
                 "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
-        ### Cloudfunctions2 Abiu On Deploy
+        ### Cloudfunctions2 On Deploy Base Image Update
 
         ```python
         import pulumi
@@ -1931,7 +1931,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
-        ### Cloudfunctions2 Abiu
+        ### Cloudfunctions2 Automatic Base Image Update
 
         ```python
         import pulumi
@@ -1989,7 +1989,7 @@ class Function(pulumi.CustomResource):
                 "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
-        ### Cloudfunctions2 Abiu On Deploy
+        ### Cloudfunctions2 On Deploy Base Image Update
 
         ```python
         import pulumi

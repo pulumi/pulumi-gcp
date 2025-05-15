@@ -1023,24 +1023,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.serverCaCerts;
     }
     /**
-     * A map of resource manager tags.
-     * Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
-     * 
-     */
-    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> tags;
-
-    /**
-     * @return A map of resource manager tags.
-     * Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
-     * 
-     */
-    public Output<Optional<Map<String,String>>> tags() {
-        return Codegen.optional(this.tags);
-    }
-    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances

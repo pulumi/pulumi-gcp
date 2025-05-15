@@ -18,6 +18,11 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionInstanceTemplateDisk {
     /**
+     * @return The architecture of the image. Allowed values are ARM64 or X86_64.
+     * 
+     */
+    private String architecture;
+    /**
      * @return Whether or not the disk should be auto-deleted.
      * This defaults to true.
      * 
@@ -59,6 +64,11 @@ public final class GetRegionInstanceTemplateDisk {
      * 
      */
     private String diskType;
+    /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
+     * 
+     */
+    private List<String> guestOsFeatures;
     /**
      * @return Specifies the disk interface to use for attaching this disk,
      * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
@@ -154,6 +164,13 @@ public final class GetRegionInstanceTemplateDisk {
 
     private GetRegionInstanceTemplateDisk() {}
     /**
+     * @return The architecture of the image. Allowed values are ARM64 or X86_64.
+     * 
+     */
+    public String architecture() {
+        return this.architecture;
+    }
+    /**
      * @return Whether or not the disk should be auto-deleted.
      * This defaults to true.
      * 
@@ -208,6 +225,13 @@ public final class GetRegionInstanceTemplateDisk {
      */
     public String diskType() {
         return this.diskType;
+    }
+    /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images.
+     * 
+     */
+    public List<String> guestOsFeatures() {
+        return this.guestOsFeatures;
     }
     /**
      * @return Specifies the disk interface to use for attaching this disk,
@@ -337,6 +361,7 @@ public final class GetRegionInstanceTemplateDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String architecture;
         private Boolean autoDelete;
         private Boolean boot;
         private String deviceName;
@@ -344,6 +369,7 @@ public final class GetRegionInstanceTemplateDisk {
         private String diskName;
         private Integer diskSizeGb;
         private String diskType;
+        private List<String> guestOsFeatures;
         private String interface_;
         private Map<String,String> labels;
         private String mode;
@@ -360,6 +386,7 @@ public final class GetRegionInstanceTemplateDisk {
         public Builder() {}
         public Builder(GetRegionInstanceTemplateDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.architecture = defaults.architecture;
     	      this.autoDelete = defaults.autoDelete;
     	      this.boot = defaults.boot;
     	      this.deviceName = defaults.deviceName;
@@ -367,6 +394,7 @@ public final class GetRegionInstanceTemplateDisk {
     	      this.diskName = defaults.diskName;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
+    	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.interface_ = defaults.interface_;
     	      this.labels = defaults.labels;
     	      this.mode = defaults.mode;
@@ -382,6 +410,14 @@ public final class GetRegionInstanceTemplateDisk {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder architecture(String architecture) {
+            if (architecture == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "architecture");
+            }
+            this.architecture = architecture;
+            return this;
+        }
         @CustomType.Setter
         public Builder autoDelete(Boolean autoDelete) {
             if (autoDelete == null) {
@@ -440,6 +476,17 @@ public final class GetRegionInstanceTemplateDisk {
             }
             this.diskType = diskType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder guestOsFeatures(List<String> guestOsFeatures) {
+            if (guestOsFeatures == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "guestOsFeatures");
+            }
+            this.guestOsFeatures = guestOsFeatures;
+            return this;
+        }
+        public Builder guestOsFeatures(String... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
         }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
@@ -556,6 +603,7 @@ public final class GetRegionInstanceTemplateDisk {
         }
         public GetRegionInstanceTemplateDisk build() {
             final var _resultValue = new GetRegionInstanceTemplateDisk();
+            _resultValue.architecture = architecture;
             _resultValue.autoDelete = autoDelete;
             _resultValue.boot = boot;
             _resultValue.deviceName = deviceName;
@@ -563,6 +611,7 @@ public final class GetRegionInstanceTemplateDisk {
             _resultValue.diskName = diskName;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.diskType = diskType;
+            _resultValue.guestOsFeatures = guestOsFeatures;
             _resultValue.interface_ = interface_;
             _resultValue.labels = labels;
             _resultValue.mode = mode;

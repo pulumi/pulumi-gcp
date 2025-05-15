@@ -59,6 +59,42 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Privateca Certificate Authority Basic No Org
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificateauthority.Authority("default", {
+ *     pool: "ca-pool",
+ *     certificateAuthorityId: "my-certificate-authority",
+ *     location: "us-central1",
+ *     deletionProtection: true,
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {},
+ *             },
+ *         },
+ *     },
+ *     lifetime: `${10 * 365 * 24 * 3600}s`,
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ * });
+ * ```
  * ### Privateca Certificate Authority Subordinate
  *
  * ```typescript

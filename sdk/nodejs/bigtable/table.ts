@@ -122,7 +122,7 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
-     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
      *
      * -----
      */
@@ -204,7 +204,7 @@ export class Table extends pulumi.CustomResource {
  */
 export interface TableState {
     /**
-     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
      *
      * -----
      */
@@ -247,7 +247,7 @@ export interface TableState {
  */
 export interface TableArgs {
     /**
-     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+     * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
      *
      * -----
      */

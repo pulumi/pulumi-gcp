@@ -1116,7 +1116,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudfunctions2 Abiu
+// ### Cloudfunctions2 Automatic Base Image Update
 //
 // ```go
 // package main
@@ -1212,7 +1212,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudfunctions2 Abiu On Deploy
+// ### Cloudfunctions2 On Deploy Base Image Update
 //
 // ```go
 // package main

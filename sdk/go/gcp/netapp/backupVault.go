@@ -80,10 +80,17 @@ import (
 type BackupVault struct {
 	pulumi.CustomResourceState
 
+	// Region in which backup is stored.
+	BackupRegion pulumi.StringPtrOutput `pulumi:"backupRegion"`
+	// Type of the backup vault to be created. Default is IN_REGION.
+	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+	BackupVaultType pulumi.StringOutput `pulumi:"backupVaultType"`
 	// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Name of the Backup vault created in backup region.
+	DestinationBackupVault pulumi.StringOutput `pulumi:"destinationBackupVault"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -103,6 +110,10 @@ type BackupVault struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Name of the Backup vault created in source region.
+	SourceBackupVault pulumi.StringOutput `pulumi:"sourceBackupVault"`
+	// Region in which the backup vault is created.
+	SourceRegion pulumi.StringOutput `pulumi:"sourceRegion"`
 	// The state of the Backup Vault.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -145,10 +156,17 @@ func GetBackupVault(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackupVault resources.
 type backupVaultState struct {
+	// Region in which backup is stored.
+	BackupRegion *string `pulumi:"backupRegion"`
+	// Type of the backup vault to be created. Default is IN_REGION.
+	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+	BackupVaultType *string `pulumi:"backupVaultType"`
 	// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime *string `pulumi:"createTime"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Name of the Backup vault created in backup region.
+	DestinationBackupVault *string `pulumi:"destinationBackupVault"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -168,15 +186,26 @@ type backupVaultState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Name of the Backup vault created in source region.
+	SourceBackupVault *string `pulumi:"sourceBackupVault"`
+	// Region in which the backup vault is created.
+	SourceRegion *string `pulumi:"sourceRegion"`
 	// The state of the Backup Vault.
 	State *string `pulumi:"state"`
 }
 
 type BackupVaultState struct {
+	// Region in which backup is stored.
+	BackupRegion pulumi.StringPtrInput
+	// Type of the backup vault to be created. Default is IN_REGION.
+	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+	BackupVaultType pulumi.StringPtrInput
 	// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Name of the Backup vault created in backup region.
+	DestinationBackupVault pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -196,6 +225,10 @@ type BackupVaultState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Name of the Backup vault created in source region.
+	SourceBackupVault pulumi.StringPtrInput
+	// Region in which the backup vault is created.
+	SourceRegion pulumi.StringPtrInput
 	// The state of the Backup Vault.
 	State pulumi.StringPtrInput
 }
@@ -205,6 +238,11 @@ func (BackupVaultState) ElementType() reflect.Type {
 }
 
 type backupVaultArgs struct {
+	// Region in which backup is stored.
+	BackupRegion *string `pulumi:"backupRegion"`
+	// Type of the backup vault to be created. Default is IN_REGION.
+	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+	BackupVaultType *string `pulumi:"backupVaultType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -225,6 +263,11 @@ type backupVaultArgs struct {
 
 // The set of arguments for constructing a BackupVault resource.
 type BackupVaultArgs struct {
+	// Region in which backup is stored.
+	BackupRegion pulumi.StringPtrInput
+	// Type of the backup vault to be created. Default is IN_REGION.
+	// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+	BackupVaultType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -330,6 +373,17 @@ func (o BackupVaultOutput) ToBackupVaultOutputWithContext(ctx context.Context) B
 	return o
 }
 
+// Region in which backup is stored.
+func (o BackupVaultOutput) BackupRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringPtrOutput { return v.BackupRegion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the backup vault to be created. Default is IN_REGION.
+// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+func (o BackupVaultOutput) BackupVaultType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.BackupVaultType }).(pulumi.StringOutput)
+}
+
 // Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 func (o BackupVaultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -338,6 +392,11 @@ func (o BackupVaultOutput) CreateTime() pulumi.StringOutput {
 // An optional description of this resource.
 func (o BackupVaultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Backup vault created in backup region.
+func (o BackupVaultOutput) DestinationBackupVault() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.DestinationBackupVault }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -375,6 +434,16 @@ func (o BackupVaultOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o BackupVaultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Name of the Backup vault created in source region.
+func (o BackupVaultOutput) SourceBackupVault() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.SourceBackupVault }).(pulumi.StringOutput)
+}
+
+// Region in which the backup vault is created.
+func (o BackupVaultOutput) SourceRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.SourceRegion }).(pulumi.StringOutput)
 }
 
 // The state of the Backup Vault.

@@ -4159,6 +4159,8 @@ type TargetServerSSlInfo struct {
 	CommonName *TargetServerSSlInfoCommonName `pulumi:"commonName"`
 	// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
 	Enabled bool `pulumi:"enabled"`
+	// If true, TLS is strictly enforced.
+	Enforce *bool `pulumi:"enforce"`
 	// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
 	IgnoreValidationErrors *bool `pulumi:"ignoreValidationErrors"`
 	// Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
@@ -4192,6 +4194,8 @@ type TargetServerSSlInfoArgs struct {
 	CommonName TargetServerSSlInfoCommonNamePtrInput `pulumi:"commonName"`
 	// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// If true, TLS is strictly enforced.
+	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
 	// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
 	IgnoreValidationErrors pulumi.BoolPtrInput `pulumi:"ignoreValidationErrors"`
 	// Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
@@ -4302,6 +4306,11 @@ func (o TargetServerSSlInfoOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TargetServerSSlInfo) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// If true, TLS is strictly enforced.
+func (o TargetServerSSlInfoOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
 // If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
 func (o TargetServerSSlInfoOutput) IgnoreValidationErrors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TargetServerSSlInfo) *bool { return v.IgnoreValidationErrors }).(pulumi.BoolPtrOutput)
@@ -4389,6 +4398,16 @@ func (o TargetServerSSlInfoPtrOutput) Enabled() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, TLS is strictly enforced.
+func (o TargetServerSSlInfoPtrOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enforce
 	}).(pulumi.BoolPtrOutput)
 }
 

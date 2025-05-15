@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackendServiceSignedUrlKey{}
 	case "gcp:compute/caExternalAccountKey:CaExternalAccountKey":
 		r = &CaExternalAccountKey{}
+	case "gcp:compute/crossSiteNetwork:CrossSiteNetwork":
+		r = &CrossSiteNetwork{}
 	case "gcp:compute/disk:Disk":
 		r = &Disk{}
 	case "gcp:compute/diskAsyncReplication:DiskAsyncReplication":
@@ -428,6 +430,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/caExternalAccountKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/crossSiteNetwork",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

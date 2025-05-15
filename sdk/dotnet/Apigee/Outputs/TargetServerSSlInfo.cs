@@ -31,6 +31,10 @@ namespace Pulumi.Gcp.Apigee.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// If true, TLS is strictly enforced.
+        /// </summary>
+        public readonly bool? Enforce;
+        /// <summary>
         /// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
         /// </summary>
         public readonly bool? IgnoreValidationErrors;
@@ -61,6 +65,8 @@ namespace Pulumi.Gcp.Apigee.Outputs
 
             bool enabled,
 
+            bool? enforce,
+
             bool? ignoreValidationErrors,
 
             string? keyAlias,
@@ -75,6 +81,7 @@ namespace Pulumi.Gcp.Apigee.Outputs
             ClientAuthEnabled = clientAuthEnabled;
             CommonName = commonName;
             Enabled = enabled;
+            Enforce = enforce;
             IgnoreValidationErrors = ignoreValidationErrors;
             KeyAlias = keyAlias;
             KeyStore = keyStore;

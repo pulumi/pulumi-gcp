@@ -17,6 +17,21 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     public static final BackupState Empty = new BackupState();
 
     /**
+     * Region in which backup is stored.
+     * 
+     */
+    @Import(name="backupRegion")
+    private @Nullable Output<String> backupRegion;
+
+    /**
+     * @return Region in which backup is stored.
+     * 
+     */
+    public Optional<Output<String>> backupRegion() {
+        return Optional.ofNullable(this.backupRegion);
+    }
+
+    /**
      * Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
      * 
      */
@@ -247,6 +262,21 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Region of the volume from which the backup was created.
+     * 
+     */
+    @Import(name="volumeRegion")
+    private @Nullable Output<String> volumeRegion;
+
+    /**
+     * @return Region of the volume from which the backup was created.
+     * 
+     */
+    public Optional<Output<String>> volumeRegion() {
+        return Optional.ofNullable(this.volumeRegion);
+    }
+
+    /**
      * Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.
      * 
      */
@@ -264,6 +294,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     private BackupState() {}
 
     private BackupState(BackupState $) {
+        this.backupRegion = $.backupRegion;
         this.backupType = $.backupType;
         this.chainStorageBytes = $.chainStorageBytes;
         this.createTime = $.createTime;
@@ -278,6 +309,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         this.sourceVolume = $.sourceVolume;
         this.state = $.state;
         this.vaultName = $.vaultName;
+        this.volumeRegion = $.volumeRegion;
         this.volumeUsageBytes = $.volumeUsageBytes;
     }
 
@@ -297,6 +329,27 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BackupState defaults) {
             $ = new BackupState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupRegion Region in which backup is stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegion(@Nullable Output<String> backupRegion) {
+            $.backupRegion = backupRegion;
+            return this;
+        }
+
+        /**
+         * @param backupRegion Region in which backup is stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegion(String backupRegion) {
+            return backupRegion(Output.of(backupRegion));
         }
 
         /**
@@ -611,6 +664,27 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vaultName(String vaultName) {
             return vaultName(Output.of(vaultName));
+        }
+
+        /**
+         * @param volumeRegion Region of the volume from which the backup was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeRegion(@Nullable Output<String> volumeRegion) {
+            $.volumeRegion = volumeRegion;
+            return this;
+        }
+
+        /**
+         * @param volumeRegion Region of the volume from which the backup was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeRegion(String volumeRegion) {
+            return volumeRegion(Output.of(volumeRegion));
         }
 
         /**

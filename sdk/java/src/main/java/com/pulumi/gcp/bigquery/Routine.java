@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *             .routineId("routine_id")
  *             .routineType("PROCEDURE")
  *             .language("SQL")
+ *             .securityMode("INVOKER")
  *             .definitionBody("CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
  *             .build());
  * 
@@ -813,6 +814,22 @@ public class Routine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> routineType() {
         return this.routineType;
+    }
+    /**
+     * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine&#39;s configuration.
+     * Possible values are: `DEFINER`, `INVOKER`.
+     * 
+     */
+    @Export(name="securityMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securityMode;
+
+    /**
+     * @return Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine&#39;s configuration.
+     * Possible values are: `DEFINER`, `INVOKER`.
+     * 
+     */
+    public Output<Optional<String>> securityMode() {
+        return Codegen.optional(this.securityMode);
     }
     /**
      * Optional. If language is one of &#34;PYTHON&#34;, &#34;JAVA&#34;, &#34;SCALA&#34;, this field stores the options for spark stored procedure.

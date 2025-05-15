@@ -90,7 +90,6 @@ type LookupMetastoreServiceResult struct {
 	ServiceId            string                                   `pulumi:"serviceId"`
 	State                string                                   `pulumi:"state"`
 	StateMessage         string                                   `pulumi:"stateMessage"`
-	Tags                 map[string]string                        `pulumi:"tags"`
 	TelemetryConfigs     []GetMetastoreServiceTelemetryConfig     `pulumi:"telemetryConfigs"`
 	Tier                 string                                   `pulumi:"tier"`
 	Uid                  string                                   `pulumi:"uid"`
@@ -243,10 +242,6 @@ func (o LookupMetastoreServiceResultOutput) State() pulumi.StringOutput {
 
 func (o LookupMetastoreServiceResultOutput) StateMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreServiceResult) string { return v.StateMessage }).(pulumi.StringOutput)
-}
-
-func (o LookupMetastoreServiceResultOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupMetastoreServiceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupMetastoreServiceResultOutput) TelemetryConfigs() GetMetastoreServiceTelemetryConfigArrayOutput {

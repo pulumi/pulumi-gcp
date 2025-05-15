@@ -122,7 +122,7 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
 	AutomatedBackupPolicy TableAutomatedBackupPolicyOutput `pulumi:"automatedBackupPolicy"`
@@ -178,7 +178,7 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
 	AutomatedBackupPolicy *TableAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
@@ -202,7 +202,7 @@ type tableState struct {
 }
 
 type TableState struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
 	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrInput
@@ -230,7 +230,7 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
 	AutomatedBackupPolicy *TableAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
@@ -255,7 +255,7 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
-	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+	// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 	//
 	// ***
 	AutomatedBackupPolicy TableAutomatedBackupPolicyPtrInput
@@ -365,7 +365,7 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
-// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, omit this argument. To disable automated backup on an _existing_ table that has automated backup enabled, set both Retention Period and Frequency to "0". If this argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
 //
 // ***
 func (o TableOutput) AutomatedBackupPolicy() TableAutomatedBackupPolicyOutput {

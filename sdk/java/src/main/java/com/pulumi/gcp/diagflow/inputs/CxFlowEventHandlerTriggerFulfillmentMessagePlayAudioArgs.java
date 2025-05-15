@@ -21,6 +21,8 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs exte
      * (Output)
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
+     * &lt;a name=&#34;nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio&#34;&gt;&lt;/a&gt;The `mixed_audio` block contains:
+     * 
      */
     @Import(name="allowPlaybackInterruption")
     private @Nullable Output<Boolean> allowPlaybackInterruption;
@@ -28,6 +30,8 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs exte
     /**
      * @return (Output)
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+     * 
+     * &lt;a name=&#34;nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio&#34;&gt;&lt;/a&gt;The `mixed_audio` block contains:
      * 
      */
     public Optional<Output<Boolean>> allowPlaybackInterruption() {
@@ -78,6 +82,8 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs exte
          * @param allowPlaybackInterruption (Output)
          * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
          * 
+         * &lt;a name=&#34;nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio&#34;&gt;&lt;/a&gt;The `mixed_audio` block contains:
+         * 
          * @return builder
          * 
          */
@@ -89,6 +95,8 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs exte
         /**
          * @param allowPlaybackInterruption (Output)
          * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+         * 
+         * &lt;a name=&#34;nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio&#34;&gt;&lt;/a&gt;The `mixed_audio` block contains:
          * 
          * @return builder
          * 

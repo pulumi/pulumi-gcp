@@ -18,6 +18,38 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
     public static final BackupVaultArgs Empty = new BackupVaultArgs();
 
     /**
+     * Region in which backup is stored.
+     * 
+     */
+    @Import(name="backupRegion")
+    private @Nullable Output<String> backupRegion;
+
+    /**
+     * @return Region in which backup is stored.
+     * 
+     */
+    public Optional<Output<String>> backupRegion() {
+        return Optional.ofNullable(this.backupRegion);
+    }
+
+    /**
+     * Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     * 
+     */
+    @Import(name="backupVaultType")
+    private @Nullable Output<String> backupVaultType;
+
+    /**
+     * @return Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     * 
+     */
+    public Optional<Output<String>> backupVaultType() {
+        return Optional.ofNullable(this.backupVaultType);
+    }
+
+    /**
      * An optional description of this resource.
      * 
      */
@@ -107,6 +139,8 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
     private BackupVaultArgs() {}
 
     private BackupVaultArgs(BackupVaultArgs $) {
+        this.backupRegion = $.backupRegion;
+        this.backupVaultType = $.backupVaultType;
         this.description = $.description;
         this.labels = $.labels;
         this.location = $.location;
@@ -130,6 +164,50 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BackupVaultArgs defaults) {
             $ = new BackupVaultArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupRegion Region in which backup is stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegion(@Nullable Output<String> backupRegion) {
+            $.backupRegion = backupRegion;
+            return this;
+        }
+
+        /**
+         * @param backupRegion Region in which backup is stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegion(String backupRegion) {
+            return backupRegion(Output.of(backupRegion));
+        }
+
+        /**
+         * @param backupVaultType Type of the backup vault to be created. Default is IN_REGION.
+         * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupVaultType(@Nullable Output<String> backupVaultType) {
+            $.backupVaultType = backupVaultType;
+            return this;
+        }
+
+        /**
+         * @param backupVaultType Type of the backup vault to be created. Default is IN_REGION.
+         * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupVaultType(String backupVaultType) {
+            return backupVaultType(Output.of(backupVaultType));
         }
 
         /**

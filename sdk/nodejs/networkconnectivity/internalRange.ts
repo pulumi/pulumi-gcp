@@ -204,6 +204,10 @@ export class InternalRange extends pulumi.CustomResource {
      */
     public readonly excludeCidrRanges!: pulumi.Output<string[] | undefined>;
     /**
+     * Immutable ranges cannot have their fields modified, except for labels and description.
+     */
+    public readonly immutable!: pulumi.Output<boolean | undefined>;
+    /**
      * The IP range that this internal range defines.
      * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
      * NOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.
@@ -292,6 +296,7 @@ export class InternalRange extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["excludeCidrRanges"] = state ? state.excludeCidrRanges : undefined;
+            resourceInputs["immutable"] = state ? state.immutable : undefined;
             resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["migration"] = state ? state.migration : undefined;
@@ -318,6 +323,7 @@ export class InternalRange extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["excludeCidrRanges"] = args ? args.excludeCidrRanges : undefined;
+            resourceInputs["immutable"] = args ? args.immutable : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["migration"] = args ? args.migration : undefined;
@@ -357,6 +363,10 @@ export interface InternalRangeState {
      * Only IPv4 CIDR ranges are supported.
      */
     excludeCidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Immutable ranges cannot have their fields modified, except for labels and description.
+     */
+    immutable?: pulumi.Input<boolean>;
     /**
      * The IP range that this internal range defines.
      * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF
@@ -444,6 +454,10 @@ export interface InternalRangeArgs {
      * Only IPv4 CIDR ranges are supported.
      */
     excludeCidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Immutable ranges cannot have their fields modified, except for labels and description.
+     */
+    immutable?: pulumi.Input<boolean>;
     /**
      * The IP range that this internal range defines.
      * NOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF

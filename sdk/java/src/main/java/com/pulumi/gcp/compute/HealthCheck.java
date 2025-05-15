@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.HealthCheckArgs;
 import com.pulumi.gcp.compute.inputs.HealthCheckState;
 import com.pulumi.gcp.compute.outputs.HealthCheckGrpcHealthCheck;
+import com.pulumi.gcp.compute.outputs.HealthCheckGrpcTlsHealthCheck;
 import com.pulumi.gcp.compute.outputs.HealthCheckHttp2HealthCheck;
 import com.pulumi.gcp.compute.outputs.HealthCheckHttpHealthCheck;
 import com.pulumi.gcp.compute.outputs.HealthCheckHttpsHealthCheck;
@@ -568,6 +569,91 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Health Check Grpc With Tls
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckGrpcTlsHealthCheckArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var grpc_with_tls_health_check = new HealthCheck("grpc-with-tls-health-check", HealthCheckArgs.builder()
+ *             .name("grpc-with-tls-health-check")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .grpcTlsHealthCheck(HealthCheckGrpcTlsHealthCheckArgs.builder()
+ *                 .port(443)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Health Check Grpc With Tls Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckGrpcTlsHealthCheckArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var grpc_with_tls_health_check = new HealthCheck("grpc-with-tls-health-check", HealthCheckArgs.builder()
+ *             .name("grpc-with-tls-health-check")
+ *             .description("Health check via grpc with TLS")
+ *             .timeoutSec(1)
+ *             .checkIntervalSec(1)
+ *             .healthyThreshold(4)
+ *             .unhealthyThreshold(5)
+ *             .grpcTlsHealthCheck(HealthCheckGrpcTlsHealthCheckArgs.builder()
+ *                 .portSpecification("USE_FIXED_PORT")
+ *                 .port(443)
+ *                 .grpcServiceName("testservice")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Health Check With Logging
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -833,6 +919,22 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<HealthCheckGrpcHealthCheck>> grpcHealthCheck() {
         return Codegen.optional(this.grpcHealthCheck);
+    }
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="grpcTlsHealthCheck", refs={HealthCheckGrpcTlsHealthCheck.class}, tree="[0]")
+    private Output</* @Nullable */ HealthCheckGrpcTlsHealthCheck> grpcTlsHealthCheck;
+
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<HealthCheckGrpcTlsHealthCheck>> grpcTlsHealthCheck() {
+        return Codegen.optional(this.grpcTlsHealthCheck);
     }
     /**
      * A so-far unhealthy instance will be marked healthy after this many

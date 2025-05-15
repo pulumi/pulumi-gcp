@@ -75,6 +75,11 @@ export type CaExternalAccountKey = import("./caExternalAccountKey").CaExternalAc
 export const CaExternalAccountKey: typeof import("./caExternalAccountKey").CaExternalAccountKey = null as any;
 utilities.lazyLoad(exports, ["CaExternalAccountKey"], () => require("./caExternalAccountKey"));
 
+export { CrossSiteNetworkArgs, CrossSiteNetworkState } from "./crossSiteNetwork";
+export type CrossSiteNetwork = import("./crossSiteNetwork").CrossSiteNetwork;
+export const CrossSiteNetwork: typeof import("./crossSiteNetwork").CrossSiteNetwork = null as any;
+utilities.lazyLoad(exports, ["CrossSiteNetwork"], () => require("./crossSiteNetwork"));
+
 export { DiskArgs, DiskState } from "./disk";
 export type Disk = import("./disk").Disk;
 export const Disk: typeof import("./disk").Disk = null as any;
@@ -1178,6 +1183,8 @@ const _module = {
                 return new BackendServiceSignedUrlKey(name, <any>undefined, { urn })
             case "gcp:compute/caExternalAccountKey:CaExternalAccountKey":
                 return new CaExternalAccountKey(name, <any>undefined, { urn })
+            case "gcp:compute/crossSiteNetwork:CrossSiteNetwork":
+                return new CrossSiteNetwork(name, <any>undefined, { urn })
             case "gcp:compute/disk:Disk":
                 return new Disk(name, <any>undefined, { urn })
             case "gcp:compute/diskAsyncReplication:DiskAsyncReplication":
@@ -1495,6 +1502,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamMember", 
 pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceSignedUrlKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/caExternalAccountKey", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/crossSiteNetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/disk", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/diskAsyncReplication", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/diskIamBinding", _module)

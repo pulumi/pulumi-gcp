@@ -373,6 +373,57 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Health Check Grpc With Tls
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var grpc_with_tls_region_health_check = new Gcp.Compute.RegionHealthCheck("grpc-with-tls-region-health-check", new()
+    ///     {
+    ///         Name = "grpc-with-tls-region-health-check",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         GrpcTlsHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckGrpcTlsHealthCheckArgs
+    ///         {
+    ///             Port = 443,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Health Check Grpc With Tls Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var grpc_with_tls_region_health_check = new Gcp.Compute.RegionHealthCheck("grpc-with-tls-region-health-check", new()
+    ///     {
+    ///         Name = "grpc-with-tls-region-health-check",
+    ///         Description = "regional health check via GRPC with TLS",
+    ///         TimeoutSec = 1,
+    ///         CheckIntervalSec = 1,
+    ///         HealthyThreshold = 4,
+    ///         UnhealthyThreshold = 5,
+    ///         GrpcTlsHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckGrpcTlsHealthCheckArgs
+    ///         {
+    ///             PortSpecification = "USE_FIXED_PORT",
+    ///             Port = 443,
+    ///             GrpcServiceName = "testservice",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -433,6 +484,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("grpcHealthCheck")]
         public Output<Outputs.RegionHealthCheckGrpcHealthCheck?> GrpcHealthCheck { get; private set; } = null!;
+
+        /// <summary>
+        /// A nested object resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("grpcTlsHealthCheck")]
+        public Output<Outputs.RegionHealthCheckGrpcTlsHealthCheck?> GrpcTlsHealthCheck { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier number for the resource. This identifier is defined by the server.
@@ -613,6 +671,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionHealthCheckGrpcHealthCheckArgs>? GrpcHealthCheck { get; set; }
 
         /// <summary>
+        /// A nested object resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("grpcTlsHealthCheck")]
+        public Input<Inputs.RegionHealthCheckGrpcTlsHealthCheckArgs>? GrpcTlsHealthCheck { get; set; }
+
+        /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many
         /// consecutive successes. The default value is 2.
         /// </summary>
@@ -739,6 +804,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("grpcHealthCheck")]
         public Input<Inputs.RegionHealthCheckGrpcHealthCheckGetArgs>? GrpcHealthCheck { get; set; }
+
+        /// <summary>
+        /// A nested object resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("grpcTlsHealthCheck")]
+        public Input<Inputs.RegionHealthCheckGrpcTlsHealthCheckGetArgs>? GrpcTlsHealthCheck { get; set; }
 
         /// <summary>
         /// The unique identifier number for the resource. This identifier is defined by the server.

@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// You may set this, for example:
         /// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         /// * In a webhook response when you determine that you handled the customer issue.
+        /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("conversationSuccess")]
@@ -35,6 +36,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// You may set this, for example:
         /// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         /// * In a webhook response when you determine that the customer issue can only be handled by a human.
+        /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("liveAgentHandoff")]
@@ -42,19 +44,22 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
         /// <summary>
         /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("outputAudioText")]
         public Input<Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextGetArgs>? OutputAudioText { get; set; }
 
         /// <summary>
-        /// A custom, platform-specific payload.
+        /// Returns a response containing a custom, platform-specific payload.
+        /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         /// </summary>
         [Input("payload")]
         public Input<string>? Payload { get; set; }
 
         /// <summary>
         /// Specifies an audio clip to be played by the client as part of the response.
+        /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("playAudio")]
@@ -62,6 +67,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
         /// <summary>
         /// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("telephonyTransferCall")]
@@ -69,6 +75,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
         /// <summary>
         /// The text response message.
+        /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         /// Structure is documented below.
         /// </summary>
         [Input("text")]

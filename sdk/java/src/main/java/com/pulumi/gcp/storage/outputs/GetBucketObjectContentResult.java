@@ -29,8 +29,18 @@ public final class GetBucketObjectContentResult {
      * 
      */
     private String contentBase64;
+    /**
+     * @return (Computed) Base64 encoded SHA512 checksum of file content.
+     * 
+     */
+    private String contentBase64sha512;
     private String contentDisposition;
     private String contentEncoding;
+    /**
+     * @return (Computed) Hex encoded SHA512 checksum of file content.
+     * 
+     */
+    private String contentHexsha512;
     private String contentLanguage;
     private String contentType;
     private String crc32c;
@@ -78,11 +88,25 @@ public final class GetBucketObjectContentResult {
     public String contentBase64() {
         return this.contentBase64;
     }
+    /**
+     * @return (Computed) Base64 encoded SHA512 checksum of file content.
+     * 
+     */
+    public String contentBase64sha512() {
+        return this.contentBase64sha512;
+    }
     public String contentDisposition() {
         return this.contentDisposition;
     }
     public String contentEncoding() {
         return this.contentEncoding;
+    }
+    /**
+     * @return (Computed) Hex encoded SHA512 checksum of file content.
+     * 
+     */
+    public String contentHexsha512() {
+        return this.contentHexsha512;
     }
     public String contentLanguage() {
         return this.contentLanguage;
@@ -162,8 +186,10 @@ public final class GetBucketObjectContentResult {
         private String cacheControl;
         private String content;
         private String contentBase64;
+        private String contentBase64sha512;
         private String contentDisposition;
         private String contentEncoding;
+        private String contentHexsha512;
         private String contentLanguage;
         private String contentType;
         private String crc32c;
@@ -191,8 +217,10 @@ public final class GetBucketObjectContentResult {
     	      this.cacheControl = defaults.cacheControl;
     	      this.content = defaults.content;
     	      this.contentBase64 = defaults.contentBase64;
+    	      this.contentBase64sha512 = defaults.contentBase64sha512;
     	      this.contentDisposition = defaults.contentDisposition;
     	      this.contentEncoding = defaults.contentEncoding;
+    	      this.contentHexsha512 = defaults.contentHexsha512;
     	      this.contentLanguage = defaults.contentLanguage;
     	      this.contentType = defaults.contentType;
     	      this.crc32c = defaults.crc32c;
@@ -248,6 +276,14 @@ public final class GetBucketObjectContentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder contentBase64sha512(String contentBase64sha512) {
+            if (contentBase64sha512 == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "contentBase64sha512");
+            }
+            this.contentBase64sha512 = contentBase64sha512;
+            return this;
+        }
+        @CustomType.Setter
         public Builder contentDisposition(String contentDisposition) {
             if (contentDisposition == null) {
               throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "contentDisposition");
@@ -261,6 +297,14 @@ public final class GetBucketObjectContentResult {
               throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "contentEncoding");
             }
             this.contentEncoding = contentEncoding;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentHexsha512(String contentHexsha512) {
+            if (contentHexsha512 == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "contentHexsha512");
+            }
+            this.contentHexsha512 = contentHexsha512;
             return this;
         }
         @CustomType.Setter
@@ -435,8 +479,10 @@ public final class GetBucketObjectContentResult {
             _resultValue.cacheControl = cacheControl;
             _resultValue.content = content;
             _resultValue.contentBase64 = contentBase64;
+            _resultValue.contentBase64sha512 = contentBase64sha512;
             _resultValue.contentDisposition = contentDisposition;
             _resultValue.contentEncoding = contentEncoding;
+            _resultValue.contentHexsha512 = contentHexsha512;
             _resultValue.contentLanguage = contentLanguage;
             _resultValue.contentType = contentType;
             _resultValue.crc32c = crc32c;

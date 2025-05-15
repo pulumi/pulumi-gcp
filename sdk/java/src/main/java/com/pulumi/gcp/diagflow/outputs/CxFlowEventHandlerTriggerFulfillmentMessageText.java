@@ -20,7 +20,8 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageText {
      */
     private @Nullable Boolean allowPlaybackInterruption;
     /**
-     * @return A collection of text responses.
+     * @return A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+     * required: true
      * 
      */
     private @Nullable List<String> texts;
@@ -35,7 +36,8 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageText {
         return Optional.ofNullable(this.allowPlaybackInterruption);
     }
     /**
-     * @return A collection of text responses.
+     * @return A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+     * required: true
      * 
      */
     public List<String> texts() {

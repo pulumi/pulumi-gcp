@@ -85,6 +85,15 @@ export class BackupVault extends pulumi.CustomResource {
     }
 
     /**
+     * Region in which backup is stored.
+     */
+    public readonly backupRegion!: pulumi.Output<string | undefined>;
+    /**
+     * Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     */
+    public readonly backupVaultType!: pulumi.Output<string>;
+    /**
      * Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -92,6 +101,10 @@ export class BackupVault extends pulumi.CustomResource {
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the Backup vault created in backup region.
+     */
+    public /*out*/ readonly destinationBackupVault!: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -125,6 +138,14 @@ export class BackupVault extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Name of the Backup vault created in source region.
+     */
+    public /*out*/ readonly sourceBackupVault!: pulumi.Output<string>;
+    /**
+     * Region in which the backup vault is created.
+     */
+    public /*out*/ readonly sourceRegion!: pulumi.Output<string>;
+    /**
      * The state of the Backup Vault.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -142,28 +163,38 @@ export class BackupVault extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupVaultState | undefined;
+            resourceInputs["backupRegion"] = state ? state.backupRegion : undefined;
+            resourceInputs["backupVaultType"] = state ? state.backupVaultType : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destinationBackupVault"] = state ? state.destinationBackupVault : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["sourceBackupVault"] = state ? state.sourceBackupVault : undefined;
+            resourceInputs["sourceRegion"] = state ? state.sourceRegion : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as BackupVaultArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["backupRegion"] = args ? args.backupRegion : undefined;
+            resourceInputs["backupVaultType"] = args ? args.backupVaultType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["destinationBackupVault"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["sourceBackupVault"] = undefined /*out*/;
+            resourceInputs["sourceRegion"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -178,6 +209,15 @@ export class BackupVault extends pulumi.CustomResource {
  */
 export interface BackupVaultState {
     /**
+     * Region in which backup is stored.
+     */
+    backupRegion?: pulumi.Input<string>;
+    /**
+     * Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     */
+    backupVaultType?: pulumi.Input<string>;
+    /**
      * Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
     createTime?: pulumi.Input<string>;
@@ -185,6 +225,10 @@ export interface BackupVaultState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Name of the Backup vault created in backup region.
+     */
+    destinationBackupVault?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -218,6 +262,14 @@ export interface BackupVaultState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Name of the Backup vault created in source region.
+     */
+    sourceBackupVault?: pulumi.Input<string>;
+    /**
+     * Region in which the backup vault is created.
+     */
+    sourceRegion?: pulumi.Input<string>;
+    /**
      * The state of the Backup Vault.
      */
     state?: pulumi.Input<string>;
@@ -227,6 +279,15 @@ export interface BackupVaultState {
  * The set of arguments for constructing a BackupVault resource.
  */
 export interface BackupVaultArgs {
+    /**
+     * Region in which backup is stored.
+     */
+    backupRegion?: pulumi.Input<string>;
+    /**
+     * Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     */
+    backupVaultType?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */

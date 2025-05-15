@@ -713,7 +713,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [gcfCmekKeyuser],
  * });
  * ```
- * ### Cloudfunctions2 Abiu
+ * ### Cloudfunctions2 Automatic Base Image Update
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -775,7 +775,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudfunctions2 Abiu On Deploy
+ * ### Cloudfunctions2 On Deploy Base Image Update
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

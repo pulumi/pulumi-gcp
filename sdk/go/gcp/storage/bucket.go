@@ -176,7 +176,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "auto-expire", &storage.BucketArgs{
+//			_, err := storage.NewBucket(ctx, "no-public-access", &storage.BucketArgs{
 //				Name:                   pulumi.String("no-public-access-bucket"),
 //				Location:               pulumi.String("US"),
 //				ForceDestroy:           pulumi.Bool(true),
@@ -205,7 +205,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "auto-expire", &storage.BucketArgs{
+//			_, err := storage.NewBucket(ctx, "hns-enabled", &storage.BucketArgs{
 //				Name:         pulumi.String("hns-enabled-bucket"),
 //				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),

@@ -1189,6 +1189,9 @@
                                 "allowed_consumer_projects": {
                                     "maxItemsOne": false
                                 },
+                                "psc_auto_connections": {
+                                    "maxItemsOne": false
+                                },
                                 "psc_interface_configs": {
                                     "maxItemsOne": false
                                 }
@@ -6336,6 +6339,10 @@
                 "current": "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey",
                 "majorVersion": 8
             },
+            "google_compute_cross_site_network": {
+                "current": "gcp:compute/crossSiteNetwork:CrossSiteNetwork",
+                "majorVersion": 8
+            },
             "google_compute_disk": {
                 "current": "gcp:compute/disk:Disk",
                 "majorVersion": 8,
@@ -6725,6 +6732,9 @@
                 "majorVersion": 8,
                 "fields": {
                     "grpc_health_check": {
+                        "maxItemsOne": true
+                    },
+                    "grpc_tls_health_check": {
                         "maxItemsOne": true
                     },
                     "http2_health_check": {
@@ -7409,6 +7419,9 @@
                             "fields": {
                                 "disk_encryption_key": {
                                     "maxItemsOne": true
+                                },
+                                "guest_os_features": {
+                                    "maxItemsOne": false
                                 },
                                 "resource_policies": {
                                     "maxItemsOne": true
@@ -8447,6 +8460,9 @@
                     "grpc_health_check": {
                         "maxItemsOne": true
                     },
+                    "grpc_tls_health_check": {
+                        "maxItemsOne": true
+                    },
                     "http2_health_check": {
                         "maxItemsOne": true
                     },
@@ -8575,6 +8591,9 @@
                             "fields": {
                                 "disk_encryption_key": {
                                     "maxItemsOne": true
+                                },
+                                "guest_os_features": {
+                                    "maxItemsOne": false
                                 },
                                 "resource_policies": {
                                     "maxItemsOne": true
@@ -18001,6 +18020,93 @@
                             }
                         }
                     },
+                    "knowledge_connector_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "data_store_connections": {
+                                    "maxItemsOne": false
+                                },
+                                "trigger_fulfillment": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "advanced_settings": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "dtmf_settings": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "logging_settings": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "speech_settings": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "conditional_cases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "messages": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "conversation_success": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "end_interaction": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "knowledge_info_card": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "live_agent_handoff": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "mixed_audio": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "segments": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "output_audio_text": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "play_audio": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "telephony_transfer_call": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "text": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "text": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "set_parameter_actions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "nlu_settings": {
                         "maxItemsOne": true
                     },
@@ -18312,6 +18418,93 @@
                                                         }
                                                     }
                                                 }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "knowledge_connector_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "data_store_connections": {
+                                    "maxItemsOne": false
+                                },
+                                "trigger_fulfillment": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "advanced_settings": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "dtmf_settings": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "logging_settings": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "speech_settings": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "conditional_cases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "messages": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "conversation_success": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "end_interaction": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "knowledge_info_card": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "live_agent_handoff": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "mixed_audio": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "segments": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "output_audio_text": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "play_audio": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "telephony_transfer_call": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "text": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "text": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "set_parameter_actions": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -25275,6 +25468,16 @@
                 "fields": {
                     "aws_v4_authentication": {
                         "maxItemsOne": true
+                    },
+                    "flex_shielding": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "flex_shielding_regions": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "origin_override_action": {
                         "maxItemsOne": true,
@@ -33165,6 +33368,9 @@
                                 "allowed_consumer_projects": {
                                     "maxItemsOne": false
                                 },
+                                "psc_auto_connections": {
+                                    "maxItemsOne": false
+                                },
                                 "psc_interface_configs": {
                                     "maxItemsOne": false
                                 }
@@ -35300,6 +35506,9 @@
                     "grpc_health_check": {
                         "maxItemsOne": false
                     },
+                    "grpc_tls_health_check": {
+                        "maxItemsOne": false
+                    },
                     "http2_health_check": {
                         "maxItemsOne": false
                     },
@@ -35605,6 +35814,9 @@
                         "elem": {
                             "fields": {
                                 "disk_encryption_key": {
+                                    "maxItemsOne": false
+                                },
+                                "guest_os_features": {
                                     "maxItemsOne": false
                                 },
                                 "resource_policies": {
@@ -36074,6 +36286,9 @@
                         "elem": {
                             "fields": {
                                 "disk_encryption_key": {
+                                    "maxItemsOne": false
+                                },
+                                "guest_os_features": {
                                     "maxItemsOne": false
                                 },
                                 "resource_policies": {
@@ -42679,6 +42894,7 @@
             "gcp:compute/backendServiceIamPolicy:BackendServiceIamPolicy": 0,
             "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey": 0,
             "gcp:compute/caExternalAccountKey:CaExternalAccountKey": 0,
+            "gcp:compute/crossSiteNetwork:CrossSiteNetwork": 0,
             "gcp:compute/disk:Disk": 0,
             "gcp:compute/diskAsyncReplication:DiskAsyncReplication": 0,
             "gcp:compute/diskIamBinding:DiskIamBinding": 0,

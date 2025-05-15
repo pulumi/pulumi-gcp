@@ -1033,7 +1033,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        auto_expire = gcp.storage.Bucket("auto-expire",
+        no_public_access = gcp.storage.Bucket("no-public-access",
             name="no-public-access-bucket",
             location="US",
             force_destroy=True,
@@ -1046,7 +1046,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        auto_expire = gcp.storage.Bucket("auto-expire",
+        hns_enabled = gcp.storage.Bucket("hns-enabled",
             name="hns-enabled-bucket",
             location="US",
             force_destroy=True,
@@ -1224,7 +1224,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        auto_expire = gcp.storage.Bucket("auto-expire",
+        no_public_access = gcp.storage.Bucket("no-public-access",
             name="no-public-access-bucket",
             location="US",
             force_destroy=True,
@@ -1237,7 +1237,7 @@ class Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        auto_expire = gcp.storage.Bucket("auto-expire",
+        hns_enabled = gcp.storage.Bucket("hns-enabled",
             name="hns-enabled-bucket",
             location="US",
             force_destroy=True,

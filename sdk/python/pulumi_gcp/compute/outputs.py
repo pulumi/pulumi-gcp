@@ -88,6 +88,7 @@ __all__ = [
     'GlobalForwardingRuleServiceDirectoryRegistrations',
     'HaVpnGatewayVpnInterface',
     'HealthCheckGrpcHealthCheck',
+    'HealthCheckGrpcTlsHealthCheck',
     'HealthCheckHttp2HealthCheck',
     'HealthCheckHttpHealthCheck',
     'HealthCheckHttpsHealthCheck',
@@ -330,6 +331,7 @@ __all__ = [
     'RegionDiskIamMemberCondition',
     'RegionDiskSourceSnapshotEncryptionKey',
     'RegionHealthCheckGrpcHealthCheck',
+    'RegionHealthCheckGrpcTlsHealthCheck',
     'RegionHealthCheckHttp2HealthCheck',
     'RegionHealthCheckHttpHealthCheck',
     'RegionHealthCheckHttpsHealthCheck',
@@ -755,6 +757,7 @@ __all__ = [
     'GetGlobalForwardingRuleServiceDirectoryRegistrationResult',
     'GetHcVpnGatewayVpnInterfaceResult',
     'GetHealthCheckGrpcHealthCheckResult',
+    'GetHealthCheckGrpcTlsHealthCheckResult',
     'GetHealthCheckHttp2HealthCheckResult',
     'GetHealthCheckHttpHealthCheckResult',
     'GetHealthCheckHttpsHealthCheckResult',
@@ -6834,6 +6837,96 @@ class HealthCheckGrpcHealthCheck(dict):
         checking.
         If not specified, gRPC health check follows behavior specified in `port` and
         `portName` fields.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        return pulumi.get(self, "port_specification")
+
+
+@pulumi.output_type
+class HealthCheckGrpcTlsHealthCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grpcServiceName":
+            suggest = "grpc_service_name"
+        elif key == "portSpecification":
+            suggest = "port_specification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HealthCheckGrpcTlsHealthCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HealthCheckGrpcTlsHealthCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HealthCheckGrpcTlsHealthCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 grpc_service_name: Optional[builtins.str] = None,
+                 port: Optional[builtins.int] = None,
+                 port_specification: Optional[builtins.str] = None):
+        """
+        :param builtins.str grpc_service_name: The gRPC service name for the health check.
+               The value of grpcServiceName has the following meanings by convention:
+               - Empty serviceName means the overall status of all services at the backend.
+               - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+               The grpcServiceName can only be ASCII.
+        :param builtins.int port: The port number for the health check request.
+               Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        :param builtins.str port_specification: Specifies how port is selected for health checking, can be one of the
+               following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: Not supported for GRPC with TLS health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, gRPC with TLS health check follows behavior specified in the `port` field.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        if grpc_service_name is not None:
+            pulumi.set(__self__, "grpc_service_name", grpc_service_name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_specification is not None:
+            pulumi.set(__self__, "port_specification", port_specification)
+
+    @property
+    @pulumi.getter(name="grpcServiceName")
+    def grpc_service_name(self) -> Optional[builtins.str]:
+        """
+        The gRPC service name for the health check.
+        The value of grpcServiceName has the following meanings by convention:
+        - Empty serviceName means the overall status of all services at the backend.
+        - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+        The grpcServiceName can only be ASCII.
+        """
+        return pulumi.get(self, "grpc_service_name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[builtins.int]:
+        """
+        The port number for the health check request.
+        Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> Optional[builtins.str]:
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: Not supported for GRPC with TLS health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, gRPC with TLS health check follows behavior specified in the `port` field.
         Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
         """
         return pulumi.get(self, "port_specification")
@@ -16571,6 +16664,8 @@ class InstanceTemplateDisk(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "guestOsFeatures":
+            suggest = "guest_os_features"
         elif key == "provisionedIops":
             suggest = "provisioned_iops"
         elif key == "provisionedThroughput":
@@ -16600,6 +16695,7 @@ class InstanceTemplateDisk(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 architecture: Optional[builtins.str] = None,
                  auto_delete: Optional[builtins.bool] = None,
                  boot: Optional[builtins.bool] = None,
                  device_name: Optional[builtins.str] = None,
@@ -16607,6 +16703,7 @@ class InstanceTemplateDisk(dict):
                  disk_name: Optional[builtins.str] = None,
                  disk_size_gb: Optional[builtins.int] = None,
                  disk_type: Optional[builtins.str] = None,
+                 guest_os_features: Optional[Sequence[builtins.str]] = None,
                  interface: Optional[builtins.str] = None,
                  labels: Optional[Mapping[str, builtins.str]] = None,
                  mode: Optional[builtins.str] = None,
@@ -16621,6 +16718,7 @@ class InstanceTemplateDisk(dict):
                  source_snapshot_encryption_key: Optional['outputs.InstanceTemplateDiskSourceSnapshotEncryptionKey'] = None,
                  type: Optional[builtins.str] = None):
         """
+        :param builtins.str architecture: The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
         :param builtins.bool auto_delete: Whether or not the disk should be auto-deleted.
                This defaults to true.
         :param builtins.bool boot: Indicates that this is a boot disk.
@@ -16643,6 +16741,7 @@ class InstanceTemplateDisk(dict):
                the size must be exactly 375GB.
         :param builtins.str disk_type: The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
                `"pd-balanced"` or `"pd-standard"`, `"hyperdisk-balanced"`, `"hyperdisk-throughput"` or `"hyperdisk-extreme"`.
+        :param Sequence[builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
         :param builtins.str interface: Specifies the disk interface to use for attaching this disk,
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
@@ -16685,6 +16784,8 @@ class InstanceTemplateDisk(dict):
         :param builtins.str type: The type of GCE disk, can be either `"SCRATCH"` or
                `"PERSISTENT"`.
         """
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
         if boot is not None:
@@ -16699,6 +16800,8 @@ class InstanceTemplateDisk(dict):
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if labels is not None:
@@ -16725,6 +16828,14 @@ class InstanceTemplateDisk(dict):
             pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[builtins.str]:
+        """
+        The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="autoDelete")
@@ -16796,6 +16907,14 @@ class InstanceTemplateDisk(dict):
         `"pd-balanced"` or `"pd-standard"`, `"hyperdisk-balanced"`, `"hyperdisk-throughput"` or `"hyperdisk-extreme"`.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[Sequence[builtins.str]]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        """
+        return pulumi.get(self, "guest_os_features")
 
     @property
     @pulumi.getter
@@ -25627,6 +25746,96 @@ class RegionHealthCheckGrpcHealthCheck(dict):
 
 
 @pulumi.output_type
+class RegionHealthCheckGrpcTlsHealthCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grpcServiceName":
+            suggest = "grpc_service_name"
+        elif key == "portSpecification":
+            suggest = "port_specification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionHealthCheckGrpcTlsHealthCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionHealthCheckGrpcTlsHealthCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionHealthCheckGrpcTlsHealthCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 grpc_service_name: Optional[builtins.str] = None,
+                 port: Optional[builtins.int] = None,
+                 port_specification: Optional[builtins.str] = None):
+        """
+        :param builtins.str grpc_service_name: The gRPC service name for the health check.
+               The value of grpcServiceName has the following meanings by convention:
+               * Empty serviceName means the overall status of all services at the backend.
+               * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+               The grpcServiceName can only be ASCII.
+        :param builtins.int port: The port number for the health check request.
+               Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        :param builtins.str port_specification: Specifies how port is selected for health checking, can be one of the
+               following values:
+               * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+               * `USE_NAMED_PORT`: Not supported for GRPC with TLS health checking.
+               * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+               network endpoint is used for health checking. For other backends, the
+               port or named port specified in the Backend Service is used for health
+               checking.
+               If not specified, gRPC health check follows behavior specified in the `port` field.
+               Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        if grpc_service_name is not None:
+            pulumi.set(__self__, "grpc_service_name", grpc_service_name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_specification is not None:
+            pulumi.set(__self__, "port_specification", port_specification)
+
+    @property
+    @pulumi.getter(name="grpcServiceName")
+    def grpc_service_name(self) -> Optional[builtins.str]:
+        """
+        The gRPC service name for the health check.
+        The value of grpcServiceName has the following meanings by convention:
+        * Empty serviceName means the overall status of all services at the backend.
+        * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+        The grpcServiceName can only be ASCII.
+        """
+        return pulumi.get(self, "grpc_service_name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[builtins.int]:
+        """
+        The port number for the health check request.
+        Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> Optional[builtins.str]:
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+        * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+        * `USE_NAMED_PORT`: Not supported for GRPC with TLS health checking.
+        * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+        network endpoint is used for health checking. For other backends, the
+        port or named port specified in the Backend Service is used for health
+        checking.
+        If not specified, gRPC health check follows behavior specified in the `port` field.
+        Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
+        """
+        return pulumi.get(self, "port_specification")
+
+
+@pulumi.output_type
 class RegionHealthCheckHttp2HealthCheck(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -27593,6 +27802,8 @@ class RegionInstanceTemplateDisk(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "guestOsFeatures":
+            suggest = "guest_os_features"
         elif key == "provisionedIops":
             suggest = "provisioned_iops"
         elif key == "provisionedThroughput":
@@ -27622,6 +27833,7 @@ class RegionInstanceTemplateDisk(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 architecture: Optional[builtins.str] = None,
                  auto_delete: Optional[builtins.bool] = None,
                  boot: Optional[builtins.bool] = None,
                  device_name: Optional[builtins.str] = None,
@@ -27629,6 +27841,7 @@ class RegionInstanceTemplateDisk(dict):
                  disk_name: Optional[builtins.str] = None,
                  disk_size_gb: Optional[builtins.int] = None,
                  disk_type: Optional[builtins.str] = None,
+                 guest_os_features: Optional[Sequence[builtins.str]] = None,
                  interface: Optional[builtins.str] = None,
                  labels: Optional[Mapping[str, builtins.str]] = None,
                  mode: Optional[builtins.str] = None,
@@ -27643,6 +27856,7 @@ class RegionInstanceTemplateDisk(dict):
                  source_snapshot_encryption_key: Optional['outputs.RegionInstanceTemplateDiskSourceSnapshotEncryptionKey'] = None,
                  type: Optional[builtins.str] = None):
         """
+        :param builtins.str architecture: The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
         :param builtins.bool auto_delete: Whether or not the disk should be auto-deleted.
                This defaults to true.
         :param builtins.bool boot: Indicates that this is a boot disk.
@@ -27665,6 +27879,7 @@ class RegionInstanceTemplateDisk(dict):
                the size must be exactly 375GB.
         :param builtins.str disk_type: The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
                `"pd-balanced"` or `"pd-standard"`.
+        :param Sequence[builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
         :param builtins.str interface: Specifies the disk interface to use for attaching this disk,
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
@@ -27707,6 +27922,8 @@ class RegionInstanceTemplateDisk(dict):
         :param builtins.str type: The type of GCE disk, can be either `"SCRATCH"` or
                `"PERSISTENT"`.
         """
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
         if boot is not None:
@@ -27721,6 +27938,8 @@ class RegionInstanceTemplateDisk(dict):
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if labels is not None:
@@ -27747,6 +27966,14 @@ class RegionInstanceTemplateDisk(dict):
             pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> Optional[builtins.str]:
+        """
+        The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="autoDelete")
@@ -27818,6 +28045,14 @@ class RegionInstanceTemplateDisk(dict):
         `"pd-balanced"` or `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[Sequence[builtins.str]]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        """
+        return pulumi.get(self, "guest_os_features")
 
     @property
     @pulumi.getter
@@ -57235,6 +57470,80 @@ class GetHealthCheckGrpcHealthCheckResult(dict):
 
 
 @pulumi.output_type
+class GetHealthCheckGrpcTlsHealthCheckResult(dict):
+    def __init__(__self__, *,
+                 grpc_service_name: builtins.str,
+                 port: builtins.int,
+                 port_specification: builtins.str):
+        """
+        :param builtins.str grpc_service_name: The gRPC service name for the health check.
+               The value of grpcServiceName has the following meanings by convention:
+                 - Empty serviceName means the overall status of all services at the backend.
+                 - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+               The grpcServiceName can only be ASCII.
+        :param builtins.int port: The port number for the health check request.
+               Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        :param builtins.str port_specification: Specifies how port is selected for health checking, can be one of the
+               following values:
+               
+                 * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+               
+                 * 'USE_NAMED_PORT': Not supported for GRPC with TLS health checking.
+               
+                 * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+                 network endpoint is used for health checking. For other backends, the
+                 port or named port specified in the Backend Service is used for health
+                 checking.
+               
+               If not specified, gRPC with TLS health check follows behavior specified in the 'port' field. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+        """
+        pulumi.set(__self__, "grpc_service_name", grpc_service_name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "port_specification", port_specification)
+
+    @property
+    @pulumi.getter(name="grpcServiceName")
+    def grpc_service_name(self) -> builtins.str:
+        """
+        The gRPC service name for the health check.
+        The value of grpcServiceName has the following meanings by convention:
+          - Empty serviceName means the overall status of all services at the backend.
+          - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+        The grpcServiceName can only be ASCII.
+        """
+        return pulumi.get(self, "grpc_service_name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> builtins.int:
+        """
+        The port number for the health check request.
+        Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> builtins.str:
+        """
+        Specifies how port is selected for health checking, can be one of the
+        following values:
+
+          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+
+          * 'USE_NAMED_PORT': Not supported for GRPC with TLS health checking.
+
+          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+          network endpoint is used for health checking. For other backends, the
+          port or named port specified in the Backend Service is used for health
+          checking.
+
+        If not specified, gRPC with TLS health check follows behavior specified in the 'port' field. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+        """
+        return pulumi.get(self, "port_specification")
+
+
+@pulumi.output_type
 class GetHealthCheckHttp2HealthCheckResult(dict):
     def __init__(__self__, *,
                  host: builtins.str,
@@ -60383,6 +60692,7 @@ class GetInstanceTemplateConfidentialInstanceConfigResult(dict):
 @pulumi.output_type
 class GetInstanceTemplateDiskResult(dict):
     def __init__(__self__, *,
+                 architecture: builtins.str,
                  auto_delete: builtins.bool,
                  boot: builtins.bool,
                  device_name: builtins.str,
@@ -60390,6 +60700,7 @@ class GetInstanceTemplateDiskResult(dict):
                  disk_name: builtins.str,
                  disk_size_gb: builtins.int,
                  disk_type: builtins.str,
+                 guest_os_features: Sequence[builtins.str],
                  interface: builtins.str,
                  labels: Mapping[str, builtins.str],
                  mode: builtins.str,
@@ -60404,6 +60715,7 @@ class GetInstanceTemplateDiskResult(dict):
                  source_snapshot_encryption_keys: Sequence['outputs.GetInstanceTemplateDiskSourceSnapshotEncryptionKeyResult'],
                  type: builtins.str):
         """
+        :param builtins.str architecture: The architecture of the image. Allowed values are ARM64 or X86_64.
         :param builtins.bool auto_delete: Whether or not the disk should be auto-deleted.
                This defaults to true.
         :param builtins.bool boot: Indicates that this is a boot disk.
@@ -60418,6 +60730,7 @@ class GetInstanceTemplateDiskResult(dict):
                the size must be exactly 375GB.
         :param builtins.str disk_type: The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
                `"pd-balanced"` or `"pd-standard"`.
+        :param Sequence[builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param builtins.str interface: Specifies the disk interface to use for attaching this disk,
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
@@ -60459,6 +60772,7 @@ class GetInstanceTemplateDiskResult(dict):
         :param Sequence['GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_keys: The customer-supplied encryption key of the source snapshot.
         :param builtins.str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "auto_delete", auto_delete)
         pulumi.set(__self__, "boot", boot)
         pulumi.set(__self__, "device_name", device_name)
@@ -60466,6 +60780,7 @@ class GetInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "disk_name", disk_name)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "guest_os_features", guest_os_features)
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mode", mode)
@@ -60479,6 +60794,14 @@ class GetInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "source_snapshot", source_snapshot)
         pulumi.set(__self__, "source_snapshot_encryption_keys", source_snapshot_encryption_keys)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> builtins.str:
+        """
+        The architecture of the image. Allowed values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="autoDelete")
@@ -60542,6 +60865,14 @@ class GetInstanceTemplateDiskResult(dict):
         `"pd-balanced"` or `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Sequence[builtins.str]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images.
+        """
+        return pulumi.get(self, "guest_os_features")
 
     @property
     @pulumi.getter
@@ -64447,6 +64778,7 @@ class GetRegionInstanceTemplateConfidentialInstanceConfigResult(dict):
 @pulumi.output_type
 class GetRegionInstanceTemplateDiskResult(dict):
     def __init__(__self__, *,
+                 architecture: builtins.str,
                  auto_delete: builtins.bool,
                  boot: builtins.bool,
                  device_name: builtins.str,
@@ -64454,6 +64786,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
                  disk_name: builtins.str,
                  disk_size_gb: builtins.int,
                  disk_type: builtins.str,
+                 guest_os_features: Sequence[builtins.str],
                  interface: builtins.str,
                  labels: Mapping[str, builtins.str],
                  mode: builtins.str,
@@ -64468,6 +64801,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
                  source_snapshot_encryption_keys: Sequence['outputs.GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult'],
                  type: builtins.str):
         """
+        :param builtins.str architecture: The architecture of the image. Allowed values are ARM64 or X86_64.
         :param builtins.bool auto_delete: Whether or not the disk should be auto-deleted.
                This defaults to true.
         :param builtins.bool boot: Indicates that this is a boot disk.
@@ -64482,6 +64816,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
                the size must be exactly 375GB.
         :param builtins.str disk_type: The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
                `"pd-balanced"` or `"pd-standard"`.
+        :param Sequence[builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
         :param builtins.str interface: Specifies the disk interface to use for attaching this disk,
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
@@ -64523,6 +64858,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
         :param Sequence['GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_keys: The customer-supplied encryption key of the source snapshot.
         :param builtins.str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "auto_delete", auto_delete)
         pulumi.set(__self__, "boot", boot)
         pulumi.set(__self__, "device_name", device_name)
@@ -64530,6 +64866,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "disk_name", disk_name)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "guest_os_features", guest_os_features)
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mode", mode)
@@ -64543,6 +64880,14 @@ class GetRegionInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "source_snapshot", source_snapshot)
         pulumi.set(__self__, "source_snapshot_encryption_keys", source_snapshot_encryption_keys)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> builtins.str:
+        """
+        The architecture of the image. Allowed values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="autoDelete")
@@ -64606,6 +64951,14 @@ class GetRegionInstanceTemplateDiskResult(dict):
         `"pd-balanced"` or `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Sequence[builtins.str]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images.
+        """
+        return pulumi.get(self, "guest_os_features")
 
     @property
     @pulumi.getter

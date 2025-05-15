@@ -251,6 +251,41 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Health Check Grpc With Tls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const grpc_with_tls_health_check = new gcp.compute.HealthCheck("grpc-with-tls-health-check", {
+ *     name: "grpc-with-tls-health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     grpcTlsHealthCheck: {
+ *         port: 443,
+ *     },
+ * });
+ * ```
+ * ### Health Check Grpc With Tls Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const grpc_with_tls_health_check = new gcp.compute.HealthCheck("grpc-with-tls-health-check", {
+ *     name: "grpc-with-tls-health-check",
+ *     description: "Health check via grpc with TLS",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     healthyThreshold: 4,
+ *     unhealthyThreshold: 5,
+ *     grpcTlsHealthCheck: {
+ *         portSpecification: "USE_FIXED_PORT",
+ *         port: 443,
+ *         grpcServiceName: "testservice",
+ *     },
+ * });
+ * ```
  * ### Health Check With Logging
  *
  * ```typescript
@@ -402,6 +437,11 @@ export class HealthCheck extends pulumi.CustomResource {
      */
     public readonly grpcHealthCheck!: pulumi.Output<outputs.compute.HealthCheckGrpcHealthCheck | undefined>;
     /**
+     * A nested object resource.
+     * Structure is documented below.
+     */
+    public readonly grpcTlsHealthCheck!: pulumi.Output<outputs.compute.HealthCheckGrpcTlsHealthCheck | undefined>;
+    /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
      */
@@ -506,6 +546,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["grpcHealthCheck"] = state ? state.grpcHealthCheck : undefined;
+            resourceInputs["grpcTlsHealthCheck"] = state ? state.grpcTlsHealthCheck : undefined;
             resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
             resourceInputs["http2HealthCheck"] = state ? state.http2HealthCheck : undefined;
             resourceInputs["httpHealthCheck"] = state ? state.httpHealthCheck : undefined;
@@ -525,6 +566,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
+            resourceInputs["grpcTlsHealthCheck"] = args ? args.grpcTlsHealthCheck : undefined;
             resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             resourceInputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
             resourceInputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
@@ -569,6 +611,11 @@ export interface HealthCheckState {
      * Structure is documented below.
      */
     grpcHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcHealthCheck>;
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     */
+    grpcTlsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcTlsHealthCheck>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
@@ -677,6 +724,11 @@ export interface HealthCheckArgs {
      * Structure is documented below.
      */
     grpcHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcHealthCheck>;
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     */
+    grpcTlsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcTlsHealthCheck>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.

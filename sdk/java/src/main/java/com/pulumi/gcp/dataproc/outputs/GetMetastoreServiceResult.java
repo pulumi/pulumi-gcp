@@ -53,7 +53,6 @@ public final class GetMetastoreServiceResult {
     private String serviceId;
     private String state;
     private String stateMessage;
-    private Map<String,String> tags;
     private List<GetMetastoreServiceTelemetryConfig> telemetryConfigs;
     private String tier;
     private String uid;
@@ -139,9 +138,6 @@ public final class GetMetastoreServiceResult {
     public String stateMessage() {
         return this.stateMessage;
     }
-    public Map<String,String> tags() {
-        return this.tags;
-    }
     public List<GetMetastoreServiceTelemetryConfig> telemetryConfigs() {
         return this.telemetryConfigs;
     }
@@ -189,7 +185,6 @@ public final class GetMetastoreServiceResult {
         private String serviceId;
         private String state;
         private String stateMessage;
-        private Map<String,String> tags;
         private List<GetMetastoreServiceTelemetryConfig> telemetryConfigs;
         private String tier;
         private String uid;
@@ -222,7 +217,6 @@ public final class GetMetastoreServiceResult {
     	      this.serviceId = defaults.serviceId;
     	      this.state = defaults.state;
     	      this.stateMessage = defaults.stateMessage;
-    	      this.tags = defaults.tags;
     	      this.telemetryConfigs = defaults.telemetryConfigs;
     	      this.tier = defaults.tier;
     	      this.uid = defaults.uid;
@@ -449,14 +443,6 @@ public final class GetMetastoreServiceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(Map<String,String> tags) {
-            if (tags == null) {
-              throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "tags");
-            }
-            this.tags = tags;
-            return this;
-        }
-        @CustomType.Setter
         public Builder telemetryConfigs(List<GetMetastoreServiceTelemetryConfig> telemetryConfigs) {
             if (telemetryConfigs == null) {
               throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "telemetryConfigs");
@@ -518,7 +504,6 @@ public final class GetMetastoreServiceResult {
             _resultValue.serviceId = serviceId;
             _resultValue.state = state;
             _resultValue.stateMessage = stateMessage;
-            _resultValue.tags = tags;
             _resultValue.telemetryConfigs = telemetryConfigs;
             _resultValue.tier = tier;
             _resultValue.uid = uid;

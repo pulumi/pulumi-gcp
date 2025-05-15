@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * ### Storage Pool Create
+ * ### Storage Pool Create Doc
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
