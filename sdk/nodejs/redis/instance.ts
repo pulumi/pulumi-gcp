@@ -462,12 +462,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.redis.InstanceServerCaCert[]>;
     /**
-     * A map of resource manager tags.
-     * Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
-     */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
@@ -530,7 +524,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
             resourceInputs["secondaryIpRange"] = state ? state.secondaryIpRange : undefined;
             resourceInputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["transitEncryptionMode"] = state ? state.transitEncryptionMode : undefined;
         } else {
@@ -559,7 +552,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
             resourceInputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
             resourceInputs["secondaryIpRange"] = args ? args.secondaryIpRange : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
             resourceInputs["authString"] = undefined /*out*/;
@@ -782,12 +774,6 @@ export interface InstanceState {
      */
     serverCaCerts?: pulumi.Input<pulumi.Input<inputs.redis.InstanceServerCaCert>[]>;
     /**
-     * A map of resource manager tags.
-     * Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
-     */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
@@ -934,12 +920,6 @@ export interface InstanceArgs {
      * range associated with the private service access connection, or "auto".
      */
     secondaryIpRange?: pulumi.Input<string>;
-    /**
-     * A map of resource manager tags.
-     * Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_key_value}.
-     */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance

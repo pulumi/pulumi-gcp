@@ -188,8 +188,16 @@ namespace Pulumi.Gcp.Storage
         /// Use this when dealing with binary data.
         /// </summary>
         public readonly string ContentBase64;
+        /// <summary>
+        /// (Computed) Base64 encoded SHA512 checksum of file content.
+        /// </summary>
+        public readonly string ContentBase64sha512;
         public readonly string ContentDisposition;
         public readonly string ContentEncoding;
+        /// <summary>
+        /// (Computed) Hex encoded SHA512 checksum of file content.
+        /// </summary>
+        public readonly string ContentHexsha512;
         public readonly string ContentLanguage;
         public readonly string ContentType;
         public readonly string Crc32c;
@@ -224,9 +232,13 @@ namespace Pulumi.Gcp.Storage
 
             string contentBase64,
 
+            string contentBase64sha512,
+
             string contentDisposition,
 
             string contentEncoding,
+
+            string contentHexsha512,
 
             string contentLanguage,
 
@@ -272,8 +284,10 @@ namespace Pulumi.Gcp.Storage
             CacheControl = cacheControl;
             Content = content;
             ContentBase64 = contentBase64;
+            ContentBase64sha512 = contentBase64sha512;
             ContentDisposition = contentDisposition;
             ContentEncoding = contentEncoding;
+            ContentHexsha512 = contentHexsha512;
             ContentLanguage = contentLanguage;
             ContentType = contentType;
             Crc32c = crc32c;

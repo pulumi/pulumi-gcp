@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * ### Storage Pool Create
+ * ### Storage Pool Create Doc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

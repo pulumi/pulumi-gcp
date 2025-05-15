@@ -12,6 +12,7 @@ import com.pulumi.gcp.diagflow.CxFlowArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowState;
 import com.pulumi.gcp.diagflow.outputs.CxFlowAdvancedSettings;
 import com.pulumi.gcp.diagflow.outputs.CxFlowEventHandler;
+import com.pulumi.gcp.diagflow.outputs.CxFlowKnowledgeConnectorSettings;
 import com.pulumi.gcp.diagflow.outputs.CxFlowNluSettings;
 import com.pulumi.gcp.diagflow.outputs.CxFlowTransitionRoute;
 import java.lang.Boolean;
@@ -144,6 +145,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.discoveryengine.DataStore;
+ * import com.pulumi.gcp.discoveryengine.DataStoreArgs;
+ * import com.pulumi.gcp.diagflow.CxWebhook;
+ * import com.pulumi.gcp.diagflow.CxWebhookArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.diagflow.CxFlow;
  * import com.pulumi.gcp.diagflow.CxFlowArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
@@ -156,6 +164,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsSpeechSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsDtmfSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsLoggingSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -192,6 +206,26 @@ import javax.annotation.Nullable;
  *             .name("dialogflowcx-bucket")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var myDatastore = new DataStore("myDatastore", DataStoreArgs.builder()
+ *             .location("global")
+ *             .dataStoreId("datastore-flow-full")
+ *             .displayName("datastore-flow-full")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("NO_CONTENT")
+ *             .solutionTypes("SOLUTION_TYPE_CHAT")
+ *             .build());
+ * 
+ *         var myWebhook = new CxWebhook("myWebhook", CxWebhookArgs.builder()
+ *             .parent(agent.id())
+ *             .displayName("MyWebhook")
+ *             .genericWebService(CxWebhookGenericWebServiceArgs.builder()
+ *                 .uri("https://example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
  * 
  *         var basicFlow = new CxFlow("basicFlow", CxFlowArgs.builder()
@@ -480,6 +514,125 @@ import javax.annotation.Nullable;
  *                     .enableConsentBasedRedaction(true)
  *                     .build())
  *                 .build())
+ *             .knowledgeConnectorSettings(CxFlowKnowledgeConnectorSettingsArgs.builder()
+ *                 .enabled(true)
+ *                 .triggerFulfillment(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs.builder()
+ *                     .messages(                    
+ *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .channel("some-channel")
+ *                             .text(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs.builder()
+ *                                 .texts("information completed, navigating to page 2")
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .payload("""
+ *           {"some-key": "some-value", "other-key": ["other-value"]}
+ *                             """)
+ *                             .build(),
+ *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .conversationSuccess(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs.builder()
+ *                                 .metadata("""
+ *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *                                 """)
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .outputAudioText(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs.builder()
+ *                                 .text("some output text")
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .outputAudioText(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs.builder()
+ *                                 .ssml("""
+ *             <speak>Some example <say-as interpret-as="characters">SSML XML</say-as></speak>
+ *                                 """)
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .liveAgentHandoff(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
+ *                                 .metadata("""
+ *             {"some-metadata-key": "some-value", "other-metadata-key": 1234}
+ *                                 """)
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .playAudio(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs.builder()
+ *                                 .audioUri("http://example.com/some-audio-file.mp3")
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs.builder()
+ *                             .telephonyTransferCall(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs.builder()
+ *                                 .phoneNumber("1-234-567-8902")
+ *                                 .build())
+ *                             .build())
+ *                     .webhook(myWebhook.id())
+ *                     .returnPartialResponses(true)
+ *                     .tag("some-tag")
+ *                     .setParameterActions(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs.builder()
+ *                         .parameter("some-param")
+ *                         .value("123.45")
+ *                         .build())
+ *                     .conditionalCases(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs.builder()
+ *                         .cases(serializeJson(
+ *                             jsonArray(
+ *                                 jsonObject(
+ *                                     jsonProperty("condition", "$sys.func.RAND() < 0.5"),
+ *                                     jsonProperty("caseContent", jsonArray(jsonObject(
+ *                                         jsonProperty("message", jsonObject(
+ *                                             jsonProperty("text", jsonObject(
+ *                                                 jsonProperty("text", jsonArray("First case"))
+ *                                             ))
+ *                                         ))
+ *                                     )))
+ *                                 ), 
+ *                                 jsonObject(
+ *                                     jsonProperty("caseContent", jsonArray(jsonObject(
+ *                                         jsonProperty("message", jsonObject(
+ *                                             jsonProperty("text", jsonObject(
+ *                                                 jsonProperty("text", jsonArray("Final case"))
+ *                                             ))
+ *                                         ))
+ *                                     )))
+ *                                 )
+ *                             )))
+ *                         .build())
+ *                     .advancedSettings(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs.builder()
+ *                         .speechSettings(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs.builder()
+ *                             .endpointerSensitivity(30)
+ *                             .noSpeechTimeout("3.500s")
+ *                             .useTimeoutBasedEndpointing(true)
+ *                             .models(Map.ofEntries(
+ *                                 Map.entry("name", "wrench"),
+ *                                 Map.entry("mass", "1.3kg"),
+ *                                 Map.entry("count", "3")
+ *                             ))
+ *                             .build())
+ *                         .dtmfSettings(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs.builder()
+ *                             .enabled(true)
+ *                             .maxDigits(1)
+ *                             .finishDigit("#")
+ *                             .interdigitTimeoutDuration("3.500s")
+ *                             .endpointingTimeoutDuration("3.500s")
+ *                             .build())
+ *                         .loggingSettings(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs.builder()
+ *                             .enableStackdriverLogging(true)
+ *                             .enableInteractionLogging(true)
+ *                             .enableConsentBasedRedaction(true)
+ *                             .build())
+ *                         .build())
+ *                     .enableGenerativeFallback(true)
+ *                     .build())
+ *                 .dataStoreConnections(CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs.builder()
+ *                     .dataStoreType("UNSTRUCTURED")
+ *                     .dataStore(Output.tuple(agent.location(), myDatastore.dataStoreId()).applyValue(values -> {
+ *                         var location = values.t1;
+ *                         var dataStoreId = values.t2;
+ *                         return String.format("projects/%s/locations/%s/collections/default_collection/dataStores/%s", project.number(),location,dataStoreId);
+ *                     }))
+ *                     .documentProcessingMode("DOCUMENTS")
+ *                     .build())
+ *                 .targetFlow(agent.startFlow())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -600,6 +753,22 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> isDefaultStartFlow() {
         return Codegen.optional(this.isDefaultStartFlow);
+    }
+    /**
+     * Knowledge connector configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="knowledgeConnectorSettings", refs={CxFlowKnowledgeConnectorSettings.class}, tree="[0]")
+    private Output</* @Nullable */ CxFlowKnowledgeConnectorSettings> knowledgeConnectorSettings;
+
+    /**
+     * @return Knowledge connector configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxFlowKnowledgeConnectorSettings>> knowledgeConnectorSettings() {
+        return Codegen.optional(this.knowledgeConnectorSettings);
     }
     /**
      * The language of the following fields in flow:

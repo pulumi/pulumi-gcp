@@ -71,12 +71,12 @@ import javax.annotation.Nullable;
  *         var default_ = new RegionalEndpoint("default", RegionalEndpointArgs.builder()
  *             .name("my-rep")
  *             .location("us-central1")
- *             .targetGoogleApi("storage.us-central1.p.rep.googleapis.com")
+ *             .targetGoogleApi("storage.us-central1.rep.googleapis.com")
  *             .accessType("REGIONAL")
  *             .address("192.168.0.5")
  *             .network(myNetwork.id())
  *             .subnetwork(mySubnetwork.id())
- *             .description("My RegionalEndpoint targeting Google API storage.us-central1.p.rep.googleapis.com")
+ *             .description("My RegionalEndpoint targeting Google API storage.us-central1.rep.googleapis.com")
  *             .labels(Map.of("env", "default"))
  *             .build());
  * 
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *         var default_ = new RegionalEndpoint("default", RegionalEndpointArgs.builder()
  *             .name("my-rep")
  *             .location("us-central1")
- *             .targetGoogleApi("storage.us-central1.p.rep.googleapis.com")
+ *             .targetGoogleApi("storage.us-central1.rep.googleapis.com")
  *             .accessType("GLOBAL")
  *             .address("192.168.0.4")
  *             .network(myNetwork.id())
@@ -370,14 +370,14 @@ public class RegionalEndpoint extends com.pulumi.resources.CustomResource {
         return this.subnetwork;
     }
     /**
-     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.p.rep.googleapis.com\&#34;.
+     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.rep.googleapis.com\&#34;.
      * 
      */
     @Export(name="targetGoogleApi", refs={String.class}, tree="[0]")
     private Output<String> targetGoogleApi;
 
     /**
-     * @return The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.p.rep.googleapis.com\&#34;.
+     * @return The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \&#34;cloudkms.us-central1.rep.googleapis.com\&#34;.
      * 
      */
     public Output<String> targetGoogleApi() {

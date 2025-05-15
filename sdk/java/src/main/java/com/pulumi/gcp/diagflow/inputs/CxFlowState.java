@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerArgs;
+import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteArgs;
 import java.lang.Boolean;
@@ -116,6 +117,23 @@ public final class CxFlowState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> isDefaultStartFlow() {
         return Optional.ofNullable(this.isDefaultStartFlow);
+    }
+
+    /**
+     * Knowledge connector configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="knowledgeConnectorSettings")
+    private @Nullable Output<CxFlowKnowledgeConnectorSettingsArgs> knowledgeConnectorSettings;
+
+    /**
+     * @return Knowledge connector configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxFlowKnowledgeConnectorSettingsArgs>> knowledgeConnectorSettings() {
+        return Optional.ofNullable(this.knowledgeConnectorSettings);
     }
 
     /**
@@ -252,6 +270,7 @@ public final class CxFlowState extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.eventHandlers = $.eventHandlers;
         this.isDefaultStartFlow = $.isDefaultStartFlow;
+        this.knowledgeConnectorSettings = $.knowledgeConnectorSettings;
         this.languageCode = $.languageCode;
         this.name = $.name;
         this.nluSettings = $.nluSettings;
@@ -417,6 +436,29 @@ public final class CxFlowState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isDefaultStartFlow(Boolean isDefaultStartFlow) {
             return isDefaultStartFlow(Output.of(isDefaultStartFlow));
+        }
+
+        /**
+         * @param knowledgeConnectorSettings Knowledge connector configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knowledgeConnectorSettings(@Nullable Output<CxFlowKnowledgeConnectorSettingsArgs> knowledgeConnectorSettings) {
+            $.knowledgeConnectorSettings = knowledgeConnectorSettings;
+            return this;
+        }
+
+        /**
+         * @param knowledgeConnectorSettings Knowledge connector configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knowledgeConnectorSettings(CxFlowKnowledgeConnectorSettingsArgs knowledgeConnectorSettings) {
+            return knowledgeConnectorSettings(Output.of(knowledgeConnectorSettings));
         }
 
         /**

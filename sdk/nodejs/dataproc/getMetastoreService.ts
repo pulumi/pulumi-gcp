@@ -83,7 +83,6 @@ export interface GetMetastoreServiceResult {
     readonly serviceId: string;
     readonly state: string;
     readonly stateMessage: string;
-    readonly tags: {[key: string]: string};
     readonly telemetryConfigs: outputs.dataproc.GetMetastoreServiceTelemetryConfig[];
     readonly tier: string;
     readonly uid: string;

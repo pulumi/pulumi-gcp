@@ -69,6 +69,8 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///     });
     /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
     ///     var basicPage = new Gcp.Diagflow.CxPage("basic_page", new()
     ///     {
     ///         Parent = agent.StartFlow,
@@ -969,6 +971,195 @@ namespace Pulumi.Gcp.Diagflow
     ///                 FinishDigit = "#",
     ///             },
     ///         },
+    ///         KnowledgeConnectorSettings = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsArgs
+    ///         {
+    ///             Enabled = true,
+    ///             TriggerFulfillment = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs
+    ///             {
+    ///                 Messages = new[]
+    ///                 {
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
+    ///                     {
+    ///                         Channel = "some-channel",
+    ///                         KnowledgeInfoCard = null,
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
+    ///                     {
+    ///                         Channel = "some-channel",
+    ///                         Text = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs
+    ///                         {
+    ///                             Texts = new[]
+    ///                             {
+    ///                                 "information completed, navigating to page 2",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
+    ///                     {
+    ///                         Payload = @"          {""some-key"": ""some-value"", ""other-key"": [""other-value""]}
+    /// ",
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
+    ///                     {
+    ///                         ConversationSuccess = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs
+    ///                         {
+    ///                             Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
+    ///                     {
+    ///                         OutputAudioText = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs
+    ///                         {
+    ///                             Text = "some output text",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
+    ///                     {
+    ///                         OutputAudioText = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs
+    ///                         {
+    ///                             Ssml = @"            &lt;speak&gt;Some example &lt;say-as interpret-as=""characters""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+    /// ",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
+    ///                     {
+    ///                         LiveAgentHandoff = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs
+    ///                         {
+    ///                             Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
+    ///                     {
+    ///                         PlayAudio = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs
+    ///                         {
+    ///                             AudioUri = "http://example.com/some-audio-file.mp3",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs
+    ///                     {
+    ///                         TelephonyTransferCall = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs
+    ///                         {
+    ///                             PhoneNumber = "1-234-567-8902",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Webhook = myWebhook.Id,
+    ///                 ReturnPartialResponses = true,
+    ///                 Tag = "some-tag",
+    ///                 SetParameterActions = new[]
+    ///                 {
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs
+    ///                     {
+    ///                         Parameter = "some-param",
+    ///                         Value = "123.45",
+    ///                     },
+    ///                 },
+    ///                 ConditionalCases = new[]
+    ///                 {
+    ///                     new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs
+    ///                     {
+    ///                         Cases = JsonSerializer.Serialize(new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["condition"] = "$sys.func.RAND() &lt; 0.5",
+    ///                                 ["caseContent"] = new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["text"] = new[]
+    ///                                                 {
+    ///                                                     "First case",
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["caseContent"] = new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["text"] = new[]
+    ///                                                 {
+    ///                                                     "Final case",
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         }),
+    ///                     },
+    ///                 },
+    ///                 AdvancedSettings = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs
+    ///                 {
+    ///                     SpeechSettings = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs
+    ///                     {
+    ///                         EndpointerSensitivity = 30,
+    ///                         NoSpeechTimeout = "3.500s",
+    ///                         UseTimeoutBasedEndpointing = true,
+    ///                         Models = 
+    ///                         {
+    ///                             { "name", "wrench" },
+    ///                             { "mass", "1.3kg" },
+    ///                             { "count", "3" },
+    ///                         },
+    ///                     },
+    ///                     DtmfSettings = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs
+    ///                     {
+    ///                         Enabled = true,
+    ///                         MaxDigits = 1,
+    ///                         FinishDigit = "#",
+    ///                         InterdigitTimeoutDuration = "3.500s",
+    ///                         EndpointingTimeoutDuration = "3.500s",
+    ///                     },
+    ///                     LoggingSettings = new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs
+    ///                     {
+    ///                         EnableStackdriverLogging = true,
+    ///                         EnableInteractionLogging = true,
+    ///                         EnableConsentBasedRedaction = true,
+    ///                     },
+    ///                 },
+    ///                 EnableGenerativeFallback = true,
+    ///             },
+    ///             DataStoreConnections = new[]
+    ///             {
+    ///                 new Gcp.Diagflow.Inputs.CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs
+    ///                 {
+    ///                     DataStoreType = "PUBLIC_WEB",
+    ///                     DataStore = Output.Tuple(project, agent.Location).Apply(values =&gt;
+    ///                     {
+    ///                         var project = values.Item1;
+    ///                         var location = values.Item2;
+    ///                         return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/{location}/collections/default_collection/dataStores/datastore-page-full";
+    ///                     }),
+    ///                     DocumentProcessingMode = "CHUNKS",
+    ///                 },
+    ///             },
+    ///             TargetPage = myPage2.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var myDatastore = new Gcp.DiscoveryEngine.DataStore("my_datastore", new()
+    ///     {
+    ///         Location = "global",
+    ///         DataStoreId = "datastore-page-full",
+    ///         DisplayName = "datastore-page-full",
+    ///         IndustryVertical = "GENERIC",
+    ///         ContentConfig = "NO_CONTENT",
     ///     });
     /// 
     /// });
@@ -1032,6 +1223,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("form")]
         public Output<Outputs.CxPageForm?> Form { get; private set; } = null!;
+
+        /// <summary>
+        /// Knowledge connector configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("knowledgeConnectorSettings")]
+        public Output<Outputs.CxPageKnowledgeConnectorSettings?> KnowledgeConnectorSettings { get; private set; } = null!;
 
         /// <summary>
         /// The language of the following fields in page:
@@ -1178,6 +1376,13 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.CxPageFormArgs>? Form { get; set; }
 
         /// <summary>
+        /// Knowledge connector configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("knowledgeConnectorSettings")]
+        public Input<Inputs.CxPageKnowledgeConnectorSettingsArgs>? KnowledgeConnectorSettings { get; set; }
+
+        /// <summary>
         /// The language of the following fields in page:
         /// Page.entry_fulfillment.messages
         /// Page.entry_fulfillment.conditional_cases
@@ -1287,6 +1492,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("form")]
         public Input<Inputs.CxPageFormGetArgs>? Form { get; set; }
+
+        /// <summary>
+        /// Knowledge connector configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("knowledgeConnectorSettings")]
+        public Input<Inputs.CxPageKnowledgeConnectorSettingsGetArgs>? KnowledgeConnectorSettings { get; set; }
 
         /// <summary>
         /// The language of the following fields in page:

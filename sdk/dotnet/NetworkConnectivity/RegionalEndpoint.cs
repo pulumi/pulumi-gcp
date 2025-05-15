@@ -48,12 +48,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///     {
     ///         Name = "my-rep",
     ///         Location = "us-central1",
-    ///         TargetGoogleApi = "storage.us-central1.p.rep.googleapis.com",
+    ///         TargetGoogleApi = "storage.us-central1.rep.googleapis.com",
     ///         AccessType = "REGIONAL",
     ///         Address = "192.168.0.5",
     ///         Network = myNetwork.Id,
     ///         Subnetwork = mySubnetwork.Id,
-    ///         Description = "My RegionalEndpoint targeting Google API storage.us-central1.p.rep.googleapis.com",
+    ///         Description = "My RegionalEndpoint targeting Google API storage.us-central1.rep.googleapis.com",
     ///         Labels = 
     ///         {
     ///             { "env", "default" },
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///     {
     ///         Name = "my-rep",
     ///         Location = "us-central1",
-    ///         TargetGoogleApi = "storage.us-central1.p.rep.googleapis.com",
+    ///         TargetGoogleApi = "storage.us-central1.rep.googleapis.com",
     ///         AccessType = "GLOBAL",
     ///         Address = "192.168.0.4",
     ///         Network = myNetwork.Id,
@@ -216,7 +216,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> Subnetwork { get; private set; } = null!;
 
         /// <summary>
-        /// The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: \"cloudkms.us-central1.p.rep.googleapis.com\".
+        /// The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
         /// </summary>
         [Output("targetGoogleApi")]
         public Output<string> TargetGoogleApi { get; private set; } = null!;
@@ -348,7 +348,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: \"cloudkms.us-central1.p.rep.googleapis.com\".
+        /// The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
         /// </summary>
         [Input("targetGoogleApi", required: true)]
         public Input<string> TargetGoogleApi { get; set; } = null!;
@@ -476,7 +476,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: \"cloudkms.us-central1.p.rep.googleapis.com\".
+        /// The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
         /// </summary>
         [Input("targetGoogleApi")]
         public Input<string>? TargetGoogleApi { get; set; }

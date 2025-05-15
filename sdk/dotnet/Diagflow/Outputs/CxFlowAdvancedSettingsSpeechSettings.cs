@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         public readonly ImmutableDictionary<string, string>? Models;
         /// <summary>
         /// Timeout before detecting no speech.
-        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
         /// </summary>
         public readonly string? NoSpeechTimeout;
         /// <summary>

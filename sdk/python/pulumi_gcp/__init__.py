@@ -2576,6 +2576,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/crossSiteNetwork",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/crossSiteNetwork:CrossSiteNetwork": "CrossSiteNetwork"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/disk",
   "fqn": "pulumi_gcp.compute",
   "classes": {

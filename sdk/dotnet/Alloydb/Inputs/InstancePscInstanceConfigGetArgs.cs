@@ -25,6 +25,19 @@ namespace Pulumi.Gcp.Alloydb.Inputs
             set => _allowedConsumerProjects = value;
         }
 
+        [Input("pscAutoConnections")]
+        private InputList<Inputs.InstancePscInstanceConfigPscAutoConnectionGetArgs>? _pscAutoConnections;
+
+        /// <summary>
+        /// Configurations for setting up PSC service automation.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstancePscInstanceConfigPscAutoConnectionGetArgs> PscAutoConnections
+        {
+            get => _pscAutoConnections ?? (_pscAutoConnections = new InputList<Inputs.InstancePscInstanceConfigPscAutoConnectionGetArgs>());
+            set => _pscAutoConnections = value;
+        }
+
         /// <summary>
         /// (Output)
         /// The DNS name of the instance for PSC connectivity.

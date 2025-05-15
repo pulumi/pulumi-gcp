@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     routineId: "routine_id",
  *     routineType: "PROCEDURE",
  *     language: "SQL",
+ *     securityMode: "INVOKER",
  *     definitionBody: "CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);",
  * });
  * ```
@@ -382,6 +383,11 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly routineType!: pulumi.Output<string>;
     /**
+     * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+     * Possible values are: `DEFINER`, `INVOKER`.
+     */
+    public readonly securityMode!: pulumi.Output<string | undefined>;
+    /**
      * Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
      * Structure is documented below.
      */
@@ -416,6 +422,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["returnType"] = state ? state.returnType : undefined;
             resourceInputs["routineId"] = state ? state.routineId : undefined;
             resourceInputs["routineType"] = state ? state.routineType : undefined;
+            resourceInputs["securityMode"] = state ? state.securityMode : undefined;
             resourceInputs["sparkOptions"] = state ? state.sparkOptions : undefined;
         } else {
             const args = argsOrState as RoutineArgs | undefined;
@@ -445,6 +452,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["returnType"] = args ? args.returnType : undefined;
             resourceInputs["routineId"] = args ? args.routineId : undefined;
             resourceInputs["routineType"] = args ? args.routineType : undefined;
+            resourceInputs["securityMode"] = args ? args.securityMode : undefined;
             resourceInputs["sparkOptions"] = args ? args.sparkOptions : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
@@ -548,6 +556,11 @@ export interface RoutineState {
      */
     routineType?: pulumi.Input<string>;
     /**
+     * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+     * Possible values are: `DEFINER`, `INVOKER`.
+     */
+    securityMode?: pulumi.Input<string>;
+    /**
      * Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
      * Structure is documented below.
      */
@@ -637,6 +650,11 @@ export interface RoutineArgs {
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
     routineType: pulumi.Input<string>;
+    /**
+     * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
+     * Possible values are: `DEFINER`, `INVOKER`.
+     */
+    securityMode?: pulumi.Input<string>;
     /**
      * Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
      * Structure is documented below.

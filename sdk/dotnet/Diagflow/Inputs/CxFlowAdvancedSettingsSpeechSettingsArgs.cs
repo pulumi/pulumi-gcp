@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
         /// <summary>
         /// Timeout before detecting no speech.
-        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
         /// </summary>
         [Input("noSpeechTimeout")]
         public Input<string>? NoSpeechTimeout { get; set; }

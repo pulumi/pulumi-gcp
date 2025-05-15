@@ -20,6 +20,7 @@ from .backend_service_iam_member import *
 from .backend_service_iam_policy import *
 from .backend_service_signed_url_key import *
 from .ca_external_account_key import *
+from .cross_site_network import *
 from .disk import *
 from .disk_async_replication import *
 from .disk_iam_binding import *

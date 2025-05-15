@@ -9,6 +9,7 @@ import com.pulumi.gcp.diagflow.inputs.CxPageAdvancedSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageEntryFulfillmentArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageFormArgs;
+import com.pulumi.gcp.diagflow.inputs.CxPageKnowledgeConnectorSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteArgs;
 import java.lang.String;
 import java.util.List;
@@ -108,6 +109,23 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<CxPageFormArgs>> form() {
         return Optional.ofNullable(this.form);
+    }
+
+    /**
+     * Knowledge connector configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="knowledgeConnectorSettings")
+    private @Nullable Output<CxPageKnowledgeConnectorSettingsArgs> knowledgeConnectorSettings;
+
+    /**
+     * @return Knowledge connector configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxPageKnowledgeConnectorSettingsArgs>> knowledgeConnectorSettings() {
+        return Optional.ofNullable(this.knowledgeConnectorSettings);
     }
 
     /**
@@ -241,6 +259,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         this.entryFulfillment = $.entryFulfillment;
         this.eventHandlers = $.eventHandlers;
         this.form = $.form;
+        this.knowledgeConnectorSettings = $.knowledgeConnectorSettings;
         this.languageCode = $.languageCode;
         this.name = $.name;
         this.parent = $.parent;
@@ -394,6 +413,29 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder form(CxPageFormArgs form) {
             return form(Output.of(form));
+        }
+
+        /**
+         * @param knowledgeConnectorSettings Knowledge connector configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knowledgeConnectorSettings(@Nullable Output<CxPageKnowledgeConnectorSettingsArgs> knowledgeConnectorSettings) {
+            $.knowledgeConnectorSettings = knowledgeConnectorSettings;
+            return this;
+        }
+
+        /**
+         * @param knowledgeConnectorSettings Knowledge connector configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knowledgeConnectorSettings(CxPageKnowledgeConnectorSettingsArgs knowledgeConnectorSettings) {
+            return knowledgeConnectorSettings(Output.of(knowledgeConnectorSettings));
         }
 
         /**

@@ -309,6 +309,23 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine&#39;s configuration.
+     * Possible values are: `DEFINER`, `INVOKER`.
+     * 
+     */
+    @Import(name="securityMode")
+    private @Nullable Output<String> securityMode;
+
+    /**
+     * @return Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine&#39;s configuration.
+     * Possible values are: `DEFINER`, `INVOKER`.
+     * 
+     */
+    public Optional<Output<String>> securityMode() {
+        return Optional.ofNullable(this.securityMode);
+    }
+
+    /**
      * Optional. If language is one of &#34;PYTHON&#34;, &#34;JAVA&#34;, &#34;SCALA&#34;, this field stores the options for spark stored procedure.
      * Structure is documented below.
      * 
@@ -344,6 +361,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         this.returnType = $.returnType;
         this.routineId = $.routineId;
         this.routineType = $.routineType;
+        this.securityMode = $.securityMode;
         this.sparkOptions = $.sparkOptions;
     }
 
@@ -769,6 +787,29 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder routineType(String routineType) {
             return routineType(Output.of(routineType));
+        }
+
+        /**
+         * @param securityMode Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine&#39;s configuration.
+         * Possible values are: `DEFINER`, `INVOKER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityMode(@Nullable Output<String> securityMode) {
+            $.securityMode = securityMode;
+            return this;
+        }
+
+        /**
+         * @param securityMode Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine&#39;s configuration.
+         * Possible values are: `DEFINER`, `INVOKER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityMode(String securityMode) {
+            return securityMode(Output.of(securityMode));
         }
 
         /**

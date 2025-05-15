@@ -94,6 +94,36 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:netapp/backupVault:BackupVault")
 public class BackupVault extends com.pulumi.resources.CustomResource {
     /**
+     * Region in which backup is stored.
+     * 
+     */
+    @Export(name="backupRegion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> backupRegion;
+
+    /**
+     * @return Region in which backup is stored.
+     * 
+     */
+    public Output<Optional<String>> backupRegion() {
+        return Codegen.optional(this.backupRegion);
+    }
+    /**
+     * Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     * 
+     */
+    @Export(name="backupVaultType", refs={String.class}, tree="[0]")
+    private Output<String> backupVaultType;
+
+    /**
+     * @return Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     * 
+     */
+    public Output<String> backupVaultType() {
+        return this.backupVaultType;
+    }
+    /**
      * Create time of the backup vault. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
      * 
      */
@@ -120,6 +150,20 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Name of the Backup vault created in backup region.
+     * 
+     */
+    @Export(name="destinationBackupVault", refs={String.class}, tree="[0]")
+    private Output<String> destinationBackupVault;
+
+    /**
+     * @return Name of the Backup vault created in backup region.
+     * 
+     */
+    public Output<String> destinationBackupVault() {
+        return this.destinationBackupVault;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -218,6 +262,34 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * Name of the Backup vault created in source region.
+     * 
+     */
+    @Export(name="sourceBackupVault", refs={String.class}, tree="[0]")
+    private Output<String> sourceBackupVault;
+
+    /**
+     * @return Name of the Backup vault created in source region.
+     * 
+     */
+    public Output<String> sourceBackupVault() {
+        return this.sourceBackupVault;
+    }
+    /**
+     * Region in which the backup vault is created.
+     * 
+     */
+    @Export(name="sourceRegion", refs={String.class}, tree="[0]")
+    private Output<String> sourceRegion;
+
+    /**
+     * @return Region in which the backup vault is created.
+     * 
+     */
+    public Output<String> sourceRegion() {
+        return this.sourceRegion;
     }
     /**
      * The state of the Backup Vault.

@@ -84,6 +84,8 @@ __all__ = [
     'InstanceObservabilityConfigArgsDict',
     'InstancePscInstanceConfigArgs',
     'InstancePscInstanceConfigArgsDict',
+    'InstancePscInstanceConfigPscAutoConnectionArgs',
+    'InstancePscInstanceConfigPscAutoConnectionArgsDict',
     'InstancePscInstanceConfigPscInterfaceConfigArgs',
     'InstancePscInstanceConfigPscInterfaceConfigArgsDict',
     'InstanceQueryInsightsConfigArgs',
@@ -2174,6 +2176,11 @@ if not MYPY:
         List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
         These should be specified as project numbers only.
         """
+        psc_auto_connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscAutoConnectionArgsDict']]]]
+        """
+        Configurations for setting up PSC service automation.
+        Structure is documented below.
+        """
         psc_dns_name: NotRequired[pulumi.Input[builtins.str]]
         """
         (Output)
@@ -2200,12 +2207,15 @@ elif False:
 class InstancePscInstanceConfigArgs:
     def __init__(__self__, *,
                  allowed_consumer_projects: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscAutoConnectionArgs']]]] = None,
                  psc_dns_name: Optional[pulumi.Input[builtins.str]] = None,
                  psc_interface_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgs']]]] = None,
                  service_attachment_link: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allowed_consumer_projects: List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
                These should be specified as project numbers only.
+        :param pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscAutoConnectionArgs']]] psc_auto_connections: Configurations for setting up PSC service automation.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] psc_dns_name: (Output)
                The DNS name of the instance for PSC connectivity.
                Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
@@ -2219,6 +2229,8 @@ class InstancePscInstanceConfigArgs:
         """
         if allowed_consumer_projects is not None:
             pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        if psc_auto_connections is not None:
+            pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         if psc_dns_name is not None:
             pulumi.set(__self__, "psc_dns_name", psc_dns_name)
         if psc_interface_configs is not None:
@@ -2238,6 +2250,19 @@ class InstancePscInstanceConfigArgs:
     @allowed_consumer_projects.setter
     def allowed_consumer_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "allowed_consumer_projects", value)
+
+    @property
+    @pulumi.getter(name="pscAutoConnections")
+    def psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscAutoConnectionArgs']]]]:
+        """
+        Configurations for setting up PSC service automation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_auto_connections")
+
+    @psc_auto_connections.setter
+    def psc_auto_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscInstanceConfigPscAutoConnectionArgs']]]]):
+        pulumi.set(self, "psc_auto_connections", value)
 
     @property
     @pulumi.getter(name="pscDnsName")
@@ -2281,6 +2306,145 @@ class InstancePscInstanceConfigArgs:
     @service_attachment_link.setter
     def service_attachment_link(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "service_attachment_link", value)
+
+
+if not MYPY:
+    class InstancePscInstanceConfigPscAutoConnectionArgsDict(TypedDict):
+        consumer_network: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The consumer network for the PSC service automation, example:
+        "projects/vpc-host-project/global/networks/default".
+        The consumer network might be hosted a different project than the
+        consumer project. The API expects the consumer project specified to be
+        the project ID (and not the project number)
+        """
+        consumer_network_status: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The status of the service connection policy.
+        """
+        consumer_project: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The consumer project to which the PSC service automation endpoint will
+        be created. The API expects the consumer project to be the project ID(
+        and not the project number).
+        """
+        ip_address: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The IP address of the PSC service automation endpoint.
+        """
+        status: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (Output)
+        The status of the PSC service automation connection.
+        """
+elif False:
+    InstancePscInstanceConfigPscAutoConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstancePscInstanceConfigPscAutoConnectionArgs:
+    def __init__(__self__, *,
+                 consumer_network: Optional[pulumi.Input[builtins.str]] = None,
+                 consumer_network_status: Optional[pulumi.Input[builtins.str]] = None,
+                 consumer_project: Optional[pulumi.Input[builtins.str]] = None,
+                 ip_address: Optional[pulumi.Input[builtins.str]] = None,
+                 status: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] consumer_network: The consumer network for the PSC service automation, example:
+               "projects/vpc-host-project/global/networks/default".
+               The consumer network might be hosted a different project than the
+               consumer project. The API expects the consumer project specified to be
+               the project ID (and not the project number)
+        :param pulumi.Input[builtins.str] consumer_network_status: (Output)
+               The status of the service connection policy.
+        :param pulumi.Input[builtins.str] consumer_project: The consumer project to which the PSC service automation endpoint will
+               be created. The API expects the consumer project to be the project ID(
+               and not the project number).
+        :param pulumi.Input[builtins.str] ip_address: (Output)
+               The IP address of the PSC service automation endpoint.
+        :param pulumi.Input[builtins.str] status: (Output)
+               The status of the PSC service automation connection.
+        """
+        if consumer_network is not None:
+            pulumi.set(__self__, "consumer_network", consumer_network)
+        if consumer_network_status is not None:
+            pulumi.set(__self__, "consumer_network_status", consumer_network_status)
+        if consumer_project is not None:
+            pulumi.set(__self__, "consumer_project", consumer_project)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="consumerNetwork")
+    def consumer_network(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The consumer network for the PSC service automation, example:
+        "projects/vpc-host-project/global/networks/default".
+        The consumer network might be hosted a different project than the
+        consumer project. The API expects the consumer project specified to be
+        the project ID (and not the project number)
+        """
+        return pulumi.get(self, "consumer_network")
+
+    @consumer_network.setter
+    def consumer_network(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "consumer_network", value)
+
+    @property
+    @pulumi.getter(name="consumerNetworkStatus")
+    def consumer_network_status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The status of the service connection policy.
+        """
+        return pulumi.get(self, "consumer_network_status")
+
+    @consumer_network_status.setter
+    def consumer_network_status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "consumer_network_status", value)
+
+    @property
+    @pulumi.getter(name="consumerProject")
+    def consumer_project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The consumer project to which the PSC service automation endpoint will
+        be created. The API expects the consumer project to be the project ID(
+        and not the project number).
+        """
+        return pulumi.get(self, "consumer_project")
+
+    @consumer_project.setter
+    def consumer_project(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "consumer_project", value)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The IP address of the PSC service automation endpoint.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (Output)
+        The status of the PSC service automation connection.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "status", value)
 
 
 if not MYPY:

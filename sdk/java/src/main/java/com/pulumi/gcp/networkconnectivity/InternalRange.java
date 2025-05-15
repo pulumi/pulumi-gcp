@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeState;
 import com.pulumi.gcp.networkconnectivity.outputs.InternalRangeMigration;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -363,6 +364,20 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> excludeCidrRanges() {
         return Codegen.optional(this.excludeCidrRanges);
+    }
+    /**
+     * Immutable ranges cannot have their fields modified, except for labels and description.
+     * 
+     */
+    @Export(name="immutable", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> immutable;
+
+    /**
+     * @return Immutable ranges cannot have their fields modified, except for labels and description.
+     * 
+     */
+    public Output<Optional<Boolean>> immutable() {
+        return Codegen.optional(this.immutable);
     }
     /**
      * The IP range that this internal range defines.

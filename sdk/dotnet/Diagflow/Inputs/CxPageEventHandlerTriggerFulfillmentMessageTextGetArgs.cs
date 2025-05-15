@@ -23,7 +23,8 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         private InputList<string>? _texts;
 
         /// <summary>
-        /// A collection of text responses.
+        /// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        /// required: true
         /// </summary>
         public InputList<string> Texts
         {

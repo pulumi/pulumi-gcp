@@ -28,13 +28,16 @@ class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
     """
-    def __init__(__self__, database_dialect=None, ddls=None, deletion_protection=None, enable_drop_protection=None, encryption_configs=None, id=None, instance=None, name=None, project=None, state=None, version_retention_period=None):
+    def __init__(__self__, database_dialect=None, ddls=None, default_time_zone=None, deletion_protection=None, enable_drop_protection=None, encryption_configs=None, id=None, instance=None, name=None, project=None, state=None, version_retention_period=None):
         if database_dialect and not isinstance(database_dialect, str):
             raise TypeError("Expected argument 'database_dialect' to be a str")
         pulumi.set(__self__, "database_dialect", database_dialect)
         if ddls and not isinstance(ddls, list):
             raise TypeError("Expected argument 'ddls' to be a list")
         pulumi.set(__self__, "ddls", ddls)
+        if default_time_zone and not isinstance(default_time_zone, str):
+            raise TypeError("Expected argument 'default_time_zone' to be a str")
+        pulumi.set(__self__, "default_time_zone", default_time_zone)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -72,6 +75,11 @@ class GetDatabaseResult:
     @pulumi.getter
     def ddls(self) -> Sequence[builtins.str]:
         return pulumi.get(self, "ddls")
+
+    @property
+    @pulumi.getter(name="defaultTimeZone")
+    def default_time_zone(self) -> builtins.str:
+        return pulumi.get(self, "default_time_zone")
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -130,6 +138,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
         return GetDatabaseResult(
             database_dialect=self.database_dialect,
             ddls=self.ddls,
+            default_time_zone=self.default_time_zone,
             deletion_protection=self.deletion_protection,
             enable_drop_protection=self.enable_drop_protection,
             encryption_configs=self.encryption_configs,
@@ -176,6 +185,7 @@ def get_database(instance: Optional[builtins.str] = None,
     return AwaitableGetDatabaseResult(
         database_dialect=pulumi.get(__ret__, 'database_dialect'),
         ddls=pulumi.get(__ret__, 'ddls'),
+        default_time_zone=pulumi.get(__ret__, 'default_time_zone'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         enable_drop_protection=pulumi.get(__ret__, 'enable_drop_protection'),
         encryption_configs=pulumi.get(__ret__, 'encryption_configs'),
@@ -219,6 +229,7 @@ def get_database_output(instance: Optional[pulumi.Input[builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetDatabaseResult(
         database_dialect=pulumi.get(__response__, 'database_dialect'),
         ddls=pulumi.get(__response__, 'ddls'),
+        default_time_zone=pulumi.get(__response__, 'default_time_zone'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         enable_drop_protection=pulumi.get(__response__, 'enable_drop_protection'),
         encryption_configs=pulumi.get(__response__, 'encryption_configs'),

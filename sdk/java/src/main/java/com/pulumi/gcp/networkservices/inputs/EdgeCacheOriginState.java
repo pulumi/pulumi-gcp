@@ -6,6 +6,7 @@ package com.pulumi.gcp.networkservices.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginAwsV4AuthenticationArgs;
+import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginFlexShieldingArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginRedirectArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginTimeoutArgs;
@@ -88,6 +89,25 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> failoverOrigin() {
         return Optional.ofNullable(this.failoverOrigin);
+    }
+
+    /**
+     * The FlexShieldingOptions to be used for all routes to this origin.
+     * If not set, defaults to a global caching layer in front of the origin.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="flexShielding")
+    private @Nullable Output<EdgeCacheOriginFlexShieldingArgs> flexShielding;
+
+    /**
+     * @return The FlexShieldingOptions to be used for all routes to this origin.
+     * If not set, defaults to a global caching layer in front of the origin.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EdgeCacheOriginFlexShieldingArgs>> flexShielding() {
+        return Optional.ofNullable(this.flexShielding);
     }
 
     /**
@@ -353,6 +373,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.failoverOrigin = $.failoverOrigin;
+        this.flexShielding = $.flexShielding;
         this.labels = $.labels;
         this.maxAttempts = $.maxAttempts;
         this.name = $.name;
@@ -475,6 +496,31 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
          */
         public Builder failoverOrigin(String failoverOrigin) {
             return failoverOrigin(Output.of(failoverOrigin));
+        }
+
+        /**
+         * @param flexShielding The FlexShieldingOptions to be used for all routes to this origin.
+         * If not set, defaults to a global caching layer in front of the origin.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexShielding(@Nullable Output<EdgeCacheOriginFlexShieldingArgs> flexShielding) {
+            $.flexShielding = flexShielding;
+            return this;
+        }
+
+        /**
+         * @param flexShielding The FlexShieldingOptions to be used for all routes to this origin.
+         * If not set, defaults to a global caching layer in front of the origin.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexShielding(EdgeCacheOriginFlexShieldingArgs flexShielding) {
+            return flexShielding(Output.of(flexShielding));
         }
 
         /**

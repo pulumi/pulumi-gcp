@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const auto_expire = new gcp.storage.Bucket("auto-expire", {
+ * const no_public_access = new gcp.storage.Bucket("no-public-access", {
  *     name: "no-public-access-bucket",
  *     location: "US",
  *     forceDestroy: true,
@@ -124,7 +124,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const auto_expire = new gcp.storage.Bucket("auto-expire", {
+ * const hns_enabled = new gcp.storage.Bucket("hns-enabled", {
  *     name: "hns-enabled-bucket",
  *     location: "US",
  *     forceDestroy: true,

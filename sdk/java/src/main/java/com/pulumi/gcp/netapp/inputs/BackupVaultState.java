@@ -17,6 +17,38 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     public static final BackupVaultState Empty = new BackupVaultState();
 
     /**
+     * Region in which backup is stored.
+     * 
+     */
+    @Import(name="backupRegion")
+    private @Nullable Output<String> backupRegion;
+
+    /**
+     * @return Region in which backup is stored.
+     * 
+     */
+    public Optional<Output<String>> backupRegion() {
+        return Optional.ofNullable(this.backupRegion);
+    }
+
+    /**
+     * Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     * 
+     */
+    @Import(name="backupVaultType")
+    private @Nullable Output<String> backupVaultType;
+
+    /**
+     * @return Type of the backup vault to be created. Default is IN_REGION.
+     * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+     * 
+     */
+    public Optional<Output<String>> backupVaultType() {
+        return Optional.ofNullable(this.backupVaultType);
+    }
+
+    /**
      * Create time of the backup vault. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
      * 
      */
@@ -44,6 +76,21 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Name of the Backup vault created in backup region.
+     * 
+     */
+    @Import(name="destinationBackupVault")
+    private @Nullable Output<String> destinationBackupVault;
+
+    /**
+     * @return Name of the Backup vault created in backup region.
+     * 
+     */
+    public Optional<Output<String>> destinationBackupVault() {
+        return Optional.ofNullable(this.destinationBackupVault);
     }
 
     /**
@@ -151,6 +198,36 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Name of the Backup vault created in source region.
+     * 
+     */
+    @Import(name="sourceBackupVault")
+    private @Nullable Output<String> sourceBackupVault;
+
+    /**
+     * @return Name of the Backup vault created in source region.
+     * 
+     */
+    public Optional<Output<String>> sourceBackupVault() {
+        return Optional.ofNullable(this.sourceBackupVault);
+    }
+
+    /**
+     * Region in which the backup vault is created.
+     * 
+     */
+    @Import(name="sourceRegion")
+    private @Nullable Output<String> sourceRegion;
+
+    /**
+     * @return Region in which the backup vault is created.
+     * 
+     */
+    public Optional<Output<String>> sourceRegion() {
+        return Optional.ofNullable(this.sourceRegion);
+    }
+
+    /**
      * The state of the Backup Vault.
      * 
      */
@@ -168,14 +245,19 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     private BackupVaultState() {}
 
     private BackupVaultState(BackupVaultState $) {
+        this.backupRegion = $.backupRegion;
+        this.backupVaultType = $.backupVaultType;
         this.createTime = $.createTime;
         this.description = $.description;
+        this.destinationBackupVault = $.destinationBackupVault;
         this.effectiveLabels = $.effectiveLabels;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.sourceBackupVault = $.sourceBackupVault;
+        this.sourceRegion = $.sourceRegion;
         this.state = $.state;
     }
 
@@ -195,6 +277,50 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BackupVaultState defaults) {
             $ = new BackupVaultState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backupRegion Region in which backup is stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegion(@Nullable Output<String> backupRegion) {
+            $.backupRegion = backupRegion;
+            return this;
+        }
+
+        /**
+         * @param backupRegion Region in which backup is stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRegion(String backupRegion) {
+            return backupRegion(Output.of(backupRegion));
+        }
+
+        /**
+         * @param backupVaultType Type of the backup vault to be created. Default is IN_REGION.
+         * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupVaultType(@Nullable Output<String> backupVaultType) {
+            $.backupVaultType = backupVaultType;
+            return this;
+        }
+
+        /**
+         * @param backupVaultType Type of the backup vault to be created. Default is IN_REGION.
+         * Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupVaultType(String backupVaultType) {
+            return backupVaultType(Output.of(backupVaultType));
         }
 
         /**
@@ -237,6 +363,27 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param destinationBackupVault Name of the Backup vault created in backup region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationBackupVault(@Nullable Output<String> destinationBackupVault) {
+            $.destinationBackupVault = destinationBackupVault;
+            return this;
+        }
+
+        /**
+         * @param destinationBackupVault Name of the Backup vault created in backup region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationBackupVault(String destinationBackupVault) {
+            return destinationBackupVault(Output.of(destinationBackupVault));
         }
 
         /**
@@ -377,6 +524,48 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param sourceBackupVault Name of the Backup vault created in source region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceBackupVault(@Nullable Output<String> sourceBackupVault) {
+            $.sourceBackupVault = sourceBackupVault;
+            return this;
+        }
+
+        /**
+         * @param sourceBackupVault Name of the Backup vault created in source region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceBackupVault(String sourceBackupVault) {
+            return sourceBackupVault(Output.of(sourceBackupVault));
+        }
+
+        /**
+         * @param sourceRegion Region in which the backup vault is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceRegion(@Nullable Output<String> sourceRegion) {
+            $.sourceRegion = sourceRegion;
+            return this;
+        }
+
+        /**
+         * @param sourceRegion Region in which the backup vault is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceRegion(String sourceRegion) {
+            return sourceRegion(Output.of(sourceRegion));
         }
 
         /**

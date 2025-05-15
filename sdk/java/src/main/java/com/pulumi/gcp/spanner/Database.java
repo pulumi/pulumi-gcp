@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  *             .instance(main.name())
  *             .name("my-database")
  *             .versionRetentionPeriod("3d")
+ *             .defaultTimeZone("UTC")
  *             .ddls(            
  *                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
  *                 "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)")
@@ -139,6 +140,22 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<String>>> ddls() {
         return Codegen.optional(this.ddls);
+    }
+    /**
+     * The default time zone for the database. The default time zone must be a valid name
+     * from the tz database. Default value is &#34;America/Los_angeles&#34;.
+     * 
+     */
+    @Export(name="defaultTimeZone", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> defaultTimeZone;
+
+    /**
+     * @return The default time zone for the database. The default time zone must be a valid name
+     * from the tz database. Default value is &#34;America/Los_angeles&#34;.
+     * 
+     */
+    public Output<Optional<String>> defaultTimeZone() {
+        return Codegen.optional(this.defaultTimeZone);
     }
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false

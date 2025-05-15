@@ -492,7 +492,7 @@ type AuthorityConfigSubjectConfigSubject struct {
 	// The locality or city of the subject.
 	Locality *string `pulumi:"locality"`
 	// The organization of the subject.
-	Organization string `pulumi:"organization"`
+	Organization *string `pulumi:"organization"`
 	// The organizational unit of the subject.
 	OrganizationalUnit *string `pulumi:"organizationalUnit"`
 	// The postal code of the subject.
@@ -522,7 +522,7 @@ type AuthorityConfigSubjectConfigSubjectArgs struct {
 	// The locality or city of the subject.
 	Locality pulumi.StringPtrInput `pulumi:"locality"`
 	// The organization of the subject.
-	Organization pulumi.StringInput `pulumi:"organization"`
+	Organization pulumi.StringPtrInput `pulumi:"organization"`
 	// The organizational unit of the subject.
 	OrganizationalUnit pulumi.StringPtrInput `pulumi:"organizationalUnit"`
 	// The postal code of the subject.
@@ -626,8 +626,8 @@ func (o AuthorityConfigSubjectConfigSubjectOutput) Locality() pulumi.StringPtrOu
 }
 
 // The organization of the subject.
-func (o AuthorityConfigSubjectConfigSubjectOutput) Organization() pulumi.StringOutput {
-	return o.ApplyT(func(v AuthorityConfigSubjectConfigSubject) string { return v.Organization }).(pulumi.StringOutput)
+func (o AuthorityConfigSubjectConfigSubjectOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorityConfigSubjectConfigSubject) *string { return v.Organization }).(pulumi.StringPtrOutput)
 }
 
 // The organizational unit of the subject.
@@ -710,7 +710,7 @@ func (o AuthorityConfigSubjectConfigSubjectPtrOutput) Organization() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return &v.Organization
+		return v.Organization
 	}).(pulumi.StringPtrOutput)
 }
 

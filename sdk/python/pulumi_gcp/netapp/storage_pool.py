@@ -742,7 +742,7 @@ class StoragePool(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Storage Pool Create
+        ### Storage Pool Create Doc
 
         ```python
         import pulumi
@@ -849,7 +849,7 @@ class StoragePool(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Storage Pool Create
+        ### Storage Pool Create Doc
 
         ```python
         import pulumi

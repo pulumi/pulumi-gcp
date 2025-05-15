@@ -11,6 +11,7 @@ import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateDiskSourceSnapshotEnc
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,6 +21,21 @@ import javax.annotation.Nullable;
 public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionInstanceTemplateDiskArgs Empty = new RegionInstanceTemplateDiskArgs();
+
+    /**
+     * The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * 
+     */
+    @Import(name="architecture")
+    private @Nullable Output<String> architecture;
+
+    /**
+     * @return The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+     * 
+     */
+    public Optional<Output<String>> architecture() {
+        return Optional.ofNullable(this.architecture);
+    }
 
     /**
      * Whether or not the disk should be auto-deleted.
@@ -154,6 +170,21 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
      */
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
+    }
+
+    /**
+     * A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+     * 
+     */
+    @Import(name="guestOsFeatures")
+    private @Nullable Output<List<String>> guestOsFeatures;
+
+    /**
+     * @return A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+     * 
+     */
+    public Optional<Output<List<String>>> guestOsFeatures() {
+        return Optional.ofNullable(this.guestOsFeatures);
     }
 
     /**
@@ -410,6 +441,7 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
     private RegionInstanceTemplateDiskArgs() {}
 
     private RegionInstanceTemplateDiskArgs(RegionInstanceTemplateDiskArgs $) {
+        this.architecture = $.architecture;
         this.autoDelete = $.autoDelete;
         this.boot = $.boot;
         this.deviceName = $.deviceName;
@@ -417,6 +449,7 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
         this.diskName = $.diskName;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
+        this.guestOsFeatures = $.guestOsFeatures;
         this.interface_ = $.interface_;
         this.labels = $.labels;
         this.mode = $.mode;
@@ -448,6 +481,27 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
 
         public Builder(RegionInstanceTemplateDiskArgs defaults) {
             $ = new RegionInstanceTemplateDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architecture(@Nullable Output<String> architecture) {
+            $.architecture = architecture;
+            return this;
+        }
+
+        /**
+         * @param architecture The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architecture(String architecture) {
+            return architecture(Output.of(architecture));
         }
 
         /**
@@ -625,6 +679,37 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
          */
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(@Nullable Output<List<String>> guestOsFeatures) {
+            $.guestOsFeatures = guestOsFeatures;
+            return this;
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(List<String> guestOsFeatures) {
+            return guestOsFeatures(Output.of(guestOsFeatures));
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system. Applicable only for bootable images. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(String... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
         }
 
         /**

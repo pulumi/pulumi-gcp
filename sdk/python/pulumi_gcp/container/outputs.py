@@ -7210,7 +7210,7 @@ class ClusterNodeConfig(dict):
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
-        :param 'ClusterNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        :param 'ClusterNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         :param 'ClusterNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -7713,7 +7713,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="windowsNodeConfig")
     def windows_node_config(self) -> Optional['outputs.ClusterNodeConfigWindowsNodeConfig']:
         """
-        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         """
         return pulumi.get(self, "windows_node_config")
 
@@ -10551,7 +10551,7 @@ class ClusterNodePoolNodeConfig(dict):
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
-        :param 'ClusterNodePoolNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        :param 'ClusterNodePoolNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         :param 'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -11054,7 +11054,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="windowsNodeConfig")
     def windows_node_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigWindowsNodeConfig']:
         """
-        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
         """
         return pulumi.get(self, "windows_node_config")
 

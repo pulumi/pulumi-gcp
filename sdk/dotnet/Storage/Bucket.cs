@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto_expire = new Gcp.Storage.Bucket("auto-expire", new()
+    ///     var no_public_access = new Gcp.Storage.Bucket("no-public-access", new()
     ///     {
     ///         Name = "no-public-access-bucket",
     ///         Location = "US",
@@ -184,7 +184,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auto_expire = new Gcp.Storage.Bucket("auto-expire", new()
+    ///     var hns_enabled = new Gcp.Storage.Bucket("hns-enabled", new()
     ///     {
     ///         Name = "hns-enabled-bucket",
     ///         Location = "US",

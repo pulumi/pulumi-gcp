@@ -2259,6 +2259,10 @@ if not MYPY:
         The TLS Common Name of the certificate.
         Structure is documented below.
         """
+        enforce: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, TLS is strictly enforced.
+        """
         ignore_validation_errors: NotRequired[pulumi.Input[builtins.bool]]
         """
         If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
@@ -2289,6 +2293,7 @@ class TargetServerSSlInfoArgs:
                  ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  client_auth_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  common_name: Optional[pulumi.Input['TargetServerSSlInfoCommonNameArgs']] = None,
+                 enforce: Optional[pulumi.Input[builtins.bool]] = None,
                  ignore_validation_errors: Optional[pulumi.Input[builtins.bool]] = None,
                  key_alias: Optional[pulumi.Input[builtins.str]] = None,
                  key_store: Optional[pulumi.Input[builtins.str]] = None,
@@ -2300,6 +2305,7 @@ class TargetServerSSlInfoArgs:
         :param pulumi.Input[builtins.bool] client_auth_enabled: Enables two-way TLS.
         :param pulumi.Input['TargetServerSSlInfoCommonNameArgs'] common_name: The TLS Common Name of the certificate.
                Structure is documented below.
+        :param pulumi.Input[builtins.bool] enforce: If true, TLS is strictly enforced.
         :param pulumi.Input[builtins.bool] ignore_validation_errors: If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
         :param pulumi.Input[builtins.str] key_alias: Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
         :param pulumi.Input[builtins.str] key_store: Required if clientAuthEnabled is true. The resource ID of the keystore.
@@ -2313,6 +2319,8 @@ class TargetServerSSlInfoArgs:
             pulumi.set(__self__, "client_auth_enabled", client_auth_enabled)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
         if ignore_validation_errors is not None:
             pulumi.set(__self__, "ignore_validation_errors", ignore_validation_errors)
         if key_alias is not None:
@@ -2372,6 +2380,18 @@ class TargetServerSSlInfoArgs:
     @common_name.setter
     def common_name(self, value: Optional[pulumi.Input['TargetServerSSlInfoCommonNameArgs']]):
         pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, TLS is strictly enforced.
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enforce", value)
 
     @property
     @pulumi.getter(name="ignoreValidationErrors")

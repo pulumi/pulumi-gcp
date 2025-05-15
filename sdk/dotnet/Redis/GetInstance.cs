@@ -205,7 +205,6 @@ namespace Pulumi.Gcp.Redis
         public readonly string ReservedIpRange;
         public readonly string SecondaryIpRange;
         public readonly ImmutableArray<Outputs.GetInstanceServerCaCertResult> ServerCaCerts;
-        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string Tier;
         public readonly string TransitEncryptionMode;
 
@@ -281,8 +280,6 @@ namespace Pulumi.Gcp.Redis
 
             ImmutableArray<Outputs.GetInstanceServerCaCertResult> serverCaCerts,
 
-            ImmutableDictionary<string, string> tags,
-
             string tier,
 
             string transitEncryptionMode)
@@ -322,7 +319,6 @@ namespace Pulumi.Gcp.Redis
             ReservedIpRange = reservedIpRange;
             SecondaryIpRange = secondaryIpRange;
             ServerCaCerts = serverCaCerts;
-            Tags = tags;
             Tier = tier;
             TransitEncryptionMode = transitEncryptionMode;
         }

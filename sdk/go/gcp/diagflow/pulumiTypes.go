@@ -2327,7 +2327,7 @@ func (o CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput) Uri() pulumi.S
 }
 
 type CxFlowAdvancedSettingsDtmfSettings struct {
-	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 	Enabled *bool `pulumi:"enabled"`
 	// The digit that terminates a DTMF digit sequence.
 	FinishDigit *string `pulumi:"finishDigit"`
@@ -2347,7 +2347,7 @@ type CxFlowAdvancedSettingsDtmfSettingsInput interface {
 }
 
 type CxFlowAdvancedSettingsDtmfSettingsArgs struct {
-	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The digit that terminates a DTMF digit sequence.
 	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
@@ -2432,7 +2432,7 @@ func (o CxFlowAdvancedSettingsDtmfSettingsOutput) ToCxFlowAdvancedSettingsDtmfSe
 	}).(CxFlowAdvancedSettingsDtmfSettingsPtrOutput)
 }
 
-// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 func (o CxFlowAdvancedSettingsDtmfSettingsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowAdvancedSettingsDtmfSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -2471,7 +2471,7 @@ func (o CxFlowAdvancedSettingsDtmfSettingsPtrOutput) Elem() CxFlowAdvancedSettin
 	}).(CxFlowAdvancedSettingsDtmfSettingsOutput)
 }
 
-// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 func (o CxFlowAdvancedSettingsDtmfSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxFlowAdvancedSettingsDtmfSettings) *bool {
 		if v == nil {
@@ -2683,7 +2683,7 @@ type CxFlowAdvancedSettingsSpeechSettings struct {
 	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
 	Models map[string]string `pulumi:"models"`
 	// Timeout before detecting no speech.
-	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
 	NoSpeechTimeout *string `pulumi:"noSpeechTimeout"`
 	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
@@ -2707,7 +2707,7 @@ type CxFlowAdvancedSettingsSpeechSettingsArgs struct {
 	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
 	Models pulumi.StringMapInput `pulumi:"models"`
 	// Timeout before detecting no speech.
-	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
 	NoSpeechTimeout pulumi.StringPtrInput `pulumi:"noSpeechTimeout"`
 	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
@@ -2802,7 +2802,7 @@ func (o CxFlowAdvancedSettingsSpeechSettingsOutput) Models() pulumi.StringMapOut
 }
 
 // Timeout before detecting no speech.
-// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
 func (o CxFlowAdvancedSettingsSpeechSettingsOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowAdvancedSettingsSpeechSettings) *string { return v.NoSpeechTimeout }).(pulumi.StringPtrOutput)
 }
@@ -2858,7 +2858,7 @@ func (o CxFlowAdvancedSettingsSpeechSettingsPtrOutput) Models() pulumi.StringMap
 }
 
 // Timeout before detecting no speech.
-// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
 func (o CxFlowAdvancedSettingsSpeechSettingsPtrOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlowAdvancedSettingsSpeechSettings) *string {
 		if v == nil {
@@ -3381,6 +3381,7 @@ type CxFlowEventHandlerTriggerFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess *CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -3388,20 +3389,26 @@ type CxFlowEventHandlerTriggerFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff *CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload *string `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall *CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text *CxFlowEventHandlerTriggerFulfillmentMessageText `pulumi:"text"`
 }
@@ -3425,6 +3432,7 @@ type CxFlowEventHandlerTriggerFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -3432,20 +3440,26 @@ type CxFlowEventHandlerTriggerFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
 }
@@ -3511,6 +3525,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) Channel() pulumi.Stri
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 //   - In a webhook response when you determine that you handled the customer issue.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ConversationSuccess() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess {
@@ -3523,6 +3538,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ConversationSuccess()
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 //   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
@@ -3531,6 +3547,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) LiveAgentHandoff() Cx
 }
 
 // A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) OutputAudioText() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText {
@@ -3538,12 +3555,14 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) OutputAudioText() CxF
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-// A custom, platform-specific payload.
+// Returns a response containing a custom, platform-specific payload.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an audio clip to be played by the client as part of the response.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) PlayAudio() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
@@ -3552,6 +3571,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) PlayAudio() CxFlowEve
 }
 
 // Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
@@ -3560,6 +3580,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) TelephonyTransferCall
 }
 
 // The text response message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) Text() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageText {
@@ -3866,8 +3887,10 @@ type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml *string `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text *string `pulumi:"text"`
 }
 
@@ -3887,8 +3910,10 @@ type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 }
 
@@ -3978,11 +4003,13 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) AllowP
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
@@ -4023,6 +4050,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) All
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -4033,6 +4061,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssm
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -4045,6 +4074,8 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Tex
 type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -4064,6 +4095,8 @@ type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioInput interface {
 type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -4148,6 +4181,8 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowEven
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
@@ -4183,6 +4218,8 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() Cx
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -4343,7 +4380,8 @@ type CxFlowEventHandlerTriggerFulfillmentMessageText struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts []string `pulumi:"texts"`
 }
 
@@ -4362,7 +4400,8 @@ type CxFlowEventHandlerTriggerFulfillmentMessageTextArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts pulumi.StringArrayInput `pulumi:"texts"`
 }
 
@@ -4449,7 +4488,8 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) AllowPlaybackInte
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
 }
@@ -4489,7 +4529,8 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackI
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageText) []string {
 		if v == nil {
@@ -4603,6 +4644,3423 @@ func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowEventHandlerTriggerFulfillmentSetParameterAction {
 		return vs[0].([]CxFlowEventHandlerTriggerFulfillmentSetParameterAction)[vs[1].(int)]
 	}).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput)
+}
+
+type CxFlowKnowledgeConnectorSettings struct {
+	// Optional. List of related data store connections.
+	// Structure is documented below.
+	DataStoreConnections []CxFlowKnowledgeConnectorSettingsDataStoreConnection `pulumi:"dataStoreConnections"`
+	// Whether Knowledge Connector is enabled or not.
+	Enabled *bool `pulumi:"enabled"`
+	// The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+	// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+	TargetFlow *string `pulumi:"targetFlow"`
+	// The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+	// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+	// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+	TargetPage *string `pulumi:"targetPage"`
+	// The fulfillment to be triggered.
+	// When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+	// Structure is documented below.
+	TriggerFulfillment *CxFlowKnowledgeConnectorSettingsTriggerFulfillment `pulumi:"triggerFulfillment"`
+}
+
+// CxFlowKnowledgeConnectorSettingsInput is an input type that accepts CxFlowKnowledgeConnectorSettingsArgs and CxFlowKnowledgeConnectorSettingsOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsArgs{...}
+type CxFlowKnowledgeConnectorSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsOutput() CxFlowKnowledgeConnectorSettingsOutput
+	ToCxFlowKnowledgeConnectorSettingsOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsArgs struct {
+	// Optional. List of related data store connections.
+	// Structure is documented below.
+	DataStoreConnections CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayInput `pulumi:"dataStoreConnections"`
+	// Whether Knowledge Connector is enabled or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+	// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+	TargetFlow pulumi.StringPtrInput `pulumi:"targetFlow"`
+	// The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+	// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+	// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+	TargetPage pulumi.StringPtrInput `pulumi:"targetPage"`
+	// The fulfillment to be triggered.
+	// When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+	// Structure is documented below.
+	TriggerFulfillment CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrInput `pulumi:"triggerFulfillment"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsArgs) ToCxFlowKnowledgeConnectorSettingsOutput() CxFlowKnowledgeConnectorSettingsOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsArgs) ToCxFlowKnowledgeConnectorSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsArgs) ToCxFlowKnowledgeConnectorSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsArgs) ToCxFlowKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsOutput).ToCxFlowKnowledgeConnectorSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsArgs, CxFlowKnowledgeConnectorSettingsPtr and CxFlowKnowledgeConnectorSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsPtrType CxFlowKnowledgeConnectorSettingsArgs
+
+func CxFlowKnowledgeConnectorSettingsPtr(v *CxFlowKnowledgeConnectorSettingsArgs) CxFlowKnowledgeConnectorSettingsPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsOutput) ToCxFlowKnowledgeConnectorSettingsOutput() CxFlowKnowledgeConnectorSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsOutput) ToCxFlowKnowledgeConnectorSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsOutput) ToCxFlowKnowledgeConnectorSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsOutput) ToCxFlowKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettings) *CxFlowKnowledgeConnectorSettings {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsPtrOutput)
+}
+
+// Optional. List of related data store connections.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsOutput) DataStoreConnections() CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettings) []CxFlowKnowledgeConnectorSettingsDataStoreConnection {
+		return v.DataStoreConnections
+	}).(CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput)
+}
+
+// Whether Knowledge Connector is enabled or not.
+func (o CxFlowKnowledgeConnectorSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+func (o CxFlowKnowledgeConnectorSettingsOutput) TargetFlow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettings) *string { return v.TargetFlow }).(pulumi.StringPtrOutput)
+}
+
+// The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+func (o CxFlowKnowledgeConnectorSettingsOutput) TargetPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettings) *string { return v.TargetPage }).(pulumi.StringPtrOutput)
+}
+
+// The fulfillment to be triggered.
+// When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsOutput) TriggerFulfillment() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
+		return v.TriggerFulfillment
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettings) CxFlowKnowledgeConnectorSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettings
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsOutput)
+}
+
+// Optional. List of related data store connections.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsPtrOutput) DataStoreConnections() CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettings) []CxFlowKnowledgeConnectorSettingsDataStoreConnection {
+		if v == nil {
+			return nil
+		}
+		return v.DataStoreConnections
+	}).(CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput)
+}
+
+// Whether Knowledge Connector is enabled or not.
+func (o CxFlowKnowledgeConnectorSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+func (o CxFlowKnowledgeConnectorSettingsPtrOutput) TargetFlow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetFlow
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+func (o CxFlowKnowledgeConnectorSettingsPtrOutput) TargetPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetPage
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fulfillment to be triggered.
+// When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsPtrOutput) TriggerFulfillment() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
+		if v == nil {
+			return nil
+		}
+		return v.TriggerFulfillment
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsDataStoreConnection struct {
+	// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+	DataStore *string `pulumi:"dataStore"`
+	// The type of the connected data store.
+	// * PUBLIC_WEB: A data store that contains public web content.
+	// * UNSTRUCTURED: A data store that contains unstructured private data.
+	// * STRUCTURED: A data store that contains structured data (for example FAQ).
+	//   Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+	DataStoreType *string `pulumi:"dataStoreType"`
+	// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+	// * DOCUMENTS: Documents are processed as documents.
+	// * CHUNKS: Documents are converted to chunks.
+	//   Possible values are: `DOCUMENTS`, `CHUNKS`.
+	DocumentProcessingMode *string `pulumi:"documentProcessingMode"`
+}
+
+// CxFlowKnowledgeConnectorSettingsDataStoreConnectionInput is an input type that accepts CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs and CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsDataStoreConnectionInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs{...}
+type CxFlowKnowledgeConnectorSettingsDataStoreConnectionInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput() CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput
+	ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs struct {
+	// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+	DataStore pulumi.StringPtrInput `pulumi:"dataStore"`
+	// The type of the connected data store.
+	// * PUBLIC_WEB: A data store that contains public web content.
+	// * UNSTRUCTURED: A data store that contains unstructured private data.
+	// * STRUCTURED: A data store that contains structured data (for example FAQ).
+	//   Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+	DataStoreType pulumi.StringPtrInput `pulumi:"dataStoreType"`
+	// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+	// * DOCUMENTS: Documents are processed as documents.
+	// * CHUNKS: Documents are converted to chunks.
+	//   Possible values are: `DOCUMENTS`, `CHUNKS`.
+	DocumentProcessingMode pulumi.StringPtrInput `pulumi:"documentProcessingMode"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsDataStoreConnection)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs) ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput() CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs) ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput)
+}
+
+// CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayInput is an input type that accepts CxFlowKnowledgeConnectorSettingsDataStoreConnectionArray and CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsDataStoreConnectionArray{ CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs{...} }
+type CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput() CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput
+	ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsDataStoreConnectionArray []CxFlowKnowledgeConnectorSettingsDataStoreConnectionInput
+
+func (CxFlowKnowledgeConnectorSettingsDataStoreConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsDataStoreConnection)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsDataStoreConnectionArray) ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput() CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsDataStoreConnectionArray) ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsDataStoreConnection)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput) ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput() CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput) ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return o
+}
+
+// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+func (o CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput) DataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsDataStoreConnection) *string { return v.DataStore }).(pulumi.StringPtrOutput)
+}
+
+// The type of the connected data store.
+//   - PUBLIC_WEB: A data store that contains public web content.
+//   - UNSTRUCTURED: A data store that contains unstructured private data.
+//   - STRUCTURED: A data store that contains structured data (for example FAQ).
+//     Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+func (o CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput) DataStoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsDataStoreConnection) *string { return v.DataStoreType }).(pulumi.StringPtrOutput)
+}
+
+// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+//   - DOCUMENTS: Documents are processed as documents.
+//   - CHUNKS: Documents are converted to chunks.
+//     Possible values are: `DOCUMENTS`, `CHUNKS`.
+func (o CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput) DocumentProcessingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsDataStoreConnection) *string { return v.DocumentProcessingMode }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsDataStoreConnection)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput) ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput() CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput) ToCxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput) Index(i pulumi.IntInput) CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowKnowledgeConnectorSettingsDataStoreConnection {
+		return vs[0].([]CxFlowKnowledgeConnectorSettingsDataStoreConnection)[vs[1].(int)]
+	}).(CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillment struct {
+	// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+	// DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings `pulumi:"advancedSettings"`
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase `pulumi:"conditionalCases"`
+	// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+	EnableGenerativeFallback *bool `pulumi:"enableGenerativeFallback"`
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction `pulumi:"setParameterActions"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag *string `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook *string `pulumi:"webhook"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs struct {
+	// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+	// DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput `pulumi:"advancedSettings"`
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
+	// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+	EnableGenerativeFallback pulumi.BoolPtrInput `pulumi:"enableGenerativeFallback"`
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook pulumi.StringPtrInput `pulumi:"webhook"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillment)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillment)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput)
+}
+
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+// DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) AdvancedSettings() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+		return v.AdvancedSettings
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput)
+}
+
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) ConditionalCases() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillment) []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
+		return v.ConditionalCases
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) EnableGenerativeFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *bool { return v.EnableGenerativeFallback }).(pulumi.BoolPtrOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) Messages() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillment) []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage {
+		return v.Messages
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) SetParameterActions() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillment) []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction {
+		return v.SetParameterActions
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *string { return v.Webhook }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillment) CxFlowKnowledgeConnectorSettingsTriggerFulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillment
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput)
+}
+
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+// DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) AdvancedSettings() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedSettings
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput)
+}
+
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ConditionalCases() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillment) []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionalCases
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) EnableGenerativeFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGenerativeFallback
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) Messages() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillment) []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage {
+		if v == nil {
+			return nil
+		}
+		return v.Messages
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnPartialResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) SetParameterActions() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillment) []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction {
+		if v == nil {
+			return nil
+		}
+		return v.SetParameterActions
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Webhook
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings struct {
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings `pulumi:"dtmfSettings"`
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+	// * Agent level
+	//   Structure is documented below.
+	LoggingSettings *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings `pulumi:"loggingSettings"`
+	// Settings for speech to text detection. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	SpeechSettings *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings `pulumi:"speechSettings"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs struct {
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput `pulumi:"dtmfSettings"`
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+	// * Agent level
+	//   Structure is documented below.
+	LoggingSettings CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput `pulumi:"loggingSettings"`
+	// Settings for speech to text detection. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	SpeechSettings CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput `pulumi:"speechSettings"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) DtmfSettings() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+		return v.DtmfSettings
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+//   - Agent level
+//     Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) LoggingSettings() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+		return v.LoggingSettings
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Settings for speech to text detection. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) SpeechSettings() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+		return v.SpeechSettings
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) DtmfSettings() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+		if v == nil {
+			return nil
+		}
+		return v.DtmfSettings
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+//   - Agent level
+//     Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) LoggingSettings() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingSettings
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Settings for speech to text detection. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) SpeechSettings() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SpeechSettings
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled *bool `pulumi:"enabled"`
+	// Endpoint timeout setting for matching dtmf input to regex.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	EndpointingTimeoutDuration *string `pulumi:"endpointingTimeoutDuration"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit *string `pulumi:"finishDigit"`
+	// Interdigit timeout setting for matching dtmf input to regex.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	InterdigitTimeoutDuration *string `pulumi:"interdigitTimeoutDuration"`
+	// Max length of DTMF digits.
+	MaxDigits *int `pulumi:"maxDigits"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Endpoint timeout setting for matching dtmf input to regex.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	EndpointingTimeoutDuration pulumi.StringPtrInput `pulumi:"endpointingTimeoutDuration"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
+	// Interdigit timeout setting for matching dtmf input to regex.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	InterdigitTimeoutDuration pulumi.StringPtrInput `pulumi:"interdigitTimeoutDuration"`
+	// Max length of DTMF digits.
+	MaxDigits pulumi.IntPtrInput `pulumi:"maxDigits"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Endpoint timeout setting for matching dtmf input to regex.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) EndpointingTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		return v.EndpointingTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interdigit timeout setting for matching dtmf input to regex.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) InterdigitTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		return v.InterdigitTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *int {
+		return v.MaxDigits
+	}).(pulumi.IntPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Endpoint timeout setting for matching dtmf input to regex.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) EndpointingTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointingTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interdigit timeout setting for matching dtmf input to regex.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) InterdigitTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InterdigitTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDigits
+	}).(pulumi.IntPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings struct {
+	// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+	EnableConsentBasedRedaction *bool `pulumi:"enableConsentBasedRedaction"`
+	// Enables DF Interaction logging.
+	EnableInteractionLogging *bool `pulumi:"enableInteractionLogging"`
+	// Enables Google Cloud Logging.
+	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs struct {
+	// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+	EnableConsentBasedRedaction pulumi.BoolPtrInput `pulumi:"enableConsentBasedRedaction"`
+	// Enables DF Interaction logging.
+	EnableInteractionLogging pulumi.BoolPtrInput `pulumi:"enableInteractionLogging"`
+	// Enables Google Cloud Logging.
+	EnableStackdriverLogging pulumi.BoolPtrInput `pulumi:"enableStackdriverLogging"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) EnableConsentBasedRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		return v.EnableConsentBasedRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables DF Interaction logging.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		return v.EnableInteractionLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables Google Cloud Logging.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput)
+}
+
+// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) EnableConsentBasedRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConsentBasedRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables DF Interaction logging.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInteractionLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables Google Cloud Logging.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings struct {
+	// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+	EndpointerSensitivity *int `pulumi:"endpointerSensitivity"`
+	// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+	Models map[string]string `pulumi:"models"`
+	// Timeout before detecting no speech.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	NoSpeechTimeout *string `pulumi:"noSpeechTimeout"`
+	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs struct {
+	// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+	EndpointerSensitivity pulumi.IntPtrInput `pulumi:"endpointerSensitivity"`
+	// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+	Models pulumi.StringMapInput `pulumi:"models"`
+	// Timeout before detecting no speech.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	NoSpeechTimeout pulumi.StringPtrInput `pulumi:"noSpeechTimeout"`
+	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) EndpointerSensitivity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *int {
+		return v.EndpointerSensitivity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) Models() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) map[string]string {
+		return v.Models
+	}).(pulumi.StringMapOutput)
+}
+
+// Timeout before detecting no speech.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *string {
+		return v.NoSpeechTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *bool {
+		return v.UseTimeoutBasedEndpointing
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput)
+}
+
+// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) EndpointerSensitivity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointerSensitivity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) Models() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Models
+	}).(pulumi.StringMapOutput)
+}
+
+// Timeout before detecting no speech.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NoSpeechTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTimeoutBasedEndpointing
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases *string `pulumi:"cases"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases pulumi.StringPtrInput `pulumi:"cases"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray{ CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{...} }
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput) Cases() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase) *string { return v.Cases }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
+		return vs[0].([]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)[vs[1].(int)]
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	//   Structure is documented below.
+	ConversationSuccess *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
+	// (Output)
+	// This type has no fields.
+	// Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	EndInteractions []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction `pulumi:"endInteractions"`
+	// This type has no fields.
+	// Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+	// Otherwise, the info card response is skipped.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	KnowledgeInfoCard *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard `pulumi:"knowledgeInfoCard"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	//   Structure is documented below.
+	LiveAgentHandoff *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
+	// (Output)
+	// Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	MixedAudios []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio `pulumi:"mixedAudios"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	OutputAudioText *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	Payload *string `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	PlayAudio *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	TelephonyTransferCall *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
+	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	Text *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText `pulumi:"text"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	//   Structure is documented below.
+	ConversationSuccess CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
+	// (Output)
+	// This type has no fields.
+	// Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	EndInteractions CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput `pulumi:"endInteractions"`
+	// This type has no fields.
+	// Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+	// Otherwise, the info card response is skipped.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	KnowledgeInfoCard CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput `pulumi:"knowledgeInfoCard"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	//   Structure is documented below.
+	LiveAgentHandoff CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
+	// (Output)
+	// Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	MixedAudios CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput `pulumi:"mixedAudios"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	OutputAudioText CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	PlayAudio CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	TelephonyTransferCall CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
+	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	Text CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArray and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArray{ CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{...} }
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArray []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageInput
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return o
+}
+
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer issue.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+//     Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) ConversationSuccess() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess {
+		return v.ConversationSuccess
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// (Output)
+// This type has no fields.
+// Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) EndInteractions() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction {
+		return v.EndInteractions
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput)
+}
+
+// This type has no fields.
+// Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+// Otherwise, the info card response is skipped.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) KnowledgeInfoCard() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard {
+		return v.KnowledgeInfoCard
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput)
+}
+
+// Indicates that the conversation should be handed off to a live agent.
+// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+//     Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff {
+		return v.LiveAgentHandoff
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// (Output)
+// Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) MixedAudios() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
+		return v.MixedAudios
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput)
+}
+
+// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) OutputAudioText() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText {
+		return v.OutputAudioText
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// Returns a response containing a custom, platform-specific payload.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an audio clip to be played by the client as part of the response.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) PlayAudio() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
+		return v.PlayAudio
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// The text response message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) Text() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
+		return v.Text
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage {
+		return vs[0].([]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage)[vs[1].(int)]
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess) *string {
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction struct {
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs struct {
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray{ CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs{...} }
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return o
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput) Index(i pulumi.IntInput) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction {
+		return vs[0].([]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)[vs[1].(int)]
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard struct {
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs struct {
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio struct {
+	// Segments this audio response is composed of.
+	Segments []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment `pulumi:"segments"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs struct {
+	// Segments this audio response is composed of.
+	Segments CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput `pulumi:"segments"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray{ CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs{...} }
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return o
+}
+
+// Segments this audio response is composed of.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput) Segments() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio) []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment {
+		return v.Segments
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput) Index(i pulumi.IntInput) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
+		return vs[0].([]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)[vs[1].(int)]
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment struct {
+	// (Output)
+	// Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+	// A base64-encoded string.
+	// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+	Audio *string `pulumi:"audio"`
+	// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+	// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+	Uri *string `pulumi:"uri"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs struct {
+	// (Output)
+	// Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+	// A base64-encoded string.
+	// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+	Audio pulumi.StringPtrInput `pulumi:"audio"`
+	// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+	// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray{ CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs{...} }
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return o
+}
+
+// (Output)
+// Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+// A base64-encoded string.
+// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) Audio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment) *string {
+		return v.Audio
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput) Index(i pulumi.IntInput) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment {
+		return vs[0].([]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)[vs[1].(int)]
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+	Ssml *string `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+	Text *string `pulumi:"text"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *string {
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *string {
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) string { return v.AudioUri }).(pulumi.StringOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AudioUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall) string {
+		return v.PhoneNumber
+	}).(pulumi.StringOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
+	Texts []string `pulumi:"texts"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
+	Texts pulumi.StringArrayInput `pulumi:"texts"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput)
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput).ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs, CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtr and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput` via:
+//
+//	        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput
+}
+
+type cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs
+
+func CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtr(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput {
+	return (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType)(v)
+}
+
+func (*cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText) *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
+		return &v
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText
+		return ret
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Texts
+	}).(pulumi.StringArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction struct {
+	// Display name of the parameter.
+	Parameter *string `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs{...}
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs struct {
+	// Display name of the parameter.
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput)
+}
+
+// CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray and CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput values.
+// You can construct a concrete instance of `CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput` via:
+//
+//	CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{ CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs{...} }
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput
+	ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray []CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return i.ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+// Display name of the parameter.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction) *string {
+		return v.Parameter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The new JSON-encoded value of the parameter. A null value clears the parameter.
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput() CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction {
+		return vs[0].([]CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)[vs[1].(int)]
+	}).(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput)
 }
 
 type CxFlowNluSettings struct {
@@ -5326,6 +8784,7 @@ type CxFlowTransitionRouteTriggerFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess *CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -5333,20 +8792,26 @@ type CxFlowTransitionRouteTriggerFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff *CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload *string `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall *CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text *CxFlowTransitionRouteTriggerFulfillmentMessageText `pulumi:"text"`
 }
@@ -5370,6 +8835,7 @@ type CxFlowTransitionRouteTriggerFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -5377,20 +8843,26 @@ type CxFlowTransitionRouteTriggerFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
 }
@@ -5456,6 +8928,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) Channel() pulumi.S
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 //   - In a webhook response when you determine that you handled the customer issue.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ConversationSuccess() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess {
@@ -5468,6 +8941,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ConversationSucces
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 //   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
@@ -5476,6 +8950,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) LiveAgentHandoff()
 }
 
 // A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) OutputAudioText() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText {
@@ -5483,12 +8958,14 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) OutputAudioText() 
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-// A custom, platform-specific payload.
+// Returns a response containing a custom, platform-specific payload.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an audio clip to be played by the client as part of the response.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) PlayAudio() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
@@ -5497,6 +8974,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) PlayAudio() CxFlow
 }
 
 // Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
@@ -5505,6 +8983,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) TelephonyTransferC
 }
 
 // The text response message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) Text() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageText {
@@ -5811,8 +9290,10 @@ type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml *string `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text *string `pulumi:"text"`
 }
 
@@ -5832,8 +9313,10 @@ type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 }
 
@@ -5923,11 +9406,13 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) All
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
@@ -5968,6 +9453,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -5978,6 +9464,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -5990,6 +9477,8 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -6009,6 +9498,8 @@ type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioInput interface {
 type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -6093,6 +9584,8 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowT
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -6130,6 +9623,8 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem()
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -6292,7 +9787,8 @@ type CxFlowTransitionRouteTriggerFulfillmentMessageText struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts []string `pulumi:"texts"`
 }
 
@@ -6311,7 +9807,8 @@ type CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts pulumi.StringArrayInput `pulumi:"texts"`
 }
 
@@ -6398,7 +9895,8 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) AllowPlaybackI
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
 }
@@ -6438,7 +9936,8 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) AllowPlayba
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageText) []string {
 		if v == nil {
@@ -7087,7 +10586,7 @@ func (o CxPageAdvancedSettingsPtrOutput) DtmfSettings() CxPageAdvancedSettingsDt
 }
 
 type CxPageAdvancedSettingsDtmfSettings struct {
-	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 	Enabled *bool `pulumi:"enabled"`
 	// The digit that terminates a DTMF digit sequence.
 	FinishDigit *string `pulumi:"finishDigit"`
@@ -7107,7 +10606,7 @@ type CxPageAdvancedSettingsDtmfSettingsInput interface {
 }
 
 type CxPageAdvancedSettingsDtmfSettingsArgs struct {
-	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The digit that terminates a DTMF digit sequence.
 	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
@@ -7192,7 +10691,7 @@ func (o CxPageAdvancedSettingsDtmfSettingsOutput) ToCxPageAdvancedSettingsDtmfSe
 	}).(CxPageAdvancedSettingsDtmfSettingsPtrOutput)
 }
 
-// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 func (o CxPageAdvancedSettingsDtmfSettingsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageAdvancedSettingsDtmfSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -7231,7 +10730,7 @@ func (o CxPageAdvancedSettingsDtmfSettingsPtrOutput) Elem() CxPageAdvancedSettin
 	}).(CxPageAdvancedSettingsDtmfSettingsOutput)
 }
 
-// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 func (o CxPageAdvancedSettingsDtmfSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageAdvancedSettingsDtmfSettings) *bool {
 		if v == nil {
@@ -7615,6 +11114,7 @@ type CxPageEntryFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess *CxPageEntryFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -7622,20 +11122,26 @@ type CxPageEntryFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff *CxPageEntryFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText *CxPageEntryFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload *string `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio *CxPageEntryFulfillmentMessagePlayAudio `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall *CxPageEntryFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text *CxPageEntryFulfillmentMessageText `pulumi:"text"`
 }
@@ -7659,6 +11165,7 @@ type CxPageEntryFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess CxPageEntryFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -7666,20 +11173,26 @@ type CxPageEntryFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff CxPageEntryFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText CxPageEntryFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio CxPageEntryFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall CxPageEntryFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text CxPageEntryFulfillmentMessageTextPtrInput `pulumi:"text"`
 }
@@ -7745,6 +11258,7 @@ func (o CxPageEntryFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 //   - In a webhook response when you determine that you handled the customer issue.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageEntryFulfillmentMessageOutput) ConversationSuccess() CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessageConversationSuccess {
@@ -7757,6 +11271,7 @@ func (o CxPageEntryFulfillmentMessageOutput) ConversationSuccess() CxPageEntryFu
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 //   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageEntryFulfillmentMessageOutput) LiveAgentHandoff() CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessageLiveAgentHandoff {
@@ -7765,6 +11280,7 @@ func (o CxPageEntryFulfillmentMessageOutput) LiveAgentHandoff() CxPageEntryFulfi
 }
 
 // A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageEntryFulfillmentMessageOutput) OutputAudioText() CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessageOutputAudioText {
@@ -7772,18 +11288,21 @@ func (o CxPageEntryFulfillmentMessageOutput) OutputAudioText() CxPageEntryFulfil
 	}).(CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-// A custom, platform-specific payload.
+// Returns a response containing a custom, platform-specific payload.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 func (o CxPageEntryFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an audio clip to be played by the client as part of the response.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageEntryFulfillmentMessageOutput) PlayAudio() CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessagePlayAudio { return v.PlayAudio }).(CxPageEntryFulfillmentMessagePlayAudioPtrOutput)
 }
 
 // Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageEntryFulfillmentMessageOutput) TelephonyTransferCall() CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessageTelephonyTransferCall {
@@ -7792,6 +11311,7 @@ func (o CxPageEntryFulfillmentMessageOutput) TelephonyTransferCall() CxPageEntry
 }
 
 // The text response message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageEntryFulfillmentMessageOutput) Text() CxPageEntryFulfillmentMessageTextPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessageText { return v.Text }).(CxPageEntryFulfillmentMessageTextPtrOutput)
@@ -8096,8 +11616,10 @@ type CxPageEntryFulfillmentMessageOutputAudioText struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml *string `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text *string `pulumi:"text"`
 }
 
@@ -8117,8 +11639,10 @@ type CxPageEntryFulfillmentMessageOutputAudioTextArgs struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 }
 
@@ -8206,11 +11730,13 @@ func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterru
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
@@ -8251,6 +11777,7 @@ func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInte
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -8261,6 +11788,7 @@ func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.Str
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -8273,6 +11801,8 @@ func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.Str
 type CxPageEntryFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -8292,6 +11822,8 @@ type CxPageEntryFulfillmentMessagePlayAudioInput interface {
 type CxPageEntryFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -8376,6 +11908,8 @@ func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToCxPageEntryFulfillmentMe
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageEntryFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessagePlayAudio) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
@@ -8411,6 +11945,8 @@ func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageEntryFulfi
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageEntryFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -8571,7 +12107,8 @@ type CxPageEntryFulfillmentMessageText struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts []string `pulumi:"texts"`
 }
 
@@ -8590,7 +12127,8 @@ type CxPageEntryFulfillmentMessageTextArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts pulumi.StringArrayInput `pulumi:"texts"`
 }
 
@@ -8677,7 +12215,8 @@ func (o CxPageEntryFulfillmentMessageTextOutput) AllowPlaybackInterruption() pul
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageEntryFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
 }
@@ -8717,7 +12256,8 @@ func (o CxPageEntryFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageEntryFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageText) []string {
 		if v == nil {
@@ -9336,6 +12876,7 @@ type CxPageEventHandlerTriggerFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess *CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -9343,20 +12884,26 @@ type CxPageEventHandlerTriggerFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff *CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload *string `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall *CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text *CxPageEventHandlerTriggerFulfillmentMessageText `pulumi:"text"`
 }
@@ -9380,6 +12927,7 @@ type CxPageEventHandlerTriggerFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -9387,20 +12935,26 @@ type CxPageEventHandlerTriggerFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text CxPageEventHandlerTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
 }
@@ -9466,6 +13020,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) Channel() pulumi.Stri
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 //   - In a webhook response when you determine that you handled the customer issue.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ConversationSuccess() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess {
@@ -9478,6 +13033,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ConversationSuccess()
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 //   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
@@ -9486,6 +13042,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) LiveAgentHandoff() Cx
 }
 
 // A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) OutputAudioText() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText {
@@ -9493,12 +13050,14 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) OutputAudioText() CxP
 	}).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-// A custom, platform-specific payload.
+// Returns a response containing a custom, platform-specific payload.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an audio clip to be played by the client as part of the response.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) PlayAudio() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio {
@@ -9507,6 +13066,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) PlayAudio() CxPageEve
 }
 
 // Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
@@ -9515,6 +13075,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) TelephonyTransferCall
 }
 
 // The text response message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) Text() CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessageText {
@@ -9821,8 +13382,10 @@ type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml *string `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text *string `pulumi:"text"`
 }
 
@@ -9842,8 +13405,10 @@ type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 }
 
@@ -9933,11 +13498,13 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) AllowP
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
@@ -9978,6 +13545,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) All
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -9988,6 +13556,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssm
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -10000,6 +13569,8 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Tex
 type CxPageEventHandlerTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -10019,6 +13590,8 @@ type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioInput interface {
 type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -10103,6 +13676,8 @@ func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageEven
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
@@ -10138,6 +13713,8 @@ func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() Cx
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -10298,7 +13875,8 @@ type CxPageEventHandlerTriggerFulfillmentMessageText struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts []string `pulumi:"texts"`
 }
 
@@ -10317,7 +13895,8 @@ type CxPageEventHandlerTriggerFulfillmentMessageTextArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts pulumi.StringArrayInput `pulumi:"texts"`
 }
 
@@ -10404,7 +13983,8 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) AllowPlaybackInte
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
 }
@@ -10444,7 +14024,8 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackI
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageText) []string {
 		if v == nil {
@@ -11039,7 +14620,7 @@ func (o CxPageFormParameterAdvancedSettingsPtrOutput) DtmfSettings() CxPageFormP
 }
 
 type CxPageFormParameterAdvancedSettingsDtmfSettings struct {
-	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 	Enabled *bool `pulumi:"enabled"`
 	// The digit that terminates a DTMF digit sequence.
 	FinishDigit *string `pulumi:"finishDigit"`
@@ -11059,7 +14640,7 @@ type CxPageFormParameterAdvancedSettingsDtmfSettingsInput interface {
 }
 
 type CxPageFormParameterAdvancedSettingsDtmfSettingsArgs struct {
-	// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The digit that terminates a DTMF digit sequence.
 	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
@@ -11144,7 +14725,7 @@ func (o CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) ToCxPageFormParam
 	}).(CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput)
 }
 
-// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 func (o CxPageFormParameterAdvancedSettingsDtmfSettingsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterAdvancedSettingsDtmfSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -11183,7 +14764,7 @@ func (o CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput) Elem() CxPageF
 	}).(CxPageFormParameterAdvancedSettingsDtmfSettingsOutput)
 }
 
-// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
 func (o CxPageFormParameterAdvancedSettingsDtmfSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterAdvancedSettingsDtmfSettings) *bool {
 		if v == nil {
@@ -11779,6 +15360,7 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -11786,20 +15368,26 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload *string `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText `pulumi:"text"`
 }
@@ -11823,6 +15411,7 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -11830,20 +15419,26 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrInput `pulumi:"text"`
 }
@@ -11909,6 +15504,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Ch
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 //   - In a webhook response when you determine that you handled the customer issue.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) ConversationSuccess() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess {
@@ -11921,6 +15517,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Co
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 //   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) LiveAgentHandoff() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff {
@@ -11929,6 +15526,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Li
 }
 
 // A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) OutputAudioText() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText {
@@ -11936,12 +15534,14 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Ou
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-// A custom, platform-specific payload.
+// Returns a response containing a custom, platform-specific payload.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an audio clip to be played by the client as part of the response.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) PlayAudio() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio {
@@ -11950,6 +15550,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Pl
 }
 
 // Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) TelephonyTransferCall() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall {
@@ -11958,6 +15559,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Te
 }
 
 // The text response message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Text() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
@@ -12268,8 +15870,10 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTe
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml *string `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text *string `pulumi:"text"`
 }
 
@@ -12289,8 +15893,10 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTe
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 }
 
@@ -12380,6 +15986,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *string {
 		return v.Ssml
@@ -12387,6 +15994,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *string {
 		return v.Text
@@ -12429,6 +16037,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -12439,6 +16048,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -12451,6 +16061,8 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -12470,6 +16082,8 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioInpu
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -12554,6 +16168,8 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioO
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -12593,6 +16209,8 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioP
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -12755,7 +16373,8 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts []string `pulumi:"texts"`
 }
 
@@ -12774,7 +16393,8 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs stru
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts pulumi.StringArrayInput `pulumi:"texts"`
 }
 
@@ -12863,7 +16483,8 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
 }
@@ -12903,7 +16524,8 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText) []string {
 		if v == nil {
@@ -13534,6 +17156,7 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -13541,20 +17164,26 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload *string `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText `pulumi:"text"`
 }
@@ -13578,6 +17207,7 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -13585,20 +17215,26 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
 }
@@ -13666,6 +17302,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 //   - In a webhook response when you determine that you handled the customer issue.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ConversationSuccess() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess {
@@ -13678,6 +17315,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 //   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
@@ -13686,6 +17324,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 }
 
 // A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) OutputAudioText() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText {
@@ -13693,7 +17332,8 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-// A custom, platform-specific payload.
+// Returns a response containing a custom, platform-specific payload.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *string {
 		return v.Payload
@@ -13701,6 +17341,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 }
 
 // Specifies an audio clip to be played by the client as part of the response.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) PlayAudio() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio {
@@ -13709,6 +17350,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 }
 
 // Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
@@ -13717,6 +17359,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 }
 
 // The text response message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) Text() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText {
@@ -14027,8 +17670,10 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml *string `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text *string `pulumi:"text"`
 }
 
@@ -14048,8 +17693,10 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 }
 
@@ -14139,6 +17786,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
 		return v.Ssml
@@ -14146,6 +17794,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
 		return v.Text
@@ -14188,6 +17837,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -14198,6 +17848,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -14210,6 +17861,8 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -14229,6 +17882,8 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -14313,6 +17968,8 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -14352,6 +18009,8 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -14514,7 +18173,8 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts []string `pulumi:"texts"`
 }
 
@@ -14533,7 +18193,8 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts pulumi.StringArrayInput `pulumi:"texts"`
 }
 
@@ -14622,7 +18283,8 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) []string {
 		return v.Texts
@@ -14664,7 +18326,8 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) []string {
 		if v == nil {
@@ -14782,6 +18445,3423 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSet
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction {
 		return vs[0].([]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction)[vs[1].(int)]
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput)
+}
+
+type CxPageKnowledgeConnectorSettings struct {
+	// Optional. List of related data store connections.
+	// Structure is documented below.
+	DataStoreConnections []CxPageKnowledgeConnectorSettingsDataStoreConnection `pulumi:"dataStoreConnections"`
+	// Whether Knowledge Connector is enabled or not.
+	Enabled *bool `pulumi:"enabled"`
+	// The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+	// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+	TargetFlow *string `pulumi:"targetFlow"`
+	// The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+	// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+	// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+	TargetPage *string `pulumi:"targetPage"`
+	// The fulfillment to be triggered.
+	// When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+	// Structure is documented below.
+	TriggerFulfillment *CxPageKnowledgeConnectorSettingsTriggerFulfillment `pulumi:"triggerFulfillment"`
+}
+
+// CxPageKnowledgeConnectorSettingsInput is an input type that accepts CxPageKnowledgeConnectorSettingsArgs and CxPageKnowledgeConnectorSettingsOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsArgs{...}
+type CxPageKnowledgeConnectorSettingsInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsOutput() CxPageKnowledgeConnectorSettingsOutput
+	ToCxPageKnowledgeConnectorSettingsOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsOutput
+}
+
+type CxPageKnowledgeConnectorSettingsArgs struct {
+	// Optional. List of related data store connections.
+	// Structure is documented below.
+	DataStoreConnections CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayInput `pulumi:"dataStoreConnections"`
+	// Whether Knowledge Connector is enabled or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+	// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+	TargetFlow pulumi.StringPtrInput `pulumi:"targetFlow"`
+	// The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+	// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+	// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+	TargetPage pulumi.StringPtrInput `pulumi:"targetPage"`
+	// The fulfillment to be triggered.
+	// When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+	// Structure is documented below.
+	TriggerFulfillment CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrInput `pulumi:"triggerFulfillment"`
+}
+
+func (CxPageKnowledgeConnectorSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsArgs) ToCxPageKnowledgeConnectorSettingsOutput() CxPageKnowledgeConnectorSettingsOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsArgs) ToCxPageKnowledgeConnectorSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsArgs) ToCxPageKnowledgeConnectorSettingsPtrOutput() CxPageKnowledgeConnectorSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsArgs) ToCxPageKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsOutput).ToCxPageKnowledgeConnectorSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsArgs, CxPageKnowledgeConnectorSettingsPtr and CxPageKnowledgeConnectorSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsPtrOutput() CxPageKnowledgeConnectorSettingsPtrOutput
+	ToCxPageKnowledgeConnectorSettingsPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsPtrType CxPageKnowledgeConnectorSettingsArgs
+
+func CxPageKnowledgeConnectorSettingsPtr(v *CxPageKnowledgeConnectorSettingsArgs) CxPageKnowledgeConnectorSettingsPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsPtrType) ToCxPageKnowledgeConnectorSettingsPtrOutput() CxPageKnowledgeConnectorSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsPtrType) ToCxPageKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsOutput) ToCxPageKnowledgeConnectorSettingsOutput() CxPageKnowledgeConnectorSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsOutput) ToCxPageKnowledgeConnectorSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsOutput) ToCxPageKnowledgeConnectorSettingsPtrOutput() CxPageKnowledgeConnectorSettingsPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsOutput) ToCxPageKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettings) *CxPageKnowledgeConnectorSettings {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsPtrOutput)
+}
+
+// Optional. List of related data store connections.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsOutput) DataStoreConnections() CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettings) []CxPageKnowledgeConnectorSettingsDataStoreConnection {
+		return v.DataStoreConnections
+	}).(CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput)
+}
+
+// Whether Knowledge Connector is enabled or not.
+func (o CxPageKnowledgeConnectorSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+func (o CxPageKnowledgeConnectorSettingsOutput) TargetFlow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettings) *string { return v.TargetFlow }).(pulumi.StringPtrOutput)
+}
+
+// The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+func (o CxPageKnowledgeConnectorSettingsOutput) TargetPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettings) *string { return v.TargetPage }).(pulumi.StringPtrOutput)
+}
+
+// The fulfillment to be triggered.
+// When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsOutput) TriggerFulfillment() CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillment {
+		return v.TriggerFulfillment
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsPtrOutput() CxPageKnowledgeConnectorSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsPtrOutput) Elem() CxPageKnowledgeConnectorSettingsOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettings) CxPageKnowledgeConnectorSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettings
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsOutput)
+}
+
+// Optional. List of related data store connections.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsPtrOutput) DataStoreConnections() CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettings) []CxPageKnowledgeConnectorSettingsDataStoreConnection {
+		if v == nil {
+			return nil
+		}
+		return v.DataStoreConnections
+	}).(CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput)
+}
+
+// Whether Knowledge Connector is enabled or not.
+func (o CxPageKnowledgeConnectorSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+func (o CxPageKnowledgeConnectorSettingsPtrOutput) TargetFlow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetFlow
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+func (o CxPageKnowledgeConnectorSettingsPtrOutput) TargetPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetPage
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fulfillment to be triggered.
+// When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsPtrOutput) TriggerFulfillment() CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillment {
+		if v == nil {
+			return nil
+		}
+		return v.TriggerFulfillment
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsDataStoreConnection struct {
+	// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+	DataStore *string `pulumi:"dataStore"`
+	// The type of the connected data store.
+	// * PUBLIC_WEB: A data store that contains public web content.
+	// * UNSTRUCTURED: A data store that contains unstructured private data.
+	// * STRUCTURED: A data store that contains structured data (for example FAQ).
+	//   Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+	DataStoreType *string `pulumi:"dataStoreType"`
+	// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+	// * DOCUMENTS: Documents are processed as documents.
+	// * CHUNKS: Documents are converted to chunks.
+	//   Possible values are: `DOCUMENTS`, `CHUNKS`.
+	DocumentProcessingMode *string `pulumi:"documentProcessingMode"`
+}
+
+// CxPageKnowledgeConnectorSettingsDataStoreConnectionInput is an input type that accepts CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs and CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsDataStoreConnectionInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs{...}
+type CxPageKnowledgeConnectorSettingsDataStoreConnectionInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsDataStoreConnectionOutput() CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput
+	ToCxPageKnowledgeConnectorSettingsDataStoreConnectionOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput
+}
+
+type CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs struct {
+	// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+	DataStore pulumi.StringPtrInput `pulumi:"dataStore"`
+	// The type of the connected data store.
+	// * PUBLIC_WEB: A data store that contains public web content.
+	// * UNSTRUCTURED: A data store that contains unstructured private data.
+	// * STRUCTURED: A data store that contains structured data (for example FAQ).
+	//   Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+	DataStoreType pulumi.StringPtrInput `pulumi:"dataStoreType"`
+	// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+	// * DOCUMENTS: Documents are processed as documents.
+	// * CHUNKS: Documents are converted to chunks.
+	//   Possible values are: `DOCUMENTS`, `CHUNKS`.
+	DocumentProcessingMode pulumi.StringPtrInput `pulumi:"documentProcessingMode"`
+}
+
+func (CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsDataStoreConnection)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs) ToCxPageKnowledgeConnectorSettingsDataStoreConnectionOutput() CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsDataStoreConnectionOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs) ToCxPageKnowledgeConnectorSettingsDataStoreConnectionOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput)
+}
+
+// CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayInput is an input type that accepts CxPageKnowledgeConnectorSettingsDataStoreConnectionArray and CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsDataStoreConnectionArray{ CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs{...} }
+type CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput() CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput
+	ToCxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput
+}
+
+type CxPageKnowledgeConnectorSettingsDataStoreConnectionArray []CxPageKnowledgeConnectorSettingsDataStoreConnectionInput
+
+func (CxPageKnowledgeConnectorSettingsDataStoreConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsDataStoreConnection)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsDataStoreConnectionArray) ToCxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput() CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsDataStoreConnectionArray) ToCxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsDataStoreConnection)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput) ToCxPageKnowledgeConnectorSettingsDataStoreConnectionOutput() CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput) ToCxPageKnowledgeConnectorSettingsDataStoreConnectionOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return o
+}
+
+// The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+func (o CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput) DataStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsDataStoreConnection) *string { return v.DataStore }).(pulumi.StringPtrOutput)
+}
+
+// The type of the connected data store.
+//   - PUBLIC_WEB: A data store that contains public web content.
+//   - UNSTRUCTURED: A data store that contains unstructured private data.
+//   - STRUCTURED: A data store that contains structured data (for example FAQ).
+//     Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+func (o CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput) DataStoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsDataStoreConnection) *string { return v.DataStoreType }).(pulumi.StringPtrOutput)
+}
+
+// The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+//   - DOCUMENTS: Documents are processed as documents.
+//   - CHUNKS: Documents are converted to chunks.
+//     Possible values are: `DOCUMENTS`, `CHUNKS`.
+func (o CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput) DocumentProcessingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsDataStoreConnection) *string { return v.DocumentProcessingMode }).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsDataStoreConnection)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput) ToCxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput() CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput) ToCxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput) Index(i pulumi.IntInput) CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageKnowledgeConnectorSettingsDataStoreConnection {
+		return vs[0].([]CxPageKnowledgeConnectorSettingsDataStoreConnection)[vs[1].(int)]
+	}).(CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillment struct {
+	// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+	// DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings `pulumi:"advancedSettings"`
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases []CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase `pulumi:"conditionalCases"`
+	// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+	EnableGenerativeFallback *bool `pulumi:"enableGenerativeFallback"`
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions []CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction `pulumi:"setParameterActions"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag *string `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook *string `pulumi:"webhook"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs struct {
+	// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+	// DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+	// Structure is documented below.
+	AdvancedSettings CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput `pulumi:"advancedSettings"`
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
+	// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+	EnableGenerativeFallback pulumi.BoolPtrInput `pulumi:"enableGenerativeFallback"`
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook pulumi.StringPtrInput `pulumi:"webhook"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillment)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillment)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillment) *CxPageKnowledgeConnectorSettingsTriggerFulfillment {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput)
+}
+
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+// DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) AdvancedSettings() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillment) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+		return v.AdvancedSettings
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput)
+}
+
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) ConditionalCases() CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillment) []CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
+		return v.ConditionalCases
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) EnableGenerativeFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillment) *bool { return v.EnableGenerativeFallback }).(pulumi.BoolPtrOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) Messages() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillment) []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage {
+		return v.Messages
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) SetParameterActions() CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillment) []CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction {
+		return v.SetParameterActions
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillment) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillment) *string { return v.Webhook }).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillment) CxPageKnowledgeConnectorSettingsTriggerFulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillment
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput)
+}
+
+// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+// DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) AdvancedSettings() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillment) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedSettings
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput)
+}
+
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ConditionalCases() CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillment) []CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionalCases
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) EnableGenerativeFallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGenerativeFallback
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) Messages() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillment) []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage {
+		if v == nil {
+			return nil
+		}
+		return v.Messages
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnPartialResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) SetParameterActions() CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillment) []CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction {
+		if v == nil {
+			return nil
+		}
+		return v.SetParameterActions
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Webhook
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings struct {
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings `pulumi:"dtmfSettings"`
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+	// * Agent level
+	//   Structure is documented below.
+	LoggingSettings *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings `pulumi:"loggingSettings"`
+	// Settings for speech to text detection. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	SpeechSettings *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings `pulumi:"speechSettings"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs struct {
+	// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	DtmfSettings CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput `pulumi:"dtmfSettings"`
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+	// * Agent level
+	//   Structure is documented below.
+	LoggingSettings CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput `pulumi:"loggingSettings"`
+	// Settings for speech to text detection. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	SpeechSettings CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput `pulumi:"speechSettings"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) DtmfSettings() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+		return v.DtmfSettings
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+//   - Agent level
+//     Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) LoggingSettings() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+		return v.LoggingSettings
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Settings for speech to text detection. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput) SpeechSettings() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+		return v.SpeechSettings
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput)
+}
+
+// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) DtmfSettings() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+		if v == nil {
+			return nil
+		}
+		return v.DtmfSettings
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+//   - Agent level
+//     Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) LoggingSettings() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingSettings
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Settings for speech to text detection. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput) SpeechSettings() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SpeechSettings
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled *bool `pulumi:"enabled"`
+	// Endpoint timeout setting for matching dtmf input to regex.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	EndpointingTimeoutDuration *string `pulumi:"endpointingTimeoutDuration"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit *string `pulumi:"finishDigit"`
+	// Interdigit timeout setting for matching dtmf input to regex.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	InterdigitTimeoutDuration *string `pulumi:"interdigitTimeoutDuration"`
+	// Max length of DTMF digits.
+	MaxDigits *int `pulumi:"maxDigits"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs struct {
+	// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Endpoint timeout setting for matching dtmf input to regex.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	EndpointingTimeoutDuration pulumi.StringPtrInput `pulumi:"endpointingTimeoutDuration"`
+	// The digit that terminates a DTMF digit sequence.
+	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
+	// Interdigit timeout setting for matching dtmf input to regex.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	InterdigitTimeoutDuration pulumi.StringPtrInput `pulumi:"interdigitTimeoutDuration"`
+	// Max length of DTMF digits.
+	MaxDigits pulumi.IntPtrInput `pulumi:"maxDigits"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Endpoint timeout setting for matching dtmf input to regex.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) EndpointingTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		return v.EndpointingTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interdigit timeout setting for matching dtmf input to regex.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) InterdigitTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		return v.InterdigitTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *int {
+		return v.MaxDigits
+	}).(pulumi.IntPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput)
+}
+
+// If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Endpoint timeout setting for matching dtmf input to regex.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) EndpointingTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointingTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The digit that terminates a DTMF digit sequence.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interdigit timeout setting for matching dtmf input to regex.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) InterdigitTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InterdigitTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max length of DTMF digits.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput) MaxDigits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDigits
+	}).(pulumi.IntPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings struct {
+	// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+	EnableConsentBasedRedaction *bool `pulumi:"enableConsentBasedRedaction"`
+	// Enables DF Interaction logging.
+	EnableInteractionLogging *bool `pulumi:"enableInteractionLogging"`
+	// Enables Google Cloud Logging.
+	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs struct {
+	// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+	EnableConsentBasedRedaction pulumi.BoolPtrInput `pulumi:"enableConsentBasedRedaction"`
+	// Enables DF Interaction logging.
+	EnableInteractionLogging pulumi.BoolPtrInput `pulumi:"enableInteractionLogging"`
+	// Enables Google Cloud Logging.
+	EnableStackdriverLogging pulumi.BoolPtrInput `pulumi:"enableStackdriverLogging"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) EnableConsentBasedRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		return v.EnableConsentBasedRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables DF Interaction logging.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		return v.EnableInteractionLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables Google Cloud Logging.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput)
+}
+
+// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) EnableConsentBasedRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConsentBasedRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables DF Interaction logging.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInteractionLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables Google Cloud Logging.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings struct {
+	// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+	EndpointerSensitivity *int `pulumi:"endpointerSensitivity"`
+	// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+	Models map[string]string `pulumi:"models"`
+	// Timeout before detecting no speech.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	NoSpeechTimeout *string `pulumi:"noSpeechTimeout"`
+	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs struct {
+	// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+	EndpointerSensitivity pulumi.IntPtrInput `pulumi:"endpointerSensitivity"`
+	// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+	Models pulumi.StringMapInput `pulumi:"models"`
+	// Timeout before detecting no speech.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+	NoSpeechTimeout pulumi.StringPtrInput `pulumi:"noSpeechTimeout"`
+	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) EndpointerSensitivity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *int {
+		return v.EndpointerSensitivity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) Models() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) map[string]string {
+		return v.Models
+	}).(pulumi.StringMapOutput)
+}
+
+// Timeout before detecting no speech.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *string {
+		return v.NoSpeechTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *bool {
+		return v.UseTimeoutBasedEndpointing
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput)
+}
+
+// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) EndpointerSensitivity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointerSensitivity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) Models() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Models
+	}).(pulumi.StringMapOutput)
+}
+
+// Timeout before detecting no speech.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NoSpeechTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTimeoutBasedEndpointing
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases *string `pulumi:"cases"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases pulumi.StringPtrInput `pulumi:"cases"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray and CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray{ CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{...} }
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray []CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput) Cases() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase) *string { return v.Cases }).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
+		return vs[0].([]CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase)[vs[1].(int)]
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	//   Structure is documented below.
+	ConversationSuccess *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
+	// (Output)
+	// This type has no fields.
+	// Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	EndInteractions []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction `pulumi:"endInteractions"`
+	// This type has no fields.
+	// Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+	// Otherwise, the info card response is skipped.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	KnowledgeInfoCard *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard `pulumi:"knowledgeInfoCard"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	//   Structure is documented below.
+	LiveAgentHandoff *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
+	// (Output)
+	// Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	MixedAudios []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio `pulumi:"mixedAudios"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	OutputAudioText *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	Payload *string `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	PlayAudio *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	TelephonyTransferCall *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
+	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	Text *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText `pulumi:"text"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	//   Structure is documented below.
+	ConversationSuccess CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
+	// (Output)
+	// This type has no fields.
+	// Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	EndInteractions CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput `pulumi:"endInteractions"`
+	// This type has no fields.
+	// Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+	// Otherwise, the info card response is skipped.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	KnowledgeInfoCard CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput `pulumi:"knowledgeInfoCard"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	//   Structure is documented below.
+	LiveAgentHandoff CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
+	// (Output)
+	// Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	MixedAudios CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput `pulumi:"mixedAudios"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	OutputAudioText CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	PlayAudio CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	TelephonyTransferCall CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
+	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+	// Structure is documented below.
+	Text CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArray and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArray{ CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{...} }
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArray []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageInput
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return o
+}
+
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer issue.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+//     Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) ConversationSuccess() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess {
+		return v.ConversationSuccess
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// (Output)
+// This type has no fields.
+// Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) EndInteractions() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction {
+		return v.EndInteractions
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput)
+}
+
+// This type has no fields.
+// Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+// Otherwise, the info card response is skipped.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) KnowledgeInfoCard() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard {
+		return v.KnowledgeInfoCard
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput)
+}
+
+// Indicates that the conversation should be handed off to a live agent.
+// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+//     Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff {
+		return v.LiveAgentHandoff
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// (Output)
+// Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) MixedAudios() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
+		return v.MixedAudios
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput)
+}
+
+// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) OutputAudioText() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText {
+		return v.OutputAudioText
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// Returns a response containing a custom, platform-specific payload.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an audio clip to be played by the client as part of the response.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) PlayAudio() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
+		return v.PlayAudio
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// The text response message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+// Structure is documented below.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput) Text() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
+		return v.Text
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage {
+		return vs[0].([]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage)[vs[1].(int)]
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess) *string {
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction struct {
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs struct {
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray{ CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs{...} }
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return o
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput) Index(i pulumi.IntInput) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction {
+		return vs[0].([]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction)[vs[1].(int)]
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard struct {
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs struct {
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio struct {
+	// Segments this audio response is composed of.
+	Segments []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment `pulumi:"segments"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs struct {
+	// Segments this audio response is composed of.
+	Segments CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput `pulumi:"segments"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray{ CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs{...} }
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return o
+}
+
+// Segments this audio response is composed of.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput) Segments() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio) []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment {
+		return v.Segments
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput) Index(i pulumi.IntInput) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
+		return vs[0].([]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio)[vs[1].(int)]
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment struct {
+	// (Output)
+	// Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+	// A base64-encoded string.
+	// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+	Audio *string `pulumi:"audio"`
+	// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+	// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+	Uri *string `pulumi:"uri"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs struct {
+	// (Output)
+	// Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+	// A base64-encoded string.
+	// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+	Audio pulumi.StringPtrInput `pulumi:"audio"`
+	// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+	// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray{ CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs{...} }
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray []CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return o
+}
+
+// (Output)
+// Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+// A base64-encoded string.
+// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) Audio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment) *string {
+		return v.Audio
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput) Index(i pulumi.IntInput) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment {
+		return vs[0].([]CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment)[vs[1].(int)]
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+	Ssml *string `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+	Text *string `pulumi:"text"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *string {
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *string {
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) string { return v.AudioUri }).(pulumi.StringOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AudioUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall) string {
+		return v.PhoneNumber
+	}).(pulumi.StringOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
+	Texts []string `pulumi:"texts"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
+	Texts pulumi.StringArrayInput `pulumi:"texts"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput)
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput).ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs, CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtr and CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput` via:
+//
+//	        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput
+}
+
+type cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs
+
+func CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtr(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput {
+	return (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType)(v)
+}
+
+func (*cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrType) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText) *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
+		return &v
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText) CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText
+		return ret
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Texts
+	}).(pulumi.StringArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction struct {
+	// Display name of the parameter.
+	Parameter *string `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs and CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs{...}
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs struct {
+	// Display name of the parameter.
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput)
+}
+
+// CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray and CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput values.
+// You can construct a concrete instance of `CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput` via:
+//
+//	CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{ CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs{...} }
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput interface {
+	pulumi.Input
+
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput
+	ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray []CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return i.ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+// Display name of the parameter.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction) *string {
+		return v.Parameter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The new JSON-encoded value of the parameter. A null value clears the parameter.
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput() CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction {
+		return vs[0].([]CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction)[vs[1].(int)]
+	}).(CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput)
 }
 
 type CxPageTransitionRoute struct {
@@ -15302,6 +22382,7 @@ type CxPageTransitionRouteTriggerFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess *CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -15309,20 +22390,26 @@ type CxPageTransitionRouteTriggerFulfillmentMessage struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff *CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload *string `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall *CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text *CxPageTransitionRouteTriggerFulfillmentMessageText `pulumi:"text"`
 }
@@ -15346,6 +22433,7 @@ type CxPageTransitionRouteTriggerFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 	// * In a webhook response when you determine that you handled the customer issue.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	ConversationSuccess CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
 	// Indicates that the conversation should be handed off to a live agent.
@@ -15353,20 +22441,26 @@ type CxPageTransitionRouteTriggerFulfillmentMessageArgs struct {
 	// You may set this, for example:
 	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	//   Structure is documented below.
 	LiveAgentHandoff CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	OutputAudioText CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
-	// A custom, platform-specific payload.
+	// Returns a response containing a custom, platform-specific payload.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Specifies an audio clip to be played by the client as part of the response.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	PlayAudio CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
 	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	TelephonyTransferCall CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
+	// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 	// Structure is documented below.
 	Text CxPageTransitionRouteTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
 }
@@ -15432,6 +22526,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) Channel() pulumi.S
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
 //   - In a webhook response when you determine that you handled the customer issue.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ConversationSuccess() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess {
@@ -15444,6 +22539,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ConversationSucces
 // You may set this, for example:
 //   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
 //   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 //     Structure is documented below.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
@@ -15452,6 +22548,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) LiveAgentHandoff()
 }
 
 // A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) OutputAudioText() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText {
@@ -15459,12 +22556,14 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) OutputAudioText() 
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
-// A custom, platform-specific payload.
+// Returns a response containing a custom, platform-specific payload.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an audio clip to be played by the client as part of the response.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) PlayAudio() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio {
@@ -15473,6 +22572,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) PlayAudio() CxPage
 }
 
 // Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
@@ -15481,6 +22581,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) TelephonyTransferC
 }
 
 // The text response message.
+// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
 // Structure is documented below.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) Text() CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessageText {
@@ -15787,8 +22888,10 @@ type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml *string `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text *string `pulumi:"text"`
 }
 
@@ -15808,8 +22911,10 @@ type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// The SSML text to be synthesized. For more information, see SSML.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
 	// The raw text to be synthesized.
+	// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 }
 
@@ -15899,11 +23004,13 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) All
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
@@ -15944,6 +23051,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 }
 
 // The SSML text to be synthesized. For more information, see SSML.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -15954,6 +23062,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 }
 
 // The raw text to be synthesized.
+// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string {
 		if v == nil {
@@ -15966,6 +23075,8 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -15985,6 +23096,8 @@ type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioInput interface {
 type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	//
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -16069,6 +23182,8 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxPageT
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -16106,6 +23221,8 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem()
 
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+//
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -16268,7 +23385,8 @@ type CxPageTransitionRouteTriggerFulfillmentMessageText struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts []string `pulumi:"texts"`
 }
 
@@ -16287,7 +23405,8 @@ type CxPageTransitionRouteTriggerFulfillmentMessageTextArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
-	// A collection of text responses.
+	// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+	// required: true
 	Texts pulumi.StringArrayInput `pulumi:"texts"`
 }
 
@@ -16374,7 +23493,8 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) AllowPlaybackI
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageText) []string { return v.Texts }).(pulumi.StringArrayOutput)
 }
@@ -16414,7 +23534,8 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) AllowPlayba
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A collection of text responses.
+// A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+// required: true
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageText) []string {
 		if v == nil {
@@ -22021,6 +29142,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsDataStoreConnectionInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsDataStoreConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowNluSettingsInput)(nil)).Elem(), CxFlowNluSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowNluSettingsPtrInput)(nil)).Elem(), CxFlowNluSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteInput)(nil)).Elem(), CxFlowTransitionRouteArgs{})
@@ -22149,6 +29310,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsDataStoreConnectionInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsDataStoreConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteInput)(nil)).Elem(), CxPageTransitionRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteArrayInput)(nil)).Elem(), CxPageTransitionRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentArgs{})
@@ -22295,6 +29496,46 @@ func init() {
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsDataStoreConnectionOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsDataStoreConnectionArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput{})
+	pulumi.RegisterOutputType(CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowNluSettingsOutput{})
 	pulumi.RegisterOutputType(CxFlowNluSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteOutput{})
@@ -22423,6 +29664,46 @@ func init() {
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsDataStoreConnectionOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsDataStoreConnectionArrayOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArrayOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArrayOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArrayOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArrayOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionOutput{})
+	pulumi.RegisterOutputType(CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArrayOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteArrayOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentOutput{})

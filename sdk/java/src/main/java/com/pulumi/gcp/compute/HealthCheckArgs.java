@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.HealthCheckGrpcHealthCheckArgs;
+import com.pulumi.gcp.compute.inputs.HealthCheckGrpcTlsHealthCheckArgs;
 import com.pulumi.gcp.compute.inputs.HealthCheckHttp2HealthCheckArgs;
 import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 import com.pulumi.gcp.compute.inputs.HealthCheckHttpsHealthCheckArgs;
@@ -73,6 +74,23 @@ public final class HealthCheckArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<HealthCheckGrpcHealthCheckArgs>> grpcHealthCheck() {
         return Optional.ofNullable(this.grpcHealthCheck);
+    }
+
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="grpcTlsHealthCheck")
+    private @Nullable Output<HealthCheckGrpcTlsHealthCheckArgs> grpcTlsHealthCheck;
+
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<HealthCheckGrpcTlsHealthCheckArgs>> grpcTlsHealthCheck() {
+        return Optional.ofNullable(this.grpcTlsHealthCheck);
     }
 
     /**
@@ -321,6 +339,7 @@ public final class HealthCheckArgs extends com.pulumi.resources.ResourceArgs {
         this.checkIntervalSec = $.checkIntervalSec;
         this.description = $.description;
         this.grpcHealthCheck = $.grpcHealthCheck;
+        this.grpcTlsHealthCheck = $.grpcTlsHealthCheck;
         this.healthyThreshold = $.healthyThreshold;
         this.http2HealthCheck = $.http2HealthCheck;
         this.httpHealthCheck = $.httpHealthCheck;
@@ -420,6 +439,29 @@ public final class HealthCheckArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder grpcHealthCheck(HealthCheckGrpcHealthCheckArgs grpcHealthCheck) {
             return grpcHealthCheck(Output.of(grpcHealthCheck));
+        }
+
+        /**
+         * @param grpcTlsHealthCheck A nested object resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grpcTlsHealthCheck(@Nullable Output<HealthCheckGrpcTlsHealthCheckArgs> grpcTlsHealthCheck) {
+            $.grpcTlsHealthCheck = grpcTlsHealthCheck;
+            return this;
+        }
+
+        /**
+         * @param grpcTlsHealthCheck A nested object resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grpcTlsHealthCheck(HealthCheckGrpcTlsHealthCheckArgs grpcTlsHealthCheck) {
+            return grpcTlsHealthCheck(Output.of(grpcTlsHealthCheck));
         }
 
         /**

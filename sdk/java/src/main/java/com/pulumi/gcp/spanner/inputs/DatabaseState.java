@@ -45,6 +45,23 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The default time zone for the database. The default time zone must be a valid name
+     * from the tz database. Default value is &#34;America/Los_angeles&#34;.
+     * 
+     */
+    @Import(name="defaultTimeZone")
+    private @Nullable Output<String> defaultTimeZone;
+
+    /**
+     * @return The default time zone for the database. The default time zone must be a valid name
+     * from the tz database. Default value is &#34;America/Los_angeles&#34;.
+     * 
+     */
+    public Optional<Output<String>> defaultTimeZone() {
+        return Optional.ofNullable(this.defaultTimeZone);
+    }
+
+    /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
      * 
@@ -181,6 +198,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     private DatabaseState(DatabaseState $) {
         this.databaseDialect = $.databaseDialect;
         this.ddls = $.ddls;
+        this.defaultTimeZone = $.defaultTimeZone;
         this.deletionProtection = $.deletionProtection;
         this.enableDropProtection = $.enableDropProtection;
         this.encryptionConfig = $.encryptionConfig;
@@ -245,6 +263,29 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         public Builder ddls(String... ddls) {
             return ddls(List.of(ddls));
+        }
+
+        /**
+         * @param defaultTimeZone The default time zone for the database. The default time zone must be a valid name
+         * from the tz database. Default value is &#34;America/Los_angeles&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTimeZone(@Nullable Output<String> defaultTimeZone) {
+            $.defaultTimeZone = defaultTimeZone;
+            return this;
+        }
+
+        /**
+         * @param defaultTimeZone The default time zone for the database. The default time zone must be a valid name
+         * from the tz database. Default value is &#34;America/Los_angeles&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTimeZone(String defaultTimeZone) {
+            return defaultTimeZone(Output.of(defaultTimeZone));
         }
 
         /**

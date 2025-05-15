@@ -53,6 +53,7 @@ export interface GetHealthCheckResult {
     readonly creationTimestamp: string;
     readonly description: string;
     readonly grpcHealthChecks: outputs.compute.GetHealthCheckGrpcHealthCheck[];
+    readonly grpcTlsHealthChecks: outputs.compute.GetHealthCheckGrpcTlsHealthCheck[];
     readonly healthyThreshold: number;
     readonly http2HealthChecks: outputs.compute.GetHealthCheckHttp2HealthCheck[];
     readonly httpHealthChecks: outputs.compute.GetHealthCheckHttpHealthCheck[];

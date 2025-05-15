@@ -337,29 +337,30 @@ class AuthorityConfigSubjectConfigSubject(dict):
 
     def __init__(__self__, *,
                  common_name: builtins.str,
-                 organization: builtins.str,
                  country_code: Optional[builtins.str] = None,
                  locality: Optional[builtins.str] = None,
+                 organization: Optional[builtins.str] = None,
                  organizational_unit: Optional[builtins.str] = None,
                  postal_code: Optional[builtins.str] = None,
                  province: Optional[builtins.str] = None,
                  street_address: Optional[builtins.str] = None):
         """
         :param builtins.str common_name: The common name of the distinguished name.
-        :param builtins.str organization: The organization of the subject.
         :param builtins.str country_code: The country code of the subject.
         :param builtins.str locality: The locality or city of the subject.
+        :param builtins.str organization: The organization of the subject.
         :param builtins.str organizational_unit: The organizational unit of the subject.
         :param builtins.str postal_code: The postal code of the subject.
         :param builtins.str province: The province, territory, or regional state of the subject.
         :param builtins.str street_address: The street address of the subject.
         """
         pulumi.set(__self__, "common_name", common_name)
-        pulumi.set(__self__, "organization", organization)
         if country_code is not None:
             pulumi.set(__self__, "country_code", country_code)
         if locality is not None:
             pulumi.set(__self__, "locality", locality)
+        if organization is not None:
+            pulumi.set(__self__, "organization", organization)
         if organizational_unit is not None:
             pulumi.set(__self__, "organizational_unit", organizational_unit)
         if postal_code is not None:
@@ -378,14 +379,6 @@ class AuthorityConfigSubjectConfigSubject(dict):
         return pulumi.get(self, "common_name")
 
     @property
-    @pulumi.getter
-    def organization(self) -> builtins.str:
-        """
-        The organization of the subject.
-        """
-        return pulumi.get(self, "organization")
-
-    @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[builtins.str]:
         """
@@ -400,6 +393,14 @@ class AuthorityConfigSubjectConfigSubject(dict):
         The locality or city of the subject.
         """
         return pulumi.get(self, "locality")
+
+    @property
+    @pulumi.getter
+    def organization(self) -> Optional[builtins.str]:
+        """
+        The organization of the subject.
+        """
+        return pulumi.get(self, "organization")
 
     @property
     @pulumi.getter(name="organizationalUnit")

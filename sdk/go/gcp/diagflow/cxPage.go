@@ -30,8 +30,11 @@ import (
 // import (
 //
 //	"encoding/json"
+//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -73,6 +76,10 @@ import (
 //					Uri: pulumi.String("https://example.com"),
 //				},
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -406,6 +413,39 @@ import (
 //				return err
 //			}
 //			json15 := string(tmpJSON15)
+//			tmpJSON16, err := json.Marshal([]interface{}{
+//				map[string]interface{}{
+//					"condition": "$sys.func.RAND() < 0.5",
+//					"caseContent": []map[string]interface{}{
+//						map[string]interface{}{
+//							"message": map[string]interface{}{
+//								"text": map[string]interface{}{
+//									"text": []string{
+//										"First case",
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				map[string]interface{}{
+//					"caseContent": []map[string]interface{}{
+//						map[string]interface{}{
+//							"message": map[string]interface{}{
+//								"text": map[string]interface{}{
+//									"text": []string{
+//										"Final case",
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json16 := string(tmpJSON16)
 //			_, err = diagflow.NewCxPage(ctx, "basic_page", &diagflow.CxPageArgs{
 //				Parent:      agent.StartFlow,
 //				DisplayName: pulumi.String("MyPage"),
@@ -784,6 +824,117 @@ import (
 //						FinishDigit: pulumi.String("#"),
 //					},
 //				},
+//				KnowledgeConnectorSettings: &diagflow.CxPageKnowledgeConnectorSettingsArgs{
+//					Enabled: pulumi.Bool(true),
+//					TriggerFulfillment: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs{
+//						Messages: diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArray{
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								Channel:           pulumi.String("some-channel"),
+//								KnowledgeInfoCard: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs{},
+//							},
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								Channel: pulumi.String("some-channel"),
+//								Text: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs{
+//									Texts: pulumi.StringArray{
+//										pulumi.String("information completed, navigating to page 2"),
+//									},
+//								},
+//							},
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								Payload: pulumi.String("          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n"),
+//							},
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								ConversationSuccess: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs{
+//									Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//								},
+//							},
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								OutputAudioText: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{
+//									Text: pulumi.String("some output text"),
+//								},
+//							},
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								OutputAudioText: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs{
+//									Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n"),
+//								},
+//							},
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								LiveAgentHandoff: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs{
+//									Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//								},
+//							},
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								PlayAudio: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs{
+//									AudioUri: pulumi.String("http://example.com/some-audio-file.mp3"),
+//								},
+//							},
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs{
+//								TelephonyTransferCall: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs{
+//									PhoneNumber: pulumi.String("1-234-567-8902"),
+//								},
+//							},
+//						},
+//						Webhook:                myWebhook.ID(),
+//						ReturnPartialResponses: pulumi.Bool(true),
+//						Tag:                    pulumi.String("some-tag"),
+//						SetParameterActions: diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs{
+//								Parameter: pulumi.String("some-param"),
+//								Value:     pulumi.String("123.45"),
+//							},
+//						},
+//						ConditionalCases: diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArray{
+//							&diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs{
+//								Cases: pulumi.String(json16),
+//							},
+//						},
+//						AdvancedSettings: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs{
+//							SpeechSettings: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs{
+//								EndpointerSensitivity:      pulumi.Int(30),
+//								NoSpeechTimeout:            pulumi.String("3.500s"),
+//								UseTimeoutBasedEndpointing: pulumi.Bool(true),
+//								Models: pulumi.StringMap{
+//									"name":  pulumi.String("wrench"),
+//									"mass":  pulumi.String("1.3kg"),
+//									"count": pulumi.String("3"),
+//								},
+//							},
+//							DtmfSettings: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs{
+//								Enabled:                    pulumi.Bool(true),
+//								MaxDigits:                  pulumi.Int(1),
+//								FinishDigit:                pulumi.String("#"),
+//								InterdigitTimeoutDuration:  pulumi.String("3.500s"),
+//								EndpointingTimeoutDuration: pulumi.String("3.500s"),
+//							},
+//							LoggingSettings: &diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs{
+//								EnableStackdriverLogging:    pulumi.Bool(true),
+//								EnableInteractionLogging:    pulumi.Bool(true),
+//								EnableConsentBasedRedaction: pulumi.Bool(true),
+//							},
+//						},
+//						EnableGenerativeFallback: pulumi.Bool(true),
+//					},
+//					DataStoreConnections: diagflow.CxPageKnowledgeConnectorSettingsDataStoreConnectionArray{
+//						&diagflow.CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs{
+//							DataStoreType: pulumi.String("PUBLIC_WEB"),
+//							DataStore: agent.Location.ApplyT(func(location string) (string, error) {
+//								return fmt.Sprintf("projects/%v/locations/%v/collections/default_collection/dataStores/datastore-page-full", project.Number, location), nil
+//							}).(pulumi.StringOutput),
+//							DocumentProcessingMode: pulumi.String("CHUNKS"),
+//						},
+//					},
+//					TargetPage: myPage2.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = discoveryengine.NewDataStore(ctx, "my_datastore", &discoveryengine.DataStoreArgs{
+//				Location:         pulumi.String("global"),
+//				DataStoreId:      pulumi.String("datastore-page-full"),
+//				DisplayName:      pulumi.String("datastore-page-full"),
+//				IndustryVertical: pulumi.String("GENERIC"),
+//				ContentConfig:    pulumi.String("NO_CONTENT"),
 //			})
 //			if err != nil {
 //				return err
@@ -831,6 +982,9 @@ type CxPage struct {
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	// Structure is documented below.
 	Form CxPageFormPtrOutput `pulumi:"form"`
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings CxPageKnowledgeConnectorSettingsPtrOutput `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in page:
 	// Page.entry_fulfillment.messages
 	// Page.entry_fulfillment.conditional_cases
@@ -917,6 +1071,9 @@ type cxPageState struct {
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	// Structure is documented below.
 	Form *CxPageForm `pulumi:"form"`
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings *CxPageKnowledgeConnectorSettings `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in page:
 	// Page.entry_fulfillment.messages
 	// Page.entry_fulfillment.conditional_cases
@@ -971,6 +1128,9 @@ type CxPageState struct {
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	// Structure is documented below.
 	Form CxPageFormPtrInput
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings CxPageKnowledgeConnectorSettingsPtrInput
 	// The language of the following fields in page:
 	// Page.entry_fulfillment.messages
 	// Page.entry_fulfillment.conditional_cases
@@ -1029,6 +1189,9 @@ type cxPageArgs struct {
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	// Structure is documented below.
 	Form *CxPageForm `pulumi:"form"`
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings *CxPageKnowledgeConnectorSettings `pulumi:"knowledgeConnectorSettings"`
 	// The language of the following fields in page:
 	// Page.entry_fulfillment.messages
 	// Page.entry_fulfillment.conditional_cases
@@ -1081,6 +1244,9 @@ type CxPageArgs struct {
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	// Structure is documented below.
 	Form CxPageFormPtrInput
+	// Knowledge connector configuration.
+	// Structure is documented below.
+	KnowledgeConnectorSettings CxPageKnowledgeConnectorSettingsPtrInput
 	// The language of the following fields in page:
 	// Page.entry_fulfillment.messages
 	// Page.entry_fulfillment.conditional_cases
@@ -1231,6 +1397,12 @@ func (o CxPageOutput) EventHandlers() CxPageEventHandlerArrayOutput {
 // Structure is documented below.
 func (o CxPageOutput) Form() CxPageFormPtrOutput {
 	return o.ApplyT(func(v *CxPage) CxPageFormPtrOutput { return v.Form }).(CxPageFormPtrOutput)
+}
+
+// Knowledge connector configuration.
+// Structure is documented below.
+func (o CxPageOutput) KnowledgeConnectorSettings() CxPageKnowledgeConnectorSettingsPtrOutput {
+	return o.ApplyT(func(v *CxPage) CxPageKnowledgeConnectorSettingsPtrOutput { return v.KnowledgeConnectorSettings }).(CxPageKnowledgeConnectorSettingsPtrOutput)
 }
 
 // The language of the following fields in page:

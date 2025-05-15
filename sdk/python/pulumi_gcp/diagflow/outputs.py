@@ -45,6 +45,26 @@ __all__ = [
     'CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall',
     'CxFlowEventHandlerTriggerFulfillmentMessageText',
     'CxFlowEventHandlerTriggerFulfillmentSetParameterAction',
+    'CxFlowKnowledgeConnectorSettings',
+    'CxFlowKnowledgeConnectorSettingsDataStoreConnection',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillment',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText',
+    'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction',
     'CxFlowNluSettings',
     'CxFlowTransitionRoute',
     'CxFlowTransitionRouteTriggerFulfillment',
@@ -109,6 +129,26 @@ __all__ = [
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText',
     'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction',
+    'CxPageKnowledgeConnectorSettings',
+    'CxPageKnowledgeConnectorSettingsDataStoreConnection',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillment',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText',
+    'CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction',
     'CxPageTransitionRoute',
     'CxPageTransitionRouteTriggerFulfillment',
     'CxPageTransitionRouteTriggerFulfillmentConditionalCase',
@@ -936,7 +976,7 @@ class CxFlowAdvancedSettingsDtmfSettings(dict):
                  finish_digit: Optional[builtins.str] = None,
                  max_digits: Optional[builtins.int] = None):
         """
-        :param builtins.bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param builtins.bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
         :param builtins.str finish_digit: The digit that terminates a DTMF digit sequence.
         :param builtins.int max_digits: Max length of DTMF digits.
         """
@@ -951,7 +991,7 @@ class CxFlowAdvancedSettingsDtmfSettings(dict):
     @pulumi.getter
     def enabled(self) -> Optional[builtins.bool]:
         """
-        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
         """
         return pulumi.get(self, "enabled")
 
@@ -1069,7 +1109,7 @@ class CxFlowAdvancedSettingsSpeechSettings(dict):
         :param Mapping[str, builtins.str] models: Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
                An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
         :param builtins.str no_speech_timeout: Timeout before detecting no speech.
-               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
         :param builtins.bool use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         """
         if endpointer_sensitivity is not None:
@@ -1103,7 +1143,7 @@ class CxFlowAdvancedSettingsSpeechSettings(dict):
     def no_speech_timeout(self) -> Optional[builtins.str]:
         """
         Timeout before detecting no speech.
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
         """
         return pulumi.get(self, "no_speech_timeout")
 
@@ -1382,21 +1422,28 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
-        :param builtins.str payload: A custom, platform-specific payload.
+        :param builtins.str payload: Returns a response containing a custom, platform-specific payload.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         :param 'CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxFlowEventHandlerTriggerFulfillmentMessageTextArgs' text: The text response message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         """
         if channel is not None:
@@ -1433,6 +1480,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         * In a webhook response when you determine that you handled the customer issue.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "conversation_success")
@@ -1446,6 +1494,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         * In a webhook response when you determine that the customer issue can only be handled by a human.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "live_agent_handoff")
@@ -1455,6 +1504,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
     def output_audio_text(self) -> Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText']:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "output_audio_text")
@@ -1463,7 +1513,8 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
     @pulumi.getter
     def payload(self) -> Optional[builtins.str]:
         """
-        A custom, platform-specific payload.
+        Returns a response containing a custom, platform-specific payload.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         """
         return pulumi.get(self, "payload")
 
@@ -1472,6 +1523,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
     def play_audio(self) -> Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio']:
         """
         Specifies an audio clip to be played by the client as part of the response.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "play_audio")
@@ -1481,6 +1533,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
     def telephony_transfer_call(self) -> Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall']:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "telephony_transfer_call")
@@ -1490,6 +1543,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
     def text(self) -> Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageText']:
         """
         The text response message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "text")
@@ -1560,7 +1614,9 @@ class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param builtins.str ssml: The SSML text to be synthesized. For more information, see SSML.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         :param builtins.str text: The raw text to be synthesized.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -1583,6 +1639,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
     def ssml(self) -> Optional[builtins.str]:
         """
         The SSML text to be synthesized. For more information, see SSML.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "ssml")
 
@@ -1591,6 +1648,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
     def text(self) -> Optional[builtins.str]:
         """
         The raw text to be synthesized.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "text")
 
@@ -1623,6 +1681,8 @@ class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
         :param builtins.str audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+               
+               <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         pulumi.set(__self__, "audio_uri", audio_uri)
         if allow_playback_interruption is not None:
@@ -1642,6 +1702,8 @@ class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
         """
         (Output)
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+
+        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         return pulumi.get(self, "allow_playback_interruption")
 
@@ -1706,7 +1768,8 @@ class CxFlowEventHandlerTriggerFulfillmentMessageText(dict):
         """
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        :param Sequence[builtins.str] texts: A collection of text responses.
+        :param Sequence[builtins.str] texts: A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+               required: true
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -1726,13 +1789,1287 @@ class CxFlowEventHandlerTriggerFulfillmentMessageText(dict):
     @pulumi.getter
     def texts(self) -> Optional[Sequence[builtins.str]]:
         """
-        A collection of text responses.
+        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        required: true
         """
         return pulumi.get(self, "texts")
 
 
 @pulumi.output_type
 class CxFlowEventHandlerTriggerFulfillmentSetParameterAction(dict):
+    def __init__(__self__, *,
+                 parameter: Optional[builtins.str] = None,
+                 value: Optional[builtins.str] = None):
+        """
+        :param builtins.str parameter: Display name of the parameter.
+        :param builtins.str value: The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[builtins.str]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "parameter")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[builtins.str]:
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStoreConnections":
+            suggest = "data_store_connections"
+        elif key == "targetFlow":
+            suggest = "target_flow"
+        elif key == "targetPage":
+            suggest = "target_page"
+        elif key == "triggerFulfillment":
+            suggest = "trigger_fulfillment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store_connections: Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsDataStoreConnection']] = None,
+                 enabled: Optional[builtins.bool] = None,
+                 target_flow: Optional[builtins.str] = None,
+                 target_page: Optional[builtins.str] = None,
+                 trigger_fulfillment: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillment'] = None):
+        """
+        :param Sequence['CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs'] data_store_connections: Optional. List of related data store connections.
+               Structure is documented below.
+        :param builtins.bool enabled: Whether Knowledge Connector is enabled or not.
+        :param builtins.str target_flow: The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+               This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        :param builtins.str target_page: The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+               The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+               This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to be triggered.
+               When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+               Structure is documented below.
+        """
+        if data_store_connections is not None:
+            pulumi.set(__self__, "data_store_connections", data_store_connections)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if target_flow is not None:
+            pulumi.set(__self__, "target_flow", target_flow)
+        if target_page is not None:
+            pulumi.set(__self__, "target_page", target_page)
+        if trigger_fulfillment is not None:
+            pulumi.set(__self__, "trigger_fulfillment", trigger_fulfillment)
+
+    @property
+    @pulumi.getter(name="dataStoreConnections")
+    def data_store_connections(self) -> Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsDataStoreConnection']]:
+        """
+        Optional. List of related data store connections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_store_connections")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[builtins.bool]:
+        """
+        Whether Knowledge Connector is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="targetFlow")
+    def target_flow(self) -> Optional[builtins.str]:
+        """
+        The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+        This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        """
+        return pulumi.get(self, "target_flow")
+
+    @property
+    @pulumi.getter(name="targetPage")
+    def target_page(self) -> Optional[builtins.str]:
+        """
+        The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+        The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+        This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        """
+        return pulumi.get(self, "target_page")
+
+    @property
+    @pulumi.getter(name="triggerFulfillment")
+    def trigger_fulfillment(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillment']:
+        """
+        The fulfillment to be triggered.
+        When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger_fulfillment")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsDataStoreConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStore":
+            suggest = "data_store"
+        elif key == "dataStoreType":
+            suggest = "data_store_type"
+        elif key == "documentProcessingMode":
+            suggest = "document_processing_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsDataStoreConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsDataStoreConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsDataStoreConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store: Optional[builtins.str] = None,
+                 data_store_type: Optional[builtins.str] = None,
+                 document_processing_mode: Optional[builtins.str] = None):
+        """
+        :param builtins.str data_store: The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+        :param builtins.str data_store_type: The type of the connected data store.
+               * PUBLIC_WEB: A data store that contains public web content.
+               * UNSTRUCTURED: A data store that contains unstructured private data.
+               * STRUCTURED: A data store that contains structured data (for example FAQ).
+               Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+        :param builtins.str document_processing_mode: The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+               * DOCUMENTS: Documents are processed as documents.
+               * CHUNKS: Documents are converted to chunks.
+               Possible values are: `DOCUMENTS`, `CHUNKS`.
+        """
+        if data_store is not None:
+            pulumi.set(__self__, "data_store", data_store)
+        if data_store_type is not None:
+            pulumi.set(__self__, "data_store_type", data_store_type)
+        if document_processing_mode is not None:
+            pulumi.set(__self__, "document_processing_mode", document_processing_mode)
+
+    @property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> Optional[builtins.str]:
+        """
+        The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+        """
+        return pulumi.get(self, "data_store")
+
+    @property
+    @pulumi.getter(name="dataStoreType")
+    def data_store_type(self) -> Optional[builtins.str]:
+        """
+        The type of the connected data store.
+        * PUBLIC_WEB: A data store that contains public web content.
+        * UNSTRUCTURED: A data store that contains unstructured private data.
+        * STRUCTURED: A data store that contains structured data (for example FAQ).
+        Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+        """
+        return pulumi.get(self, "data_store_type")
+
+    @property
+    @pulumi.getter(name="documentProcessingMode")
+    def document_processing_mode(self) -> Optional[builtins.str]:
+        """
+        The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+        * DOCUMENTS: Documents are processed as documents.
+        * CHUNKS: Documents are converted to chunks.
+        Possible values are: `DOCUMENTS`, `CHUNKS`.
+        """
+        return pulumi.get(self, "document_processing_mode")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advancedSettings":
+            suggest = "advanced_settings"
+        elif key == "conditionalCases":
+            suggest = "conditional_cases"
+        elif key == "enableGenerativeFallback":
+            suggest = "enable_generative_fallback"
+        elif key == "returnPartialResponses":
+            suggest = "return_partial_responses"
+        elif key == "setParameterActions":
+            suggest = "set_parameter_actions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 advanced_settings: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings'] = None,
+                 conditional_cases: Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase']] = None,
+                 enable_generative_fallback: Optional[builtins.bool] = None,
+                 messages: Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage']] = None,
+                 return_partial_responses: Optional[builtins.bool] = None,
+                 set_parameter_actions: Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction']] = None,
+                 tag: Optional[builtins.str] = None,
+                 webhook: Optional[builtins.str] = None):
+        """
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs' advanced_settings: Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+               DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
+        :param Sequence['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
+               Structure is documented below.
+        :param builtins.bool enable_generative_fallback: If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        :param Sequence['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+               Structure is documented below.
+        :param builtins.bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param Sequence['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs'] set_parameter_actions: Set parameter values before executing the webhook.
+               Structure is documented below.
+        :param builtins.str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        :param builtins.str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if conditional_cases is not None:
+            pulumi.set(__self__, "conditional_cases", conditional_cases)
+        if enable_generative_fallback is not None:
+            pulumi.set(__self__, "enable_generative_fallback", enable_generative_fallback)
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if return_partial_responses is not None:
+            pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if set_parameter_actions is not None:
+            pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings']:
+        """
+        Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+        DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @property
+    @pulumi.getter(name="conditionalCases")
+    def conditional_cases(self) -> Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase']]:
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_cases")
+
+    @property
+    @pulumi.getter(name="enableGenerativeFallback")
+    def enable_generative_fallback(self) -> Optional[builtins.bool]:
+        """
+        If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        """
+        return pulumi.get(self, "enable_generative_fallback")
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage']]:
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> Optional[builtins.bool]:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
+
+    @property
+    @pulumi.getter(name="setParameterActions")
+    def set_parameter_actions(self) -> Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction']]:
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_parameter_actions")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[builtins.str]:
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[builtins.str]:
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        return pulumi.get(self, "webhook")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dtmfSettings":
+            suggest = "dtmf_settings"
+        elif key == "loggingSettings":
+            suggest = "logging_settings"
+        elif key == "speechSettings":
+            suggest = "speech_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dtmf_settings: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings'] = None,
+                 logging_settings: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings'] = None,
+                 speech_settings: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings'] = None):
+        """
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs' dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs' logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+               * Agent level
+               Structure is documented below.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs' speech_settings: Settings for speech to text detection. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
+        """
+        if dtmf_settings is not None:
+            pulumi.set(__self__, "dtmf_settings", dtmf_settings)
+        if logging_settings is not None:
+            pulumi.set(__self__, "logging_settings", logging_settings)
+        if speech_settings is not None:
+            pulumi.set(__self__, "speech_settings", speech_settings)
+
+    @property
+    @pulumi.getter(name="dtmfSettings")
+    def dtmf_settings(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings']:
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dtmf_settings")
+
+    @property
+    @pulumi.getter(name="loggingSettings")
+    def logging_settings(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings']:
+        """
+        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+        * Agent level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_settings")
+
+    @property
+    @pulumi.getter(name="speechSettings")
+    def speech_settings(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings']:
+        """
+        Settings for speech to text detection. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "speech_settings")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointingTimeoutDuration":
+            suggest = "endpointing_timeout_duration"
+        elif key == "finishDigit":
+            suggest = "finish_digit"
+        elif key == "interdigitTimeoutDuration":
+            suggest = "interdigit_timeout_duration"
+        elif key == "maxDigits":
+            suggest = "max_digits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[builtins.bool] = None,
+                 endpointing_timeout_duration: Optional[builtins.str] = None,
+                 finish_digit: Optional[builtins.str] = None,
+                 interdigit_timeout_duration: Optional[builtins.str] = None,
+                 max_digits: Optional[builtins.int] = None):
+        """
+        :param builtins.bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param builtins.str endpointing_timeout_duration: Endpoint timeout setting for matching dtmf input to regex.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        :param builtins.str finish_digit: The digit that terminates a DTMF digit sequence.
+        :param builtins.str interdigit_timeout_duration: Interdigit timeout setting for matching dtmf input to regex.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        :param builtins.int max_digits: Max length of DTMF digits.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if endpointing_timeout_duration is not None:
+            pulumi.set(__self__, "endpointing_timeout_duration", endpointing_timeout_duration)
+        if finish_digit is not None:
+            pulumi.set(__self__, "finish_digit", finish_digit)
+        if interdigit_timeout_duration is not None:
+            pulumi.set(__self__, "interdigit_timeout_duration", interdigit_timeout_duration)
+        if max_digits is not None:
+            pulumi.set(__self__, "max_digits", max_digits)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[builtins.bool]:
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="endpointingTimeoutDuration")
+    def endpointing_timeout_duration(self) -> Optional[builtins.str]:
+        """
+        Endpoint timeout setting for matching dtmf input to regex.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        """
+        return pulumi.get(self, "endpointing_timeout_duration")
+
+    @property
+    @pulumi.getter(name="finishDigit")
+    def finish_digit(self) -> Optional[builtins.str]:
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        return pulumi.get(self, "finish_digit")
+
+    @property
+    @pulumi.getter(name="interdigitTimeoutDuration")
+    def interdigit_timeout_duration(self) -> Optional[builtins.str]:
+        """
+        Interdigit timeout setting for matching dtmf input to regex.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        """
+        return pulumi.get(self, "interdigit_timeout_duration")
+
+    @property
+    @pulumi.getter(name="maxDigits")
+    def max_digits(self) -> Optional[builtins.int]:
+        """
+        Max length of DTMF digits.
+        """
+        return pulumi.get(self, "max_digits")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConsentBasedRedaction":
+            suggest = "enable_consent_based_redaction"
+        elif key == "enableInteractionLogging":
+            suggest = "enable_interaction_logging"
+        elif key == "enableStackdriverLogging":
+            suggest = "enable_stackdriver_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_consent_based_redaction: Optional[builtins.bool] = None,
+                 enable_interaction_logging: Optional[builtins.bool] = None,
+                 enable_stackdriver_logging: Optional[builtins.bool] = None):
+        """
+        :param builtins.bool enable_consent_based_redaction: Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+        :param builtins.bool enable_interaction_logging: Enables DF Interaction logging.
+        :param builtins.bool enable_stackdriver_logging: Enables Google Cloud Logging.
+        """
+        if enable_consent_based_redaction is not None:
+            pulumi.set(__self__, "enable_consent_based_redaction", enable_consent_based_redaction)
+        if enable_interaction_logging is not None:
+            pulumi.set(__self__, "enable_interaction_logging", enable_interaction_logging)
+        if enable_stackdriver_logging is not None:
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+
+    @property
+    @pulumi.getter(name="enableConsentBasedRedaction")
+    def enable_consent_based_redaction(self) -> Optional[builtins.bool]:
+        """
+        Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+        """
+        return pulumi.get(self, "enable_consent_based_redaction")
+
+    @property
+    @pulumi.getter(name="enableInteractionLogging")
+    def enable_interaction_logging(self) -> Optional[builtins.bool]:
+        """
+        Enables DF Interaction logging.
+        """
+        return pulumi.get(self, "enable_interaction_logging")
+
+    @property
+    @pulumi.getter(name="enableStackdriverLogging")
+    def enable_stackdriver_logging(self) -> Optional[builtins.bool]:
+        """
+        Enables Google Cloud Logging.
+        """
+        return pulumi.get(self, "enable_stackdriver_logging")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointerSensitivity":
+            suggest = "endpointer_sensitivity"
+        elif key == "noSpeechTimeout":
+            suggest = "no_speech_timeout"
+        elif key == "useTimeoutBasedEndpointing":
+            suggest = "use_timeout_based_endpointing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpointer_sensitivity: Optional[builtins.int] = None,
+                 models: Optional[Mapping[str, builtins.str]] = None,
+                 no_speech_timeout: Optional[builtins.str] = None,
+                 use_timeout_based_endpointing: Optional[builtins.bool] = None):
+        """
+        :param builtins.int endpointer_sensitivity: Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        :param Mapping[str, builtins.str] models: Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+               An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+        :param builtins.str no_speech_timeout: Timeout before detecting no speech.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        :param builtins.bool use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+        """
+        if endpointer_sensitivity is not None:
+            pulumi.set(__self__, "endpointer_sensitivity", endpointer_sensitivity)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
+        if no_speech_timeout is not None:
+            pulumi.set(__self__, "no_speech_timeout", no_speech_timeout)
+        if use_timeout_based_endpointing is not None:
+            pulumi.set(__self__, "use_timeout_based_endpointing", use_timeout_based_endpointing)
+
+    @property
+    @pulumi.getter(name="endpointerSensitivity")
+    def endpointer_sensitivity(self) -> Optional[builtins.int]:
+        """
+        Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        """
+        return pulumi.get(self, "endpointer_sensitivity")
+
+    @property
+    @pulumi.getter
+    def models(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+        An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+        """
+        return pulumi.get(self, "models")
+
+    @property
+    @pulumi.getter(name="noSpeechTimeout")
+    def no_speech_timeout(self) -> Optional[builtins.str]:
+        """
+        Timeout before detecting no speech.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        """
+        return pulumi.get(self, "no_speech_timeout")
+
+    @property
+    @pulumi.getter(name="useTimeoutBasedEndpointing")
+    def use_timeout_based_endpointing(self) -> Optional[builtins.bool]:
+        """
+        Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+        """
+        return pulumi.get(self, "use_timeout_based_endpointing")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase(dict):
+    def __init__(__self__, *,
+                 cases: Optional[builtins.str] = None):
+        """
+        :param builtins.str cases: A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+               See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        if cases is not None:
+            pulumi.set(__self__, "cases", cases)
+
+    @property
+    @pulumi.getter
+    def cases(self) -> Optional[builtins.str]:
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        return pulumi.get(self, "cases")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationSuccess":
+            suggest = "conversation_success"
+        elif key == "endInteractions":
+            suggest = "end_interactions"
+        elif key == "knowledgeInfoCard":
+            suggest = "knowledge_info_card"
+        elif key == "liveAgentHandoff":
+            suggest = "live_agent_handoff"
+        elif key == "mixedAudios":
+            suggest = "mixed_audios"
+        elif key == "outputAudioText":
+            suggest = "output_audio_text"
+        elif key == "playAudio":
+            suggest = "play_audio"
+        elif key == "telephonyTransferCall":
+            suggest = "telephony_transfer_call"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 channel: Optional[builtins.str] = None,
+                 conversation_success: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess'] = None,
+                 end_interactions: Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction']] = None,
+                 knowledge_info_card: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard'] = None,
+                 live_agent_handoff: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff'] = None,
+                 mixed_audios: Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio']] = None,
+                 output_audio_text: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText'] = None,
+                 payload: Optional[builtins.str] = None,
+                 play_audio: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio'] = None,
+                 telephony_transfer_call: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall'] = None,
+                 text: Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText'] = None):
+        """
+        :param builtins.str channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+               Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+               * In a webhook response when you determine that you handled the customer issue.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param Sequence['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs'] end_interactions: (Output)
+               This type has no fields.
+               Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs' knowledge_info_card: This type has no fields.
+               Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+               Otherwise, the info card response is skipped.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+               Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+               * In a webhook response when you determine that the customer issue can only be handled by a human.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param Sequence['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs'] mixed_audios: (Output)
+               Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param builtins.str payload: Returns a response containing a custom, platform-specific payload.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param 'CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs' text: The text response message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conversation_success is not None:
+            pulumi.set(__self__, "conversation_success", conversation_success)
+        if end_interactions is not None:
+            pulumi.set(__self__, "end_interactions", end_interactions)
+        if knowledge_info_card is not None:
+            pulumi.set(__self__, "knowledge_info_card", knowledge_info_card)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if mixed_audios is not None:
+            pulumi.set(__self__, "mixed_audios", mixed_audios)
+        if output_audio_text is not None:
+            pulumi.set(__self__, "output_audio_text", output_audio_text)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if play_audio is not None:
+            pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[builtins.str]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter(name="conversationSuccess")
+    def conversation_success(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess']:
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_success")
+
+    @property
+    @pulumi.getter(name="endInteractions")
+    def end_interactions(self) -> Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction']]:
+        """
+        (Output)
+        This type has no fields.
+        Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        """
+        return pulumi.get(self, "end_interactions")
+
+    @property
+    @pulumi.getter(name="knowledgeInfoCard")
+    def knowledge_info_card(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard']:
+        """
+        This type has no fields.
+        Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+        Otherwise, the info card response is skipped.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        """
+        return pulumi.get(self, "knowledge_info_card")
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff']:
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @property
+    @pulumi.getter(name="mixedAudios")
+    def mixed_audios(self) -> Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio']]:
+        """
+        (Output)
+        Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mixed_audios")
+
+    @property
+    @pulumi.getter(name="outputAudioText")
+    def output_audio_text(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText']:
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_audio_text")
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[builtins.str]:
+        """
+        Returns a response containing a custom, platform-specific payload.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        """
+        return pulumi.get(self, "payload")
+
+    @property
+    @pulumi.getter(name="playAudio")
+    def play_audio(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio']:
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "play_audio")
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall']:
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText']:
+        """
+        The text response message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess(dict):
+    def __init__(__self__, *,
+                 metadata: Optional[builtins.str] = None):
+        """
+        :param builtins.str metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[builtins.str]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff(dict):
+    def __init__(__self__, *,
+                 metadata: Optional[builtins.str] = None):
+        """
+        :param builtins.str metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[builtins.str]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio(dict):
+    def __init__(__self__, *,
+                 segments: Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment']] = None):
+        """
+        :param Sequence['CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs'] segments: Segments this audio response is composed of.
+        """
+        if segments is not None:
+            pulumi.set(__self__, "segments", segments)
+
+    @property
+    @pulumi.getter
+    def segments(self) -> Optional[Sequence['outputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment']]:
+        """
+        Segments this audio response is composed of.
+        """
+        return pulumi.get(self, "segments")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[builtins.bool] = None,
+                 audio: Optional[builtins.str] = None,
+                 uri: Optional[builtins.str] = None):
+        """
+        :param builtins.bool allow_playback_interruption: (Output)
+               Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+        :param builtins.str audio: Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+               A base64-encoded string.
+               This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        :param builtins.str uri: Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+               This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if audio is not None:
+            pulumi.set(__self__, "audio", audio)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[builtins.bool]:
+        """
+        (Output)
+        Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def audio(self) -> Optional[builtins.str]:
+        """
+        Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+        A base64-encoded string.
+        This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        """
+        return pulumi.get(self, "audio")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[builtins.str]:
+        """
+        Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+        This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[builtins.bool] = None,
+                 ssml: Optional[builtins.str] = None,
+                 text: Optional[builtins.str] = None):
+        """
+        :param builtins.bool allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param builtins.str ssml: The SSML text to be synthesized. For more information, see SSML.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+        :param builtins.str text: The raw text to be synthesized.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[builtins.bool]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[builtins.str]:
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+        """
+        return pulumi.get(self, "ssml")
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[builtins.str]:
+        """
+        The raw text to be synthesized.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "audioUri":
+            suggest = "audio_uri"
+        elif key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audio_uri: builtins.str,
+                 allow_playback_interruption: Optional[builtins.bool] = None):
+        """
+        :param builtins.str audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param builtins.bool allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+               
+               <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
+        """
+        pulumi.set(__self__, "audio_uri", audio_uri)
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+
+    @property
+    @pulumi.getter(name="audioUri")
+    def audio_uri(self) -> builtins.str:
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        return pulumi.get(self, "audio_uri")
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[builtins.bool]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+
+        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phoneNumber":
+            suggest = "phone_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 phone_number: builtins.str):
+        """
+        :param builtins.str phone_number: Transfer the call to a phone number in E.164 format.
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> builtins.str:
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[builtins.bool] = None,
+                 texts: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.bool allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param Sequence[builtins.str] texts: A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+               required: true
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[builtins.bool]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[Sequence[builtins.str]]:
+        """
+        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        required: true
+        """
+        return pulumi.get(self, "texts")
+
+
+@pulumi.output_type
+class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction(dict):
     def __init__(__self__, *,
                  parameter: Optional[builtins.str] = None,
                  value: Optional[builtins.str] = None):
@@ -2122,21 +3459,28 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
-        :param builtins.str payload: A custom, platform-specific payload.
+        :param builtins.str payload: Returns a response containing a custom, platform-specific payload.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         :param 'CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs' text: The text response message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         """
         if channel is not None:
@@ -2173,6 +3517,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         * In a webhook response when you determine that you handled the customer issue.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "conversation_success")
@@ -2186,6 +3531,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         * In a webhook response when you determine that the customer issue can only be handled by a human.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "live_agent_handoff")
@@ -2195,6 +3541,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
     def output_audio_text(self) -> Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText']:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "output_audio_text")
@@ -2203,7 +3550,8 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
     @pulumi.getter
     def payload(self) -> Optional[builtins.str]:
         """
-        A custom, platform-specific payload.
+        Returns a response containing a custom, platform-specific payload.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         """
         return pulumi.get(self, "payload")
 
@@ -2212,6 +3560,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
     def play_audio(self) -> Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio']:
         """
         Specifies an audio clip to be played by the client as part of the response.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "play_audio")
@@ -2221,6 +3570,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
     def telephony_transfer_call(self) -> Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall']:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "telephony_transfer_call")
@@ -2230,6 +3580,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
     def text(self) -> Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageText']:
         """
         The text response message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "text")
@@ -2300,7 +3651,9 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param builtins.str ssml: The SSML text to be synthesized. For more information, see SSML.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         :param builtins.str text: The raw text to be synthesized.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -2323,6 +3676,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
     def ssml(self) -> Optional[builtins.str]:
         """
         The SSML text to be synthesized. For more information, see SSML.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "ssml")
 
@@ -2331,6 +3685,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
     def text(self) -> Optional[builtins.str]:
         """
         The raw text to be synthesized.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "text")
 
@@ -2363,6 +3718,8 @@ class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
         :param builtins.str audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+               
+               <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         pulumi.set(__self__, "audio_uri", audio_uri)
         if allow_playback_interruption is not None:
@@ -2382,6 +3739,8 @@ class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
         """
         (Output)
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+
+        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         return pulumi.get(self, "allow_playback_interruption")
 
@@ -2446,7 +3805,8 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageText(dict):
         """
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        :param Sequence[builtins.str] texts: A collection of text responses.
+        :param Sequence[builtins.str] texts: A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+               required: true
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -2466,7 +3826,8 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageText(dict):
     @pulumi.getter
     def texts(self) -> Optional[Sequence[builtins.str]]:
         """
-        A collection of text responses.
+        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        required: true
         """
         return pulumi.get(self, "texts")
 
@@ -2772,7 +4133,7 @@ class CxPageAdvancedSettingsDtmfSettings(dict):
                  finish_digit: Optional[builtins.str] = None,
                  max_digits: Optional[builtins.int] = None):
         """
-        :param builtins.bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param builtins.bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
         :param builtins.str finish_digit: The digit that terminates a DTMF digit sequence.
         :param builtins.int max_digits: Max length of DTMF digits.
         """
@@ -2787,7 +4148,7 @@ class CxPageAdvancedSettingsDtmfSettings(dict):
     @pulumi.getter
     def enabled(self) -> Optional[builtins.bool]:
         """
-        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
         """
         return pulumi.get(self, "enabled")
 
@@ -2978,21 +4339,28 @@ class CxPageEntryFulfillmentMessage(dict):
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageEntryFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageEntryFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
-        :param builtins.str payload: A custom, platform-specific payload.
+        :param builtins.str payload: Returns a response containing a custom, platform-specific payload.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         :param 'CxPageEntryFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageEntryFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageEntryFulfillmentMessageTextArgs' text: The text response message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         """
         if channel is not None:
@@ -3029,6 +4397,7 @@ class CxPageEntryFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         * In a webhook response when you determine that you handled the customer issue.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "conversation_success")
@@ -3042,6 +4411,7 @@ class CxPageEntryFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         * In a webhook response when you determine that the customer issue can only be handled by a human.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "live_agent_handoff")
@@ -3051,6 +4421,7 @@ class CxPageEntryFulfillmentMessage(dict):
     def output_audio_text(self) -> Optional['outputs.CxPageEntryFulfillmentMessageOutputAudioText']:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "output_audio_text")
@@ -3059,7 +4430,8 @@ class CxPageEntryFulfillmentMessage(dict):
     @pulumi.getter
     def payload(self) -> Optional[builtins.str]:
         """
-        A custom, platform-specific payload.
+        Returns a response containing a custom, platform-specific payload.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         """
         return pulumi.get(self, "payload")
 
@@ -3068,6 +4440,7 @@ class CxPageEntryFulfillmentMessage(dict):
     def play_audio(self) -> Optional['outputs.CxPageEntryFulfillmentMessagePlayAudio']:
         """
         Specifies an audio clip to be played by the client as part of the response.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "play_audio")
@@ -3077,6 +4450,7 @@ class CxPageEntryFulfillmentMessage(dict):
     def telephony_transfer_call(self) -> Optional['outputs.CxPageEntryFulfillmentMessageTelephonyTransferCall']:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "telephony_transfer_call")
@@ -3086,6 +4460,7 @@ class CxPageEntryFulfillmentMessage(dict):
     def text(self) -> Optional['outputs.CxPageEntryFulfillmentMessageText']:
         """
         The text response message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "text")
@@ -3156,7 +4531,9 @@ class CxPageEntryFulfillmentMessageOutputAudioText(dict):
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param builtins.str ssml: The SSML text to be synthesized. For more information, see SSML.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         :param builtins.str text: The raw text to be synthesized.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -3179,6 +4556,7 @@ class CxPageEntryFulfillmentMessageOutputAudioText(dict):
     def ssml(self) -> Optional[builtins.str]:
         """
         The SSML text to be synthesized. For more information, see SSML.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "ssml")
 
@@ -3187,6 +4565,7 @@ class CxPageEntryFulfillmentMessageOutputAudioText(dict):
     def text(self) -> Optional[builtins.str]:
         """
         The raw text to be synthesized.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "text")
 
@@ -3219,6 +4598,8 @@ class CxPageEntryFulfillmentMessagePlayAudio(dict):
         :param builtins.str audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+               
+               <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         pulumi.set(__self__, "audio_uri", audio_uri)
         if allow_playback_interruption is not None:
@@ -3238,6 +4619,8 @@ class CxPageEntryFulfillmentMessagePlayAudio(dict):
         """
         (Output)
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+
+        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         return pulumi.get(self, "allow_playback_interruption")
 
@@ -3302,7 +4685,8 @@ class CxPageEntryFulfillmentMessageText(dict):
         """
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        :param Sequence[builtins.str] texts: A collection of text responses.
+        :param Sequence[builtins.str] texts: A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+               required: true
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -3322,7 +4706,8 @@ class CxPageEntryFulfillmentMessageText(dict):
     @pulumi.getter
     def texts(self) -> Optional[Sequence[builtins.str]]:
         """
-        A collection of text responses.
+        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        required: true
         """
         return pulumi.get(self, "texts")
 
@@ -3624,21 +5009,28 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
-        :param builtins.str payload: A custom, platform-specific payload.
+        :param builtins.str payload: Returns a response containing a custom, platform-specific payload.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         :param 'CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageEventHandlerTriggerFulfillmentMessageTextArgs' text: The text response message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         """
         if channel is not None:
@@ -3675,6 +5067,7 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         * In a webhook response when you determine that you handled the customer issue.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "conversation_success")
@@ -3688,6 +5081,7 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         * In a webhook response when you determine that the customer issue can only be handled by a human.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "live_agent_handoff")
@@ -3697,6 +5091,7 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
     def output_audio_text(self) -> Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText']:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "output_audio_text")
@@ -3705,7 +5100,8 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
     @pulumi.getter
     def payload(self) -> Optional[builtins.str]:
         """
-        A custom, platform-specific payload.
+        Returns a response containing a custom, platform-specific payload.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         """
         return pulumi.get(self, "payload")
 
@@ -3714,6 +5110,7 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
     def play_audio(self) -> Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessagePlayAudio']:
         """
         Specifies an audio clip to be played by the client as part of the response.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "play_audio")
@@ -3723,6 +5120,7 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
     def telephony_transfer_call(self) -> Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall']:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "telephony_transfer_call")
@@ -3732,6 +5130,7 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
     def text(self) -> Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageText']:
         """
         The text response message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "text")
@@ -3802,7 +5201,9 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param builtins.str ssml: The SSML text to be synthesized. For more information, see SSML.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         :param builtins.str text: The raw text to be synthesized.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -3825,6 +5226,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
     def ssml(self) -> Optional[builtins.str]:
         """
         The SSML text to be synthesized. For more information, see SSML.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "ssml")
 
@@ -3833,6 +5235,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText(dict):
     def text(self) -> Optional[builtins.str]:
         """
         The raw text to be synthesized.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "text")
 
@@ -3865,6 +5268,8 @@ class CxPageEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
         :param builtins.str audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+               
+               <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         pulumi.set(__self__, "audio_uri", audio_uri)
         if allow_playback_interruption is not None:
@@ -3884,6 +5289,8 @@ class CxPageEventHandlerTriggerFulfillmentMessagePlayAudio(dict):
         """
         (Output)
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+
+        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         return pulumi.get(self, "allow_playback_interruption")
 
@@ -3948,7 +5355,8 @@ class CxPageEventHandlerTriggerFulfillmentMessageText(dict):
         """
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        :param Sequence[builtins.str] texts: A collection of text responses.
+        :param Sequence[builtins.str] texts: A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+               required: true
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -3968,7 +5376,8 @@ class CxPageEventHandlerTriggerFulfillmentMessageText(dict):
     @pulumi.getter
     def texts(self) -> Optional[Sequence[builtins.str]]:
         """
-        A collection of text responses.
+        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        required: true
         """
         return pulumi.get(self, "texts")
 
@@ -4239,7 +5648,7 @@ class CxPageFormParameterAdvancedSettingsDtmfSettings(dict):
                  finish_digit: Optional[builtins.str] = None,
                  max_digits: Optional[builtins.int] = None):
         """
-        :param builtins.bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param builtins.bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
         :param builtins.str finish_digit: The digit that terminates a DTMF digit sequence.
         :param builtins.int max_digits: Max length of DTMF digits.
         """
@@ -4254,7 +5663,7 @@ class CxPageFormParameterAdvancedSettingsDtmfSettings(dict):
     @pulumi.getter
     def enabled(self) -> Optional[builtins.bool]:
         """
-        If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
         """
         return pulumi.get(self, "enabled")
 
@@ -4519,21 +5928,28 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
-        :param builtins.str payload: A custom, platform-specific payload.
+        :param builtins.str payload: Returns a response containing a custom, platform-specific payload.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs' text: The text response message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         """
         if channel is not None:
@@ -4570,6 +5986,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         * In a webhook response when you determine that you handled the customer issue.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "conversation_success")
@@ -4583,6 +6000,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         * In a webhook response when you determine that the customer issue can only be handled by a human.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "live_agent_handoff")
@@ -4592,6 +6010,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
     def output_audio_text(self) -> Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText']:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "output_audio_text")
@@ -4600,7 +6019,8 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
     @pulumi.getter
     def payload(self) -> Optional[builtins.str]:
         """
-        A custom, platform-specific payload.
+        Returns a response containing a custom, platform-specific payload.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         """
         return pulumi.get(self, "payload")
 
@@ -4609,6 +6029,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
     def play_audio(self) -> Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio']:
         """
         Specifies an audio clip to be played by the client as part of the response.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "play_audio")
@@ -4618,6 +6039,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
     def telephony_transfer_call(self) -> Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall']:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "telephony_transfer_call")
@@ -4627,6 +6049,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
     def text(self) -> Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText']:
         """
         The text response message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "text")
@@ -4697,7 +6120,9 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioT
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param builtins.str ssml: The SSML text to be synthesized. For more information, see SSML.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         :param builtins.str text: The raw text to be synthesized.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -4720,6 +6145,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioT
     def ssml(self) -> Optional[builtins.str]:
         """
         The SSML text to be synthesized. For more information, see SSML.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "ssml")
 
@@ -4728,6 +6154,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioT
     def text(self) -> Optional[builtins.str]:
         """
         The raw text to be synthesized.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "text")
 
@@ -4760,6 +6187,8 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio(di
         :param builtins.str audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+               
+               <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         pulumi.set(__self__, "audio_uri", audio_uri)
         if allow_playback_interruption is not None:
@@ -4779,6 +6208,8 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio(di
         """
         (Output)
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+
+        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         return pulumi.get(self, "allow_playback_interruption")
 
@@ -4843,7 +6274,8 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(dict):
         """
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        :param Sequence[builtins.str] texts: A collection of text responses.
+        :param Sequence[builtins.str] texts: A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+               required: true
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -4863,7 +6295,8 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(dict):
     @pulumi.getter
     def texts(self) -> Optional[Sequence[builtins.str]]:
         """
-        A collection of text responses.
+        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        required: true
         """
         return pulumi.get(self, "texts")
 
@@ -5165,21 +6598,28 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
-        :param builtins.str payload: A custom, platform-specific payload.
+        :param builtins.str payload: Returns a response containing a custom, platform-specific payload.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs' text: The text response message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         """
         if channel is not None:
@@ -5216,6 +6656,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         * In a webhook response when you determine that you handled the customer issue.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "conversation_success")
@@ -5229,6 +6670,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         * In a webhook response when you determine that the customer issue can only be handled by a human.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "live_agent_handoff")
@@ -5238,6 +6680,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def output_audio_text(self) -> Optional['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText']:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "output_audio_text")
@@ -5246,7 +6689,8 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     @pulumi.getter
     def payload(self) -> Optional[builtins.str]:
         """
-        A custom, platform-specific payload.
+        Returns a response containing a custom, platform-specific payload.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         """
         return pulumi.get(self, "payload")
 
@@ -5255,6 +6699,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def play_audio(self) -> Optional['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio']:
         """
         Specifies an audio clip to be played by the client as part of the response.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "play_audio")
@@ -5264,6 +6709,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def telephony_transfer_call(self) -> Optional['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall']:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "telephony_transfer_call")
@@ -5273,6 +6719,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def text(self) -> Optional['outputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText']:
         """
         The text response message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "text")
@@ -5343,7 +6790,9 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param builtins.str ssml: The SSML text to be synthesized. For more information, see SSML.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         :param builtins.str text: The raw text to be synthesized.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -5366,6 +6815,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def ssml(self) -> Optional[builtins.str]:
         """
         The SSML text to be synthesized. For more information, see SSML.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "ssml")
 
@@ -5374,6 +6824,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     def text(self) -> Optional[builtins.str]:
         """
         The raw text to be synthesized.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "text")
 
@@ -5406,6 +6857,8 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         :param builtins.str audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+               
+               <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         pulumi.set(__self__, "audio_uri", audio_uri)
         if allow_playback_interruption is not None:
@@ -5425,6 +6878,8 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         """
         (Output)
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+
+        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         return pulumi.get(self, "allow_playback_interruption")
 
@@ -5489,7 +6944,8 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
         """
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        :param Sequence[builtins.str] texts: A collection of text responses.
+        :param Sequence[builtins.str] texts: A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+               required: true
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -5509,13 +6965,1287 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
     @pulumi.getter
     def texts(self) -> Optional[Sequence[builtins.str]]:
         """
-        A collection of text responses.
+        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        required: true
         """
         return pulumi.get(self, "texts")
 
 
 @pulumi.output_type
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction(dict):
+    def __init__(__self__, *,
+                 parameter: Optional[builtins.str] = None,
+                 value: Optional[builtins.str] = None):
+        """
+        :param builtins.str parameter: Display name of the parameter.
+        :param builtins.str value: The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[builtins.str]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "parameter")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[builtins.str]:
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStoreConnections":
+            suggest = "data_store_connections"
+        elif key == "targetFlow":
+            suggest = "target_flow"
+        elif key == "targetPage":
+            suggest = "target_page"
+        elif key == "triggerFulfillment":
+            suggest = "trigger_fulfillment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store_connections: Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsDataStoreConnection']] = None,
+                 enabled: Optional[builtins.bool] = None,
+                 target_flow: Optional[builtins.str] = None,
+                 target_page: Optional[builtins.str] = None,
+                 trigger_fulfillment: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillment'] = None):
+        """
+        :param Sequence['CxPageKnowledgeConnectorSettingsDataStoreConnectionArgs'] data_store_connections: Optional. List of related data store connections.
+               Structure is documented below.
+        :param builtins.bool enabled: Whether Knowledge Connector is enabled or not.
+        :param builtins.str target_flow: The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+               This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        :param builtins.str target_page: The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+               The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+               This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to be triggered.
+               When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+               Structure is documented below.
+        """
+        if data_store_connections is not None:
+            pulumi.set(__self__, "data_store_connections", data_store_connections)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if target_flow is not None:
+            pulumi.set(__self__, "target_flow", target_flow)
+        if target_page is not None:
+            pulumi.set(__self__, "target_page", target_page)
+        if trigger_fulfillment is not None:
+            pulumi.set(__self__, "trigger_fulfillment", trigger_fulfillment)
+
+    @property
+    @pulumi.getter(name="dataStoreConnections")
+    def data_store_connections(self) -> Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsDataStoreConnection']]:
+        """
+        Optional. List of related data store connections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_store_connections")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[builtins.bool]:
+        """
+        Whether Knowledge Connector is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="targetFlow")
+    def target_flow(self) -> Optional[builtins.str]:
+        """
+        The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
+        This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        """
+        return pulumi.get(self, "target_flow")
+
+    @property
+    @pulumi.getter(name="targetPage")
+    def target_page(self) -> Optional[builtins.str]:
+        """
+        The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
+        The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
+        This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
+        """
+        return pulumi.get(self, "target_page")
+
+    @property
+    @pulumi.getter(name="triggerFulfillment")
+    def trigger_fulfillment(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillment']:
+        """
+        The fulfillment to be triggered.
+        When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter $request.knowledge.answers (contains up to the 5 highest confidence answers) and $request.knowledge.questions (contains the corresponding questions) to construct the fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger_fulfillment")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsDataStoreConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStore":
+            suggest = "data_store"
+        elif key == "dataStoreType":
+            suggest = "data_store_type"
+        elif key == "documentProcessingMode":
+            suggest = "document_processing_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsDataStoreConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsDataStoreConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsDataStoreConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store: Optional[builtins.str] = None,
+                 data_store_type: Optional[builtins.str] = None,
+                 document_processing_mode: Optional[builtins.str] = None):
+        """
+        :param builtins.str data_store: The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+        :param builtins.str data_store_type: The type of the connected data store.
+               * PUBLIC_WEB: A data store that contains public web content.
+               * UNSTRUCTURED: A data store that contains unstructured private data.
+               * STRUCTURED: A data store that contains structured data (for example FAQ).
+               Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+        :param builtins.str document_processing_mode: The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+               * DOCUMENTS: Documents are processed as documents.
+               * CHUNKS: Documents are converted to chunks.
+               Possible values are: `DOCUMENTS`, `CHUNKS`.
+        """
+        if data_store is not None:
+            pulumi.set(__self__, "data_store", data_store)
+        if data_store_type is not None:
+            pulumi.set(__self__, "data_store_type", data_store_type)
+        if document_processing_mode is not None:
+            pulumi.set(__self__, "document_processing_mode", document_processing_mode)
+
+    @property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> Optional[builtins.str]:
+        """
+        The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+        """
+        return pulumi.get(self, "data_store")
+
+    @property
+    @pulumi.getter(name="dataStoreType")
+    def data_store_type(self) -> Optional[builtins.str]:
+        """
+        The type of the connected data store.
+        * PUBLIC_WEB: A data store that contains public web content.
+        * UNSTRUCTURED: A data store that contains unstructured private data.
+        * STRUCTURED: A data store that contains structured data (for example FAQ).
+        Possible values are: `PUBLIC_WEB`, `UNSTRUCTURED`, `STRUCTURED`.
+        """
+        return pulumi.get(self, "data_store_type")
+
+    @property
+    @pulumi.getter(name="documentProcessingMode")
+    def document_processing_mode(self) -> Optional[builtins.str]:
+        """
+        The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+        * DOCUMENTS: Documents are processed as documents.
+        * CHUNKS: Documents are converted to chunks.
+        Possible values are: `DOCUMENTS`, `CHUNKS`.
+        """
+        return pulumi.get(self, "document_processing_mode")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advancedSettings":
+            suggest = "advanced_settings"
+        elif key == "conditionalCases":
+            suggest = "conditional_cases"
+        elif key == "enableGenerativeFallback":
+            suggest = "enable_generative_fallback"
+        elif key == "returnPartialResponses":
+            suggest = "return_partial_responses"
+        elif key == "setParameterActions":
+            suggest = "set_parameter_actions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 advanced_settings: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings'] = None,
+                 conditional_cases: Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase']] = None,
+                 enable_generative_fallback: Optional[builtins.bool] = None,
+                 messages: Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage']] = None,
+                 return_partial_responses: Optional[builtins.bool] = None,
+                 set_parameter_actions: Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction']] = None,
+                 tag: Optional[builtins.str] = None,
+                 webhook: Optional[builtins.str] = None):
+        """
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs' advanced_settings: Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+               DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+               Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+               Structure is documented below.
+        :param Sequence['CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs'] conditional_cases: Conditional cases for this fulfillment.
+               Structure is documented below.
+        :param builtins.bool enable_generative_fallback: If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        :param Sequence['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs'] messages: The list of rich message responses to present to the user.
+               Structure is documented below.
+        :param builtins.bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param Sequence['CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs'] set_parameter_actions: Set parameter values before executing the webhook.
+               Structure is documented below.
+        :param builtins.str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        :param builtins.str webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        if advanced_settings is not None:
+            pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if conditional_cases is not None:
+            pulumi.set(__self__, "conditional_cases", conditional_cases)
+        if enable_generative_fallback is not None:
+            pulumi.set(__self__, "enable_generative_fallback", enable_generative_fallback)
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if return_partial_responses is not None:
+            pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if set_parameter_actions is not None:
+            pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="advancedSettings")
+    def advanced_settings(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings']:
+        """
+        Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playbackInterruptionSettings at fulfillment level only overrides the playbackInterruptionSettings at the agent level, leaving other settings at the agent level unchanged.
+        DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel.
+        Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_settings")
+
+    @property
+    @pulumi.getter(name="conditionalCases")
+    def conditional_cases(self) -> Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase']]:
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_cases")
+
+    @property
+    @pulumi.getter(name="enableGenerativeFallback")
+    def enable_generative_fallback(self) -> Optional[builtins.bool]:
+        """
+        If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
+        """
+        return pulumi.get(self, "enable_generative_fallback")
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage']]:
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> Optional[builtins.bool]:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
+
+    @property
+    @pulumi.getter(name="setParameterActions")
+    def set_parameter_actions(self) -> Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction']]:
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_parameter_actions")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[builtins.str]:
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[builtins.str]:
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        return pulumi.get(self, "webhook")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dtmfSettings":
+            suggest = "dtmf_settings"
+        elif key == "loggingSettings":
+            suggest = "logging_settings"
+        elif key == "speechSettings":
+            suggest = "speech_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dtmf_settings: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings'] = None,
+                 logging_settings: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings'] = None,
+                 speech_settings: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings'] = None):
+        """
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs' dtmf_settings: Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs' logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+               * Agent level
+               Structure is documented below.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs' speech_settings: Settings for speech to text detection. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
+        """
+        if dtmf_settings is not None:
+            pulumi.set(__self__, "dtmf_settings", dtmf_settings)
+        if logging_settings is not None:
+            pulumi.set(__self__, "logging_settings", logging_settings)
+        if speech_settings is not None:
+            pulumi.set(__self__, "speech_settings", speech_settings)
+
+    @property
+    @pulumi.getter(name="dtmfSettings")
+    def dtmf_settings(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings']:
+        """
+        Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dtmf_settings")
+
+    @property
+    @pulumi.getter(name="loggingSettings")
+    def logging_settings(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings']:
+        """
+        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+        * Agent level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_settings")
+
+    @property
+    @pulumi.getter(name="speechSettings")
+    def speech_settings(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings']:
+        """
+        Settings for speech to text detection. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "speech_settings")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointingTimeoutDuration":
+            suggest = "endpointing_timeout_duration"
+        elif key == "finishDigit":
+            suggest = "finish_digit"
+        elif key == "interdigitTimeoutDuration":
+            suggest = "interdigit_timeout_duration"
+        elif key == "maxDigits":
+            suggest = "max_digits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[builtins.bool] = None,
+                 endpointing_timeout_duration: Optional[builtins.str] = None,
+                 finish_digit: Optional[builtins.str] = None,
+                 interdigit_timeout_duration: Optional[builtins.str] = None,
+                 max_digits: Optional[builtins.int] = None):
+        """
+        :param builtins.bool enabled: If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        :param builtins.str endpointing_timeout_duration: Endpoint timeout setting for matching dtmf input to regex.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        :param builtins.str finish_digit: The digit that terminates a DTMF digit sequence.
+        :param builtins.str interdigit_timeout_duration: Interdigit timeout setting for matching dtmf input to regex.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        :param builtins.int max_digits: Max length of DTMF digits.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if endpointing_timeout_duration is not None:
+            pulumi.set(__self__, "endpointing_timeout_duration", endpointing_timeout_duration)
+        if finish_digit is not None:
+            pulumi.set(__self__, "finish_digit", finish_digit)
+        if interdigit_timeout_duration is not None:
+            pulumi.set(__self__, "interdigit_timeout_duration", interdigit_timeout_duration)
+        if max_digits is not None:
+            pulumi.set(__self__, "max_digits", max_digits)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[builtins.bool]:
+        """
+        If true, incoming audio is processed for DTMF (dual tone multi frequtectency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will de the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="endpointingTimeoutDuration")
+    def endpointing_timeout_duration(self) -> Optional[builtins.str]:
+        """
+        Endpoint timeout setting for matching dtmf input to regex.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        """
+        return pulumi.get(self, "endpointing_timeout_duration")
+
+    @property
+    @pulumi.getter(name="finishDigit")
+    def finish_digit(self) -> Optional[builtins.str]:
+        """
+        The digit that terminates a DTMF digit sequence.
+        """
+        return pulumi.get(self, "finish_digit")
+
+    @property
+    @pulumi.getter(name="interdigitTimeoutDuration")
+    def interdigit_timeout_duration(self) -> Optional[builtins.str]:
+        """
+        Interdigit timeout setting for matching dtmf input to regex.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        """
+        return pulumi.get(self, "interdigit_timeout_duration")
+
+    @property
+    @pulumi.getter(name="maxDigits")
+    def max_digits(self) -> Optional[builtins.int]:
+        """
+        Max length of DTMF digits.
+        """
+        return pulumi.get(self, "max_digits")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConsentBasedRedaction":
+            suggest = "enable_consent_based_redaction"
+        elif key == "enableInteractionLogging":
+            suggest = "enable_interaction_logging"
+        elif key == "enableStackdriverLogging":
+            suggest = "enable_stackdriver_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_consent_based_redaction: Optional[builtins.bool] = None,
+                 enable_interaction_logging: Optional[builtins.bool] = None,
+                 enable_stackdriver_logging: Optional[builtins.bool] = None):
+        """
+        :param builtins.bool enable_consent_based_redaction: Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+        :param builtins.bool enable_interaction_logging: Enables DF Interaction logging.
+        :param builtins.bool enable_stackdriver_logging: Enables Google Cloud Logging.
+        """
+        if enable_consent_based_redaction is not None:
+            pulumi.set(__self__, "enable_consent_based_redaction", enable_consent_based_redaction)
+        if enable_interaction_logging is not None:
+            pulumi.set(__self__, "enable_interaction_logging", enable_interaction_logging)
+        if enable_stackdriver_logging is not None:
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+
+    @property
+    @pulumi.getter(name="enableConsentBasedRedaction")
+    def enable_consent_based_redaction(self) -> Optional[builtins.bool]:
+        """
+        Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+        """
+        return pulumi.get(self, "enable_consent_based_redaction")
+
+    @property
+    @pulumi.getter(name="enableInteractionLogging")
+    def enable_interaction_logging(self) -> Optional[builtins.bool]:
+        """
+        Enables DF Interaction logging.
+        """
+        return pulumi.get(self, "enable_interaction_logging")
+
+    @property
+    @pulumi.getter(name="enableStackdriverLogging")
+    def enable_stackdriver_logging(self) -> Optional[builtins.bool]:
+        """
+        Enables Google Cloud Logging.
+        """
+        return pulumi.get(self, "enable_stackdriver_logging")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointerSensitivity":
+            suggest = "endpointer_sensitivity"
+        elif key == "noSpeechTimeout":
+            suggest = "no_speech_timeout"
+        elif key == "useTimeoutBasedEndpointing":
+            suggest = "use_timeout_based_endpointing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpointer_sensitivity: Optional[builtins.int] = None,
+                 models: Optional[Mapping[str, builtins.str]] = None,
+                 no_speech_timeout: Optional[builtins.str] = None,
+                 use_timeout_based_endpointing: Optional[builtins.bool] = None):
+        """
+        :param builtins.int endpointer_sensitivity: Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        :param Mapping[str, builtins.str] models: Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+               An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+        :param builtins.str no_speech_timeout: Timeout before detecting no speech.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        :param builtins.bool use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+        """
+        if endpointer_sensitivity is not None:
+            pulumi.set(__self__, "endpointer_sensitivity", endpointer_sensitivity)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
+        if no_speech_timeout is not None:
+            pulumi.set(__self__, "no_speech_timeout", no_speech_timeout)
+        if use_timeout_based_endpointing is not None:
+            pulumi.set(__self__, "use_timeout_based_endpointing", use_timeout_based_endpointing)
+
+    @property
+    @pulumi.getter(name="endpointerSensitivity")
+    def endpointer_sensitivity(self) -> Optional[builtins.int]:
+        """
+        Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        """
+        return pulumi.get(self, "endpointer_sensitivity")
+
+    @property
+    @pulumi.getter
+    def models(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+        An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+        """
+        return pulumi.get(self, "models")
+
+    @property
+    @pulumi.getter(name="noSpeechTimeout")
+    def no_speech_timeout(self) -> Optional[builtins.str]:
+        """
+        Timeout before detecting no speech.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
+        """
+        return pulumi.get(self, "no_speech_timeout")
+
+    @property
+    @pulumi.getter(name="useTimeoutBasedEndpointing")
+    def use_timeout_based_endpointing(self) -> Optional[builtins.bool]:
+        """
+        Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
+        """
+        return pulumi.get(self, "use_timeout_based_endpointing")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase(dict):
+    def __init__(__self__, *,
+                 cases: Optional[builtins.str] = None):
+        """
+        :param builtins.str cases: A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+               See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        if cases is not None:
+            pulumi.set(__self__, "cases", cases)
+
+    @property
+    @pulumi.getter
+    def cases(self) -> Optional[builtins.str]:
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        return pulumi.get(self, "cases")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationSuccess":
+            suggest = "conversation_success"
+        elif key == "endInteractions":
+            suggest = "end_interactions"
+        elif key == "knowledgeInfoCard":
+            suggest = "knowledge_info_card"
+        elif key == "liveAgentHandoff":
+            suggest = "live_agent_handoff"
+        elif key == "mixedAudios":
+            suggest = "mixed_audios"
+        elif key == "outputAudioText":
+            suggest = "output_audio_text"
+        elif key == "playAudio":
+            suggest = "play_audio"
+        elif key == "telephonyTransferCall":
+            suggest = "telephony_transfer_call"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 channel: Optional[builtins.str] = None,
+                 conversation_success: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess'] = None,
+                 end_interactions: Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction']] = None,
+                 knowledge_info_card: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard'] = None,
+                 live_agent_handoff: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff'] = None,
+                 mixed_audios: Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio']] = None,
+                 output_audio_text: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText'] = None,
+                 payload: Optional[builtins.str] = None,
+                 play_audio: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio'] = None,
+                 telephony_transfer_call: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall'] = None,
+                 text: Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText'] = None):
+        """
+        :param builtins.str channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs' conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+               Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+               * In a webhook response when you determine that you handled the customer issue.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param Sequence['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteractionArgs'] end_interactions: (Output)
+               This type has no fields.
+               Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCardArgs' knowledge_info_card: This type has no fields.
+               Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+               Otherwise, the info card response is skipped.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+               Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+               * In a webhook response when you determine that the customer issue can only be handled by a human.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param Sequence['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioArgs'] mixed_audios: (Output)
+               Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param builtins.str payload: Returns a response containing a custom, platform-specific payload.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        :param 'CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs' text: The text response message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+               Structure is documented below.
+        """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conversation_success is not None:
+            pulumi.set(__self__, "conversation_success", conversation_success)
+        if end_interactions is not None:
+            pulumi.set(__self__, "end_interactions", end_interactions)
+        if knowledge_info_card is not None:
+            pulumi.set(__self__, "knowledge_info_card", knowledge_info_card)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if mixed_audios is not None:
+            pulumi.set(__self__, "mixed_audios", mixed_audios)
+        if output_audio_text is not None:
+            pulumi.set(__self__, "output_audio_text", output_audio_text)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if play_audio is not None:
+            pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[builtins.str]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter(name="conversationSuccess")
+    def conversation_success(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess']:
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_success")
+
+    @property
+    @pulumi.getter(name="endInteractions")
+    def end_interactions(self) -> Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction']]:
+        """
+        (Output)
+        This type has no fields.
+        Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        """
+        return pulumi.get(self, "end_interactions")
+
+    @property
+    @pulumi.getter(name="knowledgeInfoCard")
+    def knowledge_info_card(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard']:
+        """
+        This type has no fields.
+        Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return a payload with Infobot Messenger compatible info card.
+        Otherwise, the info card response is skipped.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        """
+        return pulumi.get(self, "knowledge_info_card")
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff']:
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @property
+    @pulumi.getter(name="mixedAudios")
+    def mixed_audios(self) -> Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio']]:
+        """
+        (Output)
+        Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via playAudio. This message is generated by Dialogflow only and not supposed to be defined by the user.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mixed_audios")
+
+    @property
+    @pulumi.getter(name="outputAudioText")
+    def output_audio_text(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText']:
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_audio_text")
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[builtins.str]:
+        """
+        Returns a response containing a custom, platform-specific payload.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        """
+        return pulumi.get(self, "payload")
+
+    @property
+    @pulumi.getter(name="playAudio")
+    def play_audio(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio']:
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "play_audio")
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall']:
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText']:
+        """
+        The text response message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess(dict):
+    def __init__(__self__, *,
+                 metadata: Optional[builtins.str] = None):
+        """
+        :param builtins.str metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[builtins.str]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageEndInteraction(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageKnowledgeInfoCard(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff(dict):
+    def __init__(__self__, *,
+                 metadata: Optional[builtins.str] = None):
+        """
+        :param builtins.str metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[builtins.str]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio(dict):
+    def __init__(__self__, *,
+                 segments: Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment']] = None):
+        """
+        :param Sequence['CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegmentArgs'] segments: Segments this audio response is composed of.
+        """
+        if segments is not None:
+            pulumi.set(__self__, "segments", segments)
+
+    @property
+    @pulumi.getter
+    def segments(self) -> Optional[Sequence['outputs.CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment']]:
+        """
+        Segments this audio response is composed of.
+        """
+        return pulumi.get(self, "segments")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[builtins.bool] = None,
+                 audio: Optional[builtins.str] = None,
+                 uri: Optional[builtins.str] = None):
+        """
+        :param builtins.bool allow_playback_interruption: (Output)
+               Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+        :param builtins.str audio: Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+               A base64-encoded string.
+               This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        :param builtins.str uri: Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+               This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if audio is not None:
+            pulumi.set(__self__, "audio", audio)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[builtins.bool]:
+        """
+        (Output)
+        Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def audio(self) -> Optional[builtins.str]:
+        """
+        Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+        A base64-encoded string.
+        This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        """
+        return pulumi.get(self, "audio")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[builtins.str]:
+        """
+        Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
+        This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[builtins.bool] = None,
+                 ssml: Optional[builtins.str] = None,
+                 text: Optional[builtins.str] = None):
+        """
+        :param builtins.bool allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param builtins.str ssml: The SSML text to be synthesized. For more information, see SSML.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+        :param builtins.str text: The raw text to be synthesized.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[builtins.bool]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[builtins.str]:
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+        """
+        return pulumi.get(self, "ssml")
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[builtins.str]:
+        """
+        The raw text to be synthesized.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "audioUri":
+            suggest = "audio_uri"
+        elif key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audio_uri: builtins.str,
+                 allow_playback_interruption: Optional[builtins.bool] = None):
+        """
+        :param builtins.str audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param builtins.bool allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+               
+               <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
+        """
+        pulumi.set(__self__, "audio_uri", audio_uri)
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+
+    @property
+    @pulumi.getter(name="audioUri")
+    def audio_uri(self) -> builtins.str:
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        return pulumi.get(self, "audio_uri")
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[builtins.bool]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+
+        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phoneNumber":
+            suggest = "phone_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 phone_number: builtins.str):
+        """
+        :param builtins.str phone_number: Transfer the call to a phone number in E.164 format.
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> builtins.str:
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[builtins.bool] = None,
+                 texts: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.bool allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param Sequence[builtins.str] texts: A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+               required: true
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[builtins.bool]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[Sequence[builtins.str]]:
+        """
+        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        required: true
+        """
+        return pulumi.get(self, "texts")
+
+
+@pulumi.output_type
+class CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction(dict):
     def __init__(__self__, *,
                  parameter: Optional[builtins.str] = None,
                  value: Optional[builtins.str] = None):
@@ -5827,21 +8557,28 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
                * In a webhook response when you determine that you handled the customer issue.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs' live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
                Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
                You may set this, for example:
                * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
                * In a webhook response when you determine that the customer issue can only be handled by a human.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
-        :param builtins.str payload: A custom, platform-specific payload.
+        :param builtins.str payload: Returns a response containing a custom, platform-specific payload.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         :param 'CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs' play_audio: Specifies an audio clip to be played by the client as part of the response.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs' telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         :param 'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs' text: The text response message.
+               This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
                Structure is documented below.
         """
         if channel is not None:
@@ -5878,6 +8615,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         * In a webhook response when you determine that you handled the customer issue.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "conversation_success")
@@ -5891,6 +8629,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
         You may set this, for example:
         * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         * In a webhook response when you determine that the customer issue can only be handled by a human.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "live_agent_handoff")
@@ -5900,6 +8639,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
     def output_audio_text(self) -> Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText']:
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "output_audio_text")
@@ -5908,7 +8648,8 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
     @pulumi.getter
     def payload(self) -> Optional[builtins.str]:
         """
-        A custom, platform-specific payload.
+        Returns a response containing a custom, platform-specific payload.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         """
         return pulumi.get(self, "payload")
 
@@ -5917,6 +8658,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
     def play_audio(self) -> Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio']:
         """
         Specifies an audio clip to be played by the client as part of the response.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "play_audio")
@@ -5926,6 +8668,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
     def telephony_transfer_call(self) -> Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall']:
         """
         Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "telephony_transfer_call")
@@ -5935,6 +8678,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
     def text(self) -> Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageText']:
         """
         The text response message.
+        This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
         Structure is documented below.
         """
         return pulumi.get(self, "text")
@@ -6005,7 +8749,9 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param builtins.str ssml: The SSML text to be synthesized. For more information, see SSML.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         :param builtins.str text: The raw text to be synthesized.
+               This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -6028,6 +8774,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
     def ssml(self) -> Optional[builtins.str]:
         """
         The SSML text to be synthesized. For more information, see SSML.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "ssml")
 
@@ -6036,6 +8783,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText(dict):
     def text(self) -> Optional[builtins.str]:
         """
         The raw text to be synthesized.
+        This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         """
         return pulumi.get(self, "text")
 
@@ -6068,6 +8816,8 @@ class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
         :param builtins.str audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+               
+               <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         pulumi.set(__self__, "audio_uri", audio_uri)
         if allow_playback_interruption is not None:
@@ -6087,6 +8837,8 @@ class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio(dict):
         """
         (Output)
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+
+        <a name="nested_knowledge_connector_settings_trigger_fulfillment_messages_messages_mixed_audio"></a>The `mixed_audio` block contains:
         """
         return pulumi.get(self, "allow_playback_interruption")
 
@@ -6151,7 +8903,8 @@ class CxPageTransitionRouteTriggerFulfillmentMessageText(dict):
         """
         :param builtins.bool allow_playback_interruption: (Output)
                Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        :param Sequence[builtins.str] texts: A collection of text responses.
+        :param Sequence[builtins.str] texts: A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+               required: true
         """
         if allow_playback_interruption is not None:
             pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
@@ -6171,7 +8924,8 @@ class CxPageTransitionRouteTriggerFulfillmentMessageText(dict):
     @pulumi.getter
     def texts(self) -> Optional[Sequence[builtins.str]]:
         """
-        A collection of text responses.
+        A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
+        required: true
         """
         return pulumi.get(self, "texts")
 

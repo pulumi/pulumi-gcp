@@ -120,6 +120,12 @@ namespace Pulumi.Gcp.Netapp
     public partial class Backup : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Region in which backup is stored.
+        /// </summary>
+        [Output("backupRegion")]
+        public Output<string> BackupRegion { get; private set; } = null!;
+
+        /// <summary>
         /// Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
         /// </summary>
         [Output("backupType")]
@@ -213,6 +219,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("vaultName")]
         public Output<string> VaultName { get; private set; } = null!;
+
+        /// <summary>
+        /// Region of the volume from which the backup was created.
+        /// </summary>
+        [Output("volumeRegion")]
+        public Output<string> VolumeRegion { get; private set; } = null!;
 
         /// <summary>
         /// Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.
@@ -343,6 +355,12 @@ namespace Pulumi.Gcp.Netapp
     public sealed class BackupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Region in which backup is stored.
+        /// </summary>
+        [Input("backupRegion")]
+        public Input<string>? BackupRegion { get; set; }
+
+        /// <summary>
         /// Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
         /// </summary>
         [Input("backupType")]
@@ -462,6 +480,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("vaultName")]
         public Input<string>? VaultName { get; set; }
+
+        /// <summary>
+        /// Region of the volume from which the backup was created.
+        /// </summary>
+        [Input("volumeRegion")]
+        public Input<string>? VolumeRegion { get; set; }
 
         /// <summary>
         /// Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.

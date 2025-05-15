@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// <summary>
         /// The organization of the subject.
         /// </summary>
-        public readonly string Organization;
+        public readonly string? Organization;
         /// <summary>
         /// The organizational unit of the subject.
         /// </summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             string? locality,
 
-            string organization,
+            string? organization,
 
             string? organizationalUnit,
 

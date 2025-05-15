@@ -42,6 +42,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
      * You may set this, for example:
      * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
      * * In a webhook response when you determine that you handled the customer issue.
+     *   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      *   Structure is documented below.
      * 
      */
@@ -54,6 +55,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
      * You may set this, for example:
      * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
      * * In a webhook response when you determine that you handled the customer issue.
+     *   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      *   Structure is documented below.
      * 
      */
@@ -67,6 +69,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
      * You may set this, for example:
      * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
      * * In a webhook response when you determine that the customer issue can only be handled by a human.
+     *   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      *   Structure is documented below.
      * 
      */
@@ -79,6 +82,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
      * You may set this, for example:
      * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
      * * In a webhook response when you determine that the customer issue can only be handled by a human.
+     *   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      *   Structure is documented below.
      * 
      */
@@ -88,6 +92,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
     /**
      * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * Structure is documented below.
      * 
      */
@@ -96,6 +101,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
     /**
      * @return A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * Structure is documented below.
      * 
      */
@@ -104,14 +110,16 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
     }
 
     /**
-     * A custom, platform-specific payload.
+     * Returns a response containing a custom, platform-specific payload.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * 
      */
     @Import(name="payload")
     private @Nullable Output<String> payload;
 
     /**
-     * @return A custom, platform-specific payload.
+     * @return Returns a response containing a custom, platform-specific payload.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * 
      */
     public Optional<Output<String>> payload() {
@@ -120,6 +128,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
     /**
      * Specifies an audio clip to be played by the client as part of the response.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * Structure is documented below.
      * 
      */
@@ -128,6 +137,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
     /**
      * @return Specifies an audio clip to be played by the client as part of the response.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * Structure is documented below.
      * 
      */
@@ -137,6 +147,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
     /**
      * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * Structure is documented below.
      * 
      */
@@ -145,6 +156,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
     /**
      * @return Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * Structure is documented below.
      * 
      */
@@ -154,6 +166,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
     /**
      * The text response message.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * Structure is documented below.
      * 
      */
@@ -162,6 +175,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
     /**
      * @return The text response message.
+     * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
      * Structure is documented below.
      * 
      */
@@ -227,6 +241,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
          * * In a webhook response when you determine that you handled the customer issue.
+         *   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          *   Structure is documented below.
          * 
          * @return builder
@@ -243,6 +258,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
          * * In a webhook response when you determine that you handled the customer issue.
+         *   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          *   Structure is documented below.
          * 
          * @return builder
@@ -258,6 +274,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
          * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         *   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          *   Structure is documented below.
          * 
          * @return builder
@@ -274,6 +291,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
          * You may set this, for example:
          * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
          * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         *   This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          *   Structure is documented below.
          * 
          * @return builder
@@ -285,6 +303,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
         /**
          * @param outputAudioText A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -297,6 +316,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
         /**
          * @param outputAudioText A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -307,7 +327,8 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
         }
 
         /**
-         * @param payload A custom, platform-specific payload.
+         * @param payload Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * 
          * @return builder
          * 
@@ -318,7 +339,8 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
         }
 
         /**
-         * @param payload A custom, platform-specific payload.
+         * @param payload Returns a response containing a custom, platform-specific payload.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * 
          * @return builder
          * 
@@ -329,6 +351,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
         /**
          * @param playAudio Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -341,6 +364,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
         /**
          * @param playAudio Specifies an audio clip to be played by the client as part of the response.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -352,6 +376,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
         /**
          * @param telephonyTransferCall Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -364,6 +389,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
         /**
          * @param telephonyTransferCall Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -375,6 +401,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
         /**
          * @param text The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -387,6 +414,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageArgs extends com.p
 
         /**
          * @param text The text response message.
+         * This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
          * Structure is documented below.
          * 
          * @return builder

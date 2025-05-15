@@ -189,6 +189,12 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      */
     public readonly failoverOrigin!: pulumi.Output<string | undefined>;
     /**
+     * The FlexShieldingOptions to be used for all routes to this origin.
+     * If not set, defaults to a global caching layer in front of the origin.
+     * Structure is documented below.
+     */
+    public readonly flexShielding!: pulumi.Output<outputs.networkservices.EdgeCacheOriginFlexShielding | undefined>;
+    /**
      * Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -293,6 +299,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["failoverOrigin"] = state ? state.failoverOrigin : undefined;
+            resourceInputs["flexShielding"] = state ? state.flexShielding : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maxAttempts"] = state ? state.maxAttempts : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -313,6 +320,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             resourceInputs["awsV4Authentication"] = args ? args.awsV4Authentication : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["failoverOrigin"] = args ? args.failoverOrigin : undefined;
+            resourceInputs["flexShielding"] = args ? args.flexShielding : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["maxAttempts"] = args ? args.maxAttempts : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -358,6 +366,12 @@ export interface EdgeCacheOriginState {
      * A reference to a Topic resource.
      */
     failoverOrigin?: pulumi.Input<string>;
+    /**
+     * The FlexShieldingOptions to be used for all routes to this origin.
+     * If not set, defaults to a global caching layer in front of the origin.
+     * Structure is documented below.
+     */
+    flexShielding?: pulumi.Input<inputs.networkservices.EdgeCacheOriginFlexShielding>;
     /**
      * Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -467,6 +481,12 @@ export interface EdgeCacheOriginArgs {
      * A reference to a Topic resource.
      */
     failoverOrigin?: pulumi.Input<string>;
+    /**
+     * The FlexShieldingOptions to be used for all routes to this origin.
+     * If not set, defaults to a global caching layer in front of the origin.
+     * Structure is documented below.
+     */
+    flexShielding?: pulumi.Input<inputs.networkservices.EdgeCacheOriginFlexShielding>;
     /**
      * Set of label tags associated with the EdgeCache resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

@@ -265,6 +265,41 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Region Health Check Grpc With Tls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const grpc_with_tls_region_health_check = new gcp.compute.RegionHealthCheck("grpc-with-tls-region-health-check", {
+ *     name: "grpc-with-tls-region-health-check",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     grpcTlsHealthCheck: {
+ *         port: 443,
+ *     },
+ * });
+ * ```
+ * ### Region Health Check Grpc With Tls Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const grpc_with_tls_region_health_check = new gcp.compute.RegionHealthCheck("grpc-with-tls-region-health-check", {
+ *     name: "grpc-with-tls-region-health-check",
+ *     description: "regional health check via GRPC with TLS",
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     healthyThreshold: 4,
+ *     unhealthyThreshold: 5,
+ *     grpcTlsHealthCheck: {
+ *         portSpecification: "USE_FIXED_PORT",
+ *         port: 443,
+ *         grpcServiceName: "testservice",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -343,6 +378,11 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly grpcHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckGrpcHealthCheck | undefined>;
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     */
+    public readonly grpcTlsHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckGrpcTlsHealthCheck | undefined>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
@@ -442,6 +482,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["grpcHealthCheck"] = state ? state.grpcHealthCheck : undefined;
+            resourceInputs["grpcTlsHealthCheck"] = state ? state.grpcTlsHealthCheck : undefined;
             resourceInputs["healthCheckId"] = state ? state.healthCheckId : undefined;
             resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
             resourceInputs["http2HealthCheck"] = state ? state.http2HealthCheck : undefined;
@@ -462,6 +503,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             resourceInputs["checkIntervalSec"] = args ? args.checkIntervalSec : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["grpcHealthCheck"] = args ? args.grpcHealthCheck : undefined;
+            resourceInputs["grpcTlsHealthCheck"] = args ? args.grpcTlsHealthCheck : undefined;
             resourceInputs["healthyThreshold"] = args ? args.healthyThreshold : undefined;
             resourceInputs["http2HealthCheck"] = args ? args.http2HealthCheck : undefined;
             resourceInputs["httpHealthCheck"] = args ? args.httpHealthCheck : undefined;
@@ -507,6 +549,11 @@ export interface RegionHealthCheckState {
      * Structure is documented below.
      */
     grpcHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckGrpcHealthCheck>;
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     */
+    grpcTlsHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckGrpcTlsHealthCheck>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
@@ -609,6 +656,11 @@ export interface RegionHealthCheckArgs {
      * Structure is documented below.
      */
     grpcHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckGrpcHealthCheck>;
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     */
+    grpcTlsHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckGrpcTlsHealthCheck>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.

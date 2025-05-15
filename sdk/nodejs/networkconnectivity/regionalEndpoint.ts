@@ -34,12 +34,12 @@ import * as utilities from "../utilities";
  * const _default = new gcp.networkconnectivity.RegionalEndpoint("default", {
  *     name: "my-rep",
  *     location: "us-central1",
- *     targetGoogleApi: "storage.us-central1.p.rep.googleapis.com",
+ *     targetGoogleApi: "storage.us-central1.rep.googleapis.com",
  *     accessType: "REGIONAL",
  *     address: "192.168.0.5",
  *     network: myNetwork.id,
  *     subnetwork: mySubnetwork.id,
- *     description: "My RegionalEndpoint targeting Google API storage.us-central1.p.rep.googleapis.com",
+ *     description: "My RegionalEndpoint targeting Google API storage.us-central1.rep.googleapis.com",
  *     labels: {
  *         env: "default",
  *     },
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.networkconnectivity.RegionalEndpoint("default", {
  *     name: "my-rep",
  *     location: "us-central1",
- *     targetGoogleApi: "storage.us-central1.p.rep.googleapis.com",
+ *     targetGoogleApi: "storage.us-central1.rep.googleapis.com",
  *     accessType: "GLOBAL",
  *     address: "192.168.0.4",
  *     network: myNetwork.id,
@@ -187,7 +187,7 @@ export class RegionalEndpoint extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
-     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: \"cloudkms.us-central1.p.rep.googleapis.com\".
+     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
      */
     public readonly targetGoogleApi!: pulumi.Output<string>;
     /**
@@ -324,7 +324,7 @@ export interface RegionalEndpointState {
      */
     subnetwork?: pulumi.Input<string>;
     /**
-     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: \"cloudkms.us-central1.p.rep.googleapis.com\".
+     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
      */
     targetGoogleApi?: pulumi.Input<string>;
     /**
@@ -383,7 +383,7 @@ export interface RegionalEndpointArgs {
      */
     subnetwork?: pulumi.Input<string>;
     /**
-     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: \"cloudkms.us-central1.p.rep.googleapis.com\".
+     * The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
      */
     targetGoogleApi: pulumi.Input<string>;
 }

@@ -21,12 +21,14 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
         /// <summary>
         /// The SSML text to be synthesized. For more information, see SSML.
+        /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         /// </summary>
         [Input("ssml")]
         public Input<string>? Ssml { get; set; }
 
         /// <summary>
         /// The raw text to be synthesized.
+        /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
         /// </summary>
         [Input("text")]
         public Input<string>? Text { get; set; }

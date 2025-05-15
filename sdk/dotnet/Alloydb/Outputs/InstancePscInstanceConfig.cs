@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedConsumerProjects;
         /// <summary>
+        /// Configurations for setting up PSC service automation.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.InstancePscInstanceConfigPscAutoConnection> PscAutoConnections;
+        /// <summary>
         /// (Output)
         /// The DNS name of the instance for PSC connectivity.
         /// Name convention: &lt;uid&gt;.&lt;uid&gt;.&lt;region&gt;.alloydb-psc.goog
@@ -42,6 +47,8 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         private InstancePscInstanceConfig(
             ImmutableArray<string> allowedConsumerProjects,
 
+            ImmutableArray<Outputs.InstancePscInstanceConfigPscAutoConnection> pscAutoConnections,
+
             string? pscDnsName,
 
             ImmutableArray<Outputs.InstancePscInstanceConfigPscInterfaceConfig> pscInterfaceConfigs,
@@ -49,6 +56,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
             string? serviceAttachmentLink)
         {
             AllowedConsumerProjects = allowedConsumerProjects;
+            PscAutoConnections = pscAutoConnections;
             PscDnsName = pscDnsName;
             PscInterfaceConfigs = pscInterfaceConfigs;
             ServiceAttachmentLink = serviceAttachmentLink;

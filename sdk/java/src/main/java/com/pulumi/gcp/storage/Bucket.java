@@ -230,7 +230,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()
+ *         var no_public_access = new Bucket("no-public-access", BucketArgs.builder()
  *             .name("no-public-access-bucket")
  *             .location("US")
  *             .forceDestroy(true)
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var auto_expire = new Bucket("auto-expire", BucketArgs.builder()
+ *         var hns_enabled = new Bucket("hns-enabled", BucketArgs.builder()
  *             .name("hns-enabled-bucket")
  *             .location("US")
  *             .forceDestroy(true)

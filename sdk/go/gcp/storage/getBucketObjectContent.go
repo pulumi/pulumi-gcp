@@ -75,9 +75,13 @@ type GetBucketObjectContentResult struct {
 	Content string `pulumi:"content"`
 	// (Computed) Base64 encoded version of the object content.
 	// Use this when dealing with binary data.
-	ContentBase64       string                                     `pulumi:"contentBase64"`
-	ContentDisposition  string                                     `pulumi:"contentDisposition"`
-	ContentEncoding     string                                     `pulumi:"contentEncoding"`
+	ContentBase64 string `pulumi:"contentBase64"`
+	// (Computed) Base64 encoded SHA512 checksum of file content.
+	ContentBase64sha512 string `pulumi:"contentBase64sha512"`
+	ContentDisposition  string `pulumi:"contentDisposition"`
+	ContentEncoding     string `pulumi:"contentEncoding"`
+	// (Computed) Hex encoded SHA512 checksum of file content.
+	ContentHexsha512    string                                     `pulumi:"contentHexsha512"`
 	ContentLanguage     string                                     `pulumi:"contentLanguage"`
 	ContentType         string                                     `pulumi:"contentType"`
 	Crc32c              string                                     `pulumi:"crc32c"`
@@ -158,12 +162,22 @@ func (o GetBucketObjectContentResultOutput) ContentBase64() pulumi.StringOutput 
 	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.ContentBase64 }).(pulumi.StringOutput)
 }
 
+// (Computed) Base64 encoded SHA512 checksum of file content.
+func (o GetBucketObjectContentResultOutput) ContentBase64sha512() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.ContentBase64sha512 }).(pulumi.StringOutput)
+}
+
 func (o GetBucketObjectContentResultOutput) ContentDisposition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.ContentDisposition }).(pulumi.StringOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) ContentEncoding() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.ContentEncoding }).(pulumi.StringOutput)
+}
+
+// (Computed) Hex encoded SHA512 checksum of file content.
+func (o GetBucketObjectContentResultOutput) ContentHexsha512() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.ContentHexsha512 }).(pulumi.StringOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) ContentLanguage() pulumi.StringOutput {

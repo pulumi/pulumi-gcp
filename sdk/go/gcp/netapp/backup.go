@@ -131,6 +131,8 @@ import (
 type Backup struct {
 	pulumi.CustomResourceState
 
+	// Region in which backup is stored.
+	BackupRegion pulumi.StringOutput `pulumi:"backupRegion"`
 	// Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
 	BackupType pulumi.StringOutput `pulumi:"backupType"`
 	// Backups of a volume build incrementally on top of each other. They form a "backup chain".
@@ -169,6 +171,8 @@ type Backup struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Name of the backup vault to store the backup in.
 	VaultName pulumi.StringOutput `pulumi:"vaultName"`
+	// Region of the volume from which the backup was created.
+	VolumeRegion pulumi.StringOutput `pulumi:"volumeRegion"`
 	// Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.
 	VolumeUsageBytes pulumi.StringOutput `pulumi:"volumeUsageBytes"`
 }
@@ -214,6 +218,8 @@ func GetBackup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Backup resources.
 type backupState struct {
+	// Region in which backup is stored.
+	BackupRegion *string `pulumi:"backupRegion"`
 	// Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
 	BackupType *string `pulumi:"backupType"`
 	// Backups of a volume build incrementally on top of each other. They form a "backup chain".
@@ -252,11 +258,15 @@ type backupState struct {
 	State *string `pulumi:"state"`
 	// Name of the backup vault to store the backup in.
 	VaultName *string `pulumi:"vaultName"`
+	// Region of the volume from which the backup was created.
+	VolumeRegion *string `pulumi:"volumeRegion"`
 	// Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.
 	VolumeUsageBytes *string `pulumi:"volumeUsageBytes"`
 }
 
 type BackupState struct {
+	// Region in which backup is stored.
+	BackupRegion pulumi.StringPtrInput
 	// Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
 	BackupType pulumi.StringPtrInput
 	// Backups of a volume build incrementally on top of each other. They form a "backup chain".
@@ -295,6 +305,8 @@ type BackupState struct {
 	State pulumi.StringPtrInput
 	// Name of the backup vault to store the backup in.
 	VaultName pulumi.StringPtrInput
+	// Region of the volume from which the backup was created.
+	VolumeRegion pulumi.StringPtrInput
 	// Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.
 	VolumeUsageBytes pulumi.StringPtrInput
 }
@@ -445,6 +457,11 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// Region in which backup is stored.
+func (o BackupOutput) BackupRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupRegion }).(pulumi.StringOutput)
+}
+
 // Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]
 func (o BackupOutput) BackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.BackupType }).(pulumi.StringOutput)
@@ -523,6 +540,11 @@ func (o BackupOutput) State() pulumi.StringOutput {
 // Name of the backup vault to store the backup in.
 func (o BackupOutput) VaultName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.VaultName }).(pulumi.StringOutput)
+}
+
+// Region of the volume from which the backup was created.
+func (o BackupOutput) VolumeRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.VolumeRegion }).(pulumi.StringOutput)
 }
 
 // Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.

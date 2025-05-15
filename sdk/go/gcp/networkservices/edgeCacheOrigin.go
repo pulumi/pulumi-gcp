@@ -216,6 +216,10 @@ type EdgeCacheOrigin struct {
 	// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
 	// A reference to a Topic resource.
 	FailoverOrigin pulumi.StringPtrOutput `pulumi:"failoverOrigin"`
+	// The FlexShieldingOptions to be used for all routes to this origin.
+	// If not set, defaults to a global caching layer in front of the origin.
+	// Structure is documented below.
+	FlexShielding EdgeCacheOriginFlexShieldingPtrOutput `pulumi:"flexShielding"`
 	// Set of label tags associated with the EdgeCache resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -330,6 +334,10 @@ type edgeCacheOriginState struct {
 	// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
 	// A reference to a Topic resource.
 	FailoverOrigin *string `pulumi:"failoverOrigin"`
+	// The FlexShieldingOptions to be used for all routes to this origin.
+	// If not set, defaults to a global caching layer in front of the origin.
+	// Structure is documented below.
+	FlexShielding *EdgeCacheOriginFlexShielding `pulumi:"flexShielding"`
 	// Set of label tags associated with the EdgeCache resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -407,6 +415,10 @@ type EdgeCacheOriginState struct {
 	// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
 	// A reference to a Topic resource.
 	FailoverOrigin pulumi.StringPtrInput
+	// The FlexShieldingOptions to be used for all routes to this origin.
+	// If not set, defaults to a global caching layer in front of the origin.
+	// Structure is documented below.
+	FlexShielding EdgeCacheOriginFlexShieldingPtrInput
 	// Set of label tags associated with the EdgeCache resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -486,6 +498,10 @@ type edgeCacheOriginArgs struct {
 	// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
 	// A reference to a Topic resource.
 	FailoverOrigin *string `pulumi:"failoverOrigin"`
+	// The FlexShieldingOptions to be used for all routes to this origin.
+	// If not set, defaults to a global caching layer in front of the origin.
+	// Structure is documented below.
+	FlexShielding *EdgeCacheOriginFlexShielding `pulumi:"flexShielding"`
 	// Set of label tags associated with the EdgeCache resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -559,6 +575,10 @@ type EdgeCacheOriginArgs struct {
 	// The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
 	// A reference to a Topic resource.
 	FailoverOrigin pulumi.StringPtrInput
+	// The FlexShieldingOptions to be used for all routes to this origin.
+	// If not set, defaults to a global caching layer in front of the origin.
+	// Structure is documented below.
+	FlexShielding EdgeCacheOriginFlexShieldingPtrInput
 	// Set of label tags associated with the EdgeCache resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -729,6 +749,13 @@ func (o EdgeCacheOriginOutput) EffectiveLabels() pulumi.StringMapOutput {
 // A reference to a Topic resource.
 func (o EdgeCacheOriginOutput) FailoverOrigin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringPtrOutput { return v.FailoverOrigin }).(pulumi.StringPtrOutput)
+}
+
+// The FlexShieldingOptions to be used for all routes to this origin.
+// If not set, defaults to a global caching layer in front of the origin.
+// Structure is documented below.
+func (o EdgeCacheOriginOutput) FlexShielding() EdgeCacheOriginFlexShieldingPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheOrigin) EdgeCacheOriginFlexShieldingPtrOutput { return v.FlexShielding }).(EdgeCacheOriginFlexShieldingPtrOutput)
 }
 
 // Set of label tags associated with the EdgeCache resource.

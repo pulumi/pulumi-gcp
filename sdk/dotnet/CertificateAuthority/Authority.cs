@@ -77,6 +77,57 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// ### Privateca Certificate Authority Basic No Org
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateAuthority.Authority("default", new()
+    ///     {
+    ///         Pool = "ca-pool",
+    ///         CertificateAuthorityId = "my-certificate-authority",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = true,
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     CommonName = "my-certificate-authority",
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = null,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Lifetime = $"{10 * 365 * 24 * 3600}s",
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Privateca Certificate Authority Subordinate
     /// 
     /// ```csharp

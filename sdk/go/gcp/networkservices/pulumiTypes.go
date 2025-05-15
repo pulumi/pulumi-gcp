@@ -435,6 +435,155 @@ func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) SecretAccessKeyVersion() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+type EdgeCacheOriginFlexShielding struct {
+	// Whenever possible, content will be fetched from origin and cached in or
+	// near the specified origin. Best effort.
+	// You must specify exactly one FlexShieldingRegion.
+	// Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+	FlexShieldingRegions *string `pulumi:"flexShieldingRegions"`
+}
+
+// EdgeCacheOriginFlexShieldingInput is an input type that accepts EdgeCacheOriginFlexShieldingArgs and EdgeCacheOriginFlexShieldingOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginFlexShieldingInput` via:
+//
+//	EdgeCacheOriginFlexShieldingArgs{...}
+type EdgeCacheOriginFlexShieldingInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginFlexShieldingOutput() EdgeCacheOriginFlexShieldingOutput
+	ToEdgeCacheOriginFlexShieldingOutputWithContext(context.Context) EdgeCacheOriginFlexShieldingOutput
+}
+
+type EdgeCacheOriginFlexShieldingArgs struct {
+	// Whenever possible, content will be fetched from origin and cached in or
+	// near the specified origin. Best effort.
+	// You must specify exactly one FlexShieldingRegion.
+	// Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+	FlexShieldingRegions pulumi.StringPtrInput `pulumi:"flexShieldingRegions"`
+}
+
+func (EdgeCacheOriginFlexShieldingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginFlexShielding)(nil)).Elem()
+}
+
+func (i EdgeCacheOriginFlexShieldingArgs) ToEdgeCacheOriginFlexShieldingOutput() EdgeCacheOriginFlexShieldingOutput {
+	return i.ToEdgeCacheOriginFlexShieldingOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginFlexShieldingArgs) ToEdgeCacheOriginFlexShieldingOutputWithContext(ctx context.Context) EdgeCacheOriginFlexShieldingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginFlexShieldingOutput)
+}
+
+func (i EdgeCacheOriginFlexShieldingArgs) ToEdgeCacheOriginFlexShieldingPtrOutput() EdgeCacheOriginFlexShieldingPtrOutput {
+	return i.ToEdgeCacheOriginFlexShieldingPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginFlexShieldingArgs) ToEdgeCacheOriginFlexShieldingPtrOutputWithContext(ctx context.Context) EdgeCacheOriginFlexShieldingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginFlexShieldingOutput).ToEdgeCacheOriginFlexShieldingPtrOutputWithContext(ctx)
+}
+
+// EdgeCacheOriginFlexShieldingPtrInput is an input type that accepts EdgeCacheOriginFlexShieldingArgs, EdgeCacheOriginFlexShieldingPtr and EdgeCacheOriginFlexShieldingPtrOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginFlexShieldingPtrInput` via:
+//
+//	        EdgeCacheOriginFlexShieldingArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeCacheOriginFlexShieldingPtrInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginFlexShieldingPtrOutput() EdgeCacheOriginFlexShieldingPtrOutput
+	ToEdgeCacheOriginFlexShieldingPtrOutputWithContext(context.Context) EdgeCacheOriginFlexShieldingPtrOutput
+}
+
+type edgeCacheOriginFlexShieldingPtrType EdgeCacheOriginFlexShieldingArgs
+
+func EdgeCacheOriginFlexShieldingPtr(v *EdgeCacheOriginFlexShieldingArgs) EdgeCacheOriginFlexShieldingPtrInput {
+	return (*edgeCacheOriginFlexShieldingPtrType)(v)
+}
+
+func (*edgeCacheOriginFlexShieldingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginFlexShielding)(nil)).Elem()
+}
+
+func (i *edgeCacheOriginFlexShieldingPtrType) ToEdgeCacheOriginFlexShieldingPtrOutput() EdgeCacheOriginFlexShieldingPtrOutput {
+	return i.ToEdgeCacheOriginFlexShieldingPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeCacheOriginFlexShieldingPtrType) ToEdgeCacheOriginFlexShieldingPtrOutputWithContext(ctx context.Context) EdgeCacheOriginFlexShieldingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginFlexShieldingPtrOutput)
+}
+
+type EdgeCacheOriginFlexShieldingOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginFlexShieldingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginFlexShielding)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginFlexShieldingOutput) ToEdgeCacheOriginFlexShieldingOutput() EdgeCacheOriginFlexShieldingOutput {
+	return o
+}
+
+func (o EdgeCacheOriginFlexShieldingOutput) ToEdgeCacheOriginFlexShieldingOutputWithContext(ctx context.Context) EdgeCacheOriginFlexShieldingOutput {
+	return o
+}
+
+func (o EdgeCacheOriginFlexShieldingOutput) ToEdgeCacheOriginFlexShieldingPtrOutput() EdgeCacheOriginFlexShieldingPtrOutput {
+	return o.ToEdgeCacheOriginFlexShieldingPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeCacheOriginFlexShieldingOutput) ToEdgeCacheOriginFlexShieldingPtrOutputWithContext(ctx context.Context) EdgeCacheOriginFlexShieldingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginFlexShielding) *EdgeCacheOriginFlexShielding {
+		return &v
+	}).(EdgeCacheOriginFlexShieldingPtrOutput)
+}
+
+// Whenever possible, content will be fetched from origin and cached in or
+// near the specified origin. Best effort.
+// You must specify exactly one FlexShieldingRegion.
+// Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+func (o EdgeCacheOriginFlexShieldingOutput) FlexShieldingRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCacheOriginFlexShielding) *string { return v.FlexShieldingRegions }).(pulumi.StringPtrOutput)
+}
+
+type EdgeCacheOriginFlexShieldingPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginFlexShieldingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginFlexShielding)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginFlexShieldingPtrOutput) ToEdgeCacheOriginFlexShieldingPtrOutput() EdgeCacheOriginFlexShieldingPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginFlexShieldingPtrOutput) ToEdgeCacheOriginFlexShieldingPtrOutputWithContext(ctx context.Context) EdgeCacheOriginFlexShieldingPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginFlexShieldingPtrOutput) Elem() EdgeCacheOriginFlexShieldingOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginFlexShielding) EdgeCacheOriginFlexShielding {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheOriginFlexShielding
+		return ret
+	}).(EdgeCacheOriginFlexShieldingOutput)
+}
+
+// Whenever possible, content will be fetched from origin and cached in or
+// near the specified origin. Best effort.
+// You must specify exactly one FlexShieldingRegion.
+// Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+func (o EdgeCacheOriginFlexShieldingPtrOutput) FlexShieldingRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginFlexShielding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlexShieldingRegions
+	}).(pulumi.StringPtrOutput)
+}
+
 type EdgeCacheOriginOriginOverrideAction struct {
 	// The header actions, including adding and removing
 	// headers, for request handled by this origin.
@@ -12888,6 +13037,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetValidationSharedKeyArrayInput)(nil)).Elem(), EdgeCacheKeysetValidationSharedKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginAwsV4AuthenticationInput)(nil)).Elem(), EdgeCacheOriginAwsV4AuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginAwsV4AuthenticationPtrInput)(nil)).Elem(), EdgeCacheOriginAwsV4AuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginFlexShieldingInput)(nil)).Elem(), EdgeCacheOriginFlexShieldingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginFlexShieldingPtrInput)(nil)).Elem(), EdgeCacheOriginFlexShieldingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionPtrInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionHeaderActionInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionHeaderActionArgs{})
@@ -13042,6 +13193,8 @@ func init() {
 	pulumi.RegisterOutputType(EdgeCacheKeysetValidationSharedKeyArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginAwsV4AuthenticationOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginAwsV4AuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginFlexShieldingOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginFlexShieldingPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionHeaderActionOutput{})

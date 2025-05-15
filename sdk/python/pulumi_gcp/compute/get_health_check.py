@@ -28,7 +28,7 @@ class GetHealthCheckResult:
     """
     A collection of values returned by getHealthCheck.
     """
-    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_checks=None, healthy_threshold=None, http2_health_checks=None, http_health_checks=None, https_health_checks=None, id=None, log_configs=None, name=None, project=None, self_link=None, source_regions=None, ssl_health_checks=None, tcp_health_checks=None, timeout_sec=None, type=None, unhealthy_threshold=None):
+    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_checks=None, grpc_tls_health_checks=None, healthy_threshold=None, http2_health_checks=None, http_health_checks=None, https_health_checks=None, id=None, log_configs=None, name=None, project=None, self_link=None, source_regions=None, ssl_health_checks=None, tcp_health_checks=None, timeout_sec=None, type=None, unhealthy_threshold=None):
         if check_interval_sec and not isinstance(check_interval_sec, int):
             raise TypeError("Expected argument 'check_interval_sec' to be a int")
         pulumi.set(__self__, "check_interval_sec", check_interval_sec)
@@ -41,6 +41,9 @@ class GetHealthCheckResult:
         if grpc_health_checks and not isinstance(grpc_health_checks, list):
             raise TypeError("Expected argument 'grpc_health_checks' to be a list")
         pulumi.set(__self__, "grpc_health_checks", grpc_health_checks)
+        if grpc_tls_health_checks and not isinstance(grpc_tls_health_checks, list):
+            raise TypeError("Expected argument 'grpc_tls_health_checks' to be a list")
+        pulumi.set(__self__, "grpc_tls_health_checks", grpc_tls_health_checks)
         if healthy_threshold and not isinstance(healthy_threshold, int):
             raise TypeError("Expected argument 'healthy_threshold' to be a int")
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
@@ -106,6 +109,11 @@ class GetHealthCheckResult:
     @pulumi.getter(name="grpcHealthChecks")
     def grpc_health_checks(self) -> Sequence['outputs.GetHealthCheckGrpcHealthCheckResult']:
         return pulumi.get(self, "grpc_health_checks")
+
+    @property
+    @pulumi.getter(name="grpcTlsHealthChecks")
+    def grpc_tls_health_checks(self) -> Sequence['outputs.GetHealthCheckGrpcTlsHealthCheckResult']:
+        return pulumi.get(self, "grpc_tls_health_checks")
 
     @property
     @pulumi.getter(name="healthyThreshold")
@@ -196,6 +204,7 @@ class AwaitableGetHealthCheckResult(GetHealthCheckResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             grpc_health_checks=self.grpc_health_checks,
+            grpc_tls_health_checks=self.grpc_tls_health_checks,
             healthy_threshold=self.healthy_threshold,
             http2_health_checks=self.http2_health_checks,
             http_health_checks=self.http_health_checks,
@@ -246,6 +255,7 @@ def get_health_check(name: Optional[builtins.str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         grpc_health_checks=pulumi.get(__ret__, 'grpc_health_checks'),
+        grpc_tls_health_checks=pulumi.get(__ret__, 'grpc_tls_health_checks'),
         healthy_threshold=pulumi.get(__ret__, 'healthy_threshold'),
         http2_health_checks=pulumi.get(__ret__, 'http2_health_checks'),
         http_health_checks=pulumi.get(__ret__, 'http_health_checks'),
@@ -293,6 +303,7 @@ def get_health_check_output(name: Optional[pulumi.Input[builtins.str]] = None,
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         description=pulumi.get(__response__, 'description'),
         grpc_health_checks=pulumi.get(__response__, 'grpc_health_checks'),
+        grpc_tls_health_checks=pulumi.get(__response__, 'grpc_tls_health_checks'),
         healthy_threshold=pulumi.get(__response__, 'healthy_threshold'),
         http2_health_checks=pulumi.get(__response__, 'http2_health_checks'),
         http_health_checks=pulumi.get(__response__, 'http_health_checks'),

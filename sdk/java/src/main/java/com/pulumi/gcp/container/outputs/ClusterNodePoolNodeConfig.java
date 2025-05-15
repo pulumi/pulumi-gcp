@@ -304,7 +304,7 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable List<ClusterNodePoolNodeConfigTaint> taints;
     /**
-     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigWindowsNodeConfig windowsNodeConfig;
@@ -669,7 +669,7 @@ public final class ClusterNodePoolNodeConfig {
         return this.taints == null ? List.of() : this.taints;
     }
     /**
-     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
      * 
      */
     public Optional<ClusterNodePoolNodeConfigWindowsNodeConfig> windowsNodeConfig() {

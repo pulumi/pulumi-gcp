@@ -139,6 +139,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string CreationTimestamp;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetHealthCheckGrpcHealthCheckResult> GrpcHealthChecks;
+        public readonly ImmutableArray<Outputs.GetHealthCheckGrpcTlsHealthCheckResult> GrpcTlsHealthChecks;
         public readonly int HealthyThreshold;
         public readonly ImmutableArray<Outputs.GetHealthCheckHttp2HealthCheckResult> Http2HealthChecks;
         public readonly ImmutableArray<Outputs.GetHealthCheckHttpHealthCheckResult> HttpHealthChecks;
@@ -167,6 +168,8 @@ namespace Pulumi.Gcp.Compute
             string description,
 
             ImmutableArray<Outputs.GetHealthCheckGrpcHealthCheckResult> grpcHealthChecks,
+
+            ImmutableArray<Outputs.GetHealthCheckGrpcTlsHealthCheckResult> grpcTlsHealthChecks,
 
             int healthyThreshold,
 
@@ -202,6 +205,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             Description = description;
             GrpcHealthChecks = grpcHealthChecks;
+            GrpcTlsHealthChecks = grpcTlsHealthChecks;
             HealthyThreshold = healthyThreshold;
             Http2HealthChecks = http2HealthChecks;
             HttpHealthChecks = httpHealthChecks;

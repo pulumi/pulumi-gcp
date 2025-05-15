@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckGrpcHealthCheck;
+import com.pulumi.gcp.compute.outputs.GetHealthCheckGrpcTlsHealthCheck;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckHttp2HealthCheck;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckHttpHealthCheck;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckHttpsHealthCheck;
@@ -25,6 +26,7 @@ public final class GetHealthCheckResult {
     private String creationTimestamp;
     private String description;
     private List<GetHealthCheckGrpcHealthCheck> grpcHealthChecks;
+    private List<GetHealthCheckGrpcTlsHealthCheck> grpcTlsHealthChecks;
     private Integer healthyThreshold;
     private List<GetHealthCheckHttp2HealthCheck> http2HealthChecks;
     private List<GetHealthCheckHttpHealthCheck> httpHealthChecks;
@@ -57,6 +59,9 @@ public final class GetHealthCheckResult {
     }
     public List<GetHealthCheckGrpcHealthCheck> grpcHealthChecks() {
         return this.grpcHealthChecks;
+    }
+    public List<GetHealthCheckGrpcTlsHealthCheck> grpcTlsHealthChecks() {
+        return this.grpcTlsHealthChecks;
     }
     public Integer healthyThreshold() {
         return this.healthyThreshold;
@@ -121,6 +126,7 @@ public final class GetHealthCheckResult {
         private String creationTimestamp;
         private String description;
         private List<GetHealthCheckGrpcHealthCheck> grpcHealthChecks;
+        private List<GetHealthCheckGrpcTlsHealthCheck> grpcTlsHealthChecks;
         private Integer healthyThreshold;
         private List<GetHealthCheckHttp2HealthCheck> http2HealthChecks;
         private List<GetHealthCheckHttpHealthCheck> httpHealthChecks;
@@ -143,6 +149,7 @@ public final class GetHealthCheckResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.grpcHealthChecks = defaults.grpcHealthChecks;
+    	      this.grpcTlsHealthChecks = defaults.grpcTlsHealthChecks;
     	      this.healthyThreshold = defaults.healthyThreshold;
     	      this.http2HealthChecks = defaults.http2HealthChecks;
     	      this.httpHealthChecks = defaults.httpHealthChecks;
@@ -194,6 +201,17 @@ public final class GetHealthCheckResult {
         }
         public Builder grpcHealthChecks(GetHealthCheckGrpcHealthCheck... grpcHealthChecks) {
             return grpcHealthChecks(List.of(grpcHealthChecks));
+        }
+        @CustomType.Setter
+        public Builder grpcTlsHealthChecks(List<GetHealthCheckGrpcTlsHealthCheck> grpcTlsHealthChecks) {
+            if (grpcTlsHealthChecks == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "grpcTlsHealthChecks");
+            }
+            this.grpcTlsHealthChecks = grpcTlsHealthChecks;
+            return this;
+        }
+        public Builder grpcTlsHealthChecks(GetHealthCheckGrpcTlsHealthCheck... grpcTlsHealthChecks) {
+            return grpcTlsHealthChecks(List.of(grpcTlsHealthChecks));
         }
         @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
@@ -340,6 +358,7 @@ public final class GetHealthCheckResult {
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
             _resultValue.grpcHealthChecks = grpcHealthChecks;
+            _resultValue.grpcTlsHealthChecks = grpcTlsHealthChecks;
             _resultValue.healthyThreshold = healthyThreshold;
             _resultValue.http2HealthChecks = http2HealthChecks;
             _resultValue.httpHealthChecks = httpHealthChecks;

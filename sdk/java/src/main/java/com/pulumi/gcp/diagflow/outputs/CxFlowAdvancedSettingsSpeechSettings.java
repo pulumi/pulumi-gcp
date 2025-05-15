@@ -27,7 +27,7 @@ public final class CxFlowAdvancedSettingsSpeechSettings {
     private @Nullable Map<String,String> models;
     /**
      * @return Timeout before detecting no speech.
-     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.500s&#34;.
      * 
      */
     private @Nullable String noSpeechTimeout;
@@ -55,7 +55,7 @@ public final class CxFlowAdvancedSettingsSpeechSettings {
     }
     /**
      * @return Timeout before detecting no speech.
-     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.500s&#34;.
      * 
      */
     public Optional<String> noSpeechTimeout() {

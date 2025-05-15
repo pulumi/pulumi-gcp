@@ -21152,7 +21152,7 @@ type ClusterNodeConfig struct {
 	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
 	// recommended. Structure is documented below.
 	Taints []ClusterNodeConfigTaint `pulumi:"taints"`
-	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 	WindowsNodeConfig *ClusterNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -21308,7 +21308,7 @@ type ClusterNodeConfigArgs struct {
 	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
 	// recommended. Structure is documented below.
 	Taints ClusterNodeConfigTaintArrayInput `pulumi:"taints"`
-	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 	WindowsNodeConfig ClusterNodeConfigWindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -21660,7 +21660,7 @@ func (o ClusterNodeConfigOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
 }
 
-// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 func (o ClusterNodeConfigOutput) WindowsNodeConfig() ClusterNodeConfigWindowsNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigWindowsNodeConfig { return v.WindowsNodeConfig }).(ClusterNodeConfigWindowsNodeConfigPtrOutput)
 }
@@ -22176,7 +22176,7 @@ func (o ClusterNodeConfigPtrOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	}).(ClusterNodeConfigTaintArrayOutput)
 }
 
-// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 func (o ClusterNodeConfigPtrOutput) WindowsNodeConfig() ClusterNodeConfigWindowsNodeConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigWindowsNodeConfig {
 		if v == nil {
@@ -29726,7 +29726,7 @@ type ClusterNodePoolNodeConfig struct {
 	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
 	// recommended. Structure is documented below.
 	Taints []ClusterNodePoolNodeConfigTaint `pulumi:"taints"`
-	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 	WindowsNodeConfig *ClusterNodePoolNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -29882,7 +29882,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// this field to manage taints. If you do, `lifecycle.ignore_changes` is
 	// recommended. Structure is documented below.
 	Taints ClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
-	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 	WindowsNodeConfig ClusterNodePoolNodeConfigWindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -30256,7 +30256,7 @@ func (o ClusterNodePoolNodeConfigOutput) Taints() ClusterNodePoolNodeConfigTaint
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
-// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 func (o ClusterNodePoolNodeConfigOutput) WindowsNodeConfig() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWindowsNodeConfig {
 		return v.WindowsNodeConfig
@@ -30776,7 +30776,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Taints() ClusterNodePoolNodeConfigTa
 	}).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
-// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2019]. For example:
+// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
 func (o ClusterNodePoolNodeConfigPtrOutput) WindowsNodeConfig() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWindowsNodeConfig {
 		if v == nil {
