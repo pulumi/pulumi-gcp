@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * // there can be only 1 Legacy network per region for a given project,
  * // so creating new project for isolation in CI.

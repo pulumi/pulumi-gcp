@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
  *     name: "ca-pool",
@@ -129,7 +129,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * const project = gcp.organizations.getProject({});
  * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
@@ -291,7 +291,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * const project = gcp.organizations.getProject({});
  * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {

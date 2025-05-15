@@ -462,7 +462,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * const mesh = new gcp.networkservices.Mesh("mesh", {name: "network-services-mesh"});
  * const waitForMesh = new time.index.Sleep("wait_for_mesh", {createDuration: "1m"}, {

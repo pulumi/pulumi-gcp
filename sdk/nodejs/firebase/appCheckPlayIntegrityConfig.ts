@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * // Enables the Play Integrity API
  * const playIntegrity = new gcp.projects.Service("play_integrity", {
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * // Enables the Play Integrity API
  * const playIntegrity = new gcp.projects.Service("play_integrity", {
