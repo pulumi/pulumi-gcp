@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * // Create Folder in GCP Organization
  * const autokmsFolder = new gcp.organizations.Folder("autokms_folder", {

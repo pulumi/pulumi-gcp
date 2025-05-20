@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * const pabPolicy = new gcp.iam.PrincipalAccessBoundaryPolicy("pab_policy", {
  *     organization: "123456789",

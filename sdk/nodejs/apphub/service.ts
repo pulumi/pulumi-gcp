@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * const application = new gcp.apphub.Application("application", {
  *     location: "us-central1",
@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * const application = new gcp.apphub.Application("application", {
  *     location: "us-central1",

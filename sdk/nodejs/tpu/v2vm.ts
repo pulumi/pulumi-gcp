@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
+ * import * as time from "@pulumiverse/time";
  *
  * const available = gcp.tpu.getV2RuntimeVersions({});
  * const availableGetV2AcceleratorTypes = gcp.tpu.getV2AcceleratorTypes({});
